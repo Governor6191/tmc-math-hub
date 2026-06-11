@@ -16,13 +16,13 @@ test('parseFolderListing extracts folders and files with ids, names, types', () 
   ]);
 });
 
-// A2: garbage HTML now throws; valid-but-empty listing returns []
+// guard: markup change detection — throws on unrecognized structure, returns [] on valid empty listing
 test('parseFolderListing throws on unrecognized markup, returns [] on valid empty listing', () => {
   assert.throws(() => parseFolderListing('<html><body>nothing here</body></html>'), /flip-entries/);
   assert.deepEqual(parseFolderListing('<div class="flip-entries"></div>'), []);
 });
 
-// A1: trailing folders link after the last entry must not misclassify a file
+// guard: trailing folder link after last entry must not misclassify a file as a folder
 test('a trailing folders link after the last entry does not misclassify it', () => {
   const html = `<div class="flip-entries"><div class="flip-entry" id="entry-abc123"><a href="https://drive.google.com/file/d/abc123/view"><div class="flip-entry-title">notes.pdf</div></a></div></div><div class="footer"><a href="https://drive.google.com/drive/folders/zzz999">open hub</a></div>`;
   assert.deepEqual(parseFolderListing(html), [{ id: 'abc123', name: 'notes.pdf', type: 'file' }]);
@@ -30,7 +30,7 @@ test('a trailing folders link after the last entry does not misclassify it', () 
 
 test('decodeEntities handles the five common entities', () => {
   assert.equal(decodeEntities('A &amp; B &lt;x&gt; &quot;q&quot; &#39;s&#39;'), `A & B <x> "q" 's'`);
-  // A3: numeric entities (decimal and hex)
+  // numeric entities (decimal and hex)
   assert.equal(decodeEntities('L&#244;pital&#x2019;s rule'), 'Lôpital’s rule');
 });
 
@@ -85,10 +85,11 @@ test('buildCatalog produces the spec schema with defaults', async () => {
   assert.deepEqual(course.examFormats.map(f => f.id), ['midsem', 'endsem']);
   assert.deepEqual(course.materials, [
     { title: 'Limits.pdf', driveFileId: 'f1', kind: 'pdf' },
-    { title: 'calci_complete_practice.pdf', driveFileId: 'f2', kind: 'practice' },
+    { title: 'calci_complete_practice.pdf', driveFileId: 'f2', kind: 'practice', path: 'PRACTICE' },
   ]);
 });
 
+// G1: two-pass id assignment — collision across years/semesters still gets suffix
 test('buildCatalog suffixes colliding course ids across semesters', async () => {
   const LIST = {
     root: fakeListing([{ id: 'y1', name: 'YEAR 1', type: 'folder' }, { id: 'y2', name: 'YEAR 2', type: 'folder' }]),
@@ -172,6 +173,7 @@ test('"Yr 4 sem 2" parses as semester 2 and duplicate nesting is drilled through
   assert.deepEqual(sem.courses[0].materials, [{ title: 'fa.pdf', driveFileId: 'f1', kind: 'pdf' }]);
 });
 
+// G4: material subfolder path — root files have no 'path' key; nested files carry relative path
 test('materials are collected from all course descendants: root first, then subfolders depth-first', async () => {
   const LIST = {
     root: fakeListing([{ id: 'y1', name: 'YEAR 1', type: 'folder' }]),
@@ -188,11 +190,13 @@ test('materials are collected from all course descendants: root first, then subf
   };
   const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB', 0, 6));
   const course = catalog.years[0].semesters[0].courses[0];
+  // root file has no 'path' key; subfolder files carry their relative path
   assert.deepEqual(course.materials, [
     { title: 'c.pdf', driveFileId: 'fc', kind: 'pdf' },
-    { title: 'a.pdf', driveFileId: 'fa', kind: 'pdf' },
-    { title: 'b.pdf', driveFileId: 'fb', kind: 'practice' },
+    { title: 'a.pdf', driveFileId: 'fa', kind: 'pdf', path: 'SLIDES' },
+    { title: 'b.pdf', driveFileId: 'fb', kind: 'practice', path: 'PRACTICE/2023' },
   ]);
+  assert.equal('path' in course.materials[0], false);
 });
 
 test('a track folder with no semester-numbered children is skipped', async () => {
@@ -218,29 +222,59 @@ test('a track folder with no semester-numbered children is skipped', async () =>
   assert.ok(sem.courses.every(c => !('track' in c)));
 });
 
-test('same course name across three tracks in one semester gets unique ids', async () => {
-  const LIST = {
-    root: fakeListing([{ id: 'y4', name: 'YEAR 4', type: 'folder' }]),
-    y4: fakeListing([
-      { id: 'ta', name: 'APPLIED MATHS', type: 'folder' },
-      { id: 'tm', name: 'MATHEMATICAL ECONOMICS', type: 'folder' },
-      { id: 'tp', name: 'PURE MATHS', type: 'folder' },
-    ]),
-    ta: fakeListing([{ id: 'as1', name: 'SEM 1', type: 'folder' }]),
-    tm: fakeListing([{ id: 'ms1', name: 'SEM 1', type: 'folder' }]),
-    tp: fakeListing([{ id: 'ps1', name: 'SEM 1', type: 'folder' }]),
-    as1: fakeListing([{ id: 'ca', name: 'REAL FUNCTION I', type: 'folder' }, { id: 'xa', name: 'OPTIMIZATION I', type: 'folder' }]),
-    ms1: fakeListing([{ id: 'cm', name: 'REAL FUNCTION I', type: 'folder' }, { id: 'xm', name: 'ECONOMETRICS', type: 'folder' }]),
-    ps1: fakeListing([{ id: 'cp', name: 'REAL FUNCTION I', type: 'folder' }, { id: 'xp', name: 'TOPOLOGY', type: 'folder' }]),
-    ca: fakeListing([]), cm: fakeListing([]), cp: fakeListing([]),
-    xa: fakeListing([]), xm: fakeListing([]), xp: fakeListing([]),
-  };
-  const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB'));
-  const ids = catalog.years[0].semesters[0].courses.map(c => c.id);
-  assert.equal(new Set(ids).size, ids.length);
-  assert.ok(ids.includes('real-function-i'));
-  assert.ok(ids.includes('real-function-i-y4s1'));
-  assert.ok(ids.includes('real-function-i-y4s1-pure-maths'));
+// G1: three-track collision — NONE gets bare slug; all get track-suffixed ids.
+// Order-independence: build with tracks in reversed order → same id set.
+test('same course name across three tracks in one semester: all get track-suffixed ids (order-independent)', async () => {
+  function makeList(trackOrder) {
+    const trackFolders = {
+      ta: 'APPLIED MATHS',
+      tm: 'MATHEMATICAL ECONOMICS',
+      tp: 'PURE MATHS',
+    };
+    const LIST = {
+      root: fakeListing([{ id: 'y4', name: 'YEAR 4', type: 'folder' }]),
+      y4: fakeListing(trackOrder.map(id => ({ id, name: trackFolders[id], type: 'folder' }))),
+      ta: fakeListing([{ id: 'as1', name: 'SEM 1', type: 'folder' }]),
+      tm: fakeListing([{ id: 'ms1', name: 'SEM 1', type: 'folder' }]),
+      tp: fakeListing([{ id: 'ps1', name: 'SEM 1', type: 'folder' }]),
+      as1: fakeListing([{ id: 'ca', name: 'INTEGRAL EQUATION', type: 'folder' }, { id: 'xa', name: 'OPTIMIZATION I', type: 'folder' }]),
+      ms1: fakeListing([{ id: 'cm', name: 'INTEGRAL EQUATION', type: 'folder' }, { id: 'xm', name: 'ECONOMETRICS', type: 'folder' }]),
+      ps1: fakeListing([{ id: 'cp', name: 'INTEGRAL EQUATION', type: 'folder' }, { id: 'xp', name: 'TOPOLOGY', type: 'folder' }]),
+      ca: fakeListing([{ id: 'fa', name: 'ie-applied.pdf', type: 'file' }]),
+      cm: fakeListing([{ id: 'fm', name: 'ie-econ.pdf', type: 'file' }]),
+      cp: fakeListing([{ id: 'fp', name: 'ie-pure.pdf', type: 'file' }]),
+      xa: fakeListing([]), xm: fakeListing([]), xp: fakeListing([]),
+    };
+    return LIST;
+  }
+
+  async function getIds(trackOrder) {
+    const catalog = buildCatalog(await crawlTree(async id => makeList(trackOrder)[id], 'root', 'HUB'));
+    return catalog.years[0].semesters[0].courses.map(c => c.id).sort();
+  }
+
+  const forwardIds = await getIds(['ta', 'tm', 'tp']);
+  const reversedIds = await getIds(['tp', 'tm', 'ta']);
+
+  // All three share the same base slug → none gets bare slug
+  assert.ok(!forwardIds.includes('integral-equation'), 'bare slug must not appear');
+  // All three get track-suffixed ids
+  assert.ok(forwardIds.includes('integral-equation-applied-maths'), 'applied-maths variant must appear');
+  assert.ok(forwardIds.includes('integral-equation-mathematical-economics'), 'mathematical-economics variant must appear');
+  assert.ok(forwardIds.includes('integral-equation-pure-maths'), 'pure-maths variant must appear');
+
+  // Order-independence: same id set regardless of listing order
+  assert.deepEqual(forwardIds, reversedIds);
+
+  // driveFolderIds map to the same course regardless of order
+  async function getIdToFolderMap(trackOrder) {
+    const catalog = buildCatalog(await crawlTree(async id => makeList(trackOrder)[id], 'root', 'HUB'));
+    const courses = catalog.years[0].semesters[0].courses;
+    return Object.fromEntries(courses.map(c => [c.id, c.driveFolderId]));
+  }
+  const forwardMap = await getIdToFolderMap(['ta', 'tm', 'tp']);
+  const reversedMap = await getIdToFolderMap(['tp', 'tm', 'ta']);
+  assert.deepEqual(forwardMap, reversedMap);
 });
 
 test('each course gets its own examFormats copy', async () => {
@@ -255,4 +289,87 @@ test('each course gets its own examFormats copy', async () => {
   const [a, b] = catalog.years[0].semesters[0].courses;
   a.examFormats[0].questions = 999;
   assert.equal(b.examFormats[0].questions, 30);
+});
+
+// G2: junk filtering and kind-by-extension
+test('collectMaterials skips junk files and assigns kind by extension', async () => {
+  const LIST = {
+    root: fakeListing([{ id: 'y1', name: 'YEAR 1', type: 'folder' }]),
+    y1: fakeListing([{ id: 's1', name: 'SEM 1', type: 'folder' }]),
+    s1: fakeListing([{ id: 'c1', name: 'ALGORITHMS', type: 'folder' }]),
+    c1: fakeListing([
+      { id: 'f1', name: 'notes.pdf',      type: 'file' },
+      { id: 'f2', name: 'deck.pptx',      type: 'file' },
+      { id: 'f3', name: 'photo.jpg',      type: 'file' },
+      { id: 'f4', name: 'prog.c',         type: 'file' },
+      { id: 'f5', name: 'movie.mp4',      type: 'file' },
+      { id: 'f6', name: 'arch.zip',       type: 'file' },
+      { id: 'f7', name: 'weird.xyz',      type: 'file' },
+      // junk — must be skipped
+      { id: 'j1', name: '.DS_Store',      type: 'file' },
+      { id: 'j2', name: '~$lock.docx',    type: 'file' },
+      { id: 'j3', name: 'a.out',          type: 'file' },
+      { id: 'j4', name: 'noext',          type: 'file' },
+    ]),
+  };
+  const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB'));
+  const mats = catalog.years[0].semesters[0].courses[0].materials;
+  assert.equal(mats.length, 7, 'exactly 7 non-junk files should survive');
+  assert.deepEqual(mats.map(m => m.driveFileId), ['f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7']);
+  assert.deepEqual(mats.map(m => m.kind), ['pdf', 'doc', 'image', 'code', 'video', 'archive', 'other']);
+  // junk absent
+  const ids = mats.map(m => m.driveFileId);
+  assert.ok(!ids.includes('j1') && !ids.includes('j2') && !ids.includes('j3') && !ids.includes('j4'));
+});
+
+// G3: drillThrough guard — only drill when child slug === parent slug
+test('drillThrough does NOT drill when the lone child has a different name', async () => {
+  // Semester folder has exactly one course "OPTIMIZATION 2" which itself has
+  // only subfolders (no root files). Must NOT drill — OPTIMIZATION 2 must appear
+  // as a course, not its subfolders as courses.
+  const LIST = {
+    root: fakeListing([{ id: 'y4', name: 'YEAR 4', type: 'folder' }]),
+    y4: fakeListing([{ id: 's2', name: 'SEM 2', type: 'folder' }]),
+    s2: fakeListing([{ id: 'co', name: 'OPTIMIZATION 2', type: 'folder' }]),
+    co: fakeListing([
+      { id: 'sub1', name: 'NOTES', type: 'folder' },
+      { id: 'sub2', name: 'EXAMS', type: 'folder' },
+    ]),
+    sub1: fakeListing([{ id: 'f1', name: 'notes.pdf', type: 'file' }]),
+    sub2: fakeListing([{ id: 'f2', name: 'exam.pdf', type: 'file' }]),
+  };
+  const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB', 0, 6));
+  const sem = catalog.years[0].semesters[0];
+  // Only one course — 'optimization-2'
+  assert.equal(sem.courses.length, 1);
+  assert.equal(sem.courses[0].id, 'optimization-2');
+  assert.equal(sem.courses[0].title, 'Optimization 2');
+  // Its materials come from the subfolders
+  const matIds = sem.courses[0].materials.map(m => m.driveFileId);
+  assert.ok(matIds.includes('f1'));
+  assert.ok(matIds.includes('f2'));
+});
+
+// G5: spelled-out semester numbers
+test('semesterNumber handles spelled-out words and digit fallback', async () => {
+  // We test via buildCatalog using semester folder names
+  async function semFromName(semName) {
+    const LIST = {
+      root: fakeListing([{ id: 'y1', name: 'YEAR 1', type: 'folder' }]),
+      y1: fakeListing([{ id: 's1', name: semName, type: 'folder' }]),
+      s1: fakeListing([{ id: 'c1', name: 'ALGEBRA', type: 'folder' }]),
+      c1: fakeListing([]),
+    };
+    const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB'));
+    return catalog.years[0].semesters[0].semester;
+  }
+
+  assert.equal(await semFromName('SEMESTER ONE'), 1);
+  assert.equal(await semFromName('FIRST SEMESTER'), 1);
+  assert.equal(await semFromName('SEM TWO'), 2);
+  assert.equal(await semFromName('SEMESTER TWO'), 2);
+  assert.equal(await semFromName('SECOND SEMESTER'), 2);
+  // digit fallback still works
+  assert.equal(await semFromName('2ND SEM'), 2);
+  assert.equal(await semFromName('SEM 1'), 1);
 });
