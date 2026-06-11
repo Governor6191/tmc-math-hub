@@ -49,7 +49,7 @@ function renderSession(course, year, semester, pool) {
         Practice${topicId ? ` · ${escapeHtml(queue[0]?.topicTitle ?? topicId)}` : ''}</p>
       ${draftMode ? `<div class="draft-banner">Draft preview. These questions are not reviewed yet and your answers are not saved.</div>` : ''}
       <div class="quiz-head">
-        <h1>Question ${index + 1} of ${queue.length}</h1>
+        <h1>${index < queue.length ? `Question ${index + 1} of ${queue.length}` : 'Session complete'}</h1>
         <span class="quiz-tally">${t.correct}/${t.answered} correct</span>
       </div>`;
   }
