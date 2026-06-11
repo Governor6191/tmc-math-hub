@@ -51,9 +51,17 @@ export function validateBank(bank, expectedCourseId, expectedTopicId) {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  if (process.argv.length < 3) { console.error('usage: node tools/validate-questions.js <bank.json> [...more]'); process.exit(1); }
   let failed = false;
   for (const file of process.argv.slice(2)) {
-    const bank = JSON.parse(await readFile(file, 'utf8'));
+    let bank;
+    try {
+      bank = JSON.parse(await readFile(file, 'utf8'));
+    } catch (err) {
+      console.error(`${file}: ${err.message}`);
+      failed = true;
+      continue;
+    }
     const m = file.replace(/\\/g, '/').match(/questions\/([^/]+)\/(?:drafts\/)?([^/]+)\.json$/);
     if (!m) { console.error(`${file}: path does not look like a question bank location`); failed = true; continue; }
     const errors = validateBank(bank, m[1], m[2]);
