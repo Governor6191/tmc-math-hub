@@ -16,6 +16,11 @@ const course = catalog.years.find(y => y.year === 1).semesters.find(s => s.semes
   .courses.find(c => c.id === 'calculus-i');
 if (!course) throw new Error('calculus-i not found in catalog');
 
+if (course.topics.length > 0) {
+  console.error('calculus-i already has topics — this script curates a freshly generated catalog only. Aborting (no changes written).');
+  process.exit(1);
+}
+
 course.topics = TOPIC_MAP.map(t => ({
   id: t.id,
   title: t.title,
