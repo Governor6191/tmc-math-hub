@@ -88,3 +88,53 @@ test('buildCatalog produces the spec schema with defaults', async () => {
     { title: 'calci_complete_practice.pdf', driveFileId: 'f2', kind: 'practice' },
   ]);
 });
+
+test('buildCatalog suffixes colliding course ids across semesters', async () => {
+  const LIST = {
+    root: fakeListing([{ id: 'y1', name: 'YEAR 1', type: 'folder' }, { id: 'y2', name: 'YEAR 2', type: 'folder' }]),
+    y1: fakeListing([{ id: 'a1', name: 'SEM 1', type: 'folder' }]),
+    y2: fakeListing([{ id: 'b1', name: 'SEM 1', type: 'folder' }]),
+    a1: fakeListing([{ id: 'ca', name: 'ABSTRACT ALGEBRA', type: 'folder' }]),
+    b1: fakeListing([{ id: 'cb', name: 'ABSTRACT ALGEBRA', type: 'folder' }]),
+    ca: fakeListing([]),
+    cb: fakeListing([]),
+  };
+  const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB'));
+  const ids = catalog.years.flatMap(y => y.semesters).flatMap(s => s.courses).map(c => c.id);
+  assert.deepEqual(ids.sort(), ['abstract-algebra', 'abstract-algebra-y2s1'].sort());
+});
+
+test('buildCatalog skips folders without year/semester numbers', async () => {
+  const LIST = {
+    root: fakeListing([{ id: 'y1', name: 'YEAR 1', type: 'folder' }, { id: 'x1', name: 'ARCHIVE', type: 'folder' }]),
+    y1: fakeListing([{ id: 's1', name: 'SEM 1', type: 'folder' }]),
+    x1: fakeListing([]),
+    s1: fakeListing([]),
+  };
+  const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB'));
+  assert.equal(catalog.years.length, 1);
+  assert.equal(catalog.years[0].year, 1);
+});
+
+test('crawlTree stops descending past maxDepth', async () => {
+  let fetches = 0;
+  const deepFetcher = async id => { fetches++; return fakeListing([{ id: `${id}x`, name: `D${id.length}`, type: 'folder' }]); };
+  const tree = await crawlTree(deepFetcher, 'r', 'root', 0, 2);
+  assert.equal(fetches, 3);
+  const d2 = tree.folders[0].folders[0];
+  assert.deepEqual(d2.folders, []);
+});
+
+test('each course gets its own examFormats copy', async () => {
+  const LIST = {
+    root: fakeListing([{ id: 'y1', name: 'YEAR 1', type: 'folder' }]),
+    y1: fakeListing([{ id: 's1', name: 'SEM 1', type: 'folder' }]),
+    s1: fakeListing([{ id: 'c1', name: 'ALGEBRA', type: 'folder' }, { id: 'c2', name: 'CALCULUS', type: 'folder' }]),
+    c1: fakeListing([]),
+    c2: fakeListing([]),
+  };
+  const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB'));
+  const [a, b] = catalog.years[0].semesters[0].courses;
+  a.examFormats[0].questions = 999;
+  assert.equal(b.examFormats[0].questions, 30);
+});

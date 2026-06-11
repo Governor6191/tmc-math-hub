@@ -1,4 +1,4 @@
-import { writeFile } from 'node:fs/promises';
+import { writeFile, mkdir } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
 const ENTITIES = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'" };
@@ -46,10 +46,25 @@ export function slugify(title) {
 
 export async function crawlTree(fetchListing, id, name, depth = 0, maxDepth = 4) {
   const node = { id, name, files: [], folders: [] };
-  if (depth > maxDepth) return node;
-  for (const e of parseFolderListing(await fetchListing(id))) {
+  if (depth > maxDepth) {
+    console.error(`  WARNING: max depth reached at "${name}" (${id}) — not descending`);
+    return node;
+  }
+  let entries;
+  try {
+    entries = parseFolderListing(await fetchListing(id));
+  } catch (err) {
+    throw new Error(`while crawling "${name}" (${id}): ${err.message}`);
+  }
+  for (const e of entries) {
     if (e.type === 'file') node.files.push({ id: e.id, name: e.name });
-    else node.folders.push(await crawlTree(fetchListing, e.id, e.name, depth + 1, maxDepth));
+    else {
+      if (depth + 1 > maxDepth) {
+        console.error(`  WARNING: max depth reached at "${e.name}" (${e.id}) — not descending`);
+      } else {
+        node.folders.push(await crawlTree(fetchListing, e.id, e.name, depth + 1, maxDepth));
+      }
+    }
   }
   return node;
 }
@@ -73,18 +88,20 @@ export function buildCatalog(rootTree) {
   const seenIds = new Set();
   for (const yearFolder of rootTree.folders) {
     const yearNum = Number((yearFolder.name.match(/(\d+)/) || [])[1]);
-    if (!yearNum) continue;
+    if (!yearNum) { console.error(`  WARNING: skipping folder "${yearFolder.name}" — no year number in name`); continue; }
     const semesters = [];
     for (const semFolder of yearFolder.folders) {
       const semNum = Number((semFolder.name.match(/(\d+)/) || [])[1]);
-      if (!semNum) continue;
+      if (!semNum) { console.error(`  WARNING: skipping folder "${semFolder.name}" — no year number in name`); continue; }
       const courses = [];
       for (const courseFolder of semFolder.folders) {
         let id = slugify(courseFolder.name);
         if (seenIds.has(id)) id = `${id}-y${yearNum}s${semNum}`;
+        if (seenIds.has(id)) throw new Error(`duplicate course id after suffixing: ${id}`);
         seenIds.add(id);
         const materials = courseFolder.files.map(f => ({ title: f.name, driveFileId: f.id, kind: 'pdf' }));
         for (const sub of courseFolder.folders) {
+          if (sub.folders.length > 0) console.error(`  WARNING: "${courseFolder.name}/${sub.name}" has nested subfolders — their files are not collected`);
           const kind = /practice/i.test(sub.name) ? 'practice' : 'pdf';
           for (const f of sub.files) materials.push({ title: f.name, driveFileId: f.id, kind });
         }
@@ -92,7 +109,7 @@ export function buildCatalog(rootTree) {
           id,
           title: titleCase(courseFolder.name),
           driveFolderId: courseFolder.id,
-          examFormats: DEFAULT_EXAM_FORMATS,
+          examFormats: structuredClone(DEFAULT_EXAM_FORMATS),
           topics: [],
           materials,
         });
@@ -114,17 +131,25 @@ const DELAY_MS = 500;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function liveFetchListing(id) {
-  await sleep(DELAY_MS);
-  const res = await fetch(`https://drive.google.com/embeddedfolderview?id=${id}`);
-  if (!res.ok) throw new Error(`fetch failed for folder ${id}: HTTP ${res.status}`);
-  console.error(`  crawled folder ${id}`);
-  return res.text();
+  for (let attempt = 1; ; attempt++) {
+    await sleep(DELAY_MS * attempt);
+    try {
+      const res = await fetch(`https://drive.google.com/embeddedfolderview?id=${id}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      console.error(`  crawled folder ${id}`);
+      return await res.text();
+    } catch (err) {
+      if (attempt >= 3) throw new Error(`fetch failed for folder ${id} after ${attempt} attempts: ${err.message}`);
+      console.error(`  retrying folder ${id} (attempt ${attempt} failed: ${err.message})`);
+    }
+  }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   console.error('Crawling TMC_SLIDES_HUB (sequential, ~500ms/folder)...');
   const tree = await crawlTree(liveFetchListing, ROOT_ID, 'TMC_SLIDES_HUB');
   const catalog = buildCatalog(tree);
+  await mkdir(new URL('../data/', import.meta.url), { recursive: true });
   await writeFile(new URL('../data/catalog.generated.json', import.meta.url), JSON.stringify(catalog, null, 2) + '\n');
   const courses = catalog.years.flatMap(y => y.semesters).flatMap(s => s.courses);
   const files = courses.flatMap(c => c.materials);
