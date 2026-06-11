@@ -133,3 +133,52 @@ a:hover { color: var(--green-dark); }
   .videos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .coming { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* quiz components (Stage 2) */
+:root {
+  --right-bg: #e2efe7;
+  --right-text: #14503a;
+  --wrong-bg: #f7e4e0;
+  --wrong-text: #8a2f23;
+}
+
+.quiz-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin: 0.75rem 0; }
+.quiz-tally { font-family: var(--font-mono); font-size: 0.85rem; color: var(--ink-soft); }
+
+.quiz-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; }
+.quiz-stem { font-size: 1.05rem; margin: 0 0 1rem; }
+
+.quiz-options { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.option-btn {
+  display: flex; align-items: baseline; gap: 0.6rem; width: 100%; text-align: left;
+  font: inherit; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line-strong); border-radius: 8px; padding: 0.65rem 0.9rem; cursor: pointer;
+}
+.option-btn:hover { border-color: var(--green); }
+.option-btn:disabled { cursor: default; }
+.option-letter { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft); }
+.option-btn.is-correct { background: var(--right-bg); border-color: var(--right-text); color: var(--right-text); }
+.option-btn.is-wrong { background: var(--wrong-bg); border-color: var(--wrong-text); color: var(--wrong-text); }
+
+.explanation { background: var(--paper); border-left: 3px solid var(--green); border-radius: 0; padding: 0.75rem 1rem; margin: 1rem 0 0; }
+.explanation .verdict { font-weight: 600; margin: 0 0 0.4rem; }
+.explanation .verdict.wrong { color: var(--wrong-text); }
+.explanation .verdict.right { color: var(--right-text); }
+
+.quiz-next { margin-top: 1rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.next-btn {
+  font: inherit; font-weight: 600; color: var(--paper); background: var(--green);
+  border: 1px solid var(--green-dark); border-radius: 8px; padding: 0.55rem 1.4rem; cursor: pointer;
+}
+.next-btn:hover { background: var(--green-dark); }
+
+.quiz-summary { text-align: center; padding: 1.5rem 0; }
+.quiz-summary .score { font-family: var(--font-display); font-size: 3rem; }
+
+.draft-banner {
+  background: var(--amber-bg); color: var(--amber-text);
+  border-radius: var(--radius); padding: 0.6rem 1rem; margin: 0.75rem 0; font-size: 0.9rem;
+}
+
+.review-q { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 1rem 0; }
+.review-q .meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-soft); }
