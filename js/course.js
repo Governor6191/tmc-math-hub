@@ -88,18 +88,22 @@ root.addEventListener('click', e => {
   viewer.scrollIntoView({ block: 'start' });
 });
 
-try {
-  const catalog = await loadCatalog();
-  const hit = courseId ? findCourse(catalog, courseId) : null;
-  if (!hit) {
-    root.innerHTML = `<div class="error"><p>We couldn't find that course.
-      <a href="index.html">Back to the library</a>.</p></div>`;
-  } else {
-    document.title = `${hit.course.title} — TMC Math Hub`;
-    render(hit.course, hit.year, hit.semester);
+// async IIFE rather than top-level await: old mobile browsers that can't parse
+// top-level await would otherwise reject the whole module, chrome included
+(async () => {
+  try {
+    const catalog = await loadCatalog();
+    const hit = courseId ? findCourse(catalog, courseId) : null;
+    if (!hit) {
+      root.innerHTML = `<div class="error"><p>We couldn't find that course.
+        <a href="index.html">Back to the library</a>.</p></div>`;
+    } else {
+      document.title = `${hit.course.title} — TMC Math Hub`;
+      render(hit.course, hit.year, hit.semester);
+    }
+  } catch (err) {
+    console.error(err);
+    root.innerHTML = `<div class="error"><p>The course catalog failed to load.
+      Check your connection, then <a href="">reload the page</a>.</p></div>`;
   }
-} catch (err) {
-  console.error(err);
-  root.innerHTML = `<div class="error"><p>The course catalog failed to load.
-    Check your connection, then <a href="">reload the page</a>.</p></div>`;
-}
+})();

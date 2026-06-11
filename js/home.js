@@ -32,17 +32,21 @@ function semesterBlock(s) {
   return html;
 }
 
-try {
-  const catalog = await loadCatalog();
-  root.innerHTML = catalog.years.map(y => `
-    <section class="year">
-      <h2>Year ${y.year}</h2>
-      ${y.semesters.map(semesterBlock).join('')}
-    </section>`).join('');
-  if (status) status.textContent = '';
-} catch (err) {
-  console.error(err);
-  root.innerHTML = `<div class="error"><p>The course catalog failed to load.
-    Check your connection, then <a href="">reload the page</a>.</p></div>`;
-  if (status) status.textContent = 'The course catalog failed to load.';
-}
+// async IIFE rather than top-level await: old mobile browsers that can't parse
+// top-level await would otherwise reject the whole module, chrome included
+(async () => {
+  try {
+    const catalog = await loadCatalog();
+    root.innerHTML = catalog.years.map(y => `
+      <section class="year">
+        <h2>Year ${y.year}</h2>
+        ${y.semesters.map(semesterBlock).join('')}
+      </section>`).join('');
+    if (status) status.textContent = '';
+  } catch (err) {
+    console.error(err);
+    root.innerHTML = `<div class="error"><p>The course catalog failed to load.
+      Check your connection, then <a href="">reload the page</a>.</p></div>`;
+    if (status) status.textContent = 'The course catalog failed to load.';
+  }
+})();
