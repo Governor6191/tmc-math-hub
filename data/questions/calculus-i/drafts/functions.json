@@ -1,0 +1,429 @@
+{
+  "courseId": "calculus-i",
+  "topicId": "functions",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "calculus-i-functions-001",
+      "stem": "What is the domain of $\\displaystyle f(x) = \\frac{x+3}{x^2 - 4}$?",
+      "options": [
+        "all real numbers $x$ with $x \\neq 2$",
+        "all real numbers $x$ with $x \\neq 2$ and $x \\neq -2$",
+        "all real numbers $x$ with $x \\neq -3$",
+        "all real numbers"
+      ],
+      "answer": 1,
+      "explanation": "A rational function is undefined exactly where its denominator is zero. Factor: $x^2 - 4 = (x-2)(x+2)$, which vanishes at $x = 2$ and at $x = -2$, so both points must be removed from the domain. The numerator being zero at $x = -3$ is harmless; it just makes $f(-3) = 0$. The trap is solving $x^2 = 4$ and keeping only the positive root, which silently drops $x = -2$.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-002",
+      "stem": "Find the domain of $f(x) = \\sqrt{2x - 6}$.",
+      "options": [
+        "$[3, \\infty)$",
+        "$(3, \\infty)$",
+        "$(-\\infty, 3]$",
+        "$[-3, \\infty)$"
+      ],
+      "answer": 0,
+      "explanation": "An even root needs a nonnegative radicand, so solve $2x - 6 \\ge 0$, which gives $x \\ge 3$. The endpoint belongs in the domain because $f(3) = \\sqrt{0} = 0$ is perfectly defined. Flipping the inequality or mishandling the sign of the $6$ produces the other intervals. The trap is excluding the endpoint: square roots allow zero, it is division and logarithms that do not.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-003",
+      "stem": "What is the domain of $f(x) = \\ln(5 - x)$?",
+      "options": [
+        "$(-\\infty, 5]$",
+        "$(5, \\infty)$",
+        "$(-\\infty, 5)$",
+        "all real numbers $x$ with $x \\neq 5$"
+      ],
+      "answer": 2,
+      "explanation": "A logarithm accepts only strictly positive inputs, so require $5 - x > 0$. Solving gives $x < 5$, the interval $(-\\infty, 5)$. At $x = 5$ the expression becomes $\\ln 0$, which is undefined, so the endpoint must stay out; treating the restriction like a denominator only removes the single point $x = 5$ and wrongly keeps everything beyond it. The trap is writing $5 - x \\ge 0$ as if this were a square root, which incorrectly includes the endpoint.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.5"
+    },
+    {
+      "id": "calculus-i-functions-004",
+      "stem": "Find the domain of $\\displaystyle f(x) = \\frac{\\sqrt{x+1}}{x - 3}$.",
+      "options": [
+        "$[-1, \\infty)$",
+        "$[-1, 3) \\cup (3, \\infty)$",
+        "$(-1, 3) \\cup (3, \\infty)$",
+        "$[1, 3) \\cup (3, \\infty)$"
+      ],
+      "answer": 1,
+      "explanation": "Two constraints apply at once. The square root needs $x + 1 \\ge 0$, so $x \\ge -1$, and the denominator needs $x \\neq 3$. Intersecting them gives $[-1, 3) \\cup (3, \\infty)$; the point $x = -1$ stays in because $\\sqrt{0} = 0$ in the numerator is fine. The trap is checking only the radicand and forgetting the denominator restriction at $x = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I review, Functions section"
+    },
+    {
+      "id": "calculus-i-functions-005",
+      "stem": "What is the range of $f(x) = \\sqrt{9 - x^2}$?",
+      "options": [
+        "$[-3, 3]$",
+        "$[0, 9]$",
+        "$(0, 3)$",
+        "$[0, 3]$"
+      ],
+      "answer": 3,
+      "explanation": "The domain is where $9 - x^2 \\ge 0$, namely $[-3, 3]$, but the question asks for the range of outputs. The quantity $9 - x^2$ runs from $0$ (at $x = \\pm 3$) up to $9$ (at $x = 0$), so its square root runs from $0$ up to $3$, and both extremes are attained. Hence the range is $[0, 3]$; the graph is the upper half of the circle $x^2 + y^2 = 9$. The trap is reporting the domain $[-3, 3]$ when the range was asked, the classic domain and range mix-up.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-006",
+      "stem": "Let $f(x) = 2x + 1$ and $g(x) = x^2$. Find $(f \\circ g)(x)$.",
+      "options": [
+        "$2x^2 + 1$",
+        "$4x^2 + 4x + 1$",
+        "$2x^3 + x^2$",
+        "$x^2 + 2x + 1$"
+      ],
+      "answer": 0,
+      "explanation": "By definition $(f \\circ g)(x) = f(g(x))$, so substitute $g(x) = x^2$ into $f$: $f(x^2) = 2x^2 + 1$. Composing in the other order gives $g(f(x)) = (2x+1)^2 = 4x^2 + 4x + 1$, a different function. Multiplying the two formulas gives $2x^3 + x^2$ and adding them gives $x^2 + 2x + 1$, and neither operation is composition. The trap is the order swap: in $f \\circ g$, the function $g$ is applied first and $f$ second.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 1.3"
+    },
+    {
+      "id": "calculus-i-functions-007",
+      "stem": "Let $f(x) = 3x - 1$ and $g(x) = x^2 + 2$. Evaluate $(f \\circ g)(2)$.",
+      "options": [
+        "$27$",
+        "$30$",
+        "$17$",
+        "$11$",
+        "$5$"
+      ],
+      "answer": 2,
+      "explanation": "Work from the inside out: $g(2) = 2^2 + 2 = 6$, then $f(6) = 3(6) - 1 = 17$. Reversing the order gives $g(f(2)) = g(5) = 5^2 + 2 = 27$, which answers a different question. The values $30$ and $11$ come from multiplying or adding $f(2) = 5$ and $g(2) = 6$, and $5$ is $f(2)$ alone with $g$ ignored. The trap is evaluating the composition in the wrong order.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.3"
+    },
+    {
+      "id": "calculus-i-functions-008",
+      "stem": "Let $f(x) = x^2$ and $g(x) = \\sqrt{x - 1}$. Which statement about $(f \\circ g)(x)$ is correct?",
+      "options": [
+        "$(f \\circ g)(x) = x - 1$ for all real $x$",
+        "$(f \\circ g)(x) = \\sqrt{x^2 - 1}$, with domain $|x| \\ge 1$",
+        "$(f \\circ g)(x) = x - 1$ for $x > 1$",
+        "$(f \\circ g)(x) = x - 1$ for $x \\ge 1$"
+      ],
+      "answer": 3,
+      "explanation": "First compose: $f(g(x)) = (\\sqrt{x-1})^2 = x - 1$. The domain of a composition is every $x$ in the domain of $g$ whose output lands in the domain of $f$; here $g$ requires $x - 1 \\ge 0$, so $x \\ge 1$, and $f$ accepts everything. The endpoint $x = 1$ works, since $g(1) = 0$ and $f(0) = 0$. The formula $\\sqrt{x^2 - 1}$ is the other order, $g \\circ f$. The trap is simplifying to $x - 1$ first and reading the domain off the simplified formula, which erases the hidden restriction from the square root.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I review, Functions section"
+    },
+    {
+      "id": "calculus-i-functions-009",
+      "stem": "Let $\\displaystyle f(x) = \\frac{x}{x+1}$. Find a simplified formula for $f(f(x))$.",
+      "options": [
+        "$\\displaystyle \\frac{x}{2x+1}$",
+        "$\\displaystyle \\frac{x^2}{(x+1)^2}$",
+        "$\\displaystyle \\frac{x+1}{x}$",
+        "$\\displaystyle \\frac{x}{x+2}$"
+      ],
+      "answer": 0,
+      "explanation": "Substitute the whole formula into itself: $f(f(x)) = \\dfrac{x/(x+1)}{x/(x+1) + 1}$. Combine the bottom over a common denominator: $\\dfrac{x}{x+1} + 1 = \\dfrac{x + (x+1)}{x+1} = \\dfrac{2x+1}{x+1}$. Dividing the two fractions cancels the $x+1$ factors and leaves $\\dfrac{x}{2x+1}$; a spot check at $x = 1$ gives $f(1/2) = 1/3$, which matches. Squaring the formula computes $[f(x)]^2$, not $f \\circ f$, and $\\frac{x+1}{x}$ is the reciprocal $1/f(x)$. The trap is reading repeated application as squaring or as taking a reciprocal.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 1.3"
+    },
+    {
+      "id": "calculus-i-functions-010",
+      "stem": "Find the inverse function of $f(x) = 2x - 5$.",
+      "options": [
+        "$\\displaystyle f^{-1}(x) = \\frac{x}{2} + 5$",
+        "$\\displaystyle f^{-1}(x) = \\frac{1}{2x - 5}$",
+        "$\\displaystyle f^{-1}(x) = \\frac{x + 5}{2}$",
+        "$\\displaystyle f^{-1}(x) = \\frac{x - 5}{2}$"
+      ],
+      "answer": 2,
+      "explanation": "Write $y = 2x - 5$ and solve for $x$: add $5$ to get $y + 5 = 2x$, then divide by $2$, so $x = (y+5)/2$ and $f^{-1}(x) = (x+5)/2$. Check with a point: $f(4) = 3$ and $f^{-1}(3) = 4$. The formula $\\frac{x}{2} + 5$ undoes the operations in the wrong order, and $\\frac{x-5}{2}$ comes from a sign slip when moving the $5$. The trap is reading $f^{-1}$ as the reciprocal $\\frac{1}{2x-5}$; the notation means the inverse function, not one over $f$.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 1.5"
+    },
+    {
+      "id": "calculus-i-functions-011",
+      "stem": "Let $\\displaystyle f(x) = \\frac{x+1}{x-2}$ for $x \\neq 2$. Find $f^{-1}(x)$.",
+      "options": [
+        "$\\displaystyle f^{-1}(x) = \\frac{x-2}{x+1}$",
+        "$\\displaystyle f^{-1}(x) = \\frac{2x+1}{x-1}$",
+        "$\\displaystyle f^{-1}(x) = \\frac{2x-1}{x+1}$",
+        "$\\displaystyle f^{-1}(x) = \\frac{x-1}{2x+1}$"
+      ],
+      "answer": 1,
+      "explanation": "Set $y = \\frac{x+1}{x-2}$ and solve for $x$. Clear the fraction: $y(x-2) = x + 1$, so $xy - 2y = x + 1$; gather the $x$ terms to get $x(y - 1) = 2y + 1$, hence $x = \\frac{2y+1}{y-1}$. Renaming the variable gives $f^{-1}(x) = \\frac{2x+1}{x-1}$; check that $f(3) = 4$ and $f^{-1}(4) = 9/3 = 3$. The trap is the reciprocal shortcut: flipping the fraction to $\\frac{x-2}{x+1}$ computes $1/f(x)$, which is not the inverse function.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.5"
+    },
+    {
+      "id": "calculus-i-functions-012",
+      "stem": "The function $f(x) = \\sqrt{x - 2}$ has inverse $f^{-1}(x) = x^2 + 2$. What is the domain of $f^{-1}$?",
+      "options": [
+        "$[2, \\infty)$",
+        "all real numbers",
+        "$(0, \\infty)$",
+        "$[0, \\infty)$"
+      ],
+      "answer": 3,
+      "explanation": "The domain of an inverse function equals the range of the original function. The outputs of $f(x) = \\sqrt{x-2}$ are all values from $0$ upward, starting at $f(2) = 0$, so the range of $f$ is $[0, \\infty)$, and that is the domain of $f^{-1}$. Although the formula $x^2 + 2$ makes sense for every real $x$, the inverse is only defined on outputs $f$ actually produces, so negative inputs are excluded and the endpoint $0$ is included. The trap is reading the domain off the inverse's algebraic formula, or copying the domain of $f$ itself instead of swapping domain and range.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.5"
+    },
+    {
+      "id": "calculus-i-functions-013",
+      "stem": "Find $f^{-1}(x)$ for $f(x) = x^3 + 4$.",
+      "options": [
+        "$f^{-1}(x) = \\sqrt[3]{x - 4}$",
+        "$f^{-1}(x) = \\sqrt[3]{x} - 4$",
+        "$\\displaystyle f^{-1}(x) = \\frac{1}{x^3 + 4}$",
+        "$f^{-1}(x) = (x - 4)^3$"
+      ],
+      "answer": 0,
+      "explanation": "Set $y = x^3 + 4$ and undo the operations in reverse order: first subtract $4$, then take the cube root, giving $x = \\sqrt[3]{y - 4}$, so $f^{-1}(x) = \\sqrt[3]{x - 4}$. Check with a point: $f(2) = 12$ and $\\sqrt[3]{12 - 4} = \\sqrt[3]{8} = 2$. Writing $\\sqrt[3]{x} - 4$ undoes the steps in the wrong order, and $(x-4)^3$ forgets to invert the cube at all. The trap is the reciprocal confusion: $f^{-1}(x)$ does not mean $\\frac{1}{f(x)}$.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I review, Inverse Functions section"
+    },
+    {
+      "id": "calculus-i-functions-014",
+      "stem": "Which of the following functions is odd?",
+      "options": [
+        "$f(x) = x^3 + 1$",
+        "$f(x) = x^2 + x$",
+        "$f(x) = x^3 - 4x$",
+        "$f(x) = |x|^3$"
+      ],
+      "answer": 2,
+      "explanation": "Apply the test: $f$ is odd when $f(-x) = -f(x)$ for every $x$. For $f(x) = x^3 - 4x$, compute $f(-x) = (-x)^3 - 4(-x) = -x^3 + 4x = -(x^3 - 4x)$, so it passes. The function $x^3 + 1$ fails because the constant term does not change sign, $x^2 + x$ mixes an even term with an odd term so it is neither, and $|x|^3$ satisfies $|-x|^3 = |x|^3$, making it even despite the cube. The trap is judging parity from the exponents alone instead of actually computing $f(-x)$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-015",
+      "stem": "The graph of $f(x) = x^4 - 3x^2 + 2$ has which symmetry?",
+      "options": [
+        "symmetric about the origin",
+        "symmetric about the $y$-axis",
+        "symmetric about the $x$-axis",
+        "no symmetry"
+      ],
+      "answer": 1,
+      "explanation": "Compute $f(-x) = (-x)^4 - 3(-x)^2 + 2 = x^4 - 3x^2 + 2 = f(x)$, so $f$ is even, and an even function's graph is symmetric about the $y$-axis. Origin symmetry would require $f(-x) = -f(x)$, which fails here since $f(0) = 2 \\neq -2$. Symmetry about the $x$-axis is impossible for a nonzero function, because it would put two $y$ values above one $x$ and break the vertical line test. The trap is a sign slip such as $(-x)^4 = -x^4$, which makes an even power look odd and wrecks the test.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-016",
+      "stem": "Classify $f(x) = x^3 - 2x + 1$ as even, odd, or neither.",
+      "options": [
+        "even",
+        "odd",
+        "both even and odd",
+        "neither even nor odd"
+      ],
+      "answer": 3,
+      "explanation": "Compute $f(-x) = (-x)^3 - 2(-x) + 1 = -x^3 + 2x + 1$. This does not equal $f(x) = x^3 - 2x + 1$, so $f$ is not even; and $-f(x) = -x^3 + 2x - 1$ differs from $f(-x)$ in the constant term, so $f$ is not odd either. A numeric check confirms it: $f(1) = 0$ while $f(-1) = 2$, and neither $f(-1) = f(1)$ nor $f(-1) = -f(1)$ holds. The trap is seeing the odd powers $x^3$ and $-2x$ and declaring the function odd while overlooking that the constant $+1$ breaks the sign change.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-017",
+      "stem": "Suppose $f$ is an odd function defined for all real numbers, and $f(2) = 7$. What is $f(-2) + f(0)$?",
+      "options": [
+        "$-7$",
+        "$7$",
+        "$0$",
+        "cannot be determined from the given information"
+      ],
+      "answer": 0,
+      "explanation": "Oddness means $f(-x) = -f(x)$ for every $x$, so $f(-2) = -f(2) = -7$. Setting $x = 0$ in the same identity gives $f(0) = -f(0)$, so $2f(0) = 0$ and $f(0) = 0$: an odd function defined at the origin must pass through it. Therefore $f(-2) + f(0) = -7 + 0 = -7$. Answering $7$ comes from applying the even rule $f(-x) = f(x)$, and choosing the last option misses that oddness pins down $f(0)$ exactly. The trap is mixing up the even and odd symmetry rules, or not realizing that $f(0) = 0$ is forced.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-018",
+      "stem": "Let $f(x) = x^2$ for $x < 2$, and $f(x) = 3x - 1$ for $x \\ge 2$. Find $f(2)$.",
+      "options": [
+        "$4$",
+        "both $4$ and $5$",
+        "$5$",
+        "$f(2)$ is undefined"
+      ],
+      "answer": 2,
+      "explanation": "At $x = 2$, check which condition holds: the rule $x^2$ applies only when $x < 2$, while $3x - 1$ applies when $x \\ge 2$. Since $2 \\ge 2$, use the second rule: $f(2) = 3(2) - 1 = 5$. A piecewise function assigns exactly one rule to each input, so there is no ambiguity at the boundary and no second value. The trap is plugging the boundary point into the wrong branch, or imagining the function takes both values there.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-019",
+      "stem": "Let $f(x) = 2x + 1$ for $x \\le -1$, $f(x) = x^2$ for $-1 < x < 3$, and $f(x) = 7$ for $x \\ge 3$. Compute $f(-2) + f(3)$.",
+      "options": [
+        "$11$",
+        "$4$",
+        "$6$",
+        "$13$"
+      ],
+      "answer": 1,
+      "explanation": "For $f(-2)$: since $-2 \\le -1$, the first rule applies, giving $f(-2) = 2(-2) + 1 = -3$. For $f(3)$: since $3 \\ge 3$, the constant rule applies, giving $f(3) = 7$; the middle rule $x^2$ stops strictly before $3$. The sum is $-3 + 7 = 4$. The wrong totals come from sending $-2$ or $3$ into the middle branch: $f(-2) = 4$ gives $11$, $f(3) = 9$ gives $6$, and both errors together give $13$. The trap is ignoring the strict versus non-strict inequalities that decide which branch owns each boundary point.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-020",
+      "stem": "Which piecewise formula equals $|x - 3|$ for all real $x$?",
+      "options": [
+        "$x - 3$ for $x \\ge 3$, and $3 - x$ for $x < 3$",
+        "$x - 3$ for $x \\ge 0$, and $3 - x$ for $x < 0$",
+        "$x - 3$ for $x \\ge 3$, and $-x - 3$ for $x < 3$",
+        "$3 - x$ for $x \\ge 3$, and $x - 3$ for $x < 3$"
+      ],
+      "answer": 0,
+      "explanation": "By definition $|u| = u$ when $u \\ge 0$ and $|u| = -u$ when $u < 0$; here $u = x - 3$, so the split happens where $x - 3 = 0$, namely at $x = 3$, not at $0$. For $x \\ge 3$ the inside is nonnegative and $|x - 3| = x - 3$; for $x < 3$ it is negative and $|x - 3| = -(x - 3) = 3 - x$. A check at $x = 0$ gives $|0 - 3| = 3$, and the formula $3 - x$ also gives $3$. The traps are splitting at $x = 0$ out of habit and distributing the negative sign incorrectly as $-x - 3$ instead of $-x + 3$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-021",
+      "stem": "Let $f(x) = 2x + k$ for $x < 1$, and $f(x) = x^2 + 3$ for $x \\ge 1$. For what value of $k$ do the two pieces of the graph meet at $x = 1$ with no jump?",
+      "options": [
+        "$k = 4$",
+        "$k = -2$",
+        "$k = 3$",
+        "$k = 2$"
+      ],
+      "answer": 3,
+      "explanation": "The pieces meet when the two formulas agree at the boundary, so set them equal at $x = 1$. The right piece gives $1^2 + 3 = 4$, and the left piece approaches $2(1) + k = 2 + k$ there. Solving $2 + k = 4$ gives $k = 2$; with that value both pieces pass through the point $(1, 4)$. Getting $k = 4$ comes from dropping the $2x$ term, $k = 3$ from matching the formulas at $x = 0$, and $k = -2$ from moving the $2$ to the wrong side. The trap is matching the pieces anywhere other than the actual boundary point $x = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-022",
+      "stem": "The graph of $y = f(x - 2) + 3$ is obtained from the graph of $y = f(x)$ by which sequence of shifts?",
+      "options": [
+        "$2$ units left and $3$ units up",
+        "$2$ units right and $3$ units up",
+        "$2$ units right and $3$ units down",
+        "$2$ units left and $3$ units down"
+      ],
+      "answer": 1,
+      "explanation": "Changes inside the function act on $x$ and run opposite to their apparent sign: replacing $x$ by $x - 2$ moves the graph $2$ units right, because the input must be $2$ larger to reproduce the old output. Changes outside the function act on $y$ exactly as written: adding $3$ moves the graph $3$ units up. To confirm, a point $(a, b)$ on $y = f(x)$ becomes $(a + 2, b + 3)$ on the new graph. The trap is reading the minus sign in $x - 2$ as a shift to the left.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.3"
+    },
+    {
+      "id": "calculus-i-functions-023",
+      "stem": "The graph of $y = \\sqrt{x}$ starts at the point $(0, 0)$. Where does the graph of $y = \\sqrt{x + 4} - 1$ start?",
+      "options": [
+        "$(4, -1)$",
+        "$(-4, 1)$",
+        "$(-4, -1)$",
+        "$(4, 1)$"
+      ],
+      "answer": 2,
+      "explanation": "The graph of $y = \\sqrt{x + 4} - 1$ is the graph of $y = \\sqrt{x}$ shifted $4$ units left (the $+4$ sits inside, so it moves the graph opposite to its sign) and $1$ unit down (the $-1$ sits outside, so it acts as written). The starting point $(0, 0)$ therefore moves to $(0 - 4, 0 - 1) = (-4, -1)$. Check directly: at $x = -4$ the radicand is $0$, so $y = \\sqrt{0} - 1 = -1$, and the domain $[-4, \\infty)$ confirms the left shift. The trap is flipping the directions: inside changes go opposite to their sign, outside changes do not.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.3"
+    },
+    {
+      "id": "calculus-i-functions-024",
+      "stem": "How is the graph of $y = f(2x)$ related to the graph of $y = f(x)$?",
+      "options": [
+        "compressed horizontally by a factor of $\\tfrac{1}{2}$",
+        "stretched horizontally by a factor of $2$",
+        "stretched vertically by a factor of $2$",
+        "compressed vertically by a factor of $\\tfrac{1}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "If $(a, b)$ lies on $y = f(x)$, then $x = a/2$ satisfies $f(2x) = f(a) = b$, so the point $(a/2, b)$ lies on $y = f(2x)$. Every point keeps its height but moves to half its horizontal distance from the $y$-axis, which is a horizontal compression by factor $\\tfrac{1}{2}$. Multiplying inside the function changes $x$, not $y$; the vertical options describe $2f(x)$ or $\\tfrac{1}{2}f(x)$ instead. The trap is assuming that multiplying by $2$ must stretch: inside the function the effect is the reciprocal, a squeeze toward the $y$-axis.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.3"
+    },
+    {
+      "id": "calculus-i-functions-025",
+      "stem": "The point $(4, 5)$ lies on the graph of $y = f(x)$. Which point must lie on the graph of $y = 2f(x - 1) + 3$?",
+      "options": [
+        "$(3, 13)$",
+        "$(5, 16)$",
+        "$(3, 16)$",
+        "$(5, 13)$"
+      ],
+      "answer": 3,
+      "explanation": "Handle the coordinates separately. The input must satisfy $x - 1 = 4$, so $x = 5$: the graph shifts right by $1$. The output is built from $f(4) = 5$ by first multiplying by $2$ and then adding $3$, so $y = 2(5) + 3 = 13$, giving the point $(5, 13)$. Computing $2(5 + 3) = 16$ applies the shift before the stretch, and $x = 3$ shifts left instead of right. The trap is the order of operations on the output: in $2f(x-1) + 3$ the stretch happens first and the vertical shift last.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 1.3"
+    },
+    {
+      "id": "calculus-i-functions-026",
+      "stem": "The graph of $y = e^{-x}$ can be obtained from the graph of $y = e^{x}$ by which reflection?",
+      "options": [
+        "reflection about the $x$-axis",
+        "reflection about the $y$-axis",
+        "reflection about the origin",
+        "reflection about the line $y = x$"
+      ],
+      "answer": 1,
+      "explanation": "Replacing $x$ with $-x$ negates the input, which mirrors the graph across the $y$-axis; that is exactly the change from $e^{x}$ to $e^{-x}$. Reflection about the $x$-axis would negate the output and give $y = -e^{x}$, which is negative everywhere, while $e^{-x}$ stays positive. Reflection about the line $y = x$ produces the inverse function, $y = \\ln x$, not $e^{-x}$. The trap is confusing negating the input, a $y$-axis reflection, with negating the output, an $x$-axis reflection.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.4"
+    },
+    {
+      "id": "calculus-i-functions-027",
+      "stem": "Evaluate $\\log_3 \\left( \\tfrac{1}{9} \\right)$.",
+      "options": [
+        "$2$",
+        "$\\tfrac{1}{2}$",
+        "$-2$",
+        "$-3$"
+      ],
+      "answer": 2,
+      "explanation": "Ask: $3$ raised to what power gives $\\tfrac{1}{9}$? Since $9 = 3^2$, we have $\\tfrac{1}{9} = 3^{-2}$, so $\\log_3 \\left( \\tfrac{1}{9} \\right) = -2$. The answer $2$ drops the negative that the reciprocal forces, $\\tfrac{1}{2}$ comes from guessing that the log of a reciprocal is the reciprocal of the log, and $-3$ comes from miscounting the power of $3$ in $9$. The trap is forgetting the rule $\\log_b(1/a) = -\\log_b a$: a reciprocal flips the sign of the logarithm, not the logarithm itself.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 1.5"
+    },
+    {
+      "id": "calculus-i-functions-028",
+      "stem": "For positive numbers $a$, $b$, $c$, write $\\ln a + 2\\ln b - \\ln c$ as a single logarithm.",
+      "options": [
+        "$\\displaystyle \\ln\\left(\\frac{ab^2}{c}\\right)$",
+        "$\\ln(a + b^2 - c)$",
+        "$\\displaystyle \\ln\\left(\\frac{2ab}{c}\\right)$",
+        "$\\ln(ab^2 - c)$",
+        "$\\ln(ab^2 c)$"
+      ],
+      "answer": 0,
+      "explanation": "First move the coefficient into an exponent: $2\\ln b = \\ln b^2$. Then combine with the product and quotient laws: $\\ln a + \\ln b^2 = \\ln(ab^2)$, and subtracting $\\ln c$ divides by $c$, giving $\\ln(ab^2/c)$. Writing $\\ln(a + b^2 - c)$ treats a sum of logs as the log of a sum, $\\ln(2ab/c)$ pulls the $2$ in as a multiplier instead of an exponent, $\\ln(ab^2 - c)$ turns the quotient law into subtraction inside, and $\\ln(ab^2 c)$ ignores the minus sign. The trap is the classic misuse $\\ln u + \\ln v = \\ln(u + v)$: sums of logs combine into products, never sums.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.5"
+    },
+    {
+      "id": "calculus-i-functions-029",
+      "stem": "Solve $e^{2x} = 7$ for $x$.",
+      "options": [
+        "$x = \\ln\\left(\\tfrac{7}{2}\\right)$",
+        "$x = 2\\ln 7$",
+        "$x = \\ln 7 - 2$",
+        "$\\displaystyle x = \\frac{\\ln 7}{2}$"
+      ],
+      "answer": 3,
+      "explanation": "Take the natural log of both sides: $\\ln(e^{2x}) = \\ln 7$, and since $\\ln$ undoes the exponential, the left side is just $2x$. So $2x = \\ln 7$ and $x = \\frac{\\ln 7}{2} \\approx 0.973$. Writing $\\ln(7/2)$ divides inside the logarithm, which is a different number from $\\frac{\\ln 7}{2}$; multiplying to get $2\\ln 7$ or subtracting to get $\\ln 7 - 2$ mis-solves the final linear step. The trap is moving the $2$ inside the log: $\\frac{\\ln 7}{2}$ and $\\ln\\frac{7}{2}$ are not the same.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.5"
+    },
+    {
+      "id": "calculus-i-functions-030",
+      "stem": "Solve $\\log_2 x + \\log_2 (x - 2) = 3$.",
+      "options": [
+        "$x = 4$ and $x = -2$",
+        "$x = 4$ only",
+        "$x = 5$",
+        "$x = \\tfrac{5}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "Combine with the product law: $\\log_2\\left(x(x-2)\\right) = 3$, so $x(x - 2) = 2^3 = 8$. This gives $x^2 - 2x - 8 = 0$, which factors as $(x - 4)(x + 2) = 0$, so the candidates are $x = 4$ and $x = -2$. The original logarithms require $x > 0$ and $x - 2 > 0$, so $x = -2$ must be rejected, leaving $x = 4$; check: $\\log_2 4 + \\log_2 2 = 2 + 1 = 3$. The answer $x = 5$ comes from the misuse $\\log a + \\log b = \\log(a + b)$, and $x = \\tfrac{5}{2}$ from dropping the logs entirely. The trap is keeping the extraneous root: always test candidates against the domain of the original equation.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I review, Exponential and Logarithm Equations"
+    }
+  ]
+}

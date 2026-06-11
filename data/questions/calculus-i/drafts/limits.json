@@ -1,0 +1,277 @@
+{
+  "courseId": "calculus-i",
+  "topicId": "limits",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "calculus-i-limits-001",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 3}\\frac{x^2 - 2x + 4}{x + 1}$.",
+      "options": ["$\\frac{11}{4}$", "$\\frac{7}{4}$", "$\\frac{19}{4}$", "$1$"],
+      "answer": 1,
+      "explanation": "The denominator at $x = 3$ is $3 + 1 = 4$, which is not zero, so the function is continuous there and direct substitution applies. The numerator is $3^2 - 2(3) + 4 = 9 - 6 + 4 = 7$, so the limit is $\\frac{7}{4}$. No factoring or special technique is needed when substitution gives a defined value. The wrong options set three traps: $\\frac{19}{4}$ comes from a sign slip that turns $-2x$ into $+2x$, $\\frac{11}{4}$ comes from forgetting to multiply $2$ by $3$ in the $-2x$ term, and $1$ misapplies the leading-coefficient shortcut, which is valid only for limits at infinity.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 2.3"
+    },
+    {
+      "id": "calculus-i-limits-002",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 0}\\frac{\\sin 4x}{x}$.",
+      "options": ["$0$", "$1$", "$4$", "The limit does not exist"],
+      "answer": 2,
+      "explanation": "Rewrite the quotient as $\\frac{\\sin 4x}{x} = 4 \\cdot \\frac{\\sin 4x}{4x}$. As $x \\to 0$ we also have $4x \\to 0$, so $\\frac{\\sin 4x}{4x} \\to 1$ by the standard limit $\\lim_{t\\to 0}\\frac{\\sin t}{t} = 1$. The limit is therefore $4 \\cdot 1 = 4$. The trap answer $1$ quotes the standard limit while ignoring the coefficient inside the sine; $0$ comes from substituting $x = 0$ into the numerator alone, and the DNE option assumes every $0/0$ form fails, when in fact $0/0$ means more work is needed.",
+      "difficulty": "warmup",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-limits-003",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 2}\\frac{x^2 - 4}{x - 2}$.",
+      "options": ["$0$", "$\\infty$", "$4$", "The limit does not exist"],
+      "answer": 2,
+      "explanation": "Substituting $x = 2$ gives $0/0$, an indeterminate form, so we must do algebra before concluding anything. Factor the numerator: $x^2 - 4 = (x - 2)(x + 2)$, and cancel the common factor $x - 2$, which is legal because $x \\ne 2$ during the limit process. What remains is $x + 2$, and substituting $x = 2$ gives $4$. The traps: $0$ reads the vanishing numerator as the answer, $\\infty$ assumes division by zero always blows up, and DNE treats the indeterminate form $0/0$ as a final verdict instead of a signal to factor.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 2.3"
+    },
+    {
+      "id": "calculus-i-limits-004",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to\\infty}\\frac{3x^2 + 5x}{6x^2 - x + 2}$.",
+      "options": ["$0$", "$\\frac{1}{2}$", "$2$", "$3$", "$\\infty$"],
+      "answer": 1,
+      "explanation": "Divide numerator and denominator by $x^2$, the highest power present: the quotient becomes $\\frac{3 + 5/x}{6 - 1/x + 2/x^2}$. As $x \\to \\infty$ every term with $x$ in the denominator goes to $0$, leaving $\\frac{3}{6} = \\frac{1}{2}$. Because the degrees match, the limit is the ratio of leading coefficients. The traps: $2$ inverts that ratio as $6/3$, $3$ takes the numerator's leading coefficient alone, and $0$ and $\\infty$ are the two degree-comparison errors, each pretending one side has strictly larger degree when the degrees are equal.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 2.6"
+    },
+    {
+      "id": "calculus-i-limits-005",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 3^-}\\frac{|x - 3|}{x - 3}$.",
+      "options": ["$-1$", "$0$", "$1$", "The limit does not exist"],
+      "answer": 0,
+      "explanation": "We approach $3$ from the left, so $x < 3$ and $x - 3 < 0$, which means $|x - 3| = -(x - 3)$. The quotient is then $\\frac{-(x - 3)}{x - 3} = -1$ for every $x < 3$, so the left-hand limit is $-1$. The traps: $1$ uses the formula $|x - 3| = x - 3$, which only holds on the right side of $3$; DNE is the verdict for the two-sided limit, but the question asks for a one-sided limit, which exists; and $0$ comes from plugging $x = 3$ into the $0/0$ form instead of analyzing the sign.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 2.3"
+    },
+    {
+      "id": "calculus-i-limits-006",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 0}\\frac{1}{x^2}$.",
+      "options": ["$0$", "$-\\infty$", "$\\infty$", "The limit does not exist because the one-sided limits disagree"],
+      "answer": 2,
+      "explanation": "For every $x \\ne 0$ we have $x^2 > 0$, so $\\frac{1}{x^2}$ is positive on both sides of $0$. As $x \\to 0$ from either side, $x^2 \\to 0$ through positive values, so $\\frac{1}{x^2}$ increases without bound. Both one-sided limits are $+\\infty$ and they agree, so we write the limit as $\\infty$, the standard way to describe this infinite behavior. The trap option imports the behavior of $\\frac{1}{x}$, whose one-sided limits really do disagree; here the square keeps both sides positive. The answer $0$ confuses $x \\to 0$ with $x \\to \\infty$.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 2.2"
+    },
+    {
+      "id": "calculus-i-limits-007",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to -3}\\frac{x^2 + x - 6}{x + 3}$.",
+      "options": ["$-5$", "$0$", "$1$", "The limit does not exist"],
+      "answer": 0,
+      "explanation": "Substituting $x = -3$ gives $\\frac{9 - 3 - 6}{0} = \\frac{0}{0}$, indeterminate, so factor. The numerator factors as $x^2 + x - 6 = (x + 3)(x - 2)$, and cancelling $x + 3$ leaves $x - 2$. Substituting $x = -3$ gives $-3 - 2 = -5$. The traps: $1$ evaluates $x - 2$ at $+3$ instead of $-3$, a sign slip on the approach point; $0$ concludes the limit is zero because the numerator goes to zero, ignoring the denominator; and DNE is the reflex answer to seeing $0/0$ before doing the algebra.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.3"
+    },
+    {
+      "id": "calculus-i-limits-008",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 1}\\frac{x^3 - 1}{x - 1}$.",
+      "options": ["$0$", "$1$", "$3$", "The limit does not exist"],
+      "answer": 2,
+      "explanation": "Substitution gives $0/0$, so use the difference of cubes: $x^3 - 1 = (x - 1)(x^2 + x + 1)$. Cancelling $x - 1$ leaves $x^2 + x + 1$, and substituting $x = 1$ gives $1 + 1 + 1 = 3$. The traps: $1$ comes from an illegal cancellation such as treating $\\frac{x^3 - 1}{x - 1}$ as $x^2$, or from pattern-matching the answer $1$ from the sine limit; $0$ reads the vanishing numerator as the limit; and DNE again treats the indeterminate form as a final answer instead of an instruction to factor.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-limits-009",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to -1}\\left(2x^3 - x + 1\\right)$.",
+      "options": ["$-2$", "$0$", "$4$", "The limit does not exist"],
+      "answer": 1,
+      "explanation": "Polynomials are continuous everywhere, so substitute directly: $2(-1)^3 - (-1) + 1 = -2 + 1 + 1 = 0$. Note that $(-1)^3 = -1$ and that subtracting $-1$ adds $1$. The limit is exactly $0$, and zero is a perfectly legitimate limit value. The traps: $-2$ forgets to flip the sign in the $-x$ term, computing $-2 - 1 + 1$; $4$ treats $(-1)^3$ as $+1$, computing $2 + 1 + 1$; and DNE confuses a limit equal to zero with a limit that fails to exist.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.3"
+    },
+    {
+      "id": "calculus-i-limits-010",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 0}\\frac{\\sqrt{x + 9} - 3}{x}$.",
+      "options": ["$0$", "$\\frac{1}{6}$", "$\\frac{1}{3}$", "$6$"],
+      "answer": 1,
+      "explanation": "Substitution gives $\\frac{3 - 3}{0} = \\frac{0}{0}$, so multiply numerator and denominator by the conjugate $\\sqrt{x + 9} + 3$. The numerator becomes $(x + 9) - 9 = x$, so the expression simplifies to $\\frac{x}{x(\\sqrt{x + 9} + 3)} = \\frac{1}{\\sqrt{x + 9} + 3}$ after cancelling $x$. Substituting $x = 0$ gives $\\frac{1}{3 + 3} = \\frac{1}{6}$. The traps: $\\frac{1}{3}$ drops the $+3$ and evaluates $\\frac{1}{\\sqrt{9}}$, $6$ inverts the correct answer, and $0$ reads the vanishing numerator as the limit without noticing the denominator vanishes too.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.3"
+    },
+    {
+      "id": "calculus-i-limits-011",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 4}\\frac{\\sqrt{x} - 2}{x - 4}$.",
+      "options": ["$0$", "$\\frac{1}{2}$", "$\\frac{1}{4}$", "The limit does not exist"],
+      "answer": 2,
+      "explanation": "Substituting $x = 4$ gives $0/0$. Write the denominator as a difference of squares in $\\sqrt{x}$: $x - 4 = (\\sqrt{x} - 2)(\\sqrt{x} + 2)$, then cancel the factor $\\sqrt{x} - 2$. What remains is $\\frac{1}{\\sqrt{x} + 2}$, and substituting $x = 4$ gives $\\frac{1}{2 + 2} = \\frac{1}{4}$. The traps: $\\frac{1}{2}$ drops the $+2$ and computes $\\frac{1}{\\sqrt{4}}$, $0$ plugs the approach value into the indeterminate form and reads the zero numerator as the answer, and DNE is the $0/0$ reflex applied before the algebra.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-limits-012",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 0}\\frac{x}{\\sqrt{x + 1} - 1}$.",
+      "options": ["$0$", "$1$", "$2$", "The limit does not exist"],
+      "answer": 2,
+      "explanation": "Substitution gives $\\frac{0}{1 - 1} = \\frac{0}{0}$, so multiply numerator and denominator by the conjugate $\\sqrt{x + 1} + 1$. The denominator becomes $(x + 1) - 1 = x$, so the expression equals $\\frac{x(\\sqrt{x + 1} + 1)}{x} = \\sqrt{x + 1} + 1$ after cancelling $x$. Substituting $x = 0$ gives $1 + 1 = 2$. The traps: $1$ drops the trailing $+1$ after rationalizing and keeps only $\\sqrt{x + 1}$, $0$ reads the vanishing numerator as the limit, and DNE treats the indeterminate form as the final answer.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.3"
+    },
+    {
+      "id": "calculus-i-limits-013",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 0}\\frac{\\sin 5x}{\\sin 2x}$.",
+      "options": ["$\\frac{5}{2}$", "$\\frac{2}{5}$", "$1$", "The limit does not exist"],
+      "answer": 0,
+      "explanation": "Multiply and divide to build two standard limits: $\\frac{\\sin 5x}{\\sin 2x} = \\frac{\\sin 5x}{5x} \\cdot \\frac{2x}{\\sin 2x} \\cdot \\frac{5}{2}$. As $x \\to 0$, both $\\frac{\\sin 5x}{5x} \\to 1$ and $\\frac{2x}{\\sin 2x} \\to 1$, so the limit is $1 \\cdot 1 \\cdot \\frac{5}{2} = \\frac{5}{2}$. The traps: $1$ cancels the sines as if $\\sin$ were a multiplicative constant, $\\frac{2}{5}$ puts the coefficients upside down, and DNE is the $0/0$ reflex; the indeterminate form here resolves cleanly through the standard sine limit.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-limits-014",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 0}\\frac{1 - \\cos x}{x}$.",
+      "options": ["$0$", "$\\frac{1}{2}$", "$1$", "The limit does not exist"],
+      "answer": 0,
+      "explanation": "Multiply numerator and denominator by $1 + \\cos x$: the numerator becomes $1 - \\cos^2 x = \\sin^2 x$, so the expression equals $\\frac{\\sin x}{x} \\cdot \\frac{\\sin x}{1 + \\cos x}$. As $x \\to 0$ the first factor tends to $1$ and the second tends to $\\frac{0}{2} = 0$, so the limit is $1 \\cdot 0 = 0$. This is the standard companion limit to $\\frac{\\sin x}{x}$. The traps: $1$ pattern-matches the sine limit, $\\frac{1}{2}$ belongs to the different limit $\\frac{1 - \\cos x}{x^2}$, and DNE again mistakes the indeterminate form for a verdict.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-limits-015",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 4}\\sqrt{x^2 + 9}$.",
+      "options": ["$5$", "$7$", "$25$", "The limit does not exist"],
+      "answer": 0,
+      "explanation": "The expression $x^2 + 9$ is positive for every $x$, so $\\sqrt{x^2 + 9}$ is continuous everywhere and direct substitution applies. Compute the inside first: $4^2 + 9 = 16 + 9 = 25$, then take the root: $\\sqrt{25} = 5$. The traps: $25$ stops before taking the square root, $7$ splits the root across the sum as $\\sqrt{x^2} + \\sqrt{9} = 4 + 3$, which is invalid because roots do not distribute over addition, and DNE invents a problem where the function is perfectly continuous.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.5"
+    },
+    {
+      "id": "calculus-i-limits-016",
+      "stem": "Let $f(x) = 2x + k$ for $x < 3$ and $f(x) = x^2 - 1$ for $x \\ge 3$. For what value of $k$ does $\\displaystyle\\lim_{x\\to 3} f(x)$ exist?",
+      "options": ["$k = -2$", "$k = 2$", "$k = 8$", "$k = 14$"],
+      "answer": 1,
+      "explanation": "The two-sided limit exists exactly when the one-sided limits agree. From the left, $f(x) = 2x + k$ gives $\\lim_{x\\to 3^-} f(x) = 2(3) + k = 6 + k$. From the right, $f(x) = x^2 - 1$ gives $\\lim_{x\\to 3^+} f(x) = 9 - 1 = 8$. Setting $6 + k = 8$ yields $k = 2$. The traps: $k = -2$ solves the equation backwards as $6 - 8$, $k = 8$ sets $k$ equal to the right-hand limit while forgetting the $2x$ contribution, and $k = 14$ adds the two one-sided limits instead of equating them.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.3"
+    },
+    {
+      "id": "calculus-i-limits-017",
+      "stem": "Let $g(x) = x + 2$ for $x < 1$ and $g(x) = 4 - x^2$ for $x > 1$, with $g(1)$ undefined. Which statement about $\\displaystyle\\lim_{x\\to 1} g(x)$ is true?",
+      "options": ["The limit does not exist because $g(1)$ is undefined", "The limit exists and equals $3$", "The limit exists and equals $5$", "The one-sided limits are $3$ and $5$, so the limit does not exist"],
+      "answer": 1,
+      "explanation": "Check each side separately. From the left, $g(x) = x + 2 \\to 1 + 2 = 3$. From the right, $g(x) = 4 - x^2 \\to 4 - 1 = 3$. The one-sided limits agree, so the limit exists and equals $3$, even though $g(1)$ itself is undefined: a limit describes values near the point, never at it. The traps: the first option is the classic confusion of a limit with a function value, while the options involving $5$ come from the sign slip $4 + 1$ when evaluating $4 - x^2$ at $x = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.2"
+    },
+    {
+      "id": "calculus-i-limits-018",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 5}\\frac{x^2 - 25}{|x - 5|}$.",
+      "options": ["$-10$", "$0$", "$10$", "The limit does not exist"],
+      "answer": 3,
+      "explanation": "Factor the numerator: $x^2 - 25 = (x - 5)(x + 5)$, then split by side. For $x > 5$, $|x - 5| = x - 5$, so the quotient is $x + 5 \\to 10$. For $x < 5$, $|x - 5| = -(x - 5)$, so the quotient is $-(x + 5) \\to -10$. The one-sided limits are $10$ and $-10$, which disagree, so the two-sided limit does not exist. The traps: $10$ and $-10$ each take only one side and forget the absolute value flips sign on the left, while $0$ plugs $x = 5$ into the $0/0$ form.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.3"
+    },
+    {
+      "id": "calculus-i-limits-019",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 3^-}\\frac{x + 1}{x - 3}$.",
+      "options": ["$\\infty$", "$-\\infty$", "$4$", "The limit does not exist and cannot be described as $\\infty$ or $-\\infty$"],
+      "answer": 1,
+      "explanation": "As $x \\to 3^-$ the numerator tends to $3 + 1 = 4$, a positive number, while the denominator $x - 3$ tends to $0$ through negative values, since $x < 3$. A quantity near $4$ divided by a tiny negative number is a huge negative number, so the quotient decreases without bound and the limit is $-\\infty$. The traps: $\\infty$ ignores the sign of $x - 3$ on the left side, $4$ stops at the numerator, and the last option is wrong because this one-sided behavior is exactly what the symbol $-\\infty$ describes.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.2"
+    },
+    {
+      "id": "calculus-i-limits-020",
+      "stem": "Which of the following is the complete list of vertical asymptotes of $f(x) = \\dfrac{x^2 - 4}{x^2 - 3x + 2}$?",
+      "options": ["$x = 1$ only", "$x = 2$ only", "$x = 1$ and $x = 2$", "$x = -2$ and $x = 2$"],
+      "answer": 0,
+      "explanation": "Factor everything first: $f(x) = \\dfrac{(x - 2)(x + 2)}{(x - 1)(x - 2)}$. At $x = 2$ the factor $x - 2$ cancels and the limit is $\\dfrac{2 + 2}{2 - 1} = 4$, a finite value, so $x = 2$ is a removable hole, not an asymptote. At $x = 1$ the denominator tends to $0$ while the numerator tends to $1 - 4 = -3 \\ne 0$, so the function blows up and $x = 1$ is the only vertical asymptote. The traps: including $x = 2$ reads asymptotes off the unfactored denominator without cancelling first, and the option with $x = -2$ sets the numerator to zero, which locates $x$-intercepts, not asymptotes.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-limits-021",
+      "stem": "Which statement about $\\displaystyle\\lim_{x\\to 0}\\frac{5}{x}$ is true?",
+      "options": ["The limit is $\\infty$ because dividing by zero always gives $\\infty$", "The limit is $-\\infty$", "The limit is $0$", "The left-hand limit is $-\\infty$ and the right-hand limit is $\\infty$, so the two-sided limit does not exist"],
+      "answer": 3,
+      "explanation": "Test each side. As $x \\to 0^+$ the denominator is a tiny positive number, so $\\frac{5}{x} \\to +\\infty$; as $x \\to 0^-$ the denominator is a tiny negative number, so $\\frac{5}{x} \\to -\\infty$. The two one-sided behaviors disagree, so the two-sided limit does not exist, and unlike $\\frac{1}{x^2}$ it cannot even be described by a single infinity symbol. The traps: the first option assumes division by zero always gives $+\\infty$ regardless of sign, the second takes only the left side, and $0$ confuses $x \\to 0$ with $x \\to \\infty$, where $\\frac{5}{x}$ really does tend to $0$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.2"
+    },
+    {
+      "id": "calculus-i-limits-022",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to\\infty}\\frac{2x + 3}{x^2 - 5}$.",
+      "options": ["$0$", "$2$", "$\\infty$", "The limit does not exist"],
+      "answer": 0,
+      "explanation": "Divide numerator and denominator by $x^2$, the highest power in the expression: the quotient becomes $\\frac{2/x + 3/x^2}{1 - 5/x^2}$. As $x \\to \\infty$ the numerator tends to $0$ and the denominator tends to $1$, so the limit is $0$. In degree language, the denominator has degree $2$ against the numerator's degree $1$, and when the bottom degree is larger the limit at infinity is $0$. The traps: $2$ applies the leading-coefficient ratio, which is only valid when the degrees are equal, $\\infty$ runs the degree comparison backwards, and DNE is wrong because the limit exists and gives the horizontal asymptote $y = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.6"
+    },
+    {
+      "id": "calculus-i-limits-023",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to -\\infty}\\frac{3x^3 + x}{2x^2 + 1}$.",
+      "options": ["$0$", "$\\frac{3}{2}$", "$\\infty$", "$-\\infty$"],
+      "answer": 3,
+      "explanation": "The numerator has degree $3$ and the denominator degree $2$, so for large $|x|$ the quotient behaves like $\\frac{3x^3}{2x^2} = \\frac{3x}{2}$. As $x \\to -\\infty$, $\\frac{3x}{2} \\to -\\infty$, so the limit is $-\\infty$. To confirm, dividing top and bottom by $x^2$ gives $\\frac{3x + 1/x}{2 + 1/x^2}$, whose numerator tends to $-\\infty$ while the denominator tends to $2$. The traps: $\\infty$ forgets that $x$ is negative here, $\\frac{3}{2}$ applies the equal-degree coefficient rule even though the degrees differ, and $0$ runs the degree comparison in the wrong direction.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-limits-024",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to\\infty}\\frac{\\sin x}{x}$.",
+      "options": ["$0$", "$1$", "$\\infty$", "The limit does not exist because $\\sin x$ oscillates"],
+      "answer": 0,
+      "explanation": "For all $x$ we have $-1 \\le \\sin x \\le 1$, so for $x > 0$ dividing by $x$ gives $-\\frac{1}{x} \\le \\frac{\\sin x}{x} \\le \\frac{1}{x}$. Both bounding functions tend to $0$ as $x \\to \\infty$, so by the squeeze theorem the limit is $0$. The numerator stays trapped between $-1$ and $1$ while the denominator grows without bound. The traps: $1$ imports the famous $x \\to 0$ result into the wrong setting, the oscillation option ignores that the shrinking factor $\\frac{1}{x}$ crushes the amplitude, and $\\infty$ forgets the numerator is bounded.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.6"
+    },
+    {
+      "id": "calculus-i-limits-025",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 0} x^2 \\sin\\left(\\frac{1}{x}\\right)$.",
+      "options": ["$1$", "$0$", "The limit does not exist because $\\sin(1/x)$ oscillates", "$\\infty$"],
+      "answer": 1,
+      "explanation": "Direct substitution fails because $\\sin(1/x)$ has no limit at $0$, but the sine factor is bounded: $-1 \\le \\sin(1/x) \\le 1$ for all $x \\ne 0$. Multiplying through by $x^2 \\ge 0$ gives $-x^2 \\le x^2 \\sin(1/x) \\le x^2$. Both $-x^2$ and $x^2$ tend to $0$ as $x \\to 0$, so the squeeze theorem forces the limit to be $0$. The traps: the oscillation option stops at the misbehaving sine and forgets the $x^2$ factor kills the amplitude, $1$ pattern-matches $\\frac{\\sin x}{x}$, and $\\infty$ assumes the blow-up of $\\frac{1}{x}$ inside the sine carries through, but sine stays bounded no matter what its input does.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 2.3"
+    },
+    {
+      "id": "calculus-i-limits-026",
+      "stem": "Suppose $2x \\le g(x) \\le x^4 - x^2 + 2$ for all real $x$. Evaluate $\\displaystyle\\lim_{x\\to 1} g(x)$.",
+      "options": ["$1$", "$2$", "$4$", "The limit cannot be determined from the given information"],
+      "answer": 1,
+      "explanation": "Take the limit of each bound at $x = 1$. The lower bound gives $2x \\to 2(1) = 2$, and the upper bound gives $x^4 - x^2 + 2 \\to 1 - 1 + 2 = 2$. Both bounds approach the same value, so the squeeze theorem applies and forces $\\lim_{x\\to 1} g(x) = 2$, even though we know nothing else about $g$. The traps: the last option misses that the two bounds pinch together at exactly this point, $1$ answers with the approach value $x = 1$ instead of the function value, and $4$ misevaluates the upper bound with the sign slip $1 + 1 + 2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 2.3"
+    },
+    {
+      "id": "calculus-i-limits-027",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 0}\\frac{1 - \\cos x}{x^2}$.",
+      "options": ["$0$", "$\\frac{1}{2}$", "$1$", "The limit does not exist"],
+      "answer": 1,
+      "explanation": "Multiply numerator and denominator by the conjugate $1 + \\cos x$: the numerator becomes $1 - \\cos^2 x = \\sin^2 x$, so the expression equals $\\left(\\frac{\\sin x}{x}\\right)^2 \\cdot \\frac{1}{1 + \\cos x}$. As $x \\to 0$ the first factor tends to $1^2 = 1$ and the second tends to $\\frac{1}{1 + 1} = \\frac{1}{2}$, so the limit is $\\frac{1}{2}$. The traps: $0$ pattern-matches the different limit $\\frac{1 - \\cos x}{x}$, which has only one power of $x$ in the denominator; $1$ keeps the squared sine factor but drops the $\\frac{1}{1 + \\cos x}$ factor; and DNE is the usual $0/0$ surrender.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-limits-028",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to -\\infty}\\frac{\\sqrt{9x^2 + x}}{2x - 1}$.",
+      "options": ["$-\\frac{3}{2}$", "$\\frac{3}{2}$", "$0$", "The limit does not exist because $9x^2 + x$ is negative whenever $x$ is negative"],
+      "answer": 0,
+      "explanation": "Factor $x^2$ out of the radicand: $\\sqrt{9x^2 + x} = \\sqrt{x^2}\\sqrt{9 + 1/x} = |x|\\sqrt{9 + 1/x}$, and since $x \\to -\\infty$ means $x < 0$, we have $|x| = -x$. Dividing numerator and denominator by $x$ gives $\\frac{-\\sqrt{9 + 1/x}}{2 - 1/x}$, which tends to $\\frac{-\\sqrt{9}}{2} = -\\frac{3}{2}$. The traps: $\\frac{3}{2}$ is the classic slip of writing $\\sqrt{x^2} = x$ instead of $|x| = -x$ for negative $x$, $0$ misjudges the effective degrees, and the last option is false because $9x^2 + x = x(9x + 1)$ is a product of two negative factors, hence positive, for every $x < -\\frac{1}{9}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 2.6"
+    },
+    {
+      "id": "calculus-i-limits-029",
+      "stem": "Let $f(x) = x^2 - kx$ for $x < 2$ and $f(x) = k - x^2$ for $x \\ge 2$. For what value of $k$ does $\\displaystyle\\lim_{x\\to 2} f(x)$ exist?",
+      "options": ["$k = 0$", "$k = \\frac{8}{3}$", "$k = -\\frac{8}{3}$", "$k = 8$"],
+      "answer": 1,
+      "explanation": "The limit exists when the one-sided limits match. From the left, $f(x) = x^2 - kx$ gives $\\lim_{x\\to 2^-} f(x) = 4 - 2k$; from the right, $f(x) = k - x^2$ gives $\\lim_{x\\to 2^+} f(x) = k - 4$. Setting $4 - 2k = k - 4$ and collecting terms: $4 + 4 = k + 2k$, so $8 = 3k$ and $k = \\frac{8}{3}$. The traps: $k = 8$ stops at $3k = 8$ without dividing, $k = -\\frac{8}{3}$ is a sign slip while moving terms across the equals sign, and $k = 0$ comes from wrongly equating $4 - 2k$ with $k + 4$.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-limits-030",
+      "stem": "Suppose $\\displaystyle\\lim_{x\\to 0}\\frac{f(x)}{x} = 3$. What is $\\displaystyle\\lim_{x\\to 0} f(x)$?",
+      "options": ["$0$", "$3$", "The limit does not exist", "The limit cannot be determined from the given information"],
+      "answer": 0,
+      "explanation": "Write $f(x) = \\frac{f(x)}{x} \\cdot x$ for $x \\ne 0$. Both factors have limits as $x \\to 0$: the first tends to $3$ by hypothesis and the second tends to $0$, so the product law gives $\\lim_{x\\to 0} f(x) = 3 \\cdot 0 = 0$. Intuitively, if $f(x)$ approached anything other than $0$, the quotient $\\frac{f(x)}{x}$ would blow up rather than settle at $3$. The traps: $3$ copies the given number, which is the limit of the quotient, not of $f$ itself; the cannot-be-determined option misses the product-law decomposition; and DNE is wrong because the limit exists and equals $0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 2.3"
+    }
+  ]
+}
