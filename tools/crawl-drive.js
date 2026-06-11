@@ -92,7 +92,7 @@ export function buildCatalog(rootTree) {
     const semesters = [];
     for (const semFolder of yearFolder.folders) {
       const semNum = Number((semFolder.name.match(/(\d+)/) || [])[1]);
-      if (!semNum) { console.error(`  WARNING: skipping folder "${semFolder.name}" — no year number in name`); continue; }
+      if (!semNum) { console.error(`  WARNING: skipping folder "${semFolder.name}" — no semester number in name`); continue; }
       const courses = [];
       for (const courseFolder of semFolder.folders) {
         let id = slugify(courseFolder.name);
