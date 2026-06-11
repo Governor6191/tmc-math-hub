@@ -6,3 +6,4 @@ structural validation plus an independent blind re-solve of every question.
 - limits: 30 questions, blind check agreed 30/30 first pass, 0 fixed, 0 dropped, 2026-06-11
 - functions: 30 questions, blind check agreed 30/30 first pass, 0 fixed, 0 dropped, 2026-06-11
 - continuity: 24 questions, blind check agreed 24/24 first pass, 0 fixed, 0 dropped, 2026-06-11
+- derivatives: 36 questions, blind check agreed 36/36 first pass, 0 fixed, 0 dropped, 2026-06-11
