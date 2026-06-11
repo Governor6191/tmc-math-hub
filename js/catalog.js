@@ -29,5 +29,6 @@ export function courseStats(course) {
     videos,
     materials: course.materials.length,
     files: slides + course.materials.length, // YouTube videos excluded since they are not downloadable files
+    questions: course.topics.reduce((n, t) => n + (t.questionCount ?? 0), 0),
   };
 }

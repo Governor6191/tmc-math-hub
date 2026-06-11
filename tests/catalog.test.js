@@ -11,7 +11,7 @@ const FIXTURE = {
         id: 'calculus-i', title: 'Calculus I', driveFolderId: 'c1',
         examFormats: [],
         topics: [
-          { id: 'limits', title: 'Limits', slides: [{ title: 'Limits.pdf', driveFileId: 'f1' }], videos: [{ title: 'v', youtubeId: 'y1' }], questionFile: null },
+          { id: 'limits', title: 'Limits', slides: [{ title: 'Limits.pdf', driveFileId: 'f1' }], videos: [{ title: 'v', youtubeId: 'y1' }], questionFile: 'data/questions/calculus-i/limits.json', questionCount: 40 },
           { id: 'functions', title: 'Functions', slides: [{ title: 'F1.pdf', driveFileId: 'f2' }, { title: 'F2.pdf', driveFileId: 'f3' }], videos: [], questionFile: null },
         ],
         materials: [{ title: 'Stewart.pdf', driveFileId: 'f4', kind: 'textbook' }],
@@ -31,9 +31,9 @@ test('findCourse returns null for unknown ids', () => {
   assert.equal(findCourse(FIXTURE, 'nope'), null);
 });
 
-test('courseStats counts topics, slides, videos, files', () => {
+test('courseStats counts topics, slides, videos, files, questions', () => {
   assert.deepEqual(courseStats(FIXTURE.years[0].semesters[0].courses[0]),
-    { topics: 2, slides: 3, videos: 1, materials: 1, files: 4 });
+    { topics: 2, slides: 3, videos: 1, materials: 1, files: 4, questions: 40 });
 });
 
 test('loadCatalog fetches once and caches', async () => {

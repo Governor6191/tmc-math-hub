@@ -10,6 +10,7 @@ function courseCard(c) {
   const meta = [`${st.files} file${st.files === 1 ? '' : 's'}`];
   if (st.topics) meta.push(`${st.topics} topics`);
   if (st.videos) meta.push(`${st.videos} videos`);
+  if (st.questions) meta.push(`${st.questions} questions`);
   return `<li><a class="course-card" href="course.html?c=${encodeURIComponent(c.id)}">
     <span class="course-title">${escapeHtml(c.title)}</span>
     <span class="course-meta">${meta.join(' · ')}</span>

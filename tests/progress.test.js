@@ -49,6 +49,12 @@ test('corrupt stored JSON resets gracefully instead of crashing', () => {
   assert.equal(getProgress('calculus-i', store).attempted, 1);
 });
 
+test('a stored JSON array is treated as corrupt and reset', () => {
+  const store = memStore();
+  store.setItem('tmc.v1.practice.calculus-i', '[1,2]');
+  assert.deepEqual(getProgress('calculus-i', store), { attempted: 0, correct: 0, byQuestion: {} });
+});
+
 test('courses are stored under separate keys', () => {
   const store = memStore();
   recordAnswer('calculus-i', 'q1', true, store);

@@ -1,5 +1,6 @@
 import { renderChrome, drivePreviewUrl, driveViewUrl, driveDownloadUrl, escapeHtml } from './app.js';
 import { loadCatalog, findCourse, courseStats } from './catalog.js';
+import { getProgress, isAvailable } from './progress.js';
 
 renderChrome();
 const root = document.getElementById('course');
@@ -22,6 +23,9 @@ function section(title, items) {
 }
 
 function render(course, year, semester) {
+  const prog = isAvailable() ? getProgress(course.id) : null;
+  const attemptedLine = prog && prog.attempted > 0
+    ? ` You have answered ${prog.attempted} on this device.` : '';
   const st = courseStats(course);
   const practice = course.materials.filter(m => m.kind === 'practice');
   const textbooks = course.materials.filter(m => m.kind === 'textbook');
@@ -33,6 +37,7 @@ function render(course, year, semester) {
     <p class="badges">
       ${st.topics ? `<span class="badge">${st.topics} topic${st.topics === 1 ? '' : 's'}</span>` : ''}
       <span class="badge">${st.files} file${st.files === 1 ? '' : 's'}</span>
+      ${st.questions ? `<span class="badge">${st.questions} questions</span>` : ''}
       ${st.videos ? `<span class="badge">${st.videos} videos</span>` : ''}
     </p>
 
@@ -52,6 +57,7 @@ function render(course, year, semester) {
       <article class="topic">
         <h3>${escapeHtml(t.title)}</h3>
         <ul class="pdf-list">${t.slides.map(fileRow).join('')}</ul>
+        ${t.questionCount ? `<p><a href="practice.html?c=${encodeURIComponent(course.id)}&t=${encodeURIComponent(t.id)}">Practice ${t.questionCount} questions on ${escapeHtml(t.title)}</a></p>` : ''}
         ${t.videos.length ? `<div class="videos">${t.videos.map(v => `
           <figure class="video">
             <iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.youtubeId)}"
@@ -66,9 +72,14 @@ function render(course, year, semester) {
     ${section(course.topics.length ? 'Other files' : 'Slides &amp; files', others)}
 
     <section class="coming" aria-label="Coming soon">
+      ${st.questions ? `
+      <div class="coming-card"><h3>Practice questions</h3>
+        <p>${st.questions} questions with instant marking and worked solutions.${attemptedLine}</p>
+        <a class="next-btn" style="display: inline-block; text-decoration: none;" href="practice.html?c=${encodeURIComponent(course.id)}">Start practice</a></div>`
+      : `
       <div class="coming-card"><h3>Practice questions</h3>
         <p>Hundreds of trial questions with instant marking and worked solutions.</p>
-        <span class="badge soon">Coming soon</span></div>
+        <span class="badge soon">Coming soon</span></div>`}
       <div class="coming-card"><h3>Mock exam hall</h3>
         <p>Timed, Moodle-style trial exams. Feel the real format before exam day.</p>
         <span class="badge soon">Coming soon</span></div>

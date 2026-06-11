@@ -22,7 +22,7 @@ export function isAvailable(store = defaultStore()) {
 function readCourse(courseId, store) {
   let data;
   try { data = JSON.parse(store.getItem(KEY_PREFIX + courseId)); } catch { data = null; }
-  return data && typeof data === 'object' ? data : {};
+  return data && typeof data === 'object' && !Array.isArray(data) ? data : {};
 }
 
 export function recordAnswer(courseId, questionId, correct, store = defaultStore()) {
