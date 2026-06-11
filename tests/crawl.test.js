@@ -125,6 +125,124 @@ test('crawlTree stops descending past maxDepth', async () => {
   assert.deepEqual(d2.folders, []);
 });
 
+// ── Task 4b: Year 4 tracks, drill-through, deep materials ──────────────────
+
+test('track folders merge into the same semester and tag their courses with track', async () => {
+  const LIST = {
+    root: fakeListing([{ id: 'y4', name: 'YEAR 4', type: 'folder' }]),
+    y4: fakeListing([
+      { id: 'tr1', name: 'APPLIED MATHS', type: 'folder' },
+      { id: 's1', name: 'SEM 1', type: 'folder' },
+    ]),
+    tr1: fakeListing([{ id: 'ts1', name: 'SEM 1', type: 'folder' }]),
+    ts1: fakeListing([{ id: 'c1', name: 'OPTIMIZATION I', type: 'folder' }]),
+    s1: fakeListing([{ id: 'c2', name: 'REAL FUNCTION I', type: 'folder' }]),
+    c1: fakeListing([{ id: 'f1', name: 'opt.pdf', type: 'file' }]),
+    c2: fakeListing([{ id: 'f2', name: 'real.pdf', type: 'file' }]),
+  };
+  const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB'));
+  assert.equal(catalog.years.length, 1);
+  assert.equal(catalog.years[0].semesters.length, 1);
+  const sem = catalog.years[0].semesters[0];
+  assert.equal(sem.semester, 1);
+  assert.deepEqual(sem.courses.map(c => c.id), ['optimization-i', 'real-function-i']);
+  const tracked = sem.courses.find(c => c.id === 'optimization-i');
+  const untracked = sem.courses.find(c => c.id === 'real-function-i');
+  assert.equal(tracked.track, 'Applied Maths');
+  assert.equal('track' in untracked, false);
+});
+
+test('"Yr 4 sem 2" parses as semester 2 and duplicate nesting is drilled through', async () => {
+  const LIST = {
+    root: fakeListing([{ id: 'y4', name: 'YEAR 4', type: 'folder' }]),
+    y4: fakeListing([{ id: 'o1', name: 'Yr 4 sem 2', type: 'folder' }]),
+    o1: fakeListing([{ id: 'i1', name: 'Yr 4 sem 2', type: 'folder' }]),
+    i1: fakeListing([
+      { id: 'c1', name: 'Functional Analysis', type: 'folder' },
+      { id: 'c2', name: 'Optimization 2', type: 'folder' },
+    ]),
+    c1: fakeListing([{ id: 'f1', name: 'fa.pdf', type: 'file' }]),
+    c2: fakeListing([]),
+  };
+  const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB'));
+  assert.equal(catalog.years[0].semesters.length, 1);
+  const sem = catalog.years[0].semesters[0];
+  assert.equal(sem.semester, 2);
+  assert.deepEqual(sem.courses.map(c => c.id), ['functional-analysis', 'optimization-2']);
+  assert.deepEqual(sem.courses[0].materials, [{ title: 'fa.pdf', driveFileId: 'f1', kind: 'pdf' }]);
+});
+
+test('materials are collected from all course descendants: root first, then subfolders depth-first', async () => {
+  const LIST = {
+    root: fakeListing([{ id: 'y1', name: 'YEAR 1', type: 'folder' }]),
+    y1: fakeListing([{ id: 's1', name: 'SEM 1', type: 'folder' }]),
+    s1: fakeListing([{ id: 'c1', name: 'CALCULUS I', type: 'folder' }]),
+    c1: fakeListing([
+      { id: 'sl', name: 'SLIDES', type: 'folder' },
+      { id: 'pr', name: 'PRACTICE', type: 'folder' },
+      { id: 'fc', name: 'c.pdf', type: 'file' },
+    ]),
+    sl: fakeListing([{ id: 'fa', name: 'a.pdf', type: 'file' }]),
+    pr: fakeListing([{ id: 'y23', name: '2023', type: 'folder' }]),
+    y23: fakeListing([{ id: 'fb', name: 'b.pdf', type: 'file' }]),
+  };
+  const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB', 0, 6));
+  const course = catalog.years[0].semesters[0].courses[0];
+  assert.deepEqual(course.materials, [
+    { title: 'c.pdf', driveFileId: 'fc', kind: 'pdf' },
+    { title: 'a.pdf', driveFileId: 'fa', kind: 'pdf' },
+    { title: 'b.pdf', driveFileId: 'fb', kind: 'practice' },
+  ]);
+});
+
+test('a track folder with no semester-numbered children is skipped', async () => {
+  const LIST = {
+    root: fakeListing([{ id: 'y4', name: 'YEAR 4', type: 'folder' }]),
+    y4: fakeListing([
+      { id: 'tr', name: 'PURE MATHS', type: 'folder' },
+      { id: 's1', name: 'SEM 1', type: 'folder' },
+    ]),
+    tr: fakeListing([{ id: 'n1', name: 'NOTES', type: 'folder' }]),
+    n1: fakeListing([]),
+    s1: fakeListing([
+      { id: 'c1', name: 'ALGEBRA', type: 'folder' },
+      { id: 'c2', name: 'TOPOLOGY', type: 'folder' },
+    ]),
+    c1: fakeListing([]),
+    c2: fakeListing([]),
+  };
+  const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB'));
+  assert.equal(catalog.years[0].semesters.length, 1);
+  const sem = catalog.years[0].semesters[0];
+  assert.deepEqual(sem.courses.map(c => c.id), ['algebra', 'topology']);
+  assert.ok(sem.courses.every(c => !('track' in c)));
+});
+
+test('same course name across three tracks in one semester gets unique ids', async () => {
+  const LIST = {
+    root: fakeListing([{ id: 'y4', name: 'YEAR 4', type: 'folder' }]),
+    y4: fakeListing([
+      { id: 'ta', name: 'APPLIED MATHS', type: 'folder' },
+      { id: 'tm', name: 'MATHEMATICAL ECONOMICS', type: 'folder' },
+      { id: 'tp', name: 'PURE MATHS', type: 'folder' },
+    ]),
+    ta: fakeListing([{ id: 'as1', name: 'SEM 1', type: 'folder' }]),
+    tm: fakeListing([{ id: 'ms1', name: 'SEM 1', type: 'folder' }]),
+    tp: fakeListing([{ id: 'ps1', name: 'SEM 1', type: 'folder' }]),
+    as1: fakeListing([{ id: 'ca', name: 'REAL FUNCTION I', type: 'folder' }, { id: 'xa', name: 'OPTIMIZATION I', type: 'folder' }]),
+    ms1: fakeListing([{ id: 'cm', name: 'REAL FUNCTION I', type: 'folder' }, { id: 'xm', name: 'ECONOMETRICS', type: 'folder' }]),
+    ps1: fakeListing([{ id: 'cp', name: 'REAL FUNCTION I', type: 'folder' }, { id: 'xp', name: 'TOPOLOGY', type: 'folder' }]),
+    ca: fakeListing([]), cm: fakeListing([]), cp: fakeListing([]),
+    xa: fakeListing([]), xm: fakeListing([]), xp: fakeListing([]),
+  };
+  const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB'));
+  const ids = catalog.years[0].semesters[0].courses.map(c => c.id);
+  assert.equal(new Set(ids).size, ids.length);
+  assert.ok(ids.includes('real-function-i'));
+  assert.ok(ids.includes('real-function-i-y4s1'));
+  assert.ok(ids.includes('real-function-i-y4s1-pure-maths'));
+});
+
 test('each course gets its own examFormats copy', async () => {
   const LIST = {
     root: fakeListing([{ id: 'y1', name: 'YEAR 1', type: 'folder' }]),

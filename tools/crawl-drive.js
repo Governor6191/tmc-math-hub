@@ -83,40 +83,90 @@ function titleCase(s) {
   }).join(' ');
 }
 
+// C1: semester numbers prefer the digits after a "sem" token ("Yr 4 sem 2" → 2),
+// fall back to the first digit run, null when no digits at all.
+function semesterNumber(name) {
+  const m = name.match(/sem\D*?(\d+)/i) || name.match(/(\d+)/);
+  return m ? Number(m[1]) : null;
+}
+
+// C3: a semester folder holding exactly one child folder and zero files, where the
+// child itself holds only folders, is duplicate nesting — use the child's contents.
+// (The child must have zero files and at least one folder: a lone course folder with
+// root files, or a lone empty course folder, is NOT a wrapper.)
+function drillThrough(semFolder) {
+  let node = semFolder;
+  for (let i = 0; i < 2; i++) {
+    const child = node.folders[0];
+    if (node.folders.length !== 1 || node.files.length !== 0 ||
+        child.files.length !== 0 || child.folders.length === 0) break;
+    console.error(`  note: drilling through duplicate folder "${child.name}" inside "${node.name}"`);
+    node = child;
+  }
+  return node;
+}
+
+// C4: collect every descendant file of the course folder — root files first
+// (listing order), then subfolders in listing order, depth-first. A file is
+// 'practice' when any folder on its path below the course matches /practice/i.
+function collectMaterials(courseFolder) {
+  const materials = [];
+  (function walk(node, underPractice) {
+    for (const f of node.files) {
+      materials.push({ title: f.name, driveFileId: f.id, kind: underPractice ? 'practice' : 'pdf' });
+    }
+    for (const sub of node.folders) walk(sub, underPractice || /practice/i.test(sub.name));
+  })(courseFolder, false);
+  return materials;
+}
+
 export function buildCatalog(rootTree) {
   const years = [];
   const seenIds = new Set();
   for (const yearFolder of rootTree.folders) {
     const yearNum = Number((yearFolder.name.match(/(\d+)/) || [])[1]);
     if (!yearNum) { console.error(`  WARNING: skipping folder "${yearFolder.name}" — no year number in name`); continue; }
-    const semesters = [];
-    for (const semFolder of yearFolder.folders) {
-      const semNum = Number((semFolder.name.match(/(\d+)/) || [])[1]);
-      if (!semNum) { console.error(`  WARNING: skipping folder "${semFolder.name}" — no semester number in name`); continue; }
-      const courses = [];
-      for (const courseFolder of semFolder.folders) {
+
+    // C2: a year child with no semester number is a track folder ("APPLIED MATHS");
+    // its semester-numbered children are semester folders whose courses get a track tag.
+    const semSources = [];
+    for (const child of yearFolder.folders) {
+      const semNum = semesterNumber(child.name);
+      if (semNum) { semSources.push({ semFolder: child, semNum, track: null }); continue; }
+      let found = false;
+      for (const sub of child.folders) {
+        const subNum = semesterNumber(sub.name);
+        if (subNum) { semSources.push({ semFolder: sub, semNum: subNum, track: titleCase(child.name) }); found = true; }
+      }
+      if (!found) console.error(`  WARNING: skipping track folder "${child.name}" — no semester-numbered children`);
+    }
+
+    // Semesters with the same number (from tracks and/or the year root) merge.
+    const bySem = new Map();
+    for (const { semFolder, semNum, track } of semSources) {
+      if (!bySem.has(semNum)) bySem.set(semNum, []);
+      const courses = bySem.get(semNum);
+      for (const courseFolder of drillThrough(semFolder).folders) {
         let id = slugify(courseFolder.name);
         if (seenIds.has(id)) id = `${id}-y${yearNum}s${semNum}`;
+        if (seenIds.has(id) && track) id = `${slugify(courseFolder.name)}-y${yearNum}s${semNum}-${slugify(track)}`;
         if (seenIds.has(id)) throw new Error(`duplicate course id after suffixing: ${id}`);
         seenIds.add(id);
-        const materials = courseFolder.files.map(f => ({ title: f.name, driveFileId: f.id, kind: 'pdf' }));
-        for (const sub of courseFolder.folders) {
-          if (sub.folders.length > 0) console.error(`  WARNING: "${courseFolder.name}/${sub.name}" has nested subfolders — their files are not collected`);
-          const kind = /practice/i.test(sub.name) ? 'practice' : 'pdf';
-          for (const f of sub.files) materials.push({ title: f.name, driveFileId: f.id, kind });
-        }
         courses.push({
           id,
           title: titleCase(courseFolder.name),
+          ...(track ? { track } : {}),
           driveFolderId: courseFolder.id,
           examFormats: structuredClone(DEFAULT_EXAM_FORMATS),
           topics: [],
-          materials,
+          materials: collectMaterials(courseFolder),
         });
       }
-      courses.sort((a, b) => a.title.localeCompare(b.title));
-      semesters.push({ semester: semNum, courses });
     }
+    const semesters = [...bySem.entries()].map(([semester, courses]) => {
+      courses.sort((a, b) => a.title.localeCompare(b.title));
+      return { semester, courses };
+    });
     semesters.sort((a, b) => a.semester - b.semester);
     years.push({ year: yearNum, semesters });
   }
@@ -147,7 +197,8 @@ async function liveFetchListing(id) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   console.error('Crawling TMC_SLIDES_HUB (sequential, ~500ms/folder)...');
-  const tree = await crawlTree(liveFetchListing, ROOT_ID, 'TMC_SLIDES_HUB');
+  // C4: depth 6 — tracks add a level under the year, course subfolders add more.
+  const tree = await crawlTree(liveFetchListing, ROOT_ID, 'TMC_SLIDES_HUB', 0, 6);
   const catalog = buildCatalog(tree);
   await mkdir(new URL('../data/', import.meta.url), { recursive: true });
   await writeFile(new URL('../data/catalog.generated.json', import.meta.url), JSON.stringify(catalog, null, 2) + '\n');
