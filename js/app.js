@@ -17,13 +17,13 @@ export function renderChrome() {
   if (footer) {
     footer.innerHTML = `
       <p>Built by and for fellows of the KNUST Mathematics Department.</p>
-      <p>All PDFs stream from the <a href="https://drive.google.com/drive/folders/1k-3KXvCbHkT3RKFBFY2XOz9wbcI2pbb3">TMC Drive hub</a> — nothing is hosted here.</p>`;
+      <p>All PDFs stream from the <a href="https://drive.google.com/drive/folders/1k-3KXvCbHkT3RKFBFY2XOz9wbcI2pbb3">TMC Drive hub</a>. Nothing is hosted here.</p>`;
   }
 }
 
 export const drivePreviewUrl = id => `https://drive.google.com/file/d/${id}/preview`;
 export const driveViewUrl = id => `https://drive.google.com/file/d/${id}/view`;
-// Note: Google shows a "can't scan for viruses" interstitial for very large files — expected, not a bug.
+// Note: Google shows a "can't scan for viruses" interstitial for very large files. Expected, not a bug.
 export const driveDownloadUrl = id => `https://drive.google.com/uc?export=download&id=${id}`;
 
 export function escapeHtml(s) {

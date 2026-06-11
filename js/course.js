@@ -70,7 +70,7 @@ function render(course, year, semester) {
         <p>Hundreds of trial questions with instant marking and worked solutions.</p>
         <span class="badge soon">Coming soon</span></div>
       <div class="coming-card"><h3>Mock exam hall</h3>
-        <p>Timed, Moodle-style trial exams — feel the real format before exam day.</p>
+        <p>Timed, Moodle-style trial exams. Feel the real format before exam day.</p>
         <span class="badge soon">Coming soon</span></div>
     </section>`;
 }
@@ -98,7 +98,7 @@ root.addEventListener('click', e => {
       root.innerHTML = `<div class="error"><p>We couldn't find that course.
         <a href="index.html">Back to the library</a>.</p></div>`;
     } else {
-      document.title = `${hit.course.title} — TMC Math Hub`;
+      document.title = `${hit.course.title} - TMC Math Hub`;
       render(hit.course, hit.year, hit.semester);
     }
   } catch (err) {

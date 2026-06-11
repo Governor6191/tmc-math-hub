@@ -28,6 +28,6 @@ export function courseStats(course) {
     slides,
     videos,
     materials: course.materials.length,
-    files: slides + course.materials.length, // YouTube videos excluded — not downloadable files
+    files: slides + course.materials.length, // YouTube videos excluded since they are not downloadable files
   };
 }

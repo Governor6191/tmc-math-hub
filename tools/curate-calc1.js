@@ -20,7 +20,7 @@ const course = sem1.courses.find(c => c.id === 'calculus-i');
 if (!course) throw new Error('calculus-i not found in catalog');
 
 if (course.topics.length > 0) {
-  console.error('calculus-i already has topics — this script curates a freshly generated catalog only. Aborting (no changes written).');
+  console.error('calculus-i already has topics. This script curates a freshly generated catalog only. Aborting (no changes written).');
   process.exit(1);
 }
 

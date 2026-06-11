@@ -16,7 +16,7 @@ test('parseFolderListing extracts folders and files with ids, names, types', () 
   ]);
 });
 
-// guard: markup change detection — throws on unrecognized structure, returns [] on valid empty listing
+// guard: markup change detection. Throws on unrecognized structure, returns [] on valid empty listing.
 test('parseFolderListing throws on unrecognized markup, returns [] on valid empty listing', () => {
   assert.throws(() => parseFolderListing('<html><body>nothing here</body></html>'), /flip-entries/);
   assert.deepEqual(parseFolderListing('<div class="flip-entries"></div>'), []);
@@ -89,7 +89,7 @@ test('buildCatalog produces the spec schema with defaults', async () => {
   ]);
 });
 
-// G1: two-pass id assignment — collision across years/semesters still gets suffix
+// G1: two-pass id assignment. Collision across years/semesters still gets a suffix.
 test('buildCatalog suffixes colliding course ids across semesters', async () => {
   const LIST = {
     root: fakeListing([{ id: 'y1', name: 'YEAR 1', type: 'folder' }, { id: 'y2', name: 'YEAR 2', type: 'folder' }]),
@@ -173,7 +173,7 @@ test('"Yr 4 sem 2" parses as semester 2 and duplicate nesting is drilled through
   assert.deepEqual(sem.courses[0].materials, [{ title: 'fa.pdf', driveFileId: 'f1', kind: 'pdf' }]);
 });
 
-// G4: material subfolder path — root files have no 'path' key; nested files carry relative path
+// G4: material subfolder path. Root files have no 'path' key; nested files carry a relative path.
 test('materials are collected from all course descendants: root first, then subfolders depth-first', async () => {
   const LIST = {
     root: fakeListing([{ id: 'y1', name: 'YEAR 1', type: 'folder' }]),
@@ -222,7 +222,7 @@ test('a track folder with no semester-numbered children is skipped', async () =>
   assert.ok(sem.courses.every(c => !('track' in c)));
 });
 
-// G1: three-track collision — NONE gets bare slug; all get track-suffixed ids.
+// G1: three-track collision. NONE gets the bare slug; all get track-suffixed ids.
 // Order-independence: build with tracks in reversed order → same id set.
 test('same course name across three tracks in one semester: all get track-suffixed ids (order-independent)', async () => {
   function makeList(trackOrder) {
@@ -305,7 +305,7 @@ test('collectMaterials skips junk files and assigns kind by extension', async ()
       { id: 'f5', name: 'movie.mp4',      type: 'file' },
       { id: 'f6', name: 'arch.zip',       type: 'file' },
       { id: 'f7', name: 'weird.xyz',      type: 'file' },
-      // junk — must be skipped
+      // junk: must be skipped
       { id: 'j1', name: '.DS_Store',      type: 'file' },
       { id: 'j2', name: '~$lock.docx',    type: 'file' },
       { id: 'j3', name: 'a.out',          type: 'file' },
@@ -322,10 +322,10 @@ test('collectMaterials skips junk files and assigns kind by extension', async ()
   assert.ok(!ids.includes('j1') && !ids.includes('j2') && !ids.includes('j3') && !ids.includes('j4'));
 });
 
-// G3: drillThrough guard — only drill when child slug === parent slug
+// G3: drillThrough guard. Only drill when child slug === parent slug.
 test('drillThrough does NOT drill when the lone child has a different name', async () => {
   // Semester folder has exactly one course "OPTIMIZATION 2" which itself has
-  // only subfolders (no root files). Must NOT drill — OPTIMIZATION 2 must appear
+  // only subfolders (no root files). Must NOT drill: OPTIMIZATION 2 must appear
   // as a course, not its subfolders as courses.
   const LIST = {
     root: fakeListing([{ id: 'y4', name: 'YEAR 4', type: 'folder' }]),
@@ -340,7 +340,7 @@ test('drillThrough does NOT drill when the lone child has a different name', asy
   };
   const catalog = buildCatalog(await crawlTree(async id => LIST[id], 'root', 'HUB', 0, 6));
   const sem = catalog.years[0].semesters[0];
-  // Only one course — 'optimization-2'
+  // Only one course: 'optimization-2'
   assert.equal(sem.courses.length, 1);
   assert.equal(sem.courses[0].id, 'optimization-2');
   assert.equal(sem.courses[0].title, 'Optimization 2');

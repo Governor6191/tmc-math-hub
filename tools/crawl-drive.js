@@ -14,7 +14,7 @@ export function decodeEntities(s) {
 export function parseFolderListing(html) {
   // guard: markup change detection
   if (!html.includes('flip-entries')) {
-    throw new Error('Unrecognized Drive folder listing markup (no flip-entries container) — has Google changed embeddedfolderview?');
+    throw new Error('Unrecognized Drive folder listing markup (no flip-entries container). Has Google changed embeddedfolderview?');
   }
 
   const entries = [];
@@ -47,7 +47,7 @@ export function slugify(title) {
 export async function crawlTree(fetchListing, id, name, depth = 0, maxDepth = 4) {
   const node = { id, name, files: [], folders: [] };
   if (depth > maxDepth) {
-    console.error(`  WARNING: max depth reached at "${name}" (${id}) — not descending`);
+    console.error(`  WARNING: max depth reached at "${name}" (${id}), not descending`);
     return node;
   }
   let entries;
@@ -60,7 +60,7 @@ export async function crawlTree(fetchListing, id, name, depth = 0, maxDepth = 4)
     if (e.type === 'file') node.files.push({ id: e.id, name: e.name });
     else {
       if (depth + 1 > maxDepth) {
-        console.error(`  WARNING: max depth reached at "${e.name}" (${e.id}) — not descending`);
+        console.error(`  WARNING: max depth reached at "${e.name}" (${e.id}), not descending`);
       } else {
         node.folders.push(await crawlTree(fetchListing, e.id, e.name, depth + 1, maxDepth));
       }
@@ -109,7 +109,7 @@ function semesterNumber(name) {
 // drillThrough: descend through duplicate wrapper folders.
 // A wrapper is a lone empty child whose slug equals the parent's slug
 // (e.g. "Yr 4 sem 2" containing a nested "Yr 4 sem 2").
-// A course folder with a different name is NOT a wrapper — do not drill.
+// A course folder with a different name is NOT a wrapper, so do not drill.
 function drillThrough(semFolder) {
   let node = semFolder;
   for (let i = 0; i < 2; i++) {
@@ -144,7 +144,7 @@ function kindFromExt(ext) {
 // Module-level junk-skip counter (reset at the start of each buildCatalog call)
 let junkSkipCount = 0;
 
-// collect every descendant file of the course folder — root files first
+// collect every descendant file of the course folder: root files first
 // (listing order), then subfolders in listing order, depth-first.
 // 'practice' kind when any folder on the path below the course matches /practice/i.
 // Files whose path segments form a relative path get that path added;
@@ -183,7 +183,7 @@ export function buildCatalog(rootTree) {
 
   for (const yearFolder of rootTree.folders) {
     const yearNum = Number((yearFolder.name.match(/(\d+)/) || [])[1]);
-    if (!yearNum) { console.error(`  WARNING: skipping folder "${yearFolder.name}" — no year number in name`); continue; }
+    if (!yearNum) { console.error(`  WARNING: skipping folder "${yearFolder.name}": no year number in name`); continue; }
 
     // a year child with no semester number is a track folder ("APPLIED MATHS");
     // its semester-numbered children are semester folders whose courses get a track tag.
@@ -196,7 +196,7 @@ export function buildCatalog(rootTree) {
         const subNum = semesterNumber(sub.name);
         if (subNum) { semSources.push({ semFolder: sub, semNum: subNum, track: titleCase(child.name) }); found = true; }
       }
-      if (!found) console.error(`  WARNING: skipping track folder "${child.name}" — no semester-numbered children`);
+      if (!found) console.error(`  WARNING: skipping track folder "${child.name}": no semester-numbered children`);
     }
 
     for (const { semFolder, semNum, track } of semSources) {
@@ -248,7 +248,7 @@ export function buildCatalog(rootTree) {
   const years = [];
   const yearMap = new Map();  // yearNum → Map<semNum, course[]>
 
-  // Seed every (year, sem) pair that was discovered — ensures empty semesters appear
+  // Seed every (year, sem) pair that was discovered, which ensures empty semesters appear
   for (const c of allCandidates) {
     if (!yearMap.has(c.yearNum)) yearMap.set(c.yearNum, new Map());
     const semMap = yearMap.get(c.yearNum);
@@ -308,7 +308,7 @@ export function buildCatalog(rootTree) {
   return { generatedAt: new Date().toISOString().slice(0, 10), years };
 }
 
-// CLI entry point — run directly to regenerate the catalog
+// CLI entry point. Run directly to regenerate the catalog.
 
 const ROOT_ID = '1k-3KXvCbHkT3RKFBFY2XOz9wbcI2pbb3';
 const DELAY_MS = 500;
@@ -331,7 +331,7 @@ async function liveFetchListing(id) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   console.error('Crawling TMC_SLIDES_HUB (sequential, ~500ms/folder)...');
-  // depth 6 — tracks add a level under the year, course subfolders add more.
+  // depth 6: tracks add a level under the year, course subfolders add more.
   const tree = await crawlTree(liveFetchListing, ROOT_ID, 'TMC_SLIDES_HUB', 0, 6);
   const catalog = buildCatalog(tree);
   await mkdir(new URL('../data/', import.meta.url), { recursive: true });
