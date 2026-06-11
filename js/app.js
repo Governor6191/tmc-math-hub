@@ -23,6 +23,7 @@ export function renderChrome() {
 
 export const drivePreviewUrl = id => `https://drive.google.com/file/d/${id}/preview`;
 export const driveViewUrl = id => `https://drive.google.com/file/d/${id}/view`;
+// Note: Google shows a "can't scan for viruses" interstitial for very large files — expected, not a bug.
 export const driveDownloadUrl = id => `https://drive.google.com/uc?export=download&id=${id}`;
 
 export function escapeHtml(s) {

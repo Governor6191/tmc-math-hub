@@ -10,8 +10,8 @@ function fileRow(item) {
   return `<li class="pdf-row">
     <span class="pdf-title">${escapeHtml(item.title)}${pathHint}</span>
     <span class="pdf-actions">
-      <button class="read-btn" data-file="${item.driveFileId}" data-title="${escapeHtml(item.title)}">Read here</button>
-      <a href="${driveDownloadUrl(item.driveFileId)}">Download</a>
+      <button class="read-btn" data-file="${escapeHtml(item.driveFileId)}" data-title="${escapeHtml(item.title)}">Read here</button>
+      <a href="${driveDownloadUrl(escapeHtml(item.driveFileId))}">Download</a>
     </span>
   </li>`;
 }
@@ -31,12 +31,12 @@ function render(course, year, semester) {
     <p class="crumb"><a href="index.html">Library</a> · Year ${year} · Semester ${semester}${course.track ? ` · ${escapeHtml(course.track)} option` : ''}</p>
     <h1>${escapeHtml(course.title)}</h1>
     <p class="badges">
-      ${st.topics ? `<span class="badge">${st.topics} topics</span>` : ''}
+      ${st.topics ? `<span class="badge">${st.topics} topic${st.topics === 1 ? '' : 's'}</span>` : ''}
       <span class="badge">${st.files} file${st.files === 1 ? '' : 's'}</span>
       ${st.videos ? `<span class="badge">${st.videos} videos</span>` : ''}
     </p>
 
-    <section class="viewer" id="viewer" hidden>
+    <section class="viewer" id="viewer" tabindex="-1" hidden>
       <div class="viewer-head">
         <strong id="viewer-title"></strong>
         <span class="viewer-links">
@@ -73,19 +73,20 @@ function render(course, year, semester) {
         <p>Timed, Moodle-style trial exams — feel the real format before exam day.</p>
         <span class="badge soon">Coming soon</span></div>
     </section>`;
-
-  root.addEventListener('click', e => {
-    const btn = e.target.closest('.read-btn');
-    if (!btn) return;
-    document.getElementById('viewer-title').textContent = btn.dataset.title;
-    document.getElementById('viewer-download').href = driveDownloadUrl(btn.dataset.file);
-    document.getElementById('viewer-open').href = driveViewUrl(btn.dataset.file);
-    document.getElementById('viewer-frame').src = drivePreviewUrl(btn.dataset.file);
-    const viewer = document.getElementById('viewer');
-    viewer.hidden = false;
-    viewer.scrollIntoView({ block: 'start' });
-  });
 }
+
+root.addEventListener('click', e => {
+  const btn = e.target.closest('.read-btn');
+  if (!btn) return;
+  document.getElementById('viewer-title').textContent = btn.dataset.title;
+  document.getElementById('viewer-download').href = driveDownloadUrl(btn.dataset.file);
+  document.getElementById('viewer-open').href = driveViewUrl(btn.dataset.file);
+  document.getElementById('viewer-frame').src = drivePreviewUrl(btn.dataset.file);
+  const viewer = document.getElementById('viewer');
+  viewer.hidden = false;
+  viewer.focus({ preventScroll: true });
+  viewer.scrollIntoView({ block: 'start' });
+});
 
 try {
   const catalog = await loadCatalog();

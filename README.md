@@ -1,13 +1,26 @@
 # TMC Math Hub
 
 Free learning platform for KNUST Mathematics undergraduates: every course's
-slides and textbooks (Year 1–4) readable in-page, with practice questions and
-Moodle-style mock exams coming in later stages.
+slides and textbooks (Year 1–4) readable in-page, streamed from the TMC
+academic board's Google Drive hub. Practice questions and Moodle-style mock
+exams arrive in later stages (see the design spec).
 
-- Plain HTML/CSS/JS. No build step, no dependencies.
-- PDFs stream from the TMC academic board Google Drive hub — nothing is hosted here.
-- `data/catalog.json` is the single source of content; regenerate the skeleton
-  with `node tools/crawl-drive.js` (see `tools/crawl-drive.md`).
+## Stack
 
-Local preview: `npm run serve` → http://localhost:8088
-Tests: `npm test`
+Plain HTML, CSS, and JavaScript ES modules — no framework, no build step, no
+dependencies. Node ≥ 18.13 is needed only for maintainer tooling and tests.
+
+## Working on the site
+
+- Preview: `npm run serve` → http://localhost:8088 (pages need a server; `file://` won't work)
+- Tests: `npm test`
+- Refresh content after the Drive hub changes: see `tools/crawl-drive.md`
+
+## Content model
+
+`data/catalog.json` drives everything: years → semesters (with Year-4 option
+tracks) → courses → topics (slides, videos, future question files) +
+materials (each with a kind: pdf, practice, textbook, doc, video, image,
+code, archive, other — and a subfolder path hint). The skeleton is generated
+by `tools/crawl-drive.js`; topic groupings and video links are hand-curated
+(see `tools/curate-calc1.js` for the template).
