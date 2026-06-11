@@ -8,12 +8,15 @@ const TOPIC_MAP = [
   { id: 'applications-of-differentiation', title: 'Applications of differentiation', files: ['7. Applications of Differentiation I.pdf', '7. Applications of Differentiation II.pdf'] },
   { id: 'sequences-and-series', title: 'Sequences and series', files: ['1.Sequence-and-series.pdf', 'Sequence and Series.pdf'] },
 ];
-const TEXTBOOK_RE = /stewart|dawkins|schaum|smith_roland|minton|foundations-of-calculus|advanced-calculus/i;
+const TEXTBOOK_RE = /stewart|dawkins|schaum|smith.*roland|minton|foundations-of-calculus|advanced-calculus/i;
 
-const path = new URL('../data/catalog.json', import.meta.url);
-const catalog = JSON.parse(await readFile(path, 'utf8'));
-const course = catalog.years.find(y => y.year === 1).semesters.find(s => s.semester === 1)
-  .courses.find(c => c.id === 'calculus-i');
+const catalogUrl = new URL('../data/catalog.json', import.meta.url);
+const catalog = JSON.parse(await readFile(catalogUrl, 'utf8'));
+const year1 = catalog.years.find(y => y.year === 1);
+if (!year1) throw new Error('Year 1 not found in catalog');
+const sem1 = year1.semesters.find(s => s.semester === 1);
+if (!sem1) throw new Error('Semester 1 not found in catalog');
+const course = sem1.courses.find(c => c.id === 'calculus-i');
 if (!course) throw new Error('calculus-i not found in catalog');
 
 if (course.topics.length > 0) {
@@ -32,13 +35,27 @@ course.topics = TOPIC_MAP.map(t => ({
   questionFile: null,
 }));
 
+// Validate every topic's slide count against its TOPIC_MAP entry before writing
+let validationFailed = false;
+for (const t of TOPIC_MAP) {
+  const topic = course.topics.find(tp => tp.id === t.id);
+  const got = topic ? topic.slides.length : 0;
+  const expected = t.files.length;
+  if (got !== expected) {
+    const matched = topic ? new Set(topic.slides.map(s => s.title)) : new Set();
+    const missing = t.files.filter(f => !matched.has(f));
+    process.stderr.write(`ERROR: topic '${t.id}' expected ${expected} files, got ${got}. Unmatched: ${missing.join(', ')}\n`);
+    validationFailed = true;
+  }
+}
+if (validationFailed) process.exit(1);
+
 const moved = new Set(course.topics.flatMap(t => t.slides.map(s => s.title)));
 course.materials = course.materials.filter(m => !moved.has(m.title));
 for (const m of course.materials) {
   if (m.kind === 'pdf' && TEXTBOOK_RE.test(m.title)) m.kind = 'textbook';
 }
 
-await writeFile(path, JSON.stringify(catalog, null, 2) + '\n');
+await writeFile(catalogUrl, JSON.stringify(catalog, null, 2) + '\n');
 const mapped = course.topics.flatMap(t => t.slides).length;
 console.log(`calculus-i: ${course.topics.length} topics, ${mapped} slides mapped, ${course.materials.length} materials remain`);
-for (const t of course.topics) if (!t.slides.length) console.warn(`WARNING: topic '${t.id}' matched no files`);
