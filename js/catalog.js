@@ -1,7 +1,7 @@
 let cached = null;
 
 export async function loadCatalog(url = 'data/catalog.json', fetcher = u => fetch(u)) {
-  if (cached) return cached;
+  if (cached !== null) return cached;
   const res = await fetcher(url);
   if (!res.ok) throw new Error(`Could not load the course catalog (HTTP ${res.status})`);
   cached = await res.json();
@@ -28,6 +28,6 @@ export function courseStats(course) {
     slides,
     videos,
     materials: course.materials.length,
-    files: slides + course.materials.length,
+    files: slides + course.materials.length, // YouTube videos excluded — not downloadable files
   };
 }
