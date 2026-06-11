@@ -16,16 +16,75 @@ test('parseFolderListing extracts folders and files with ids, names, types', () 
   ]);
 });
 
-test('parseFolderListing returns [] on empty/garbage html', () => {
-  assert.deepEqual(parseFolderListing('<html><body>nothing here</body></html>'), []);
+// A2: garbage HTML now throws; valid-but-empty listing returns []
+test('parseFolderListing throws on unrecognized markup, returns [] on valid empty listing', () => {
+  assert.throws(() => parseFolderListing('<html><body>nothing here</body></html>'), /flip-entries/);
+  assert.deepEqual(parseFolderListing('<div class="flip-entries"></div>'), []);
+});
+
+// A1: trailing folders link after the last entry must not misclassify a file
+test('a trailing folders link after the last entry does not misclassify it', () => {
+  const html = `<div class="flip-entries"><div class="flip-entry" id="entry-abc123"><a href="https://drive.google.com/file/d/abc123/view"><div class="flip-entry-title">notes.pdf</div></a></div></div><div class="footer"><a href="https://drive.google.com/drive/folders/zzz999">open hub</a></div>`;
+  assert.deepEqual(parseFolderListing(html), [{ id: 'abc123', name: 'notes.pdf', type: 'file' }]);
 });
 
 test('decodeEntities handles the five common entities', () => {
   assert.equal(decodeEntities('A &amp; B &lt;x&gt; &quot;q&quot; &#39;s&#39;'), `A & B <x> "q" 's'`);
+  // A3: numeric entities (decimal and hex)
+  assert.equal(decodeEntities('L&#244;pital&#x2019;s rule'), 'Lôpital’s rule');
 });
 
 test('slugify produces url-safe ids', () => {
   assert.equal(slugify('CALCULUS I'), 'calculus-i');
   assert.equal(slugify('ELECTRICITY & MAGNETISM'), 'electricity-and-magnetism');
   assert.equal(slugify('  COMM SKILLS I  '), 'comm-skills-i');
+});
+
+// ── Part B ──────────────────────────────────────────────────────────────────
+import { crawlTree, buildCatalog } from '../tools/crawl-drive.js';
+
+function fakeListing(entries) {
+  return '<div class="flip-entries">' + entries.map(e =>
+    `<div class="flip-entry" id="entry-${e.id}"><a href="${e.type === 'folder'
+      ? `https://drive.google.com/drive/folders/${e.id}`
+      : `https://drive.google.com/file/d/${e.id}/view`}"><div class="flip-entry-title">${e.name}</div></a></div>`
+  ).join('\n') + '</div>';
+}
+
+const LISTINGS = {
+  root: fakeListing([{ id: 'y1', name: 'YEAR 1', type: 'folder' }]),
+  y1: fakeListing([{ id: 's1', name: 'SEM 1', type: 'folder' }]),
+  s1: fakeListing([{ id: 'c1', name: 'CALCULUS I', type: 'folder' }]),
+  c1: fakeListing([
+    { id: 'f1', name: 'Limits.pdf', type: 'file' },
+    { id: 'p1', name: 'PRACTICE', type: 'folder' },
+  ]),
+  p1: fakeListing([{ id: 'f2', name: 'calci_complete_practice.pdf', type: 'file' }]),
+};
+
+test('crawlTree walks folders recursively via the injected fetcher', async () => {
+  const tree = await crawlTree(async id => LISTINGS[id], 'root', 'TMC_SLIDES_HUB');
+  assert.equal(tree.folders[0].name, 'YEAR 1');
+  assert.equal(tree.folders[0].folders[0].folders[0].name, 'CALCULUS I');
+  const course = tree.folders[0].folders[0].folders[0];
+  assert.deepEqual(course.files.map(f => f.name), ['Limits.pdf']);
+  assert.equal(course.folders[0].files[0].name, 'calci_complete_practice.pdf');
+});
+
+test('buildCatalog produces the spec schema with defaults', async () => {
+  const tree = await crawlTree(async id => LISTINGS[id], 'root', 'TMC_SLIDES_HUB');
+  const catalog = buildCatalog(tree);
+  assert.equal(catalog.years.length, 1);
+  assert.equal(catalog.years[0].year, 1);
+  assert.equal(catalog.years[0].semesters[0].semester, 1);
+  const course = catalog.years[0].semesters[0].courses[0];
+  assert.equal(course.id, 'calculus-i');
+  assert.equal(course.title, 'Calculus I');
+  assert.equal(course.driveFolderId, 'c1');
+  assert.deepEqual(course.topics, []);
+  assert.deepEqual(course.examFormats.map(f => f.id), ['midsem', 'endsem']);
+  assert.deepEqual(course.materials, [
+    { title: 'Limits.pdf', driveFileId: 'f1', kind: 'pdf' },
+    { title: 'calci_complete_practice.pdf', driveFileId: 'f2', kind: 'practice' },
+  ]);
 });
