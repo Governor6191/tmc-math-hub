@@ -1,0 +1,429 @@
+{
+  "courseId": "logic-and-set-theory",
+  "topicId": "sets-and-operations",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "logic-and-set-theory-sets-and-operations-001",
+      "stem": "Let $A = \\lbrace x \\in \\mathbb{Z} : x^2 < 10 \\rbrace$. Which roster (list) form gives $A$?",
+      "options": [
+        "$\\lbrace 0, 1, 2, 3 \\rbrace$",
+        "$\\lbrace -3, -2, -1, 1, 2, 3 \\rbrace$",
+        "$\\lbrace -3, -2, -1, 0, 1, 2, 3 \\rbrace$",
+        "$\\lbrace 1, 2, 3 \\rbrace$"
+      ],
+      "answer": 2,
+      "explanation": "Square each integer and keep those below $10$: $0^2 = 0$, $(\\pm 1)^2 = 1$, $(\\pm 2)^2 = 4$, and $(\\pm 3)^2 = 9$ all qualify, while $(\\pm 4)^2 = 16$ fails. So $A = \\lbrace -3, -2, -1, 0, 1, 2, 3 \\rbrace$, seven elements in all. Zero belongs because $0^2 = 0 < 10$, and the negative integers belong because squaring removes the sign. The trap is reading $x \\in \\mathbb{Z}$ as if it said $x \\in \\mathbb{N}$ and dropping the negatives, the zero, or both.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-002",
+      "stem": "Let $A = \\lbrace 1, 2, \\lbrace 3 \\rbrace \\rbrace$. Which statement is true?",
+      "options": [
+        "$\\lbrace 3 \\rbrace \\in A$",
+        "$3 \\in A$",
+        "$\\lbrace 3 \\rbrace \\subseteq A$",
+        "$\\lbrace 1, 2 \\rbrace \\in A$"
+      ],
+      "answer": 0,
+      "explanation": "The set $A$ has exactly three elements: the number $1$, the number $2$, and the set $\\lbrace 3 \\rbrace$. Since $\\lbrace 3 \\rbrace$ appears on the roster, $\\lbrace 3 \\rbrace \\in A$ is true. By contrast $3 \\in A$ fails because the bare number $3$ is not listed, and $\\lbrace 3 \\rbrace \\subseteq A$ fails for the same reason, since that subset claim would need $3$ itself to be an element of $A$. Finally $\\lbrace 1, 2 \\rbrace$ is a subset of $A$, not an element of it. The trap is blurring the line between an object and the set containing it: membership looks exactly one brace level deep.",
+      "difficulty": "warmup",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-003",
+      "stem": "A set $A$ has exactly $5$ elements. How many elements does its power set $P(A)$ have?",
+      "options": [
+        "$25$",
+        "$32$",
+        "$10$",
+        "$31$",
+        "$16$"
+      ],
+      "answer": 1,
+      "explanation": "A set with $n$ elements has exactly $2^n$ subsets, because each element is either in or out of a given subset, two independent choices made five times here. So $|P(A)| = 2^5 = 32$. The count $25$ comes from squaring ($n^2$), $10$ from doubling ($2n$), $16$ from slipping to exponent $4$, and $31$ from wrongly deleting the empty set, which is a genuine subset of $A$. The trap is computing $n^2$ or $2n$ instead of $2^n$.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-004",
+      "stem": "Let $A = \\lbrace 1, 2, 3, 4 \\rbrace$ and $B = \\lbrace 3, 4, 5, 6 \\rbrace$. Find $A \\cap B$.",
+      "options": [
+        "$\\lbrace 1, 2 \\rbrace$",
+        "$\\lbrace 1, 2, 3, 4, 5, 6 \\rbrace$",
+        "$\\lbrace 5, 6 \\rbrace$",
+        "$\\lbrace 3, 4 \\rbrace$"
+      ],
+      "answer": 3,
+      "explanation": "The intersection collects only the elements the two sets share. Checking element by element, $3$ and $4$ appear in both $A$ and $B$, while $1$ and $2$ live only in $A$ and $5$ and $6$ only in $B$. So $A \\cap B = \\lbrace 3, 4 \\rbrace$. Choosing $\\lbrace 1, 2, 3, 4, 5, 6 \\rbrace$ computes the union instead, while $\\lbrace 1, 2 \\rbrace$ and $\\lbrace 5, 6 \\rbrace$ are the two one-sided differences. The trap is reading the cap symbol $\\cap$ as if it pooled everything together rather than keeping only the overlap.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-005",
+      "stem": "Which statement is true for every set $A$?",
+      "options": [
+        "$\\emptyset \\in A$",
+        "$\\emptyset \\subseteq A$",
+        "$A \\in A$",
+        "$A \\subset A$"
+      ],
+      "answer": 1,
+      "explanation": "The empty set is a subset of every set: the requirement that each element of $\\emptyset$ belongs to $A$ holds vacuously, because $\\emptyset$ has no elements to check. So $\\emptyset \\subseteq A$ is true no matter what $A$ is. By contrast $\\emptyset \\in A$ holds only when $A$ happens to list the empty set as one of its elements, and $A \\subset A$ fails because a proper subset must leave something out. The trap is treating the empty set as if it were not a subset, or sliding between the membership symbol and the subset symbol as if they were interchangeable.",
+      "difficulty": "warmup",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-006",
+      "stem": "If $|A| = 3$ and $|B| = 4$, what is $|A \\times B|$, the number of ordered pairs in the Cartesian product?",
+      "options": [
+        "$12$",
+        "$7$",
+        "$81$",
+        "$64$"
+      ],
+      "answer": 0,
+      "explanation": "Each ordered pair in $A \\times B$ picks its first coordinate from $A$ and its second from $B$, so the multiplication principle gives $|A \\times B| = 3 \\times 4 = 12$. Arranging the pairs in a grid with $3$ rows and $4$ columns makes the count visible. Adding to get $7$ confuses the product with a combined list of elements, while $81 = 3^4$ and $64 = 4^3$ come from exponentiating the two sizes. The trap is computing $|A| + |B|$ instead of $|A| \\cdot |B|$.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-007",
+      "stem": "Which set-builder expression describes the set $\\lbrace 1, 4, 9, 16, 25 \\rbrace$?",
+      "options": [
+        "$\\lbrace x \\in \\mathbb{N} : x^2 \\le 25 \\rbrace$",
+        "$\\lbrace x \\in \\mathbb{N} : 1 \\le x \\le 25 \\rbrace$",
+        "$\\lbrace x^2 : x \\in \\mathbb{N}, 1 \\le x \\le 5 \\rbrace$",
+        "$\\lbrace x^2 : x \\in \\mathbb{N}, 1 \\le x \\le 25 \\rbrace$"
+      ],
+      "answer": 2,
+      "explanation": "The listed numbers are $1^2, 2^2, 3^2, 4^2, 5^2$, so the set collects the squares of $1$ through $5$: $\\lbrace x^2 : x \\in \\mathbb{N}, 1 \\le x \\le 5 \\rbrace$. The form $\\lbrace x \\in \\mathbb{N} : x^2 \\le 25 \\rbrace$ instead collects the inputs $1, 2, 3, 4, 5$, not their squares. Bounding $x$ itself by $25$ in the squaring form would produce all squares up to $625$, far too many. The trap is confusing the expression being collected with the condition it satisfies: whatever stands to the left of the colon is what actually lands in the set.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-008",
+      "stem": "Let $B = \\lbrace \\emptyset, \\lbrace \\emptyset \\rbrace \\rbrace$. Which statement is FALSE?",
+      "options": [
+        "$\\emptyset \\in B$",
+        "$\\lbrace \\emptyset \\rbrace \\subseteq B$",
+        "$\\lbrace \\emptyset \\rbrace \\in B$",
+        "$\\lbrace \\lbrace \\emptyset \\rbrace \\rbrace \\in B$"
+      ],
+      "answer": 3,
+      "explanation": "List the two elements of $B$: the empty set $\\emptyset$ and the singleton $\\lbrace \\emptyset \\rbrace$. Then $\\emptyset \\in B$ and $\\lbrace \\emptyset \\rbrace \\in B$ are true by direct inspection, and $\\lbrace \\emptyset \\rbrace \\subseteq B$ is true because its only element, $\\emptyset$, belongs to $B$. However $\\lbrace \\lbrace \\emptyset \\rbrace \\rbrace$ matches neither element of $B$, so $\\lbrace \\lbrace \\emptyset \\rbrace \\rbrace \\in B$ is false, even though $\\lbrace \\lbrace \\emptyset \\rbrace \\rbrace \\subseteq B$ would be true. The trap is letting the braces blur together: membership demands an exact match with a listed element, one level of nesting at a time.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-009",
+      "stem": "Let $A = \\lbrace a, b, c, d, e \\rbrace$ and $B = \\lbrace c, d, f \\rbrace$. Find the set difference $A - B$.",
+      "options": [
+        "$\\lbrace a, b, e \\rbrace$",
+        "$\\lbrace f \\rbrace$",
+        "$\\lbrace a, b, e, f \\rbrace$",
+        "$\\lbrace c, d \\rbrace$"
+      ],
+      "answer": 0,
+      "explanation": "The difference $A - B$ keeps the elements of $A$ that do not appear in $B$. Removing the shared elements $c$ and $d$ from $A$ leaves $\\lbrace a, b, e \\rbrace$; the element $f$ plays no role because the difference starts from $A$. Choosing $\\lbrace f \\rbrace$ computes $B - A$, the difference taken in the wrong direction, while $\\lbrace a, b, e, f \\rbrace$ is the symmetric difference and $\\lbrace c, d \\rbrace$ is the intersection. The trap is treating $A - B$ as if it were symmetric: the order of the operands matters.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-010",
+      "stem": "Let $A = \\lbrace 1, 2, 3, 4 \\rbrace$ and $B = \\lbrace 3, 4, 5 \\rbrace$. Find the symmetric difference $A \\triangle B$.",
+      "options": [
+        "$\\lbrace 3, 4 \\rbrace$",
+        "$\\lbrace 1, 2, 5 \\rbrace$",
+        "$\\lbrace 1, 2 \\rbrace$",
+        "$\\lbrace 1, 2, 3, 4, 5 \\rbrace$"
+      ],
+      "answer": 1,
+      "explanation": "The symmetric difference collects the elements lying in exactly one of the two sets. Here $A - B = \\lbrace 1, 2 \\rbrace$ and $B - A = \\lbrace 5 \\rbrace$, so $A \\triangle B = \\lbrace 1, 2, 5 \\rbrace$. The shared elements $3$ and $4$ are exactly the ones discarded, so $\\lbrace 3, 4 \\rbrace$ is the intersection, $\\lbrace 1, 2, 3, 4, 5 \\rbrace$ is the union, and $\\lbrace 1, 2 \\rbrace$ stops after only one of the two one-sided differences. The trap is computing $A - B$ alone and forgetting that the symmetric difference also gathers $B - A$.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-011",
+      "stem": "Let the universe be $U = \\lbrace 1, 2, 3, 4, 5, 6, 7, 8, 9 \\rbrace$ and let $A$ be the set of odd numbers in $U$. Find the complement $A'$.",
+      "options": [
+        "$\\lbrace 2, 4, 6, 8, 10 \\rbrace$",
+        "$\\lbrace 0, 2, 4, 6, 8 \\rbrace$",
+        "$\\lbrace 2, 4, 6, 8 \\rbrace$",
+        "$\\lbrace 1, 3, 5, 7, 9 \\rbrace$"
+      ],
+      "answer": 2,
+      "explanation": "The complement $A'$ consists of the members of the universe $U$ that are not in $A$. Here $A = \\lbrace 1, 3, 5, 7, 9 \\rbrace$, and removing these from $U$ leaves the evens $\\lbrace 2, 4, 6, 8 \\rbrace$. Including $10$ silently swaps in the universe $\\lbrace 1, 2, \\dots, 10 \\rbrace$, including $0$ does the same at the bottom end, and the option $\\lbrace 1, 3, 5, 7, 9 \\rbrace$ is just $A$ itself, not its complement. The trap is taking the complement relative to the wrong universe: a complement only makes sense inside the stated $U$.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-012",
+      "stem": "For sets $A$ and $B$ inside a universe $U$, De Morgan's law says $(A \\cup B)'$ always equals which set?",
+      "options": [
+        "$A' \\cap B'$",
+        "$A' \\cup B'$",
+        "$(A \\cap B)'$",
+        "$A \\cap B$"
+      ],
+      "answer": 0,
+      "explanation": "An element avoids $A \\cup B$ exactly when it avoids $A$ and also avoids $B$, so the complement of a union is the intersection of the complements: $(A \\cup B)' = A' \\cap B'$. Writing $A' \\cup B'$ complements the parts but forgets to flip the connective, and that set is actually $(A \\cap B)'$ by the other De Morgan law, so the second and third options name the same wrong set in two disguises. The option $A \\cap B$ drops the complements altogether. The trap is complementing each set while keeping the union unchanged: the union must turn into an intersection.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-013",
+      "stem": "For any sets $A$, $B$, $C$, the distributive law expands $A \\cap (B \\cup C)$ into which expression?",
+      "options": [
+        "$(A \\cup B) \\cap (A \\cup C)$",
+        "$(A \\cap B) \\cap (A \\cap C)$",
+        "$A \\cup (B \\cap C)$",
+        "$(A \\cap B) \\cup (A \\cap C)$"
+      ],
+      "answer": 3,
+      "explanation": "An element lies in $A \\cap (B \\cup C)$ exactly when it is in $A$ and in at least one of $B$ or $C$, which is precisely membership in $(A \\cap B) \\cup (A \\cap C)$: intersection distributes over union. A quick check with $A = \\lbrace 1 \\rbrace$, $B = \\lbrace 1 \\rbrace$, $C = \\lbrace 2 \\rbrace$ confirms both sides equal $\\lbrace 1 \\rbrace$. The expression $(A \\cup B) \\cap (A \\cup C)$ is the expansion of the dual identity for $A \\cup (B \\cap C)$, not of this one, and $(A \\cap B) \\cap (A \\cap C)$ collapses to $A \\cap B \\cap C$. The trap is reaching for the dual distributive law: the operation appearing in both terms of the expansion must be the outer one.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-014",
+      "stem": "For any sets $A$ and $B$, the expression $A \\cup (A \\cap B)$ simplifies to which set?",
+      "options": [
+        "$A \\cap B$",
+        "$A$",
+        "$A \\cup B$",
+        "$B$"
+      ],
+      "answer": 1,
+      "explanation": "Every element of $A \\cap B$ already lies in $A$, so forming the union $A \\cup (A \\cap B)$ adds nothing new: the result is exactly $A$. This is the absorption law. A concrete check with $A = \\lbrace 1, 2 \\rbrace$ and $B = \\lbrace 2, 3 \\rbrace$ gives $A \\cup \\lbrace 2 \\rbrace = \\lbrace 1, 2 \\rbrace = A$. Answering $A \\cup B$ treats the inner $A \\cap B$ as if it were all of $B$, while $A \\cap B$ or $B$ throws away the elements of $A$ outside $B$. The trap is expanding mechanically instead of noticing that $A \\cap B \\subseteq A$ forces the union to collapse onto $A$.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-015",
+      "stem": "In a class of $60$ first-year students at KNUST, $35$ offer Statistics, $28$ offer Computer Science, and $15$ offer both courses. How many students offer at least one of the two courses?",
+      "options": [
+        "$63$",
+        "$12$",
+        "$48$",
+        "$33$"
+      ],
+      "answer": 2,
+      "explanation": "By inclusion-exclusion, $|S \\cup C| = |S| + |C| - |S \\cap C| = 35 + 28 - 15 = 48$. The subtraction is required because the $15$ students offering both courses are counted once inside the $35$ and again inside the $28$. The answer $63$ skips the subtraction entirely, and the fact that it exceeds the class size of $60$ is a built-in warning that something is double counted; $12$ answers the different question of how many offer neither course, and $33$ subtracts the overlap twice. The trap is adding the two course lists without removing the students who appear on both.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-016",
+      "stem": "Out of $80$ students in Unity Hall, $45$ play football, $30$ play volleyball, and $12$ play both games. How many of the students play neither game?",
+      "options": [
+        "$17$",
+        "$5$",
+        "$29$",
+        "$12$"
+      ],
+      "answer": 0,
+      "explanation": "First count the students who play at least one game: $|F \\cup V| = 45 + 30 - 12 = 63$, where the $12$ on both team lists are subtracted once. The students who play neither game are the rest of the hall: $80 - 63 = 17$. Computing $80 - 45 - 30 = 5$ removes the $12$ dual players twice and forgets to add them back, $29$ comes from subtracting the overlap twice within the union ($45 + 30 - 24$), and $12$ merely restates the both-games count. The trap is subtracting both team lists from $80$ without correcting for the players counted on each list.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-017",
+      "stem": "A survey of $100$ KNUST students records that $40$ study Mathematics, $35$ study Physics, and $30$ study Chemistry. Also, $12$ study Mathematics and Physics, $10$ study Physics and Chemistry, $8$ study Mathematics and Chemistry, and $5$ study all three subjects. How many students study at least one of the three subjects?",
+      "options": [
+        "$105$",
+        "$75$",
+        "$85$",
+        "$80$",
+        "$70$"
+      ],
+      "answer": 3,
+      "explanation": "Inclusion-exclusion for three sets gives $|M \\cup P \\cup C| = 40 + 35 + 30 - 12 - 10 - 8 + 5$. The single counts sum to $105$, the pairwise overlaps remove $30$, and the triple overlap is added back once because those $5$ students were added three times and then subtracted three times. The total is $105 - 30 + 5 = 80$. The answer $105$ ignores every overlap, $75$ forgets to restore the triple intersection, $85$ restores it twice, and $70$ subtracts it instead of adding it. The trap is mishandling the students in all three subjects: after the pairwise subtractions they have vanished from the count and must be added back exactly once.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-018",
+      "stem": "In a survey of $100$ KNUST students, $40$ study Mathematics, $35$ study Physics, and $30$ study Chemistry, while $12$ study Mathematics and Physics, $10$ study Physics and Chemistry, $8$ study Mathematics and Chemistry, and $5$ study all three. How many students study exactly one of the three subjects?",
+      "options": [
+        "$80$",
+        "$60$",
+        "$45$",
+        "$20$"
+      ],
+      "answer": 1,
+      "explanation": "Work region by region in the Venn diagram. Mathematics only: $40 - 12 - 8 + 5 = 25$, where the $5$ studying all three was subtracted in both pairwise counts and must be added back once. Similarly Physics only gives $35 - 12 - 10 + 5 = 18$ and Chemistry only gives $30 - 10 - 8 + 5 = 17$. The total studying exactly one subject is $25 + 18 + 17 = 60$. The answer $45$ forgets to restore the triple overlap in each of the three computations, while $80$ counts the whole union and $20$ counts those studying none. The trap is subtracting both pairwise overlaps from a single subject without adding back the triple intersection contained in both of them.",
+      "difficulty": "stretch",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-019",
+      "stem": "Let $A = \\lbrace 1, 2 \\rbrace$ and $B = \\lbrace x, y \\rbrace$. Which of the following is the Cartesian product $A \\times B$?",
+      "options": [
+        "$\\lbrace (x, 1), (x, 2), (y, 1), (y, 2) \\rbrace$",
+        "$\\lbrace (1, x), (2, y) \\rbrace$",
+        "$\\lbrace (1, x), (1, y), (2, x), (2, y) \\rbrace$",
+        "$\\lbrace 1, 2, x, y \\rbrace$"
+      ],
+      "answer": 2,
+      "explanation": "Form every ordered pair whose first coordinate comes from $A$ and whose second comes from $B$: $(1, x)$, $(1, y)$, $(2, x)$, $(2, y)$. That is all of $A \\times B$, and the count checks out as $|A \\times B| = 2 \\times 2 = 4$. Swapping coordinates produces $B \\times A$, a genuinely different set of pairs, while matching $1$ with $x$ and $2$ with $y$ gives only a termwise pairing rather than the full product, and $\\lbrace 1, 2, x, y \\rbrace$ confuses the product with the union. The trap is forgetting that every element of $A$ must pair with every element of $B$, in that order.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-020",
+      "stem": "A chop bar near the KNUST campus pairs each of its $6$ staple foods with each soup on its menu, and the chalkboard advertises $24$ distinct staple and soup combinations. How many soups are on the menu?",
+      "options": [
+        "$4$",
+        "$18$",
+        "$30$",
+        "$144$"
+      ],
+      "answer": 0,
+      "explanation": "The combinations form the Cartesian product of the set of staples and the set of soups, so the sizes multiply: $6 \\times s = 24$ where $s$ is the number of soups. Dividing gives $s = 24 \\div 6 = 4$. Subtracting to get $18$ treats the pairing rule as if combinations were obtained by addition, while $30$ adds and $144$ multiplies the two given numbers without inverting anything. The trap is the additive picture of pairing: Cartesian products multiply counts, so the unknown side is recovered by division, not subtraction.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-021",
+      "stem": "How many proper subsets does a set with $4$ elements have?",
+      "options": [
+        "$16$",
+        "$14$",
+        "$8$",
+        "$15$"
+      ],
+      "answer": 3,
+      "explanation": "A set with $4$ elements has $2^4 = 16$ subsets in total. A proper subset is any subset other than the whole set itself, so exactly one subset is excluded, leaving $16 - 1 = 15$. The count $16$ forgets to exclude the set itself, $14$ wrongly throws out the empty set as well, even though the empty set is a perfectly good proper subset, and $8 = 2^3$ slips on the exponent. The trap is excluding the empty set: properness only forbids equality with the whole set, it says nothing against being empty.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-022",
+      "stem": "Let $A = \\lbrace 1, 2, 3, 4, 5 \\rbrace$. How many subsets of $A$ contain the element $1$?",
+      "options": [
+        "$32$",
+        "$16$",
+        "$15$",
+        "$8$"
+      ],
+      "answer": 1,
+      "explanation": "A subset that must contain $1$ is completely determined by which of the remaining elements $2, 3, 4, 5$ it includes. Those four elements each give an independent in-or-out choice, so there are $2^4 = 16$ such subsets, exactly half of the $2^5 = 32$ subsets of $A$. Answering $32$ ignores the requirement on $1$ entirely, $15$ subtracts one for the empty set even though the empty set was never among the $16$ counted (every subset counted contains $1$), and $8 = 2^3$ slips on the exponent. The trap is failing to see that fixing one element inside leaves free choices only over the other four.",
+      "difficulty": "stretch",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-023",
+      "stem": "Let $A = \\lbrace 1, 2 \\rbrace$. Which of the following is an element of the power set $P(A)$?",
+      "options": [
+        "$1$",
+        "$\\lbrace \\lbrace 1 \\rbrace \\rbrace$",
+        "$\\lbrace 1 \\rbrace$",
+        "$\\lbrace \\emptyset \\rbrace$"
+      ],
+      "answer": 2,
+      "explanation": "The elements of $P(A)$ are exactly the subsets of $A$: $P(A) = \\lbrace \\emptyset, \\lbrace 1 \\rbrace, \\lbrace 2 \\rbrace, \\lbrace 1, 2 \\rbrace \\rbrace$. Since $\\lbrace 1 \\rbrace \\subseteq A$, we get $\\lbrace 1 \\rbrace \\in P(A)$. The bare number $1$ is an element of $A$ but not a subset of $A$, so it is not in $P(A)$; the set $\\lbrace \\lbrace 1 \\rbrace \\rbrace$ is a subset of $P(A)$ rather than an element of it; and $\\lbrace \\emptyset \\rbrace$ would need $\\emptyset$ to be an element of $A$, which it is not. The trap is forgetting that membership in a power set means being a subset of the original set, one brace level up from membership in $A$.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-024",
+      "stem": "Let $A = \\lbrace x \\in \\mathbb{N} : x \\text{ is prime and } x < 10 \\rbrace$. Which statement is true?",
+      "options": [
+        "$1 \\in A$",
+        "$9 \\in A$",
+        "$\\lbrace 2 \\rbrace \\in A$",
+        "$2 \\in A$"
+      ],
+      "answer": 3,
+      "explanation": "Writing $A$ in roster form, the primes below $10$ are $2, 3, 5, 7$, so $A = \\lbrace 2, 3, 5, 7 \\rbrace$ and $2 \\in A$ is true. The number $1$ is not prime by definition, since a prime needs exactly two distinct divisors, and $9 = 3 \\times 3$ is composite. The statement $\\lbrace 2 \\rbrace \\in A$ confuses the singleton with the element: $\\lbrace 2 \\rbrace \\subseteq A$ holds, but the set $\\lbrace 2 \\rbrace$ is not itself one of the numbers listed in $A$. The trap is twofold and classic: counting $1$ as prime, and wrapping an element in braces without switching the relation from $\\in$ to $\\subseteq$.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-025",
+      "stem": "Which one of the following statements about sets is true?",
+      "options": [
+        "$\\lbrace 1, 2, 3 \\rbrace = \\lbrace 3, 2, 1, 2 \\rbrace$",
+        "$\\lbrace 1, 2, 3 \\rbrace \\neq \\lbrace 3, 2, 1 \\rbrace$",
+        "$\\lbrace 1, 2 \\rbrace = \\lbrace \\lbrace 1 \\rbrace, \\lbrace 2 \\rbrace \\rbrace$",
+        "$\\emptyset = \\lbrace \\emptyset \\rbrace$"
+      ],
+      "answer": 0,
+      "explanation": "A set is determined solely by which elements belong to it: the order of listing and any repetition carry no information. So $\\lbrace 3, 2, 1, 2 \\rbrace$ lists exactly the elements $1, 2, 3$ and equals $\\lbrace 1, 2, 3 \\rbrace$. The other statements all fail: reordering a roster never changes the set, the set $\\lbrace \\lbrace 1 \\rbrace, \\lbrace 2 \\rbrace \\rbrace$ contains singletons rather than numbers, and $\\lbrace \\emptyset \\rbrace$ is a one-element set while $\\emptyset$ has no elements at all. The trap is treating a roster like a sequence: sets ignore order and duplicates, and braces around an object always build something new.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-026",
+      "stem": "Let $A = \\lbrace 2, 4, 6 \\rbrace$ and $B = \\lbrace x \\in \\mathbb{N} : x \\text{ is even and } x \\le 10 \\rbrace$. Which statement is true?",
+      "options": [
+        "$B \\subseteq A$",
+        "$A \\subset B$",
+        "$A \\in B$",
+        "$8 \\in A$"
+      ],
+      "answer": 1,
+      "explanation": "Spelling out $B$ in roster form gives $B = \\lbrace 2, 4, 6, 8, 10 \\rbrace$. Every element of $A = \\lbrace 2, 4, 6 \\rbrace$ belongs to $B$, and $B$ has elements such as $8$ and $10$ outside $A$, so $A$ is a proper subset of $B$ and $A \\subset B$ holds. The reverse inclusion $B \\subseteq A$ fails at $8$, the statement $A \\in B$ writes a membership symbol where inclusion is meant ($B$ contains numbers, not sets of numbers), and $8 \\in A$ is false since $A$ stops at $6$. The trap is writing $\\in$ between two sets when the relationship being asserted is containment of one set inside the other.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-027",
+      "stem": "For arbitrary sets $A$ and $B$, which expression always equals the symmetric difference $A \\triangle B$?",
+      "options": [
+        "$(A \\cap B) - (A \\cup B)$",
+        "$(A - B) \\cap (B - A)$",
+        "$(A \\cup B) \\cap (A \\cap B)$",
+        "$(A \\cup B) - (A \\cap B)$"
+      ],
+      "answer": 3,
+      "explanation": "An element lies in $A \\triangle B$ exactly when it belongs to $A$ or to $B$ but not to both, which is precisely the union with the intersection carved out: $(A \\cup B) - (A \\cap B)$. The reversed difference $(A \\cap B) - (A \\cup B)$ is always empty because the intersection sits inside the union, and $(A - B) \\cap (B - A)$ is always empty too, since no element can be in $A$ without $B$ and simultaneously in $B$ without $A$; the correct combination of the one-sided differences uses a union, $(A - B) \\cup (B - A)$. The remaining option $(A \\cup B) \\cap (A \\cap B)$ collapses to $A \\cap B$, the exact opposite region. The trap is flipping the difference or joining the one-sided differences with an intersection, both of which silently produce the empty set.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-028",
+      "stem": "Among $120$ KNUST first-year students, $60$ take Algebra, $50$ take Calculus, and $45$ take Statistics. Of these, $25$ take Algebra and Calculus, $20$ take Calculus and Statistics, $15$ take Algebra and Statistics, and $10$ take all three. How many students take exactly two of the three courses?",
+      "options": [
+        "$60$",
+        "$10$",
+        "$30$",
+        "$50$"
+      ],
+      "answer": 2,
+      "explanation": "Students taking exactly two courses fill the three pairwise regions of the Venn diagram once the triple region is removed from each. Algebra and Calculus only: $25 - 10 = 15$; Calculus and Statistics only: $20 - 10 = 10$; Algebra and Statistics only: $15 - 10 = 5$. The total is $15 + 10 + 5 = 30$. Answering $60$ simply adds the pairwise counts, ignoring that the $10$ students in all three courses sit inside every one of those counts; $50$ removes that $10$ only once instead of three times; and $10$ answers the different question of exactly three. The trap is forgetting that the all-three group is double counted inside each pairwise figure.",
+      "difficulty": "stretch",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-029",
+      "stem": "What is the power set $P(\\lbrace \\emptyset \\rbrace)$?",
+      "options": [
+        "$\\lbrace \\emptyset, \\lbrace \\emptyset \\rbrace \\rbrace$",
+        "$\\lbrace \\lbrace \\emptyset \\rbrace \\rbrace$",
+        "$\\lbrace \\emptyset \\rbrace$",
+        "$\\emptyset$"
+      ],
+      "answer": 0,
+      "explanation": "The set $\\lbrace \\emptyset \\rbrace$ has one element, so it has $2^1 = 2$ subsets: the empty set $\\emptyset$ and the whole set $\\lbrace \\emptyset \\rbrace$. Hence $P(\\lbrace \\emptyset \\rbrace) = \\lbrace \\emptyset, \\lbrace \\emptyset \\rbrace \\rbrace$. The option $\\lbrace \\lbrace \\emptyset \\rbrace \\rbrace$ drops $\\emptyset$, treating the empty set as if it were not a subset, while $\\lbrace \\emptyset \\rbrace$ forgets that every set is a subset of itself, and $\\emptyset$ would make the power set memberless, contradicting $|P(A)| = 2^{|A|} \\ge 1$. The trap is dropping the empty set from the subset list: it is a subset of every set, including this one.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-sets-and-operations-030",
+      "stem": "Let $A = \\lbrace 1, 2 \\rbrace$ and $B = \\lbrace 3 \\rbrace$. Which statement is true?",
+      "options": [
+        "$(3, 1) \\in A \\times B$",
+        "$A \\times B = B \\times A$",
+        "$|A \\times B| = 3$",
+        "$(1, 3) \\in A \\times B$"
+      ],
+      "answer": 3,
+      "explanation": "By definition $A \\times B = \\lbrace (1, 3), (2, 3) \\rbrace$, with first coordinates drawn from $A$ and second coordinates from $B$, so $(1, 3) \\in A \\times B$ is true. The pair $(3, 1)$ instead belongs to $B \\times A = \\lbrace (3, 1), (3, 2) \\rbrace$, and comparing the two rosters shows $A \\times B \\neq B \\times A$: the Cartesian product is not commutative. Finally $|A \\times B| = 2 \\times 1 = 2$, not $2 + 1 = 3$. The trap is treating ordered pairs as unordered, or adding the set sizes when they should be multiplied.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    }
+  ]
+}
