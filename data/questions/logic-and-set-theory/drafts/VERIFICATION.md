@@ -5,3 +5,5 @@ structural validation plus an independent blind re-solve of every question.
 
 - propositional-logic: 30 questions, blind check agreed 30/30 first pass, 0 fixed, 0 dropped, 2026-06-12
 - sets-and-operations: 30 questions, blind check agreed 30/30 first pass, 0 fixed, 0 dropped, 2026-06-12
+- arguments-and-proofs: 30 questions, blind check agreed 30/30 first pass, 0 fixed, 0 dropped, 2026-06-12
+- predicate-logic: 24 questions, blind check agreed 24/24 first pass, 0 fixed, 0 dropped, 2026-06-12

@@ -1,0 +1,429 @@
+{
+  "courseId": "logic-and-set-theory",
+  "topicId": "arguments-and-proofs",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-001",
+      "stem": "Consider the argument: if it rains in Kumasi this afternoon, then the inter-hall football match will be postponed; it rained in Kumasi this afternoon; therefore the match was postponed. Which rule of inference does this argument use?",
+      "options": [
+        "Modus ponens",
+        "Modus tollens",
+        "Hypothetical syllogism",
+        "Affirming the consequent"
+      ],
+      "answer": 0,
+      "explanation": "Let $p$ stand for: it rains in Kumasi this afternoon, and $q$ for: the match is postponed. The premises are $p \\to q$ and $p$, and the conclusion is $q$, which is exactly the form of modus ponens. The argument affirms the antecedent $p$, the one move a conditional premise fully licenses, so the argument is valid. Affirming the consequent would run the other way, from $q$ back to $p$. The trap is mixing up affirming the antecedent, which is modus ponens and valid, with affirming the consequent, which is a fallacy.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-002",
+      "stem": "An argument has premises $p \\to q$ and $\\lnot q$, and conclusion $\\lnot p$. Which rule of inference is this?",
+      "options": [
+        "Modus ponens",
+        "Denying the antecedent",
+        "Modus tollens",
+        "Disjunctive syllogism"
+      ],
+      "answer": 2,
+      "explanation": "Modus tollens has exactly this shape: from a conditional $p \\to q$ and the denial $\\lnot q$ of its consequent, infer the denial $\\lnot p$ of its antecedent. The validity is easy to check with a truth table: in every row where $p \\to q$ and $\\lnot q$ are both true, $p$ must be false. Denying the antecedent looks similar but starts from $\\lnot p$ and jumps to $\\lnot q$, and that form is invalid. Modus ponens needs the premise $p$, which is not given here. The trap is labelling any argument containing negations as denying the antecedent; the valid rule modus tollens denies the consequent, not the antecedent.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-003",
+      "stem": "Consider the argument: if the trotro leaves Tech Junction by 7 am, then Ama reaches Adum by 8 am; Ama reached Adum by 8 am; therefore the trotro left Tech Junction by 7 am. This argument is:",
+      "options": [
+        "Valid by modus ponens",
+        "An instance of affirming the consequent, hence invalid",
+        "Valid by modus tollens",
+        "An instance of denying the antecedent, hence invalid"
+      ],
+      "answer": 1,
+      "explanation": "Write $p$ for: the trotro leaves Tech Junction by 7 am, and $q$ for: Ama reaches Adum by 8 am. The argument has the form $p \\to q$, $q$, therefore $p$, which affirms the consequent. The conditional promises nothing when only $q$ is known: Ama could have reached Adum by 8 am in a shared taxi even if the trotro left late, so the premises can be true while the conclusion is false. Modus ponens would need the premise $p$ itself, and modus tollens would need $\\lnot q$. The trap is treating a conditional as if it also runs backwards from consequent to antecedent.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-004",
+      "stem": "To prove the statement: if $n$ is an odd integer then $n^2$ is odd, a student assumes $n = 2k + 1$ for some integer $k$ and computes $n^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$, concluding that $n^2$ is odd. Which proof method is this?",
+      "options": [
+        "Proof by contradiction",
+        "Proof by contrapositive",
+        "Mathematical induction",
+        "Direct proof"
+      ],
+      "answer": 3,
+      "explanation": "The student assumes the hypothesis, that $n$ is odd, writes it in the standard form $n = 2k + 1$, and computes forward until the conclusion appears: $n^2$ is twice an integer plus one, hence odd. Hypothesis in, conclusion out, with no negations anywhere: that is a direct proof. A contrapositive proof would start by assuming $n^2$ is even, and a contradiction proof would assume $n$ odd and $n^2$ even together. Induction does not apply since nothing is being propagated from $n$ to $n + 1$. The trap is reading the opening word assume as a signal of proof by contradiction; direct proofs also begin by assuming the hypothesis.",
+      "difficulty": "warmup",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-005",
+      "stem": "An argument has premises $p \\lor q$ and $\\lnot p$, and conclusion $q$. Which rule of inference is this?",
+      "options": [
+        "Disjunctive syllogism",
+        "Hypothetical syllogism",
+        "Addition",
+        "Simplification"
+      ],
+      "answer": 0,
+      "explanation": "From the disjunction $p \\lor q$ and the denial $\\lnot p$ of one disjunct, disjunctive syllogism concludes the other disjunct $q$. If at least one of two alternatives holds and the first is ruled out, the second must hold; a truth table confirms there is no row with both premises true and $q$ false. Hypothetical syllogism is a different rule that chains two conditionals into one. Addition and simplification work from a single premise, building a disjunction or extracting a conjunct. The trap is confusing the two syllogisms by name: hypothetical syllogism chains conditionals, while disjunctive syllogism eliminates a disjunct.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-006",
+      "stem": "In a proof by mathematical induction that $1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$ for all integers $n \\geq 1$, what must the base case establish?",
+      "options": [
+        "That the formula holds for an arbitrary fixed value $n = k$",
+        "That the formula holds at $n = 1$, namely $1 = \\frac{1(1+1)}{2}$",
+        "That if the formula holds for $n = k$ then it holds for $n = k + 1$",
+        "That the formula holds for the first few values, say $n = 1, 2, 3$"
+      ],
+      "answer": 1,
+      "explanation": "Induction needs a true starting point and the base case supplies it: verify the claim at the smallest value covered, here $n = 1$, where both sides equal $1$. Assuming the formula for an arbitrary $n = k$ is the inductive hypothesis, and proving the passage from $k$ to $k + 1$ is the inductive step; neither is the base case. Checking several initial values adds no logical force beyond the one required starting instance. The trap is confusing the base case, a single verified instance, with the inductive hypothesis, which is an assumption made inside the step.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-007",
+      "stem": "Using a truth table, an argument form is valid precisely when:",
+      "options": [
+        "The conclusion is true in at least one row of the table",
+        "There is a row in which the premises and the conclusion are all true",
+        "Every row that makes all the premises true also makes the conclusion true",
+        "The conclusion is true in every row of the table"
+      ],
+      "answer": 2,
+      "explanation": "Validity is a guarantee: whenever the premises all hold, the conclusion must hold too. In truth table terms, no row may make every premise true while the conclusion comes out false, which is exactly the third option. Finding one agreeable row shows only that the premises and conclusion are consistent, a much weaker property. Demanding the conclusion be true in every row would make the conclusion a tautology, which valid arguments do not require. The trap is upgrading validity to tautology or downgrading it to mere consistency, when it is precisely the absence of a row with true premises and a false conclusion.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-008",
+      "stem": "Consider the argument: if Accra is in Ghana then $3$ is an odd number; $3$ is an odd number; therefore Accra is in Ghana. Every sentence in this argument, premises and conclusion alike, is true. Is the argument valid?",
+      "options": [
+        "Yes, because the premises and the conclusion are all true",
+        "No: the form is $p \\to q$, $q$, therefore $p$, which affirms the consequent, and truth of the conclusion does not make a form valid",
+        "Yes, it is an instance of modus ponens",
+        "No, because premises about numbers can never support a conclusion about geography"
+      ],
+      "answer": 1,
+      "explanation": "Validity attaches to the form of an argument, not to the actual truth values of its sentences. Here the form is $p \\to q$, $q$, therefore $p$: the assignment $p$ false, $q$ true makes both premises true and the conclusion false, so the form is invalid, and this argument merely affirms the consequent. The argument happens to land on a true conclusion, but a form that can lead from truth to falsehood gives no guarantee. Subject matter is also beside the point; logic does not require premises and conclusion to share a topic, so the last option gives the right verdict for the wrong reason. The trap is believing that an argument with a true conclusion must be valid; validity is about what the premises force, not about what happens to be so.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-009",
+      "stem": "From the premises $p \\to q$ and $q \\to r$, hypothetical syllogism allows us to conclude:",
+      "options": [
+        "$p \\to r$",
+        "$r \\to p$",
+        "$\\lnot p \\to \\lnot r$",
+        "$p \\land r$"
+      ],
+      "answer": 0,
+      "explanation": "Hypothetical syllogism chains conditionals nose to tail: from $p \\to q$ and $q \\to r$ it yields $p \\to r$. A truth table over the eight rows confirms there is no row with both premises true and $p \\to r$ false. The converse $r \\to p$ and the inverse $\\lnot p \\to \\lnot r$ are not equivalent to $p \\to r$ and do not follow; the assignment $p$ false, $q$ true, $r$ true makes both premises true while $r \\to p$ fails. The conjunction $p \\land r$ asserts both components outright, which nothing in the premises supports. The trap is concluding the converse: chaining gives $p \\to r$ in that direction only.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-010",
+      "stem": "Consider the argument: if the dining hall serves jollof on Friday, then Kofi eats in the hall; the dining hall did not serve jollof this Friday; therefore Kofi did not eat in the hall. This argument is:",
+      "options": [
+        "Valid by modus tollens",
+        "Valid by modus ponens",
+        "Invalid: it affirms the consequent",
+        "Invalid: it denies the antecedent"
+      ],
+      "answer": 3,
+      "explanation": "Let $p$ be: the hall serves jollof on Friday, and $q$: Kofi eats in the hall. The argument runs $p \\to q$, $\\lnot p$, therefore $\\lnot q$, which denies the antecedent and is invalid. The conditional only says what happens when jollof is served; it is silent otherwise, and Kofi may well eat in the hall for waakye too, making the premises true and the conclusion false. Modus tollens would instead start from $\\lnot q$, the news that Kofi did not eat in the hall. The trap is reading $p \\to q$ as if it also asserted $\\lnot p \\to \\lnot q$; a conditional does not entail its inverse.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-011",
+      "stem": "From the premises $p \\lor q$, $\\lnot p$, and $q \\to r$, which conclusion follows validly?",
+      "options": [
+        "$\\lnot q$",
+        "$r$",
+        "$p$",
+        "$\\lnot r$"
+      ],
+      "answer": 1,
+      "explanation": "Apply disjunctive syllogism to $p \\lor q$ and $\\lnot p$ to obtain $q$, then modus ponens on $q \\to r$ and $q$ to obtain $r$. Each step is a named valid rule, so $r$ follows from the premises. The premise $\\lnot p$ rules $p$ out directly, and $q$ was just derived, so $\\lnot q$ is wrong as well. Nothing in the premises negates $r$; the assignment with $q$ and $r$ true and $p$ false satisfies all premises and refutes $\\lnot r$. The trap is letting the negative premise $\\lnot p$ spread its negation onto everything downstream instead of tracking what each rule actually delivers.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-012",
+      "stem": "To prove the statement: if $n^2$ is even then $n$ is even, a student assumes that $n$ is odd and deduces that $n^2$ is odd. Which proof method is the student using?",
+      "options": [
+        "Proof by contradiction",
+        "Direct proof",
+        "Proof by contrapositive",
+        "Proof by counterexample"
+      ],
+      "answer": 2,
+      "explanation": "The statement has the form $P \\to Q$ with $P$: $n^2$ is even, and $Q$: $n$ is even. The student assumes $\\lnot Q$, that $n$ is odd, and derives $\\lnot P$, that $n^2$ is odd, which proves the logically equivalent contrapositive $\\lnot Q \\to \\lnot P$. A proof by contradiction would assume both $P$ and $\\lnot Q$ together and hunt for an absurdity; here the hypothesis that $n^2$ is even is never assumed at all. A direct proof would start from $n^2$ even, which is awkward to work with. The trap is filing every proof that assumes a negation under contradiction; a contrapositive proof assumes only the negated conclusion and ends cleanly at the negated hypothesis.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-013",
+      "stem": "To show that the argument form with premises $p \\to q$ and $q$, and conclusion $p$, is invalid, which truth assignment serves as a counterexample?",
+      "options": [
+        "$p$ false and $q$ true",
+        "$p$ true and $q$ true",
+        "$p$ true and $q$ false",
+        "$p$ false and $q$ false"
+      ],
+      "answer": 0,
+      "explanation": "A counterexample to an argument form is a truth assignment making every premise true and the conclusion false. Take $p$ false and $q$ true: then $p \\to q$ is true because its antecedent is false, the premise $q$ is true, and the conclusion $p$ is false, so the form is invalid. With $p$ and $q$ both true the conclusion also comes out true, which refutes nothing. With $q$ false the second premise fails, and with $p$ true and $q$ false the conditional fails, so neither row even qualifies. The trap is offering a row where some premise is false; a counterexample must keep all the premises true while making the conclusion false.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-014",
+      "stem": "Consider the argument: if the Ayeduase trotro is full, then Yaw walks to campus; Yaw did not walk to campus; therefore the trotro was not full. Which rule of inference does this argument use?",
+      "options": [
+        "Modus ponens",
+        "Denying the antecedent",
+        "Modus tollens",
+        "Disjunctive syllogism"
+      ],
+      "answer": 2,
+      "explanation": "Let $p$ be: the Ayeduase trotro is full, and $q$: Yaw walks to campus. The premises are $p \\to q$ and $\\lnot q$, and the conclusion is $\\lnot p$, the exact shape of modus tollens. If the trotro had been full, Yaw would have walked; he did not walk, so the trotro cannot have been full, and a truth table shows no row with true premises and a false conclusion. Denying the antecedent would instead argue from the trotro not being full to Yaw not walking. The trap is assuming that an argument built out of negations must be a fallacy; denying the consequent is the valid rule modus tollens.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-015",
+      "stem": "Which of the following argument forms is NOT valid?",
+      "options": [
+        "$p \\to q$ and $p$, therefore $q$",
+        "$p \\to q$ and $\\lnot q$, therefore $\\lnot p$",
+        "$p \\to q$ and $\\lnot p$, therefore $\\lnot q$",
+        "$p \\lor q$ and $\\lnot p$, therefore $q$",
+        "$p$, therefore $p \\lor q$"
+      ],
+      "answer": 2,
+      "explanation": "Four of these are the named rules modus ponens, modus tollens, disjunctive syllogism, and addition, each checkable by truth table. The third form denies the antecedent: from $p \\to q$ and $\\lnot p$ it leaps to $\\lnot q$, but the assignment $p$ false, $q$ true makes both premises true and the conclusion false. A conditional whose antecedent fails tells us nothing about its consequent. The form looks deceptively like modus tollens with the roles swapped, which is exactly why it fools people. The trap is granting denying the antecedent the validity of modus tollens; the valid rule negates the consequent first, not the antecedent.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-016",
+      "stem": "Premises: if it rains in Kumasi tonight, then the route to Katanga floods; if the route to Katanga floods, then morning lectures start late; it rained in Kumasi tonight. Which conclusion follows validly?",
+      "options": [
+        "If morning lectures start late, then it rained in Kumasi tonight",
+        "The route to Katanga did not flood",
+        "Morning lectures never start late unless the route floods",
+        "Morning lectures start late"
+      ],
+      "answer": 3,
+      "explanation": "Let $p$: it rains in Kumasi tonight, $q$: the route to Katanga floods, and $r$: morning lectures start late. The premises are $p \\to q$, $q \\to r$, and $p$. Modus ponens on the first conditional gives $q$, and modus ponens again gives $r$: morning lectures start late. The converse conditional $r \\to p$ does not follow, since lectures could start late for reasons the premises never mention, and nothing supports $\\lnot q$ when $q$ was in fact derived. The trap is concluding the converse of the chained conditional instead of running the chain forward with modus ponens.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-017",
+      "stem": "A proof that $\\sqrt{2}$ is irrational begins: suppose $\\sqrt{2} = \\frac{a}{b}$ where $a$ and $b$ are integers with no common factor; it then derives that $a$ and $b$ are both even. Which proof method is this?",
+      "options": [
+        "Direct proof",
+        "Proof by contradiction",
+        "Proof by contrapositive",
+        "Mathematical induction"
+      ],
+      "answer": 1,
+      "explanation": "The proof assumes the negation of the statement to be proved: it supposes $\\sqrt{2}$ is rational, written as a fraction $\\frac{a}{b}$ in lowest terms. From this assumption it derives that $a$ and $b$ are both even, contradicting the no common factor condition, so the assumption must be false and $\\sqrt{2}$ is irrational. Contrapositive does not apply cleanly here because the statement is not packaged as a conditional with a hypothesis and conclusion to swap. A direct proof would have to reach irrationality without ever assuming the negation, and nothing is being passed from $n$ to $n + 1$. The trap is the standing confusion between contrapositive and contradiction: contradiction assumes the negation of the whole statement and drives it into absurdity.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-018",
+      "stem": "For the claim $1 + 2 + \\cdots + n = \\frac{n(n+1)}{2} + 3$ for every integer $n \\geq 1$, a student correctly proves the inductive step: if the claim holds for $n = k$ then it holds for $n = k + 1$. The student then declares the claim true for all $n \\geq 1$. What is wrong with this induction?",
+      "options": [
+        "Nothing: a correct inductive step is by itself a complete induction proof",
+        "The inductive step must contain an algebra error, because the claimed formula is false",
+        "The claim should have been verified for many values of $n$ instead of argued by induction",
+        "The base case was never verified, and indeed the claim fails at $n = 1$, so the inductive step has nothing to stand on"
+      ],
+      "answer": 3,
+      "explanation": "Induction needs both pillars: a true base case and a valid inductive step. Here the step is genuinely correct: adding $k + 1$ to both sides of the assumed equation produces the corresponding equation for $k + 1$, with the stray $+3$ carried along untouched. But at $n = 1$ the claim reads $1 = 1 + 3$, which is false, so there is no first rung and the ladder never starts; the step only transports truth that the base case must first supply. This also shows that a false statement can support a flawless inductive step. The trap is accepting an induction with a missing base case; the step alone proves only the conditional passage from $k$ to $k + 1$, never the claim itself.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-019",
+      "stem": "Consider the argument: all cats can fly; Garfield is a cat; therefore Garfield can fly. Which assessment is correct?",
+      "options": [
+        "Invalid, because the first premise is false",
+        "Valid but unsound: the conclusion follows from the premises, but a premise is false",
+        "Invalid, because the conclusion is false",
+        "Valid and sound, since the conclusion follows logically"
+      ],
+      "answer": 1,
+      "explanation": "Validity asks only whether the conclusion is forced by the premises, and here it is: in any situation where every cat can fly and Garfield is a cat, Garfield can fly. The argument is therefore valid even though the first premise is false in the real world; what fails is soundness, which demands validity plus all premises actually true. Judging validity by the truth of the premises or of the conclusion confuses two separate questions, since valid arguments can have false premises and false conclusions. Sound it is not, because cats do not fly. The trap is collapsing validity into truth: a valid argument with a false premise is still valid, just unsound.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-020",
+      "stem": "In a deduction, a student first combines $p \\to q$ and $q \\to r$ to infer $p \\to r$, and then combines $p \\to r$ with the premise $p$ to infer $r$. The two rules used, in order, are:",
+      "options": [
+        "Hypothetical syllogism, then modus ponens",
+        "Modus ponens, then hypothetical syllogism",
+        "Disjunctive syllogism, then modus ponens",
+        "Hypothetical syllogism, then modus tollens"
+      ],
+      "answer": 0,
+      "explanation": "The first move chains $p \\to q$ and $q \\to r$ into $p \\to r$, which is hypothetical syllogism, the rule that composes two conditionals. The second move applies $p \\to r$ together with the premise $p$ to detach the conclusion $r$, which is modus ponens. No disjunction appears anywhere, so disjunctive syllogism is out, and modus tollens would require the negation $\\lnot r$ rather than the affirmation of $p$. The order matters: the conditional $p \\to r$ must exist before anything can be detached from it. The trap is naming the detachment step modus tollens just because it ends the deduction; detaching a consequent from an affirmed antecedent is modus ponens.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-021",
+      "stem": "From the premises $\\lnot p \\to q$ and $\\lnot q$, which conclusion follows validly?",
+      "options": [
+        "$\\lnot p$",
+        "$q$",
+        "$p$",
+        "Nothing follows from these premises"
+      ],
+      "answer": 2,
+      "explanation": "Modus tollens applied to the conditional $\\lnot p \\to q$ and the denial $\\lnot q$ yields the negation of the antecedent, namely $\\lnot \\lnot p$. By the double negation law this is just $p$. Concluding $\\lnot p$ asserts the antecedent itself, and together with the premises that is inconsistent, since it would force $q$ against the premise $\\lnot q$. The premise $\\lnot q$ also rules out the option $q$ outright. The trap is stopping at the antecedent instead of negating it: modus tollens delivers the negation of the antecedent, and negating $\\lnot p$ gives $p$.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-022",
+      "stem": "To disprove the claim: every prime number is odd, a student exhibits the prime $2$, which is even, and stops. This piece of reasoning is:",
+      "options": [
+        "Invalid reasoning: a single example can never settle a general claim",
+        "A proof by contradiction",
+        "Not yet sufficient: more even primes would be needed",
+        "A correct proof by counterexample: one counterexample disproves a universal statement"
+      ],
+      "answer": 3,
+      "explanation": "The claim is universal: every prime is odd. A universal statement is false as soon as one instance fails, so exhibiting the prime $2$, which is even, refutes it completely; this is proof by counterexample. No contradiction is being derived from an assumption, so the contradiction label does not fit, and asking for more even primes misunderstands what refutation requires. The asymmetry is worth memorizing: one example cannot prove a universal claim, but one counterexample destroys it. The trap is applying the slogan that examples never prove anything in the wrong direction; against a universal claim, a single counterexample is decisive.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-023",
+      "stem": "In the inductive step of a proof by mathematical induction that $P(n)$ holds for all integers $n \\geq 1$, what exactly must be shown?",
+      "options": [
+        "That $P(k)$ is true for an arbitrary $k \\geq 1$",
+        "That for an arbitrary $k \\geq 1$, if $P(k)$ is true then $P(k + 1)$ is true",
+        "That $P(k + 1)$ is true outright",
+        "That $P(k)$ and $P(k + 1)$ are both true"
+      ],
+      "answer": 1,
+      "explanation": "The inductive step is a conditional claim proved for arbitrary $k$: assuming $P(k)$, the inductive hypothesis, one must derive $P(k + 1)$. Nothing in the step asserts that $P(k)$ is actually true; that assumption lives only inside the conditional, and the base case is what supplies actual truth at the start. Proving $P(k + 1)$ outright, with no hypothesis, would be a direct proof for all values and induction would be unnecessary. Claiming both $P(k)$ and $P(k + 1)$ are true assumes the very thing under proof. The trap is treating the inductive hypothesis as an established fact rather than a temporary assumption inside an implication.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-024",
+      "stem": "Consider the argument: either the dining hall serves banku or it serves rice, where or is inclusive; the hall served rice today; therefore it did not serve banku. Assess the argument.",
+      "options": [
+        "Invalid: from $b \\lor r$ and $r$ nothing follows about $b$, since an inclusive disjunction allows both disjuncts to hold",
+        "Valid by disjunctive syllogism",
+        "Valid, because a dining hall would not serve two staples on the same day",
+        "Invalid, because the first premise might be false"
+      ],
+      "answer": 0,
+      "explanation": "With $b$: the hall serves banku, and $r$: the hall serves rice, the premises are $b \\lor r$ and $r$, and the conclusion is $\\lnot b$. The assignment with $b$ and $r$ both true makes both premises true and the conclusion false, so the argument is invalid; an inclusive or is satisfied when both disjuncts hold. Disjunctive syllogism needs the denial of one disjunct, $\\lnot b$ or $\\lnot r$, not the affirmation of one. Background knowledge about menus is not a premise, and validity never depends on whether the premises happen to be true. The trap is running disjunctive syllogism backwards: affirming one disjunct of an inclusive disjunction says nothing about the other.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-025",
+      "stem": "From the premises $p \\to (q \\lor r)$, $\\lnot q$, and $\\lnot r$, which conclusion follows validly?",
+      "options": [
+        "$p$",
+        "$q \\lor r$",
+        "$\\lnot p$",
+        "Nothing can be concluded about $p$"
+      ],
+      "answer": 2,
+      "explanation": "Combine the premises $\\lnot q$ and $\\lnot r$ by conjunction to get $\\lnot q \\land \\lnot r$, which by De Morgan's law is $\\lnot(q \\lor r)$. Now modus tollens on $p \\to (q \\lor r)$ with $\\lnot(q \\lor r)$ yields $\\lnot p$. The options $p$ and $q \\lor r$ are in fact false in every situation satisfying the premises, so they certainly do not follow. The conclusion $\\lnot p$ is forced: if $p$ held, the conditional would deliver $q \\lor r$, contradicting both negative premises. The trap is declaring that nothing follows because no single premise matches a rule; the two negations must first be merged by De Morgan before modus tollens can fire.",
+      "difficulty": "stretch",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-026",
+      "stem": "From the premises $p \\to q$, $r \\to s$, and $p \\lor r$, which conclusion follows validly?",
+      "options": [
+        "$q \\lor s$",
+        "$q \\land s$",
+        "$q$",
+        "$s$",
+        "$p \\land r$"
+      ],
+      "answer": 0,
+      "explanation": "This is the constructive dilemma: from $p \\to q$, $r \\to s$, and $p \\lor r$, conclude $q \\lor s$. Whichever disjunct of $p \\lor r$ holds, the matching conditional fires and delivers its consequent, so at least one of $q$ and $s$ is guaranteed. No single consequent follows on its own: the assignment $p$ true, $q$ true, $r$ false, $s$ false satisfies all premises but makes $s$ false, and the mirror assignment kills $q$. The conjunctions $q \\land s$ and $p \\land r$ fail in those same assignments. The trap is collapsing a disjunction of antecedents into a single chosen one; the premises never say which of $p$ or $r$ is true, so only the disjunction of consequents follows.",
+      "difficulty": "stretch",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-027",
+      "stem": "A proof of the statement: if $x + y \\geq 100$ then $x \\geq 50$ or $y \\geq 50$, begins: suppose $x < 50$ and $y < 50$; then $x + y < 100$. The proof then stops. Which method is this, and why?",
+      "options": [
+        "Proof by contradiction, since the proof begins with an assumption that is later refuted",
+        "Proof by contrapositive: the negation of the conclusion is assumed and the negation of the hypothesis is derived, with no contradiction needed",
+        "Direct proof, since the argument is a straightforward computation",
+        "Proof by counterexample, since particular values of $x$ and $y$ are considered"
+      ],
+      "answer": 1,
+      "explanation": "The statement is the conditional: if $x + y \\geq 100$ then $x \\geq 50 \\lor y \\geq 50$. The proof assumes the negation of the conclusion, which by De Morgan is $x < 50$ and $y < 50$, and derives $x + y < 100$, the negation of the hypothesis; that establishes the contrapositive, which is equivalent to the original, so the proof may stop there. A proof by contradiction would also assume the hypothesis $x + y \\geq 100$ and would end by colliding the two, but here the hypothesis is never assumed and nothing absurd is derived. The argument is not direct, since it starts at the negated conclusion rather than the hypothesis, and no specific numbers are exhibited. The trap is the contrapositive versus contradiction confusion: if the proof never assumes the hypothesis and never produces an absurdity, it is contrapositive.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-028",
+      "stem": "A bogus induction proves that all horses have the same colour. Base case: any group of $1$ horse trivially shows one colour. Inductive step: given $k + 1$ horses, set one aside; the remaining $k$ share a colour by the inductive hypothesis; set aside a different horse instead, and the other $k$ also share a colour, so the overlap forces all $k + 1$ to match. Where exactly does the proof fail?",
+      "options": [
+        "The base case is false: one horse does not determine a colour",
+        "Induction cannot be applied to statements about collections of objects",
+        "The proof is correct as written, so the error must lie in the definition of colour",
+        "The inductive step fails at $k = 1$: the two groups of $k$ horses do not overlap, so no shared horse links their colours"
+      ],
+      "answer": 3,
+      "explanation": "The base case is fine: a single horse has whatever colour it has. The inductive step quietly relies on the two groups of $k$ horses overlapping, since a common horse is what transfers the colour from one group to the other. For $k \\geq 2$ they do overlap, but in the passage from $1$ horse to $2$ horses each group contains exactly one horse and the groups are disjoint, so nothing links the two colours. An inductive step must be valid for every $k$ from the base value upward, and this one has a hole at the very first step. The trap is checking an inductive step only for comfortably large $k$; a single failing value, here $k = 1$, breaks the whole chain.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-029",
+      "stem": "An argument with premises $h_1$ and $h_2$ and conclusion $c$ is valid if and only if which proposition is a tautology?",
+      "options": [
+        "$(h_1 \\land h_2) \\land c$",
+        "$(h_1 \\lor h_2) \\to c$",
+        "$c \\to (h_1 \\land h_2)$",
+        "$(h_1 \\land h_2) \\to c$"
+      ],
+      "answer": 3,
+      "explanation": "An argument is valid exactly when no truth assignment makes all premises true and the conclusion false, and that is precisely the condition for the conditional from the conjoined premises to the conclusion, $(h_1 \\land h_2) \\to c$, to be true in every row. The conjunction $(h_1 \\land h_2) \\land c$ being a tautology would force premises and conclusion to be true in every row, far too strong. Joining the premises with $\\lor$ describes an argument that must succeed with only one premise at a time, a different and stronger demand on $c$. Reversing the arrow, $c \\to (h_1 \\land h_2)$, tests whether the conclusion entails the premises, the converse direction. The trap is pointing the conditional the wrong way or joining the premises with the wrong connective: validity is the conjunction of the premises implying the conclusion.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-arguments-and-proofs-030",
+      "stem": "Akosua argues: if the lecture ends by 4 pm, I catch the 4:15 trotro; if I catch the 4:15 trotro, I reach Ayeduase before dark; I reached Ayeduase before dark; therefore the lecture ended by 4 pm. This reasoning is:",
+      "options": [
+        "Invalid: chaining the conditionals gives that if the lecture ended by 4 pm she reaches Ayeduase before dark, and the argument then affirms the consequent",
+        "Valid: hypothetical syllogism followed by modus ponens",
+        "Valid: modus tollens applied twice",
+        "Invalid: the two conditional premises contradict each other"
+      ],
+      "answer": 0,
+      "explanation": "Let $p$: the lecture ends by 4 pm, $q$: Akosua catches the 4:15 trotro, and $r$: she reaches Ayeduase before dark. Hypothetical syllogism legitimately chains the premises into $p \\to r$, but the remaining premise is $r$, and from $p \\to r$ and $r$ the argument concludes $p$, which affirms the consequent. The assignment $p$ false, $q$ false, $r$ true makes every premise true and the conclusion false: she may have skipped the lecture entirely and still reached home before dark. Modus ponens would need $p$ as a premise, modus tollens would need $\\lnot r$, and the two conditionals are perfectly compatible. The trap is believing a true conclusion at the end of a tidy chain certifies the argument; conditionals chain forward, and affirming the final consequent proves nothing about the first antecedent.",
+      "difficulty": "stretch",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    }
+  ]
+}

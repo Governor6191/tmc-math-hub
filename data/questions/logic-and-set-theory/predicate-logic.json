@@ -1,0 +1,345 @@
+{
+  "courseId": "logic-and-set-theory",
+  "topicId": "predicate-logic",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "logic-and-set-theory-predicate-logic-001",
+      "stem": "Let the domain be $D = \\{1, 2, 3, 4\\}$ and let $P(x)$ mean $x^2 < 10$. What are the truth values of $\\forall x\\, P(x)$ and $\\exists x\\, P(x)$?",
+      "options": [
+        "Both $\\forall x\\, P(x)$ and $\\exists x\\, P(x)$ are true",
+        "$\\forall x\\, P(x)$ is true and $\\exists x\\, P(x)$ is false",
+        "$\\forall x\\, P(x)$ is false and $\\exists x\\, P(x)$ is true",
+        "Both $\\forall x\\, P(x)$ and $\\exists x\\, P(x)$ are false"
+      ],
+      "answer": 2,
+      "explanation": "Check each element of $D$: $1^2 = 1$, $2^2 = 4$, and $3^2 = 9$ are all less than $10$, but $4^2 = 16$ is not. The single failure at $x = 4$ makes $\\forall x\\, P(x)$ false, since a universal statement must hold at every element. The existential $\\exists x\\, P(x)$ needs only one witness, and $x = 1$ already provides it. The trap is letting one counterexample sink both statements; it falsifies the universal but leaves the existential standing.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-002",
+      "stem": "Let the domain be all KNUST students, with $L(x)$: $x$ is in the Logic class, and $C(x)$: $x$ has taken Calculus I. Which formula translates: every student in the Logic class has taken Calculus I?",
+      "options": [
+        "$\\forall x\\, (L(x) \\to C(x))$",
+        "$\\forall x\\, (L(x) \\land C(x))$",
+        "$\\exists x\\, (L(x) \\land C(x))$",
+        "$\\forall x\\, (C(x) \\to L(x))$"
+      ],
+      "answer": 0,
+      "explanation": "The sentence restricts attention to students in the Logic class and asserts something about each of them, so the universal quantifier needs a conditional: $\\forall x\\, (L(x) \\to C(x))$. The conjunction version $\\forall x\\, (L(x) \\land C(x))$ says every KNUST student is in the Logic class and has taken Calculus I, a far stronger claim. The existential version only says some Logic student has taken Calculus I, and the converse $\\forall x\\, (C(x) \\to L(x))$ says everyone who took Calculus I is in the Logic class. The trap is pairing $\\forall$ with $\\land$; a universal claim about a subgroup of the domain needs $\\to$ to do the restricting.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-003",
+      "stem": "Let the domain be the residents of Katanga Hall. Consider the statement: every resident attended the hall meeting. Which of the following is its negation?",
+      "options": [
+        "No resident of Katanga Hall attended the hall meeting",
+        "At least one resident of Katanga Hall attended the hall meeting",
+        "Exactly one resident of Katanga Hall did not attend the hall meeting",
+        "At least one resident of Katanga Hall did not attend the hall meeting"
+      ],
+      "answer": 3,
+      "explanation": "Symbolically the statement is $\\forall x\\, A(x)$, and its negation is $\\exists x\\, \\lnot A(x)$: at least one resident did not attend. Saying no resident attended is $\\forall x\\, \\lnot A(x)$, which negates the predicate but keeps the universal quantifier, and that is much stronger than the negation. Saying at least one resident attended flips the quantifier but forgets to negate the predicate, and saying exactly one resident missed the meeting smuggles in a uniqueness claim that negation never produces. The trap is flipping the quantifier or negating the predicate but not doing both.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-004",
+      "stem": "Consider the claim: every prime number is odd. Which value of $n$ is a counterexample to this claim?",
+      "options": [
+        "$n = 9$",
+        "$n = 2$",
+        "$n = 3$",
+        "$n = 1$"
+      ],
+      "answer": 1,
+      "explanation": "A counterexample must satisfy the hypothesis, being prime, while violating the conclusion, being odd. The number $2$ is prime and even, so it refutes the claim. The number $9$ is odd and not prime, so the claim says nothing about it; $3$ is prime and odd, so it confirms rather than refutes; and $1$ is not prime by convention. The trap is offering a number that fails the hypothesis, or a confirming instance, in place of a genuine counterexample.",
+      "difficulty": "warmup",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-005",
+      "stem": "Take $\\mathbb{N} = \\{1, 2, 3, \\ldots\\}$. Determine the truth value of $\\exists x\\, (x + 3 = 1)$ first over the domain $\\mathbb{N}$ and then over the domain $\\mathbb{Z}$.",
+      "options": [
+        "True over $\\mathbb{N}$ and true over $\\mathbb{Z}$",
+        "True over $\\mathbb{N}$ and false over $\\mathbb{Z}$",
+        "False over $\\mathbb{N}$ and true over $\\mathbb{Z}$",
+        "False over $\\mathbb{N}$ and false over $\\mathbb{Z}$"
+      ],
+      "answer": 2,
+      "explanation": "Solving $x + 3 = 1$ gives $x = -2$ as the only candidate witness. Since $-2$ is not a natural number, no witness exists in $\\mathbb{N}$ and the statement is false there. Since $-2 \\in \\mathbb{Z}$, the same statement is true over the integers. The trap is treating a quantified formula as having a fixed truth value; the same formula can be false over one domain and true over a larger one.",
+      "difficulty": "warmup",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-006",
+      "stem": "Over the domain $\\mathbb{R}$, consider $S_1: \\forall x\\, \\exists y\\, (x + y = 0)$ and $S_2: \\exists y\\, \\forall x\\, (x + y = 0)$. What are their truth values?",
+      "options": [
+        "$S_1$ is true and $S_2$ is false",
+        "Both $S_1$ and $S_2$ are true",
+        "Both $S_1$ and $S_2$ are false",
+        "$S_1$ is false and $S_2$ is true"
+      ],
+      "answer": 0,
+      "explanation": "$S_1$ is true: given any real $x$, take $y = -x$, and this choice of $y$ is allowed to depend on $x$. $S_2$ demands a single real $y$ that works for every $x$ at once, so the same $y$ would have to satisfy $1 + y = 0$ and $2 + y = 0$, forcing $y = -1$ and $y = -2$ simultaneously. No such $y$ exists, so $S_2$ is false. The trap is swapping $\\forall x\\, \\exists y$ and $\\exists y\\, \\forall x$ as if order did not matter; the first lets $y$ depend on $x$, the second does not.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-007",
+      "stem": "Let the domain be all KNUST students, with $U(x)$: $x$ lives in Unity Hall, $A(x)$: $x$ lives in Africa Hall, and $F(x, y)$: $x$ and $y$ are friends. Which formula translates: every student in Unity Hall has a friend who lives in Africa Hall?",
+      "options": [
+        "$\\exists y\\, (A(y) \\land \\forall x\\, (U(x) \\to F(x, y)))$",
+        "$\\forall x\\, (U(x) \\to \\exists y\\, (A(y) \\to F(x, y)))$",
+        "$\\forall x\\, \\exists y\\, (U(x) \\land A(y) \\land F(x, y))$",
+        "$\\forall x\\, (U(x) \\to \\exists y\\, (A(y) \\land F(x, y)))$"
+      ],
+      "answer": 3,
+      "explanation": "The sentence says: for each Unity Hall student $x$ there is some student $y$, possibly different for different $x$, with $y$ in Africa Hall and $y$ a friend of $x$. That is $\\forall x\\, (U(x) \\to \\exists y\\, (A(y) \\land F(x, y)))$. Writing $\\exists y\\, (A(y) \\to F(x, y))$ becomes true as soon as any student lives outside Africa Hall, so it asserts almost nothing, while pulling $\\exists y$ to the front fixes one student befriended by all of Unity Hall. The version with the bare conjunction $U(x) \\land A(y) \\land F(x, y)$ under $\\forall x$ claims every KNUST student lives in Unity Hall. The trap is twofold: $\\exists$ pairs with $\\land$ rather than $\\to$, and moving $\\exists y$ in front of $\\forall x$ changes who may depend on whom.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-008",
+      "stem": "Which formula is logically equivalent to $\\lnot \\forall x\\, \\exists y\\, P(x, y)$?",
+      "options": [
+        "$\\forall x\\, \\exists y\\, \\lnot P(x, y)$",
+        "$\\exists x\\, \\forall y\\, \\lnot P(x, y)$",
+        "$\\exists x\\, \\exists y\\, \\lnot P(x, y)$",
+        "$\\forall x\\, \\forall y\\, \\lnot P(x, y)$"
+      ],
+      "answer": 1,
+      "explanation": "Push the negation inward one quantifier at a time: $\\lnot \\forall x\\, \\exists y\\, P(x, y)$ becomes $\\exists x\\, \\lnot \\exists y\\, P(x, y)$, which becomes $\\exists x\\, \\forall y\\, \\lnot P(x, y)$. Every quantifier flips and the negation finally lands on the predicate. Negating only the predicate gives $\\forall x\\, \\exists y\\, \\lnot P(x, y)$, and flipping only one of the two quantifiers gives $\\exists x\\, \\exists y\\, \\lnot P(x, y)$ or $\\forall x\\, \\forall y\\, \\lnot P(x, y)$; none of these is equivalent to the negation. The trap is a partial negation that flips some quantifiers or negates the predicate but does not do all of it together.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-009",
+      "stem": "Let the domain be $D = \\{1, 2, 3\\}$. Consider $S_1: \\forall x\\, \\exists y\\, (x + y = 4)$ and $S_2: \\exists y\\, \\forall x\\, (x + y = 4)$. What are their truth values?",
+      "options": [
+        "Both $S_1$ and $S_2$ are true",
+        "$S_1$ is false and $S_2$ is true",
+        "$S_1$ is true and $S_2$ is false",
+        "Both $S_1$ and $S_2$ are false"
+      ],
+      "answer": 2,
+      "explanation": "For $S_1$, check each $x$: when $x = 1$ take $y = 3$, when $x = 2$ take $y = 2$, and when $x = 3$ take $y = 1$, so $S_1$ is true. For $S_2$, one fixed $y \\in D$ would need $1 + y = 4$, $2 + y = 4$, and $3 + y = 4$ all at once, demanding $y = 3$, $y = 2$, and $y = 1$ simultaneously, which is impossible. So $S_2$ is false even though $S_1$ is true. The trap is treating the quantifier swap as harmless; over a finite domain you can check directly that the dependent choices in $S_1$ cannot be replaced by one uniform $y$.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-010",
+      "stem": "Exactly one of the following statements is true. Which one?",
+      "options": [
+        "$\\forall x \\in \\mathbb{R}\\, (x^2 > 0)$",
+        "$\\exists x \\in \\mathbb{Z}\\, (2x = 7)$",
+        "$\\exists x \\in \\mathbb{R}\\, (x^2 = -1)$",
+        "$\\forall x \\in \\mathbb{R}\\, (2x > x)$",
+        "$\\forall x \\in \\mathbb{R}\\, (x^2 \\geq 0)$"
+      ],
+      "answer": 4,
+      "explanation": "$\\forall x \\in \\mathbb{R}\\, (x^2 \\geq 0)$ is true: every real number has a nonnegative square. The strict version $\\forall x \\in \\mathbb{R}\\, (x^2 > 0)$ fails at $x = 0$, where the square equals $0$ exactly. $\\exists x \\in \\mathbb{Z}\\, (2x = 7)$ fails because the only candidate $7/2$ is not an integer, and $\\exists x \\in \\mathbb{R}\\, (x^2 = -1)$ fails because the familiar witness $i$ is not real. $\\forall x \\in \\mathbb{R}\\, (2x > x)$ looks safe if you cancel $x$ from both sides, but it fails at $x = 0$ and at every negative $x$. The trap is overlooking boundary elements like $0$ and ignoring the stated domain when a familiar witness lives outside it.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-011",
+      "stem": "Consider the statement: some student in the Logic class scored at least 70 on the end of semester exam. Which of the following is its negation?",
+      "options": [
+        "Every student in the Logic class scored below 70",
+        "Some student in the Logic class scored below 70",
+        "Every student in the Logic class scored at least 70",
+        "Exactly one student in the Logic class scored below 70"
+      ],
+      "answer": 0,
+      "explanation": "Write $S(x)$ for: $x$ scored at least 70. The statement is $\\exists x\\, S(x)$ and its negation is $\\forall x\\, \\lnot S(x)$, that is, every student scored below 70. Saying some student scored below 70 negates the predicate but keeps $\\exists$, and that can easily be true at the same time as the original. Saying every student scored at least 70 flips the quantifier without negating anything, and exactly one student scoring below 70 adds a uniqueness claim that negation does not create. The trap is changing only the quantifier or only the predicate; the negation of some is every, applied to the negated predicate.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-012",
+      "stem": "A student wants to prove $\\exists x \\in \\mathbb{Z}\\, (x^2 - 5x + 6 = 0)$. Which of the following is sufficient?",
+      "options": [
+        "Check the equation for every integer, one by one, until all integers have been examined",
+        "Exhibit $x = 2$ and verify that $2^2 - 5(2) + 6 = 0$",
+        "First prove that the integer solution is unique, then exhibit it",
+        "Show that no integer fails the equation $x^2 - 5x + 6 = 0$"
+      ],
+      "answer": 1,
+      "explanation": "An existential statement is established by a single verified witness. Since $2^2 - 5(2) + 6 = 4 - 10 + 6 = 0$, exhibiting $x = 2$ and checking the arithmetic completes the proof. Examining every integer is impossible and unnecessary, proving uniqueness first is irrelevant (and doomed here, since $x = 3$ also works), and showing that no integer fails the equation is the proof obligation for a universal statement, not an existential one. The trap is confusing the roles: a witness proves an existential, a counterexample refutes a universal, and neither calls for uniqueness or exhaustive checking.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-013",
+      "stem": "Let the domain be all people in Kumasi, with $P(x)$: $x$ trades at Kejetia market, and $Q(x)$: $x$ speaks Twi. Which English sentence does $\\forall x\\, (P(x) \\to Q(x))$ express?",
+      "options": [
+        "Every person in Kumasi trades at Kejetia market and speaks Twi",
+        "Every person who speaks Twi trades at Kejetia market",
+        "Every person who trades at Kejetia market speaks Twi",
+        "Some person who trades at Kejetia market speaks Twi"
+      ],
+      "answer": 2,
+      "explanation": "The universal quantifier ranges over everyone in Kumasi, but the conditional only makes a demand when its hypothesis $P(x)$ holds. So the formula asserts that whoever trades at Kejetia speaks Twi, and it says nothing about people who do not trade there. Reading it as a conjunction would claim everyone in Kumasi both trades at Kejetia and speaks Twi, reading it as $Q(x) \\to P(x)$ gives the converse claim about Twi speakers, and reading $\\forall$ as some weakens it to an existential. The trap is ignoring the direction of the conditional; $\\forall x\\, (P(x) \\to Q(x))$ restricts the universal claim to the objects satisfying $P$, not those satisfying $Q$.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-014",
+      "stem": "Over the domain $\\mathbb{Z}$, consider $S_1: \\forall x\\, \\exists y\\, (y > x)$ and $S_2: \\exists y\\, \\forall x\\, (y > x)$. What are their truth values?",
+      "options": [
+        "$S_1$ is true and $S_2$ is false",
+        "$S_1$ is false and $S_2$ is true",
+        "Both $S_1$ and $S_2$ are true",
+        "Both $S_1$ and $S_2$ are false"
+      ],
+      "answer": 0,
+      "explanation": "$S_1$ is true: for any integer $x$, the integer $y = x + 1$ is larger, and $y$ is allowed to depend on $x$. $S_2$ asserts one fixed integer $y$ greater than every integer $x$; taking $x = y$ would force $y > y$, which is absurd, so $S_2$ is false. Together the pair says every integer has something above it, yet the integers have no largest element and no upper bound. The trap is reading $\\exists y\\, \\forall x$ as if it were $\\forall x\\, \\exists y$; the first requires a single uniform bound, which would have to exceed itself.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-015",
+      "stem": "Which formula is logically equivalent to $\\lnot \\forall x\\, (P(x) \\to Q(x))$?",
+      "options": [
+        "$\\exists x\\, (P(x) \\to \\lnot Q(x))$",
+        "$\\forall x\\, (P(x) \\land \\lnot Q(x))$",
+        "$\\exists x\\, (\\lnot P(x) \\land Q(x))$",
+        "$\\exists x\\, (P(x) \\land \\lnot Q(x))$"
+      ],
+      "answer": 3,
+      "explanation": "Negating the universal gives $\\exists x\\, \\lnot (P(x) \\to Q(x))$, and a conditional is false exactly when its hypothesis is true and its conclusion is false, so $\\lnot (P(x) \\to Q(x))$ is $P(x) \\land \\lnot Q(x)$. The negation is therefore $\\exists x\\, (P(x) \\land \\lnot Q(x))$: some object satisfies $P$ but not $Q$. Keeping the arrow and writing $\\exists x\\, (P(x) \\to \\lnot Q(x))$ is wrong because that formula is already true whenever any object fails $P$, and negating the wrong component gives $\\lnot P(x) \\land Q(x)$, which describes objects the original statement never mentioned. The trap is negating a conditional as if it were another conditional; its negation is a conjunction.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-016",
+      "stem": "In a Logic tutorial group at KNUST, no member is older than 40. Consider $S_1$: every member of the group older than 40 has taken Calculus II, and $S_2$: some member of the group older than 40 has taken Calculus II. What are their truth values?",
+      "options": [
+        "$S_1$ is false and $S_2$ is false",
+        "$S_1$ is true and $S_2$ is false",
+        "$S_1$ is true and $S_2$ is true",
+        "Neither statement has a truth value, because the group has no member older than 40"
+      ],
+      "answer": 1,
+      "explanation": "$S_1$ has the form $\\forall x\\, (O(x) \\to T(x))$, and it could only be false if some member were older than 40 without having taken Calculus II. No member is older than 40, so no counterexample exists and $S_1$ is vacuously true. $S_2$ has the form $\\exists x\\, (O(x) \\land T(x))$ and needs a witness who is both older than 40 and has taken the course; no such member exists, so $S_2$ is false. Both statements are perfectly meaningful even though the collection of over-40 members is empty. The trap is mishandling the empty case: a universal restricted to an empty collection is vacuously true, while the matching existential is false.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-017",
+      "stem": "Consider the claim $\\forall x \\in \\mathbb{R}\\, (x^2 \\geq x)$. Which value of $x$ is a counterexample?",
+      "options": [
+        "$x = 1/2$",
+        "$x = 0$",
+        "$x = 1$",
+        "$x = -1$",
+        "$x = 2$"
+      ],
+      "answer": 0,
+      "explanation": "A counterexample must make the claim false, so it must satisfy $x^2 < x$, which rearranges to $x(x - 1) < 0$, true exactly when $0 < x < 1$. Taking $x = 1/2$ gives $x^2 = 1/4 < 1/2$, so the claim fails there. At $x = 0$ and $x = 1$ the two sides are equal, and equality satisfies $\\geq$, while $x = -1$ gives $1 \\geq -1$ and $x = 2$ gives $4 \\geq 2$, both confirming instances. The trap is twofold: reading $\\geq$ as if equality broke the claim, and offering a confirming instance, which is a witness, where a counterexample is required.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-018",
+      "stem": "Let the domain be all KNUST students, with $F(x)$: $x$ is in final year, and $V(x)$: $x$ has visited Lake Bosomtwe. Which formula translates: some final year student has visited Lake Bosomtwe?",
+      "options": [
+        "$\\exists x\\, (F(x) \\to V(x))$",
+        "$\\forall x\\, (F(x) \\to V(x))$",
+        "$\\exists x\\, (F(x) \\land V(x))$",
+        "$\\forall x\\, (F(x) \\land V(x))$"
+      ],
+      "answer": 2,
+      "explanation": "The sentence asserts the existence of one student who is both in final year and has visited the lake, which is $\\exists x\\, (F(x) \\land V(x))$. The version $\\exists x\\, (F(x) \\to V(x))$ is true as soon as any student is not in final year, since a conditional with a false hypothesis is true, so it fails to capture the sentence. The universal versions claim something about all students: either that every final year student has visited the lake, or, with the conjunction, that every student is a final year student who has. The trap is pairing $\\exists$ with $\\to$; the existential quantifier needs a conjunction to pin both properties on the same witness.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-019",
+      "stem": "Let $D = \\{1, 2, 3, 4, 5, 6\\}$ and consider the statement $\\forall x \\in D\\, (E(x) \\to x^2 > 10)$, where $E(x)$ means: $x$ is even. What is its truth value?",
+      "options": [
+        "True, because $4^2 = 16 > 10$ and $6^2 = 36 > 10$",
+        "False, and $x = 3$ is a counterexample",
+        "True, because the odd elements of $D$ make the conditional true",
+        "False, and $x = 2$ is a counterexample"
+      ],
+      "answer": 3,
+      "explanation": "Only the even elements can falsify the conditional, so check $x = 2, 4, 6$: their squares are $4$, $16$, and $36$. Since $4$ is not greater than $10$, the element $x = 2$ satisfies the hypothesis and violates the conclusion, so the statement is false with counterexample $x = 2$. The odd elements $1, 3, 5$ make the conditional vacuously true, so $x = 3$ cannot be a counterexample, and verifying $16 > 10$ and $36 > 10$ only shows that $4$ and $6$ are not counterexamples. The trap is forgetting that a counterexample to $\\forall x\\, (P(x) \\to Q(x))$ must satisfy the hypothesis and fail the conclusion; elements failing the hypothesis neither confirm nor refute anything.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-020",
+      "stem": "The statement that $f$ is continuous at $a$ reads: $\\forall \\varepsilon > 0\\, \\exists \\delta > 0\\, \\forall x\\, (|x - a| < \\delta \\to |f(x) - f(a)| < \\varepsilon)$. Which formula is its negation?",
+      "options": [
+        "$\\exists \\varepsilon > 0\\, \\forall \\delta > 0\\, \\exists x\\, (|x - a| < \\delta \\to |f(x) - f(a)| \\geq \\varepsilon)$",
+        "$\\exists \\varepsilon > 0\\, \\forall \\delta > 0\\, \\exists x\\, (|x - a| < \\delta \\land |f(x) - f(a)| \\geq \\varepsilon)$",
+        "$\\forall \\varepsilon > 0\\, \\exists \\delta > 0\\, \\forall x\\, (|x - a| < \\delta \\to |f(x) - f(a)| \\geq \\varepsilon)$",
+        "$\\exists \\varepsilon > 0\\, \\exists \\delta > 0\\, \\exists x\\, (|x - a| < \\delta \\land |f(x) - f(a)| \\geq \\varepsilon)$"
+      ],
+      "answer": 1,
+      "explanation": "Negate from the outside in: each $\\forall$ becomes $\\exists$, each $\\exists$ becomes $\\forall$, and the negation finally lands on the conditional. A negated conditional is a conjunction, $|x - a| < \\delta \\land |f(x) - f(a)| \\geq \\varepsilon$, so the negation reads: there is an $\\varepsilon > 0$ such that for every $\\delta > 0$ some $x$ lies within $\\delta$ of $a$ yet $f(x)$ stays at least $\\varepsilon$ away from $f(a)$. Keeping the arrow produces a formula made true by any $x$ far from $a$, negating only the predicate keeps the original quantifiers, and flipping every quantifier to $\\exists$ no longer says that every $\\delta$ fails. The trap is stopping the negation halfway: every quantifier must flip, and the inner conditional must become a conjunction with its conclusion negated.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-021",
+      "stem": "Over the domain $\\mathbb{R}$, consider $S_1: \\exists y\\, \\forall x\\, (x \\cdot y = x)$ and $S_2: \\exists y\\, \\forall x\\, (x \\cdot y = 1)$. What are their truth values?",
+      "options": [
+        "Both $S_1$ and $S_2$ are false",
+        "$S_1$ is false and $S_2$ is true",
+        "$S_1$ is true and $S_2$ is false",
+        "Both $S_1$ and $S_2$ are true"
+      ],
+      "answer": 2,
+      "explanation": "$S_1$ is true with the single witness $y = 1$, since $x \\cdot 1 = x$ for every real $x$; an $\\exists\\, \\forall$ statement is true precisely when one uniform witness exists. $S_2$ is false: taking $x = 0$ gives $0 \\cdot y = 0 \\neq 1$ no matter what $y$ is, and even setting $0$ aside, the would-be witness needs $y = 1/x$ to vary with $x$. So the same quantifier prefix yields one true statement and one false statement, depending on the predicate. The trap is the shortcut that $\\exists y\\, \\forall x$ statements are always false over infinite domains; they are true exactly when a single $y$ works uniformly, as $y = 1$ does for $S_1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-022",
+      "stem": "Let the domain be $D = \\{0, 1, 2\\}$ and let $P(x, y)$ mean: $x + y$ is even. How many of the following four statements are true? $\\forall x\\, \\forall y\\, P(x, y)$; $\\forall x\\, \\exists y\\, P(x, y)$; $\\exists x\\, \\forall y\\, P(x, y)$; $\\exists x\\, \\exists y\\, P(x, y)$.",
+      "options": [
+        "Exactly one",
+        "Exactly two",
+        "Exactly three",
+        "All four"
+      ],
+      "answer": 1,
+      "explanation": "Check each form: $\\forall x\\, \\forall y\\, P(x, y)$ fails at $(0, 1)$ since $0 + 1$ is odd, while $\\exists x\\, \\exists y\\, P(x, y)$ is true with witness $(0, 0)$. $\\forall x\\, \\exists y\\, P(x, y)$ is true: for each $x$ choose $y = x$, and $x + x = 2x$ is even. $\\exists x\\, \\forall y\\, P(x, y)$ is false: for any fixed $x$, the sums $x + 0$ and $x + 1$ differ by $1$, so they cannot both be even. That makes exactly two true statements. The trap is sliding from $\\forall x\\, \\exists y$ to $\\exists x\\, \\forall y$; the successful choice $y = x$ depends on $x$, and no single $x$ works against every $y$.",
+      "difficulty": "stretch",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-023",
+      "stem": "A student claims that $\\exists x \\in \\mathbb{Z}\\, (x^2 = 4)$ is false, arguing that both $2$ and $-2$ satisfy $x^2 = 4$, so there is no unique $x$. Which assessment is correct?",
+      "options": [
+        "The statement is true; an existential claim needs at least one witness, and $x = 2$ already provides one",
+        "The student is right; an existential statement fails when more than one value satisfies the predicate",
+        "The statement has no truth value until it is rewritten with the uniqueness quantifier $\\exists !$",
+        "The statement is false because a proof would have to check that every integer satisfies $x^2 = 4$"
+      ],
+      "answer": 0,
+      "explanation": "The existential quantifier asserts that at least one integer satisfies the predicate, and $x = 2$ is already a complete witness since $2^2 = 4$. Having the second witness $x = -2$ makes the statement no less true; an abundance of witnesses is never a defect. Uniqueness is a separate and stronger assertion written $\\exists ! x\\, (x^2 = 4)$, and that statement is indeed false here, but it is not the statement that was made. Demanding that every integer satisfy the equation confuses the existential with a universal. The trap is reading some as exactly one; $\\exists$ requires at least one witness, and extra witnesses do not undermine it.",
+      "difficulty": "stretch",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-predicate-logic-024",
+      "stem": "Let the domain of discourse be the empty set and let $P(x)$ be an arbitrary predicate. Which of the following holds?",
+      "options": [
+        "Both $\\forall x\\, P(x)$ and $\\exists x\\, P(x)$ are true",
+        "Both $\\forall x\\, P(x)$ and $\\exists x\\, P(x)$ are false",
+        "The truth values cannot be determined without knowing the predicate $P$",
+        "$\\forall x\\, P(x)$ is true and $\\exists x\\, P(x)$ is false"
+      ],
+      "answer": 3,
+      "explanation": "A universal statement $\\forall x\\, P(x)$ is false only when the domain contains a counterexample, an element making $P$ false. The empty domain contains no elements at all, hence no counterexample, so $\\forall x\\, P(x)$ is vacuously true whatever $P$ is. An existential statement $\\exists x\\, P(x)$ needs a witness, and the empty domain offers none, so it is false whatever $P$ is. In particular, the familiar inference from $\\forall x\\, P(x)$ to $\\exists x\\, P(x)$ breaks down over the empty domain. The trap is assuming a universal statement carries existential import; over an empty domain the universal is true and the existential is false, with no dependence on $P$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    }
+  ]
+}
