@@ -1,0 +1,277 @@
+{
+  "courseId": "calculus-i",
+  "topicId": "sequences-and-series",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "calculus-i-sequences-and-series-001",
+      "stem": "Find the limit of the sequence $a_n = \\displaystyle\\frac{3n + 1}{2n + 5}$.",
+      "options": ["$\\frac{3}{2}$", "$\\frac{2}{3}$", "$\\frac{1}{5}$", "$0$"],
+      "answer": 0,
+      "explanation": "Divide the numerator and denominator by $n$, the highest power present: $a_n = \\frac{3 + 1/n}{2 + 5/n}$. As $n \\to \\infty$ the terms $1/n$ and $5/n$ vanish, leaving $\\frac{3}{2}$. Because the degrees match, the limit is the ratio of the leading coefficients. The traps: $\\frac{2}{3}$ inverts that ratio, $\\frac{1}{5}$ takes the ratio of the constant terms instead, and $0$ assumes the denominator always dominates, which only happens when its degree is strictly larger.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 11.1"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-002",
+      "stem": "What is $\\displaystyle\\lim_{n\\to\\infty} \\frac{4n + 1}{2n^2 + 3}$?",
+      "options": ["$2$", "$0$", "$\\frac{1}{3}$", "The sequence diverges to $\\infty$"],
+      "answer": 1,
+      "explanation": "Compare degrees: the numerator has degree $1$ and the denominator degree $2$. Dividing through by $n^2$ gives $\\frac{4/n + 1/n^2}{2 + 3/n^2}$, and every term in the numerator vanishes as $n \\to \\infty$, so the limit is $\\frac{0}{2} = 0$. When the denominator's degree is strictly larger, the sequence converges to $0$. The traps: $2$ matches leading coefficients while ignoring the degree mismatch, $\\frac{1}{3}$ is the ratio of the constant terms, and the divergence option reads the growing numerator alone and forgets the denominator grows faster.",
+      "difficulty": "warmup",
+      "source": "in the style of Dawkins Calculus II notes, sequences chapter"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-003",
+      "stem": "The sequence $3, 7, 11, 15, \\ldots$ continues the same pattern. Classify it and give its nth term.",
+      "options": ["Arithmetic, with $a_n = 4n + 3$", "Geometric, with $a_n = 3\\left(\\frac{7}{3}\\right)^{n-1}$", "Arithmetic, with $a_n = 4n - 1$", "Arithmetic, with $a_n = 3n + 4$"],
+      "answer": 2,
+      "explanation": "Consecutive differences are $7 - 3 = 4$, $11 - 7 = 4$, $15 - 11 = 4$: a constant difference, so the sequence is arithmetic with $a_1 = 3$ and $d = 4$. The nth term is $a_n = a_1 + (n-1)d = 3 + 4(n-1) = 4n - 1$. Check: $n = 1$ gives $3$ and $n = 4$ gives $15$, matching the list. The traps: $4n + 3$ uses $a_1 + nd$, an off-by-one that would make the first term $7$; $3n + 4$ multiplies the first term by $n$ instead of the difference; the geometric option confuses a constant difference with a constant ratio, but $\\frac{7}{3} \\ne \\frac{11}{7}$, so the sequence is not geometric.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 11.1"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-004",
+      "stem": "Evaluate $\\displaystyle\\sum_{n=0}^{\\infty} \\left(\\frac{1}{3}\\right)^n$.",
+      "options": ["$\\frac{1}{2}$", "$\\frac{2}{3}$", "$\\frac{3}{2}$", "The series diverges"],
+      "answer": 2,
+      "explanation": "This is geometric with ratio $r = \\frac{1}{3}$ and first term $a = 1$, since the $n = 0$ term is $(1/3)^0 = 1$. Because $|r| < 1$ the series converges to $\\frac{a}{1-r} = \\frac{1}{1 - 1/3} = \\frac{3}{2}$. The traps: $\\frac{1}{2}$ uses $\\frac{1}{3}$ as the first term, which would be right only if the sum started at $n = 1$; here the $n = 0$ term equals $1$ and must be counted. The option $\\frac{2}{3}$ computes $1 - r$ and stops, and the divergence option assumes infinitely many positive terms must add up to infinity.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-005",
+      "stem": "What does the Test for Divergence say about the series $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{n}{n+1}$?",
+      "options": ["The series diverges because $\\displaystyle\\lim_{n\\to\\infty} \\frac{n}{n+1} = 1 \\ne 0$", "The series converges to $1$ because the terms approach $1$", "The series converges because the terms are bounded", "The test is inconclusive"],
+      "answer": 0,
+      "explanation": "The Test for Divergence says that if $\\lim_{n\\to\\infty} a_n \\ne 0$, then $\\sum a_n$ diverges. Here $\\lim_{n\\to\\infty} \\frac{n}{n+1} = 1 \\ne 0$, so the series diverges; intuitively, we keep adding numbers close to $1$ forever, so the partial sums grow without bound. The traps: the second option confuses the limit of the terms with the value of the sum; bounded terms say nothing about convergence of a series; and the test is far from inconclusive here, since a nonzero term limit is exactly the situation the test settles.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-006",
+      "stem": "Consider the sequence $a_n = \\displaystyle\\frac{2n}{n+3}$. Which description is correct?",
+      "options": ["Increasing and unbounded", "Increasing and bounded", "Decreasing and bounded", "Bounded but not monotonic"],
+      "answer": 1,
+      "explanation": "Compute the first terms: $a_1 = \\frac{2}{4} = \\frac{1}{2}$, $a_2 = \\frac{4}{5}$, $a_3 = 1$, $a_4 = \\frac{8}{7}$, which suggests growth, and indeed $a_{n+1} - a_n = \\frac{6}{(n+3)(n+4)} > 0$ for every $n$, so the sequence is increasing. For bounds, $\\frac{2n}{n+3} < \\frac{2n+6}{n+3} = 2$, so $0 < a_n < 2$ always. The sequence is therefore increasing and bounded, and it converges to $2$. The trap is reading the growing numerator as unbounded growth; the denominator grows at the same rate and the limit $2$ caps the sequence. The decreasing and non-monotonic options both fail the quick check $a_1 < a_2 < a_3$.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 11.1"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-007",
+      "stem": "Evaluate $\\displaystyle\\lim_{n\\to\\infty}\\left(\\sqrt{n^2 + 3n} - n\\right)$.",
+      "options": ["$0$", "$\\frac{3}{2}$", "$3$", "The sequence diverges to $\\infty$"],
+      "answer": 1,
+      "explanation": "Multiply and divide by the conjugate: $\\sqrt{n^2 + 3n} - n = \\frac{(n^2 + 3n) - n^2}{\\sqrt{n^2 + 3n} + n} = \\frac{3n}{\\sqrt{n^2 + 3n} + n}$. Now divide top and bottom by $n$: $\\frac{3}{\\sqrt{1 + 3/n} + 1}$, and as $n \\to \\infty$ this tends to $\\frac{3}{1 + 1} = \\frac{3}{2}$. The traps: $0$ argues that $\\sqrt{n^2 + 3n} \\approx n$ so the difference must vanish, but the lower-order correction survives; $3$ divides $3n$ by $n$ alone, forgetting the root contributes a second $n$ in the denominator; and the infinity option treats a difference of two unbounded quantities as automatically unbounded.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 11.1"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-008",
+      "stem": "Find the limit of the sequence $a_n = \\displaystyle\\frac{\\sqrt{4n^2 + 1}}{3n + 2}$.",
+      "options": ["$\\frac{2}{3}$", "$\\frac{4}{3}$", "$0$", "The sequence diverges"],
+      "answer": 0,
+      "explanation": "Divide the numerator and denominator by $n$, taking the $n$ inside the root as $\\sqrt{n^2}$: $a_n = \\frac{\\sqrt{4 + 1/n^2}}{3 + 2/n}$. As $n \\to \\infty$ this becomes $\\frac{\\sqrt{4}}{3} = \\frac{2}{3}$. The numerator grows like $2n$ and the denominator like $3n$, the same order, so the limit is finite and nonzero. The traps: $\\frac{4}{3}$ forgets to take the square root of $4$; $0$ and the divergence option are the two degree-comparison errors, each pretending one side grows at a strictly faster rate when both grow like $n$.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus II notes, sequences chapter"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-009",
+      "stem": "What is the behavior of the sequence $a_n = (-1)^n \\displaystyle\\frac{n}{n+1}$ as $n \\to \\infty$?",
+      "options": ["It converges to $1$", "It converges to $0$", "It converges to $-1$", "It diverges"],
+      "answer": 3,
+      "explanation": "Split into subsequences. For even $n$, $a_n = \\frac{n}{n+1} \\to 1$; for odd $n$, $a_n = -\\frac{n}{n+1} \\to -1$. Two subsequences with different limits mean the sequence has no limit, so it diverges by oscillation. The traps: $1$ drops the sign factor and takes the limit of $\\frac{n}{n+1}$ alone; $-1$ looks only at the odd terms; and $0$ assumes a $(-1)^n$ factor always averages out to zero, which happens only when the factor multiplying it tends to $0$, and here it tends to $1$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.1"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-010",
+      "stem": "Determine the limit of the sequence $a_n = \\displaystyle\\frac{(-1)^n}{n}$, if it exists.",
+      "options": ["The sequence diverges because its terms alternate in sign", "$1$", "$-1$", "$0$"],
+      "answer": 3,
+      "explanation": "Bound the size: $|a_n| = \\frac{1}{n} \\to 0$, and a sequence whose absolute value tends to $0$ must itself tend to $0$, by the squeeze $-\\frac{1}{n} \\le a_n \\le \\frac{1}{n}$. So the sequence converges to $0$ even though its signs alternate forever. The main trap is the divergence option: alternating signs alone do not force divergence; what matters is whether the magnitudes shrink to $0$, and here they do. The options $1$ and $-1$ track the sign pattern instead of the shrinking size of the terms.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus II notes, sequences chapter"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-011",
+      "stem": "Determine whether the sequence $a_n = \\displaystyle\\frac{2n + (-1)^n}{n}$ converges, and if so find its limit.",
+      "options": ["It converges to $1$", "It converges to $2$", "It converges to $3$", "It diverges because of the $(-1)^n$ term"],
+      "answer": 1,
+      "explanation": "Rewrite the term: $a_n = \\frac{2n + (-1)^n}{n} = 2 + \\frac{(-1)^n}{n}$. The second piece satisfies $\\left|\\frac{(-1)^n}{n}\\right| = \\frac{1}{n} \\to 0$, so it vanishes and the sequence converges to $2$. The traps: the divergence option treats any appearance of $(-1)^n$ as fatal, but here the alternating part is damped by the growing denominator; $1$ and $3$ evaluate $2 + (-1)^n$ as if the alternating term kept its full size $\\pm 1$ in the limit instead of shrinking to $0$.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus II notes, sequences chapter"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-012",
+      "stem": "The sequence $a_n = \\displaystyle\\frac{n}{n^2 + 1}$ is best described as:",
+      "options": ["Increasing and bounded", "Decreasing and unbounded", "Decreasing and bounded", "Not monotonic, because the numerator and denominator both increase"],
+      "answer": 2,
+      "explanation": "Compare consecutive terms by cross multiplying positive quantities: $a_{n+1} < a_n$ is equivalent to $(n+1)(n^2 + 1) < n\\left((n+1)^2 + 1\\right)$, which expands to $n^3 + n^2 + n + 1 < n^3 + 2n^2 + 2n$, true because $n^2 + n - 1 > 0$ for $n \\ge 1$. So the sequence is decreasing, and $0 < a_n \\le a_1 = \\frac{1}{2}$ shows it is bounded. The traps: the increasing option follows the growing numerator and ignores the faster-growing denominator; a decreasing sequence of positive terms cannot be unbounded; and a fraction can be perfectly monotonic even when its numerator and denominator both increase, so the last option's reasoning proves nothing.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.1"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-013",
+      "stem": "Which statement is exactly what the Monotonic Sequence Theorem guarantees?",
+      "options": ["Every bounded sequence converges", "Every monotonic sequence converges", "Every bounded monotonic sequence converges", "Every convergent sequence is monotonic"],
+      "answer": 2,
+      "explanation": "The Monotonic Sequence Theorem says a sequence that is both bounded and monotonic must converge; the two hypotheses work together, with monotonic ruling out oscillation and bounded ruling out escape to infinity. Drop either one and the conclusion fails: $a_n = (-1)^n$ is bounded but oscillates forever, and $a_n = n$ is monotonic but runs off to infinity. The converse fails too: $a_n = \\frac{(-1)^n}{n}$ converges to $0$ while hopping between positive and negative values, so convergent sequences need not be monotonic. The three wrong options are exactly these broken variants: each drops a hypothesis or reverses the implication.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.1"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-014",
+      "stem": "Which of the following sequences is bounded but not convergent?",
+      "options": ["$a_n = \\frac{1}{n}$", "$a_n = (-1)^n$", "$a_n = n$", "$a_n = (-1)^n n$"],
+      "answer": 1,
+      "explanation": "The sequence $a_n = (-1)^n$ takes only the values $-1$ and $1$, so it is bounded ($|a_n| \\le 1$), yet it never settles: the even subsequence has limit $1$ and the odd subsequence has limit $-1$, so the sequence diverges. That makes it bounded but not convergent. The traps: $\\frac{1}{n}$ is bounded but also converges to $0$, so it fails the second requirement; $a_n = n$ and $a_n = (-1)^n n$ are both unbounded, the latter despite its alternating sign, so they fail the first. Boundedness is about size, not about whether the terms wander.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus II notes, sequences chapter"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-015",
+      "stem": "Let $a \\ne 0$. The geometric series $\\displaystyle\\sum_{n=1}^{\\infty} a r^{n-1}$ converges precisely when:",
+      "options": ["$r < 1$", "$|r| < 1$", "$|r| \\le 1$", "$0 < r < 1$", "$r \\ne 1$"],
+      "answer": 1,
+      "explanation": "For $r \\ne 1$ the partial sums are $s_N = a\\,\\frac{1 - r^N}{1 - r}$, and these converge exactly when $r^N$ has a finite limit, which happens precisely for $|r| < 1$; at $r = 1$ the partial sums are $aN$, which also diverge. The condition is two-sided: $r = -2$ satisfies $r < 1$ yet the terms blow up in size, which kills the first option. Endpoints fail as well: at $r = 1$ and $r = -1$ the terms do not approach $0$, so $|r| \\le 1$ is wrong. The interval $0 < r < 1$ forgets that negative ratios like $r = -\\frac{1}{2}$ converge fine, and $r \\ne 1$ confuses where the partial-sum formula is defined with where the series converges. Every wrong option mishandles one side of the inequality $|r| < 1$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-016",
+      "stem": "Determine whether $\\displaystyle\\sum_{n=1}^{\\infty} \\left(-\\frac{5}{4}\\right)^n$ converges or diverges.",
+      "options": ["It converges to $-\\frac{5}{9}$", "It converges to $5$", "It diverges", "It converges because the alternating signs cancel"],
+      "answer": 2,
+      "explanation": "The ratio is $r = -\\frac{5}{4}$ and $|r| = \\frac{5}{4} > 1$, so this geometric series diverges; the terms $\\left(-\\frac{5}{4}\\right)^n$ grow in magnitude and do not approach $0$. The convergence condition is the absolute value condition $|r| < 1$, not $r < 1$. The traps: the first option checks only $r < 1$, which $-\\frac{5}{4}$ satisfies, and then plugs into $\\frac{a}{1-r}$ to get $\\frac{-5/4}{1 + 5/4} = -\\frac{5}{9}$; the formula produces a number, but the number means nothing when $|r| \\ge 1$. The option $5$ makes the same illegal move after dropping the sign of $r$. And alternating signs produce cancellation only when the term sizes shrink to $0$, which these do not.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-017",
+      "stem": "Compute $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{2}{3^n}$.",
+      "options": ["$1$", "$3$", "$\\frac{2}{3}$", "$\\frac{1}{2}$"],
+      "answer": 0,
+      "explanation": "Write the series as $\\sum_{n=1}^{\\infty} 2\\left(\\frac{1}{3}\\right)^n$: it is geometric with ratio $r = \\frac{1}{3}$, and since the sum starts at $n = 1$, the first term is $a = \\frac{2}{3}$. The sum is $\\frac{a}{1-r} = \\frac{2/3}{2/3} = 1$. The traps: $3$ uses $a = 2$, the value an $n = 0$ term would have, but this series has no $n = 0$ term; $\\frac{2}{3}$ stops after computing the first term; and $\\frac{1}{2}$ divides by $1 + r$ instead of $1 - r$. Identify the actual first term before reaching for $\\frac{a}{1-r}$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-018",
+      "stem": "Find the sum $\\displaystyle\\sum_{n=2}^{\\infty} \\left(\\frac{1}{2}\\right)^n$.",
+      "options": ["$\\frac{1}{4}$", "$2$", "$1$", "$\\frac{1}{2}$"],
+      "answer": 3,
+      "explanation": "The series is geometric with ratio $r = \\frac{1}{2}$, and because the index starts at $n = 2$, the first term is $a = \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$. The sum is $\\frac{a}{1-r} = \\frac{1/4}{1/2} = \\frac{1}{2}$. As a check, the full sum from $n = 0$ equals $2$, and removing the missing terms $1 + \\frac{1}{2}$ leaves $\\frac{1}{2}$. The traps: $2$ uses $a = 1$ as if the sum began at $n = 0$; $1$ uses the $n = 1$ first term $\\frac{1}{2}$; and $\\frac{1}{4}$ is only the first term of the series. The formula $\\frac{a}{1-r}$ is safe only after $a$ is matched to the true starting index.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-019",
+      "stem": "Evaluate $\\displaystyle\\sum_{n=0}^{\\infty} \\frac{3^{n+1}}{4^n}$.",
+      "options": ["$4$", "$12$", "$3$", "The series diverges because $3^{n+1}$ grows without bound"],
+      "answer": 1,
+      "explanation": "Rewrite the term: $\\frac{3^{n+1}}{4^n} = 3 \\cdot \\left(\\frac{3}{4}\\right)^n$, so the series is geometric with ratio $r = \\frac{3}{4}$ and first term $a = 3$ at $n = 0$. Since $|r| < 1$ it converges to $\\frac{a}{1-r} = \\frac{3}{1/4} = 12$. The traps: $4$ sums $\\sum \\left(\\frac{3}{4}\\right)^n$ and drops the extra factor of $3$ hiding in the exponent $n + 1$; $3$ treats $\\frac{3}{4} \\cdot 3 = \\frac{9}{4}$... no, $3$ comes from using $\\frac{3/4}{1 - 3/4}$, the $n = 1$ habit applied to an $n = 0$ sum; and the divergence option stares at the growing numerator without comparing it to $4^n$, when the ratio $\\frac{3}{4} < 1$ is what decides.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-020",
+      "stem": "Express the repeating decimal $0.272727\\ldots$ as a ratio of integers.",
+      "options": ["$\\frac{3}{10}$", "$\\frac{27}{100}$", "$\\frac{3}{11}$", "$\\frac{27}{999}$"],
+      "answer": 2,
+      "explanation": "Write the decimal as a geometric series: $0.272727\\ldots = \\frac{27}{100} + \\frac{27}{100^2} + \\frac{27}{100^3} + \\cdots$, with first term $a = \\frac{27}{100}$ and ratio $r = \\frac{1}{100}$, one factor of $\\frac{1}{100}$ per repeating block of two digits. The sum is $\\frac{27/100}{1 - 1/100} = \\frac{27/100}{99/100} = \\frac{27}{99} = \\frac{3}{11}$. Check by dividing: $3 \\div 11 = 0.2727\\ldots$ The traps: $\\frac{3}{10}$ comes from using $r = \\frac{1}{10}$, the one-digit ratio, on a two-digit block; $\\frac{27}{100}$ is only the first term, the exact value $0.27$; and $\\frac{27}{999}$ divides by the wrong block length, three nines instead of two.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-021",
+      "stem": "Find the sum of the telescoping series $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)}$.",
+      "options": ["The series diverges", "$0$", "$\\frac{1}{2}$", "$1$"],
+      "answer": 3,
+      "explanation": "Partial fractions give $\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}$. The partial sum telescopes: $s_N = \\left(1 - \\frac{1}{2}\\right) + \\left(\\frac{1}{2} - \\frac{1}{3}\\right) + \\cdots + \\left(\\frac{1}{N} - \\frac{1}{N+1}\\right) = 1 - \\frac{1}{N+1}$. As $N \\to \\infty$, $s_N \\to 1$, so the series converges to $1$. The traps: $\\frac{1}{2}$ keeps only the first term of the series; $0$ imagines every term cancels, but the leading $1$ never finds a partner; and the divergence option pattern-matches the harmonic series, when the telescoping cancellation changes everything.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-022",
+      "stem": "Compute $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{1}{(n+1)(n+2)}$.",
+      "options": ["$1$", "$\\frac{1}{6}$", "The series diverges", "$\\frac{1}{2}$"],
+      "answer": 3,
+      "explanation": "Decompose: $\\frac{1}{(n+1)(n+2)} = \\frac{1}{n+1} - \\frac{1}{n+2}$. The partial sum telescopes to $s_N = \\frac{1}{2} - \\frac{1}{N+2}$, because the surviving first piece is $\\frac{1}{2}$, coming from $n = 1$, not $1$. Letting $N \\to \\infty$ gives $\\frac{1}{2}$. The traps: $1$ recycles the answer to $\\sum \\frac{1}{n(n+1)}$ without noticing the shifted start; $\\frac{1}{6}$ is just the first term $\\frac{1}{2 \\cdot 3}$; and divergence is impossible since these terms sit below those of a convergent telescoping series. The off-by-one in the surviving term is the whole game here.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-023",
+      "stem": "Find the sum $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{1}{n(n+2)}$.",
+      "options": ["$\\frac{3}{4}$", "$\\frac{3}{2}$", "$\\frac{1}{2}$", "$1$"],
+      "answer": 0,
+      "explanation": "Partial fractions give $\\frac{1}{n(n+2)} = \\frac{1}{2}\\left(\\frac{1}{n} - \\frac{1}{n+2}\\right)$. Because the gap between the two pieces is $2$, the cancellation skips a step and two leading terms survive: $s_N = \\frac{1}{2}\\left(1 + \\frac{1}{2} - \\frac{1}{N+1} - \\frac{1}{N+2}\\right)$. As $N \\to \\infty$ this tends to $\\frac{1}{2} \\cdot \\frac{3}{2} = \\frac{3}{4}$. The traps: $\\frac{3}{2}$ forgets the overall factor $\\frac{1}{2}$ from the decomposition; $\\frac{1}{2}$ lets only the single term $1$ survive, missing the second survivor $\\frac{1}{2}$; and $1$ pattern-matches the classic $\\sum \\frac{1}{n(n+1)}$ answer without redoing the telescope for the wider gap.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-024",
+      "stem": "The terms of the harmonic series $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{1}{n}$ satisfy $\\displaystyle\\lim_{n\\to\\infty} \\frac{1}{n} = 0$. What does the Test for Divergence allow us to conclude?",
+      "options": ["The series converges because its terms approach $0$", "Nothing: the test gives no information when the terms approach $0$, and in fact this series diverges", "The series converges to $0$", "The series diverges because its terms are never equal to $0$"],
+      "answer": 1,
+      "explanation": "The Test for Divergence has exactly one conclusion: if the terms do not tend to $0$, the series diverges. When the terms do tend to $0$, as $\\frac{1}{n}$ does, the test is silent and convergence is not established. In fact the harmonic series diverges, since its partial sums grow roughly like $\\ln n$ without bound, which proves that terms going to $0$ cannot guarantee convergence. The trap is the converse error in the first option: reading 'terms go to $0$' as a proof of convergence. The condition $\\lim a_n = 0$ is necessary for convergence but never sufficient, and the last two options confuse the limit of the terms with the sum or invent a condition the test does not contain.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-025",
+      "stem": "Determine the behavior of the series $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{2n^2 + 1}{3n^2 + 5}$.",
+      "options": ["It converges to $\\frac{2}{3}$", "It converges because the terms are bounded", "It diverges by the Test for Divergence", "The Test for Divergence is inconclusive here"],
+      "answer": 2,
+      "explanation": "Compute the limit of the terms: dividing through by $n^2$ gives $\\frac{2 + 1/n^2}{3 + 5/n^2} \\to \\frac{2}{3}$. Since $\\frac{2}{3} \\ne 0$, the Test for Divergence applies and the series diverges; adding numbers that stay near $\\frac{2}{3}$ forever drives the partial sums to infinity. The traps: the first option confuses the limit of the terms with the sum of the series; bounded terms do not make a series converge; and the inconclusive option has the test backwards, since the test is silent only when the term limit equals zero, and here it does not.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.2"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-026",
+      "stem": "An arithmetic sequence has first term $a_1 = 5$ and common difference $d = -3$. Find $a_{10}$.",
+      "options": ["$-27$", "$-25$", "$-22$", "$32$", "$35$"],
+      "answer": 2,
+      "explanation": "The nth term of an arithmetic sequence is $a_n = a_1 + (n-1)d$. With $a_1 = 5$, $d = -3$, and $n = 10$: $a_{10} = 5 + 9(-3) = 5 - 27 = -22$. The traps: $-25$ uses $a_1 + nd$ with $n = 10$, the classic off-by-one; $-27$ is $9(-3)$ alone, forgetting to add the first term; $32$ flips the sign of $d$ and computes $5 + 27$; and $35$ stacks both errors as $5 + 10(3)$. Count steps, not terms: from $a_1$ to $a_{10}$ there are exactly $9$ jumps of size $d$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.1"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-027",
+      "stem": "Find the nth term of the geometric sequence $2, 6, 18, 54, \\ldots$",
+      "options": ["$a_n = 2 \\cdot 3^n$", "$a_n = 2 \\cdot 3^{n-1}$", "$a_n = 3 \\cdot 2^{n-1}$", "$a_n = 2 + 3(n-1)$"],
+      "answer": 1,
+      "explanation": "The ratio of consecutive terms is $\\frac{6}{2} = \\frac{18}{6} = \\frac{54}{18} = 3$, a constant, so the sequence is geometric with $a_1 = 2$ and $r = 3$. The nth term is $a_n = a_1 r^{n-1} = 2 \\cdot 3^{n-1}$; check $n = 3$: $2 \\cdot 9 = 18$, matching the list. The traps: $2 \\cdot 3^n$ is the off-by-one exponent, which would make the first term $6$; $3 \\cdot 2^{n-1}$ swaps the roles of first term and ratio; and $2 + 3(n-1)$ applies the arithmetic formula to a sequence built from a constant ratio, not a constant difference.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 11.1"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-028",
+      "stem": "A geometric sequence satisfies $a_2 = 6$ and $a_5 = 48$. Find its nth term.",
+      "options": ["$a_n = 3 \\cdot 2^{n-1}$", "$a_n = 6 \\cdot 2^{n-1}$", "$a_n = 3 \\cdot 2^n$", "$a_n = -8 + 14(n-1)$"],
+      "answer": 0,
+      "explanation": "Use $a_n = a_1 r^{n-1}$ at the two given positions: $\\frac{a_5}{a_2} = r^3 = \\frac{48}{6} = 8$, so $r = 2$, and then $a_1 = \\frac{a_2}{r} = \\frac{6}{2} = 3$. The nth term is $a_n = 3 \\cdot 2^{n-1}$; check $a_2 = 3 \\cdot 2 = 6$ and $a_5 = 3 \\cdot 16 = 48$. The traps: $6 \\cdot 2^{n-1}$ treats $a_2 = 6$ as the first term; $3 \\cdot 2^n$ shifts the exponent and gives $a_2 = 12$; and the arithmetic option solves $d = \\frac{48 - 6}{3} = 14$, which does pass through both data points, but with constant differences, the wrong structure for a geometric sequence.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus II notes, sequences chapter"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-029",
+      "stem": "What is the long-run behavior of the sequence $a_n = \\displaystyle\\frac{3^n}{n!}$?",
+      "options": ["It diverges because $3^n$ grows without bound", "It converges to $1$", "It converges to $0$", "It diverges because the sequence is not monotonic"],
+      "answer": 2,
+      "explanation": "Look at consecutive terms: $\\frac{a_{n+1}}{a_n} = \\frac{3^{n+1}}{(n+1)!} \\cdot \\frac{n!}{3^n} = \\frac{3}{n+1}$. For $n \\ge 3$ this ratio is at most $\\frac{3}{4}$, so $a_n \\le a_3 \\left(\\frac{3}{4}\\right)^{n-3}$ for $n \\ge 3$, and the right side tends to $0$; since every term is positive, the squeeze gives $a_n \\to 0$. Factorials outgrow every exponential. The traps: the first option reasons from the growing numerator alone and ignores the far faster factorial below; 'converges to $1$' misreads what a shrinking ratio implies; and the last option correctly notices the sequence rises from $a_1 = 3$ to $a_2 = a_3 = 4.5$ before falling, but a sequence does not need to be monotonic from the start to converge, only to settle eventually.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus II notes, sequences chapter"
+    },
+    {
+      "id": "calculus-i-sequences-and-series-030",
+      "stem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{2^n + 3^n}{6^n}$.",
+      "options": ["$5$", "$\\frac{7}{2}$", "$\\frac{3}{2}$", "The series diverges"],
+      "answer": 2,
+      "explanation": "Split the fraction: $\\frac{2^n + 3^n}{6^n} = \\left(\\frac{1}{3}\\right)^n + \\left(\\frac{1}{2}\\right)^n$, so the series is the sum of two geometric series, both with $|r| < 1$. Starting at $n = 1$, the first sums to $\\frac{1/3}{1 - 1/3} = \\frac{1}{2}$ and the second to $\\frac{1/2}{1 - 1/2} = 1$, for a total of $\\frac{3}{2}$. The traps: $\\frac{7}{2}$ applies the $n = 0$ formula $\\frac{1}{1-r}$ to both pieces, overcounting the two missing $n = 0$ terms, which add up to $2$; $5$ compresses $\\frac{2^n + 3^n}{6^n}$ into the single ratio $\\left(\\frac{5}{6}\\right)^n$, but exponentials do not add base-wise; and divergence is impossible since every term is positive and below $2\\left(\\frac{1}{2}\\right)^n$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 11.2"
+    }
+  ]
+}
