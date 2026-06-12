@@ -80,9 +80,14 @@ function render(course, year, semester) {
       <div class="coming-card"><h3>Practice questions</h3>
         <p>Hundreds of trial questions with instant marking and worked solutions.</p>
         <span class="badge soon">Coming soon</span></div>`}
+      ${st.questions ? `
+      <div class="coming-card"><h3>Mock exam hall</h3>
+        <p>Timed, Moodle-style trial exams drawn from ${st.questions} questions. Feel the real format before exam day.</p>
+        <a class="next-btn" style="display: inline-block; text-decoration: none;" href="exam.html?c=${encodeURIComponent(course.id)}">Enter exam hall</a></div>`
+      : `
       <div class="coming-card"><h3>Mock exam hall</h3>
         <p>Timed, Moodle-style trial exams. Feel the real format before exam day.</p>
-        <span class="badge soon">Coming soon</span></div>
+        <span class="badge soon">Coming soon</span></div>`}
     </section>`;
 }
 

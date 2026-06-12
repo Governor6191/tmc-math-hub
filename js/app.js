@@ -1,5 +1,6 @@
 const NAV = [
   { href: 'index.html', label: 'Library' },
+  { href: 'progress.html', label: 'Progress' },
   { href: 'about.html', label: 'About' },
 ];
 
