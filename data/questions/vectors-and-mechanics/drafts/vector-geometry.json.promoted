@@ -1,0 +1,343 @@
+{
+  "courseId": "vectors-and-mechanics",
+  "topicId": "vector-geometry",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "vectors-and-mechanics-vector-geometry-001",
+      "stem": "Find a vector equation of the line through the point $(2, -1, 3)$ parallel to the vector $4\\mathbf{i} + \\mathbf{j} - 2\\mathbf{k}$.",
+      "options": [
+        "$\\mathbf{r} = (4\\mathbf{i} + \\mathbf{j} - 2\\mathbf{k}) + t(2\\mathbf{i} - \\mathbf{j} + 3\\mathbf{k})$",
+        "$\\mathbf{r} = (2\\mathbf{i} - \\mathbf{j} + 3\\mathbf{k}) + t(2\\mathbf{i} - \\mathbf{j} + 3\\mathbf{k})$",
+        "$\\mathbf{r} = (2\\mathbf{i} - \\mathbf{j} + 3\\mathbf{k}) + t(4\\mathbf{i} + \\mathbf{j} - 2\\mathbf{k})$",
+        "$\\mathbf{r} = (2\\mathbf{i} + \\mathbf{j} + 3\\mathbf{k}) + t(4\\mathbf{i} + \\mathbf{j} - 2\\mathbf{k})$"
+      ],
+      "answer": 2,
+      "explanation": "A line in space is $\\mathbf{r} = \\mathbf{r}_0 + t\\,\\mathbf{d}$, where $\\mathbf{r}_0$ is the position vector of a known point and $\\mathbf{d}$ is the direction. Here $\\mathbf{r}_0 = 2\\mathbf{i} - \\mathbf{j} + 3\\mathbf{k}$ and $\\mathbf{d} = 4\\mathbf{i} + \\mathbf{j} - 2\\mathbf{k}$. The option that starts from $4\\mathbf{i} + \\mathbf{j} - 2\\mathbf{k}$ swaps the two roles, the one that repeats $2\\mathbf{i} - \\mathbf{j} + 3\\mathbf{k}$ recycles the point as its own direction, and the one with $+\\mathbf{j}$ drops the minus sign on the $y$ coordinate of the point. The trap is swapping the point and the direction: the vector before $t$ anchors the line and the vector multiplying $t$ steers it.",
+      "difficulty": "warmup",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-002",
+      "stem": "Find parametric equations of the line through the points $A(1, 2, 3)$ and $B(3, -1, 4)$.",
+      "options": [
+        "$x = 1 + 2t,\\ y = 2 - 3t,\\ z = 3 + t$",
+        "$x = 2 + t,\\ y = -3 + 2t,\\ z = 1 + 3t$",
+        "$x = 1 + 4t,\\ y = 2 + t,\\ z = 3 + 7t$",
+        "$x = 1 + 3t,\\ y = 2 - t,\\ z = 3 + 4t$"
+      ],
+      "answer": 0,
+      "explanation": "The direction is $\\overrightarrow{AB} = B - A = (2, -3, 1)$, and using $A$ as the base point gives $x = 1 + 2t$, $y = 2 - 3t$, $z = 3 + t$. A quick check confirms it: $t = 0$ returns $A$ and $t = 1$ returns $B$. The option with $4, 1, 7$ adds the two points to get the direction instead of subtracting them, the option starting at $(2, -3, 1)$ swaps the roles of base point and direction, and the remaining option uses the coordinates of $B$ as if they were a direction. The trap is building the direction from anything other than a difference of the two points: only $B - A$ (or $A - B$) points along the line.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 12.5"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-003",
+      "stem": "Find symmetric (Cartesian) equations of the line through the point $(4, -1, 2)$ with direction vector $3\\mathbf{i} + 2\\mathbf{j} - 5\\mathbf{k}$.",
+      "options": [
+        "$\\dfrac{x+4}{3} = \\dfrac{y-1}{2} = \\dfrac{z+2}{-5}$",
+        "$\\dfrac{x-4}{3} = \\dfrac{y+1}{2} = \\dfrac{z-2}{-5}$",
+        "$\\dfrac{x-3}{4} = \\dfrac{y-2}{-1} = \\dfrac{z+5}{2}$",
+        "$\\dfrac{x-4}{3} = \\dfrac{y-1}{2} = \\dfrac{z-2}{-5}$"
+      ],
+      "answer": 1,
+      "explanation": "Symmetric form is $\\frac{x - x_0}{a} = \\frac{y - y_0}{b} = \\frac{z - z_0}{c}$, with the point in the numerators and the direction in the denominators. With point $(4, -1, 2)$ and direction $(3, 2, -5)$ the middle numerator is $y - (-1) = y + 1$, giving the correct option. The option with $y - 1$ subtracts the coordinate while ignoring its sign, the option with $x + 4$ and $z + 2$ flips every numerator sign, and the option with $x - 3$ puts the direction in the numerators and the point in the denominators. The trap is the negative coordinate: subtracting $-1$ produces $y + 1$, so any option showing $y - 1$ has mishandled that sign.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 12.5"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-004",
+      "stem": "Consider the line $\\mathbf{r} = (\\mathbf{i} + 2\\mathbf{j} - \\mathbf{k}) + t(2\\mathbf{i} - \\mathbf{j} + 3\\mathbf{k})$. Which of the following points lies on the line?",
+      "options": [
+        "$(2, -1, 3)$",
+        "$(3, 1, 5)$",
+        "$(-1, 3, -7)$",
+        "$(5, 0, 5)$"
+      ],
+      "answer": 3,
+      "explanation": "A point lies on the line only if a single value of $t$ reproduces all three coordinates. For $(5, 0, 5)$, the $x$ equation $1 + 2t = 5$ gives $t = 2$, and then $y = 2 - 2 = 0$ and $z = -1 + 6 = 5$ both match. The point $(3, 1, 5)$ matches $x$ and $y$ at $t = 1$ but the line has $z = 2$ there, and $(-1, 3, -7)$ matches $x$ and $y$ at $t = -1$ but the line has $z = -4$. The point $(2, -1, 3)$ is the direction vector, which steers the line but need not lie on it. The trap is checking only two of the three coordinate equations, or mistaking the direction vector for a point of the line.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 12.5"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-005",
+      "stem": "Find the point of intersection of the lines $\\mathbf{r}_1 = (1, 1, 0) + t(1, -1, 2)$ and $\\mathbf{r}_2 = (2, 0, 2) + s(-1, 1, 1)$.",
+      "options": [
+        "$(1, 1, 0)$",
+        "$(2, 0, 2)$",
+        "The lines are skew",
+        "The lines are parallel"
+      ],
+      "answer": 1,
+      "explanation": "Equate components: $1 + t = 2 - s$, $1 - t = s$, and $2t = 2 + s$. The second equation gives $s = 1 - t$; the first then reduces to the identity $1 + t = 1 + t$, so the third must decide: $2t = 2 + (1 - t)$ gives $t = 1$ and $s = 0$. The first line at $t = 1$ and the second at $s = 0$ both give $(2, 0, 2)$, so the lines meet there. The directions $(1, -1, 2)$ and $(-1, 1, 1)$ are not proportional, so the lines are not parallel, and $(1, 1, 0)$ is just the base point of the first line. The trap is misreading the identity from the $x$ equation as a dead end and declaring the lines skew, instead of pressing on to the third equation.",
+      "difficulty": "core",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-006",
+      "stem": "Determine the relationship between the lines $L_1: x = 1 + t,\\ y = 2 + 2t,\\ z = 3 + t$ and $L_2: x = 2 + s,\\ y = 1 - s,\\ z = 4 + 2s$.",
+      "options": [
+        "They are skew",
+        "They intersect at $(1, 2, 3)$",
+        "They intersect at $(1, 2, 2)$",
+        "They are parallel"
+      ],
+      "answer": 0,
+      "explanation": "The directions $(1, 2, 1)$ and $(1, -1, 2)$ are not proportional, so the lines are not parallel. Solving the $x$ and $y$ equations, $t - s = 1$ and $2t + s = -1$, gives $t = 0$ and $s = -1$. The $z$ check then fails: $L_1$ has $z = 3$ at $t = 0$ while $L_2$ has $z = 4 - 2 = 2$ at $s = -1$, so there is no common point and the lines are skew. The candidate points $(1, 2, 3)$ and $(1, 2, 2)$ agree in $x$ and $y$ only. The trap is declaring an intersection after solving just two of the three component equations; the third equation is the verdict.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 12.5"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-007",
+      "stem": "For what value of $a$ do the lines $\\mathbf{r}_1 = (1, 0, a) + t(1, 1, 2)$ and $\\mathbf{r}_2 = (0, 1, 1) + s(2, 1, 1)$ intersect?",
+      "options": [
+        "$a = 3$",
+        "$a = 0$",
+        "$a = -3$",
+        "$a = 9$"
+      ],
+      "answer": 2,
+      "explanation": "From the $y$ components $t = 1 + s$, and the $x$ components $1 + t = 2s$ then give $2 + s = 2s$, so $s = 2$ and $t = 3$. Intersection requires the $z$ components to agree as well: $a + 2t = 1 + s$, that is $a + 6 = 3$, so $a = -3$. The value $a = 3$ flips the sign in the last step, $a = 0$ comes from swapping $t$ and $s$ in the $z$ equation (solving $a + 4 = 4$), and $a = 9$ moves $2t$ across with the wrong sign (computing $a = 1 + s + 2t$). The trap is the final transfer: after $s$ and $t$ are pinned down by two equations, the constant in the third must be isolated with every sign intact.",
+      "difficulty": "stretch",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-008",
+      "stem": "Find an equation of the plane through the point $(1, -2, 3)$ with normal vector $2\\mathbf{i} + \\mathbf{j} - 4\\mathbf{k}$.",
+      "options": [
+        "$2x + y - 4z - 12 = 0$",
+        "$x - 2y + 3z = 14$",
+        "$2x + y - 4z = 0$",
+        "$2x + y - 4z + 12 = 0$"
+      ],
+      "answer": 3,
+      "explanation": "With normal $(2, 1, -4)$ the plane is $2x + y - 4z = d$, and substituting the point gives $d = 2(1) + (-2) - 4(3) = 2 - 2 - 12 = -12$. So $2x + y - 4z = -12$, which rearranges to $2x + y - 4z + 12 = 0$. The option ending in $- 12 = 0$ flips the constant when moving it across the equals sign, the option $x - 2y + 3z = 14$ uses the point itself as the normal, and $2x + y - 4z = 0$ never substitutes the point at all. The trap is the sign of $d$: bringing $-12$ to the left side makes it $+12$, and botching that flip is the classic constant-term error.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 12.5"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-009",
+      "stem": "Find an equation of the plane through the points $A(1, 0, 0)$, $B(0, 2, 0)$, and $C(0, 0, 3)$.",
+      "options": [
+        "$6x + 3y + 2z = 6$",
+        "$x + 2y + 3z = 6$",
+        "$6x + 3y + 2z = 0$",
+        "$6x - 3y + 2z = 6$"
+      ],
+      "answer": 0,
+      "explanation": "Form two edge vectors $\\overrightarrow{AB} = (-1, 2, 0)$ and $\\overrightarrow{AC} = (-1, 0, 3)$; their cross product $(6, 3, 2)$ is normal to the plane. Substituting $A$ gives $6x + 3y + 2z = 6$, and $B$ and $C$ confirm it: $3(2) = 6$ and $2(3) = 6$. The option $x + 2y + 3z = 6$ copies the intercepts straight into the coefficients, but intercept form puts them in denominators: $\\frac{x}{1} + \\frac{y}{2} + \\frac{z}{3} = 1$ clears to the correct equation. The option with right side $0$ forgets to substitute a point, and $6x - 3y + 2z = 6$ carries a sign error in the middle component of the cross product. The trap is writing the intercepts as coefficients; that plane passes through none of the three points.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 12.5"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-010",
+      "stem": "Find an equation of the plane through the point $(2, 1, -1)$ parallel to the plane $3x - y + 2z = 5$.",
+      "options": [
+        "$3x - y + 2z = 5$",
+        "$2x + y - z = 6$",
+        "$3x - y + 2z = 3$",
+        "$3x - y + 2z = -3$"
+      ],
+      "answer": 2,
+      "explanation": "Parallel planes share a normal, so the new plane is $3x - y + 2z = d$ with $d$ fixed by the point: $d = 3(2) - 1(1) + 2(-1) = 6 - 1 - 2 = 3$. The option with right side $5$ keeps the old constant, but that plane misses $(2, 1, -1)$ since the left side evaluates to $3$, not $5$. The option with $-3$ flips the computed constant's sign, and $2x + y - z = 6$ promotes the point's coordinates into a normal. The trap is recycling the original constant: a parallel plane keeps the normal but must recompute $d$ from the new point.",
+      "difficulty": "core",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-011",
+      "stem": "Find a Cartesian equation of the plane that contains the point $P(1, 2, 3)$ and the line $\\mathbf{r} = (1, 0, 1) + t(2, 1, 1)$.",
+      "options": [
+        "$y - z - 1 = 0$",
+        "$y - z + 1 = 0$",
+        "$2x + y + z = 7$",
+        "$x + 2y + 3z = 14$"
+      ],
+      "answer": 1,
+      "explanation": "Take $A(1, 0, 1)$ on the line; then $\\overrightarrow{AP} = (0, 2, 2)$ and the direction $(2, 1, 1)$ both lie in the plane. The normal is their cross product: $(2, 1, 1) \\times (0, 2, 2) = (0, -4, 4)$, proportional to $(0, 1, -1)$. Substituting $P$ gives $y - z = 2 - 3 = -1$, so $y - z + 1 = 0$, and $A$ checks out: $0 - 1 + 1 = 0$. The option $y - z - 1 = 0$ flips the constant and contains neither $A$ nor $P$, the option $2x + y + z = 7$ uses the line's direction as the normal, and $x + 2y + 3z = 14$ uses the coordinates of $P$ as the normal. The trap is the direction-for-normal swap: a vector lying in the plane can never be its normal, which must come from a cross product of two in-plane vectors.",
+      "difficulty": "stretch",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-012",
+      "stem": "Find the angle between two lines whose direction vectors are $\\mathbf{u} = \\mathbf{i} + 2\\mathbf{j} + 2\\mathbf{k}$ and $\\mathbf{v} = 2\\mathbf{i} + 2\\mathbf{j} + \\mathbf{k}$.",
+      "options": [
+        "$\\sin^{-1}\\left(\\dfrac{8}{9}\\right)$",
+        "$\\cos^{-1}\\left(\\dfrac{8}{81}\\right)$",
+        "$\\cos^{-1}\\left(\\dfrac{4}{9}\\right)$",
+        "$\\cos^{-1}\\left(\\dfrac{8}{9}\\right)$"
+      ],
+      "answer": 3,
+      "explanation": "The angle between lines satisfies $\\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$. Here $\\mathbf{u} \\cdot \\mathbf{v} = 2 + 4 + 2 = 8$ and $|\\mathbf{u}| = |\\mathbf{v}| = \\sqrt{9} = 3$, so $\\cos\\theta = \\frac{8}{9}$ and $\\theta = \\cos^{-1}\\left(\\frac{8}{9}\\right)$. The ratio $\\frac{8}{81}$ divides by $|\\mathbf{u}|^2|\\mathbf{v}|^2 = 81$, skipping the square roots; $\\frac{4}{9}$ drops the middle term of the dot product; the $\\sin^{-1}$ option borrows the line-plane formula. The trap is the denominator: magnitudes enter as square roots, and dividing by $9 \\times 9 = 81$ means they were never taken.",
+      "difficulty": "core",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-013",
+      "stem": "Find the angle between the planes $2x - y + z = 4$ and $x + y + 2z = 1$.",
+      "options": [
+        "$60^\\circ$",
+        "$30^\\circ$",
+        "$\\cos^{-1}\\left(\\dfrac{5}{6}\\right)$",
+        "$90^\\circ$"
+      ],
+      "answer": 0,
+      "explanation": "The angle between planes is the angle between their normals: $\\mathbf{n}_1 = (2, -1, 1)$ and $\\mathbf{n}_2 = (1, 1, 2)$ give $\\mathbf{n}_1 \\cdot \\mathbf{n}_2 = 2 - 1 + 2 = 3$ with $|\\mathbf{n}_1| = |\\mathbf{n}_2| = \\sqrt{6}$. Then $\\cos\\theta = \\frac{3}{6} = \\frac{1}{2}$, so $\\theta = 60^\\circ$. The answer $30^\\circ$ is the complement, produced by reaching for the sine formula that belongs to a line and a plane; $\\cos^{-1}\\left(\\frac{5}{6}\\right)$ drops the minus sign in the dot product; $90^\\circ$ would require the normals' dot product to vanish, and $3 \\neq 0$. The trap is the complement: plane-plane angles use cosine with the two normals, and importing the line-plane sine formula hands you $30^\\circ$ instead of $60^\\circ$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 12.5"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-014",
+      "stem": "Find the angle between the line with direction vector $\\mathbf{i} + \\mathbf{k}$ and the plane $x + y = 4$.",
+      "options": [
+        "$60^\\circ$",
+        "$45^\\circ$",
+        "$30^\\circ$",
+        "$90^\\circ$"
+      ],
+      "answer": 2,
+      "explanation": "The angle between a line and a plane uses sine: $\\sin\\theta = \\frac{|\\mathbf{n} \\cdot \\mathbf{d}|}{|\\mathbf{n}||\\mathbf{d}|}$ with $\\mathbf{n} = (1, 1, 0)$ and $\\mathbf{d} = (1, 0, 1)$. Here $\\mathbf{n} \\cdot \\mathbf{d} = 1$ and $|\\mathbf{n}| = |\\mathbf{d}| = \\sqrt{2}$, so $\\sin\\theta = \\frac{1}{2}$ and $\\theta = 30^\\circ$. The answer $60^\\circ$ is the angle between the line and the normal, since $\\cos^{-1}\\left(\\frac{1}{2}\\right) = 60^\\circ$; $45^\\circ$ comes from dividing by only one factor of $\\sqrt{2}$; $90^\\circ$ would need the direction parallel to the normal. The trap is the complement: computing with the normal and quoting $\\cos^{-1}$ gives the angle to the normal, and the angle to the plane is $90^\\circ$ minus that.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 12.5"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-015",
+      "stem": "Find the acute angle between two lines with direction vectors $\\mathbf{u} = \\mathbf{i} + 2\\mathbf{j} + 2\\mathbf{k}$ and $\\mathbf{v} = 3\\mathbf{i} - 4\\mathbf{j}$.",
+      "options": [
+        "$\\cos^{-1}\\left(-\\dfrac{1}{3}\\right)$",
+        "$\\cos^{-1}\\left(\\dfrac{1}{3}\\right)$",
+        "$\\cos^{-1}\\left(\\dfrac{11}{15}\\right)$",
+        "$\\sin^{-1}\\left(\\dfrac{1}{3}\\right)$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $\\mathbf{u} \\cdot \\mathbf{v} = 3 - 8 + 0 = -5$ with $|\\mathbf{u}| = 3$ and $|\\mathbf{v}| = 5$, so the vectors themselves meet at $\\cos^{-1}\\left(-\\frac{1}{3}\\right)$, an obtuse angle. Lines carry no arrows, so the angle between lines is taken acute: use the absolute value, $\\cos\\theta = \\frac{|-5|}{15} = \\frac{1}{3}$, giving $\\cos^{-1}\\left(\\frac{1}{3}\\right)$. The option $\\cos^{-1}\\left(-\\frac{1}{3}\\right)$ is the obtuse companion, $\\cos^{-1}\\left(\\frac{11}{15}\\right)$ comes from adding $3 + 8$ in the dot product, and $\\sin^{-1}\\left(\\frac{1}{3}\\right)$ is the complement. The trap is the negative dot product: it only means the chosen direction vectors point away from each other, and the line-line angle must still be reported acute.",
+      "difficulty": "stretch",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-016",
+      "stem": "Find the distance from the point $(1, 2, 3)$ to the plane $2x + 2y + z = 5$.",
+      "options": [
+        "$4$",
+        "$\\dfrac{4}{9}$",
+        "$\\dfrac{14}{3}$",
+        "$\\dfrac{4}{3}$"
+      ],
+      "answer": 3,
+      "explanation": "The distance is $\\frac{|2(1) + 2(2) + 1(3) - 5|}{\\sqrt{2^2 + 2^2 + 1^2}} = \\frac{|9 - 5|}{3} = \\frac{4}{3}$. The answer $4$ stops at the numerator and never divides by $|\\mathbf{n}| = 3$. The answer $\\frac{4}{9}$ divides by $|\\mathbf{n}|^2 = 9$ instead of $|\\mathbf{n}|$, and $\\frac{14}{3}$ adds the $5$ instead of subtracting it. The trap is the missing magnitude denominator: the bare numerator is not a distance, since it changes if the plane equation is rescaled.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 12.5"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-017",
+      "stem": "Find the distance from the point $P(3, 1, -1)$ to the line through $A(1, 0, 1)$ with direction vector $\\mathbf{d} = \\mathbf{i} + 2\\mathbf{j} + 2\\mathbf{k}$.",
+      "options": [
+        "$3$",
+        "$9$",
+        "$1$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "With $\\overrightarrow{AP} = (2, 1, -2)$, the cross product is $\\overrightarrow{AP} \\times \\mathbf{d} = (6, -6, 3)$, whose magnitude is $\\sqrt{36 + 36 + 9} = 9$. Dividing by $|\\mathbf{d}| = 3$ gives the distance $\\frac{9}{3} = 3$. The answer $9$ skips the division by $|\\mathbf{d}|$, and $1$ divides by $|\\mathbf{d}|^2 = 9$. The answer $0$ comes from computing $\\overrightarrow{AP} \\cdot \\mathbf{d} = 2 + 2 - 4 = 0$ and concluding $P$ lies on the line, but the zero dot product only says $\\overrightarrow{AP}$ is perpendicular to the line. The trap is the magnitude denominator (the cross product must be divided by $|\\mathbf{d}|$), compounded by mistaking the perpendicularity test for a membership test.",
+      "difficulty": "core",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-018",
+      "stem": "Find the distance from the point $(1, 1, 1)$ to the plane $2x - 3y + 6z + 14 = 0$.",
+      "options": [
+        "$19$",
+        "$\\dfrac{9}{7}$",
+        "$\\dfrac{19}{7}$",
+        "$\\dfrac{19}{49}$"
+      ],
+      "answer": 2,
+      "explanation": "For a plane written $ax + by + cz + d = 0$, the distance from $(x_0, y_0, z_0)$ is $\\frac{|ax_0 + by_0 + cz_0 + d|}{\\sqrt{a^2 + b^2 + c^2}}$. Here the numerator is $|2 - 3 + 6 + 14| = 19$ and the denominator is $\\sqrt{4 + 9 + 36} = 7$, so the distance is $\\frac{19}{7}$. The answer $19$ omits the denominator, $\\frac{19}{49}$ divides by $|\\mathbf{n}|^2 = 49$, and $\\frac{9}{7}$ subtracts the $14$ as if the plane were $2x - 3y + 6z = 14$. The trap is the sign of $d$: in the form $ax + by + cz + d = 0$ the constant enters the numerator exactly as written, here $+14$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 12.5"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-019",
+      "stem": "Find the distance between the skew lines $\\mathbf{r}_1 = (1, 0, 0) + t(1, 1, 0)$ and $\\mathbf{r}_2 = (0, 0, 2) + s(0, 1, 1)$.",
+      "options": [
+        "$1$",
+        "$\\sqrt{3}$",
+        "$\\dfrac{1}{3}$",
+        "$\\dfrac{\\sqrt{3}}{3}$"
+      ],
+      "answer": 3,
+      "explanation": "The common perpendicular direction is $\\mathbf{d}_1 \\times \\mathbf{d}_2 = (1, 1, 0) \\times (0, 1, 1) = (1, -1, 1)$, with magnitude $\\sqrt{3}$. The vector between base points is $(0, 0, 2) - (1, 0, 0) = (-1, 0, 2)$, and its dot product with $(1, -1, 1)$ is $-1 + 0 + 2 = 1$. The distance is therefore $\\frac{|1|}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$. The answer $1$ stops at the numerator, $\\sqrt{3}$ multiplies where it should divide, and $\\frac{1}{3}$ divides by $|\\mathbf{d}_1 \\times \\mathbf{d}_2|^2 = 3$. The trap is once more the magnitude denominator: the scalar triple product must be divided by $|\\mathbf{d}_1 \\times \\mathbf{d}_2|$, not by its square and not by nothing.",
+      "difficulty": "stretch",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-020",
+      "stem": "For what value of $k$ is the line with direction vector $(2, k, -1)$ parallel to the plane $3x - y + 4z = 7$?",
+      "options": [
+        "$k = -2$",
+        "$k = 2$",
+        "$k = 10$",
+        "No such $k$ exists"
+      ],
+      "answer": 1,
+      "explanation": "A line is parallel to a plane exactly when its direction is perpendicular to the plane's normal. So $(2, k, -1) \\cdot (3, -1, 4) = 6 - k - 4 = 0$, giving $k = 2$. The answer $k = -2$ flips the sign in the last step, and $k = 10$ botches the sign of the third term (solving $6 - k + 4 = 0$). The choice that no such $k$ exists comes from demanding the direction be parallel to the normal, which is the condition for the line to be perpendicular to the plane (and indeed impossible here, since $\\frac{2}{3} \\neq \\frac{-1}{4}$). The trap is the normal-direction confusion: parallel to the plane means perpendicular to the normal, not aligned with it.",
+      "difficulty": "core",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-021",
+      "stem": "Which of the following planes is perpendicular to the plane $2x - y + 3z = 4$?",
+      "options": [
+        "$4x - 2y + 6z = 1$",
+        "$2x - y + 3z = -4$",
+        "$x + 2y = 7$",
+        "$x + y + z = 6$"
+      ],
+      "answer": 2,
+      "explanation": "Two planes are perpendicular exactly when their normals have zero dot product. For $x + 2y = 7$ the normal is $(1, 2, 0)$, and $(2, -1, 3) \\cdot (1, 2, 0) = 2 - 2 + 0 = 0$, so this is the perpendicular plane. The plane $4x - 2y + 6z = 1$ has normal $2(2, -1, 3)$, so it is parallel, as is $2x - y + 3z = -4$ with the identical normal; and $(2, -1, 3) \\cdot (1, 1, 1) = 4 \\neq 0$ rules out the last option. The trap is reading proportional normals as a sign of perpendicularity: scaled coefficients mean parallel planes, and only a vanishing dot product of normals means perpendicular.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 12.5"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-022",
+      "stem": "Find $k$ such that the lines with direction vectors $(2, 1, -3)$ and $(k, 2, 4)$ are perpendicular.",
+      "options": [
+        "$k = 5$",
+        "$k = -5$",
+        "$k = -7$",
+        "$k = 10$"
+      ],
+      "answer": 0,
+      "explanation": "Perpendicular lines have perpendicular directions, so set the dot product to zero: $2k + (1)(2) + (-3)(4) = 2k + 2 - 12 = 0$. Then $2k = 10$ and $k = 5$. The answer $k = -5$ flips the sign at the end, $k = -7$ takes $(-3)(4)$ as $+12$ and solves $2k + 14 = 0$, and $k = 10$ stops at $2k = 10$ without dividing. The trap is the term $(-3)(4) = -12$: it crosses the equals sign as $+12$, and the final division by $2$ still remains.",
+      "difficulty": "core",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-023",
+      "stem": "Find $k$ so that the line with direction vector $(4, k, -2)$ is perpendicular to the plane $2x - 3y - z = 6$.",
+      "options": [
+        "$k = -3$",
+        "$k = 6$",
+        "$k = \\dfrac{10}{3}$",
+        "$k = -6$"
+      ],
+      "answer": 3,
+      "explanation": "A line is perpendicular to a plane when its direction is parallel to the normal $(2, -3, -1)$. The first components give the scale factor $\\lambda = \\frac{4}{2} = 2$, and the third components confirm it: $-2 = 2(-1)$. So $k = 2(-3) = -6$. The answer $k = -3$ copies the normal's component without the factor $2$, $k = 6$ flips the sign, and $k = \\frac{10}{3}$ solves $\\mathbf{d} \\cdot \\mathbf{n} = 8 - 3k + 2 = 0$, which is the condition for the line to be parallel to the plane. The trap is answering the opposite question: perpendicular to the plane means parallel to the normal, so setting the dot product to zero tests parallelism instead.",
+      "difficulty": "core",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    },
+    {
+      "id": "vectors-and-mechanics-vector-geometry-024",
+      "stem": "Find values of $a$ and $b$ for which the planes $2x + ay - 4z = 3$ and $x - 3y + bz = 7$ are parallel.",
+      "options": [
+        "$a = 6,\\ b = 2$",
+        "$a = -6,\\ b = -2$",
+        "$a = -3,\\ b = -4$",
+        "$a = -6,\\ b = 2$"
+      ],
+      "answer": 1,
+      "explanation": "Parallel planes have proportional normals: $(2, a, -4) = \\lambda(1, -3, b)$ for a single scale factor $\\lambda$. The first components force $\\lambda = 2$, so $a = 2(-3) = -6$, and $-4 = 2b$ gives $b = -2$. The pair $(6, 2)$ flips both signs, $(-3, -4)$ copies coefficients across without any scale factor (silently assuming $\\lambda = 1$), and $(-6, 2)$ solves $-4 = 2b$ with a dropped sign. The trap is the scale factor: one common $\\lambda$ must run through all three components, and matching coefficients pairwise ignores it.",
+      "difficulty": "stretch",
+      "source": "in the style of Weatherburn, Elementary Vector Analysis"
+    }
+  ]
+}
