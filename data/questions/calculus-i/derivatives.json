@@ -1,0 +1,512 @@
+{
+  "courseId": "calculus-i",
+  "topicId": "derivatives",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "calculus-i-derivatives-001",
+      "stem": "Let $f(x) = x^2$. Which limit equals $f'(2)$?",
+      "options": [
+        "$\\displaystyle\\lim_{h\\to 0}\\frac{(2+h)^2 + 4}{h}$",
+        "$\\displaystyle\\lim_{h\\to 0}\\frac{(2+h)^2 - 4}{h}$",
+        "$\\displaystyle\\lim_{h\\to 0}\\frac{(2+h)^2 - 4}{2+h}$",
+        "$\\displaystyle\\lim_{x\\to 2}\\frac{x^2 - 4}{x}$"
+      ],
+      "answer": 1,
+      "explanation": "The definition gives $f'(2) = \\lim_{h\\to 0}\\frac{f(2+h) - f(2)}{h}$. Here $f(2+h) = (2+h)^2$ and $f(2) = 4$, so the correct limit is $\\lim_{h\\to 0}\\frac{(2+h)^2 - 4}{h}$, the average rate of change over a shrinking interval. The version with $+4$ adds the function value instead of subtracting it, so its numerator does not vanish and the limit blows up. Dividing by $2+h$ instead of $h$ forgets that the denominator must be the run between the two inputs, and the $x \\to 2$ version needs denominator $x - 2$, not $x$. The trap is matching the pieces $(2+h)^2$ and $4$ without checking that the quotient has the exact form of difference of outputs over difference of inputs.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 2.7"
+    },
+    {
+      "id": "calculus-i-derivatives-002",
+      "stem": "Differentiate $f(x) = x^5 - 4x^3 + 7x - 2$.",
+      "options": [
+        "$f'(x) = 5x^4 - 12x^2 + 7$",
+        "$f'(x) = x^4 - 4x^2 + 7$",
+        "$f'(x) = 5x^4 - 12x^2 + 7x$",
+        "$f'(x) = 5x^4 - 12x^2$"
+      ],
+      "answer": 0,
+      "explanation": "Apply the power rule term by term: $\\frac{d}{dx}x^5 = 5x^4$, $\\frac{d}{dx}(-4x^3) = -12x^2$, $\\frac{d}{dx}(7x) = 7$, and the constant $-2$ differentiates to $0$. Collecting terms gives $f'(x) = 5x^4 - 12x^2 + 7$. The rule is multiply by the old exponent, then lower the exponent by one. The traps: $x^4 - 4x^2 + 7$ lowers each exponent but never multiplies by it, $5x^4 - 12x^2 + 7x$ leaves the linear term $7x$ undifferentiated, and $5x^4 - 12x^2$ kills the $7x$ term as if it were a constant.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 3.1"
+    },
+    {
+      "id": "calculus-i-derivatives-003",
+      "stem": "Differentiate $f(x) = x^2 \\sin x$.",
+      "options": [
+        "$f'(x) = 2x\\cos x$",
+        "$f'(x) = x^2\\cos x$",
+        "$f'(x) = 2x\\sin x + x^2\\cos x$",
+        "$f'(x) = 2x\\sin x$"
+      ],
+      "answer": 2,
+      "explanation": "The product rule gives $f'(x) = (x^2)'\\sin x + x^2(\\sin x)' = 2x\\sin x + x^2\\cos x$. Both terms are needed because both factors vary with $x$. The headline trap is $2x\\cos x$, the product of the two derivatives, which is not how differentiation interacts with products. The options $x^2\\cos x$ and $2x\\sin x$ each differentiate one factor while freezing the other, which is only valid when the frozen factor is a genuine constant.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 3.2"
+    },
+    {
+      "id": "calculus-i-derivatives-004",
+      "stem": "Differentiate $f(x) = (2x + 5)^3$.",
+      "options": [
+        "$f'(x) = 3(2x+5)^2$",
+        "$f'(x) = 6(2x+5)^2$",
+        "$f'(x) = 6(2x+5)^3$",
+        "$f'(x) = 2(2x+5)^2$"
+      ],
+      "answer": 1,
+      "explanation": "Write $f(x) = u^3$ with $u = 2x + 5$. The chain rule gives $f'(x) = 3u^2 \\cdot u' = 3(2x+5)^2 \\cdot 2 = 6(2x+5)^2$. The most common trap is $3(2x+5)^2$, which applies the power rule to the outside but never multiplies by the inner derivative $2$. The option $6(2x+5)^3$ multiplies by the exponent and the inner derivative but forgets to lower the exponent, and $2(2x+5)^2$ keeps the inner derivative while dropping the factor of $3$ from the power rule.",
+      "difficulty": "warmup",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-derivatives-005",
+      "stem": "Differentiate $f(x) = 4\\sin x - 2\\cos x$.",
+      "options": [
+        "$f'(x) = 4\\cos x - 2\\sin x$",
+        "$f'(x) = -4\\cos x - 2\\sin x$",
+        "$f'(x) = -4\\cos x + 2\\sin x$",
+        "$f'(x) = 4\\cos x + 2\\sin x$"
+      ],
+      "answer": 3,
+      "explanation": "Use $\\frac{d}{dx}\\sin x = \\cos x$ and $\\frac{d}{dx}\\cos x = -\\sin x$ term by term: the first term gives $4\\cos x$ and the second gives $-2(-\\sin x) = +2\\sin x$. So $f'(x) = 4\\cos x + 2\\sin x$. The trap $4\\cos x - 2\\sin x$ uses $\\frac{d}{dx}\\cos x = +\\sin x$ and so misses the double negative on the cosine term. The option $-4\\cos x - 2\\sin x$ is the antiderivative of $f$, not the derivative, and $-4\\cos x + 2\\sin x$ attaches the minus sign to the sine derivative instead of the cosine derivative.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 3.3"
+    },
+    {
+      "id": "calculus-i-derivatives-006",
+      "stem": "Find $\\dfrac{dy}{dx}$ if $x^2 + y^2 = 25$.",
+      "options": [
+        "$\\dfrac{dy}{dx} = \\dfrac{x}{y}$",
+        "$\\dfrac{dy}{dx} = -\\dfrac{y}{x}$",
+        "$\\dfrac{dy}{dx} = -\\dfrac{x}{y}$",
+        "$\\dfrac{dy}{dx} = -\\dfrac{2x}{y}$"
+      ],
+      "answer": 2,
+      "explanation": "Differentiate both sides with respect to $x$, remembering that $y$ is a function of $x$: $2x + 2y\\dfrac{dy}{dx} = 0$. Solving gives $\\dfrac{dy}{dx} = -\\dfrac{2x}{2y} = -\\dfrac{x}{y}$. The chain rule is what produces the $\\dfrac{dy}{dx}$ attached to the $y^2$ term. The traps: $\\dfrac{x}{y}$ loses the minus sign when the $2x$ term crosses the equals sign, $-\\dfrac{y}{x}$ solves for the reciprocal, and $-\\dfrac{2x}{y}$ drops the factor of $2$ produced when $y^2$ is differentiated, leaving the coefficients unbalanced.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.5"
+    },
+    {
+      "id": "calculus-i-derivatives-007",
+      "stem": "Find the equation of the tangent line to $y = x^2$ at the point $(3, 9)$.",
+      "options": [
+        "$y = 6x - 18$",
+        "$y = 6x - 9$",
+        "$y = 9x - 18$",
+        "$y = 6x$"
+      ],
+      "answer": 1,
+      "explanation": "The derivative is $y' = 2x$, so the slope at $x = 3$ is $m = 6$. Point-slope form through $(3, 9)$ gives $y - 9 = 6(x - 3)$, which simplifies to $y = 6x - 18 + 9 = 6x - 9$. Check: at $x = 3$ the line gives $y = 9$, matching the point of tangency. The traps: $y = 6x - 18$ writes $y = 6(x - 3)$ and forgets to add back the $y$-coordinate $9$, $y = 9x - 18$ uses the function value $9$ as the slope instead of the derivative, and $y = 6x$ has the right slope but is never anchored at the point.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 2.7"
+    },
+    {
+      "id": "calculus-i-derivatives-008",
+      "stem": "Using the limit definition of the derivative, compute $f'(x)$ for $f(x) = x^2 - 3x$.",
+      "options": [
+        "$f'(x) = 2x$",
+        "$f'(x) = 2x + 3$",
+        "$f'(x) = 2x - 3$",
+        "$f'(x) = 2x + h - 3$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $f(x+h) = (x+h)^2 - 3(x+h) = x^2 + 2xh + h^2 - 3x - 3h$. Subtracting $f(x) = x^2 - 3x$ leaves $2xh + h^2 - 3h$, and dividing by $h$ gives $2x + h - 3$. Letting $h \\to 0$ removes the lone $h$, so $f'(x) = 2x - 3$. The traps: $2x + h - 3$ stops before taking the limit, so $h$ illegally survives into the answer, $2x$ forgets to distribute the $-3$ over $(x+h)$ and so loses the $-3h$ term, and $2x + 3$ comes from a sign slip that turns the $-3x$ term into $+3x$ during the subtraction.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.8"
+    },
+    {
+      "id": "calculus-i-derivatives-009",
+      "stem": "Differentiate $f(x) = \\dfrac{3}{x^2} - \\dfrac{2}{x}$.",
+      "options": [
+        "$f'(x) = -\\dfrac{6}{x^3} - \\dfrac{2}{x^2}$",
+        "$f'(x) = -\\dfrac{6}{x^3} + \\dfrac{2}{x^2}$",
+        "$f'(x) = \\dfrac{6}{x^3} - \\dfrac{2}{x^2}$",
+        "$f'(x) = -\\dfrac{6}{x} + 2$"
+      ],
+      "answer": 1,
+      "explanation": "Rewrite with negative exponents: $f(x) = 3x^{-2} - 2x^{-1}$. The power rule gives $f'(x) = 3(-2)x^{-3} - 2(-1)x^{-2} = -6x^{-3} + 2x^{-2}$, which is $-\\dfrac{6}{x^3} + \\dfrac{2}{x^2}$. The second term turns positive because of the double negative. The traps: $-\\dfrac{6}{x^3} - \\dfrac{2}{x^2}$ misses that double negative on the second term, $\\dfrac{6}{x^3} - \\dfrac{2}{x^2}$ multiplies down the sizes of the exponents while ignoring their negative signs, and $-\\dfrac{6}{x} + 2$ raises each exponent by one instead of lowering it.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-derivatives-010",
+      "stem": "Differentiate $f(x) = \\dfrac{3x + 1}{x^2 + 2}$.",
+      "options": [
+        "$f'(x) = \\dfrac{3}{2x}$",
+        "$f'(x) = \\dfrac{3x^2 + 2x - 6}{(x^2+2)^2}$",
+        "$f'(x) = \\dfrac{-3x^2 - 2x + 6}{(x^2+2)^2}$",
+        "$f'(x) = \\dfrac{-3x^2 - 2x + 6}{x^2+2}$"
+      ],
+      "answer": 2,
+      "explanation": "Quotient rule with $u = 3x + 1$ and $v = x^2 + 2$: $f'(x) = \\dfrac{u'v - uv'}{v^2} = \\dfrac{3(x^2+2) - (3x+1)(2x)}{(x^2+2)^2}$. The numerator expands to $3x^2 + 6 - 6x^2 - 2x = -3x^2 - 2x + 6$. So $f'(x) = \\dfrac{-3x^2 - 2x + 6}{(x^2+2)^2}$. The traps: $\\dfrac{3x^2 + 2x - 6}{(x^2+2)^2}$ flips the order in the numerator, putting top times derivative-of-bottom first, which negates the whole answer, $\\dfrac{3}{2x}$ just divides the two derivatives, and the last option forgets to square the denominator.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.2"
+    },
+    {
+      "id": "calculus-i-derivatives-011",
+      "stem": "Differentiate $f(x) = \\sqrt{x^2 + 9}$.",
+      "options": [
+        "$f'(x) = \\dfrac{1}{2\\sqrt{x^2+9}}$",
+        "$f'(x) = \\dfrac{2x}{\\sqrt{x^2+9}}$",
+        "$f'(x) = x\\sqrt{x^2+9}$",
+        "$f'(x) = \\dfrac{x}{\\sqrt{x^2+9}}$"
+      ],
+      "answer": 3,
+      "explanation": "Write $f(x) = (x^2+9)^{1/2}$ and apply the chain rule: $f'(x) = \\frac{1}{2}(x^2+9)^{-1/2}\\cdot 2x$. The $\\frac{1}{2}$ from the root and the factor $2$ from the inner derivative $2x$ cancel, leaving $f'(x) = \\dfrac{x}{\\sqrt{x^2+9}}$. The traps: $\\dfrac{1}{2\\sqrt{x^2+9}}$ differentiates the square root but skips the inner derivative entirely, $\\dfrac{2x}{\\sqrt{x^2+9}}$ keeps the inner derivative but drops the $\\frac{1}{2}$ from the root, and $x\\sqrt{x^2+9}$ never lowers the exponent from $\\frac{1}{2}$ to $-\\frac{1}{2}$, leaving the root upstairs.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.4"
+    },
+    {
+      "id": "calculus-i-derivatives-012",
+      "stem": "Differentiate $f(x) = \\tan(3x)$.",
+      "options": [
+        "$f'(x) = \\sec^2(3x)$",
+        "$f'(x) = 3\\sec(3x)\\tan(3x)$",
+        "$f'(x) = -3\\csc^2(3x)$",
+        "$f'(x) = 3\\sec^2(3x)$"
+      ],
+      "answer": 3,
+      "explanation": "With $u = 3x$, the rule $\\frac{d}{dx}\\tan u = \\sec^2 u \\cdot u'$ gives $f'(x) = \\sec^2(3x)\\cdot 3 = 3\\sec^2(3x)$. The derivative of tangent is secant squared, and the chain rule contributes the factor $3$ from the inside. The traps: $\\sec^2(3x)$ forgets the inner derivative, $3\\sec(3x)\\tan(3x)$ reaches for the derivative formula of secant instead of tangent, and $-3\\csc^2(3x)$ uses the cotangent formula, importing both the wrong function and the wrong sign.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-derivatives-013",
+      "stem": "Find $\\dfrac{dy}{dx}$ if $x^2 + xy + y^2 = 7$.",
+      "options": [
+        "$\\dfrac{dy}{dx} = \\dfrac{2x + y}{x + 2y}$",
+        "$\\dfrac{dy}{dx} = -\\dfrac{2x + y}{x + 2y}$",
+        "$\\dfrac{dy}{dx} = -\\dfrac{2x}{x + 2y}$",
+        "$\\dfrac{dy}{dx} = -\\dfrac{2x + y}{2y}$"
+      ],
+      "answer": 1,
+      "explanation": "Differentiate every term with respect to $x$: $2x + \\left(y + x\\dfrac{dy}{dx}\\right) + 2y\\dfrac{dy}{dx} = 0$, where the middle term needs the product rule because $xy$ is a product of two varying quantities. Group the derivative terms: $\\dfrac{dy}{dx}(x + 2y) = -(2x + y)$, so $\\dfrac{dy}{dx} = -\\dfrac{2x+y}{x+2y}$. The traps: the positive version loses the minus sign while isolating $\\dfrac{dy}{dx}$, $-\\dfrac{2x}{x+2y}$ writes the derivative of $xy$ as $x\\dfrac{dy}{dx}$ alone and drops the $y$ from the product rule, and $-\\dfrac{2x+y}{2y}$ writes it as $y$ alone and drops the $x\\dfrac{dy}{dx}$ piece instead.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 3.5"
+    },
+    {
+      "id": "calculus-i-derivatives-014",
+      "stem": "Find the equation of the tangent line to $y = \\dfrac{1}{x}$ at $x = 2$.",
+      "options": [
+        "$y = \\dfrac{x}{4}$",
+        "$y = -\\dfrac{x}{4} + 1$",
+        "$y = -\\dfrac{x}{2} + \\dfrac{3}{2}$",
+        "$y = -\\dfrac{1}{4}$"
+      ],
+      "answer": 1,
+      "explanation": "The point of tangency is $\\left(2, \\frac{1}{2}\\right)$ and the derivative is $y' = -\\dfrac{1}{x^2}$, so the slope is $m = -\\dfrac{1}{4}$. Point-slope: $y - \\dfrac{1}{2} = -\\dfrac{1}{4}(x - 2)$, which simplifies to $y = -\\dfrac{x}{4} + \\dfrac{1}{2} + \\dfrac{1}{2} = -\\dfrac{x}{4} + 1$. The traps: $y = \\dfrac{x}{4}$ drops the minus sign in $\\frac{d}{dx}x^{-1} = -x^{-2}$, $y = -\\dfrac{x}{2} + \\dfrac{3}{2}$ uses slope $-\\dfrac{1}{2}$ from forgetting to square the denominator, and $y = -\\dfrac{1}{4}$ reports the slope as if it were the tangent line, the classic slope versus equation confusion.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.7"
+    },
+    {
+      "id": "calculus-i-derivatives-015",
+      "stem": "Using the limit definition of the derivative, compute $f'(x)$ for $f(x) = \\dfrac{1}{x}$.",
+      "options": [
+        "$f'(x) = \\dfrac{1}{x^2}$",
+        "$f'(x) = -\\dfrac{1}{x}$",
+        "$f'(x) = -\\dfrac{1}{x^2}$",
+        "$f'(x) = 0$"
+      ],
+      "answer": 2,
+      "explanation": "Form the difference quotient: $\\dfrac{1}{h}\\left(\\dfrac{1}{x+h} - \\dfrac{1}{x}\\right) = \\dfrac{1}{h}\\cdot\\dfrac{x - (x+h)}{x(x+h)} = \\dfrac{-h}{h\\,x(x+h)}$. Cancel $h$ to get $\\dfrac{-1}{x(x+h)}$, then let $h \\to 0$ to find $f'(x) = -\\dfrac{1}{x^2}$. The traps: $\\dfrac{1}{x^2}$ loses the minus sign when simplifying $x - (x+h) = -h$, $-\\dfrac{1}{x}$ drops one factor of $x$ from the denominator $x(x+h)$, and $0$ reads the vanishing numerator as the answer even though the denominator vanishes too.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.8"
+    },
+    {
+      "id": "calculus-i-derivatives-016",
+      "stem": "Differentiate $f(x) = 2x^{3/2} - 8\\sqrt{x}$.",
+      "options": [
+        "$f'(x) = 3\\sqrt{x} - \\dfrac{8}{\\sqrt{x}}$",
+        "$f'(x) = 3\\sqrt{x} - \\dfrac{4}{\\sqrt{x}}$",
+        "$f'(x) = 2\\sqrt{x} - \\dfrac{8}{\\sqrt{x}}$",
+        "$f'(x) = 3x^{5/2} - 4x^{3/2}$"
+      ],
+      "answer": 1,
+      "explanation": "Write the function as $2x^{3/2} - 8x^{1/2}$ and use the power rule: $2\\cdot\\frac{3}{2}x^{1/2} - 8\\cdot\\frac{1}{2}x^{-1/2} = 3x^{1/2} - 4x^{-1/2}$. In radical form that is $3\\sqrt{x} - \\dfrac{4}{\\sqrt{x}}$. Fractional exponents follow the same rule as whole numbers: multiply by the exponent, then subtract one from it. The traps: $3\\sqrt{x} - \\dfrac{8}{\\sqrt{x}}$ uses $\\frac{d}{dx}\\sqrt{x} = \\frac{1}{\\sqrt{x}}$ and misses the factor of one half, $2\\sqrt{x} - \\dfrac{8}{\\sqrt{x}}$ lowers the exponents without ever multiplying by them, and $3x^{5/2} - 4x^{3/2}$ adds one to each exponent instead of subtracting.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-derivatives-017",
+      "stem": "Find the slope of the curve $y = \\dfrac{x}{x+1}$ at $x = 1$.",
+      "options": [
+        "$-\\dfrac{1}{4}$",
+        "$1$",
+        "$\\dfrac{1}{4}$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "answer": 2,
+      "explanation": "Quotient rule: $y' = \\dfrac{(x+1)\\cdot 1 - x\\cdot 1}{(x+1)^2} = \\dfrac{1}{(x+1)^2}$. At $x = 1$ this gives $\\dfrac{1}{(1+1)^2} = \\dfrac{1}{4}$. The traps: $-\\dfrac{1}{4}$ comes from flipping the quotient rule order and computing $x\\cdot 1 - (x+1)\\cdot 1 = -1$ in the numerator, $1$ is the quotient of the two derivatives $\\frac{1}{1}$, and $\\dfrac{1}{2}$ forgets to square the denominator, evaluating $\\dfrac{1}{x+1}$ at $x = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.2"
+    },
+    {
+      "id": "calculus-i-derivatives-018",
+      "stem": "Differentiate $f(x) = (1 + \\sqrt{x})^4$.",
+      "options": [
+        "$f'(x) = 4(1+\\sqrt{x})^3$",
+        "$f'(x) = \\dfrac{2(1+\\sqrt{x})^3}{\\sqrt{x}}$",
+        "$f'(x) = \\dfrac{4(1+\\sqrt{x})^3}{\\sqrt{x}}$",
+        "$f'(x) = 2(1+\\sqrt{x})^3$"
+      ],
+      "answer": 1,
+      "explanation": "This is a composition with outer fourth power and inner $1 + \\sqrt{x}$. The chain rule gives $f'(x) = 4(1+\\sqrt{x})^3 \\cdot \\dfrac{1}{2\\sqrt{x}} = \\dfrac{2(1+\\sqrt{x})^3}{\\sqrt{x}}$, since $4 \\cdot \\frac{1}{2} = 2$. The inner derivative is $\\frac{d}{dx}(1 + \\sqrt{x}) = \\dfrac{1}{2\\sqrt{x}}$. The traps: $4(1+\\sqrt{x})^3$ stops after the outer power rule and skips the inner derivative, $\\dfrac{4(1+\\sqrt{x})^3}{\\sqrt{x}}$ uses $\\dfrac{1}{\\sqrt{x}}$ for the derivative of $\\sqrt{x}$, missing the half, and $2(1+\\sqrt{x})^3$ treats the inner derivative as the bare constant $\\frac{1}{2}$, losing the $\\sqrt{x}$ in the denominator.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.4"
+    },
+    {
+      "id": "calculus-i-derivatives-019",
+      "stem": "Find the slope of the curve $y = \\cos x$ at $x = \\dfrac{\\pi}{6}$.",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "$-\\dfrac{1}{2}$",
+        "$\\dfrac{\\sqrt{3}}{2}$",
+        "$-\\dfrac{\\sqrt{3}}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "The slope function is the derivative: $y' = -\\sin x$. At $x = \\frac{\\pi}{6}$ this gives $-\\sin\\frac{\\pi}{6} = -\\frac{1}{2}$. The traps: $\\frac{1}{2}$ uses $\\frac{d}{dx}\\cos x = +\\sin x$, the single most common trig sign error, $\\frac{\\sqrt{3}}{2}$ evaluates the function value $\\cos\\frac{\\pi}{6}$ itself, confusing the height of the curve with its slope, and $-\\frac{\\sqrt{3}}{2}$ differentiates cosine to $-\\cos x$, keeping the right sign but the wrong function.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.3"
+    },
+    {
+      "id": "calculus-i-derivatives-020",
+      "stem": "Find the slope of the curve $x^3 + y^3 = 9$ at the point $(1, 2)$.",
+      "options": [
+        "$-\\dfrac{1}{4}$",
+        "$\\dfrac{1}{4}$",
+        "$-4$",
+        "$-\\dfrac{1}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "Differentiate implicitly: $3x^2 + 3y^2\\dfrac{dy}{dx} = 0$, so $\\dfrac{dy}{dx} = -\\dfrac{x^2}{y^2}$. At $(1, 2)$ the slope is $-\\dfrac{1}{4}$, and the point does lie on the curve since $1 + 8 = 9$. The traps: $\\dfrac{1}{4}$ loses the minus sign when the $3x^2$ term is moved across the equals sign, $-4$ solves for the reciprocal $-\\dfrac{y^2}{x^2}$, and $-\\dfrac{1}{2}$ uses $-\\dfrac{x}{y}$, forgetting that the power rule squares both variables here.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-derivatives-021",
+      "stem": "Find the equation of the tangent line to $y = e^x$ at $x = 0$.",
+      "options": [
+        "$y = x$",
+        "$y = 1$",
+        "$y = x + 1$",
+        "$y = x - 1$"
+      ],
+      "answer": 2,
+      "explanation": "Since $\\frac{d}{dx}e^x = e^x$, the slope at $x = 0$ is $e^0 = 1$, and the point of tangency is $(0, 1)$. Point-slope gives $y - 1 = 1\\cdot(x - 0)$, so $y = x + 1$. The headline trap is $y = 1$: applying the power rule to $e^x$ as if it were a power function gives the bogus derivative $xe^{x-1}$, which is $0$ at $x = 0$ and produces a horizontal line. The power rule needs a variable base and constant exponent, and $e^x$ is the opposite. The remaining traps mishandle the anchor point: $y = x$ forgets that the curve passes through $(0, 1)$, and $y = x - 1$ makes a sign slip on the $y$-coordinate in point-slope form.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.1"
+    },
+    {
+      "id": "calculus-i-derivatives-022",
+      "stem": "Using the limit definition of the derivative, compute $f'(x)$ for $f(x) = \\sqrt{x}$.",
+      "options": [
+        "$f'(x) = \\dfrac{1}{2\\sqrt{x}}$",
+        "$f'(x) = \\dfrac{1}{\\sqrt{x}}$",
+        "$f'(x) = -\\dfrac{1}{2\\sqrt{x}}$",
+        "$f'(x) = \\dfrac{\\sqrt{x}}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "The difference quotient is $\\dfrac{\\sqrt{x+h} - \\sqrt{x}}{h}$; multiply top and bottom by the conjugate $\\sqrt{x+h} + \\sqrt{x}$. The numerator becomes $(x + h) - x = h$, so after cancelling $h$ the quotient is $\\dfrac{1}{\\sqrt{x+h} + \\sqrt{x}}$. Letting $h \\to 0$ gives $\\dfrac{1}{\\sqrt{x} + \\sqrt{x}} = \\dfrac{1}{2\\sqrt{x}}$. The traps: $\\dfrac{1}{\\sqrt{x}}$ forgets that the two root terms in the denominator add to $2\\sqrt{x}$, $-\\dfrac{1}{2\\sqrt{x}}$ subtracts in the wrong order when expanding the conjugate product, and $\\dfrac{\\sqrt{x}}{2}$ multiplies by $\\frac{1}{2}$ without ever lowering the exponent, a power rule slip pasted onto a definition problem.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 2.8"
+    },
+    {
+      "id": "calculus-i-derivatives-023",
+      "stem": "Differentiate $f(x) = 2^x$.",
+      "options": [
+        "$f'(x) = x\\,2^{x-1}$",
+        "$f'(x) = 2^x$",
+        "$f'(x) = 2^x \\ln 2$",
+        "$f'(x) = \\dfrac{2^x}{\\ln 2}$"
+      ],
+      "answer": 2,
+      "explanation": "For a general base, $\\frac{d}{dx}a^x = a^x \\ln a$, so $f'(x) = 2^x \\ln 2$. One way to see it: $2^x = e^{x\\ln 2}$, and the chain rule brings down the constant $\\ln 2$. The headline trap is $x\\,2^{x-1}$, the power rule applied to an exponential; the power rule needs a constant exponent and a variable base, and here it is the other way around. The option $2^x$ forgets the $\\ln 2$ factor, treating base $2$ like base $e$, and $\\dfrac{2^x}{\\ln 2}$ divides instead of multiplies, which is the antiderivative of $2^x$ rather than its derivative.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.4"
+    },
+    {
+      "id": "calculus-i-derivatives-024",
+      "stem": "Differentiate $g(x) = \\sqrt{x}\\,(x - 4)$.",
+      "options": [
+        "$g'(x) = \\dfrac{1}{2\\sqrt{x}}$",
+        "$g'(x) = \\dfrac{x - 4}{2\\sqrt{x}}$",
+        "$g'(x) = \\sqrt{x}$",
+        "$g'(x) = \\dfrac{3x - 4}{2\\sqrt{x}}$"
+      ],
+      "answer": 3,
+      "explanation": "Product rule with $u = \\sqrt{x}$ and $v = x - 4$: $g'(x) = \\dfrac{1}{2\\sqrt{x}}(x - 4) + \\sqrt{x}\\cdot 1$. Put both terms over the common denominator $2\\sqrt{x}$: the second term is $\\dfrac{2x}{2\\sqrt{x}}$, so $g'(x) = \\dfrac{x - 4 + 2x}{2\\sqrt{x}} = \\dfrac{3x - 4}{2\\sqrt{x}}$. The traps: $\\dfrac{1}{2\\sqrt{x}}$ multiplies the two derivatives together, the classic product rule shortcut that fails, $\\dfrac{x-4}{2\\sqrt{x}}$ differentiates only the root and freezes $x - 4$, and $\\sqrt{x}$ differentiates only the linear factor and freezes the root.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-derivatives-025",
+      "stem": "Differentiate $f(x) = e^{3x^2}$.",
+      "options": [
+        "$f'(x) = e^{3x^2}$",
+        "$f'(x) = 6x\\,e^{3x^2}$",
+        "$f'(x) = e^{6x}$",
+        "$f'(x) = 3x^2 e^{3x^2 - 1}$"
+      ],
+      "answer": 1,
+      "explanation": "The chain rule for exponentials says $\\frac{d}{dx}e^u = e^u\\,u'$ with $u = 3x^2$, so $f'(x) = e^{3x^2}\\cdot 6x = 6x\\,e^{3x^2}$. The exponential shell is copied unchanged and multiplied by the derivative of the exponent. The traps: $e^{3x^2}$ skips the inner derivative entirely, $e^{6x}$ differentiates the exponent in place instead of multiplying by its derivative, and $3x^2 e^{3x^2 - 1}$ applies the power rule to an exponential, treating $e^{3x^2}$ as if the variable were in the base rather than the exponent.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.4"
+    },
+    {
+      "id": "calculus-i-derivatives-026",
+      "stem": "Differentiate $f(x) = \\sin^2 x$.",
+      "options": [
+        "$f'(x) = 2\\sin x$",
+        "$f'(x) = \\cos^2 x$",
+        "$f'(x) = -2\\sin x\\cos x$",
+        "$f'(x) = 2\\sin x\\cos x$"
+      ],
+      "answer": 3,
+      "explanation": "Write $f(x) = (\\sin x)^2$ and use the chain rule: the outer power rule gives $2\\sin x$ and the inner derivative contributes $\\cos x$, so $f'(x) = 2\\sin x\\cos x$. The traps: $2\\sin x$ stops after the outer layer and forgets the inner derivative, $\\cos^2 x$ pushes the derivative inside the square and differentiates only the sine while leaving the structure untouched, and $-2\\sin x\\cos x$ uses $\\frac{d}{dx}\\sin x = -\\cos x$, attaching the minus sign that belongs to cosine's derivative.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.4"
+    },
+    {
+      "id": "calculus-i-derivatives-027",
+      "stem": "Evaluate $\\displaystyle\\lim_{h\\to 0}\\frac{\\sin\\left(\\frac{\\pi}{6} + h\\right) - \\sin\\frac{\\pi}{6}}{h}$ by recognizing it as a derivative.",
+      "options": [
+        "$\\dfrac{\\sqrt{3}}{2}$",
+        "$\\dfrac{1}{2}$",
+        "$-\\dfrac{\\sqrt{3}}{2}$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "This is exactly the limit definition of $f'(a)$ with $f(x) = \\sin x$ and $a = \\frac{\\pi}{6}$. Since $\\frac{d}{dx}\\sin x = \\cos x$, the limit equals $\\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}$. No algebraic expansion is needed once the difference quotient is recognized. The traps: $\\frac{1}{2}$ evaluates $\\sin\\frac{\\pi}{6}$, the function value rather than the derivative, $-\\frac{\\sqrt{3}}{2}$ uses $\\frac{d}{dx}\\sin x = -\\cos x$, a trig sign error, and $0$ is the reflex that a numerator going to $0$ forces a zero limit, ignoring the vanishing denominator.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.7"
+    },
+    {
+      "id": "calculus-i-derivatives-028",
+      "stem": "Find the equation of the tangent line to the circle $x^2 + y^2 = 25$ at the point $(3, -4)$.",
+      "options": [
+        "$y = -\\dfrac{3}{4}x - \\dfrac{7}{4}$",
+        "$y = \\dfrac{3}{4}x + \\dfrac{7}{4}$",
+        "$y = \\dfrac{3}{4}x - \\dfrac{25}{4}$",
+        "$y = \\dfrac{3}{4}x$"
+      ],
+      "answer": 2,
+      "explanation": "Implicit differentiation gives $2x + 2y\\dfrac{dy}{dx} = 0$, so $\\dfrac{dy}{dx} = -\\dfrac{x}{y}$, and at $(3, -4)$ the slope is $-\\dfrac{3}{-4} = \\dfrac{3}{4}$. Point-slope through $(3, -4)$: $y + 4 = \\dfrac{3}{4}(x - 3)$, so $y = \\dfrac{3}{4}x - \\dfrac{9}{4} - 4 = \\dfrac{3}{4}x - \\dfrac{25}{4}$. Check: at $x = 3$ the line gives $y = \\dfrac{9 - 25}{4} = -4$. The traps: $y = -\\dfrac{3}{4}x - \\dfrac{7}{4}$ ignores the minus sign on the $y$-coordinate when evaluating $-\\dfrac{x}{y}$, $y = \\dfrac{3}{4}x + \\dfrac{7}{4}$ writes $y - 4$ instead of $y + 4$ in point-slope, the classic sign slip at a negative point, and $y = \\dfrac{3}{4}x$ never anchors the line at the point.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 3.5"
+    },
+    {
+      "id": "calculus-i-derivatives-029",
+      "stem": "Differentiate $f(x) = \\dfrac{x^2}{2x + 1}$.",
+      "options": [
+        "$f'(x) = \\dfrac{-2x^2 - 2x}{(2x+1)^2}$",
+        "$f'(x) = \\dfrac{2x^2 + 2x}{2x+1}$",
+        "$f'(x) = x$",
+        "$f'(x) = \\dfrac{2x^2 + 2x}{(2x+1)^2}$"
+      ],
+      "answer": 3,
+      "explanation": "Quotient rule: $f'(x) = \\dfrac{2x(2x+1) - x^2\\cdot 2}{(2x+1)^2}$. The numerator is $4x^2 + 2x - 2x^2 = 2x^2 + 2x$, so $f'(x) = \\dfrac{2x^2 + 2x}{(2x+1)^2}$. Remember the order: derivative of the top times the bottom comes first in the numerator. The traps: $\\dfrac{-2x^2 - 2x}{(2x+1)^2}$ flips that order and negates the entire numerator, $x$ is the quotient of the two derivatives $\\dfrac{2x}{2}$, and $\\dfrac{2x^2 + 2x}{2x+1}$ forgets to square the denominator.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-derivatives-030",
+      "stem": "Find the slope of $f(x) = x^3$ at $x = -2$.",
+      "options": [
+        "$12$",
+        "$-12$",
+        "$-8$",
+        "$-6$"
+      ],
+      "answer": 0,
+      "explanation": "The slope at a point is the derivative there: $f'(x) = 3x^2$, so $f'(-2) = 3(-2)^2 = 3\\cdot 4 = 12$. Squaring the negative input gives a positive number before multiplying by $3$. The traps: $-12$ treats $(-2)^2$ as $-4$, the standard sign slip at a negative evaluation point, $-8$ computes the function value $f(-2) = (-2)^3$, confusing the height of the curve with its slope, and $-6$ writes the derivative as $3x$ and evaluates that instead.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 2.7"
+    },
+    {
+      "id": "calculus-i-derivatives-031",
+      "stem": "Differentiate $f(x) = \\dfrac{\\cos x}{1 - \\sin x}$ and simplify.",
+      "options": [
+        "$f'(x) = \\tan x$",
+        "$f'(x) = \\dfrac{1}{1 - \\sin x}$",
+        "$f'(x) = -\\dfrac{1}{1 - \\sin x}$",
+        "$f'(x) = \\dfrac{2\\sin x + 1}{1 - \\sin x}$"
+      ],
+      "answer": 1,
+      "explanation": "Quotient rule: $f'(x) = \\dfrac{-\\sin x(1 - \\sin x) - \\cos x(-\\cos x)}{(1 - \\sin x)^2}$. The numerator is $-\\sin x + \\sin^2 x + \\cos^2 x = 1 - \\sin x$ by the Pythagorean identity. Cancelling one factor of $1 - \\sin x$ leaves $f'(x) = \\dfrac{1}{1 - \\sin x}$. The traps: $-\\dfrac{1}{1 - \\sin x}$ flips the quotient rule order, negating everything, $\\dfrac{2\\sin x + 1}{1 - \\sin x}$ comes from using $\\frac{d}{dx}\\cos x = +\\sin x$, which leaves a stray $2\\sin x$ after the identity, and $\\tan x$ is the quotient of the two derivatives $\\dfrac{-\\sin x}{-\\cos x}$, skipping the rule entirely.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 3.3"
+    },
+    {
+      "id": "calculus-i-derivatives-032",
+      "stem": "Differentiate $f(x) = \\sqrt{1 + \\sin(2x)}$.",
+      "options": [
+        "$f'(x) = \\dfrac{\\cos(2x)}{2\\sqrt{1 + \\sin(2x)}}$",
+        "$f'(x) = \\dfrac{\\cos(2x)}{\\sqrt{1 + \\sin(2x)}}$",
+        "$f'(x) = \\dfrac{2\\cos(2x)}{\\sqrt{1 + \\sin(2x)}}$",
+        "$f'(x) = \\dfrac{1}{2\\sqrt{1 + \\sin(2x)}}$"
+      ],
+      "answer": 1,
+      "explanation": "There are three layers: the square root outside, $1 + \\sin(2x)$ in the middle, and $2x$ inside. The chain rule multiplies all three derivatives: $f'(x) = \\dfrac{1}{2\\sqrt{1 + \\sin(2x)}}\\cdot\\cos(2x)\\cdot 2 = \\dfrac{\\cos(2x)}{\\sqrt{1 + \\sin(2x)}}$. The half from the root and the $2$ from the innermost layer cancel. The traps: $\\dfrac{\\cos(2x)}{2\\sqrt{1 + \\sin(2x)}}$ forgets the innermost factor $2$ from differentiating $2x$, $\\dfrac{2\\cos(2x)}{\\sqrt{1 + \\sin(2x)}}$ keeps that $2$ but drops the half from the square root, and $\\dfrac{1}{2\\sqrt{1 + \\sin(2x)}}$ differentiates only the outer root and ignores both inner layers.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-derivatives-033",
+      "stem": "Differentiate $f(x) = x\\tan x$.",
+      "options": [
+        "$f'(x) = \\sec^2 x$",
+        "$f'(x) = \\tan x + x\\sec^2 x$",
+        "$f'(x) = x\\sec^2 x$",
+        "$f'(x) = \\tan x + x\\sec x\\tan x$"
+      ],
+      "answer": 1,
+      "explanation": "Product rule: $f'(x) = 1\\cdot\\tan x + x\\cdot\\sec^2 x = \\tan x + x\\sec^2 x$. Both pieces are required since both $x$ and $\\tan x$ vary. The traps: $\\sec^2 x$ multiplies the two derivatives $1\\cdot\\sec^2 x$, the product of derivatives error, $x\\sec^2 x$ treats the factor $x$ as a frozen coefficient and loses the $\\tan x$ term, and $\\tan x + x\\sec x\\tan x$ swaps in the derivative formula for secant where tangent's formula belongs.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.3"
+    },
+    {
+      "id": "calculus-i-derivatives-034",
+      "stem": "Find $\\dfrac{dy}{dx}$ if $y + \\sin y = x$.",
+      "options": [
+        "$\\dfrac{dy}{dx} = \\dfrac{1}{1 - \\cos y}$",
+        "$\\dfrac{dy}{dx} = 1 + \\cos y$",
+        "$\\dfrac{dy}{dx} = \\dfrac{1}{1 + \\cos y}$",
+        "$\\dfrac{dy}{dx} = 0$"
+      ],
+      "answer": 2,
+      "explanation": "Differentiate both sides with respect to $x$: $\\dfrac{dy}{dx} + \\cos y\\,\\dfrac{dy}{dx} = 1$, where the chain rule on $\\sin y$ produces the $\\cos y\\,\\dfrac{dy}{dx}$ term. Factor: $\\dfrac{dy}{dx}(1 + \\cos y) = 1$, so $\\dfrac{dy}{dx} = \\dfrac{1}{1 + \\cos y}$. The traps: $\\dfrac{1}{1 - \\cos y}$ uses $\\frac{d}{dx}\\sin y = -\\cos y\\,\\dfrac{dy}{dx}$, a trig sign error, $1 + \\cos y$ forgets to take the reciprocal in the final isolation step, and $0$ comes from writing the derivative of the bare $y$ as $1$ without its $\\dfrac{dy}{dx}$, which wrongly collapses the equation to $\\cos y\\,\\dfrac{dy}{dx} = 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 3.5"
+    },
+    {
+      "id": "calculus-i-derivatives-035",
+      "stem": "At which values of $x$ does the graph of $f(x) = x^3 - 3x$ have a horizontal tangent line?",
+      "options": [
+        "$x = 1$ and $x = -1$",
+        "$x = 0$, $x = \\sqrt{3}$, and $x = -\\sqrt{3}$",
+        "$x = 1$ only",
+        "$x = 0$"
+      ],
+      "answer": 0,
+      "explanation": "A horizontal tangent occurs where the derivative is zero. Here $f'(x) = 3x^2 - 3 = 3(x^2 - 1)$, which vanishes at $x = 1$ and $x = -1$. The traps: the set $x = 0$, $\\pm\\sqrt{3}$ comes from setting the function $x^3 - 3x = x(x^2 - 3)$ equal to zero, which finds the $x$-intercepts instead of the flat points, $x = 1$ only drops the negative root when solving $x^2 = 1$, and $x = 0$ solves $f''(x) = 6x = 0$, locating the inflection point rather than a horizontal tangent.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.1"
+    },
+    {
+      "id": "calculus-i-derivatives-036",
+      "stem": "Evaluate $\\displaystyle\\lim_{h\\to 0}\\frac{(2+h)^5 - 32}{h}$ by recognizing it as a derivative.",
+      "options": [
+        "$32$",
+        "$16$",
+        "$80$",
+        "$0$",
+        "The limit does not exist"
+      ],
+      "answer": 2,
+      "explanation": "With $f(x) = x^5$ and $a = 2$, this limit is exactly $\\lim_{h\\to 0}\\frac{f(2+h) - f(2)}{h} = f'(2)$, since $f(2) = 2^5 = 32$. The power rule gives $f'(x) = 5x^4$, so $f'(2) = 5\\cdot 16 = 80$. Recognizing the structure avoids a painful binomial expansion of $(2+h)^5$. The traps: $32$ is the function value $f(2)$, not the rate of change, $16$ evaluates $x^4$ at $2$ but forgets the coefficient $5$ from the power rule, $0$ reads the vanishing numerator as the limit, and the does-not-exist option treats the $0/0$ form as fatal when it is precisely the form every derivative limit takes.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 2.7"
+    }
+  ]
+}

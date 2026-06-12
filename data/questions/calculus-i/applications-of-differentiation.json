@@ -1,0 +1,511 @@
+{
+  "courseId": "calculus-i",
+  "topicId": "applications-of-differentiation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "calculus-i-applications-of-differentiation-001",
+      "stem": "On which interval is $f(x) = x^2 - 4x + 1$ increasing?",
+      "options": [
+        "$(0, \\infty)$",
+        "$(-\\infty, 2)$",
+        "$(-\\infty, \\infty)$",
+        "$(2, \\infty)$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $f'(x) = 2x - 4$, which is zero at $x = 2$. For $x > 2$ we get $f'(x) > 0$, so $f$ is increasing there, and for $x < 2$ we get $f'(x) < 0$, so $f$ is decreasing. A quick check: $f(3) = -2$ and $f(4) = 1$, so the values really do climb past $x = 2$. The interval $(-\\infty, 2)$ is where $f$ decreases, $(0, \\infty)$ comes from differentiating only the $x^2$ term and ignoring $-4x$, and $(-\\infty, \\infty)$ forgets the parabola turns at its vertex. The trap is reading the sign chart backwards and reporting the decreasing interval as increasing.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 4.3"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-002",
+      "stem": "Find the interval on which $f(x) = x^3 - 3x^2 - 9x + 4$ is decreasing.",
+      "options": [
+        "$(-\\infty, -1) \\cup (3, \\infty)$",
+        "$(-3, 1)$",
+        "$(-1, 3)$",
+        "$(-\\infty, 1)$"
+      ],
+      "answer": 2,
+      "explanation": "Differentiate: $f'(x) = 3x^2 - 6x - 9 = 3(x - 3)(x + 1)$, with zeros at $x = -1$ and $x = 3$. Testing a point between them, $f'(0) = -9 < 0$, so $f$ decreases exactly on $(-1, 3)$; outside, $f'(10) = 231 > 0$ confirms increase. The union $(-\\infty, -1) \\cup (3, \\infty)$ is where $f$ increases, so picking it swaps the conclusion. The interval $(-\\infty, 1)$ answers a different question: it is where $f'' = 6x - 6$ is negative, which is concavity, not decrease. And $(-3, 1)$ comes from factoring with the root signs flipped. The trap is mixing up the sign of $f'$ with the sign of $f''$ or with the wrong factor roots.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.3"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-003",
+      "stem": "On which interval is $g(t) = t^4 - 4t^3$ increasing?",
+      "options": [
+        "$(0, \\infty)$",
+        "$(0, 3)$",
+        "$(3, \\infty)$",
+        "$(-\\infty, 0) \\cup (3, \\infty)$"
+      ],
+      "answer": 2,
+      "explanation": "Here $g'(t) = 4t^3 - 12t^2 = 4t^2(t - 3)$, with critical numbers $t = 0$ and $t = 3$. Since $4t^2 \\ge 0$ always, the sign of $g'$ matches the sign of $t - 3$: negative for $t < 3$ (except the single point $t = 0$ where it is zero) and positive for $t > 3$. So $g$ increases only on $(3, \\infty)$ and decreases on $(-\\infty, 3)$. The options $(0, 3)$ and $(-\\infty, 0) \\cup (3, \\infty)$ both assume the sign of $g'$ flips at every critical number, and $(0, \\infty)$ uses the smaller critical number as the switch. The trap is forgetting that a squared factor does not change sign, so $t = 0$ is a critical number where no sign change happens.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-004",
+      "stem": "The function $f(x) = x - 2\\ln x$ is decreasing on which interval?",
+      "options": [
+        "$(0, 2)$",
+        "$\\left(0, \\tfrac{1}{2}\\right)$",
+        "$(2, \\infty)$",
+        "$(-\\infty, 2)$"
+      ],
+      "answer": 0,
+      "explanation": "The domain is $x > 0$ because of the logarithm. Compute $f'(x) = 1 - \\frac{2}{x} = \\frac{x - 2}{x}$; on the domain the denominator is positive, so $f'(x) < 0$ exactly when $x < 2$, giving the decreasing interval $(0, 2)$. As a check, $f(1) = 1$ and $f(2) = 2 - 2\\ln 2 \\approx 0.61$, so the function really drops. Choosing $(-\\infty, 2)$ ignores that $\\ln x$ is undefined for $x \\le 0$, $(2, \\infty)$ is the increasing interval, and $\\left(0, \\tfrac{1}{2}\\right)$ comes from mishandling the inequality $\\frac{2}{x} > 1$ when taking reciprocals. The trap is forgetting the domain restriction and reporting points where the function does not even exist.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.3"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-005",
+      "stem": "Find all intervals on which $\\displaystyle f(x) = x + \\frac{4}{x}$ is decreasing.",
+      "options": [
+        "$(0, 2)$",
+        "$(-2, 0) \\cup (0, 2)$",
+        "$(-\\infty, -2) \\cup (2, \\infty)$",
+        "$(-2, 2)$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $f'(x) = 1 - \\frac{4}{x^2}$, which is negative when $x^2 < 4$, that is, for $-2 < x < 2$ with $x \\ne 0$. But $x = 0$ is not in the domain at all: there is a vertical asymptote there, so the decrease happens on the two separate pieces $(-2, 0)$ and $(0, 2)$. Numerically, $f(1) = 5$ and $f(1.5) \\approx 4.17$, and on the other side $f(-1.5) \\approx -4.17$ and $f(-1) = -5$, confirming decrease on both pieces. Writing $(-2, 2)$ glues the two pieces across the asymptote, $(-\\infty, -2) \\cup (2, \\infty)$ is the increasing set, and $(0, 2)$ misses the negative branch. The trap is ignoring the point where $f$ and $f'$ are undefined and treating the interval as unbroken.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-006",
+      "stem": "Suppose $f$ is continuous at $x = c$ and $f'(x)$ changes from negative to positive as $x$ passes through $c$. What does the first derivative test conclude?",
+      "options": [
+        "$f$ has an inflection point at $x = c$",
+        "$f$ has an absolute minimum at $x = c$",
+        "$f$ has a local maximum at $x = c$",
+        "$f$ has a local minimum at $x = c$"
+      ],
+      "answer": 3,
+      "explanation": "Negative $f'$ means the function is falling, and positive $f'$ means it is rising. Falling then rising is the shape of a valley, so $f$ has a local minimum at $x = c$. A local maximum would need the opposite switch, positive to negative. Inflection points are about $f''$ changing sign, a different test entirely, and the first derivative test is purely local, so it can never promise an absolute minimum on its own. The trap is flipping the sign pattern and calling the valley a peak.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 4.3"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-007",
+      "stem": "Find all critical numbers of $f(x) = x^3 - 12x$.",
+      "options": [
+        "$x = 0$, $x = 2\\sqrt{3}$, and $x = -2\\sqrt{3}$",
+        "$x = -2$ and $x = 2$",
+        "$x = 2$ only",
+        "$x = 0$ only"
+      ],
+      "answer": 1,
+      "explanation": "Critical numbers are where $f'$ is zero or undefined. Here $f'(x) = 3x^2 - 12 = 3(x^2 - 4)$, which is zero at $x = \\pm 2$ and defined everywhere, so the critical numbers are $-2$ and $2$. Check: $f'(2) = 12 - 12 = 0$ and $f'(-2) = 12 - 12 = 0$. Keeping only $x = 2$ throws away the negative square root, the triple $0, \\pm 2\\sqrt{3}$ solves $f(x) = 0$ instead of $f'(x) = 0$, and $x = 0$ alone solves $f''(x) = 0$, which locates a possible inflection, not a critical number. The trap is setting the wrong function to zero: critical numbers come from $f'$, not from $f$ or $f''$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.1"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-008",
+      "stem": "At which $x$ value does $f(x) = x^3 - 3x + 1$ have a local maximum?",
+      "options": [
+        "$f$ has no local maximum",
+        "$x = 0$",
+        "$x = 1$",
+        "$x = -1$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $f'(x) = 3x^2 - 3 = 3(x - 1)(x + 1)$, so the critical numbers are $x = -1$ and $x = 1$. Testing signs: $f'(-2) = 9 > 0$, $f'(0) = -3 < 0$, and $f'(2) = 9 > 0$, so $f'$ goes positive to negative at $x = -1$ (local maximum) and negative to positive at $x = 1$ (local minimum). Indeed $f(-1) = 3$ beats its neighbors $f(-2) = -1$ and $f(0) = 1$. Choosing $x = 1$ swaps the maximum and the minimum, $x = 0$ solves $f''(x) = 6x = 0$, which is an inflection candidate, and a cubic certainly can have local extrema even though it has no absolute ones. The trap is assigning the maximum to the wrong critical number by misreading the sign change.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.3"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-009",
+      "stem": "What is the local maximum value of $f(x) = 2x^3 - 9x^2 + 12x$?",
+      "options": [
+        "$2$",
+        "$4$",
+        "$1$",
+        "$5$"
+      ],
+      "answer": 3,
+      "explanation": "Here $f'(x) = 6x^2 - 18x + 12 = 6(x - 1)(x - 2)$, so the critical numbers are $x = 1$ and $x = 2$. The sign of $f'$ runs positive, negative, positive, so $x = 1$ is the local maximum and $x = 2$ is the local minimum. The question asks for the value, so evaluate: $f(1) = 2 - 9 + 12 = 5$, while $f(2) = 16 - 36 + 24 = 4$ is the local minimum value. Answering $4$ swaps maximum and minimum, while $1$ and $2$ report the $x$ locations instead of the function values. The trap is handing back the input where the maximum occurs rather than the maximum value itself.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-010",
+      "stem": "Find all critical numbers of $f(x) = x^{2/3}(x - 5)$.",
+      "options": [
+        "$x = 0$ and $x = 2$",
+        "$x = 0$, $x = 2$, and $x = 5$",
+        "$x = 0$ and $x = 5$",
+        "$x = 2$ only"
+      ],
+      "answer": 0,
+      "explanation": "Expand to $f(x) = x^{5/3} - 5x^{2/3}$ and differentiate: $f'(x) = \\frac{5}{3}x^{2/3} - \\frac{10}{3}x^{-1/3} = \\frac{5}{3}x^{-1/3}(x - 2)$. This is zero at $x = 2$ and undefined at $x = 0$, and since $f(0) = 0$ exists, $x = 0$ is also a critical number. Check $x = 2$: $\\frac{5}{3}(2)^{2/3} - \\frac{10}{3}(2)^{-1/3} = \\frac{5}{3}2^{-1/3}(2 - 2) = 0$. Listing only $x = 2$ drops the point where $f'$ fails to exist, $x = 0$ and $x = 5$ are the zeros of $f$ itself, and the three-number list pads the answer with the root $x = 5$, where $f' \\ne 0$. The trap is forgetting that critical numbers include points in the domain where $f'$ is undefined, not just where it equals zero.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.1"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-011",
+      "stem": "Find all critical numbers of $f(x) = x - 2\\sin x$ on the interval $(0, 2\\pi)$.",
+      "options": [
+        "$x = \\dfrac{2\\pi}{3}$ and $x = \\dfrac{4\\pi}{3}$",
+        "$x = \\dfrac{\\pi}{3}$ and $x = \\dfrac{5\\pi}{3}$",
+        "$x = \\dfrac{\\pi}{6}$ and $x = \\dfrac{5\\pi}{6}$",
+        "$x = \\dfrac{\\pi}{3}$ only"
+      ],
+      "answer": 1,
+      "explanation": "Set $f'(x) = 1 - 2\\cos x = 0$, so $\\cos x = \\tfrac{1}{2}$. On $(0, 2\\pi)$ the cosine equals $\\tfrac{1}{2}$ at $x = \\tfrac{\\pi}{3}$ (first quadrant) and at $x = \\tfrac{5\\pi}{3}$ (fourth quadrant). Both check out: $\\cos\\tfrac{\\pi}{3} = \\cos\\tfrac{5\\pi}{3} = \\tfrac{1}{2}$. Stopping at $\\tfrac{\\pi}{3}$ misses the second solution in the period, the pair $\\tfrac{2\\pi}{3}, \\tfrac{4\\pi}{3}$ solves $\\cos x = -\\tfrac{1}{2}$ after a sign slip, and $\\tfrac{\\pi}{6}, \\tfrac{5\\pi}{6}$ solves $\\sin x = \\tfrac{1}{2}$, the wrong trig function. The trap is finding only the reference-angle solution and forgetting cosine is also positive in the fourth quadrant.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 4.1"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-012",
+      "stem": "Suppose $f'(c) = 0$ and $f''(c) > 0$. What does the second derivative test conclude about $x = c$?",
+      "options": [
+        "$f$ has a local maximum at $x = c$",
+        "the test is inconclusive",
+        "$f$ has an inflection point at $x = c$",
+        "$f$ has a local minimum at $x = c$"
+      ],
+      "answer": 3,
+      "explanation": "Positive $f''$ means the graph is concave upward near $c$, shaped like a cup. A horizontal tangent at the bottom of a cup is a local minimum, so $f''(c) > 0$ with $f'(c) = 0$ gives a local minimum. Picture $f(x) = x^2$ at $c = 0$: $f'(0) = 0$, $f''(0) = 2 > 0$, and the origin is clearly the bottom. An inflection point would require $f''$ to change sign, and the test is inconclusive only when $f''(c) = 0$. The trap is reading $f'' > 0$ as a maximum; remember concave up holds water, so the critical point sits at a minimum.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 4.3"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-013",
+      "stem": "Use the second derivative test to classify the critical point $x = 0$ of $f(x) = x^4 - 8x^2 + 3$.",
+      "options": [
+        "the test is inconclusive at $x = 0$",
+        "local maximum, because $f''(0) = -16 < 0$",
+        "local minimum, because $f''(0) < 0$",
+        "inflection point, because $f''(0) \\ne 0$"
+      ],
+      "answer": 1,
+      "explanation": "First confirm $x = 0$ is critical: $f'(x) = 4x^3 - 16x$, so $f'(0) = 0$. Then $f''(x) = 12x^2 - 16$ gives $f''(0) = -16 < 0$, so the graph is concave down there and the critical point is a local maximum. A sanity check: $f(0) = 3$ while $f(1) = -4$ and $f(-1) = -4$, so the origin value really is a local peak. Calling it a minimum reverses the meaning of the sign of $f''$, an inflection point needs $f''$ to change sign rather than to be nonzero, and the test only fails when $f''(0) = 0$, which is not the case. The trap is the sign misread: $f'' < 0$ means concave down, hence a maximum, not a minimum.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.3"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-014",
+      "stem": "On which interval is $f(x) = x^3 - 6x^2 + 9x + 2$ concave upward?",
+      "options": [
+        "$(-\\infty, 2)$",
+        "$(1, 3)$",
+        "$(2, \\infty)$",
+        "$(3, \\infty)$"
+      ],
+      "answer": 2,
+      "explanation": "Concavity follows the sign of the second derivative. Here $f'(x) = 3x^2 - 12x + 9$ and $f''(x) = 6x - 12$, which is positive exactly when $x > 2$. So $f$ is concave upward on $(2, \\infty)$ and concave downward on $(-\\infty, 2)$, with an inflection point at $x = 2$. The interval $(-\\infty, 2)$ swaps the sign reading, $(1, 3)$ is where $f' = 3(x-1)(x-3)$ is negative, which describes decrease rather than concavity, and $(3, \\infty)$ treats the critical number $x = 3$ as the concavity switch. The trap is running the first derivative analysis when the question is about the second derivative.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-015",
+      "stem": "Find the $x$ coordinates of all inflection points of $f(x) = x^4 - 6x^2$.",
+      "options": [
+        "$x = 0$, $x = \\sqrt{3}$, and $x = -\\sqrt{3}$",
+        "$x = 1$ only",
+        "$x = -1$, $x = 0$, and $x = 1$",
+        "$x = -1$ and $x = 1$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $f''(x) = 12x^2 - 12 = 12(x - 1)(x + 1)$, which is zero at $x = \\pm 1$. The sign of $f''$ is positive for $|x| > 1$ and negative for $|x| < 1$, so the concavity genuinely changes at both points and both are inflection points. The list $0, \\pm\\sqrt{3}$ solves $f'(x) = 4x^3 - 12x = 0$, which finds critical points, not inflection points. Keeping only $x = 1$ forgets the negative root of $x^2 = 1$, and adding $x = 0$ smuggles a critical number into the inflection list even though $f''(0) = -12 \\ne 0$. The trap is confusing the zeros of $f'$ with the zeros of $f''$ when hunting for inflection points.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.3"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-016",
+      "stem": "For $f(x) = x^4$ we have $f'(0) = 0$ and $f''(0) = 0$. Which statement is correct?",
+      "options": [
+        "$x = 0$ is neither a local extremum nor an inflection point",
+        "$f$ has a local minimum at $x = 0$ but no inflection point there, since $f'' = 12x^2$ never changes sign",
+        "the second derivative test shows a local minimum at $x = 0$",
+        "$f$ has an inflection point at $x = 0$ because $f''(0) = 0$"
+      ],
+      "answer": 1,
+      "explanation": "Since $f''(0) = 0$, the second derivative test says nothing, so fall back on the first derivative test: $f'(x) = 4x^3$ is negative for $x < 0$ and positive for $x > 0$, so $x = 0$ is a local minimum (in fact the absolute minimum). For inflection, $f''(x) = 12x^2 \\ge 0$ everywhere, so the concavity never changes and there is no inflection point even though $f''(0) = 0$. That rules out the second option, the third option misattributes the conclusion to a test that was inconclusive, and the fourth denies a minimum that plainly exists since $x^4 \\ge 0 = f(0)$. The trap is treating $f''(c) = 0$ as a guarantee of an inflection point; an inflection requires an actual sign change in $f''$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.3"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-017",
+      "stem": "Classify the critical points of $f(x) = x^4 - 4x^3$.",
+      "options": [
+        "local minimum at $x = 3$; neither a maximum nor a minimum at $x = 0$",
+        "local minima at both $x = 0$ and $x = 3$",
+        "local minimum at $x = 3$ and local maximum at $x = 0$",
+        "local maximum at $x = 3$ and local minimum at $x = 0$"
+      ],
+      "answer": 0,
+      "explanation": "From $f'(x) = 4x^3 - 12x^2 = 4x^2(x - 3)$ the critical numbers are $x = 0$ and $x = 3$. The second derivative $f''(x) = 12x^2 - 24x$ gives $f''(3) = 36 > 0$, so $x = 3$ is a local minimum with $f(3) = -27$. At $x = 0$, $f''(0) = 0$, so the test is silent; checking $f'$ directly, $f'(-1) = -16 < 0$ and $f'(1) = -8 < 0$, so $f'$ does not change sign and $x = 0$ is neither a maximum nor a minimum. Assuming the two critical points must alternate as max then min, or that an upward-opening quartic makes every critical point a minimum, both fail here. The trap is expecting a sign change of $f'$ at every critical number; the squared factor $4x^2$ keeps the sign fixed through $x = 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-018",
+      "stem": "What is the absolute maximum value of $f(x) = x^2 - 2x$ on the closed interval $[0, 3]$?",
+      "options": [
+        "$-1$",
+        "$1$",
+        "$3$",
+        "$f$ has no absolute maximum on $[0, 3]$"
+      ],
+      "answer": 2,
+      "explanation": "The closed interval method: find critical numbers, then compare $f$ at those and at the endpoints. Here $f'(x) = 2x - 2 = 0$ at $x = 1$, and the candidates give $f(0) = 0$, $f(1) = -1$, and $f(3) = 9 - 6 = 3$. The largest of these is $3$, attained at the endpoint $x = 3$, while the smallest, $-1$, is the absolute minimum. Answering $-1$ reports the minimum (or stops after the critical point), $1$ hands back the location of the critical number instead of a value, and the last option forgets that a continuous function on a closed interval always attains a maximum. The trap is skipping the endpoints; the winner here is not at a critical point at all.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 4.1"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-019",
+      "stem": "Find the absolute maximum value of $f(x) = x^3 - 3x^2 + 1$ on $[-1, 4]$.",
+      "options": [
+        "$-3$",
+        "$1$",
+        "$17$",
+        "$4$"
+      ],
+      "answer": 2,
+      "explanation": "Critical numbers come from $f'(x) = 3x^2 - 6x = 3x(x - 2)$, giving $x = 0$ and $x = 2$, both inside $[-1, 4]$. Evaluate all candidates: $f(-1) = -3$, $f(0) = 1$, $f(2) = 8 - 12 + 1 = -3$, and $f(4) = 64 - 48 + 1 = 17$. The absolute maximum value is $17$, attained at the right endpoint. Choosing $1$ compares only the critical point values and crowns the local maximum, $-3$ is the absolute minimum (attained twice), and $4$ is the location of the maximum rather than its value. The trap is forgetting to evaluate the endpoints, which is exactly where this maximum lives.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.1"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-020",
+      "stem": "Find the absolute minimum of $f(x) = x^{2/3}$ on $[-1, 8]$.",
+      "options": [
+        "$1$, attained at $x = -1$",
+        "$4$, attained at $x = 8$",
+        "$0$, attained at $x = 0$",
+        "$f$ has no absolute minimum because $f'(x)$ is never zero"
+      ],
+      "answer": 2,
+      "explanation": "The derivative $f'(x) = \\frac{2}{3}x^{-1/3}$ is never zero, but it is undefined at $x = 0$, and since $f(0) = 0$ exists, $x = 0$ is a critical number. Compare candidates: $f(-1) = 1$, $f(0) = 0$, and $f(8) = 4$. The smallest value is $0$ at the cusp $x = 0$; indeed $x^{2/3} \\ge 0$ everywhere, so nothing can beat it. Choosing $1$ checks only the endpoints and misses the interior cusp, $4$ is the absolute maximum, and the last option wrongly concludes that no zero of $f'$ means no critical points. The trap is ignoring critical numbers where $f'$ is undefined; the minimum sits exactly at such a point.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.1"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-021",
+      "stem": "What is the absolute maximum value of $f(x) = 2x^3 - 3x^2 - 12x + 1$ on $[0, 3]$?",
+      "options": [
+        "$-19$",
+        "$1$",
+        "$0$",
+        "$-8$"
+      ],
+      "answer": 1,
+      "explanation": "Differentiate: $f'(x) = 6x^2 - 6x - 12 = 6(x - 2)(x + 1)$, so the critical numbers are $x = 2$ and $x = -1$, but only $x = 2$ lies in $[0, 3]$. Evaluate the candidates: $f(0) = 1$, $f(2) = 16 - 12 - 24 + 1 = -19$, and $f(3) = 54 - 27 - 36 + 1 = -8$. The largest is $f(0) = 1$, so the absolute maximum value is $1$, attained at the left endpoint. Answering $-19$ treats the lone critical point as automatically the answer, $-8$ compares only the right endpoint with the critical point and forgets $x = 0$, and $0$ confuses the location of the maximum with its value. The trap is dropping an endpoint from the comparison; here the left endpoint wins.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-022",
+      "stem": "Find the absolute maximum value of $f(t) = t\\sqrt{4 - t^2}$ on the interval $[-1, 2]$.",
+      "options": [
+        "$-\\sqrt{3}$",
+        "$2$",
+        "$0$",
+        "$\\sqrt{2}$"
+      ],
+      "answer": 1,
+      "explanation": "By the product and chain rules, $f'(t) = \\sqrt{4 - t^2} - \\dfrac{t^2}{\\sqrt{4 - t^2}} = \\dfrac{4 - 2t^2}{\\sqrt{4 - t^2}}$, which vanishes at $t = \\pm\\sqrt{2}$; only $t = \\sqrt{2}$ lies inside $[-1, 2]$. Compare candidates: $f(-1) = -\\sqrt{3} \\approx -1.73$, $f(\\sqrt{2}) = \\sqrt{2}\\cdot\\sqrt{2} = 2$, and $f(2) = 0$. The absolute maximum value is $2$ at the interior point $t = \\sqrt{2}$. Picking $0$ assumes the maximum must sit at an endpoint and takes the better endpoint value, $\\sqrt{2}$ reports the location instead of the value, and $-\\sqrt{3}$ is the absolute minimum. The trap is the mirror image of forgetting endpoints: assuming extrema only happen at endpoints and never checking the interior critical number.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 4.1"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-023",
+      "stem": "For $x > 0$, what is the minimum value of $\\displaystyle S(x) = x + \\frac{1}{x}$?",
+      "options": [
+        "$S$ has no minimum on $(0, \\infty)$",
+        "$0$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "Set $S'(x) = 1 - \\frac{1}{x^2} = 0$, giving $x^2 = 1$ and so $x = 1$ on the positive axis. Since $S''(x) = \\frac{2}{x^3} > 0$ for $x > 0$, this critical point is a minimum, and the minimum value is $S(1) = 1 + 1 = 2$. Spot check: $S(2) = 2.5$ and $S(\\tfrac{1}{2}) = 2.5$, both larger. Answering $1$ gives the input where the minimum occurs rather than the minimum value, $0$ imagines the sum can shrink toward zero even though $\\frac{1}{x}$ blows up as $x \\to 0^+$, and the open interval does not prevent an interior minimum from existing. The trap is reporting the optimal $x$ instead of the optimal value of the quantity being minimized.",
+      "difficulty": "warmup",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-024",
+      "stem": "Two positive numbers add up to $20$. What is the smallest possible value of the sum of their squares?",
+      "options": [
+        "$100$",
+        "$400$",
+        "$200$",
+        "$10$"
+      ],
+      "answer": 2,
+      "explanation": "Let the numbers be $x$ and $20 - x$, and minimize $S(x) = x^2 + (20 - x)^2$ for $0 < x < 20$. Then $S'(x) = 2x - 2(20 - x) = 4x - 40$, which is zero at $x = 10$, and $S''(x) = 4 > 0$ confirms a minimum. The numbers are $10$ and $10$, and the minimum sum of squares is $100 + 100 = 200$; nearby, $9^2 + 11^2 = 202$ is indeed larger. The value $400$ is what the sum of squares approaches at the extreme split $20$ and $0$, which is the supremum, not the minimum; $10$ is one of the optimal numbers, not the requested sum; and $100$ squares only one of the two numbers. The trap is answering with the optimizing $x$ (or half the objective) instead of the actual quantity the problem asked to minimize.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.7"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-025",
+      "stem": "A farmer has $240$ m of fencing for a rectangular field along a straight river. No fence is needed on the river side. What is the largest area she can enclose?",
+      "options": [
+        "$3600 \\text{ m}^2$",
+        "$14400 \\text{ m}^2$",
+        "$7200 \\text{ m}^2$",
+        "$6400 \\text{ m}^2$"
+      ],
+      "answer": 2,
+      "explanation": "Let $w$ be each side perpendicular to the river and $l$ the side parallel to it, so the fencing constraint is $2w + l = 240$ and the area is $A = w(240 - 2w) = 240w - 2w^2$. Setting $A'(w) = 240 - 4w = 0$ gives $w = 60$, hence $l = 120$ and $A = 60 \\cdot 120 = 7200$ square meters; $A'' = -4 < 0$ confirms a maximum. The answer $14400$ comes from writing the constraint as $w + l = 240$, forgetting that two widths need fencing; $6400$ forces the field to be a square with three fenced sides of $80$ m each; and $3600$ fences all four sides as if the river were not there. The trap is setting up the constraint wrong: count exactly the three sides that actually need fence.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.7"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-026",
+      "stem": "An open-top box is made from a $12$ cm by $12$ cm sheet of cardboard by cutting equal squares of side $x$ from the corners and folding up the sides. What is the maximum possible volume?",
+      "options": [
+        "$256 \\text{ cm}^3$",
+        "$2 \\text{ cm}^3$",
+        "$128 \\text{ cm}^3$",
+        "$200 \\text{ cm}^3$"
+      ],
+      "answer": 2,
+      "explanation": "The base is $(12 - 2x)$ by $(12 - 2x)$ and the height is $x$, so $V(x) = x(12 - 2x)^2$ for $0 < x < 6$. Differentiating, $V'(x) = (12 - 2x)^2 - 4x(12 - 2x) = (12 - 2x)(12 - 6x)$, which vanishes at $x = 2$ and $x = 6$; the root $x = 6$ cuts the sheet away entirely, so the maximum is at $x = 2$, giving $V(2) = 2(12 - 4)^2 = 2 \\cdot 64 = 128$ cubic cm. Compare $V(1) = 100$ and $V(3) = 108$, both smaller, which confirms the peak. The answer $256$ writes the base as $(12 - x)$, forgetting a square comes off each end of every side; $200$ evaluates $12 - 2x$ at $x = 2$ as $12 - 2 = 10$; and $2$ reports the cut size $x$ instead of the volume. The trap is answering with the optimal $x$ or a mis-built base length rather than the maximized volume itself.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.7"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-027",
+      "stem": "A rectangle has its base on the $x$ axis and its two upper corners on the parabola $y = 12 - x^2$. What is the largest possible area of the rectangle?",
+      "options": [
+        "$32$",
+        "$16$",
+        "$2$",
+        "$12$"
+      ],
+      "answer": 0,
+      "explanation": "If the upper right corner is at $(x, 12 - x^2)$ with $0 < x < \\sqrt{12}$, the rectangle has width $2x$ by symmetry and height $12 - x^2$, so $A(x) = 2x(12 - x^2) = 24x - 2x^3$. Then $A'(x) = 24 - 6x^2 = 0$ gives $x = 2$, and $A''(x) = -12x < 0$ there confirms a maximum, so $A = 2(2)(12 - 4) = 4 \\cdot 8 = 32$. Nearby values $A(1.5) = 29.25$ and $A(2.5) = 28.75$ are smaller, as expected. The answer $16$ uses width $x$ instead of $2x$, forgetting the rectangle extends to both sides of the axis of symmetry; $12$ maximizes the height of the parabola rather than the area; and $2$ reports the optimal $x$. The trap is dropping the factor of $2$ in the width because only half the rectangle was drawn.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-028",
+      "stem": "The radius of a circle is increasing at $3$ cm/s. How fast is the area increasing when the radius is $10$ cm?",
+      "options": [
+        "$60\\pi \\text{ cm}^2/\\text{s}$",
+        "$20\\pi \\text{ cm}^2/\\text{s}$",
+        "$300\\pi \\text{ cm}^2/\\text{s}$",
+        "$6\\pi \\text{ cm}^2/\\text{s}$"
+      ],
+      "answer": 0,
+      "explanation": "Start from $A = \\pi r^2$ and differentiate with respect to time: $\\frac{dA}{dt} = 2\\pi r \\frac{dr}{dt}$. Substituting $r = 10$ and $\\frac{dr}{dt} = 3$ gives $\\frac{dA}{dt} = 2\\pi(10)(3) = 60\\pi$ square cm per second. The answer $20\\pi$ computes $2\\pi r$ and stops, omitting the chain rule factor $\\frac{dr}{dt}$; $300\\pi$ multiplies the area $\\pi r^2 = 100\\pi$ by $3$ without differentiating; and $6\\pi$ differentiates the circumference $2\\pi r$ instead of the area. The trap is dropping the $\\frac{dr}{dt}$ factor that the chain rule attaches to every time derivative.",
+      "difficulty": "warmup",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-029",
+      "stem": "A $10$ ft ladder leans against a wall. The bottom slides away from the wall at $2$ ft/s. How fast is the top sliding down the wall when the bottom is $6$ ft from the wall?",
+      "options": [
+        "$\\dfrac{6}{5}$ ft/s",
+        "$2$ ft/s",
+        "$\\dfrac{8}{3}$ ft/s",
+        "$\\dfrac{3}{2}$ ft/s"
+      ],
+      "answer": 3,
+      "explanation": "Let $x$ be the distance from the wall and $y$ the height of the top, with $x^2 + y^2 = 100$. When $x = 6$, $y = \\sqrt{100 - 36} = 8$. Differentiating the relation, $2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0$, so $\\frac{dy}{dt} = -\\frac{x}{y}\\frac{dx}{dt} = -\\frac{6}{8}(2) = -\\frac{3}{2}$, meaning the top slides down at $\\frac{3}{2}$ ft/s. The value $\\frac{8}{3}$ flips the ratio to $\\frac{y}{x}$, $2$ ft/s assumes the top moves at the same speed as the bottom with no constraint at all, and $\\frac{6}{5}$ divides by the ladder length $10$ instead of by $y$. The trap is inverting the $\\frac{x}{y}$ ratio (or replacing $y$ with the hypotenuse) when solving the differentiated Pythagorean relation.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-030",
+      "stem": "The volume of a sphere increases at $100$ cm$^3$/s. How fast is the radius increasing when $r = 5$ cm? (Recall $V = \\frac{4}{3}\\pi r^3$.)",
+      "options": [
+        "$\\dfrac{5}{\\pi}$ cm/s",
+        "$\\dfrac{25}{\\pi}$ cm/s",
+        "$\\dfrac{3}{\\pi}$ cm/s",
+        "$\\dfrac{1}{\\pi}$ cm/s"
+      ],
+      "answer": 3,
+      "explanation": "Differentiate $V = \\frac{4}{3}\\pi r^3$ with respect to time: $\\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt}$, since the power rule turns $r^3$ into $3r^2$ and cancels the $\\frac{1}{3}$. At $r = 5$ this reads $100 = 4\\pi(25)\\frac{dr}{dt} = 100\\pi \\frac{dr}{dt}$, so $\\frac{dr}{dt} = \\frac{1}{\\pi}$ cm/s. The answer $\\frac{3}{\\pi}$ forgets to multiply by the exponent, leaving $\\frac{4}{3}\\pi r^2$ in the derivative; $\\frac{5}{\\pi}$ writes the derivative as $4\\pi r$ with the square lost; and $\\frac{25}{\\pi}$ never substitutes $r$ at all, dividing $100$ by a bare $4\\pi$. The trap is botching the power rule inside the related-rates equation and inheriting a wrong coefficient.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-031",
+      "stem": "Water is pumped into an inverted cone-shaped tank at $9$ m$^3$/min. The tank is $12$ m tall with top radius $4$ m. How fast is the water level rising when the water is $6$ m deep?",
+      "options": [
+        "$\\dfrac{27}{16\\pi}$ m/min",
+        "$4\\pi$ m/min",
+        "$\\dfrac{3}{4\\pi}$ m/min",
+        "$\\dfrac{9}{4\\pi}$ m/min"
+      ],
+      "answer": 3,
+      "explanation": "By similar triangles the water surface radius satisfies $\\frac{r}{h} = \\frac{4}{12}$, so $r = \\frac{h}{3}$ and the water volume is $V = \\frac{1}{3}\\pi r^2 h = \\frac{\\pi h^3}{27}$. Differentiating, $\\frac{dV}{dt} = \\frac{\\pi h^2}{9}\\frac{dh}{dt}$; at $h = 6$ this is $\\frac{36\\pi}{9}\\frac{dh}{dt} = 4\\pi\\frac{dh}{dt}$, and setting it equal to $9$ gives $\\frac{dh}{dt} = \\frac{9}{4\\pi}$ m/min. The answer $\\frac{27}{16\\pi}$ freezes the radius at the tank's top value $4$ instead of letting it shrink with the water level; $\\frac{3}{4\\pi}$ uses a cylinder formula $\\pi r^2 h$ and loses the cone's factor $\\frac{1}{3}$; and $4\\pi$ computes $\\frac{dV}{dh}$ and stops without ever solving for $\\frac{dh}{dt}$. The trap is treating the radius as constant rather than substituting the similar-triangles relation before differentiating.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-032",
+      "stem": "A man $2$ m tall walks away from a $6$ m lamppost at $1.5$ m/s. How fast is the tip of his shadow moving away from the lamppost?",
+      "options": [
+        "$\\dfrac{9}{4}$ m/s",
+        "$\\dfrac{3}{4}$ m/s",
+        "$\\dfrac{3}{2}$ m/s",
+        "$\\dfrac{9}{2}$ m/s"
+      ],
+      "answer": 0,
+      "explanation": "Let $x$ be the man's distance from the post and $s$ the distance from the post to the shadow's tip. Similar triangles compare the post to the man standing at distance $x$ from the post with shadow tip at $s$: $\\frac{6}{s} = \\frac{2}{s - x}$, so $6s - 6x = 2s$ and $s = \\frac{3}{2}x$. Differentiating, $\\frac{ds}{dt} = \\frac{3}{2}\\frac{dx}{dt} = \\frac{3}{2}(1.5) = \\frac{9}{4}$ m/s, independent of where he is. The answer $\\frac{3}{4}$ is the growth rate of the shadow's length $s - x = \\frac{x}{2}$, a different quantity than the tip's speed; $\\frac{3}{2}$ assumes the tip just travels with the man; and $\\frac{9}{2}$ sets up the triangles as $\\frac{6}{s} = \\frac{2}{x}$, comparing the full shadow to the man's distance instead of to the shadow segment beyond him. The trap is answering for the shadow's length when the question asks how fast the tip itself moves.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-033",
+      "stem": "Use the linear approximation of $f(x) = \\sqrt{x}$ at $a = 4$ to estimate $\\sqrt{4.1}$.",
+      "options": [
+        "$1.975$",
+        "$2.1$",
+        "$2.025$",
+        "$2.05$"
+      ],
+      "answer": 2,
+      "explanation": "The linearization is $L(x) = f(4) + f'(4)(x - 4)$ with $f(4) = 2$ and $f'(x) = \\frac{1}{2\\sqrt{x}}$, so $f'(4) = \\frac{1}{4}$. Then $\\sqrt{4.1} \\approx L(4.1) = 2 + \\frac{1}{4}(0.1) = 2.025$, and the true value $2.0248...$ confirms the estimate is excellent. The answer $2.05$ uses the slope $\\frac{1}{\\sqrt{x}}$, dropping the $2$ from the derivative of the square root; $2.1$ adds the full increment $0.1$ as if the slope were $1$; and $1.975$ subtracts the correction even though $4.1$ sits above the center $4$. The trap is the derivative slip: $\\frac{d}{dx}\\sqrt{x}$ is $\\frac{1}{2\\sqrt{x}}$, not $\\frac{1}{\\sqrt{x}}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-034",
+      "stem": "Use a linear approximation of $f(x) = x^{1/3}$ centered at $a = 27$ to estimate $\\sqrt[3]{27.3}$.",
+      "options": [
+        "$3 - \\dfrac{0.3}{27} \\approx 2.989$",
+        "$3 + \\dfrac{0.3}{27} \\approx 3.011$",
+        "$3 + \\dfrac{0.3}{9} \\approx 3.033$",
+        "$3 + \\dfrac{0.3}{3} = 3.1$"
+      ],
+      "answer": 1,
+      "explanation": "With $f(x) = x^{1/3}$ we get $f(27) = 3$ and $f'(x) = \\frac{1}{3}x^{-2/3}$, so $f'(27) = \\frac{1}{3 \\cdot 9} = \\frac{1}{27}$. The linearization gives $\\sqrt[3]{27.3} \\approx 3 + \\frac{1}{27}(0.3) \\approx 3.0111$, and the true value $3.01107...$ matches to four decimal places. The estimate $3.033$ uses slope $\\frac{1}{9}$, dropping the $\\frac{1}{3}$ from the power rule; $3.1$ takes the exponent $\\frac{1}{3}$ itself as the slope without the $x^{-2/3}$ factor; and $2.989$ subtracts the correction despite $27.3$ lying above the center. The trap is evaluating the derivative wrong: both the $\\frac{1}{3}$ and the $x^{-2/3}$ must survive into the slope.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-035",
+      "stem": "Use differentials to estimate the change in $y = x^3$ when $x$ increases from $2$ to $2.1$.",
+      "options": [
+        "$dy = 1.2$",
+        "$dy = 0.8$",
+        "$dy = 12$",
+        "$dy = 0.6$"
+      ],
+      "answer": 0,
+      "explanation": "The differential is $dy = f'(x)\\,dx = 3x^2\\,dx$. With $x = 2$ and $dx = 0.1$ this gives $dy = 3(4)(0.1) = 1.2$. The exact change is $\\Delta y = 2.1^3 - 2^3 = 9.261 - 8 = 1.261$, so the differential estimate is close, as it should be for a small $dx$. The answer $12$ computes $f'(2) = 12$ but never multiplies by $dx$; $0.6$ differentiates $x^3$ as $3x$ and gets slope $6$ times $0.1$; and $0.8$ multiplies the function value $8$ by $dx$ without differentiating at all. The trap is forgetting the $dx$ factor: a differential is the derivative times the change in input, not the derivative alone.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-036",
+      "stem": "You want to estimate $\\sqrt{35.7}$ using a linear approximation of $f(x) = \\sqrt{x}$. Which setup is correct, and what estimate does it produce?",
+      "options": [
+        "Center at $a = 35.7$ itself, since the closer the center the better: $L(x) = \\sqrt{35.7} + \\dfrac{x - 35.7}{2\\sqrt{35.7}}$",
+        "Center at $a = 36$: $L(x) = 6 + \\dfrac{x - 36}{12}$, so $\\sqrt{35.7} \\approx 6 - \\dfrac{0.3}{12} = 5.975$",
+        "Center at $a = 36$: $L(x) = 6 + \\dfrac{x - 36}{12}$, so $\\sqrt{35.7} \\approx 6 + \\dfrac{0.3}{12} = 6.025$",
+        "Center at $a = 25$: $L(x) = 5 + \\dfrac{x - 25}{10}$, so $\\sqrt{35.7} \\approx 5 + \\dfrac{10.7}{10} = 6.07$"
+      ],
+      "answer": 1,
+      "explanation": "Pick the nearest point where $\\sqrt{x}$ is known exactly: $a = 36$. Then $f(36) = 6$, $f'(36) = \\frac{1}{2\\sqrt{36}} = \\frac{1}{12}$, and $L(x) = 6 + \\frac{x - 36}{12}$, so $\\sqrt{35.7} \\approx 6 + \\frac{35.7 - 36}{12} = 6 - 0.025 = 5.975$, very close to the true value $5.9749...$. The second option drops the sign of $x - a = -0.3$ and adjusts upward even though $35.7$ is below $36$. Centering at $35.7$ itself is circular: the formula then requires $\\sqrt{35.7}$, the very number being estimated. Centering at $25$ uses a known square but one far from $35.7$, and the estimate $6.07$ degrades badly because the tangent line is being trusted ten units from its point of tangency. The trap is choosing the wrong center: it must be a nearby point where the function's exact value is known.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I notes"
+    }
+  ]
+}

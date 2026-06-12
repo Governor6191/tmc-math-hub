@@ -1,0 +1,345 @@
+{
+  "courseId": "calculus-i",
+  "topicId": "continuity",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "calculus-i-continuity-001",
+      "stem": "Let $f(x) = \\dfrac{x^2 - 9}{x - 3}$ for $x \\ne 3$ and $f(3) = 5$. Is $f$ continuous at $x = 3$?",
+      "options": [
+        "Yes, because $f(3) = 5$ is defined",
+        "Yes, because $\\displaystyle\\lim_{x\\to 3} f(x)$ exists",
+        "No; the limit is $6$ but $f(3) = 5$, so the limit does not equal the function value",
+        "No, because $\\displaystyle\\lim_{x\\to 3} f(x)$ does not exist"
+      ],
+      "answer": 2,
+      "explanation": "For $x \\ne 3$, factor: $\\frac{x^2 - 9}{x - 3} = \\frac{(x - 3)(x + 3)}{x - 3} = x + 3$, so $\\lim_{x\\to 3} f(x) = 6$. The function value is defined, $f(3) = 5$, and the limit exists, so the first two continuity conditions hold. But continuity also demands $\\lim_{x\\to 3} f(x) = f(3)$, and $6 \\ne 5$, so $f$ is discontinuous at $3$. The traps: the two Yes options each check only one condition, definedness or the limit alone, while continuity needs all three; the remaining No option claims the limit fails to exist, but the factoring shows it exists and equals $6$.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 2.5"
+    },
+    {
+      "id": "calculus-i-continuity-002",
+      "stem": "On what set is the rational function $f(x) = \\dfrac{x + 1}{x^2 - 4}$ continuous?",
+      "options": [
+        "All real numbers",
+        "All real numbers except $x = -1$",
+        "All real numbers except $x = 2$",
+        "All real numbers except $x = 2$ and $x = -2$"
+      ],
+      "answer": 3,
+      "explanation": "A rational function is continuous at every point of its domain, that is, wherever its denominator is nonzero. Here $x^2 - 4 = (x - 2)(x + 2)$ vanishes at $x = 2$ and $x = -2$, so those two points are excluded and $f$ is continuous everywhere else. The numerator plays no role in continuity: $x = -1$ simply makes $f(x) = 0$, which is a perfectly good value. The traps: excluding $x = -1$ punishes the harmless zero of the numerator, excluding only $x = 2$ forgets the negative root of $x^2 - 4$, and choosing all real numbers treats every rational function as continuous everywhere, which holds only when the denominator never vanishes.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 2.5"
+    },
+    {
+      "id": "calculus-i-continuity-003",
+      "stem": "The function $g(x) = \\dfrac{x^2 - 1}{x - 1}$ is undefined at $x = 1$. What type of discontinuity does $g$ have there?",
+      "options": [
+        "Removable",
+        "Jump",
+        "Infinite",
+        "None; $g$ is continuous at $x = 1$ because the limit exists there"
+      ],
+      "answer": 0,
+      "explanation": "Factor: $g(x) = \\frac{(x - 1)(x + 1)}{x - 1} = x + 1$ for $x \\ne 1$, so $\\lim_{x\\to 1} g(x) = 2$, a finite number. Since the limit exists but $g(1)$ is undefined, the discontinuity is removable: defining $g(1) = 2$ would repair it. A jump requires the one-sided limits to exist but disagree, and an infinite discontinuity requires the function to blow up; neither happens here. The traps: jump and infinite are reflex answers to a vanishing denominator, and the final option forgets that continuity requires $g(1)$ to be defined, not just the limit to exist.",
+      "difficulty": "warmup",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-continuity-004",
+      "stem": "Let $f(x) = kx + 3$ for $x < 2$ and $f(x) = x^2 + 1$ for $x \\ge 2$. For what value of $k$ is $f$ continuous at $x = 2$?",
+      "options": [
+        "$k = -1$",
+        "$k = 1$",
+        "$k = 2$",
+        "$k = \\frac{5}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "From the right, $f(2) = 2^2 + 1 = 5$, and this is also the right-hand limit since the second piece covers $x \\ge 2$. From the left, $\\lim_{x\\to 2^-} f(x) = k(2) + 3 = 2k + 3$. Continuity at $2$ requires the two sides to meet: $2k + 3 = 5$, so $2k = 2$ and $k = 1$. The traps: $k = -1$ solves $2k = 3 - 5$, subtracting in the wrong direction; $k = 2$ drops the factor of $x = 2$ and solves $k + 3 = 5$; and $k = \\frac{5}{2}$ forgets the $+3$ and solves $2k = 5$.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 2.5"
+    },
+    {
+      "id": "calculus-i-continuity-005",
+      "stem": "Let $f(x) = x^3 + x - 1$. Which statement correctly uses the Intermediate Value Theorem to show that $f$ has a root in $(0, 1)$?",
+      "options": [
+        "$f$ is continuous on $[0, 1]$ as a polynomial, $f(0) = -1 < 0$, and $f(1) = 1 > 0$, so the IVT gives a $c$ in $(0, 1)$ with $f(c) = 0$",
+        "$f(0) = -1$ and $f(1) = 1$ average to $0$, so the root is exactly at $x = \\frac{1}{2}$",
+        "$f(0)$ and $f(1)$ have opposite signs, so a root exists whether or not $f$ is continuous",
+        "The IVT does not apply because neither $f(0)$ nor $f(1)$ equals $0$"
+      ],
+      "answer": 0,
+      "explanation": "Compute the endpoint values: $f(0) = 0 + 0 - 1 = -1$ and $f(1) = 1 + 1 - 1 = 1$. Polynomials are continuous everywhere, so $f$ is continuous on $[0, 1]$, and $0$ lies between $f(0) = -1$ and $f(1) = 1$. The IVT therefore guarantees some $c$ in $(0, 1)$ with $f(c) = 0$, which is the required root. The traps: the midpoint option pretends the IVT locates the root, when it only proves existence; the opposite-signs option throws away the continuity hypothesis, without which the conclusion can fail; and the last option invents a requirement, since the endpoint values need to bracket $0$, not equal it.",
+      "difficulty": "warmup",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-continuity-006",
+      "stem": "Define $f(x) = \\dfrac{x^2 - 4}{x - 2}$ for $x \\ne 2$ and $f(2) = 4$. Which, if any, of the three conditions for continuity at $x = 2$ fails?",
+      "options": [
+        "$f(2)$ is not defined",
+        "$\\displaystyle\\lim_{x\\to 2} f(x)$ does not exist, because substitution gives $\\frac{0}{0}$",
+        "The limit exists but does not equal $f(2)$",
+        "None of them; $f$ is continuous at $x = 2$"
+      ],
+      "answer": 3,
+      "explanation": "Check the three conditions in order. First, $f(2) = 4$ is defined by the second line of the definition. Second, for $x \\ne 2$ we factor $\\frac{(x - 2)(x + 2)}{x - 2} = x + 2$, so $\\lim_{x\\to 2} f(x) = 4$, which exists. Third, the limit $4$ equals $f(2) = 4$, so all three conditions hold and $f$ is continuous at $2$. The traps: claiming $f(2)$ is undefined ignores the explicitly assigned value $4$; the $\\frac{0}{0}$ option treats an indeterminate form as proof the limit fails, when it only signals that more algebra is needed; and the mismatch option assumes the patched value must be wrong instead of computing the limit.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.5"
+    },
+    {
+      "id": "calculus-i-continuity-007",
+      "stem": "Classify the discontinuity of $f(x) = \\dfrac{x + 2}{x^2 - 4}$ at $x = -2$.",
+      "options": [
+        "Jump",
+        "Removable",
+        "Infinite",
+        "There is no discontinuity at $x = -2$ because the limit exists there"
+      ],
+      "answer": 1,
+      "explanation": "Factor the denominator: $f(x) = \\frac{x + 2}{(x - 2)(x + 2)} = \\frac{1}{x - 2}$ for $x \\ne -2$. So $\\lim_{x\\to -2} f(x) = \\frac{1}{-2 - 2} = -\\frac{1}{4}$, a finite limit, while $f(-2)$ is undefined. A finite limit at an undefined point is precisely a removable discontinuity: redefining $f(-2) = -\\frac{1}{4}$ would make $f$ continuous there. Contrast this with $x = 2$, where the simplified denominator still vanishes and the discontinuity is infinite. The traps: infinite is the reflex for any zero denominator, but here the factor $x + 2$ cancels; jump needs disagreeing one-sided limits, which does not happen; and the last option forgets that continuity also requires $f(-2)$ to be defined.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-continuity-008",
+      "stem": "What type of discontinuity does $f(x) = \\dfrac{|x - 1|}{x - 1}$ have at $x = 1$?",
+      "options": [
+        "Removable",
+        "Infinite",
+        "Jump",
+        "None; the expression simplifies to $1$, so $f$ is continuous everywhere"
+      ],
+      "answer": 2,
+      "explanation": "Split by sign. For $x > 1$ we have $|x - 1| = x - 1$, so $f(x) = 1$; for $x < 1$ we have $|x - 1| = -(x - 1)$, so $f(x) = -1$. The one-sided limits at $1$ are therefore $1$ from the right and $-1$ from the left: both exist but disagree, which is exactly the definition of a jump discontinuity. The traps: removable requires the two-sided limit to exist, which it does not; infinite is the zero-denominator reflex, but the function values stay bounded at $\\pm 1$; and simplifying $\\frac{|x - 1|}{x - 1}$ to $1$ is valid only on the right side of $1$, not for $x < 1$.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-continuity-009",
+      "stem": "Let $g(x) = x^2 + 1$ for $x < 1$ and $g(x) = 3 - x$ for $x \\ge 1$. Determine whether $g$ is continuous at $x = 1$.",
+      "options": [
+        "Continuous; the left and right limits both equal $2$, and $g(1) = 2$",
+        "Discontinuous; the left limit is $2$ but the right limit is $3$",
+        "Discontinuous; a function defined by two different formulas cannot be continuous at the point where the formula changes",
+        "Discontinuous; $g(1)$ is undefined because neither piece includes $x = 1$"
+      ],
+      "answer": 0,
+      "explanation": "From the left, $\\lim_{x\\to 1^-} g(x) = 1^2 + 1 = 2$. From the right, $\\lim_{x\\to 1^+} g(x) = 3 - 1 = 2$, and the function value is $g(1) = 3 - 1 = 2$ because the second piece covers $x \\ge 1$. The one-sided limits agree, the value is defined, and all three numbers equal $2$, so $g$ is continuous at $1$. The traps: the right limit $3$ comes from reading off the constant in $3 - x$ instead of evaluating at $x = 1$; the formula-change option is a myth, since two pieces can meet perfectly; and the undefined option misreads the condition $x \\ge 1$, which does include $x = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.5"
+    },
+    {
+      "id": "calculus-i-continuity-010",
+      "stem": "Classify the discontinuity of $f(x) = \\dfrac{1}{(x - 3)^2}$ at $x = 3$.",
+      "options": [
+        "Removable; defining $f(3)$ appropriately would make $f$ continuous",
+        "Jump",
+        "Infinite",
+        "None; $f$ is continuous at $x = 3$ because the two one-sided limits agree"
+      ],
+      "answer": 2,
+      "explanation": "As $x \\to 3$ from either side, $(x - 3)^2 \\to 0$ through positive values, so $f(x) = \\frac{1}{(x - 3)^2}$ grows without bound and $\\lim_{x\\to 3} f(x) = \\infty$. A function that blows up at a point has an infinite discontinuity there, and the line $x = 3$ is a vertical asymptote. No finite value assigned to $f(3)$ could ever match an infinite limit, so the discontinuity cannot be removed. The traps: removable requires a finite limit; jump requires two finite, unequal one-sided limits; and the last option notes that the one-sided behaviors agree but forgets that an infinite limit is not a real number, so the limit does not exist in the sense continuity requires.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-continuity-011",
+      "stem": "Let $f(x) = \\dfrac{x^2 - 16}{x - 4}$ for $x \\ne 4$ and $f(4) = k$. For what value of $k$ is $f$ continuous at $x = 4$?",
+      "options": [
+        "$k = 0$",
+        "$k = 4$",
+        "$k = 8$",
+        "No value of $k$ can make $f$ continuous at $x = 4$"
+      ],
+      "answer": 2,
+      "explanation": "Continuity at $4$ requires $k = f(4) = \\lim_{x\\to 4} f(x)$, so compute the limit. Factor: $\\frac{x^2 - 16}{x - 4} = \\frac{(x - 4)(x + 4)}{x - 4} = x + 4$ for $x \\ne 4$, so the limit is $4 + 4 = 8$. Setting $k = 8$ makes the function value equal the limit, which is exactly the third continuity condition. The traps: $k = 0$ substitutes $x = 4$ into the numerator and reads the result as the limit; $k = 4$ confuses the location of the point with the value of the limit; and the no-value option treats the $\\frac{0}{0}$ form as a nonexistent limit instead of an instruction to factor.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.5"
+    },
+    {
+      "id": "calculus-i-continuity-012",
+      "stem": "Let $f(x) = kx^2$ for $x \\le 2$ and $f(x) = 2x + k$ for $x > 2$. Find the value of $k$ that makes $f$ continuous at $x = 2$.",
+      "options": [
+        "$k = \\frac{2}{3}$",
+        "$k = 1$",
+        "$k = \\frac{4}{3}$",
+        "$k = \\frac{4}{5}$",
+        "$k = 4$"
+      ],
+      "answer": 2,
+      "explanation": "The left piece gives $f(2) = k \\cdot 2^2 = 4k$, which is also the left-hand limit. The right-hand limit is $\\lim_{x\\to 2^+} (2x + k) = 4 + k$. Continuity requires $4k = 4 + k$, so $3k = 4$ and $k = \\frac{4}{3}$; both sides then equal $\\frac{16}{3}$. The traps: $k = 1$ drops the $k$ on the right side and solves $4k = 4$; $k = \\frac{4}{5}$ moves that $k$ to the wrong side, solving $5k = 4$; $k = \\frac{2}{3}$ evaluates the right piece as $2 + k$ by dropping the factor of $2$ in $2x$; and $k = 4$ evaluates the left piece as $2k$ instead of $k \\cdot 4$.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-continuity-013",
+      "stem": "Let $f(x) = x^4 + x - 3$, so that $f(1) = -1$ and $f(2) = 15$. Which conclusion does the Intermediate Value Theorem justify?",
+      "options": [
+        "$f$ has at least one root in $(1, 2)$",
+        "$f$ has a root at exactly $x = 1.5$, the midpoint of the interval",
+        "$f$ has exactly one root in $(1, 2)$",
+        "$f$ also has a root in $(0, 1)$, since $f$ is continuous there"
+      ],
+      "answer": 0,
+      "explanation": "$f$ is a polynomial, hence continuous on $[1, 2]$, and $0$ lies between $f(1) = -1$ and $f(2) = 15$. The IVT therefore guarantees at least one $c$ in $(1, 2)$ with $f(c) = 0$, and that is all it guarantees. The theorem is purely an existence statement: it neither locates a root nor counts the roots. The traps: the midpoint option treats the IVT as a root-finding formula; the exactly-one option adds a uniqueness claim the theorem never makes; and the $(0, 1)$ option ignores that $f(0) = -3$ and $f(1) = -1$ have the same sign, so the IVT yields no conclusion on that interval.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.5"
+    },
+    {
+      "id": "calculus-i-continuity-014",
+      "stem": "Consider $f(x) = \\dfrac{1}{x}$ on $[-1, 1]$. We have $f(-1) = -1 < 0$ and $f(1) = 1 > 0$, yet $f$ has no root anywhere. Which statement resolves this?",
+      "options": [
+        "The IVT guarantees a $c$ in $(-1, 1)$ with $f(c) = 0$, so $f$ must have a root there after all",
+        "The IVT does not apply because $f$ is not continuous on $[-1, 1]$; it has an infinite discontinuity at $x = 0$",
+        "The IVT does not apply because $0$ is not between $f(-1) = -1$ and $f(1) = 1$",
+        "$f$ has a root at $x = 0$, since the sign of $f$ changes there"
+      ],
+      "answer": 1,
+      "explanation": "The IVT has two hypotheses: continuity on the closed interval and a target value lying between the endpoint values. The bracketing condition holds here, since $0$ lies between $-1$ and $1$, but $f(x) = \\frac{1}{x}$ is not continuous on $[-1, 1]$: it is not even defined at $x = 0$, where it has an infinite discontinuity. With a hypothesis violated, the IVT simply gives no conclusion, and indeed $\\frac{1}{x}$ is never $0$. The traps: applying the theorem anyway manufactures a root that does not exist; the betweenness option mis-checks a hypothesis that actually holds; and a sign change without continuity does not force a root, since $f(0)$ is undefined rather than zero.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-continuity-015",
+      "stem": "Define $f(x) = \\dfrac{\\sin x}{x}$ for $x \\ne 0$ and $f(0) = 1$. Is $f$ continuous at $x = 0$?",
+      "options": [
+        "No; $\\frac{\\sin x}{x}$ is undefined at $x = 0$, so $f$ cannot be continuous there",
+        "Yes; $\\displaystyle\\lim_{x\\to 0} f(x) = 1 = f(0)$",
+        "No; the limit is $0$ because $\\sin 0 = 0$",
+        "No; substitution gives $\\frac{0}{0}$, which is undefined, so the limit does not exist"
+      ],
+      "answer": 1,
+      "explanation": "The function value is $f(0) = 1$ by definition, so the first continuity condition holds. The limit is the standard result $\\lim_{x\\to 0} \\frac{\\sin x}{x} = 1$, so the limit exists, and it equals $f(0) = 1$. All three conditions hold, so $f$ is continuous at $0$; this is exactly how a removable discontinuity gets removed by choosing the patch value correctly. The traps: the undefined option looks only at the quotient formula and ignores the assigned value $f(0) = 1$; the limit-is-$0$ option substitutes into the numerator alone; and the $\\frac{0}{0}$ option treats an indeterminate form as a nonexistent limit instead of a prompt for more analysis.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-continuity-016",
+      "stem": "Find and classify all discontinuities of $f(x) = \\dfrac{x - 1}{x^2 - 3x + 2}$.",
+      "options": [
+        "Removable at $x = 1$ and infinite at $x = 2$",
+        "Infinite at both $x = 1$ and $x = 2$",
+        "Infinite at $x = 1$ and removable at $x = 2$",
+        "Jump at $x = 1$ and infinite at $x = 2$"
+      ],
+      "answer": 0,
+      "explanation": "Factor the denominator: $x^2 - 3x + 2 = (x - 1)(x - 2)$, so $f$ is undefined exactly at $x = 1$ and $x = 2$. For $x \\ne 1$ the factor $x - 1$ cancels, leaving $f(x) = \\frac{1}{x - 2}$, so $\\lim_{x\\to 1} f(x) = \\frac{1}{1 - 2} = -1$: a finite limit at an undefined point, which is a removable discontinuity. At $x = 2$ the remaining denominator $x - 2$ still vanishes while the numerator does not, so $f$ blows up and the discontinuity is infinite. The traps: calling both points infinite is the zero-denominator reflex that skips the cancellation at $x = 1$; the swapped option cancels at the wrong point; and a jump is impossible here, since this kind of rational function never produces two different finite one-sided limits.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.5"
+    },
+    {
+      "id": "calculus-i-continuity-017",
+      "stem": "Let $f(x) = x^2 + k$ for $x < -1$ and $f(x) = kx + 5$ for $x \\ge -1$. For what value of $k$ is $f$ continuous at $x = -1$?",
+      "options": [
+        "$k = 3$",
+        "$k = 2$",
+        "No value of $k$ makes $f$ continuous at $x = -1$",
+        "$k = 4$"
+      ],
+      "answer": 1,
+      "explanation": "The left-hand limit is $\\lim_{x\\to -1^-}(x^2 + k) = (-1)^2 + k = 1 + k$. The function value and right-hand limit both come from the second piece: $f(-1) = k(-1) + 5 = 5 - k$. Setting $1 + k = 5 - k$ gives $2k = 4$, so $k = 2$; as a check, both sides then equal $3$. The traps: $k = 3$ treats $(-1)^2$ as $-1$ and solves $-1 + k = 5 - k$; $k = 4$ stops at $2k = 4$ and forgets to divide by $2$; and the no-value option comes from evaluating at $x = +1$ instead of $x = -1$, which makes the $k$ terms cancel and the equation impossible.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-continuity-018",
+      "stem": "Let $f(x) = x^3 - 4x + 1$. On which of the following intervals does the Intermediate Value Theorem guarantee that $f$ has a root?",
+      "options": [
+        "$(-1, 0)$",
+        "$(1, 2)$",
+        "$(2, 3)$",
+        "$(3, 4)$"
+      ],
+      "answer": 1,
+      "explanation": "Since $f$ is a polynomial it is continuous everywhere, so the only hypothesis to check is a sign change between the endpoints. Evaluate: $f(-1) = -1 + 4 + 1 = 4$, $f(0) = 1$, $f(1) = 1 - 4 + 1 = -2$, $f(2) = 8 - 8 + 1 = 1$, $f(3) = 27 - 12 + 1 = 16$, and $f(4) = 64 - 16 + 1 = 49$. Only on $[1, 2]$ do the endpoint values, $-2$ and $1$, have opposite signs, so the IVT guarantees a root in $(1, 2)$ and gives no guarantee on the other three intervals, whose endpoint values share a sign. The trap: picking an interval without checking both endpoint signs, or assuming continuity alone is enough; the IVT needs the target value $0$ to lie strictly between the endpoint values.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-continuity-019",
+      "stem": "On what set is $h(x) = \\sqrt{x^2 - 9}$ continuous?",
+      "options": [
+        "$(-\\infty, -3] \\cup [3, \\infty)$",
+        "$[-3, 3]$",
+        "$(-\\infty, -3) \\cup (3, \\infty)$",
+        "$[3, \\infty)$",
+        "All real numbers, because $x^2 - 9$ is a polynomial"
+      ],
+      "answer": 0,
+      "explanation": "$h$ is the composition of the continuous square root function with the polynomial $x^2 - 9$, so it is continuous at every point of its domain. The domain requires $x^2 - 9 \\ge 0$, that is $x^2 \\ge 9$, which means $x \\le -3$ or $x \\ge 3$. At the endpoints $x = \\pm 3$ the inside equals $0$ and $h$ is continuous from the appropriate side, so the endpoints are included: $h$ is continuous on $(-\\infty, -3] \\cup [3, \\infty)$. The traps: $[-3, 3]$ flips the inequality $x^2 \\ge 9$; the open-interval option needlessly discards the endpoints, where one-sided continuity holds; $[3, \\infty)$ forgets that large negative $x$ also makes $x^2 - 9 \\ge 0$; and the all-reals option checks the inner polynomial but ignores the square root's domain restriction.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.5"
+    },
+    {
+      "id": "calculus-i-continuity-020",
+      "stem": "Let $f(x) = \\dfrac{x^2 - k^2}{x - k}$ for $x \\ne k$ and $f(k) = 8$. For what value of $k$ is $f$ continuous at $x = k$?",
+      "options": [
+        "$k = 4$",
+        "$k = 8$",
+        "$k = 2\\sqrt{2}$",
+        "No value of $k$, because substitution at $x = k$ gives $\\frac{0}{0}$"
+      ],
+      "answer": 0,
+      "explanation": "For $x \\ne k$, factor the difference of squares: $\\frac{x^2 - k^2}{x - k} = \\frac{(x - k)(x + k)}{x - k} = x + k$. So $\\lim_{x\\to k} f(x) = k + k = 2k$, and continuity requires this limit to equal $f(k) = 8$. Solving $2k = 8$ gives $k = 4$, and then $f$ agrees everywhere with the continuous function $x + 4$. The traps: $k = 8$ assumes the limit is just $k$, losing one of the two terms in $x + k$; $k = 2\\sqrt{2}$ solves $k^2 = 8$, confusing the cancelled factor with the limit; and the no-value option treats $\\frac{0}{0}$ as a dead end instead of an instruction to factor.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-continuity-021",
+      "stem": "Define $f(x) = \\dfrac{x^2 - x - 2}{x - 2}$ for $x < 2$, $f(2) = 3$, and $f(x) = x + 1$ for $x > 2$. Which statement is correct?",
+      "options": [
+        "$f$ has a jump discontinuity at $x = 2$ because the formula changes there",
+        "$f$ has a removable discontinuity at $x = 2$",
+        "$f$ has an infinite discontinuity at $x = 2$ because the first denominator vanishes there",
+        "$f$ is continuous at $x = 2$"
+      ],
+      "answer": 3,
+      "explanation": "For $x < 2$, factor: $\\frac{x^2 - x - 2}{x - 2} = \\frac{(x - 2)(x + 1)}{x - 2} = x + 1$, so the left-hand limit is $2 + 1 = 3$. The right-hand limit is $\\lim_{x\\to 2^+}(x + 1) = 3$ as well, and the defined value is $f(2) = 3$. Limit, value, and equality all check out, so $f$ is continuous at $2$; in fact all three branches agree with the single continuous function $x + 1$. The traps: jump is the changed-formula reflex, but the pieces meet exactly; removable assumes the patched value must miss the limit, but $3$ is precisely right; and infinite reacts to the vanishing denominator without noticing that the factor $x - 2$ cancels.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 2.5"
+    },
+    {
+      "id": "calculus-i-continuity-022",
+      "stem": "Which argument correctly shows that the equation $\\cos x = x$ has a solution in $\\left(0, \\frac{\\pi}{2}\\right)$?",
+      "options": [
+        "Both $\\cos x$ and $x$ are continuous, and any two continuous functions must intersect somewhere",
+        "Let $f(x) = \\cos x - x$; then $f$ is continuous, $f(0) = 1 > 0$, and $f\\left(\\frac{\\pi}{2}\\right) = -\\frac{\\pi}{2} < 0$, so the IVT gives a $c$ with $f(c) = 0$",
+        "Check the endpoints: $\\cos 0 = 1 \\ne 0$ and $\\cos\\frac{\\pi}{2} = 0 \\ne \\frac{\\pi}{2}$, so the equation has no solution in the interval",
+        "Apply the IVT directly to $\\cos x$: it takes every value between $\\cos 0$ and $\\cos\\frac{\\pi}{2}$, so at some point it must take the value $x$"
+      ],
+      "answer": 1,
+      "explanation": "The standard move is to rewrite the equation as a root problem: let $f(x) = \\cos x - x$, a difference of continuous functions, hence continuous on $\\left[0, \\frac{\\pi}{2}\\right]$. Then $f(0) = \\cos 0 - 0 = 1 > 0$ and $f\\left(\\frac{\\pi}{2}\\right) = 0 - \\frac{\\pi}{2} < 0$, so $0$ lies between the endpoint values. The IVT gives a $c$ in $\\left(0, \\frac{\\pi}{2}\\right)$ with $f(c) = 0$, that is, $\\cos c = c$. The traps: continuity of two functions alone never forces an intersection, since the continuous functions $x$ and $x + 1$ never meet; failure of the equation at both endpoints says nothing about interior points; and applying the IVT to $\\cos x$ with the moving target $x$ misuses the theorem, which compares a function against a fixed number.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 2.5"
+    },
+    {
+      "id": "calculus-i-continuity-023",
+      "stem": "A function $f$ is continuous on $[0, 4]$ with $f(0) = 3$, $f(1) = -1$, $f(2) = -5$, $f(3) = 2$, and $f(4) = 6$. What is the minimum number of solutions of $f(x) = 0$ in $(0, 4)$ that the Intermediate Value Theorem guarantees?",
+      "options": [
+        "$0$; a table of values can never guarantee a root",
+        "$1$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": 2,
+      "explanation": "Scan consecutive sample points for sign changes. From $f(0) = 3$ to $f(1) = -1$ the sign flips from positive to negative, so the IVT, applied on $[0, 1]$ where $f$ is continuous, gives a root in $(0, 1)$. From $f(2) = -5$ to $f(3) = 2$ the sign flips again, giving a second root in $(2, 3)$; between $x = 1$ and $x = 2$ the values stay negative and between $x = 3$ and $x = 4$ they stay positive, so no further roots are forced. The minimum is therefore $2$; the function could have more roots, but the table guarantees at least these two. The traps: answering $1$ stops at the first sign change; $4$ counts every subinterval as if each must contain a root; and $0$ forgets that continuity plus tabulated sign changes is exactly the setting where the IVT applies.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-continuity-024",
+      "stem": "Which of the following statements is true?",
+      "options": [
+        "If $\\displaystyle\\lim_{x\\to a} f(x)$ exists, then $f$ is continuous at $a$",
+        "If $f(a)$ is defined and $\\displaystyle\\lim_{x\\to a} f(x)$ exists, then $f$ is continuous at $a$",
+        "If $f(a)$ is not defined, then $\\displaystyle\\lim_{x\\to a} f(x)$ cannot exist",
+        "$\\displaystyle\\lim_{x\\to a} f(x)$ can exist even when $f(a)$ is not defined"
+      ],
+      "answer": 3,
+      "explanation": "The limit of $f$ as $x$ approaches $a$ depends only on the values of $f$ near $a$, never on the value at $a$ itself. For example, $f(x) = \\frac{x^2 - 9}{x - 3}$ is undefined at $3$, yet its limit there is $6$; this is the situation at every removable discontinuity. So the limit can certainly exist at a point where the function is undefined, and the last statement is true. The traps: the first option forgets that continuity also needs $f(a)$ to be defined and equal to the limit; the second supplies definedness and existence but omits the equality condition, which fails whenever a piecewise value is patched in at the wrong height; and the third is the converse error, believing a function must be defined at a point to have a limit there.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 2.5"
+    }
+  ]
+}
