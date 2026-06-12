@@ -182,3 +182,52 @@ a:hover { color: var(--green-dark); }
 
 .review-q { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 1rem 0; }
 .review-q .meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-soft); }
+
+/* exam components (Stage 3) */
+.exam-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; margin: 0.75rem 0; }
+.exam-timer {
+  background: var(--card); border: 1px solid var(--line-strong); border-radius: 999px;
+  font-family: var(--font-mono); font-size: 0.95rem; padding: 0.3rem 0.9rem;
+}
+.exam-timer.warn { background: var(--wrong-bg); color: var(--wrong-text); border-color: var(--wrong-text); }
+
+.exam-layout { display: grid; gap: 1rem; grid-template-columns: 1fr; align-items: start; }
+
+.exam-side { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.9rem; }
+.exam-side h2 { margin: 0 0 0.6rem; font-size: 1rem; }
+.nav-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.cell {
+  font: inherit; font-size: 0.85rem; font-family: var(--font-mono);
+  height: 2.1rem; border-radius: 6px; cursor: pointer; position: relative;
+  background: var(--paper); border: 1px solid var(--line-strong); color: var(--ink);
+}
+.cell.answered { background: var(--right-bg); border-color: var(--right-text); color: var(--right-text); }
+.cell.current { outline: 3px solid var(--green); outline-offset: 1px; }
+.cell.flagged::after {
+  content: ""; position: absolute; top: 3px; right: 3px;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--wrong-text);
+}
+.exam-legend { display: flex; flex-direction: column; gap: 0.25rem; margin-top: 0.6rem; font-size: 0.75rem; color: var(--ink-soft); }
+.flag-btn {
+  font: inherit; font-size: 0.85rem; color: var(--ink-soft); background: none;
+  border: 1px dashed var(--line-strong); border-radius: 6px; padding: 0.3rem 0.8rem; cursor: pointer;
+}
+.flag-btn.on { color: var(--wrong-text); border-color: var(--wrong-text); border-style: solid; }
+
+.format-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.25rem; margin: 0.75rem 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; }
+.format-card h3 { margin: 0; }
+.format-meta { color: var(--ink-soft); font-size: 0.9rem; }
+
+.summary-list { list-style: none; margin: 1rem 0; padding: 0; }
+.summary-list li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.45rem 0; border-bottom: 1px solid var(--line); font-size: 0.95rem; }
+.summary-state { font-family: var(--font-mono); font-size: 0.8rem; }
+.summary-state.unanswered { color: var(--wrong-text); }
+
+.review-pick { font-size: 0.85rem; padding: 0.3rem 0.6rem; border-radius: 6px; }
+.review-pick.right { background: var(--right-bg); color: var(--right-text); }
+.review-pick.wrong { background: var(--wrong-bg); color: var(--wrong-text); }
+
+@media (min-width: 720px) {
+  .exam-layout { grid-template-columns: minmax(0, 1fr) 230px; }
+  .exam-side { position: sticky; top: 1rem; }
+}
