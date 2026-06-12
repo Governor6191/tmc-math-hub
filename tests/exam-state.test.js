@@ -1,0 +1,77 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { createAttempt, remainingMs, answerQuestion, toggleFlag, answeredCount, scoreAttempt } from '../js/exam-state.js';
+
+function fakeRng(seq) { let i = 0; return () => seq[i++ % seq.length]; }
+const FORMAT = { id: 'midsem', label: 'Mid-semester', questions: 3, minutes: 40 };
+const POOL = Array.from({ length: 5 }, (_, i) => ({
+  id: `q${i}`, stem: `stem ${i}`, options: ['a', 'b', 'c', 'd'], answer: 1,
+  explanation: `expl ${i}`, difficulty: 'core', topicTitle: 'Limits',
+}));
+
+function freshAttempt() {
+  return createAttempt('calculus-i', FORMAT, POOL, fakeRng([0.4, 0.9, 0.1]), () => 1000000);
+}
+
+test('createAttempt draws the format count, shuffles options, tracks the key', () => {
+  const a = freshAttempt();
+  assert.equal(a.courseId, 'calculus-i');
+  assert.equal(a.formatId, 'midsem');
+  assert.equal(a.questions.length, 3);
+  assert.equal(a.durationMs, 40 * 60 * 1000);
+  assert.equal(a.startedAt, 1000000);
+  for (const q of a.questions) {
+    assert.equal(q.options.length, 4);
+    assert.equal(q.options[q.answerIndex], 'b');
+  }
+  assert.deepEqual(a.answers, {});
+  assert.deepEqual(a.flags, {});
+  assert.equal(a.submitted, false);
+});
+
+test('createAttempt caps at the pool size when the format asks for more', () => {
+  const big = { ...FORMAT, questions: 50 };
+  assert.equal(createAttempt('c', big, POOL, fakeRng([0.5]), () => 0).questions.length, 5);
+});
+
+test('remainingMs counts down from duration and floors at zero', () => {
+  const a = freshAttempt();
+  assert.equal(remainingMs(a, () => 1000000), 40 * 60 * 1000);
+  assert.equal(remainingMs(a, () => 1000000 + 60 * 1000), 39 * 60 * 1000);
+  assert.equal(remainingMs(a, () => 1000000 + 41 * 60 * 1000), 0);
+});
+
+test('answerQuestion records and overwrites; answeredCount counts unique', () => {
+  const a = freshAttempt();
+  answerQuestion(a, 0, 2);
+  answerQuestion(a, 0, 1);
+  answerQuestion(a, 2, 0);
+  assert.equal(a.answers[0], 1);
+  assert.equal(answeredCount(a), 2);
+});
+
+test('toggleFlag flips on and off', () => {
+  const a = freshAttempt();
+  toggleFlag(a, 1);
+  assert.equal(a.flags[1], true);
+  toggleFlag(a, 1);
+  assert.equal(1 in a.flags, false);
+});
+
+test('scoreAttempt counts answers matching the shuffled key', () => {
+  const a = freshAttempt();
+  answerQuestion(a, 0, a.questions[0].answerIndex);
+  answerQuestion(a, 1, (a.questions[1].answerIndex + 1) % 4);
+  const s = scoreAttempt(a);
+  assert.deepEqual(s, { correct: 1, total: 3 });
+});
+
+test('an attempt survives a JSON round trip (checkpoint shape)', () => {
+  const a = freshAttempt();
+  answerQuestion(a, 0, 3);
+  toggleFlag(a, 2);
+  const back = JSON.parse(JSON.stringify(a));
+  assert.equal(remainingMs(back, () => 1000000 + 1000), a.durationMs - 1000);
+  assert.equal(back.answers[0], 3);
+  assert.equal(back.flags[2], true);
+});
