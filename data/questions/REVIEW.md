@@ -1,26 +1,25 @@
 # Reviewing question banks (for Sylvester)
 
-Draft banks live in data/questions/<course>/drafts/. Students never see them:
-the site only serves banks wired into catalog.json, which happens at promotion.
+Standing policy (set by Sylvester, 2026-06-12): a bank auto-promotes once it
+passes both machine gates, structural validation plus an independent blind
+re-solve of every question with full agreement. Sylvester reviews
+retroactively and can pull any question or bank back by id.
 
-Your loop per bank, about 10 minutes each:
+Your retroactive loop per bank, about 10 minutes each:
 
-1. Open the review page (works locally and on the live site):
-   review.html?course=calculus-i&bank=limits
+1. Open the review page (works locally and on the live site, before or
+   after promotion): review.html?course=calculus-i&bank=limits
    Every question renders with real math, the correct answer highlighted,
-   and the worked solution below.
+   and the worked solution below. Per-bank verification stats live in
+   data/questions/<course>/drafts/VERIFICATION.md.
 2. Spot-check at least 10 questions: is the keyed answer right, are the
    distractors plausible, is the explanation actually teaching?
-3. To feel it as a student: practice.html?c=calculus-i&t=limits&draft=1
-4. Happy? Tell Claude "promote calculus-i limits", or run:
-   node tools/promote-bank.js calculus-i limits
-   then commit and push. The topic's practice goes live on the next deploy.
-5. Not happy? Note the question ids and what is wrong; Claude regenerates
-   or fixes those, the batch gets re-verified, you re-check.
+3. Found a bad one? Tell Claude the question id and what is wrong; it gets
+   fixed or removed, re-verified, and redeployed in one commit.
 
-Every draft batch was already machine-verified before it reached you:
-structural validation plus an independent blind re-solve of every question.
-Your check is the final gate, not the only one.
+A bank that fails blind verification never promotes: mismatches get fixed
+and re-checked, and a bank with more than 20 percent mismatches is
+regenerated from scratch.
 
 ## Authoring notes (for whoever writes questions)
 

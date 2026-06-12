@@ -1,0 +1,427 @@
+{
+  "courseId": "logic-and-set-theory",
+  "topicId": "propositional-logic",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "logic-and-set-theory-propositional-logic-001",
+      "stem": "Which of the following sentences is a proposition, that is, a declarative sentence that is either true or false?",
+      "options": [
+        "Close the door before you leave.",
+        "Is $7$ a prime number?",
+        "$7$ is an even number.",
+        "$x + 3 = 5$"
+      ],
+      "answer": 2,
+      "explanation": "A proposition must be a declarative sentence carrying exactly one truth value. The command and the question make no claim about the world, so neither has a truth value. The equation $x + 3 = 5$ contains a free variable $x$; its truth changes with $x$, so it is an open sentence, not a proposition. The sentence stating that $7$ is even is declarative and definitely false, and a false sentence is still a proposition. The trap is rejecting it because it is false: being false is just as much a truth value as being true.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-002",
+      "stem": "Which of the following sentences fails to be a proposition?",
+      "options": [
+        "$2 + 2 = 5$",
+        "This sentence is false.",
+        "Kumasi is the capital of Ghana.",
+        "Every even integer greater than $2$ is the sum of two primes."
+      ],
+      "answer": 1,
+      "explanation": "Check each sentence for a definite truth value. The equation $2 + 2 = 5$ and the claim about Kumasi are simply false, and false sentences are propositions. The claim about even integers is Goldbach's conjecture; nobody knows its truth value yet, but it is still either true or false, so it qualifies. The self-referential sentence can carry no truth value at all: if it were true it would be false, and if it were false it would be true. The trap is rejecting the unproved conjecture because its truth value is unknown, when the real failure is the sentence that cannot consistently take any truth value.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-003",
+      "stem": "Let $p$ be the statement: all the students in the class passed the exam. Which sentence is the negation $\\lnot p$?",
+      "options": [
+        "No student in the class passed the exam.",
+        "All the students in the class failed the exam.",
+        "At least one student in the class did not pass the exam.",
+        "At least one student in the class passed the exam."
+      ],
+      "answer": 2,
+      "explanation": "A negation must be true in exactly the situations where the original is false. The claim that all students passed already fails as soon as a single student did not pass, so its denial is that at least one student did not pass. Saying that no student passed, or that all failed, claims far more than the denial; both can be false at the same time as the original, for example when exactly half the class passed. The remaining option is compatible with the original statement, so it cannot be its negation. The trap is negating to the opposite extreme: the denial of all passed is not all failed but some did not pass.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-004",
+      "stem": "Let $p$ stand for: the function is continuous, and $q$ for: the function is differentiable. The negation of $p \\land q$, the claim that the function is continuous and differentiable, is:",
+      "options": [
+        "The function is not continuous or it is not differentiable.",
+        "The function is not continuous and it is not differentiable.",
+        "The function is not continuous and it is differentiable.",
+        "The function is either continuous or differentiable."
+      ],
+      "answer": 0,
+      "explanation": "By De Morgan's law, $\\lnot(p \\land q) \\equiv \\lnot p \\lor \\lnot q$: negating a conjunction negates each part and flips the connective from and to or. The conjunction fails as soon as either property fails, so its denial only needs one of the two to break down. Demanding that both fail, $\\lnot p \\land \\lnot q$, is the negation of $p \\lor q$, a different statement; it is false when the function is continuous but not differentiable, exactly where the true negation must hold. Negating just the first conjunct, or dropping the negations entirely, fails even faster. The twin traps are applying De Morgan without flipping the connective and negating only half of the compound.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-005",
+      "stem": "Suppose $p$ is true and $q$ is false. Which one of the following compound propositions is true?",
+      "options": [
+        "$p \\land q$",
+        "$p \\to q$",
+        "$p \\leftrightarrow q$",
+        "$q \\to p$"
+      ],
+      "answer": 3,
+      "explanation": "Evaluate each connective at $p$ true and $q$ false. The conjunction $p \\land q$ needs both parts true, so it is false, and the biconditional $p \\leftrightarrow q$ needs matching truth values, so it is false too. The conditional $p \\to q$ has a true antecedent and a false consequent, the one combination that makes a conditional false. But $q \\to p$ has a false antecedent, and a conditional with a false antecedent is true by definition, whatever its consequent does. The trap is judging $q \\to p$ false just because $q$ is false: a false antecedent never falsifies a conditional.",
+      "difficulty": "warmup",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-006",
+      "stem": "In the four-row truth table for the inclusive disjunction $p \\lor q$, how many rows make the proposition true?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "answer": 2,
+      "explanation": "List the rows: both true gives true, $p$ true with $q$ false gives true, $p$ false with $q$ true gives true, and both false gives false. Inclusive or fails only when both disjuncts fail, so exactly $3$ of the $4$ rows are true. The answer $2$ counts only the rows where exactly one of $p$, $q$ is true, which is the table of the exclusive or $p \\oplus q$, not of $\\lor$; the answer $1$ counts the table of $p \\land q$. The trap is reading or in its everyday exclusive sense and throwing away the row where both parts are true.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-007",
+      "stem": "Let $p$ be true, $q$ false, and $r$ false. Which of the following compound propositions is false?",
+      "options": [
+        "$p \\lor (q \\land r)$",
+        "$(p \\lor q) \\land r$",
+        "$p \\to (q \\to r)$",
+        "$\\lnot r \\to p$"
+      ],
+      "answer": 1,
+      "explanation": "Work from the inside out. In $p \\lor (q \\land r)$ the disjunct $p$ is already true, so the whole disjunction is true. In $(p \\lor q) \\land r$ the first conjunct $p \\lor q$ is true, but the conjunction still needs $r$, which is false, so this one is false. In $p \\to (q \\to r)$ the inner conditional $q \\to r$ has a false antecedent and is therefore true, and a conditional with a true consequent is true; likewise $\\lnot r$ and $p$ are both true, making $\\lnot r \\to p$ true. The traps are treating the two groupings of $p$, $q$, $r$ as interchangeable when moving the parentheses changes the value, and calling $q \\to r$ false because both of its parts are false.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-008",
+      "stem": "Let $p$ be false, $q$ true, and $r$ true. Which of the following compound propositions is true?",
+      "options": [
+        "$p \\leftrightarrow q$",
+        "$q \\oplus r$",
+        "$p \\oplus q$",
+        "$\\lnot q \\lor p$"
+      ],
+      "answer": 2,
+      "explanation": "Evaluate each at $p$ false, $q$ true, $r$ true. The biconditional $p \\leftrightarrow q$ compares false with true, a mismatch, so it is false. The exclusive disjunction $q \\oplus r$ compares true with true, and exclusive or rejects exactly the case where both parts are true, so it is false. In $p \\oplus q$ exactly one component is true, which is precisely when exclusive or holds, so it is true; finally $\\lnot q \\lor p$ joins two false parts and is false. The trap is reading $q \\oplus r$ inclusively and accepting the both-true row that $\\oplus$ exists to exclude.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-009",
+      "stem": "Consider the conditional: if it rains, then the match is cancelled. Its converse is:",
+      "options": [
+        "If the match is cancelled, then it rains.",
+        "If it does not rain, then the match is not cancelled.",
+        "If the match is not cancelled, then it does not rain.",
+        "It rains and the match is not cancelled."
+      ],
+      "answer": 0,
+      "explanation": "Write the conditional as $p \\to q$ with $p$ for rain and $q$ for cancellation. The converse swaps antecedent and consequent with no negations, giving $q \\to p$: if the match is cancelled, then it rains. Negating both parts without swapping gives the inverse $\\lnot p \\to \\lnot q$, while swapping and negating gives the contrapositive $\\lnot q \\to \\lnot p$. The conjunction option is the negation of the conditional, not a related conditional at all. The trap is shuffling the three relatives of a conditional: only the plain swap is the converse.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-010",
+      "stem": "The contrapositive of the statement: if a number is divisible by $6$, then it is divisible by $3$, is which of the following?",
+      "options": [
+        "If a number is divisible by $3$, then it is divisible by $6$.",
+        "If a number is not divisible by $6$, then it is not divisible by $3$.",
+        "A number is divisible by $6$ and not divisible by $3$.",
+        "If a number is not divisible by $3$, then it is not divisible by $6$."
+      ],
+      "answer": 3,
+      "explanation": "With $p$ for divisibility by $6$ and $q$ for divisibility by $3$, the statement is $p \\to q$ and its contrapositive is $\\lnot q \\to \\lnot p$: negate both parts and swap them. It reads: if a number is not divisible by $3$, then it is not divisible by $6$, and like the original it is true. Swapping without negating gives the converse, which is false here since $9$ is divisible by $3$ but not by $6$; negating without swapping gives the inverse, false by the same witness. The conjunction option is the negation of the conditional, not one of its relatives. The trap is letting the converse or the inverse masquerade as the contrapositive: only swap and negate together preserve the meaning.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-011",
+      "stem": "Which of the following is logically equivalent to the conditional $p \\to q$?",
+      "options": [
+        "its converse $q \\to p$",
+        "its contrapositive $\\lnot q \\to \\lnot p$",
+        "its inverse $\\lnot p \\to \\lnot q$",
+        "its negation $\\lnot(p \\to q)$"
+      ],
+      "answer": 1,
+      "explanation": "Compare truth tables. $p \\to q$ is false only at $p$ true, $q$ false; the contrapositive $\\lnot q \\to \\lnot p$ is false only when $\\lnot q$ is true and $\\lnot p$ is false, which is the same row, so the two agree in all four rows. The converse fails at a different row ($p$ false, $q$ true), and the inverse is the contrapositive of the converse, so it fails alongside the converse, not alongside the original. The negation disagrees with $p \\to q$ in every row by definition. The trap is promoting the converse or the inverse to equivalence: a conditional says nothing about what happens when its antecedent fails.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-012",
+      "stem": "For a conditional $p \\to q$, consider its converse $q \\to p$ and its inverse $\\lnot p \\to \\lnot q$. These two propositions are:",
+      "options": [
+        "logically equivalent to each other",
+        "logically equivalent to the original conditional $p \\to q$",
+        "negations of each other",
+        "in agreement only in the row where $p$ and $q$ are both true"
+      ],
+      "answer": 0,
+      "explanation": "Take the contrapositive of the converse $q \\to p$: negate both parts and swap to get $\\lnot p \\to \\lnot q$, which is exactly the inverse. Every conditional is equivalent to its own contrapositive, so the converse and the inverse are logically equivalent to each other; their tables agree in all four rows, not just where both variables are true. Neither is equivalent to the original: at $p$ false, $q$ true the original is true while the converse and the inverse are both false. That same row also shows they are not negations of each other, since they agree there. The trap is the familiar one in a new disguise: students who know the original is not equivalent to its converse often refuse to believe the converse and inverse are equivalent, yet contraposition forces it.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-013",
+      "stem": "The conditional $p \\to q$ can be rewritten as a disjunction. Which one?",
+      "options": [
+        "$\\lnot p \\lor q$",
+        "$p \\lor \\lnot q$",
+        "$\\lnot p \\land q$",
+        "$\\lnot(p \\lor q)$"
+      ],
+      "answer": 0,
+      "explanation": "A conditional is false in exactly one row: $p$ true and $q$ false, so any equivalent formula must be false exactly there. The disjunction $\\lnot p \\lor q$ fails precisely when $\\lnot p$ and $q$ are both false, that is when $p$ is true and $q$ is false, so its table matches $p \\to q$ in all four rows. The formula $p \\lor \\lnot q$ instead fails at $p$ false, $q$ true, the wrong row; $\\lnot p \\land q$ is true in only one row, far too strong; and $\\lnot(p \\lor q)$ holds only when both variables are false. The trap is negating the wrong side: in the disjunctive form it is the antecedent that picks up the negation, never the consequent.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-014",
+      "stem": "By De Morgan's law, $\\lnot(p \\lor q)$ is logically equivalent to:",
+      "options": [
+        "$\\lnot p \\lor \\lnot q$",
+        "$\\lnot p \\land \\lnot q$",
+        "$\\lnot p \\lor q$",
+        "$p \\land q$"
+      ],
+      "answer": 1,
+      "explanation": "A disjunction $p \\lor q$ is false only when both disjuncts are false, so its negation must be true exactly when $p$ and $q$ are both false; that is the table of $\\lnot p \\land \\lnot q$. De Morgan's law packages this observation: push the negation onto each part and flip $\\lor$ to $\\land$. Writing $\\lnot p \\lor \\lnot q$ negates the parts but keeps the connective; that formula equals $\\lnot(p \\land q)$, the other De Morgan law, and it is true in three rows instead of one. Negating a single disjunct, or dropping the negations altogether, already fails at the row where $p$ and $q$ are both true. The trap is applying De Morgan without flipping the connective.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-015",
+      "stem": "Using De Morgan's law and the law of double negation, $\\lnot(\\lnot p \\land q)$ simplifies to:",
+      "options": [
+        "$p \\lor \\lnot q$",
+        "$p \\land \\lnot q$",
+        "$\\lnot p \\lor \\lnot q$",
+        "$p \\land q$"
+      ],
+      "answer": 0,
+      "explanation": "Apply De Morgan to the conjunction, negating each conjunct and flipping $\\land$ to $\\lor$: $\\lnot(\\lnot p \\land q) \\equiv \\lnot\\lnot p \\lor \\lnot q$. The law of double negation collapses $\\lnot\\lnot p$ to $p$, leaving $p \\lor \\lnot q$. As a check, both the original and $p \\lor \\lnot q$ are false at exactly one row, $p$ false and $q$ true, the only row where $\\lnot p \\land q$ holds. Keeping $\\land$ after De Morgan gives $p \\land \\lnot q$, which is false at the row where $p$ and $q$ are both true even though the original is true there; leaving $\\lnot p$ untouched gives $\\lnot p \\lor \\lnot q$, wrong at that same row. The traps are forgetting to flip the connective and forgetting to cancel the double negation.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-016",
+      "stem": "Which equivalence states the distributive law of $\\lor$ over $\\land$?",
+      "options": [
+        "$p \\lor (q \\land r) \\equiv (p \\lor q) \\land (p \\lor r)$",
+        "$p \\lor (q \\land r) \\equiv (p \\land q) \\lor (p \\land r)$",
+        "$p \\lor (q \\land r) \\equiv (p \\lor q) \\land r$",
+        "$p \\lor (q \\land r) \\equiv (p \\lor q) \\lor (p \\lor r)$"
+      ],
+      "answer": 0,
+      "explanation": "Distribution copies the outer operand $p$ into each part of the inner conjunction while every connective keeps its role: $p \\lor (q \\land r) \\equiv (p \\lor q) \\land (p \\lor r)$. To verify, fix $p$ true: both sides are true since every clause contains $p$; fix $p$ false: the left side reduces to $q \\land r$ and the right side does too, so the tables agree in all eight rows. The version $(p \\land q) \\lor (p \\land r)$ lets the connectives trade places; it equals $p \\land (q \\lor r)$ and is false at $p$ true, $q$ false, $r$ false where the left side is true. The version $(p \\lor q) \\land r$ forgets to copy $p$ into the second clause and fails whenever $r$ is false but $p$ is true, while $(p \\lor q) \\lor (p \\lor r)$ collapses to $p \\lor q \\lor r$ and is wrongly true at $p$ false, $q$ true, $r$ false. The trap is letting $\\lor$ and $\\land$ swap roles in mid-distribution.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-017",
+      "stem": "The negation $\\lnot(p \\to q)$ is logically equivalent to:",
+      "options": [
+        "$\\lnot p \\to \\lnot q$",
+        "$q \\to p$",
+        "$\\lnot p \\land q$",
+        "$p \\land \\lnot q$"
+      ],
+      "answer": 3,
+      "explanation": "Rewrite the conditional as a disjunction first: $p \\to q \\equiv \\lnot p \\lor q$. Negating with De Morgan flips $\\lor$ to $\\land$ and cancels the double negation: $\\lnot(\\lnot p \\lor q) \\equiv p \\land \\lnot q$. This matches the table directly: a conditional fails only when its antecedent holds and its consequent fails, so the negation must assert exactly that combination. The inverse $\\lnot p \\to \\lnot q$ and the converse $q \\to p$ are both true at the row where $p$ and $q$ are both true, where the negation must be false, so neither can be the negation; and $\\lnot p \\land q$ negates the wrong half of the conjunction. The trap is expecting the negation of a conditional to be another conditional: it is a conjunction.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-018",
+      "stem": "Classify the proposition $(p \\to q) \\lor (q \\to p)$.",
+      "options": [
+        "a contingency, false exactly when $p$ is true and $q$ is false",
+        "a tautology",
+        "a contradiction",
+        "true exactly when $p$ and $q$ have the same truth value"
+      ],
+      "answer": 1,
+      "explanation": "Build the four-row table. When $p$ and $q$ are both true or both false, each disjunct is a conditional whose antecedent and consequent match, so both are true. At $p$ true, $q$ false the first disjunct $p \\to q$ fails, but the second, $q \\to p$, has a false antecedent and is therefore true; at $p$ false, $q$ true the roles simply swap. In every row at least one of the two conditionals is true, so the disjunction is true in all four rows: a tautology. The trap is spotting the row where $p \\to q$ alone is false and declaring a contingency without checking the other disjunct in that same row.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-019",
+      "stem": "Classify the proposition $(p \\lor q) \\land (\\lnot p \\land \\lnot q)$.",
+      "options": [
+        "a tautology",
+        "a contingency, true exactly when exactly one of $p$, $q$ is true",
+        "a contradiction",
+        "a contingency, true exactly when $p$ and $q$ are both true"
+      ],
+      "answer": 2,
+      "explanation": "By De Morgan, $\\lnot p \\land \\lnot q \\equiv \\lnot(p \\lor q)$, so the whole proposition has the form $r \\land \\lnot r$ with $r = p \\lor q$. A statement conjoined with its own negation is false in every row, so this is a contradiction. Checking directly: whenever at least one variable is true the second conjunct fails, and when both are false the first conjunct fails, so no row survives. Misreading $\\lnot p \\land \\lnot q$ as $\\lnot(p \\land q)$ turns the formula into $(p \\lor q) \\land \\lnot(p \\land q)$, the exclusive or, a contingency true exactly when one variable is true. That unflipped De Morgan is the trap, and it converts a contradiction into a contingency.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-020",
+      "stem": "The proposition $(p \\to q) \\to (q \\to p)$ is:",
+      "options": [
+        "a tautology",
+        "a contingency, false only when $p$ is false and $q$ is true",
+        "a contradiction",
+        "a contingency, false only when $p$ is true and $q$ is false"
+      ],
+      "answer": 1,
+      "explanation": "Run all four rows. When $p$ and $q$ agree, both inner conditionals are true and so is the whole. At $p$ true, $q$ false, the antecedent $p \\to q$ is false, and a false antecedent makes the outer conditional true. At $p$ false, $q$ true, the antecedent $p \\to q$ is true while $q \\to p$ is false, so the whole conditional is true pointing at false: this single row is false, and the proposition is a contingency. The traps: calling it a tautology assumes a conditional always supports its converse, and the other contingency option names the row where the inner $p \\to q$ fails rather than the row where the whole formula fails.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-021",
+      "stem": "The biconditional $p \\leftrightarrow q$ is true exactly when:",
+      "options": [
+        "$p$ and $q$ are both true",
+        "$p$ and $q$ have different truth values",
+        "at least one of $p$, $q$ is true",
+        "$p$ and $q$ have the same truth value"
+      ],
+      "answer": 3,
+      "explanation": "From the truth table, $p \\leftrightarrow q$ is true in the two rows where the variables match, both true or both false, and false in the two mixed rows. So the biconditional asserts agreement, nothing more. Restricting to both true describes $p \\land q$ and wrongly discards the both-false row; at least one true describes $p \\lor q$; and different truth values describes the exclusive or $p \\oplus q$, the exact opposite of the biconditional. The trap is forgetting that two false statements still agree, so the both-false row makes a biconditional true.",
+      "difficulty": "warmup",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-022",
+      "stem": "Which combination of conditionals is logically equivalent to the biconditional $p \\leftrightarrow q$?",
+      "options": [
+        "$(p \\to q) \\lor (q \\to p)$",
+        "$(p \\to q) \\land (q \\to p)$",
+        "$p \\oplus q$",
+        "$p \\land q$"
+      ],
+      "answer": 1,
+      "explanation": "A biconditional asserts implication in both directions, so it unpacks as the conjunction $(p \\to q) \\land (q \\to p)$. Check the mixed rows: at $p$ true, $q$ false the first conjunct fails, and at $p$ false, $q$ true the second fails, reproducing the biconditional's two false rows, while in the agreeing rows both conjuncts are true. Joining the directions with $\\lor$ instead gives a tautology, true even in the mixed rows where $p \\leftrightarrow q$ is false, so or is too weak a glue. $p \\oplus q$ is the negation of the biconditional, and $p \\land q$ misses the both-false row. The trap is checking the option with $\\lor$ only on the agreeing rows, where it happens to match, and concluding equivalence from that partial agreement.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-023",
+      "stem": "The compound proposition $(p \\lor q) \\land \\lnot(p \\land q)$ is true precisely when:",
+      "options": [
+        "at least one of $p$, $q$ is true",
+        "$p$ and $q$ are both true",
+        "exactly one of $p$, $q$ is true",
+        "$p$ and $q$ have the same truth value"
+      ],
+      "answer": 2,
+      "explanation": "The first conjunct $p \\lor q$ demands at least one true variable, while the second conjunct $\\lnot(p \\land q)$ forbids both from being true. Together they hold exactly when one variable is true and the other is false, which is the truth table of the exclusive or $p \\oplus q$. The both-true row fails the second conjunct, and the both-false row fails the first, so neither survives. Reading the formula as plain inclusive or simply ignores the clause that was built to exclude the both-true row. The trap is the inclusive reading: the second conjunct is exactly what separates $\\oplus$ from $\\lor$.",
+      "difficulty": "core",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-024",
+      "stem": "The negation of the biconditional, $\\lnot(p \\leftrightarrow q)$, is logically equivalent to:",
+      "options": [
+        "$\\lnot p \\leftrightarrow \\lnot q$",
+        "$p \\oplus q$",
+        "$\\lnot p \\land \\lnot q$",
+        "$\\lnot(p \\to q)$"
+      ],
+      "answer": 1,
+      "explanation": "$p \\leftrightarrow q$ is true exactly when the variables agree, so its negation is true exactly when they differ, and that is the defining table of the exclusive or $p \\oplus q$. Negating each side instead gives $\\lnot p \\leftrightarrow \\lnot q$, but two negations agree exactly when the originals agree, so that formula is equivalent to $p \\leftrightarrow q$ itself, not to its negation. The conjunction $\\lnot p \\land \\lnot q$ is true in the both-false row, where the biconditional is also true, so it cannot be the negation. Finally $\\lnot(p \\to q)$ equals $p \\land \\lnot q$, which captures only one of the two disagreement rows. The traps are negating both halves, which changes nothing, and negating only one direction, which catches only half the disagreement.",
+      "difficulty": "core",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-025",
+      "stem": "How many of the eight rows in the truth table of $(p \\lor q) \\to r$ are true?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": 2,
+      "explanation": "Split the eight rows by the antecedent. The disjunction $p \\lor q$ is false only when $p$ and $q$ are both false, which covers two rows, and in both of them the conditional is vacuously true whatever $r$ is. In the remaining six rows the antecedent is true, so the conditional is true exactly when $r$ is true, which happens in three of them. The total is $2 + 3 = 5$ true rows. Answering $3$ counts only the rows with a true antecedent and true $r$, silently treating a conditional with a false antecedent as false; answering $4$ counts the rows where $r$ is true, and $6$ counts the rows where the antecedent is true. The trap is dropping the two vacuously true rows.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-026",
+      "stem": "Read $p \\oplus q \\oplus r$ as $(p \\oplus q) \\oplus r$, where $\\oplus$ is the exclusive or. For how many of the eight truth assignments to $(p, q, r)$ is it true?",
+      "options": [
+        "$1$",
+        "$3$",
+        "$4$",
+        "$7$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $(p \\oplus q) \\oplus r$ row by row, or notice the pattern: each $\\oplus$ flips the running value whenever its new input is true, so the chain is true exactly when an odd number of the three variables are true. Odd counts occur with exactly one true variable, which happens in $3$ assignments, or with all three true, which is $1$ more, giving $4$ rows in total. Answering $3$ reads the chain as saying exactly one of the three is true, wrongly rejecting the all-true row: there $p \\oplus q$ is false, and false $\\oplus$ true is true. Answering $7$ reads $\\oplus$ as inclusive or, and $1$ reads it as a conjunction. The trap is the exactly-one reading: a chained exclusive or tests parity, not uniqueness.",
+      "difficulty": "stretch",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-027",
+      "stem": "Using the disjunctive form of the conditional and De Morgan's law, $\\lnot(p \\to \\lnot q)$ simplifies to:",
+      "options": [
+        "$p \\to q$",
+        "$\\lnot p \\land q$",
+        "$\\lnot p \\lor \\lnot q$",
+        "$p \\land q$"
+      ],
+      "answer": 3,
+      "explanation": "Rewrite the inner conditional first: $p \\to \\lnot q \\equiv \\lnot p \\lor \\lnot q$. Now negate with De Morgan, flipping $\\lor$ to $\\land$ and cancelling the double negations: $\\lnot(\\lnot p \\lor \\lnot q) \\equiv p \\land q$. Sanity check: $p \\to \\lnot q$ is false exactly when $p$ is true and $\\lnot q$ is false, that is when $p$ and $q$ are both true, so its negation must be true exactly there, and $p \\land q$ is. The option $\\lnot p \\lor \\lnot q$ stops after the rewriting step and forgets the outer negation; $\\lnot p \\land q$ negates the antecedent that should have stayed positive; and $p \\to q$ pretends that negating a conditional yields another conditional. The trap is losing track of which negations the simplification has already absorbed.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-028",
+      "stem": "The contrapositive of $(p \\land q) \\to r$ is:",
+      "options": [
+        "$\\lnot r \\to (\\lnot p \\lor \\lnot q)$",
+        "$\\lnot r \\to (\\lnot p \\land \\lnot q)$",
+        "$(\\lnot p \\lor \\lnot q) \\to \\lnot r$",
+        "$r \\to (p \\land q)$"
+      ],
+      "answer": 0,
+      "explanation": "The contrapositive of a conditional negates both sides and swaps them, so here we need $\\lnot r \\to \\lnot(p \\land q)$. De Morgan turns $\\lnot(p \\land q)$ into $\\lnot p \\lor \\lnot q$, giving: if $r$ fails, then $p$ fails or $q$ fails. Writing $\\lnot p \\land \\lnot q$ instead applies De Morgan without flipping the connective and demands that both antecedent parts fail, a strictly stronger claim that is not equivalent. Keeping the original direction, $(\\lnot p \\lor \\lnot q) \\to \\lnot r$, is the inverse, and $r \\to (p \\land q)$ is the converse; neither is equivalent to the original conditional. The twin traps are the unflipped De Morgan and the converse-contrapositive swap, and this question springs both at once.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-029",
+      "stem": "A student checks the single row where $p$ and $q$ are both true, finds that $p \\to q$ and $q \\to p$ are both true there, and concludes that the two are logically equivalent. Which truth assignment refutes the claim?",
+      "options": [
+        "$p$ true and $q$ true",
+        "$p$ false and $q$ false",
+        "no assignment refutes it; the two are logically equivalent",
+        "$p$ true and $q$ false"
+      ],
+      "answer": 3,
+      "explanation": "Logical equivalence requires the same truth value in every row, so one agreeing row proves nothing. At $p$ true, $q$ false the conditional $p \\to q$ runs from a true antecedent to a false consequent and is false, while $q \\to p$ has a false antecedent and is true: the two formulas disagree, so they are not equivalent. The mirror row, $p$ false and $q$ true, refutes the claim equally well. The rows where $p$ and $q$ match make every conditional between them true, so the both-true and both-false options provide no separation. The trap is double-barrelled: equivalence certified from one matching row, resting on the standing temptation to believe a conditional and its converse say the same thing.",
+      "difficulty": "stretch",
+      "source": "in the style of Acharjya, Fundamental Approach to Discrete Mathematics"
+    },
+    {
+      "id": "logic-and-set-theory-propositional-logic-030",
+      "stem": "Classify the proposition $(p \\leftrightarrow q) \\leftrightarrow (p \\oplus q)$.",
+      "options": [
+        "a tautology",
+        "a contingency, true exactly when $p$ and $q$ are both true",
+        "a contingency, true exactly when $p$ and $q$ differ",
+        "a contradiction"
+      ],
+      "answer": 3,
+      "explanation": "The two inner formulas have opposite truth tables: $p \\leftrightarrow q$ is true exactly when the variables agree, and $p \\oplus q$ is true exactly when they differ. A biconditional between two formulas is true only in the rows where they share a truth value, and these two never do, so every one of the four rows is false: the proposition is a contradiction. Misreading $\\oplus$ as inclusive or makes the right side true in the both-true row, where the left side is also true, which produces the spurious verdict true exactly when both are true. Reading the outer $\\leftrightarrow$ as a disjunction instead yields a tautology, the opposite classification. The trap is missing that the exclusive or is precisely the negation of the biconditional, which forces disagreement in every row.",
+      "difficulty": "stretch",
+      "source": "in the style of Stoll, Set Theory and Logic"
+    }
+  ]
+}
