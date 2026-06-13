@@ -7,3 +7,4 @@ structural validation plus an independent blind re-solve of every question.
 - integration-techniques: 36 questions, blind check agreed 36/36 first pass, 0 fixed, 0 dropped, 2026-06-12 (Q036 is a "most direct method" judgment item; checker confirmed the keyed substitution answer)
 - applications-of-integration: 30 questions, blind check agreed 30/30 first pass, 0 fixed, 0 dropped, 2026-06-12 (stored option positions reshuffled after the check, which had a cyclic 0123 pattern; reshuffle preserves correctness by moving the answer index with its option)
 - coordinate-geometry: 30 questions, blind check agreed 30/30 first pass, 0 fixed, 0 dropped, 2026-06-12
+- conic-sections: 30 questions, blind check agreed 30/30 first pass, 0 fixed, 0 dropped, 2026-06-12 (Q018 vertical-transverse hyperbola asymptote slope a/b confirmed correct)
