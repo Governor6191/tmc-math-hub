@@ -1,9 +1,12 @@
 # TMC Math Hub
 
+### Live site: https://governor6191.github.io/tmc-math-hub/
+
 Free learning platform for KNUST Mathematics undergraduates: every course's
 slides and textbooks (Year 1 to 4) readable in-page, streamed from the TMC
-academic board's Google Drive hub. Practice questions and Moodle-style mock
-exams arrive in later stages (see the design spec).
+academic board's Google Drive hub, plus thousands of practice questions and
+Moodle-style mock exams (live for every Year 1 course). Light and dark themes,
+slide-out navigation, no login.
 
 ## Stack
 
