@@ -1,0 +1,427 @@
+{
+  "courseId": "linear-algebra-i",
+  "topicId": "systems-of-equations",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "linear-algebra-i-systems-of-equations-001",
+      "stem": "Solve the system $\\begin{cases} x + y = 5 \\\\ x - y = 1 \\end{cases}$ for $(x, y)$.",
+      "options": [
+        "$(4, 1)$",
+        "$(2, 3)$",
+        "$(3, 2)$",
+        "$(1, 4)$"
+      ],
+      "answer": 2,
+      "explanation": "Add the two equations to eliminate $y$: $(x+y)+(x-y) = 5+1$ gives $2x = 6$, so $x = 3$. Substituting into $x + y = 5$ gives $y = 2$. Checking the second equation, $3 - 2 = 1$, confirms the pair. The trap option $(2, 3)$ swaps the roles of $x$ and $y$, which fails the second equation since $2 - 3 = -1$, not $1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-002",
+      "stem": "Solve the system $\\begin{cases} 2x + y = 7 \\\\ x - y = 2 \\end{cases}$ for $(x, y)$.",
+      "options": [
+        "$(3, 1)$",
+        "$(2, 0)$",
+        "$(1, 5)$",
+        "$(4, -1)$"
+      ],
+      "answer": 0,
+      "explanation": "Add the equations to cancel $y$: $(2x+y)+(x-y) = 7+2$ gives $3x = 9$, so $x = 3$. Then $x - y = 2$ gives $y = 1$. Substituting back, $2\\cdot3 + 1 = 7$ holds. The trap option $(4, -1)$ comes from a sign slip when subtracting instead of adding the equations, producing $x = 4$ and an inconsistent $y$.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-003",
+      "stem": "A linear system in two unknowns has the row echelon form $\\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 4 \\end{pmatrix}$ for its augmented matrix. How many solutions does it have?",
+      "options": [
+        "No solution",
+        "Exactly one solution",
+        "Infinitely many solutions",
+        "Exactly two solutions"
+      ],
+      "answer": 1,
+      "explanation": "There are two unknowns and two nonzero rows, each giving a pivot, so both variables are leading variables with no free variable. The second row reads $y = 4$, and back-substitution into $x + 2y = 3$ pins down $x$ uniquely. A system whose pivots cover every unknown and has no contradictory row has exactly one solution. The trap option infinitely many wrongly assumes a free variable exists, but here every column to the left of the bar has a pivot.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-004",
+      "stem": "The augmented matrix of a system reduces to $\\begin{pmatrix} 1 & 3 & 5 \\\\ 0 & 0 & 2 \\end{pmatrix}$. What does this tell you about the solutions?",
+      "options": [
+        "Unique solution",
+        "Infinitely many solutions",
+        "The system is homogeneous",
+        "No solution"
+      ],
+      "answer": 3,
+      "explanation": "The second row translates to the equation $0x + 0y = 2$, that is $0 = 2$, which can never hold. A row of zeros to the left of the bar with a nonzero entry to the right of the bar signals a contradiction. Whenever such a row appears, the system is inconsistent and has no solution. The trap option infinitely many confuses this $0 = 2$ row with a genuine $0 = 0$ row, but a nonzero right-hand side makes all the difference.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-005",
+      "stem": "Consider the homogeneous system $\\begin{cases} x + y = 0 \\\\ 2x - y = 0 \\end{cases}$. Which statement is correct?",
+      "options": [
+        "It has no solution.",
+        "It has infinitely many nontrivial solutions.",
+        "Its only solution is the trivial solution $x = y = 0$.",
+        "It is inconsistent because the right sides are zero."
+      ],
+      "answer": 2,
+      "explanation": "A homogeneous system always has the trivial solution, so it is never inconsistent. Adding the two equations gives $3x = 0$, so $x = 0$, and then $y = 0$ from either equation. Because the two equations are independent (two pivots for two unknowns), the only solution is the trivial one. The trap option no solution forgets that a homogeneous system is automatically consistent.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-006",
+      "stem": "A coefficient matrix of a system in $3$ unknowns row reduces so that it has $3$ pivots. What is the rank, and how many solutions does the corresponding consistent system have?",
+      "options": [
+        "Rank $3$; exactly one solution",
+        "Rank $2$; infinitely many solutions",
+        "Rank $3$; infinitely many solutions",
+        "Rank $0$; no solution"
+      ],
+      "answer": 0,
+      "explanation": "The rank of a matrix is the number of pivots in its row echelon form, so three pivots means rank $3$. With $3$ unknowns and rank equal to $3$, there are no free variables, so a consistent system has exactly one solution. Rank equal to the number of unknowns forces uniqueness. The trap option rank $3$ with infinitely many solutions miscounts free variables, since free variables equal unknowns minus rank, here $3 - 3 = 0$.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-007",
+      "stem": "Solve $\\begin{cases} 3x + 2y = 12 \\\\ x + 4y = 14 \\end{cases}$ for $(x, y)$.",
+      "options": [
+        "$(4, 0)$",
+        "$(2, 4)$",
+        "$(3, \\tfrac{3}{2})$",
+        "$(2, 3)$"
+      ],
+      "answer": 3,
+      "explanation": "From the second equation $x = 14 - 4y$, substitute into the first: $3(14 - 4y) + 2y = 12$ gives $42 - 12y + 2y = 12$, so $-10y = -30$ and $y = 3$. Then $x = 14 - 12 = 2$. Checking, $3\\cdot2 + 2\\cdot3 = 12$ holds. The trap option $(2, 4)$ keeps the correct $x$ but slips in back-substitution, solving $-10y = -40$ instead of $-30$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-008",
+      "stem": "Solve $\\begin{cases} 4x - 3y = 5 \\\\ 2x + y = 5 \\end{cases}$ for $(x, y)$.",
+      "options": [
+        "$(\\tfrac{5}{2}, 0)$",
+        "$(2, 1)$",
+        "$(1, 3)$",
+        "$(2, 3)$"
+      ],
+      "answer": 1,
+      "explanation": "Multiply the second equation by $3$ to get $6x + 3y = 15$, then add to the first: $10x = 20$, so $x = 2$. Substituting into $2x + y = 5$ gives $y = 1$. Checking the first equation, $4\\cdot2 - 3\\cdot1 = 5$ holds. The trap option $(1, 3)$ comes from a sign error in elimination, adding $-3y$ and $+y$ as if they reinforced rather than partly cancelled.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-009",
+      "stem": "Solve the system $\\begin{cases} x + y + z = 6 \\\\ y + z = 5 \\\\ z = 3 \\end{cases}$ by back-substitution.",
+      "options": [
+        "$(3, 2, 1)$",
+        "$(2, 1, 3)$",
+        "$(1, 2, 3)$",
+        "$(1, 3, 2)$"
+      ],
+      "answer": 2,
+      "explanation": "The system is already in triangular form, so work upward. The third equation gives $z = 3$; the second gives $y = 5 - z = 2$; the first gives $x = 6 - y - z = 1$. Substituting back, $1 + 2 + 3 = 6$ confirms the result $(1, 2, 3)$. The trap option $(3, 2, 1)$ reverses the order of back-substitution, reading the values off in the wrong direction.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-010",
+      "stem": "Solve $\\begin{cases} x + 2y + z = 4 \\\\ 2y + 3z = 5 \\\\ 4z = 4 \\end{cases}$ by back-substitution.",
+      "options": [
+        "$(1, 1, 1)$",
+        "$(3, -1, 1)$",
+        "$(2, 1, 1)$",
+        "$(1, -1, 1)$"
+      ],
+      "answer": 0,
+      "explanation": "From the last equation $4z = 4$, so $z = 1$. The middle equation $2y + 3z = 5$ becomes $2y + 3 = 5$, giving $y = 1$. The top equation $x + 2y + z = 4$ becomes $x + 2 + 1 = 4$, giving $x = 1$. A check shows $1 + 2 + 1 = 4$ holds. The trap option $(3, -1, 1)$ misreads $2y + 3 = 5$ as $2y - 3 = 5$, producing $y = -1$ and a compensating wrong $x$.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-011",
+      "stem": "For what value of $k$ does the system $\\begin{cases} x + 2y = 3 \\\\ 2x + ky = 7 \\end{cases}$ have no solution?",
+      "options": [
+        "$k = 2$",
+        "$k = 0$",
+        "$k = 6$",
+        "$k = 4$"
+      ],
+      "answer": 3,
+      "explanation": "Eliminate $x$ by subtracting twice the first equation from the second: $(2x + ky) - 2(x + 2y) = 7 - 6$ gives $(k - 4)y = 1$. If $k = 4$, this becomes $0 = 1$, a contradiction, so the system has no solution. For any other $k$ the equation $(k-4)y = 1$ solves uniquely. The trap option $k = 2$ does not zero out the left side of $(k-4)y = 1$, so it leaves a solvable equation rather than the no-solution case asked for.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-012",
+      "stem": "For what value of $k$ does the system $\\begin{cases} x + 2y = 3 \\\\ 2x + ky = 6 \\end{cases}$ have infinitely many solutions?",
+      "options": [
+        "$k = 2$",
+        "$k = 4$",
+        "$k = 6$",
+        "$k = 3$"
+      ],
+      "answer": 1,
+      "explanation": "Subtract twice the first equation from the second: $(2x + ky) - 2(x + 2y) = 6 - 6$ gives $(k - 4)y = 0$. When $k = 4$ this is $0 = 0$, which is always true, leaving one free variable and infinitely many solutions; the second equation is just twice the first. The trap option $k = 6$ gives $(k-4)y = 0$ as $2y = 0$, forcing $y = 0$ and a unique solution instead, which is the opposite case to the one asked.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-013",
+      "stem": "The augmented matrix of a system reduces to $\\begin{pmatrix} 1 & 2 & -1 & 4 \\\\ 0 & 1 & 3 & 2 \\\\ 0 & 0 & 0 & 0 \\end{pmatrix}$. How many solutions does the system have?",
+      "options": [
+        "No solution",
+        "Exactly one solution",
+        "Infinitely many solutions",
+        "Exactly three solutions"
+      ],
+      "answer": 2,
+      "explanation": "The bottom row is entirely zero, including the entry to the right of the bar, so it reads $0 = 0$ and imposes no constraint. There are three unknowns but only two pivots, leaving one free variable, so the consistent system has infinitely many solutions. A genuine all-zero row signals a redundant equation, not a contradiction. The trap option no solution mistakes this $0 = 0$ row for the contradictory $0 = \\text{nonzero}$ case.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-014",
+      "stem": "Row reduce the augmented matrix $\\begin{pmatrix} 1 & 1 & 3 \\\\ 2 & 3 & 8 \\end{pmatrix}$ to echelon form using $R_2 \\to R_2 - 2R_1$. What is the resulting matrix?",
+      "options": [
+        "$\\begin{pmatrix} 1 & 1 & 3 \\\\ 0 & 1 & 2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 1 & 3 \\\\ 0 & 5 & 14 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 1 & 3 \\\\ 4 & 5 & 14 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 1 & 3 \\\\ 0 & 1 & 4 \\end{pmatrix}$"
+      ],
+      "answer": 0,
+      "explanation": "The operation leaves row one alone and replaces row two with row two minus twice row one. Entry by entry, $2 - 2\\cdot1 = 0$, $3 - 2\\cdot1 = 1$, and $8 - 2\\cdot3 = 2$, giving the new row $(0, 1, 2)$. The result is $\\begin{pmatrix} 1 & 1 & 3 \\\\ 0 & 1 & 2 \\end{pmatrix}$, now in echelon form. The trap option with second row $(4, 5, 14)$ adds $2R_1$ instead of subtracting it, getting $2 + 2 = 4$ and so on.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-015",
+      "stem": "Solve $\\begin{cases} x + y + z = 6 \\\\ x + 2y + 3z = 14 \\\\ x + 4y + 9z = 36 \\end{cases}$ by Gaussian elimination.",
+      "options": [
+        "$(3, 2, 1)$",
+        "$(2, 2, 2)$",
+        "$(1, 3, 2)$",
+        "$(1, 2, 3)$"
+      ],
+      "answer": 3,
+      "explanation": "Subtract the first equation from the second and third to clear $x$: this gives $y + 2z = 8$ and $3y + 8z = 30$. Eliminating $y$ by subtracting three times the first reduced equation from the second yields $2z = 6$, so $z = 3$, then $y = 8 - 6 = 2$ and $x = 6 - 2 - 3 = 1$. Substituting into the original third equation, $1 + 8 + 27 = 36$ checks out. The trap option $(3, 2, 1)$ swaps $x$ and $z$, which fails the third equation since $3 + 8 + 9 = 20$, not $36$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-016",
+      "stem": "A homogeneous system has $4$ unknowns, and its coefficient matrix has rank $4$. How many solutions does it have?",
+      "options": [
+        "Infinitely many solutions",
+        "Only the trivial solution",
+        "No solution",
+        "Exactly four solutions"
+      ],
+      "answer": 1,
+      "explanation": "For a homogeneous system the number of free variables is the number of unknowns minus the rank, here $4 - 4 = 0$. With no free variables, the only solution is the trivial one where every unknown is zero. Nontrivial solutions appear only when the rank is strictly less than the number of unknowns. The trap option infinitely many would require a free variable, but a full-rank coefficient matrix leaves none.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-017",
+      "stem": "A homogeneous system has $3$ unknowns, and its coefficient matrix has rank $2$. Which statement is correct?",
+      "options": [
+        "It has nontrivial solutions (infinitely many).",
+        "It has only the trivial solution.",
+        "It has no solution.",
+        "It has exactly one nontrivial solution."
+      ],
+      "answer": 0,
+      "explanation": "The count of free variables is unknowns minus rank, here $3 - 2 = 1$, so one variable is free. A free variable in a homogeneous system produces infinitely many solutions, all nontrivial except the trivial one obtained by setting the free variable to zero. Whenever the rank is less than the number of unknowns, nontrivial solutions exist. The trap option only the trivial solution would hold only if the rank equalled the number of unknowns, which it does not here.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-018",
+      "stem": "The augmented matrix $\\begin{pmatrix} 1 & 0 & 0 & 2 \\\\ 0 & 1 & 0 & -1 \\\\ 0 & 0 & 1 & 5 \\end{pmatrix}$ is in reduced row echelon form. What is the solution of the system?",
+      "options": [
+        "$(-2, 1, -5)$",
+        "$(5, -1, 2)$",
+        "$(2, -1, 5)$",
+        "$(2, 1, 5)$"
+      ],
+      "answer": 2,
+      "explanation": "In reduced row echelon form each pivot column is a unit column, so the rightmost column reads off the solution directly. The rows say $x = 2$, $y = -1$, and $z = 5$ with nothing left to solve. No back-substitution is needed once the form is fully reduced. The trap option $(2, 1, 5)$ drops the minus sign on the second component, misreading $-1$ as $1$.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-019",
+      "stem": "For what value of $k$ does $\\begin{cases} kx + y = 2 \\\\ 4x + 2y = 5 \\end{cases}$ have a unique solution?",
+      "options": [
+        "$k = 2$",
+        "$k \\neq 0$",
+        "$k = 4$",
+        "$k \\neq 2$"
+      ],
+      "answer": 3,
+      "explanation": "A $2 \\times 2$ system has a unique solution exactly when its coefficient determinant is nonzero. Here the determinant is $k\\cdot2 - 1\\cdot4 = 2k - 4$, which is nonzero precisely when $k \\neq 2$. At $k = 2$ the determinant vanishes and the lines are parallel, so uniqueness fails. The trap option $k = 2$ names the single value that destroys uniqueness rather than the condition that guarantees it.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-020",
+      "stem": "Find all solutions of the homogeneous system $\\begin{cases} x + 2y - z = 0 \\\\ 2x + 4y - 2z = 0 \\end{cases}$.",
+      "options": [
+        "Only $x = y = z = 0$",
+        "$x = z - 2y$ with $y, z$ free (infinitely many)",
+        "No solution",
+        "$x = 2y - z$ with $y$ free only"
+      ],
+      "answer": 1,
+      "explanation": "The second equation is exactly twice the first, so after $R_2 \\to R_2 - 2R_1$ it becomes $0 = 0$ and the system collapses to the single equation $x + 2y - z = 0$. With three unknowns and rank $1$, there are $3 - 1 = 2$ free variables, giving infinitely many solutions described by $x = z - 2y$ with $y$ and $z$ free. The trap option only the trivial solution ignores that the two equations are dependent, leaving free variables.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-021",
+      "stem": "The augmented matrix of a system is $\\begin{pmatrix} 1 & 2 & 4 \\\\ 3 & 6 & 7 \\end{pmatrix}$. After row reduction, how many solutions does the system have?",
+      "options": [
+        "No solution",
+        "Exactly one solution",
+        "Infinitely many solutions",
+        "Exactly two solutions"
+      ],
+      "answer": 0,
+      "explanation": "Apply $R_2 \\to R_2 - 3R_1$: the new second row is $(3 - 3, 6 - 6, 7 - 12) = (0, 0, -5)$. This row reads $0 = -5$, an impossible statement, so the system is inconsistent. The left sides were proportional but the right sides were not, which is the hallmark of no solution. The trap option infinitely many would apply only if the whole row, including the entry to the right of the bar, were zero, but the $-5$ blocks that.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-022",
+      "stem": "Reduce $\\begin{pmatrix} 2 & 4 & 6 \\\\ 1 & 1 & 4 \\end{pmatrix}$ toward echelon form by first scaling $R_1 \\to \\tfrac{1}{2}R_1$, then $R_2 \\to R_2 - R_1$. What is the result?",
+      "options": [
+        "$\\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & -1 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & -1 & 7 \\end{pmatrix}$"
+      ],
+      "answer": 2,
+      "explanation": "Scaling row one by $\\tfrac{1}{2}$ gives $(1, 2, 3)$. Then $R_2 \\to R_2 - R_1$ replaces row two with $(1 - 1, 1 - 2, 4 - 3) = (0, -1, 1)$. The result is $\\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & -1 & 1 \\end{pmatrix}$, which is in echelon form. The trap option with second row $(0, 1, 1)$ drops the minus sign on the middle entry, treating $1 - 2$ as $+1$ rather than $-1$.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-023",
+      "stem": "Solve $\\begin{cases} 2x + 3y = 8 \\\\ 5x + 4y = 13 \\end{cases}$ for $(x, y)$.",
+      "options": [
+        "$(2, 1)$",
+        "$(\\tfrac{5}{2}, 1)$",
+        "$(4, 0)$",
+        "$(1, 2)$"
+      ],
+      "answer": 3,
+      "explanation": "Use elimination: multiply the first equation by $5$ and the second by $2$ to match the $x$ terms, giving $10x + 15y = 40$ and $10x + 8y = 26$. Subtracting yields $7y = 14$, so $y = 2$, and then $2x + 6 = 8$ gives $x = 1$. Checking the second equation, $5\\cdot1 + 4\\cdot2 = 13$ holds. The trap option $(2, 1)$ swaps the two values, which fails the first equation since $2\\cdot2 + 3\\cdot1 = 7$, not $8$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-024",
+      "stem": "A consistent system of $2$ equations in $3$ unknowns has a coefficient matrix of rank $2$. How many solutions does it have?",
+      "options": [
+        "Exactly one solution",
+        "Infinitely many solutions",
+        "No solution",
+        "Exactly two solutions"
+      ],
+      "answer": 1,
+      "explanation": "The number of free variables equals unknowns minus rank, here $3 - 2 = 1$, so one variable is free. A consistent system with at least one free variable has infinitely many solutions, parameterized by that free variable. With more unknowns than the rank, uniqueness is impossible. The trap option exactly one solution ignores the leftover free variable created when the rank falls short of the number of unknowns.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-025",
+      "stem": "Find the rank of the matrix $\\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 0 & 0 & 0 \\end{pmatrix}$.",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "Row two is exactly twice row one, so $R_2 \\to R_2 - 2R_1$ turns it into a zero row, and row three is already zero. Only one nonzero row remains, namely $(1, 2, 3)$, giving a single pivot, so the rank is $1$. Rank counts pivots, equivalently the number of independent nonzero rows after reduction. The trap option $2$ counts the original two nonzero-looking top rows without noticing that the second is a multiple of the first.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-026",
+      "stem": "For what value of $k$ does the homogeneous system $\\begin{cases} x + ky = 0 \\\\ 2x + 8y = 0 \\end{cases}$ have a nontrivial solution?",
+      "options": [
+        "$k = 8$",
+        "$k = 2$",
+        "$k = 4$",
+        "$k = 0$"
+      ],
+      "answer": 2,
+      "explanation": "A homogeneous $2 \\times 2$ system has a nontrivial solution exactly when its coefficient determinant is zero. The determinant is $1\\cdot8 - k\\cdot2 = 8 - 2k$, and setting $8 - 2k = 0$ gives $k = 4$, at which point the two equations are proportional and a free variable appears. For any other $k$ only the trivial solution exists. The trap option $k = 8$ reads the value off the matrix entry rather than solving the determinant condition $8 - 2k = 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-027",
+      "stem": "Solve $\\begin{cases} x + y + z = 2 \\\\ 2x + 3y + z = 7 \\\\ x - y + 2z = -3 \\end{cases}$ by elimination.",
+      "options": [
+        "$(2, 1, -1)$",
+        "$(1, -1, 2)$",
+        "$(1, 1, 0)$",
+        "$(1, 2, -1)$"
+      ],
+      "answer": 3,
+      "explanation": "Eliminate $x$ with the first equation: $R_2 \\to R_2 - 2R_1$ gives $y - z = 3$, and $R_3 \\to R_3 - R_1$ gives $-2y + z = -5$. Add twice the first reduced row to the second, $(-2y + z) + 2(y - z) = -5 + 6$, to get $-z = 1$, so $z = -1$; then $y = 3 + z = 2$ and $x = 2 - y - z = 1$. Substituting $(1, 2, -1)$ into all three originals confirms it, for instance $2 + 6 - 1 = 7$. The trap option $(1, -1, 2)$ swaps $y$ and $z$, which fails equation three.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-028",
+      "stem": "The augmented matrix $\\begin{pmatrix} 1 & 2 & 1 & 3 \\\\ 0 & 1 & 2 & 1 \\\\ 0 & 0 & 0 & 0 \\end{pmatrix}$ describes a system in $x, y, z$. Writing $z = t$ as the free variable, what is the general solution?",
+      "options": [
+        "$(1, 1, 0)$ only",
+        "$(1 + 3t, 1 - 2t, t)$",
+        "No solution",
+        "$(1 - 3t, 1 + 2t, t)$"
+      ],
+      "answer": 1,
+      "explanation": "The zero bottom row reads $0 = 0$, so the system is consistent with one free variable. From row two, $y + 2z = 1$ gives $y = 1 - 2t$. Substituting into row one, $x + 2y + z = 3$ gives $x = 3 - 2(1 - 2t) - t = 1 + 3t$. So the general solution is $(1 + 3t, 1 - 2t, t)$, and setting $t = 0$ recovers a particular solution that checks out. The trap option $(1, 1, 0)$ only reports a single particular solution and forgets the whole family generated by the free variable.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-029",
+      "stem": "For the system with augmented matrix $\\begin{pmatrix} 1 & 1 & 1 & 1 \\\\ 0 & 1 & 2 & 3 \\\\ 0 & 0 & k - 4 & k - 6 \\end{pmatrix}$, which value of $k$ makes the system inconsistent (no solution)?",
+      "options": [
+        "$k = 4$",
+        "$k = 6$",
+        "$k = 5$",
+        "$k = 2$"
+      ],
+      "answer": 0,
+      "explanation": "The bottom row reads $(k-4)z = k-6$. If $k = 4$ the left side is $0$ while the right side is $4 - 6 = -2$, giving $0 = -2$, a contradiction, so the system has no solution. For $k \\neq 4$ the row solves for $z$ and the system is consistent. The trap option $k = 6$ instead makes the row $2z = 0$, which is perfectly solvable and gives a unique solution, the opposite of inconsistency.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-systems-of-equations-030",
+      "stem": "A system of $3$ equations in $3$ unknowns has augmented matrix that row reduces so the coefficient part has rank $2$ while the full augmented matrix has rank $3$. What can you conclude?",
+      "options": [
+        "The system has a unique solution.",
+        "The system is homogeneous, so it has the trivial solution.",
+        "The system is inconsistent (no solution).",
+        "The system has infinitely many solutions."
+      ],
+      "answer": 2,
+      "explanation": "When the rank of the augmented matrix exceeds the rank of the coefficient matrix, a pivot sits in the rightmost column, which corresponds to a row of the form $0 = \\text{nonzero}$. That contradiction means the system is inconsistent and has no solution. Consistency requires the two ranks to be equal. The trap option infinitely many wrongly assumes the rank shortfall in the coefficient part guarantees free-variable solutions, but the extra pivot to the right of the bar overrides that and kills consistency.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    }
+  ]
+}
