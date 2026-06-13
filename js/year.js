@@ -28,7 +28,7 @@ function semesterBox(yearNumber, s) {
     }
     document.title = `Year ${year.year} - TMC Math Hub`;
     root.innerHTML = `
-      <p class="crumb"><a href="index.html">Library</a> · Year ${year.year}</p>
+      <p class="crumb"><a class="crumb-back" href="index.html" aria-label="Back to the library">&#8592;</a><a href="index.html">Library</a> · Year ${year.year}</p>
       <h1>Year ${year.year}</h1>
       <p class="hint">Pick a semester.</p>
       <div class="pick-grid">${year.semesters.map(s => semesterBox(year.year, s)).join('')}</div>`;

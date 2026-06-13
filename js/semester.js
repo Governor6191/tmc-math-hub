@@ -45,7 +45,7 @@ function courseList(courses) {
     }
     document.title = `Year ${year.year}, Semester ${sem.semester} - TMC Math Hub`;
     root.innerHTML = `
-      <p class="crumb"><a href="index.html">Library</a> · <a href="year.html?y=${year.year}">Year ${year.year}</a> · Semester ${sem.semester}</p>
+      <p class="crumb"><a class="crumb-back" href="year.html?y=${year.year}" aria-label="Back to Year ${year.year}">&#8592;</a><a href="index.html">Library</a> · <a href="year.html?y=${year.year}">Year ${year.year}</a> · Semester ${sem.semester}</p>
       <h1>Year ${year.year}, Semester ${sem.semester}</h1>
       ${sem.courses.length ? courseList(sem.courses) : '<p class="hint">No courses listed yet.</p>'}`;
   } catch (err) {

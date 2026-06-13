@@ -68,7 +68,7 @@ function draftBanner() {
 
 function renderPreStart(pool) {
   root.innerHTML = `
-    <p class="crumb"><a href="index.html">Library</a> ·
+    <p class="crumb"><a class="crumb-back" href="course.html?c=${encodeURIComponent(course.id)}" aria-label="Back to ${escapeHtml(course.title)}">&#8592;</a><a href="index.html">Library</a> ·
       <a href="course.html?c=${encodeURIComponent(course.id)}">${escapeHtml(course.title)}</a> · Mock exam hall</p>
     <h1>Mock exam hall</h1>
     ${draftBanner()}
