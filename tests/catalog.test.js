@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { loadCatalog, resetCatalogCache, findCourse, courseStats } from '../js/catalog.js';
+import { loadCatalog, resetCatalogCache, findCourse, courseStats, semesterStats, yearStats } from '../js/catalog.js';
 
 const FIXTURE = {
   years: [{
@@ -34,6 +34,24 @@ test('findCourse returns null for unknown ids', () => {
 test('courseStats counts topics, slides, videos, files, questions', () => {
   assert.deepEqual(courseStats(FIXTURE.years[0].semesters[0].courses[0]),
     { topics: 2, slides: 3, videos: 1, materials: 1, files: 4, questions: 40 });
+});
+
+test('semesterStats sums its courses', () => {
+  assert.deepEqual(semesterStats(FIXTURE.years[0].semesters[0]),
+    { courses: 1, questions: 40, files: 4, topics: 2, videos: 1 });
+});
+
+test('yearStats sums courses, questions, files, topics, videos across all semesters of a year', () => {
+  assert.deepEqual(yearStats(FIXTURE.years[0]),
+    { courses: 1, questions: 40, files: 4, topics: 2, videos: 1 });
+});
+
+test('yearStats counts courses across multiple semesters and tolerates empty ones', () => {
+  const year = { year: 2, semesters: [
+    { semester: 1, courses: [{ topics: [], materials: [] }, { topics: [], materials: [] }] },
+    { semester: 2, courses: [] },
+  ] };
+  assert.deepEqual(yearStats(year), { courses: 2, questions: 0, files: 0, topics: 0, videos: 0 });
 });
 
 test('loadCatalog fetches once and caches', async () => {

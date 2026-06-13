@@ -20,6 +20,27 @@ export function findCourse(catalog, courseId) {
   return null;
 }
 
+export function semesterStats(semester) {
+  const totals = { courses: semester.courses.length, questions: 0, files: 0, topics: 0, videos: 0 };
+  for (const c of semester.courses) {
+    const st = courseStats(c);
+    totals.questions += st.questions;
+    totals.files += st.files;
+    totals.topics += st.topics;
+    totals.videos += st.videos;
+  }
+  return totals;
+}
+
+export function yearStats(year) {
+  const totals = { courses: 0, questions: 0, files: 0, topics: 0, videos: 0 };
+  for (const s of year.semesters) {
+    const st = semesterStats(s);
+    for (const k of Object.keys(totals)) totals[k] += st[k];
+  }
+  return totals;
+}
+
 export function courseStats(course) {
   const slides = course.topics.reduce((n, t) => n + t.slides.length, 0);
   const videos = course.topics.reduce((n, t) => n + t.videos.length, 0);
