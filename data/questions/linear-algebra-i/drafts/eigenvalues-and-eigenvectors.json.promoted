@@ -1,0 +1,427 @@
+{
+  "courseId": "linear-algebra-i",
+  "topicId": "eigenvalues-and-eigenvectors",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-001",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 2 & 2 \\\\ 1 & 3 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 2, 3$",
+        "$\\lambda = -1, -4$",
+        "$\\lambda = 1, 4$",
+        "$\\lambda = 5, 4$"
+      ],
+      "answer": 2,
+      "explanation": "The characteristic equation is $\\det(A - \\lambda I) = (2 - \\lambda)(3 - \\lambda) - (2)(1) = \\lambda^2 - 5\\lambda + 4 = 0$. Factoring gives $(\\lambda - 1)(\\lambda - 4) = 0$, so $\\lambda = 1$ and $\\lambda = 4$. As a check, the eigenvalues sum to $5$, which equals the trace $2 + 3$. The trap option $\\lambda = 2, 3$ just reads the diagonal entries, which only works for a triangular matrix, not for this full matrix.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-002",
+      "stem": "What are the eigenvalues of the upper triangular matrix $A = \\begin{pmatrix} 3 & 7 \\\\ 0 & -2 \\end{pmatrix}$?",
+      "options": [
+        "$\\lambda = 3, -2$",
+        "$\\lambda = 3, 7$",
+        "$\\lambda = -6$",
+        "$\\lambda = 1, -5$"
+      ],
+      "answer": 0,
+      "explanation": "The eigenvalues of a triangular matrix are exactly its diagonal entries, because $\\det(A - \\lambda I) = (3 - \\lambda)(-2 - \\lambda)$ already comes factored. Setting each factor to zero gives $\\lambda = 3$ and $\\lambda = -2$. The off-diagonal entry $7$ plays no role at all. The trap option $\\lambda = 3, 7$ reads a column instead of the diagonal, picking up the entry $7$ that does not affect the eigenvalues.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-003",
+      "stem": "An eigenvalue of $A = \\begin{pmatrix} 4 & 2 \\\\ 1 & 3 \\end{pmatrix}$ is $\\lambda = 5$. Which vector is a corresponding eigenvector?",
+      "options": [
+        "$\\begin{pmatrix} 4 \\\\ 2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 \\\\ 3 \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "Solve $(A - 5I)v = 0$, where $A - 5I = \\begin{pmatrix} -1 & 2 \\\\ 1 & -2 \\end{pmatrix}$. The first row gives $-x + 2y = 0$, so $x = 2y$, and choosing $y = 1$ yields $v = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$. Checking, $A v = \\begin{pmatrix} 10 \\\\ 5 \\end{pmatrix} = 5v$. The trap option $\\begin{pmatrix} 4 \\\\ 2 \\end{pmatrix}$ copies the first row of $A$, which is not how an eigenvector is found.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-004",
+      "stem": "The eigenvalues of a $2 \\times 2$ matrix $A$ are $\\lambda = 9$ and $\\lambda = 2$. What is the trace of $A$?",
+      "options": [
+        "$18$",
+        "$7$",
+        "$\\tfrac{9}{2}$",
+        "$11$"
+      ],
+      "answer": 3,
+      "explanation": "The sum of the eigenvalues of a square matrix equals its trace. Here that sum is $9 + 2 = 11$, so the trace of $A$ is $11$. The product $9 \\cdot 2 = 18$ would give the determinant, a different quantity. The trap option $18$ reports the product of the eigenvalues, which is the determinant, not the trace.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-005",
+      "stem": "What are the eigenvalues of the diagonal matrix $A = \\begin{pmatrix} 6 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & 4 \\end{pmatrix}$?",
+      "options": [
+        "$\\lambda = 9$",
+        "$\\lambda = 6, -1, 4$",
+        "$\\lambda = -24$",
+        "$\\lambda = 6, 1, 4$"
+      ],
+      "answer": 1,
+      "explanation": "For a diagonal matrix the eigenvalues are precisely the diagonal entries, since $\\det(A - \\lambda I) = (6 - \\lambda)(-1 - \\lambda)(4 - \\lambda)$. Setting each factor to zero gives $\\lambda = 6$, $\\lambda = -1$, and $\\lambda = 4$. No computation beyond reading the diagonal is needed. The trap option $\\lambda = 6, 1, 4$ drops the minus sign on the entry $-1$, reporting $1$ instead.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-006",
+      "stem": "The matrix $A$ has eigenvalues $\\lambda = 3$ and $\\lambda = -2$. What are the eigenvalues of $A^2$?",
+      "options": [
+        "$\\lambda = 9, 4$",
+        "$\\lambda = 6, -4$",
+        "$\\lambda = 3, -2$",
+        "$\\lambda = 9, -4$"
+      ],
+      "answer": 0,
+      "explanation": "If $Av = \\lambda v$, then $A^2 v = A(\\lambda v) = \\lambda^2 v$, so the eigenvalues of $A^2$ are the squares of those of $A$. Squaring gives $3^2 = 9$ and $(-2)^2 = 4$, both positive. The eigenvectors stay the same; only the eigenvalues are squared. The trap option $\\lambda = 6, -4$ doubles each eigenvalue as $2\\lambda$ instead of squaring it as $\\lambda^2$.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-007",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 4, 3$",
+        "$\\lambda = -2, -5$",
+        "$\\lambda = 2, 5$",
+        "$\\lambda = 7, 10$"
+      ],
+      "answer": 2,
+      "explanation": "The characteristic polynomial is $\\det(A - \\lambda I) = (4 - \\lambda)(3 - \\lambda) - (1)(2) = \\lambda^2 - 7\\lambda + 10 = 0$. This factors as $(\\lambda - 2)(\\lambda - 5) = 0$, giving $\\lambda = 2$ and $\\lambda = 5$. The eigenvalues sum to $7$ (the trace) and multiply to $10$ (the determinant), confirming the result. The trap option $\\lambda = -2, -5$ flips both signs, which would come from solving $\\lambda^2 + 7\\lambda + 10 = 0$ after a sign error in $A - \\lambda I$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-008",
+      "stem": "An eigenvalue of $A = \\begin{pmatrix} 7 & 4 \\\\ -3 & -1 \\end{pmatrix}$ is $\\lambda = 5$. A corresponding eigenvector is:",
+      "options": [
+        "$\\begin{pmatrix} 2 \\\\ -3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 7 \\\\ 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$"
+      ],
+      "answer": 3,
+      "explanation": "Form $A - 5I = \\begin{pmatrix} 2 & 4 \\\\ -3 & -6 \\end{pmatrix}$ and solve $(A - 5I)v = 0$. The first row gives $2x + 4y = 0$, so $x = -2y$, and taking $y = -1$ yields $v = \\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$. Verifying, $Av = \\begin{pmatrix} 10 \\\\ -5 \\end{pmatrix} = 5v$. The trap option $\\begin{pmatrix} 2 \\\\ -3 \\end{pmatrix}$ is the eigenvector for the other eigenvalue $\\lambda = 1$, not for $\\lambda = 5$.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-009",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 5 & 4 \\\\ 1 & 2 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 5, 2$",
+        "$\\lambda = 1, 6$",
+        "$\\lambda = 7, 6$",
+        "$\\lambda = -1, -6$"
+      ],
+      "answer": 1,
+      "explanation": "The characteristic equation is $\\det(A - \\lambda I) = (5 - \\lambda)(2 - \\lambda) - (4)(1) = \\lambda^2 - 7\\lambda + 6 = 0$. Factoring gives $(\\lambda - 1)(\\lambda - 6) = 0$, so $\\lambda = 1$ and $\\lambda = 6$. The sum $1 + 6 = 7$ matches the trace and the product $1 \\cdot 6 = 6$ matches the determinant. The trap option $\\lambda = 7, 6$ mistakes the trace $7$ and determinant $6$ for the eigenvalues themselves.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-010",
+      "stem": "A $2 \\times 2$ matrix $A$ has eigenvalues $\\lambda = 5$ and $\\lambda = -1$. What is $\\det(A)$?",
+      "options": [
+        "$-5$",
+        "$4$",
+        "$5$",
+        "$-6$"
+      ],
+      "answer": 0,
+      "explanation": "The determinant of a matrix equals the product of its eigenvalues. Here that product is $5 \\cdot (-1) = -5$, so $\\det(A) = -5$. The sum $5 + (-1) = 4$ would give the trace instead. The trap option $4$ adds the eigenvalues, reporting the trace rather than the determinant.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-011",
+      "stem": "What are the eigenvalues of the lower triangular matrix $A = \\begin{pmatrix} 2 & 0 & 0 \\\\ 5 & 7 & 0 \\\\ -1 & 3 & 4 \\end{pmatrix}$?",
+      "options": [
+        "$\\lambda = 2, 5, -1$",
+        "$\\lambda = 13$",
+        "$\\lambda = 2, 7, 4$",
+        "$\\lambda = 56$"
+      ],
+      "answer": 2,
+      "explanation": "For any triangular matrix, upper or lower, the eigenvalues are the diagonal entries, since $\\det(A - \\lambda I) = (2 - \\lambda)(7 - \\lambda)(4 - \\lambda)$. The roots are therefore $\\lambda = 2$, $\\lambda = 7$, and $\\lambda = 4$. The entries below the diagonal do not affect the eigenvalues. The trap option $\\lambda = 2, 5, -1$ reads the first column instead of the diagonal.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-012",
+      "stem": "A matrix $A$ is invertible and has eigenvalues $\\lambda = 4$ and $\\lambda = -2$. What are the eigenvalues of $A^{-1}$?",
+      "options": [
+        "$\\lambda = 4, -2$",
+        "$\\lambda = \\tfrac{1}{4}, -\\tfrac{1}{2}$",
+        "$\\lambda = -4, 2$",
+        "$\\lambda = 16, 4$"
+      ],
+      "answer": 1,
+      "explanation": "If $Av = \\lambda v$ with $\\lambda \\ne 0$, then applying $A^{-1}$ gives $v = \\lambda A^{-1} v$, so $A^{-1} v = \\tfrac{1}{\\lambda} v$. The eigenvalues of $A^{-1}$ are the reciprocals $\\tfrac{1}{4}$ and $-\\tfrac{1}{2}$. The eigenvectors are unchanged; only the eigenvalues invert. The trap option $\\lambda = 4, -2$ forgets that the inverse takes reciprocals and leaves the eigenvalues as they were.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-013",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 0 & 1 \\\\ -2 & -3 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 0, -3$",
+        "$\\lambda = 1, 2$",
+        "$\\lambda = 3, 2$",
+        "$\\lambda = -1, -2$"
+      ],
+      "answer": 3,
+      "explanation": "The characteristic equation is $\\det(A - \\lambda I) = (0 - \\lambda)(-3 - \\lambda) - (1)(-2) = \\lambda^2 + 3\\lambda + 2 = 0$. Factoring gives $(\\lambda + 1)(\\lambda + 2) = 0$, so $\\lambda = -1$ and $\\lambda = -2$. The sum $-3$ equals the trace and the product $2$ equals the determinant. The trap option $\\lambda = 1, 2$ flips both signs, which comes from solving $\\lambda^2 - 3\\lambda + 2 = 0$ after mishandling the signs in the characteristic polynomial.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-014",
+      "stem": "Verify which vector is an eigenvector of $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$, and state its eigenvalue.",
+      "options": [
+        "$\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$ with $\\lambda = 3$",
+        "$\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$ with $\\lambda = 2$",
+        "$\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ with $\\lambda = 2$",
+        "$\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$ with $\\lambda = 1$"
+      ],
+      "answer": 0,
+      "explanation": "Test $v = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$: then $Av = \\begin{pmatrix} 2 + 1 \\\\ 1 + 2 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 3 \\end{pmatrix} = 3v$, so it is an eigenvector with $\\lambda = 3$. A vector is an eigenvector only if $Av$ is a scalar multiple of $v$, which fails for $\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$ since $A\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$. The trap option $\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$ with $\\lambda = 1$ has the right vector but reads off the wrong eigenvalue, since $Av = 3v$, not $1v$.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-015",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 7 & 2 \\\\ 0 & 3 \\end{pmatrix}$ and then of $A^T$.",
+      "options": [
+        "$A$ has $\\lambda = 7, 3$ but $A^T$ has $\\lambda = 7, 5$",
+        "$A$ has $\\lambda = 7, 3$ but $A^T$ has $\\lambda = 3, 0$",
+        "Both $A$ and $A^T$ have $\\lambda = 7, 3$",
+        "$A$ has $\\lambda = 7, 3$ but $A^T$ has $\\lambda = 9, 1$"
+      ],
+      "answer": 2,
+      "explanation": "Since $A$ is triangular, its eigenvalues are the diagonal entries $7$ and $3$. A matrix and its transpose always share the same characteristic polynomial, because $\\det(A^T - \\lambda I) = \\det((A - \\lambda I)^T) = \\det(A - \\lambda I)$, so $A^T$ also has eigenvalues $7$ and $3$. Transposing turns the upper triangular $A$ into a lower triangular matrix with the same diagonal. The trap option claiming $A^T$ has $\\lambda = 3, 0$ wrongly reads new entries off the transposed shape instead of using that the eigenvalues are unchanged.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-016",
+      "stem": "The matrix $A$ has eigenvalues $\\lambda = 5$ and $\\lambda = 3$. What are the eigenvalues of $A + 2I$?",
+      "options": [
+        "$\\lambda = 5, 3$",
+        "$\\lambda = 10, 6$",
+        "$\\lambda = 7, 1$",
+        "$\\lambda = 7, 5$"
+      ],
+      "answer": 3,
+      "explanation": "If $Av = \\lambda v$, then $(A + 2I)v = Av + 2v = (\\lambda + 2)v$, so each eigenvalue increases by $2$ while the eigenvectors stay the same. Thus $5 \\to 7$ and $3 \\to 5$, giving eigenvalues $7$ and $5$. Adding $cI$ shifts every eigenvalue by $c$. The trap option $\\lambda = 10, 6$ multiplies each eigenvalue by $2$, treating $A + 2I$ as if it were $2A$.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-017",
+      "stem": "What are the eigenvalues of $A = \\begin{pmatrix} -3 & 0 & 0 \\\\ 0 & -3 & 0 \\\\ 0 & 0 & 5 \\end{pmatrix}$?",
+      "options": [
+        "$\\lambda = -1$ only",
+        "$\\lambda = -3$ (repeated) and $\\lambda = 5$",
+        "$\\lambda = 3, 3, 5$",
+        "$\\lambda = 45$"
+      ],
+      "answer": 1,
+      "explanation": "For a diagonal matrix the eigenvalues are the diagonal entries, so here $\\det(A - \\lambda I) = (-3 - \\lambda)^2(5 - \\lambda)$. The eigenvalue $-3$ appears twice and $5$ appears once, giving $\\lambda = -3$ as a repeated eigenvalue and $\\lambda = 5$. The repetition reflects the two equal diagonal entries. The trap option $\\lambda = 3, 3, 5$ drops the minus sign on the repeated entry $-3$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-018",
+      "stem": "The matrix $A$ has eigenvalues $\\lambda = 4$ and $\\lambda = -3$. What are the eigenvalues of $3A$?",
+      "options": [
+        "$\\lambda = 12, -9$",
+        "$\\lambda = 4, -3$",
+        "$\\lambda = 7, 0$",
+        "$\\lambda = 64, -27$"
+      ],
+      "answer": 0,
+      "explanation": "If $Av = \\lambda v$, then $(3A)v = 3(Av) = 3\\lambda v$, so multiplying the matrix by a scalar $k$ multiplies every eigenvalue by $k$. With $k = 3$, the eigenvalues become $3 \\cdot 4 = 12$ and $3 \\cdot (-3) = -9$. The eigenvectors are unchanged. The trap option $\\lambda = 4, -3$ leaves the eigenvalues untouched, forgetting that scaling the matrix scales them too.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-019",
+      "stem": "Is $v = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$ an eigenvector of $A = \\begin{pmatrix} 3 & 4 \\\\ 0 & -1 \\end{pmatrix}$? If so, give the eigenvalue.",
+      "options": [
+        "No, because $Av$ is not a multiple of $v$",
+        "Yes, with $\\lambda = -1$",
+        "Yes, with $\\lambda = 3$",
+        "Yes, with $\\lambda = 4$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $Av = \\begin{pmatrix} 3 \\cdot 1 + 4 \\cdot 0 \\\\ 0 \\cdot 1 + (-1) \\cdot 0 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 0 \\end{pmatrix} = 3v$, which is a scalar multiple of $v$, so $v$ is an eigenvector with $\\lambda = 3$. The eigenvalue is the multiplier $3$, not any other entry of the matrix. The trap option $\\lambda = 4$ grabs the off-diagonal entry that the vector $\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$ never even activates.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-020",
+      "stem": "For the matrix $A = \\begin{pmatrix} 5 & 0 \\\\ 0 & 5 \\end{pmatrix}$, what is the dimension of the eigenspace for $\\lambda = 5$?",
+      "options": [
+        "$0$",
+        "$2$",
+        "$1$",
+        "$5$"
+      ],
+      "answer": 1,
+      "explanation": "Here $A = 5I$, so $A - 5I$ is the zero matrix and the equation $(A - 5I)v = 0$ is satisfied by every vector in $\\mathbb{R}^2$. The eigenspace is therefore all of $\\mathbb{R}^2$, which has dimension $2$, and any nonzero vector is an eigenvector. A scalar multiple of the identity has a full-dimensional eigenspace for its single repeated eigenvalue. The trap option $1$ assumes a repeated eigenvalue must give a one-dimensional eigenspace, but that is not the case here.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-021",
+      "stem": "A $2 \\times 2$ matrix $A$ has trace $5$ and determinant $6$. What are its eigenvalues?",
+      "options": [
+        "$\\lambda = 5, 6$",
+        "$\\lambda = 1, 5$",
+        "$\\lambda = 6, 1$",
+        "$\\lambda = 2, 3$"
+      ],
+      "answer": 3,
+      "explanation": "The eigenvalues of a $2 \\times 2$ matrix satisfy $\\lambda_1 + \\lambda_2 = \\text{trace} = 5$ and $\\lambda_1 \\lambda_2 = \\det = 6$, so they are the roots of $\\lambda^2 - 5\\lambda + 6 = 0$. Factoring gives $(\\lambda - 2)(\\lambda - 3) = 0$, hence $\\lambda = 2$ and $\\lambda = 3$. Indeed $2 + 3 = 5$ and $2 \\cdot 3 = 6$. The trap option $\\lambda = 5, 6$ mistakes the trace and determinant themselves for the eigenvalues.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-022",
+      "stem": "A matrix $A$ has eigenvalues $\\lambda = 3$ and $\\lambda = -4$. What are the eigenvalues of $A^T$?",
+      "options": [
+        "$\\lambda = 3, -4$",
+        "$\\lambda = \\tfrac{1}{3}, -\\tfrac{1}{4}$",
+        "$\\lambda = -3, 4$",
+        "$\\lambda = 9, 16$"
+      ],
+      "answer": 0,
+      "explanation": "A matrix and its transpose always have the same eigenvalues, because $\\det(A^T - \\lambda I) = \\det(A - \\lambda I)$ gives identical characteristic polynomials. So $A^T$ has eigenvalues $3$ and $-4$, exactly as $A$ does. Note the eigenvectors may differ, but the eigenvalues do not. The trap option $\\lambda = -3, 4$ negates the eigenvalues, as if transposing changed their signs.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-023",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 6 & -2 \\\\ 2 & 1 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 6, 1$",
+        "$\\lambda = 7, 10$",
+        "$\\lambda = 2, 5$",
+        "$\\lambda = -2, -5$"
+      ],
+      "answer": 2,
+      "explanation": "The characteristic equation is $\\det(A - \\lambda I) = (6 - \\lambda)(1 - \\lambda) - (-2)(2) = \\lambda^2 - 7\\lambda + 10 = 0$, where the $-(-2)(2) = +4$ adds to the constant term. Factoring gives $(\\lambda - 2)(\\lambda - 5) = 0$, so $\\lambda = 2$ and $\\lambda = 5$. The sum $7$ is the trace and the product $10$ is the determinant. The trap option $\\lambda = 7, 10$ confuses the trace and determinant with the eigenvalues.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-024",
+      "stem": "Does the matrix $A = \\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \\end{pmatrix}$ have $0$ as an eigenvalue?",
+      "options": [
+        "No, because all entries of $A$ are nonzero",
+        "Yes, because $\\det(A) = 0$, so $A$ is singular",
+        "No, because the trace of $A$ is $4$, which is nonzero",
+        "Yes, because the trace of $A$ is $0$"
+      ],
+      "answer": 1,
+      "explanation": "Zero is an eigenvalue of $A$ exactly when $\\det(A - 0 \\cdot I) = \\det(A) = 0$, that is, when $A$ is singular. Here $\\det(A) = (2)(2) - (4)(1) = 4 - 4 = 0$, so $A$ is singular and $\\lambda = 0$ is indeed an eigenvalue. The other eigenvalue is $4$, since the trace is $4$. The trap option pointing to nonzero entries is irrelevant, since singularity depends on the determinant, not on whether individual entries are nonzero.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-025",
+      "stem": "What are the eigenvalues of the upper triangular matrix $A = \\begin{pmatrix} 1 & 8 & -4 \\\\ 0 & 6 & 2 \\\\ 0 & 0 & -2 \\end{pmatrix}$?",
+      "options": [
+        "$\\lambda = 1, 8, -4$",
+        "$\\lambda = 5$",
+        "$\\lambda = 1, 6, 2$",
+        "$\\lambda = 1, 6, -2$"
+      ],
+      "answer": 3,
+      "explanation": "The eigenvalues of a triangular matrix are its diagonal entries, since $\\det(A - \\lambda I) = (1 - \\lambda)(6 - \\lambda)(-2 - \\lambda)$ is already factored. Reading the diagonal gives $\\lambda = 1$, $\\lambda = 6$, and $\\lambda = -2$. The entries above the diagonal, including $8$ and $-4$, do not matter. The trap option $\\lambda = 1, 6, 2$ takes $2$ from above the diagonal instead of the diagonal entry $-2$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-026",
+      "stem": "A $2 \\times 2$ matrix has one eigenvalue $\\lambda = 10$, and its trace is $15$ while its determinant is $50$. What is the other eigenvalue?",
+      "options": [
+        "$\\lambda = 40$",
+        "$\\lambda = -5$",
+        "$\\lambda = 25$",
+        "$\\lambda = 5$"
+      ],
+      "answer": 3,
+      "explanation": "The two eigenvalues sum to the trace, so $10 + \\lambda_2 = 15$ gives $\\lambda_2 = 5$. This is consistent with the determinant, since $10 \\cdot 5 = 50$ as required. Either relation alone pins down the missing eigenvalue. The trap option $\\lambda = 40$ subtracts $10$ from the determinant $50$ instead of from the trace, confusing the sum and product relations.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-027",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 1 & 4 \\\\ 2 & 3 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 1, 3$",
+        "$\\lambda = 4, -1$",
+        "$\\lambda = 5, -1$",
+        "$\\lambda = 5, 1$"
+      ],
+      "answer": 2,
+      "explanation": "The characteristic equation is $\\det(A - \\lambda I) = (1 - \\lambda)(3 - \\lambda) - (4)(2) = \\lambda^2 - 4\\lambda - 5 = 0$. Factoring gives $(\\lambda - 5)(\\lambda + 1) = 0$, so $\\lambda = 5$ and $\\lambda = -1$. The sum $5 + (-1) = 4$ is the trace and the product $5 \\cdot (-1) = -5$ is the determinant. The trap option $\\lambda = 5, 1$ keeps the right magnitudes but loses the sign on $\\lambda = -1$, which would make the product $5$ instead of the correct $-5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-028",
+      "stem": "An eigenvalue of $A = \\begin{pmatrix} 3 & 2 \\\\ 3 & -2 \\end{pmatrix}$ is $\\lambda = 4$. Find a corresponding eigenvector, then state the other eigenvalue using the trace.",
+      "options": [
+        "$\\begin{pmatrix} -1 \\\\ 3 \\end{pmatrix}$ with the other eigenvalue $\\lambda = 4$",
+        "$\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ with the other eigenvalue $\\lambda = -3$",
+        "$\\begin{pmatrix} 3 \\\\ 2 \\end{pmatrix}$ with the other eigenvalue $\\lambda = -3$",
+        "$\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ with the other eigenvalue $\\lambda = -12$"
+      ],
+      "answer": 1,
+      "explanation": "Form $A - 4I = \\begin{pmatrix} -1 & 2 \\\\ 3 & -6 \\end{pmatrix}$; the first row gives $-x + 2y = 0$, so $x = 2y$ and $v = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$, which checks since $Av = \\begin{pmatrix} 8 \\\\ 4 \\end{pmatrix} = 4v$. The trace is $3 + (-2) = 1$, so the other eigenvalue is $1 - 4 = -3$. The trap option giving the other eigenvalue as $\\lambda = -12$ uses the determinant ($\\det = -12$) divided incorrectly, instead of subtracting from the trace.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-029",
+      "stem": "A matrix $A$ has eigenvalues $\\lambda = 6$ and $\\lambda = 3$. What are the eigenvalues of $A^2 - I$?",
+      "options": [
+        "$\\lambda = 35, 8$",
+        "$\\lambda = 11, 5$",
+        "$\\lambda = 36, 9$",
+        "$\\lambda = 12, 6$"
+      ],
+      "answer": 0,
+      "explanation": "If $Av = \\lambda v$, then $(A^2 - I)v = A^2 v - v = (\\lambda^2 - 1)v$, so each eigenvalue $\\lambda$ becomes $\\lambda^2 - 1$. For $\\lambda = 6$ this is $36 - 1 = 35$, and for $\\lambda = 3$ it is $9 - 1 = 8$. The eigenvectors are unchanged throughout. The trap option $\\lambda = 35, 8$ is correct; by contrast a common slip gives $\\lambda = 11, 5$ by computing $2\\lambda - 1$ instead of $\\lambda^2 - 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-eigenvalues-and-eigenvectors-030",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 4 & 2 \\\\ 2 & 1 \\end{pmatrix}$, and decide whether $A$ is invertible.",
+      "options": [
+        "$\\lambda = 5, 0$; $A$ is not invertible because $0$ is an eigenvalue",
+        "$\\lambda = 5, 0$; $A$ is invertible",
+        "$\\lambda = 4, 1$; $A$ is invertible",
+        "$\\lambda = 5, 1$; $A$ is not invertible"
+      ],
+      "answer": 0,
+      "explanation": "The characteristic equation is $\\det(A - \\lambda I) = (4 - \\lambda)(1 - \\lambda) - (2)(2) = \\lambda^2 - 5\\lambda = 0$, which factors as $\\lambda(\\lambda - 5) = 0$, giving $\\lambda = 0$ and $\\lambda = 5$. Because $0$ is an eigenvalue, $\\det(A) = 0 \\cdot 5 = 0$, so $A$ is singular and not invertible. A matrix is invertible if and only if $0$ is not one of its eigenvalues. The trap option $\\lambda = 4, 1$ reads the diagonal as if $A$ were triangular and then wrongly concludes the matrix is invertible.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    }
+  ]
+}

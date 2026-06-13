@@ -1,0 +1,427 @@
+{
+  "courseId": "linear-algebra-i",
+  "topicId": "linear-transformations",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "linear-algebra-i-linear-transformations-001",
+      "stem": "Which of these maps $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ is linear?",
+      "options": [
+        "$T(x, y) = (x + 1, y)$",
+        "$T(x, y) = (x^2, y)$",
+        "$T(x, y) = (2x, x - y)$",
+        "$T(x, y) = (x, |y|)$"
+      ],
+      "answer": 2,
+      "explanation": "A map is linear when each output coordinate is a linear combination of the inputs with no constant term and no nonlinear pieces. Here $T(x, y) = (2x, x - y)$ qualifies, since both $2x$ and $x - y$ are linear in $x$ and $y$. The option $(x + 1, y)$ adds the constant $1$, so $T(0,0) = (1,0) \\ne \\mathbf{0}$, and $(x^2, y)$ squares an input, both of which break linearity. The trap is treating any tidy formula as linear; a constant shift or a power of a variable disqualifies it immediately.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-002",
+      "stem": "The linear map $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ has standard matrix $A = \\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix}$. What is $T(2, 1)$?",
+      "options": [
+        "$(6, 2)$",
+        "$(7, 2)$",
+        "$(7, 4)$",
+        "$(3, 2)$"
+      ],
+      "answer": 1,
+      "explanation": "To apply a linear map given by a matrix, multiply: $T(2,1) = A \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 3 \\cdot 2 + 1 \\cdot 1 \\\\ 0 \\cdot 2 + 2 \\cdot 1 \\end{pmatrix} = \\begin{pmatrix} 7 \\\\ 2 \\end{pmatrix}$. So the image is $(7, 2)$. The trap option $(6, 2)$ multiplies each component of the input by the matching diagonal entry only, ignoring the off-diagonal entry $1$ that contributes to the first coordinate.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-003",
+      "stem": "Why can the map $T(x, y) = (x + y + 3, \\, x - y)$ not be a linear transformation?",
+      "options": [
+        "Because it mixes $x$ and $y$ in the first coordinate.",
+        "Because the second coordinate can be negative.",
+        "Because it sends $\\mathbb{R}^2$ to $\\mathbb{R}^2$ rather than to $\\mathbb{R}$.",
+        "Because $T(0, 0) = (3, 0) \\ne \\mathbf{0}$."
+      ],
+      "answer": 3,
+      "explanation": "Every linear map must satisfy $T(\\mathbf{0}) = \\mathbf{0}$, because $T(\\mathbf{0}) = T(0 \\cdot \\mathbf{0}) = 0 \\cdot T(\\mathbf{0}) = \\mathbf{0}$. Here $T(0,0) = (0 + 0 + 3, \\, 0 - 0) = (3, 0)$, which is not the zero vector, so $T$ cannot be linear. The constant $+3$ is what shifts the origin away from itself. The trap is blaming the mixing of $x$ and $y$, which is perfectly fine in a linear map; the real culprit is the constant term that violates $T(\\mathbf{0}) = \\mathbf{0}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-004",
+      "stem": "What is the standard matrix of the rotation of $\\mathbb{R}^2$ counterclockwise about the origin by $90^\\circ$?",
+      "options": [
+        "$\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} -1 & 0 \\\\ 0 & 1 \\end{pmatrix}$"
+      ],
+      "answer": 0,
+      "explanation": "The counterclockwise rotation by angle $\\theta$ has matrix $\\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}$. At $\\theta = 90^\\circ$, $\\cos 90^\\circ = 0$ and $\\sin 90^\\circ = 1$, giving $\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$. As a check, this sends $(1,0)$ to $(0,1)$, exactly a quarter turn counterclockwise. The trap option $\\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}$ swaps the signs of the sine entries, which produces a clockwise rotation instead.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-005",
+      "stem": "For a linear map $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ we know $T(1, 0) = (4, 1)$. Using linearity, what is $T(3, 0)$?",
+      "options": [
+        "$(4, 3)$",
+        "$(7, 4)$",
+        "$(12, 3)$",
+        "$(4, 1)$"
+      ],
+      "answer": 2,
+      "explanation": "Linearity gives $T(c \\mathbf{v}) = c \\, T(\\mathbf{v})$, so $T(3, 0) = T(3 \\cdot (1,0)) = 3 \\, T(1,0) = 3 (4,1) = (12, 3)$. Both coordinates scale by the same factor $3$. The trap option $(12, 3)$ versus $(4, 3)$ matters here: $(4, 3)$ scales only the second coordinate while leaving the first unchanged, which is not how scalar multiplication through a linear map works, since the whole output vector scales together.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-006",
+      "stem": "What is the standard matrix of the reflection of $\\mathbb{R}^2$ across the $x$-axis?",
+      "options": [
+        "$\\begin{pmatrix} -1 & 0 \\\\ 0 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "Reflecting across the $x$-axis keeps the first coordinate and negates the second: $(x, y) \\mapsto (x, -y)$. Reading off the images of the basis vectors, $(1,0) \\mapsto (1,0)$ and $(0,1) \\mapsto (0,-1)$, gives the matrix $\\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$. The trap option $\\begin{pmatrix} -1 & 0 \\\\ 0 & 1 \\end{pmatrix}$ negates the wrong coordinate, which is the reflection across the $y$-axis instead.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-007",
+      "stem": "A linear map $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ satisfies $T(1, 0) = (2, 3)$ and $T(0, 1) = (1, 5)$. What is its standard matrix?",
+      "options": [
+        "$\\begin{pmatrix} 2 & 3 \\\\ 1 & 5 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 1 \\\\ 5 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 2 \\\\ 5 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 1 \\\\ 3 & 5 \\end{pmatrix}$"
+      ],
+      "answer": 3,
+      "explanation": "The standard matrix of a linear map has the images of the standard basis vectors as its columns, in order. So $T(1,0) = (2,3)$ becomes the first column and $T(0,1) = (1,5)$ becomes the second column, giving $\\begin{pmatrix} 2 & 1 \\\\ 3 & 5 \\end{pmatrix}$. The trap option $\\begin{pmatrix} 2 & 3 \\\\ 1 & 5 \\end{pmatrix}$ writes those images as rows instead of columns, which transposes the intended matrix.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-008",
+      "stem": "What is the standard matrix of the reflection of $\\mathbb{R}^2$ across the line $y = x$?",
+      "options": [
+        "$\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & -1 \\\\ -1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}$"
+      ],
+      "answer": 0,
+      "explanation": "Reflecting across $y = x$ swaps the two coordinates: $(x, y) \\mapsto (y, x)$. The basis images are $(1,0) \\mapsto (0,1)$ and $(0,1) \\mapsto (1,0)$, so the matrix is $\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$. The trap option, the identity $\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$, leaves points fixed instead of swapping their coordinates, confusing the reflection with doing nothing.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-009",
+      "stem": "For the projection $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ onto the $x$-axis, $T(x, y) = (x, 0)$, what is the kernel of $T$?",
+      "options": [
+        "Only the zero vector $\\{ \\mathbf{0} \\}$.",
+        "All of $\\mathbb{R}^2$.",
+        "The $y$-axis, $\\{ (0, y) : y \\in \\mathbb{R} \\}$.",
+        "The $x$-axis, $\\{ (x, 0) : x \\in \\mathbb{R} \\}$."
+      ],
+      "answer": 2,
+      "explanation": "The kernel is the set of inputs sent to $\\mathbf{0}$, so we solve $T(x, y) = (x, 0) = (0, 0)$, which forces $x = 0$ while $y$ is free. That set is the $y$-axis, $\\{ (0, y) : y \\in \\mathbb{R} \\}$. The projection collapses the vertical direction, so exactly the vertical axis is killed. The trap option, the $x$-axis, names the range of the projection rather than its kernel; the range is what survives, the kernel is what is sent to zero.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-010",
+      "stem": "What is the standard matrix of the scaling of $\\mathbb{R}^2$ that doubles the $x$-direction and triples the $y$-direction?",
+      "options": [
+        "$\\begin{pmatrix} 2 & 3 \\\\ 3 & 2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 6 & 0 \\\\ 0 & 6 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 0 \\\\ 0 & 2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$"
+      ],
+      "answer": 3,
+      "explanation": "A scaling that multiplies the $x$-direction by $2$ and the $y$-direction by $3$ sends $(1,0) \\mapsto (2,0)$ and $(0,1) \\mapsto (0,3)$, so its matrix is the diagonal $\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$. The diagonal entries hold the two scale factors. The trap option $\\begin{pmatrix} 3 & 0 \\\\ 0 & 2 \\end{pmatrix}$ swaps the factors, applying the triple to $x$ and the double to $y$, the reverse of what was asked.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-011",
+      "stem": "A linear map $T : \\mathbb{R}^2 \\to \\mathbb{R}^3$ satisfies $T(1, 0) = (1, 2, 0)$ and $T(0, 1) = (0, 1, 3)$. What is its standard matrix?",
+      "options": [
+        "$\\begin{pmatrix} 1 & 2 & 0 \\\\ 0 & 1 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 2 & 1 \\\\ 0 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\\\ 0 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 2 & 3 \\\\ 0 & 1 \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "For a map $\\mathbb{R}^2 \\to \\mathbb{R}^3$, the standard matrix is $3 \\times 2$: the images of the two basis vectors become the two columns. Thus $T(1,0) = (1,2,0)$ is the first column and $T(0,1) = (0,1,3)$ is the second, giving $\\begin{pmatrix} 1 & 0 \\\\ 2 & 1 \\\\ 0 & 3 \\end{pmatrix}$. The trap option $\\begin{pmatrix} 1 & 2 & 0 \\\\ 0 & 1 & 3 \\end{pmatrix}$ writes the images as rows, producing a $2 \\times 3$ matrix that would map $\\mathbb{R}^3 \\to \\mathbb{R}^2$, the wrong direction entirely.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-012",
+      "stem": "Let $S$ have matrix $B = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ and $T$ have matrix $A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$. What is the standard matrix of the composition $T \\circ S$ (apply $S$ first, then $T$)?",
+      "options": [
+        "$\\begin{pmatrix} 2 & 2 \\\\ 0 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 3 \\\\ 0 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 5 & 0 \\\\ 0 & 5 \\end{pmatrix}$"
+      ],
+      "answer": 0,
+      "explanation": "Composition corresponds to matrix multiplication, and $(T \\circ S)(\\mathbf{x}) = T(S(\\mathbf{x})) = A(B\\mathbf{x}) = (AB)\\mathbf{x}$, so the matrix is $AB$ with $A$ on the left. Computing $AB = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 2 & 2 \\\\ 0 & 3 \\end{pmatrix}$. The trap option $\\begin{pmatrix} 2 & 3 \\\\ 0 & 3 \\end{pmatrix}$ comes from multiplying in the wrong order as $BA$, which corresponds to $S \\circ T$, not $T \\circ S$.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-013",
+      "stem": "Is the map $T : \\mathbb{R}^2 \\to \\mathbb{R}$ given by $T(x, y) = xy$ a linear transformation?",
+      "options": [
+        "Yes, because it sends two inputs to one output.",
+        "Yes, because $T(0, 0) = 0$.",
+        "Yes, because it has no constant term.",
+        "No, because $T(2(1,1)) \\ne 2\\,T(1,1)$."
+      ],
+      "answer": 3,
+      "explanation": "Although $T(0,0) = 0$, passing that single test is not enough; linearity also requires $T(c\\mathbf{v}) = c\\,T(\\mathbf{v})$ for all scalars. Take $\\mathbf{v} = (1,1)$: then $T(2,2) = 2 \\cdot 2 = 4$, while $2\\,T(1,1) = 2 \\cdot (1 \\cdot 1) = 2$, and $4 \\ne 2$. The product $xy$ is nonlinear because multiplying inputs makes the output grow quadratically. The trap is concluding linearity from $T(\\mathbf{0}) = \\mathbf{0}$ alone, but that condition is necessary, not sufficient.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-014",
+      "stem": "A linear map $T : \\mathbb{R}^3 \\to \\mathbb{R}^2$ has standard matrix $A = \\begin{pmatrix} 1 & 0 & 2 \\\\ 0 & 1 & 1 \\end{pmatrix}$. Is $T$ onto $\\mathbb{R}^2$?",
+      "options": [
+        "No, because the domain $\\mathbb{R}^3$ is larger than $\\mathbb{R}^2$.",
+        "No, because $T$ cannot be one-to-one.",
+        "Yes, because the columns span all of $\\mathbb{R}^2$ (rank $2$).",
+        "Yes, because every $3 \\times 2$ situation is automatically onto."
+      ],
+      "answer": 2,
+      "explanation": "A linear map is onto exactly when the columns of its matrix span the entire codomain, that is, when the rank equals the dimension of the codomain. Here the first two columns $(1,0)$ and $(0,1)$ already span $\\mathbb{R}^2$, so the rank is $2 = \\dim \\mathbb{R}^2$ and $T$ is onto. The trap is thinking a map from a bigger space to a smaller one cannot be onto; in fact going from $\\mathbb{R}^3$ to $\\mathbb{R}^2$ makes onto easy and one-to-one impossible, and onto is what the rank confirms here.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-015",
+      "stem": "What is the standard matrix of the horizontal shear of $\\mathbb{R}^2$ defined by $T(x, y) = (x + 2y, \\, y)$?",
+      "options": [
+        "$\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 2 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 0 \\\\ 0 & 1 \\end{pmatrix}$"
+      ],
+      "answer": 0,
+      "explanation": "Reading the images of the basis vectors, $T(1,0) = (1,0)$ is the first column and $T(0,1) = (2,1)$ is the second column, so the shear matrix is $\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\end{pmatrix}$. The shear factor $2$ sits in the upper-right entry, where it adds a multiple of $y$ into the $x$-coordinate. The trap option $\\begin{pmatrix} 1 & 0 \\\\ 2 & 1 \\end{pmatrix}$ places the $2$ in the lower-left, which is a vertical shear $(x, y) \\mapsto (x, \\, 2x + y)$ instead of the horizontal one given.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-016",
+      "stem": "A linear map $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ has standard matrix $A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\end{pmatrix}$. What is the nullity of $T$?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": 1,
+      "explanation": "The nullity is the dimension of the kernel, found by solving $A\\mathbf{x} = \\mathbf{0}$. The second row $2x + 4y = 0$ is just twice the first row $x + 2y = 0$, so there is one independent equation, leaving one free variable and a one-dimensional kernel. Hence the nullity is $1$. By rank-nullity, $\\operatorname{rank} + \\operatorname{nullity} = 2$, so the rank is $1$, consistent with the two proportional rows. The trap option $0$ assumes the kernel is trivial, but the dependent rows make $A$ singular and give a nonzero null space.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-017",
+      "stem": "A linear map $T : \\mathbb{R}^3 \\to \\mathbb{R}^2$ sends $T(1,0,0) = (1, 2)$, $T(0,1,0) = (0, 1)$, and $T(0,0,1) = (3, 0)$. What is its standard matrix?",
+      "options": [
+        "$\\begin{pmatrix} 1 & 2 & 0 \\\\ 1 & 3 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 2 & 1 \\\\ 3 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 2 \\\\ 0 & 1 \\\\ 3 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 & 3 \\\\ 2 & 1 & 0 \\end{pmatrix}$"
+      ],
+      "answer": 3,
+      "explanation": "For a map $\\mathbb{R}^3 \\to \\mathbb{R}^2$ the standard matrix is $2 \\times 3$, with the three basis images as its columns. So the columns are $(1,2)$, $(0,1)$, and $(3,0)$, giving $\\begin{pmatrix} 1 & 0 & 3 \\\\ 2 & 1 & 0 \\end{pmatrix}$. The trap option $\\begin{pmatrix} 1 & 0 \\\\ 2 & 1 \\\\ 3 & 0 \\end{pmatrix}$ stacks the images as rows, building a $3 \\times 2$ matrix that maps the wrong way, from $\\mathbb{R}^2$ into $\\mathbb{R}^3$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-018",
+      "stem": "Let $S$ be rotation by $90^\\circ$ counterclockwise, with matrix $B = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$, and let $T$ be the reflection across the $x$-axis, with matrix $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$. What is the matrix of $T \\circ S$ (first rotate, then reflect)?",
+      "options": [
+        "$\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & -1 \\\\ -1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "Doing $S$ first and then $T$ corresponds to the product $AB$, with the second map $A$ on the left: $AB = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix} = \\begin{pmatrix} 0 & -1 \\\\ -1 & 0 \\end{pmatrix}$. The trap option $\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$ is $BA$, the reverse order, which would mean reflecting first and then rotating; since these maps do not commute, the order changes the answer.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-019",
+      "stem": "Which property must any linear map $T : \\mathbb{R}^n \\to \\mathbb{R}^m$ satisfy for all vectors $\\mathbf{u}, \\mathbf{v}$ and scalars $c$?",
+      "options": [
+        "$T(\\mathbf{u} + \\mathbf{v}) = T(\\mathbf{u}) + T(\\mathbf{v})$ and $T(c\\mathbf{u}) = c\\,T(\\mathbf{u})$.",
+        "$T(\\mathbf{u} \\cdot \\mathbf{v}) = T(\\mathbf{u}) \\cdot T(\\mathbf{v})$.",
+        "$T(\\mathbf{u} + \\mathbf{v}) = T(\\mathbf{u}) \\, T(\\mathbf{v})$.",
+        "$T(c) = c$ for every scalar $c$."
+      ],
+      "answer": 0,
+      "explanation": "Linearity is defined by exactly two axioms: additivity, $T(\\mathbf{u} + \\mathbf{v}) = T(\\mathbf{u}) + T(\\mathbf{v})$, and homogeneity, $T(c\\mathbf{u}) = c\\,T(\\mathbf{u})$. Together these guarantee $T$ preserves all linear combinations and force $T(\\mathbf{0}) = \\mathbf{0}$. The other choices involve products of vectors or of outputs, which are not part of the definition. The trap is importing a multiplicative rule like $T(\\mathbf{u} + \\mathbf{v}) = T(\\mathbf{u})\\,T(\\mathbf{v})$; linearity concerns sums and scalar multiples, never products of the vectors.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-020",
+      "stem": "Let $T$ have matrix $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$ and $S$ have matrix $B = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$. What is the standard matrix of $S \\circ T$ (apply $T$ first, then $S$)?",
+      "options": [
+        "$\\begin{pmatrix} 2 & 1 \\\\ 4 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 & 4 \\\\ 1 & 2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 4 & 3 \\\\ 2 & 1 \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "Since $T$ acts first and $S$ second, $(S \\circ T)(\\mathbf{x}) = S(T(\\mathbf{x})) = B(A\\mathbf{x}) = (BA)\\mathbf{x}$, so the matrix is $BA$ with $B$ on the left. Computing $BA = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} = \\begin{pmatrix} 3 & 4 \\\\ 1 & 2 \\end{pmatrix}$, which swaps the rows of $A$. The trap option $\\begin{pmatrix} 2 & 1 \\\\ 4 & 3 \\end{pmatrix}$ is $AB$, the wrong order, which swaps the columns of $A$ instead and corresponds to $T \\circ S$.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-021",
+      "stem": "What is the standard matrix of the rotation of $\\mathbb{R}^2$ counterclockwise by $180^\\circ$?",
+      "options": [
+        "$\\begin{pmatrix} 0 & -1 \\\\ -1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}$"
+      ],
+      "answer": 3,
+      "explanation": "Using the rotation matrix $\\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}$ at $\\theta = 180^\\circ$, we have $\\cos 180^\\circ = -1$ and $\\sin 180^\\circ = 0$, giving $\\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}$. This sends every vector $\\mathbf{v}$ to $-\\mathbf{v}$, exactly a half turn. The trap option $\\begin{pmatrix} 0 & -1 \\\\ -1 & 0 \\end{pmatrix}$ puts the entries in the off-diagonal slots, mixing up the cosine and sine positions of the rotation matrix.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-022",
+      "stem": "A linear map $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ has $\\ker(T) = \\{ \\mathbf{0} \\}$. Which conclusion follows?",
+      "options": [
+        "$T$ is onto but cannot be one-to-one.",
+        "$T$ sends some nonzero vector to $\\mathbf{0}$.",
+        "$T$ is one-to-one, and since the domain and codomain are both $\\mathbb{R}^2$, also onto.",
+        "$T$ must be the zero map."
+      ],
+      "answer": 2,
+      "explanation": "A linear map is one-to-one exactly when its kernel is trivial, so $\\ker(T) = \\{\\mathbf{0}\\}$ makes $T$ one-to-one. For a square case $\\mathbb{R}^2 \\to \\mathbb{R}^2$, the rank-nullity theorem gives rank $= 2 - 0 = 2$, so the image is all of $\\mathbb{R}^2$ and $T$ is also onto. A self-map of $\\mathbb{R}^n$ that is one-to-one is automatically onto. The trap is asserting some nonzero vector maps to $\\mathbf{0}$, which directly contradicts the trivial kernel we were given.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-023",
+      "stem": "A linear map $T : \\mathbb{R}^2 \\to \\mathbb{R}^3$ has standard matrix $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 1 & 1 \\end{pmatrix}$. What is $T(2, 3)$?",
+      "options": [
+        "$(2, 3, 5)$",
+        "$(2, 3, 1)$",
+        "$(5, 5, 5)$",
+        "$(2, 3, 6)$"
+      ],
+      "answer": 0,
+      "explanation": "Apply the matrix to the input: $T(2,3) = A \\begin{pmatrix} 2 \\\\ 3 \\end{pmatrix} = \\begin{pmatrix} 1 \\cdot 2 + 0 \\cdot 3 \\\\ 0 \\cdot 2 + 1 \\cdot 3 \\\\ 1 \\cdot 2 + 1 \\cdot 3 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 3 \\\\ 5 \\end{pmatrix}$. So the image is $(2, 3, 5)$. The trap option $(2, 3, 1)$ copies the third row of $A$, namely $(1,1)$ read as the number $1$, instead of actually computing the dot product $1 \\cdot 2 + 1 \\cdot 3 = 5$ for the third coordinate.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-024",
+      "stem": "What is the standard matrix of the orthogonal projection of $\\mathbb{R}^2$ onto the $y$-axis, $T(x, y) = (0, y)$?",
+      "options": [
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "Projection onto the $y$-axis sends $(1,0) \\mapsto (0,0)$ and $(0,1) \\mapsto (0,1)$, so the columns give the matrix $\\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}$. Only the second coordinate survives, which is why the lone $1$ sits in the lower-right entry. The trap option $\\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$ keeps the first coordinate instead, which is the projection onto the $x$-axis, the opposite of what was asked.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-025",
+      "stem": "Is the map $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ given by $T(\\mathbf{x}) = A\\mathbf{x} + \\mathbf{b}$, where $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$ and $\\mathbf{b} = (3, -2)$, a linear transformation?",
+      "options": [
+        "Yes, because it is built from a matrix $A$.",
+        "Yes, because the matrix part $A$ is the identity.",
+        "No, because the translation by $\\mathbf{b} \\ne \\mathbf{0}$ makes it affine, not linear.",
+        "Yes, because it preserves vector addition."
+      ],
+      "answer": 2,
+      "explanation": "A map of the form $\\mathbf{x} \\mapsto A\\mathbf{x} + \\mathbf{b}$ is linear only when the translation vector $\\mathbf{b}$ is zero. Here $\\mathbf{b} = (3,-2) \\ne \\mathbf{0}$, so $T(\\mathbf{0}) = A\\mathbf{0} + \\mathbf{b} = (3,-2) \\ne \\mathbf{0}$, which already fails linearity. Such a map is called affine, a linear map followed by a shift. The trap is assuming any expression containing a matrix is linear; the added constant vector $\\mathbf{b}$ is exactly what breaks it.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-026",
+      "stem": "Let $T$ be rotation by $90^\\circ$ counterclockwise, with matrix $A = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$. What is the standard matrix of $T \\circ T$, applying the rotation twice?",
+      "options": [
+        "$\\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & -2 \\\\ 2 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}$"
+      ],
+      "answer": 3,
+      "explanation": "Applying $T$ twice corresponds to $A^2 = A \\cdot A = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix} = \\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}$. This is the $180^\\circ$ rotation, as expected since two quarter turns make a half turn. The trap option $\\begin{pmatrix} 0 & -2 \\\\ 2 & 0 \\end{pmatrix}$ doubles the entries of $A$, treating composition as adding $A + A = 2A$ rather than multiplying $A \\cdot A$.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-027",
+      "stem": "A linear map $T : \\mathbb{R}^4 \\to \\mathbb{R}^3$ has rank $3$. What is its nullity, and is $T$ onto?",
+      "options": [
+        "Nullity $1$; $T$ is onto.",
+        "Nullity $3$; $T$ is not onto.",
+        "Nullity $0$; $T$ is one-to-one.",
+        "Nullity $1$; $T$ is one-to-one."
+      ],
+      "answer": 0,
+      "explanation": "The rank-nullity theorem says $\\dim(\\text{domain}) = \\operatorname{rank} + \\operatorname{nullity}$, so $4 = 3 + \\operatorname{nullity}$ gives nullity $1$. Since the rank $3$ equals $\\dim \\mathbb{R}^3$, the image fills the codomain and $T$ is onto. With nullity $1 > 0$ the kernel is nontrivial, so $T$ is not one-to-one. The trap is swapping rank and nullity to report nullity $3$; the nullity is the leftover dimension $4 - 3 = 1$, not the rank itself.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-028",
+      "stem": "A linear map $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ sends $T(1, 1) = (3, 1)$ and $T(1, -1) = (1, 3)$. What is its standard matrix?",
+      "options": [
+        "$\\begin{pmatrix} 3 & 1 \\\\ 1 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 1 \\\\ 2 & -1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 4 & 2 \\\\ 4 & -2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 3 \\\\ 3 & 1 \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "The columns of the matrix are $T(1,0)$ and $T(0,1)$, which we recover from the given data. Adding, $T(1,1) + T(1,-1) = T(2,0) = 2\\,T(1,0)$, so $T(1,0) = \\tfrac{1}{2}(3+1, \\, 1+3) = (2, 2)$; subtracting, $T(1,1) - T(1,-1) = T(0,2) = 2\\,T(0,1)$, so $T(0,1) = \\tfrac{1}{2}(3-1, \\, 1-3) = (1, -1)$. The matrix is therefore $\\begin{pmatrix} 2 & 1 \\\\ 2 & -1 \\end{pmatrix}$. The trap option $\\begin{pmatrix} 3 & 1 \\\\ 1 & 3 \\end{pmatrix}$ just drops the given output vectors in as columns, forgetting that $(1,1)$ and $(1,-1)$ are not the standard basis vectors.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-029",
+      "stem": "A linear map $T : \\mathbb{R}^3 \\to \\mathbb{R}^3$ has standard matrix $A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 1 \\\\ 1 & 1 & 2 \\end{pmatrix}$, whose third row equals the first row minus the second. What are the rank and nullity of $T$?",
+      "options": [
+        "Rank $3$, nullity $0$.",
+        "Rank $1$, nullity $2$.",
+        "Rank $3$, nullity $3$.",
+        "Rank $2$, nullity $1$."
+      ],
+      "answer": 3,
+      "explanation": "The third row is the first minus the second, a dependency, so the three rows are not independent and the rank is at most $2$; the first two rows are clearly independent, so the rank is exactly $2$. By rank-nullity, $\\operatorname{nullity} = 3 - \\operatorname{rank} = 3 - 2 = 1$. So rank $2$ and nullity $1$. The trap option rank $3$, nullity $0$ ignores the row dependency and wrongly assumes the square matrix is invertible.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-030",
+      "stem": "A linear map $T : \\mathbb{R}^5 \\to \\mathbb{R}^3$ is onto. What is the nullity of $T$?",
+      "options": [
+        "$0$",
+        "$3$",
+        "$2$",
+        "$5$"
+      ],
+      "answer": 2,
+      "explanation": "Since $T$ is onto, its image is all of $\\mathbb{R}^3$, so the rank equals $\\dim \\mathbb{R}^3 = 3$. Rank-nullity then gives $\\operatorname{nullity} = \\dim(\\text{domain}) - \\operatorname{rank} = 5 - 3 = 2$. So the kernel is two-dimensional, and in particular $T$ is not one-to-one. The trap option $0$ assumes a trivial kernel, but a map from a higher-dimensional space onto a lower-dimensional one must collapse some directions, forcing a positive nullity.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    }
+  ]
+}
