@@ -8,3 +8,4 @@ structural validation plus an independent blind re-solve of every question.
 - recurrence-relations: 30 questions, blind check agreed 30/30 first pass, 0 fixed, 0 dropped, 2026-06-13
 - graph-theory: 30 questions, blind check agreed 30/30 first pass, 0 fixed, 0 dropped, 2026-06-13 (Q012 non-graphical sequence: checker confirmed only the keyed option states a valid reason, the other No option is a wrong-justification trap)
 - number-theory: 30 questions, blind check agreed 30/30 first pass, 0 fixed, 0 dropped, 2026-06-13 (Q025 rebuilt during authoring before the check, original distractors were all true congruences)
+- complex-numbers: 30 questions, blind check agreed 30/30 first pass, 0 fixed, 0 dropped, 2026-06-13
