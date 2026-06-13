@@ -1,0 +1,511 @@
+{
+  "courseId": "calculus-ii",
+  "topicId": "integration-techniques",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "calculus-ii-integration-techniques-001",
+      "stem": "Evaluate $\\displaystyle\\int 2x\\left(x^2 + 1\\right)^5 dx$.",
+      "options": [
+        "$\\left(x^2 + 1\\right)^6 + C$",
+        "$\\dfrac{\\left(x^2 + 1\\right)^6}{6} + C$",
+        "$\\dfrac{\\left(x^2 + 1\\right)^6}{12} + C$",
+        "$\\dfrac{2x^2\\left(x^2 + 1\\right)^6}{6} + C$"
+      ],
+      "answer": 1,
+      "explanation": "Let $u = x^2 + 1$, so $du = 2x\\,dx$, which is exactly the rest of the integrand. The integral becomes $\\int u^5\\,du = \\frac{u^6}{6} + C = \\frac{\\left(x^2 + 1\\right)^6}{6} + C$. Differentiating with the chain rule returns $\\frac{6\\left(x^2 + 1\\right)^5}{6}\\cdot 2x = 2x\\left(x^2 + 1\\right)^5$, so the answer checks. The option $\\left(x^2 + 1\\right)^6 + C$ forgets to divide by the new exponent $6$, $\\frac{\\left(x^2 + 1\\right)^6}{12} + C$ divides by $6$ and again by the $2$ that $du$ already consumed, and the option $\\frac{2x^2\\left(x^2 + 1\\right)^6}{6} + C$ drags a stray $2x$ outside. The trap is double-counting the $2x$: once $du = 2x\\,dx$ absorbs it, no extra factor remains.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-002",
+      "stem": "Evaluate $\\displaystyle\\int x e^{x}\\,dx$.",
+      "options": [
+        "$x e^{x} + e^{x} + C$",
+        "$x e^{x} - e^{x} + C$",
+        "$\\dfrac{x^2}{2}e^{x} + C$",
+        "$x e^{x} - \\dfrac{x^2}{2}e^{x} + C$"
+      ],
+      "answer": 1,
+      "explanation": "Integrate by parts with $u = x$ and $dv = e^{x}\\,dx$, so $du = dx$ and $v = e^{x}$. Then $\\int x e^{x}\\,dx = uv - \\int v\\,du = x e^{x} - \\int e^{x}\\,dx = x e^{x} - e^{x} + C$. Differentiating gives $e^{x} + x e^{x} - e^{x} = x e^{x}$, which matches. The option $x e^{x} + e^{x} + C$ uses the wrong sign, writing $uv + \\int v\\,du$ instead of minus, $\\frac{x^2}{2}e^{x} + C$ integrates the product as if each factor integrated separately, and the option $x e^{x} - \\frac{x^2}{2}e^{x} + C$ swaps $u$ and $dv$ so that $dv = x\\,dx$ pulls a quadratic out. The trap is the parts sign: the formula is $uv - \\int v\\,du$, and the minus is not optional.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-003",
+      "stem": "Evaluate $\\displaystyle\\int \\frac{1}{(x - 1)(x + 3)}\\,dx$.",
+      "options": [
+        "$\\dfrac{1}{4}\\ln\\left|\\dfrac{x + 3}{x - 1}\\right| + C$",
+        "$\\ln\\left|(x - 1)(x + 3)\\right| + C$",
+        "$\\dfrac{1}{2}\\ln\\left|\\dfrac{x - 1}{x + 3}\\right| + C$",
+        "$\\dfrac{1}{4}\\ln\\left|\\dfrac{x - 1}{x + 3}\\right| + C$"
+      ],
+      "answer": 3,
+      "explanation": "Write $\\frac{1}{(x - 1)(x + 3)} = \\frac{A}{x - 1} + \\frac{B}{x + 3}$. Cover-up at $x = 1$ gives $A = \\frac{1}{1 + 3} = \\frac{1}{4}$, and at $x = -3$ gives $B = \\frac{1}{-3 - 1} = -\\frac{1}{4}$. Integrating, $\\frac{1}{4}\\ln|x - 1| - \\frac{1}{4}\\ln|x + 3| = \\frac{1}{4}\\ln\\left|\\frac{x - 1}{x + 3}\\right| + C$, whose derivative is $\\frac{1}{4}\\left(\\frac{1}{x-1} - \\frac{1}{x+3}\\right) = \\frac{1}{(x-1)(x+3)}$. The option $\\frac{1}{4}\\ln\\left|\\frac{x+3}{x-1}\\right|$ swaps the cover-up values, attaching $+\\frac{1}{4}$ to $x + 3$ and $-\\frac{1}{4}$ to $x - 1$; the log-of-product option integrates as if the denominator were a single linear factor; and the $\\frac{1}{2}$ option uses the wrong constant. The trap is assigning each cover-up residue to its own factor: $A$ belongs over $x - 1$, $B$ over $x + 3$.",
+      "difficulty": "core",
+      "source": "in the style of Schaum's Outline of Calculus"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-004",
+      "stem": "Evaluate $\\displaystyle\\int \\sin^2 x\\,dx$.",
+      "options": [
+        "$\\dfrac{x}{2} - \\dfrac{\\sin 2x}{4} + C$",
+        "$\\dfrac{\\sin^3 x}{3} + C$",
+        "$\\dfrac{x}{2} + \\dfrac{\\sin 2x}{4} + C$",
+        "$\\dfrac{x}{2} - \\dfrac{\\sin 2x}{2} + C$"
+      ],
+      "answer": 0,
+      "explanation": "An even power of sine needs the half-angle identity $\\sin^2 x = \\frac{1 - \\cos 2x}{2}$. Integrating, $\\int \\frac{1 - \\cos 2x}{2}\\,dx = \\frac{x}{2} - \\frac{\\sin 2x}{4} + C$. Differentiating returns $\\frac{1}{2} - \\frac{2\\cos 2x}{4} = \\frac{1 - \\cos 2x}{2} = \\sin^2 x$, so the answer checks. The option $\\frac{\\sin^3 x}{3} + C$ applies the reverse power rule to $\\sin x$ with no $\\cos x$ factor present to be a derivative; the $+\\frac{\\sin 2x}{4}$ option uses the identity for $\\cos^2 x$ instead of $\\sin^2 x$, flipping the sign; and the $-\\frac{\\sin 2x}{2}$ option forgets that integrating $\\cos 2x$ divides by $2$. The trap is reaching for the power rule on an even power of sine: with no odd factor to peel off, the half-angle identity is the only way in.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-005",
+      "stem": "Evaluate $\\displaystyle\\int \\cos(3x)\\,dx$.",
+      "options": [
+        "$3\\sin(3x) + C$",
+        "$\\sin(3x) + C$",
+        "$-\\dfrac{1}{3}\\sin(3x) + C$",
+        "$\\dfrac{1}{3}\\sin(3x) + C$"
+      ],
+      "answer": 3,
+      "explanation": "Let $u = 3x$, so $du = 3\\,dx$ and $dx = \\frac{1}{3}\\,du$. Then $\\int \\cos(3x)\\,dx = \\frac{1}{3}\\int \\cos u\\,du = \\frac{1}{3}\\sin(3x) + C$. Differentiating gives $\\frac{1}{3}\\cdot 3\\cos(3x) = \\cos(3x)$, confirming the answer. The option $3\\sin(3x) + C$ multiplies by $3$ instead of dividing, $\\sin(3x) + C$ ignores the inner derivative entirely, and $-\\frac{1}{3}\\sin(3x) + C$ imports a minus sign that belongs to integrating cosine of nothing. The trap is the constant factor from a linear substitution: integrating $\\cos(kx)$ divides by $k$, it does not multiply.",
+      "difficulty": "core",
+      "source": "in the style of Schaum's Outline of Calculus"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-006",
+      "stem": "Evaluate $\\displaystyle\\int \\ln x\\,dx$.",
+      "options": [
+        "$\\dfrac{1}{x} + C$",
+        "$x\\ln x - x + C$",
+        "$x\\ln x + x + C$",
+        "$\\dfrac{\\left(\\ln x\\right)^2}{2} + C$"
+      ],
+      "answer": 1,
+      "explanation": "There is no product in sight, so take $u = \\ln x$ and $dv = dx$, giving $du = \\frac{1}{x}\\,dx$ and $v = x$. Then $\\int \\ln x\\,dx = x\\ln x - \\int x\\cdot\\frac{1}{x}\\,dx = x\\ln x - \\int 1\\,dx = x\\ln x - x + C$. Differentiating gives $\\ln x + x\\cdot\\frac{1}{x} - 1 = \\ln x$, so it checks. The option $\\frac{1}{x} + C$ differentiates $\\ln x$ rather than integrating it, $x\\ln x + x + C$ flips the parts sign to $uv + \\int v\\,du$, and $\\frac{(\\ln x)^2}{2} + C$ treats $\\ln x$ as if $\\frac{1}{x}\\,dx$ were already attached as $du$. The trap is forgetting the standard parts setup for $\\ln x$: with $dv = dx$, the leftover integral collapses to $\\int 1\\,dx$, and the parts minus sign stays.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-007",
+      "stem": "Evaluate $\\displaystyle\\int \\frac{5x - 3}{x^2 - 2x - 3}\\,dx$.",
+      "options": [
+        "$2\\ln|x - 3| + 3\\ln|x + 1| + C$",
+        "$\\ln\\left|x^2 - 2x - 3\\right| + C$",
+        "$3\\ln|x + 1| + 2\\ln|x - 3| + C$",
+        "$3\\ln|x - 3| + 2\\ln|x + 1| + C$"
+      ],
+      "answer": 3,
+      "explanation": "Factor the denominator as $(x - 3)(x + 1)$ and write $\\frac{5x - 3}{(x - 3)(x + 1)} = \\frac{A}{x - 3} + \\frac{B}{x + 1}$. Cover-up at $x = 3$ gives $A = \\frac{15 - 3}{3 + 1} = 3$, and at $x = -1$ gives $B = \\frac{-5 - 3}{-1 - 3} = 2$. Integrating yields $3\\ln|x - 3| + 2\\ln|x + 1| + C$, whose derivative is $\\frac{3}{x-3} + \\frac{2}{x+1} = \\frac{5x - 3}{x^2 - 2x - 3}$. The option $2\\ln|x - 3| + 3\\ln|x + 1|$ swaps the two cover-up values; the option $3\\ln|x + 1| + 2\\ln|x - 3|$ attaches each residue to the wrong factor; and the single-log option pretends the numerator is the derivative of the denominator, which it is not. The trap is matching residues to factors: $A = 3$ sits over $x - 3$ because $x = 3$ is the root that kills $x - 3$.",
+      "difficulty": "core",
+      "source": "in the style of Schaum's Outline of Calculus"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-008",
+      "stem": "Evaluate $\\displaystyle\\int \\sin^3 x \\cos x\\,dx$.",
+      "options": [
+        "$\\dfrac{\\sin^4 x \\cos^2 x}{8} + C$",
+        "$-\\dfrac{\\cos^4 x}{4} + C$",
+        "$\\dfrac{\\sin^4 x}{4} + C$",
+        "$\\dfrac{\\sin^3 x}{3} + C$"
+      ],
+      "answer": 2,
+      "explanation": "The factor $\\cos x\\,dx$ is the derivative of $\\sin x$, so let $u = \\sin x$, $du = \\cos x\\,dx$. The integral becomes $\\int u^3\\,du = \\frac{u^4}{4} + C = \\frac{\\sin^4 x}{4} + C$. Differentiating gives $\\frac{4\\sin^3 x}{4}\\cos x = \\sin^3 x\\cos x$, confirming the answer. The option $\\frac{\\sin^4 x\\cos^2 x}{8} + C$ integrates each factor on its own, $-\\frac{\\cos^4 x}{4} + C$ substitutes $u = \\cos x$ but then there is no spare $\\sin x$ to supply $du$, and $\\frac{\\sin^3 x}{3} + C$ ignores the $\\cos x$ factor altogether. The trap is choosing the wrong $u$ for an odd power: keep the lone $\\cos x$ as $du$ and let $u = \\sin x$.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-009",
+      "stem": "Evaluate $\\displaystyle\\int x\\sqrt{x^2 + 4}\\,dx$.",
+      "options": [
+        "$\\dfrac{2}{3}\\left(x^2 + 4\\right)^{3/2} + C$",
+        "$\\dfrac{1}{2}\\left(x^2 + 4\\right)^{3/2} + C$",
+        "$\\dfrac{x^2}{2}\\cdot\\dfrac{2}{3}\\left(x^2 + 4\\right)^{3/2} + C$",
+        "$\\dfrac{1}{3}\\left(x^2 + 4\\right)^{3/2} + C$"
+      ],
+      "answer": 3,
+      "explanation": "Let $u = x^2 + 4$, so $du = 2x\\,dx$ and $x\\,dx = \\frac{1}{2}\\,du$. Then $\\int x\\sqrt{x^2 + 4}\\,dx = \\frac{1}{2}\\int u^{1/2}\\,du = \\frac{1}{2}\\cdot\\frac{2}{3}u^{3/2} + C = \\frac{1}{3}\\left(x^2 + 4\\right)^{3/2} + C$. Differentiating gives $\\frac{1}{3}\\cdot\\frac{3}{2}\\left(x^2 + 4\\right)^{1/2}\\cdot 2x = x\\sqrt{x^2 + 4}$, which matches. The option $\\frac{2}{3}\\left(x^2 + 4\\right)^{3/2}$ forgets the $\\frac{1}{2}$ from solving $x\\,dx = \\frac{1}{2}\\,du$; $\\frac{1}{2}\\left(x^2 + 4\\right)^{3/2}$ keeps the $\\frac{1}{2}$ but drops the $\\frac{2}{3}$ from the power rule; and the option that keeps an explicit $\\frac{x^2}{2}$ factor outside leaves the variable undigested. The trap is the missing constant factor: the lone $x$ supplies only half of $du$, so a $\\frac{1}{2}$ must come along.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-010",
+      "stem": "Evaluate $\\displaystyle\\int \\arctan x\\,dx$.",
+      "options": [
+        "$x\\arctan x - \\dfrac{1}{2}\\ln\\left(1 + x^2\\right) + C$",
+        "$\\dfrac{1}{1 + x^2} + C$",
+        "$x\\arctan x + \\dfrac{1}{2}\\ln\\left(1 + x^2\\right) + C$",
+        "$\\dfrac{\\left(\\arctan x\\right)^2}{2} + C$"
+      ],
+      "answer": 0,
+      "explanation": "Take $u = \\arctan x$ and $dv = dx$, so $du = \\frac{1}{1 + x^2}\\,dx$ and $v = x$. Then $\\int \\arctan x\\,dx = x\\arctan x - \\int \\frac{x}{1 + x^2}\\,dx$. The leftover integral is $\\frac{1}{2}\\ln\\left(1 + x^2\\right)$ by the substitution $w = 1 + x^2$, so the answer is $x\\arctan x - \\frac{1}{2}\\ln\\left(1 + x^2\\right) + C$. Differentiating gives $\\arctan x + \\frac{x}{1 + x^2} - \\frac{x}{1 + x^2} = \\arctan x$. The option $\\frac{1}{1 + x^2} + C$ differentiates instead of integrating, the $+\\frac{1}{2}\\ln$ option flips the parts sign to plus, and $\\frac{(\\arctan x)^2}{2} + C$ treats the integrand as if its own derivative were attached. The trap is the parts sign carried onto the leftover log term: it stays negative.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-011",
+      "stem": "Evaluate $\\displaystyle\\int \\frac{3x + 6}{x^2 + 2x - 8}\\,dx$.",
+      "options": [
+        "$\\ln|x + 4| + 2\\ln|x - 2| + C$",
+        "$2\\ln|x + 4| + \\ln|x - 2| + C$",
+        "$2\\ln|x - 2| - \\ln|x + 4| + C$",
+        "$\\dfrac{3}{2}\\ln\\left|x^2 + 2x - 8\\right| + C$"
+      ],
+      "answer": 0,
+      "explanation": "Factor the denominator as $(x + 4)(x - 2)$ and set $\\frac{3x + 6}{(x + 4)(x - 2)} = \\frac{A}{x + 4} + \\frac{B}{x - 2}$. Cover-up at $x = -4$ gives $A = \\frac{3(-4) + 6}{-4 - 2} = \\frac{-6}{-6} = 1$, and at $x = 2$ gives $B = \\frac{3(2) + 6}{2 + 4} = \\frac{12}{6} = 2$. Integrating yields $\\ln|x + 4| + 2\\ln|x - 2| + C$, whose derivative is $\\frac{1}{x + 4} + \\frac{2}{x - 2} = \\frac{3x + 6}{x^2 + 2x - 8}$, so the answer checks. The option $2\\ln|x + 4| + \\ln|x - 2|$ swaps the two cover-up values between the factors, the option $2\\ln|x - 2| - \\ln|x + 4|$ swaps them and flips a sign, and the single-log option treats the numerator as the derivative of the denominator, which it is not. The trap is swapping the partial-fraction constants: $A = 1$ comes from the root $x = -4$ and belongs over $x + 4$, while $B = 2$ comes from $x = 2$ and belongs over $x - 2$.",
+      "difficulty": "core",
+      "source": "in the style of Schaum's Outline of Calculus"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-012",
+      "stem": "Evaluate $\\displaystyle\\int \\tan x\\,dx$.",
+      "options": [
+        "$\\sec^2 x + C$",
+        "$-\\ln|\\cos x| + C$",
+        "$\\ln|\\cos x| + C$",
+        "$\\ln|\\sin x| + C$"
+      ],
+      "answer": 1,
+      "explanation": "Write $\\tan x = \\frac{\\sin x}{\\cos x}$ and let $u = \\cos x$, so $du = -\\sin x\\,dx$. Then $\\int \\tan x\\,dx = -\\int \\frac{du}{u} = -\\ln|u| + C = -\\ln|\\cos x| + C$, which is also written $\\ln|\\sec x| + C$. Differentiating $-\\ln|\\cos x|$ gives $-\\frac{-\\sin x}{\\cos x} = \\tan x$, confirming the answer. The option $\\sec^2 x + C$ is the derivative of $\\tan x$, not an antiderivative; $\\ln|\\cos x| + C$ drops the minus sign produced by $du = -\\sin x\\,dx$; and $\\ln|\\sin x| + C$ substitutes in the numerator by mistake, which would integrate $\\cot x$. The trap is the sign from $du$: because $\\frac{d}{dx}\\cos x = -\\sin x$, the logarithm picks up a leading minus.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-013",
+      "stem": "Evaluate the definite integral $\\displaystyle\\int_{0}^{1} 2x\\,e^{x^2}\\,dx$.",
+      "options": [
+        "$e^2 - 1$",
+        "$e - 1$",
+        "$\\dfrac{e - 1}{2}$",
+        "$e$"
+      ],
+      "answer": 1,
+      "explanation": "Let $u = x^2$, so $du = 2x\\,dx$, and change the limits: $x = 0$ gives $u = 0$, $x = 1$ gives $u = 1$. The integral becomes $\\int_{0}^{1} e^{u}\\,du = e^{1} - e^{0} = e - 1$. With converted limits no back-substitution is needed. The option $e^2 - 1$ keeps the original $x$-limits and writes $e^{x^2}$ evaluated as $e^{1}$ but mislabels the upper value, $\\frac{e - 1}{2}$ tacks on a stray $\\frac{1}{2}$ even though $2x\\,dx$ matches $du$ exactly, and $e$ never subtracts the lower-limit value $e^{0} = 1$. The trap is the limits of a definite substitution: once $u$ runs from $0$ to $1$, evaluate in $u$ and do not reintroduce $x$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-014",
+      "stem": "Evaluate $\\displaystyle\\int x^2 e^{x}\\,dx$.",
+      "options": [
+        "$x^2 e^{x} + 2x e^{x} + 2e^{x} + C$",
+        "$x^2 e^{x} - 2x e^{x} + 2e^{x} + C$",
+        "$x^2 e^{x} - 2x e^{x} - 2e^{x} + C$",
+        "$\\dfrac{x^3}{3}e^{x} + C$"
+      ],
+      "answer": 1,
+      "explanation": "Apply parts twice. First $u = x^2$, $dv = e^{x}\\,dx$ gives $x^2 e^{x} - \\int 2x e^{x}\\,dx$. Parts again on $\\int 2x e^{x}\\,dx$ gives $2x e^{x} - 2e^{x}$, so the full antiderivative is $x^2 e^{x} - 2x e^{x} + 2e^{x} + C$. Differentiating returns $x^2 e^{x}$ after the middle terms cancel in pairs. The option with all plus signs flips the parts sign on the first round; the option ending in $-2e^{x}$ drops a sign in the second application of parts; and $\\frac{x^3}{3}e^{x} + C$ integrates the power and the exponential separately. The trap in repeated parts is sign bookkeeping: each application contributes its own minus, so the signs alternate.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-015",
+      "stem": "Evaluate $\\displaystyle\\int \\frac{1}{x^2(x + 1)}\\,dx$.",
+      "options": [
+        "$\\ln|x| - \\dfrac{1}{x} - \\ln|x + 1| + C$",
+        "$-\\dfrac{1}{x} + \\ln|x + 1| + C$",
+        "$-\\ln|x| - \\dfrac{1}{x} + \\ln|x + 1| + C$",
+        "$\\ln\\left|x^2(x + 1)\\right| + C$"
+      ],
+      "answer": 2,
+      "explanation": "A repeated linear factor needs both powers, so write $\\frac{1}{x^2(x + 1)} = \\frac{A}{x} + \\frac{B}{x^2} + \\frac{D}{x + 1}$. Clearing denominators gives $1 = Ax(x + 1) + B(x + 1) + Dx^2$. Setting $x = 0$ gives $B = 1$, setting $x = -1$ gives $D = 1$, and matching the $x^2$ coefficients gives $A + D = 0$, so $A = -1$. Integrating $-\\frac{1}{x} + \\frac{1}{x^2} + \\frac{1}{x + 1}$ gives $-\\ln|x| - \\frac{1}{x} + \\ln|x + 1| + C$, whose derivative is $-\\frac{1}{x} + \\frac{1}{x^2} + \\frac{1}{x + 1} = \\frac{1}{x^2(x + 1)}$. The option $-\\frac{1}{x} + \\ln|x + 1| + C$ omits the $\\frac{A}{x}$ term that the repeated factor still requires, the option $\\ln|x| - \\frac{1}{x} - \\ln|x + 1| + C$ flips the signs of both logarithms, and the single-log option ignores the repeated power entirely. The trap is dropping a term: a squared factor $x^2$ contributes both $\\frac{A}{x}$ and $\\frac{B}{x^2}$, not just one.",
+      "difficulty": "core",
+      "source": "in the style of Schaum's Outline of Calculus"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-016",
+      "stem": "Evaluate $\\displaystyle\\int \\cos^3 x\\,dx$.",
+      "options": [
+        "$\\dfrac{\\cos^4 x}{4} + C$",
+        "$\\sin x - \\dfrac{\\sin^3 x}{3} + C$",
+        "$\\sin x + \\dfrac{\\sin^3 x}{3} + C$",
+        "$\\dfrac{\\sin^3 x}{3} + C$"
+      ],
+      "answer": 1,
+      "explanation": "Peel off one cosine and convert the rest: $\\cos^3 x = \\cos x\\left(1 - \\sin^2 x\\right)$. With $u = \\sin x$, $du = \\cos x\\,dx$, the integral is $\\int \\left(1 - u^2\\right)du = u - \\frac{u^3}{3} + C = \\sin x - \\frac{\\sin^3 x}{3} + C$. Differentiating gives $\\cos x - \\sin^2 x\\cos x = \\cos x\\left(1 - \\sin^2 x\\right) = \\cos^3 x$. The option $\\frac{\\cos^4 x}{4} + C$ applies the power rule to $\\cos x$ with no spare $-\\sin x$ to be its $du$; the $+\\frac{\\sin^3 x}{3}$ option keeps the wrong sign on the converted term; and $\\frac{\\sin^3 x}{3} + C$ forgets the leading $\\sin x$ from the $1$ in the identity. The trap is splitting the odd power on the wrong factor: save one cosine for $du$ and rewrite the even number that remain using $\\cos^2 x = 1 - \\sin^2 x$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-017",
+      "stem": "Evaluate $\\displaystyle\\int \\frac{1}{\\sqrt{9 - x^2}}\\,dx$.",
+      "options": [
+        "$\\arcsin\\left(\\dfrac{x}{3}\\right) + C$",
+        "$3\\arcsin\\left(\\dfrac{x}{3}\\right) + C$",
+        "$\\arcsin(3x) + C$",
+        "$\\ln\\left|\\sqrt{9 - x^2}\\right| + C$"
+      ],
+      "answer": 0,
+      "explanation": "For $\\sqrt{a^2 - x^2}$ with $a = 3$, substitute $x = 3\\sin\\theta$, so $dx = 3\\cos\\theta\\,d\\theta$ and $\\sqrt{9 - x^2} = 3\\cos\\theta$. The integral becomes $\\int \\frac{3\\cos\\theta}{3\\cos\\theta}\\,d\\theta = \\int 1\\,d\\theta = \\theta + C = \\arcsin\\left(\\frac{x}{3}\\right) + C$. Differentiating $\\arcsin\\left(\\frac{x}{3}\\right)$ gives $\\frac{1/3}{\\sqrt{1 - x^2/9}} = \\frac{1}{\\sqrt{9 - x^2}}$, which matches. The option $3\\arcsin\\left(\\frac{x}{3}\\right)$ keeps an extra factor of $3$ that the $3\\cos\\theta$ in the numerator already cancelled, $\\arcsin(3x)$ uses the wrong triangle ratio $\\frac{x}{1/3}$ instead of $\\frac{x}{3}$, and the log option mistakes this for a $\\frac{1}{u}$ form. The trap is the triangle side: with $x = a\\sin\\theta$ the argument of arcsine is $\\frac{x}{a}$, here $\\frac{x}{3}$, not $3x$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-018",
+      "stem": "Evaluate $\\displaystyle\\int \\frac{1}{x^2 + 16}\\,dx$.",
+      "options": [
+        "$\\arctan\\left(\\dfrac{x}{4}\\right) + C$",
+        "$\\dfrac{1}{4}\\arctan\\left(\\dfrac{x}{4}\\right) + C$",
+        "$\\dfrac{1}{16}\\arctan\\left(\\dfrac{x}{4}\\right) + C$",
+        "$\\dfrac{1}{4}\\arctan(4x) + C$"
+      ],
+      "answer": 1,
+      "explanation": "For $x^2 + a^2$ with $a = 4$, substitute $x = 4\\tan\\theta$, so $dx = 4\\sec^2\\theta\\,d\\theta$ and $x^2 + 16 = 16\\sec^2\\theta$. The integral becomes $\\int \\frac{4\\sec^2\\theta}{16\\sec^2\\theta}\\,d\\theta = \\frac{1}{4}\\int 1\\,d\\theta = \\frac{1}{4}\\theta + C = \\frac{1}{4}\\arctan\\left(\\frac{x}{4}\\right) + C$. Differentiating gives $\\frac{1}{4}\\cdot\\frac{1/4}{1 + x^2/16} = \\frac{1}{x^2 + 16}$. The option without the $\\frac{1}{4}$ forgets the constant the tangent substitution produces, $\\frac{1}{16}\\arctan\\left(\\frac{x}{4}\\right)$ divides by $a^2$ instead of $a$, and $\\frac{1}{4}\\arctan(4x)$ uses the wrong triangle ratio inside arctangent. The trap is the leading constant for $\\frac{1}{x^2 + a^2}$: the antiderivative is $\\frac{1}{a}\\arctan\\frac{x}{a}$, so it is $\\frac{1}{4}$ out front and $\\frac{x}{4}$ inside, not $\\frac{1}{16}$ or $4x$.",
+      "difficulty": "core",
+      "source": "in the style of Schaum's Outline of Calculus"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-019",
+      "stem": "Evaluate $\\displaystyle\\int \\frac{1}{x^2\\sqrt{x^2 - 1}}\\,dx$ for $x > 1$.",
+      "options": [
+        "$\\sqrt{x^2 - 1} + C$",
+        "$\\arccos\\left(\\dfrac{1}{x}\\right) + C$",
+        "$\\dfrac{\\sqrt{x^2 - 1}}{x} + C$",
+        "$-\\dfrac{\\sqrt{x^2 - 1}}{x} + C$"
+      ],
+      "answer": 2,
+      "explanation": "For $\\sqrt{x^2 - 1}$ substitute $x = \\sec\\theta$, so $dx = \\sec\\theta\\tan\\theta\\,d\\theta$ and $\\sqrt{x^2 - 1} = \\tan\\theta$. The integral becomes $\\int \\frac{\\sec\\theta\\tan\\theta}{\\sec^2\\theta\\,\\tan\\theta}\\,d\\theta = \\int \\cos\\theta\\,d\\theta = \\sin\\theta + C$. From the reference triangle, $\\sin\\theta = \\frac{\\sqrt{x^2 - 1}}{x}$, so the integral is $\\frac{\\sqrt{x^2 - 1}}{x} + C$. Differentiating $\\frac{\\sqrt{x^2 - 1}}{x}$ gives $\\frac{1}{x^2\\sqrt{x^2 - 1}}$ after simplification. The option $\\sqrt{x^2 - 1} + C$ reads the hypotenuse leg as $\\tan\\theta$ rather than $\\sin\\theta$; $\\arccos\\left(\\frac{1}{x}\\right) + C$ matches $\\theta$ itself instead of $\\sin\\theta$; and the negative option reverses the sign of $\\sin\\theta$. The trap is reading the wrong side of the triangle when converting $\\theta$ back to $x$: here the answer is $\\sin\\theta = \\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{\\sqrt{x^2 - 1}}{x}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-020",
+      "stem": "Evaluate $\\displaystyle\\int e^{5x}\\,dx$.",
+      "options": [
+        "$5e^{5x} + C$",
+        "$e^{5x} + C$",
+        "$\\dfrac{1}{5}e^{x} + C$",
+        "$\\dfrac{1}{5}e^{5x} + C$"
+      ],
+      "answer": 3,
+      "explanation": "Let $u = 5x$, so $du = 5\\,dx$ and $dx = \\frac{1}{5}\\,du$. Then $\\int e^{5x}\\,dx = \\frac{1}{5}\\int e^{u}\\,du = \\frac{1}{5}e^{5x} + C$. Differentiating gives $\\frac{1}{5}\\cdot 5 e^{5x} = e^{5x}$, confirming the answer. The option $5e^{5x} + C$ multiplies by $5$ instead of dividing, $e^{5x} + C$ ignores the inner derivative entirely, and $\\frac{1}{5}e^{x} + C$ loses the $5$ in the exponent. The trap is the constant factor on a linear substitution: integrating $e^{kx}$ divides by $k$, so a $\\frac{1}{5}$ must appear.",
+      "difficulty": "warmup",
+      "source": "in the style of Schaum's Outline of Calculus"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-021",
+      "stem": "Evaluate $\\displaystyle\\int \\frac{\\ln x}{x}\\,dx$.",
+      "options": [
+        "$\\left(\\ln x\\right)^2 + C$",
+        "$\\ln\\left|\\ln x\\right| + C$",
+        "$\\dfrac{\\left(\\ln x\\right)^2}{2} + C$",
+        "$\\dfrac{1}{2x^2}\\ln x + C$"
+      ],
+      "answer": 2,
+      "explanation": "Let $u = \\ln x$, so $du = \\frac{1}{x}\\,dx$, which is the rest of the integrand. The integral becomes $\\int u\\,du = \\frac{u^2}{2} + C = \\frac{(\\ln x)^2}{2} + C$. Differentiating gives $\\frac{2\\ln x}{2}\\cdot\\frac{1}{x} = \\frac{\\ln x}{x}$, which matches. The option $(\\ln x)^2 + C$ forgets to divide by the new exponent $2$, $\\ln|\\ln x| + C$ treats the integrand as $\\frac{u'}{u}$ when in fact $u = \\ln x$ and $du = \\frac{1}{x}\\,dx$ make it $\\int u\\,du$, and $\\frac{1}{2x^2}\\ln x + C$ tries to integrate the $\\frac{1}{x}$ separately. The trap is identifying $du$: since $\\frac{1}{x}\\,dx$ is exactly $du$ for $u = \\ln x$, the integral is a plain power of $u$, not a logarithm.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-022",
+      "stem": "Evaluate $\\displaystyle\\int e^{x}\\sin x\\,dx$.",
+      "options": [
+        "$e^{x}\\left(\\sin x - \\cos x\\right) + C$",
+        "$\\dfrac{e^{x}\\left(\\sin x + \\cos x\\right)}{2} + C$",
+        "$\\dfrac{e^{x}\\left(\\sin x - \\cos x\\right)}{2} + C$",
+        "$e^{x}\\cos x + C$"
+      ],
+      "answer": 2,
+      "explanation": "Call the integral $I$ and apply parts twice. With $u = \\sin x$, $dv = e^{x}\\,dx$: $I = e^{x}\\sin x - \\int e^{x}\\cos x\\,dx$. Parts again on the remaining integral gives $\\int e^{x}\\cos x\\,dx = e^{x}\\cos x + \\int e^{x}\\sin x\\,dx = e^{x}\\cos x + I$. Substituting, $I = e^{x}\\sin x - e^{x}\\cos x - I$, so $2I = e^{x}(\\sin x - \\cos x)$ and $I = \\frac{e^{x}(\\sin x - \\cos x)}{2} + C$. Differentiating confirms it returns $e^{x}\\sin x$. The option without the $\\frac{1}{2}$ forgets to divide after solving $2I = \\cdots$; the $+\\cos x$ option mismanages a sign in the second parts step; and $e^{x}\\cos x + C$ stops after one application. The trap is the recursive parts step: when the original integral reappears, solve for it algebraically and divide by $2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-023",
+      "stem": "Evaluate $\\displaystyle\\int \\frac{x + 4}{x(x - 2)}\\,dx$.",
+      "options": [
+        "$3\\ln|x| - 2\\ln|x - 2| + C$",
+        "$2\\ln|x| - 3\\ln|x - 2| + C$",
+        "$\\ln\\left|x(x - 2)\\right| + C$",
+        "$-2\\ln|x| + 3\\ln|x - 2| + C$"
+      ],
+      "answer": 3,
+      "explanation": "Write $\\frac{x + 4}{x(x - 2)} = \\frac{A}{x} + \\frac{B}{x - 2}$. Cover-up at $x = 0$ gives $A = \\frac{0 + 4}{0 - 2} = -2$, and at $x = 2$ gives $B = \\frac{2 + 4}{2} = 3$. Integrating, the answer is $-2\\ln|x| + 3\\ln|x - 2| + C$, whose derivative is $-\\frac{2}{x} + \\frac{3}{x - 2} = \\frac{-2(x - 2) + 3x}{x(x - 2)} = \\frac{x + 4}{x(x - 2)}$. The option $3\\ln|x| - 2\\ln|x - 2|$ swaps the two cover-up values; the option $2\\ln|x| - 3\\ln|x - 2|$ swaps them and drops the sign on $A$; and the single-log option treats the numerator as the denominator's derivative. The trap is the cover-up bookkeeping: $A = -2$ comes from $x = 0$ and lives over $x$, while $B = 3$ comes from $x = 2$ and lives over $x - 2$.",
+      "difficulty": "core",
+      "source": "in the style of Schaum's Outline of Calculus"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-024",
+      "stem": "Evaluate $\\displaystyle\\int \\tan^2 x \\sec^2 x\\,dx$.",
+      "options": [
+        "$\\dfrac{\\tan^3 x \\sec^3 x}{9} + C$",
+        "$\\dfrac{\\sec^3 x}{3} + C$",
+        "$\\dfrac{\\tan^3 x}{3} + C$",
+        "$\\dfrac{\\tan^2 x}{2} + C$"
+      ],
+      "answer": 2,
+      "explanation": "Since $\\frac{d}{dx}\\tan x = \\sec^2 x$, the lone $\\sec^2 x\\,dx$ is $du$ for $u = \\tan x$. The integral becomes $\\int u^2\\,du = \\frac{u^3}{3} + C = \\frac{\\tan^3 x}{3} + C$. Differentiating gives $\\tan^2 x\\sec^2 x$, which matches. The option $\\frac{\\tan^3 x\\sec^3 x}{9} + C$ integrates each factor on its own, the option $\\frac{\\sec^3 x}{3} + C$ would require a $\\sec x\\tan x$ factor for $du$ that is not present, and $\\frac{\\tan^2 x}{2} + C$ treats the integrand as $\\sec^2 x\\tan x$ and miscounts the power of tangent. The trap in the sec-tan family is matching $u$ to the available $du$: a bare $\\sec^2 x\\,dx$ means $u = \\tan x$, and the remaining $\\tan^2 x$ becomes $u^2$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-025",
+      "stem": "Evaluate $\\displaystyle\\int \\sqrt{4 - x^2}\\,dx$.",
+      "options": [
+        "$\\dfrac{\\left(4 - x^2\\right)^{3/2}}{3} + C$",
+        "$2\\arcsin\\left(\\dfrac{x}{2}\\right) + \\dfrac{x\\sqrt{4 - x^2}}{2} + C$",
+        "$2\\arcsin\\left(\\dfrac{x}{2}\\right) - \\dfrac{x\\sqrt{4 - x^2}}{2} + C$",
+        "$\\arcsin\\left(\\dfrac{x}{2}\\right) + \\dfrac{x\\sqrt{4 - x^2}}{2} + C$"
+      ],
+      "answer": 1,
+      "explanation": "With $a = 2$, set $x = 2\\sin\\theta$, so $dx = 2\\cos\\theta\\,d\\theta$ and $\\sqrt{4 - x^2} = 2\\cos\\theta$. The integral becomes $\\int 4\\cos^2\\theta\\,d\\theta = 2\\int (1 + \\cos 2\\theta)\\,d\\theta = 2\\theta + \\sin 2\\theta + C$. Since $\\sin 2\\theta = 2\\sin\\theta\\cos\\theta = 2\\cdot\\frac{x}{2}\\cdot\\frac{\\sqrt{4 - x^2}}{2} = \\frac{x\\sqrt{4 - x^2}}{2}$, the answer is $2\\arcsin\\left(\\frac{x}{2}\\right) + \\frac{x\\sqrt{4 - x^2}}{2} + C$. Differentiating recovers $\\sqrt{4 - x^2}$. The option $\\frac{(4 - x^2)^{3/2}}{3} + C$ pretends a stray $x$ factor is present to make a plain substitution work; the minus-sign option mishandles the double-angle term; and the option $\\arcsin\\left(\\frac{x}{2}\\right) + \\frac{x\\sqrt{4 - x^2}}{2} + C$ drops the leading $2$ from $2\\theta$. The trap is converting $\\sin 2\\theta$ back through the reference triangle: read both legs, $\\sin\\theta = \\frac{x}{2}$ and $\\cos\\theta = \\frac{\\sqrt{4 - x^2}}{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-026",
+      "stem": "Evaluate $\\displaystyle\\int \\frac{x^2}{\\sqrt{9 - x^2}}\\,dx$.",
+      "options": [
+        "$\\dfrac{9}{2}\\arcsin\\left(\\dfrac{x}{3}\\right) + \\dfrac{x\\sqrt{9 - x^2}}{2} + C$",
+        "$-\\sqrt{9 - x^2} + C$",
+        "$\\dfrac{9}{2}\\arcsin\\left(\\dfrac{x}{3}\\right) - \\dfrac{x\\sqrt{9 - x^2}}{2} + C$",
+        "$\\dfrac{x^3}{3\\sqrt{9 - x^2}} + C$"
+      ],
+      "answer": 2,
+      "explanation": "Set $x = 3\\sin\\theta$, so $dx = 3\\cos\\theta\\,d\\theta$, $x^2 = 9\\sin^2\\theta$, and $\\sqrt{9 - x^2} = 3\\cos\\theta$. The integral becomes $\\int \\frac{9\\sin^2\\theta}{3\\cos\\theta}\\cdot 3\\cos\\theta\\,d\\theta = 9\\int \\sin^2\\theta\\,d\\theta = \\frac{9}{2}\\left(\\theta - \\sin\\theta\\cos\\theta\\right) + C$. Converting back with $\\sin\\theta\\cos\\theta = \\frac{x}{3}\\cdot\\frac{\\sqrt{9 - x^2}}{3} = \\frac{x\\sqrt{9 - x^2}}{9}$ gives $\\frac{9}{2}\\arcsin\\left(\\frac{x}{3}\\right) - \\frac{x\\sqrt{9 - x^2}}{2} + C$, whose derivative simplifies to $\\frac{x^2}{\\sqrt{9 - x^2}}$. The $+$ option flips the sign on the second term; $-\\sqrt{9 - x^2} + C$ is the antiderivative of $\\frac{x}{\\sqrt{9 - x^2}}$, not $\\frac{x^2}{\\sqrt{9 - x^2}}$; and the option $\\frac{x^3}{3\\sqrt{9 - x^2}} + C$ integrates numerator and denominator separately. The trap is the wrong triangle side again: $\\sin\\theta\\cos\\theta$ must be rebuilt from both legs of the $x = 3\\sin\\theta$ triangle.",
+      "difficulty": "stretch",
+      "source": "in the style of Schaum's Outline of Calculus"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-027",
+      "stem": "Which technique evaluates $\\displaystyle\\int \\frac{x}{x^2 + 1}\\,dx$ most directly?",
+      "options": [
+        "Substitution with $u = x^2 + 1$.",
+        "Integration by parts with $u = x$, $dv = \\dfrac{1}{x^2 + 1}\\,dx$.",
+        "Partial fractions over $x^2 + 1$.",
+        "Trigonometric substitution $x = \\tan\\theta$."
+      ],
+      "answer": 0,
+      "explanation": "The numerator $x$ is, up to the constant $\\frac{1}{2}$, the derivative of the denominator $x^2 + 1$, so $u = x^2 + 1$ with $du = 2x\\,dx$ turns the integral into $\\frac{1}{2}\\int \\frac{du}{u} = \\frac{1}{2}\\ln(x^2 + 1) + C$. Parts would work but needs the antiderivative of $\\frac{1}{x^2 + 1}$, which is arctangent, making it a detour; partial fractions fails because $x^2 + 1$ is irreducible over the reals, so it does not split into linear factors; and trigonometric substitution buries a one-line problem in trig identities. The trap is reaching for a heavy method when the numerator already signals a simple substitution: if the top is the derivative of the bottom, substitute.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-028",
+      "stem": "Which technique evaluates $\\displaystyle\\int x\\cos x\\,dx$ most directly?",
+      "options": [
+        "Substitution with $u = \\cos x$.",
+        "Partial fractions.",
+        "Trigonometric substitution $x = \\sin\\theta$.",
+        "Integration by parts with $u = x$, $dv = \\cos x\\,dx$."
+      ],
+      "answer": 3,
+      "explanation": "The integrand is a polynomial times a trigonometric function, the signature case for integration by parts. Choosing $u = x$ (which differentiates to the simpler $1$) and $dv = \\cos x\\,dx$ gives $x\\sin x - \\int \\sin x\\,dx = x\\sin x + \\cos x + C$. Substitution with $u = \\cos x$ fails because there is no spare $\\sin x$ factor to become $du$; partial fractions applies only to rational functions, and this is not one; and trigonometric substitution targets radicals like $\\sqrt{a^2 - x^2}$, which are absent here. The trap is trying to substitute when the integrand is a product of unlike functions: a polynomial times a trig, exponential, or log factor calls for parts.",
+      "difficulty": "warmup",
+      "source": "in the style of Schaum's Outline of Calculus"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-029",
+      "stem": "Evaluate the definite integral $\\displaystyle\\int_{0}^{\\pi/2} \\sin^2 x \\cos x\\,dx$.",
+      "options": [
+        "$1$",
+        "$0$",
+        "$\\dfrac{2}{3}$",
+        "$\\dfrac{1}{3}$"
+      ],
+      "answer": 3,
+      "explanation": "Let $u = \\sin x$, so $du = \\cos x\\,dx$, and change the limits: $x = 0$ gives $u = 0$, $x = \\frac{\\pi}{2}$ gives $u = 1$. The integral becomes $\\int_{0}^{1} u^2\\,du = \\frac{u^3}{3}\\Big|_{0}^{1} = \\frac{1}{3}$. With limits converted, evaluate directly in $u$. The option $1$ uses the unconverted upper limit $\\frac{\\pi}{2}$ inside $\\frac{\\sin^3 x}{3}$ but then also forgets to divide by $3$; the option $0$ changes the limits a second time, sending the upper limit back from $1$ to $\\sin 1$ as if the substitution applied twice; and $\\frac{2}{3}$ doubles the result. The trap is changing the limits once and only once: after $u = \\sin x$ sends them to $0$ and $1$, leave them alone.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-030",
+      "stem": "Evaluate the definite integral $\\displaystyle\\int_{1}^{e} \\ln x\\,dx$.",
+      "options": [
+        "$1$",
+        "$e - 1$",
+        "$e$",
+        "$e + 1$"
+      ],
+      "answer": 0,
+      "explanation": "By parts with $u = \\ln x$, $dv = dx$, an antiderivative is $x\\ln x - x$. Evaluating from $1$ to $e$: at $x = e$, $e\\ln e - e = e - e = 0$; at $x = 1$, $1\\cdot 0 - 1 = -1$. The integral is $0 - (-1) = 1$. Differentiating $x\\ln x - x$ returns $\\ln x$, confirming the antiderivative. The option $e - 1$ uses the wrong antiderivative $x\\ln x$ without the $-x$ term; $e$ evaluates only at the upper limit and forgets to subtract; and $e + 1$ adds the lower-limit value instead of subtracting it. The trap is the parts antiderivative for $\\ln x$: it is $x\\ln x - x$, and the $-x$ is what makes the upper limit collapse to $0$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-031",
+      "stem": "Evaluate $\\displaystyle\\int \\frac{3x + 1}{(x - 1)^2}\\,dx$.",
+      "options": [
+        "$3\\ln|x - 1| - \\dfrac{4}{x - 1} + C$",
+        "$3\\ln|x - 1| + \\dfrac{4}{x - 1} + C$",
+        "$\\dfrac{3x + 1}{-(x - 1)} + C$",
+        "$3\\ln|x - 1| - 4\\ln|x - 1| + C$"
+      ],
+      "answer": 0,
+      "explanation": "A repeated linear factor needs $\\frac{3x + 1}{(x - 1)^2} = \\frac{A}{x - 1} + \\frac{B}{(x - 1)^2}$. Clearing denominators, $3x + 1 = A(x - 1) + B$. At $x = 1$, $B = 4$; matching the $x$ coefficient, $A = 3$. Integrating $\\frac{3}{x - 1} + \\frac{4}{(x - 1)^2}$ gives $3\\ln|x - 1| - \\frac{4}{x - 1} + C$. Differentiating returns $\\frac{3}{x - 1} + \\frac{4}{(x - 1)^2} = \\frac{3x + 1}{(x - 1)^2}$. The option $+\\frac{4}{x - 1}$ forgets that $\\int (x - 1)^{-2}\\,dx = -(x - 1)^{-1}$ carries a minus; the option $\\frac{3x + 1}{-(x - 1)}$ integrates the whole fraction as one reciprocal; and the option $3\\ln|x - 1| - 4\\ln|x - 1|$ treats $\\frac{B}{(x - 1)^2}$ as another logarithm instead of a power. The trap is integrating the repeated-factor term as a log: $\\frac{1}{(x - 1)^2}$ is a power, so it integrates to $-\\frac{1}{x - 1}$, not a logarithm.",
+      "difficulty": "stretch",
+      "source": "in the style of Schaum's Outline of Calculus"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-032",
+      "stem": "Evaluate $\\displaystyle\\int \\sec^4 x\\,dx$.",
+      "options": [
+        "$\\dfrac{\\sec^5 x}{5} + C$",
+        "$\\tan x - \\dfrac{\\tan^3 x}{3} + C$",
+        "$\\dfrac{\\tan^3 x}{3} + C$",
+        "$\\tan x + \\dfrac{\\tan^3 x}{3} + C$"
+      ],
+      "answer": 3,
+      "explanation": "Save one $\\sec^2 x$ for $du$ and convert the other using $\\sec^2 x = 1 + \\tan^2 x$: $\\int \\sec^4 x\\,dx = \\int (1 + \\tan^2 x)\\sec^2 x\\,dx$. With $u = \\tan x$, $du = \\sec^2 x\\,dx$, this is $\\int (1 + u^2)\\,du = u + \\frac{u^3}{3} + C = \\tan x + \\frac{\\tan^3 x}{3} + C$. Differentiating gives $\\sec^2 x + \\tan^2 x\\sec^2 x = (1 + \\tan^2 x)\\sec^2 x = \\sec^4 x$. The option $\\frac{\\sec^5 x}{5} + C$ applies the power rule to $\\sec x$ with no $\\sec x\\tan x$ factor to be its $du$; the $-\\frac{\\tan^3 x}{3}$ option flips the sign of the converted term; and $\\frac{\\tan^3 x}{3} + C$ drops the $\\tan x$ from the $1$ in the identity. The trap is splitting the even power of secant on the wrong factor: keep one $\\sec^2 x$ as $du$ and rewrite the rest with $\\sec^2 x = 1 + \\tan^2 x$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-033",
+      "stem": "Evaluate $\\displaystyle\\int \\tan^3 x \\sec^3 x\\,dx$.",
+      "options": [
+        "$\\dfrac{\\sec^5 x}{5} + \\dfrac{\\sec^3 x}{3} + C$",
+        "$\\dfrac{\\tan^4 x \\sec^4 x}{16} + C$",
+        "$\\dfrac{\\sec^5 x}{5} - \\dfrac{\\sec^3 x}{3} + C$",
+        "$\\dfrac{\\sec^6 x}{6} + C$"
+      ],
+      "answer": 2,
+      "explanation": "With an odd power of tangent, peel off one $\\sec x\\tan x$ for $du$ and convert the remaining even tangents: $\\tan^3 x\\sec^3 x = \\tan^2 x\\sec^2 x\\cdot(\\sec x\\tan x) = (\\sec^2 x - 1)\\sec^2 x\\,(\\sec x\\tan x)$. Let $u = \\sec x$, $du = \\sec x\\tan x\\,dx$, giving $\\int (u^2 - 1)u^2\\,du = \\int (u^4 - u^2)\\,du = \\frac{u^5}{5} - \\frac{u^3}{3} + C = \\frac{\\sec^5 x}{5} - \\frac{\\sec^3 x}{3} + C$. Differentiating recovers $\\tan^3 x\\sec^3 x$. The $+\\frac{\\sec^3 x}{3}$ option drops the minus from $\\tan^2 x = \\sec^2 x - 1$; the product option integrates each factor separately; and $\\frac{\\sec^6 x}{6} + C$ pretends the whole integrand is $\\sec^5 x\\cdot(\\sec x\\tan x)$, miscounting the powers. The trap is splitting the sec-tan product on the wrong factor: with odd tangent, reserve $\\sec x\\tan x$ for $du$ and rewrite the even tangents as $\\sec^2 x - 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-034",
+      "stem": "Evaluate $\\displaystyle\\int \\frac{1}{x^2 + 2x + 5}\\,dx$.",
+      "options": [
+        "$\\dfrac{1}{2}\\arctan\\left(\\dfrac{x + 1}{2}\\right) + C$",
+        "$\\arctan\\left(\\dfrac{x + 1}{2}\\right) + C$",
+        "$\\dfrac{1}{2}\\arctan\\left(\\dfrac{x}{2}\\right) + C$",
+        "$\\ln\\left|x^2 + 2x + 5\\right| + C$"
+      ],
+      "answer": 0,
+      "explanation": "Complete the square: $x^2 + 2x + 5 = (x + 1)^2 + 4$. With $u = x + 1$ and $a = 2$, the integral is $\\int \\frac{du}{u^2 + 4} = \\frac{1}{2}\\arctan\\left(\\frac{u}{2}\\right) + C = \\frac{1}{2}\\arctan\\left(\\frac{x + 1}{2}\\right) + C$. Differentiating gives $\\frac{1}{2}\\cdot\\frac{1/2}{1 + (x + 1)^2/4} = \\frac{1}{(x + 1)^2 + 4} = \\frac{1}{x^2 + 2x + 5}$. The option without $\\frac{1}{2}$ forgets the constant for $\\frac{1}{u^2 + a^2}$; the option with $\\frac{x}{2}$ inside skips completing the square, leaving the shift out; and the log option mistakes an irreducible quadratic denominator for a $\\frac{u'}{u}$ form, but the numerator is not the derivative $2x + 2$. The trap is missing the completed square: an irreducible quadratic in the denominator becomes $(x + 1)^2 + 4$, and the arctangent argument is the shifted $\\frac{x + 1}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of Schaum's Outline of Calculus"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-035",
+      "stem": "Which technique evaluates $\\displaystyle\\int \\frac{1}{x^2\\sqrt{x^2 + 9}}\\,dx$ most directly?",
+      "options": [
+        "Substitution with $u = x^2 + 9$.",
+        "Partial fractions over $x^2\\sqrt{x^2 + 9}$.",
+        "Trigonometric substitution $x = 3\\tan\\theta$.",
+        "Integration by parts with $u = \\dfrac{1}{x^2}$."
+      ],
+      "answer": 2,
+      "explanation": "The radical $\\sqrt{x^2 + 9}$ is the $\\sqrt{x^2 + a^2}$ form with $a = 3$, which the substitution $x = 3\\tan\\theta$ rationalizes, turning the integral into one in $\\sin\\theta$ and $\\cos\\theta$. A plain $u = x^2 + 9$ stalls because there is no spare $x$ in the numerator to supply $du = 2x\\,dx$; partial fractions does not apply, since a square root is not a rational function; and parts only tangles the radical further. The trap is overlooking a square root of $x^2 + a^2$: that radical, with no convenient $x\\,dx$ to substitute away, is the textbook flag for trigonometric substitution.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 7"
+    },
+    {
+      "id": "calculus-ii-integration-techniques-036",
+      "stem": "Which technique evaluates $\\displaystyle\\int \\frac{2x + 5}{x^2 + 5x + 6}\\,dx$ most directly?",
+      "options": [
+        "Substitution with $u = x^2 + 5x + 6$.",
+        "Partial fractions after factoring the denominator.",
+        "Integration by parts with $u = 2x + 5$.",
+        "Trigonometric substitution $x = \\sqrt{6}\\sin\\theta$."
+      ],
+      "answer": 0,
+      "explanation": "Notice that the numerator $2x + 5$ is exactly the derivative of the denominator $x^2 + 5x + 6$, so $u = x^2 + 5x + 6$ gives $du = (2x + 5)\\,dx$ and the integral collapses to $\\int \\frac{du}{u} = \\ln\\left|x^2 + 5x + 6\\right| + C$ in one line. Partial fractions would also work, since $x^2 + 5x + 6 = (x + 2)(x + 3)$, but it is extra labor when the derivative pattern is sitting in plain view; parts is the wrong tool for a rational function; and trigonometric substitution does not fit a denominator that factors over the reals. The trap is defaulting to partial fractions on every rational function: when the numerator is the denominator's derivative, the logarithm substitution is far quicker.",
+      "difficulty": "core",
+      "source": "in the style of Schaum's Outline of Calculus"
+    }
+  ]
+}
