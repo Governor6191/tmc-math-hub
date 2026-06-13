@@ -8,6 +8,12 @@ const root = document.getElementById('feedback-root');
 // placeholder below with the real key.
 const WEB3FORMS_KEY = 'c213a3b5-92af-4847-b955-5c073ce2c0e5';
 
+// Free imgbb API key (get one at https://api.imgbb.com). An optional screenshot
+// is uploaded there and its link is included in the feedback email; the static
+// site has no storage of its own.
+const IMGBB_KEY = 'REPLACE_WITH_IMGBB_API_KEY';
+const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+
 const TOPICS = [
   'General feedback',
   'About a question or its answer',
@@ -41,6 +47,10 @@ function formMarkup() {
         <span>Your email <em>(optional, only if you want a reply)</em></span>
         <input type="email" name="email" autocomplete="email" placeholder="you@example.com">
       </label>
+      <label class="field">
+        <span>Screenshot <em>(optional, e.g. the question that looks wrong)</em></span>
+        <input type="file" name="screenshot" accept="image/*">
+      </label>
       <input type="hidden" name="from_page" value="${escapeHtml(fromContext)}">
       <input type="text" name="nickname" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-row">
@@ -65,6 +75,15 @@ function wire() {
   const status = document.getElementById('feedback-status');
   const btn = form.querySelector('button[type="submit"]');
 
+  async function uploadScreenshot(file) {
+    const fd = new FormData();
+    fd.append('image', file);
+    const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_KEY}`, { method: 'POST', body: fd });
+    const data = await res.json().catch(() => null);
+    if (!res.ok || !data || !data.success || !data.data || !data.data.url) throw new Error('image-upload');
+    return data.data.url;
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const message = form.message.value.trim();
@@ -74,39 +93,58 @@ function wire() {
       form.message.focus();
       return;
     }
+    const file = form.screenshot.files[0];
+    if (file) {
+      if (!file.type.startsWith('image/')) {
+        status.textContent = 'The attachment must be an image (png, jpg, and the like).';
+        status.className = 'feedback-status err';
+        return;
+      }
+      if (file.size > MAX_IMAGE_BYTES) {
+        status.textContent = 'That image is over 5 MB. Please attach a smaller one.';
+        status.className = 'feedback-status err';
+        return;
+      }
+    }
     if (form.nickname.value) { showThanks(); return; } // honeypot: silently drop bots
 
     btn.disabled = true;
-    status.textContent = 'Sending...';
-    status.className = 'feedback-status';
-
-    const payload = {
-      access_key: WEB3FORMS_KEY,
-      subject: `TMC Math Hub feedback: ${form.topic.value}`,
-      from_name: 'TMC Math Hub visitor',
-      topic: form.topic.value,
-      message,
-      from_page: form.from_page.value,
-    };
-    const email = form.email.value.trim();
-    if (email) payload.email = email;
-
     try {
+      let screenshotUrl = '';
+      if (file) {
+        status.textContent = 'Uploading screenshot...';
+        status.className = 'feedback-status';
+        screenshotUrl = await uploadScreenshot(file);
+      }
+      status.textContent = 'Sending...';
+      status.className = 'feedback-status';
+
+      const payload = {
+        access_key: WEB3FORMS_KEY,
+        subject: `TMC Math Hub feedback: ${form.topic.value}`,
+        from_name: 'TMC Math Hub visitor',
+        topic: form.topic.value,
+        message: screenshotUrl ? `${message}\n\nScreenshot: ${screenshotUrl}` : message,
+        from_page: form.from_page.value,
+      };
+      if (screenshotUrl) payload.screenshot = screenshotUrl;
+      const email = form.email.value.trim();
+      if (email) payload.email = email;
+
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(payload),
       });
       const data = await res.json();
-      if (data.success) {
-        showThanks();
-      } else {
-        throw new Error(data.message || 'Submission failed');
-      }
+      if (!data.success) throw new Error(data.message || 'Submission failed');
+      showThanks();
     } catch (err) {
       console.error(err);
       btn.disabled = false;
-      status.textContent = 'Sorry, that did not send. Check your connection and try again.';
+      status.textContent = err.message === 'image-upload'
+        ? 'The screenshot would not upload. Try a smaller image, or remove it and send just the message.'
+        : 'Sorry, that did not send. Check your connection and try again.';
       status.className = 'feedback-status err';
     }
   });
