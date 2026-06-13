@@ -1,0 +1,427 @@
+{
+  "courseId": "statistics-and-probability",
+  "topicId": "random-variables",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "statistics-and-probability-random-variables-001",
+      "stem": "A discrete random variable $X$ takes the values $1, 2, 3, 4$ with probabilities $p(1) = 0.1$, $p(2) = 0.2$, $p(3) = 0.4$, and $p(4) = k$. What value of $k$ makes this a valid probability mass function?",
+      "options": [
+        "$0.1$",
+        "$0.3$",
+        "$0.25$",
+        "$0.7$"
+      ],
+      "answer": 1,
+      "explanation": "A valid pmf must have all its probabilities sum to $1$. The three given probabilities add to $0.1 + 0.2 + 0.4 = 0.7$, so $k = 1 - 0.7 = 0.3$. The option $0.7$ is the sum of the given probabilities rather than the leftover, and $0.25$ assumes equal quarters for four outcomes while ignoring the values already fixed. The trap is forgetting that the total probability across all outcomes must equal exactly $1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-002",
+      "stem": "A random variable $X$ has the distribution $p(0) = 0.2$, $p(1) = 0.5$, $p(2) = 0.3$. Find the expected value $E(X)$.",
+      "options": [
+        "$1.5$",
+        "$0.9$",
+        "$1$",
+        "$1.1$"
+      ],
+      "answer": 3,
+      "explanation": "The expected value is the probability-weighted sum $E(X) = \\sum x \\, p(x) = 0(0.2) + 1(0.5) + 2(0.3) = 0.5 + 0.6 = 1.1$. The option $1$ is the plain average $\\frac{0 + 1 + 2}{3}$ of the three possible values, which ignores how likely each one is. The trap is averaging the outcomes equally instead of weighting each by its probability.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-003",
+      "stem": "A random variable $X$ has $p(1) = 0.1$, $p(2) = 0.3$, $p(3) = 0.4$, $p(4) = 0.2$. Find $P(X > 2)$.",
+      "options": [
+        "$0.6$",
+        "$0.9$",
+        "$0.4$",
+        "$0.3$"
+      ],
+      "answer": 0,
+      "explanation": "The event $X > 2$ is strictly greater than $2$, so it covers $X = 3$ and $X = 4$ only: $P(X > 2) = 0.4 + 0.2 = 0.6$. The option $0.9$ adds in $p(2) = 0.3$ as well, which would be $P(X \\ge 2)$ rather than $P(X > 2)$. The trap is an off-by-one on the inequality, including $X = 2$ when the strict $>$ excludes it.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-004",
+      "stem": "A random variable $X$ takes values $1$ and $4$, each with probability $0.5$. Find the standard deviation $\\sigma$ of $X$.",
+      "options": [
+        "$2.5$",
+        "$1.25$",
+        "$2.25$",
+        "$1.5$"
+      ],
+      "answer": 3,
+      "explanation": "First $E(X) = 0.5(1) + 0.5(4) = 2.5$ and $E(X^2) = 0.5(1) + 0.5(16) = 8.5$, so $\\text{Var}(X) = E(X^2) - [E(X)]^2 = 8.5 - 6.25 = 2.25$. The standard deviation is $\\sigma = \\sqrt{2.25} = 1.5$. The option $2.25$ reports the variance itself without taking the square root. The trap is quoting $\\text{Var}(X)$ as the standard deviation and forgetting the $\\sqrt{\\;}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-005",
+      "stem": "A random variable $X$ has $E(X) = 2$. What is $E(3X + 1)$?",
+      "options": [
+        "$9$",
+        "$7$",
+        "$6$",
+        "$3$"
+      ],
+      "answer": 1,
+      "explanation": "By linearity of expectation, $E(aX + b) = a\\,E(X) + b$, so $E(3X + 1) = 3(2) + 1 = 7$. The option $6$ computes $3 \\times 2$ but drops the added constant $b = 1$. The trap is forgetting that the constant $b$ carries straight through the expectation and only the slope $a$ multiplies $E(X)$.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-006",
+      "stem": "A random variable $X$ takes the values $1, 2, 3, 4, 5$, each with the same probability $k$. What is the value of $k$?",
+      "options": [
+        "$\\frac{1}{5}$",
+        "$\\frac{1}{4}$",
+        "$5$",
+        "$\\frac{1}{15}$"
+      ],
+      "answer": 0,
+      "explanation": "There are $5$ equally likely values, and the probabilities must sum to $1$, so $5k = 1$ and $k = \\frac{1}{5}$. The option $\\frac{1}{15}$ comes from dividing by $1 + 2 + 3 + 4 + 5 = 15$, mistakenly weighting by the values rather than counting outcomes. The trap is using the sum of the $x$-values in the denominator instead of the number of equally likely outcomes.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-007",
+      "stem": "A random variable $X$ takes the values $1, 2, 3, 4$ with $p(x) = kx$ for a constant $k$. Find $k$ so that $p(x)$ is a valid probability mass function.",
+      "options": [
+        "$\\frac{2}{5}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{10}$",
+        "$\\frac{1}{24}$"
+      ],
+      "answer": 2,
+      "explanation": "Summing the probabilities, $\\sum p(x) = k(1 + 2 + 3 + 4) = 10k$, which must equal $1$, so $k = \\frac{1}{10}$. The option $\\frac{1}{4}$ treats the four outcomes as equally likely and divides $1$ by $4$, ignoring the weighting $p(x) = kx$. The trap is assuming a uniform pmf instead of summing the actual unequal probabilities to $1$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-008",
+      "stem": "A random variable $X$ has $p(0) = 0.4$, $p(1) = 0.3$, $p(2) = 0.2$, $p(3) = 0.1$. Find $E(X)$.",
+      "options": [
+        "$1$",
+        "$1.5$",
+        "$2$",
+        "$0.6$"
+      ],
+      "answer": 0,
+      "explanation": "Weighting each value by its probability, $E(X) = 0(0.4) + 1(0.3) + 2(0.2) + 3(0.1) = 0 + 0.3 + 0.4 + 0.3 = 1$. The option $1.5$ is the unweighted average $\\frac{0 + 1 + 2 + 3}{4}$ of the four values. The trap is taking a plain mean of the outcomes rather than summing $x \\, p(x)$ with the decreasing probabilities.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-009",
+      "stem": "A random variable $X$ has $p(0) = 0.25$, $p(1) = 0.5$, $p(2) = 0.25$. Find $\\text{Var}(X)$.",
+      "options": [
+        "$1.5$",
+        "$0.25$",
+        "$-0.5$",
+        "$0.5$"
+      ],
+      "answer": 3,
+      "explanation": "Here $E(X) = 0(0.25) + 1(0.5) + 2(0.25) = 1$ and $E(X^2) = 0(0.25) + 1(0.5) + 4(0.25) = 1.5$, so $\\text{Var}(X) = E(X^2) - [E(X)]^2 = 1.5 - 1 = 0.5$. The option $1.5$ leaves the answer as $E(X^2)$ without subtracting the mean squared, and $-0.5$ reverses the order as $[E(X)]^2 - E(X^2)$. The trap is forgetting to subtract $[E(X)]^2$, or subtracting the two terms in the wrong order.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-010",
+      "stem": "A random variable $X$ takes values $1$ and $5$, each with probability $0.5$. Find the standard deviation $\\sigma$.",
+      "options": [
+        "$4$",
+        "$1.5$",
+        "$2.5$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "We have $E(X) = 0.5(1) + 0.5(5) = 3$ and $E(X^2) = 0.5(1) + 0.5(25) = 13$, so $\\text{Var}(X) = 13 - 9 = 4$ and $\\sigma = \\sqrt{4} = 2$. The option $4$ reports the variance instead of its square root. The trap is stopping at $\\text{Var}(X)$ and calling it the standard deviation rather than taking $\\sqrt{\\text{Var}(X)}$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-011",
+      "stem": "A random variable $X$ has $p(1) = 0.1$, $p(2) = 0.2$, $p(3) = 0.3$, $p(4) = 0.25$, $p(5) = 0.15$. Find $P(2 < X \\le 4)$.",
+      "options": [
+        "$0.75$",
+        "$0.30$",
+        "$0.55$",
+        "$0.45$"
+      ],
+      "answer": 2,
+      "explanation": "The event $2 < X \\le 4$ excludes $2$ but includes $4$, so it covers $X = 3$ and $X = 4$: $P = 0.3 + 0.25 = 0.55$. The option $0.75$ also counts $p(2) = 0.2$, treating the lower bound as $\\le$ instead of the strict $<$. The trap is mishandling the open-closed interval and including $X = 2$ when $2 < X$ leaves it out.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-012",
+      "stem": "A random variable $X$ has $p(1) = 0.2$, $p(2) = 0.3$, $p(3) = 0.4$, $p(4) = 0.1$. Using the cumulative distribution function, find $F(3) = P(X \\le 3)$.",
+      "options": [
+        "$0.9$",
+        "$0.5$",
+        "$0.1$",
+        "$0.6$"
+      ],
+      "answer": 0,
+      "explanation": "The cdf accumulates all probability up to and including $3$: $F(3) = p(1) + p(2) + p(3) = 0.2 + 0.3 + 0.4 = 0.9$. The option $0.5$ is $P(X < 3) = p(1) + p(2)$, which stops before $X = 3$, and $0.1$ is $1 - F(3) = P(X > 3)$. The trap is an off-by-one that drops $p(3)$ by reading $P(X \\le 3)$ as a strict $P(X < 3)$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-013",
+      "stem": "A random variable $X$ has $\\text{Var}(X) = 4$. What is $\\text{Var}(2X + 3)$?",
+      "options": [
+        "$8$",
+        "$4$",
+        "$16$",
+        "$19$"
+      ],
+      "answer": 2,
+      "explanation": "For a linear transformation, $\\text{Var}(aX + b) = a^2 \\, \\text{Var}(X)$, so $\\text{Var}(2X + 3) = 2^2 \\times 4 = 16$. The option $8$ uses $a$ instead of $a^2$ (computing $2 \\times 4$), and $19$ wrongly adds the constant $b = 3$ to the variance. The trap is multiplying by $a$ rather than $a^2$, or letting the additive constant $b$ change the variance when shifting leaves spread unchanged.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-014",
+      "stem": "A church raffle in Kumasi sells tickets. A ticket wins GHC $50$ with probability $0.02$, wins GHC $10$ with probability $0.10$, and wins nothing with probability $0.88$. What are the expected winnings per ticket?",
+      "options": [
+        "GHC $20$",
+        "GHC $2$",
+        "GHC $1$",
+        "GHC $60$"
+      ],
+      "answer": 1,
+      "explanation": "The expected winnings are $E(X) = 50(0.02) + 10(0.10) + 0(0.88) = 1 + 1 + 0 = $ GHC $2$. The option GHC $20$ is the plain average $\\frac{50 + 10 + 0}{3}$ of the prize amounts, ignoring how rarely the big prizes occur. The trap is averaging the cedi prizes equally instead of weighting each by its probability.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-015",
+      "stem": "A random variable $X$ has $p(1) = 0.15$, $p(2) = 0.35$, $p(3) = k$, $p(4) = 0.20$. Find $k$.",
+      "options": [
+        "$0.35$",
+        "$0.25$",
+        "$0.70$",
+        "$0.30$"
+      ],
+      "answer": 3,
+      "explanation": "The probabilities must total $1$. The known ones sum to $0.15 + 0.35 + 0.20 = 0.70$, so $k = 1 - 0.70 = 0.30$. The option $0.70$ is that running sum rather than the missing piece, and $0.35$ just repeats $p(2)$. The trap is reporting the total of the known probabilities instead of subtracting it from $1$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-016",
+      "stem": "A market trader at Kejetia records her daily sales of large bags of rice as a random variable $X$ with $p(0) = 0.1$, $p(1) = 0.2$, $p(2) = 0.3$, $p(3) = 0.3$, $p(4) = 0.1$. What is the expected number of bags sold per day?",
+      "options": [
+        "$2.5$",
+        "$2.1$",
+        "$2$",
+        "$1.8$"
+      ],
+      "answer": 1,
+      "explanation": "The expected value is $E(X) = 0(0.1) + 1(0.2) + 2(0.3) + 3(0.3) + 4(0.1) = 0.2 + 0.6 + 0.9 + 0.4 = 2.1$ bags. The option $2$ is the unweighted average $\\frac{0 + 1 + 2 + 3 + 4}{5}$ of the possible counts. The trap is averaging the five outcomes equally rather than weighting each by how often it occurs.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-017",
+      "stem": "A random variable $X$ takes the values $0, 1, 2$, each with probability $\\frac{1}{3}$. Find $\\text{Var}(X)$.",
+      "options": [
+        "$\\frac{5}{3}$",
+        "$1$",
+        "$-\\frac{2}{3}$",
+        "$\\frac{2}{3}$"
+      ],
+      "answer": 3,
+      "explanation": "Here $E(X) = \\frac{1}{3}(0 + 1 + 2) = 1$ and $E(X^2) = \\frac{1}{3}(0 + 1 + 4) = \\frac{5}{3}$, so $\\text{Var}(X) = E(X^2) - [E(X)]^2 = \\frac{5}{3} - 1 = \\frac{2}{3}$. The option $\\frac{5}{3}$ stops at $E(X^2)$ without subtracting the mean squared, and $-\\frac{2}{3}$ flips the subtraction to $[E(X)]^2 - E(X^2)$. The trap is leaving out the $-[E(X)]^2$ term or reversing the order of the difference.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-018",
+      "stem": "The cumulative distribution function of a random variable $X$ is $F(1) = 0.2$, $F(2) = 0.5$, $F(3) = 0.8$, $F(4) = 1$. Find $P(X > 3)$.",
+      "options": [
+        "$0.5$",
+        "$0.8$",
+        "$0.2$",
+        "$0.3$"
+      ],
+      "answer": 2,
+      "explanation": "Since $P(X > 3) = 1 - P(X \\le 3) = 1 - F(3) = 1 - 0.8 = 0.2$. The option $0.5$ uses $1 - F(2)$, taking the complement one step too early at $X = 2$, and $0.8$ is simply $F(3)$ itself, the probability of the complementary event $X \\le 3$. The trap is reading $F$ at the wrong value or quoting $F(3)$ directly instead of its complement $1 - F(3)$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-019",
+      "stem": "The cumulative distribution function of $X$ is $F(1) = 0.2$, $F(2) = 0.5$, $F(3) = 0.8$, $F(4) = 1$. Find $P(1 < X \\le 3)$.",
+      "options": [
+        "$0.6$",
+        "$0.3$",
+        "$0.5$",
+        "$0.8$"
+      ],
+      "answer": 0,
+      "explanation": "For a cdf, $P(a < X \\le b) = F(b) - F(a)$, so $P(1 < X \\le 3) = F(3) - F(1) = 0.8 - 0.2 = 0.6$. The option $0.3$ subtracts the wrong neighbour as $F(3) - F(2)$, and $0.8$ is just $F(3)$ with nothing subtracted. The trap is subtracting at the wrong endpoint, or forgetting to subtract $F$ at the lower bound entirely.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-020",
+      "stem": "A random variable $X$ has $E(X) = 4$. What is $E(-2X + 5)$?",
+      "options": [
+        "$-3$",
+        "$-8$",
+        "$13$",
+        "$3$"
+      ],
+      "answer": 0,
+      "explanation": "By linearity, $E(-2X + 5) = -2\\,E(X) + 5 = -2(4) + 5 = -8 + 5 = -3$. The option $-8$ computes $-2 \\times 4$ but forgets to add $b = 5$, and $13$ drops the negative sign on $a$, giving $2(4) + 5$. The trap is mishandling the negative coefficient or omitting the additive constant in $E(aX + b) = a\\,E(X) + b$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-021",
+      "stem": "A random variable $X$ has $\\text{Var}(X) = 9$. What is $\\text{Var}(5 - 2X)$?",
+      "options": [
+        "$-18$",
+        "$18$",
+        "$36$",
+        "$9$"
+      ],
+      "answer": 2,
+      "explanation": "Here $a = -2$ and $b = 5$, and $\\text{Var}(aX + b) = a^2 \\, \\text{Var}(X) = (-2)^2 (9) = 4 \\times 9 = 36$. The option $-18$ uses $a \\, \\text{Var}(X) = -2 \\times 9$, keeping the sign and the wrong power, and $18$ uses $|a| \\, \\text{Var}(X)$. The trap is squaring the coefficient incorrectly: $a^2 = 4$, not $a = -2$, and a variance can never be negative.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-022",
+      "stem": "A random variable $X$ takes the values $1, 2, 3$ with $p(1) = \\frac{1}{4}$, $p(2) = \\frac{1}{3}$, and $p(3) = k$. Find $k$.",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{5}{12}$",
+        "$\\frac{7}{12}$",
+        "$\\frac{1}{12}$"
+      ],
+      "answer": 1,
+      "explanation": "The probabilities sum to $1$, so $k = 1 - \\frac{1}{4} - \\frac{1}{3} = 1 - \\frac{3}{12} - \\frac{4}{12} = 1 - \\frac{7}{12} = \\frac{5}{12}$. The option $\\frac{7}{12}$ is the sum $\\frac{1}{4} + \\frac{1}{3}$ of the known probabilities rather than the remainder. The trap is reporting the combined known probability instead of subtracting it from $1$ to find what is left.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-023",
+      "stem": "The number of goals Asante Kotoko scores in a home match is a random variable $X$ with $p(0) = 0.3$, $p(1) = 0.4$, $p(2) = 0.2$, $p(3) = 0.1$. What is the expected number of goals?",
+      "options": [
+        "$0.9$",
+        "$2$",
+        "$1.1$",
+        "$1.5$"
+      ],
+      "answer": 2,
+      "explanation": "The expected value is $E(X) = 0(0.3) + 1(0.4) + 2(0.2) + 3(0.1) = 0 + 0.4 + 0.4 + 0.3 = 1.1$ goals. The option $1.5$ is the plain average $\\frac{0 + 1 + 2 + 3}{4}$ of the possible scores, treating each as equally likely. The trap is taking an ordinary mean of the goal counts instead of the probability-weighted sum $\\sum x \\, p(x)$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-024",
+      "stem": "A random variable $X$ takes the values $0$ and $6$, each with probability $0.5$. Find the standard deviation $\\sigma$.",
+      "options": [
+        "$3$",
+        "$9$",
+        "$4.5$",
+        "$6$"
+      ],
+      "answer": 0,
+      "explanation": "We have $E(X) = 0.5(0) + 0.5(6) = 3$ and $E(X^2) = 0.5(0) + 0.5(36) = 18$, so $\\text{Var}(X) = 18 - 9 = 9$ and $\\sigma = \\sqrt{9} = 3$. The option $9$ reports the variance rather than its square root. The trap is quoting $\\text{Var}(X)$ as the standard deviation instead of taking $\\sqrt{\\text{Var}(X)}$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-025",
+      "stem": "A continuous random variable $X$ is uniformly distributed on the interval $[2, 8]$. Find $E(X)$.",
+      "options": [
+        "$3$",
+        "$10$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": 2,
+      "explanation": "For a uniform distribution on $[a, b]$, the mean is the midpoint $E(X) = \\frac{a + b}{2} = \\frac{2 + 8}{2} = 5$. The option $3$ uses the half-width $\\frac{b - a}{2} = \\frac{8 - 2}{2}$, and $6$ uses the full width $b - a = 8 - 2$. The trap is using the length of the interval instead of the midpoint $\\frac{a + b}{2}$ for the mean.",
+      "difficulty": "stretch",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-026",
+      "stem": "A continuous random variable $X$ has density $f(x) = kx$ for $0 \\le x \\le 2$ and $f(x) = 0$ otherwise. Find the constant $k$ that makes $f$ a valid density.",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$1$",
+        "$\\frac{1}{4}$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "A density must integrate to $1$: $\\int_0^2 kx \\, dx = k \\left[ \\frac{x^2}{2} \\right]_0^2 = k \\cdot \\frac{4}{2} = 2k$, which must equal $1$, so $k = \\frac{1}{2}$. The option $\\frac{1}{4}$ comes from setting the value $kx$ at $x = 2$ equal to $1$ instead of the area, and $1$ ignores the integration entirely. The trap is treating the height of $f$ as the constraint rather than the total area under the curve.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-027",
+      "stem": "A continuous random variable $X$ is uniformly distributed on $[0, 12]$. Find $\\text{Var}(X)$.",
+      "options": [
+        "$6$",
+        "$12$",
+        "$1$",
+        "$36$"
+      ],
+      "answer": 1,
+      "explanation": "For a uniform distribution on $[a, b]$, the variance is $\\text{Var}(X) = \\frac{(b - a)^2}{12} = \\frac{(12 - 0)^2}{12} = \\frac{144}{12} = 12$. The option $6$ is the mean $\\frac{a + b}{2}$, not the variance, and $1$ uses $\\frac{b - a}{12}$ without squaring the width. The trap is confusing the variance formula with the mean, or forgetting to square $(b - a)$ before dividing by $12$.",
+      "difficulty": "stretch",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-028",
+      "stem": "A random variable $X$ takes the values $1, 2, 3$ with $p(1) = 0.5$, $p(2) = 0.3$, $p(3) = 0.2$. Find $E(X^2)$.",
+      "options": [
+        "$2.89$",
+        "$3.5$",
+        "$1.7$",
+        "$4.9$"
+      ],
+      "answer": 1,
+      "explanation": "The expectation of $X^2$ weights the squared values: $E(X^2) = 1^2(0.5) + 2^2(0.3) + 3^2(0.2) = 0.5 + 1.2 + 1.8 = 3.5$. The option $2.89$ is $[E(X)]^2 = 1.7^2$, squaring the mean instead of averaging the squares, and $1.7$ is $E(X)$ itself. The trap is computing $[E(X)]^2$ when $E(X^2)$ requires squaring each value first, then weighting by probability.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-029",
+      "stem": "A random variable $X$ has $E(X) = 3$ and $\\text{Var}(X) = 2$. Find $\\text{Var}(4X - 1)$.",
+      "options": [
+        "$8$",
+        "$31$",
+        "$32$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "Variance ignores additive constants and scales by the square of the coefficient: $\\text{Var}(4X - 1) = 4^2 \\, \\text{Var}(X) = 16 \\times 2 = 32$. The option $8$ uses $4 \\times 2$ with the first power of the coefficient, and $31$ wrongly subtracts the constant $1$ from the variance. The trap is forgetting that $\\text{Var}(aX + b) = a^2 \\, \\text{Var}(X)$, so the slope is squared and the shift $b$ has no effect.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-random-variables-030",
+      "stem": "In a game at a Cape Coast fair you pay GHC $5$ to play. You win GHC $12$ with probability $0.4$ and win nothing otherwise. What is the expected net gain per game?",
+      "options": [
+        "GHC $4.80$",
+        "$-$GHC $0.20$",
+        "GHC $0.20$",
+        "$-$GHC $5$"
+      ],
+      "answer": 1,
+      "explanation": "The expected prize is $12(0.4) + 0(0.6) = 4.80$ cedis, and subtracting the GHC $5$ cost gives an expected net gain of $4.80 - 5 = -$GHC $0.20$, a small expected loss. The option GHC $4.80$ reports the expected winnings but never subtracts the cost of playing, and GHC $0.20$ has the sign backwards. The trap is forgetting to deduct the amount paid to play, so a losing game looks like a winning one.",
+      "difficulty": "stretch",
+      "source": "in the style of standard introductory statistics texts"
+    }
+  ]
+}
