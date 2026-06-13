@@ -1,0 +1,427 @@
+{
+  "courseId": "discrete-mathematics",
+  "topicId": "graph-theory",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "discrete-mathematics-graph-theory-001",
+      "stem": "A simple graph $G$ has vertices $\\lbrace a, b, c, d \\rbrace$ and edges $\\lbrace a,b \\rbrace$, $\\lbrace a,c \\rbrace$, $\\lbrace a,d \\rbrace$, $\\lbrace b,c \\rbrace$. What is the degree of vertex $a$?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "The degree of a vertex is the number of edges incident to it. Vertex $a$ appears in the edges $\\lbrace a,b \\rbrace$, $\\lbrace a,c \\rbrace$, and $\\lbrace a,d \\rbrace$, which is $3$ edges, so $\\deg(a) = 3$. The edge $\\lbrace b,c \\rbrace$ does not touch $a$ and must not be counted. The answer $4$ comes from counting the total number of edges in the graph instead of only those incident to $a$. The trap is confusing the degree of a single vertex with the edge count of the whole graph.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-002",
+      "stem": "In a simple graph the degrees of the vertices are $3, 3, 2, 2, 2$. Using the handshaking lemma, how many edges does the graph have?",
+      "options": [
+        "$12$",
+        "$24$",
+        "$7$",
+        "$6$"
+      ],
+      "answer": 3,
+      "explanation": "The handshaking lemma states that the sum of all vertex degrees equals twice the number of edges: $\\sum \\deg(v) = 2|E|$. Here the degree sum is $3+3+2+2+2 = 12$, so $2|E| = 12$ and $|E| = 6$. The answer $12$ reports the degree sum itself, forgetting to divide by $2$. The trap is treating the sum of degrees as the edge count rather than as twice the edge count.",
+      "difficulty": "warmup",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-003",
+      "stem": "How many edges does the complete graph $K_{6}$ have?",
+      "options": [
+        "$36$",
+        "$15$",
+        "$30$",
+        "$12$"
+      ],
+      "answer": 1,
+      "explanation": "In the complete graph $K_n$ every pair of distinct vertices is joined by exactly one edge, so the number of edges is $\\binom{n}{2} = \\dfrac{n(n-1)}{2}$. For $n = 6$ this is $\\dfrac{6 \\times 5}{2} = 15$. The answer $36 = 6^2$ counts ordered pairs including a vertex with itself, and $30 = 6 \\times 5$ counts each edge twice by treating $\\lbrace u,v \\rbrace$ and $\\lbrace v,u \\rbrace$ as different. The trap is using $n^2$ or $n(n-1)$ instead of halving $n(n-1)$.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-004",
+      "stem": "How many edges are in the cycle graph $C_{8}$ (a single cycle through $8$ vertices)?",
+      "options": [
+        "$16$",
+        "$7$",
+        "$8$",
+        "$28$"
+      ],
+      "answer": 2,
+      "explanation": "The cycle graph $C_n$ is a single closed loop through $n$ vertices, where each vertex is joined to its two neighbours. Such a cycle has exactly $n$ edges, so $C_8$ has $8$ edges. The answer $7$ confuses the cycle with the path $P_8$ on $8$ vertices, which has only $n-1 = 7$ edges because a path does not close up. The trap is dropping the final edge that closes the loop, turning the cycle count $n$ into the path count $n-1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-005",
+      "stem": "A graph has vertices $\\lbrace 1,2,3,4,5 \\rbrace$ and edges $\\lbrace 1,2 \\rbrace$, $\\lbrace 2,3 \\rbrace$, $\\lbrace 4,5 \\rbrace$. How many connected components does it have?",
+      "options": [
+        "$2$",
+        "$1$",
+        "$3$",
+        "$5$"
+      ],
+      "answer": 0,
+      "explanation": "A connected component is a maximal set of vertices that are all reachable from one another. Vertices $1, 2, 3$ are linked through the edges $\\lbrace 1,2 \\rbrace$ and $\\lbrace 2,3 \\rbrace$, forming one component, while $4$ and $5$ are joined by $\\lbrace 4,5 \\rbrace$, forming a second. No edge connects the two groups, so there are $2$ components. The answer $1$ wrongly calls the whole graph connected even though no path links $3$ to $4$. The trap is declaring a graph connected when it actually splits into separate pieces.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-006",
+      "stem": "A connected graph has exactly two vertices of odd degree and all other vertices of even degree. Which of the following does it definitely have?",
+      "options": [
+        "an Euler circuit but no Euler path",
+        "a Hamiltonian cycle",
+        "neither an Euler path nor an Euler circuit",
+        "an Euler path but no Euler circuit"
+      ],
+      "answer": 3,
+      "explanation": "A connected graph has an Euler circuit exactly when every vertex has even degree, and an Euler path that is not a circuit exactly when there are precisely two vertices of odd degree. Here there are two odd-degree vertices, so an Euler path exists (it must start at one odd vertex and end at the other), but an Euler circuit does not, since a circuit requires all even degrees. A Hamiltonian cycle is unrelated to degree parity and is not guaranteed. The trap is mixing the two Euler conditions: two odd vertices give an Euler path, while zero odd vertices are required for an Euler circuit.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-007",
+      "stem": "A simple graph has $10$ vertices, each of degree $4$. How many edges does it have?",
+      "options": [
+        "$40$",
+        "$14$",
+        "$20$",
+        "$80$"
+      ],
+      "answer": 2,
+      "explanation": "By the handshaking lemma the sum of degrees is twice the number of edges. With $10$ vertices each of degree $4$, the degree sum is $10 \\times 4 = 40$, so $2|E| = 40$ and $|E| = 20$. The answer $40$ stops at the degree sum and forgets to halve it. The trap is reading the total degree as the edge count; the sum of degrees always equals $2|E|$, so the edge count is the sum divided by $2$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-008",
+      "stem": "How many edges does the complete bipartite graph $K_{3,4}$ have?",
+      "options": [
+        "$12$",
+        "$7$",
+        "$21$",
+        "$24$"
+      ],
+      "answer": 0,
+      "explanation": "In the complete bipartite graph $K_{m,n}$ every vertex in the part of size $m$ is joined to every vertex in the part of size $n$, and there are no edges within a part. The number of edges is therefore $m \\times n$, so $K_{3,4}$ has $3 \\times 4 = 12$ edges. The answer $7 = 3 + 4$ adds the part sizes instead of multiplying, and $21 = \\binom{7}{2}$ treats the $7$ vertices as a complete graph $K_7$. The trap is using $m+n$ or the $K_n$ formula instead of the product $m \\cdot n$ that counts the cross edges.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-009",
+      "stem": "A simple graph $G$ on vertices $\\lbrace 1,2,3 \\rbrace$ has adjacency matrix $\\begin{pmatrix} 0 & 1 & 1 \\\\ 1 & 0 & 0 \\\\ 1 & 0 & 0 \\end{pmatrix}$, where rows and columns are indexed $1,2,3$. How many edges does $G$ have?",
+      "options": [
+        "$4$",
+        "$3$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "In the adjacency matrix of a simple undirected graph, a $1$ in row $i$ column $j$ means an edge joins vertices $i$ and $j$, and the matrix is symmetric, so each edge produces two $1$ entries. Here the $1$ entries are at positions $(1,2)$, $(1,3)$, $(2,1)$, $(3,1)$, which is $4$ ones, corresponding to the edges $\\lbrace 1,2 \\rbrace$ and $\\lbrace 1,3 \\rbrace$. So there are $2$ edges. The answer $4$ counts the $1$ entries directly without halving for symmetry. The trap is reading the number of $1$s as the edge count instead of dividing by $2$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-010",
+      "stem": "Consider the graph with vertices $\\lbrace a,b,c,d \\rbrace$ and edges $\\lbrace a,b \\rbrace$, $\\lbrace b,c \\rbrace$, $\\lbrace c,d \\rbrace$, $\\lbrace d,a \\rbrace$, $\\lbrace a,c \\rbrace$. The degrees are $\\deg(a)=3$, $\\deg(b)=2$, $\\deg(c)=3$, $\\deg(d)=2$. Does this connected graph have an Euler circuit, an Euler path, or neither?",
+      "options": [
+        "Euler circuit",
+        "Euler path but not an Euler circuit",
+        "neither",
+        "both an Euler circuit and a Hamiltonian cycle"
+      ],
+      "answer": 1,
+      "explanation": "An Euler circuit needs every vertex to have even degree, while an Euler path that is not a circuit needs exactly two odd-degree vertices in a connected graph. Here $\\deg(a)=3$ and $\\deg(c)=3$ are odd while $\\deg(b)=2$ and $\\deg(d)=2$ are even, giving exactly two odd vertices. So the graph has an Euler path (from $a$ to $c$) but no Euler circuit. The answer 'Euler circuit' ignores that two vertices have odd degree. The trap is granting an Euler circuit when two odd-degree vertices in fact permit only an open Euler path.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-011",
+      "stem": "A tree is a connected graph with no cycles. If a tree has $12$ vertices, how many edges does it have?",
+      "options": [
+        "$13$",
+        "$12$",
+        "$24$",
+        "$11$"
+      ],
+      "answer": 3,
+      "explanation": "A fundamental property of trees is that a tree on $n$ vertices has exactly $n - 1$ edges. With $n = 12$ vertices the tree has $12 - 1 = 11$ edges. The answer $12$ uses $n$ itself, and $13$ uses $n + 1$, both of which would create a cycle or disconnect the graph and so cannot describe a tree. The trap is misremembering the tree edge count as $n$ or $n+1$ rather than the correct $n - 1$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-012",
+      "stem": "Is the degree sequence $5, 3, 2, 2, 1$ a possible degree sequence for a simple graph on $5$ vertices?",
+      "options": [
+        "No, because a vertex of degree $5$ is impossible on $5$ vertices",
+        "Yes, because the degree sum is even",
+        "Yes, because all degrees are different",
+        "No, because the degrees do not add to $10$"
+      ],
+      "answer": 0,
+      "explanation": "In a simple graph on $5$ vertices, a single vertex can be joined to at most the other $4$ vertices (no loops, no multiple edges), so the maximum possible degree is $5 - 1 = 4$. A claimed degree of $5$ exceeds this bound, so the sequence cannot be graphical regardless of any parity check. While the degree sum $5+3+2+2+1 = 13$ is in fact odd (also disqualifying it), the decisive structural reason is that no vertex can have degree $5$ among only $5$ vertices. The trap is checking only the degree-sum parity and overlooking that each degree must be at most $n - 1$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-013",
+      "stem": "A graph is $3$-regular (every vertex has degree $3$) and has $8$ vertices. How many edges does it have?",
+      "options": [
+        "$24$",
+        "$11$",
+        "$12$",
+        "$16$"
+      ],
+      "answer": 2,
+      "explanation": "In a $k$-regular graph every vertex has the same degree $k$, so the degree sum is $k \\times n$. Here that is $3 \\times 8 = 24$, and by the handshaking lemma the number of edges is half this, $|E| = 24 / 2 = 12$. The answer $24$ reports the degree sum without halving, and $11$ mistakenly uses the tree formula $n - 1$. The trap is forgetting to divide the regular degree sum $kn$ by $2$ to obtain the edge count.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-014",
+      "stem": "In the graph with vertices $\\lbrace p,q,r,s \\rbrace$ and edges $\\lbrace p,q \\rbrace$, $\\lbrace q,r \\rbrace$, $\\lbrace r,s \\rbrace$, which sequence of vertices is a valid walk from $p$ to $s$?",
+      "options": [
+        "$p, r, s$",
+        "$p, s$",
+        "$p, q, s$",
+        "$p, q, r, s$"
+      ],
+      "answer": 3,
+      "explanation": "A walk is a sequence of vertices in which each consecutive pair is joined by an edge of the graph. Checking $p, q, r, s$: the pairs $\\lbrace p,q \\rbrace$, $\\lbrace q,r \\rbrace$, and $\\lbrace r,s \\rbrace$ are all edges, so it is a valid walk. The option $p, r, s$ fails because $\\lbrace p,r \\rbrace$ is not an edge, and $p, s$ fails because $\\lbrace p,s \\rbrace$ is not an edge. The trap is treating two vertices as adjacent when no edge actually joins them; every consecutive step of a walk must use a real edge.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-015",
+      "stem": "For which values of $n$ does the complete graph $K_{n}$ have an Euler circuit? (Recall every vertex of $K_n$ has degree $n-1$.)",
+      "options": [
+        "all $n \\ge 3$",
+        "exactly when $n$ is odd",
+        "exactly when $n$ is even",
+        "only $n = 2$"
+      ],
+      "answer": 1,
+      "explanation": "A connected graph has an Euler circuit exactly when every vertex has even degree. In $K_n$ each vertex has degree $n - 1$, which is even precisely when $n - 1$ is even, that is when $n$ is odd. So $K_n$ has an Euler circuit exactly when $n$ is odd (for example $K_3$ and $K_5$). The answer 'when $n$ is even' inverts the parity, since for even $n$ the degree $n - 1$ is odd. The trap is forgetting that the relevant parity is that of the degree $n - 1$, not of $n$ itself.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-016",
+      "stem": "A connected graph on $4$ vertices $\\lbrace a,b,c,d \\rbrace$ has edges $\\lbrace a,b \\rbrace$, $\\lbrace b,c \\rbrace$, $\\lbrace c,d \\rbrace$. Does this graph have a Hamiltonian path (a path visiting every vertex exactly once)?",
+      "options": [
+        "Yes: $a, b, c, d$",
+        "No, because it has no cycle",
+        "No, because it is a tree",
+        "Yes: $a, c, b, d$"
+      ],
+      "answer": 0,
+      "explanation": "A Hamiltonian path visits every vertex exactly once, using existing edges for each step. The sequence $a, b, c, d$ uses the edges $\\lbrace a,b \\rbrace$, $\\lbrace b,c \\rbrace$, $\\lbrace c,d \\rbrace$, all of which are present, and touches each of the four vertices once, so it is a Hamiltonian path. A graph need not contain a cycle to have a Hamiltonian path, so 'No, because it has no cycle' is wrong; this graph is in fact a path, which is a tree, yet it still has a Hamiltonian path. The option $a, c, b, d$ fails because $\\lbrace a,c \\rbrace$ is not an edge. The trap is confusing the existence of a Hamiltonian path with the existence of a cycle; they are independent conditions.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-017",
+      "stem": "A connected graph with $9$ vertices and $8$ edges contains no cycle. Which statement is correct?",
+      "options": [
+        "It is a tree, since a connected graph on $n$ vertices with $n-1$ edges is a tree",
+        "It cannot be a tree, because trees need $n$ edges",
+        "It must contain a cycle",
+        "It is disconnected"
+      ],
+      "answer": 0,
+      "explanation": "A tree can be characterized as a connected graph that contains no cycle, and equivalently as a connected graph on $n$ vertices with exactly $n - 1$ edges. Here $n = 9$ and the edge count is $8 = 9 - 1$, with the graph connected and acyclic, so it is precisely a tree. The claim that trees need $n$ edges is false; that many edges would force a cycle. The trap is using $n$ as the tree edge count instead of $n - 1$, which is exactly the value $8$ given here.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-018",
+      "stem": "A simple graph has degree sequence $4, 4, 4, 4, 4$ on $5$ vertices. Which graph is this?",
+      "options": [
+        "the cycle $C_5$",
+        "the complete bipartite graph $K_{2,3}$",
+        "the complete graph $K_5$",
+        "a tree on $5$ vertices"
+      ],
+      "answer": 2,
+      "explanation": "On $5$ vertices the maximum possible degree is $4$, achieved only when a vertex is joined to all $4$ others. If every one of the $5$ vertices has degree $4$, then every vertex is adjacent to every other, which is exactly the complete graph $K_5$. The cycle $C_5$ is $2$-regular (degree $2$), a tree has a leaf of degree $1$, and $K_{2,3}$ has degrees $3,3,2,2,2$, so none of these match. The trap is not recognizing that an $(n-1)$-regular simple graph on $n$ vertices must be $K_n$.",
+      "difficulty": "stretch",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-019",
+      "stem": "A graph has $7$ edges. What is the sum of the degrees of all its vertices?",
+      "options": [
+        "$7$",
+        "$14$",
+        "$49$",
+        "$3.5$"
+      ],
+      "answer": 1,
+      "explanation": "By the handshaking lemma the sum of the degrees of all vertices equals twice the number of edges: $\\sum \\deg(v) = 2|E|$. With $|E| = 7$ this gives $2 \\times 7 = 14$. The answer $7$ confuses the degree sum with the edge count, and $3.5 = 7/2$ divides when it should multiply. The trap is applying the relation $\\sum \\deg(v) = 2|E|$ in the wrong direction; given the edges, the degree sum is double the edge count, not equal to or half of it.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-020",
+      "stem": "In the cycle graph $C_n$ with $n \\ge 3$, what is the degree of each vertex?",
+      "options": [
+        "$n - 1$",
+        "$n$",
+        "$2$",
+        "$1$"
+      ],
+      "answer": 2,
+      "explanation": "The cycle graph $C_n$ joins the vertices in a single closed loop, so each vertex is adjacent to exactly two others, its immediate predecessor and successor around the loop. Hence every vertex of $C_n$ has degree $2$, making $C_n$ a $2$-regular graph. The answer $n - 1$ is the degree in the complete graph $K_n$, not the cycle. The trap is importing the $K_n$ degree $n - 1$ into the cycle, where each vertex only ever has two neighbours.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-021",
+      "stem": "A graph on $6$ vertices has edges $\\lbrace 1,2 \\rbrace$, $\\lbrace 2,3 \\rbrace$, $\\lbrace 3,1 \\rbrace$, $\\lbrace 4,5 \\rbrace$. Vertex $6$ has no edges. How many connected components does the graph have?",
+      "options": [
+        "$2$",
+        "$4$",
+        "$1$",
+        "$3$"
+      ],
+      "answer": 3,
+      "explanation": "Each connected component is a maximal group of mutually reachable vertices. The vertices $1, 2, 3$ form one component (a triangle), $4$ and $5$ form a second component, and the isolated vertex $6$, with no edges at all, is a component on its own. That gives $3$ components in total. The answer $2$ forgets that an isolated vertex still counts as its own component. The trap is overlooking a vertex of degree $0$; an isolated vertex is a full component by itself.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-022",
+      "stem": "A connected graph has vertices of degrees $4, 4, 3, 3, 2$. Does it have an Euler circuit, an Euler path, or neither?",
+      "options": [
+        "Euler path but not an Euler circuit",
+        "Euler circuit, because the degree sum is even",
+        "neither, because some degrees are odd and they are not exactly two",
+        "Euler circuit, because it is connected"
+      ],
+      "answer": 0,
+      "explanation": "Count the odd-degree vertices: the degrees $3$ and $3$ are odd while $4, 4, 2$ are even, so there are exactly two odd-degree vertices. In a connected graph this is precisely the condition for an Euler path that is not a circuit, with the path running between the two odd vertices. An Euler circuit would require zero odd-degree vertices, which fails here. The degree sum being even is always true (it equals $2|E|$) and tells us nothing about Euler circuits. The trap is invoking the even degree sum or mere connectedness to claim an Euler circuit, when the count of odd vertices is what decides it.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-023",
+      "stem": "How many edges must be removed from the complete graph $K_4$ to turn it into a spanning tree on its $4$ vertices?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "The complete graph $K_4$ has $\\dfrac{4 \\times 3}{2} = 6$ edges. A spanning tree on $4$ vertices is a tree using all $4$ vertices, and a tree on $n$ vertices has $n - 1 = 3$ edges. To go from $6$ edges down to $3$ edges, one must remove $6 - 3 = 3$ edges. The answer $2$ would leave $4$ edges, which is one too many and would still contain a cycle. The trap is using the wrong tree edge count; the target is $n - 1 = 3$ edges, so $6 - 3 = 3$ edges are removed.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-024",
+      "stem": "A simple graph has $5$ vertices and the degree sequence $4, 3, 3, 2, 2$. How many edges does it have?",
+      "options": [
+        "$14$",
+        "$28$",
+        "$8$",
+        "$7$"
+      ],
+      "answer": 3,
+      "explanation": "The handshaking lemma gives the number of edges as half the degree sum. The degree sum is $4 + 3 + 3 + 2 + 2 = 14$, so $|E| = 14 / 2 = 7$. The answer $14$ reports the degree sum itself without halving, and $28 = 2 \\times 14$ doubles it instead. The trap is forgetting the factor of $2$ in $\\sum \\deg(v) = 2|E|$; the edge count is the degree sum divided by $2$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-025",
+      "stem": "Which of the following is true of the complete bipartite graph $K_{2,3}$?",
+      "options": [
+        "It has $5$ edges",
+        "It is the same as the complete graph $K_5$",
+        "Its vertices have degree sequence $3, 3, 2, 2, 2$",
+        "Every vertex has degree $4$"
+      ],
+      "answer": 2,
+      "explanation": "In $K_{2,3}$ the part of size $2$ and the part of size $3$ are fully joined across, with no edges inside a part. Each of the $2$ vertices in the first part connects to all $3$ vertices of the other part, giving degree $3$; each of the $3$ vertices in the second part connects to both vertices of the first part, giving degree $2$. So the degree sequence is $3, 3, 2, 2, 2$. It has $2 \\times 3 = 6$ edges (not $5$), and it is not $K_5$, in which every vertex would have degree $4$. The trap is treating $K_{2,3}$ as if it were complete on all $5$ vertices; bipartite graphs have no edges within a part, so the degrees are $3$ and $2$, not $4$.",
+      "difficulty": "stretch",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-026",
+      "stem": "A graph on vertices $\\lbrace a,b,c,d,e \\rbrace$ has edges $\\lbrace a,b \\rbrace$, $\\lbrace b,c \\rbrace$, $\\lbrace c,a \\rbrace$, $\\lbrace c,d \\rbrace$, $\\lbrace d,e \\rbrace$. Is the graph connected?",
+      "options": [
+        "Yes, every vertex is reachable from every other",
+        "No, because it contains a cycle",
+        "No, because $e$ is isolated",
+        "No, it has two components"
+      ],
+      "answer": 0,
+      "explanation": "A graph is connected when there is a path between every pair of vertices. Starting from $a$, the edges let us reach $b$ and $c$ (via the triangle $a,b,c$), then $d$ via $\\lbrace c,d \\rbrace$, and finally $e$ via $\\lbrace d,e \\rbrace$, so all five vertices lie in one component and the graph is connected. The presence of the cycle $a,b,c$ does not break connectedness, and $e$ is not isolated since $\\lbrace d,e \\rbrace$ is an edge. The trap is assuming a cycle or a far-out vertex disconnects the graph; here a single path reaches every vertex, so it is connected.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-027",
+      "stem": "How many vertices does a $4$-regular graph with $10$ edges have?",
+      "options": [
+        "$40$",
+        "$5$",
+        "$20$",
+        "$2$"
+      ],
+      "answer": 1,
+      "explanation": "In a $4$-regular graph every vertex has degree $4$, so with $n$ vertices the degree sum is $4n$. By the handshaking lemma the degree sum equals $2|E| = 2 \\times 10 = 20$. Setting $4n = 20$ gives $n = 5$. The answer $40 = 4 \\times 10$ multiplies the degree by the edge count directly, and $20$ uses the degree sum as the vertex count. The trap is skipping the handshaking relation; you must set the regular degree sum $4n$ equal to $2|E|$ and solve for $n$.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-028",
+      "stem": "A connected graph has vertices of degrees $2, 2, 2, 2$. Does it have an Euler circuit?",
+      "options": [
+        "No, because four vertices is too few",
+        "No, because it has no odd-degree vertices",
+        "Yes, because all vertices have even degree",
+        "Only if it is also a complete graph"
+      ],
+      "answer": 2,
+      "explanation": "A connected graph has an Euler circuit exactly when every vertex has even degree. Here all four vertices have degree $2$, which is even, so an Euler circuit exists (this graph is the cycle $C_4$, which is itself a closed Euler tour). Having no odd-degree vertices is the very condition that guarantees the circuit, so 'No, because it has no odd-degree vertices' inverts the rule. The trap is misreading the Euler circuit condition: zero odd-degree vertices is exactly what is required, not what forbids it.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-029",
+      "stem": "The complete graph $K_5$ is known to have a Hamiltonian cycle. What is the length of a Hamiltonian cycle in $K_5$ (the number of edges it uses)?",
+      "options": [
+        "$4$",
+        "$10$",
+        "$24$",
+        "$5$"
+      ],
+      "answer": 3,
+      "explanation": "A Hamiltonian cycle visits every vertex exactly once and returns to the start, so on $n$ vertices it uses exactly $n$ edges (one edge leaving each vertex around the loop). With $n = 5$ vertices the Hamiltonian cycle uses $5$ edges. The answer $4 = n - 1$ counts the edges of a Hamiltonian path, which does not close back to the start, and $10$ is the total number of edges in $K_5$, not the edges of one cycle. The trap is using the path length $n - 1$ for a cycle; closing the loop adds the final edge, giving $n$ edges in all.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-030",
+      "stem": "A graph $G$ has $6$ vertices and $5$ edges and is connected. Which conclusion is guaranteed?",
+      "options": [
+        "$G$ has a cycle",
+        "$G$ is a tree",
+        "$G$ is disconnected",
+        "$G$ is the complete graph $K_6$"
+      ],
+      "answer": 1,
+      "explanation": "A connected graph on $n$ vertices with exactly $n - 1$ edges is a tree, and a tree contains no cycle. Here $n = 6$ and the edge count is $5 = 6 - 1$ with the graph connected, so $G$ must be a tree and therefore acyclic. It cannot have a cycle, since a connected graph with a cycle on $6$ vertices needs at least $6$ edges, and it is certainly not $K_6$, which has $15$ edges. The trap is asserting a cycle when the edge count $n - 1$ together with connectedness forces a tree, which has none.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    }
+  ]
+}
