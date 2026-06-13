@@ -1,7 +1,8 @@
 // Pure exam attempt model. No DOM, no storage, injected clock and rng,
 // JSON-serializable so the whole attempt checkpoints to localStorage.
 
-import { drawQuestions, shuffleOptions } from './quiz-engine.js';
+import { drawQuestions, shuffleOptions, shuffle } from './quiz-engine.js';
+import { gradeCloze } from './cloze-engine.js';
 
 export function createAttempt(courseId, format, pool, rng = Math.random, now = Date.now) {
   const drawn = drawQuestions(pool, format.questions, rng);
@@ -12,9 +13,22 @@ export function createAttempt(courseId, format, pool, rng = Math.random, now = D
     durationMs: format.minutes * 60 * 1000,
     startedAt: now(),
     questions: drawn.map(q => {
+      if (q.format === 'cloze') {
+        return {
+          id: q.id,
+          format: 'cloze',
+          stem: q.stem,
+          solution: q.solution,
+          gaps: q.gaps.map(g => (g.type === 'dropdown' ? { ...g, options: shuffle(g.options, rng) } : { ...g })),
+          explanation: q.explanation,
+          difficulty: q.difficulty,
+          topicTitle: q.topicTitle ?? '',
+        };
+      }
       const s = shuffleOptions(q, rng);
       return {
         id: q.id,
+        format: 'mcq',
         stem: q.stem,
         options: s.options,
         answerIndex: s.answerIndex,
@@ -50,7 +64,8 @@ export function answeredCount(attempt) {
 export function scoreAttempt(attempt) {
   let correct = 0;
   attempt.questions.forEach((q, i) => {
-    if (attempt.answers[i] === q.answerIndex) correct++;
+    if (q.format === 'cloze') correct += gradeCloze(q, attempt.answers[i] || {}).score;
+    else if (attempt.answers[i] === q.answerIndex) correct += 1;
   });
   return { correct, total: attempt.questions.length };
 }

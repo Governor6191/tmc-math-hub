@@ -75,3 +75,21 @@ test('an attempt survives a JSON round trip (checkpoint shape)', () => {
   assert.equal(back.answers[0], 3);
   assert.equal(back.flags[2], true);
 });
+
+test('scoreAttempt gives partial credit for a cloze question and adds it to mcq marks', () => {
+  const pool = [
+    { id: 'm1', stem: 's', options: ['a', 'b'], answer: 0, explanation: 'e', difficulty: 'core', topicTitle: 'T' },
+    { id: 'c1', format: 'cloze', stem: 's2', solution: '{{1}} {{2}}',
+      gaps: [{ id: 1, type: 'number', answer: 2 }, { id: 2, type: 'number', answer: 5 }],
+      explanation: 'e2', difficulty: 'core', topicTitle: 'T' },
+  ];
+  const fmt = { id: 'f', label: 'F', questions: 2, minutes: 10 };
+  const a = createAttempt('c', fmt, pool, () => 0.1, () => 0);
+  const mcq = a.questions.findIndex(q => q.format !== 'cloze');
+  const cloze = a.questions.findIndex(q => q.format === 'cloze');
+  answerQuestion(a, mcq, a.questions[mcq].answerIndex);     // 1.0
+  answerQuestion(a, cloze, { 1: '2', 2: '9' });             // 0.5
+  const s = scoreAttempt(a);
+  assert.equal(s.total, 2);
+  assert.equal(s.correct, 1.5);
+});
