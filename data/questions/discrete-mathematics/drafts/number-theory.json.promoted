@@ -1,0 +1,427 @@
+{
+  "courseId": "discrete-mathematics",
+  "topicId": "number-theory",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "discrete-mathematics-number-theory-001",
+      "stem": "Using the division algorithm, when $47$ is divided by $6$ the result is written as $47 = 6q + r$ with $0 \\le r < 6$. What is the remainder $r$?",
+      "options": [
+        "$7$",
+        "$5$",
+        "$1$",
+        "$6$"
+      ],
+      "answer": 1,
+      "explanation": "The division algorithm writes $47 = 6q + r$ with the quotient $q$ as large as possible while keeping $0 \\le r < 6$. Since $6 \\times 7 = 42$ and $6 \\times 8 = 48 > 47$, the quotient is $q = 7$ and the remainder is $r = 47 - 42 = 5$. The answer $7$ is the quotient $q$, reported in place of the remainder. The trap is swapping the quotient and the remainder: $r$ is what is left over after subtracting $6q$, not the number of times $6$ fits in.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-002",
+      "stem": "A number is divisible by $3$ exactly when the sum of its digits is divisible by $3$. Which one of the following numbers is divisible by $3$?",
+      "options": [
+        "$742$",
+        "$821$",
+        "$655$",
+        "$738$"
+      ],
+      "answer": 3,
+      "explanation": "Apply the digit-sum rule to each candidate. For $738$ the digit sum is $7 + 3 + 8 = 18$, which is divisible by $3$, so $738$ is divisible by $3$. The others fail: $742$ gives $13$, $821$ gives $11$, and $655$ gives $16$, none a multiple of $3$. The trap is checking only the last digit (as one would for $2$ or $5$); divisibility by $3$ depends on the whole digit sum, not the final digit.",
+      "difficulty": "warmup",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-003",
+      "stem": "Reduce $17$ modulo $5$. That is, find the value of $17 \\bmod 5$.",
+      "options": [
+        "$2$",
+        "$3$",
+        "$12$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "The value $a \\bmod 5$ is the remainder when $a$ is divided by $5$, lying in $\\lbrace 0, 1, 2, 3, 4 \\rbrace$. Since $17 = 5 \\times 3 + 2$, the remainder is $2$, so $17 \\bmod 5 = 2$. The answer $3$ is the quotient, and $12 = 17 - 5$ subtracts $5$ only once instead of reducing all the way below $5$. The trap is stopping the subtraction early or reporting the quotient: keep subtracting multiples of $5$ until the result is in $\\lbrace 0, \\dots, 4 \\rbrace$.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-004",
+      "stem": "What is the greatest common divisor $\\gcd(12, 18)$?",
+      "options": [
+        "$36$",
+        "$3$",
+        "$6$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "List the common divisors of $12$ and $18$. The divisors of $12$ are $1, 2, 3, 4, 6, 12$ and of $18$ are $1, 2, 3, 6, 9, 18$; the largest shared one is $6$, so $\\gcd(12, 18) = 6$. The answer $36$ is the least common multiple $\\operatorname{lcm}(12, 18)$, not the gcd. The trap is confusing gcd with lcm: the gcd is the largest number dividing both (so it cannot exceed either input), while the lcm is the smallest number both divide into.",
+      "difficulty": "warmup",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-005",
+      "stem": "A market trader multiplies $7$ cedis by $8$ cedis and gets $56$. Using last-digit (mod $10$) arithmetic, what is the units digit of the product $7 \\times 8$?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$1$",
+        "$3$"
+      ],
+      "answer": 1,
+      "explanation": "The units digit of a product depends only on the units digits of the factors, that is, on the values modulo $10$. Here $7 \\times 8 = 56$, and $56 \\bmod 10 = 6$, so the units digit is $6$. The answer $5$ reads off the tens digit of $56$ instead of the units digit. The trap is picking the wrong digit of the product: the last-digit question asks for the value mod $10$, which is the rightmost digit, not the leading one.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-006",
+      "stem": "A trotro leaves the Kumasi lorry station when the station clock reads $9$ o'clock. The journey takes $5$ hours. On a $12$-hour clock, what hour will it show when the trotro arrives?",
+      "options": [
+        "$14$",
+        "$3$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "Clock hours wrap around every $12$, so the new hour is $(9 + 5) \\bmod 12$. Now $9 + 5 = 14$, and $14 \\bmod 12 = 2$, so the clock reads $2$ o'clock. The answer $14$ forgets to wrap past $12$, and $3$ is an off-by-one slip from miscounting the steps $10, 11, 12, 1, 2$. The trap is not reducing modulo $12$: a $12$-hour clock has no hour $14$, so the sum must be brought back into the range $1$ to $12$.",
+      "difficulty": "warmup",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-007",
+      "stem": "By the division algorithm, $100 = 7q + r$ with $0 \\le r < 7$. What is the quotient $q$?",
+      "options": [
+        "$14$",
+        "$2$",
+        "$15$",
+        "$13$"
+      ],
+      "answer": 0,
+      "explanation": "The quotient is the largest integer $q$ with $7q \\le 100$. Since $7 \\times 14 = 98 \\le 100$ but $7 \\times 15 = 105 > 100$, the quotient is $q = 14$, leaving remainder $r = 100 - 98 = 2$. The answer $2$ is the remainder $r$, given in place of the quotient. The trap is swapping the quotient and the remainder: $q$ counts how many whole $7$s fit into $100$, while $r$ is the small leftover.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-008",
+      "stem": "Apply the division algorithm to $-17$ divided by $5$, so that $-17 = 5q + r$ with $0 \\le r < 5$. What is the remainder $r$?",
+      "options": [
+        "$-2$",
+        "$2$",
+        "$3$",
+        "$-3$"
+      ],
+      "answer": 2,
+      "explanation": "The division algorithm requires the remainder to satisfy $0 \\le r < 5$, so $r$ must be nonnegative even when the dividend is negative. Taking $q = -4$ gives $5 \\times (-4) = -20$ and $r = -17 - (-20) = 3$, which lies in range, so $r = 3$. The answer $-2$ comes from writing $-17 = 5 \\times (-3) - 2$, but $-2$ is not allowed as a remainder. The trap is keeping a negative remainder: push the quotient down by one more so the leftover lands in $\\lbrace 0, 1, 2, 3, 4 \\rbrace$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-009",
+      "stem": "What is the prime factorization of $360$?",
+      "options": [
+        "$2^{2} \\times 3^{2} \\times 5 \\times 7$",
+        "$2^{3} \\times 3^{3} \\times 5$",
+        "$2^{4} \\times 3 \\times 5$",
+        "$2^{3} \\times 3^{2} \\times 5$"
+      ],
+      "answer": 3,
+      "explanation": "Factor by repeatedly dividing out primes: $360 = 2 \\times 180 = 2 \\times 2 \\times 90 = 2 \\times 2 \\times 2 \\times 45 = 2^{3} \\times 45$, and $45 = 3^{2} \\times 5$. So $360 = 2^{3} \\times 3^{2} \\times 5$. A quick check multiplies back: $8 \\times 9 \\times 5 = 360$. The answer $2^{3} \\times 3^{3} \\times 5$ over-counts the factor of $3$ (that product is $1080$). The trap is mis-tallying how many times a prime divides: $360 / 9 = 40$ is whole but $360 / 27$ is not, so $3$ appears exactly twice.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-010",
+      "stem": "Given that $72 = 2^{3} \\times 3^{2}$, how many positive divisors does $72$ have?",
+      "options": [
+        "$12$",
+        "$5$",
+        "$6$",
+        "$8$"
+      ],
+      "answer": 0,
+      "explanation": "For $n = p^{a} q^{b}$ the number of positive divisors is $(a+1)(b+1)$, since each prime's exponent in a divisor ranges from $0$ up to its value in $n$. Here $72 = 2^{3} \\times 3^{2}$ gives $(3+1)(2+1) = 4 \\times 3 = 12$ divisors. The answer $5 = 3 + 2$ adds the exponents, and $6 = 3 \\times 2$ multiplies the exponents themselves. The trap is using the exponents directly instead of adding one to each first: the count multiplies $(a+1)(b+1)$, not $a \\cdot b$ or $a + b$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-011",
+      "stem": "Given that $12 = 2^{2} \\times 3$, what is the sum of all the positive divisors of $12$?",
+      "options": [
+        "$16$",
+        "$28$",
+        "$6$",
+        "$11$"
+      ],
+      "answer": 1,
+      "explanation": "The sum of the divisors of $p^{a} q^{b}$ factors as $(1 + p + \\dots + p^{a})(1 + q + \\dots + q^{b})$. For $12 = 2^{2} \\times 3$ this is $(1 + 2 + 4)(1 + 3) = 7 \\times 4 = 28$, which matches listing $1 + 2 + 3 + 4 + 6 + 12 = 28$. The answer $16$ is the sum of the proper divisors only, dropping $12$ itself; $6$ is just the count of divisors; and $11 = 7 + 4$ adds the two bracket sums instead of multiplying them. The trap is mishandling the divisor-sum formula: the brackets multiply to give $28$, and the full total includes $n$ itself.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-012",
+      "stem": "Use the Euclidean algorithm to find $\\gcd(252, 105)$.",
+      "options": [
+        "$3$",
+        "$7$",
+        "$21$",
+        "$1260$"
+      ],
+      "answer": 2,
+      "explanation": "Run the Euclidean algorithm: $252 = 2 \\times 105 + 42$, then $105 = 2 \\times 42 + 21$, then $42 = 2 \\times 21 + 0$. The last nonzero remainder is $21$, so $\\gcd(252, 105) = 21$. The answer $1260$ is the least common multiple, not the gcd. The trap is reporting the lcm in place of the gcd: the gcd is the final nonzero remainder of the algorithm and must divide both inputs, so it cannot be larger than $105$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-013",
+      "stem": "Using the identity $\\gcd(a,b) \\times \\operatorname{lcm}(a,b) = a \\times b$, find $\\operatorname{lcm}(12, 18)$ given that $\\gcd(12, 18) = 6$.",
+      "options": [
+        "$36$",
+        "$6$",
+        "$108$",
+        "$216$"
+      ],
+      "answer": 0,
+      "explanation": "Rearranging the identity gives $\\operatorname{lcm}(a,b) = \\dfrac{a \\times b}{\\gcd(a,b)}$. Here $\\operatorname{lcm}(12, 18) = \\dfrac{12 \\times 18}{6} = \\dfrac{216}{6} = 36$. The answer $216$ is the raw product $a \\times b$, forgetting to divide by the gcd, and $6$ just repeats the gcd. The trap is leaving out the division by $\\gcd(a,b)$: the product $a \\times b$ counts the shared factors twice, and dividing by the gcd removes the double count.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-014",
+      "stem": "Two sizes of paving stone are $8$ cm and $12$ cm long. What is $\\gcd(8, 12)$, the largest length that divides both exactly?",
+      "options": [
+        "$24$",
+        "$2$",
+        "$96$",
+        "$4$"
+      ],
+      "answer": 3,
+      "explanation": "The divisors of $8$ are $1, 2, 4, 8$ and of $12$ are $1, 2, 3, 4, 6, 12$, so the greatest common one is $4$, giving $\\gcd(8, 12) = 4$. The answer $24$ is $\\operatorname{lcm}(8, 12)$, the smallest length both divide into, which is the opposite quantity. The trap is confusing gcd with lcm: a length that divides both stones cannot be longer than the shorter stone, so the gcd must be at most $8$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-015",
+      "stem": "Evaluate $(23 + 19) \\bmod 7$.",
+      "options": [
+        "$2$",
+        "$1$",
+        "$0$",
+        "$6$"
+      ],
+      "answer": 2,
+      "explanation": "Modular addition can be done before or after reducing. Directly, $23 + 19 = 42$, and $42 = 7 \\times 6$, so $42 \\bmod 7 = 0$. Checking with reduced parts, $23 \\equiv 2$ and $19 \\equiv 5 \\pmod 7$, and $2 + 5 = 7 \\equiv 0$, which agrees. The answer $6$ is the quotient $42 / 7$, not the remainder. The trap is reporting the quotient instead of the remainder: when the sum is an exact multiple of the modulus, the result of the mod is $0$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-016",
+      "stem": "The prime factorization of $360$ is $2^{3} \\times 3^{2} \\times 5$. How many distinct prime factors does $360$ have?",
+      "options": [
+        "$6$",
+        "$3$",
+        "$24$",
+        "$4$"
+      ],
+      "answer": 1,
+      "explanation": "The distinct prime factors are just the different primes appearing in the factorization, namely $2$, $3$, and $5$, so there are $3$ of them. The answer $6 = 3 + 2 + 1$ counts the primes with multiplicity (every repeated factor counted), and $24 = (3+1)(2+1)(1+1)$ is the number of positive divisors, a different quantity. The trap is confusing the count of distinct primes with the total prime factors or with the divisor count: distinct primes ignores the exponents and just tallies how many different primes are present, here $3$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-017",
+      "stem": "Evaluate $3^{4} \\bmod 5$.",
+      "options": [
+        "$1$",
+        "$3$",
+        "$4$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "Compute the power, then reduce: $3^{4} = 81$, and $81 = 5 \\times 16 + 1$, so $3^{4} \\bmod 5 = 1$. Equivalently, reduce as you go: $3^{2} = 9 \\equiv 4$, then $3^{4} = (3^{2})^{2} \\equiv 4^{2} = 16 \\equiv 1 \\pmod 5$. The answer $2$ comes from computing $3 \\times 4 = 12 \\equiv 2$, that is, multiplying the base by the exponent instead of raising to the power. The trap is replacing $3^{4}$ with $3 \\times 4$: the exponent means repeated multiplication, not a single product with $4$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-018",
+      "stem": "Evaluate $2^{10} \\bmod 7$ by using the cycle of powers of $2$ modulo $7$.",
+      "options": [
+        "$4$",
+        "$1$",
+        "$2$",
+        "$6$"
+      ],
+      "answer": 2,
+      "explanation": "The powers of $2$ modulo $7$ cycle: $2^{1} \\equiv 2$, $2^{2} \\equiv 4$, $2^{3} \\equiv 1$, and then they repeat with period $3$. Write $2^{10} = (2^{3})^{3} \\times 2^{1} \\equiv 1^{3} \\times 2 = 2 \\pmod 7$. The answer $6$ comes from reducing the exponent the wrong way, for instance computing $2 \\times 10 = 20 \\equiv 6$, which multiplies the base by the exponent. The trap is collapsing $2^{10}$ to $2 \\times 10$: reduce the exponent against the cycle length $3$ (since $10 \\equiv 1 \\pmod 3$), not the base against the modulus.",
+      "difficulty": "stretch",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-019",
+      "stem": "What is the last digit of $7^{4}$?",
+      "options": [
+        "$7$",
+        "$1$",
+        "$9$",
+        "$3$"
+      ],
+      "answer": 1,
+      "explanation": "Last digits of powers of $7$ cycle as $7, 9, 3, 1$ for exponents $1, 2, 3, 4$, then repeat with period $4$. So $7^{4}$ ends in $1$, which checks against $7^{4} = 2401$. The answer $7$ reads off the last digit of the base $7$ rather than of the fourth power. The trap is reporting the units digit of the base instead of tracking the cycle: the last digit of a power follows its own repeating pattern, here landing on $1$ at the fourth step.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-020",
+      "stem": "What is the last digit of $3^{100}$?",
+      "options": [
+        "$3$",
+        "$9$",
+        "$7$",
+        "$1$"
+      ],
+      "answer": 3,
+      "explanation": "The last digits of powers of $3$ repeat in the cycle $3, 9, 7, 1$ with period $4$. Since $100 \\equiv 0 \\pmod 4$, the exponent lands at the end of a cycle, matching $3^{4}$, which ends in $1$. So $3^{100}$ ends in $1$. The answer $3$ comes from reading the base's units digit, ignoring the exponent entirely. The trap is taking the last digit from the base rather than from the position $100 \\bmod 4$ in the cycle, which here points to the digit $1$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-021",
+      "stem": "Find the integer $x$ with $0 \\le x < 7$ that satisfies $3x \\equiv 1 \\pmod 7$. (This $x$ is the multiplicative inverse of $3$ modulo $7$.)",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "A modular inverse of $3$ modulo $7$ is a whole number $x$ in $\\lbrace 0, \\dots, 6 \\rbrace$ with $3x \\equiv 1 \\pmod 7$. Testing values, $3 \\times 5 = 15 = 7 \\times 2 + 1 \\equiv 1$, so $x = 5$. The answer $3$ would only fit if the ordinary reciprocal $1/3$ made sense here, but modular arithmetic has no fractions. The trap is reaching for the real-number reciprocal: the inverse mod $7$ is the residue you multiply by to land on $1$, found by search or the Euclidean algorithm, here $5$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-022",
+      "stem": "Find the integer $x$ with $0 \\le x < 9$ that satisfies $4x \\equiv 1 \\pmod 9$.",
+      "options": [
+        "$7$",
+        "$5$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": 0,
+      "explanation": "The inverse of $4$ modulo $9$ is the residue $x$ with $4x \\equiv 1 \\pmod 9$. Testing residues, $4 \\times 7 = 28 = 9 \\times 3 + 1 \\equiv 1$, so $x = 7$. The answer $5$ comes from taking the additive complement $9 - 4 = 5$, confusing 'the number that adds to the modulus' with 'the number that multiplies to $1$'. The trap is mixing up the additive and multiplicative inverse: the modular inverse is found by which residue gives a product of $1$, not by subtracting from $9$, and $4 \\times 5 = 20 \\equiv 2$, not $1$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-023",
+      "stem": "Solve the linear congruence $5x \\equiv 3 \\pmod 7$ for the integer $x$ with $0 \\le x < 7$.",
+      "options": [
+        "$1$",
+        "$4$",
+        "$6$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "Since $\\gcd(5, 7) = 1$, there is a unique solution modulo $7$. Multiply both sides by the inverse of $5$, which is $3$ because $5 \\times 3 = 15 \\equiv 1$: then $x \\equiv 3 \\times 3 = 9 \\equiv 2 \\pmod 7$. A direct check gives $5 \\times 2 = 10 \\equiv 3$, as required, so $x = 2$. The answer $4$ comes from dividing the right side by $5$ as if in ordinary arithmetic. The trap is treating the congruence like a real equation: you cannot divide by $5$, you multiply by its modular inverse.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-024",
+      "stem": "Working modulo $12$, which one of the following products is congruent to $0$, even though neither factor is $0 \\bmod 12$?",
+      "options": [
+        "$5 \\times 7$",
+        "$4 \\times 3$",
+        "$5 \\times 11$",
+        "$7 \\times 11$"
+      ],
+      "answer": 1,
+      "explanation": "A product is $0 \\bmod 12$ when it is a multiple of $12$. Among the choices, $4 \\times 3 = 12 \\equiv 0 \\pmod{12}$, yet neither $4$ nor $3$ is $0 \\bmod 12$; these are zero divisors. The others give nonzero residues: $5 \\times 7 = 35 \\equiv 11$, $5 \\times 11 = 55 \\equiv 7$, and $7 \\times 11 = 77 \\equiv 5$. The trap is assuming a product can be $0 \\bmod m$ only if a factor is: when $m$ is composite, factors that together supply all of $m$'s primes (here $4$ and $3$ supplying $12$) multiply to $0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-025",
+      "stem": "Which one of the following congruences is true?",
+      "options": [
+        "$50 \\equiv 17 \\pmod 7$",
+        "$29 \\equiv 10 \\pmod 6$",
+        "$38 \\equiv 14 \\pmod 8$",
+        "$41 \\equiv 13 \\pmod 9$"
+      ],
+      "answer": 2,
+      "explanation": "By definition $a \\equiv b \\pmod m$ means $m$ divides $a - b$. Testing $38 \\equiv 14 \\pmod 8$, the difference $38 - 14 = 24 = 8 \\times 3$, which $8$ divides exactly, so this congruence is true. The others fail the divisibility test: $50 - 17 = 33$ is not a multiple of $7$, $29 - 10 = 19$ is not a multiple of $6$, and $41 - 13 = 28$ is not a multiple of $9$. The trap is checking whether the two numbers look close or share a last digit rather than whether the modulus divides their difference: only $24$ here is a clean multiple of its modulus.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-026",
+      "stem": "Today is Monday. A cultural festival is exactly $100$ days from today. On what day of the week will the festival fall?",
+      "options": [
+        "$\\text{Tuesday}$",
+        "$\\text{Wednesday}$",
+        "$\\text{Thursday}$",
+        "$\\text{Monday}$"
+      ],
+      "answer": 1,
+      "explanation": "Days of the week repeat every $7$, so only $100 \\bmod 7$ matters. Since $100 = 7 \\times 14 + 2$, the festival is $2$ weekdays past Monday: Monday plus $2$ gives Wednesday. The Tuesday option advances by only $1$, an off-by-one from miscounting the remainder. The trap is reducing modulo the wrong number or miscounting the offset: weekday arithmetic is mod $7$ (not mod $12$ like a clock), and $100 \\bmod 7 = 2$ moves Monday to Wednesday.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-027",
+      "stem": "A product code ends in a single check digit $c$ chosen so that the sum of all the digits, including $c$, is congruent to $0 \\pmod{10}$. If the digits before the check digit sum to $37$, what is the check digit $c$ (with $0 \\le c \\le 9$)?",
+      "options": [
+        "$7$",
+        "$0$",
+        "$5$",
+        "$3$"
+      ],
+      "answer": 3,
+      "explanation": "The rule requires $37 + c \\equiv 0 \\pmod{10}$, so $c \\equiv -37 \\equiv -7 \\equiv 3 \\pmod{10}$. The check digit is $c = 3$, since $37 + 3 = 40$ is a multiple of $10$. The answer $7$ takes $37 \\bmod 10 = 7$ directly, reporting the leftover instead of what must be added to clear it. The trap is giving the current residue rather than its complement: the check digit is $10 - (37 \\bmod 10) = 10 - 7 = 3$, the amount needed to reach the next multiple of $10$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-028",
+      "stem": "A number is divisible by $11$ exactly when the alternating sum of its digits (from the right: first digit minus second plus third and so on) is divisible by $11$. Is $2728$ divisible by $11$?",
+      "options": [
+        "$\\text{Yes, the alternating sum } 8-2+7-2=11 \\text{ is a multiple of } 11$",
+        "$\\text{No, the digit sum } 2+7+2+8=19 \\text{ is not a multiple of } 11$",
+        "$\\text{No, } 2728 \\text{ is even so it cannot be divisible by } 11$",
+        "$\\text{Yes, because } 2728 \\text{ ends in } 8$"
+      ],
+      "answer": 0,
+      "explanation": "The test for $11$ uses the alternating digit sum, not the plain digit sum. From the right, $8 - 2 + 7 - 2 = 11$, which is divisible by $11$, so $2728$ is divisible by $11$ (indeed $2728 = 11 \\times 248$). The option that adds the plain digit sum $2+7+2+8=19$ applies the wrong rule, the one meant for $3$ or $9$. The trap is using the ordinary digit sum for an $11$ test: the correct rule alternates the signs of the digits, here giving exactly $11$.",
+      "difficulty": "stretch",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-029",
+      "stem": "Two whole numbers satisfy $\\gcd = 6$ and $\\operatorname{lcm} = 72$. If one of the numbers is $24$, what is the other number? (Use $\\gcd \\times \\operatorname{lcm} = a \\times b$.)",
+      "options": [
+        "$18$",
+        "$12$",
+        "$288$",
+        "$9$"
+      ],
+      "answer": 0,
+      "explanation": "From $\\gcd \\times \\operatorname{lcm} = a \\times b$, the product of the two numbers is $6 \\times 72 = 432$. With one number $a = 24$, the other is $b = 432 / 24 = 18$. A check confirms $\\gcd(24, 18) = 6$ and $\\operatorname{lcm}(24, 18) = 72$. The answer $12$ comes from dividing the lcm by the gcd, $72 / 6$, which uses the wrong two quantities. The trap is mishandling the identity: the product of the numbers equals $\\gcd \\times \\operatorname{lcm}$, so the missing number is that product divided by the known number, $432 / 24 = 18$, not the lcm divided by the gcd.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-030",
+      "stem": "A market woman has a basket of oranges. When she shares them into groups of $5$, exactly $3$ are left over. The number of oranges is the smallest such count greater than $20$. How many oranges are there?",
+      "options": [
+        "$25$",
+        "$28$",
+        "$23$",
+        "$18$"
+      ],
+      "answer": 2,
+      "explanation": "The count $n$ satisfies $n \\equiv 3 \\pmod 5$, so it has the form $5k + 3$, giving $\\dots, 18, 23, 28, \\dots$. The smallest such value greater than $20$ is $23$, since $18$ is below $20$ and $23 = 5 \\times 4 + 3$ is the next one up. The answer $28$ overshoots to the following term in the list. The trap is picking the wrong member of the residue class: list the values $5k + 3$ and take the first one strictly above $20$, which is $23$, not $28$ or the sub-$20$ value $18$.",
+      "difficulty": "stretch",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    }
+  ]
+}
