@@ -1,0 +1,427 @@
+{
+  "courseId": "calculus-ii",
+  "topicId": "applications-of-integration",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "calculus-ii-applications-of-integration-001",
+      "stem": "Find the area of the region under $y = x^2$ and above the $x$-axis from $x = 0$ to $x = 3$.",
+      "options": [
+        "$27$",
+        "$9$",
+        "$6$",
+        "$\\dfrac{9}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "The area is $\\displaystyle\\int_0^3 x^2\\,dx = \\left[\\dfrac{x^3}{3}\\right]_0^3 = \\dfrac{27}{3} = 9$. As a sanity check, the region sits inside the $3 \\times 9$ rectangle, and $9$ is comfortably less than $27$, so the size is plausible. The option $27$ forgets to divide by the new exponent and just reports $x^3$ at $x = 3$; the option $6$ differentiates instead of integrating, giving $2x$ at $x = 3$; and $\\dfrac{9}{2}$ uses the triangle formula as if the boundary were the line $y = x$. The trap is dropping the $\\tfrac{1}{3}$ from the power rule and quoting the antiderivative unevaluated.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-002",
+      "stem": "Find the area of the region bounded by $y = x$ and $y = x^2$ between their intersection points.",
+      "options": [
+        "$\\dfrac{1}{6}$",
+        "$-\\dfrac{1}{6}$",
+        "$\\dfrac{1}{2}$",
+        "$\\dfrac{1}{3}$"
+      ],
+      "answer": 0,
+      "explanation": "The curves meet where $x = x^2$, that is at $x = 0$ and $x = 1$, and on $(0, 1)$ the line $y = x$ lies above the parabola $y = x^2$. So the area is $\\displaystyle\\int_0^1 \\left(x - x^2\\right)dx = \\left[\\dfrac{x^2}{2} - \\dfrac{x^3}{3}\\right]_0^1 = \\dfrac{1}{2} - \\dfrac{1}{3} = \\dfrac{1}{6}$. The value $-\\dfrac{1}{6}$ integrates bottom minus top, $x^2 - x$, and keeps the negative sign; $\\dfrac{1}{2}$ keeps only the $\\int x\\,dx$ piece and forgets to subtract the parabola; and $\\dfrac{1}{3}$ integrates the parabola alone. The trap is writing the integrand as bottom minus top: area is always top minus bottom, so a negative answer signals the order was flipped.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-003",
+      "stem": "The region under $y = \\sqrt{x}$ from $x = 0$ to $x = 4$ is revolved about the $x$-axis. Find the volume of the solid.",
+      "options": [
+        "$8$",
+        "$\\dfrac{16\\pi}{3}$",
+        "$4\\pi$",
+        "$8\\pi$"
+      ],
+      "answer": 3,
+      "explanation": "Disks perpendicular to the $x$-axis have radius $y = \\sqrt{x}$, so $V = \\pi\\displaystyle\\int_0^4 \\left(\\sqrt{x}\\right)^2 dx = \\pi\\int_0^4 x\\,dx = \\pi\\left[\\dfrac{x^2}{2}\\right]_0^4 = 8\\pi$. Squaring the radius is what turns $\\sqrt{x}$ into the clean integrand $x$. The option $8$ drops the leading $\\pi$ from the disk formula; $4\\pi$ integrates $\\sqrt{x}$ without squaring the radius, computing $\\pi\\int \\sqrt{x}\\,dx$ wrongly evaluated; and $\\dfrac{16\\pi}{3}$ comes from $\\pi\\int \\left(\\sqrt{x}\\right)^2$ but with an arithmetic slip on the bounds. The trap is forgetting to square the radius: the disk area is $\\pi r^2$, not $\\pi r$.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-004",
+      "stem": "Find the average value of $f(x) = x^2$ on the interval $[0, 3]$.",
+      "options": [
+        "$3$",
+        "$\\dfrac{9}{2}$",
+        "$9$",
+        "$27$"
+      ],
+      "answer": 0,
+      "explanation": "The average value is $\\dfrac{1}{b - a}\\displaystyle\\int_a^b f(x)\\,dx = \\dfrac{1}{3 - 0}\\int_0^3 x^2\\,dx = \\dfrac{1}{3}\\cdot 9 = 3$. A quick check: $f$ ranges from $0$ to $9$ on this interval, and $3$ lies between, as any average must. The option $9$ computes the integral $\\int_0^3 x^2\\,dx = 9$ but forgets to divide by the length $3$; $27$ leaves the antiderivative unevaluated; and $\\dfrac{9}{2}$ averages the endpoints $\\tfrac{0 + 9}{2}$ as if $f$ were linear. The trap is skipping the division by $b - a$, which reports the integral rather than the average.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-005",
+      "stem": "Find the area of the region under $y = 4 - x^2$ and above the $x$-axis from $x = -2$ to $x = 2$.",
+      "options": [
+        "$\\dfrac{16}{3}$",
+        "$8$",
+        "$\\dfrac{32}{3}$",
+        "$16$"
+      ],
+      "answer": 2,
+      "explanation": "On $[-2, 2]$ the parabola $y = 4 - x^2$ is nonnegative, so the area is $\\displaystyle\\int_{-2}^{2}\\left(4 - x^2\\right)dx = \\left[4x - \\dfrac{x^3}{3}\\right]_{-2}^{2}$. Evaluating, the top gives $8 - \\dfrac{8}{3}$ and the bottom gives $-8 + \\dfrac{8}{3}$, so the difference is $16 - \\dfrac{16}{3} = \\dfrac{32}{3}$. The option $\\dfrac{16}{3}$ integrates only over $[0, 2]$ and forgets to double for the symmetric left half; $16$ keeps just the $4x$ term and drops $\\dfrac{x^3}{3}$; and $8$ uses $\\int_0^2$ of the same integrand. The trap is integrating over half the symmetric interval and forgetting the region extends to $x = -2$.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Calculus"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-006",
+      "stem": "The region under $y = x$ from $x = 0$ to $x = 2$ is revolved about the $x$-axis. Find the volume of the resulting cone.",
+      "options": [
+        "$2\\pi$",
+        "$\\dfrac{8}{3}$",
+        "$4\\pi$",
+        "$\\dfrac{8\\pi}{3}$"
+      ],
+      "answer": 3,
+      "explanation": "Disks of radius $y = x$ give $V = \\pi\\displaystyle\\int_0^2 x^2\\,dx = \\pi\\left[\\dfrac{x^3}{3}\\right]_0^2 = \\dfrac{8\\pi}{3}$. This matches the cone formula $\\tfrac{1}{3}\\pi r^2 h$ with $r = 2$ and $h = 2$, namely $\\tfrac{1}{3}\\pi\\cdot 4\\cdot 2 = \\dfrac{8\\pi}{3}$, so the answer checks. The option $\\dfrac{8}{3}$ drops the $\\pi$; $4\\pi$ integrates $\\pi\\int x\\,dx$ without squaring the radius; and $2\\pi$ leaves out both the squaring and the $\\tfrac{1}{3}$. The trap is forgetting the leading $\\pi$ that every disk slice carries.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-007",
+      "stem": "The region bounded by $y = x^2$, the $x$-axis, and $x = 2$ is revolved about the $y$-axis. Using cylindrical shells, find the volume.",
+      "options": [
+        "$\\dfrac{32\\pi}{5}$",
+        "$\\dfrac{16\\pi}{3}$",
+        "$4\\pi$",
+        "$8\\pi$"
+      ],
+      "answer": 3,
+      "explanation": "A shell at position $x$ has radius $x$ and height $y = x^2$, so $V = 2\\pi\\displaystyle\\int_0^2 x\\cdot x^2\\,dx = 2\\pi\\int_0^2 x^3\\,dx = 2\\pi\\left[\\dfrac{x^4}{4}\\right]_0^2 = 2\\pi\\cdot 4 = 8\\pi$. The option $4\\pi$ forgets the $2\\pi$ and uses a bare $\\pi$ out front; $\\dfrac{32\\pi}{5}$ swaps radius and height, integrating $2\\pi\\int x^2\\cdot x^2$ as if the height were $x$ and radius $x^2$; and $\\dfrac{16\\pi}{3}$ uses height $x$ with radius $x$. The trap is swapping the shell radius and height: about the $y$-axis the radius is the distance $x$ and the height is the function value.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-008",
+      "stem": "Find the area of the region enclosed by $y = 2x$ and $y = x^2$.",
+      "options": [
+        "$4$",
+        "$\\dfrac{8}{3}$",
+        "$\\dfrac{4}{3}$",
+        "$-\\dfrac{4}{3}$"
+      ],
+      "answer": 2,
+      "explanation": "The curves meet where $x^2 = 2x$, that is at $x = 0$ and $x = 2$, and on $(0, 2)$ the line $y = 2x$ is above the parabola. So the area is $\\displaystyle\\int_0^2 \\left(2x - x^2\\right)dx = \\left[x^2 - \\dfrac{x^3}{3}\\right]_0^2 = 4 - \\dfrac{8}{3} = \\dfrac{4}{3}$. The option $-\\dfrac{4}{3}$ integrates $x^2 - 2x$, the bottom minus the top, keeping the sign; $\\dfrac{8}{3}$ integrates the parabola $x^2$ alone; and $4$ keeps only the $\\int 2x\\,dx$ piece. The trap is subtracting in the wrong order: the integrand must be the upper curve minus the lower, here $2x - x^2$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-009",
+      "stem": "The region enclosed by $y = 2x$ and $y = x^2$ is revolved about the $x$-axis. Find the volume of the solid.",
+      "options": [
+        "$\\dfrac{64\\pi}{15}$",
+        "$\\dfrac{4\\pi}{3}$",
+        "$\\dfrac{32\\pi}{15}$",
+        "$\\dfrac{8\\pi}{15}$"
+      ],
+      "answer": 0,
+      "explanation": "The curves meet at $x = 0$ and $x = 2$, with $y = 2x$ outer and $y = x^2$ inner. Washers give $V = \\pi\\displaystyle\\int_0^2 \\left[(2x)^2 - \\left(x^2\\right)^2\\right]dx = \\pi\\int_0^2 \\left(4x^2 - x^4\\right)dx = \\pi\\left[\\dfrac{4x^3}{3} - \\dfrac{x^5}{5}\\right]_0^2 = \\pi\\left(\\dfrac{32}{3} - \\dfrac{32}{5}\\right) = \\dfrac{64\\pi}{15}$. The option $\\dfrac{4\\pi}{3}$ uses $(R - r)^2 = (2x - x^2)^2$ instead of $R^2 - r^2$; $\\dfrac{32\\pi}{15}$ keeps only the outer-radius integral $\\pi\\int (2x)^2$ minus a miscomputed inner; and $\\dfrac{8\\pi}{15}$ drops the factor in the $4x^2$ term. The trap is the washer integrand: it is $R^2 - r^2$, never $(R - r)^2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-010",
+      "stem": "Find the average value of $f(x) = \\sin x$ on the interval $[0, \\pi]$.",
+      "options": [
+        "$0$",
+        "$\\dfrac{1}{\\pi}$",
+        "$\\dfrac{2}{\\pi}$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "The average value is $\\dfrac{1}{\\pi - 0}\\displaystyle\\int_0^\\pi \\sin x\\,dx = \\dfrac{1}{\\pi}\\left[-\\cos x\\right]_0^\\pi = \\dfrac{1}{\\pi}\\left(1 - (-1)\\right) = \\dfrac{2}{\\pi}$. The check: $\\sin x$ peaks at $1$ on this interval, and $\\dfrac{2}{\\pi} \\approx 0.64$ is a believable average for a hump. The option $2$ is the integral $\\int_0^\\pi \\sin x\\,dx = 2$ without dividing by $\\pi$; $\\dfrac{1}{\\pi}$ mishandles the sign and gets $\\dfrac{1}{\\pi}(1 - 0)$; and $0$ assumes the symmetry cancels, as it would over a full period $[0, 2\\pi]$. The trap is forgetting to divide the integral by the interval length $b - a = \\pi$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-011",
+      "stem": "The region under $y = x$ from $x = 0$ to $x = 1$ is revolved about the $y$-axis. Using cylindrical shells, find the volume.",
+      "options": [
+        "$\\dfrac{\\pi}{3}$",
+        "$\\dfrac{2\\pi}{3}$",
+        "$\\dfrac{2\\pi}{5}$",
+        "$\\dfrac{\\pi}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "A shell at $x$ has radius $x$ and height $y = x$, so $V = 2\\pi\\displaystyle\\int_0^1 x\\cdot x\\,dx = 2\\pi\\int_0^1 x^2\\,dx = 2\\pi\\left[\\dfrac{x^3}{3}\\right]_0^1 = \\dfrac{2\\pi}{3}$. The option $\\dfrac{\\pi}{3}$ forgets the factor $2$ in $2\\pi$; $\\dfrac{\\pi}{2}$ uses height $x$ but treats the shell as a disk $\\pi\\int x^2$ wrongly evaluated; and $\\dfrac{2\\pi}{5}$ swaps in a height of $x^2$ rather than $x$. The trap is dropping the $2$ from the shell circumference $2\\pi x$, which halves the volume.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Calculus"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-012",
+      "stem": "Find the area of the region enclosed by the parabola $y = x^2$ and the line $y = x + 2$.",
+      "options": [
+        "$\\dfrac{9}{2}$",
+        "$9$",
+        "$-\\dfrac{9}{2}$",
+        "$\\dfrac{7}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "Set $x^2 = x + 2$, so $x^2 - x - 2 = (x - 2)(x + 1) = 0$, giving intersections at $x = -1$ and $x = 2$. On this interval the line is above the parabola, so the area is $\\displaystyle\\int_{-1}^{2}\\left(x + 2 - x^2\\right)dx = \\left[\\dfrac{x^2}{2} + 2x - \\dfrac{x^3}{3}\\right]_{-1}^{2}$. The top gives $2 + 4 - \\dfrac{8}{3} = \\dfrac{10}{3}$ and the bottom gives $\\dfrac{1}{2} - 2 + \\dfrac{1}{3} = -\\dfrac{7}{6}$, so the area is $\\dfrac{10}{3} + \\dfrac{7}{6} = \\dfrac{9}{2}$. The option $-\\dfrac{9}{2}$ integrates parabola minus line; $9$ forgets to halve via the $\\dfrac{x^2}{2}$ term; and $\\dfrac{7}{2}$ uses wrong limits $x = 0$ to $2$. The trap is flipping the subtraction order so the signed area comes out negative.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-013",
+      "stem": "The region bounded by $y = x^2$, $y = 4$, and the $y$-axis (in the first quadrant) is revolved about the $y$-axis. Using disks in $y$, find the volume.",
+      "options": [
+        "$16\\pi$",
+        "$8\\pi$",
+        "$8$",
+        "$\\dfrac{16\\pi}{3}$"
+      ],
+      "answer": 1,
+      "explanation": "Slicing perpendicular to the $y$-axis, each disk has radius $x = \\sqrt{y}$, so its area is $\\pi x^2 = \\pi y$. Then $V = \\pi\\displaystyle\\int_0^4 y\\,dy = \\pi\\left[\\dfrac{y^2}{2}\\right]_0^4 = 8\\pi$. The option $16\\pi$ forgets to square the radius and integrates $\\pi\\int \\left(\\sqrt{y}\\right)$ incorrectly, doubling the result; $\\dfrac{16\\pi}{3}$ integrates $\\pi\\int y\\,dy$ but mistakes the antiderivative; and $8$ drops the $\\pi$. The trap here is setting up the radius: rotating about the $y$-axis means the radius is the $x$-distance $\\sqrt{y}$, and $\\left(\\sqrt{y}\\right)^2 = y$ is what makes the integral clean.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-014",
+      "stem": "Find the average value of $f(x) = \\dfrac{1}{x}$ on the interval $[1, e]$.",
+      "options": [
+        "$e - 1$",
+        "$\\dfrac{1}{e - 1}$",
+        "$\\dfrac{1}{e}$",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "The average value is $\\dfrac{1}{e - 1}\\displaystyle\\int_1^e \\dfrac{1}{x}\\,dx = \\dfrac{1}{e - 1}\\left[\\ln x\\right]_1^e = \\dfrac{1}{e - 1}\\left(1 - 0\\right) = \\dfrac{1}{e - 1}$. Since $\\dfrac{1}{x}$ ranges between $\\dfrac{1}{e}$ and $1$ here, the average $\\dfrac{1}{e - 1} \\approx 0.58$ sits correctly inside that range. The option $1$ is the integral $\\int_1^e \\tfrac{1}{x}\\,dx = 1$ without dividing by the length; $\\dfrac{1}{e}$ just evaluates $f$ at the right endpoint; and $e - 1$ inverts the divisor, multiplying by the length instead of dividing. The trap is omitting the $\\dfrac{1}{b - a}$ factor, which here is $\\dfrac{1}{e - 1}$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-015",
+      "stem": "Find the arc length of the curve $y = \\dfrac{2}{3}x^{3/2}$ from $x = 0$ to $x = 3$.",
+      "options": [
+        "$\\dfrac{9}{2}$",
+        "$\\dfrac{14}{3}$",
+        "$\\dfrac{16}{3}$",
+        "$\\dfrac{2}{3}\\left(3\\right)^{3/2}$"
+      ],
+      "answer": 1,
+      "explanation": "Here $\\dfrac{dy}{dx} = x^{1/2}$, so $1 + \\left(\\dfrac{dy}{dx}\\right)^2 = 1 + x$ and the arc length is $\\displaystyle\\int_0^3 \\sqrt{1 + x}\\,dx = \\left[\\dfrac{2}{3}(1 + x)^{3/2}\\right]_0^3 = \\dfrac{2}{3}\\left(8 - 1\\right) = \\dfrac{14}{3}$. The option $\\dfrac{9}{2}$ integrates $\\dfrac{dy}{dx} = x^{1/2}$ by itself, forgetting the $\\sqrt{1 + (\\,\\cdot\\,)^2}$; the option $\\dfrac{2}{3}(3)^{3/2}$ just evaluates the original $y$ at $x = 3$ as if length equaled height; and $\\dfrac{16}{3}$ mishandles the lower limit, using $(1 + 0)^{3/2} = 0$. The trap is using $\\dfrac{dy}{dx}$ as the integrand instead of $\\sqrt{1 + \\left(\\dfrac{dy}{dx}\\right)^2}$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-016",
+      "stem": "The region under $y = x - x^2$ and above the $x$-axis is revolved about the $y$-axis. Using cylindrical shells, find the volume.",
+      "options": [
+        "$\\dfrac{1}{6}$",
+        "$\\dfrac{\\pi}{6}$",
+        "$\\dfrac{\\pi}{30}$",
+        "$\\dfrac{\\pi}{3}$"
+      ],
+      "answer": 1,
+      "explanation": "The curve meets the $x$-axis at $x = 0$ and $x = 1$, so a shell at $x$ has radius $x$ and height $x - x^2$. Then $V = 2\\pi\\displaystyle\\int_0^1 x\\left(x - x^2\\right)dx = 2\\pi\\int_0^1 \\left(x^2 - x^3\\right)dx = 2\\pi\\left[\\dfrac{x^3}{3} - \\dfrac{x^4}{4}\\right]_0^1 = 2\\pi\\left(\\dfrac{1}{3} - \\dfrac{1}{4}\\right) = \\dfrac{\\pi}{6}$. The option $\\dfrac{1}{6}$ drops the $2\\pi$ entirely; $\\dfrac{\\pi}{3}$ forgets to multiply the height by the radius $x$, integrating $2\\pi\\int (x - x^2)$; and $\\dfrac{\\pi}{30}$ swaps radius and height. The trap is omitting the leading $2\\pi$ that the shell circumference contributes.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-017",
+      "stem": "Find the arc length of the curve $y = x^{3/2}$ from $x = 0$ to $x = \\dfrac{4}{3}$.",
+      "options": [
+        "$\\left(\\dfrac{4}{3}\\right)^{3/2}$",
+        "$\\dfrac{56}{27}$",
+        "$\\dfrac{14}{27}$",
+        "$\\dfrac{8}{27}$"
+      ],
+      "answer": 1,
+      "explanation": "With $\\dfrac{dy}{dx} = \\dfrac{3}{2}x^{1/2}$, we get $1 + \\left(\\dfrac{dy}{dx}\\right)^2 = 1 + \\dfrac{9}{4}x$, so the length is $\\displaystyle\\int_0^{4/3}\\sqrt{1 + \\dfrac{9}{4}x}\\,dx = \\left[\\dfrac{8}{27}\\left(1 + \\dfrac{9}{4}x\\right)^{3/2}\\right]_0^{4/3}$. At $x = \\dfrac{4}{3}$ the bracket is $1 + 3 = 4$, so this is $\\dfrac{8}{27}\\left(4^{3/2} - 1\\right) = \\dfrac{8}{27}\\left(8 - 1\\right) = \\dfrac{56}{27}$. The option $\\dfrac{8}{27}$ forgets to evaluate, dropping the $(8 - 1)$ factor; $\\left(\\dfrac{4}{3}\\right)^{3/2}$ reports the height $y$ at the right endpoint instead of the length; and $\\dfrac{14}{27}$ uses the wrong constant out front. The trap is again integrating without the $\\sqrt{1 + (\\,\\cdot\\,)^2}$ structure, or forgetting to evaluate the antiderivative across both limits.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Calculus"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-018",
+      "stem": "Find the area of the region enclosed by $y = x^2$ and $y = 8 - x^2$.",
+      "options": [
+        "$-\\dfrac{64}{3}$",
+        "$\\dfrac{32}{3}$",
+        "$32$",
+        "$\\dfrac{64}{3}$"
+      ],
+      "answer": 3,
+      "explanation": "The curves meet where $x^2 = 8 - x^2$, that is $2x^2 = 8$, so $x = \\pm 2$, and between them $y = 8 - x^2$ is the upper curve. The area is $\\displaystyle\\int_{-2}^{2}\\left[(8 - x^2) - x^2\\right]dx = \\int_{-2}^{2}\\left(8 - 2x^2\\right)dx = \\left[8x - \\dfrac{2x^3}{3}\\right]_{-2}^{2}$. The top is $16 - \\dfrac{16}{3} = \\dfrac{32}{3}$ and the bottom is $-\\dfrac{32}{3}$, so the area is $\\dfrac{64}{3}$. The option $\\dfrac{32}{3}$ integrates only over $[0, 2]$ and forgets the symmetric half; $-\\dfrac{64}{3}$ subtracts in the wrong order; and $32$ drops the $-\\dfrac{2x^3}{3}$ term. The trap is integrating over half the symmetric interval, which halves the true area.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-019",
+      "stem": "The region enclosed by $y = x$ and $y = x^2$ is revolved about the $x$-axis. Find the volume of the solid.",
+      "options": [
+        "$\\dfrac{\\pi}{6}$",
+        "$\\dfrac{2\\pi}{15}$",
+        "$\\dfrac{8\\pi}{15}$",
+        "$\\dfrac{2\\pi}{5}$"
+      ],
+      "answer": 1,
+      "explanation": "On $(0, 1)$ the line $y = x$ is the outer radius and $y = x^2$ the inner. Washers give $V = \\pi\\displaystyle\\int_0^1 \\left[x^2 - \\left(x^2\\right)^2\\right]dx = \\pi\\int_0^1 \\left(x^2 - x^4\\right)dx = \\pi\\left[\\dfrac{x^3}{3} - \\dfrac{x^5}{5}\\right]_0^1 = \\pi\\left(\\dfrac{1}{3} - \\dfrac{1}{5}\\right) = \\dfrac{2\\pi}{15}$. The option $\\dfrac{\\pi}{6}$ uses $(R - r)^2 = (x - x^2)^2$ rather than $R^2 - r^2$; $\\dfrac{8\\pi}{15}$ mis-signs the inner term; and $\\dfrac{2\\pi}{5}$ keeps only the $\\pi\\int x^2$ contribution. The trap is the washer integrand: subtract the squares $R^2 - r^2$, never square the difference.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-020",
+      "stem": "Find the average value of $f(x) = 3x^2$ on the interval $[1, 2]$.",
+      "options": [
+        "$\\dfrac{9}{2}$",
+        "$7$",
+        "$21$",
+        "$\\dfrac{7}{3}$"
+      ],
+      "answer": 1,
+      "explanation": "The average value is $\\dfrac{1}{2 - 1}\\displaystyle\\int_1^2 3x^2\\,dx = \\dfrac{1}{1}\\left[x^3\\right]_1^2 = 8 - 1 = 7$. Since $f$ runs from $3$ to $12$ on the interval, an average of $7$ is comfortably in range. The option $\\dfrac{7}{3}$ divides by $3$ as though the interval had length $3$ rather than $1$; $21$ leaves an extra factor, evaluating $3x^3$ at the endpoints without the antiderivative's $\\tfrac{1}{3}$; and $\\dfrac{9}{2}$ averages the endpoint values $\\tfrac{3 + 12}{2}$ as if $f$ were linear. The trap is dividing by the wrong length: here $b - a = 1$, so the average equals the integral.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Calculus"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-021",
+      "stem": "Find the arc length of the curve $y = \\dfrac{1}{3}\\left(x^2 + 2\\right)^{3/2}$ from $x = 1$ to $x = 2$.",
+      "options": [
+        "$3$",
+        "$\\dfrac{14}{3}$",
+        "$\\dfrac{10}{3}$",
+        "$\\dfrac{7}{3}$"
+      ],
+      "answer": 2,
+      "explanation": "Differentiate: $\\dfrac{dy}{dx} = x\\left(x^2 + 2\\right)^{1/2}$, so $\\left(\\dfrac{dy}{dx}\\right)^2 = x^2\\left(x^2 + 2\\right) = x^4 + 2x^2$, and $1 + \\left(\\dfrac{dy}{dx}\\right)^2 = x^4 + 2x^2 + 1 = \\left(x^2 + 1\\right)^2$. The integrand becomes $x^2 + 1$, so the length is $\\displaystyle\\int_1^2 \\left(x^2 + 1\\right)dx = \\left[\\dfrac{x^3}{3} + x\\right]_1^2 = \\left(\\dfrac{8}{3} + 2\\right) - \\left(\\dfrac{1}{3} + 1\\right) = \\dfrac{10}{3}$. The option $\\dfrac{7}{3}$ keeps only the $\\dfrac{x^3}{3}$ term and forgets $\\int 1\\,dx$; $\\dfrac{14}{3}$ doubles the $\\int x^2$ piece; and $3$ drops the perfect-square recognition and integrates carelessly. The trap is missing that $1 + \\left(\\dfrac{dy}{dx}\\right)^2$ collapses to a perfect square, which is the whole point of this designed curve.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-022",
+      "stem": "The region bounded by $y = 4 - x^2$, the $x$-axis, and the $y$-axis (in the first quadrant) is revolved about the $y$-axis. Using cylindrical shells, find the volume.",
+      "options": [
+        "$8\\pi$",
+        "$\\dfrac{16\\pi}{3}$",
+        "$\\dfrac{32\\pi}{3}$",
+        "$4\\pi$"
+      ],
+      "answer": 0,
+      "explanation": "In the first quadrant the curve meets the axes at $x = 0$ and $x = 2$, so a shell at $x$ has radius $x$ and height $4 - x^2$. Then $V = 2\\pi\\displaystyle\\int_0^2 x\\left(4 - x^2\\right)dx = 2\\pi\\int_0^2 \\left(4x - x^3\\right)dx = 2\\pi\\left[2x^2 - \\dfrac{x^4}{4}\\right]_0^2 = 2\\pi\\left(8 - 4\\right) = 8\\pi$. The option $4\\pi$ forgets the factor $2$ in $2\\pi$; $\\dfrac{32\\pi}{3}$ swaps radius and height so the integrand becomes $\\left(4 - x^2\\right)$ times a wrong factor; and $\\dfrac{16\\pi}{3}$ drops the radius $x$ from the shell volume. The trap is forgetting the $2\\pi$ circumference, the single most common shell slip.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-023",
+      "stem": "A force of $40$ N stretches a spring $0.5$ m beyond its natural length. How much work is done in stretching the spring $0.2$ m from its natural length?",
+      "options": [
+        "$0.8$ J",
+        "$3.2$ J",
+        "$1.6$ J",
+        "$8$ J"
+      ],
+      "answer": 2,
+      "explanation": "Hooke's law gives $F = kx$, so $40 = k(0.5)$ and $k = 80$ N/m. The work to stretch from $0$ to $0.2$ m is $W = \\displaystyle\\int_0^{0.2} 80x\\,dx = 80\\left[\\dfrac{x^2}{2}\\right]_0^{0.2} = 40(0.04) = 1.6$ J. The option $8$ J multiplies the force at the endpoint $F = 80(0.2) = 16$ by the distance carelessly, treating force as constant; $3.2$ J forgets the $\\tfrac{1}{2}$ from integrating $x$, computing $80(0.04)$; and $0.8$ J uses $k = 40$ without solving Hooke's law. The trap is treating a spring force as constant: it grows with stretch, so the work needs the integral $\\int kx\\,dx$, which carries the factor $\\tfrac{1}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-024",
+      "stem": "Find the area of the region enclosed by $y = \\sqrt{x}$ and $y = x^2$.",
+      "options": [
+        "$-\\dfrac{1}{3}$",
+        "$\\dfrac{2}{3}$",
+        "$\\dfrac{1}{3}$",
+        "$\\dfrac{1}{6}$"
+      ],
+      "answer": 2,
+      "explanation": "The curves meet where $\\sqrt{x} = x^2$, that is $x = x^4$, so $x = 0$ and $x = 1$; on $(0, 1)$ the curve $y = \\sqrt{x}$ lies above $y = x^2$. The area is $\\displaystyle\\int_0^1 \\left(\\sqrt{x} - x^2\\right)dx = \\left[\\dfrac{2}{3}x^{3/2} - \\dfrac{x^3}{3}\\right]_0^1 = \\dfrac{2}{3} - \\dfrac{1}{3} = \\dfrac{1}{3}$. The option $-\\dfrac{1}{3}$ integrates $x^2 - \\sqrt{x}$, bottom minus top; $\\dfrac{2}{3}$ keeps only the $\\int \\sqrt{x}\\,dx$ piece; and $\\dfrac{1}{6}$ comes from mistaking the upper curve for $y = x$ rather than $y = \\sqrt{x}$. The trap is the order of subtraction: top minus bottom is $\\sqrt{x} - x^2$, and reversing it flips the sign.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-025",
+      "stem": "The region under $y = e^{x}$ from $x = 0$ to $x = 1$ is revolved about the $x$-axis. Find the volume of the solid.",
+      "options": [
+        "$\\dfrac{1}{2}\\left(e^2 - 1\\right)$",
+        "$\\pi\\left(e - 1\\right)$",
+        "$\\pi\\left(e^2 - 1\\right)$",
+        "$\\dfrac{\\pi}{2}\\left(e^2 - 1\\right)$"
+      ],
+      "answer": 3,
+      "explanation": "Disks of radius $y = e^{x}$ give $V = \\pi\\displaystyle\\int_0^1 \\left(e^{x}\\right)^2 dx = \\pi\\int_0^1 e^{2x}\\,dx = \\pi\\left[\\dfrac{e^{2x}}{2}\\right]_0^1 = \\dfrac{\\pi}{2}\\left(e^2 - 1\\right)$. Squaring the radius turns $e^x$ into $e^{2x}$, and integrating $e^{2x}$ supplies the $\\tfrac{1}{2}$. The option $\\pi\\left(e - 1\\right)$ forgets to square the radius, computing $\\pi\\int e^{x}\\,dx$; $\\pi\\left(e^2 - 1\\right)$ squares correctly but drops the $\\tfrac{1}{2}$ from integrating $e^{2x}$; and $\\dfrac{1}{2}\\left(e^2 - 1\\right)$ loses the leading $\\pi$. The trap is forgetting to square the radius, which also changes the exponential from $e^x$ to $e^{2x}$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-026",
+      "stem": "Find the arc length of the curve $y = \\dfrac{x^2}{8} - \\ln x$ from $x = 1$ to $x = 2$.",
+      "options": [
+        "$\\dfrac{3}{8} + \\ln 2$",
+        "$\\dfrac{3}{8}$",
+        "$\\dfrac{3}{8} - \\ln 2$",
+        "$\\dfrac{5}{8} + \\ln 2$"
+      ],
+      "answer": 0,
+      "explanation": "Here $\\dfrac{dy}{dx} = \\dfrac{x}{4} - \\dfrac{1}{x}$, so $\\left(\\dfrac{dy}{dx}\\right)^2 = \\dfrac{x^2}{16} - \\dfrac{1}{2} + \\dfrac{1}{x^2}$ and $1 + \\left(\\dfrac{dy}{dx}\\right)^2 = \\dfrac{x^2}{16} + \\dfrac{1}{2} + \\dfrac{1}{x^2} = \\left(\\dfrac{x}{4} + \\dfrac{1}{x}\\right)^2$. The integrand is $\\dfrac{x}{4} + \\dfrac{1}{x}$, so the length is $\\displaystyle\\int_1^2 \\left(\\dfrac{x}{4} + \\dfrac{1}{x}\\right)dx = \\left[\\dfrac{x^2}{8} + \\ln x\\right]_1^2 = \\left(\\dfrac{1}{2} + \\ln 2\\right) - \\dfrac{1}{8} = \\dfrac{3}{8} + \\ln 2$. The option $\\dfrac{3}{8} - \\ln 2$ mishandles the sign when squaring, landing on $\\left(\\dfrac{x}{4} - \\dfrac{1}{x}\\right)$ as the integrand; $\\dfrac{3}{8}$ forgets the $\\int \\tfrac{1}{x}$ term; and $\\dfrac{5}{8} + \\ln 2$ slips on the $\\dfrac{x^2}{8}$ evaluation. The trap is the sign on the middle term: the cross term flips from $-\\tfrac{1}{2}$ to $+\\tfrac{1}{2}$, producing the sum $\\dfrac{x}{4} + \\dfrac{1}{x}$, not the difference.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-027",
+      "stem": "The region under $y = \\sqrt{x}$ from $x = 0$ to $x = 4$ is revolved about the $y$-axis. Using cylindrical shells, find the volume.",
+      "options": [
+        "$\\dfrac{128\\pi}{5}$",
+        "$\\dfrac{128}{5}$",
+        "$\\dfrac{64\\pi}{5}$",
+        "$\\dfrac{32\\pi}{3}$"
+      ],
+      "answer": 0,
+      "explanation": "A shell at $x$ has radius $x$ and height $\\sqrt{x}$, so $V = 2\\pi\\displaystyle\\int_0^4 x\\sqrt{x}\\,dx = 2\\pi\\int_0^4 x^{3/2}\\,dx = 2\\pi\\left[\\dfrac{2}{5}x^{5/2}\\right]_0^4 = 2\\pi\\cdot\\dfrac{2}{5}\\cdot 32 = \\dfrac{128\\pi}{5}$, using $4^{5/2} = 32$. The option $\\dfrac{64\\pi}{5}$ forgets the factor $2$ in $2\\pi$; $\\dfrac{128}{5}$ drops the $\\pi$; and $\\dfrac{32\\pi}{3}$ swaps radius and height, integrating $2\\pi\\int \\sqrt{x}\\cdot\\sqrt{x}$. The trap is swapping the shell radius and height: the radius is the distance $x$ to the axis and the height is the function value $\\sqrt{x}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Calculus"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-028",
+      "stem": "Find the average value of $f(x) = \\sqrt{x}$ on the interval $[0, 4]$.",
+      "options": [
+        "$\\dfrac{16}{3}$",
+        "$\\dfrac{4}{3}$",
+        "$\\dfrac{2}{3}$",
+        "$2$"
+      ],
+      "answer": 1,
+      "explanation": "The average value is $\\dfrac{1}{4 - 0}\\displaystyle\\int_0^4 \\sqrt{x}\\,dx = \\dfrac{1}{4}\\left[\\dfrac{2}{3}x^{3/2}\\right]_0^4 = \\dfrac{1}{4}\\cdot\\dfrac{2}{3}\\cdot 8 = \\dfrac{4}{3}$, since $4^{3/2} = 8$. The check: $\\sqrt{x}$ runs from $0$ to $2$ on this interval, and $\\dfrac{4}{3} \\approx 1.33$ is a sensible average. The option $\\dfrac{16}{3}$ is the integral $\\int_0^4 \\sqrt{x}\\,dx = \\dfrac{16}{3}$ without dividing by the length $4$; $2$ takes the value at the right endpoint; and $\\dfrac{2}{3}$ divides by $8$ instead of $4$. The trap is forgetting the $\\dfrac{1}{b - a}$ factor, which here is $\\dfrac{1}{4}$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-029",
+      "stem": "A cylindrical tank of radius $2$ m and height $3$ m is full of water. Taking the density of water times gravity as $9800$ N/m$^3$, the work to pump all the water out over the top rim equals which of the following? (Set $y = 0$ at the bottom.)",
+      "options": [
+        "$58{,}800\\,\\pi$ J",
+        "$352{,}800\\,\\pi$ J",
+        "$117{,}600\\,\\pi$ J",
+        "$176{,}400\\,\\pi$ J"
+      ],
+      "answer": 3,
+      "explanation": "A slab at height $y$ has volume $\\pi(2)^2\\,dy = 4\\pi\\,dy$, weight $9800\\cdot 4\\pi\\,dy$, and must rise a distance $3 - y$ to clear the rim. So $W = \\displaystyle\\int_0^3 9800\\cdot 4\\pi\\,(3 - y)\\,dy = 39200\\pi\\left[3y - \\dfrac{y^2}{2}\\right]_0^3 = 39200\\pi\\left(9 - \\dfrac{9}{2}\\right) = 39200\\pi\\cdot\\dfrac{9}{2} = 176{,}400\\,\\pi$ J. The option $352{,}800\\,\\pi$ lifts every slab the full height $3$ instead of $3 - y$, doubling the result; $117{,}600\\,\\pi$ uses lift distance $y$ rather than $3 - y$; and $58{,}800\\,\\pi$ forgets the radius-squared, using $2\\pi$ for the cross-section. The trap is the lift distance: each slab travels $3 - y$, the gap from its height up to the rim, not the full tank height.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, chapter 6"
+    },
+    {
+      "id": "calculus-ii-applications-of-integration-030",
+      "stem": "A rectangular tank with base $4$ m by $3$ m and depth $2$ m is full of water. Taking the density of water times gravity as $9800$ N/m$^3$, find the work to pump all the water out over the top edge. (Set $y = 0$ at the bottom.)",
+      "options": [
+        "$235{,}200$ J",
+        "$352{,}800$ J",
+        "$470{,}400$ J",
+        "$117{,}600$ J"
+      ],
+      "answer": 0,
+      "explanation": "A horizontal slab at height $y$ has volume $(4)(3)\\,dy = 12\\,dy$, weight $9800\\cdot 12\\,dy$, and lifts a distance $2 - y$ to reach the top. So $W = \\displaystyle\\int_0^2 9800\\cdot 12\\,(2 - y)\\,dy = 117600\\left[2y - \\dfrac{y^2}{2}\\right]_0^2 = 117600\\,(4 - 2) = 117600\\cdot 2 = 235{,}200$ J. The option $470{,}400$ lifts every slab the full depth $2$ instead of $2 - y$, doubling the work; $117{,}600$ keeps only $\\int 2\\,dy$ wrongly, missing half the integral; and $352{,}800$ mishandles the bracket, using $4 - \\tfrac{1}{2}(2)$. The trap is using the full depth as the lift distance for every slab: a slab already at height $y$ only needs to rise $2 - y$.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Calculus"
+    }
+  ]
+}
