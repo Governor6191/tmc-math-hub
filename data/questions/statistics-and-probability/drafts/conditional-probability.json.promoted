@@ -1,0 +1,427 @@
+{
+  "courseId": "statistics-and-probability",
+  "topicId": "conditional-probability",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "statistics-and-probability-conditional-probability-001",
+      "stem": "In a group of $50$ students, $30$ are boys and $20$ are girls. Of the boys, $12$ wear glasses, and of the girls, $9$ wear glasses. A student is chosen at random. Given that the chosen student is a boy, what is the probability that the student wears glasses?",
+      "options": [
+        "$\\frac{6}{25}$",
+        "$\\frac{4}{7}$",
+        "$\\frac{2}{5}$",
+        "$\\frac{21}{50}$"
+      ],
+      "answer": 2,
+      "explanation": "Conditioning on the student being a boy restricts attention to the $30$ boys, of whom $12$ wear glasses, so $P(\\text{glasses} \\mid \\text{boy}) = \\frac{12}{30} = \\frac{2}{5}$. The option $\\frac{6}{25} = \\frac{12}{50}$ is the joint probability $P(\\text{glasses} \\cap \\text{boy})$, which forgets to divide by $P(\\text{boy})$. The option $\\frac{4}{7} = \\frac{12}{21}$ swaps the condition and computes $P(\\text{boy} \\mid \\text{glasses})$ using the $21$ glasses-wearers. The trap is using the whole group as the denominator instead of restricting to the conditioning event.",
+      "difficulty": "warmup",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-002",
+      "stem": "A box contains $3$ red pens and $2$ blue pens. Two pens are drawn one after the other without replacement. Using $P(A \\cap B) = P(A)\\,P(B \\mid A)$, what is the probability that both pens are red?",
+      "options": [
+        "$\\frac{3}{10}$",
+        "$\\frac{9}{25}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{1}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "The first pen is red with probability $\\frac{3}{5}$. Given that a red pen was removed, $2$ red remain out of $4$ pens, so the second is red with probability $\\frac{2}{4}$. The multiplication rule gives $P(\\text{both red}) = \\frac{3}{5} \\times \\frac{2}{4} = \\frac{6}{20} = \\frac{3}{10}$. The option $\\frac{9}{25} = \\frac{3}{5} \\times \\frac{3}{5}$ treats the draws as with replacement, and $\\frac{3}{5}$ uses only the first draw. The trap is keeping the counts unchanged on the second draw instead of using the conditional probability after removal.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-003",
+      "stem": "Events $A$ and $B$ are independent with $P(A) = 0.5$ and $P(B) = 0.4$. What is $P(A \\cap B)$?",
+      "options": [
+        "$0.9$",
+        "$0.5$",
+        "$0.1$",
+        "$0.2$"
+      ],
+      "answer": 3,
+      "explanation": "For independent events the joint probability factorises: $P(A \\cap B) = P(A)\\,P(B) = 0.5 \\times 0.4 = 0.2$. The option $0.9$ adds the two probabilities as if computing a union of mutually exclusive events, and $0.5$ just repeats $P(A)$. The trap is adding the probabilities of independent events instead of multiplying them.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-004",
+      "stem": "A fair six-sided die is rolled once. Given that the result is an even number, what is the probability that the result is a $2$?",
+      "options": [
+        "$\\frac{1}{6}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{4}$"
+      ],
+      "answer": 1,
+      "explanation": "Knowing the result is even restricts the sample space to $\\{2,4,6\\}$, three equally likely outcomes, of which one is a $2$. So $P(2 \\mid \\text{even}) = \\frac{1}{3}$. The option $\\frac{1}{6}$ is the unconditional probability of rolling a $2$, ignoring the given information. The option $\\frac{1}{2}$ wrongly halves on the basis of two values. The trap is failing to shrink the sample space to the conditioning event.",
+      "difficulty": "warmup",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-005",
+      "stem": "A jar holds $5$ mangoes and $3$ oranges. Two fruits are drawn at random without replacement. Given that the first fruit drawn is a mango, what is the probability that the second fruit is also a mango?",
+      "options": [
+        "$\\frac{5}{8}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{5}{7}$",
+        "$\\frac{4}{7}$"
+      ],
+      "answer": 3,
+      "explanation": "After the first mango is drawn and not replaced, $4$ mangoes remain among the $7$ fruits left in the jar. So $P(\\text{second mango} \\mid \\text{first mango}) = \\frac{4}{7}$. The option $\\frac{5}{8}$ is the probability the first draw is a mango, ignoring that one mango has already been removed. The option $\\frac{5}{7}$ reduces the denominator to $7$ but forgets to drop the numerator from $5$ to $4$. The trap is not reducing the mango count after the first one is taken out.",
+      "difficulty": "warmup",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-006",
+      "stem": "On a particular day the probability of rain is $0.3$. If it rains, the probability that a football match is cancelled is $0.8$. What is the probability that it rains and the match is cancelled?",
+      "options": [
+        "$0.24$",
+        "$1.1$",
+        "$0.8$",
+        "$0.5$"
+      ],
+      "answer": 0,
+      "explanation": "Let $R$ be rain and $C$ cancellation. We are given $P(R) = 0.3$ and $P(C \\mid R) = 0.8$, so by the multiplication rule $P(R \\cap C) = P(R)\\,P(C \\mid R) = 0.3 \\times 0.8 = 0.24$. The option $1.1$ adds the two numbers, exceeding $1$, and $0.8$ reports the conditional probability $P(C \\mid R)$ instead of the joint probability. The trap is quoting the conditional value $P(C \\mid R)$ rather than multiplying it by $P(R)$ to get the joint probability.",
+      "difficulty": "warmup",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-007",
+      "stem": "At a clinic in Kumasi, $200$ patients are recorded. Of these, $120$ are adults and $80$ are children. Among the adults, $30$ tested positive for malaria, and among the children, $50$ tested positive. A patient record is selected at random. Given that the patient is a child, what is the probability that the patient tested positive?",
+      "options": [
+        "$\\frac{1}{4}$",
+        "$\\frac{5}{12}$",
+        "$\\frac{5}{8}$",
+        "$\\frac{2}{5}$"
+      ],
+      "answer": 2,
+      "explanation": "Conditioning on the patient being a child restricts attention to the $80$ children, of whom $50$ tested positive, so $P(\\text{positive} \\mid \\text{child}) = \\frac{50}{80} = \\frac{5}{8}$. The option $\\frac{1}{4} = \\frac{50}{200}$ is the joint probability $P(\\text{positive} \\cap \\text{child})$, which forgets to divide by $P(\\text{child})$. The option $\\frac{2}{5} = \\frac{80}{200}$ is just $P(\\text{child})$, and $\\frac{5}{12} = \\frac{50}{120}$ wrongly divides the positive children by the number of adults. The trap is dividing by the total of $200$ patients instead of restricting the denominator to the $80$ children.",
+      "difficulty": "core",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-008",
+      "stem": "A bag contains $4$ green marbles and $6$ yellow marbles. Two marbles are drawn one after another without replacement. What is the probability that the first is green and the second is yellow?",
+      "options": [
+        "$\\frac{6}{25}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{12}{25}$",
+        "$\\frac{4}{15}$"
+      ],
+      "answer": 3,
+      "explanation": "The first marble is green with probability $\\frac{4}{10}$. Given a green marble was removed, $6$ yellow remain out of $9$ marbles, so the second is yellow with probability $\\frac{6}{9}$. Multiplying along this branch of the tree, $P(\\text{green then yellow}) = \\frac{4}{10} \\times \\frac{6}{9} = \\frac{24}{90} = \\frac{4}{15}$. The option $\\frac{6}{25} = \\frac{4}{10} \\times \\frac{6}{10}$ treats the draws as with replacement, and $\\frac{2}{3} = \\frac{6}{9}$ uses only the second factor. The trap is forgetting to reduce the total from $10$ to $9$ on the second draw.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-009",
+      "stem": "A card is drawn from a standard deck of $52$ cards. Let $A$ be the event that the card is a king and $B$ the event that the card is a heart. Are $A$ and $B$ independent, and what is $P(A \\mid B)$?",
+      "options": [
+        "Independent; $P(A \\mid B) = \\frac{1}{13}$",
+        "Not independent; $P(A \\mid B) = \\frac{1}{4}$",
+        "Independent; $P(A \\mid B) = \\frac{1}{52}$",
+        "Not independent; $P(A \\mid B) = \\frac{4}{13}$"
+      ],
+      "answer": 0,
+      "explanation": "There is exactly one king of hearts, so $P(A \\cap B) = \\frac{1}{52}$, while $P(A)\\,P(B) = \\frac{4}{52} \\times \\frac{13}{52} = \\frac{1}{52}$; since these are equal, $A$ and $B$ are independent. Then $P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{1/52}{13/52} = \\frac{1}{13}$, which equals $P(A) = \\frac{4}{52} = \\frac{1}{13}$, confirming independence. The option giving $\\frac{1}{52}$ reports the joint probability instead of the conditional, and $\\frac{4}{13}$ miscounts kings among the $13$ hearts. The trap is confusing $P(A \\cap B)$ with $P(A \\mid B)$ when checking independence.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-010",
+      "stem": "A factory runs two machines. Machine $X$ makes $60\\%$ of the items and machine $Y$ makes $40\\%$. Machine $X$ produces a defect with probability $0.05$, and machine $Y$ with probability $0.10$. What is the probability that a randomly chosen item is defective?",
+      "options": [
+        "$0.15$",
+        "$0.075$",
+        "$0.07$",
+        "$0.04$"
+      ],
+      "answer": 2,
+      "explanation": "By the law of total probability, $P(D) = P(D \\mid X)P(X) + P(D \\mid Y)P(Y) = (0.05)(0.6) + (0.10)(0.4) = 0.03 + 0.04 = 0.07$. The option $0.15$ adds the two defect rates $0.05 + 0.10$ without weighting by the production shares, and $0.075$ is the unweighted average $\\frac{0.05 + 0.10}{2}$. The trap is summing or averaging the conditional defect rates instead of weighting each by its machine's share of output.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-011",
+      "stem": "A clinic in Kumasi screens for a disease that $2\\%$ of patients actually have. The test is positive for $90\\%$ of patients who have the disease and for $5\\%$ of patients who do not. A randomly chosen patient tests positive. What is the probability that the patient actually has the disease?",
+      "options": [
+        "$0.90$",
+        "$0.02$",
+        "$\\frac{18}{49}$",
+        "$\\frac{18}{67}$"
+      ],
+      "answer": 3,
+      "explanation": "Let $D$ be having the disease. By total probability, $P(+) = P(+ \\mid D)P(D) + P(+ \\mid D^c)P(D^c) = (0.90)(0.02) + (0.05)(0.98) = 0.018 + 0.049 = 0.067$. Bayes theorem then gives $P(D \\mid +) = \\frac{P(+ \\mid D)P(D)}{P(+)} = \\frac{0.018}{0.067} = \\frac{18}{67}$, about $0.27$. The option $0.90$ quotes the test sensitivity $P(+ \\mid D)$, and $0.02$ quotes the prior $P(D)$ unchanged, ignoring the positive result. The trap is base-rate neglect: reporting the sensitivity or the prior instead of computing the posterior from Bayes theorem.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-012",
+      "stem": "A bag holds $7$ white balls and $3$ black balls. Two balls are drawn without replacement. Given that the first ball drawn is white, what is the probability that the second ball is black?",
+      "options": [
+        "$\\frac{1}{3}$",
+        "$\\frac{3}{10}$",
+        "$\\frac{7}{30}$",
+        "$\\frac{3}{7}$"
+      ],
+      "answer": 0,
+      "explanation": "After one white ball is removed, $9$ balls remain, of which $3$ are still black. So $P(\\text{second black} \\mid \\text{first white}) = \\frac{3}{9} = \\frac{1}{3}$. The option $\\frac{3}{10}$ is the unconditional probability of drawing a black ball first, ignoring the removal. The option $\\frac{7}{30} = \\frac{7}{10} \\times \\frac{3}{9}$ is the joint probability of white then black, not the conditional probability of the second draw. The trap is reporting the joint probability when only the conditional probability of the second draw is asked.",
+      "difficulty": "core",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-013",
+      "stem": "Among $80$ first-year students, $50$ study Economics and $30$ do not. Of those who study Economics, $20$ also play sports; of those who do not study Economics, $18$ play sports. A student is chosen at random. Given that the student plays sports, what is the probability that the student studies Economics?",
+      "options": [
+        "$\\frac{2}{5}$",
+        "$\\frac{10}{19}$",
+        "$\\frac{1}{4}$",
+        "$\\frac{19}{40}$"
+      ],
+      "answer": 1,
+      "explanation": "The total number who play sports is $20 + 18 = 38$, and of these $20$ study Economics, so $P(\\text{Economics} \\mid \\text{sports}) = \\frac{20}{38} = \\frac{10}{19}$. The option $\\frac{2}{5} = \\frac{20}{50}$ swaps the condition and computes $P(\\text{sports} \\mid \\text{Economics})$. The option $\\frac{1}{4} = \\frac{20}{80}$ is the joint probability $P(\\text{Economics} \\cap \\text{sports})$. The trap is conditioning on the wrong event, dividing by the Economics students rather than by the sports players.",
+      "difficulty": "core",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-014",
+      "stem": "A first-year student must register for two courses in sequence. The probability of getting a place in Calculus is $0.7$. Given a place in Calculus, the probability of also getting a place in Statistics is $0.5$. What is the probability that the student gets places in both courses?",
+      "options": [
+        "$1.2$",
+        "$0.5$",
+        "$0.35$",
+        "$0.7$"
+      ],
+      "answer": 2,
+      "explanation": "Let $C$ be a place in Calculus and $S$ a place in Statistics. We are given $P(C) = 0.7$ and $P(S \\mid C) = 0.5$, so the multiplication rule gives $P(C \\cap S) = P(C)\\,P(S \\mid C) = 0.7 \\times 0.5 = 0.35$. The option $1.2$ adds the two values, exceeding $1$, and $0.5$ reports the conditional probability $P(S \\mid C)$ rather than the joint probability. The trap is reading $P(S \\mid C)$ as the final answer instead of multiplying it by $P(C)$.",
+      "difficulty": "core",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-015",
+      "stem": "For two events, $P(A) = 0.6$, $P(B) = 0.5$, and $P(A \\cap B) = 0.3$. Are $A$ and $B$ independent?",
+      "options": [
+        "No, because $P(A \\cap B) \\neq 0$",
+        "No, because $P(A \\mid B) = 0.5$",
+        "Yes, because $P(A) + P(B) > 1$",
+        "Yes, because $P(A \\cap B) = P(A)\\,P(B)$"
+      ],
+      "answer": 3,
+      "explanation": "Independence is checked by comparing the joint probability with the product of the marginals: $P(A)\\,P(B) = 0.6 \\times 0.5 = 0.3$, which equals the given $P(A \\cap B) = 0.3$, so $A$ and $B$ are independent. Equivalently $P(A \\mid B) = \\frac{0.3}{0.5} = 0.6 = P(A)$. The option claiming dependence because $P(A \\cap B) \\neq 0$ confuses independence with mutual exclusivity, and the option about $P(A) + P(B) > 1$ is irrelevant to independence. The trap is mistaking independence for mutual exclusivity instead of testing $P(A \\cap B) = P(A)\\,P(B)$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-016",
+      "stem": "Two factories assemble phones for one brand. Factory A supplies $70\\%$ of the phones and factory B supplies $30\\%$. A phone from factory A is faulty with probability $0.02$, and a phone from factory B with probability $0.06$. What is the probability that a randomly selected phone is faulty?",
+      "options": [
+        "$0.032$",
+        "$0.08$",
+        "$0.04$",
+        "$0.018$"
+      ],
+      "answer": 0,
+      "explanation": "By the law of total probability, $P(F) = P(F \\mid A)P(A) + P(F \\mid B)P(B) = (0.02)(0.70) + (0.06)(0.30) = 0.014 + 0.018 = 0.032$. The option $0.08$ adds the two fault rates $0.02 + 0.06$ without weighting by the supply shares, and $0.04$ is the unweighted average $\\frac{0.02 + 0.06}{2}$. The trap is failing to weight each conditional fault rate by its factory's share before adding.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-017",
+      "stem": "Two factories assemble phones for one brand. Factory A supplies $70\\%$ and factory B supplies $30\\%$. A phone from factory A is faulty with probability $0.02$, and a phone from factory B with probability $0.06$. A randomly selected phone is found to be faulty. What is the probability that it came from factory B?",
+      "options": [
+        "$0.30$",
+        "$0.06$",
+        "$\\frac{9}{16}$",
+        "$\\frac{7}{16}$"
+      ],
+      "answer": 2,
+      "explanation": "From the law of total probability, $P(F) = (0.02)(0.70) + (0.06)(0.30) = 0.014 + 0.018 = 0.032$. Bayes theorem gives $P(B \\mid F) = \\frac{P(F \\mid B)P(B)}{P(F)} = \\frac{0.018}{0.032} = \\frac{9}{16}$. The option $0.30$ quotes the prior $P(B)$ unchanged, and $\\frac{7}{16} = \\frac{0.014}{0.032}$ is $P(A \\mid F)$, the probability the faulty phone came from the other factory. The trap is base-rate neglect, reporting the prior $P(B)$ instead of updating it with the faulty evidence, or swapping the two factories in the numerator.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-018",
+      "stem": "From a standard deck of $52$ cards, two cards are dealt without replacement. Given that the first card is a heart, what is the probability that the second card is also a heart?",
+      "options": [
+        "$\\frac{1}{4}$",
+        "$\\frac{3}{13}$",
+        "$\\frac{1}{17}$",
+        "$\\frac{4}{17}$"
+      ],
+      "answer": 3,
+      "explanation": "After one heart is dealt and not replaced, $12$ hearts remain among the $51$ cards left. So $P(\\text{second heart} \\mid \\text{first heart}) = \\frac{12}{51} = \\frac{4}{17}$. The option $\\frac{1}{4} = \\frac{13}{52}$ ignores the removal and uses the full deck; $\\frac{3}{13} = \\frac{12}{52}$ updates the heart count to $12$ but forgets to shrink the deck to $51$; and $\\frac{1}{17} = \\frac{13}{52} \\times \\frac{12}{51}$ reports the joint probability of two hearts instead of the conditional probability of the second draw. The trap is not updating both the heart count and the deck size after the first card is removed.",
+      "difficulty": "core",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-019",
+      "stem": "A survey of $100$ people records tea and coffee preferences. In total $40$ like tea and $70$ like coffee, while $30$ like both. A person is chosen at random. Given that the person likes coffee, what is the probability that the person also likes tea?",
+      "options": [
+        "$\\frac{3}{4}$",
+        "$\\frac{3}{7}$",
+        "$\\frac{3}{10}$",
+        "$\\frac{4}{7}$"
+      ],
+      "answer": 1,
+      "explanation": "Conditioning on liking coffee restricts attention to the $70$ coffee-likers, of whom $30$ also like tea, so $P(\\text{tea} \\mid \\text{coffee}) = \\frac{30}{70} = \\frac{3}{7}$. The option $\\frac{3}{4} = \\frac{30}{40}$ swaps the condition and computes $P(\\text{coffee} \\mid \\text{tea})$ using the $40$ tea-likers. The option $\\frac{3}{10} = \\frac{30}{100}$ is the joint probability $P(\\text{tea} \\cap \\text{coffee})$. The trap is dividing by the wrong subgroup, using the tea-likers or the whole sample rather than the coffee-likers in the denominator.",
+      "difficulty": "core",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-020",
+      "stem": "A drawer contains $5$ blue socks and $4$ red socks. Two socks are pulled out at random without replacement. What is the probability that both socks are blue?",
+      "options": [
+        "$\\frac{5}{18}$",
+        "$\\frac{25}{81}$",
+        "$\\frac{5}{9}$",
+        "$\\frac{1}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "The first sock is blue with probability $\\frac{5}{9}$. Given a blue sock was removed, $4$ blue remain out of $8$, so the second is blue with probability $\\frac{4}{8}$. Multiplying, $P(\\text{both blue}) = \\frac{5}{9} \\times \\frac{4}{8} = \\frac{20}{72} = \\frac{5}{18}$. The option $\\frac{25}{81} = \\frac{5}{9} \\times \\frac{5}{9}$ treats the draws as with replacement, and $\\frac{5}{9}$ uses only the first draw. The trap is not reducing the counts on the second draw after one blue sock is removed.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-021",
+      "stem": "A fair coin is tossed and a fair six-sided die is rolled. Let $H$ be the event that the coin shows heads and $T$ the event that the die shows a number greater than $4$. What is $P(H \\cap T)$?",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{5}{6}$",
+        "$\\frac{1}{6}$",
+        "$\\frac{1}{3}$"
+      ],
+      "answer": 2,
+      "explanation": "The coin and the die are physically separate, so the events are independent. Here $P(H) = \\frac{1}{2}$ and $P(T) = \\frac{2}{6} = \\frac{1}{3}$ (the values $5$ and $6$), giving $P(H \\cap T) = P(H)\\,P(T) = \\frac{1}{2} \\times \\frac{1}{3} = \\frac{1}{6}$. The option $\\frac{5}{6} = \\frac{1}{2} + \\frac{1}{3}$ adds the probabilities instead of multiplying, and $\\frac{1}{3}$ reports only $P(T)$. The trap is adding probabilities of independent events rather than multiplying them.",
+      "difficulty": "core",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-022",
+      "stem": "A student travels to campus by trotro, taxi, or on foot, with probabilities $0.5$, $0.3$, and $0.2$ respectively. The probability of arriving late is $0.1$ by trotro, $0.2$ by taxi, and $0.4$ on foot. What is the probability that the student arrives late on a given day?",
+      "options": [
+        "$0.7$",
+        "$0.233$",
+        "$0.1$",
+        "$0.19$"
+      ],
+      "answer": 3,
+      "explanation": "By the law of total probability, $P(L) = (0.1)(0.5) + (0.2)(0.3) + (0.4)(0.2) = 0.05 + 0.06 + 0.08 = 0.19$. The option $0.7$ adds the three late rates $0.1 + 0.2 + 0.4$ without weighting by how often each mode is used, and $0.233$ is the unweighted average $\\frac{0.1 + 0.2 + 0.4}{3}$. The trap is summing or averaging the conditional late rates instead of weighting each by the probability of using that mode of transport.",
+      "difficulty": "core",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-023",
+      "stem": "Two bags look identical. Bag $1$ has $4$ red and $6$ green sweets; bag $2$ has $7$ red and $3$ green sweets. A bag is chosen at random and one sweet is drawn; it is red. What is the probability that it came from bag $1$?",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{4}{11}$",
+        "$\\frac{2}{5}$",
+        "$\\frac{7}{11}$"
+      ],
+      "answer": 1,
+      "explanation": "Each bag is chosen with probability $\\frac{1}{2}$. By total probability, $P(\\text{red}) = \\frac{1}{2} \\cdot \\frac{4}{10} + \\frac{1}{2} \\cdot \\frac{7}{10} = \\frac{4}{20} + \\frac{7}{20} = \\frac{11}{20}$. Bayes theorem gives $P(\\text{bag 1} \\mid \\text{red}) = \\frac{\\frac{1}{2} \\cdot \\frac{4}{10}}{\\frac{11}{20}} = \\frac{4/20}{11/20} = \\frac{4}{11}$. The option $\\frac{1}{2}$ quotes the prior probability of choosing bag $1$, ignoring the red evidence, and $\\frac{2}{5} = \\frac{4}{10}$ is just $P(\\text{red} \\mid \\text{bag 1})$. The trap is base-rate neglect, reporting the prior $\\frac{1}{2}$ or the likelihood instead of the posterior from Bayes theorem.",
+      "difficulty": "core",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-024",
+      "stem": "A box contains $6$ functioning and $4$ faulty chips. Three chips are drawn at random without replacement. What is the probability that all three are functioning?",
+      "options": [
+        "$\\frac{27}{125}$",
+        "$\\frac{1}{6}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{8}{27}$"
+      ],
+      "answer": 1,
+      "explanation": "Drawing without replacement, the probabilities chain through conditional values: $P(\\text{all functioning}) = \\frac{6}{10} \\times \\frac{5}{9} \\times \\frac{4}{8} = \\frac{120}{720} = \\frac{1}{6}$. Equivalently $\\frac{\\binom{6}{3}}{\\binom{10}{3}} = \\frac{20}{120} = \\frac{1}{6}$. The option $\\frac{27}{125} = \\left(\\frac{6}{10}\\right)^3$ treats the draws as with replacement, and $\\frac{1}{3} = \\frac{6}{10} \\times \\frac{5}{9}$ stops after only two of the three draws. The trap is using a with-replacement product or dropping the third conditional factor.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-025",
+      "stem": "A rare condition affects $1$ in $1000$ people. A screening test is positive for $99\\%$ of people who have the condition and for $2\\%$ of people who do not. A person tests positive. What is the probability that the person actually has the condition?",
+      "options": [
+        "$0.99$",
+        "$0.001$",
+        "$\\frac{99}{2097}$",
+        "$\\frac{99}{2000}$"
+      ],
+      "answer": 2,
+      "explanation": "Let $D$ be having the condition, so $P(D) = 0.001$. By total probability, $P(+) = (0.99)(0.001) + (0.02)(0.999) = 0.00099 + 0.01998 = 0.02097$. Bayes theorem gives $P(D \\mid +) = \\frac{0.00099}{0.02097} = \\frac{99}{2097}$, about $0.047$. The option $0.99$ quotes the test sensitivity $P(+ \\mid D)$, and $0.001$ quotes the prior $P(D)$ unchanged. Because the condition is so rare, even a fairly accurate test yields mostly false positives. The trap is base-rate neglect: reporting the sensitivity or the prior instead of the posterior, ignoring how few people truly have the condition.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-026",
+      "stem": "An email is spam with probability $0.4$. The word \"free\" appears in $70\\%$ of spam emails and in $10\\%$ of non-spam emails. What is the probability that a randomly chosen email contains the word \"free\"?",
+      "options": [
+        "$0.8$",
+        "$0.34$",
+        "$0.28$",
+        "$0.4$"
+      ],
+      "answer": 1,
+      "explanation": "Let $S$ be spam, with $P(S) = 0.4$ and $P(S^c) = 0.6$. By the law of total probability, $P(\\text{free}) = P(\\text{free} \\mid S)P(S) + P(\\text{free} \\mid S^c)P(S^c) = (0.70)(0.4) + (0.10)(0.6) = 0.28 + 0.06 = 0.34$. The option $0.8$ adds the two conditional rates $0.70 + 0.10$ without weighting, and $0.28$ stops after only the spam branch, forgetting the non-spam contribution. The trap is weighting only one partition or summing the conditionals without their priors.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-027",
+      "stem": "A bag contains $3$ red, $4$ blue, and $5$ green balls. Three balls are drawn at random without replacement. Given that the first two balls drawn are both blue, what is the probability that the third ball is also blue?",
+      "options": [
+        "$\\frac{1}{3}$",
+        "$\\frac{2}{5}$",
+        "$\\frac{1}{6}$",
+        "$\\frac{1}{5}$"
+      ],
+      "answer": 3,
+      "explanation": "Conditioning on the first two draws being blue removes $2$ blue balls and $2$ balls from the total. There were $4$ blue among $12$ balls, so after the two blue draws there are $2$ blue among the $10$ remaining. Thus $P(\\text{third blue} \\mid \\text{first two blue}) = \\frac{2}{10} = \\frac{1}{5}$. The option $\\frac{1}{3} = \\frac{4}{12}$ ignores the conditioning and uses the original counts. The option $\\frac{2}{5} = \\frac{4}{10}$ reduces the total to $10$ but forgets to drop the blue count from $4$ to $2$, while $\\frac{1}{6} = \\frac{2}{12}$ drops the blue count but leaves the total at $12$. The trap is forgetting to update both the blue count and the total after the two given blue draws.",
+      "difficulty": "stretch",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-028",
+      "stem": "For two events, $P(A) = 0.4$ and $P(B) = 0.5$. You are told $P(A \\cup B) = 0.7$. Are $A$ and $B$ independent?",
+      "options": [
+        "Yes, because $P(A \\cap B) = P(A)\\,P(B)$",
+        "Yes, because $P(A \\cup B) = P(A) + P(B)$",
+        "No, because $P(A \\cap B) = 0.1$",
+        "Cannot be determined without $P(A \\mid B)$"
+      ],
+      "answer": 0,
+      "explanation": "First recover the intersection from the addition rule: $P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = 0.4 + 0.5 - 0.7 = 0.2$. Independence requires $P(A \\cap B) = P(A)\\,P(B) = 0.4 \\times 0.5 = 0.2$, and indeed $0.2 = 0.2$, so $A$ and $B$ are independent. The option claiming $P(A \\cap B) = 0.1$ misapplies the addition rule, and the option about $P(A \\cup B) = P(A) + P(B)$ would require disjoint events, which is false here. The trap is testing independence without first extracting the correct intersection from the union.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery and Runger, Applied Statistics and Probability for Engineers"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-029",
+      "stem": "Of the registered voters in a town, $55\\%$ support party P and $45\\%$ support party Q. Among P supporters, $30\\%$ are first-time voters; among Q supporters, $40\\%$ are first-time voters. A randomly chosen voter is a first-time voter. What is the probability that this voter supports party Q?",
+      "options": [
+        "$0.45$",
+        "$\\frac{12}{23}$",
+        "$0.40$",
+        "$\\frac{11}{23}$"
+      ],
+      "answer": 1,
+      "explanation": "By total probability, $P(\\text{first-time}) = (0.30)(0.55) + (0.40)(0.45) = 0.165 + 0.18 = 0.345$. Bayes theorem gives $P(Q \\mid \\text{first-time}) = \\frac{(0.40)(0.45)}{0.345} = \\frac{0.18}{0.345} = \\frac{12}{23}$, about $0.52$. The option $0.45$ quotes the prior $P(Q)$ unchanged, and $\\frac{11}{23} = \\frac{0.165}{0.345}$ is $P(P \\mid \\text{first-time})$, the posterior for the other party. The trap is base-rate neglect or swapping the parties, reporting the prior or the wrong party's share in the numerator.",
+      "difficulty": "stretch",
+      "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-030",
+      "stem": "A bag has $5$ red and $3$ white balls. Two balls are drawn without replacement. What is the probability that the second ball drawn is white?",
+      "options": [
+        "$\\frac{3}{7}$",
+        "$\\frac{3}{8}$",
+        "$\\frac{15}{56}$",
+        "$\\frac{1}{4}$"
+      ],
+      "answer": 1,
+      "explanation": "Condition on the first draw and use total probability. If the first is red (probability $\\frac{5}{8}$), the second is white with probability $\\frac{3}{7}$; if the first is white (probability $\\frac{3}{8}$), the second is white with probability $\\frac{2}{7}$. So $P(\\text{second white}) = \\frac{5}{8} \\cdot \\frac{3}{7} + \\frac{3}{8} \\cdot \\frac{2}{7} = \\frac{15}{56} + \\frac{6}{56} = \\frac{21}{56} = \\frac{3}{8}$. This equals the chance the first ball is white, as symmetry predicts. The option $\\frac{3}{7}$ uses only the first-red branch, and $\\frac{15}{56}$ keeps just that branch's product. The trap is conditioning on only one outcome of the first draw instead of summing both weighted branches.",
+      "difficulty": "stretch",
+      "source": "in the style of standard introductory statistics texts"
+    }
+  ]
+}
