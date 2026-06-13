@@ -92,3 +92,68 @@ test('accepts distinct option values including a sign difference and opaque expr
   b.questions[0].answer = 0;
   assert.deepEqual(validateBank(b, 'calculus-i', 'limits'), []);
 });
+
+function goodCloze() {
+  return {
+    courseId: 'calculus-i',
+    topicId: 'limits',
+    status: 'draft',
+    questions: [{
+      id: 'calculus-i-limits-101',
+      format: 'cloze',
+      stem: 'Evaluate $\\lim_{x\\to 0}\\frac{\\sin 3x}{x}$.',
+      solution: 'As $x\\to 0$, $\\frac{\\sin 3x}{3x}\\to$ {{1}}, so the value is {{2}}, that is $3\\cdot$ {{3}}.',
+      gaps: [
+        { id: 1, type: 'number', answer: 1, tolerance: 0 },
+        { id: 2, type: 'dropdown', options: ['1', '0', '3'], answer: '3' },
+        { id: 3, type: 'text', accept: ['1'] },
+      ],
+      explanation: 'The standard limit is $\\lim_{u\\to0}\\frac{\\sin u}{u}=1$ with $u=3x$.',
+      difficulty: 'core',
+      source: 'in the style of Stewart 8e, 2.3',
+    }],
+  };
+}
+
+test('a well-formed cloze bank has no errors', () => {
+  assert.deepEqual(validateBank(goodCloze(), 'calculus-i', 'limits'), []);
+});
+
+test('cloze: a gap with no marker, and a marker with no gap, are caught', () => {
+  const b = goodCloze();
+  b.questions[0].solution = 'As $x\\to 0$, {{1}} then {{2}} and {{9}}.';
+  const errors = validateBank(b, 'calculus-i', 'limits');
+  assert.ok(errors.some(e => e.includes('gap 3') && e.includes('marker')));
+  assert.ok(errors.some(e => e.includes('{{9}}')));
+});
+
+test('cloze: dropdown answer must be one of its options', () => {
+  const b = goodCloze();
+  b.questions[0].gaps[1].answer = 'banana';
+  const errors = validateBank(b, 'calculus-i', 'limits');
+  assert.ok(errors.some(e => e.includes('dropdown answer')));
+});
+
+test('cloze: a bad gap type and an empty accept list are caught', () => {
+  const b = goodCloze();
+  b.questions[0].gaps[0].type = 'slider';
+  b.questions[0].gaps[2].accept = [];
+  const errors = validateBank(b, 'calculus-i', 'limits');
+  assert.ok(errors.some(e => e.includes('type must be')));
+  assert.ok(errors.some(e => e.includes('accept')));
+});
+
+test('cloze: voice rules apply to the solution', () => {
+  const b = goodCloze();
+  const emDash = String.fromCharCode(0x2014);
+  b.questions[0].solution = `First simplify {{1}} {{2}} {{3}} then take the limit${emDash} with care.`;
+  const errors = validateBank(b, 'calculus-i', 'limits');
+  assert.ok(errors.some(e => e.includes('dash')));
+});
+
+test('an unknown format is rejected', () => {
+  const b = goodCloze();
+  b.questions[0].format = 'essay';
+  const errors = validateBank(b, 'calculus-i', 'limits');
+  assert.ok(errors.some(e => e.includes('format')));
+});
