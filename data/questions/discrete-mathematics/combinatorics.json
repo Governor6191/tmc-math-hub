@@ -1,0 +1,427 @@
+{
+  "courseId": "discrete-mathematics",
+  "topicId": "combinatorics",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "discrete-mathematics-combinatorics-001",
+      "stem": "A canteen lunch combo is built by choosing one of $4$ staples (rice, banku, fufu, kenkey) and one of $3$ soups. How many different combos are possible?",
+      "options": [
+        "$12$",
+        "$7$",
+        "$4$",
+        "$64$"
+      ],
+      "answer": 0,
+      "explanation": "Building a combo is a sequence of two independent choices: the staple, then the soup. By the multiplication principle the totals multiply, so there are $4 \\times 3 = 12$ combos. The answer $7$ comes from adding $4 + 3$, which would only be right if you were choosing a single item from one list or the other rather than one from each. The trap is using the addition principle where the multiplication principle is needed: each staple can be paired with each of the $3$ soups.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-002",
+      "stem": "A student must pick exactly one elective. There are $5$ science electives and $3$ humanities electives available, and they are all distinct. In how many ways can the student pick one elective?",
+      "options": [
+        "$15$",
+        "$5$",
+        "$8$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "Only one elective is chosen, and it comes from either the science list or the humanities list, never both at once. These two cases are disjoint, so the addition principle applies: $5 + 3 = 8$ ways. The answer $15$ multiplies the two counts, which would count a science and a humanities elective chosen together, but the student picks just one. The trap is multiplying when the choices are alternatives (this or that) rather than a sequence of stages (this and then that).",
+      "difficulty": "warmup",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-003",
+      "stem": "In how many ways can $4$ distinct books be arranged in a row on a shelf?",
+      "options": [
+        "$16$",
+        "$24$",
+        "$256$",
+        "$12$"
+      ],
+      "answer": 1,
+      "explanation": "Arranging all $4$ distinct books in order is a permutation of $4$ objects, so the count is $4! = 4 \\times 3 \\times 2 \\times 1 = 24$. You can see this stagewise: $4$ choices for the first slot, then $3$, then $2$, then $1$. The answer $16 = 4^2$ and $256 = 4^4$ treat the slots as if repetition were allowed, and $12 = 4 \\times 3$ stops after only two slots. The trap is forgetting that filling every position with distinct objects multiplies all the way down to $1$, giving $n!$.",
+      "difficulty": "warmup",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-004",
+      "stem": "From a group of $6$ students, $2$ are to be chosen to receive identical prizes. In how many ways can this be done?",
+      "options": [
+        "$30$",
+        "$12$",
+        "$36$",
+        "$15$"
+      ],
+      "answer": 3,
+      "explanation": "The two prizes are identical, so the order in which the students are chosen does not matter: this is a combination. The count is $\\binom{6}{2} = \\dfrac{6 \\times 5}{2} = 15$. The answer $30 = 6 \\times 5 = P(6,2)$ treats the selection as ordered, double counting each pair (choosing Ama then Kofi versus Kofi then Ama). The trap is using a permutation where a combination is needed: with identical prizes the pair $\\lbrace$Ama, Kofi$\\rbrace$ is one outcome, not two.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-005",
+      "stem": "How many distinct arrangements can be made using all the letters of the word $\\text{BOOK}$?",
+      "options": [
+        "$24$",
+        "$6$",
+        "$12$",
+        "$4$"
+      ],
+      "answer": 2,
+      "explanation": "The word $\\text{BOOK}$ has $4$ letters, but the two O's are identical. Arranging $4$ letters with one letter repeated twice gives $\\dfrac{4!}{2!} = \\dfrac{24}{2} = 12$ distinct arrangements. The answer $24 = 4!$ forgets to divide by the repeats and so counts each arrangement twice, once for every way of swapping the two indistinguishable O's. The trap is treating repeated letters as distinct: identical letters force a division by the factorial of their multiplicity.",
+      "difficulty": "warmup",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-006",
+      "stem": "What is the least number of students that must be in a room to be certain that at least two of them were born in the same month of the year?",
+      "options": [
+        "$13$",
+        "$12$",
+        "$24$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "Treat the $12$ months as pigeonholes and the students as pigeons. With $12$ students it is possible for each to have a different birth month, so $12$ is not enough to force a repeat. The $13$th student must land in a month already used, guaranteeing two who share a month. By the pigeonhole principle the threshold is $12 + 1 = 13$. The trap is answering $12$, the number of holes: you need one more than the number of categories before a clash is unavoidable.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-007",
+      "stem": "A KNUST private car number plate has the format $\\text{GR}$ followed by $4$ digits and then $2$ letters, for example $\\text{GR}\\,1234\\,\\text{AB}$. If digits run $0$ to $9$ and letters run $\\text{A}$ to $\\text{Z}$, and repetition is allowed, how many such plates are possible?",
+      "options": [
+        "$10^{4} + 26^{2}$",
+        "$P(10,4) \\cdot P(26,2)$",
+        "$10^{4} \\cdot 26^{2} \\cdot 2$",
+        "$10^{4} \\cdot 26^{2}$"
+      ],
+      "answer": 3,
+      "explanation": "The leading $\\text{GR}$ is fixed, so it contributes a factor of $1$. Each of the $4$ digit slots can be filled $10$ ways and each of the $2$ letter slots $26$ ways, all independently and with repetition allowed. The multiplication principle gives $10^4 \\cdot 26^2$ plates. The answer $10^4 + 26^2$ adds the blocks instead of multiplying, and $P(10,4) \\cdot P(26,2)$ forbids repetition, which the problem explicitly permits. The trap is using permutations $P(n,r)$ when characters may repeat: with repetition each slot keeps its full set of choices, so the count is a product of powers.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-008",
+      "stem": "Eight students queue at the SRC office, but a particular student must stand first in the line. In how many ways can the eight students be arranged in the queue?",
+      "options": [
+        "$40320$",
+        "$5040$",
+        "$8$",
+        "$362880$"
+      ],
+      "answer": 1,
+      "explanation": "The first position is forced, so that student is fixed and contributes one choice. The remaining $7$ students fill the other $7$ positions in any order, giving $7! = 5040$ arrangements. The answer $40320 = 8!$ ignores the restriction and arranges all eight freely, while $362880 = 9!$ uses the wrong count of people. The trap is multiplying as though every position were free: once a slot is pinned to a specific person, only the leftover objects are permuted.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-009",
+      "stem": "A club must choose a President, a Secretary, and a Treasurer from its $10$ members. No member may hold more than one post. In how many ways can the three posts be filled?",
+      "options": [
+        "$120$",
+        "$720$",
+        "$30$",
+        "$1000$"
+      ],
+      "answer": 1,
+      "explanation": "The three posts are distinct, so the order of selection matters: this is a permutation of $10$ members taken $3$ at a time, $P(10,3) = 10 \\times 9 \\times 8 = 720$. The answer $120 = \\binom{10}{3}$ counts unordered groups of three and so undercounts by a factor of $3! = 6$, ignoring that President-Secretary-Treasurer assignments differ. The trap is using a combination for distinct, labelled roles: when each chosen person gets a different title, the arrangement is ordered.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-010",
+      "stem": "A committee of $4$ people is to be formed in a hall from $7$ men and $5$ women. How many committees consist of exactly $2$ men and $2$ women?",
+      "options": [
+        "$420$",
+        "$66$",
+        "$120$",
+        "$210$"
+      ],
+      "answer": 3,
+      "explanation": "Choose the men and the women separately, since a committee is unordered. The men can be chosen in $\\binom{7}{2} = 21$ ways and the women in $\\binom{5}{2} = 10$ ways, and the multiplication principle combines the two independent selections: $21 \\times 10 = 210$. The answer $420$ doubles this, which happens if you mistakenly use ordered choices (a permutation) for one of the groups. The trap is multiplying correctly but slipping into a permutation for the men or the women; committee membership does not depend on the order people are picked.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-011",
+      "stem": "In the binomial expansion of $(x + y)^{7}$, what is the coefficient of the term $x^{4} y^{3}$?",
+      "options": [
+        "$35$",
+        "$21$",
+        "$840$",
+        "$7$"
+      ],
+      "answer": 0,
+      "explanation": "By the binomial theorem the term containing $x^{4} y^{3}$ in $(x+y)^7$ is $\\binom{7}{3} x^{4} y^{3}$, where the lower index counts the $y$ factors. So the coefficient is $\\binom{7}{3} = \\dfrac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35$. The answer $21 = \\binom{7}{2}$ uses the wrong index, and $7 = \\binom{7}{1}$ is off as well; $840 = P(7,3)$ forgets to divide by $3!$ and so counts ordered selections. The trap is reading off the wrong binomial coefficient: for $x^{n-k} y^{k}$ the coefficient is $\\binom{n}{k}$, here $\\binom{7}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-012",
+      "stem": "How many distinct arrangements can be formed using all the letters of the word $\\text{BANANA}$?",
+      "options": [
+        "$720$",
+        "$120$",
+        "$60$",
+        "$360$"
+      ],
+      "answer": 2,
+      "explanation": "The word $\\text{BANANA}$ has $6$ letters with three A's and two N's repeated. The number of distinct arrangements is $\\dfrac{6!}{3! \\, 2!} = \\dfrac{720}{6 \\times 2} = 60$. The answer $720 = 6!$ ignores all repeats, $120 = \\dfrac{6!}{3!}$ divides only by the A's and forgets the two N's, and $360 = \\dfrac{6!}{2!}$ accounts only for the N's. The trap is dividing by some but not all of the repeated-letter factorials: every repeated letter contributes its own factorial to the denominator.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-013",
+      "stem": "A coin is tossed and a single die is rolled. How many outcomes give a head together with an even number on the die?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$2$",
+        "$3$"
+      ],
+      "answer": 3,
+      "explanation": "Split the outcome into two independent parts: the coin showing a head (exactly $1$ favourable way) and the die showing an even number, which is $2$, $4$, or $6$ (exactly $3$ favourable ways). The multiplication principle gives $1 \\times 3 = 3$ outcomes. The answer $5$ adds $2 + 3$ in a confused way, and $6$ counts all die faces while ignoring the head requirement. The trap is adding instead of multiplying the counts of two simultaneous conditions: a head and an even die are linked by 'and', so the favourable counts multiply.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-014",
+      "stem": "How many three-digit numbers can be formed from the digits $1, 2, 3, 4, 5, 6, 7$ if no digit may be repeated?",
+      "options": [
+        "$343$",
+        "$210$",
+        "$35$",
+        "$120$"
+      ],
+      "answer": 1,
+      "explanation": "A three-digit number is an ordered selection, and with no repetition allowed this is a permutation of $7$ digits taken $3$ at a time: $P(7,3) = 7 \\times 6 \\times 5 = 210$. The answer $343 = 7^3$ would be correct only if repetition were allowed, $35 = \\binom{7}{3}$ ignores that the order of digits matters (so $123$ and $321$ would be merged), and $120$ uses the wrong base count. The trap is using a combination for an ordered arrangement: in a number the position of each digit changes its value.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-015",
+      "stem": "From a class of $12$ students, a study group of $5$ students is to be selected. In how many ways can this be done?",
+      "options": [
+        "$95040$",
+        "$60$",
+        "$792$",
+        "$3960$"
+      ],
+      "answer": 2,
+      "explanation": "A study group has no internal ranking, so order does not matter: the count is the combination $\\binom{12}{5} = \\dfrac{12 \\times 11 \\times 10 \\times 9 \\times 8}{5 \\times 4 \\times 3 \\times 2 \\times 1} = 792$. The answer $95040 = P(12,5)$ treats the five seats as ordered and overcounts each group by $5! = 120$. The trap is using a permutation when forming an unordered group: dividing the ordered count $95040$ by $120$ recovers the correct $792$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-016",
+      "stem": "How many distinct arrangements can be formed using all the letters of the word $\\text{MISSISSIPPI}$?",
+      "options": [
+        "$34650$",
+        "$39916800$",
+        "$831600$",
+        "$1247400$"
+      ],
+      "answer": 0,
+      "explanation": "The word $\\text{MISSISSIPPI}$ has $11$ letters: one M, four I's, four S's, and two P's. The number of distinct arrangements is $\\dfrac{11!}{1! \\, 4! \\, 4! \\, 2!} = \\dfrac{39916800}{1 \\times 24 \\times 24 \\times 2} = 34650$. The answer $39916800 = 11!$ ignores every repeat, while $831600 = \\dfrac{11!}{4! \\, 2!}$ and $1247400 = \\dfrac{11!}{4! \\, 4!}$ each leave out one of the repeated-letter factorials. The trap is dropping a repeated letter from the denominator: all of the four I's, four S's, and two P's must be divided out.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-017",
+      "stem": "There are $30$ students in a tutorial. What is the least value of $k$ for which we can be sure that at least $k$ of them were born on the same day of the week?",
+      "options": [
+        "$5$",
+        "$4$",
+        "$7$",
+        "$3$"
+      ],
+      "answer": 0,
+      "explanation": "There are $7$ days of the week, the pigeonholes. By the generalized pigeonhole principle, distributing $30$ students over $7$ days forces some day to hold at least $\\lceil 30 / 7 \\rceil = \\lceil 4.28 \\rceil = 5$ students. So we can be sure at least $5$ share a day, and no larger number is guaranteed since $30 = 4 \\times 7 + 2$ allows a spread with maximum $5$. The answer $4$ rounds $30/7$ down instead of up; that many is possible to avoid. The trap is using the floor of $N/k$ rather than the ceiling: the generalized principle needs rounding up.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-018",
+      "stem": "What is the sum of all the coefficients in the expansion of $(x + y)^{6}$?",
+      "options": [
+        "$12$",
+        "$36$",
+        "$64$",
+        "$32$"
+      ],
+      "answer": 2,
+      "explanation": "The sum of the coefficients of $(x+y)^6$ is obtained by setting $x = 1$ and $y = 1$, which gives $(1+1)^6 = 2^6 = 64$. Equivalently the coefficients are $\\binom{6}{0}, \\binom{6}{1}, \\dots, \\binom{6}{6}$, and their sum is the row total $2^6 = 64$. The answer $12 = 2 \\times 6$ doubles the exponent, $36 = 6^2$ squares it, and $32 = 2^5$ slips on the power. The trap is not recognizing that substituting $1$ for both variables collapses the whole expansion to $2^n$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-019",
+      "stem": "A jollof platter is assembled by choosing one protein from $\\lbrace$ chicken, beef, fish $\\rbrace$, one side from $\\lbrace$ salad, plantain $\\rbrace$, and one drink from $\\lbrace$ sobolo, malt, water, soda $\\rbrace$. How many different platters can be assembled?",
+      "options": [
+        "$9$",
+        "$14$",
+        "$12$",
+        "$24$"
+      ],
+      "answer": 3,
+      "explanation": "A platter is a sequence of three independent choices: protein ($3$ ways), side ($2$ ways), and drink ($4$ ways). The multiplication principle gives $3 \\times 2 \\times 4 = 24$ platters. The answer $9 = 3 + 2 + 4$ adds the counts, which would only suit picking a single item overall, and $14$ comes from a partial mix of adding and multiplying. The trap is adding the option counts instead of multiplying across the independent stages of building one platter.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-020",
+      "stem": "In the expansion of $(x - 2)^{6}$, what is the coefficient of the term in $x^{4}$?",
+      "options": [
+        "$15$",
+        "$60$",
+        "$-60$",
+        "$-30$"
+      ],
+      "answer": 1,
+      "explanation": "By the binomial theorem the general term of $(x-2)^6$ is $\\binom{6}{k} x^{6-k} (-2)^{k}$. The power of $x$ is $6 - k$, so $x^4$ needs $k = 2$. That term is $\\binom{6}{2} x^{4} (-2)^{2} = 15 \\cdot x^{4} \\cdot 4 = 60 x^{4}$, so the coefficient is $60$. The answer $15 = \\binom{6}{2}$ drops the $(-2)^2$ factor, and $-60$ mistakes $(-2)^2$ for a negative value even though squaring removes the sign. The trap is omitting or mis-signing the constant: every term carries the binomial coefficient times the constant base raised to the matching power, and $(-2)^2 = +4$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-021",
+      "stem": "In how many ways can $6$ people be seated at a round table, where seatings that differ only by a rotation are regarded as the same?",
+      "options": [
+        "$720$",
+        "$60$",
+        "$120$",
+        "$144$"
+      ],
+      "answer": 2,
+      "explanation": "For a circular arrangement of $n$ distinct people, rotations are not counted as new, so the count is $(n-1)!$ rather than $n!$. With $n = 6$ this is $(6-1)! = 5! = 120$. The answer $720 = 6!$ is the count for a row; it overcounts the round table by a factor of $6$ because each circular seating can be rotated into $6$ positions that all look the same. The trap is using $n!$ for a circular permutation: fixing one person to kill the rotational symmetry leaves $(n-1)!$ arrangements.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-022",
+      "stem": "From $9$ players, a team of $4$ is to be chosen. If one particular player, the captain, must be on the team, in how many ways can the team be completed?",
+      "options": [
+        "$56$",
+        "$126$",
+        "$84$",
+        "$70$"
+      ],
+      "answer": 0,
+      "explanation": "The captain is already on the team, so only $3$ more players must be chosen from the remaining $8$. Since a team is unordered, the count is $\\binom{8}{3} = \\dfrac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1} = 56$. The answer $126 = \\binom{9}{4}$ ignores the captain restriction and chooses all four freely, while $70 = \\binom{8}{4}$ keeps the right pool of $8$ but the wrong number to pick. The trap is not reducing both counts after fixing the captain: include him for free and choose only $3$ from the other $8$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-023",
+      "stem": "How many distinct arrangements of the letters of the word $\\text{LEVEL}$ begin and end with the letter $\\text{L}$?",
+      "options": [
+        "$6$",
+        "$3$",
+        "$12$",
+        "$2$"
+      ],
+      "answer": 1,
+      "explanation": "The word $\\text{LEVEL}$ has letters L, E, V, E, L: two L's, two E's, and one V. Placing an L at each end uses up both L's, and the two middle-end positions are now fixed. The three interior slots must be filled with E, V, E, which has $\\dfrac{3!}{2!} = 3$ arrangements because the two E's repeat. So the answer is $3$. The count $6 = 3!$ forgets that the two interior E's are identical, and $12$ double counts by also swapping the two fixed L's. The trap is treating the repeated E's (and L's) as distinct: identical letters never create new arrangements.",
+      "difficulty": "stretch",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-024",
+      "stem": "A drawer contains socks of $4$ colours, mixed together in the dark. What is the least number of socks one must pull out to be certain of getting at least one matching pair (two socks of the same colour)?",
+      "options": [
+        "$4$",
+        "$8$",
+        "$2$",
+        "$5$"
+      ],
+      "answer": 3,
+      "explanation": "The $4$ colours act as pigeonholes. Pulling $4$ socks could give one of each colour with no pair, so $4$ is not yet safe. The $5$th sock must repeat a colour already drawn, guaranteeing a matching pair. By the pigeonhole principle the threshold is $4 + 1 = 5$. The answer $4$ stops at the number of colours, and $8$ assumes you need two of every colour. The trap is forgetting the extra item: to force a repeat you need one more than the number of categories, not the number of categories itself.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-025",
+      "stem": "A commercial vehicle plate has the form $\\text{AS}$, then $4$ digits, then $1$ letter, where the letter may be any of $\\text{A}$ to $\\text{Z}$ except it may not be a vowel (A, E, I, O, U). Digits run $0$ to $9$ with repetition allowed. How many such plates are possible?",
+      "options": [
+        "$10^{4} \\cdot 26$",
+        "$10^{4} \\cdot 21$",
+        "$10^{4} \\cdot 20$",
+        "$P(10,4) \\cdot 21$"
+      ],
+      "answer": 1,
+      "explanation": "The prefix $\\text{AS}$ is fixed. The $4$ digit slots give $10^4$ since repetition is allowed. For the final letter, removing the $5$ vowels from the $26$ letters leaves $26 - 5 = 21$ allowed letters. The multiplication principle gives $10^4 \\cdot 21$ plates. The answer $10^4 \\cdot 26$ forgets the vowel restriction, $10^4 \\cdot 20$ miscounts the vowels as $6$, and $P(10,4) \\cdot 21$ wrongly forbids repeated digits. The trap is mishandling the restricted slot: subtract exactly the $5$ vowels, giving $21$ valid letters, while leaving the unrestricted digit slots at full count.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-026",
+      "stem": "Five students and one tutor sit at a round table for a study session. If rotations are regarded as the same seating, and the tutor's seat is taken as the reference point, in how many ways can the group be seated?",
+      "options": [
+        "$720$",
+        "$24$",
+        "$600$",
+        "$120$"
+      ],
+      "answer": 3,
+      "explanation": "There are $6$ people in all, so the round-table count is $(6-1)! = 5! = 120$. Fixing the tutor as the reference seat is exactly the standard device that removes the rotational duplicates, and the remaining $5$ people then fill the other seats in $5! = 120$ ways. The answer $720 = 6!$ treats the table as a row and overcounts by the $6$ rotations, while $24 = 4!$ removes one person too many. The trap is using $6!$ for a circular arrangement: anchoring one person leaves $(6-1)!$ seatings.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-027",
+      "stem": "A committee of $3$ is to be chosen in a hall from $5$ men and $4$ women, and the committee must include at least one woman. How many such committees are possible?",
+      "options": [
+        "$74$",
+        "$84$",
+        "$10$",
+        "$64$"
+      ],
+      "answer": 0,
+      "explanation": "Use complementary counting. The total number of committees of $3$ from the $9$ people is $\\binom{9}{3} = 84$. The committees with no woman are all-men, $\\binom{5}{3} = 10$. Subtracting, the committees with at least one woman number $84 - 10 = 74$. The answer $84$ forgets to remove the all-male committees, while $10$ is exactly the count being subtracted. The trap is ignoring the 'at least one' constraint: the clean route is total minus the unwanted all-men case, $84 - 10 = 74$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-028",
+      "stem": "How many distinct arrangements of the letters of the word $\\text{NUMBER}$ have the two letters $\\text{N}$ and $\\text{B}$ next to each other?",
+      "options": [
+        "$720$",
+        "$120$",
+        "$240$",
+        "$48$"
+      ],
+      "answer": 2,
+      "explanation": "All six letters of $\\text{NUMBER}$ are distinct. Glue N and B together as a single block, leaving $5$ items (the block plus U, M, E, R) to arrange in $5! = 120$ ways. The block itself can be ordered as NB or BN, giving a factor of $2$. The total is $5! \\times 2 = 120 \\times 2 = 240$. The answer $720 = 6!$ ignores the adjacency requirement entirely, and $120 = 5!$ glues the pair but forgets the block can be internally swapped. The trap is omitting the factor of $2$ for the two internal orders of the glued pair.",
+      "difficulty": "stretch",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-029",
+      "stem": "A bag contains many marbles in $3$ colours. What is the least number of marbles one must draw to be certain of getting at least $4$ marbles of the same colour?",
+      "options": [
+        "$12$",
+        "$9$",
+        "$10$",
+        "$13$"
+      ],
+      "answer": 2,
+      "explanation": "There are $3$ colours, the pigeonholes. The worst case before a colour reaches $4$ is having exactly $3$ of each colour, which is $3 \\times 3 = 9$ marbles with no colour yet at $4$. One more marble, the $10$th, must push some colour to $4$. So the threshold is $3 \\times 3 + 1 = 10$. The answer $9$ is the largest count that can still be avoided, and $12 = 3 \\times 4$ overshoots by ignoring the plus one. The trap is misapplying the generalized pigeonhole bound: to guarantee $4$ in one of $3$ holes you need $3 \\times (4-1) + 1 = 10$, not $3 \\times 4$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics and Its Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-030",
+      "stem": "In the expansion of $(2x + 3)^{5}$, what is the coefficient of the term in $x^{3}$?",
+      "options": [
+        "$80$",
+        "$8$",
+        "$240$",
+        "$720$"
+      ],
+      "answer": 3,
+      "explanation": "By the binomial theorem the general term is $\\binom{5}{k} (2x)^{5-k} (3)^{k}$. The power of $x$ is $5 - k$, so $x^3$ requires $k = 2$. That term is $\\binom{5}{2} (2x)^{3} (3)^{2} = 10 \\cdot 8x^{3} \\cdot 9 = 720 x^{3}$, giving the coefficient $720$. The answer $80 = \\binom{5}{2} \\cdot 8$ forgets the $3^2 = 9$ factor, $8$ keeps only $(2)^3$ and drops both $\\binom{5}{2}$ and the power of $3$, and $240$ mishandles which constant goes with which power. The trap is omitting one of the constant factors: every term carries the binomial coefficient and both numerical bases raised to their correct powers.",
+      "difficulty": "stretch",
+      "source": "in the style of Epp, Discrete Mathematics with Applications"
+    }
+  ]
+}
