@@ -69,3 +69,26 @@ test('rejects bad difficulty and empty source', () => {
   assert.ok(errors.some(e => e.includes('difficulty')));
   assert.ok(errors.some(e => e.includes('source')));
 });
+
+test('rejects two options with the same numeric value (reduced vs unreduced)', () => {
+  const b = goodBank();
+  b.questions[0].options = ['$\\frac{7}{15}$', '$\\frac{21}{45}$', '$1$', '$2$'];
+  b.questions[0].answer = 0;
+  const errors = validateBank(b, 'calculus-i', 'limits');
+  assert.ok(errors.some(e => e.includes('option') && e.includes('same value')));
+});
+
+test('rejects two textually identical options', () => {
+  const b = goodBank();
+  b.questions[0].options = ['$5$', '$5$', '$1$', '$2$'];
+  b.questions[0].answer = 0;
+  const errors = validateBank(b, 'calculus-i', 'limits');
+  assert.ok(errors.some(e => e.includes('option') && e.includes('same value')));
+});
+
+test('accepts distinct option values including a sign difference and opaque expressions', () => {
+  const b = goodBank();
+  b.questions[0].options = ['$\\frac{2}{3}$', '$-\\frac{2}{3}$', '$e^{-2}$', '$1 - e^{-2}$'];
+  b.questions[0].answer = 0;
+  assert.deepEqual(validateBank(b, 'calculus-i', 'limits'), []);
+});

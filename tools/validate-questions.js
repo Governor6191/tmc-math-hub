@@ -8,6 +8,26 @@ const DIFFICULTIES = new Set(['warmup', 'core', 'stretch']);
 const STATUSES = new Set(['draft', 'approved']);
 const DASH_RE = /[–—]/;
 
+// Canonicalize an option for duplicate detection. Pure numbers and single
+// fractions (optionally signed, optionally with currency words) reduce to a
+// numeric key so that, for example, 7/15 and 21/45 collide; anything with
+// further structure (powers, e^, binom, sqrt, prose) stays an opaque string
+// key, so only genuinely identical expressions collide.
+function optionKey(raw) {
+  const t = String(raw).replace(/\$/g, '').replace(/\\[,;:!]/g, '').replace(/\s+/g, '');
+  const frac = t.match(/^(-?)\\[dt]?frac\{(-?\d+)\}\{(-?\d+)\}$/);
+  if (frac) {
+    const den = Number(frac[3]);
+    if (den !== 0) {
+      const sign = frac[1] === '-' ? -1 : 1;
+      return 'num:' + (sign * Number(frac[2]) / den).toFixed(9);
+    }
+  }
+  const plain = t.replace(/GHC|GHS|cedis|pesewas|\\?%/gi, '');
+  if (/^-?\d+(?:\.\d+)?$/.test(plain)) return 'num:' + Number(plain).toFixed(9);
+  return 'str:' + t;
+}
+
 function textProblems(label, s, errors, qid) {
   if (DASH_RE.test(s)) errors.push(`${qid}: ${label} contains an em or en dash (voice rules ban them)`);
   const dollars = (s.match(/\$/g) || []).length;
@@ -45,6 +65,15 @@ export function validateBank(bank, expectedCourseId, expectedTopicId) {
     if (typeof q.source !== 'string' || q.source.trim().length === 0) errors.push(`${qid}: source must not be empty`);
     for (const [label, s] of [['stem', q.stem], ['explanation', q.explanation], ...(Array.isArray(q.options) ? q.options.map((o, i) => [`option ${i}`, o]) : [])]) {
       if (typeof s === 'string') textProblems(label, s, errors, qid);
+    }
+    if (Array.isArray(q.options)) {
+      const keys = new Map();
+      q.options.forEach((o, i) => {
+        if (typeof o !== 'string') return;
+        const k = optionKey(o);
+        if (keys.has(k)) errors.push(`${qid}: options ${keys.get(k)} and ${i} have the same value`);
+        else keys.set(k, i);
+      });
     }
   }
   return errors;
