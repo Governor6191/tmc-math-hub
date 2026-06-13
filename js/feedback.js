@@ -11,7 +11,7 @@ const WEB3FORMS_KEY = 'c213a3b5-92af-4847-b955-5c073ce2c0e5';
 // Free imgbb API key (get one at https://api.imgbb.com). An optional screenshot
 // is uploaded there and its link is included in the feedback email; the static
 // site has no storage of its own.
-const IMGBB_KEY = 'REPLACE_WITH_IMGBB_API_KEY';
+const IMGBB_KEY = '9f60dc41e1e594ed5285655c2e2763f5';
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 
 const TOPICS = [
