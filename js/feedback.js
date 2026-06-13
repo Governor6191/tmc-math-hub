@@ -6,7 +6,7 @@ const root = document.getElementById('feedback-root');
 // Free Web3Forms access key (get one at https://web3forms.com, it routes
 // submissions to Sylvester's inbox without exposing the address). Replace the
 // placeholder below with the real key.
-const WEB3FORMS_KEY = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY';
+const WEB3FORMS_KEY = 'c213a3b5-92af-4847-b955-5c073ce2c0e5';
 
 const TOPICS = [
   'General feedback',
