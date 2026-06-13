@@ -5,6 +5,7 @@ const SECTIONS = [
   { href: 'index.html', label: 'Library' },
   { href: 'progress.html', label: 'My progress' },
   { href: 'about.html', label: 'About' },
+  { href: 'feedback.html', label: 'Feedback' },
 ];
 
 export function escapeHtml(s) {
@@ -60,6 +61,7 @@ export function renderChrome() {
   if (footer) {
     footer.innerHTML = `
       <p>Built by and for fellows of the KNUST Mathematics Department.</p>
+      <p>Spotted an error or have an idea? <a href="feedback.html">Send feedback</a>.</p>
       <p>All PDFs stream from the <a href="https://drive.google.com/drive/folders/1k-3KXvCbHkT3RKFBFY2XOz9wbcI2pbb3">TMC Drive hub</a>. Nothing is hosted here.</p>`;
   }
 }
