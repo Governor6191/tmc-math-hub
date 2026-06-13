@@ -3,6 +3,8 @@ import { loadCatalog, findCourse } from './catalog.js';
 import { createAttempt, remainingMs, answerQuestion, toggleFlag, answeredCount, scoreAttempt } from './exam-state.js';
 import { saveCheckpoint, loadCheckpoint, clearCheckpoint, recordAttempt } from './exam-store.js';
 import { renderMathIn } from './math-render.js';
+import { gradeCloze } from './cloze-engine.js';
+import { solutionHtml, readGapValues, markGaps } from './cloze-render.js';
 
 renderChrome();
 const root = document.getElementById('exam');
@@ -126,12 +128,14 @@ function renderExam() {
           <button class="flag-btn${attempt.flags[i] ? ' on' : ''}" id="flag">${attempt.flags[i] ? 'Flagged' : 'Flag question'}</button>
         </div>
         <p class="quiz-stem">${escapeHtml(q.stem)}</p>
-        <ul class="quiz-options">
+        ${q.format === 'cloze'
+          ? solutionHtml(q)
+          : `<ul class="quiz-options">
           ${q.options.map((opt, oi) => `
             <li><button class="option-btn${attempt.answers[i] === oi ? ' is-correct' : ''}" data-pick="${oi}">
               <span class="option-letter">${LETTERS[oi]}</span><span>${escapeHtml(opt)}</span>
             </button></li>`).join('')}
-        </ul>
+        </ul>`}
         <div class="quiz-next">
           <button class="read-btn" id="prev"${i === 0 ? ' disabled' : ''}>Previous</button>
           <button class="next-btn" id="next">${i === attempt.questions.length - 1 ? 'Go to summary' : 'Next'}</button>
@@ -166,6 +170,17 @@ function wireExamEvents() {
     else { attempt.current++; checkpoint(); renderExam(); }
   });
   document.getElementById('finish').addEventListener('click', renderSummary);
+  const cloze = root.querySelector('.cloze-solution');
+  if (cloze) {
+    const i = attempt.current;
+    const saved = attempt.answers[i] || {};
+    cloze.querySelectorAll('.cloze-gap').forEach(el => {
+      if (saved[el.dataset.gap] !== undefined) el.value = saved[el.dataset.gap];
+      const save = () => { answerQuestion(attempt, i, readGapValues(cloze)); checkpoint(); };
+      el.addEventListener('input', save);
+      el.addEventListener('change', save);
+    });
+  }
 }
 
 function renderSummary() {
@@ -220,7 +235,7 @@ function renderResults(s, auto) {
     ${draftBanner()}
     ${auto ? `<div class="draft-banner">Time ran out, so the attempt was submitted automatically.</div>` : ''}
     <div class="quiz-card quiz-summary">
-      <p class="score">${s.correct}/${s.total}</p>
+      <p class="score">${Number.isInteger(s.correct) ? s.correct : s.correct.toFixed(1)}/${s.total}</p>
       <p>${pct}%. ${pct >= 70 ? 'Exam-room ready.' : pct >= 50 ? 'Getting there. Work the review below.' : 'The review below is where the marks are. Read every explanation.'}</p>
       <div class="quiz-next" style="justify-content: center;">
         <a href="exam.html?c=${encodeURIComponent(course.id)}${draftMode ? '&draft=1' : ''}">Take another paper</a>
@@ -229,6 +244,16 @@ function renderResults(s, auto) {
     </div>
     <h2>Review</h2>
     ${attempt.questions.map((q, i) => {
+      if (q.format === 'cloze') {
+        const graded = gradeCloze(q, attempt.answers[i] || {});
+        return `
+      <article class="review-q">
+        <p class="meta">Question ${i + 1} · ${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}${attempt.flags[i] ? ' · flagged' : ''} · ${graded.correctCount}/${graded.total} blanks</p>
+        <p class="quiz-stem">${escapeHtml(q.stem)}</p>
+        <div data-review-cloze="${i}">${solutionHtml(q)}</div>
+        <div class="explanation"><div>${escapeHtml(q.explanation)}</div></div>
+      </article>`;
+      }
       const chosen = attempt.answers[i];
       return `
       <article class="review-q">
@@ -244,6 +269,14 @@ function renderResults(s, auto) {
         <div class="explanation"><div>${escapeHtml(q.explanation)}</div></div>
       </article>`;
     }).join('')}`;
+  renderMathIn(root);
+  root.querySelectorAll('[data-review-cloze]').forEach(div => {
+    const i = Number(div.dataset.reviewCloze);
+    const q = attempt.questions[i];
+    const saved = attempt.answers[i] || {};
+    div.querySelectorAll('.cloze-gap').forEach(el => { if (saved[el.dataset.gap] !== undefined) el.value = saved[el.dataset.gap]; });
+    markGaps(div, gradeCloze(q, saved));
+  });
   renderMathIn(root);
 }
 
