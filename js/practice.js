@@ -1,6 +1,8 @@
 import { renderChrome, escapeHtml } from './app.js';
 import { loadCatalog, findCourse } from './catalog.js';
 import { drawQuestions, shuffleOptions, mark, tally } from './quiz-engine.js';
+import { gradeCloze } from './cloze-engine.js';
+import { solutionHtml, readGapValues, markGaps } from './cloze-render.js';
 import { recordAnswer, getProgress, isAvailable } from './progress.js';
 import { renderMathIn } from './math-render.js';
 
@@ -40,6 +42,7 @@ function renderSession(course, year, semester, pool) {
   const queue = drawQuestions(pool, SESSION_SIZE);
   const results = [];
   let index = 0;
+  const fmtCount = n => (Number.isInteger(n) ? String(n) : n.toFixed(1));
 
   function header() {
     const t = tally(results);
@@ -50,12 +53,13 @@ function renderSession(course, year, semester, pool) {
       ${draftMode ? `<div class="draft-banner">Draft preview. These questions are not reviewed yet and your answers are not saved.</div>` : ''}
       <div class="quiz-head">
         <h1>${index < queue.length ? `Question ${index + 1} of ${queue.length}` : 'Session complete'}</h1>
-        <span class="quiz-tally">${t.correct}/${t.answered} correct</span>
+        <span class="quiz-tally">${fmtCount(t.correct)}/${t.answered} correct</span>
       </div>`;
   }
 
   function showQuestion() {
     const q = queue[index];
+    if (q.format === 'cloze') { showCloze(q); return; }
     const shuffled = shuffleOptions(q);
     root.innerHTML = `
       ${header()}
@@ -94,8 +98,9 @@ function renderSession(course, year, semester, pool) {
           <button class="next-btn" id="next">${last ? 'See results' : 'Next question'}</button>
         </div>`;
       renderMathIn(document.getElementById('feedback'));
+      const tnow = tally(results);
       document.querySelector('.quiz-head .quiz-tally').textContent =
-        `${tally(results).correct}/${tally(results).answered} correct`;
+        `${fmtCount(tnow.correct)}/${tnow.answered} correct`;
       document.getElementById('next').addEventListener('click', () => {
         index++;
         if (index < queue.length) showQuestion();
@@ -105,13 +110,57 @@ function renderSession(course, year, semester, pool) {
     }));
   }
 
+  function showCloze(q) {
+    root.innerHTML = `
+      ${header()}
+      <div class="quiz-card">
+        <p class="quiz-stem">${escapeHtml(q.stem)}</p>
+        ${solutionHtml(q, { shuffleDropdowns: true })}
+        <div class="quiz-next" style="margin-top: 1.1rem;">
+          <span class="hint">Fill every blank, then check.</span>
+          <button class="next-btn" id="check">Check</button>
+        </div>
+        <div id="feedback"></div>
+      </div>`;
+    renderMathIn(root);
+
+    document.getElementById('check').addEventListener('click', () => {
+      const graded = gradeCloze(q, readGapValues(root));
+      markGaps(root, graded);
+      renderMathIn(root);
+      results.push({ score: graded.score });
+      if (!draftMode) recordAnswer(course.id, q.id, graded.score);
+      document.getElementById('check').disabled = true;
+
+      const last = index === queue.length - 1;
+      document.getElementById('feedback').innerHTML = `
+        <div class="explanation">
+          <p class="verdict ${graded.allCorrect ? 'right' : 'wrong'}">${graded.allCorrect ? 'All correct.' : `${graded.correctCount} of ${graded.total} blanks right.`}</p>
+          <div>${escapeHtml(q.explanation)}</div>
+        </div>
+        <div class="quiz-next">
+          <span class="hint">${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}</span>
+          <button class="next-btn" id="next">${last ? 'See results' : 'Next question'}</button>
+        </div>`;
+      renderMathIn(document.getElementById('feedback'));
+      const t = tally(results);
+      document.querySelector('.quiz-head .quiz-tally').textContent = `${fmtCount(t.correct)}/${t.answered} correct`;
+      document.getElementById('next').addEventListener('click', () => {
+        index++;
+        if (index < queue.length) showQuestion();
+        else showSummary();
+      });
+      document.getElementById('next').focus();
+    });
+  }
+
   function showSummary() {
     const t = tally(results);
     const prog = !draftMode && isAvailable() ? getProgress(course.id) : null;
     root.innerHTML = `
       ${header()}
       <div class="quiz-card quiz-summary">
-        <p class="score">${t.correct}/${t.answered}</p>
+        <p class="score">${fmtCount(t.correct)}/${t.answered}</p>
         <p>${t.percent >= 80 ? 'Strong work.' : t.percent >= 50 ? 'Solid. The explanations you just read are the gold.' : 'Rough round. Read the worked solutions and go again.'}</p>
         ${prog ? `<p class="hint">All time on this device: ${prog.attempted} questions tried in ${escapeHtml(course.title)}.</p>` : ''}
         <div class="quiz-next" style="justify-content: center;">
