@@ -1,6 +1,15 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { loadCatalog, resetCatalogCache, findCourse, courseStats, semesterStats, yearStats } from '../js/catalog.js';
+import { loadCatalog, resetCatalogCache, findCourse, courseStats, semesterStats, yearStats, yearTracks, coursesForGroup } from '../js/catalog.js';
+
+const TRACKED_YEAR = { year: 4, semesters: [
+  { semester: 1, courses: [
+    { track: 'Pure Maths', topics: [], materials: [] },
+    { track: 'Applied Maths', topics: [], materials: [] },
+    { track: 'Applied Maths', topics: [], materials: [] },
+  ] },
+  { semester: 2, courses: [ { topics: [], materials: [] }, { topics: [], materials: [] } ] },
+] };
 
 const FIXTURE = {
   years: [{
@@ -52,6 +61,20 @@ test('yearStats counts courses across multiple semesters and tolerates empty one
     { semester: 2, courses: [] },
   ] };
   assert.deepEqual(yearStats(year), { courses: 2, questions: 0, files: 0, topics: 0, videos: 0 });
+});
+
+test('yearTracks lists distinct sorted stream names, empty when untracked', () => {
+  assert.deepEqual(yearTracks(TRACKED_YEAR), ['Applied Maths', 'Pure Maths']);
+  assert.deepEqual(yearTracks(FIXTURE.years[0]), []);
+});
+
+test('coursesForGroup returns the stream plus untracked common courses', () => {
+  const s1 = TRACKED_YEAR.semesters[0].courses;
+  assert.equal(coursesForGroup(s1, 'Pure Maths').length, 1);
+  assert.equal(coursesForGroup(s1, 'Applied Maths').length, 2);
+  const s2 = TRACKED_YEAR.semesters[1].courses; // all untracked, shown to every group
+  assert.equal(coursesForGroup(s2, 'Pure Maths').length, 2);
+  assert.equal(coursesForGroup(s2, null).length, 2);
 });
 
 test('loadCatalog fetches once and caches', async () => {

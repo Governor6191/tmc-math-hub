@@ -30,9 +30,12 @@ function render(course, year, semester) {
   const practice = course.materials.filter(m => m.kind === 'practice');
   const textbooks = course.materials.filter(m => m.kind === 'textbook');
   const others = course.materials.filter(m => m.kind !== 'practice' && m.kind !== 'textbook');
+  const gq = course.track ? `&amp;g=${encodeURIComponent(course.track)}` : '';
+  const semHref = `semester.html?y=${year}&amp;s=${semester}${gq}`;
+  const trackCrumb = course.track ? ` · <a href="year.html?y=${year}&amp;g=${encodeURIComponent(course.track)}">${escapeHtml(course.track)}</a>` : '';
 
   root.innerHTML = `
-    <p class="crumb"><a class="crumb-back" href="semester.html?y=${year}&amp;s=${semester}" aria-label="Back to Year ${year} Semester ${semester}">&#8592;</a><a href="index.html">Library</a> · <a href="year.html?y=${year}">Year ${year}</a> · <a href="semester.html?y=${year}&amp;s=${semester}">Semester ${semester}</a>${course.track ? ` · ${escapeHtml(course.track)} option` : ''}</p>
+    <p class="crumb"><a class="crumb-back" href="${semHref}" aria-label="Back to Semester ${semester}">&#8592;</a><a href="index.html">Library</a> · <a href="year.html?y=${year}">Year ${year}</a>${trackCrumb} · <a href="${semHref}">Semester ${semester}</a></p>
     <h1>${escapeHtml(course.title)}</h1>
     <p class="badges">
       ${st.topics ? `<span class="badge">${st.topics} topic${st.topics === 1 ? '' : 's'}</span>` : ''}

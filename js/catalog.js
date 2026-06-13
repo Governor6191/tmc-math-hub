@@ -20,9 +20,9 @@ export function findCourse(catalog, courseId) {
   return null;
 }
 
-export function semesterStats(semester) {
-  const totals = { courses: semester.courses.length, questions: 0, files: 0, topics: 0, videos: 0 };
-  for (const c of semester.courses) {
+export function statsForCourses(courses) {
+  const totals = { courses: courses.length, questions: 0, files: 0, topics: 0, videos: 0 };
+  for (const c of courses) {
     const st = courseStats(c);
     totals.questions += st.questions;
     totals.files += st.files;
@@ -32,13 +32,27 @@ export function semesterStats(semester) {
   return totals;
 }
 
+export function semesterStats(semester) {
+  return statsForCourses(semester.courses);
+}
+
 export function yearStats(year) {
-  const totals = { courses: 0, questions: 0, files: 0, topics: 0, videos: 0 };
-  for (const s of year.semesters) {
-    const st = semesterStats(s);
-    for (const k of Object.keys(totals)) totals[k] += st[k];
-  }
-  return totals;
+  return statsForCourses(year.semesters.flatMap(s => s.courses));
+}
+
+// Distinct option streams (tracks) offered in a year, sorted. Empty for years
+// without streams (Years 1 to 3).
+export function yearTracks(year) {
+  const set = new Set();
+  for (const s of year.semesters) for (const c of s.courses) if (c.track) set.add(c.track);
+  return [...set].sort();
+}
+
+// Courses a student in a given stream sees: that stream's courses plus any
+// untracked (common) courses. With no track, every course is returned.
+export function coursesForGroup(courses, track) {
+  if (!track) return courses;
+  return courses.filter(c => c.track === track || !c.track);
 }
 
 export function courseStats(course) {
