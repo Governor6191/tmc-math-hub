@@ -33,6 +33,7 @@ export function renderChrome() {
     if (!document.getElementById('tmc-drawer')) {
       const scrim = document.createElement('div');
       scrim.className = 'drawer-scrim';
+      scrim.setAttribute('aria-hidden', 'true');
       const drawer = document.createElement('aside');
       drawer.id = 'tmc-drawer';
       drawer.className = 'drawer';
@@ -66,8 +67,10 @@ export function renderChrome() {
 function wireDrawer(drawer, scrim, burger) {
   const FOCUSABLE = 'a[href], button:not([disabled])';
   let lastFocus = null;
+  let hideTimer = null;
 
   const open = () => {
+    clearTimeout(hideTimer);
     lastFocus = document.activeElement;
     drawer.hidden = false;
     requestAnimationFrame(() => { drawer.classList.add('is-open'); scrim.classList.add('is-open'); });
@@ -82,8 +85,9 @@ function wireDrawer(drawer, scrim, burger) {
     scrim.classList.remove('is-open');
     document.body.classList.remove('drawer-open');
     burger.setAttribute('aria-expanded', 'false');
-    setTimeout(() => { drawer.hidden = true; }, 220);
-    if (lastFocus) lastFocus.focus();
+    hideTimer = setTimeout(() => { drawer.hidden = true; }, 220);
+    const restore = lastFocus && lastFocus.isConnected ? lastFocus : burger;
+    restore.focus();
   };
 
   burger.addEventListener('click', open);
