@@ -1,0 +1,427 @@
+{
+  "courseId": "linear-algebra-i",
+  "topicId": "vector-spaces",
+  "status": "draft",
+  "questions": [
+    {
+      "id": "linear-algebra-i-vector-spaces-001",
+      "stem": "Which vector must belong to every subspace $W$ of a vector space $V$?",
+      "options": [
+        "The vector $(1,1,\\ldots,1)$.",
+        "Every standard basis vector.",
+        "The zero vector $\\mathbf{0}$.",
+        "No particular vector is required."
+      ],
+      "answer": 2,
+      "explanation": "A subspace must be closed under scalar multiplication, and taking the scalar $0$ times any vector it contains yields $\\mathbf{0}$. Since a subspace is nonempty, it contains some vector, and so it must contain $\\mathbf{0}$. This is why the very first thing to check for a candidate subspace is whether it contains the zero vector. The trap here is thinking a subspace need contain no specific vector; in fact $\\mathbf{0}$ is always forced.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-002",
+      "stem": "Is the set $W = \\{ (x, y) \\in \\mathbb{R}^2 : y = 2x \\}$ a subspace of $\\mathbb{R}^2$?",
+      "options": [
+        "Yes, it is a line through the origin closed under the operations.",
+        "No, because it is only a line and not all of $\\mathbb{R}^2$.",
+        "No, because lines are never subspaces.",
+        "Yes, but only because it contains infinitely many points."
+      ],
+      "answer": 0,
+      "explanation": "The line $y = 2x$ passes through the origin, so it contains $\\mathbf{0} = (0,0)$. Adding two points $(a, 2a)$ and $(b, 2b)$ gives $(a+b, 2(a+b))$, which still satisfies $y = 2x$, and scaling $(a, 2a)$ by $c$ gives $(ca, 2ca)$, again on the line. All three conditions hold, so $W$ is a subspace. The trap is assuming a proper subset cannot be a subspace; lines through the origin in $\\mathbb{R}^2$ are exactly the one-dimensional subspaces.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-003",
+      "stem": "Is the set $W = \\{ (x, y) \\in \\mathbb{R}^2 : y = 2x + 1 \\}$ a subspace of $\\mathbb{R}^2$?",
+      "options": [
+        "Yes, because it is a straight line.",
+        "Yes, because it is closed under addition.",
+        "No, because its slope is not $1$.",
+        "No, because it does not contain the zero vector."
+      ],
+      "answer": 3,
+      "explanation": "Check the zero vector first: setting $(x,y) = (0,0)$ gives $0 = 2(0) + 1 = 1$, which is false, so $\\mathbf{0} \\notin W$. A subspace must contain the zero vector, so $W$ fails immediately and cannot be a subspace. This is an affine line, shifted off the origin by the $+1$ term. The trap is calling any straight line a subspace; a line is a subspace only when it passes through the origin.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-004",
+      "stem": "Is the vector $(5, 7)$ a linear combination of $(1, 0)$ and $(0, 1)$ in $\\mathbb{R}^2$?",
+      "options": [
+        "No, since $(5,7)$ is not one of the two given vectors.",
+        "No, the coefficients would have to be equal.",
+        "Yes, with $(5,7) = 5(1,0) + 7(0,1)$.",
+        "Yes, but only with negative coefficients."
+      ],
+      "answer": 2,
+      "explanation": "We seek scalars $a, b$ with $a(1,0) + b(0,1) = (a, b) = (5, 7)$, which forces $a = 5$ and $b = 7$. Since real coefficients exist, $(5,7)$ is indeed a linear combination of the two standard vectors. In fact $(1,0)$ and $(0,1)$ span all of $\\mathbb{R}^2$, so every vector is such a combination. The trap is thinking a vector must literally appear in the list to be a combination of it; what matters is whether suitable coefficients exist.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-005",
+      "stem": "How many vectors are in the standard basis of $\\mathbb{R}^4$?",
+      "options": [
+        "$4$",
+        "$3$",
+        "$5$",
+        "$16$"
+      ],
+      "answer": 0,
+      "explanation": "The standard basis of $\\mathbb{R}^n$ consists of the vectors $\\mathbf{e}_1, \\ldots, \\mathbf{e}_n$, each having a single $1$ and the rest zeros, so there are exactly $n$ of them. For $\\mathbb{R}^4$ that gives $4$ basis vectors. The number of basis vectors equals the dimension of the space. The trap option $16$ confuses the dimension with something like the number of entries in a $4 \\times 4$ array; dimension counts basis vectors, not matrix entries.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-006",
+      "stem": "Are the vectors $(2, 0)$ and $(0, 5)$ linearly independent in $\\mathbb{R}^2$?",
+      "options": [
+        "No, because both lie on the coordinate axes.",
+        "No, because they point in different directions.",
+        "Yes, but only because both have a zero entry.",
+        "Yes, neither is a scalar multiple of the other."
+      ],
+      "answer": 3,
+      "explanation": "Two vectors in $\\mathbb{R}^2$ are linearly dependent exactly when one is a scalar multiple of the other. No scalar $c$ satisfies $(2,0) = c(0,5)$, since that would need $2 = 0$, so neither is a multiple of the other and the pair is independent. Equivalently, the matrix with these columns has determinant $2 \\cdot 5 - 0 \\cdot 0 = 10 \\neq 0$. The trap is reasoning from the shape of the entries rather than testing for a scalar multiple or computing the determinant.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-007",
+      "stem": "Is the set $W = \\{ (x, y, z) \\in \\mathbb{R}^3 : x + y + z = 0 \\}$ a subspace of $\\mathbb{R}^3$?",
+      "options": [
+        "No, because the equation involves three variables.",
+        "Yes, it is the solution set of a homogeneous linear equation.",
+        "No, because it does not contain $(1,1,1)$.",
+        "Yes, but only the single point $(0,0,0)$ qualifies."
+      ],
+      "answer": 1,
+      "explanation": "The point $(0,0,0)$ satisfies $0 + 0 + 0 = 0$, so $\\mathbf{0} \\in W$. If $(x_1,y_1,z_1)$ and $(x_2,y_2,z_2)$ each sum to $0$, their sum has coordinate total $(x_1+x_2)+(y_1+y_2)+(z_1+z_2) = 0$, and scaling by $c$ multiplies the total by $c$, keeping it $0$. The solution set of any homogeneous linear equation is a subspace, here a plane through the origin. The trap is imagining only the origin satisfies the equation; the whole plane does, and it is two dimensional.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-008",
+      "stem": "Is the set $W = \\{ (x, y, z) \\in \\mathbb{R}^3 : x + y + z = 1 \\}$ a subspace of $\\mathbb{R}^3$?",
+      "options": [
+        "Yes, because it is a plane in $\\mathbb{R}^3$.",
+        "Yes, because the sum of the coordinates is constant.",
+        "No, because the plane is not perpendicular to an axis.",
+        "No, because $(0,0,0)$ does not satisfy $x+y+z=1$."
+      ],
+      "answer": 3,
+      "explanation": "Test the zero vector: $0 + 0 + 0 = 0 \\neq 1$, so $\\mathbf{0} \\notin W$ and the set cannot be a subspace. We can also see failure of closure under addition: $(1,0,0)$ and $(0,1,0)$ are both in $W$, but their sum $(1,1,0)$ gives a coordinate total of $2 \\neq 1$. This is an affine plane that misses the origin. The trap is treating every plane as a subspace; only planes through the origin (the homogeneous case $x+y+z=0$) qualify.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-009",
+      "stem": "Is $(4, 5)$ in the span of $(1, 1)$ and $(2, 3)$ in $\\mathbb{R}^2$?",
+      "options": [
+        "Yes, with $(4,5) = 2(1,1) + 1(2,3)$.",
+        "No, because $(4,5)$ is not a multiple of either vector.",
+        "No, because two vectors span only a line.",
+        "Yes, with $(4,5) = 1(1,1) + 1(2,3)$."
+      ],
+      "answer": 0,
+      "explanation": "Solve $a(1,1) + b(2,3) = (4,5)$, giving $a + 2b = 4$ and $a + 3b = 5$. Subtracting the first equation from the second yields $b = 1$, and then $a = 4 - 2 = 2$, so $(4,5) = 2(1,1) + 1(2,3)$. Since $(1,1)$ and $(2,3)$ are independent, they span all of $\\mathbb{R}^2$, so every vector lies in their span. The trap option $1(1,1)+1(2,3) = (3,4)$ comes from guessing equal coefficients without solving the system.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-010",
+      "stem": "What does the span of the single vector $(2, 4, 6)$ describe in $\\mathbb{R}^3$?",
+      "options": [
+        "A plane through the origin.",
+        "All of $\\mathbb{R}^3$.",
+        "A line through the origin in the direction $(1,2,3)$.",
+        "Only the point $(2,4,6)$."
+      ],
+      "answer": 2,
+      "explanation": "The span of one nonzero vector is the set of all its scalar multiples $t(2,4,6)$, which traces a line through the origin. Since $(2,4,6) = 2(1,2,3)$, that line has direction $(1,2,3)$. A single vector can span at most a one-dimensional subspace, so it cannot fill a plane or all of $\\mathbb{R}^3$. The trap of choosing just the point $(2,4,6)$ forgets that scaling, including by $0$ and by negatives, sweeps out the entire line.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-011",
+      "stem": "Are the vectors $(1, 2)$, $(2, 4)$ linearly independent in $\\mathbb{R}^2$?",
+      "options": [
+        "Yes, because they are written with different numbers.",
+        "Yes, because both have positive entries.",
+        "No, because together they span all of $\\mathbb{R}^2$.",
+        "No, because $(2,4) = 2(1,2)$."
+      ],
+      "answer": 3,
+      "explanation": "Test whether one vector is a scalar multiple of the other: indeed $(2,4) = 2 \\cdot (1,2)$, so the relation $2(1,2) - 1(2,4) = \\mathbf{0}$ is a nontrivial dependence. Hence the pair is linearly dependent, not independent. The determinant of the matrix with these columns is $1 \\cdot 4 - 2 \\cdot 2 = 0$, confirming dependence. The trap is concluding independence because the vectors look different; different-looking vectors can still be proportional, and only a test settles it.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-012",
+      "stem": "Are the vectors $(1, 0, 0)$, $(0, 1, 0)$, and $(1, 1, 0)$ linearly independent in $\\mathbb{R}^3$?",
+      "options": [
+        "No, because $(1,1,0) = (1,0,0) + (0,1,0)$.",
+        "Yes, because there are three distinct vectors.",
+        "Yes, because each has a different pattern of zeros.",
+        "No, because none of them has a nonzero third entry."
+      ],
+      "answer": 0,
+      "explanation": "Notice that $(1,0,0) + (0,1,0) = (1,1,0)$, so $1(1,0,0) + 1(0,1,0) - 1(1,1,0) = \\mathbf{0}$ is a nontrivial dependence relation. The three vectors are therefore linearly dependent. Row reducing the matrix with these rows produces a zero row, since the third row is the sum of the first two, giving rank $2$ rather than $3$. The trap is assuming three different vectors must be independent; the count of vectors never proves independence, only a row reduction or determinant does.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-013",
+      "stem": "Do the vectors $(1, 0, 0)$, $(0, 1, 0)$, $(0, 0, 1)$ form a basis for $\\mathbb{R}^3$?",
+      "options": [
+        "No, three vectors are too few to span $\\mathbb{R}^3$.",
+        "Yes, they are the standard basis, independent and spanning.",
+        "No, because a basis must contain the zero vector.",
+        "Yes, but only because their entries are all $0$ or $1$."
+      ],
+      "answer": 1,
+      "explanation": "These are the standard basis vectors $\\mathbf{e}_1, \\mathbf{e}_2, \\mathbf{e}_3$ of $\\mathbb{R}^3$. Any vector $(a,b,c)$ equals $a\\mathbf{e}_1 + b\\mathbf{e}_2 + c\\mathbf{e}_3$, so they span, and the matrix with these columns is the identity with determinant $1 \\neq 0$, so they are independent. A basis of $\\mathbb{R}^3$ needs exactly three independent spanning vectors, which these are. The trap claiming a basis must contain $\\mathbf{0}$ is wrong: $\\mathbf{0}$ is never in an independent set.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-014",
+      "stem": "Do the vectors $(1, 1)$, $(1, -1)$, and $(2, 3)$ form a basis for $\\mathbb{R}^2$?",
+      "options": [
+        "Yes, because they span $\\mathbb{R}^2$.",
+        "Yes, because the first two are already independent.",
+        "No, because $(2,3)$ has entries larger than $1$.",
+        "No, because three vectors in $\\mathbb{R}^2$ cannot be independent."
+      ],
+      "answer": 3,
+      "explanation": "A basis for $\\mathbb{R}^2$ must be linearly independent, but any set of three vectors in a two-dimensional space is automatically dependent. Concretely, since $(1,1)$ and $(1,-1)$ already span $\\mathbb{R}^2$, the third vector $(2,3)$ is a combination of them, so the set is dependent and not a basis. Spanning alone is not enough; a basis must be both spanning and independent. The trap is treating any spanning set as a basis, ignoring that $n+1$ vectors in $\\mathbb{R}^n$ are never independent.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-015",
+      "stem": "Does the single vector $(1, 2, 3)$ form a basis for $\\mathbb{R}^3$?",
+      "options": [
+        "Yes, because it is a nonzero vector.",
+        "Yes, because its entries are distinct.",
+        "No, because one vector cannot span $\\mathbb{R}^3$.",
+        "No, because it is not a unit vector."
+      ],
+      "answer": 2,
+      "explanation": "A basis for $\\mathbb{R}^3$ must span the space, which requires exactly three vectors since $\\dim \\mathbb{R}^3 = 3$. A single vector spans only the line of its scalar multiples, a one-dimensional subspace, so it cannot reach every point of $\\mathbb{R}^3$. Although $(1,2,3)$ is independent on its own, independence is not enough; a basis must also span. The trap is treating any independent set as a basis, forgetting that too few vectors fail to span.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-016",
+      "stem": "What is the dimension of the subspace $W = \\{ (x, y, z) \\in \\mathbb{R}^3 : z = 0 \\}$?",
+      "options": [
+        "$2$",
+        "$1$",
+        "$3$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "Points of $W$ have the form $(x, y, 0) = x(1,0,0) + y(0,1,0)$, so $W$ is spanned by $(1,0,0)$ and $(0,1,0)$. These two vectors are independent, so they form a basis and $\\dim W = 2$; this is the $xy$-plane. The dimension counts basis vectors, not the number of ambient coordinates. The trap option $3$ confuses the dimension of $W$ with the dimension $3$ of the surrounding space $\\mathbb{R}^3$.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-017",
+      "stem": "What is the dimension of the span of $(1, 0, 0)$, $(2, 0, 0)$, and $(0, 1, 0)$ in $\\mathbb{R}^3$?",
+      "options": [
+        "$3$, one for each vector listed.",
+        "$1$, since all vectors share a zero entry.",
+        "$0$, since one vector is a multiple of another.",
+        "$2$, since the span is a plane."
+      ],
+      "answer": 3,
+      "explanation": "The vector $(2,0,0) = 2(1,0,0)$ is redundant, so the span is generated by just $(1,0,0)$ and $(0,1,0)$, which are independent. The dimension of a span equals the rank of the set, which is $2$ here, describing the $xy$-plane. The dimension is the number of independent vectors, not simply the number of vectors written down. The trap option $3$ counts the three listed vectors instead of taking the rank after discarding the dependent one.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-018",
+      "stem": "A set of vectors in $\\mathbb{R}^5$ has $4$ elements. Which conclusion is guaranteed?",
+      "options": [
+        "The set must be a basis for $\\mathbb{R}^5$.",
+        "The set cannot span $\\mathbb{R}^5$.",
+        "The set must be linearly dependent.",
+        "The set must contain the zero vector."
+      ],
+      "answer": 1,
+      "explanation": "Spanning $\\mathbb{R}^5$ requires at least $5$ vectors, since $\\dim \\mathbb{R}^5 = 5$ and any spanning set has at least that many members. With only $4$ vectors the span has dimension at most $4$, so it cannot be all of $\\mathbb{R}^5$. The set could still be independent, so dependence is not forced. The trap is assuming $4$ vectors must be dependent; in $\\mathbb{R}^5$ a set of $4$ vectors can be independent, it simply fails to span.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-019",
+      "stem": "Is the set $W = \\{ (x, y) \\in \\mathbb{R}^2 : xy = 0 \\}$ a subspace of $\\mathbb{R}^2$?",
+      "options": [
+        "Yes, because it contains the origin.",
+        "Yes, because it is closed under scalar multiplication.",
+        "No, because it is not closed under addition.",
+        "No, because it contains only finitely many points."
+      ],
+      "answer": 2,
+      "explanation": "The set $W$ is the union of the two coordinate axes, since $xy = 0$ means $x = 0$ or $y = 0$. It does contain $\\mathbf{0}$ and is closed under scaling, but addition fails: $(1,0)$ and $(0,1)$ both lie in $W$, yet their sum $(1,1)$ has $xy = 1 \\neq 0$, so it is outside $W$. Failing even one closure condition disqualifies it as a subspace. The trap is concluding subspace status from the zero vector and scaling alone, without testing closure under addition.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-020",
+      "stem": "Is the first-quadrant set $W = \\{ (x, y) \\in \\mathbb{R}^2 : x \\geq 0 \\text{ and } y \\geq 0 \\}$ a subspace of $\\mathbb{R}^2$?",
+      "options": [
+        "No, because it is not closed under scalar multiplication.",
+        "Yes, because it is closed under addition.",
+        "Yes, because it contains the origin.",
+        "No, because it does not contain the origin."
+      ],
+      "answer": 0,
+      "explanation": "The first quadrant contains $\\mathbf{0}$ and is closed under addition, since adding two vectors with nonnegative entries keeps the entries nonnegative. But scalar multiplication fails: $(1,1)$ is in $W$, while $(-1)(1,1) = (-1,-1)$ has negative entries and is not in $W$. A subspace must be closed under multiplication by every scalar, including negatives, so $W$ is not a subspace. The trap is checking only the zero vector and addition while overlooking that negative scalars break this set.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-021",
+      "stem": "Is $(1, 2, 4)$ in the span of $(1, 0, 1)$ and $(0, 1, 1)$ in $\\mathbb{R}^3$?",
+      "options": [
+        "Yes, with $(1,2,4) = 1(1,0,1) + 2(0,1,1)$.",
+        "Yes, because any vector lies in the span of two vectors.",
+        "No, because $(1,2,4)$ has a larger third entry.",
+        "No, because the required coefficients give an inconsistent system."
+      ],
+      "answer": 3,
+      "explanation": "Solve $a(1,0,1) + b(0,1,1) = (1,2,4)$. The first two coordinates force $a = 1$ and $b = 2$, but the third coordinate then requires $a + b = 1 + 2 = 3$, while the target has $4$. Since $3 \\neq 4$, no choice of $a, b$ works and the system is inconsistent, so $(1,2,4)$ is not in the span. The trap option uses the coefficients $a=1, b=2$ from the first two coordinates without checking that the third coordinate also matches.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-022",
+      "stem": "What is the dimension of the subspace of $\\mathbb{R}^4$ spanned by $(1,0,0,0)$, $(0,1,0,0)$, $(1,1,0,0)$, and $(0,0,1,0)$?",
+      "options": [
+        "$4$, since four vectors are given.",
+        "$2$, since two have leading $1$ in the same slot.",
+        "$3$, after removing the dependent vector.",
+        "$1$, since they all start near the origin."
+      ],
+      "answer": 2,
+      "explanation": "The vector $(1,1,0,0)$ equals $(1,0,0,0) + (0,1,0,0)$, so it is dependent and adds nothing new to the span. The remaining vectors $(1,0,0,0)$, $(0,1,0,0)$, and $(0,0,1,0)$ are independent, giving a span of dimension $3$. Dimension is the rank, the number of independent vectors, not the raw count of vectors. The trap option $4$ counts every listed vector instead of discarding the one that is a sum of the others.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-023",
+      "stem": "Is the set $\\{ 1, x, x^2 \\}$ a basis for the space $P_2$ of polynomials of degree at most $2$?",
+      "options": [
+        "Yes, it is independent and spans $P_2$, which has dimension $3$.",
+        "No, because polynomials are not vectors.",
+        "No, because $P_2$ needs only two basis elements.",
+        "Yes, but only because the constant $1$ is included."
+      ],
+      "answer": 0,
+      "explanation": "Every polynomial of degree at most $2$ is uniquely $a + bx + cx^2$, so $\\{1, x, x^2\\}$ spans $P_2$. If $a + bx + cx^2 = 0$ for all $x$, then $a = b = c = 0$, so the set is also independent. Three independent spanning elements make this the standard basis of $P_2$, confirming $\\dim P_2 = 3$. The trap claiming only two basis elements are needed miscounts the dimension; a degree-at-most-$2$ space has three independent coefficients.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-024",
+      "stem": "Do the vectors $(1, 2)$ and $(3, 4)$ form a basis for $\\mathbb{R}^2$?",
+      "options": [
+        "No, because their entries are all different.",
+        "Yes, they are two independent vectors in $\\mathbb{R}^2$.",
+        "No, because $(3,4)$ is a multiple of $(1,2)$.",
+        "Yes, but only because both have a $2$ or a $4$."
+      ],
+      "answer": 1,
+      "explanation": "For two vectors in $\\mathbb{R}^2$, being a basis is equivalent to being independent, which holds exactly when the determinant of the matrix with these columns is nonzero. Here that determinant is $1 \\cdot 4 - 3 \\cdot 2 = 4 - 6 = -2 \\neq 0$, so the pair is independent and hence a basis. Two independent vectors in $\\mathbb{R}^2$ automatically span it. The trap option claims $(3,4)$ is a multiple of $(1,2)$, but $3/1 \\neq 4/2$, so they are not proportional.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-025",
+      "stem": "What are the coordinates of the vector $(7, 2)$ relative to the standard basis $\\{ (1,0), (0,1) \\}$ of $\\mathbb{R}^2$?",
+      "options": [
+        "$(2, 7)$",
+        "$(9, 0)$",
+        "$(5, 5)$",
+        "$(7, 2)$"
+      ],
+      "answer": 3,
+      "explanation": "Coordinates relative to a basis are the coefficients needed to write the vector as a combination of the basis vectors. Since $(7,2) = 7(1,0) + 2(0,1)$, the coordinate vector is $(7, 2)$. Relative to the standard basis, a vector's coordinates always match its ordinary entries in the same order. The trap option $(2,7)$ swaps the two coordinates, attaching the coefficients to the wrong basis vectors.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-026",
+      "stem": "Find the coordinates of $(5, 1)$ relative to the basis $B = \\{ (1, 1), (1, -1) \\}$ of $\\mathbb{R}^2$.",
+      "options": [
+        "$(3, 2)$",
+        "$(5, 1)$",
+        "$(2, 3)$",
+        "$(1, 5)$"
+      ],
+      "answer": 0,
+      "explanation": "We need scalars $a, b$ with $a(1,1) + b(1,-1) = (5,1)$, giving the system $a + b = 5$ and $a - b = 1$. Adding the equations yields $2a = 6$, so $a = 3$, and then $b = 5 - 3 = 2$. Thus the coordinate vector relative to $B$ is $(3, 2)$, and indeed $3(1,1) + 2(1,-1) = (5,1)$. The trap option $(5,1)$ reuses the original entries, which are the coordinates only in the standard basis, not in $B$.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-027",
+      "stem": "Are the vectors $(1, 2, 3)$, $(2, 5, 7)$, and $(0, 1, 1)$ linearly independent in $\\mathbb{R}^3$?",
+      "options": [
+        "Yes, because the three vectors look unrelated.",
+        "No, because three vectors in $\\mathbb{R}^3$ are always dependent.",
+        "No, because $(2,5,7) = 2(1,2,3) + 1(0,1,1)$.",
+        "Yes, because none of them is the zero vector."
+      ],
+      "answer": 2,
+      "explanation": "Check for a dependence by writing the third-listed vector in terms of the others: $2(1,2,3) + 1(0,1,1) = (2, 5, 7)$, which matches the second vector exactly. So $2(1,2,3) - 1(2,5,7) + 1(0,1,1) = \\mathbf{0}$ is a nontrivial relation, making the set dependent. Equivalently, the determinant of the matrix with these rows is $0$. The trap is judging independence by appearance; here the vectors look unrelated yet satisfy a hidden linear relation that only computation reveals.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-028",
+      "stem": "What is the dimension of the subspace $W = \\{ (a, b, c, d) \\in \\mathbb{R}^4 : a = b \\text{ and } c = d \\}$?",
+      "options": [
+        "$4$",
+        "$2$",
+        "$3$",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "A vector in $W$ has the form $(a, a, c, c) = a(1,1,0,0) + c(0,0,1,1)$, so $W$ is spanned by $(1,1,0,0)$ and $(0,0,1,1)$. These two vectors are independent, so they form a basis and $\\dim W = 2$. Each independent equation $a = b$ and $c = d$ cuts the dimension of $\\mathbb{R}^4$ down by one, from $4$ to $2$. The trap option $4$ uses the dimension of the ambient space, ignoring that the two constraints remove two degrees of freedom.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-029",
+      "stem": "Is the set $W = \\{ A \\in M_{2 \\times 2} : \\operatorname{trace}(A) = 0 \\}$ of $2 \\times 2$ real matrices a subspace, and if so what is its dimension?",
+      "options": [
+        "It is not a subspace, since the trace condition is nonlinear.",
+        "It is a subspace of dimension $4$.",
+        "It is a subspace of dimension $1$.",
+        "It is a subspace of dimension $3$."
+      ],
+      "answer": 3,
+      "explanation": "The trace is a linear function, and the zero matrix has trace $0$, so $W$ contains $\\mathbf{0}$ and is closed under addition and scalar multiplication, making it a subspace. A trace-zero matrix is $\\begin{pmatrix} a & b \\\\ c & -a \\end{pmatrix}$, with $a, b, c$ free, so a basis is $\\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}, \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}, \\begin{pmatrix} 0 & 0 \\\\ 1 & 0 \\end{pmatrix}$, giving dimension $3$. The trap answer $4$ uses the dimension of all of $M_{2 \\times 2}$, forgetting that the single trace equation removes one degree of freedom.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-030",
+      "stem": "The vectors $(1, 1, 0)$ and $(0, 1, 1)$ are a basis for a plane $W$ through the origin in $\\mathbb{R}^3$. What are the coordinates of $(2, 3, 1)$ relative to this basis, given that $(2,3,1)$ lies in $W$?",
+      "options": [
+        "$(2, 3)$",
+        "$(2, 1)$",
+        "$(1, 2)$",
+        "$(3, 1)$"
+      ],
+      "answer": 1,
+      "explanation": "Seek $a, b$ with $a(1,1,0) + b(0,1,1) = (2,3,1)$. The first coordinate gives $a = 2$, the third gives $b = 1$, and the middle coordinate checks out since $a + b = 2 + 1 = 3$, matching the target. So the coordinate vector relative to this basis is $(2, 1)$. Even though the vector lives in $\\mathbb{R}^3$, its coordinates in a two-vector basis form a pair. The trap option $(2,3)$ borrows the first two entries of the original vector rather than solving for the basis coefficients.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    }
+  ]
+}
