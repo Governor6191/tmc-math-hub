@@ -73,7 +73,9 @@ function wireDrawer(drawer, scrim, burger) {
     clearTimeout(hideTimer);
     lastFocus = document.activeElement;
     drawer.hidden = false;
-    requestAnimationFrame(() => { drawer.classList.add('is-open'); scrim.classList.add('is-open'); });
+    void drawer.offsetWidth; // force reflow so the slide-in animates from the hidden state, even when rAF is throttled
+    drawer.classList.add('is-open');
+    scrim.classList.add('is-open');
     document.body.classList.add('drawer-open');
     burger.setAttribute('aria-expanded', 'true');
     const first = drawer.querySelector(FOCUSABLE);
