@@ -1,0 +1,427 @@
+{
+  "courseId": "linear-algebra-i",
+  "topicId": "determinants",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "linear-algebra-i-determinants-001",
+      "stem": "Compute the determinant $\\begin{vmatrix} 3 & 5 \\\\ 2 & 4 \\end{vmatrix}$.",
+      "options": [
+        "$22$",
+        "$2$",
+        "$-2$",
+        "$7$"
+      ],
+      "answer": 1,
+      "explanation": "For a $2 \\times 2$ matrix the determinant is $ad - bc$. Here $a=3$, $b=5$, $c=2$, $d=4$, so the value is $3 \\cdot 4 - 5 \\cdot 2 = 12 - 10 = 2$. The main-diagonal product comes first and the anti-diagonal product is subtracted. The trap option $22$ adds the two products as $ad + bc$ instead of subtracting.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-002",
+      "stem": "Compute the determinant $\\begin{vmatrix} 6 & 1 \\\\ -2 & 3 \\end{vmatrix}$.",
+      "options": [
+        "$20$",
+        "$16$",
+        "$-20$",
+        "$-16$"
+      ],
+      "answer": 0,
+      "explanation": "Apply $ad - bc$ with $a=6$, $b=1$, $c=-2$, $d=3$. This gives $6 \\cdot 3 - 1 \\cdot (-2) = 18 + 2 = 20$. Subtracting a negative anti-diagonal product adds to the total. The trap option $16$ comes from computing $6 \\cdot 3 - 1 \\cdot 2 = 16$, dropping the sign on the $-2$ entry.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-003",
+      "stem": "What is the determinant of the diagonal matrix $\\begin{pmatrix} 4 & 0 & 0 \\\\ 0 & 5 & 0 \\\\ 0 & 0 & 2 \\end{pmatrix}$?",
+      "options": [
+        "$11$",
+        "$0$",
+        "$40$",
+        "$80$"
+      ],
+      "answer": 2,
+      "explanation": "The determinant of a diagonal or triangular matrix is the product of its diagonal entries. Here that product is $4 \\cdot 5 \\cdot 2 = 40$. The off-diagonal zeros contribute nothing to the cofactor expansion. The trap option $11$ adds the diagonal entries instead of multiplying them.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-004",
+      "stem": "What is the determinant of the upper triangular matrix $\\begin{pmatrix} 2 & 7 & -3 \\\\ 0 & 3 & 8 \\\\ 0 & 0 & 5 \\end{pmatrix}$?",
+      "options": [
+        "$210$",
+        "$10$",
+        "$0$",
+        "$30$"
+      ],
+      "answer": 3,
+      "explanation": "For a triangular matrix the determinant equals the product of the diagonal entries, regardless of the entries above the diagonal. That product is $2 \\cdot 3 \\cdot 5 = 30$. The numbers $7$, $-3$, and $8$ above the diagonal play no role. The trap option $210$ multiplies in the entry $7$ as well, treating an off-diagonal number as if it mattered.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-005",
+      "stem": "A matrix is invertible if and only if which condition holds?",
+      "options": [
+        "Its determinant equals $1$.",
+        "Its determinant is nonzero.",
+        "Its determinant equals $0$.",
+        "All of its entries are nonzero."
+      ],
+      "answer": 1,
+      "explanation": "A square matrix is invertible exactly when its determinant is nonzero, since the inverse formula divides by that determinant. A zero determinant signals that the rows are linearly dependent and no inverse exists. The value of the determinant need not be $1$; any nonzero number works. The trap option requiring determinant $0$ states the singular case, which is precisely when the matrix fails to be invertible.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-006",
+      "stem": "Two square matrices $A$ and $B$ differ by a single row swap: $B$ is $A$ with two of its rows interchanged. If $\\det(A) = 9$, what is $\\det(B)$?",
+      "options": [
+        "$9$",
+        "$18$",
+        "$-9$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "Interchanging two rows of a matrix multiplies its determinant by $-1$. So $\\det(B) = -\\det(A) = -9$. The magnitude is unchanged; only the sign flips. The trap option $9$ assumes a row swap leaves the determinant alone, which is the rule for adding a multiple of one row to another, not for swapping.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-007",
+      "stem": "Compute the determinant $\\begin{vmatrix} -4 & 7 \\\\ 3 & -2 \\end{vmatrix}$.",
+      "options": [
+        "$29$",
+        "$-13$",
+        "$-29$",
+        "$13$"
+      ],
+      "answer": 1,
+      "explanation": "Use $ad - bc$ with $a=-4$, $b=7$, $c=3$, $d=-2$. The main-diagonal product is $(-4)(-2) = 8$ and the anti-diagonal product is $7 \\cdot 3 = 21$, giving $8 - 21 = -13$. Keep the signs of both products throughout. The trap option $29$ comes from $ad + bc = 8 + 21$, adding the two products instead of subtracting.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-008",
+      "stem": "Compute the determinant $\\begin{vmatrix} 1 & 2 & 3 \\\\ 0 & 4 & 5 \\\\ 1 & 0 & 6 \\end{vmatrix}$ by cofactor expansion along the first row.",
+      "options": [
+        "$22$",
+        "$2$",
+        "$10$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "Expanding along the first row, $\\det = 1 \\cdot (4 \\cdot 6 - 5 \\cdot 0) - 2 \\cdot (0 \\cdot 6 - 5 \\cdot 1) + 3 \\cdot (0 \\cdot 0 - 4 \\cdot 1)$. The minors give $1 \\cdot 24 - 2 \\cdot (-5) + 3 \\cdot (-4) = 24 + 10 - 12 = 22$. The middle term carries the checkerboard minus sign, so $-2 \\cdot (-5) = +10$. The trap option $2$ forgets that minus and uses $+2 \\cdot (-5) = -10$, giving $24 - 10 - 12 = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-009",
+      "stem": "Compute the determinant $\\begin{vmatrix} 2 & 0 & 1 \\\\ 3 & -1 & 2 \\\\ 1 & 4 & 0 \\end{vmatrix}$.",
+      "options": [
+        "$-3$",
+        "$29$",
+        "$6$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "Expand along the first row. The first cofactor is $2 \\cdot ((-1)(0) - 2 \\cdot 4) = 2 \\cdot (-8) = -16$, the middle term vanishes because its entry is $0$, and the third cofactor is $1 \\cdot (3 \\cdot 4 - (-1)(1)) = 1 \\cdot 13 = 13$. Summing gives $-16 + 0 + 13 = -3$. The minor $0 - 8 = -8$ must keep its negative sign. The trap option $29$ comes from a sign slip that treats the first minor as $+8$, yielding $16 + 13$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-010",
+      "stem": "Let $A$ be a $2 \\times 2$ matrix with $\\det(A) = 5$. What is $\\det(3A)$?",
+      "options": [
+        "$15$",
+        "$10$",
+        "$30$",
+        "$45$"
+      ],
+      "answer": 3,
+      "explanation": "Scaling an $n \\times n$ matrix by $k$ multiplies the determinant by $k^n$. With $n = 2$ and $k = 3$, the factor is $3^2 = 9$, so $\\det(3A) = 9 \\cdot 5 = 45$. Each of the two rows is scaled by $3$, contributing one factor of $3$ apiece. The trap option $15$ uses $k \\cdot \\det = 3 \\cdot 5$, forgetting that every row scales.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-011",
+      "stem": "Let $A$ be a $3 \\times 3$ matrix with $\\det(A) = 2$. What is $\\det(2A)$?",
+      "options": [
+        "$4$",
+        "$8$",
+        "$16$",
+        "$6$"
+      ],
+      "answer": 2,
+      "explanation": "For an $n \\times n$ matrix, $\\det(kA) = k^n \\det(A)$. Here $n = 3$ and $k = 2$, so the scaling factor is $2^3 = 8$ and $\\det(2A) = 8 \\cdot 2 = 16$. All three rows pick up a factor of $2$. The trap option $4$ computes $k \\cdot \\det = 2 \\cdot 2$, applying only one factor of the scalar instead of $k^3$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-012",
+      "stem": "Let $A$ and $B$ be $3 \\times 3$ matrices with $\\det(A) = 4$ and $\\det(B) = -3$. What is $\\det(AB)$?",
+      "options": [
+        "$1$",
+        "$7$",
+        "$-7$",
+        "$-12$"
+      ],
+      "answer": 3,
+      "explanation": "The determinant is multiplicative: $\\det(AB) = \\det(A)\\det(B)$. So $\\det(AB) = 4 \\cdot (-3) = -12$. This holds for any two square matrices of the same size, no matter the entries. The trap option $1$ adds the determinants as $4 + (-3)$, but $\\det$ does not distribute over a product as a sum.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-013",
+      "stem": "Let $A$ be a square matrix with $\\det(A) = -6$. What is $\\det(A^{T})$?",
+      "options": [
+        "$6$",
+        "$\\tfrac{1}{6}$",
+        "$36$",
+        "$-6$"
+      ],
+      "answer": 3,
+      "explanation": "Transposing a matrix never changes its determinant, since $\\det(A^{T}) = \\det(A)$. Therefore $\\det(A^{T}) = -6$, sign included. Rows become columns, but the cofactor expansion yields the same value either way. The trap option $6$ flips the sign, as if transposing behaved like a single row swap.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-014",
+      "stem": "Let $A$ be an invertible matrix with $\\det(A) = 8$. What is $\\det(A^{-1})$?",
+      "options": [
+        "$-8$",
+        "$\\tfrac{1}{8}$",
+        "$8$",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "Since $A A^{-1} = I$ and $\\det(I) = 1$, the multiplicative rule gives $\\det(A)\\det(A^{-1}) = 1$, so $\\det(A^{-1}) = \\tfrac{1}{\\det(A)} = \\tfrac{1}{8}$. The determinant of the inverse is the reciprocal of the original. The trap option $-8$ negates the determinant instead of taking its reciprocal.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-015",
+      "stem": "The matrix $B$ is obtained from $A$ by adding $4$ times row $1$ to row $2$. If $\\det(A) = 7$, what is $\\det(B)$?",
+      "options": [
+        "$28$",
+        "$11$",
+        "$7$",
+        "$-7$"
+      ],
+      "answer": 2,
+      "explanation": "Adding a multiple of one row to another row leaves the determinant completely unchanged. So $\\det(B) = \\det(A) = 7$. This is the row operation used in Gaussian elimination precisely because it preserves the determinant. The trap option $28$ multiplies the determinant by $4$, confusing this operation with scaling a row.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-016",
+      "stem": "The matrix $B$ is obtained from $A$ by multiplying every entry of row $3$ by $5$. If $\\det(A) = 6$, what is $\\det(B)$?",
+      "options": [
+        "$11$",
+        "$6$",
+        "$750$",
+        "$30$"
+      ],
+      "answer": 3,
+      "explanation": "Multiplying a single row by a scalar $k$ multiplies the whole determinant by that same $k$ (one factor, because only one row scales). So $\\det(B) = 5 \\cdot 6 = 30$. This differs from scaling the entire matrix, which would raise $5$ to the power of the matrix size. The trap option $750$ uses $5^3 \\cdot 6$, applying the $k^n$ rule meant for scaling all rows at once.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-017",
+      "stem": "Use Cramer's rule to find $x$ in the system $\\begin{cases} 2x + 3y = 8 \\\\ x + 4y = 9 \\end{cases}$.",
+      "options": [
+        "$1$",
+        "$2$",
+        "$-1$",
+        "$5$"
+      ],
+      "answer": 0,
+      "explanation": "The coefficient determinant is $\\begin{vmatrix} 2 & 3 \\\\ 1 & 4 \\end{vmatrix} = 8 - 3 = 5$. For $x$, replace the first column with the constants: $\\begin{vmatrix} 8 & 3 \\\\ 9 & 4 \\end{vmatrix} = 32 - 27 = 5$, so $x = 5/5 = 1$. The replaced column must match the variable being solved. The trap option $2$ replaces the second column instead of the first, which is the recipe for $y$, not $x$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-018",
+      "stem": "Use Cramer's rule to find $y$ in the system $\\begin{cases} 3x + y = 5 \\\\ 2x - y = 0 \\end{cases}$.",
+      "options": [
+        "$1$",
+        "$3$",
+        "$2$",
+        "$-2$"
+      ],
+      "answer": 2,
+      "explanation": "The coefficient determinant is $\\begin{vmatrix} 3 & 1 \\\\ 2 & -1 \\end{vmatrix} = -3 - 2 = -5$. For $y$, replace the second column with the constants: $\\begin{vmatrix} 3 & 5 \\\\ 2 & 0 \\end{vmatrix} = 0 - 10 = -10$, so $y = (-10)/(-5) = 2$. The numerator and denominator determinants must be divided in that order. The trap option $1$ comes from solving $x$ by mistake, replacing the first column instead of the second.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-019",
+      "stem": "For which value of $k$ is the matrix $\\begin{pmatrix} k & 2 \\\\ 8 & 4 \\end{pmatrix}$ singular?",
+      "options": [
+        "$16$",
+        "$4$",
+        "$\\tfrac{1}{4}$",
+        "$-4$"
+      ],
+      "answer": 1,
+      "explanation": "A matrix is singular when its determinant is zero. Here $\\det = 4k - 16$, and setting $4k - 16 = 0$ gives $k = 4$. At that value the second row is twice the first, so the rows are proportional. The trap option $16$ solves $\\det = 0$ but forgets to divide by the coefficient $4$, stopping at $4k = 16$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-020",
+      "stem": "What is the value of $\\begin{vmatrix} 3 & 1 & 4 \\\\ 6 & 2 & 8 \\\\ 5 & 0 & 7 \\end{vmatrix}$?",
+      "options": [
+        "$14$",
+        "$-14$",
+        "$28$",
+        "$0$"
+      ],
+      "answer": 3,
+      "explanation": "Row $2$ is exactly twice row $1$, since $(6, 2, 8) = 2 \\cdot (3, 1, 4)$. A matrix with two proportional rows is singular, so its determinant is $0$ without any expansion needed. Proportional rows make the rows linearly dependent. The trap option $14$ would result from expanding while overlooking that the second row is a multiple of the first.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-021",
+      "stem": "Compute the determinant $\\begin{vmatrix} 5 & -2 & 1 \\\\ 0 & 3 & -1 \\\\ 2 & 0 & 4 \\end{vmatrix}$.",
+      "options": [
+        "$58$",
+        "$70$",
+        "$50$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "Expand along the first column: $\\det = 5 \\cdot (3 \\cdot 4 - (-1)(0)) - 0 + 2 \\cdot ((-2)(-1) - 1 \\cdot 3)$. This is $5 \\cdot 12 + 2 \\cdot (2 - 3) = 60 + 2 \\cdot (-1) = 60 - 2 = 58$. A Sarrus check confirms it: $60 + 4 + 0 - 6 - 0 - 0 = 58$. The trap option $70$ drops the minus on the $-6$ term in the Sarrus sum, adding $+6$ instead of subtracting it.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-022",
+      "stem": "Use Cramer's rule to find $x$ in the system $\\begin{cases} 4x + y = 9 \\\\ x + 2y = 4 \\end{cases}$.",
+      "options": [
+        "$\\tfrac{1}{2}$",
+        "$2$",
+        "$14$",
+        "$\\tfrac{9}{4}$"
+      ],
+      "answer": 1,
+      "explanation": "The coefficient determinant is $\\begin{vmatrix} 4 & 1 \\\\ 1 & 2 \\end{vmatrix} = 8 - 1 = 7$. For $x$, replace the first column with the constants: $\\begin{vmatrix} 9 & 1 \\\\ 4 & 2 \\end{vmatrix} = 18 - 4 = 14$, so $x = 14/7 = 2$. Cramer's rule puts the replaced determinant on top and the coefficient determinant on the bottom. The trap option $\\tfrac{1}{2}$ swaps numerator and denominator, computing $7/14$ instead of $14/7$.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-023",
+      "stem": "Let $A$ and $B$ be $2 \\times 2$ matrices with $\\det(A) = 3$ and $\\det(B) = 6$. What is $\\det(A^{-1} B)$?",
+      "options": [
+        "$3$",
+        "$18$",
+        "$2$",
+        "$\\tfrac{1}{2}$"
+      ],
+      "answer": 2,
+      "explanation": "Using $\\det(A^{-1}) = 1/\\det(A)$ and the product rule, $\\det(A^{-1} B) = \\det(A^{-1})\\det(B) = \\tfrac{1}{3} \\cdot 6 = 2$. The inverse contributes the reciprocal of $\\det(A)$, which then multiplies $\\det(B)$. The trap option $18$ multiplies $\\det(A)$ by $\\det(B)$ directly, ignoring that the inverse inverts the determinant.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-024",
+      "stem": "Let $A$ and $B$ be $2 \\times 2$ matrices with $\\det(A) = 4$ and $\\det(B) = 9$. It is true that $\\det(A + B) = 36$. Is this statement correct, and why?",
+      "options": [
+        "Correct, because $\\det(A + B) = \\det(A)\\det(B)$.",
+        "Incorrect, because $\\det(A + B) = \\det(A) + \\det(B) = 13$ always.",
+        "Incorrect, because $\\det$ is not additive or multiplicative over a sum, so $\\det(A + B)$ is not determined by $\\det(A)$ and $\\det(B)$ alone.",
+        "Correct, because the determinant of a sum is the product of the determinants."
+      ],
+      "answer": 2,
+      "explanation": "There is no rule that turns $\\det(A + B)$ into any fixed combination of $\\det(A)$ and $\\det(B)$; the determinant is multiplicative over products but not over sums. So the value $36$ cannot be justified, and in general $\\det(A + B)$ depends on the actual entries, not just the two determinants. The claim is therefore incorrect. The trap is assuming $\\det(A + B) = \\det(A) + \\det(B)$ or $\\det(A)\\det(B)$, neither of which holds for sums.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-025",
+      "stem": "For which value of $k$ does the matrix $\\begin{pmatrix} 1 & k & 0 \\\\ 2 & 3 & 1 \\\\ 0 & 1 & 2 \\end{pmatrix}$ have determinant $0$?",
+      "options": [
+        "$\\tfrac{5}{4}$",
+        "$\\tfrac{5}{2}$",
+        "$4$",
+        "$-\\tfrac{5}{4}$"
+      ],
+      "answer": 0,
+      "explanation": "Expanding along the first row, $\\det = 1 \\cdot (3 \\cdot 2 - 1 \\cdot 1) - k \\cdot (2 \\cdot 2 - 1 \\cdot 0) + 0 = (6 - 1) - k(4) = 5 - 4k$. Setting $5 - 4k = 0$ gives $k = \\tfrac{5}{4}$. The middle cofactor carries the checkerboard minus sign, which is essential here. The trap option $\\tfrac{5}{2}$ drops the factor of $4$ from the second cofactor, solving $5 - 2k = 0$ instead.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-026",
+      "stem": "Use Cramer's rule to find $z$ in the system $\\begin{cases} x + y + z = 6 \\\\ 2y + z = 4 \\\\ x + z = 3 \\end{cases}$.",
+      "options": [
+        "$5$",
+        "$-2$",
+        "$3$",
+        "$2$"
+      ],
+      "answer": 1,
+      "explanation": "The coefficient matrix is $\\begin{pmatrix} 1 & 1 & 1 \\\\ 0 & 2 & 1 \\\\ 1 & 0 & 1 \\end{pmatrix}$ with determinant $1(2 - 0) - 1(0 - 1) + 1(0 - 2) = 2 + 1 - 2 = 1$. For $z$, replace the third column with the constants $(6, 4, 3)$: $\\begin{vmatrix} 1 & 1 & 6 \\\\ 0 & 2 & 4 \\\\ 1 & 0 & 3 \\end{vmatrix} = 1(2 \\cdot 3 - 4 \\cdot 0) - 1(0 \\cdot 3 - 4 \\cdot 1) + 6(0 \\cdot 0 - 2 \\cdot 1) = 6 + 4 - 12 = -2$, so $z = -2/1 = -2$. The replaced column must be the one matching $z$, namely the third. The trap option $5$ replaces the first column instead, which is the recipe for $x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-027",
+      "stem": "Compute the determinant $\\begin{vmatrix} 1 & -1 & 2 \\\\ 3 & 0 & -1 \\\\ -2 & 1 & 4 \\end{vmatrix}$.",
+      "options": [
+        "$17$",
+        "$-7$",
+        "$23$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "By Sarrus, the three forward-diagonal products are $(1)(0)(4) + (-1)(-1)(-2) + (2)(3)(1) = 0 - 2 + 6 = 4$, and the three backward-diagonal products are $(2)(0)(-2) + (1)(-1)(1) + (-1)(3)(4) = 0 - 1 - 12 = -13$. The determinant is forward minus backward: $4 - (-13) = 17$. The backward products must be subtracted as a block, which flips their signs. The trap option $-7$ comes from mishandling those signs, subtracting where the rule adds.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-028",
+      "stem": "Let $A$ be a $3 \\times 3$ matrix with $\\det(A) = -2$. What is $\\det(A^2)$?",
+      "options": [
+        "$-4$",
+        "$4$",
+        "$-8$",
+        "$8$"
+      ],
+      "answer": 1,
+      "explanation": "Since $A^2 = A \\cdot A$, the product rule gives $\\det(A^2) = \\det(A)\\det(A) = (-2)(-2) = 4$. Squaring the matrix squares the determinant, and squaring a negative number gives a positive result. The trap option $-4$ keeps a negative sign, as if the determinant of a square could stay negative.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-determinants-029",
+      "stem": "Compute the determinant $\\begin{vmatrix} 7 & -3 \\\\ -5 & 2 \\end{vmatrix}$.",
+      "options": [
+        "$29$",
+        "$1$",
+        "$-1$",
+        "$-29$"
+      ],
+      "answer": 2,
+      "explanation": "Apply $ad - bc$ with $a=7$, $b=-3$, $c=-5$, $d=2$. The main-diagonal product is $7 \\cdot 2 = 14$ and the anti-diagonal product is $(-3)(-5) = 15$, so $\\det = 14 - 15 = -1$. Both negative entries multiply to a positive $15$ before it is subtracted. The trap option $29$ comes from $14 - (-15)$, mishandling the sign of the anti-diagonal product.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-determinants-030",
+      "stem": "Let $A$ be a $4 \\times 4$ matrix with $\\det(A) = 3$. What is $\\det(-A)$?",
+      "options": [
+        "$-3$",
+        "$12$",
+        "$-12$",
+        "$3$"
+      ],
+      "answer": 3,
+      "explanation": "Negating a matrix is scaling by $k = -1$, so $\\det(-A) = (-1)^n \\det(A)$ for an $n \\times n$ matrix. With $n = 4$, $(-1)^4 = 1$, hence $\\det(-A) = 1 \\cdot 3 = 3$. The even size makes the sign positive. The trap option $-3$ assumes the sign always flips, ignoring that the exponent $n$ is even here.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    }
+  ]
+}
