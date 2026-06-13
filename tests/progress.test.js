@@ -62,3 +62,23 @@ test('courses are stored under separate keys', () => {
   assert.equal(getProgress('calculus-i', store).attempted, 1);
   assert.equal(getProgress('calculus-ii', store).attempted, 1);
 });
+
+test('recordAnswer accepts a fractional score and getProgress sums it', () => {
+  const store = memStore();
+  recordAnswer('calculus-i', 'c1', 0.75, store);
+  recordAnswer('calculus-i', 'c2', 1, store);
+  const p = getProgress('calculus-i', store);
+  assert.equal(p.attempted, 2);
+  assert.equal(p.correct, 1.75);
+});
+
+test('getProgress counts old boolean records (no score field) as 1 or 0', () => {
+  const store = memStore();
+  store.setItem('tmc.v1.practice.calculus-i', JSON.stringify({
+    old1: { correct: true, at: 1 },
+    old2: { correct: false, at: 2 },
+  }));
+  const p = getProgress('calculus-i', store);
+  assert.equal(p.attempted, 2);
+  assert.equal(p.correct, 1);
+});

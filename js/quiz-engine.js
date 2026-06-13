@@ -29,6 +29,6 @@ export function mark(shuffled, chosenIndex) {
 
 export function tally(results) {
   const answered = results.length;
-  const correct = results.filter(r => r.correct).length;
+  const correct = results.reduce((sum, r) => sum + (typeof r.score === 'number' ? r.score : (r.correct ? 1 : 0)), 0);
   return { answered, correct, percent: answered ? Math.round((correct / answered) * 100) : 0 };
 }

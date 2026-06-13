@@ -29,7 +29,7 @@ const root = document.getElementById('progress');
         your progress will appear here.</p></div>` : rows.map(r => `
         <section class="quiz-card" style="margin: 1rem 0;">
           <h2 style="margin-top: 0;"><a href="course.html?c=${encodeURIComponent(r.course.id)}">${escapeHtml(r.course.title)}</a></h2>
-          <p>${r.p.attempted} question${r.p.attempted === 1 ? '' : 's'} tried${r.stats.questions ? ` of ${r.stats.questions} live` : ''}, ${r.p.correct} right on latest answers.</p>
+          <p>${r.p.attempted} question${r.p.attempted === 1 ? '' : 's'} tried${r.stats.questions ? ` of ${r.stats.questions} live` : ''}, ${Math.round(r.p.correct)} right on latest answers.</p>
           ${r.attempts.length ? `
             <h3>Mock exam attempts</h3>
             <ul class="summary-list">

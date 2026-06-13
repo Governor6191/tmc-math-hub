@@ -25,10 +25,12 @@ function readCourse(courseId, store) {
   return data && typeof data === 'object' && !Array.isArray(data) ? data : {};
 }
 
-export function recordAnswer(courseId, questionId, correct, store = defaultStore()) {
+export function recordAnswer(courseId, questionId, value, store = defaultStore()) {
   if (!isAvailable(store)) return false;
   const data = readCourse(courseId, store);
-  data[questionId] = { correct: !!correct, at: Date.now() };
+  const n = value === true ? 1 : value === false ? 0 : Number(value);
+  const score = Number.isFinite(n) ? n : 0;
+  data[questionId] = { correct: score >= 1, score, at: Date.now() };
   try { store.setItem(KEY_PREFIX + courseId, JSON.stringify(data)); } catch { return false; }
   return true;
 }
@@ -37,9 +39,10 @@ export function getProgress(courseId, store = defaultStore()) {
   if (!isAvailable(store)) return { attempted: 0, correct: 0, byQuestion: {} };
   const data = readCourse(courseId, store);
   const ids = Object.keys(data);
-  return {
-    attempted: ids.length,
-    correct: ids.filter(id => data[id] && data[id].correct === true).length,
-    byQuestion: data,
-  };
+  const correct = ids.reduce((sum, id) => {
+    const e = data[id];
+    if (!e) return sum;
+    return sum + (typeof e.score === 'number' ? e.score : (e.correct === true ? 1 : 0));
+  }, 0);
+  return { attempted: ids.length, correct, byQuestion: data };
 }
