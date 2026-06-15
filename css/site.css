@@ -289,6 +289,21 @@ select.cloze-gap { text-align: left; }
 .cloze-gap.is-wrong { border-color: var(--coral); color: var(--wrong-text); background: var(--wrong-bg); }
 .cloze-gap:disabled { opacity: 1; }
 .cloze-correct { color: var(--right-text); font-family: var(--font-mono); font-size: 0.82em; margin-left: 0.2rem; white-space: nowrap; }
+/* dropdown gaps render as selectable chips so their math can be KaTeX-rendered */
+.cloze-choices { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; vertical-align: middle; margin: 0 0.2rem; }
+.cloze-choice {
+  display: inline-flex; align-items: center; cursor: pointer; position: relative;
+  padding: 0.1rem 0.55rem; border: 1px solid var(--line-strong); border-radius: 8px;
+  background: var(--card-raised); color: var(--ink); line-height: 1.4;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.cloze-choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.cloze-choice:hover { border-color: var(--mint); }
+.cloze-choice:has(input:checked) { border-color: var(--mint); background: var(--right-bg); }
+.cloze-choice:has(input:focus-visible) { outline: 3px solid var(--mint); outline-offset: 2px; }
+.cloze-choice.is-correct { border-color: var(--mint); background: var(--right-bg); color: var(--right-text); }
+.cloze-choice.is-wrong { border-color: var(--coral); background: var(--wrong-bg); color: var(--wrong-text); }
+.cloze-choice.is-answer { border-color: var(--mint); box-shadow: 0 0 0 2px var(--right-bg); }
 
 /* feedback form */
 .feedback-intro { color: var(--ink-soft); max-width: 56ch; font-size: 1.02rem; }

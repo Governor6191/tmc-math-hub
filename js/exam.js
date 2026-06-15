@@ -174,11 +174,18 @@ function wireExamEvents() {
   if (cloze) {
     const i = attempt.current;
     const saved = attempt.answers[i] || {};
-    cloze.querySelectorAll('.cloze-gap').forEach(el => {
+    const save = () => { answerQuestion(attempt, i, readGapValues(cloze)); checkpoint(); };
+    cloze.querySelectorAll('input.cloze-gap').forEach(el => {
       if (saved[el.dataset.gap] !== undefined) el.value = saved[el.dataset.gap];
-      const save = () => { answerQuestion(attempt, i, readGapValues(cloze)); checkpoint(); };
       el.addEventListener('input', save);
       el.addEventListener('change', save);
+    });
+    cloze.querySelectorAll('.cloze-choices').forEach(grp => {
+      const v = saved[grp.dataset.gap];
+      grp.querySelectorAll('input[type="radio"]').forEach(r => {
+        if (v !== undefined && r.value === v) r.checked = true;
+        r.addEventListener('change', save);
+      });
     });
   }
 }
@@ -274,7 +281,8 @@ function renderResults(s, auto) {
     const i = Number(div.dataset.reviewCloze);
     const q = attempt.questions[i];
     const saved = attempt.answers[i] || {};
-    div.querySelectorAll('.cloze-gap').forEach(el => { if (saved[el.dataset.gap] !== undefined) el.value = saved[el.dataset.gap]; });
+    div.querySelectorAll('input.cloze-gap').forEach(el => { if (saved[el.dataset.gap] !== undefined) el.value = saved[el.dataset.gap]; });
+    div.querySelectorAll('.cloze-choices').forEach(grp => { const v = saved[grp.dataset.gap]; if (v !== undefined) grp.querySelectorAll('input[type="radio"]').forEach(r => { if (r.value === v) r.checked = true; }); });
     markGaps(div, gradeCloze(q, saved));
   });
   renderMathIn(root);
