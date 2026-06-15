@@ -422,6 +422,223 @@
       "explanation": "The count $n$ satisfies $n \\equiv 3 \\pmod 5$, so it has the form $5k + 3$, giving $\\dots, 18, 23, 28, \\dots$. The smallest such value greater than $20$ is $23$, since $18$ is below $20$ and $23 = 5 \\times 4 + 3$ is the next one up. The answer $28$ overshoots to the following term in the list. The trap is picking the wrong member of the residue class: list the values $5k + 3$ and take the first one strictly above $20$, which is $23$, not $28$ or the sub-$20$ value $18$.",
       "difficulty": "stretch",
       "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-031",
+      "format": "cloze",
+      "stem": "Using the division algorithm, when $58$ is divided by $6$ the result is written as $58 = 6q + r$ with $0 \\le r < 6$. Find the quotient $q$ and the remainder $r$.",
+      "solution": "The division algorithm asks for the largest multiple of $6$ that does not exceed $58$. Since $6 \\times 9 = 54$ and $6 \\times 10 = 60$ is too big, the quotient $q$ is {{1}}. The remainder is what is left over, $58 - 54$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "We need $0 \\le r < 6$, so $q = 9$ and $r = 58 - 54 = 4$, giving $58 = 6 \\times 9 + 4$. Taking $q = 10$ would force a negative remainder.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-032",
+      "format": "cloze",
+      "stem": "Use the Euclidean algorithm to find $\\gcd(48, 36)$.",
+      "solution": "The Euclidean algorithm repeatedly replaces the pair by the smaller number and the remainder. First $48 = 36 \\times 1 + 12$, so the remainder is {{1}}. Next $36 = 12 \\times 3 + 0$; the remainder is now zero, so the last nonzero remainder is the gcd. Therefore $\\gcd(48, 36)$ equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 12,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 12,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Dividing $48$ by $36$ leaves $12$, then $36$ is exactly $3 \\times 12$. The last nonzero remainder, $12$, is the gcd.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-033",
+      "format": "cloze",
+      "stem": "Given that $360 = 2^{3} \\times 3^{2} \\times 5$, how many positive divisors does $360$ have?",
+      "solution": "The number of positive divisors is found by adding $1$ to each exponent in the prime factorization and multiplying the results. The exponents $3, 2, 1$ become $4, 3, 2$ after adding one. Multiplying $4 \\times 3 \\times 2$ gives the divisor count, which is {{1}}. The rule used here adds one to each {{2}} before multiplying.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 24,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "exponent",
+            "prime",
+            "divisor",
+            "remainder"
+          ],
+          "answer": "exponent"
+        }
+      ],
+      "explanation": "For $p^a q^b r^c$ the divisor count is $(a+1)(b+1)(c+1) = 4 \\times 3 \\times 2 = 24$. Each divisor independently picks a power of each prime from $0$ up to its exponent.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-034",
+      "format": "cloze",
+      "stem": "Evaluate $2^{10} \\bmod 7$ by using the cycle of powers of $2$ modulo $7$.",
+      "solution": "The powers of $2$ modulo $7$ cycle: $2^1 \\equiv 2$, $2^2 \\equiv 4$, $2^3 \\equiv 1 \\pmod 7$, after which the pattern repeats with period $3$. To reduce $2^{10}$, take the exponent $10$ modulo $3$; the remainder is {{1}}. Reading the cycle at that exponent gives $2^{10} \\equiv 2^1$, so the value is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $2^3 \\equiv 1 \\pmod 7$, only the exponent modulo $3$ matters. As $10 = 3 \\times 3 + 1$, we get $2^{10} \\equiv 2^1 = 2 \\pmod 7$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-035",
+      "format": "cloze",
+      "stem": "Using the identity $\\gcd(a,b) \\times \\operatorname{lcm}(a,b) = a \\times b$, find $\\operatorname{lcm}(12, 18)$ given that $\\gcd(12, 18) = 6$.",
+      "solution": "Rearrange the identity to $\\operatorname{lcm}(a,b) = \\dfrac{a \\times b}{\\gcd(a,b)}$. The product $a \\times b = 12 \\times 18$ equals {{1}}. Dividing this by the gcd $6$ gives the lcm, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 216,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 36,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The product $12 \\times 18 = 216$, and dividing by $\\gcd = 6$ gives $\\operatorname{lcm} = 36$. The identity lets you find one of gcd or lcm once the other and the product are known.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-036",
+      "format": "cloze",
+      "stem": "What is the last digit of $7^{4}$?",
+      "solution": "The last digit of a power is found from the cycle of units digits. The units digits of powers of $7$ cycle as $7, 9, 3, 1$ and then repeat, so the period is {{1}}. The fourth power lands at the end of one full cycle, so the last digit of $7^{4}$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Powers of $7$ end in $7, 9, 3, 1, 7, 9, 3, 1, \\dots$ with period $4$, so $7^4$ ends in $1$. Only the exponent modulo $4$ determines the last digit.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-037",
+      "format": "cloze",
+      "stem": "Find the integer $x$ with $0 \\le x < 7$ that satisfies $3x \\equiv 1 \\pmod 7$. This $x$ is the multiplicative inverse of $3$ modulo $7$.",
+      "solution": "Test the residues $0$ through $6$ to find one whose product with $3$ is congruent to $1$ modulo $7$. Trying $x = 5$ gives $3 \\times 5 = 15$, and $15 \\bmod 7$ equals {{1}}. Since that result is $1$, the inverse of $3$ modulo $7$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$3 \\times 5 = 15 = 14 + 1 \\equiv 1 \\pmod 7$, so $x = 5$ is the inverse. An inverse exists here because $\\gcd(3, 7) = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-038",
+      "format": "cloze",
+      "stem": "A number is divisible by $3$ exactly when the sum of its digits is divisible by $3$. Apply this test to $471$.",
+      "solution": "Add the digits of $471$: the sum $4 + 7 + 1$ equals {{1}}. Because that digit sum is itself a multiple of $3$, the test tells us that $471$ {{2}} by $3$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 12,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is divisible",
+            "is not divisible",
+            "leaves remainder 1",
+            "leaves remainder 2"
+          ],
+          "answer": "is divisible"
+        }
+      ],
+      "explanation": "The digit sum $4 + 7 + 1 = 12$ is divisible by $3$, so $471$ is divisible by $3$ (indeed $471 = 3 \\times 157$). The rule works because $10 \\equiv 1 \\pmod 3$.",
+      "difficulty": "warmup",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-number-theory-039",
+      "format": "cloze",
+      "stem": "A product code ends in a single check digit $c$ chosen so that the sum of all the digits, including $c$, is congruent to $0 \\pmod{10}$. If the digits before the check digit sum to $37$, what is the check digit $c$, with $0 \\le c \\le 9$?",
+      "solution": "We need $37 + c \\equiv 0 \\pmod{10}$. First reduce $37$ modulo $10$: its residue is {{1}}. The check digit must bring this residue up to a multiple of $10$, so $c$ is the value that makes the total end in zero. That value of $c$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $37 \\equiv 7 \\pmod{10}$, we need $7 + c \\equiv 0$, so $c = 3$ and the full digit sum is $40$. Check digits use modular arithmetic to detect single-digit errors.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics"
     }
   ]
 }

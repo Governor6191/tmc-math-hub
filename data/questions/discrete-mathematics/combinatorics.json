@@ -422,6 +422,233 @@
       "explanation": "By the binomial theorem the general term is $\\binom{5}{k} (2x)^{5-k} (3)^{k}$. The power of $x$ is $5 - k$, so $x^3$ requires $k = 2$. That term is $\\binom{5}{2} (2x)^{3} (3)^{2} = 10 \\cdot 8x^{3} \\cdot 9 = 720 x^{3}$, giving the coefficient $720$. The answer $80 = \\binom{5}{2} \\cdot 8$ forgets the $3^2 = 9$ factor, $8$ keeps only $(2)^3$ and drops both $\\binom{5}{2}$ and the power of $3$, and $240$ mishandles which constant goes with which power. The trap is omitting one of the constant factors: every term carries the binomial coefficient and both numerical bases raised to their correct powers.",
       "difficulty": "stretch",
       "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-031",
+      "format": "cloze",
+      "stem": "A cafeteria offers $5$ kinds of drink and $3$ kinds of pastry. A snack is one drink together with one pastry. How many different snacks are possible?",
+      "solution": "Building a snack is a sequence of two independent choices: the drink and then the pastry. By the multiplication principle the counts multiply rather than add. The number of choices for the drink is $5$ and for the pastry is {{1}}. Multiplying gives the total number of snacks, which is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 15,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Two independent stages combine by the multiplication principle, so the total is $5 \\times 3 = 15$. Adding would give $8$, which counts a single item from one list, not one from each.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-032",
+      "format": "cloze",
+      "stem": "In how many ways can $5$ distinct trophies be arranged in a row on a shelf?",
+      "solution": "Arranging all $5$ distinct trophies in order is a permutation of $5$ objects. Counted stagewise there are $5$ choices for the first slot, then $4$, then $3$, then $2$, then $1$. The relevant operation here is the {{1}} of $5$. Its value is $5 \\times 4 \\times 3 \\times 2 \\times 1$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "factorial",
+            "square",
+            "combination",
+            "double"
+          ],
+          "answer": "factorial"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 120,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Filling every position with distinct objects multiplies all the way down to $1$, giving $5! = 120$. Treating slots as if repetition were allowed would instead give $5^5$.",
+      "difficulty": "warmup",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-033",
+      "format": "cloze",
+      "stem": "A debate panel of $3$ students is to be chosen from a class of $8$ students. The three seats are not labelled. In how many ways can the panel be chosen?",
+      "solution": "A panel has no internal ranking, so the order of selection does not matter. The correct tool is therefore a {{1}} rather than a permutation. The count is $\\binom{8}{3} = \\dfrac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1}$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "combination",
+            "permutation",
+            "power",
+            "factorial"
+          ],
+          "answer": "combination"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 56,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Unordered selection uses $\\binom{8}{3} = 56$. The ordered count $P(8,3) = 336$ overcounts each panel by $3! = 6$.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-034",
+      "format": "cloze",
+      "stem": "How many distinct arrangements can be made using all the letters of the word $\\text{LETTER}$?",
+      "solution": "The word $\\text{LETTER}$ has $6$ letters, but the letter E appears twice and the letter T appears twice. With $6$ letters and these repeats, the count is $\\dfrac{6!}{2! \\, 2!}$. The numerator $6!$ equals $720$, and the denominator $2! \\, 2!$ equals {{1}}. Dividing gives the number of distinct arrangements, which is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 180,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Each repeated letter contributes its multiplicity factorial to the denominator, so the count is $\\dfrac{720}{2 \\times 2} = 180$. Forgetting one repeat would leave $360$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-035",
+      "format": "cloze",
+      "stem": "What is the least number of people that must be in a room to be certain that at least two of them share the same birth month?",
+      "solution": "Treat the $12$ months as pigeonholes and the people as pigeons. With $12$ people it is still possible for each to occupy a different month, so $12$ is not enough to force a clash. By the pigeonhole principle the guaranteeing threshold is one more than the number of holes, namely $12 + 1$. The least number of people required is therefore {{1}}, and the principle being used is the {{2}} principle.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 13,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "pigeonhole",
+            "multiplication",
+            "addition",
+            "inclusion-exclusion"
+          ],
+          "answer": "pigeonhole"
+        }
+      ],
+      "explanation": "You need one more than the number of categories before a repeat is unavoidable, so $12 + 1 = 13$. Answering $12$ stops at the number of holes.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-036",
+      "format": "cloze",
+      "stem": "A club must choose a President, a Secretary, and a Treasurer from its $9$ members, with no member holding two posts. In how many ways can the posts be filled?",
+      "solution": "The three posts carry different titles, so the order of selection matters and this is a permutation. The first post can be filled $9$ ways, the second $8$ ways, and the third $7$ ways. The kind of count needed is a {{1}}. Multiplying $9 \\times 8 \\times 7$ gives the total number of ways, which is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "permutation",
+            "combination",
+            "subset",
+            "partition"
+          ],
+          "answer": "permutation"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 504,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Distinct labelled roles need an ordered count, $P(9,3) = 9 \\times 8 \\times 7 = 504$. The unordered count $\\binom{9}{3} = 84$ would ignore the differing titles.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-037",
+      "format": "cloze",
+      "stem": "In the binomial expansion of $(x + y)^{8}$, what is the coefficient of the term $x^{5} y^{3}$?",
+      "solution": "By the binomial theorem the term containing $x^{5} y^{3}$ in $(x+y)^8$ is $\\binom{8}{k} x^{5} y^{3}$, where $k$ counts the $y$ factors. The correct value of $k$ here is {{1}}. The coefficient is then $\\binom{8}{3} = \\dfrac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1}$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 56,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "For $x^{n-k} y^{k}$ the coefficient is $\\binom{n}{k}$; here $\\binom{8}{3} = 56$. Using $k = 5$ would also give $\\binom{8}{5} = 56$, but the $y$ exponent fixes $k = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-038",
+      "format": "cloze",
+      "stem": "In how many ways can $7$ people be seated at a round table, where seatings that differ only by a rotation are regarded as the same?",
+      "solution": "For a circular arrangement of $n$ distinct people, rotations are not counted as new seatings, so the count is $(n-1)!$ rather than $n!$. With $7$ people the exponent on the factorial uses $n - 1$, which equals {{1}}. The number of distinct circular seatings is therefore $6!$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 720,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Fixing one person to remove rotational symmetry leaves $(7-1)! = 6! = 720$ arrangements. Using $7!$ would overcount by a factor of $7$.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-combinatorics-039",
+      "format": "cloze",
+      "stem": "A committee of $3$ is chosen from $6$ men and $4$ women, and it must contain at least one woman. How many such committees are possible?",
+      "solution": "Use complementary counting: take all committees and subtract those with no woman. The total number of committees of $3$ from the $10$ people is $\\binom{10}{3} = 120$. The committees with no woman are the all-men ones, $\\binom{6}{3}$, which equals {{1}}. Subtracting the unwanted case from the total gives the number with at least one woman, which is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 100,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Total minus the all-men case gives $120 - 20 = 100$. Counting the cases by woman count directly gives the same result, but complementary counting is cleaner for at-least-one constraints.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics"
     }
   ]
 }

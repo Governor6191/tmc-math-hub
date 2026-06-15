@@ -504,6 +504,59 @@
       "explanation": "Writing $\\frac{\\sin 3x}{5x} = \\frac{3}{5}\\cdot\\frac{\\sin 3x}{3x}$ isolates a copy of $\\frac{\\sin t}{t}$ with $t = 3x$, which tends to $1$. The limit is therefore the constant $\\frac{3}{5} = 0.6$.",
       "difficulty": "stretch",
       "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-limits-037",
+      "format": "cloze",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to\\infty}\\frac{4x^2 - x}{8x^2 + 3}$.",
+      "solution": "Divide the numerator and denominator by the highest power present, which is $x^2$. The quotient becomes $\\frac{4 - 1/x}{8 + 3/x^2}$. As $x \\to \\infty$, every term with $x$ in its denominator tends to {{1}}, so the numerator approaches $4$ and the denominator approaches $8$. Since the degrees match, the limit is the ratio of leading coefficients, which equals {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 0, "tolerance": 0 },
+        { "id": 2, "type": "number", "answer": 0.5, "tolerance": 0 }
+      ],
+      "explanation": "When numerator and denominator have equal degree, the limit at infinity is the ratio of leading coefficients. Here $\\frac{4}{8} = \\frac{1}{2}$, which is the horizontal asymptote $y = \\frac{1}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.6"
+    },
+    {
+      "id": "calculus-i-limits-038",
+      "format": "cloze",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to -2}\\frac{x^2 - x - 6}{x + 2}$.",
+      "solution": "Substituting $x = -2$ gives $\\frac{0}{0}$, an indeterminate form, so factor the numerator. The correct factoring is {{1}}. Cancelling the common factor $x + 2$ leaves the expression {{2}}. Substituting $x = -2$ into that expression now gives {{3}}.",
+      "gaps": [
+        { "id": 1, "type": "dropdown", "options": ["$(x + 2)(x - 3)$", "$(x - 2)(x + 3)$", "$(x + 2)(x + 3)$", "$(x + 6)(x - 1)$"], "answer": "$(x + 2)(x - 3)$" },
+        { "id": 2, "type": "text", "accept": ["x-3"] },
+        { "id": 3, "type": "number", "answer": -5, "tolerance": 0 }
+      ],
+      "explanation": "Since $x^2 - x - 6 = (x + 2)(x - 3)$, the quotient reduces to $x - 3$ for $x \\ne -2$. Evaluating at $x = -2$ gives $-2 - 3 = -5$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.3"
+    },
+    {
+      "id": "calculus-i-limits-039",
+      "format": "cloze",
+      "stem": "Evaluate the one-sided limit $\\displaystyle\\lim_{x\\to 1^+}\\frac{x + 2}{x - 1}$.",
+      "solution": "As $x \\to 1^+$ the numerator tends to $1 + 2 = 3$, a positive number. The denominator $x - 1$ tends to $0$ through values whose sign is {{1}}, since $x > 1$ on this side. A positive number divided by a tiny positive number grows without bound, so the limit is {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "text", "accept": ["positive"] },
+        { "id": 2, "type": "dropdown", "options": ["$\\infty$", "$-\\infty$", "$3$", "$0$"], "answer": "$\\infty$" }
+      ],
+      "explanation": "On the right side of $1$ both numerator and denominator are positive, and the denominator shrinks to $0$, so the quotient increases without bound to $+\\infty$. The left-hand limit would instead be $-\\infty$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 2.2"
+    },
+    {
+      "id": "calculus-i-limits-040",
+      "format": "cloze",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to -\\infty}\\frac{\\sqrt{4x^2 + 1}}{3x - 2}$.",
+      "solution": "Factor $x^2$ from the radicand: $\\sqrt{4x^2 + 1} = |x|\\sqrt{4 + 1/x^2}$. Because $x \\to -\\infty$ means $x$ is negative, the absolute value satisfies {{1}}. Dividing the numerator and denominator by $x$ then gives $\\frac{-\\sqrt{4 + 1/x^2}}{3 - 2/x}$, which tends to $\\frac{-\\sqrt{4}}{3}$. This equals {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "dropdown", "options": ["$|x| = -x$", "$|x| = x$", "$|x| = x^2$", "$|x| = 2x$"], "answer": "$|x| = -x$" },
+        { "id": 2, "type": "dropdown", "options": ["$-\\frac{2}{3}$", "$\\frac{2}{3}$", "$\\frac{4}{3}$", "$0$"], "answer": "$-\\frac{2}{3}$" }
+      ],
+      "explanation": "For $x < 0$ we have $\\sqrt{x^2} = |x| = -x$, so dividing by $x$ flips the sign of the root. The result is $\\frac{-2}{3} = -\\frac{2}{3}$, the horizontal asymptote as $x \\to -\\infty$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 2.6"
     }
   ]
 }

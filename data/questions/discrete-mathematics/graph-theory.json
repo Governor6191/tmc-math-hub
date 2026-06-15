@@ -422,6 +422,238 @@
       "explanation": "A connected graph on $n$ vertices with exactly $n - 1$ edges is a tree, and a tree contains no cycle. Here $n = 6$ and the edge count is $5 = 6 - 1$ with the graph connected, so $G$ must be a tree and therefore acyclic. It cannot have a cycle, since a connected graph with a cycle on $6$ vertices needs at least $6$ edges, and it is certainly not $K_6$, which has $15$ edges. The trap is asserting a cycle when the edge count $n - 1$ together with connectedness forces a tree, which has none.",
       "difficulty": "core",
       "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-031",
+      "format": "cloze",
+      "stem": "How many edges does the complete graph $K_{7}$ have?",
+      "solution": "In a complete graph on $n$ vertices every pair of distinct vertices is joined by exactly one edge, so the edge count is $\\binom{n}{2} = \\dfrac{n(n-1)}{2}$. With $n = 7$ the numerator $n(n-1) = 7 \\times 6$ equals {{1}}. Dividing by $2$ gives the number of edges, which is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 42,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 21,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Each unordered pair of vertices is one edge, so $K_7$ has $\\binom{7}{2} = \\frac{7 \\cdot 6}{2} = 21$ edges. Dividing by $2$ corrects for counting each pair in both orders.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-032",
+      "format": "cloze",
+      "stem": "In a simple graph the degrees of the vertices are $4, 4, 3, 3, 2$. Using the handshaking lemma, how many edges does the graph have?",
+      "solution": "The handshaking lemma says the sum of all vertex degrees equals twice the number of edges. Adding the degrees $4 + 4 + 3 + 3 + 2$ gives a degree sum of {{1}}. Since this sum is $2$ times the edge count, dividing by $2$ gives the number of edges, which is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 16,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Each edge contributes $1$ to the degree of each of its two endpoints, so $\\sum \\deg = 2|E|$. Here the sum is $16$, giving $|E| = 8$.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-033",
+      "format": "cloze",
+      "stem": "A tree is a connected graph with no cycles. If a tree has $15$ vertices, how many edges does it have?",
+      "solution": "A tree on $n$ vertices always has exactly $n - 1$ edges. The relationship between edges and vertices in any tree is that edges equal vertices {{1}}. With $n = 15$, the number of edges is $15 - 1$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "minus one",
+            "plus one",
+            "times two",
+            "squared"
+          ],
+          "answer": "minus one"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 14,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Every tree satisfies $|E| = |V| - 1$, so a $15$-vertex tree has $14$ edges. Adding any further edge would create a cycle.",
+      "difficulty": "warmup",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-034",
+      "format": "cloze",
+      "stem": "How many edges are in the cycle graph $C_{10}$ (a single cycle through $10$ vertices), and what is the degree of each vertex?",
+      "solution": "A cycle graph $C_n$ joins its $n$ vertices in one closed loop, using exactly one edge between consecutive vertices. The number of edges in $C_{10}$ equals the number of vertices, which is {{1}}. In any cycle graph each vertex connects to its two neighbours, so the degree of every vertex is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$C_n$ has $n$ edges and every vertex has degree $2$ (one edge to each neighbour). So $C_{10}$ has $10$ edges and is $2$-regular.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-035",
+      "format": "cloze",
+      "stem": "A simple graph is $5$-regular (every vertex has degree $5$) and has $10$ vertices. How many edges does it have?",
+      "solution": "In a $k$-regular graph every one of the $n$ vertices has the same degree $k$, so the degree sum is $n \\times k$. Here that sum is $10 \\times 5$, which equals {{1}}. By the handshaking lemma the edge count is half the degree sum, so the number of edges is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 50,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 25,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "A $5$-regular graph on $10$ vertices has degree sum $50$, so $|E| = 50/2 = 25$. The handshaking lemma turns the regular structure directly into an edge count.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-036",
+      "format": "cloze",
+      "stem": "How many edges does the complete bipartite graph $K_{4,5}$ have?",
+      "solution": "In $K_{m,n}$ every vertex of the first part joins to every vertex of the second part, and there are no edges within a part. The number of edges is therefore the product $m \\times n$. With $m = 4$ and $n = 5$, multiplying gives {{1}} edges. The correct operation to combine the two part sizes is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "multiplication",
+            "addition",
+            "subtraction",
+            "the factorial"
+          ],
+          "answer": "multiplication"
+        }
+      ],
+      "explanation": "Each of the $4$ vertices on one side connects to all $5$ on the other, so $|E| = 4 \\times 5 = 20$. Adding the parts would instead count vertices, not edges.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-037",
+      "format": "cloze",
+      "stem": "A connected graph has vertices of degrees $4, 2, 4, 2$. Does it have an Euler circuit, an Euler path that is not a circuit, or neither?",
+      "solution": "A connected graph has an Euler circuit exactly when every vertex has even degree, and an Euler path that is not a circuit exactly when there are precisely two vertices of odd degree. Counting the odd-degree vertices in the list $4, 2, 4, 2$ gives {{1}} of them. With that many odd-degree vertices, the graph has an {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "Euler circuit",
+            "Euler path that is not a circuit",
+            "neither Euler path nor circuit",
+            "Hamiltonian cycle"
+          ],
+          "answer": "Euler circuit"
+        }
+      ],
+      "explanation": "All four degrees are even, so there are $0$ odd-degree vertices. A connected graph with no odd-degree vertex has an Euler circuit.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-038",
+      "format": "cloze",
+      "stem": "A connected graph has vertices of degrees $3, 3, 2, 2, 2$. Does it have an Euler circuit, an Euler path that is not a circuit, or neither?",
+      "solution": "Apply the Euler criteria: count the vertices of odd degree. In the list $3, 3, 2, 2, 2$ the number of odd-degree vertices is {{1}}. A connected graph with exactly two odd-degree vertices has an {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "Euler path that is not a circuit",
+            "Euler circuit",
+            "neither Euler path nor circuit",
+            "isolated vertex"
+          ],
+          "answer": "Euler path that is not a circuit"
+        }
+      ],
+      "explanation": "The two degree-$3$ vertices are the only odd ones, so there are exactly $2$ odd-degree vertices. That forces an Euler path (open trail) but rules out a closed Euler circuit.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-graph-theory-039",
+      "format": "cloze",
+      "stem": "A simple graph has $9$ edges. What is the sum of the degrees of all its vertices, and is that sum even or odd?",
+      "solution": "By the handshaking lemma the degree sum equals twice the number of edges, regardless of how the edges are arranged. With $9$ edges the degree sum is $2 \\times 9$, which equals {{1}}. Because it is always twice an integer, this degree sum is necessarily {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 18,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "even",
+            "odd",
+            "prime",
+            "negative"
+          ],
+          "answer": "even"
+        }
+      ],
+      "explanation": "$\\sum \\deg = 2|E| = 18$, and any multiple of $2$ is even. This is why the number of odd-degree vertices in any graph is always even.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics"
     }
   ]
 }

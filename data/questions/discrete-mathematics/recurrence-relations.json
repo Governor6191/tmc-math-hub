@@ -422,6 +422,238 @@
       "explanation": "Use the two given terms. At $n = 0$: $A + B = 3$. At $n = 2$: $A \\cdot 2^2 + B \\cdot 4^2 = 4A + 16B = 36$, that is $A + 4B = 9$. Subtracting the first equation gives $3B = 6$, so $B = 2$ and $A = 1$. Check $a_2 = 4(1) + 16(2) = 36$. The option $A = -12, B = 15$ comes from treating the $n = 2$ equation as $2A + 4B = 36$, forgetting that the roots are squared. The trap is using a non-consecutive index and writing the coefficients as $2$ and $4$ instead of $2^2 = 4$ and $4^2 = 16$.",
       "difficulty": "core",
       "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-recurrence-relations-031",
+      "format": "cloze",
+      "stem": "A sequence is defined by $a_n = a_{n-1} + 3$ with $a_1 = 2$. Find $a_4$.",
+      "solution": "Step forward one term at a time, adding $3$ each time. From $a_1 = 2$ we get $a_2 = 5$ and $a_3 = 8$. Adding $3$ once more gives $a_4$, which equals {{1}}. Because each step adds the same constant, this sequence is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 11,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "arithmetic",
+            "geometric",
+            "constant",
+            "alternating"
+          ],
+          "answer": "arithmetic"
+        }
+      ],
+      "explanation": "Iterating $a_1 = 2, a_2 = 5, a_3 = 8, a_4 = 11$. A fixed additive step makes the sequence arithmetic with common difference $3$.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-recurrence-relations-032",
+      "format": "cloze",
+      "stem": "Let $b_n = 2 b_{n-1}$ with $b_0 = 5$. Find $b_3$.",
+      "solution": "Each term is twice the previous one. From $b_0 = 5$ we get $b_1 = 10$ and $b_2 = 20$. Doubling once more gives $b_3$, which equals {{1}}. A closed form for this geometric sequence is $b_n = 5 \\times 2^{n}$, so the base being raised to the power $n$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 40,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Doubling from $5$ gives $10, 20, 40$, so $b_3 = 40$. The constant ratio $2$ makes the closed form $b_n = 5 \\cdot 2^n$.",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-recurrence-relations-033",
+      "format": "cloze",
+      "stem": "Solve the recurrence $a_n = 3 a_{n-1}$ with $a_0 = 4$ for a closed form, then evaluate $a_2$.",
+      "solution": "A first-order recurrence $a_n = r\\,a_{n-1}$ with $a_0$ given has closed form $a_n = a_0 \\, r^{n}$. Here the ratio is $r = 3$ and $a_0 = 4$, so $a_n = 4 \\times 3^{n}$. Substituting $n = 2$ uses $3^2 = 9$, and $4 \\times 9$ equals {{1}}. This closed form is a {{2}} function of $n$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 36,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "exponential",
+            "linear",
+            "quadratic",
+            "constant"
+          ],
+          "answer": "exponential"
+        }
+      ],
+      "explanation": "Unfolding $a_n = 3 a_{n-1}$ gives $a_n = 4 \\cdot 3^n$, so $a_2 = 4 \\cdot 9 = 36$. A constant ratio raised to the $n$th power is exponential growth.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-recurrence-relations-034",
+      "format": "cloze",
+      "stem": "Consider the recurrence $a_n = 5 a_{n-1} - 6 a_{n-2}$. State its characteristic equation and find its two roots.",
+      "solution": "For a linear homogeneous recurrence we substitute $a_n = r^{n}$ and divide by $r^{n-2}$ to get a polynomial in $r$. The characteristic equation here is $r^2 - 5r + 6 = 0$. Factoring as $(r-2)(r-3) = 0$, the two roots are $r = 2$ and $r = $ {{1}}. The general solution is then $a_n = A \\, 2^n + B \\, 3^n$, a sum of two {{2}} terms.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "geometric",
+            "arithmetic",
+            "polynomial",
+            "constant"
+          ],
+          "answer": "geometric"
+        }
+      ],
+      "explanation": "Substituting $a_n = r^n$ gives $r^2 - 5r + 6 = 0$, with distinct roots $2$ and $3$. Distinct real roots produce a sum of geometric terms $A 2^n + B 3^n$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-recurrence-relations-035",
+      "format": "cloze",
+      "stem": "A second-order linear homogeneous recurrence has characteristic equation $r^2 - 6r + 9 = 0$. What form does its general solution take?",
+      "solution": "Factor the characteristic equation: $r^2 - 6r + 9 = (r - 3)^2 = 0$, which has the single repeated root $r = $ {{1}}. When a root is repeated, the general solution carries an extra factor of $n$, taking the form {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$(A + Bn)3^n$",
+            "$A\\,3^n + B\\,3^n$",
+            "$A\\,3^n + B\\,9^n$",
+            "$A + Bn$"
+          ],
+          "answer": "$(A + Bn)3^n$"
+        }
+      ],
+      "explanation": "A double root $r = 3$ gives the solution $(A + Bn)3^n$. The factor $n$ on the second term is what distinguishes the repeated-root case from distinct roots.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-recurrence-relations-036",
+      "format": "cloze",
+      "stem": "Solve $a_n = 5 a_{n-1} - 6 a_{n-2}$ with $a_0 = 0$ and $a_1 = 1$, giving the closed form.",
+      "solution": "The characteristic roots are $2$ and $3$, so $a_n = A \\, 2^n + B \\, 3^n$. Applying $a_0 = 0$ gives $A + B = 0$, and applying $a_1 = 1$ gives $2A + 3B = 1$. Solving, $B = 1$ and $A = $ {{1}}. The closed form is therefore $a_n = -2^n + 3^n$. As a check, the value of $a_2$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From $A + B = 0$ and $2A + 3B = 1$ we get $B = 1$, $A = -1$, so $a_n = 3^n - 2^n$. Then $a_2 = 9 - 4 = 5$, matching $5 \\cdot 1 - 6 \\cdot 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-recurrence-relations-037",
+      "format": "cloze",
+      "stem": "Let $a_n = a_{n-1} + a_{n-2}$ with $a_1 = 1$ and $a_2 = 3$. Find $a_5$.",
+      "solution": "Each term is the sum of the two before it. Starting from $a_1 = 1$ and $a_2 = 3$, the next term is $a_3 = 1 + 3 = 4$, then $a_4 = 3 + 4 = 7$. Adding the last two gives $a_5 = 4 + 7$, which equals {{1}}. This addition rule is the same one that generates the {{2}} sequence.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 11,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "Fibonacci",
+            "geometric",
+            "arithmetic",
+            "harmonic"
+          ],
+          "answer": "Fibonacci"
+        }
+      ],
+      "explanation": "The terms run $1, 3, 4, 7, 11$, so $a_5 = 11$. The rule $a_n = a_{n-1} + a_{n-2}$ is the Fibonacci recurrence, here with different starting values.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-recurrence-relations-038",
+      "format": "cloze",
+      "stem": "Solve $a_n = 2 a_{n-1} + 1$ with $a_0 = 1$ for a closed form.",
+      "solution": "This is a first-order linear recurrence with a constant term. Iterating gives $a_0 = 1$, $a_1 = 3$, $a_2 = 7$, $a_3 = 15$, which are each one less than a power of $2$. The closed form is $a_n = 2^{n+1} - 1$. Using it, the value of $a_3$ is {{1}}, and the constant subtracted from the power of $2$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 15,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The terms $1, 3, 7, 15$ are $2^{n+1} - 1$, so $a_3 = 2^4 - 1 = 15$. The homogeneous part contributes $2^{n+1}$ and the particular part the constant $-1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-recurrence-relations-039",
+      "format": "cloze",
+      "stem": "The general solution of a recurrence is $a_n = A \\, 2^{n} + B \\, 5^{n}$. Given $a_0 = 3$ and $a_1 = 9$, find $A$ and $B$.",
+      "solution": "Plug in the initial conditions. At $n = 0$, since $2^0 = 5^0 = 1$, we get $A + B = 3$. At $n = 1$ we get $2A + 5B = 9$. Subtracting $2$ times the first equation from the second eliminates $A$ and gives $3B = 3$, so $B = $ {{1}}. Back-substituting into $A + B = 3$ gives $A = $ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From $A + B = 3$ and $2A + 5B = 9$, elimination gives $B = 1$ and $A = 2$. The two initial conditions pin down the two unknown coefficients.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
     }
   ]
 }

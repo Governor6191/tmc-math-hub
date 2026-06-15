@@ -424,6 +424,126 @@
       "explanation": "Combine with the product law: $\\log_2\\left(x(x-2)\\right) = 3$, so $x(x - 2) = 2^3 = 8$. This gives $x^2 - 2x - 8 = 0$, which factors as $(x - 4)(x + 2) = 0$, so the candidates are $x = 4$ and $x = -2$. The original logarithms require $x > 0$ and $x - 2 > 0$, so $x = -2$ must be rejected, leaving $x = 4$; check: $\\log_2 4 + \\log_2 2 = 2 + 1 = 3$. The answer $x = 5$ comes from the misuse $\\log a + \\log b = \\log(a + b)$, and $x = \\tfrac{5}{2}$ from dropping the logs entirely. The trap is keeping the extraneous root: always test candidates against the domain of the original equation.",
       "difficulty": "stretch",
       "source": "in the style of Dawkins Calculus I review, Exponential and Logarithm Equations"
+    },
+    {
+      "id": "calculus-i-functions-031",
+      "format": "cloze",
+      "stem": "Find the domain of $\\displaystyle f(x) = \\frac{x + 5}{x^2 - 9}$.",
+      "solution": "A rational function is undefined exactly where its denominator is zero, so set $x^2 - 9 = 0$. Factoring the denominator gives {{1}}, which vanishes at two points. The smaller excluded value is {{2}} and the larger excluded value is {{3}}. Every other real number is allowed.",
+      "gaps": [
+        { "id": 1, "type": "dropdown", "options": ["$(x - 3)(x + 3)$", "$(x - 3)^2$", "$(x - 9)(x + 1)$", "$(x + 3)^2$"], "answer": "$(x - 3)(x + 3)$" },
+        { "id": 2, "type": "number", "answer": -3, "tolerance": 0 },
+        { "id": 3, "type": "number", "answer": 3, "tolerance": 0 }
+      ],
+      "explanation": "Since $x^2 - 9 = (x - 3)(x + 3)$, the denominator is zero at $x = -3$ and $x = 3$. The domain is all real numbers except those two points. The numerator being zero at $x = -5$ is harmless.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-032",
+      "format": "cloze",
+      "stem": "Find the domain of $f(x) = \\sqrt{3x - 12}$.",
+      "solution": "An even root requires a nonnegative radicand, so set up the inequality $3x - 12 \\ge 0$. Solving for $x$ gives $x \\ge {{1}}$. The endpoint is {{2}} in the domain, because the square root of $0$ is defined. In interval notation the domain is therefore $[4, \\infty)$.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 4, "tolerance": 0 },
+        { "id": 2, "type": "dropdown", "options": ["included", "excluded"], "answer": "included" }
+      ],
+      "explanation": "Solving $3x - 12 \\ge 0$ gives $x \\ge 4$. Because $f(4) = \\sqrt{0} = 0$ is defined, the endpoint belongs to the domain, so the domain is $[4, \\infty)$.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-033",
+      "format": "cloze",
+      "stem": "Let $f(x) = 3x - 2$ and $g(x) = x^2 + 1$. Evaluate $(f \\circ g)(2)$.",
+      "solution": "A composition is evaluated from the inside out. First compute the inner value: $g(2) = 2^2 + 1 = {{1}}$. Then feed that result into $f$: $f$ of that value is $3$ times it minus $2$, which gives {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 5, "tolerance": 0 },
+        { "id": 2, "type": "number", "answer": 13, "tolerance": 0 }
+      ],
+      "explanation": "Since $(f \\circ g)(2) = f(g(2))$, first $g(2) = 5$, then $f(5) = 3(5) - 2 = 13$. Reversing the order would give $g(f(2)) = g(4) = 17$, a different value.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.3"
+    },
+    {
+      "id": "calculus-i-functions-034",
+      "format": "cloze",
+      "stem": "Let $f(x) = 2x + 1$ and $g(x) = x^2$. Find a simplified formula for $(g \\circ f)(x)$.",
+      "solution": "By definition $(g \\circ f)(x) = g(f(x))$, so substitute $f(x) = 2x + 1$ into $g$, which squares its input. This means we expand the square {{1}}. Carrying out the expansion gives {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "dropdown", "options": ["$(2x + 1)^2$", "$2x^2 + 1$", "$(2x)^2 + 1$", "$2(x + 1)^2$"], "answer": "$(2x + 1)^2$" },
+        { "id": 2, "type": "dropdown", "options": ["$4x^2 + 4x + 1$", "$4x^2 + 1$", "$2x^2 + 4x + 1$", "$4x^2 + 2x + 1$"], "answer": "$4x^2 + 4x + 1$" }
+      ],
+      "explanation": "Composing in this order gives $g(f(x)) = (2x + 1)^2 = 4x^2 + 4x + 1$ by the FOIL or square-of-a-binomial rule. The other order, $f(g(x)) = 2x^2 + 1$, is a different function.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.3"
+    },
+    {
+      "id": "calculus-i-functions-035",
+      "format": "cloze",
+      "stem": "Find the inverse function of $f(x) = 4x + 3$.",
+      "solution": "Write $y = 4x + 3$ and solve for $x$. First subtract $3$ from both sides to get $y - 3 = 4x$, then divide both sides by {{1}}. Swapping the variable name back to $x$, the inverse is $f^{-1}(x) = \\frac{x - 3}{4}$. The notation $f^{-1}$ refers to the {{2}} function, not the reciprocal $\\frac{1}{4x + 3}$.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 4, "tolerance": 0 },
+        { "id": 2, "type": "text", "accept": ["inverse"] }
+      ],
+      "explanation": "Solving $y = 4x + 3$ for $x$ gives $x = \\frac{y - 3}{4}$, so $f^{-1}(x) = \\frac{x - 3}{4}$. The notation $f^{-1}$ means the inverse function, never the reciprocal $\\frac{1}{f(x)}$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.5"
+    },
+    {
+      "id": "calculus-i-functions-036",
+      "format": "cloze",
+      "stem": "Classify $f(x) = x^4 - 2x^2 + 5$ as even, odd, or neither.",
+      "solution": "Apply the parity test by computing $f(-x)$. Since each power of $x$ here is even, $(-x)^4 = x^4$ and $(-x)^2 = x^2$, so $f(-x)$ simplifies to {{1}}. Comparing with $f(x)$, the two expressions are equal, so $f$ is {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "dropdown", "options": ["$x^4 - 2x^2 + 5$", "$-x^4 + 2x^2 + 5$", "$-x^4 - 2x^2 - 5$", "$x^4 - 2x^2 - 5$"], "answer": "$x^4 - 2x^2 + 5$" },
+        { "id": 2, "type": "dropdown", "options": ["even", "odd", "neither even nor odd"], "answer": "even" }
+      ],
+      "explanation": "Because $f(-x) = x^4 - 2x^2 + 5 = f(x)$, the function satisfies the even test $f(-x) = f(x)$. Its graph is symmetric about the $y$-axis.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-037",
+      "format": "cloze",
+      "stem": "Let $f(x) = 2x - 1$ for $x < 1$, and $f(x) = x^2 + 2$ for $x \\ge 1$. Compute $f(0) + f(3)$.",
+      "solution": "Decide which branch owns each input by checking its condition. For $x = 0$, since $0 < 1$, use the first rule: $f(0) = 2(0) - 1 = {{1}}$. For $x = 3$, since $3 \\ge 1$, use the second rule: $f(3) = 3^2 + 2 = {{2}}$. Adding the two results gives {{3}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": -1, "tolerance": 0 },
+        { "id": 2, "type": "number", "answer": 11, "tolerance": 0 },
+        { "id": 3, "type": "number", "answer": 10, "tolerance": 0 }
+      ],
+      "explanation": "The input $0$ satisfies $x < 1$ so $f(0) = -1$, and $3$ satisfies $x \\ge 1$ so $f(3) = 11$. Their sum is $-1 + 11 = 10$. The key is matching each input to the correct branch.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 1.1"
+    },
+    {
+      "id": "calculus-i-functions-038",
+      "format": "cloze",
+      "stem": "Evaluate $\\log_2 \\left( \\tfrac{1}{16} \\right)$.",
+      "solution": "Ask what power of $2$ gives $\\tfrac{1}{16}$. Since $16 = 2^4$, the reciprocal is $\\tfrac{1}{16} = 2^{-4}$, so the exponent is $-4$. By the rule $\\log_b(1/a) = -\\log_b a$, taking a reciprocal flips the {{1}} of the logarithm, so the value of $\\log_2\\left(\\tfrac{1}{16}\\right)$ is {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "text", "accept": ["sign"] },
+        { "id": 2, "type": "number", "answer": -4, "tolerance": 0 }
+      ],
+      "explanation": "Because $\\tfrac{1}{16} = 2^{-4}$, we have $\\log_2\\left(\\tfrac{1}{16}\\right) = -4$. The rule $\\log_b(1/a) = -\\log_b a$ shows a reciprocal flips the sign of the logarithm.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 1.5"
+    },
+    {
+      "id": "calculus-i-functions-039",
+      "format": "cloze",
+      "stem": "The point $(3, 4)$ lies on the graph of $y = f(x)$. Find the point that must lie on the graph of $y = 2f(x - 1)$.",
+      "solution": "Treat the two coordinates separately. The input must satisfy $x - 1 = 3$, so the new $x$-coordinate is {{1}}; the inside change $x - 1$ shifts the graph to the {{2}}. The output is $2$ times $f(3) = 4$, so the new $y$-coordinate is {{3}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 4, "tolerance": 0 },
+        { "id": 2, "type": "dropdown", "options": ["right", "left", "up", "down"], "answer": "right" },
+        { "id": 3, "type": "number", "answer": 8, "tolerance": 0 }
+      ],
+      "explanation": "Solving $x - 1 = 3$ gives $x = 4$ (a shift right by $1$), and the vertical stretch by $2$ sends the height $4$ to $2 \\cdot 4 = 8$. So the image point is $(4, 8)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Stewart 8e, section 1.3"
     }
   ]
 }

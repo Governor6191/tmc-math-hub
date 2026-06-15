@@ -506,6 +506,125 @@
       "explanation": "Pick the nearest point where $\\sqrt{x}$ is known exactly: $a = 36$. Then $f(36) = 6$, $f'(36) = \\frac{1}{2\\sqrt{36}} = \\frac{1}{12}$, and $L(x) = 6 + \\frac{x - 36}{12}$, so $\\sqrt{35.7} \\approx 6 + \\frac{35.7 - 36}{12} = 6 - 0.025 = 5.975$, very close to the true value $5.9749...$. The second option drops the sign of $x - a = -0.3$ and adjusts upward even though $35.7$ is below $36$. Centering at $35.7$ itself is circular: the formula then requires $\\sqrt{35.7}$, the very number being estimated. Centering at $25$ uses a known square but one far from $35.7$, and the estimate $6.07$ degrades badly because the tangent line is being trusted ten units from its point of tangency. The trap is choosing the wrong center: it must be a nearby point where the function's exact value is known.",
       "difficulty": "stretch",
       "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-037",
+      "format": "cloze",
+      "stem": "On which interval is $f(x) = x^2 - 6x + 5$ increasing?",
+      "solution": "A function increases where its derivative is positive. Compute $f'(x) = 2x - 6$, which is zero at $x = {{1}}$. For inputs larger than that value, $f'(x) > 0$, so $f$ is increasing on the interval $(3, \\infty)$; the function is {{2}} on the other side.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 3, "tolerance": 0 },
+        { "id": 2, "type": "dropdown", "options": ["decreasing", "increasing", "constant"], "answer": "decreasing" }
+      ],
+      "explanation": "Setting $f'(x) = 2x - 6 = 0$ gives $x = 3$, the vertex. For $x > 3$ the derivative is positive (increasing) and for $x < 3$ it is negative (decreasing).",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 4.3"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-038",
+      "format": "cloze",
+      "stem": "Find all critical numbers of $f(x) = x^3 - 27x$.",
+      "solution": "Critical numbers are where $f'$ is zero or undefined. Differentiate: $f'(x) = 3x^2 - 27 = 3(x^2 - 9)$. Setting this to zero gives $x^2 = {{1}}$. Taking both square roots, the smaller critical number is {{2}} and the larger is {{3}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 9, "tolerance": 0 },
+        { "id": 2, "type": "number", "answer": -3, "tolerance": 0 },
+        { "id": 3, "type": "number", "answer": 3, "tolerance": 0 }
+      ],
+      "explanation": "From $3x^2 - 27 = 0$ we get $x^2 = 9$, so the critical numbers are $x = -3$ and $x = 3$. The derivative is defined everywhere, so there are no others.",
+      "difficulty": "warmup",
+      "source": "in the style of Stewart 8e, section 4.1"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-039",
+      "format": "cloze",
+      "stem": "The function $f$ is continuous at $x = c$, and $f'(x)$ changes from positive to negative as $x$ passes through $c$. What does the first derivative test conclude?",
+      "solution": "Positive $f'$ means $f$ is rising, and negative $f'$ means $f$ is falling. Rising then falling traces out a peak, so by the first derivative test $f$ has a local {{1}} at $x = c$. If instead the sign went from negative to positive, the conclusion would be a local {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "text", "accept": ["maximum", "max"] },
+        { "id": 2, "type": "text", "accept": ["minimum", "min"] }
+      ],
+      "explanation": "A positive-to-negative sign change of $f'$ marks a local maximum (the top of a hill), while a negative-to-positive change marks a local minimum.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.3"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-040",
+      "format": "cloze",
+      "stem": "Use the second derivative test to classify the critical point $x = 0$ of $f(x) = x^4 - 18x^2 + 5$.",
+      "solution": "First confirm $x = 0$ is critical: $f'(x) = 4x^3 - 36x$, and $f'(0) = 0$. Then $f''(x) = 12x^2 - 36$, so $f''(0) = {{1}}$. Since this value is negative, the graph is concave down at $x = 0$, which makes the critical point a local {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": -36, "tolerance": 0 },
+        { "id": 2, "type": "dropdown", "options": ["maximum", "minimum", "inflection point"], "answer": "maximum" }
+      ],
+      "explanation": "Here $f''(0) = -36 < 0$, so the graph is concave down at the origin. A horizontal tangent under a concave-down arc is a local maximum.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.3"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-041",
+      "format": "cloze",
+      "stem": "On which interval is $f(x) = x^3 - 3x^2 + 4$ concave upward?",
+      "solution": "Concavity is governed by the sign of the second derivative. Compute $f'(x) = 3x^2 - 6x$, then $f''(x) = {{1}}$. Setting $f''(x) = 0$ gives the inflection location $x = 1$. The graph is concave upward where $f''(x) > 0$, namely on the interval ${{2}}$.",
+      "gaps": [
+        { "id": 1, "type": "dropdown", "options": ["$6x - 6$", "$6x^2 - 6$", "$3x - 6$", "$6x - 3$"], "answer": "$6x - 6$" },
+        { "id": 2, "type": "dropdown", "options": ["$(1, \\infty)$", "$(-\\infty, 1)$", "$(0, \\infty)$", "$(-\\infty, 0)$"], "answer": "$(1, \\infty)$" }
+      ],
+      "explanation": "Since $f''(x) = 6x - 6$ is positive exactly when $x > 1$, the function is concave upward on $(1, \\infty)$, with an inflection point at $x = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-042",
+      "format": "cloze",
+      "stem": "Find the absolute maximum value of $f(x) = x^2 - 4x + 1$ on the closed interval $[0, 5]$.",
+      "solution": "Use the closed-interval method: compare $f$ at the critical numbers and at the endpoints. From $f'(x) = 2x - 4 = 0$ the only critical number is $x = 2$. Evaluate the candidates: $f(0) = 1$, $f(2) = {{1}}$, and $f(5) = {{2}}$. The largest of these values is the absolute maximum, which equals {{3}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": -3, "tolerance": 0 },
+        { "id": 2, "type": "number", "answer": 6, "tolerance": 0 },
+        { "id": 3, "type": "number", "answer": 6, "tolerance": 0 }
+      ],
+      "explanation": "The candidates are $f(0) = 1$, $f(2) = 4 - 8 + 1 = -3$, and $f(5) = 25 - 20 + 1 = 6$. The absolute maximum value is $6$, at the endpoint $x = 5$.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.1"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-043",
+      "format": "cloze",
+      "stem": "Two positive numbers add up to $16$. What is the smallest possible value of the sum of their squares?",
+      "solution": "Let the numbers be $x$ and $16 - x$, and minimize $S(x) = x^2 + (16 - x)^2$. Differentiate: $S'(x) = 2x - 2(16 - x) = 4x - 32$. Setting this to zero gives $x = {{1}}$, so both numbers are equal. The minimum sum of squares is then $x^2 + (16 - x)^2$, which equals {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 8, "tolerance": 0 },
+        { "id": 2, "type": "number", "answer": 128, "tolerance": 0 }
+      ],
+      "explanation": "Solving $4x - 32 = 0$ gives $x = 8$, so the numbers are $8$ and $8$. The minimum sum of squares is $64 + 64 = 128$, and $S''(x) = 4 > 0$ confirms a minimum.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 4.7"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-044",
+      "format": "cloze",
+      "stem": "The radius of a circle increases at $2$ cm/s. How fast is the area increasing when the radius is $5$ cm?",
+      "solution": "Start from $A = \\pi r^2$ and differentiate with respect to time. The chain rule gives $\\dfrac{dA}{dt} = {{1}} \\cdot \\dfrac{dr}{dt}$. Substituting $r = 5$ and $\\dfrac{dr}{dt} = 2$, the coefficient of $\\pi$ in the answer is {{2}}, so $\\dfrac{dA}{dt} = 20\\pi$ cm$^2$/s.",
+      "gaps": [
+        { "id": 1, "type": "dropdown", "options": ["$2\\pi r$", "$\\pi r^2$", "$2\\pi r^2$", "$\\pi r$"], "answer": "$2\\pi r$" },
+        { "id": 2, "type": "number", "answer": 20, "tolerance": 0 }
+      ],
+      "explanation": "Differentiating gives $\\dfrac{dA}{dt} = 2\\pi r \\dfrac{dr}{dt}$. At $r = 5$, $\\dfrac{dr}{dt} = 2$, this is $2\\pi(5)(2) = 20\\pi$ cm$^2$/s.",
+      "difficulty": "core",
+      "source": "in the style of Dawkins Calculus I notes"
+    },
+    {
+      "id": "calculus-i-applications-of-differentiation-045",
+      "format": "cloze",
+      "stem": "Use the linear approximation of $f(x) = \\sqrt{x}$ at $a = 9$ to estimate $\\sqrt{9.2}$.",
+      "solution": "The linearization is $L(x) = f(9) + f'(9)(x - 9)$. Here $f(9) = 3$ and $f'(x) = \\frac{1}{2\\sqrt{x}}$, so the slope is $f'(9) = {{1}}$. Then $\\sqrt{9.2} \\approx 3 + \\frac{1}{6}(0.2)$, which rounded to four decimal places is {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "dropdown", "options": ["$\\frac{1}{6}$", "$\\frac{1}{3}$", "$\\frac{1}{2}$", "$\\frac{1}{9}$"], "answer": "$\\frac{1}{6}$" },
+        { "id": 2, "type": "number", "answer": 3.0333, "tolerance": 0.001 }
+      ],
+      "explanation": "Since $f'(9) = \\frac{1}{2\\sqrt{9}} = \\frac{1}{6}$, the estimate is $3 + \\frac{0.2}{6} = 3.0333$, very close to the true value $3.0331...$.",
+      "difficulty": "stretch",
+      "source": "in the style of Dawkins Calculus I notes"
     }
   ]
 }

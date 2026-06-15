@@ -422,6 +422,129 @@
       "explanation": "Since $T$ is onto, its image is all of $\\mathbb{R}^3$, so the rank equals $\\dim \\mathbb{R}^3 = 3$. Rank-nullity then gives $\\operatorname{nullity} = \\dim(\\text{domain}) - \\operatorname{rank} = 5 - 3 = 2$. So the kernel is two-dimensional, and in particular $T$ is not one-to-one. The trap option $0$ assumes a trivial kernel, but a map from a higher-dimensional space onto a lower-dimensional one must collapse some directions, forcing a positive nullity.",
       "difficulty": "stretch",
       "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-031",
+      "format": "cloze",
+      "stem": "A linear map $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ satisfies $T(1, 0) = (2, 3)$ and $T(0, 1) = (1, 5)$. Find its standard matrix.",
+      "solution": "The standard matrix has the images of the basis vectors as its {{1}}, in order. So $T(1, 0) = (2, 3)$ gives the first column, whose top entry is {{2}} and bottom entry is {{3}}, and $T(0, 1) = (1, 5)$ gives the second column.",
+      "gaps": [
+        { "id": 1, "type": "text", "accept": ["columns", "column"] },
+        { "id": 2, "type": "number", "answer": 2, "tolerance": 0 },
+        { "id": 3, "type": "number", "answer": 3, "tolerance": 0 }
+      ],
+      "explanation": "Each basis image becomes a column of the standard matrix, so the matrix is $\\begin{pmatrix} 2 & 1 \\\\ 3 & 5 \\end{pmatrix}$. Writing the images as rows instead would transpose it.",
+      "difficulty": "warmup",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-032",
+      "format": "cloze",
+      "stem": "Find the standard matrix of the rotation of $\\mathbb{R}^2$ counterclockwise about the origin by $90^\\circ$.",
+      "solution": "The rotation matrix is $\\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}$, and at $\\theta = 90^\\circ$ the cosine is $0$ and the sine is $1$. So the entry in row $2$, column $1$ is {{1}} and the entry in row $1$, column $2$ is {{2}}. This sends $(1, 0)$ to $(0, 1)$, a quarter turn that is {{3}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 1, "tolerance": 0 },
+        { "id": 2, "type": "number", "answer": -1, "tolerance": 0 },
+        { "id": 3, "type": "dropdown", "options": ["counterclockwise", "clockwise", "a reflection", "the identity"], "answer": "counterclockwise" }
+      ],
+      "explanation": "Substituting $\\cos 90^\\circ = 0$ and $\\sin 90^\\circ = 1$ gives $\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$. The positive sine in the lower-left makes the rotation counterclockwise, sending $(1,0)$ to $(0,1)$.",
+      "difficulty": "warmup",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-033",
+      "format": "cloze",
+      "stem": "A linear map $T : \\mathbb{R}^2 \\to \\mathbb{R}^3$ has standard matrix $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 1 & 1 \\end{pmatrix}$. Compute $T(2, 3)$.",
+      "solution": "Apply the matrix to the input by dotting each row with $(2, 3)$. The first coordinate is $1 \\cdot 2 + 0 \\cdot 3 = {{1}}$, the second is $0 \\cdot 2 + 1 \\cdot 3 = {{2}}$, and the third is $1 \\cdot 2 + 1 \\cdot 3 = {{3}}$.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 2, "tolerance": 0 },
+        { "id": 2, "type": "number", "answer": 3, "tolerance": 0 },
+        { "id": 3, "type": "number", "answer": 5, "tolerance": 0 }
+      ],
+      "explanation": "Matrix-vector multiplication dots each row with the input vector, giving $T(2,3) = (2, 3, 5)$. The third coordinate combines both inputs since its row is $(1, 1)$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-034",
+      "format": "cloze",
+      "stem": "Is the map $T(x, y) = (x + y + 3, \\, x - y)$ a linear transformation?",
+      "solution": "Every linear map must fix the origin, so test it. Computing $T(0, 0)$ gives a first coordinate of {{1}}, so $T(0, 0) \\neq (0, 0)$, which means $T$ {{2}}. The reason is the constant {{3}} in the first coordinate, which shifts the origin away from itself.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 3, "tolerance": 0 },
+        { "id": 2, "type": "dropdown", "options": ["is not linear", "is linear", "is the identity", "is a rotation"], "answer": "is not linear" },
+        { "id": 3, "type": "text", "accept": ["term", "+3", "3"] }
+      ],
+      "explanation": "Since $T(0,0) = (3, 0) \\neq \\mathbf{0}$, the map fails the requirement $T(\\mathbf{0}) = \\mathbf{0}$ and is not linear. The constant term $+3$ is the culprit; without it the map would be linear.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-035",
+      "format": "cloze",
+      "stem": "Let $S$ have matrix $B = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ and $T$ have matrix $A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$. Find the standard matrix of $T \\circ S$, applying $S$ first.",
+      "solution": "Composition is matrix multiplication with the second map on the {{1}}, so the matrix of $T \\circ S$ is $AB$. Multiplying gives a top-left entry of $2 \\cdot 1 + 0 \\cdot 0 = 2$, a top-right entry of $2 \\cdot 1 + 0 \\cdot 1 = {{2}}$, and a bottom-right entry of $0 \\cdot 1 + 3 \\cdot 1 = {{3}}$.",
+      "gaps": [
+        { "id": 1, "type": "dropdown", "options": ["left", "right", "bottom", "diagonal"], "answer": "left" },
+        { "id": 2, "type": "number", "answer": 2, "tolerance": 0 },
+        { "id": 3, "type": "number", "answer": 3, "tolerance": 0 }
+      ],
+      "explanation": "Since $(T \\circ S)(\\mathbf{x}) = A(B\\mathbf{x}) = (AB)\\mathbf{x}$, the second map $A$ sits on the left. The product is $AB = \\begin{pmatrix} 2 & 2 \\\\ 0 & 3 \\end{pmatrix}$.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-036",
+      "format": "cloze",
+      "stem": "For the projection $T(x, y) = (x, 0)$ of $\\mathbb{R}^2$ onto the $x$-axis, find the kernel of $T$.",
+      "solution": "The kernel consists of the inputs sent to $\\mathbf{0}$, so solve $(x, 0) = (0, 0)$. This forces $x = {{1}}$ while $y$ stays free, so the kernel is the {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 0, "tolerance": 0 },
+        { "id": 2, "type": "dropdown", "options": ["y-axis", "x-axis", "whole plane", "origin only"], "answer": "y-axis" }
+      ],
+      "explanation": "Setting the output to zero forces $x = 0$ with $y$ unrestricted, which is the vertical $y$-axis. The projection collapses exactly that direction, while the $x$-axis is its range, not its kernel.",
+      "difficulty": "core",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-037",
+      "format": "cloze",
+      "stem": "A linear map $T : \\mathbb{R}^4 \\to \\mathbb{R}^3$ has rank $3$. Find its nullity and decide whether it is onto.",
+      "solution": "By the rank-nullity theorem, the dimension of the domain equals rank plus nullity, so $4 = 3 + \\text{nullity}$ gives a nullity of {{1}}. Since the rank $3$ equals the dimension of $\\mathbb{R}^3$, the map {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 1, "tolerance": 0 },
+        { "id": 2, "type": "dropdown", "options": ["is onto", "is not onto", "is one-to-one", "is the zero map"], "answer": "is onto" }
+      ],
+      "explanation": "Rank-nullity gives nullity $= 4 - 3 = 1$. Because the rank reaches the full dimension of the codomain, the image is all of $\\mathbb{R}^3$, so $T$ is onto, though the nonzero nullity means it is not one-to-one.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-038",
+      "format": "cloze",
+      "stem": "Let $T$ be rotation by $90^\\circ$ counterclockwise, with matrix $A = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$. Find the matrix of $T \\circ T$ and the angle it represents.",
+      "solution": "Applying $T$ twice corresponds to $A^2 = A \\cdot A$. The entry in row $1$, column $1$ of $A^2$ is $0 \\cdot 0 + (-1) \\cdot 1 = {{1}}$, and the entry in row $2$, column $2$ is $1 \\cdot (-1) + 0 \\cdot 0 = {{2}}$. The resulting matrix is the rotation by {{3}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": -1, "tolerance": 0 },
+        { "id": 2, "type": "number", "answer": -1, "tolerance": 0 },
+        { "id": 3, "type": "dropdown", "options": ["180 degrees", "90 degrees", "270 degrees", "0 degrees"], "answer": "180 degrees" }
+      ],
+      "explanation": "Squaring gives $A^2 = \\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}$, which sends every vector to its negative. Two quarter turns combine into a half turn, the rotation by $180$ degrees.",
+      "difficulty": "stretch",
+      "source": "in the style of Leon, Linear Algebra with Applications"
+    },
+    {
+      "id": "linear-algebra-i-linear-transformations-039",
+      "format": "cloze",
+      "stem": "A linear map $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ sends $T(1, 1) = (3, 1)$ and $T(1, -1) = (1, 3)$. Find its standard matrix.",
+      "solution": "Recover the basis images by combining the data. Adding, $T(1, 1) + T(1, -1) = T(2, 0) = 2\\,T(1, 0)$, so $T(1, 0) = \\tfrac{1}{2}(4, 4)$, whose first coordinate is {{1}}. Subtracting, $T(1, 1) - T(1, -1) = T(0, 2) = 2\\,T(0, 1)$, so $T(0, 1) = \\tfrac{1}{2}(2, -2)$, whose second coordinate is {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 2, "tolerance": 0 },
+        { "id": 2, "type": "number", "answer": -1, "tolerance": 0 }
+      ],
+      "explanation": "From the sums and differences, $T(1,0) = (2, 2)$ and $T(0,1) = (1, -1)$, so the standard matrix is $\\begin{pmatrix} 2 & 1 \\\\ 2 & -1 \\end{pmatrix}$. The given vectors $(1,1)$ and $(1,-1)$ are not the standard basis, so the outputs cannot be used as columns directly.",
+      "difficulty": "stretch",
+      "source": "in the style of Anton, Elementary Linear Algebra"
     }
   ]
 }

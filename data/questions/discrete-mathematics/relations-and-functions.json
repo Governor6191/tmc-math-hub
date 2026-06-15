@@ -423,6 +423,266 @@
       "explanation": "Each equivalence class is the set of elements related to a given element. Since $1$ and $2$ are related to each other (and to themselves), they form one class $\\lbrace 1, 2 \\rbrace$. The elements $3$ and $4$ are related only to themselves, so each sits alone, giving $\\lbrace 3 \\rbrace$ and $\\lbrace 4 \\rbrace$. The partition is thus $\\lbrace \\lbrace 1, 2 \\rbrace, \\lbrace 3 \\rbrace, \\lbrace 4 \\rbrace \\rbrace$. The trap is lumping $3$ and $4$ together: $R$ never relates $3$ to $4$, so they belong to separate singleton classes rather than a shared block.",
       "difficulty": "core",
       "source": "in the style of Epp, Discrete Mathematics with Applications"
+    },
+    {
+      "id": "discrete-mathematics-relations-and-functions-031",
+      "format": "cloze",
+      "stem": "Let $A = \\lbrace 1, 2, 3 \\rbrace$ and $R = \\lbrace (1,1), (2,2), (3,3) \\rbrace$ on $A$. Is $R$ reflexive, and is $R$ symmetric?",
+      "solution": "A relation is reflexive when every element $a \\in A$ has the pair $(a,a)$ in $R$. Since $(1,1)$, $(2,2)$, and $(3,3)$ are all present, $R$ {{1}} reflexive. For symmetry we would need $(b,a)$ whenever $(a,b)$ is in $R$; here every pair is of the form $(a,a)$, which is its own reverse, so $R$ {{2}} symmetric.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "All three diagonal pairs $(a,a)$ are present, so $R$ is reflexive. Each pair equals its own reverse, so the symmetry condition holds vacuously and $R$ is symmetric (it is in fact the identity relation).",
+      "difficulty": "warmup",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-relations-and-functions-032",
+      "format": "cloze",
+      "stem": "Let $f(x) = 2x + 1$ and $g(x) = x^2$ be functions from $\\mathbb{R}$ to $\\mathbb{R}$. Find $(f \\circ g)(3)$, that is $f(g(3))$.",
+      "solution": "Composition is applied from the inside out, so evaluate $g$ first and feed the result into $f$. The inner value $g(3) = 3^2$ equals {{1}}. Substituting into $f$ gives $f(9) = 2 \\times 9 + 1$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 19,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Inner first: $g(3) = 9$, then $f(9) = 2(9) + 1 = 19$. Reversing the order would compute $(g \\circ f)(3) = (2 \\cdot 3 + 1)^2 = 49$ instead.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-relations-and-functions-033",
+      "format": "cloze",
+      "stem": "Let $A = \\lbrace 1, 2, 3 \\rbrace$ and $R = \\lbrace (1,2), (2,3) \\rbrace$ on $A$. Is $R$ transitive? If not, name the pair that must be added to make it transitive.",
+      "solution": "Transitivity requires that whenever $(a,b)$ and $(b,c)$ are in $R$, the pair $(a,c)$ is also in $R$. Here $(1,2)$ and $(2,3)$ are present, so transitivity demands the pair $(1,3)$. Since that pair is missing, $R$ {{1}} transitive. The single pair that must be added is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "is not",
+            "is"
+          ],
+          "answer": "is not"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$(1,3)$",
+            "$(3,1)$",
+            "$(2,1)$",
+            "$(1,1)$"
+          ],
+          "answer": "$(1,3)$"
+        }
+      ],
+      "explanation": "The chain $1 \\to 2 \\to 3$ forces $(1,3)$, which is absent, so $R$ is not transitive. Adding $(1,3)$ makes it transitive.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-relations-and-functions-034",
+      "format": "cloze",
+      "stem": "Let $f : \\lbrace 1, 2, 3 \\rbrace \\to \\lbrace a, b, c \\rbrace$ be the bijection $f = \\lbrace (1,b), (2,c), (3,a) \\rbrace$. Find its inverse $f^{-1}$.",
+      "solution": "The inverse of a bijection reverses every ordered pair, swapping each input with its output. Reversing $(1,b)$, $(2,c)$, $(3,a)$ produces the pairs of $f^{-1}$. The element that $f^{-1}$ sends $a$ to is {{1}}, and the full inverse relation is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\lbrace (b,1), (c,2), (a,3) \\rbrace$",
+            "$\\lbrace (1,b), (2,c), (3,a) \\rbrace$",
+            "$\\lbrace (a,1), (b,2), (c,3) \\rbrace$",
+            "$\\lbrace (b,3), (c,2), (a,1) \\rbrace$"
+          ],
+          "answer": "$\\lbrace (b,1), (c,2), (a,3) \\rbrace$"
+        }
+      ],
+      "explanation": "Reversing each pair gives $f^{-1} = \\lbrace (b,1), (c,2), (a,3) \\rbrace$, so $f^{-1}(a) = 3$. The inverse exists precisely because $f$ is a bijection.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-relations-and-functions-035",
+      "format": "cloze",
+      "stem": "Let $f(x) = x + 3$ and $g(x) = 2x$ be functions on $\\mathbb{R}$. Find a formula for the composite $(g \\circ f)(x) = g(f(x))$.",
+      "solution": "Apply $f$ first, then $g$. The inner function gives $f(x) = x + 3$, and feeding this into $g$ means doubling it: $g(x+3) = 2(x+3)$. Expanding the bracket gives a formula of the form $2x + c$, where the constant $c$ equals {{1}}. The full simplified composite is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$2x + 6$",
+            "$2x + 3$",
+            "$2x + 5$",
+            "$x + 6$"
+          ],
+          "answer": "$2x + 6$"
+        }
+      ],
+      "explanation": "$(g \\circ f)(x) = 2(x + 3) = 2x + 6$. The order matters: $(f \\circ g)(x) = 2x + 3$ instead.",
+      "difficulty": "core",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-relations-and-functions-036",
+      "format": "cloze",
+      "stem": "Let $f : \\mathbb{Z} \\to \\mathbb{Z}$ be defined by $f(n) = 2n$. Decide whether $f$ is injective (one-to-one) and whether it is surjective (onto).",
+      "solution": "For injectivity, suppose $f(m) = f(n)$, that is $2m = 2n$; dividing by $2$ forces $m = n$, so $f$ {{1}} injective. For surjectivity, ask whether every integer is an output. An odd integer such as $3$ has no integer $n$ with $2n = 3$, so the integer left unhit shows that $f$ {{2}} surjective onto $\\mathbb{Z}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is not",
+            "is"
+          ],
+          "answer": "is not"
+        }
+      ],
+      "explanation": "Doubling is one-to-one because $2m = 2n$ implies $m = n$, but its image is only the even integers, so odd targets like $3$ are missed and it is not onto $\\mathbb{Z}$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-relations-and-functions-037",
+      "format": "cloze",
+      "stem": "On $A = \\lbrace 1, 2, 3, 4 \\rbrace$ the relation $R = \\lbrace (1,1), (2,2), (3,3), (4,4), (1,3), (3,1), (2,4), (4,2) \\rbrace$ is an equivalence relation. How many equivalence classes does it have, and what is the class containing $1$?",
+      "solution": "Group elements that are related to one another. Element $1$ is related to $3$ (and to itself), forming one class, while $2$ is related to $4$, forming another. The number of distinct equivalence classes is therefore {{1}}. The class containing $1$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\lbrace 1, 3 \\rbrace$",
+            "$\\lbrace 1, 2 \\rbrace$",
+            "$\\lbrace 1 \\rbrace$",
+            "$\\lbrace 1, 3, 4 \\rbrace$"
+          ],
+          "answer": "$\\lbrace 1, 3 \\rbrace$"
+        }
+      ],
+      "explanation": "The relations link $1$ with $3$ and $2$ with $4$, giving the partition $\\lbrace 1,3 \\rbrace$ and $\\lbrace 2,4 \\rbrace$, so there are $2$ classes. The class of $1$ is $\\lbrace 1, 3 \\rbrace$.",
+      "difficulty": "core",
+      "source": "in the style of Rosen, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-relations-and-functions-038",
+      "format": "cloze",
+      "stem": "On $A = \\lbrace 1, 2, 3 \\rbrace$ let $R = \\lbrace (1,1), (2,2), (3,3), (1,2), (2,3), (1,3) \\rbrace$. Determine whether $R$ is a partial order.",
+      "solution": "A partial order must be reflexive, antisymmetric, and transitive. All three pairs $(1,1), (2,2), (3,3)$ are present, so $R$ is reflexive. No pair has its reverse present (for example $(1,2)$ is in $R$ but $(2,1)$ is not), so antisymmetry holds. The chains $(1,2),(2,3)$ are completed by $(1,3)$, so transitivity holds. Having all three properties, $R$ {{1}} a partial order. The one property that would fail if $(2,1)$ were added is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "antisymmetry",
+            "reflexivity",
+            "transitivity",
+            "symmetry"
+          ],
+          "answer": "antisymmetry"
+        }
+      ],
+      "explanation": "Reflexive, antisymmetric, and transitive all hold, so $R$ is a partial order (it is the order $1 \\le 2 \\le 3$). Adding $(2,1)$ alongside $(1,2)$ would break antisymmetry.",
+      "difficulty": "stretch",
+      "source": "in the style of Epp, Discrete Mathematics"
+    },
+    {
+      "id": "discrete-mathematics-relations-and-functions-039",
+      "format": "cloze",
+      "stem": "On $A = \\lbrace 1, 2, 3 \\rbrace$ consider $R = \\lbrace (1,2), (2,3) \\rbrace$. Find the transitive closure of $R$, the smallest transitive relation containing $R$.",
+      "solution": "The transitive closure adds exactly the pairs forced by chaining existing pairs, and nothing more. The chain $(1,2)$ then $(2,3)$ forces the new pair {{1}}. No further pairs are forced once it is added, so the transitive closure is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$(1,3)$",
+            "$(3,1)$",
+            "$(2,1)$",
+            "$(3,2)$"
+          ],
+          "answer": "$(1,3)$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\lbrace (1,2), (2,3), (1,3) \\rbrace$",
+            "$\\lbrace (1,2), (2,3) \\rbrace$",
+            "$\\lbrace (1,2), (2,3), (3,1) \\rbrace$",
+            "$\\lbrace (1,2), (2,3), (1,3), (3,1) \\rbrace$"
+          ],
+          "answer": "$\\lbrace (1,2), (2,3), (1,3) \\rbrace$"
+        }
+      ],
+      "explanation": "Chaining $1 \\to 2 \\to 3$ forces $(1,3)$, and no new chain arises after adding it, so the closure is $\\lbrace (1,2), (2,3), (1,3) \\rbrace$.",
+      "difficulty": "stretch",
+      "source": "in the style of Rosen, Discrete Mathematics"
     }
   ]
 }

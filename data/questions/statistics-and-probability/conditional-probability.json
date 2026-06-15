@@ -422,6 +422,260 @@
       "explanation": "Condition on the first draw and use total probability. If the first is red (probability $\\frac{5}{8}$), the second is white with probability $\\frac{3}{7}$; if the first is white (probability $\\frac{3}{8}$), the second is white with probability $\\frac{2}{7}$. So $P(\\text{second white}) = \\frac{5}{8} \\cdot \\frac{3}{7} + \\frac{3}{8} \\cdot \\frac{2}{7} = \\frac{15}{56} + \\frac{6}{56} = \\frac{21}{56} = \\frac{3}{8}$. This equals the chance the first ball is white, as symmetry predicts. The option $\\frac{3}{7}$ uses only the first-red branch, and $\\frac{15}{56}$ keeps just that branch's product. The trap is conditioning on only one outcome of the first draw instead of summing both weighted branches.",
       "difficulty": "stretch",
       "source": "in the style of standard introductory statistics texts"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-031",
+      "format": "cloze",
+      "stem": "In a group of $50$ students, $30$ are boys and $20$ are girls. Of the boys, $12$ wear glasses. A student is chosen at random. Given that the student is a boy, find the probability that the student wears glasses.",
+      "solution": "Conditioning on the student being a boy restricts attention to just the boys, so the denominator becomes {{1}}. Of those, $12$ wear glasses, so $P(\\text{glasses} \\mid \\text{boy})$ as a decimal is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 30,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.4,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Given the student is a boy, only the $30$ boys matter, and $12$ of them wear glasses, so $P(\\text{glasses} \\mid \\text{boy}) = \\frac{12}{30} = 0.4$. Dividing by the whole group of $50$ would give the joint probability instead.",
+      "difficulty": "warmup",
+      "source": "in the style of an introductory statistics text"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-032",
+      "format": "cloze",
+      "stem": "A box contains $3$ red pens and $2$ blue pens. Two pens are drawn one after the other without replacement. Find the probability that both pens are red.",
+      "solution": "The first pen is red with probability $\\frac{3}{5}$. Given that a red pen has been removed, the second pen is red with probability that as a decimal is {{1}}. Multiplying the two together gives $P(\\text{both red})$ as a decimal of about {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.3,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "After a red pen is removed, $2$ red remain out of $4$ pens, so the second draw is red with probability $\\frac{2}{4} = 0.5$. Then $P(\\text{both red}) = \\frac{3}{5} \\times \\frac{2}{4} = \\frac{6}{20} = 0.3$. The counts must drop on the second draw.",
+      "difficulty": "warmup",
+      "source": "in the style of an introductory statistics text"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-033",
+      "format": "cloze",
+      "stem": "Events $A$ and $B$ satisfy $P(A) = 0.5$ and $P(B) = 0.4$, and the occurrence of one does not affect the other. Find $P(A \\cap B)$.",
+      "solution": "When two events do not influence each other, the joint probability factorises as $P(A \\cap B) = {{1}}$. Substituting the values gives a result of {{2}}. Two events with this multiplying property are described as {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$P(A)\\,P(B)$",
+            "$P(A) + P(B)$",
+            "$P(A) - P(B)$",
+            "$P(A \\mid B)$"
+          ],
+          "answer": "$P(A)\\,P(B)$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "independent",
+            "Independent"
+          ]
+        }
+      ],
+      "explanation": "For independent events the joint probability is the product $P(A)\\,P(B) = 0.5 \\times 0.4 = 0.2$. Adding the probabilities would describe a union of disjoint events, not a joint probability.",
+      "difficulty": "warmup",
+      "source": "in the style of an introductory statistics text"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-034",
+      "format": "cloze",
+      "stem": "A first-year student registers for two courses in sequence. The probability of a place in Calculus is $P(C) = 0.7$. Given a place in Calculus, the probability of a place in Statistics is $P(S \\mid C) = 0.5$. Find the probability of getting places in both.",
+      "solution": "The multiplication rule gives $P(C \\cap S) = P(C)\\,P(S \\mid C) = 0.7 \\times 0.5$, which equals {{1}}. The value $0.5$ used here, the chance of Statistics once Calculus is secured, is an example of a {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.35,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "conditional probability",
+            "joint probability",
+            "marginal probability",
+            "complement"
+          ],
+          "answer": "conditional probability"
+        }
+      ],
+      "explanation": "By the multiplication rule, $P(C \\cap S) = 0.7 \\times 0.5 = 0.35$. The given $P(S \\mid C) = 0.5$ is a conditional probability; quoting it as the final answer would ignore the factor $P(C)$.",
+      "difficulty": "core",
+      "source": "in the style of an introductory statistics text"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-035",
+      "format": "cloze",
+      "stem": "A factory runs two machines. Machine $X$ makes $60\\%$ of the items and machine $Y$ makes $40\\%$. Machine $X$ produces a defect with probability $0.05$, and machine $Y$ with probability $0.10$. Find the probability that a randomly chosen item is defective.",
+      "solution": "Each defect rate must be weighted by the share of items that machine makes, then the weighted pieces are summed. This combining step is {{1}}. Computing $(0.05)(0.6) + (0.10)(0.4)$ gives a probability of {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "the law of total probability",
+            "Bayes theorem",
+            "the complement rule",
+            "the addition rule for mutually exclusive events"
+          ],
+          "answer": "the law of total probability"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.07,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "By the law of total probability, $P(D) = (0.05)(0.6) + (0.10)(0.4) = 0.03 + 0.04 = 0.07$. Simply adding the two defect rates would ignore how much each machine produces.",
+      "difficulty": "core",
+      "source": "in the style of an introductory statistics text"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-036",
+      "format": "cloze",
+      "stem": "A clinic screens for a disease that $2\\%$ of patients have. The test is positive for $90\\%$ of patients who have the disease and for $5\\%$ of patients who do not. A patient tests positive. Find the probability that the patient actually has the disease.",
+      "solution": "First find the joint probability of having the disease and testing positive: $(0.90)(0.02)$, which equals {{1}}. The overall probability of a positive test, $(0.90)(0.02) + (0.05)(0.98)$, equals {{2}}. Dividing the joint probability by this total gives a posterior of about {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.018,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.067,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.269,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Here $(0.90)(0.02) = 0.018$ and $P(+) = 0.018 + (0.05)(0.98) = 0.018 + 0.049 = 0.067$, so Bayes theorem gives $P(D \\mid +) = \\frac{0.018}{0.067} \\approx 0.269$. Because the disease is rare, most positives are false alarms.",
+      "difficulty": "core",
+      "source": "in the style of an introductory statistics text"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-037",
+      "format": "cloze",
+      "stem": "From a standard deck of $52$ cards, two cards are dealt without replacement. Given that the first card is a heart, find the probability that the second card is also a heart.",
+      "solution": "After one heart is dealt and not replaced, both the number of hearts and the size of the deck drop by one. The probability that the second card is a heart is {{1}}. As a decimal that value is about {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{12}{51}$",
+            "$\\frac{13}{52}$",
+            "$\\frac{12}{52}$",
+            "$\\frac{13}{51}$"
+          ],
+          "answer": "$\\frac{12}{51}$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.235,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Removing one heart leaves $12$ hearts among $51$ cards, so $P(\\text{second heart} \\mid \\text{first heart}) = \\frac{12}{51} \\approx 0.235$. Both the heart count and the deck size must be updated after the first card.",
+      "difficulty": "core",
+      "source": "in the style of an introductory statistics text"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-038",
+      "format": "cloze",
+      "stem": "For two events, $P(A) = 0.6$, $P(B) = 0.5$, and $P(A \\cap B) = 0.3$. Determine whether $A$ and $B$ are independent.",
+      "solution": "Independence is tested by comparing the joint probability with the product of the marginals. The product $P(A)\\,P(B) = 0.6 \\times 0.5$ equals {{1}}. Since this matches the given $P(A \\cap B) = 0.3$, the two events are {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "independent",
+            "Independent"
+          ]
+        }
+      ],
+      "explanation": "Since $P(A)\\,P(B) = 0.6 \\times 0.5 = 0.3$ equals the given $P(A \\cap B) = 0.3$, the events are independent. A nonzero intersection alone does not decide independence; mutual exclusivity is a different idea.",
+      "difficulty": "core",
+      "source": "in the style of an introductory statistics text"
+    },
+    {
+      "id": "statistics-and-probability-conditional-probability-039",
+      "format": "cloze",
+      "stem": "Two bags look identical. Bag $1$ has $4$ red and $6$ green sweets; bag $2$ has $7$ red and $3$ green sweets. A bag is chosen at random and one sweet is drawn; it is red. Find the probability that it came from bag $1$.",
+      "solution": "Each bag is chosen with probability $\\frac{1}{2}$. The overall probability of drawing red is $\\frac{1}{2}\\cdot\\frac{4}{10} + \\frac{1}{2}\\cdot\\frac{7}{10}$, which as a decimal equals {{1}}. To reverse the conditioning and find $P(\\text{bag 1} \\mid \\text{red})$ we apply {{2}}. The result, $\\frac{0.2}{0.55}$, as a decimal is about {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.55,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "Bayes theorem",
+            "the law of total probability",
+            "the multiplication rule",
+            "the complement rule"
+          ],
+          "answer": "Bayes theorem"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.364,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Total probability gives $P(\\text{red}) = \\frac{1}{2}(0.4) + \\frac{1}{2}(0.7) = 0.2 + 0.35 = 0.55$. Bayes theorem then gives $P(\\text{bag 1} \\mid \\text{red}) = \\frac{0.2}{0.55} = \\frac{4}{11} \\approx 0.364$. Quoting the prior $\\frac{1}{2}$ would ignore the red evidence.",
+      "difficulty": "stretch",
+      "source": "in the style of an introductory statistics text"
     }
   ]
 }
