@@ -1,0 +1,530 @@
+{
+  "courseId": "fluid-dynamics",
+  "topicId": "navier-stokes",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "fluid-dynamics-navier-stokes-001",
+      "stem": "The incompressible Navier-Stokes momentum equation is which of the following?",
+      "options": [
+        "$\\rho\\dfrac{D\\mathbf{u}}{Dt} = -\\nabla p + \\mu\\nabla^2\\mathbf{u} + \\rho\\mathbf{g}$",
+        "$\\dfrac{D\\mathbf{u}}{Dt} = -\\nabla p + \\nabla\\cdot\\mathbf{u}$",
+        "$\\rho\\dfrac{D\\mathbf{u}}{Dt} = \\mu\\nabla^2\\mathbf{u}$",
+        "$\\rho\\dfrac{D\\mathbf{u}}{Dt} = -\\nabla p + \\rho\\mathbf{g}$"
+      ],
+      "answer": 0,
+      "explanation": "The Navier-Stokes equation adds the viscous term $\\mu\\nabla^2\\mathbf{u}$ to Euler's equation: $\\rho\\,D\\mathbf{u}/Dt = -\\nabla p + \\mu\\nabla^2\\mathbf{u} + \\rho\\mathbf{g}$. Dropping the viscous term gives Euler's equation, and dropping the pressure or gravity terms removes forces that genuinely act on the fluid.",
+      "difficulty": "warmup",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-002",
+      "stem": "In the Navier-Stokes equation, which term represents the viscous (internal friction) force per unit volume?",
+      "options": [
+        "$\\rho\\mathbf{g}$",
+        "$\\rho(\\mathbf{u}\\cdot\\nabla)\\mathbf{u}$",
+        "$-\\nabla p$",
+        "$\\mu\\nabla^2\\mathbf{u}$"
+      ],
+      "answer": 3,
+      "explanation": "The viscous force per unit volume for an incompressible Newtonian fluid is $\\mu\\nabla^2\\mathbf{u}$. The term $-\\nabla p$ is the pressure force, $\\rho\\mathbf{g}$ is gravity, and $\\rho(\\mathbf{u}\\cdot\\nabla)\\mathbf{u}$ is the convective (inertial) acceleration, not a force from viscosity.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-003",
+      "stem": "The Reynolds number for a flow of characteristic speed $U$, length scale $L$, density $\\rho$, and dynamic viscosity $\\mu$ is defined as which expression?",
+      "options": [
+        "$\\dfrac{\\mu U L}{\\rho}$",
+        "$\\dfrac{\\rho U}{\\mu L}$",
+        "$\\dfrac{\\mu}{\\rho U L}$",
+        "$\\dfrac{\\rho U L}{\\mu}$"
+      ],
+      "answer": 3,
+      "explanation": "The Reynolds number is $Re = \\rho U L/\\mu = U L/\\nu$, the ratio of inertial to viscous forces. Its reciprocal would weight viscosity over inertia, and the other forms are dimensionally inconsistent with a pure number.",
+      "difficulty": "warmup",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-004",
+      "stem": "Water ($\\rho = 1000\\ \\text{kg m}^{-3}$, $\\mu = 1.0 \\times 10^{-3}\\ \\text{Pa s}$) flows at $U = 2.0\\ \\text{m s}^{-1}$ through a pipe of diameter $L = 0.10\\ \\text{m}$. What is the Reynolds number?",
+      "options": [
+        "$2.0 \\times 10^{4}$",
+        "$2.0 \\times 10^{5}$",
+        "$2.0 \\times 10^{2}$",
+        "$2.0 \\times 10^{3}$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $Re = \\rho U L/\\mu = (1000 \\times 2.0 \\times 0.10)/(1.0 \\times 10^{-3}) = 200/10^{-3} = 2.0 \\times 10^{5}$. The other options drop one, two, or three powers of ten in the division by $\\mu$.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-005",
+      "stem": "The no-slip boundary condition states what about a viscous fluid at a solid wall?",
+      "options": [
+        "The fluid pressure equals zero at the wall.",
+        "The fluid velocity is maximum at the wall.",
+        "The fluid velocity equals the velocity of the wall.",
+        "The shear stress vanishes at the wall."
+      ],
+      "answer": 2,
+      "explanation": "For a viscous fluid the layer in contact with a solid surface moves with the surface, so the fluid velocity matches the wall velocity (zero for a stationary wall). This is the no-slip condition. Pressure and shear stress are generally nonzero at the wall, and the speed is largest away from the wall, not at it.",
+      "difficulty": "warmup",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-006",
+      "stem": "In plane Couette flow the fluid lies between two parallel plates a distance $h$ apart, the lower fixed and the upper moving at speed $U$. What is the steady velocity profile $u(y)$, with $y$ measured from the lower plate?",
+      "options": [
+        "$u(y) = U(1 - y/h)$.",
+        "$u(y) = U(y/h)^2$ (parabolic).",
+        "$u(y) = U$ (uniform).",
+        "$u(y) = U\\,y/h$ (linear)."
+      ],
+      "answer": 3,
+      "explanation": "With no pressure gradient the velocity varies linearly across the gap, satisfying no-slip at both walls: $u = 0$ at $y = 0$ and $u = U$ at $y = h$, so $u(y) = U\\,y/h$. The parabolic profile belongs to pressure-driven (Poiseuille) flow, and a uniform profile would violate no-slip at the fixed plate.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-007",
+      "stem": "Pressure-driven flow between two fixed parallel plates (plane Poiseuille flow) has what velocity profile across the gap?",
+      "options": [
+        "Parabolic, maximum at both walls and zero at the centre.",
+        "Parabolic, zero at both walls and maximum at the centre.",
+        "Linear, zero at one wall and maximum at the other.",
+        "Uniform across the gap."
+      ],
+      "answer": 1,
+      "explanation": "Balancing the pressure gradient against viscous stress gives a parabolic profile that satisfies no-slip ($u = 0$) at both plates and peaks in the middle. A linear profile is Couette flow, and a uniform profile ignores viscosity at the walls.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-008",
+      "stem": "In plane Couette flow with gap $h = 0.010\\ \\text{m}$, upper-plate speed $U = 2.0\\ \\text{m s}^{-1}$, and dynamic viscosity $\\mu = 1.0 \\times 10^{-3}\\ \\text{Pa s}$, what is the shear stress on the plates?",
+      "options": [
+        "$0.020\\ \\text{Pa}$",
+        "$20\\ \\text{Pa}$",
+        "$2.0\\ \\text{Pa}$",
+        "$0.20\\ \\text{Pa}$"
+      ],
+      "answer": 3,
+      "explanation": "The shear stress is $\\tau = \\mu\\,du/dy = \\mu U/h = (1.0 \\times 10^{-3} \\times 2.0)/0.010 = 2.0 \\times 10^{-3}/0.010 = 0.20\\ \\text{Pa}$. It is uniform across the gap for the linear profile. The other options misplace powers of ten in the division by $h$.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-009",
+      "stem": "The kinematic viscosity $\\nu$ relates to the dynamic viscosity $\\mu$ and density $\\rho$ by which expression?",
+      "options": [
+        "$\\nu = \\mu + \\rho$",
+        "$\\nu = \\rho/\\mu$",
+        "$\\nu = \\mu/\\rho$",
+        "$\\nu = \\mu\\rho$"
+      ],
+      "answer": 2,
+      "explanation": "Kinematic viscosity is $\\nu = \\mu/\\rho$, with units $\\text{m}^2\\text{s}^{-1}$. For water this is about $1.0 \\times 10^{-6}\\ \\text{m}^2\\text{s}^{-1}$. The product $\\mu\\rho$ and the reciprocal $\\rho/\\mu$ have the wrong dimensions for a kinematic viscosity.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-010",
+      "stem": "For water with $\\nu = 1.0 \\times 10^{-6}\\ \\text{m}^2\\text{s}^{-1}$, a flow has speed $U = 0.50\\ \\text{m s}^{-1}$ over a length scale $L = 0.20\\ \\text{m}$. What is the Reynolds number, using $Re = UL/\\nu$?",
+      "options": [
+        "$1.0 \\times 10^{3}$",
+        "$1.0 \\times 10^{5}$",
+        "$1.0 \\times 10^{4}$",
+        "$1.0 \\times 10^{6}$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $Re = UL/\\nu = (0.50 \\times 0.20)/(1.0 \\times 10^{-6}) = 0.10/10^{-6} = 1.0 \\times 10^{5}$. The other options are off by powers of ten in handling $\\nu = 10^{-6}$.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-011",
+      "stem": "A large Reynolds number indicates which balance of effects in a flow?",
+      "options": [
+        "Pressure forces balance gravity exactly.",
+        "The flow must be incompressible.",
+        "Inertial forces dominate over viscous forces.",
+        "Viscous forces dominate over inertial forces."
+      ],
+      "answer": 2,
+      "explanation": "Since $Re$ is the ratio of inertial to viscous forces, a large value means inertia dominates and viscous effects are confined to thin regions like boundary layers. A small $Re$ is the viscous-dominated (creeping-flow) regime. The Reynolds number says nothing directly about gravity-pressure balance or compressibility.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-012",
+      "stem": "For flow in a circular pipe, transition from laminar to turbulent flow is usually taken to occur near which Reynolds number?",
+      "options": [
+        "$Re \\approx 10^{6}$",
+        "$Re \\approx 1$",
+        "$Re \\approx 100$",
+        "$Re \\approx 2300$"
+      ],
+      "answer": 3,
+      "explanation": "Pipe flow is typically laminar below about $Re \\approx 2300$ (based on diameter) and becomes turbulent above it, though the exact value depends on disturbances. $Re \\approx 1$ is deep in the creeping regime, and $10^{6}$ is fully turbulent.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-013",
+      "stem": "In fully developed laminar flow through a circular pipe (Hagen-Poiseuille flow), how does the mean (average) velocity compare with the maximum velocity on the axis?",
+      "options": [
+        "The mean is half the maximum.",
+        "The mean is one third of the maximum.",
+        "The mean equals the maximum.",
+        "The mean is twice the maximum."
+      ],
+      "answer": 0,
+      "explanation": "For the parabolic pipe profile, averaging over the cross-section gives $u_{\\text{mean}} = \\tfrac{1}{2}u_{\\text{max}}$. So the volume flow rate equals $u_{\\text{max}}/2$ times the area. The mean cannot exceed the maximum, ruling out the doubled option.",
+      "difficulty": "stretch",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-014",
+      "stem": "The Hagen-Poiseuille law for laminar flow rate $Q$ through a circular pipe of radius $R$ and length $L$ under pressure drop $\\Delta p$ is $Q = \\pi R^4 \\Delta p/(8\\mu L)$. If the radius is doubled at fixed $\\Delta p$, $L$, and $\\mu$, how does $Q$ change?",
+      "options": [
+        "It is unchanged.",
+        "It increases by a factor of $16$.",
+        "It increases by a factor of $4$.",
+        "It doubles."
+      ],
+      "answer": 1,
+      "explanation": "Because $Q \\propto R^4$, doubling the radius multiplies $Q$ by $2^4 = 16$. This strong dependence is why small changes in pipe radius greatly affect flow. A factor of $4$ would correspond to $R^2$, the area scaling, which is not the Poiseuille result.",
+      "difficulty": "stretch",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-015",
+      "stem": "Heavy oil ($\\rho = 900\\ \\text{kg m}^{-3}$, $\\mu = 0.10\\ \\text{Pa s}$) flows at $U = 2.0\\ \\text{m s}^{-1}$ over a length scale $L = 0.050\\ \\text{m}$. What is the Reynolds number, and is the flow likely laminar?",
+      "options": [
+        "$9.0 \\times 10^{2}$, laminar.",
+        "$90$, laminar.",
+        "$1.8 \\times 10^{3}$, transitional.",
+        "$9.0 \\times 10^{4}$, turbulent."
+      ],
+      "answer": 0,
+      "explanation": "Here $Re = \\rho U L/\\mu = (900 \\times 2.0 \\times 0.050)/0.10 = 90/0.10 = 9.0 \\times 10^{2} = 900$, well below the pipe transition near $2300$, so the flow is laminar. The high viscosity of oil keeps $Re$ low. The other options misplace powers of ten.",
+      "difficulty": "stretch",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-016",
+      "stem": "Newton's law of viscosity for a simple shear flow relates the shear stress $\\tau$ to the velocity gradient by which expression?",
+      "options": [
+        "$\\tau = \\rho\\dfrac{du}{dy}$",
+        "$\\tau = \\mu\\dfrac{du}{dy}$",
+        "$\\tau = \\mu/\\dfrac{du}{dy}$",
+        "$\\tau = \\mu\\,u$"
+      ],
+      "answer": 1,
+      "explanation": "For a Newtonian fluid the shear stress is proportional to the rate of strain: $\\tau = \\mu\\,du/dy$. The constant of proportionality is the dynamic viscosity $\\mu$, not the density, and the stress depends on the gradient, not the velocity itself or its reciprocal.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-017",
+      "stem": "In plane Couette flow the upper plate moves at $U = 8.0\\ \\text{m s}^{-1}$ over a gap $h$, with the lower plate fixed. What is the fluid speed at one quarter of the gap height, $y = h/4$?",
+      "options": [
+        "$4.0\\ \\text{m s}^{-1}$",
+        "$8.0\\ \\text{m s}^{-1}$",
+        "$2.0\\ \\text{m s}^{-1}$",
+        "$6.0\\ \\text{m s}^{-1}$"
+      ],
+      "answer": 2,
+      "explanation": "The profile is linear, $u(y) = U\\,y/h$, so at $y = h/4$, $u = 8.0 \\times \\tfrac{1}{4} = 2.0\\ \\text{m s}^{-1}$. The value $6.0$ is the speed at $y = 3h/4$, $4.0$ is the mid-gap value, and $8.0$ is the top-plate speed.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-018",
+      "stem": "Why can the no-slip condition not be applied in inviscid (Euler) flow theory?",
+      "options": [
+        "Because inviscid flow has no pressure.",
+        "Because the density is infinite at the wall.",
+        "Because without viscosity the governing equation is lower order and cannot enforce a tangential velocity match at the wall.",
+        "Because inviscid flow is always turbulent."
+      ],
+      "answer": 2,
+      "explanation": "Removing the viscous term $\\mu\\nabla^2\\mathbf{u}$ lowers the order of the equation, so it can satisfy only the no-penetration condition (zero normal velocity) and cannot also pin the tangential velocity to the wall. Viscosity is exactly what makes no-slip physically and mathematically necessary, giving rise to boundary layers.",
+      "difficulty": "stretch",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-019",
+      "stem": "Two geometrically similar flows are dynamically similar when which condition is met?",
+      "options": [
+        "They have the same relevant dimensionless numbers, such as the Reynolds number.",
+        "They have the same velocity everywhere.",
+        "They have the same absolute pressure.",
+        "They use the same fluid."
+      ],
+      "answer": 0,
+      "explanation": "Dynamic similarity requires the governing dimensionless groups to match. For viscous incompressible flow without a free surface, equal Reynolds numbers suffice, so a model and a full-scale flow behave identically in nondimensional terms. Matching absolute speeds, fluids, or pressures is neither necessary nor sufficient.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-020",
+      "stem": "In the creeping-flow (very low Reynolds number) limit, which terms of the Navier-Stokes equation become negligible?",
+      "options": [
+        "The pressure-gradient term.",
+        "The viscous term.",
+        "The inertial (convective acceleration) terms.",
+        "The gravity term only."
+      ],
+      "answer": 2,
+      "explanation": "At $Re \\ll 1$ inertia is small compared with viscous forces, so the convective acceleration $\\rho(\\mathbf{u}\\cdot\\nabla)\\mathbf{u}$ is dropped, leaving the Stokes equations $0 = -\\nabla p + \\mu\\nabla^2\\mathbf{u} + \\rho\\mathbf{g}$. The viscous and pressure terms are precisely the ones that must be retained in this limit.",
+      "difficulty": "stretch",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-021",
+      "stem": "Glycerin has dynamic viscosity $\\mu = 1.5\\ \\text{Pa s}$ and density $\\rho = 1260\\ \\text{kg m}^{-3}$. What is its kinematic viscosity $\\nu$?",
+      "options": [
+        "$1.89 \\times 10^{3}\\ \\text{m}^2\\text{s}^{-1}$",
+        "$8.40 \\times 10^{2}\\ \\text{m}^2\\text{s}^{-1}$",
+        "$1.50\\ \\text{m}^2\\text{s}^{-1}$",
+        "$1.19 \\times 10^{-3}\\ \\text{m}^2\\text{s}^{-1}$"
+      ],
+      "answer": 3,
+      "explanation": "Kinematic viscosity is $\\nu = \\mu/\\rho = 1.5/1260 = 1.19 \\times 10^{-3}\\ \\text{m}^2\\text{s}^{-1}$. The value $8.40 \\times 10^{2}$ inverts to $\\rho/\\mu$, $1.89 \\times 10^{3}$ multiplies $\\mu\\rho$, and $1.50$ forgets to divide by density.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-022",
+      "stem": "Water ($\\rho = 1000\\ \\text{kg m}^{-3}$, $\\mu = 1.0 \\times 10^{-3}\\ \\text{Pa s}$) flows at $U = 0.10\\ \\text{m s}^{-1}$ through a pipe of diameter $d = 0.020\\ \\text{m}$. Is the flow laminar or turbulent?",
+      "options": [
+        "Laminar, $Re = 200$.",
+        "Laminar, $Re = 2.0 \\times 10^{3}$.",
+        "Turbulent, $Re = 2.0 \\times 10^{5}$.",
+        "Turbulent, $Re = 2.0 \\times 10^{4}$."
+      ],
+      "answer": 1,
+      "explanation": "Here $Re = \\rho U d/\\mu = (1000 \\times 0.10 \\times 0.020)/(1.0 \\times 10^{-3}) = 2.0/10^{-3} = 2.0 \\times 10^{3} = 2000$, just below the transition near $2300$, so the flow is laminar. The other options misplace powers of ten or mislabel the regime.",
+      "difficulty": "stretch",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-023",
+      "format": "cloze",
+      "stem": "Water flows with $\\rho = 1000\\ \\text{kg m}^{-3}$ and $\\mu = 1.0 \\times 10^{-3}\\ \\text{Pa s}$ at speed $U = 1.0\\ \\text{m s}^{-1}$ through a pipe of diameter $L = 0.050\\ \\text{m}$.",
+      "solution": "The Reynolds number is $Re = \\rho U L/\\mu =$ {{1}}. Since this is far above the pipe transition value of about $2300$, the flow is expected to be {{2}}. The Reynolds number measures the ratio of inertial to {{3}} forces.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 50000,
+          "tolerance": 50
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "turbulent",
+            "laminar",
+            "creeping"
+          ],
+          "answer": "turbulent"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "viscous",
+            "viscosity"
+          ]
+        }
+      ],
+      "explanation": "Compute $Re = (1000 \\times 1.0 \\times 0.050)/(1.0 \\times 10^{-3}) = 50/10^{-3} = 50000$. This greatly exceeds $2300$, so the flow is turbulent, and $Re$ is the ratio of inertial to viscous forces.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-024",
+      "format": "cloze",
+      "stem": "Plane Couette flow has the lower plate fixed and the upper plate, a distance $h = 0.0050\\ \\text{m}$ above it, moving at $U = 0.50\\ \\text{m s}^{-1}$. The fluid viscosity is $\\mu = 0.10\\ \\text{Pa s}$.",
+      "solution": "The velocity profile is {{1}} across the gap. The shear stress is uniform and equals $\\tau = \\mu U/h =$ {{2}} $\\text{Pa}$. The fluid speed exactly at the lower plate is {{3}} $\\text{m s}^{-1}$, by the no-slip condition.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "linear",
+            "parabolic",
+            "uniform"
+          ],
+          "answer": "linear"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0.1
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "With no pressure gradient the profile is linear, $u = U\\,y/h$. The shear stress is $\\tau = \\mu U/h = 0.10 \\times 0.50/0.0050 = 10\\ \\text{Pa}$. At the fixed lower plate no-slip forces $u = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-025",
+      "format": "cloze",
+      "stem": "Compare the two classic one-dimensional viscous flows between parallel plates.",
+      "solution": "When flow is driven only by a moving wall with no pressure gradient, the profile is {{1}} and the flow is called {{2}} flow. When flow is driven by a pressure gradient between two fixed walls, the profile is parabolic and the flow is called {{3}} flow.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "linear",
+            "parabolic",
+            "uniform"
+          ],
+          "answer": "linear"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "Couette",
+            "couette"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "Poiseuille",
+            "poiseuille"
+          ]
+        }
+      ],
+      "explanation": "Wall-driven flow with no pressure gradient gives a linear profile, the defining feature of Couette flow. Pressure-driven flow between fixed walls gives a parabolic profile, which is Poiseuille flow.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-026",
+      "format": "cloze",
+      "stem": "Heavy oil has dynamic viscosity $\\mu = 0.10\\ \\text{Pa s}$ and density $\\rho = 900\\ \\text{kg m}^{-3}$. It flows at $U = 2.0\\ \\text{m s}^{-1}$ over a length scale $L = 0.050\\ \\text{m}$.",
+      "solution": "The Reynolds number is $Re = \\rho U L/\\mu =$ {{1}}. Because this lies well below the transition value of about $2300$, the flow is {{2}}. Compared with water at the same speed and size, the oil's much higher viscosity makes its Reynolds number {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 900,
+          "tolerance": 1
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "laminar",
+            "turbulent",
+            "transitional"
+          ],
+          "answer": "laminar"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "much smaller",
+            "much larger",
+            "the same"
+          ],
+          "answer": "much smaller"
+        }
+      ],
+      "explanation": "Here $Re = (900 \\times 2.0 \\times 0.050)/0.10 = 90/0.10 = 900$, below $2300$, so the flow is laminar. A larger viscosity in the denominator drives the Reynolds number down, so the oil's $Re$ is much smaller than water's.",
+      "difficulty": "stretch",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-027",
+      "format": "cloze",
+      "stem": "Consider fully developed laminar flow of water through a long circular pipe (Hagen-Poiseuille flow), where $Q = \\pi R^4 \\Delta p/(8\\mu L)$.",
+      "solution": "The velocity profile across the pipe is {{1}}, with the maximum on the axis. The mean velocity is {{2}} times the maximum velocity. Because $Q \\propto R^4$, doubling the radius multiplies the flow rate by a factor of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "parabolic",
+            "linear",
+            "uniform"
+          ],
+          "answer": "parabolic"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 16,
+          "tolerance": 0.1
+        }
+      ],
+      "explanation": "The pipe profile is parabolic, peaking on the axis, and averaging gives $u_{\\text{mean}} = \\tfrac{1}{2}u_{\\text{max}}$. Since $Q \\propto R^4$, doubling $R$ gives a factor $2^4 = 16$ increase in flow rate.",
+      "difficulty": "stretch",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    },
+    {
+      "id": "fluid-dynamics-navier-stokes-028",
+      "format": "cloze",
+      "stem": "Examine the structure of the incompressible Navier-Stokes equation $\\rho\\,D\\mathbf{u}/Dt = -\\nabla p + \\mu\\nabla^2\\mathbf{u} + \\rho\\mathbf{g}$ and its limits.",
+      "solution": "The term $\\mu\\nabla^2\\mathbf{u}$ represents the {{1}} force per unit volume. When this term is dropped, the equation reduces to the {{2}} equation for an inviscid fluid. At very low Reynolds number the {{3}} terms become negligible, giving the Stokes (creeping-flow) equations.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "viscous",
+            "pressure",
+            "gravitational"
+          ],
+          "answer": "viscous"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "Euler",
+            "Euler's",
+            "euler"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "inertial",
+            "viscous",
+            "pressure"
+          ],
+          "answer": "inertial"
+        }
+      ],
+      "explanation": "The Laplacian term $\\mu\\nabla^2\\mathbf{u}$ is the viscous force per volume. Removing it leaves Euler's equation. At $Re \\ll 1$ the inertial (convective) terms drop out, leaving the linear Stokes equations.",
+      "difficulty": "core",
+      "source": "in the style of Acheson, Elementary Fluid Dynamics"
+    }
+  ]
+}

@@ -1,0 +1,561 @@
+{
+  "courseId": "numerical-analysis-iii",
+  "topicId": "boundary-value-problems",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-001",
+      "stem": "How does a two-point boundary-value problem (BVP) differ from an initial-value problem (IVP) for a second-order ODE?",
+      "options": [
+        "A BVP specifies the solution and its derivative at one endpoint; an IVP specifies values at two endpoints.",
+        "There is no difference; the names are interchangeable.",
+        "A BVP specifies conditions at two distinct points, while an IVP specifies the solution and its derivative at a single starting point.",
+        "A BVP can only be linear, while an IVP can be nonlinear."
+      ],
+      "answer": 2,
+      "explanation": "A boundary-value problem imposes conditions at two separate points (for example $y(a)$ and $y(b)$), whereas an initial-value problem gives the full state ($y$ and $y'$) at one starting point. The two-sided coupling is what prevents simple forward marching and motivates shooting or finite-difference methods.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-002",
+      "stem": "In the finite-difference method, the second derivative $y''(x_i)$ at an interior node is most commonly replaced by which approximation?",
+      "options": [
+        "$\\dfrac{y_{i-1} - 2y_i + y_{i+1}}{h^2}$",
+        "$\\dfrac{y_{i+1} - y_i}{h}$",
+        "$\\dfrac{y_{i+1} - y_{i-1}}{2h}$",
+        "$\\dfrac{y_{i+1} - 2y_i + y_{i-1}}{h}$"
+      ],
+      "answer": 0,
+      "explanation": "The standard central second difference is $y''(x_i) \\approx \\frac{y_{i-1} - 2y_i + y_{i+1}}{h^2}$, with truncation error $-\\frac{h^2}{12} y^{(4)}(\\xi)$, hence second order. The quotient over $2h$ approximates the first derivative, and dividing the second difference by $h$ rather than $h^2$ is dimensionally wrong.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-003",
+      "stem": "What is the order of the truncation error of the central-difference approximation $\\frac{y_{i-1} - 2y_i + y_{i+1}}{h^2}$ for $y''$?",
+      "options": [
+        "$O(h)$",
+        "$O(h^2)$",
+        "$O(h^4)$",
+        "$O(h^3)$"
+      ],
+      "answer": 1,
+      "explanation": "Taylor expanding $y_{i\\pm 1}$ about $x_i$ cancels the odd terms, leaving error $-\\frac{h^2}{12} y^{(4)}(\\xi)$, so the approximation is second order, $O(h^2)$. This is why halving $h$ cuts the discretization error by roughly four.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-004",
+      "stem": "Consider $y'' = 2$ on $[0,1]$ with $y(0) = 0$, $y(1) = 0$, discretized with $h = 0.25$ (nodes at $0.25, 0.5, 0.75$). The finite-difference equation at each interior node is $y_{i-1} - 2y_i + y_{i+1} = 0.125$. By symmetry $y_1 = y_3$. What is $y_1$?",
+      "options": [
+        "$0.1250$",
+        "$-0.1250$",
+        "$-0.2500$",
+        "$-0.1875$"
+      ],
+      "answer": 3,
+      "explanation": "With $h^2 = 0.0625$, the right side is $0.0625 \\cdot 2 = 0.125$. Using $y_0 = y_4 = 0$ and symmetry $y_1 = y_3$: from node 1, $-2y_1 + y_2 = 0.125$; from node 2, $2y_1 - 2y_2 = 0.125$. Solving gives $y_1 = -0.1875$. The exact solution $y = x^2 - x$ gives $y(0.25) = -0.1875$ exactly, since central differences are exact for quadratics.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-005",
+      "stem": "For the same problem $y'' = 2$, $y(0) = y(1) = 0$ with $h = 0.25$, given $y_1 = y_3 = -0.1875$, what is the middle value $y_2$ (at $x = 0.5$)?",
+      "options": [
+        "$-0.1875$",
+        "$-0.2000$",
+        "$0.0000$",
+        "$-0.2500$"
+      ],
+      "answer": 3,
+      "explanation": "From node 1, $-2y_1 + y_2 = 0.125$, so $y_2 = 0.125 + 2(-0.1875) = 0.125 - 0.375 = -0.25$. This matches the exact value $y(0.5) = 0.25 - 0.5 = -0.25$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-006",
+      "stem": "Discretizing the linear BVP $y'' = f(x)$ with Dirichlet conditions on a uniform grid produces a linear system whose coefficient matrix has which structure?",
+      "options": [
+        "Dense and nonsymmetric.",
+        "Diagonal only.",
+        "Upper triangular.",
+        "Tridiagonal, with $-2$ on the diagonal and $1$ on the off-diagonals."
+      ],
+      "answer": 3,
+      "explanation": "Each interior equation $y_{i-1} - 2y_i + y_{i+1} = h^2 f_i$ couples only neighbouring unknowns, so the matrix is tridiagonal with diagonal $-2$ and both off-diagonals $1$. Such systems are solved efficiently (and stably, being diagonally dominant) by the Thomas algorithm in $O(n)$ work.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-007",
+      "stem": "The linear shooting method solves a linear BVP $y'' = p(x)y' + q(x)y + r(x)$, $y(a) = \\alpha$, $y(b) = \\beta$, by solving how many initial-value problems?",
+      "options": [
+        "Three IVPs.",
+        "One IVP.",
+        "As many as there are interior grid points.",
+        "Two IVPs, whose solutions are combined linearly."
+      ],
+      "answer": 3,
+      "explanation": "Because the equation is linear, the BVP solution is $y = y_1 + c\\, y_2$, where $y_1$ solves the inhomogeneous IVP with $y_1(a) = \\alpha, y_1'(a) = 0$ and $y_2$ solves the homogeneous IVP with $y_2(a) = 0, y_2'(a) = 1$. Two IVPs suffice; the constant $c$ is chosen to meet the right boundary condition.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-008",
+      "stem": "In linear shooting, once $y_1$ (inhomogeneous IVP) and $y_2$ (homogeneous IVP with $y_2(a) = 0$, $y_2'(a) = 1$) are computed, the combination $y = y_1 + c\\, y_2$ must satisfy $y(b) = \\beta$. What is $c$?",
+      "options": [
+        "$c = \\beta - y_1(b)$",
+        "$c = \\dfrac{\\beta - y_1(b)}{y_2(b)}$",
+        "$c = \\beta\\, y_2(b)$",
+        "$c = \\dfrac{y_1(b)}{y_2(b)}$"
+      ],
+      "answer": 1,
+      "explanation": "Imposing $y_1(b) + c\\, y_2(b) = \\beta$ and solving for $c$ gives $c = \\frac{\\beta - y_1(b)}{y_2(b)}$. This is valid provided $y_2(b) \\ne 0$, which is guaranteed when the homogeneous BVP has only the trivial solution (the condition for a unique solution).",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-009",
+      "stem": "Apply linear shooting to $y'' = y$, $y(0) = 0$, $y(1) = 1$. The homogeneous IVP $y_2'' = y_2$, $y_2(0) = 0$, $y_2'(0) = 1$ has solution $y_2(x) = \\sinh x$. What is $y_2(1)$?",
+      "options": [
+        "$0.8415$",
+        "$1.0000$",
+        "$1.1752$",
+        "$1.5431$"
+      ],
+      "answer": 2,
+      "explanation": "$y_2(1) = \\sinh(1) = \\frac{e - e^{-1}}{2} \\approx 1.1752$. Since the inhomogeneous IVP here gives $y_1 \\equiv 0$, the shooting constant is $c = (1 - 0)/\\sinh(1)$, recovering the exact solution $y = \\sinh x / \\sinh 1$. The value $1.5431$ is $\\cosh(1)$, a common trap.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-010",
+      "stem": "For a nonlinear BVP, the shooting method differs from the linear case in what way?",
+      "options": [
+        "It needs no initial guess.",
+        "It cannot be applied at all.",
+        "It requires iterating on the unknown initial slope (for example by the secant or Newton method) until the far boundary condition is met.",
+        "It still uses exactly two IVPs combined linearly."
+      ],
+      "answer": 2,
+      "explanation": "Superposition fails for nonlinear equations, so the solution cannot be assembled from two fixed IVPs. Instead one treats the missing initial slope $y'(a) = s$ as an unknown, integrates to $b$, and adjusts $s$ iteratively (secant or Newton) to drive $y(b; s) - \\beta$ to zero. This is a root-finding problem in $s$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-011",
+      "stem": "When discretizing the general linear BVP $y'' = p(x) y' + q(x) y + r(x)$, the first derivative $y'(x_i)$ is approximated by the central difference $\\frac{y_{i+1} - y_{i-1}}{2h}$. After multiplying through by $h^2$, the coefficient of $y_{i-1}$ in the difference equation is which expression?",
+      "options": [
+        "$-2 - h^2 q_i$",
+        "$h^2 r_i$",
+        "$1 - \\dfrac{h}{2} p_i$",
+        "$1 + \\dfrac{h}{2} p_i$"
+      ],
+      "answer": 3,
+      "explanation": "Substituting both central differences and multiplying by $h^2$ yields $\\left(1 + \\frac{h}{2}p_i\\right) y_{i-1} + \\left(-2 - h^2 q_i\\right) y_i + \\left(1 - \\frac{h}{2}p_i\\right) y_{i+1} = h^2 r_i$. So the lower coefficient is $1 + \\frac{h}{2}p_i$; the upper one is $1 - \\frac{h}{2}p_i$, and the diagonal is $-2 - h^2 q_i$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-012",
+      "stem": "If the interval $[a, b]$ is divided into $n$ equal subintervals for a Dirichlet BVP, how many interior unknowns appear in the finite-difference linear system?",
+      "options": [
+        "$n + 1$",
+        "$2n$",
+        "$n - 1$",
+        "$n$"
+      ],
+      "answer": 2,
+      "explanation": "There are $n + 1$ grid points $x_0, \\dots, x_n$, but the two endpoint values $y_0$ and $y_n$ are fixed by the Dirichlet conditions. That leaves $n - 1$ interior unknowns, giving an $(n-1) \\times (n-1)$ tridiagonal system.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-013",
+      "stem": "Consider $y'' = 6x$ on $[0,1]$ with $y(0) = 0$, $y(1) = 1$ (exact solution $y = x^3$), using a single interior node at $x_1 = 0.5$ with $h = 0.5$. The difference equation is $(y_0 - 2y_1 + y_2)/h^2 = 6x_1$. What is $y_1$?",
+      "options": [
+        "$0.3750$",
+        "$0.1250$",
+        "$0.5000$",
+        "$0.2500$"
+      ],
+      "answer": 1,
+      "explanation": "With $y_0 = 0$, $y_2 = 1$, $h^2 = 0.25$, and $6x_1 = 3$: $(0 - 2y_1 + 1)/0.25 = 3$ gives $-2y_1 + 1 = 0.75$, so $y_1 = 0.125$. The exact value is $0.5^3 = 0.125$, agreeing here because the local error involves $y^{(4)} = 0$ for a cubic.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-014",
+      "stem": "A drawback of the simple shooting method for some BVPs, compared with finite differences, is which of the following?",
+      "options": [
+        "It can be numerically unstable when the IVP solutions grow rapidly, so small slope changes blow up over the interval.",
+        "It cannot handle nonlinear problems.",
+        "It produces no approximation at interior points.",
+        "It always requires solving a dense linear system."
+      ],
+      "answer": 0,
+      "explanation": "When the underlying IVP has rapidly growing modes (for instance $e^{kx}$ with large $k$), tiny changes in the guessed initial slope are amplified enormously by the far endpoint, making the root-find for the slope ill-conditioned. Finite differences avoid this by solving the coupled system directly; multiple shooting is another remedy.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-015",
+      "stem": "For the BVP $y'' = y'$ on $[0,1]$ with $y(0) = 0$, $y(1) = 1$, using one interior node at $x_1 = 0.5$, $h = 0.5$, with $y''\\approx \\frac{y_0 - 2y_1 + y_2}{h^2}$ and $y' \\approx \\frac{y_2 - y_0}{2h}$, what is $y_1$?",
+      "options": [
+        "$0.2500$",
+        "$0.5000$",
+        "$0.3750$",
+        "$0.3775$"
+      ],
+      "answer": 2,
+      "explanation": "Substitute $y_0 = 0$, $y_2 = 1$: the scheme is $\\frac{0 - 2y_1 + 1}{0.25} = \\frac{1 - 0}{1}$, i.e. $-8y_1 + 4 = 1$, so $y_1 = 3/8 = 0.375$. The exact solution $y = (e^x - 1)/(e - 1)$ gives $y(0.5) \\approx 0.3775$, close to the coarse-grid estimate.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-016",
+      "stem": "A Neumann boundary condition specifies which quantity at an endpoint?",
+      "options": [
+        "The value of the derivative $y'$.",
+        "A linear combination $\\alpha y + \\beta y'$.",
+        "The value of the solution $y$.",
+        "Nothing; it is the absence of a condition."
+      ],
+      "answer": 0,
+      "explanation": "A Neumann condition prescribes the derivative, such as $y'(a) = \\gamma$. A Dirichlet condition fixes $y$ itself, and a Robin (mixed) condition fixes a combination $\\alpha y + \\beta y'$. Neumann conditions are usually discretized with a one-sided or ghost-node difference for $y'$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-017",
+      "stem": "Why is the tridiagonal system from a finite-difference BVP typically solvable in a stable way without pivoting?",
+      "options": [
+        "Because it is upper triangular by construction.",
+        "Because all entries are positive.",
+        "Because the matrix is diagonally dominant (and often symmetric negative definite), so the Thomas algorithm is stable.",
+        "Because the right-hand side is always zero."
+      ],
+      "answer": 2,
+      "explanation": "With diagonal $-2 - h^2 q_i$ and off-diagonals near $1$, the matrix is (for $q \\ge 0$) strictly diagonally dominant, which guarantees the Thomas (tridiagonal Gaussian elimination) algorithm proceeds without zero pivots and is numerically stable. No general pivoting is needed.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-018",
+      "stem": "To make the global error of a second-order finite-difference BVP solver about four times smaller, how should the step size $h$ be changed?",
+      "options": [
+        "Double it.",
+        "Leave it unchanged.",
+        "Halve it.",
+        "Increase it fourfold."
+      ],
+      "answer": 2,
+      "explanation": "The method is second order, so the error behaves like $C h^2$. Halving $h$ multiplies the error by $(1/2)^2 = 1/4$. Doubling $h$ would make the error four times larger instead.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-019",
+      "stem": "The existence-uniqueness theorem for the linear BVP $y'' = p y' + q y + r$ guarantees a unique solution when, on the interval, which condition holds?",
+      "options": [
+        "$q(x) > 0$ everywhere.",
+        "$p(x) = 0$ everywhere.",
+        "$r(x) = 0$ everywhere.",
+        "$q(x) \\ge 0$ and $p, q, r$ are continuous."
+      ],
+      "answer": 3,
+      "explanation": "The standard theorem (Burden and Faires) requires $p, q, r$ continuous on $[a,b]$ and $q(x) \\ge 0$ there; then the BVP has a unique solution. The condition $q \\ge 0$ also makes the discrete tridiagonal matrix diagonally dominant and invertible, tying existence to solvability of the linear system.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-020",
+      "stem": "Which pairing of method with its main idea is correct for solving BVPs?",
+      "options": [
+        "Shooting: assemble one large sparse linear system over the whole grid.",
+        "Finite differences: guess the initial derivative and iterate.",
+        "Shooting: convert the BVP into IVPs and adjust the initial slope to hit the far boundary.",
+        "Finite differences: integrate forward from one endpoint only."
+      ],
+      "answer": 2,
+      "explanation": "Shooting reformulates the BVP as an IVP with an unknown initial slope and iterates on that slope (root-finding) to satisfy the boundary condition at the other end. Finite differences instead replace derivatives with difference quotients on a grid and solve the resulting coupled (tridiagonal) linear system. The other options swap the two descriptions.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-021",
+      "stem": "In the Rayleigh-Ritz / finite-element approach to a BVP, the solution is approximated as a linear combination of basis functions, and the coefficients are found by which principle?",
+      "options": [
+        "Making the residual orthogonal to the basis (weak form) or minimizing an associated energy functional.",
+        "Matching the solution at the endpoints only.",
+        "Taking the Fourier transform of the data.",
+        "Forward Euler time stepping."
+      ],
+      "answer": 0,
+      "explanation": "Variational methods recast the BVP in weak form: the coefficients are chosen so the residual is orthogonal to the trial space (Galerkin) or, equivalently for self-adjoint problems, so an energy functional is minimized. Piecewise basis functions then yield the finite-element method with a sparse stiffness matrix.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-022",
+      "stem": "For the BVP $y'' = y$, $y(0) = 0$, $y(1) = 1$, a finite-difference solve with $h = 0.5$ (one interior node) gives the equation $(0 - 2y_1 + 1)/0.25 = y_1$. What is $y_1$?",
+      "options": [
+        "$0.5000$",
+        "$0.4434$",
+        "$0.4444$",
+        "$0.3750$"
+      ],
+      "answer": 2,
+      "explanation": "Multiply out: $-8y_1 + 4 = y_1$, so $9y_1 = 4$ and $y_1 = 4/9 \\approx 0.4444$. The exact solution $y = \\sinh x / \\sinh 1$ gives $y(0.5) \\approx 0.4434$, so the coarse grid is already within about $0.001$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-023",
+      "stem": "Replacing a Neumann condition $y'(a) = \\gamma$ with the one-sided difference $\\frac{y_1 - y_0}{h} = \\gamma$ has what effect on the overall accuracy of an otherwise second-order scheme?",
+      "options": [
+        "It can reduce the global accuracy to first order unless a second-order (for example ghost-node or central) approximation is used.",
+        "It keeps the scheme second order.",
+        "It makes the scheme fourth order.",
+        "It has no effect because boundary nodes do not matter."
+      ],
+      "answer": 0,
+      "explanation": "The one-sided quotient $\\frac{y_1 - y_0}{h}$ is only first-order accurate, so using it for the Neumann condition can degrade the whole solution to first order. A second-order treatment, such as a ghost node combined with the central difference, preserves the $O(h^2)$ accuracy of the interior scheme.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-024",
+      "stem": "Which is a genuine advantage of the finite-difference method over simple shooting for linear BVPs?",
+      "options": [
+        "It works only for nonlinear problems.",
+        "It produces the solution at all interior nodes simultaneously and avoids the instability of integrating fast-growing modes.",
+        "It is always higher order than any shooting scheme.",
+        "It requires no boundary conditions."
+      ],
+      "answer": 1,
+      "explanation": "Finite differences solve for all interior values at once through a well-conditioned tridiagonal system and never integrate the exponentially growing IVP modes that can destabilize shooting. Both methods need the boundary data, and either can be made high order; the listed advantage is the structural stability and the simultaneous interior solution.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-025",
+      "format": "cloze",
+      "stem": "Solve $y'' = 2$ on $[0,1]$ with $y(0) = 0$, $y(1) = 0$ by finite differences using $h = 0.25$ (interior nodes $0.25, 0.5, 0.75$). Each interior equation is $y_{i-1} - 2y_i + y_{i+1} = h^2 \\cdot 2$.",
+      "solution": "The right-hand constant is $h^2 \\cdot 2 = 0.0625 \\cdot 2 =$ {{1}}. By symmetry $y_1 = y_3$, and solving the system gives $y_1 =$ {{2}} and the centre value $y_2 =$ {{3}} (both to four decimals). These equal the exact $y = x^2 - x$ because the local error depends on $y^{(4)}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.125,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -0.1875,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -0.25,
+          "tolerance": 0.0001
+        }
+      ],
+      "explanation": "Right side: $0.0625 \\cdot 2 = 0.125$. Node 1: $-2y_1 + y_2 = 0.125$; node 2: $2y_1 - 2y_2 = 0.125$ (using $y_1 = y_3$). Solving: $y_1 = -0.1875$, then $y_2 = 0.125 + 2(-0.1875) = -0.25$. Exact $x^2 - x$ gives the same values.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-026",
+      "format": "cloze",
+      "stem": "Set up the central-difference discretization of the general linear BVP $y'' = p(x)y' + q(x)y + r(x)$ at an interior node $i$, then identify the matrix structure.",
+      "solution": "After multiplying by $h^2$, the coefficient multiplying $y_{i-1}$ is $1 + \\frac{h}{2}p_i$, the diagonal coefficient of $y_i$ is {{1}}, and the coefficient of $y_{i+1}$ is {{2}}. Because each row couples only neighbouring unknowns, the resulting matrix is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$-2 - h^2 q_i$",
+            "$-2 + h^2 q_i$",
+            "$2 - h^2 q_i$"
+          ],
+          "answer": "$-2 - h^2 q_i$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$1 + \\frac{h}{2}p_i$",
+            "$1 - \\frac{h}{2}p_i$",
+            "$h^2 r_i$"
+          ],
+          "answer": "$1 - \\frac{h}{2}p_i$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "tridiagonal",
+            "dense",
+            "diagonal"
+          ],
+          "answer": "tridiagonal"
+        }
+      ],
+      "explanation": "Substituting $y'' \\approx (y_{i-1} - 2y_i + y_{i+1})/h^2$ and $y' \\approx (y_{i+1} - y_{i-1})/(2h)$ and clearing $h^2$ gives diagonal $-2 - h^2 q_i$ and upper coefficient $1 - \\frac{h}{2}p_i$. Only three diagonals are nonzero, so the matrix is tridiagonal.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-027",
+      "format": "cloze",
+      "stem": "Linear shooting on $y'' = y$, $y(0) = 0$, $y(1) = 1$. The homogeneous IVP $y_2'' = y_2$ with $y_2(0) = 0$, $y_2'(0) = 1$ has solution $y_2(x) = \\sinh x$, and the inhomogeneous IVP gives $y_1 \\equiv 0$.",
+      "solution": "Evaluating at the right endpoint, $y_2(1) = \\sinh(1) \\approx$ {{1}} (four decimals). The shooting constant is $c = \\frac{1 - y_1(1)}{y_2(1)} \\approx$ {{2}} (four decimals). The combined solution $y = y_1 + c\\, y_2$ is exact because the equation is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.1752,
+          "tolerance": 0.0005
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.8509,
+          "tolerance": 0.0005
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "linear",
+            "nonlinear",
+            "singular"
+          ],
+          "answer": "linear"
+        }
+      ],
+      "explanation": "$\\sinh(1) = (e - e^{-1})/2 \\approx 1.1752$. With $y_1(1) = 0$, $c = 1/\\sinh(1) \\approx 0.8509$. Superposition $y = y_1 + c y_2$ is valid and exact precisely because the ODE is linear.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-028",
+      "format": "cloze",
+      "stem": "Compare the two principal BVP solvers and their basic properties.",
+      "solution": "The {{1}} method reformulates the BVP as initial-value problems and adjusts the unknown starting slope, while the {{2}} method replaces derivatives by difference quotients and solves a coupled system. For a Dirichlet problem on $n$ subintervals, the finite-difference system has {{3}} interior unknowns.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "shooting",
+            "finite-difference",
+            "Galerkin"
+          ],
+          "answer": "shooting"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "finite-difference",
+            "shooting",
+            "Runge-Kutta"
+          ],
+          "answer": "finite-difference"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$n - 1$",
+            "$n + 1$",
+            "$n$"
+          ],
+          "answer": "$n - 1$"
+        }
+      ],
+      "explanation": "Shooting converts to IVPs and iterates on the initial slope; finite differences discretize on a grid and solve a tridiagonal system. With $n$ subintervals there are $n + 1$ nodes, two fixed by Dirichlet data, leaving $n - 1$ unknowns.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-029",
+      "format": "cloze",
+      "stem": "Finite-difference solve of $y'' = y$ on $[0,1]$ with $y(0) = 0$, $y(1) = 1$, using a single interior node at $x = 0.5$ with $h = 0.5$.",
+      "solution": "The difference equation $\\frac{y_0 - 2y_1 + y_2}{h^2} = y_1$ with $y_0 = 0$, $y_2 = 1$ becomes $-8y_1 + 4 = y_1$, giving $y_1 =$ {{1}} (four decimals). The exact solution $\\frac{\\sinh x}{\\sinh 1}$ gives $y(0.5) \\approx$ {{2}} (four decimals), so the error is about {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.4444,
+          "tolerance": 0.0005
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.4434,
+          "tolerance": 0.0005
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$0.001$",
+            "$0.1$",
+            "$0.5$"
+          ],
+          "answer": "$0.001$"
+        }
+      ],
+      "explanation": "$-8y_1 + 4 = y_1 \\Rightarrow 9y_1 = 4 \\Rightarrow y_1 = 0.4444$. Exact $\\sinh(0.5)/\\sinh(1) \\approx 0.4434$. The difference is about $0.001$, small even on this very coarse grid.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-boundary-value-problems-030",
+      "format": "cloze",
+      "stem": "Classify boundary conditions and basic properties of BVP discretizations.",
+      "solution": "A condition fixing $y(a)$ is called a {{1}} condition, while one fixing $y'(a)$ is called a {{2}} condition. The central second-difference approximation to $y''$ has truncation error of order {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "Dirichlet",
+            "Neumann",
+            "Robin"
+          ],
+          "answer": "Dirichlet"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "Neumann",
+            "Dirichlet",
+            "periodic"
+          ],
+          "answer": "Neumann"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$h^2$",
+            "$h$",
+            "$h^4$"
+          ],
+          "answer": "$h^2$"
+        }
+      ],
+      "explanation": "Fixing the value $y(a)$ is a Dirichlet condition; fixing the slope $y'(a)$ is a Neumann condition (a combination would be Robin). The central second difference is second order, $O(h^2)$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    }
+  ]
+}

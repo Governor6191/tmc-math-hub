@@ -1,0 +1,514 @@
+{
+  "courseId": "dynamical-system",
+  "topicId": "phase-plane-analysis",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "dynamical-system-phase-plane-analysis-001",
+      "stem": "For a planar system $\\dot{x} = f(x,y)$, $\\dot{y} = g(x,y)$, the $x$ nullcline is the set where",
+      "options": [
+        "$g = 0$",
+        "$f = g$",
+        "$f = 0$",
+        "$x = 0$"
+      ],
+      "answer": 2,
+      "explanation": "The $x$ nullcline is where $\\dot{x} = 0$, that is $f(x,y) = 0$; on it the flow is purely vertical. Similarly the $y$ nullcline is $g = 0$, where the flow is horizontal. Fixed points lie at intersections of an $x$ nullcline with a $y$ nullcline, where both $f = g = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-002",
+      "stem": "Fixed points of a planar system occur where",
+      "options": [
+        "The trajectory is vertical",
+        "The $x$ nullclines intersect each other",
+        "$f^2 + g^2$ is maximal",
+        "An $x$ nullcline meets a $y$ nullcline"
+      ],
+      "answer": 3,
+      "explanation": "A fixed point needs both $\\dot{x} = 0$ and $\\dot{y} = 0$, that is $f = 0$ and $g = 0$ simultaneously. Geometrically this is where an $x$ nullcline ($f = 0$) crosses a $y$ nullcline ($g = 0$). Intersections of two $x$ nullclines only guarantee $f = 0$, not $g = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-003",
+      "stem": "To classify a fixed point $(x^*, y^*)$ of a nonlinear planar system, one linearizes using",
+      "options": [
+        "The Jacobian matrix evaluated at $(x^*, y^*)$",
+        "The gradient of $f + g$",
+        "The divergence of the flow only",
+        "The Hessian of $f$"
+      ],
+      "answer": 0,
+      "explanation": "Near a fixed point, set $u = x - x^*$, $v = y - y^*$; then $\\dot{u} \\approx J u$ where $J = \\begin{pmatrix} f_x & f_y \\\\ g_x & g_y \\end{pmatrix}$ is the Jacobian evaluated at $(x^*, y^*)$. Its eigenvalues classify the linearized fixed point. The Hessian and gradient are not the right linear approximation for a vector field.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-004",
+      "stem": "For $\\dot{x} = x - y$, $\\dot{y} = x + y$, the origin is a",
+      "options": [
+        "Center",
+        "Stable spiral",
+        "Unstable spiral",
+        "Saddle"
+      ],
+      "answer": 2,
+      "explanation": "The Jacobian is $\\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix}$ with $\\tau = 2$, $\\Delta = (1)(1) - (-1)(1) = 2$, discriminant $\\tau^2 - 4\\Delta = 4 - 8 = -4 < 0$. Complex eigenvalues $1 \\pm i$ with positive real part give an unstable spiral.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-005",
+      "stem": "For the damped oscillator written as $\\dot{x} = y$, $\\dot{y} = -x - y$, the origin is a",
+      "options": [
+        "Saddle",
+        "Unstable node",
+        "Center",
+        "Stable spiral"
+      ],
+      "answer": 3,
+      "explanation": "The Jacobian is $\\begin{pmatrix} 0 & 1 \\\\ -1 & -1 \\end{pmatrix}$ with $\\tau = -1$, $\\Delta = (0)(-1) - (1)(-1) = 1$, discriminant $1 - 4 = -3 < 0$. Complex eigenvalues $-\\tfrac{1}{2} \\pm \\tfrac{\\sqrt{3}}{2} i$ with negative real part give a stable spiral, as expected for a damped oscillator.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-006",
+      "stem": "Consider $\\dot{x} = x(3 - x - 2y)$, $\\dot{y} = y(2 - x - y)$. The Jacobian at the origin $(0,0)$ predicts",
+      "options": [
+        "An unstable node",
+        "A stable node",
+        "A center",
+        "A saddle"
+      ],
+      "answer": 0,
+      "explanation": "At $(0,0)$ the Jacobian is $\\begin{pmatrix} 3 & 0 \\\\ 0 & 2 \\end{pmatrix}$, since $f_x = 3 - 2x - 2y \\to 3$, $f_y = -2x \\to 0$, $g_x = -y \\to 0$, $g_y = 2 - x - 2y \\to 2$. Eigenvalues $3$ and $2$ are both positive, so the origin is an unstable node.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-007",
+      "stem": "For $\\dot{x} = x(3 - x - 2y)$, $\\dot{y} = y(2 - x - y)$, the coexistence fixed point $(1,1)$ is a",
+      "options": [
+        "Stable node",
+        "Saddle",
+        "Unstable node",
+        "Stable spiral"
+      ],
+      "answer": 1,
+      "explanation": "At $(1,1)$: $f_x = 3 - 2 - 2 = -1$, $f_y = -2(1) = -2$, $g_x = -1$, $g_y = 2 - 1 - 2 = -1$. So $J = \\begin{pmatrix} -1 & -2 \\\\ -1 & -1 \\end{pmatrix}$ with $\\Delta = (-1)(-1) - (-2)(-1) = 1 - 2 = -1 < 0$. A negative determinant means a saddle.",
+      "difficulty": "stretch",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-008",
+      "stem": "How many fixed points does $\\dot{x} = x(3 - x - 2y)$, $\\dot{y} = y(2 - x - y)$ have in the first quadrant including the axes?",
+      "options": [
+        "One",
+        "Three",
+        "Two",
+        "Four"
+      ],
+      "answer": 3,
+      "explanation": "Setting both factors to zero: $(0,0)$; the axis points $(3,0)$ (from $x = 3$, $y = 0$) and $(0,2)$ (from $y = 2$, $x = 0$); and the interior point where $3 - x - 2y = 0$ and $2 - x - y = 0$, which solve to $(1,1)$. That is four fixed points in total.",
+      "difficulty": "stretch",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-009",
+      "stem": "For the system $\\dot{x} = y$, $\\dot{y} = x - x^3 - y$, the origin $(0,0)$ is a",
+      "options": [
+        "Stable spiral",
+        "Saddle",
+        "Center",
+        "Stable node"
+      ],
+      "answer": 1,
+      "explanation": "The Jacobian is $\\begin{pmatrix} 0 & 1 \\\\ 1 - 3x^2 & -1 \\end{pmatrix}$. At $(0,0)$ this is $\\begin{pmatrix} 0 & 1 \\\\ 1 & -1 \\end{pmatrix}$ with $\\Delta = (0)(-1) - (1)(1) = -1 < 0$. A negative determinant gives a saddle.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-010",
+      "stem": "For $\\dot{x} = y$, $\\dot{y} = x - x^3 - y$, the fixed point $(1,0)$ is a",
+      "options": [
+        "Center",
+        "Saddle",
+        "Unstable node",
+        "Stable spiral"
+      ],
+      "answer": 3,
+      "explanation": "At $(1,0)$ the Jacobian is $\\begin{pmatrix} 0 & 1 \\\\ 1 - 3(1)^2 & -1 \\end{pmatrix} = \\begin{pmatrix} 0 & 1 \\\\ -2 & -1 \\end{pmatrix}$, with $\\tau = -1$, $\\Delta = 0 - (1)(-2) = 2$, discriminant $1 - 8 = -7 < 0$. Complex eigenvalues with negative real part give a stable spiral.",
+      "difficulty": "stretch",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-011",
+      "stem": "For the decoupled system $\\dot{x} = x^2 - 1$, $\\dot{y} = -y$, the fixed point $(1,0)$ is a",
+      "options": [
+        "Stable spiral",
+        "Saddle",
+        "Stable node",
+        "Center"
+      ],
+      "answer": 1,
+      "explanation": "The Jacobian is $\\begin{pmatrix} 2x & 0 \\\\ 0 & -1 \\end{pmatrix}$. At $(1,0)$ it is $\\begin{pmatrix} 2 & 0 \\\\ 0 & -1 \\end{pmatrix}$ with eigenvalues $2$ and $-1$. Opposite signs give a saddle. (Here $\\Delta = -2 < 0$, confirming the saddle.)",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-012",
+      "stem": "For the decoupled system $\\dot{x} = x^2 - 1$, $\\dot{y} = -y$, the fixed point $(-1,0)$ is a",
+      "options": [
+        "Saddle",
+        "Center",
+        "Unstable node",
+        "Stable node"
+      ],
+      "answer": 3,
+      "explanation": "At $(-1,0)$ the Jacobian is $\\begin{pmatrix} 2(-1) & 0 \\\\ 0 & -1 \\end{pmatrix} = \\begin{pmatrix} -2 & 0 \\\\ 0 & -1 \\end{pmatrix}$ with eigenvalues $-2$ and $-1$, both real and negative. This is a stable node.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-013",
+      "stem": "For the undamped pendulum $\\dot{x} = y$, $\\dot{y} = -\\sin x$, the linearization at $(0,0)$ predicts a",
+      "options": [
+        "Stable node",
+        "Center",
+        "Unstable spiral",
+        "Saddle"
+      ],
+      "answer": 1,
+      "explanation": "The Jacobian is $\\begin{pmatrix} 0 & 1 \\\\ -\\cos x & 0 \\end{pmatrix}$. At $(0,0)$ it is $\\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}$ with $\\tau = 0$, $\\Delta = 1 > 0$, eigenvalues $\\pm i$. The linearization predicts a center, which is genuine here because the undamped pendulum conserves energy.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-014",
+      "stem": "For the undamped pendulum $\\dot{x} = y$, $\\dot{y} = -\\sin x$, the fixed point at $(\\pi, 0)$ is a",
+      "options": [
+        "Stable spiral",
+        "Saddle",
+        "Center",
+        "Unstable node"
+      ],
+      "answer": 1,
+      "explanation": "At $(\\pi, 0)$ the Jacobian is $\\begin{pmatrix} 0 & 1 \\\\ -\\cos\\pi & 0 \\end{pmatrix} = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$ with $\\Delta = (0)(0) - (1)(1) = -1 < 0$. A negative determinant gives a saddle, corresponding to the inverted (unstable) equilibrium of the pendulum.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-015",
+      "stem": "The Hartman Grobman theorem guarantees that linearization correctly classifies a fixed point provided the fixed point is",
+      "options": [
+        "A saddle only",
+        "Hyperbolic (no eigenvalue with zero real part)",
+        "A center",
+        "On a nullcline"
+      ],
+      "answer": 1,
+      "explanation": "Hartman Grobman says the nonlinear flow is locally topologically conjugate to its linearization at a hyperbolic fixed point, meaning no eigenvalue has zero real part. Borderline cases such as centers ($\\mathrm{Re}\\,\\lambda = 0$) are not protected, since small nonlinear terms can turn a linear center into a slow spiral.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-016",
+      "stem": "A linearization predicting a center is the borderline case where nonlinear terms may change the verdict. Such a fixed point could actually be a",
+      "options": [
+        "Saddle",
+        "Spiral (stable or unstable)",
+        "Star",
+        "Node"
+      ],
+      "answer": 1,
+      "explanation": "When the Jacobian has purely imaginary eigenvalues, the fixed point is non hyperbolic, so Hartman Grobman does not apply. The higher order terms can add a small inward or outward drift, turning the predicted center into a stable or unstable spiral. It cannot become a saddle or node, since those require eigenvalues with nonzero real part already at linear order.",
+      "difficulty": "stretch",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-017",
+      "stem": "On an $x$ nullcline ($\\dot{x} = 0$), the direction of the flow is",
+      "options": [
+        "Purely horizontal",
+        "At 45 degrees",
+        "Zero everywhere",
+        "Purely vertical"
+      ],
+      "answer": 3,
+      "explanation": "On the $x$ nullcline $\\dot{x} = 0$ while generically $\\dot{y} \\ne 0$, so the velocity vector $(\\dot{x}, \\dot{y}) = (0, \\dot{y})$ points straight up or down: the flow crosses the $x$ nullcline vertically. (Horizontal crossings happen on the $y$ nullcline, where $\\dot{y} = 0$.)",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-018",
+      "stem": "For $\\dot{x} = x(3 - x - 2y)$, $\\dot{y} = y(2 - x - y)$, the boundary fixed point $(3,0)$ is a",
+      "options": [
+        "Saddle",
+        "Stable spiral",
+        "Unstable node",
+        "Stable node"
+      ],
+      "answer": 3,
+      "explanation": "At $(3,0)$: $f_x = 3 - 2(3) - 0 = -3$, $f_y = -2(3) = -6$, $g_x = -0 = 0$, $g_y = 2 - 3 - 0 = -1$. So $J = \\begin{pmatrix} -3 & -6 \\\\ 0 & -1 \\end{pmatrix}$, upper triangular with eigenvalues $-3$ and $-1$, both negative. This is a stable node.",
+      "difficulty": "stretch",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-019",
+      "stem": "The Jacobian of $\\dot{x} = f(x,y)$, $\\dot{y} = g(x,y)$ is",
+      "options": [
+        "$\\begin{pmatrix} f_x & 0 \\\\ 0 & g_y \\end{pmatrix}$",
+        "$\\begin{pmatrix} f_x & g_x \\\\ f_y & g_y \\end{pmatrix}$",
+        "$\\begin{pmatrix} f_x & f_y \\\\ g_x & g_y \\end{pmatrix}$",
+        "$\\begin{pmatrix} g_y & -f_y \\\\ -g_x & f_x \\end{pmatrix}$"
+      ],
+      "answer": 2,
+      "explanation": "The Jacobian stacks the gradients of the component functions as rows: row one is $(f_x, f_y)$ and row two is $(g_x, g_y)$. The option with the partials transposed has the columns and rows swapped, the diagonal only version drops the cross terms, and the last is the (scaled) inverse pattern.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-020",
+      "stem": "For $\\dot{x} = x(3 - x - 2y)$, $\\dot{y} = y(2 - x - y)$, the boundary fixed point $(0,2)$ is a",
+      "options": [
+        "Saddle",
+        "Center",
+        "Stable node",
+        "Unstable node"
+      ],
+      "answer": 2,
+      "explanation": "At $(0,2)$: $f_x = 3 - 0 - 2(2) = -1$, $f_y = -2(0) = 0$, $g_x = -2$, $g_y = 2 - 0 - 2(2) = -2$. So $J = \\begin{pmatrix} -1 & 0 \\\\ -2 & -2 \\end{pmatrix}$, lower triangular with eigenvalues $-1$ and $-2$, both negative. This is a stable node.",
+      "difficulty": "stretch",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-021",
+      "format": "cloze",
+      "stem": "Linearize $\\dot{x} = x - y$, $\\dot{y} = x + y$ at the origin.",
+      "solution": "The Jacobian is constant: $J = \\begin{pmatrix} 1 & -1 \\\\ 1 & 1 \\end{pmatrix}$. Its trace is $\\tau =$ {{1}} and its determinant is $\\Delta = (1)(1) - (-1)(1) =$ {{2}}. The discriminant $\\tau^2 - 4\\Delta = 4 - 8 = -4$ is negative and the real part of the eigenvalues is positive, so the origin is an {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "unstable spiral",
+            "stable spiral",
+            "saddle",
+            "center"
+          ],
+          "answer": "unstable spiral"
+        }
+      ],
+      "explanation": "$\\tau = 1 + 1 = 2$, $\\Delta = 1 - (-1) = 2$, discriminant $4 - 8 = -4 < 0$, eigenvalues $1 \\pm i$. Positive real part means an unstable spiral.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-022",
+      "format": "cloze",
+      "stem": "Find and classify the fixed points of $\\dot{x} = x^2 - 1$, $\\dot{y} = -y$.",
+      "solution": "Setting $x^2 - 1 = 0$ and $-y = 0$ gives the fixed points $(\\pm 1, 0)$. The Jacobian is $\\begin{pmatrix} 2x & 0 \\\\ 0 & -1 \\end{pmatrix}$. At $(1,0)$ the eigenvalues are $2$ and $-1$, which have opposite signs, so $(1,0)$ is a {{1}}. At $(-1,0)$ the eigenvalues are $-2$ and {{2}}, both negative, so $(-1,0)$ is a stable {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "saddle",
+            "node",
+            "spiral",
+            "center"
+          ],
+          "answer": "saddle"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "node",
+            "spiral",
+            "saddle",
+            "center"
+          ],
+          "answer": "node"
+        }
+      ],
+      "explanation": "Fixed points $(\\pm 1, 0)$. Jacobian diagonal $\\mathrm{diag}(2x, -1)$. At $(1,0)$: eigenvalues $2, -1$ (saddle). At $(-1,0)$: eigenvalues $-2, -1$ (stable node).",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-023",
+      "format": "cloze",
+      "stem": "Analyze the undamped pendulum $\\dot{x} = y$, $\\dot{y} = -\\sin x$ at its two fixed points.",
+      "solution": "The Jacobian is $\\begin{pmatrix} 0 & 1 \\\\ -\\cos x & 0 \\end{pmatrix}$. At the downward equilibrium $(0,0)$ the determinant is $\\Delta =$ {{1}} with zero trace, so the linearization gives a {{2}}. At the inverted equilibrium $(\\pi, 0)$ the determinant is {{3}}, so that fixed point is a {{4}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "center",
+            "saddle",
+            "node",
+            "spiral"
+          ],
+          "answer": "center"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "saddle",
+            "center",
+            "node",
+            "spiral"
+          ],
+          "answer": "saddle"
+        }
+      ],
+      "explanation": "At $(0,0)$: $J = \\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}$, $\\Delta = 1$, eigenvalues $\\pm i$ (center). At $(\\pi,0)$: $\\cos\\pi = -1$ so $J = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$, $\\Delta = -1$ (saddle).",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-024",
+      "format": "cloze",
+      "stem": "Classify the coexistence fixed point of $\\dot{x} = x(3 - x - 2y)$, $\\dot{y} = y(2 - x - y)$.",
+      "solution": "The interior fixed point solves $3 - x - 2y = 0$ and $2 - x - y = 0$, giving $(x^*, y^*) =$ ( {{1}} , 1 ). The Jacobian there is $\\begin{pmatrix} -1 & -2 \\\\ -1 & -1 \\end{pmatrix}$ with determinant $\\Delta = (-1)(-1) - (-2)(-1) =$ {{2}}. Because the determinant is negative, the coexistence state is a {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "saddle",
+            "stable node",
+            "center",
+            "stable spiral"
+          ],
+          "answer": "saddle"
+        }
+      ],
+      "explanation": "Subtracting the two nullcline equations: $(3 - x - 2y) - (2 - x - y) = 1 - y = 0$, so $y = 1$ and $x = 2 - y = 1$. At $(1,1)$, $\\Delta = 1 - 2 = -1 < 0$, a saddle.",
+      "difficulty": "stretch",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-025",
+      "format": "cloze",
+      "stem": "Use nullclines to organize a phase portrait.",
+      "solution": "The $x$ nullcline is the curve where $\\dot{x} = 0$, on which the flow is purely {{1}}. The $y$ nullcline is where $\\dot{y} = 0$, on which the flow is purely {{2}}. A point that lies on both nullclines simultaneously is a {{3}} of the system.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "vertical",
+            "horizontal",
+            "diagonal"
+          ],
+          "answer": "vertical"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "horizontal",
+            "vertical",
+            "diagonal"
+          ],
+          "answer": "horizontal"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "fixed point",
+            "equilibrium",
+            "fixed-point",
+            "fixed point (equilibrium)"
+          ]
+        }
+      ],
+      "explanation": "On the $x$ nullcline $\\dot{x} = 0$ so motion is vertical; on the $y$ nullcline $\\dot{y} = 0$ so motion is horizontal. Their intersection has $\\dot{x} = \\dot{y} = 0$, a fixed point (equilibrium).",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-phase-plane-analysis-026",
+      "format": "cloze",
+      "stem": "Linearize $\\dot{x} = y$, $\\dot{y} = x - x^3 - y$ at the fixed point $(1,0)$.",
+      "solution": "The Jacobian is $\\begin{pmatrix} 0 & 1 \\\\ 1 - 3x^2 & -1 \\end{pmatrix}$. At $(1,0)$ the lower left entry is $1 - 3 =$ {{1}}, giving trace $\\tau = -1$ and determinant $\\Delta =$ {{2}}. The discriminant $\\tau^2 - 4\\Delta = 1 - 8 = -7$ is negative with negative trace, so the fixed point is a {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "stable spiral",
+            "unstable spiral",
+            "saddle",
+            "stable node"
+          ],
+          "answer": "stable spiral"
+        }
+      ],
+      "explanation": "At $(1,0)$: lower left $= 1 - 3(1)^2 = -2$, so $J = \\begin{pmatrix} 0 & 1 \\\\ -2 & -1 \\end{pmatrix}$. $\\Delta = (0)(-1) - (1)(-2) = 2$, $\\tau = -1$, discriminant $1 - 8 = -7 < 0$: stable spiral.",
+      "difficulty": "stretch",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    }
+  ]
+}

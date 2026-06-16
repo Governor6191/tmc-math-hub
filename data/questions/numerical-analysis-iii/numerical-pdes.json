@@ -1,0 +1,548 @@
+{
+  "courseId": "numerical-analysis-iii",
+  "topicId": "numerical-pdes",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-001",
+      "stem": "The one-dimensional heat (diffusion) equation $u_t = \\alpha u_{xx}$ is an example of which class of PDE?",
+      "options": [
+        "Elliptic",
+        "First-order linear",
+        "Parabolic",
+        "Hyperbolic"
+      ],
+      "answer": 2,
+      "explanation": "The heat equation is the model parabolic PDE: it has one time derivative and a second space derivative, describing diffusion that smooths data over time. The wave equation is hyperbolic and Laplace's equation is elliptic.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-002",
+      "stem": "Laplace's equation $u_{xx} + u_{yy} = 0$ and the wave equation $u_{tt} = c^2 u_{xx}$ are, respectively, of which types?",
+      "options": [
+        "Both elliptic",
+        "Elliptic and hyperbolic",
+        "Hyperbolic and parabolic",
+        "Parabolic and elliptic"
+      ],
+      "answer": 1,
+      "explanation": "Laplace's equation is the model elliptic PDE (steady state, no time variable), while the wave equation is the model hyperbolic PDE (finite-speed propagation of signals). The heat equation would be the parabolic example.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-003",
+      "stem": "The explicit forward-time central-space (FTCS) scheme for $u_t = \\alpha u_{xx}$ updates an interior node by which formula, with $r = \\alpha k / h^2$?",
+      "options": [
+        "$u_i^{n+1} = u_i^n - r(u_{i-1}^n - 2u_i^n + u_{i+1}^n)$",
+        "$u_i^{n+1} = u_i^{n-1} + 2r(u_{i+1}^n - u_{i-1}^n)$",
+        "$u_i^{n+1} = u_i^n + r(u_{i-1}^n - 2u_i^n + u_{i+1}^n)$",
+        "$u_i^{n+1} = r(u_{i-1}^{n+1} - 2u_i^{n+1} + u_{i+1}^{n+1})$"
+      ],
+      "answer": 2,
+      "explanation": "FTCS uses a forward difference in time and the central second difference in space, giving $u_i^{n+1} = u_i^n + r(u_{i-1}^n - 2u_i^n + u_{i+1}^n)$ with $r = \\alpha k/h^2$. It is explicit because the new value depends only on known values at level $n$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-004",
+      "stem": "For the explicit FTCS scheme for the heat equation, the stability condition on $r = \\alpha k / h^2$ is which of the following?",
+      "options": [
+        "$r \\ge 1$",
+        "$r \\le \\tfrac{1}{2}$",
+        "$r \\le 1$",
+        "$r \\le 2$"
+      ],
+      "answer": 1,
+      "explanation": "Von Neumann analysis gives an amplification factor $1 - 4r \\sin^2(\\theta/2)$, which stays bounded by one in magnitude only when $r \\le \\frac{1}{2}$. Exceeding this makes the explicit scheme unstable, producing oscillations that grow without bound.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-005",
+      "stem": "With $\\alpha = 1$ and spatial step $h = 0.1$, what is the largest time step $k$ allowed by the explicit FTCS stability limit?",
+      "options": [
+        "$0.05$",
+        "$0.01$",
+        "$0.005$",
+        "$0.1$"
+      ],
+      "answer": 2,
+      "explanation": "Stability requires $r = \\alpha k / h^2 \\le \\frac{1}{2}$, so $k \\le \\frac{h^2}{2\\alpha} = \\frac{0.01}{2} = 0.005$. The much larger value $0.05$ would give $r = 5$, far into the unstable regime.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-006",
+      "stem": "In the FTCS update $u_i^{n+1} = r u_{i-1}^n + (1 - 2r) u_i^n + r u_{i+1}^n$, what is the coefficient of the central value $u_i^n$ when $r = \\tfrac{1}{2}$?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$\\tfrac{1}{2}$",
+        "$-1$"
+      ],
+      "answer": 0,
+      "explanation": "The centre coefficient is $1 - 2r$. At $r = \\frac{1}{2}$ this equals $1 - 1 = 0$, so the new value becomes the simple average $\\frac{1}{2}(u_{i-1}^n + u_{i+1}^n)$, dropping the old centre value entirely. This is exactly the marginal stability case.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-007",
+      "stem": "Apply one FTCS step with $r = 0.5$ to the heat equation on nodes with current values $u_{i-1} = 0$, $u_i = 1$, $u_{i+1} = 0$ (ends held fixed). What is the new $u_i$?",
+      "options": [
+        "$0.25$",
+        "$1.0$",
+        "$0.5$",
+        "$0.0$"
+      ],
+      "answer": 3,
+      "explanation": "With $r = 0.5$, $u_i^{n+1} = 0.5(u_{i-1}) + (1 - 1)(u_i) + 0.5(u_{i+1}) = 0.5(0) + 0 + 0.5(0) = 0$. Equivalently $1 + 0.5(0 - 2 + 0) = 1 - 1 = 0$. The spike is fully averaged away in one step.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-008",
+      "stem": "Apply one FTCS step with $r = 0.25$ to the same data $u_{i-1} = 0$, $u_i = 1$, $u_{i+1} = 0$. What is the new $u_i$?",
+      "options": [
+        "$0.25$",
+        "$0.50$",
+        "$0.75$",
+        "$1.00$"
+      ],
+      "answer": 1,
+      "explanation": "$u_i^{n+1} = 1 + 0.25(0 - 2(1) + 0) = 1 + 0.25(-2) = 1 - 0.5 = 0.5$. Because $r = 0.25 < \\frac{1}{2}$, the scheme is stable and the peak decays smoothly rather than overshooting.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-009",
+      "stem": "The Crank-Nicolson scheme for the heat equation has which key stability and accuracy property?",
+      "options": [
+        "Unconditionally unstable.",
+        "Conditionally stable, first order in time.",
+        "Explicit and only first order in space.",
+        "Unconditionally stable, second order in both time and space."
+      ],
+      "answer": 3,
+      "explanation": "Crank-Nicolson averages the spatial operator at time levels $n$ and $n+1$ (the trapezoidal rule in time), making it implicit, unconditionally stable, and second order accurate in both time and space, $O(k^2 + h^2)$. This lets it take much larger time steps than explicit FTCS.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-010",
+      "stem": "Why must each time step of the Crank-Nicolson (or backward-Euler) scheme solve a linear system, unlike explicit FTCS?",
+      "options": [
+        "Because it is identical to the explicit scheme.",
+        "Because it uses a forward time difference only.",
+        "Because it has no spatial derivative.",
+        "Because the new-level unknowns $u_{i-1}^{n+1}, u_i^{n+1}, u_{i+1}^{n+1}$ are coupled in each equation, forming a tridiagonal system."
+      ],
+      "answer": 3,
+      "explanation": "Implicit schemes evaluate the spatial difference at the unknown new time level, so several level-$(n+1)$ values appear together in every equation. Collecting them yields a tridiagonal linear system that must be solved each step (efficiently by the Thomas algorithm). The payoff is unconditional stability.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-011",
+      "stem": "Laplace's equation $u_{xx} + u_{yy} = 0$ on a uniform square grid is discretized by the five-point stencil. The value at an interior node equals which combination of its neighbours?",
+      "options": [
+        "$u_{i,j} = u_{i+1,j} - 2u_{i,j} + u_{i-1,j}$",
+        "$u_{i,j} = u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1}$",
+        "$u_{i,j} = \\tfrac{1}{4}(u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1})$",
+        "$u_{i,j} = \\tfrac{1}{2}(u_{i+1,j} + u_{i-1,j})$"
+      ],
+      "answer": 2,
+      "explanation": "Setting the sum of the two central second differences to zero gives $u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1} - 4u_{i,j} = 0$, so $u_{i,j}$ is the average of its four neighbours. This discrete mean-value property underlies iterative solvers like Jacobi and Gauss-Seidel.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-012",
+      "stem": "An interior node of a Laplace five-point grid has neighbour values $0$, $0$, $100$, and $100$. At the discrete solution, what is the node value?",
+      "options": [
+        "$50$",
+        "$25$",
+        "$100$",
+        "$200$"
+      ],
+      "answer": 0,
+      "explanation": "By the five-point stencil the node equals the average of its neighbours: $\\frac{0 + 0 + 100 + 100}{4} = \\frac{200}{4} = 50$. This is the discrete analogue of the harmonic mean-value property.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-013",
+      "stem": "A Laplace five-point interior node has three neighbours at $100$ and one at $0$. What is its value at the discrete solution?",
+      "options": [
+        "$25$",
+        "$50$",
+        "$100$",
+        "$75$"
+      ],
+      "answer": 3,
+      "explanation": "The node is the average $\\frac{100 + 100 + 100 + 0}{4} = \\frac{300}{4} = 75$. Averaging the four neighbours is the entire content of the discrete Laplace equation at that point.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-014",
+      "stem": "The explicit scheme for the wave equation $u_{tt} = c^2 u_{xx}$ uses central differences in both variables: $u_i^{n+1} = 2u_i^n - u_i^{n-1} + s^2(u_{i+1}^n - 2u_i^n + u_{i-1}^n)$. What is $s$ here?",
+      "options": [
+        "$s = c k^2 / h^2$",
+        "$s = c h / k$",
+        "$s = c k / h$",
+        "$s = k / (c h)$"
+      ],
+      "answer": 2,
+      "explanation": "The scheme replaces $u_{tt}$ and $u_{xx}$ by their central second differences, and the ratio that appears is the Courant number $s = c k / h$. It controls both accuracy and stability of the explicit wave scheme.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-015",
+      "stem": "The Courant-Friedrichs-Lewy (CFL) condition for the explicit wave-equation scheme requires the Courant number $s = c k / h$ to satisfy which bound?",
+      "options": [
+        "$s \\le 2$",
+        "$s \\le 1$",
+        "$s \\ge 1$",
+        "$s \\le \\tfrac{1}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "Stability of the explicit central scheme for the wave equation requires $s = c k / h \\le 1$. Physically, the numerical domain of dependence must contain the true (characteristic) domain of dependence; the time step cannot let a signal cross more than one cell per step.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-016",
+      "stem": "For the explicit wave scheme with wave speed $c = 2$ and spatial step $h = 0.1$, what is the largest stable time step $k$?",
+      "options": [
+        "$0.50$",
+        "$0.05$",
+        "$0.10$",
+        "$0.20$"
+      ],
+      "answer": 1,
+      "explanation": "The CFL condition $c k / h \\le 1$ gives $k \\le h/c = 0.1/2 = 0.05$. A step larger than this violates CFL and the explicit scheme becomes unstable regardless of how smooth the data are.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-017",
+      "stem": "What does the CFL condition express physically about a numerical scheme for a hyperbolic PDE?",
+      "options": [
+        "That round-off error is negligible.",
+        "That the scheme conserves energy exactly.",
+        "That the numerical domain of dependence must contain the analytical (physical) domain of dependence.",
+        "That the spatial grid must be nonuniform."
+      ],
+      "answer": 2,
+      "explanation": "CFL is a necessary condition for convergence of explicit schemes for hyperbolic problems: information must not physically travel farther in one time step than the stencil can see. If the true domain of dependence escapes the numerical one, the scheme cannot capture the correct solution and is unstable.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-018",
+      "stem": "Which technique is standard for analysing the stability of a linear finite-difference scheme for a PDE?",
+      "options": [
+        "Gaussian elimination of the stencil.",
+        "Von Neumann (Fourier) analysis of the amplification factor.",
+        "Newton's method on the boundary data.",
+        "Computing the determinant of the source term."
+      ],
+      "answer": 1,
+      "explanation": "Von Neumann analysis substitutes a Fourier mode $u_j^n = \\xi^n e^{i\\beta j h}$ into the scheme and demands the amplification factor satisfy $|\\xi| \\le 1$ for all wavenumbers. This yields conditions such as $r \\le \\frac{1}{2}$ (heat) or $s \\le 1$ (wave).",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-019",
+      "stem": "What is the truncation-error order of the explicit FTCS scheme for the heat equation in time and space?",
+      "options": [
+        "$O(k + h^2)$",
+        "$O(k^2 + h^2)$",
+        "$O(k + h)$",
+        "$O(k^2 + h^4)$"
+      ],
+      "answer": 0,
+      "explanation": "FTCS uses a first-order forward difference in time and a second-order central difference in space, so its local truncation error is $O(k) + O(h^2)$, i.e. $O(k + h^2)$. Crank-Nicolson improves the time accuracy to $O(k^2)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-020",
+      "stem": "Iterative methods such as Jacobi, Gauss-Seidel, and SOR are commonly used to solve the linear system from a discretized Laplace (or Poisson) equation because the matrix is which kind?",
+      "options": [
+        "Large, sparse, and structured (each row couples a node to its few neighbours).",
+        "Diagonal.",
+        "Always 2 by 2.",
+        "Dense and full."
+      ],
+      "answer": 0,
+      "explanation": "Discretizing an elliptic PDE over a 2D grid yields a very large but sparse system, since each equation links a node only to its four neighbours. Iterative relaxation methods exploit this sparsity (and the discrete averaging structure) far more cheaply than dense direct solvers, with SOR accelerating convergence.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-021",
+      "stem": "A backward-time central-space (BTCS, fully implicit) scheme for the heat equation has which stability behaviour?",
+      "options": [
+        "Unconditionally stable for any $r > 0$.",
+        "Stable only for $r \\le \\tfrac{1}{2}$.",
+        "Unstable for all $r$.",
+        "Stable only for $r \\le 1$."
+      ],
+      "answer": 0,
+      "explanation": "The fully implicit BTCS scheme has amplification factor $1/(1 + 4r\\sin^2(\\theta/2))$, whose magnitude is below one for every $r > 0$. It is therefore unconditionally stable (though only first order in time), allowing arbitrarily large time steps for stability purposes.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-022",
+      "stem": "Halving the spatial step $h$ for an explicit heat solver while keeping $\\alpha$ fixed and staying at the stability limit forces the time step $k$ to change how?",
+      "options": [
+        "$k$ may be doubled.",
+        "$k$ must be reduced by a factor of two.",
+        "$k$ must be reduced by a factor of about four.",
+        "$k$ is unchanged."
+      ],
+      "answer": 2,
+      "explanation": "At the stability limit $k = \\frac{h^2}{2\\alpha}$, so $k$ scales with $h^2$. Halving $h$ multiplies $k$ by $(1/2)^2 = 1/4$. This quadratic coupling is the main practical drawback of explicit parabolic schemes and a key reason to consider implicit methods.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-023",
+      "stem": "Compared with the explicit wave scheme, an explicit heat (FTCS) scheme has a time-step restriction that scales with which power of $h$?",
+      "options": [
+        "$k \\sim h^2$ for the heat scheme, whereas the wave scheme allows $k \\sim h$.",
+        "The heat scheme scales as $k \\sim h$ and the wave scheme as $k \\sim h^2$.",
+        "Both scale as $k \\sim h^2$.",
+        "Both scale as $k \\sim h$."
+      ],
+      "answer": 0,
+      "explanation": "Parabolic stability $r = \\alpha k/h^2 \\le \\frac{1}{2}$ gives $k \\sim h^2$, a severe restriction as the grid refines. Hyperbolic CFL $s = ck/h \\le 1$ gives the gentler $k \\sim h$. So explicit heat solvers pay a heavier price for fine grids than explicit wave solvers.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-024",
+      "stem": "Which statement correctly matches a PDE type with a standard numerical approach?",
+      "options": [
+        "Elliptic (Laplace): march forward in time with explicit Euler.",
+        "Hyperbolic (wave): explicit central differencing subject to a CFL limit.",
+        "Hyperbolic (wave): unconditionally stable for any time step.",
+        "Parabolic (heat): solve by the five-point average with no time stepping."
+      ],
+      "answer": 1,
+      "explanation": "The wave equation is hyperbolic and is naturally solved by explicit central differences in time and space, constrained by the CFL condition $s \\le 1$. Elliptic problems have no time variable (solved as a boundary-value/relaxation problem), and the heat equation does require time stepping, so the other options mismatch the type with the method.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-025",
+      "format": "cloze",
+      "stem": "Explicit FTCS for $u_t = \\alpha u_{xx}$ with $\\alpha = 1$ and $h = 0.1$. Identify the stability number and time-step limit.",
+      "solution": "The mesh ratio is $r = \\alpha k / h^2$, and explicit stability requires $r \\le$ {{1}}. With $h = 0.1$ and $\\alpha = 1$ the largest stable time step is $k =$ {{2}} (three decimals). The scheme is therefore only {{3}} stable.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.005,
+          "tolerance": 0.0005
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "conditionally",
+            "unconditionally"
+          ],
+          "answer": "conditionally"
+        }
+      ],
+      "explanation": "Stability: $r \\le \\frac{1}{2}$. Then $k \\le \\frac{h^2}{2\\alpha} = \\frac{0.01}{2} = 0.005$. Being limited by $r \\le \\frac{1}{2}$ makes the explicit scheme only conditionally stable.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-026",
+      "format": "cloze",
+      "stem": "Take one explicit FTCS step on a rod with current values $u = [0, 1, 2, 1, 0]$ at nodes $0$ through $4$ (ends fixed at $0$). Use the update $u_i^{n+1} = u_i^n + r(u_{i-1}^n - 2u_i^n + u_{i+1}^n)$.",
+      "solution": "With $r = 0.5$, the interior becomes node 1 $\\to$ {{1}}, node 2 $\\to$ {{2}}, and node 3 equals node 1 by symmetry. If instead $r = 0.25$, node 2 becomes {{3}} (the smaller $r$ diffuses the peak less). All three are exact arithmetic.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.5,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "At $r = 0.5$: node 1 $= 1 + 0.5(0 - 2 + 2) = 1$; node 2 $= 2 + 0.5(1 - 4 + 1) = 2 - 1 = 1$. At $r = 0.25$: node 2 $= 2 + 0.25(1 - 4 + 1) = 2 - 0.5 = 1.5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-027",
+      "format": "cloze",
+      "stem": "Apply the five-point stencil for Laplace's equation $u_{xx} + u_{yy} = 0$ at interior nodes.",
+      "solution": "The discrete equation makes each node the {{1}} of its four neighbours. A node with neighbours $0, 0, 100, 100$ takes the value {{2}}, while a node with neighbours $100, 100, 100, 0$ takes the value {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "average",
+            "sum",
+            "product"
+          ],
+          "answer": "average"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 50,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 75,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "The five-point stencil gives $u_{i,j} = \\frac{1}{4}(u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1})$, the average of neighbours. So $(0+0+100+100)/4 = 50$ and $(100+100+100+0)/4 = 75$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-028",
+      "format": "cloze",
+      "stem": "State the stability requirement and Courant number for the explicit wave-equation scheme with speed $c = 2$ and $h = 0.1$.",
+      "solution": "The Courant number is $s = c k / h$, and the CFL condition requires $s \\le$ {{1}}. This caps the time step at $k =$ {{2}} (three decimals). The condition that the numerical domain of dependence must contain the physical one is the {{3}} condition.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.05,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "CFL",
+            "von Neumann",
+            "Dirichlet"
+          ],
+          "answer": "CFL"
+        }
+      ],
+      "explanation": "CFL requires $s = ck/h \\le 1$, so $k \\le h/c = 0.1/2 = 0.05$. The domain-of-dependence requirement is precisely the Courant-Friedrichs-Lewy (CFL) condition.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-029",
+      "format": "cloze",
+      "stem": "Compare three time-stepping schemes for the heat equation by stability and accuracy.",
+      "solution": "Explicit FTCS is conditionally stable with time accuracy of order {{1}}. The fully implicit (backward) scheme is {{2}} stable but still first order in time. Crank-Nicolson is unconditionally stable and second order in time, achieved by applying the {{3}} rule in time.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "one",
+            "two",
+            "four"
+          ],
+          "answer": "one"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "unconditionally",
+            "conditionally",
+            "never"
+          ],
+          "answer": "unconditionally"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "trapezoidal",
+            "midpoint",
+            "Simpson"
+          ],
+          "answer": "trapezoidal"
+        }
+      ],
+      "explanation": "FTCS is first order in time ($O(k)$). Backward Euler is unconditionally stable but first order in time. Crank-Nicolson averages the two time levels, which is the trapezoidal rule in time, giving second-order accuracy and unconditional stability.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-pdes-030",
+      "format": "cloze",
+      "stem": "Classify standard PDEs and the time-step scaling of their explicit schemes.",
+      "solution": "The heat equation is {{1}}, the wave equation is {{2}}. At the stability limit, the explicit heat scheme needs the time step to scale like $h$ to the power {{3}}, which is harsher than the wave scheme's linear scaling in $h$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "parabolic",
+            "hyperbolic",
+            "elliptic"
+          ],
+          "answer": "parabolic"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "hyperbolic",
+            "parabolic",
+            "elliptic"
+          ],
+          "answer": "hyperbolic"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Heat is parabolic, wave is hyperbolic. The explicit heat limit $k = h^2/(2\\alpha)$ scales as $h^2$, while the wave CFL limit $k = h/c$ scales as $h^1$, so refining the grid penalizes the heat solver more severely.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    }
+  ]
+}

@@ -1,0 +1,547 @@
+{
+  "courseId": "numerical-analysis-iii",
+  "topicId": "numerical-odes",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-iii-numerical-odes-001",
+      "stem": "The explicit (forward) Euler method for $y' = f(t, y)$ with step size $h$ advances the solution by which formula?",
+      "options": [
+        "$y_{i+1} = y_{i-1} + 2h\\, f(t_i, y_i)$",
+        "$y_{i+1} = y_i + h\\, f(t_i, y_i)$",
+        "$y_{i+1} = y_i + h\\, f(t_{i+1}, y_{i+1})$",
+        "$y_{i+1} = y_i + \\dfrac{h}{2}\\left[f(t_i, y_i) + f(t_{i+1}, y_{i+1})\\right]$"
+      ],
+      "answer": 1,
+      "explanation": "Explicit Euler uses the slope at the known left endpoint: $y_{i+1} = y_i + h f(t_i, y_i)$. The first option evaluates $f$ at the unknown new point, which is backward (implicit) Euler. The third is the trapezoidal (implicit) rule, and the fourth is the explicit midpoint (leapfrog) two-step method.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-002",
+      "stem": "Apply one step of explicit Euler to $y' = y - t^2 + 1$ with $y(0) = 0.5$ and $h = 0.2$. What is $y_1$, the approximation to $y(0.2)$?",
+      "options": [
+        "$0.829$",
+        "$0.83$",
+        "$1.0$",
+        "$0.8$"
+      ],
+      "answer": 3,
+      "explanation": "With $f(0, 0.5) = 0.5 - 0 + 1 = 1.5$, Euler gives $y_1 = 0.5 + 0.2(1.5) = 0.8$. The values $0.829$ and $0.83$ are the much more accurate RK4 and Taylor-order-2 results; Euler is only first order, so the gap from the exact $y(0.2) \\approx 0.8293$ is expected.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-003",
+      "stem": "Take two steps of explicit Euler on $y' = t + y$ with $y(0) = 1$ and $h = 0.1$. What is $y_2$ (the estimate of $y(0.2)$)?",
+      "options": [
+        "$1.24$",
+        "$1.20$",
+        "$1.22$",
+        "$1.21$"
+      ],
+      "answer": 2,
+      "explanation": "Step 1: $y_1 = 1 + 0.1(0 + 1) = 1.1$. Step 2: $y_2 = 1.1 + 0.1(0.1 + 1.1) = 1.1 + 0.1(1.2) = 1.22$. The choice $1.24$ comes from a single RK2/midpoint step with $h = 0.2$, not from two Euler steps.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-004",
+      "stem": "The local truncation error of the explicit Euler method is $O(h^2)$, while its global error over a fixed interval is which order?",
+      "options": [
+        "$O(h^4)$",
+        "$O(h^3)$",
+        "$O(h^2)$",
+        "$O(h)$"
+      ],
+      "answer": 3,
+      "explanation": "Accumulating an $O(h^2)$ local error over $O(1/h)$ steps drops one power of $h$, so the global error of Euler is $O(h)$; Euler is a first-order method. This one-order loss between local and global error holds for one-step methods generally.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-005",
+      "stem": "Classical fourth-order Runge-Kutta (RK4) for $y' = f(t,y)$ combines four slope evaluations $k_1, k_2, k_3, k_4$. What is the final update formula?",
+      "options": [
+        "$y_{i+1} = y_i + \\dfrac{h}{2}(k_1 + k_4)$",
+        "$y_{i+1} = y_i + \\dfrac{h}{4}(k_1 + k_2 + k_3 + k_4)$",
+        "$y_{i+1} = y_i + \\dfrac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)$",
+        "$y_{i+1} = y_i + h\\, k_2$"
+      ],
+      "answer": 2,
+      "explanation": "RK4 weights the interior slopes twice: $y_{i+1} = y_i + \\frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)$, a weighted average that matches the Taylor expansion through $h^4$. A plain average $\\frac{1}{4}(k_1+k_2+k_3+k_4)$ does not reproduce the correct weights.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-006",
+      "stem": "For one RK4 step on $y' = y - t^2 + 1$ with $y(0) = 0.5$ and $h = 0.2$, the increments are $k_1 = 0.3$, $k_2 = 0.328$, $k_3 = 0.3308$, $k_4 = 0.35816$ (each already multiplied by $h$). What is $y_1$?",
+      "options": [
+        "$0.8260$",
+        "$0.8293$",
+        "$0.8500$",
+        "$0.8000$"
+      ],
+      "answer": 1,
+      "explanation": "$y_1 = 0.5 + \\frac{1}{6}(0.3 + 2(0.328) + 2(0.3308) + 0.35816) = 0.5 + \\frac{1}{6}(1.97576) \\approx 0.5 + 0.329293 = 0.829293$. This is accurate to the exact value $y(0.2) = 1.44 - 0.5e^{0.2} \\approx 0.829299$ to about five decimals, illustrating RK4's fourth-order accuracy.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-007",
+      "stem": "If the step size $h$ is halved, by what factor is the global error of classical RK4 expected to shrink?",
+      "options": [
+        "$16$",
+        "$4$",
+        "$8$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "RK4 has global order four, so the error scales like $h^4$. Halving $h$ multiplies the error by $(1/2)^4 = 1/16$; the error drops by a factor of about $16$. For comparison, Euler (order one) would improve only by a factor of $2$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-008",
+      "stem": "The backward (implicit) Euler method applied to $y' = -y$, with $y(0) = 1$ and $h = 0.1$, gives $y_1 = $ ?",
+      "options": [
+        "$0.9091$",
+        "$0.9000$",
+        "$1.1000$",
+        "$0.9048$"
+      ],
+      "answer": 0,
+      "explanation": "Backward Euler reads $y_1 = y_0 + h f(t_1, y_1) = 1 + 0.1(-y_1)$, so $y_1(1 + 0.1) = 1$ and $y_1 = 1/1.1 \\approx 0.9091$. Explicit Euler would have given $1 + 0.1(-1) = 0.9$, and the exact value is $e^{-0.1} \\approx 0.9048$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-009",
+      "stem": "Why is the backward Euler method preferred over explicit Euler for stiff initial-value problems?",
+      "options": [
+        "It does not require evaluating $f$ at all.",
+        "It has higher order of accuracy than explicit Euler.",
+        "It is explicit and therefore cheaper per step.",
+        "It is A-stable, so it stays bounded for stiff decaying problems regardless of step size."
+      ],
+      "answer": 3,
+      "explanation": "Backward Euler is A-stable: for $y' = \\lambda y$ with $\\mathrm{Re}(\\lambda) < 0$ its amplification factor $1/(1 - h\\lambda)$ has magnitude below one for every $h > 0$, so stiff transients stay bounded. It is still only first order, and being implicit it must solve for $y_{i+1}$ each step, so it is not cheaper.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-010",
+      "stem": "For the test equation $y' = \\lambda y$ with real $\\lambda = -100$, what is the largest step size $h$ for which explicit Euler remains absolutely stable?",
+      "options": [
+        "$0.02$",
+        "$0.1$",
+        "$0.01$",
+        "$1.0$"
+      ],
+      "answer": 0,
+      "explanation": "Explicit Euler is stable when $|1 + h\\lambda| \\le 1$, i.e. $-2 \\le h\\lambda \\le 0$. With $\\lambda = -100$ this requires $h \\le 2/100 = 0.02$. Beyond that the numerical solution grows without bound even though the true solution decays.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-011",
+      "stem": "The modified Euler (Heun) method applied to $y' = y - t^2 + 1$ with $y(0) = 0.5$ and $h = 0.2$ uses a predictor $\\tilde{y} = 0.8$. What is the corrected $y_1$?",
+      "options": [
+        "$0.829$",
+        "$0.850$",
+        "$0.826$",
+        "$0.800$"
+      ],
+      "answer": 2,
+      "explanation": "Heun averages the endpoint slopes. With $k_1 = f(0, 0.5) = 1.5$ and the predictor $\\tilde{y} = 0.8$, $k_2 = f(0.2, 0.8) = 0.8 - 0.04 + 1 = 1.76$. Then $y_1 = 0.5 + \\frac{0.2}{2}(1.5 + 1.76) = 0.5 + 0.1(3.26) = 0.826$. This second-order result already beats plain Euler's $0.8$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-012",
+      "stem": "The midpoint (second-order Runge-Kutta) method applied to $y' = t + y$ with $y(0) = 1$ and $h = 0.2$ gives $y_1 = $ ?",
+      "options": [
+        "$1.30$",
+        "$1.22$",
+        "$1.24$",
+        "$1.20$"
+      ],
+      "answer": 2,
+      "explanation": "Midpoint RK2 uses $k_1 = f(0,1) = 1$, then evaluates at the midpoint: $y_m = 1 + 0.1(1) = 1.1$, $k_2 = f(0.1, 1.1) = 1.2$, and $y_1 = 1 + 0.2(1.2) = 1.24$. The exact value $y(0.2) = 2e^{0.2} - 0.2 - 1 \\approx 1.2428$, so RK2 is close.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-013",
+      "stem": "Which statement correctly contrasts local truncation error (LTE) with global error for a one-step ODE method?",
+      "options": [
+        "Global error is the error of one step; LTE is the total error at the endpoint.",
+        "LTE and global error are always equal.",
+        "LTE is the error committed in a single step assuming exact past values; global error accumulates these over all steps.",
+        "LTE measures round-off only, never discretization."
+      ],
+      "answer": 2,
+      "explanation": "The local truncation error is the residual of one step starting from the exact solution value, measuring how well the formula matches the Taylor series. The global (accumulated) error is the difference between the numerical and exact solution at the end, built up over all steps, and is typically one order lower in $h$ than the LTE.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-014",
+      "stem": "The two-step Adams-Bashforth method is which type of scheme, and what is its order?",
+      "options": [
+        "Explicit, fourth order.",
+        "Explicit, second order.",
+        "Implicit, first order.",
+        "Implicit, second order."
+      ],
+      "answer": 1,
+      "explanation": "Adams-Bashforth methods are explicit multistep formulas using only past slopes. The two-step version $y_{i+1} = y_i + \\frac{h}{2}(3f_i - f_{i-1})$ is second order. Adams-Moulton formulas, by contrast, include $f_{i+1}$ and are implicit.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-015",
+      "stem": "Using the two-step Adams-Bashforth formula $y_{i+1} = y_i + \\frac{h}{2}(3f_i - f_{i-1})$ on $y' = y$ with $h = 0.1$, $y_0 = 1$, and $y_1 = 1.1$, what is $y_2$?",
+      "options": [
+        "$1.221$",
+        "$1.215$",
+        "$1.210$",
+        "$1.200$"
+      ],
+      "answer": 1,
+      "explanation": "Here $f_i = y_i$, so $f_1 = 1.1$ and $f_0 = 1$. Then $y_2 = 1.1 + \\frac{0.1}{2}(3(1.1) - 1) = 1.1 + 0.05(3.3 - 1) = 1.1 + 0.05(2.3) = 1.1 + 0.115 = 1.215$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-016",
+      "stem": "What distinguishes an Adams-Moulton method from an Adams-Bashforth method of the same step number?",
+      "options": [
+        "Adams-Moulton is explicit; Adams-Bashforth is implicit.",
+        "They are identical formulas.",
+        "Adams-Moulton includes the unknown slope $f_{i+1}$, making it implicit; Adams-Bashforth uses only known past slopes.",
+        "Adams-Moulton uses no past values, only the current one."
+      ],
+      "answer": 2,
+      "explanation": "Adams-Moulton formulas interpolate including the new point $t_{i+1}$, so $f_{i+1}$ appears on the right side and the method is implicit (and generally one order higher than the Adams-Bashforth method with the same number of past points). Adams-Bashforth uses only $f_i, f_{i-1}, \\dots$ and is explicit.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-017",
+      "stem": "In a predictor-corrector pair such as Adams-Bashforth-Moulton, what role does the predictor play?",
+      "options": [
+        "It increases the order of the corrector by two.",
+        "It is used only to estimate round-off error.",
+        "It replaces the need for any starting values.",
+        "It supplies an explicit estimate of $y_{i+1}$ so the implicit corrector can evaluate $f_{i+1}$ without solving a nonlinear equation."
+      ],
+      "answer": 3,
+      "explanation": "The explicit Adams-Bashforth predictor provides a first guess for $y_{i+1}$; that value is fed into $f(t_{i+1}, \\cdot)$ so the implicit Adams-Moulton corrector becomes an explicit evaluation instead of an algebraic solve. The difference between predicted and corrected values also gives a cheap local error estimate.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-018",
+      "stem": "Multistep methods such as Adams-Bashforth are not self-starting. How are the required initial values usually obtained?",
+      "options": [
+        "By extrapolating backward from the endpoint.",
+        "By a one-step method such as Runge-Kutta of matching order.",
+        "By guessing arbitrary values.",
+        "They are read from the differential equation directly."
+      ],
+      "answer": 1,
+      "explanation": "A $k$-step method needs $k$ starting values but the problem supplies only the single initial condition. The standard remedy is to generate the missing starting values with a self-starting one-step method, typically RK4, of order at least that of the multistep method, so the starting error does not dominate.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-019",
+      "stem": "The local truncation error of explicit Euler can be written $\\tau_{i+1} = \\frac{h}{2} y''(\\xi_i)$ for some $\\xi_i$. For $y' = y$ with $y(0) = 1$ this means the per-step error is proportional to which quantity?",
+      "options": [
+        "$h^3$ times $y'''$",
+        "$h^2$ times $y$ near that point",
+        "$h$ only, independent of $y$",
+        "the round-off unit alone"
+      ],
+      "answer": 1,
+      "explanation": "Multiplying the stated $\\tau_{i+1} = \\frac{h}{2} y''(\\xi)$ by $h$ to get the actual step error gives a contribution of order $h^2 y''(\\xi)$. Since $y' = y$ forces $y'' = y$, the per-step error grows like $h^2$ times the solution value, which is why the error is largest where $y$ is largest.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-020",
+      "stem": "A system of first-order ODEs $\\mathbf{y}' = \\mathbf{f}(t, \\mathbf{y})$ is solved by RK4. Compared with the scalar case, the vector method requires which change?",
+      "options": [
+        "The step size must be a vector, one per component.",
+        "RK4 must be replaced by Euler for systems.",
+        "The four stages $k_1, \\dots, k_4$ become vectors evaluated componentwise, and the same weighted average is applied to each component.",
+        "Nothing changes; only scalar problems can use RK4."
+      ],
+      "answer": 2,
+      "explanation": "RK4 extends directly to systems: each $k_j$ is a vector obtained by evaluating $\\mathbf{f}$ at the appropriate stage, and the update $\\mathbf{y}_{i+1} = \\mathbf{y}_i + \\frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)$ acts componentwise with a single scalar step size. Higher-order scalar ODEs are first rewritten as such systems.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-021",
+      "stem": "A second-order Taylor method for $y' = f(t,y)$ adds which term to the Euler update?",
+      "options": [
+        "Nothing; it is identical to Euler.",
+        "$\\dfrac{h^2}{2}\\, f'(t_i, y_i)$, where $f' = f_t + f_y f$ is the total derivative of $f$.",
+        "$\\dfrac{h}{2} f(t_{i+1}, y_{i+1})$.",
+        "$h^2 f(t_i, y_i)$."
+      ],
+      "answer": 1,
+      "explanation": "Taylor's method of order two keeps one more term of the expansion: $y_{i+1} = y_i + h f + \\frac{h^2}{2} f'$, where $f' = \\frac{d}{dt} f(t, y(t)) = f_t + f_y f$. This raises the order to two but requires computing the partial derivatives of $f$, which Runge-Kutta avoids.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-022",
+      "stem": "A method is called consistent for the IVP if which condition on its local truncation error holds?",
+      "options": [
+        "The amplification factor equals one.",
+        "The local truncation error stays constant as $h \\to 0$.",
+        "The local truncation error tends to zero as $h \\to 0$.",
+        "The global error equals zero for all $h$."
+      ],
+      "answer": 2,
+      "explanation": "Consistency means the difference scheme actually approximates the differential equation: its local truncation error $\\tau(h) \\to 0$ as $h \\to 0$. Consistency plus zero-stability gives convergence (the Dahlquist equivalence). It says nothing on its own about the global error at finite $h$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-023",
+      "stem": "Rank these methods from lowest to highest order of accuracy: explicit Euler, classical RK4, the modified Euler (Heun) method.",
+      "options": [
+        "Euler, Heun, RK4",
+        "Euler, RK4, Heun",
+        "Heun, Euler, RK4",
+        "RK4, Heun, Euler"
+      ],
+      "answer": 0,
+      "explanation": "Explicit Euler is first order, modified Euler (Heun) is second order, and classical Runge-Kutta is fourth order. So the increasing order is Euler, Heun, RK4. Higher order means the global error decreases faster as $h$ shrinks.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-024",
+      "stem": "Compared with RK4, why might a fourth-order Adams predictor-corrector method be preferred for a long integration?",
+      "options": [
+        "It is always more accurate than RK4 at the same step size.",
+        "It does not require any starting values.",
+        "It needs only one or two new function evaluations per step, whereas RK4 needs four, so it can be cheaper at comparable accuracy.",
+        "It is unconditionally stable for every problem."
+      ],
+      "answer": 2,
+      "explanation": "RK4 evaluates $f$ four times per step. A fourth-order Adams-Bashforth-Moulton predictor-corrector reuses stored past slopes and typically needs only one or two new evaluations of $f$ per step, which can make it substantially cheaper over a long interval at similar accuracy. Its drawbacks are the need for starting values and a smaller stability region.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-025",
+      "format": "cloze",
+      "stem": "Apply explicit Euler to $y' = y - t^2 + 1$, $y(0) = 0.5$, with $h = 0.2$. Compute the first two steps and compare with the exact solution $y(t) = (t+1)^2 - 0.5e^t$.",
+      "solution": "The first slope is $f(0, 0.5) = 1.5$, so $y_1 = 0.5 + 0.2(1.5) =$ {{1}}. Using $f(0.2, y_1) = 1.76$, the second step gives $y_2 =$ {{2}} (round to three decimals). Since Euler is a {{3}} method, these lag the exact $y(0.2) \\approx 0.829$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.8,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.152,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "first-order",
+            "second-order",
+            "fourth-order"
+          ],
+          "answer": "first-order"
+        }
+      ],
+      "explanation": "Step 1: $y_1 = 0.5 + 0.2(1.5) = 0.8$. Step 2: $f(0.2, 0.8) = 0.8 - 0.04 + 1 = 1.76$, so $y_2 = 0.8 + 0.2(1.76) = 1.152$. Euler is first order, so its global error is $O(h)$ and the gap from the exact value is sizeable.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-026",
+      "format": "cloze",
+      "stem": "Carry out one classical RK4 step on $y' = t + y$ with $y(0) = 1$ and $h = 0.1$. Report the four scaled increments and the result.",
+      "solution": "With $k_1 = f(0,1) = 1$, the next stage slope is $k_2 = f(0.05, 1 + 0.05 k_1) = 1.1$ and then $k_3 =$ {{1}} (three decimals). The final stage gives $k_4 = f(0.1, 1 + 0.1 k_3) \\approx 1.2105$, so $y_1 = 1 + \\frac{0.1}{6}(k_1 + 2k_2 + 2k_3 + k_4) \\approx$ {{2}} (four decimals). RK4 has global order {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.105,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.1103,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Slopes: $k_1 = 0 + 1 = 1$; $k_2 = 0.05 + (1 + 0.05) = 1.1$; $k_3 = 0.05 + (1 + 0.055) = 1.105$; $k_4 = 0.1 + (1 + 0.1105) = 1.2105$. Then $y_1 = 1 + \\frac{0.1}{6}(1 + 2.2 + 2.21 + 1.2105) = 1 + \\frac{0.1}{6}(6.6205) \\approx 1.1103$. RK4 is fourth order.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-027",
+      "format": "cloze",
+      "stem": "The two-step Adams-Bashforth method is $y_{i+1} = y_i + \\frac{h}{2}(3 f_i - f_{i-1})$. Apply it to $y' = y$ with $h = 0.1$, given $y_0 = 1$ and $y_1 = 1.1$.",
+      "solution": "Here $f_0 = y_0 = 1$ and $f_1 = y_1 = 1.1$, so $y_2 = 1.1 + \\frac{0.1}{2}(3(1.1) - 1) =$ {{1}} (three decimals). Adams-Bashforth is an {{2}} multistep method, and the two-step version has order {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.215,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "explicit",
+            "implicit"
+          ],
+          "answer": "explicit"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$y_2 = 1.1 + 0.05(3.3 - 1) = 1.1 + 0.05(2.3) = 1.1 + 0.115 = 1.215$. Adams-Bashforth uses only past slopes, so it is explicit; the two-step formula is second order.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-028",
+      "format": "cloze",
+      "stem": "Classify the order and accumulation behaviour of common one-step methods for an IVP.",
+      "solution": "Explicit Euler has local truncation error of order $h^2$ but global error of order {{1}}. The trapezoidal (implicit) method and the modified Euler method are both {{2}} order. For stiff problems the {{3}} Euler method is favoured because it is A-stable.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$h$",
+            "$h^2$",
+            "$h^4$"
+          ],
+          "answer": "$h$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "first",
+            "second",
+            "fourth"
+          ],
+          "answer": "second"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "backward",
+            "forward",
+            "explicit"
+          ],
+          "answer": "backward"
+        }
+      ],
+      "explanation": "Euler loses one order globally, giving $O(h)$. The trapezoidal rule and modified Euler are both second order. Backward (implicit) Euler is A-stable, so it controls stiff decaying transients for any step size, unlike forward Euler.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-029",
+      "format": "cloze",
+      "stem": "Analyse absolute stability of explicit Euler on the scalar test equation $y' = \\lambda y$.",
+      "solution": "Explicit Euler gives $y_{i+1} = (1 + h\\lambda) y_i$, so the amplification factor is $1 + h\\lambda$. Stability requires $|1 + h\\lambda| \\le 1$. For real $\\lambda = -50$, this forces $h \\le$ {{1}}. The method is therefore only {{2}} stable, in contrast to backward Euler which is {{3}} stable.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.04,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "conditionally",
+            "unconditionally"
+          ],
+          "answer": "conditionally"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "unconditionally",
+            "conditionally",
+            "never"
+          ],
+          "answer": "unconditionally"
+        }
+      ],
+      "explanation": "From $|1 + h\\lambda| \\le 1$ with $\\lambda = -50$: $-2 \\le -50 h \\le 0$ gives $h \\le 2/50 = 0.04$. Explicit Euler is only conditionally stable, while backward Euler is A-stable (unconditionally stable for decaying problems).",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-numerical-odes-030",
+      "format": "cloze",
+      "stem": "Use the modified Euler (Heun) predictor-corrector on $y' = y - t^2 + 1$, $y(0) = 0.5$, $h = 0.2$.",
+      "solution": "The predictor is explicit Euler: $\\tilde{y}_1 = 0.5 + 0.2(1.5) =$ {{1}}. The corrector slope is $f(0.2, \\tilde{y}_1) = 1.76$, so $y_1 = 0.5 + \\frac{0.2}{2}(1.5 + 1.76) =$ {{2}} (three decimals). This averaging of endpoint slopes makes Heun a {{3}}-order method.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.8,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.826,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "second",
+            "first",
+            "fourth"
+          ],
+          "answer": "second"
+        }
+      ],
+      "explanation": "Predictor: $\\tilde{y}_1 = 0.8$. Corrector slope $f(0.2, 0.8) = 0.8 - 0.04 + 1 = 1.76$, so $y_1 = 0.5 + 0.1(1.5 + 1.76) = 0.5 + 0.326 = 0.826$. Averaging the two slopes makes Heun second order, closer to the exact $0.8293$ than plain Euler's $0.8$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    }
+  ]
+}

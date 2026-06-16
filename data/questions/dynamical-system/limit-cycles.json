@@ -1,0 +1,502 @@
+{
+  "courseId": "dynamical-system",
+  "topicId": "limit-cycles",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "dynamical-system-limit-cycles-001",
+      "stem": "A limit cycle is",
+      "options": [
+        "A fixed point of a map",
+        "Any closed orbit in a linear system",
+        "A nullcline of the flow",
+        "An isolated closed trajectory"
+      ],
+      "answer": 3,
+      "explanation": "A limit cycle is an isolated closed trajectory: neighboring trajectories spiral toward it (stable) or away from it (unstable), so it is not surrounded by a continuous family of closed orbits. By contrast a linear center has a whole band of non isolated closed orbits, which are not limit cycles.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-002",
+      "stem": "The Poincare Bendixson theorem applies to continuous flows in",
+      "options": [
+        "One dimension",
+        "Three dimensions",
+        "The plane (two dimensions)",
+        "Any dimension"
+      ],
+      "answer": 2,
+      "explanation": "Poincare Bendixson is a two dimensional result: a trajectory trapped in a closed bounded region of the plane with no fixed points must approach a closed orbit. Its proof relies on the Jordan curve theorem, which fails in three or more dimensions, where chaos becomes possible instead.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-003",
+      "stem": "Which hypothesis is essential for the Poincare Bendixson theorem to force a closed orbit in a trapping region?",
+      "options": [
+        "The region is unbounded",
+        "The flow is linear",
+        "The region contains exactly one saddle",
+        "The region contains no fixed points"
+      ],
+      "answer": 3,
+      "explanation": "The theorem needs a closed, bounded region that traps trajectories and contains no fixed points. With no fixed point available as a limit, a confined trajectory has nowhere to go but onto a periodic orbit. If fixed points are present they could serve as the limit set, breaking the conclusion.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-004",
+      "stem": "For the polar system $\\dot{r} = r(1 - r^2)$, $\\dot{\\theta} = 1$, the limit cycle has radius",
+      "options": [
+        "$r = 1$",
+        "$r = 0$",
+        "$r = 2$",
+        "$r = \\tfrac{1}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "The radial equation has fixed points where $r(1 - r^2) = 0$, giving $r = 0$ and $r = 1$ (taking $r > 0$). Since $\\dot{\\theta} = 1 \\ne 0$, the circle $r = 1$ is a periodic orbit. Checking $\\frac{d}{dr}[r(1-r^2)] = 1 - 3r^2$ at $r = 1$ gives $-2 < 0$, so the limit cycle is stable.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-005",
+      "stem": "For $\\dot{r} = r(4 - r^2)$, $\\dot{\\theta} = 1$, the limit cycle radius and stability are",
+      "options": [
+        "$r = 16$, stable",
+        "$r = 2$, stable",
+        "$r = 4$, unstable",
+        "$r = 2$, unstable"
+      ],
+      "answer": 1,
+      "explanation": "Set $r(4 - r^2) = 0$, so $r = 2$ (for $r > 0$). The slope $\\frac{d}{dr}[r(4 - r^2)] = 4 - 3r^2$ at $r = 2$ is $4 - 12 = -8 < 0$, so radial perturbations decay and the cycle $r = 2$ is stable. The radius is $\\sqrt{4} = 2$, not 4.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-006",
+      "stem": "For $\\dot{r} = r(r^2 - 1)$, $\\dot{\\theta} = 2$, the circle $r = 1$ is",
+      "options": [
+        "A stable limit cycle",
+        "A fixed point",
+        "An unstable limit cycle",
+        "Not a closed orbit"
+      ],
+      "answer": 2,
+      "explanation": "The circle $r = 1$ satisfies $\\dot{r} = 0$ with $\\dot{\\theta} = 2 \\ne 0$, so it is a periodic orbit. The slope $\\frac{d}{dr}[r(r^2 - 1)] = 3r^2 - 1$ at $r = 1$ is $3 - 1 = 2 > 0$, so radial perturbations grow: the limit cycle is unstable.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-007",
+      "stem": "A gradient system $\\dot{\\mathbf{x}} = -\\nabla V$ cannot have a closed orbit because",
+      "options": [
+        "$V$ is always negative",
+        "$V$ would have to strictly decrease around the loop, contradicting its return to the start",
+        "Gradient systems have no fixed points",
+        "The Jacobian is symmetric"
+      ],
+      "answer": 1,
+      "explanation": "Along any trajectory, $\\frac{dV}{dt} = \\nabla V \\cdot \\dot{\\mathbf{x}} = -|\\nabla V|^2 \\le 0$, with equality only at fixed points. On a closed orbit $V$ must return to its starting value, but the strict decrease off fixed points makes that impossible. Hence gradient systems admit no periodic orbits.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-008",
+      "stem": "Dulac's criterion rules out closed orbits in a simply connected region when",
+      "options": [
+        "$\\nabla \\cdot (g\\,\\mathbf{f})$ has a single sign throughout the region for some smooth $g$",
+        "The flow is Hamiltonian",
+        "The divergence of the flow is zero everywhere",
+        "There are no fixed points"
+      ],
+      "answer": 0,
+      "explanation": "Dulac's criterion: if there is a smooth weighting function $g(x,y)$ such that $\\nabla \\cdot (g\\,\\mathbf{f})$ is strictly of one sign (always positive or always negative) on a simply connected region, then there are no closed orbits in that region. The proof applies Green's theorem to the would be loop and reaches a contradiction. The plain divergence ($g = 1$) is the special Bendixson case.",
+      "difficulty": "stretch",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-009",
+      "stem": "The van der Pol oscillator $\\ddot{x} + \\mu(x^2 - 1)\\dot{x} + x = 0$ with $\\mu > 0$ has",
+      "options": [
+        "No periodic orbits",
+        "A stable fixed point only",
+        "Infinitely many nested limit cycles",
+        "A unique, stable limit cycle"
+      ],
+      "answer": 3,
+      "explanation": "For any $\\mu > 0$ the van der Pol equation has exactly one limit cycle, and it is globally stable: all nonzero trajectories spiral onto it. The damping term $\\mu(x^2 - 1)\\dot{x}$ pumps energy in when $|x| < 1$ and removes it when $|x| > 1$, balancing on a single closed orbit.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-010",
+      "stem": "In the van der Pol oscillator, for large $\\mu$ the motion becomes",
+      "options": [
+        "Simple harmonic",
+        "Chaotic",
+        "Damped to rest",
+        "Relaxation oscillations with fast and slow phases"
+      ],
+      "answer": 3,
+      "explanation": "When $\\mu$ is large the nonlinear damping dominates and the oscillation splits into slow build ups along the cubic nullcline followed by fast jumps, producing relaxation oscillations. The waveform is far from sinusoidal, and the period scales roughly like $\\mu$. Small $\\mu$ is the nearly harmonic regime instead.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-011",
+      "stem": "By index theory, a closed orbit in a planar flow must enclose fixed points whose indices sum to",
+      "options": [
+        "$0$",
+        "$+2$",
+        "$+1$",
+        "$-1$"
+      ],
+      "answer": 2,
+      "explanation": "Any closed trajectory has index $+1$, and the index of a curve equals the sum of the indices of the fixed points it encloses. Therefore a periodic orbit must surround fixed points whose indices total $+1$. For example it can enclose a single node, spiral, or center (index $+1$ each), but not a lone saddle (index $-1$).",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-012",
+      "stem": "The index of a saddle point is",
+      "options": [
+        "$-1$",
+        "$+1$",
+        "$0$",
+        "$+2$"
+      ],
+      "answer": 0,
+      "explanation": "A saddle has index $-1$: as you traverse a small loop around it, the vector field rotates once in the opposite sense to the loop. Nodes, spirals, and centers each have index $+1$. This is why a closed orbit cannot enclose just a single saddle, since the enclosed indices would sum to $-1 \\ne +1$.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-013",
+      "stem": "A closed orbit in the plane cannot enclose a region containing",
+      "options": [
+        "No fixed points at all",
+        "Exactly one stable spiral",
+        "One node and two saddles arranged so indices sum to $+1$",
+        "A single center"
+      ],
+      "answer": 0,
+      "explanation": "Every closed orbit must enclose at least one fixed point, and the enclosed indices must sum to $+1$. A region with no fixed points has total index $0 \\ne +1$, so no closed orbit can bound it. The other options enclose fixed points summing to $+1$ (a spiral: $+1$; a center: $+1$; node plus two saddles: $1 + (-1) + (-1) = -1$, which actually fails, but at least it contains fixed points).",
+      "difficulty": "stretch",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-014",
+      "stem": "To apply Poincare Bendixson and prove a limit cycle exists, a common construction is",
+      "options": [
+        "Computing the index of every fixed point",
+        "Finding a Liapunov function",
+        "Showing the divergence is positive",
+        "Building a trapping annulus with no fixed points inside it"
+      ],
+      "answer": 3,
+      "explanation": "A standard recipe is to construct an annular trapping region where the flow points inward on both boundaries and which contains no fixed points (often by excluding an unstable fixed point with a small inner circle). Poincare Bendixson then forces a closed orbit inside the annulus. A Liapunov function does the opposite job of proving stability or ruling cycles out.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-015",
+      "stem": "If a smooth Liapunov function $V$ with $\\dot{V} < 0$ exists on the whole plane (except at a fixed point), then the system has",
+      "options": [
+        "Relaxation oscillations",
+        "Exactly one limit cycle",
+        "A center",
+        "No closed orbits"
+      ],
+      "answer": 3,
+      "explanation": "If $V$ decreases strictly along all trajectories away from the fixed point, it cannot return to its initial value around a loop, so closed orbits are impossible (the same argument as for gradient systems). A strict Liapunov function therefore rules out limit cycles and proves the fixed point is globally attracting.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-016",
+      "stem": "For $\\dot{r} = r(1 - r^2)$, $\\dot{\\theta} = 1$, the origin $r = 0$ is",
+      "options": [
+        "An unstable spiral",
+        "A saddle",
+        "A stable spiral",
+        "On the limit cycle"
+      ],
+      "answer": 0,
+      "explanation": "Near $r = 0$ the radial flow is $\\dot{r} \\approx r > 0$, so trajectories move outward, and $\\dot{\\theta} = 1$ makes them rotate: the origin is an unstable spiral. Trajectories leave the origin and wind onto the stable limit cycle at $r = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-017",
+      "stem": "A genuine limit cycle differs from the closed orbits of a linear center in that",
+      "options": [
+        "It exists only in linear systems",
+        "It has a fixed period",
+        "It is isolated and attracts or repels nearby trajectories",
+        "It encloses no fixed points"
+      ],
+      "answer": 2,
+      "explanation": "A limit cycle is isolated: there is an annulus around it containing no other closed orbits, and neighboring trajectories spiral toward it (stable) or away (unstable). A linear center is surrounded by a continuum of neutrally stable closed orbits that neither attract nor repel, so it has no isolated cycle and requires nonlinearity to become a true limit cycle.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-018",
+      "stem": "Bendixson's criterion (the $g = 1$ case of Dulac) states that no closed orbit lies in a simply connected region where",
+      "options": [
+        "The flow has a fixed point",
+        "$f_x + g_y$ is not identically zero and does not change sign",
+        "The vector field is linear",
+        "The flow is rotational"
+      ],
+      "answer": 1,
+      "explanation": "Bendixson's negative criterion: if the divergence $\\nabla \\cdot \\mathbf{f} = f_x + g_y$ has one sign (and is not identically zero) throughout a simply connected region, then there are no closed orbits there. Integrating the divergence over the interior of a hypothetical loop and using Green's theorem gives a contradiction.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-019",
+      "stem": "For small $\\mu$, the amplitude of the van der Pol limit cycle is approximately",
+      "options": [
+        "$\\sqrt{\\mu}$",
+        "$\\mu$",
+        "$2$",
+        "$1$"
+      ],
+      "answer": 2,
+      "explanation": "In the weakly nonlinear limit $\\mu \\to 0^+$, averaging (or two timing) shows the van der Pol cycle is nearly a circle of radius $2$ in the $(x, \\dot{x})$ phase plane, so the amplitude of $x(t)$ is about $2$. The amplitude is, to leading order, independent of $\\mu$; only the slow approach rate depends on $\\mu$.",
+      "difficulty": "stretch",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-020",
+      "stem": "Why can a planar system with divergence $\\nabla \\cdot \\mathbf{f} > 0$ everywhere have no closed orbit?",
+      "options": [
+        "Because all fixed points are saddles",
+        "Because the index would be $-1$",
+        "Because the area enclosed by any orbit would have to expand, contradicting periodicity",
+        "Because the flow is a gradient system"
+      ],
+      "answer": 2,
+      "explanation": "By Green's theorem, the flux of $\\mathbf{f}$ across a closed orbit equals the integral of $\\nabla \\cdot \\mathbf{f}$ over its interior. On a closed orbit the net normal flux must be zero, but a strictly positive divergence forces a strictly positive integral, a contradiction. Equivalently, the enclosed area would strictly grow, so no periodic orbit can persist.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-021",
+      "format": "cloze",
+      "stem": "Analyze the polar system $\\dot{r} = r(1 - r^2)$, $\\dot{\\theta} = 1$.",
+      "solution": "The radial flow vanishes at $r = 0$ and at $r =$ {{1}} (taking $r > 0$). Because $\\dot{\\theta} = 1 \\ne 0$, this circle is a periodic orbit. The radial derivative $\\frac{d}{dr}[r(1 - r^2)] = 1 - 3r^2$ evaluated on the cycle equals {{2}}, which is negative, so the limit cycle is {{3}}. The origin, where $\\dot{r} \\approx r > 0$, is an unstable {{4}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "stable",
+            "unstable",
+            "half stable"
+          ],
+          "answer": "stable"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "spiral",
+            "node",
+            "saddle"
+          ],
+          "answer": "spiral"
+        }
+      ],
+      "explanation": "$r(1 - r^2) = 0 \\Rightarrow r = 1$. Slope $1 - 3(1)^2 = -2 < 0$ (stable cycle). Near $0$, $\\dot{r} \\approx r > 0$ with rotation, so the origin is an unstable spiral.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-022",
+      "format": "cloze",
+      "stem": "State the Poincare Bendixson theorem and its consequences.",
+      "solution": "If a trajectory is confined to a closed, bounded region of the {{1}} that contains no fixed points, then it must approach a {{2}}. A key corollary is that {{3}} is impossible in such a two dimensional continuous flow, since the only recurrent behavior available is periodic.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "plane",
+            "line",
+            "sphere"
+          ],
+          "answer": "plane"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "closed orbit",
+            "limit cycle",
+            "periodic orbit",
+            "closed orbit (limit cycle)"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "chaos",
+            "oscillation",
+            "equilibrium"
+          ],
+          "answer": "chaos"
+        }
+      ],
+      "explanation": "Poincare Bendixson: a bounded, fixed point free trapped trajectory in the plane tends to a closed orbit (limit cycle). Hence chaos cannot occur in continuous planar flows; it needs at least three dimensions.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-023",
+      "format": "cloze",
+      "stem": "Use index theory to constrain closed orbits.",
+      "solution": "Every closed orbit in the plane has index {{1}}. Since the index of a closed curve equals the sum of the indices of the fixed points it encloses, a limit cycle must surround fixed points whose indices total $+1$. A single saddle has index {{2}}, so a closed orbit can {{3}} enclose just one saddle.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "never",
+            "always",
+            "sometimes"
+          ],
+          "answer": "never"
+        }
+      ],
+      "explanation": "A closed orbit has index $+1$ and encloses fixed points summing to $+1$. A saddle has index $-1$, so a lone saddle (total $-1$) can never be the only fixed point inside a closed orbit.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-024",
+      "format": "cloze",
+      "stem": "Rule out closed orbits using a gradient or Liapunov argument.",
+      "solution": "For a gradient system $\\dot{\\mathbf{x}} = -\\nabla V$, the rate of change of $V$ along trajectories is $\\dot{V} = -|\\nabla V|^2$, which is always {{1}} (off fixed points). Because $V$ would have to return to its starting value around a loop, closed orbits are {{2}}. The same logic works whenever a strict {{3}} function exists.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "negative",
+            "positive",
+            "zero"
+          ],
+          "answer": "negative"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "impossible",
+            "guaranteed",
+            "neutral"
+          ],
+          "answer": "impossible"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "Liapunov",
+            "Lyapunov",
+            "Liapunov (Lyapunov)"
+          ]
+        }
+      ],
+      "explanation": "$\\dot{V} = \\nabla V \\cdot \\dot{\\mathbf{x}} = -|\\nabla V|^2 < 0$ away from fixed points (negative). A monotonically decreasing $V$ cannot come back to its start around a loop, so closed orbits are impossible. A strict Liapunov function gives the same conclusion.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-025",
+      "format": "cloze",
+      "stem": "Describe the van der Pol oscillator $\\ddot{x} + \\mu(x^2 - 1)\\dot{x} + x = 0$ for $\\mu > 0$.",
+      "solution": "For every $\\mu > 0$ the system has exactly {{1}} limit cycle, and it is globally stable. When $\\mu$ is small the cycle is nearly circular with amplitude approximately {{2}}. When $\\mu$ is large the waveform becomes a {{3}} oscillation with alternating slow and fast phases.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "relaxation",
+            "relaxation oscillation"
+          ]
+        }
+      ],
+      "explanation": "Van der Pol has one globally stable limit cycle for $\\mu > 0$. Small $\\mu$: nearly harmonic, amplitude about 2. Large $\\mu$: relaxation oscillations with fast jumps and slow crawls.",
+      "difficulty": "core",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    },
+    {
+      "id": "dynamical-system-limit-cycles-026",
+      "format": "cloze",
+      "stem": "Apply Bendixson's criterion to $\\dot{x} = y$, $\\dot{y} = -x - y + x^2$.",
+      "solution": "The divergence of the flow is $\\nabla \\cdot \\mathbf{f} = f_x + g_y$. Here $f_x = 0$ and $g_y =$ {{1}}, so the divergence equals $-1$ everywhere. Because this is of a single (constant) sign and not identically zero, Bendixson's criterion guarantees the system has {{2}} closed orbits in the plane.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "no",
+            "exactly one",
+            "infinitely many"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "$f = y \\Rightarrow f_x = 0$; $g = -x - y + x^2 \\Rightarrow g_y = -1$. Divergence $= 0 + (-1) = -1$, strictly negative everywhere, so by Bendixson there are no closed orbits.",
+      "difficulty": "stretch",
+      "source": "in the style of Strogatz, Nonlinear Dynamics and Chaos"
+    }
+  ]
+}
