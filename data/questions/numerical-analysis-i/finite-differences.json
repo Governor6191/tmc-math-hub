@@ -1,0 +1,509 @@
+{
+  "courseId": "numerical-analysis-i",
+  "topicId": "finite-differences",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-i-finite-differences-001",
+      "stem": "For a function tabulated at equal spacing $h$, the forward difference $\\Delta f(x)$ is defined as which of the following?",
+      "options": [
+        "$f(x) - f(x - h)$",
+        "$\\dfrac{f(x + h) - f(x - h)}{2}$",
+        "$f(x + h) - 2f(x) + f(x - h)$",
+        "$f(x + h) - f(x)$"
+      ],
+      "answer": 3,
+      "explanation": "By definition the forward difference operator steps forward by one interval: $\\Delta f(x) = f(x + h) - f(x)$. The option $f(x) - f(x - h)$ is the backward difference $\\nabla f(x)$, the symmetric quotient $\\frac{f(x + h) - f(x - h)}{2}$ is a central difference average, and $f(x + h) - 2f(x) + f(x - h)$ is the second central difference $\\delta^2 f(x)$. The trap is confusing forward with backward: forward reaches the next point ahead, backward looks one point behind.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-002",
+      "stem": "Given the values $f(0) = 1$, $f(1) = 4$, $f(2) = 9$, $f(3) = 16$ with $h = 1$, what is the second forward difference $\\Delta^2 f(0)$?",
+      "options": [
+        "$1$",
+        "$5$",
+        "$2$",
+        "$3$"
+      ],
+      "answer": 2,
+      "explanation": "First differences are $\\Delta f(0) = 4 - 1 = 3$, $\\Delta f(1) = 9 - 4 = 5$, $\\Delta f(2) = 16 - 9 = 7$. The second difference is $\\Delta^2 f(0) = \\Delta f(1) - \\Delta f(0) = 5 - 3 = 2$. Since the data are the squares $f(x) = (x + 1)^2$, a degree-two polynomial, the second differences are constant at $2!\\cdot 1\\cdot h^2 = 2$, confirming the value. The option $3$ and $5$ are first differences, and $1$ halves the true result.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-003",
+      "stem": "The backward difference operator $\\nabla$ and the shift operator $E$ satisfy which exact relation?",
+      "options": [
+        "$\\nabla = E^{1/2} - E^{-1/2}$",
+        "$\\nabla = 1 - E^{-1}$",
+        "$\\nabla = 1 - E$",
+        "$\\nabla = E - 1$"
+      ],
+      "answer": 1,
+      "explanation": "By definition $\\nabla f(x) = f(x) - f(x - h)$. Writing $f(x - h) = E^{-1} f(x)$, this is $\\nabla f(x) = f(x) - E^{-1} f(x) = (1 - E^{-1})f(x)$, so $\\nabla = 1 - E^{-1}$. The relation $E - 1$ is the forward operator $\\Delta$, $E^{1/2} - E^{-1/2}$ is the central difference $\\delta$, and $1 - E$ has the wrong sign. The trap is forgetting that backward differences pull the argument back by $h$, which is the inverse shift $E^{-1}$, not $E$ itself.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-004",
+      "stem": "For a polynomial of degree $n$ with leading coefficient $a_n$, tabulated at spacing $h$, the $n$th forward difference $\\Delta^n f$ equals which constant?",
+      "options": [
+        "$a_n\\, n!\\, h^n$",
+        "$a_n\\, h^n$",
+        "$a_n\\, n!$",
+        "$a_n\\, (n + 1)!\\, h^n$"
+      ],
+      "answer": 0,
+      "explanation": "For $f(x) = a_n x^n + \\cdots$, each application of $\\Delta$ lowers the degree by one and the $n$th difference of $x^n$ is the constant $n!\\,h^n$. Multiplying by the leading coefficient gives $\\Delta^n f = a_n\\, n!\\, h^n$, and all higher differences vanish. Dropping the $h^n$ assumes unit spacing, dropping the $n!$ forgets the factorial that accumulates across $n$ differencing steps, and $(n + 1)!$ over-counts by one factor. The trap is omitting either the factorial or the power of $h$, both of which appear once the chain of differences is carried out.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-005",
+      "stem": "Using the values $f(1) = 2$, $f(2) = 4$, $f(3) = 8$, $f(4) = 16$ with $h = 1$, what is the third forward difference $\\Delta^3 f(1)$?",
+      "options": [
+        "$0$",
+        "$4$",
+        "$2$",
+        "$6$"
+      ],
+      "answer": 2,
+      "explanation": "First differences: $2, 4, 8$. Second differences: $4 - 2 = 2$, $8 - 4 = 4$. Third difference: $4 - 2 = 2$. So $\\Delta^3 f(1) = 2$. These values double each step, so the differences also keep growing rather than collapsing to zero, which rules out $0$. The option $4$ is a second difference, and $6$ does not arise from this table.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-006",
+      "stem": "Which operator identity correctly relates the central difference $\\delta$ to the shift operator $E$?",
+      "options": [
+        "$\\delta = E^{1/2} + E^{-1/2}$",
+        "$\\delta = E^{1/2} - E^{-1/2}$",
+        "$\\delta = \\dfrac{1}{2}\\left(E - E^{-1}\\right)$",
+        "$\\delta = E - E^{-1}$"
+      ],
+      "answer": 1,
+      "explanation": "The central difference is $\\delta f(x) = f\\!\\left(x + \\tfrac{h}{2}\\right) - f\\!\\left(x - \\tfrac{h}{2}\\right)$, which in operator form is $\\delta = E^{1/2} - E^{-1/2}$ because the half-step shift is $E^{1/2}$. The option $E - E^{-1}$ uses full steps instead of half steps, $\\frac{1}{2}(E - E^{-1})$ is the averaged central-difference combination tied to $\\mu\\delta$, and $E^{1/2} + E^{-1/2}$ is twice the averaging operator $\\mu$. The trap is using full shifts: the defining feature of $\\delta$ is the half-interval offset.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-007",
+      "stem": "The shift operator $E$ expressed in terms of the forward difference operator $\\Delta$ is which of the following?",
+      "options": [
+        "$E = \\Delta - 1$",
+        "$E = 1 + \\Delta$",
+        "$E = \\dfrac{1}{1 - \\Delta}$",
+        "$E = 1 - \\Delta$"
+      ],
+      "answer": 1,
+      "explanation": "Since $\\Delta f(x) = f(x + h) - f(x) = (E - 1)f(x)$, we have $\\Delta = E - 1$, and solving gives $E = 1 + \\Delta$. The option $\\Delta - 1$ rearranges incorrectly, $1 - \\Delta$ flips a sign, and $\\frac{1}{1 - \\Delta}$ is the series form associated with summation, not the shift itself. The trap is sign management when inverting $\\Delta = E - 1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-008",
+      "stem": "A fourth-degree polynomial is tabulated at equal spacing. Beyond which order do all of its forward differences become exactly zero?",
+      "options": [
+        "After the third differences",
+        "They never become zero",
+        "After the fifth differences",
+        "After the fourth differences"
+      ],
+      "answer": 3,
+      "explanation": "For a polynomial of degree $n$, the $n$th differences are constant and every difference of order higher than $n$ is zero. With $n = 4$, the fourth differences are constant and the fifth and all higher differences vanish, so they become zero after the fourth differences. The option after the third underestimates the degree, after the fifth keeps one nonzero order too many, and never becoming zero would describe a non-polynomial. The trap is off-by-one in matching the differencing order to the polynomial degree.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-009",
+      "stem": "Given $f(0) = 1$, $f(1) = 0$, $f(2) = 1$, $f(3) = 10$ with $h = 1$, compute $\\Delta^3 f(0)$.",
+      "options": [
+        "$6$",
+        "$12$",
+        "$10$",
+        "$8$"
+      ],
+      "answer": 0,
+      "explanation": "First differences: $0 - 1 = -1$, $1 - 0 = 1$, $10 - 1 = 9$. Second differences: $1 - (-1) = 2$, $9 - 1 = 8$. Third difference: $8 - 2 = 6$, so $\\Delta^3 f(0) = 6$. The expansion $\\Delta^3 f(0) = f(3) - 3f(2) + 3f(1) - f(0) = 10 - 3 + 0 - 1 = 6$ confirms it. The option $8$ is a second difference, $10$ is a tabulated value, and $12$ doubles part of the work. The trap is reading the wrong column or mishandling the signs in the binomial expansion.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-010",
+      "stem": "The $n$th forward difference can be written directly from function values as $\\Delta^n f(x) = \\sum_{k=0}^{n} (-1)^k \\binom{n}{k} f(x + (n - k)h)$. Using this, $\\Delta^2 f(x)$ equals which expression?",
+      "options": [
+        "$f(x + 2h) - f(x)$",
+        "$f(x + h) - 2f(x) + f(x - h)$",
+        "$f(x + 2h) - 2f(x + h) + f(x)$",
+        "$f(x + 2h) + 2f(x + h) + f(x)$"
+      ],
+      "answer": 2,
+      "explanation": "With $n = 2$ the binomial coefficients are $1, 2, 1$ and the alternating signs give $\\Delta^2 f(x) = f(x + 2h) - 2f(x + h) + f(x)$. The option $f(x + 2h) - f(x)$ skips the middle term, the all-plus version drops the alternating signs, and $f(x + h) - 2f(x) + f(x - h)$ is the second central difference $\\delta^2 f(x)$ rather than the forward one. The trap is mixing up the forward stencil, which uses points ahead, with the symmetric central stencil.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-011",
+      "stem": "Which identity correctly expresses the product $\\Delta\\nabla$ in terms of the central difference operator?",
+      "options": [
+        "$\\Delta\\nabla = \\delta$",
+        "$\\Delta\\nabla = \\delta^2$",
+        "$\\Delta\\nabla = \\Delta + \\nabla$",
+        "$\\Delta\\nabla = 2\\delta$"
+      ],
+      "answer": 1,
+      "explanation": "Using $\\Delta = E - 1$ and $\\nabla = 1 - E^{-1}$, the product is $\\Delta\\nabla = (E - 1)(1 - E^{-1}) = E - 1 - 1 + E^{-1} = E - 2 + E^{-1}$. Since $\\delta^2 = (E^{1/2} - E^{-1/2})^2 = E - 2 + E^{-1}$, we get $\\Delta\\nabla = \\delta^2$. The option $\\delta$ is only the first central difference, $\\Delta + \\nabla$ gives $E - E^{-1}$, and $2\\delta$ does not match the expansion. The trap is stopping at $\\delta$ rather than recognizing the squared central operator.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-012",
+      "stem": "From the difference table with leading entries $f(0) = 3$, $\\Delta f(0) = 4$, $\\Delta^2 f(0) = 2$ and all higher differences zero, what is $f(2)$? (Spacing $h = 1$.)",
+      "options": [
+        "$15$",
+        "$11$",
+        "$9$",
+        "$13$"
+      ],
+      "answer": 3,
+      "explanation": "Build forward: $f(1) = f(0) + \\Delta f(0) = 3 + 4 = 7$. The next first difference is $\\Delta f(1) = \\Delta f(0) + \\Delta^2 f(0) = 4 + 2 = 6$. Then $f(2) = f(1) + \\Delta f(1) = 7 + 6 = 13$. The option $11$ forgets to update the first difference by $\\Delta^2$, $9$ adds only the original $\\Delta f(0)$ once more, and $15$ over-adds. The trap is treating the first difference as constant when a nonzero second difference makes it grow by $2$ each step.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-013",
+      "stem": "The relation between the differential operator $D$ (where $Df = f'$) and the shift operator $E$ for spacing $h$ is which of the following?",
+      "options": [
+        "$E = hD$",
+        "$E = e^{hD}$",
+        "$E = 1 + hD$",
+        "$E = \\ln(hD)$"
+      ],
+      "answer": 1,
+      "explanation": "Taylor's theorem gives $f(x + h) = \\sum_{k=0}^{\\infty} \\frac{(hD)^k}{k!} f(x) = e^{hD} f(x)$, so $E = e^{hD}$. The option $1 + hD$ is only the first two terms of that exponential series, $hD$ drops the constant term entirely, and $\\ln(hD)$ inverts the relationship wrongly. The trap is truncating the exponential: the full operator is the exponential of $hD$, from which $hD = \\ln E = \\ln(1 + \\Delta)$ follows.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-014",
+      "stem": "For the factorial polynomial $x^{(3)} = x(x - 1)(x - 2)$ with unit spacing, the forward difference $\\Delta x^{(3)}$ equals which expression?",
+      "options": [
+        "$x^{(2)}$",
+        "$3x^{(2)}$",
+        "$3x^{(3)}$",
+        "$2x^{(2)}$"
+      ],
+      "answer": 1,
+      "explanation": "Factorial polynomials behave under $\\Delta$ like powers under differentiation: $\\Delta x^{(n)} = n\\, x^{(n-1)}$ for unit spacing. With $n = 3$ this gives $\\Delta x^{(3)} = 3x^{(2)}$. Checking directly, $x^{(3)} = x(x-1)(x-2)$ and $(x+1)^{(3)} = (x+1)x(x-1)$, so the difference is $x(x-1)[(x+1) - (x-2)] = 3x(x-1) = 3x^{(2)}$. The option $x^{(2)}$ drops the factor $3$, $3x^{(3)}$ keeps the wrong order, and $2x^{(2)}$ uses the wrong exponent. The trap is forgetting that the factorial power, not the ordinary power, is what makes differencing mimic differentiation.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-015",
+      "stem": "Given $f(2) = 5$, $f(4) = 11$, $f(6) = 31$ with spacing $h = 2$, what is $\\Delta^2 f(2)$?",
+      "options": [
+        "$6$",
+        "$14$",
+        "$20$",
+        "$26$"
+      ],
+      "answer": 1,
+      "explanation": "First differences: $\\Delta f(2) = 11 - 5 = 6$ and $\\Delta f(4) = 31 - 11 = 20$. The second difference is $\\Delta^2 f(2) = 20 - 6 = 14$. The spacing $h = 2$ does not change how differences are formed from listed values, only how they relate to derivatives. The option $20$ and $6$ are first differences, and $26$ adds them instead of subtracting. The trap is adding the first differences rather than subtracting the earlier from the later.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-016",
+      "stem": "The averaging operator $\\mu$ is defined so that $\\mu f(x) = \\tfrac{1}{2}\\left[f\\!\\left(x + \\tfrac{h}{2}\\right) + f\\!\\left(x - \\tfrac{h}{2}\\right)\\right]$. In operator form $\\mu$ equals which of the following?",
+      "options": [
+        "$E^{1/2} + E^{-1/2}$",
+        "$\\dfrac{1}{2}\\left(E^{1/2} - E^{-1/2}\\right)$",
+        "$\\dfrac{1}{2}\\left(E^{1/2} + E^{-1/2}\\right)$",
+        "$\\dfrac{1}{2}\\left(E + E^{-1}\\right)$"
+      ],
+      "answer": 2,
+      "explanation": "The half-step shifts are $E^{1/2}$ and $E^{-1/2}$, so averaging them gives $\\mu = \\frac{1}{2}(E^{1/2} + E^{-1/2})$. The option with a minus sign is half the central difference $\\delta$, the version without the $\\frac{1}{2}$ is twice $\\mu$, and $\\frac{1}{2}(E + E^{-1})$ uses full steps instead of half steps. The trap is using full shifts: like $\\delta$, the operator $\\mu$ is built from half-interval offsets, and a useful check is $\\mu^2 = 1 + \\tfrac{1}{4}\\delta^2$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-017",
+      "stem": "If the third differences of a tabulated function are constant and nonzero while the fourth differences are zero, the data are best represented by a polynomial of which degree?",
+      "options": [
+        "Degree 4",
+        "Degree 3",
+        "Degree 5",
+        "Degree 2"
+      ],
+      "answer": 1,
+      "explanation": "Constant $n$th differences with zero $(n+1)$th differences are the signature of a degree-$n$ polynomial. Here the third differences are constant, so the data fit a cubic, degree 3. Degree 2 would have constant second differences, degree 4 would need the fourth differences to be the constant nonzero ones, and degree 5 even higher. The trap is misreading which order of differences first becomes constant; that order equals the degree.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-018",
+      "stem": "Which of the following is the correct operator relation $\\Delta - \\nabla$ in terms of $\\delta$?",
+      "options": [
+        "$\\Delta - \\nabla = 2\\delta$",
+        "$\\Delta - \\nabla = \\delta^2$",
+        "$\\Delta - \\nabla = 0$",
+        "$\\Delta - \\nabla = \\delta$"
+      ],
+      "answer": 1,
+      "explanation": "Using $\\Delta = E - 1$ and $\\nabla = 1 - E^{-1}$, the difference is $\\Delta - \\nabla = (E - 1) - (1 - E^{-1}) = E - 2 + E^{-1} = \\delta^2$. The option $\\delta$ is only first order, $0$ would require $\\Delta$ and $\\nabla$ to be equal which they are not, and $2\\delta$ does not match. The trap is assuming $\\Delta$ and $\\nabla$ cancel; instead their difference reproduces the squared central operator, the same result as $\\Delta\\nabla$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-019",
+      "stem": "A value in a difference table is suspected to carry an error $\\varepsilon$. In the column of third differences, the error propagates with binomial coefficients $1, 3, 3, 1$ and alternating signs. The largest-magnitude error contribution appearing in that column is which multiple of $\\varepsilon$?",
+      "options": [
+        "$\\varepsilon$",
+        "$3\\varepsilon$",
+        "$6\\varepsilon$",
+        "$2\\varepsilon$"
+      ],
+      "answer": 1,
+      "explanation": "A single error $\\varepsilon$ in the function column spreads into the $n$th difference column with the binomial coefficients of $(1 - 1)^n$ pattern, namely $\\binom{n}{k}$ with alternating signs. For third differences these coefficients are $1, -3, 3, -1$, so the entries are $\\varepsilon, -3\\varepsilon, 3\\varepsilon, -\\varepsilon$, and the largest magnitude is $3\\varepsilon$. The option $\\varepsilon$ is the smallest contribution, $2\\varepsilon$ is not a binomial coefficient here, and $6\\varepsilon$ would be the peak only at the sixth-difference column. The trap is forgetting that the middle binomial coefficients, not the end ones, give the largest error amplification.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-020",
+      "stem": "Given $f(0) = 0$, $f(1) = 1$, $f(2) = 8$, $f(3) = 27$, $f(4) = 64$ with $h = 1$, what is the constant value reached in the third forward difference column?",
+      "options": [
+        "$9$",
+        "$6$",
+        "$12$",
+        "$3$"
+      ],
+      "answer": 1,
+      "explanation": "The data are cubes $f(x) = x^3$. First differences: $1, 7, 19, 37$. Second differences: $6, 12, 18$. Third differences: $6, 6$. The third difference column is constant at $6$, which agrees with $\\Delta^3 f = a_3\\, 3!\\, h^3 = 1\\cdot 6\\cdot 1 = 6$ for a cubic with leading coefficient $1$. The option $3$ halves it, $12$ is a second difference, and $9$ does not appear. The trap is misreading a second difference as the constant; only the third differences settle to a single repeated value.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-021",
+      "stem": "Which statement about the operators $\\Delta$, $\\nabla$, and $E$ is correct?",
+      "options": [
+        "$\\Delta = E\\nabla$",
+        "$\\Delta = \\nabla$",
+        "$\\Delta = E^{-1}\\nabla$",
+        "$\\nabla = E\\Delta$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $E\\nabla = E(1 - E^{-1}) = E - 1 = \\Delta$, so $\\Delta = E\\nabla$. Equivalently $\\nabla = E^{-1}\\Delta$. The option $\\nabla = E\\Delta$ applies the shift in the wrong direction, $\\Delta = E^{-1}\\nabla$ shifts the wrong way as well, and $\\Delta = \\nabla$ is false because forward and backward differences of the same function generally differ. The trap is the direction of the shift connecting the two operators: a forward shift turns backward differences into forward ones.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-022",
+      "stem": "The forward difference of a product, $\\Delta\\left[f(x)g(x)\\right]$, is given by which of the following exact identities (with $h$ the spacing)?",
+      "options": [
+        "$f(x)\\,\\Delta g(x) + g(x + h)\\,\\Delta f(x)$",
+        "$f(x)\\,\\Delta g(x) + g(x)\\,\\Delta f(x)$",
+        "$f(x)\\,\\Delta g(x) - g(x + h)\\,\\Delta f(x)$",
+        "$\\Delta f(x)\\,\\Delta g(x)$"
+      ],
+      "answer": 0,
+      "explanation": "Expand $\\Delta[fg] = f(x + h)g(x + h) - f(x)g(x)$. Add and subtract $f(x)g(x + h)$: this equals $f(x)[g(x + h) - g(x)] + g(x + h)[f(x + h) - f(x)] = f(x)\\,\\Delta g(x) + g(x + h)\\,\\Delta f(x)$. The naive option mirrors the calculus product rule but uses $g(x)$ where the discrete rule needs the shifted $g(x + h)$, the third option flips a sign, and $\\Delta f\\,\\Delta g$ keeps only a higher-order term. The trap is assuming the discrete product rule looks exactly like the differential one; the shift on the second factor is essential.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-023",
+      "format": "cloze",
+      "stem": "Construct the forward difference table for $f(0) = 1$, $f(1) = 3$, $f(2) = 7$, $f(3) = 13$ with $h = 1$, then read off the leading differences.",
+      "solution": "The first forward difference $\\Delta f(0) = f(1) - f(0)$ equals {{1}}. Continuing, the first differences are $2, 4, 6$, so the second difference $\\Delta^2 f(0)$ is the constant value {{2}}. Because that second difference is constant and nonzero, the data fit a polynomial of degree {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "First differences are $3 - 1 = 2$, $7 - 3 = 4$, $13 - 7 = 6$. Second differences are $4 - 2 = 2$ and $6 - 4 = 2$, constant at $2$. Constant second differences mark a degree-two polynomial.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-024",
+      "format": "cloze",
+      "stem": "Relate the standard difference and shift operators by completing each identity.",
+      "solution": "The forward difference satisfies $\\Delta =$ {{1}} in terms of the shift operator $E$. The central difference operator is defined by $\\delta = E^{1/2} -$ {{2}}. Finally, the product $\\Delta\\nabla$ simplifies to the squared operator {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$E - 1$",
+            "$1 - E^{-1}$",
+            "$E + 1$",
+            "$1 - E$"
+          ],
+          "answer": "$E - 1$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$E^{-1/2}$",
+            "$E^{1/2}$",
+            "$E^{-1}$",
+            "$1$"
+          ],
+          "answer": "$E^{-1/2}$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\delta$",
+            "$\\delta^2$",
+            "$\\nabla^2$",
+            "$\\Delta^2$"
+          ],
+          "answer": "$\\delta^2$"
+        }
+      ],
+      "explanation": "By definition $\\Delta = E - 1$ and $\\delta = E^{1/2} - E^{-1/2}$. The product $\\Delta\\nabla = (E - 1)(1 - E^{-1}) = E - 2 + E^{-1} = \\delta^2$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-025",
+      "format": "cloze",
+      "stem": "For the cubic data $f(0) = 2$, $f(1) = 3$, $f(2) = 10$, $f(3) = 29$, $f(4) = 66$ with $h = 1$, work down the difference table.",
+      "solution": "The first differences are $1, 7, 19, 37$, and the second differences are $6, 12,$ {{1}}. The third differences then settle to the constant value {{2}}. For a cubic $a x^3 + \\cdots$ this constant equals $a\\cdot 3!\\cdot h^3$, so the leading coefficient $a$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 18,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Second differences: $7 - 1 = 6$, $19 - 7 = 12$, $37 - 19 = 18$. Third differences: $12 - 6 = 6$ and $18 - 12 = 6$, constant at $6$. Since $a\\cdot 6\\cdot 1 = 6$, the leading coefficient is $a = 1$, consistent with $f(x) = x^3 - x^2 + x + 2$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-026",
+      "format": "cloze",
+      "stem": "Use the expansion $\\Delta^n f(0) = \\sum_{k=0}^{n} (-1)^k \\binom{n}{k} f((n-k)h)$ for the data $f(0) = 1$, $f(1) = 2$, $f(2) = 5$, $f(3) = 10$ with $h = 1$.",
+      "solution": "For $n = 2$ the stencil is $f(2) - 2f(1) + f(0)$, which evaluates to {{1}}. For $n = 3$ the stencil $f(3) - 3f(2) + 3f(1) - f(0)$ evaluates to {{2}}. A zero third difference here would signal a polynomial of degree at most {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Second difference: $5 - 2(2) + 1 = 5 - 4 + 1 = 2$. Third difference: $10 - 3(5) + 3(2) - 1 = 10 - 15 + 6 - 1 = 0$. A vanishing third difference means the data are reproduced by a polynomial of degree at most $2$; here the values $1, 2, 5, 10$ are exactly $f(x) = x^2 + 1$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-027",
+      "format": "cloze",
+      "stem": "A function value $f_2$ in an otherwise exact column carries an error $\\varepsilon$. Track how the error spreads into the difference columns.",
+      "solution": "In the first difference column the single error produces entries $+\\varepsilon$ and $-\\varepsilon$, so its largest magnitude is {{1}} times $\\varepsilon$. In the second difference column the error pattern follows the coefficients $1, -2, 1$, giving a largest magnitude of {{2}} times $\\varepsilon$. In general the $n$th difference column amplifies a single error by binomial coefficients drawn from row $n$ of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Pascal's triangle",
+            "the Fibonacci sequence",
+            "the harmonic series",
+            "a geometric series"
+          ],
+          "answer": "Pascal's triangle"
+        }
+      ],
+      "explanation": "An isolated error $\\varepsilon$ enters the $n$th differences with signs and magnitudes given by $(-1)^k\\binom{n}{k}$. First differences: coefficients $1, 1$, peak $\\varepsilon$. Second differences: coefficients $1, 2, 1$, peak $2\\varepsilon$. These binomial coefficients are exactly the rows of Pascal's triangle.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-finite-differences-028",
+      "format": "cloze",
+      "stem": "Build the forward difference table for $f(1) = 4$, $f(2) = 9$, $f(3) = 16$, $f(4) = 25$ with $h = 1$ and extend it to predict the next value.",
+      "solution": "The first differences are $5, 7, 9$ and the second differences are constant at {{1}}. Extending the pattern, the next first difference after $9$ is {{2}}, so the predicted value $f(5)$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 11,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 36,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "First differences: $9 - 4 = 5$, $16 - 9 = 7$, $25 - 16 = 9$; second differences constant at $2$. The next first difference is $9 + 2 = 11$, so $f(5) = 25 + 11 = 36$. The data are $f(x) = (x + 1)^2$, and indeed $(5 + 1)^2 = 36$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    }
+  ]
+}

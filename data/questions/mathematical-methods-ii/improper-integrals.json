@@ -1,0 +1,596 @@
+{
+  "courseId": "mathematical-methods-ii",
+  "topicId": "improper-integrals",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-methods-ii-improper-integrals-001",
+      "stem": "Evaluate $\\displaystyle\\int_1^\\infty \\frac{1}{x^2}\\,dx$.",
+      "options": [
+        "$1$",
+        "diverges",
+        "$2$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "Compute the limit $\\lim_{b\\to\\infty}\\int_1^b x^{-2}\\,dx = \\lim_{b\\to\\infty}\\left[-\\frac{1}{x}\\right]_1^b = \\lim_{b\\to\\infty}\\left(-\\frac{1}{b} + 1\\right) = 1$. Since $p = 2 > 1$, the $p$-test guarantees convergence. The option diverges misremembers the $p$-test, the option $2$ doubles the result, and $\\frac{1}{2}$ mishandles the antiderivative. The trap is the boundary term: $-\\frac{1}{b} \\to 0$, leaving the lower-limit value $1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-002",
+      "stem": "Evaluate $\\displaystyle\\int_1^\\infty \\frac{1}{x}\\,dx$.",
+      "options": [
+        "diverges",
+        "$1$",
+        "$0$",
+        "$\\ln 2$"
+      ],
+      "answer": 0,
+      "explanation": "The antiderivative is $\\ln x$, so $\\int_1^b \\frac{1}{x}\\,dx = \\ln b - \\ln 1 = \\ln b$, and $\\lim_{b\\to\\infty}\\ln b = \\infty$. Since $p = 1$, the $p$-test puts this exactly at the divergent boundary. The option $1$ confuses this with $\\int_1^\\infty x^{-2}\\,dx$, the option $0$ ignores the growth of $\\ln b$, and $\\ln 2$ uses the wrong upper limit. The trap is the critical case $p = 1$: the logarithm grows without bound, so the integral diverges.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-003",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty e^{-3x}\\,dx$.",
+      "options": [
+        "$\\dfrac{1}{3}$",
+        "diverges",
+        "$3$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $\\lim_{b\\to\\infty}\\int_0^b e^{-3x}\\,dx = \\lim_{b\\to\\infty}\\left[-\\frac{1}{3}e^{-3x}\\right]_0^b = \\lim_{b\\to\\infty}\\left(-\\frac{1}{3}e^{-3b} + \\frac{1}{3}\\right) = \\frac{1}{3}$. The general result $\\int_0^\\infty e^{-ax}\\,dx = \\frac{1}{a}$ gives $\\frac{1}{3}$ at $a = 3$. The option $3$ inverts the answer, $1$ forgets the $\\frac{1}{3}$ from integrating, and diverges ignores the decay. The trap is the constant from integrating $e^{-ax}$: it divides by $a$, giving $\\frac{1}{3}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-004",
+      "stem": "For which values of $p$ does $\\displaystyle\\int_1^\\infty \\frac{1}{x^p}\\,dx$ converge?",
+      "options": [
+        "$p < 1$",
+        "$p > 1$",
+        "$p \\ge 1$",
+        "all $p > 0$"
+      ],
+      "answer": 1,
+      "explanation": "For $p \\ne 1$, $\\int_1^b x^{-p}\\,dx = \\frac{b^{1-p} - 1}{1 - p}$. As $b \\to \\infty$, the term $b^{1-p}$ stays finite only when $1 - p < 0$, that is $p > 1$, giving the value $\\frac{1}{p - 1}$. At $p = 1$ the integral is $\\ln b$, which diverges. The option $p < 1$ describes convergence near $0$, not near $\\infty$, the option $p \\ge 1$ wrongly includes the divergent case $p = 1$, and all $p > 0$ ignores the test. The trap is the direction of the tail: out at infinity, larger powers decay faster, so convergence needs $p > 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-005",
+      "stem": "Evaluate $\\displaystyle\\int_0^1 \\frac{1}{\\sqrt{x}}\\,dx$.",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "$1$",
+        "diverges",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "This is improper at $x = 0$. Compute $\\lim_{a\\to 0^+}\\int_a^1 x^{-1/2}\\,dx = \\lim_{a\\to 0^+}\\left[2\\sqrt{x}\\right]_a^1 = \\lim_{a\\to 0^+}\\left(2 - 2\\sqrt{a}\\right) = 2$. Since the exponent is $p = \\frac{1}{2} < 1$, the integral converges near $0$. The option diverges misreads the near-zero $p$-test, $1$ mishandles the antiderivative, and $\\frac{1}{2}$ inverts it. The trap is the near-zero test: at the lower endpoint, convergence needs $p < 1$, and $\\frac{1}{2}$ qualifies.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-006",
+      "stem": "Evaluate $\\displaystyle\\int_0^1 \\frac{1}{x^2}\\,dx$.",
+      "options": [
+        "$2$",
+        "diverges",
+        "$1$",
+        "$-1$"
+      ],
+      "answer": 1,
+      "explanation": "Improper at $x = 0$: $\\lim_{a\\to 0^+}\\int_a^1 x^{-2}\\,dx = \\lim_{a\\to 0^+}\\left[-\\frac{1}{x}\\right]_a^1 = \\lim_{a\\to 0^+}\\left(-1 + \\frac{1}{a}\\right) = \\infty$. With $p = 2 \\ge 1$, the near-zero $p$-test gives divergence. The option $1$ ignores the blow-up of $\\frac{1}{a}$, the option $-1$ keeps only the finite boundary term, and $2$ guesses. The trap is the endpoint where the integrand blows up: near $0$, the power $p = 2$ is too large, so it diverges.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-007",
+      "stem": "Evaluate $\\displaystyle\\int_1^\\infty \\frac{1}{x^3}\\,dx$.",
+      "options": [
+        "diverges",
+        "$\\dfrac{1}{2}$",
+        "$1$",
+        "$\\dfrac{1}{3}$"
+      ],
+      "answer": 1,
+      "explanation": "Use $\\int_1^\\infty x^{-p}\\,dx = \\frac{1}{p - 1}$ for $p > 1$. With $p = 3$ this is $\\frac{1}{3 - 1} = \\frac{1}{2}$. Directly, $\\left[-\\frac{1}{2x^2}\\right]_1^\\infty = 0 + \\frac{1}{2}$. The option $\\frac{1}{3}$ uses $\\frac{1}{p}$ instead of $\\frac{1}{p - 1}$, the option $1$ forgets the $\\frac{1}{2}$, and diverges misapplies the test. The trap is the formula $\\frac{1}{p - 1}$: with $p = 3$ the denominator is $2$, not $3$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-008",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty \\frac{1}{1 + x^2}\\,dx$.",
+      "options": [
+        "$\\dfrac{\\pi}{2}$",
+        "$\\dfrac{\\pi}{4}$",
+        "$\\pi$",
+        "diverges"
+      ],
+      "answer": 0,
+      "explanation": "The antiderivative is $\\arctan x$, so $\\lim_{b\\to\\infty}\\left[\\arctan x\\right]_0^b = \\lim_{b\\to\\infty}\\arctan b - \\arctan 0 = \\frac{\\pi}{2} - 0 = \\frac{\\pi}{2}$. The option $\\pi$ is the full-line integral $\\int_{-\\infty}^\\infty$, the option $\\frac{\\pi}{4}$ uses an upper limit of $1$ rather than $\\infty$, and diverges ignores that $\\arctan$ has a finite limit. The trap is the limit of arctangent: $\\arctan b \\to \\frac{\\pi}{2}$ as $b \\to \\infty$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-009",
+      "stem": "Evaluate $\\displaystyle\\int_{-\\infty}^\\infty \\frac{1}{1 + x^2}\\,dx$.",
+      "options": [
+        "diverges",
+        "$\\dfrac{\\pi}{2}$",
+        "$2\\pi$",
+        "$\\pi$"
+      ],
+      "answer": 3,
+      "explanation": "Split at $0$ or use symmetry: the integrand is even, so $\\int_{-\\infty}^\\infty = 2\\int_0^\\infty \\frac{dx}{1 + x^2} = 2\\cdot\\frac{\\pi}{2} = \\pi$. Equivalently $\\left[\\arctan x\\right]_{-\\infty}^\\infty = \\frac{\\pi}{2} - \\left(-\\frac{\\pi}{2}\\right) = \\pi$. The option $\\frac{\\pi}{2}$ is the half-line value, $2\\pi$ doubles once too often, and diverges is wrong since both tails converge. The trap is using the full range: arctangent runs from $-\\frac{\\pi}{2}$ to $\\frac{\\pi}{2}$, spanning $\\pi$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-010",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty x e^{-x^2}\\,dx$.",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "diverges",
+        "$1$",
+        "$\\dfrac{\\sqrt{\\pi}}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "Substitute $u = x^2$, $du = 2x\\,dx$, so $x\\,dx = \\frac{1}{2}\\,du$, and the limits run from $0$ to $\\infty$. Then $\\int_0^\\infty x e^{-x^2}\\,dx = \\frac{1}{2}\\int_0^\\infty e^{-u}\\,du = \\frac{1}{2}\\cdot 1 = \\frac{1}{2}$. The option $1$ forgets the $\\frac{1}{2}$ from the substitution, $\\frac{\\sqrt{\\pi}}{2}$ confuses this with the Gaussian $\\int_0^\\infty e^{-x^2}\\,dx$, and diverges ignores the rapid decay. The trap is the spare factor of $x$: it provides $\\frac{1}{2}\\,du$, turning the integral into a clean $\\int_0^\\infty e^{-u}\\,du$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-011",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty x e^{-x}\\,dx$.",
+      "options": [
+        "$1$",
+        "$0$",
+        "diverges",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "Integrate by parts with $u = x$, $dv = e^{-x}\\,dx$, so $v = -e^{-x}$: $\\int_0^\\infty x e^{-x}\\,dx = \\left[-x e^{-x}\\right]_0^\\infty + \\int_0^\\infty e^{-x}\\,dx = 0 + 1 = 1$. The boundary term vanishes because $x e^{-x} \\to 0$. This equals $\\Gamma(2) = 1! = 1$. The option $0$ keeps only the boundary term, $2$ would be $\\Gamma(3) = 2!$, and diverges ignores exponential decay. The trap is the boundary term: $x e^{-x} \\to 0$ at infinity, so only $\\int_0^\\infty e^{-x}\\,dx = 1$ remains.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-012",
+      "stem": "Does $\\displaystyle\\int_1^\\infty \\frac{1}{x^2 + 1}\\,dx$ converge, and if so to what?",
+      "options": [
+        "converges to $\\dfrac{\\pi}{3}$",
+        "converges to $\\dfrac{\\pi}{4}$",
+        "converges to $\\dfrac{\\pi}{2}$",
+        "diverges"
+      ],
+      "answer": 1,
+      "explanation": "The antiderivative is $\\arctan x$, so $\\left[\\arctan x\\right]_1^\\infty = \\frac{\\pi}{2} - \\arctan 1 = \\frac{\\pi}{2} - \\frac{\\pi}{4} = \\frac{\\pi}{4}$. The option $\\frac{\\pi}{2}$ forgets to subtract the lower-limit value $\\arctan 1$, $\\frac{\\pi}{3}$ uses the wrong special angle, and diverges is incorrect since the integrand behaves like $x^{-2}$ for large $x$. The trap is the lower limit: $\\arctan 1 = \\frac{\\pi}{4}$ must be subtracted.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-013",
+      "stem": "Using the comparison test, what can you conclude about $\\displaystyle\\int_1^\\infty \\frac{1}{x^2 + x}\\,dx$?",
+      "options": [
+        "It converges by comparison with $\\dfrac{1}{x^2}$.",
+        "It diverges by comparison with $\\dfrac{1}{x}$.",
+        "The comparison test gives no information.",
+        "It diverges by comparison with $\\dfrac{1}{x^2}$."
+      ],
+      "answer": 0,
+      "explanation": "For $x \\ge 1$, $x^2 + x > x^2$, so $\\frac{1}{x^2 + x} < \\frac{1}{x^2}$. Since $\\int_1^\\infty \\frac{1}{x^2}\\,dx$ converges, the smaller positive integrand also converges by direct comparison. The option comparing with $\\frac{1}{x}$ picks a divergent bound that points the wrong way, the option claiming divergence by $\\frac{1}{x^2}$ misstates the conclusion, and the no-information option ignores a clean bound. The trap is the direction of the inequality: bounding above by a convergent integral forces convergence.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-014",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty e^{-x}\\cos x\\,dx$.",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "diverges",
+        "$1$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "This is the Laplace transform of $\\cos x$ evaluated at $s = 1$: $\\mathcal{L}\\{\\cos x\\} = \\frac{s}{s^2 + 1}$, so at $s = 1$ the value is $\\frac{1}{1 + 1} = \\frac{1}{2}$. The integral converges because $e^{-x}$ dominates the bounded cosine. The option $1$ forgets the denominator, $0$ wrongly assumes the oscillation cancels, and diverges ignores the exponential damping. The trap is recognizing the transform: $\\int_0^\\infty e^{-sx}\\cos x\\,dx = \\frac{s}{s^2 + 1}$ at $s = 1$ gives $\\frac{1}{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-015",
+      "stem": "Evaluate $\\displaystyle\\int_1^\\infty \\frac{\\ln x}{x^2}\\,dx$.",
+      "options": [
+        "$1$",
+        "$2$",
+        "$0$",
+        "diverges"
+      ],
+      "answer": 0,
+      "explanation": "Integrate by parts with $u = \\ln x$, $dv = x^{-2}\\,dx$, so $v = -\\frac{1}{x}$: $\\int_1^\\infty \\frac{\\ln x}{x^2}\\,dx = \\left[-\\frac{\\ln x}{x}\\right]_1^\\infty + \\int_1^\\infty \\frac{1}{x^2}\\,dx$. The boundary term is $0$ at both ends, and the remaining integral is $1$, so the value is $1$. The option $0$ keeps only the vanishing boundary term, $2$ doubles, and diverges ignores that $\\frac{\\ln x}{x^2}$ decays fast enough. The trap is the boundary term: $\\frac{\\ln x}{x} \\to 0$ as $x \\to \\infty$, leaving $\\int_1^\\infty x^{-2}\\,dx = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-016",
+      "stem": "Evaluate $\\displaystyle\\int_2^\\infty \\frac{1}{x^2}\\,dx$.",
+      "options": [
+        "$\\dfrac{1}{4}$",
+        "$2$",
+        "$\\dfrac{1}{2}$",
+        "$1$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $\\left[-\\frac{1}{x}\\right]_2^\\infty = 0 - \\left(-\\frac{1}{2}\\right) = \\frac{1}{2}$. The lower limit $2$ contributes the value $\\frac{1}{2}$. The option $\\frac{1}{4}$ wrongly squares the lower limit in the boundary term, $1$ uses a lower limit of $1$, and $2$ inverts the fraction. The trap is the lower-limit substitution: $-\\frac{1}{x}$ at $x = 2$ gives $-\\frac{1}{2}$, and subtracting it yields $\\frac{1}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-017",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty e^{-x/2}\\,dx$.",
+      "options": [
+        "diverges",
+        "$2$",
+        "$\\dfrac{1}{2}$",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "Here $a = \\frac{1}{2}$, and $\\int_0^\\infty e^{-ax}\\,dx = \\frac{1}{a} = \\frac{1}{1/2} = 2$. Directly, $\\left[-2e^{-x/2}\\right]_0^\\infty = 0 + 2$. The option $\\frac{1}{2}$ uses $a$ instead of $\\frac{1}{a}$, $1$ forgets the constant, and diverges ignores the decay. The trap is the reciprocal: a small rate $a = \\frac{1}{2}$ gives a large area $\\frac{1}{a} = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-018",
+      "stem": "Evaluate $\\displaystyle\\int_0^2 \\frac{1}{\\sqrt{2 - x}}\\,dx$.",
+      "options": [
+        "diverges",
+        "$\\sqrt{2}$",
+        "$2$",
+        "$2\\sqrt{2}$"
+      ],
+      "answer": 3,
+      "explanation": "Improper at $x = 2$. Let $u = 2 - x$, $du = -dx$; as $x$ goes from $0$ to $2$, $u$ goes from $2$ to $0$. The integral becomes $\\int_0^2 u^{-1/2}\\,du = \\left[2\\sqrt{u}\\right]_0^2 = 2\\sqrt{2}$. The option $\\sqrt{2}$ drops the factor of $2$ from the antiderivative, $2$ forgets the $\\sqrt{2}$, and diverges misjudges the $p = \\frac{1}{2} < 1$ singularity, which is integrable. The trap is the substitution and the integrable singularity: a $\\frac{1}{2}$ power at the endpoint converges, and $\\int_0^2 u^{-1/2}\\,du = 2\\sqrt{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-019",
+      "stem": "Evaluate $\\displaystyle\\int_{-\\infty}^0 e^{x}\\,dx$.",
+      "options": [
+        "$-1$",
+        "$1$",
+        "diverges",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $\\lim_{a\\to -\\infty}\\int_a^0 e^{x}\\,dx = \\lim_{a\\to -\\infty}\\left[e^{x}\\right]_a^0 = \\lim_{a\\to -\\infty}\\left(1 - e^{a}\\right) = 1 - 0 = 1$. As $a \\to -\\infty$, $e^{a} \\to 0$. The option $0$ ignores the upper-limit value $e^0 = 1$, $-1$ flips a sign, and diverges is wrong since $e^x$ decays as $x \\to -\\infty$. The trap is the lower tail: $e^{a} \\to 0$, leaving the upper-limit value $1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-020",
+      "stem": "By the comparison test, what happens to $\\displaystyle\\int_1^\\infty \\frac{2 + \\sin x}{x}\\,dx$?",
+      "options": [
+        "It converges.",
+        "The test is inconclusive.",
+        "It converges to $2\\ln 2$.",
+        "It diverges."
+      ],
+      "answer": 3,
+      "explanation": "Since $\\sin x \\ge -1$, the numerator satisfies $2 + \\sin x \\ge 1$, so $\\frac{2 + \\sin x}{x} \\ge \\frac{1}{x}$ for $x \\ge 1$. Because $\\int_1^\\infty \\frac{1}{x}\\,dx$ diverges, the larger positive integrand also diverges by comparison. The option converges ignores that the lower bound diverges, the specific value $2\\ln 2$ pretends the integral is finite, and inconclusive overlooks a clean bound. The trap is bounding below by a divergent integral: that forces divergence.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-021",
+      "stem": "Evaluate $\\displaystyle\\int_0^1 \\ln x\\,dx$.",
+      "options": [
+        "$-1$",
+        "diverges",
+        "$1$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "Improper at $x = 0$. An antiderivative is $x\\ln x - x$, so $\\lim_{a\\to 0^+}\\left[x\\ln x - x\\right]_a^1 = (1\\cdot 0 - 1) - \\lim_{a\\to 0^+}(a\\ln a - a)$. Since $a\\ln a \\to 0$ and $a \\to 0$, the lower limit contributes $0$, giving $-1 - 0 = -1$. The option $0$ misses the upper-limit value, $1$ flips the sign, and diverges ignores that $a\\ln a \\to 0$. The trap is the limit $a\\ln a \\to 0$: the singularity at $0$ is mild enough for the integral to converge to $-1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-022",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty 2 e^{-4x}\\,dx$.",
+      "options": [
+        "$\\dfrac{1}{4}$",
+        "$2$",
+        "$\\dfrac{1}{2}$",
+        "$8$"
+      ],
+      "answer": 2,
+      "explanation": "Factor the constant: $2\\int_0^\\infty e^{-4x}\\,dx = 2\\cdot\\frac{1}{4} = \\frac{1}{2}$, using $\\int_0^\\infty e^{-ax}\\,dx = \\frac{1}{a}$ with $a = 4$. The option $8$ multiplies by $a$ instead of dividing, $\\frac{1}{4}$ forgets the leading $2$, and $2$ ignores the integral entirely. The trap is combining the constant with the $\\frac{1}{a}$: $2\\cdot\\frac{1}{4} = \\frac{1}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-023",
+      "stem": "For which values of $p$ does $\\displaystyle\\int_0^1 \\frac{1}{x^p}\\,dx$ converge?",
+      "options": [
+        "all real $p$",
+        "$p \\ge 1$",
+        "$p > 1$",
+        "$p < 1$"
+      ],
+      "answer": 3,
+      "explanation": "Near $x = 0$, $\\int_a^1 x^{-p}\\,dx = \\frac{1 - a^{1-p}}{1 - p}$ for $p \\ne 1$. As $a \\to 0^+$, the term $a^{1-p}$ stays finite only when $1 - p > 0$, that is $p < 1$, giving the value $\\frac{1}{1 - p}$. At $p = 1$ the integral is $-\\ln a$, which diverges. The option $p > 1$ is the test at infinity, not at zero, $p \\ge 1$ wrongly includes $p = 1$, and all real $p$ ignores the singularity. The trap is the endpoint: near $0$, smaller powers are integrable, so convergence needs $p < 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-024",
+      "stem": "Evaluate $\\displaystyle\\int_3^\\infty \\frac{1}{x^2 - 1}\\,dx$ using partial fractions.",
+      "options": [
+        "diverges",
+        "$\\ln 2$",
+        "$\\dfrac{1}{2}\\ln\\dfrac{3}{2}$",
+        "$\\dfrac{1}{2}\\ln 2$"
+      ],
+      "answer": 3,
+      "explanation": "Write $\\frac{1}{x^2 - 1} = \\frac{1}{2}\\left(\\frac{1}{x - 1} - \\frac{1}{x + 1}\\right)$, so the antiderivative is $\\frac{1}{2}\\ln\\left|\\frac{x - 1}{x + 1}\\right|$. As $x \\to \\infty$ the argument tends to $1$, giving $\\frac{1}{2}\\ln 1 = 0$. At $x = 3$ it is $\\frac{1}{2}\\ln\\frac{2}{4} = \\frac{1}{2}\\ln\\frac{1}{2}$. The integral is $0 - \\frac{1}{2}\\ln\\frac{1}{2} = \\frac{1}{2}\\ln 2$. The option $\\frac{1}{2}\\ln\\frac{3}{2}$ uses the wrong endpoint ratio, $\\ln 2$ forgets the $\\frac{1}{2}$, and diverges ignores the cancellation. The trap is the limit $\\frac{x-1}{x+1} \\to 1$, so only the lower endpoint $-\\frac{1}{2}\\ln\\frac{1}{2}$ survives, and $-\\ln\\frac{1}{2} = \\ln 2$ gives $\\frac{1}{2}\\ln 2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-025",
+      "stem": "Does $\\displaystyle\\int_1^\\infty \\frac{1}{\\sqrt{x}}\\,dx$ converge or diverge?",
+      "options": [
+        "converges to $\\dfrac{1}{2}$",
+        "converges to $2$",
+        "diverges",
+        "converges to $1$"
+      ],
+      "answer": 2,
+      "explanation": "Here the exponent is $p = \\frac{1}{2}$. For the tail at infinity, $\\int_1^\\infty x^{-p}\\,dx$ converges only when $p > 1$, and $\\frac{1}{2} < 1$, so it diverges. Directly, $\\left[2\\sqrt{x}\\right]_1^\\infty = \\infty$. The option converges to $2$ confuses this with the near-zero integral $\\int_0^1 x^{-1/2}\\,dx = 2$, the value $1$ guesses, and $\\frac{1}{2}$ inverts. The trap is the location of the tail: at infinity $p = \\frac{1}{2}$ is too small, so the integral diverges even though the same power converges near $0$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-026",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty x^2 e^{-x}\\,dx$.",
+      "options": [
+        "diverges",
+        "$1$",
+        "$6$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "This is $\\Gamma(3) = 2! = 2$, using $\\int_0^\\infty x^{n}e^{-x}\\,dx = n!$. By parts twice: $\\int_0^\\infty x^2 e^{-x}\\,dx = \\left[-x^2 e^{-x}\\right]_0^\\infty + 2\\int_0^\\infty x e^{-x}\\,dx = 0 + 2\\cdot 1 = 2$. The option $1$ would be $\\Gamma(2)$, the option $6$ would be $\\Gamma(4) = 3!$, and diverges ignores the decay. The trap is the factorial index: $\\int_0^\\infty x^2 e^{-x}\\,dx = 2! = 2$, not $3! = 6$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-027",
+      "stem": "Evaluate $\\displaystyle\\int_{-\\infty}^\\infty x e^{-x^2}\\,dx$.",
+      "options": [
+        "$1$",
+        "$0$",
+        "$\\sqrt{\\pi}$",
+        "diverges"
+      ],
+      "answer": 1,
+      "explanation": "The integrand $x e^{-x^2}$ is an odd function, and it is integrable over the whole line because each tail converges. By symmetry the integral over $(-\\infty, \\infty)$ is $0$: the contributions from $x > 0$ and $x < 0$ cancel exactly. The option $1$ ignores the sign change, $\\sqrt{\\pi}$ confuses this with the even Gaussian, and diverges is wrong since both tails converge. The trap is odd symmetry: an odd integrand over a symmetric, convergent range integrates to $0$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-028",
+      "stem": "Evaluate $\\displaystyle\\int_e^\\infty \\frac{1}{x(\\ln x)^2}\\,dx$.",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "diverges",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "Substitute $u = \\ln x$, $du = \\frac{1}{x}\\,dx$; as $x$ runs from $e$ to $\\infty$, $u$ runs from $1$ to $\\infty$. The integral becomes $\\int_1^\\infty \\frac{1}{u^2}\\,du = 1$. The option $\\frac{1}{2}$ misreads the resulting $p = 2$ integral, $2$ doubles it, and diverges forgets that $\\int_1^\\infty u^{-2}\\,du$ converges. The trap is the substitution: $\\frac{1}{x}\\,dx = du$ turns the integral into the convergent $\\int_1^\\infty u^{-2}\\,du = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-029",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty \\frac{1}{(1 + x)^2}\\,dx$.",
+      "options": [
+        "$2$",
+        "diverges",
+        "$1$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "answer": 2,
+      "explanation": "Let $u = 1 + x$, $du = dx$; the limits run from $1$ to $\\infty$. The integral becomes $\\int_1^\\infty u^{-2}\\,du = \\left[-\\frac{1}{u}\\right]_1^\\infty = 0 + 1 = 1$. The option $\\frac{1}{2}$ misapplies the $p$-formula, $2$ doubles, and diverges ignores that the shifted $p = 2$ integral converges. The trap is the shift: $u = 1 + x$ moves the lower limit to $1$, giving $\\int_1^\\infty u^{-2}\\,du = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-030",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty \\frac{x}{(1 + x^2)^2}\\,dx$.",
+      "options": [
+        "diverges",
+        "$\\dfrac{1}{4}$",
+        "$1$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "answer": 3,
+      "explanation": "Let $u = 1 + x^2$, $du = 2x\\,dx$, so $x\\,dx = \\frac{1}{2}\\,du$; the limits run from $1$ to $\\infty$. The integral becomes $\\frac{1}{2}\\int_1^\\infty u^{-2}\\,du = \\frac{1}{2}\\left[-\\frac{1}{u}\\right]_1^\\infty = \\frac{1}{2}(0 + 1) = \\frac{1}{2}$. The option $1$ forgets the $\\frac{1}{2}$ from the substitution, $\\frac{1}{4}$ halves once too often, and diverges ignores the decay. The trap is the spare $x$: it supplies $\\frac{1}{2}\\,du$, leaving $\\frac{1}{2}\\int_1^\\infty u^{-2}\\,du = \\frac{1}{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-031",
+      "format": "cloze",
+      "stem": "Evaluate $\\displaystyle\\int_1^\\infty \\frac{1}{x^4}\\,dx$ using the formula $\\int_1^\\infty x^{-p}\\,dx = \\dfrac{1}{p - 1}$ for $p > 1$.",
+      "solution": "Here the exponent is $p = 4$, which is greater than $1$, so the integral converges. The denominator of the value is $p - 1$, that is {{1}}. Therefore the integral equals the fraction {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{3}$",
+            "$\\dfrac{1}{4}$",
+            "$\\dfrac{1}{5}$",
+            "$3$"
+          ],
+          "answer": "$\\dfrac{1}{3}$"
+        }
+      ],
+      "explanation": "With $p = 4 > 1$ the integral converges to $\\frac{1}{p - 1} = \\frac{1}{3}$. The denominator is $p - 1 = 3$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-032",
+      "format": "cloze",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty e^{-5x}\\,dx$ using $\\int_0^\\infty e^{-ax}\\,dx = \\dfrac{1}{a}$.",
+      "solution": "Here the decay rate is $a = 5$, so the integral converges. Its value is the reciprocal of $a$, namely {{1}}. The integral converges because the integrand decays as $x$ grows, which requires $a$ to be {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{5}$",
+            "$5$",
+            "$\\dfrac{1}{25}$",
+            "$1$"
+          ],
+          "answer": "$\\dfrac{1}{5}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "positive",
+            "negative"
+          ],
+          "answer": "positive"
+        }
+      ],
+      "explanation": "With $a = 5$ the value is $\\frac{1}{a} = \\frac{1}{5}$. Convergence of $\\int_0^\\infty e^{-ax}\\,dx$ requires $a > 0$, that is $a$ positive.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-033",
+      "format": "cloze",
+      "stem": "Apply the $p$-test at the lower endpoint to $\\displaystyle\\int_0^1 \\frac{1}{x^p}\\,dx$.",
+      "solution": "Near $x = 0$, this integral converges exactly when $p$ is less than the value {{1}}. For example, with $p = \\dfrac{1}{2}$ the integral converges and equals $\\dfrac{1}{1 - p}$, which works out to {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Convergence at the lower endpoint requires $p < 1$. With $p = \\frac{1}{2}$ the value is $\\frac{1}{1 - 1/2} = \\frac{1}{1/2} = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-034",
+      "format": "cloze",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty \\frac{1}{1 + x^2}\\,dx$ as a limit of $\\arctan x$.",
+      "solution": "The antiderivative is $\\arctan x$. As $x \\to \\infty$, $\\arctan x$ approaches the limit {{1}}. At the lower limit, $\\arctan 0$ equals {{2}}. So the integral equals $\\dfrac{\\pi}{2}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{\\pi}{2}$",
+            "$\\pi$",
+            "$\\dfrac{\\pi}{4}$",
+            "$\\infty$"
+          ],
+          "answer": "$\\dfrac{\\pi}{2}$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "As $x \\to \\infty$, $\\arctan x \\to \\frac{\\pi}{2}$, and $\\arctan 0 = 0$, so the integral is $\\frac{\\pi}{2} - 0 = \\frac{\\pi}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-035",
+      "format": "cloze",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty x e^{-x^2}\\,dx$ by the substitution $u = x^2$.",
+      "solution": "With $u = x^2$, the differential is $du = c\\,x\\,dx$, where the constant $c$ is {{1}}. So $x\\,dx = \\dfrac{1}{2}\\,du$, and the integral becomes $\\dfrac{1}{2}\\int_0^\\infty e^{-u}\\,du$. Since $\\int_0^\\infty e^{-u}\\,du = 1$, the final value is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{2}$",
+            "$1$",
+            "$2$",
+            "$\\dfrac{1}{4}$"
+          ],
+          "answer": "$\\dfrac{1}{2}$"
+        }
+      ],
+      "explanation": "Differentiating $u = x^2$ gives $du = 2x\\,dx$, so $c = 2$ and $x\\,dx = \\frac{1}{2}\\,du$. Then $\\frac{1}{2}\\int_0^\\infty e^{-u}\\,du = \\frac{1}{2}\\cdot 1 = \\frac{1}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-improper-integrals-036",
+      "format": "cloze",
+      "stem": "Use the comparison test on $\\displaystyle\\int_1^\\infty \\frac{1}{x^3 + 1}\\,dx$.",
+      "solution": "For $x \\ge 1$ we have $x^3 + 1 > x^3$, so the integrand is smaller than $\\dfrac{1}{x^3}$. The comparison integral $\\int_1^\\infty \\dfrac{1}{x^3}\\,dx$ converges because its exponent $p = 3$ satisfies $p > 1$. Therefore the original integral {{1}}. The correct comparison function to bound it above is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges"
+          ],
+          "answer": "converges"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{x^3}$",
+            "$\\dfrac{1}{x}$",
+            "$\\dfrac{1}{x^2 + 1}$",
+            "$x^3$"
+          ],
+          "answer": "$\\dfrac{1}{x^3}$"
+        }
+      ],
+      "explanation": "Since $\\frac{1}{x^3 + 1} < \\frac{1}{x^3}$ and $\\int_1^\\infty \\frac{1}{x^3}\\,dx$ converges, the smaller integral converges too. The upper-bounding comparison function is $\\frac{1}{x^3}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    }
+  ]
+}

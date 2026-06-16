@@ -1,0 +1,580 @@
+{
+  "courseId": "mathematical-methods-ii",
+  "topicId": "gamma-and-beta-functions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-001",
+      "stem": "Using $\\Gamma(n) = (n - 1)!$ for positive integers, what is $\\Gamma(5)$?",
+      "options": [
+        "$5$",
+        "$24$",
+        "$25$",
+        "$120$"
+      ],
+      "answer": 1,
+      "explanation": "By the rule $\\Gamma(n) = (n - 1)!$, $\\Gamma(5) = 4! = 24$. The option $120$ is $5! = \\Gamma(6)$, the option $5$ confuses $\\Gamma$ with its argument, and $25$ squares it. The trap is the shift by one: $\\Gamma(n)$ equals $(n - 1)!$, so $\\Gamma(5) = 4! = 24$, not $5!$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-002",
+      "stem": "What is $\\Gamma\\left(\\dfrac{1}{2}\\right)$?",
+      "options": [
+        "$\\dfrac{\\sqrt{\\pi}}{2}$",
+        "$1$",
+        "$\\sqrt{\\pi}$",
+        "$\\pi$"
+      ],
+      "answer": 2,
+      "explanation": "The standard special value is $\\Gamma\\left(\\frac{1}{2}\\right) = \\sqrt{\\pi}$, which follows from the Gaussian integral $\\int_0^\\infty x^{-1/2}e^{-x}\\,dx = \\sqrt{\\pi}$. The option $\\pi$ omits the square root, $\\frac{\\sqrt{\\pi}}{2}$ is $\\Gamma\\left(\\frac{3}{2}\\right)$, and $1$ confuses it with $\\Gamma(1)$. The trap is the value itself: $\\Gamma\\left(\\frac{1}{2}\\right) = \\sqrt{\\pi}$, the cornerstone of half-integer gamma values.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-003",
+      "stem": "What is $\\Gamma(1)$?",
+      "options": [
+        "undefined",
+        "$1$",
+        "$\\sqrt{\\pi}$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "By $\\Gamma(n) = (n - 1)!$, $\\Gamma(1) = 0! = 1$. Directly, $\\Gamma(1) = \\int_0^\\infty e^{-x}\\,dx = 1$. The option $0$ confuses the value with the argument minus one, undefined wrongly thinks the integral fails, and $\\sqrt{\\pi}$ is $\\Gamma\\left(\\frac{1}{2}\\right)$. The trap is $0! = 1$: the gamma function at $1$ equals one, not zero.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-004",
+      "stem": "Using the recursion $\\Gamma(x + 1) = x\\,\\Gamma(x)$, express $\\Gamma\\left(\\dfrac{3}{2}\\right)$.",
+      "options": [
+        "$\\dfrac{3\\sqrt{\\pi}}{4}$",
+        "$\\dfrac{\\sqrt{\\pi}}{4}$",
+        "$\\dfrac{\\sqrt{\\pi}}{2}$",
+        "$\\sqrt{\\pi}$"
+      ],
+      "answer": 2,
+      "explanation": "Write $\\Gamma\\left(\\frac{3}{2}\\right) = \\Gamma\\left(\\frac{1}{2} + 1\\right) = \\frac{1}{2}\\Gamma\\left(\\frac{1}{2}\\right) = \\frac{1}{2}\\sqrt{\\pi} = \\frac{\\sqrt{\\pi}}{2}$. The option $\\sqrt{\\pi}$ forgets the factor $\\frac{1}{2}$, $\\frac{3\\sqrt{\\pi}}{4}$ is $\\Gamma\\left(\\frac{5}{2}\\right)$, and $\\frac{\\sqrt{\\pi}}{4}$ halves once too often. The trap is the recursion factor: $\\Gamma(x + 1) = x\\Gamma(x)$ with $x = \\frac{1}{2}$ multiplies by $\\frac{1}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-005",
+      "stem": "Evaluate $\\Gamma\\left(\\dfrac{5}{2}\\right)$.",
+      "options": [
+        "$\\dfrac{15\\sqrt{\\pi}}{8}$",
+        "$\\dfrac{3\\sqrt{\\pi}}{4}$",
+        "$\\dfrac{\\sqrt{\\pi}}{2}$",
+        "$\\dfrac{3\\sqrt{\\pi}}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "Apply the recursion twice: $\\Gamma\\left(\\frac{5}{2}\\right) = \\frac{3}{2}\\Gamma\\left(\\frac{3}{2}\\right) = \\frac{3}{2}\\cdot\\frac{1}{2}\\Gamma\\left(\\frac{1}{2}\\right) = \\frac{3}{4}\\sqrt{\\pi} = \\frac{3\\sqrt{\\pi}}{4}$. The option $\\frac{\\sqrt{\\pi}}{2}$ is $\\Gamma\\left(\\frac{3}{2}\\right)$, $\\frac{15\\sqrt{\\pi}}{8}$ is $\\Gamma\\left(\\frac{7}{2}\\right)$, and $\\frac{3\\sqrt{\\pi}}{2}$ drops a factor of $\\frac{1}{2}$. The trap is stacking the recursion factors: $\\frac{3}{2}\\cdot\\frac{1}{2} = \\frac{3}{4}$ multiplies $\\sqrt{\\pi}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-006",
+      "stem": "Express the beta function $B(p, q)$ in terms of gamma functions.",
+      "options": [
+        "$\\dfrac{\\Gamma(p)\\Gamma(q)}{\\Gamma(pq)}$",
+        "$\\dfrac{\\Gamma(p)\\Gamma(q)}{\\Gamma(p + q)}$",
+        "$\\Gamma(p)\\Gamma(q)$",
+        "$\\dfrac{\\Gamma(p + q)}{\\Gamma(p)\\Gamma(q)}$"
+      ],
+      "answer": 1,
+      "explanation": "The fundamental relation is $B(p, q) = \\frac{\\Gamma(p)\\Gamma(q)}{\\Gamma(p + q)}$. The option with the reciprocal inverts the relation, $\\Gamma(p)\\Gamma(q)$ drops the denominator, and the option with $\\Gamma(pq)$ multiplies the arguments instead of adding them. The trap is the denominator argument: it is the sum $p + q$, not the product $pq$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-007",
+      "stem": "Evaluate $B(2, 3)$ using $B(p, q) = \\dfrac{\\Gamma(p)\\Gamma(q)}{\\Gamma(p + q)}$.",
+      "options": [
+        "$\\dfrac{1}{6}$",
+        "$\\dfrac{1}{20}$",
+        "$\\dfrac{1}{12}$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $B(2, 3) = \\frac{\\Gamma(2)\\Gamma(3)}{\\Gamma(5)} = \\frac{1!\\cdot 2!}{4!} = \\frac{1\\cdot 2}{24} = \\frac{1}{12}$. The option $\\frac{1}{6}$ uses $\\Gamma(4) = 6$ in the denominator, $\\frac{1}{20}$ miscomputes a factorial, and $\\frac{1}{2}$ ignores the denominator. The trap is the denominator $\\Gamma(p + q) = \\Gamma(5) = 24$: with numerator $1\\cdot 2 = 2$, the result is $\\frac{1}{12}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-008",
+      "stem": "Evaluate the integral $\\displaystyle\\int_0^\\infty x^3 e^{-x}\\,dx$.",
+      "options": [
+        "$2$",
+        "$6$",
+        "$24$",
+        "$3$"
+      ],
+      "answer": 1,
+      "explanation": "By definition $\\int_0^\\infty x^{n}e^{-x}\\,dx = \\Gamma(n + 1) = n!$. With $n = 3$ this is $\\Gamma(4) = 3! = 6$. The option $24$ is $4! = \\Gamma(5)$, $3$ confuses $n!$ with $n$, and $2$ is $2!$. The trap is the index shift: $\\int_0^\\infty x^3 e^{-x}\\,dx = \\Gamma(4) = 3! = 6$, matching the power plus one.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-009",
+      "stem": "Which integral defines the gamma function $\\Gamma(s)$ for $s > 0$?",
+      "options": [
+        "$\\displaystyle\\int_0^\\infty x^{s-1} e^{-x}\\,dx$",
+        "$\\displaystyle\\int_0^\\infty x^{s-1} e^{x}\\,dx$",
+        "$\\displaystyle\\int_0^\\infty x^{s} e^{-x}\\,dx$",
+        "$\\displaystyle\\int_0^1 x^{s-1} e^{-x}\\,dx$"
+      ],
+      "answer": 0,
+      "explanation": "The gamma function is $\\Gamma(s) = \\int_0^\\infty x^{s-1}e^{-x}\\,dx$, with the exponent $s - 1$, the decaying kernel $e^{-x}$, and limits from $0$ to $\\infty$. The option with $x^{s}$ shifts the exponent, the option ending at $1$ truncates the range, and the option with $e^{x}$ uses a growing kernel that diverges. The trap is the exponent: it is $s - 1$, which makes $\\Gamma(n) = (n - 1)!$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-010",
+      "stem": "Evaluate $B\\left(\\dfrac{1}{2}, \\dfrac{1}{2}\\right)$.",
+      "options": [
+        "$2\\pi$",
+        "$\\pi$",
+        "$\\dfrac{\\pi}{2}$",
+        "$\\sqrt{\\pi}$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $B\\left(\\frac{1}{2}, \\frac{1}{2}\\right) = \\frac{\\Gamma\\left(\\frac{1}{2}\\right)\\Gamma\\left(\\frac{1}{2}\\right)}{\\Gamma(1)} = \\frac{\\sqrt{\\pi}\\cdot\\sqrt{\\pi}}{1} = \\pi$. The option $\\sqrt{\\pi}$ forgets to square, $\\frac{\\pi}{2}$ halves needlessly, and $2\\pi$ doubles. The trap is the product of the two half-integer values: $\\sqrt{\\pi}\\cdot\\sqrt{\\pi} = \\pi$, with $\\Gamma(1) = 1$ in the denominator.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-011",
+      "stem": "Which integral over $(0, 1)$ defines the beta function $B(p, q)$?",
+      "options": [
+        "$\\displaystyle\\int_0^1 x^{p}(1 - x)^{q}\\,dx$",
+        "$\\displaystyle\\int_0^\\infty x^{p-1}(1 - x)^{q-1}\\,dx$",
+        "$\\displaystyle\\int_0^1 x^{p-1}(1 - x)^{q-1}\\,dx$",
+        "$\\displaystyle\\int_0^1 x^{p-1} e^{-(1-x)}\\,dx$"
+      ],
+      "answer": 2,
+      "explanation": "The integral definition is $B(p, q) = \\int_0^1 x^{p-1}(1 - x)^{q-1}\\,dx$, with both exponents reduced by one and the range $(0, 1)$. The option with $x^p$ and $(1 - x)^q$ omits the $-1$ shifts, the option with $e^{-(1-x)}$ replaces the power by an exponential, and the option to $\\infty$ uses the wrong range. The trap is the matching pair of exponents $p - 1$ and $q - 1$ over the unit interval.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-012",
+      "stem": "Evaluate $B(2, 2)$.",
+      "options": [
+        "$\\dfrac{1}{12}$",
+        "$\\dfrac{1}{2}$",
+        "$\\dfrac{1}{3}$",
+        "$\\dfrac{1}{6}$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $B(2, 2) = \\frac{\\Gamma(2)\\Gamma(2)}{\\Gamma(4)} = \\frac{1\\cdot 1}{6} = \\frac{1}{6}$. Equivalently $\\int_0^1 x(1 - x)\\,dx = \\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}$. The option $\\frac{1}{3}$ keeps only one term of the integral, $\\frac{1}{2}$ stops after the first, and $\\frac{1}{12}$ uses the wrong gamma values. The trap is the denominator $\\Gamma(4) = 6$, giving $\\frac{1}{6}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-013",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty \\sqrt{x}\\,e^{-x}\\,dx$.",
+      "options": [
+        "$\\pi$",
+        "$\\dfrac{3\\sqrt{\\pi}}{4}$",
+        "$\\sqrt{\\pi}$",
+        "$\\dfrac{\\sqrt{\\pi}}{2}$"
+      ],
+      "answer": 3,
+      "explanation": "Write $\\sqrt{x} = x^{1/2}$, so the integral is $\\int_0^\\infty x^{1/2}e^{-x}\\,dx = \\Gamma\\left(\\frac{3}{2}\\right)$, since the exponent $\\frac{1}{2} = s - 1$ gives $s = \\frac{3}{2}$. Then $\\Gamma\\left(\\frac{3}{2}\\right) = \\frac{\\sqrt{\\pi}}{2}$. The option $\\sqrt{\\pi}$ is $\\Gamma\\left(\\frac{1}{2}\\right)$, $\\frac{3\\sqrt{\\pi}}{4}$ is $\\Gamma\\left(\\frac{5}{2}\\right)$, and $\\pi$ confuses the values. The trap is the exponent shift: $x^{1/2}$ means $s - 1 = \\frac{1}{2}$, so $s = \\frac{3}{2}$ and the value is $\\frac{\\sqrt{\\pi}}{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-014",
+      "stem": "The beta function is symmetric. Which statement is correct?",
+      "options": [
+        "$B(p, q) = B(p + q, 0)$",
+        "$B(p, q) = \\dfrac{1}{B(q, p)}$",
+        "$B(p, q) = B(q, p)$",
+        "$B(p, q) = -B(q, p)$"
+      ],
+      "answer": 2,
+      "explanation": "Since $B(p, q) = \\frac{\\Gamma(p)\\Gamma(q)}{\\Gamma(p + q)}$ and multiplication of the gamma factors commutes, swapping $p$ and $q$ leaves the value unchanged: $B(p, q) = B(q, p)$. The option with a minus sign invents antisymmetry, the option $B(p + q, 0)$ uses an undefined argument, and the reciprocal relation is false. The trap is reading the structure: the numerator is a symmetric product, so beta is symmetric in its arguments.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-015",
+      "stem": "Evaluate $\\dfrac{\\Gamma(6)}{\\Gamma(4)}$.",
+      "options": [
+        "$120$",
+        "$30$",
+        "$20$",
+        "$6$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $\\frac{\\Gamma(6)}{\\Gamma(4)} = \\frac{5!}{3!} = \\frac{120}{6} = 20$. Equivalently, $\\Gamma(6) = 5\\cdot 4\\cdot\\Gamma(4)$, so the ratio is $5\\cdot 4 = 20$. The option $30$ multiplies the wrong pair, $120$ reports $\\Gamma(6)$ alone, and $6$ reports $\\Gamma(4)$. The trap is the telescoping recursion: $\\frac{\\Gamma(6)}{\\Gamma(4)} = 5\\cdot 4 = 20$, the product of the intervening integers.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-016",
+      "stem": "Evaluate $\\displaystyle\\int_0^1 x^2 (1 - x)^3\\,dx$ using the beta function.",
+      "options": [
+        "$\\dfrac{1}{20}$",
+        "$\\dfrac{1}{60}$",
+        "$\\dfrac{1}{30}$",
+        "$\\dfrac{1}{12}$"
+      ],
+      "answer": 1,
+      "explanation": "Match $\\int_0^1 x^{p-1}(1 - x)^{q-1}\\,dx = B(p, q)$ with $p - 1 = 2$ and $q - 1 = 3$, so $p = 3$, $q = 4$. Then $B(3, 4) = \\frac{\\Gamma(3)\\Gamma(4)}{\\Gamma(7)} = \\frac{2!\\cdot 3!}{6!} = \\frac{2\\cdot 6}{720} = \\frac{12}{720} = \\frac{1}{60}$. The option $\\frac{1}{30}$ doubles, $\\frac{1}{12}$ uses $\\Gamma(5)$ in the denominator, and $\\frac{1}{20}$ miscounts a factorial. The trap is reading the exponents as $p - 1$ and $q - 1$: the powers $2$ and $3$ give $p = 3$, $q = 4$, hence $B(3, 4) = \\frac{1}{60}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-017",
+      "stem": "Evaluate $\\Gamma\\left(\\dfrac{7}{2}\\right)$.",
+      "options": [
+        "$\\dfrac{105\\sqrt{\\pi}}{16}$",
+        "$\\dfrac{15\\sqrt{\\pi}}{8}$",
+        "$\\dfrac{3\\sqrt{\\pi}}{4}$",
+        "$\\dfrac{5\\sqrt{\\pi}}{8}$"
+      ],
+      "answer": 1,
+      "explanation": "Apply the recursion repeatedly: $\\Gamma\\left(\\frac{7}{2}\\right) = \\frac{5}{2}\\cdot\\frac{3}{2}\\cdot\\frac{1}{2}\\Gamma\\left(\\frac{1}{2}\\right) = \\frac{15}{8}\\sqrt{\\pi} = \\frac{15\\sqrt{\\pi}}{8}$. The option $\\frac{3\\sqrt{\\pi}}{4}$ is $\\Gamma\\left(\\frac{5}{2}\\right)$, $\\frac{105\\sqrt{\\pi}}{16}$ is $\\Gamma\\left(\\frac{9}{2}\\right)$, and $\\frac{5\\sqrt{\\pi}}{8}$ drops factors. The trap is multiplying all the half-integer steps: $\\frac{5}{2}\\cdot\\frac{3}{2}\\cdot\\frac{1}{2} = \\frac{15}{8}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-018",
+      "stem": "Evaluate $B(1, 1)$.",
+      "options": [
+        "$2$",
+        "$0$",
+        "$\\dfrac{1}{2}$",
+        "$1$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $B(1, 1) = \\frac{\\Gamma(1)\\Gamma(1)}{\\Gamma(2)} = \\frac{1\\cdot 1}{1} = 1$. Equivalently $\\int_0^1 x^0(1 - x)^0\\,dx = \\int_0^1 1\\,dx = 1$. The option $0$ misreads the constant integrand, $\\frac{1}{2}$ confuses it with $\\int_0^1 x\\,dx$, and $2$ doubles. The trap is the trivial exponents: with $p = q = 1$, the integrand is $1$, so the area is $1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-019",
+      "stem": "What is $\\Gamma(4)$?",
+      "options": [
+        "$4$",
+        "$6$",
+        "$24$",
+        "$12$"
+      ],
+      "answer": 1,
+      "explanation": "By $\\Gamma(n) = (n - 1)!$, $\\Gamma(4) = 3! = 6$. The option $24$ is $4! = \\Gamma(5)$, $4$ confuses the value with the argument, and $12$ guesses. The trap is the shift: $\\Gamma(4) = 3! = 6$, one factorial step below the naive $4!$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-020",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty x^4 e^{-x}\\,dx$.",
+      "options": [
+        "$5$",
+        "$24$",
+        "$120$",
+        "$4$"
+      ],
+      "answer": 1,
+      "explanation": "Use $\\int_0^\\infty x^{n}e^{-x}\\,dx = \\Gamma(n + 1) = n!$ with $n = 4$: this is $\\Gamma(5) = 4! = 24$. The option $120$ is $5! = \\Gamma(6)$, $4$ confuses $n!$ with $n$, and $5$ reports the argument of $\\Gamma$. The trap is the index: the power $4$ gives $\\Gamma(5) = 4! = 24$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-021",
+      "stem": "Evaluate $B(3, 2)$ and confirm $B(3, 2) = B(2, 3)$.",
+      "options": [
+        "$\\dfrac{1}{4}$",
+        "$\\dfrac{1}{6}$",
+        "$\\dfrac{1}{20}$",
+        "$\\dfrac{1}{12}$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $B(3, 2) = \\frac{\\Gamma(3)\\Gamma(2)}{\\Gamma(5)} = \\frac{2!\\cdot 1!}{4!} = \\frac{2\\cdot 1}{24} = \\frac{1}{12}$, which matches $B(2, 3) = \\frac{1}{12}$ by symmetry. The option $\\frac{1}{6}$ uses $\\Gamma(4)$, $\\frac{1}{20}$ miscounts, and $\\frac{1}{4}$ guesses. The trap is confirming symmetry: swapping the arguments leaves $\\frac{1}{12}$ unchanged.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-022",
+      "stem": "Evaluate $\\displaystyle\\int_0^{\\pi/2} \\sin^2\\theta\\,d\\theta$ using the beta-function trigonometric form $\\displaystyle\\int_0^{\\pi/2}\\sin^{2p-1}\\theta\\cos^{2q-1}\\theta\\,d\\theta = \\dfrac{1}{2}B(p, q)$.",
+      "options": [
+        "$\\dfrac{\\pi}{2}$",
+        "$\\pi$",
+        "$\\dfrac{\\pi}{4}$",
+        "$\\dfrac{\\pi}{8}$"
+      ],
+      "answer": 2,
+      "explanation": "Match $\\sin^2\\theta\\cos^0\\theta$: $2p - 1 = 2$ gives $p = \\frac{3}{2}$, and $2q - 1 = 0$ gives $q = \\frac{1}{2}$. Then $\\frac{1}{2}B\\left(\\frac{3}{2}, \\frac{1}{2}\\right) = \\frac{1}{2}\\cdot\\frac{\\Gamma\\left(\\frac{3}{2}\\right)\\Gamma\\left(\\frac{1}{2}\\right)}{\\Gamma(2)} = \\frac{1}{2}\\cdot\\frac{\\frac{\\sqrt{\\pi}}{2}\\cdot\\sqrt{\\pi}}{1} = \\frac{1}{2}\\cdot\\frac{\\pi}{2} = \\frac{\\pi}{4}$. The option $\\frac{\\pi}{2}$ forgets the leading $\\frac{1}{2}$, $\\frac{\\pi}{8}$ halves once more, and $\\pi$ ignores both factors. The trap is the half-factor and the parameter matching: $p = \\frac{3}{2}$, $q = \\frac{1}{2}$ yield $\\frac{\\pi}{4}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-023",
+      "stem": "Using the recursion, simplify $\\dfrac{\\Gamma(x + 1)}{\\Gamma(x)}$.",
+      "options": [
+        "$x + 1$",
+        "$x$",
+        "$x - 1$",
+        "$\\dfrac{1}{x}$"
+      ],
+      "answer": 1,
+      "explanation": "The recursion $\\Gamma(x + 1) = x\\,\\Gamma(x)$ gives $\\frac{\\Gamma(x + 1)}{\\Gamma(x)} = x$ directly. The option $x - 1$ shifts the wrong way, $x + 1$ reads the argument literally, and $\\frac{1}{x}$ inverts. The trap is the recursion itself: dividing $\\Gamma(x + 1)$ by $\\Gamma(x)$ peels off exactly one factor of $x$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-024",
+      "stem": "Evaluate $\\Gamma(3)\\,\\Gamma(4)$.",
+      "options": [
+        "$24$",
+        "$2$",
+        "$6$",
+        "$12$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $\\Gamma(3) = 2! = 2$ and $\\Gamma(4) = 3! = 6$, so the product is $2\\cdot 6 = 12$. The option $6$ reports only $\\Gamma(4)$, $24$ multiplies the wrong factorials, and $2$ reports only $\\Gamma(3)$. The trap is evaluating each factor with the shift: $\\Gamma(3) = 2$ and $\\Gamma(4) = 6$ give $12$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-025",
+      "stem": "Evaluate $\\displaystyle\\int_0^1 \\sqrt{x}\\,(1 - x)\\,dx$ using the beta function.",
+      "options": [
+        "$\\dfrac{4}{15}$",
+        "$\\dfrac{1}{6}$",
+        "$\\dfrac{2}{15}$",
+        "$\\dfrac{4}{5}$"
+      ],
+      "answer": 0,
+      "explanation": "Write $\\sqrt{x}(1 - x) = x^{1/2}(1 - x)^{1}$, matching $B(p, q)$ with $p - 1 = \\frac{1}{2}$ and $q - 1 = 1$, so $p = \\frac{3}{2}$, $q = 2$. Then $B\\left(\\frac{3}{2}, 2\\right) = \\frac{\\Gamma\\left(\\frac{3}{2}\\right)\\Gamma(2)}{\\Gamma\\left(\\frac{7}{2}\\right)} = \\frac{\\frac{\\sqrt{\\pi}}{2}\\cdot 1}{\\frac{15\\sqrt{\\pi}}{8}} = \\frac{\\sqrt{\\pi}}{2}\\cdot\\frac{8}{15\\sqrt{\\pi}} = \\frac{8}{30} = \\frac{4}{15}$. The option $\\frac{4}{5}$ drops a factor, $\\frac{2}{15}$ halves, and $\\frac{1}{6}$ ignores the half-integer gamma. The trap is the half-integer denominator $\\Gamma\\left(\\frac{7}{2}\\right) = \\frac{15\\sqrt{\\pi}}{8}$, which leaves $\\frac{4}{15}$ after the $\\sqrt{\\pi}$ cancels.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-026",
+      "stem": "By the reflection formula $\\Gamma(x)\\Gamma(1 - x) = \\dfrac{\\pi}{\\sin \\pi x}$, evaluate $\\Gamma\\left(\\dfrac{1}{4}\\right)\\Gamma\\left(\\dfrac{3}{4}\\right)$.",
+      "options": [
+        "$\\dfrac{\\pi}{\\sqrt{2}}$",
+        "$2\\pi$",
+        "$\\pi$",
+        "$\\pi\\sqrt{2}$"
+      ],
+      "answer": 3,
+      "explanation": "With $x = \\frac{1}{4}$, $1 - x = \\frac{3}{4}$, so $\\Gamma\\left(\\frac{1}{4}\\right)\\Gamma\\left(\\frac{3}{4}\\right) = \\frac{\\pi}{\\sin\\frac{\\pi}{4}} = \\frac{\\pi}{\\frac{\\sqrt{2}}{2}} = \\frac{2\\pi}{\\sqrt{2}} = \\pi\\sqrt{2}$. The option $\\pi$ forgets the sine factor, $\\frac{\\pi}{\\sqrt{2}}$ inverts the rationalization, and $2\\pi$ drops the $\\frac{1}{\\sqrt{2}}$. The trap is evaluating $\\sin\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2}$: dividing $\\pi$ by it gives $\\pi\\sqrt{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-027",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty x^{1/2} e^{-x}\\,dx + \\displaystyle\\int_0^\\infty x^{-1/2} e^{-x}\\,dx$.",
+      "options": [
+        "$\\dfrac{\\sqrt{\\pi}}{2}$",
+        "$\\sqrt{\\pi}$",
+        "$\\dfrac{3\\sqrt{\\pi}}{2}$",
+        "$2\\sqrt{\\pi}$"
+      ],
+      "answer": 2,
+      "explanation": "The first integral is $\\Gamma\\left(\\frac{3}{2}\\right) = \\frac{\\sqrt{\\pi}}{2}$, since $x^{1/2}$ means $s - 1 = \\frac{1}{2}$. The second is $\\Gamma\\left(\\frac{1}{2}\\right) = \\sqrt{\\pi}$, since $x^{-1/2}$ means $s - 1 = -\\frac{1}{2}$. The sum is $\\frac{\\sqrt{\\pi}}{2} + \\sqrt{\\pi} = \\frac{3\\sqrt{\\pi}}{2}$. The option $\\frac{\\sqrt{\\pi}}{2}$ keeps only the first integral, $2\\sqrt{\\pi}$ adds the two terms as if both were $\\sqrt{\\pi}$, and $\\sqrt{\\pi}$ keeps only the second term. The trap is matching each exponent to its gamma: $x^{1/2}$ gives $\\Gamma\\left(\\frac{3}{2}\\right)$ and $x^{-1/2}$ gives $\\Gamma\\left(\\frac{1}{2}\\right)$, summing to $\\frac{3\\sqrt{\\pi}}{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-028",
+      "stem": "Evaluate $B(4, 1)$.",
+      "options": [
+        "$1$",
+        "$\\dfrac{1}{4}$",
+        "$\\dfrac{1}{5}$",
+        "$\\dfrac{1}{3}$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $B(4, 1) = \\frac{\\Gamma(4)\\Gamma(1)}{\\Gamma(5)} = \\frac{6\\cdot 1}{24} = \\frac{1}{4}$. Equivalently $\\int_0^1 x^{3}\\,dx = \\frac{1}{4}$, since $q = 1$ makes $(1 - x)^0 = 1$. The option $\\frac{1}{3}$ uses the wrong power, $\\frac{1}{5}$ over-counts, and $1$ ignores the denominator. The trap is the simplification at $q = 1$: $B(p, 1) = \\frac{1}{p}$, so $B(4, 1) = \\frac{1}{4}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-029",
+      "stem": "What is $\\Gamma(6)$?",
+      "options": [
+        "$6$",
+        "$120$",
+        "$720$",
+        "$24$"
+      ],
+      "answer": 1,
+      "explanation": "By $\\Gamma(n) = (n - 1)!$, $\\Gamma(6) = 5! = 120$. The option $720$ is $6! = \\Gamma(7)$, $24$ is $4! = \\Gamma(5)$, and $6$ confuses the value with the argument. The trap is the shift: $\\Gamma(6) = 5! = 120$, not $6!$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-030",
+      "stem": "Evaluate $\\displaystyle\\int_0^\\infty x^{5} e^{-x}\\,dx$.",
+      "options": [
+        "$24$",
+        "$5$",
+        "$120$",
+        "$720$"
+      ],
+      "answer": 2,
+      "explanation": "Use $\\int_0^\\infty x^{n}e^{-x}\\,dx = \\Gamma(n + 1) = n!$ with $n = 5$: this is $\\Gamma(6) = 5! = 120$. The option $720$ is $6!$, $24$ is $4!$, and $5$ reports the argument. The trap is the index shift: the power $5$ gives $\\Gamma(6) = 5! = 120$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-031",
+      "format": "cloze",
+      "stem": "Evaluate small gamma values using $\\Gamma(n) = (n - 1)!$.",
+      "solution": "For $\\Gamma(5)$, the rule gives $(5 - 1)!$, so the factorial used is $4!$, which equals {{1}}. For $\\Gamma(3)$, the value is $(3 - 1)! = 2!$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 24,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "By $\\Gamma(n) = (n - 1)!$: $\\Gamma(5) = 4! = 24$ and $\\Gamma(3) = 2! = 2$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-032",
+      "format": "cloze",
+      "stem": "Use the recursion $\\Gamma(x + 1) = x\\,\\Gamma(x)$ to build half-integer values from $\\Gamma\\left(\\dfrac{1}{2}\\right) = \\sqrt{\\pi}$.",
+      "solution": "Starting from $\\Gamma\\left(\\dfrac{1}{2}\\right) = \\sqrt{\\pi}$, the recursion gives $\\Gamma\\left(\\dfrac{3}{2}\\right) = \\dfrac{1}{2}\\sqrt{\\pi}$, so the coefficient of $\\sqrt{\\pi}$ here is {{1}}. Applying it once more, $\\Gamma\\left(\\dfrac{5}{2}\\right) = \\dfrac{3}{2}\\cdot\\dfrac{1}{2}\\sqrt{\\pi}$, whose coefficient of $\\sqrt{\\pi}$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{2}$",
+            "$\\dfrac{3}{4}$",
+            "$1$",
+            "$\\dfrac{1}{4}$"
+          ],
+          "answer": "$\\dfrac{1}{2}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{3}{4}$",
+            "$\\dfrac{1}{2}$",
+            "$\\dfrac{15}{8}$",
+            "$\\dfrac{3}{2}$"
+          ],
+          "answer": "$\\dfrac{3}{4}$"
+        }
+      ],
+      "explanation": "$\\Gamma\\left(\\frac{3}{2}\\right) = \\frac{1}{2}\\sqrt{\\pi}$ has coefficient $\\frac{1}{2}$. Then $\\Gamma\\left(\\frac{5}{2}\\right) = \\frac{3}{2}\\cdot\\frac{1}{2}\\sqrt{\\pi} = \\frac{3}{4}\\sqrt{\\pi}$, coefficient $\\frac{3}{4}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-033",
+      "format": "cloze",
+      "stem": "Relate beta to gamma and evaluate $B(2, 4)$.",
+      "solution": "The relation is $B(p, q) = \\dfrac{\\Gamma(p)\\Gamma(q)}{\\Gamma(p + q)}$, so the gamma in the denominator uses the argument $p + q$, which for $B(2, 4)$ is {{1}}. Evaluating, $B(2, 4) = \\dfrac{\\Gamma(2)\\Gamma(4)}{\\Gamma(6)} = \\dfrac{1\\cdot 6}{120}$, which simplifies to the fraction {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{20}$",
+            "$\\dfrac{1}{12}$",
+            "$\\dfrac{1}{6}$",
+            "$\\dfrac{1}{60}$"
+          ],
+          "answer": "$\\dfrac{1}{20}$"
+        }
+      ],
+      "explanation": "For $B(2, 4)$, $p + q = 6$, so the denominator is $\\Gamma(6) = 120$. Then $\\frac{\\Gamma(2)\\Gamma(4)}{\\Gamma(6)} = \\frac{1\\cdot 6}{120} = \\frac{1}{20}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-034",
+      "format": "cloze",
+      "stem": "Recognize the gamma integral $\\displaystyle\\int_0^\\infty x^{n} e^{-x}\\,dx = n!$.",
+      "solution": "This integral equals $\\Gamma(n + 1)$, which for a non-negative integer $n$ is just $n$ factorial. For $n = 3$ the integral equals {{1}}. For $n = 0$, the integral $\\displaystyle\\int_0^\\infty e^{-x}\\,dx$ equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "For $n = 3$, $\\int_0^\\infty x^3 e^{-x}\\,dx = 3! = 6$. For $n = 0$, $\\int_0^\\infty e^{-x}\\,dx = 0! = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-035",
+      "format": "cloze",
+      "stem": "Use the integral definition of the beta function to set up $\\displaystyle\\int_0^1 x^4 (1 - x)^2\\,dx$.",
+      "solution": "Comparing with $\\displaystyle\\int_0^1 x^{p-1}(1 - x)^{q-1}\\,dx = B(p, q)$, the exponent $4$ means $p - 1 = 4$, so $p$ equals {{1}}. The exponent $2$ means $q - 1 = 2$, so $q$ equals {{2}}. The integral is therefore $B(5, 3)$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Matching exponents, $p - 1 = 4$ gives $p = 5$, and $q - 1 = 2$ gives $q = 3$, so the integral equals $B(5, 3)$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-gamma-and-beta-functions-036",
+      "format": "cloze",
+      "stem": "Evaluate $\\Gamma\\left(\\dfrac{1}{2}\\right)^2$ and connect it to the beta function.",
+      "solution": "Since $\\Gamma\\left(\\dfrac{1}{2}\\right) = \\sqrt{\\pi}$, squaring gives $\\Gamma\\left(\\dfrac{1}{2}\\right)^2 = \\pi$, so the numerical multiple of $\\pi$ here is {{1}}. Dividing by $\\Gamma(1)$, this product equals $B\\left(\\dfrac{1}{2}, \\dfrac{1}{2}\\right)$, because $\\Gamma(1)$ equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\Gamma\\left(\\frac{1}{2}\\right)^2 = (\\sqrt{\\pi})^2 = \\pi$, so the multiple of $\\pi$ is $1$. Since $\\Gamma(1) = 1$, the ratio $\\frac{\\Gamma(1/2)\\Gamma(1/2)}{\\Gamma(1)} = \\pi$ is exactly $B\\left(\\frac{1}{2}, \\frac{1}{2}\\right)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    }
+  ]
+}

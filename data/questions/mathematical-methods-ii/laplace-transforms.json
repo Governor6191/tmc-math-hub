@@ -1,0 +1,583 @@
+{
+  "courseId": "mathematical-methods-ii",
+  "topicId": "laplace-transforms",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-001",
+      "stem": "Compute the Laplace transform $\\displaystyle\\mathcal{L}\\{1\\} = \\int_0^\\infty e^{-st}\\,dt$ for $s > 0$.",
+      "options": [
+        "$\\dfrac{1}{s}$",
+        "$\\dfrac{1}{s^2}$",
+        "$1$",
+        "$s$"
+      ],
+      "answer": 0,
+      "explanation": "Integrate directly: $\\int_0^\\infty e^{-st}\\,dt = \\left[-\\frac{1}{s}e^{-st}\\right]_0^\\infty$. For $s > 0$ the upper limit gives $0$ and the lower limit gives $-\\frac{1}{s}$, so the value is $0 - \\left(-\\frac{1}{s}\\right) = \\frac{1}{s}$. The option $\\frac{1}{s^2}$ is $\\mathcal{L}\\{t\\}$, the option $s$ inverts the result, and $1$ forgets the $\\frac{1}{s}$ from integrating the exponential. The trap is dividing by $s$ once: integrating $e^{-st}$ in $t$ brings down a single factor of $\\frac{1}{s}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-002",
+      "stem": "Find $\\mathcal{L}\\{t^3\\}$.",
+      "options": [
+        "$\\dfrac{3}{s^4}$",
+        "$\\dfrac{6}{s^4}$",
+        "$\\dfrac{6}{s^3}$",
+        "$\\dfrac{1}{s^4}$"
+      ],
+      "answer": 1,
+      "explanation": "The standard transform is $\\mathcal{L}\\{t^n\\} = \\frac{n!}{s^{n+1}}$. With $n = 3$ this is $\\frac{3!}{s^{4}} = \\frac{6}{s^4}$. The option $\\frac{3}{s^4}$ uses $n$ in the numerator instead of $n!$, the option $\\frac{6}{s^3}$ uses the exponent $n$ rather than $n+1$, and $\\frac{1}{s^4}$ omits the factorial. The trap is the two pieces of the rule: the numerator is $n!$ and the power is $n + 1$, so $3! = 6$ over $s^4$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-003",
+      "stem": "Find $\\mathcal{L}\\{e^{4t}\\}$ and state the region of convergence.",
+      "options": [
+        "$\\dfrac{4}{s - 4}$ for $s > 4$",
+        "$\\dfrac{1}{s - 4}$ for $s > 0$",
+        "$\\dfrac{1}{s - 4}$ for $s > 4$",
+        "$\\dfrac{1}{s + 4}$ for $s > -4$"
+      ],
+      "answer": 2,
+      "explanation": "Using $\\mathcal{L}\\{e^{at}\\} = \\frac{1}{s - a}$ valid for $s > a$, with $a = 4$ the transform is $\\frac{1}{s - 4}$ for $s > 4$. Directly, $\\int_0^\\infty e^{-(s-4)t}\\,dt = \\frac{1}{s - 4}$ converges only when $s - 4 > 0$. The option $\\frac{1}{s + 4}$ uses $a = -4$, the option $\\frac{4}{s - 4}$ inserts a stray factor of $a$, and the convergence $s > 0$ ignores that the integrand decays only past $s = 4$. The trap is the sign in $s - a$: a positive exponent $4t$ shifts the pole to $s = 4$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-004",
+      "stem": "Find $\\mathcal{L}\\{\\sin 3t\\}$.",
+      "options": [
+        "$\\dfrac{3}{s^2 + 3}$",
+        "$\\dfrac{3}{s^2 - 9}$",
+        "$\\dfrac{s}{s^2 + 9}$",
+        "$\\dfrac{3}{s^2 + 9}$"
+      ],
+      "answer": 3,
+      "explanation": "The standard transform is $\\mathcal{L}\\{\\sin at\\} = \\frac{a}{s^2 + a^2}$. With $a = 3$ this is $\\frac{3}{s^2 + 9}$. The option $\\frac{s}{s^2 + 9}$ is $\\mathcal{L}\\{\\cos 3t\\}$, the option $\\frac{3}{s^2 - 9}$ is $\\mathcal{L}\\{\\sinh 3t\\}$ with the wrong sign in the denominator, and $\\frac{3}{s^2 + 3}$ squares $a$ in the numerator but not the denominator. The trap is $a^2$: the denominator carries $a^2 = 9$, not $a = 3$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-005",
+      "stem": "Find $\\mathcal{L}\\{\\cos 2t\\}$.",
+      "options": [
+        "$\\dfrac{s}{s^2 + 4}$",
+        "$\\dfrac{2}{s^2 + 4}$",
+        "$\\dfrac{s}{s^2 - 4}$",
+        "$\\dfrac{s}{s^2 + 2}$"
+      ],
+      "answer": 0,
+      "explanation": "The standard transform is $\\mathcal{L}\\{\\cos at\\} = \\frac{s}{s^2 + a^2}$. With $a = 2$ this is $\\frac{s}{s^2 + 4}$. The option $\\frac{2}{s^2 + 4}$ is $\\mathcal{L}\\{\\sin 2t\\}$, putting $a$ in the numerator instead of $s$; the option $\\frac{s}{s^2 - 4}$ is $\\mathcal{L}\\{\\cosh 2t\\}$; and $\\frac{s}{s^2 + 2}$ forgets to square $a$. The trap is which factor sits on top: cosine carries $s$ in the numerator, sine carries $a$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-006",
+      "stem": "Find $\\mathcal{L}\\{4t^2 - 3t + 5\\}$.",
+      "options": [
+        "$\\dfrac{8}{s^3} - \\dfrac{3}{s^2} + 5$",
+        "$\\dfrac{2}{s^3} - \\dfrac{3}{s^2} + \\dfrac{5}{s}$",
+        "$\\dfrac{4}{s^3} - \\dfrac{3}{s^2} + \\dfrac{5}{s}$",
+        "$\\dfrac{8}{s^3} - \\dfrac{3}{s^2} + \\dfrac{5}{s}$"
+      ],
+      "answer": 3,
+      "explanation": "Transform term by term using linearity and $\\mathcal{L}\\{t^n\\} = \\frac{n!}{s^{n+1}}$. The term $4t^2$ gives $4\\cdot\\frac{2!}{s^3} = \\frac{8}{s^3}$, the term $-3t$ gives $-3\\cdot\\frac{1}{s^2} = -\\frac{3}{s^2}$, and the constant $5$ gives $5\\cdot\\frac{1}{s} = \\frac{5}{s}$. The option $\\frac{4}{s^3}$ forgets that $2! = 2$ doubles the coefficient, the option ending in $5$ leaves the constant untransformed, and $\\frac{2}{s^3}$ keeps the $2!$ but drops the coefficient $4$. The trap is the factorial on the quadratic: $4t^2$ becomes $\\frac{4\\cdot 2}{s^3} = \\frac{8}{s^3}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-007",
+      "stem": "Using the first shifting theorem $\\mathcal{L}\\{e^{at}f(t)\\} = F(s - a)$, find $\\mathcal{L}\\{e^{2t}\\sin 3t\\}$.",
+      "options": [
+        "$\\dfrac{3}{(s + 2)^2 + 9}$",
+        "$\\dfrac{3}{(s - 2)^2 - 9}$",
+        "$\\dfrac{3}{s^2 + 9} - 2$",
+        "$\\dfrac{3}{(s - 2)^2 + 9}$"
+      ],
+      "answer": 3,
+      "explanation": "Start from $\\mathcal{L}\\{\\sin 3t\\} = \\frac{3}{s^2 + 9} = F(s)$. The factor $e^{2t}$ replaces every $s$ by $s - 2$, giving $F(s - 2) = \\frac{3}{(s - 2)^2 + 9}$. The option subtracting $2$ at the end misreads the theorem as a constant shift; the option with $(s + 2)$ shifts the wrong way, as if the exponent were $-2t$; and the option with $(s - 2)^2 - 9$ changes the sign in the denominator that belongs to sine. The trap is the direction of the shift: $e^{+at}$ sends $s$ to $s - a$, replacing $s$ throughout $F$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-008",
+      "stem": "Find $\\mathcal{L}\\{t e^{5t}\\}$.",
+      "options": [
+        "$\\dfrac{1}{(s + 5)^2}$",
+        "$\\dfrac{1}{s^2 - 5}$",
+        "$\\dfrac{1}{(s - 5)^2}$",
+        "$\\dfrac{5}{(s - 5)^2}$"
+      ],
+      "answer": 2,
+      "explanation": "Begin with $\\mathcal{L}\\{t\\} = \\frac{1}{s^2} = F(s)$. The factor $e^{5t}$ shifts $s$ to $s - 5$ by the first shifting theorem, giving $\\frac{1}{(s - 5)^2}$. The option $\\frac{1}{s^2 - 5}$ subtracts inside the square instead of shifting the whole $s$, the option with $(s + 5)$ shifts the wrong direction, and $\\frac{5}{(s - 5)^2}$ adds a spurious factor of $5$. The trap is shifting the argument, not the variable alone: every $s$ in $\\frac{1}{s^2}$ becomes $s - 5$, so the denominator is $(s - 5)^2$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-009",
+      "stem": "Find $\\mathcal{L}\\{\\cosh 4t\\}$.",
+      "options": [
+        "$\\dfrac{s}{s^2 + 16}$",
+        "$\\dfrac{4}{s^2 - 16}$",
+        "$\\dfrac{s}{s^2 - 16}$",
+        "$\\dfrac{s}{s^2 - 4}$"
+      ],
+      "answer": 2,
+      "explanation": "The standard transform is $\\mathcal{L}\\{\\cosh at\\} = \\frac{s}{s^2 - a^2}$. With $a = 4$ this is $\\frac{s}{s^2 - 16}$. One can also derive it from $\\cosh 4t = \\frac{1}{2}(e^{4t} + e^{-4t})$, giving $\\frac{1}{2}\\left(\\frac{1}{s - 4} + \\frac{1}{s + 4}\\right) = \\frac{s}{s^2 - 16}$. The option $\\frac{s}{s^2 + 16}$ is $\\mathcal{L}\\{\\cos 4t\\}$ with the wrong sign, $\\frac{4}{s^2 - 16}$ is $\\mathcal{L}\\{\\sinh 4t\\}$, and $\\frac{s}{s^2 - 4}$ fails to square $a$. The trap is the minus sign: hyperbolic functions carry $s^2 - a^2$, not $s^2 + a^2$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-010",
+      "stem": "Apply $\\mathcal{L}\\{t f(t)\\} = -F'(s)$ to find $\\mathcal{L}\\{t\\cos 2t\\}$, given $\\mathcal{L}\\{\\cos 2t\\} = \\dfrac{s}{s^2 + 4}$.",
+      "options": [
+        "$\\dfrac{-s}{(s^2 + 4)^2}$",
+        "$\\dfrac{4 - s^2}{(s^2 + 4)^2}$",
+        "$\\dfrac{s^2 + 4}{(s^2 + 4)^2}$",
+        "$\\dfrac{s^2 - 4}{(s^2 + 4)^2}$"
+      ],
+      "answer": 3,
+      "explanation": "Differentiate $F(s) = \\frac{s}{s^2 + 4}$ with the quotient rule: $F'(s) = \\frac{(s^2 + 4) - s(2s)}{(s^2 + 4)^2} = \\frac{4 - s^2}{(s^2 + 4)^2}$. The rule gives $\\mathcal{L}\\{t\\cos 2t\\} = -F'(s) = \\frac{s^2 - 4}{(s^2 + 4)^2}$. The option $\\frac{4 - s^2}{(s^2+4)^2}$ is $F'(s)$ with the minus sign forgotten, $\\frac{s^2 + 4}{(s^2+4)^2}$ drops the $-s(2s)$ term in the quotient rule, and $\\frac{-s}{(s^2+4)^2}$ mis-differentiates the numerator. The trap is the leading minus in $-F'(s)$: it flips $4 - s^2$ into $s^2 - 4$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-011",
+      "stem": "If $\\mathcal{L}\\{f(t)\\} = F(s)$ and $f(0) = 2$, what is $\\mathcal{L}\\{f'(t)\\}$?",
+      "options": [
+        "$F(s) - 2$",
+        "$sF(s) - 2s$",
+        "$sF(s) + 2$",
+        "$sF(s) - 2$"
+      ],
+      "answer": 3,
+      "explanation": "The transform of a derivative is $\\mathcal{L}\\{f'(t)\\} = sF(s) - f(0)$. With $f(0) = 2$ this is $sF(s) - 2$. The option $sF(s) + 2$ flips the sign of the initial value, $F(s) - 2$ omits the factor $s$, and $sF(s) - 2s$ multiplies the initial value by $s$ when it should stand alone. The trap is the form of the rule: $s$ multiplies $F(s)$, then the bare initial value $f(0)$ is subtracted.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-012",
+      "stem": "Write the transform of the second derivative $\\mathcal{L}\\{f''(t)\\}$ in terms of $F(s)$, $f(0)$, and $f'(0)$.",
+      "options": [
+        "$s^2 F(s) - s f(0) - f'(0)$",
+        "$s^2 F(s) - f(0) - s f'(0)$",
+        "$s^2 F(s) - f'(0) - s f(0)$ with both initial terms added",
+        "$s^2 F(s) - s f'(0) - f(0)$"
+      ],
+      "answer": 0,
+      "explanation": "Applying the first-derivative rule twice gives $\\mathcal{L}\\{f''(t)\\} = s^2 F(s) - s f(0) - f'(0)$. The pattern pairs the higher power of $s$ with the lower-order initial value: $s f(0)$ and then $f'(0)$ with no $s$. The option pairing $s$ with $f'(0)$ swaps the two initial values, the option that adds both initial terms uses the wrong signs, and the remaining option also mismatches which initial value carries the factor $s$. The trap is the bookkeeping: the coefficient of $f(0)$ is $s^{2-1} = s$, while $f'(0)$ carries $s^{2-2} = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-013",
+      "stem": "Solve $y' + 3y = 0$ with $y(0) = 5$ using Laplace transforms. What is $Y(s)$?",
+      "options": [
+        "$\\dfrac{1}{s + 3}$",
+        "$\\dfrac{5}{s - 3}$",
+        "$\\dfrac{5s}{s + 3}$",
+        "$\\dfrac{5}{s + 3}$"
+      ],
+      "answer": 3,
+      "explanation": "Transform both sides: $\\mathcal{L}\\{y'\\} + 3\\mathcal{L}\\{y\\} = sY(s) - y(0) + 3Y(s) = 0$. Substituting $y(0) = 5$ gives $(s + 3)Y(s) = 5$, so $Y(s) = \\frac{5}{s + 3}$. Inverting recovers $y(t) = 5e^{-3t}$, which satisfies the equation. The option $\\frac{5}{s - 3}$ flips the sign in the denominator, the option $\\frac{5s}{s+3}$ keeps an extra $s$ from misplacing the initial value, and $\\frac{1}{s+3}$ drops the initial value $5$. The trap is moving $y(0)$ to the right side: $sY - 5 = -3Y$ collects to $(s + 3)Y = 5$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-014",
+      "stem": "Find $\\mathcal{L}\\{e^{-t}\\cos 2t\\}$.",
+      "options": [
+        "$\\dfrac{s + 1}{(s + 1)^2 + 4}$",
+        "$\\dfrac{s}{(s + 1)^2 + 4}$",
+        "$\\dfrac{s + 1}{(s + 1)^2 - 4}$",
+        "$\\dfrac{s - 1}{(s - 1)^2 + 4}$"
+      ],
+      "answer": 0,
+      "explanation": "Start with $\\mathcal{L}\\{\\cos 2t\\} = \\frac{s}{s^2 + 4} = F(s)$. The factor $e^{-t}$ shifts $s$ to $s - (-1) = s + 1$ everywhere, giving $F(s + 1) = \\frac{s + 1}{(s + 1)^2 + 4}$. The option keeping $s$ in the numerator shifts the denominator only, the option with $(s - 1)$ shifts the wrong way, and the option with $(s + 1)^2 - 4$ alters the sine-type sign. The trap is shifting the numerator too: every $s$ becomes $s + 1$, including the $s$ on top.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-015",
+      "stem": "Find $\\mathcal{L}\\{\\sinh 3t\\}$.",
+      "options": [
+        "$\\dfrac{3}{s^2 - 9}$",
+        "$\\dfrac{3}{s^2 + 9}$",
+        "$\\dfrac{s}{s^2 - 9}$",
+        "$\\dfrac{3}{s^2 - 3}$"
+      ],
+      "answer": 0,
+      "explanation": "The standard transform is $\\mathcal{L}\\{\\sinh at\\} = \\frac{a}{s^2 - a^2}$. With $a = 3$ this is $\\frac{3}{s^2 - 9}$. From $\\sinh 3t = \\frac{1}{2}(e^{3t} - e^{-3t})$, the transform is $\\frac{1}{2}\\left(\\frac{1}{s-3} - \\frac{1}{s+3}\\right) = \\frac{3}{s^2 - 9}$. The option $\\frac{3}{s^2 + 9}$ is $\\mathcal{L}\\{\\sin 3t\\}$, the option $\\frac{s}{s^2 - 9}$ is $\\mathcal{L}\\{\\cosh 3t\\}$, and $\\frac{3}{s^2 - 3}$ does not square $a$. The trap is the minus sign and the numerator: $\\sinh$ keeps $a$ on top over $s^2 - a^2$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-016",
+      "stem": "Find $\\mathcal{L}\\{t^2 e^{-3t}\\}$.",
+      "options": [
+        "$\\dfrac{2}{(s + 3)^3}$",
+        "$\\dfrac{1}{(s + 3)^3}$",
+        "$\\dfrac{2}{(s - 3)^3}$",
+        "$\\dfrac{2}{(s + 3)^2}$"
+      ],
+      "answer": 0,
+      "explanation": "Begin with $\\mathcal{L}\\{t^2\\} = \\frac{2!}{s^3} = \\frac{2}{s^3} = F(s)$. The factor $e^{-3t}$ shifts $s$ to $s + 3$, giving $\\frac{2}{(s + 3)^3}$. The option with $(s - 3)$ shifts the wrong direction, the option $\\frac{1}{(s+3)^3}$ forgets the factorial $2! = 2$, and $\\frac{2}{(s+3)^2}$ uses the wrong power. The trap is combining both rules: $t^2$ gives the $2$ and the cube, and $e^{-3t}$ supplies the $+3$ shift.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-017",
+      "stem": "Solve $y' - 2y = 0$ with $y(0) = 3$ using Laplace transforms. What is $y(t)$?",
+      "options": [
+        "$3e^{-2t}$",
+        "$3 + e^{2t}$",
+        "$2e^{3t}$",
+        "$3e^{2t}$"
+      ],
+      "answer": 3,
+      "explanation": "Transforming gives $sY - 3 - 2Y = 0$, so $(s - 2)Y = 3$ and $Y(s) = \\frac{3}{s - 2}$. Inverting with $\\mathcal{L}^{-1}\\{\\frac{1}{s - a}\\} = e^{at}$ gives $y(t) = 3e^{2t}$. Checking: $y' = 6e^{2t}$ and $2y = 6e^{2t}$, so $y' - 2y = 0$ and $y(0) = 3$. The option $3e^{-2t}$ flips the sign of the exponent, $2e^{3t}$ swaps the coefficient and rate, and $3 + e^{2t}$ adds a spurious constant. The trap is the sign of $a$: the pole at $s = 2$ gives growth $e^{2t}$, not decay.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-018",
+      "stem": "Find $\\mathcal{L}\\{t\\sin 3t\\}$, given $\\mathcal{L}\\{\\sin 3t\\} = \\dfrac{3}{s^2 + 9}$.",
+      "options": [
+        "$\\dfrac{-6s}{(s^2 + 9)^2}$",
+        "$\\dfrac{6s}{s^2 + 9}$",
+        "$\\dfrac{6s}{(s^2 + 9)^2}$",
+        "$\\dfrac{3s}{(s^2 + 9)^2}$"
+      ],
+      "answer": 2,
+      "explanation": "Use $\\mathcal{L}\\{t f(t)\\} = -F'(s)$ with $F(s) = \\frac{3}{s^2 + 9} = 3(s^2 + 9)^{-1}$. Then $F'(s) = 3\\cdot(-1)(s^2 + 9)^{-2}(2s) = \\frac{-6s}{(s^2 + 9)^2}$, so $-F'(s) = \\frac{6s}{(s^2 + 9)^2}$. The option $\\frac{-6s}{(s^2+9)^2}$ is $F'(s)$ without the leading minus, the option $\\frac{3s}{(s^2+9)^2}$ omits the $2s$ chain factor's full coefficient, and $\\frac{6s}{s^2+9}$ fails to square the denominator. The trap is the double minus: $-F'(s)$ turns $-6s$ into $+6s$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-019",
+      "stem": "Find $\\mathcal{L}\\{5\\}$, the transform of the constant function $f(t) = 5$.",
+      "options": [
+        "$\\dfrac{5}{s^2}$",
+        "$\\dfrac{5}{s}$",
+        "$\\dfrac{1}{5s}$",
+        "$5$"
+      ],
+      "answer": 1,
+      "explanation": "By linearity $\\mathcal{L}\\{5\\} = 5\\,\\mathcal{L}\\{1\\} = 5\\cdot\\frac{1}{s} = \\frac{5}{s}$. The option $5$ forgets that even a constant gets divided by $s$, the option $\\frac{5}{s^2}$ would be $\\mathcal{L}\\{5t\\}$, and $\\frac{1}{5s}$ inverts the constant. The trap is treating a constant as if it transforms to itself: $\\mathcal{L}\\{1\\} = \\frac{1}{s}$, so the constant scales that.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-020",
+      "stem": "Using the second shifting theorem $\\mathcal{L}\\{u(t - a)f(t - a)\\} = e^{-as}F(s)$, find the transform of $u(t - 2)$, the unit step turned on at $t = 2$.",
+      "options": [
+        "$\\dfrac{e^{2s}}{s}$",
+        "$\\dfrac{e^{-2s}}{s}$",
+        "$\\dfrac{1}{s} - 2$",
+        "$\\dfrac{e^{-2s}}{s^2}$"
+      ],
+      "answer": 1,
+      "explanation": "Here $f(t) = 1$ so $F(s) = \\frac{1}{s}$, and the step turns on at $a = 2$. The theorem gives $\\mathcal{L}\\{u(t - 2)\\} = e^{-2s}\\cdot\\frac{1}{s} = \\frac{e^{-2s}}{s}$. The option $\\frac{e^{2s}}{s}$ has the wrong sign in the exponential, $\\frac{e^{-2s}}{s^2}$ uses the transform of $t$ instead of $1$, and $\\frac{1}{s} - 2$ treats the delay as a subtraction. The trap is the exponential factor: a delay of $a = 2$ multiplies by $e^{-2s}$, with a negative exponent.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-021",
+      "stem": "Find $\\mathcal{L}\\{\\sin^2 t\\}$. (Hint: use $\\sin^2 t = \\tfrac{1}{2}(1 - \\cos 2t)$.)",
+      "options": [
+        "$\\dfrac{2}{s^2 + 4}$",
+        "$\\dfrac{1}{2s} + \\dfrac{s}{2(s^2 + 4)}$",
+        "$\\dfrac{1}{2s} - \\dfrac{s}{2(s^2 + 4)}$",
+        "$\\dfrac{1}{2s} - \\dfrac{1}{2(s^2 + 4)}$"
+      ],
+      "answer": 2,
+      "explanation": "Write $\\sin^2 t = \\frac{1}{2} - \\frac{1}{2}\\cos 2t$. Transforming each piece, $\\mathcal{L}\\{\\frac{1}{2}\\} = \\frac{1}{2s}$ and $\\mathcal{L}\\{\\frac{1}{2}\\cos 2t\\} = \\frac{1}{2}\\cdot\\frac{s}{s^2 + 4}$, so the result is $\\frac{1}{2s} - \\frac{s}{2(s^2 + 4)}$. The option with $\\frac{1}{2(s^2+4)}$ uses $\\mathcal{L}\\{\\sin 2t\\}$ instead of $\\cos 2t$, the $+$ option flips the sign from the identity, and $\\frac{2}{s^2+4}$ ignores the constant term entirely. The trap is the cosine in the half-angle form: it is $\\cos 2t$, whose transform carries $s$ in the numerator.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-022",
+      "stem": "Solve $y'' + y = 0$ with $y(0) = 0$ and $y'(0) = 1$ using Laplace transforms. What is $Y(s)$?",
+      "options": [
+        "$\\dfrac{1}{s^2 + 1}$",
+        "$\\dfrac{s}{s^2 - 1}$",
+        "$\\dfrac{1}{s^2 - 1}$",
+        "$\\dfrac{s}{s^2 + 1}$"
+      ],
+      "answer": 0,
+      "explanation": "Transform: $\\mathcal{L}\\{y''\\} + \\mathcal{L}\\{y\\} = [s^2 Y - s y(0) - y'(0)] + Y = 0$. With $y(0) = 0$, $y'(0) = 1$ this is $s^2 Y - 1 + Y = 0$, so $(s^2 + 1)Y = 1$ and $Y(s) = \\frac{1}{s^2 + 1}$. Inverting gives $y(t) = \\sin t$, which checks. The option $\\frac{s}{s^2+1}$ would arise if $y'(0)$ were dropped and $y(0) = 1$ used instead, the option $\\frac{1}{s^2-1}$ has the wrong sign in the denominator, and $\\frac{s}{s^2-1}$ combines both errors. The trap is which initial value survives: with $y(0) = 0$, only the $f'(0) = 1$ term remains, leaving $\\frac{1}{s^2 + 1}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-023",
+      "stem": "Which integral defines the Laplace transform $F(s) = \\mathcal{L}\\{f(t)\\}$?",
+      "options": [
+        "$\\displaystyle\\int_0^\\infty e^{-st} f(t)\\,dt$",
+        "$\\displaystyle\\int_0^\\infty e^{-st} f(s)\\,dt$",
+        "$\\displaystyle\\int_{-\\infty}^\\infty e^{-st} f(t)\\,dt$",
+        "$\\displaystyle\\int_0^\\infty e^{st} f(t)\\,dt$"
+      ],
+      "answer": 0,
+      "explanation": "The Laplace transform is defined by $F(s) = \\int_0^\\infty e^{-st} f(t)\\,dt$, integrating from $0$ to $\\infty$ against the decaying kernel $e^{-st}$. The option with $e^{st}$ uses a growing kernel and would rarely converge, the option from $-\\infty$ is the two-sided transform, not the standard one-sided definition, and the option with $f(s)$ confuses the integration variable. The trap is the kernel and the lower limit: it is $e^{-st}$ (negative exponent) integrated from $0$, where the function is assumed to start.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-024",
+      "stem": "Find $\\mathcal{L}\\{3\\cos 2t - 4\\sin 5t\\}$.",
+      "options": [
+        "$\\dfrac{3s}{s^2 + 4} - \\dfrac{20}{s^2 + 25}$",
+        "$\\dfrac{3s}{s^2 + 4} + \\dfrac{20}{s^2 + 25}$",
+        "$\\dfrac{3s}{s^2 + 4} - \\dfrac{4}{s^2 + 25}$",
+        "$\\dfrac{3}{s^2 + 4} - \\dfrac{20}{s^2 + 25}$"
+      ],
+      "answer": 0,
+      "explanation": "By linearity, transform each term. For $3\\cos 2t$: $3\\cdot\\frac{s}{s^2 + 4} = \\frac{3s}{s^2 + 4}$. For $-4\\sin 5t$: $-4\\cdot\\frac{5}{s^2 + 25} = -\\frac{20}{s^2 + 25}$. The total is $\\frac{3s}{s^2 + 4} - \\frac{20}{s^2 + 25}$. The option with $\\frac{4}{s^2+25}$ forgets the $a = 5$ factor in the sine numerator, the option with $\\frac{3}{s^2+4}$ drops the $s$ in the cosine numerator, and the $+$ option mishandles the minus sign on the sine term. The trap is the sine numerator: $\\sin 5t$ contributes $5$ on top, so $-4\\cdot 5 = -20$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-025",
+      "stem": "Find $\\mathcal{L}\\{e^{3t} t^2\\}$ by combining the power and shifting rules.",
+      "options": [
+        "$\\dfrac{2}{(s + 3)^3}$",
+        "$\\dfrac{2}{(s - 3)^2}$",
+        "$\\dfrac{6}{(s - 3)^4}$",
+        "$\\dfrac{2}{(s - 3)^3}$"
+      ],
+      "answer": 3,
+      "explanation": "First $\\mathcal{L}\\{t^2\\} = \\frac{2!}{s^3} = \\frac{2}{s^3} = F(s)$. The factor $e^{3t}$ shifts $s$ to $s - 3$, giving $\\frac{2}{(s - 3)^3}$. The option with $(s + 3)$ shifts the wrong way, the option $\\frac{6}{(s-3)^4}$ uses $3! = 6$ and the exponent for $t^3$ rather than $t^2$, and $\\frac{2}{(s-3)^2}$ takes the wrong power. The trap is matching the factorial and power to $n = 2$: numerator $2! = 2$, denominator power $3$, then shift.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-026",
+      "stem": "Find $\\mathcal{L}\\{f'(t)\\}$ for $f(t) = \\cos t$ in two ways and confirm they agree. Which expression results?",
+      "options": [
+        "$\\dfrac{s}{s^2 + 1}$",
+        "$\\dfrac{s^2}{s^2 + 1} - 1$",
+        "$\\dfrac{-1}{s^2 + 1}$",
+        "$\\dfrac{-s}{s^2 + 1}$"
+      ],
+      "answer": 2,
+      "explanation": "Directly, $f'(t) = -\\sin t$, so $\\mathcal{L}\\{-\\sin t\\} = -\\frac{1}{s^2 + 1}$. Using the derivative rule, $\\mathcal{L}\\{f'\\} = sF(s) - f(0) = s\\cdot\\frac{s}{s^2 + 1} - 1 = \\frac{s^2}{s^2 + 1} - 1 = \\frac{s^2 - (s^2 + 1)}{s^2 + 1} = \\frac{-1}{s^2 + 1}$, which agrees. The option $\\frac{s^2}{s^2+1} - 1$ is the unsimplified intermediate form, not the reduced answer; $\\frac{s}{s^2+1}$ forgets the derivative flips cosine to negative sine; and $\\frac{-s}{s^2+1}$ keeps an $s$ that cancels. The trap is simplifying the rule's output: $\\frac{s^2}{s^2+1} - 1$ collapses to $\\frac{-1}{s^2+1}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-027",
+      "stem": "Find $\\mathcal{L}\\{t\\}$ directly from the definition $\\int_0^\\infty t\\,e^{-st}\\,dt$.",
+      "options": [
+        "$\\dfrac{1}{s}$",
+        "$\\dfrac{2}{s^3}$",
+        "$\\dfrac{1}{s^2}$",
+        "$\\dfrac{1}{s^3}$"
+      ],
+      "answer": 2,
+      "explanation": "Integrate by parts with $u = t$, $dv = e^{-st}\\,dt$, giving $v = -\\frac{1}{s}e^{-st}$. Then $\\int_0^\\infty t e^{-st}\\,dt = \\left[-\\frac{t}{s}e^{-st}\\right]_0^\\infty + \\frac{1}{s}\\int_0^\\infty e^{-st}\\,dt = 0 + \\frac{1}{s}\\cdot\\frac{1}{s} = \\frac{1}{s^2}$. This matches $\\mathcal{L}\\{t^n\\} = \\frac{n!}{s^{n+1}}$ at $n = 1$. The option $\\frac{1}{s}$ is $\\mathcal{L}\\{1\\}$, the option $\\frac{2}{s^3}$ is $\\mathcal{L}\\{t^2\\}$, and $\\frac{1}{s^3}$ uses the wrong power. The trap is the exponent: $n = 1$ gives $s^{n+1} = s^2$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-028",
+      "stem": "Solve $y' + y = 1$ with $y(0) = 0$ using Laplace transforms. What is $Y(s)$ before inverting?",
+      "options": [
+        "$\\dfrac{1}{s(s + 1)}$",
+        "$\\dfrac{1}{s(s - 1)}$",
+        "$\\dfrac{1}{s + 1}$",
+        "$\\dfrac{s}{s + 1}$"
+      ],
+      "answer": 0,
+      "explanation": "Transform both sides: $sY - y(0) + Y = \\mathcal{L}\\{1\\} = \\frac{1}{s}$. With $y(0) = 0$ this gives $(s + 1)Y = \\frac{1}{s}$, so $Y(s) = \\frac{1}{s(s + 1)}$. By partial fractions this inverts to $1 - e^{-t}$. The option $\\frac{1}{s(s-1)}$ has the wrong sign in the factor, $\\frac{1}{s+1}$ forgets to transform the right side, and $\\frac{s}{s+1}$ misplaces the $\\frac{1}{s}$ from $\\mathcal{L}\\{1\\}$. The trap is the forcing term: the constant $1$ on the right becomes $\\frac{1}{s}$, which divides the whole expression.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-029",
+      "stem": "Find $\\mathcal{L}\\{e^{-2t}\\sin 4t\\}$.",
+      "options": [
+        "$\\dfrac{s + 2}{(s + 2)^2 + 16}$",
+        "$\\dfrac{4}{(s - 2)^2 + 16}$",
+        "$\\dfrac{4}{(s + 2)^2 - 16}$",
+        "$\\dfrac{4}{(s + 2)^2 + 16}$"
+      ],
+      "answer": 3,
+      "explanation": "Start with $\\mathcal{L}\\{\\sin 4t\\} = \\frac{4}{s^2 + 16} = F(s)$. The factor $e^{-2t}$ shifts $s$ to $s + 2$, giving $\\frac{4}{(s + 2)^2 + 16}$. The option with $(s - 2)$ shifts the wrong direction, the option with $s + 2$ in the numerator is the cosine form, and the option with $-16$ flips the sine sign in the denominator. The trap is the shift direction for a decaying exponential: $e^{-2t}$ sends $s$ to $s + 2$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-030",
+      "stem": "Solve the system reduction $y'' - 3y' + 2y = 0$ with $y(0) = 0$, $y'(0) = 1$. What is $Y(s)$?",
+      "options": [
+        "$\\dfrac{1}{(s - 1)(s - 2)}$",
+        "$\\dfrac{1}{(s + 1)(s + 2)}$",
+        "$\\dfrac{1}{s^2 - 3s + 2}$ with $s$ in the numerator",
+        "$\\dfrac{s}{(s - 1)(s - 2)}$"
+      ],
+      "answer": 0,
+      "explanation": "Transform: $[s^2 Y - s y(0) - y'(0)] - 3[sY - y(0)] + 2Y = 0$. With $y(0) = 0$, $y'(0) = 1$ this is $s^2 Y - 1 - 3sY + 2Y = 0$, so $(s^2 - 3s + 2)Y = 1$. Factoring, $(s - 1)(s - 2)Y = 1$, giving $Y(s) = \\frac{1}{(s - 1)(s - 2)}$. The option with $(s + 1)(s + 2)$ factors the wrong signs, the option with $s$ in the numerator (and the equivalent last option) wrongly carries an initial-value term that vanishes here. The trap is factoring the characteristic polynomial: $s^2 - 3s + 2 = (s - 1)(s - 2)$, and only the constant $1$ from $y'(0)$ sits on top.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-031",
+      "format": "cloze",
+      "stem": "Compute $\\mathcal{L}\\{t^4\\}$ using the rule $\\mathcal{L}\\{t^n\\} = \\dfrac{n!}{s^{n+1}}$.",
+      "solution": "With $n = 4$, the numerator is $4!$, which equals {{1}}. The power in the denominator is $n + 1$, that is $s$ raised to the power {{2}}. So $\\mathcal{L}\\{t^4\\} = \\dfrac{24}{s^5}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 24,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The factorial $4! = 4\\cdot 3\\cdot 2\\cdot 1 = 24$, and the denominator power is $n + 1 = 5$, giving $\\mathcal{L}\\{t^4\\} = \\frac{24}{s^5}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-032",
+      "format": "cloze",
+      "stem": "Find $\\mathcal{L}\\{\\sin 5t\\}$ and $\\mathcal{L}\\{\\cos 5t\\}$.",
+      "solution": "For sine, $\\mathcal{L}\\{\\sin 5t\\} = \\dfrac{5}{s^2 + 25}$, so the constant in the numerator is {{1}}. For cosine, $\\mathcal{L}\\{\\cos 5t\\}$ has the same denominator but the numerator is {{2}} instead. Both denominators carry $s^2 + 25$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$s$",
+            "$5$",
+            "$s^2$",
+            "$25$"
+          ],
+          "answer": "$s$"
+        }
+      ],
+      "explanation": "With $a = 5$: $\\mathcal{L}\\{\\sin 5t\\} = \\frac{5}{s^2 + 25}$ carries $a = 5$ on top, while $\\mathcal{L}\\{\\cos 5t\\} = \\frac{s}{s^2 + 25}$ carries $s$ on top.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-033",
+      "format": "cloze",
+      "stem": "Apply the first shifting theorem to find $\\mathcal{L}\\{e^{3t}\\cos 2t\\}$, starting from $\\mathcal{L}\\{\\cos 2t\\} = \\dfrac{s}{s^2 + 4}$.",
+      "solution": "The factor $e^{3t}$ replaces every $s$ by $s - 3$. The numerator $s$ becomes the expression {{1}}, and the denominator $s^2 + 4$ becomes $(s - 3)^2 + 4$. Therefore $\\mathcal{L}\\{e^{3t}\\cos 2t\\} = \\dfrac{s - 3}{(s - 3)^2 + 4}$, and the sign used inside the shift $s - 3$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$s - 3$",
+            "$s + 3$",
+            "$s$",
+            "$s - 2$"
+          ],
+          "answer": "$s - 3$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "minus",
+            "plus"
+          ],
+          "answer": "minus"
+        }
+      ],
+      "explanation": "The theorem $\\mathcal{L}\\{e^{at}f(t)\\} = F(s - a)$ with $a = 3$ replaces $s$ by $s - 3$ throughout, including the numerator, giving $\\frac{s - 3}{(s - 3)^2 + 4}$. A positive exponent uses a minus sign in the shift.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-034",
+      "format": "cloze",
+      "stem": "Transform the derivative relation. Suppose $\\mathcal{L}\\{f(t)\\} = F(s)$ with $f(0) = 7$.",
+      "solution": "The rule for a first derivative is $\\mathcal{L}\\{f'(t)\\} = sF(s) - f(0)$. The coefficient multiplying $F(s)$ is {{1}}, and the value subtracted, namely $f(0)$, equals {{2}}. So $\\mathcal{L}\\{f'(t)\\} = sF(s) - 7$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$s$",
+            "$s^2$",
+            "$1$",
+            "$s - 1$"
+          ],
+          "answer": "$s$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The derivative rule is $\\mathcal{L}\\{f'(t)\\} = sF(s) - f(0)$. Here the multiplier of $F(s)$ is $s$ and the subtracted initial value is $f(0) = 7$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-035",
+      "format": "cloze",
+      "stem": "Solve $y' + 2y = 0$ with $y(0) = 4$ using the Laplace method.",
+      "solution": "Transforming gives $sY - 4 + 2Y = 0$, so $(s + 2)Y = 4$ and $Y(s) = \\dfrac{4}{s + 2}$. Inverting, the solution has the form $y(t) = 4e^{kt}$, where the exponent constant $k$ is {{1}}. The leading coefficient of the solution is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From $Y(s) = \\frac{4}{s + 2}$, the pole at $s = -2$ inverts to $e^{-2t}$, so $k = -2$ and the amplitude is the initial value $4$, giving $y(t) = 4e^{-2t}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-laplace-transforms-036",
+      "format": "cloze",
+      "stem": "Use $\\mathcal{L}\\{t f(t)\\} = -F'(s)$ to find $\\mathcal{L}\\{t\\,e^{2t}\\}$, given $\\mathcal{L}\\{e^{2t}\\} = \\dfrac{1}{s - 2}$.",
+      "solution": "Here $F(s) = (s - 2)^{-1}$, so $F'(s) = -(s - 2)^{-2}$. Applying the rule, $\\mathcal{L}\\{t e^{2t}\\} = -F'(s) = \\dfrac{1}{(s - 2)^{p}}$, where the power $p$ in the denominator is {{1}}. The numerator of the final answer is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Differentiating $F(s) = (s - 2)^{-1}$ gives $F'(s) = -(s - 2)^{-2}$, so $-F'(s) = (s - 2)^{-2} = \\frac{1}{(s - 2)^2}$. The denominator power is $2$ and the numerator is $1$. This also matches the shifted form of $\\mathcal{L}\\{t\\} = \\frac{1}{s^2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    }
+  ]
+}

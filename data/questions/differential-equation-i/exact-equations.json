@@ -1,0 +1,509 @@
+{
+  "courseId": "differential-equation-i",
+  "topicId": "exact-equations",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "differential-equation-i-exact-equations-001",
+      "stem": "The equation $M(x,y)\\,dx + N(x,y)\\,dy = 0$ is exact precisely when which condition holds?",
+      "options": [
+        "$\\dfrac{\\partial M}{\\partial y} = \\dfrac{\\partial N}{\\partial x}$",
+        "$M = N$",
+        "$\\dfrac{\\partial M}{\\partial x} = \\dfrac{\\partial N}{\\partial y}$",
+        "$M_x = N_y = 0$"
+      ],
+      "answer": 0,
+      "explanation": "An equation $M\\,dx + N\\,dy = 0$ is exact when there is a potential $F$ with $F_x = M$ and $F_y = N$. Equality of the mixed second partials of $F$ forces $\\frac{\\partial M}{\\partial y} = F_{xy} = F_{yx} = \\frac{\\partial N}{\\partial x}$. So the test is $M_y = N_x$. The conditions $M = N$ or $M_x = N_y$ are not the exactness criterion, and requiring both partials to vanish is far too strong.",
+      "difficulty": "warmup",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-002",
+      "stem": "Is the equation $(2x + y)\\,dx + (x + 2y)\\,dy = 0$ exact?",
+      "options": [
+        "No, since $M_y = 1$ and $N_x = 2$",
+        "No, since $M_y = 2$ and $N_x = 1$",
+        "Yes, since $M = N$",
+        "Yes, since $M_y = N_x = 1$"
+      ],
+      "answer": 3,
+      "explanation": "Here $M = 2x + y$ and $N = x + 2y$. Compute $M_y = \\frac{\\partial}{\\partial y}(2x + y) = 1$ and $N_x = \\frac{\\partial}{\\partial x}(x + 2y) = 1$. Since $M_y = N_x = 1$, the equation is exact. The functions $M$ and $N$ are not equal, but exactness depends only on the cross partials matching, not on $M = N$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-003",
+      "stem": "Solve the exact equation $(2x + y)\\,dx + (x + 2y)\\,dy = 0$.",
+      "options": [
+        "$x^2 + y^2 = C$",
+        "$x^2 + xy + y^2 = C$",
+        "$2x^2 + xy + 2y^2 = C$",
+        "$x^2 + 2xy + y^2 = C$"
+      ],
+      "answer": 1,
+      "explanation": "Find $F$ with $F_x = 2x + y$. Integrating in $x$, $F = x^2 + xy + g(y)$. Then $F_y = x + g'(y)$ must equal $N = x + 2y$, so $g'(y) = 2y$ and $g(y) = y^2$. Thus $F = x^2 + xy + y^2 = C$. Check: $F_x = 2x + y = M$ and $F_y = x + 2y = N$. The cross term is $xy$, not $2xy$, since it comes from integrating $y$ with respect to $x$ once.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-004",
+      "stem": "Solve $(3x^2 + 2y)\\,dx + (2x + 3y^2)\\,dy = 0$.",
+      "options": [
+        "$x^3 + y^3 = C$",
+        "$x^3 + 2xy + y^3 = C$",
+        "$x^3 + xy + y^3 = C$",
+        "$3x^3 + 2xy + 3y^3 = C$"
+      ],
+      "answer": 1,
+      "explanation": "Check exactness: $M_y = 2$ and $N_x = 2$, so it is exact. Integrate $M$ in $x$: $F = x^3 + 2xy + g(y)$. Then $F_y = 2x + g'(y) = 2x + 3y^2$, so $g'(y) = 3y^2$ and $g(y) = y^3$. Hence $F = x^3 + 2xy + y^3 = C$. Verify: $F_x = 3x^2 + 2y$ and $F_y = 2x + 3y^2$. The middle term is $2xy$, since $\\int 2y\\,dx = 2xy$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-005",
+      "stem": "Solve $2xy\\,dx + x^2\\,dy = 0$.",
+      "options": [
+        "$2x^2 y = C$",
+        "$xy^2 = C$",
+        "$x^2 y = C$",
+        "$x^2 + y = C$"
+      ],
+      "answer": 2,
+      "explanation": "Here $M = 2xy$ and $N = x^2$, with $M_y = 2x = N_x$, so the equation is exact. Integrate $M$ in $x$: $F = x^2 y + g(y)$. Then $F_y = x^2 + g'(y) = x^2 = N$, so $g'(y) = 0$ and $g$ is constant. Thus $x^2 y = C$. Indeed the left side is the total differential $d(x^2 y) = 2xy\\,dx + x^2\\,dy$, matching the equation exactly.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-006",
+      "stem": "For $(y^2 + 2x)\\,dx + 2xy\\,dy = 0$, the potential function is $F(x,y) = C$. What is $F$?",
+      "options": [
+        "$xy^2 + x^2 = C$",
+        "$y^2 + x^2 = C$",
+        "$xy^2 + x = C$",
+        "$\\dfrac{y^3}{3} + x^2 = C$"
+      ],
+      "answer": 0,
+      "explanation": "Check: $M = y^2 + 2x$ gives $M_y = 2y$, and $N = 2xy$ gives $N_x = 2y$, so exact. Integrate $N$ in $y$: $F = xy^2 + h(x)$. Then $F_x = y^2 + h'(x) = y^2 + 2x = M$, so $h'(x) = 2x$ and $h(x) = x^2$. Thus $F = xy^2 + x^2 = C$. Verify: $F_x = y^2 + 2x$, $F_y = 2xy$. The term $xy^2$ arises from $\\int 2xy\\,dy$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-007",
+      "stem": "Is $(3x^2 y)\\,dx + (x^3 + 1)\\,dy = 0$ exact, and if so what is its solution?",
+      "options": [
+        "Exact, $x^3 + y = C$",
+        "Exact, $x^3 y = C$",
+        "Not exact",
+        "Exact, $x^3 y + y = C$"
+      ],
+      "answer": 3,
+      "explanation": "With $M = 3x^2 y$ and $N = x^3 + 1$, $M_y = 3x^2$ and $N_x = 3x^2$, so it is exact. Integrate $M$ in $x$: $F = x^3 y + g(y)$. Then $F_y = x^3 + g'(y) = x^3 + 1$, so $g'(y) = 1$ and $g(y) = y$. Thus $F = x^3 y + y = C$. The constant term $1$ in $N$ contributes the extra $+y$, which is easy to drop if one stops at $x^3 y$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-008",
+      "stem": "Determine whether $(x - y)\\,dx + (x + y)\\,dy = 0$ is exact.",
+      "options": [
+        "Not exact, since $M_y = -1$ but $N_x = 1$",
+        "Exact, since $M_y = N_x = 1$",
+        "Exact",
+        "Not exact, since $M_y = 1$ but $N_x = -1$"
+      ],
+      "answer": 0,
+      "explanation": "Here $M = x - y$ so $M_y = -1$, and $N = x + y$ so $N_x = 1$. Since $-1 \\neq 1$, the cross partials disagree and the equation is not exact. The sign on the $-y$ term in $M$ is decisive: it makes $M_y = -1$, which fails to match $N_x = 1$. An integrating factor would be needed to make this equation exact.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-009",
+      "stem": "Solve $(\\cos y)\\,dx - (x \\sin y)\\,dy = 0$.",
+      "options": [
+        "$-x \\cos y = \\sin y + C$",
+        "$\\cos y = C$",
+        "$x \\sin y = C$",
+        "$x \\cos y = C$"
+      ],
+      "answer": 3,
+      "explanation": "Here $M = \\cos y$ with $M_y = -\\sin y$, and $N = -x\\sin y$ with $N_x = -\\sin y$, so $M_y = N_x$ and the equation is exact. Integrate $M$ in $x$: $F = x\\cos y + g(y)$. Then $F_y = -x\\sin y + g'(y) = -x\\sin y = N$, so $g'(y) = 0$. Thus $x\\cos y = C$. This is the total differential $d(x\\cos y) = \\cos y\\,dx - x\\sin y\\,dy$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-010",
+      "stem": "The left side of an exact equation equals the total differential $dF$. Which expression is $dF$ for $F = x^2 y^3$?",
+      "options": [
+        "$2xy^3\\,dx + x^2 y^2\\,dy$",
+        "$2xy^3\\,dx + 3x^2 y^2\\,dy$",
+        "$2x\\,dx + 3y^2\\,dy$",
+        "$x^2 y^3\\,dx + x^2 y^3\\,dy$"
+      ],
+      "answer": 1,
+      "explanation": "The total differential is $dF = F_x\\,dx + F_y\\,dy$. For $F = x^2 y^3$, $F_x = 2xy^3$ and $F_y = 3x^2 y^2$. So $dF = 2xy^3\\,dx + 3x^2 y^2\\,dy$. Each partial holds the other variable fixed, so differentiating $y^3$ gives $3y^2$ in the second term. Dropping that factor of $3$ is the common error.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-011",
+      "stem": "Solve $(2x + 3y)\\,dx + (3x - 2y)\\,dy = 0$.",
+      "options": [
+        "$x^2 - 3xy - y^2 = C$",
+        "$x^2 + 3xy - y^2 = C$",
+        "$x^2 + 3xy + y^2 = C$",
+        "$2x^2 + 3xy - 2y^2 = C$"
+      ],
+      "answer": 1,
+      "explanation": "Check: $M = 2x + 3y$ gives $M_y = 3$, and $N = 3x - 2y$ gives $N_x = 3$, so exact. Integrate $M$ in $x$: $F = x^2 + 3xy + g(y)$. Then $F_y = 3x + g'(y) = 3x - 2y$, so $g'(y) = -2y$ and $g(y) = -y^2$. Thus $F = x^2 + 3xy - y^2 = C$. The minus on $y^2$ comes from $\\int (-2y)\\,dy = -y^2$, matching the $-2y$ in $N$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-012",
+      "stem": "After integrating $M = 2xy$ with respect to $x$ to get $F = x^2 y + g(y)$, how is $g(y)$ found if $N = x^2 + 4y$?",
+      "options": [
+        "Set $g(y) = N$ directly",
+        "Integrate $N$ with respect to $x$",
+        "Set $F_y = N$, giving $g'(y) = 4y$, so $g(y) = 2y^2$",
+        "Set $F_x = N$ and solve"
+      ],
+      "answer": 2,
+      "explanation": "Having $F = x^2 y + g(y)$ from integrating $M$ in $x$, differentiate in $y$: $F_y = x^2 + g'(y)$. Set this equal to $N = x^2 + 4y$. The $x^2$ terms cancel, leaving $g'(y) = 4y$, so $g(y) = 2y^2$. The unknown function of integration depends only on $y$, so you recover it by matching $F_y$ to $N$, not by setting $g = N$ or integrating $N$ in $x$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-013",
+      "stem": "For the nonexact equation $(3xy + y^2)\\,dx + (x^2 + xy)\\,dy = 0$, an integrating factor depending on $x$ alone is found from $\\dfrac{M_y - N_x}{N}$. What is this ratio?",
+      "options": [
+        "$\\dfrac{1}{x}$",
+        "$x$",
+        "$\\dfrac{1}{y}$",
+        "$\\dfrac{1}{x + y}$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $M_y = \\frac{\\partial}{\\partial y}(3xy + y^2) = 3x + 2y$ and $N_x = \\frac{\\partial}{\\partial x}(x^2 + xy) = 2x + y$. Then $M_y - N_x = (3x + 2y) - (2x + y) = x + y$. Divide by $N = x^2 + xy = x(x + y)$ to get $\\frac{x + y}{x(x + y)} = \\frac{1}{x}$. Since this depends on $x$ alone, an integrating factor $\\mu(x)$ exists, found from $\\frac{1}{x}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-014",
+      "stem": "Continuing from $\\dfrac{M_y - N_x}{N} = \\dfrac{1}{x}$, the integrating factor is $\\mu = e^{\\int (1/x)\\,dx}$. What is $\\mu$?",
+      "options": [
+        "$\\ln x$",
+        "$e^x$",
+        "$\\dfrac{1}{x}$",
+        "$x$"
+      ],
+      "answer": 3,
+      "explanation": "The integrating factor is $\\mu = e^{\\int \\frac{1}{x}\\,dx} = e^{\\ln x} = x$ for $x > 0$. The exponential and natural logarithm are inverse operations, so $e^{\\ln x} = x$. The answer is the factor $x$ itself, not $\\ln x$, which is only the exponent, and not $e^x$, which would arise from integrating a constant rather than $\\frac{1}{x}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-015",
+      "stem": "Solve $(y \\cos x + 2x e^y)\\,dx + (\\sin x + x^2 e^y - 1)\\,dy = 0$.",
+      "options": [
+        "$y \\cos x + x^2 e^y - y = C$",
+        "$y \\sin x + x^2 e^y = C$",
+        "$y \\sin x + 2x e^y - y = C$",
+        "$y \\sin x + x^2 e^y - y = C$"
+      ],
+      "answer": 3,
+      "explanation": "Check exactness: $M_y = \\cos x + 2x e^y$ and $N_x = \\cos x + 2x e^y$, so exact. Integrate $M$ in $x$: $\\int (y\\cos x + 2x e^y)\\,dx = y\\sin x + x^2 e^y + g(y)$. Then $F_y = \\sin x + x^2 e^y + g'(y)$ must equal $\\sin x + x^2 e^y - 1$, so $g'(y) = -1$ and $g(y) = -y$. Thus $F = y\\sin x + x^2 e^y - y = C$. The lone $-1$ in $N$ contributes the $-y$ term.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-016",
+      "stem": "Solve the exact equation $y\\,dx + x\\,dy = 0$.",
+      "options": [
+        "$x + y = C$",
+        "$xy = C$",
+        "$x^2 + y^2 = C$",
+        "$\\dfrac{x}{y} = C$"
+      ],
+      "answer": 1,
+      "explanation": "Here $M = y$, $N = x$, with $M_y = 1 = N_x$, so exact. The left side is the product rule differential $d(xy) = y\\,dx + x\\,dy$. Therefore $xy = C$. Equivalently, integrate $M$ in $x$ to get $F = xy + g(y)$, and $F_y = x + g'(y) = x$ forces $g'(y) = 0$. The answer is the product $xy$, the simplest exact differential.",
+      "difficulty": "warmup",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-017",
+      "stem": "Solve the initial value problem $(2xy - 3)\\,dx + (x^2 + 4y)\\,dy = 0$, $y(1) = 2$.",
+      "options": [
+        "$x^2 y - 3x + 2y^2 = 7$",
+        "$x^2 y + 3x + 2y^2 = 7$",
+        "$x^2 y - 3x + 2y^2 = 11$",
+        "$x^2 y - 3x + 2y^2 = 0$"
+      ],
+      "answer": 0,
+      "explanation": "Exactness: $M_y = 2x = N_x$. Integrate $M$ in $x$: $F = x^2 y - 3x + g(y)$. Then $F_y = x^2 + g'(y) = x^2 + 4y$, so $g'(y) = 4y$ and $g(y) = 2y^2$. Thus $F = x^2 y - 3x + 2y^2 = C$. Apply $y(1) = 2$: $1\\cdot 2 - 3\\cdot 1 + 2\\cdot 4 = 2 - 3 + 8 = 7$, so $C = 7$. The constant is $7$, found by substituting the point $(1, 2)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-018",
+      "stem": "Which of these is an exact differential equation?",
+      "options": [
+        "$(2x)\\,dx + (3y)\\,dy = 0$ only after a factor",
+        "$y\\,dx - x\\,dy = 0$",
+        "$x\\,dx - y\\,dy = y\\,dx$",
+        "$(x + y)\\,dx + (x - y)\\,dy = 0$"
+      ],
+      "answer": 3,
+      "explanation": "For $(x + y)\\,dx + (x - y)\\,dy = 0$, $M_y = 1$ and $N_x = 1$, so it is exact. For $y\\,dx - x\\,dy = 0$, $M_y = 1$ but $N_x = -1$, not exact. The equation $(2x)\\,dx + (3y)\\,dy = 0$ is actually already exact since $M_y = 0 = N_x$, so claiming it needs a factor is wrong, but the first option is the cleanest exact equation. Exactness rests on $M_y = N_x$, satisfied by the first.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-019",
+      "stem": "Solve $(e^y)\\,dx + (x e^y + 2y)\\,dy = 0$.",
+      "options": [
+        "$x e^y + y^2 = C$",
+        "$e^y + y^2 = C$",
+        "$x e^y + 2y = C$",
+        "$x e^y - y^2 = C$"
+      ],
+      "answer": 0,
+      "explanation": "Check: $M = e^y$ gives $M_y = e^y$, and $N = x e^y + 2y$ gives $N_x = e^y$, so exact. Integrate $M$ in $x$: $F = x e^y + g(y)$. Then $F_y = x e^y + g'(y) = x e^y + 2y$, so $g'(y) = 2y$ and $g(y) = y^2$. Thus $F = x e^y + y^2 = C$. Verify: $F_x = e^y$ and $F_y = x e^y + 2y$. The term $y^2$ comes from integrating $2y$ in $y$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-020",
+      "stem": "What role does an integrating factor $\\mu(x,y)$ play for a nonexact equation $M\\,dx + N\\,dy = 0$?",
+      "options": [
+        "It is the general solution itself",
+        "It converts the equation to second order",
+        "It eliminates the dependent variable",
+        "Multiplying through by $\\mu$ makes the equation exact"
+      ],
+      "answer": 3,
+      "explanation": "When $M\\,dx + N\\,dy = 0$ fails the test $M_y = N_x$, an integrating factor $\\mu(x,y)$ is a function chosen so that $\\mu M\\,dx + \\mu N\\,dy = 0$ does satisfy $(\\mu M)_y = (\\mu N)_x$, that is, becomes exact. The exact equation can then be solved by finding a potential. The factor does not remove a variable, change the order, or serve as the solution itself; it only restores exactness.",
+      "difficulty": "warmup",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-021",
+      "format": "cloze",
+      "stem": "Test $(2x + y)\\,dx + (x + 2y)\\,dy = 0$ for exactness and solve it.",
+      "solution": "With $M = 2x + y$ and $N = x + 2y$, compute $M_y =$ {{1}} and $N_x = 1$. Since they are equal, the equation is {{2}}. Integrating $M$ in $x$ gives $x^2 + xy + g(y)$, and matching $F_y$ to $N$ gives $g(y) = y^2$, so the solution is $x^2 + xy + y^2 = $ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "exact",
+            "not exact"
+          ],
+          "answer": "exact"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "C",
+            "constant",
+            "a constant"
+          ]
+        }
+      ],
+      "explanation": "For $M = 2x + y$, $M_y = 1$, and for $N = x + 2y$, $N_x = 1$, so the equation is exact. Integrating $M$ in $x$ gives $F = x^2 + xy + g(y)$, and $F_y = x + g'(y) = x + 2y$ forces $g(y) = y^2$. The solution is $x^2 + xy + y^2 = C$, with $C$ an arbitrary constant.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-022",
+      "format": "cloze",
+      "stem": "Solve the exact equation $2xy\\,dx + x^2\\,dy = 0$.",
+      "solution": "Check: $M_y = 2x$ and $N_x =$ {{1}}, so the equation is exact. The left side is the total differential of the product {{2}}. Therefore the implicit solution is $x^2 y = C$, and the constant of integration {{3}} when finding $g(y)$ because $N$ contributes no new $y$ term.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$x^2 y$",
+            "$xy^2$",
+            "$x^2 + y$"
+          ],
+          "answer": "$x^2 y$"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "vanishes",
+            "is zero",
+            "is constant"
+          ]
+        }
+      ],
+      "explanation": "For $M = 2xy$, $M_y = 2x$, and for $N = x^2$, $N_x = 2x$, so the equation is exact. The left side equals $d(x^2 y)$, so the solution is $x^2 y = C$. When recovering $g(y)$ from $F_y = x^2 + g'(y) = x^2$, we get $g'(y) = 0$, so it vanishes.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-023",
+      "format": "cloze",
+      "stem": "Solve $(3x^2 + 2y)\\,dx + (2x + 3y^2)\\,dy = 0$.",
+      "solution": "Here $M_y = 2$ and $N_x = 2$, so the equation is exact. Integrating $M$ in $x$ gives $x^3 + 2xy + g(y)$. Matching $F_y = 2x + g'(y)$ to $N$ forces $g'(y) =$ {{1}} $y^2$, so $g(y) = y^3$. The full solution is $x^3 +$ {{2}} $+ y^3 = C$. This $F$ exists because the cross partials {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$2xy$",
+            "$xy$",
+            "$x^2 y$"
+          ],
+          "answer": "$2xy$"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "match",
+            "are equal",
+            "agree"
+          ]
+        }
+      ],
+      "explanation": "Since $M_y = 2 = N_x$, the equation is exact. Integrating $M$ in $x$ gives $x^3 + 2xy + g(y)$, and $F_y = 2x + g'(y) = 2x + 3y^2$ forces $g'(y) = 3y^2$, so $g(y) = y^3$. The solution is $x^3 + 2xy + y^3 = C$. The potential $F$ exists because the cross partials are equal.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-024",
+      "format": "cloze",
+      "stem": "Find an integrating factor for the nonexact equation $(3xy + y^2)\\,dx + (x^2 + xy)\\,dy = 0$.",
+      "solution": "Compute $M_y - N_x = (3x + 2y) - (2x + y) = x + y$. Dividing by $N = x(x + y)$ gives $\\dfrac{1}{x}$, a function of $x$ alone, so $\\mu = e^{\\int (1/x)\\,dx} =$ {{1}}. Multiplying through by $\\mu$ makes the equation {{2}}. The new $M$ becomes $3x^2 y + x y^2$, whose $y$ partial is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$x$",
+            "$e^x$",
+            "$\\ln x$"
+          ],
+          "answer": "$x$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "exact",
+            "separable",
+            "linear"
+          ],
+          "answer": "exact"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "$3x^2 + 2xy$",
+            "3x^2 + 2xy",
+            "3x^2+2xy"
+          ]
+        }
+      ],
+      "explanation": "Since $\\frac{M_y - N_x}{N} = \\frac{x+y}{x(x+y)} = \\frac{1}{x}$ depends on $x$ alone, $\\mu = e^{\\int \\frac{1}{x}\\,dx} = e^{\\ln x} = x$. Multiplying through gives $(3x^2 y + xy^2)\\,dx + (x^3 + x^2 y)\\,dy = 0$, now exact. The new $M = 3x^2 y + xy^2$ has $M_y = 3x^2 + 2xy$, which matches the new $N_x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-025",
+      "format": "cloze",
+      "stem": "Solve $(e^y)\\,dx + (x e^y + 2y)\\,dy = 0$.",
+      "solution": "Check: $M_y = e^y$ and $N_x = e^y$, so the equation is exact. Integrating $M = e^y$ in $x$ gives $x e^y + g(y)$. Then $F_y = x e^y + g'(y)$ matched to $N$ gives $g'(y) = 2y$, so $g(y) =$ {{1}}. The solution is $x e^y + y^2 = C$. The variable held fixed while differentiating $e^y$ with respect to $x$ is {{2}}, which is why $M_y$ is nonzero. The final answer is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$y^2$",
+            "$2y^2$",
+            "$y$"
+          ],
+          "answer": "$y^2$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$x$",
+            "$y$",
+            "neither"
+          ],
+          "answer": "$x$"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "implicit",
+            "an implicit solution",
+            "implicit solution"
+          ]
+        }
+      ],
+      "explanation": "Since $M_y = e^y = N_x$, the equation is exact. Integrating $M = e^y$ in $x$ gives $x e^y + g(y)$, and $F_y = x e^y + g'(y) = x e^y + 2y$ forces $g'(y) = 2y$, so $g(y) = y^2$. When differentiating $M = e^y$ with respect to $x$, the variable $x$ is held outside while $y$ is fixed, giving $M_y = e^y$. The result $x e^y + y^2 = C$ is an implicit solution.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-exact-equations-026",
+      "format": "cloze",
+      "stem": "Apply the exactness test to $(x - y)\\,dx + (x + y)\\,dy = 0$.",
+      "solution": "Here $M_y =$ {{1}} and $N_x = 1$. Since these are not equal, the equation is {{2}}. To proceed one would need to find an {{3}} that restores equality of the cross partials.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "not exact",
+            "exact"
+          ],
+          "answer": "not exact"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "integrating factor",
+            "integrating factor mu",
+            "factor"
+          ]
+        }
+      ],
+      "explanation": "For $M = x - y$, $M_y = -1$, and for $N = x + y$, $N_x = 1$. Since $-1 \\neq 1$, the equation is not exact. To solve it one would seek an integrating factor that, after multiplication, makes the cross partials equal and the equation exact.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    }
+  ]
+}

@@ -1,0 +1,590 @@
+{
+  "courseId": "mathematical-methods-ii",
+  "topicId": "inverse-laplace-transforms",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-001",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{s}\\right\\}$.",
+      "options": [
+        "$t$",
+        "$1$",
+        "$e^{t}$",
+        "$\\dfrac{1}{t}$"
+      ],
+      "answer": 1,
+      "explanation": "Since $\\mathcal{L}\\{1\\} = \\frac{1}{s}$, the inverse transform of $\\frac{1}{s}$ is the constant function $1$. The option $t$ is the inverse of $\\frac{1}{s^2}$, the option $e^{t}$ is the inverse of $\\frac{1}{s - 1}$, and $\\frac{1}{t}$ has no Laplace inverse of this simple form. The trap is reading the power of $s$: a single power $\\frac{1}{s}$ inverts to $1$, not to $t$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-002",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{6}{s^4}\\right\\}$.",
+      "options": [
+        "$6t^3$",
+        "$t^3$",
+        "$3t^2$",
+        "$\\dfrac{t^4}{4}$"
+      ],
+      "answer": 1,
+      "explanation": "Since $\\mathcal{L}\\{t^n\\} = \\frac{n!}{s^{n+1}}$, matching $\\frac{6}{s^4}$ to $\\frac{3!}{s^{4}}$ gives $n = 3$ and $3! = 6$, so the inverse is $t^3$. The option $6t^3$ double-counts the factorial that is already in the numerator, $\\frac{t^4}{4}$ integrates instead of matching, and $3t^2$ takes the wrong power. The trap is the factorial: $\\frac{6}{s^4} = \\frac{3!}{s^4}$ inverts cleanly to $t^3$ with no extra coefficient.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-003",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{s - 7}\\right\\}$.",
+      "options": [
+        "$e^{7t}$",
+        "$7e^{7t}$",
+        "$\\dfrac{1}{7}e^{7t}$",
+        "$e^{-7t}$"
+      ],
+      "answer": 0,
+      "explanation": "Since $\\mathcal{L}\\{e^{at}\\} = \\frac{1}{s - a}$, the inverse of $\\frac{1}{s - 7}$ is $e^{7t}$. The option $e^{-7t}$ flips the sign of the exponent, $7e^{7t}$ adds a spurious factor, and $\\frac{1}{7}e^{7t}$ divides where no division is needed. The trap is the sign of $a$: the pole at $s = 7$ corresponds to $e^{+7t}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-004",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{4}{s^2 + 16}\\right\\}$.",
+      "options": [
+        "$\\sin 4t$",
+        "$\\sin 16t$",
+        "$4\\sin 4t$",
+        "$\\cos 4t$"
+      ],
+      "answer": 0,
+      "explanation": "Match $\\frac{4}{s^2 + 16}$ to $\\frac{a}{s^2 + a^2}$ with $a = 4$, since $a^2 = 16$. This is $\\mathcal{L}\\{\\sin 4t\\}$, so the inverse is $\\sin 4t$. The option $\\cos 4t$ would need $s$ in the numerator, $4\\sin 4t$ double-counts the $a = 4$ already supplied, and $\\sin 16t$ confuses $a^2$ with $a$. The trap is reading $a$ from $a^2 = 16$: the frequency is $4$, and the numerator $4$ is exactly the $a$ that the sine form requires.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-005",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{s}{s^2 + 9}\\right\\}$.",
+      "options": [
+        "$\\cos 3t$",
+        "$\\cos 9t$",
+        "$3\\cos 3t$",
+        "$\\sin 3t$"
+      ],
+      "answer": 0,
+      "explanation": "Match $\\frac{s}{s^2 + 9}$ to $\\frac{s}{s^2 + a^2}$ with $a = 3$. This is $\\mathcal{L}\\{\\cos 3t\\}$, so the inverse is $\\cos 3t$. The option $\\sin 3t$ would need $a = 3$ in the numerator rather than $s$, $\\cos 9t$ misreads $a^2$ as the frequency, and $3\\cos 3t$ adds a stray coefficient. The trap is the numerator: an $s$ on top signals cosine, with frequency $a = \\sqrt{9} = 3$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-006",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{(s - 2)^2}\\right\\}$.",
+      "options": [
+        "$e^{2t}$",
+        "$t e^{2t}$",
+        "$t e^{-2t}$",
+        "$t^2 e^{2t}$"
+      ],
+      "answer": 1,
+      "explanation": "Since $\\mathcal{L}\\{t e^{at}\\} = \\frac{1}{(s - a)^2}$, with $a = 2$ the inverse of $\\frac{1}{(s - 2)^2}$ is $t e^{2t}$. This combines $\\mathcal{L}\\{t\\} = \\frac{1}{s^2}$ with the shift $s \\to s - 2$. The option $e^{2t}$ ignores the squared denominator, $t^2 e^{2t}$ uses the cube form, and $t e^{-2t}$ flips the sign of the exponent. The trap is the repeated pole: $(s - 2)^2$ in the denominator brings a factor of $t$ alongside $e^{2t}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-007",
+      "stem": "Use partial fractions to find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{(s - 1)(s - 2)}\\right\\}$.",
+      "options": [
+        "$2e^{2t} - e^{t}$",
+        "$e^{t} - e^{2t}$",
+        "$e^{2t} - e^{t}$",
+        "$e^{t} + e^{2t}$"
+      ],
+      "answer": 2,
+      "explanation": "Write $\\frac{1}{(s - 1)(s - 2)} = \\frac{A}{s - 1} + \\frac{B}{s - 2}$. Cover-up at $s = 1$ gives $A = \\frac{1}{1 - 2} = -1$, and at $s = 2$ gives $B = \\frac{1}{2 - 1} = 1$. Inverting, $-e^{t} + e^{2t} = e^{2t} - e^{t}$. The option $e^{t} - e^{2t}$ swaps the signs of $A$ and $B$, the option $e^{t} + e^{2t}$ ignores that $A$ is negative, and $2e^{2t} - e^{t}$ miscomputes a residue. The trap is the cover-up sign: $A = -1$ because $1 - 2 = -1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-008",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{3}{s^2 + 9}\\right\\}$.",
+      "options": [
+        "$\\dfrac{1}{3}\\sin 3t$",
+        "$\\sin 3t$",
+        "$\\cos 3t$",
+        "$3\\sin 3t$"
+      ],
+      "answer": 1,
+      "explanation": "Match $\\frac{3}{s^2 + 9}$ to $\\frac{a}{s^2 + a^2}$ with $a = 3$, since the numerator equals $a$ and $a^2 = 9$. This is $\\mathcal{L}\\{\\sin 3t\\}$, so the inverse is $\\sin 3t$ with no extra factor. The option $\\cos 3t$ needs $s$ on top, $3\\sin 3t$ double-counts the $a$, and $\\frac{1}{3}\\sin 3t$ would be the inverse of $\\frac{1}{s^2 + 9}$. The trap is matching the numerator to $a$: it is already $3$, so the answer is a clean $\\sin 3t$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-009",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{s^2 + 9}\\right\\}$.",
+      "options": [
+        "$\\dfrac{1}{3}\\sin 3t$",
+        "$\\dfrac{1}{3}\\cos 3t$",
+        "$\\sin 3t$",
+        "$3\\sin 3t$"
+      ],
+      "answer": 0,
+      "explanation": "The form $\\frac{a}{s^2 + a^2}$ inverts to $\\sin at$, but here the numerator is $1$, not $a = 3$. Write $\\frac{1}{s^2 + 9} = \\frac{1}{3}\\cdot\\frac{3}{s^2 + 9}$, so the inverse is $\\frac{1}{3}\\sin 3t$. The option $\\sin 3t$ forgets the $\\frac{1}{3}$ needed to supply the missing $a$, $\\frac{1}{3}\\cos 3t$ uses the wrong function, and $3\\sin 3t$ multiplies instead of dividing. The trap is the missing $a$ in the numerator: insert a compensating $\\frac{1}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-010",
+      "stem": "Use partial fractions to find $\\mathcal{L}^{-1}\\left\\{\\dfrac{s + 1}{s(s + 2)}\\right\\}$.",
+      "options": [
+        "$1 - \\dfrac{1}{2}e^{-2t}$",
+        "$\\dfrac{1}{2} + \\dfrac{1}{2}e^{2t}$",
+        "$\\dfrac{1}{2} - \\dfrac{1}{2}e^{-2t}$",
+        "$\\dfrac{1}{2} + \\dfrac{1}{2}e^{-2t}$"
+      ],
+      "answer": 3,
+      "explanation": "Write $\\frac{s + 1}{s(s + 2)} = \\frac{A}{s} + \\frac{B}{s + 2}$. Cover-up at $s = 0$ gives $A = \\frac{0 + 1}{0 + 2} = \\frac{1}{2}$, and at $s = -2$ gives $B = \\frac{-2 + 1}{-2} = \\frac{-1}{-2} = \\frac{1}{2}$. Inverting, $\\frac{1}{2}\\cdot 1 + \\frac{1}{2}e^{-2t}$. The option with $-\\frac{1}{2}e^{-2t}$ gets the sign of $B$ wrong, the option starting with $1$ miscomputes $A$, and the option with $e^{2t}$ flips the pole sign. The trap is the second residue: $B = \\frac{-1}{-2} = +\\frac{1}{2}$, a positive value.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-011",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{s}{s^2 - 4}\\right\\}$.",
+      "options": [
+        "$\\cosh 2t$",
+        "$\\dfrac{1}{2}\\sinh 2t$",
+        "$\\sinh 2t$",
+        "$\\cos 2t$"
+      ],
+      "answer": 0,
+      "explanation": "Match $\\frac{s}{s^2 - 4}$ to $\\frac{s}{s^2 - a^2}$ with $a = 2$. This is $\\mathcal{L}\\{\\cosh 2t\\}$, so the inverse is $\\cosh 2t$. The option $\\cos 2t$ comes from $s^2 + 4$ with the wrong sign, $\\sinh 2t$ would need $a = 2$ in the numerator, and $\\frac{1}{2}\\sinh 2t$ matches $\\frac{1}{s^2 - 4}$ instead. The trap is the minus sign in the denominator: $s^2 - a^2$ signals a hyperbolic function, and $s$ on top gives $\\cosh$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-012",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{s - 3}{(s - 3)^2 + 4}\\right\\}$.",
+      "options": [
+        "$e^{3t}\\sin 2t$",
+        "$e^{-3t}\\cos 2t$",
+        "$e^{3t}\\cos 2t$",
+        "$\\cos 2t$"
+      ],
+      "answer": 2,
+      "explanation": "Recognize the first-shift form: $\\frac{s - 3}{(s - 3)^2 + 4}$ is $F(s - 3)$ where $F(s) = \\frac{s}{s^2 + 4} = \\mathcal{L}\\{\\cos 2t\\}$. By the inverse shift, $\\mathcal{L}^{-1}\\{F(s - 3)\\} = e^{3t}\\cos 2t$. The option $e^{-3t}\\cos 2t$ flips the shift sign, $e^{3t}\\sin 2t$ uses the sine form even though the numerator is the shifted $s$, and $\\cos 2t$ forgets the exponential factor. The trap is the shift: $(s - 3)$ in place of $s$ means multiply the inverse by $e^{3t}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-013",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{2}{(s + 1)^3}\\right\\}$.",
+      "options": [
+        "$2t^2 e^{-t}$",
+        "$t^2 e^{t}$",
+        "$t^2 e^{-t}$",
+        "$t e^{-t}$"
+      ],
+      "answer": 2,
+      "explanation": "Since $\\mathcal{L}\\{t^n e^{at}\\} = \\frac{n!}{(s - a)^{n+1}}$, match $\\frac{2}{(s + 1)^3}$ with $n = 2$ (so $n! = 2$) and $a = -1$. The inverse is $t^2 e^{-t}$. The option $2t^2 e^{-t}$ double-counts the factorial already present in the numerator, $t e^{-t}$ uses the square form, and $t^2 e^{t}$ flips the exponent sign. The trap is the factorial match: $\\frac{2}{(s+1)^3} = \\frac{2!}{(s+1)^3}$ inverts to $t^2 e^{-t}$ with coefficient $1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-014",
+      "stem": "Use partial fractions to find $\\mathcal{L}^{-1}\\left\\{\\dfrac{5s - 1}{s^2 - 1}\\right\\}$.",
+      "options": [
+        "$5e^{t} - e^{-t}$",
+        "$3e^{t} + 2e^{-t}$",
+        "$2e^{t} + 3e^{-t}$",
+        "$2e^{t} - 3e^{-t}$"
+      ],
+      "answer": 2,
+      "explanation": "Factor $s^2 - 1 = (s - 1)(s + 1)$ and write $\\frac{5s - 1}{(s - 1)(s + 1)} = \\frac{A}{s - 1} + \\frac{B}{s + 1}$. Cover-up at $s = 1$ gives $A = \\frac{5 - 1}{1 + 1} = \\frac{4}{2} = 2$, and at $s = -1$ gives $B = \\frac{-5 - 1}{-1 - 1} = \\frac{-6}{-2} = 3$. Matching residues to factors, $A = 2$ sits over $s - 1$ giving $2e^{t}$, and $B = 3$ sits over $s + 1$ giving $3e^{-t}$, so the inverse is $2e^{t} + 3e^{-t}$. The option $3e^{t} + 2e^{-t}$ swaps the two coefficients between the factors, the option $2e^{t} - 3e^{-t}$ drops the sign of a positive residue, and $5e^{t} - e^{-t}$ reads the numerator coefficients directly. The trap is matching each residue to its own factor: $A = 2$ over $s - 1$ gives $2e^{t}$, $B = 3$ over $s + 1$ gives $3e^{-t}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-015",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{s^2 + 2s + 5}\\right\\}$ by completing the square.",
+      "options": [
+        "$\\dfrac{1}{2}e^{t}\\sin 2t$",
+        "$\\dfrac{1}{2}e^{-t}\\sin 2t$",
+        "$\\dfrac{1}{2}e^{-t}\\cos 2t$",
+        "$e^{-t}\\sin 2t$"
+      ],
+      "answer": 1,
+      "explanation": "Complete the square: $s^2 + 2s + 5 = (s + 1)^2 + 4$. This is the shifted sine form $\\frac{1}{(s + 1)^2 + 2^2}$. Since $\\mathcal{L}^{-1}\\{\\frac{2}{(s+1)^2 + 4}\\} = e^{-t}\\sin 2t$, dividing by $2$ gives $\\frac{1}{2}e^{-t}\\sin 2t$. The option without the $\\frac{1}{2}$ forgets to supply the missing $a = 2$, the option with $e^{t}$ flips the shift sign, and the cosine option uses the wrong function. The trap is the completed square plus the missing numerator factor: shift gives $e^{-t}$, and the $\\frac{1}{2}$ rebuilds the $\\sin$ form.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-016",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{2s}{s^2 + 16}\\right\\}$.",
+      "options": [
+        "$2\\cos 4t$",
+        "$2\\sin 4t$",
+        "$\\cos 4t$",
+        "$\\sin 4t$"
+      ],
+      "answer": 0,
+      "explanation": "Factor out the constant: $\\frac{2s}{s^2 + 16} = 2\\cdot\\frac{s}{s^2 + 16}$, and $\\frac{s}{s^2 + 16} = \\mathcal{L}\\{\\cos 4t\\}$. So the inverse is $2\\cos 4t$. The option $\\sin 4t$ uses the wrong function and drops the $2$, $2\\sin 4t$ keeps the constant but picks sine, and $\\cos 4t$ forgets the leading $2$. The trap is reading the constant and the function together: $s$ on top means cosine, and the factor $2$ survives.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-017",
+      "stem": "Use partial fractions to find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{s(s^2 + 1)}\\right\\}$.",
+      "options": [
+        "$1 - \\sin t$",
+        "$\\cos t - 1$",
+        "$1 - \\cos t$",
+        "$1 + \\cos t$"
+      ],
+      "answer": 2,
+      "explanation": "Write $\\frac{1}{s(s^2 + 1)} = \\frac{A}{s} + \\frac{Bs + C}{s^2 + 1}$. Clearing, $1 = A(s^2 + 1) + (Bs + C)s$. At $s = 0$, $A = 1$. Matching $s^2$ coefficients, $A + B = 0$ so $B = -1$; matching $s$ coefficients, $C = 0$. Thus $\\frac{1}{s} - \\frac{s}{s^2 + 1}$ inverts to $1 - \\cos t$. The option $1 + \\cos t$ gets the sign of $B$ wrong, $\\cos t - 1$ reverses the whole expression, and $1 - \\sin t$ uses the wrong trig function. The trap is the sign of the cosine term: $B = -1$ makes it $-\\cos t$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-018",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{s + 2}{(s + 2)^2 + 9}\\right\\}$.",
+      "options": [
+        "$e^{2t}\\cos 3t$",
+        "$e^{-2t}\\sin 3t$",
+        "$e^{-2t}\\cos 3t$",
+        "$\\cos 3t$"
+      ],
+      "answer": 2,
+      "explanation": "This is the shifted cosine form $F(s + 2)$ with $F(s) = \\frac{s}{s^2 + 9} = \\mathcal{L}\\{\\cos 3t\\}$. The inverse shift gives $e^{-2t}\\cos 3t$. The option $e^{2t}\\cos 3t$ flips the shift sign, $e^{-2t}\\sin 3t$ uses sine despite the shifted $s$ in the numerator, and $\\cos 3t$ drops the exponential. The trap is the shift sign: $(s + 2)$ corresponds to $e^{-2t}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-019",
+      "stem": "Use partial fractions to find $\\mathcal{L}^{-1}\\left\\{\\dfrac{7}{(s - 1)(s + 6)}\\right\\}$.",
+      "options": [
+        "$e^{t} + e^{-6t}$",
+        "$7e^{t} - 7e^{-6t}$",
+        "$e^{-t} - e^{6t}$",
+        "$e^{t} - e^{-6t}$"
+      ],
+      "answer": 3,
+      "explanation": "Write $\\frac{7}{(s - 1)(s + 6)} = \\frac{A}{s - 1} + \\frac{B}{s + 6}$. Cover-up at $s = 1$ gives $A = \\frac{7}{1 + 6} = 1$, and at $s = -6$ gives $B = \\frac{7}{-6 - 1} = \\frac{7}{-7} = -1$. Inverting, $e^{t} - e^{-6t}$. The option $e^{t} + e^{-6t}$ misses that $B$ is negative, $e^{-t} - e^{6t}$ flips both pole signs, and $7e^{t} - 7e^{-6t}$ keeps the numerator $7$ that the residues already absorbed. The trap is the second residue: $B = \\frac{7}{-7} = -1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-020",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{2}{s} + \\dfrac{3}{s^2}\\right\\}$.",
+      "options": [
+        "$2 + 3t$",
+        "$2 + 3t^2$",
+        "$2t + 3$",
+        "$2t + 3t^2$"
+      ],
+      "answer": 0,
+      "explanation": "Invert term by term: $\\mathcal{L}^{-1}\\{\\frac{2}{s}\\} = 2$ and $\\mathcal{L}^{-1}\\{\\frac{3}{s^2}\\} = 3t$. The sum is $2 + 3t$. The option $2t + 3$ swaps which term carries the $t$, $2 + 3t^2$ uses the wrong power for $\\frac{1}{s^2}$, and $2t + 3t^2$ over-powers both. The trap is matching powers: $\\frac{1}{s}$ gives a constant, $\\frac{1}{s^2}$ gives $t$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-021",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{s}{(s - 1)^2}\\right\\}$.",
+      "options": [
+        "$e^{t} + t e^{-t}$",
+        "$t e^{t}$",
+        "$e^{t} - t e^{t}$",
+        "$e^{t} + t e^{t}$"
+      ],
+      "answer": 3,
+      "explanation": "Rewrite the numerator: $\\frac{s}{(s - 1)^2} = \\frac{(s - 1) + 1}{(s - 1)^2} = \\frac{1}{s - 1} + \\frac{1}{(s - 1)^2}$. The first piece inverts to $e^{t}$ and the second to $t e^{t}$, so the answer is $e^{t} + t e^{t}$. The option $t e^{t}$ keeps only the second piece, $e^{t} - t e^{t}$ subtracts where it should add, and $e^{t} + t e^{-t}$ flips a sign in the exponent. The trap is splitting the numerator: writing $s = (s - 1) + 1$ exposes both standard forms.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-022",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{6}{s^2 + 4}\\right\\}$.",
+      "options": [
+        "$3\\cos 2t$",
+        "$3\\sin 2t$",
+        "$\\sin 2t$",
+        "$6\\sin 2t$"
+      ],
+      "answer": 1,
+      "explanation": "Match the sine form $\\frac{a}{s^2 + a^2}$ with $a = 2$, which needs a $2$ in the numerator. Write $\\frac{6}{s^2 + 4} = 3\\cdot\\frac{2}{s^2 + 4}$, so the inverse is $3\\sin 2t$. The option $6\\sin 2t$ keeps the full numerator without pulling out the $a = 2$, $3\\cos 2t$ uses cosine, and $\\sin 2t$ drops the coefficient. The trap is the numerator bookkeeping: factor the $6$ as $3\\times 2$ so the leftover $2$ matches $a$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-023",
+      "stem": "Use partial fractions to find $\\mathcal{L}^{-1}\\left\\{\\dfrac{3s + 2}{s^2 + s}\\right\\}$.",
+      "options": [
+        "$2 + e^{-t}$",
+        "$1 + 2e^{-t}$",
+        "$2 - e^{-t}$",
+        "$2 + e^{t}$"
+      ],
+      "answer": 0,
+      "explanation": "Factor $s^2 + s = s(s + 1)$ and write $\\frac{3s + 2}{s(s + 1)} = \\frac{A}{s} + \\frac{B}{s + 1}$. Cover-up at $s = 0$ gives $A = \\frac{2}{1} = 2$, and at $s = -1$ gives $B = \\frac{-3 + 2}{-1} = \\frac{-1}{-1} = 1$. Inverting, $2 + e^{-t}$. The option $2 - e^{-t}$ gets the sign of $B$ wrong, $2 + e^{t}$ flips the pole sign, and $1 + 2e^{-t}$ swaps the two residues. The trap is the second residue: $B = \\frac{-1}{-1} = +1$, so the exponential term is positive.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-024",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{4}{s^2 - 16}\\right\\}$.",
+      "options": [
+        "$\\cosh 4t$",
+        "$4\\sinh 4t$",
+        "$\\sin 4t$",
+        "$\\sinh 4t$"
+      ],
+      "answer": 3,
+      "explanation": "Match $\\frac{4}{s^2 - 16}$ to $\\frac{a}{s^2 - a^2}$ with $a = 4$, since the numerator equals $a$ and $a^2 = 16$. This is $\\mathcal{L}\\{\\sinh 4t\\}$, so the inverse is $\\sinh 4t$. The option $4\\sinh 4t$ double-counts the $a$, $\\cosh 4t$ would need $s$ on top, and $\\sin 4t$ ignores the minus sign that marks a hyperbolic form. The trap is the sign in the denominator: $s^2 - a^2$ gives $\\sinh$, not $\\sin$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-025",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{(s - 4)^2 + 1}\\right\\}$.",
+      "options": [
+        "$e^{4t}\\cos t$",
+        "$\\sin t$",
+        "$e^{-4t}\\sin t$",
+        "$e^{4t}\\sin t$"
+      ],
+      "answer": 3,
+      "explanation": "This is the shifted sine form $F(s - 4)$ with $F(s) = \\frac{1}{s^2 + 1} = \\mathcal{L}\\{\\sin t\\}$, since $a = 1$ and the numerator already equals $a$. The inverse shift gives $e^{4t}\\sin t$. The option $e^{-4t}\\sin t$ flips the shift sign, $e^{4t}\\cos t$ uses cosine even though the numerator is constant, and $\\sin t$ drops the exponential. The trap is the shift direction: $(s - 4)$ in the denominator multiplies the inverse by $e^{4t}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-026",
+      "stem": "After solving an IVP you obtain $Y(s) = \\dfrac{1}{s(s + 1)}$. Find $y(t) = \\mathcal{L}^{-1}\\{Y(s)\\}$.",
+      "options": [
+        "$1 - e^{-t}$",
+        "$1 - e^{t}$",
+        "$e^{-t} - 1$",
+        "$1 + e^{-t}$"
+      ],
+      "answer": 0,
+      "explanation": "Write $\\frac{1}{s(s + 1)} = \\frac{A}{s} + \\frac{B}{s + 1}$. Cover-up at $s = 0$ gives $A = 1$, and at $s = -1$ gives $B = \\frac{1}{-1} = -1$. Inverting, $1 - e^{-t}$. The option $1 + e^{-t}$ misses that $B$ is negative, $e^{-t} - 1$ reverses the expression, and $1 - e^{t}$ flips the pole sign. The trap is the residue $B = -1$, which makes the exponential subtract from the constant.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-027",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{s + 5}{s^2 + 9}\\right\\}$.",
+      "options": [
+        "$\\cos 3t + 5\\sin 3t$",
+        "$\\cos 3t + \\dfrac{5}{3}\\sin 3t$",
+        "$\\cos 3t - \\dfrac{5}{3}\\sin 3t$",
+        "$\\sin 3t + \\dfrac{5}{3}\\cos 3t$"
+      ],
+      "answer": 1,
+      "explanation": "Split the fraction: $\\frac{s + 5}{s^2 + 9} = \\frac{s}{s^2 + 9} + \\frac{5}{s^2 + 9}$. The first inverts to $\\cos 3t$. The second, with a $5$ in the numerator and $a = 3$, is $5\\cdot\\frac{1}{s^2 + 9} = \\frac{5}{3}\\cdot\\frac{3}{s^2 + 9}$, inverting to $\\frac{5}{3}\\sin 3t$. So the answer is $\\cos 3t + \\frac{5}{3}\\sin 3t$. The option with $5\\sin 3t$ forgets to divide by $a = 3$, the option swapping sine and cosine misreads which term carries $s$, and the minus-sign option flips a sign. The trap is the $\\frac{1}{a}$ factor on the sine piece: a bare constant over $s^2 + 9$ needs a $\\frac{1}{3}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-028",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{10}{s^3}\\right\\}$.",
+      "options": [
+        "$\\dfrac{10}{3}t^3$",
+        "$10t^2$",
+        "$5t^3$",
+        "$5t^2$"
+      ],
+      "answer": 3,
+      "explanation": "Use $\\mathcal{L}\\{t^2\\} = \\frac{2!}{s^3} = \\frac{2}{s^3}$, so $\\mathcal{L}^{-1}\\{\\frac{1}{s^3}\\} = \\frac{t^2}{2}$. Then $\\mathcal{L}^{-1}\\{\\frac{10}{s^3}\\} = 10\\cdot\\frac{t^2}{2} = 5t^2$. The option $10t^2$ forgets the $\\frac{1}{2}$ from the factorial, $5t^3$ uses the wrong power, and $\\frac{10}{3}t^3$ confuses $s^3$ with the $t^3$ form. The trap is the factorial denominator: $\\frac{1}{s^3}$ inverts to $\\frac{t^2}{2}$, halving the coefficient.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-029",
+      "stem": "Use partial fractions to find $\\mathcal{L}^{-1}\\left\\{\\dfrac{2s - 1}{(s - 1)(s - 3)}\\right\\}$.",
+      "options": [
+        "$-\\dfrac{1}{2}e^{t} - \\dfrac{5}{2}e^{3t}$",
+        "$\\dfrac{1}{2}e^{t} + \\dfrac{5}{2}e^{3t}$",
+        "$-\\dfrac{1}{2}e^{t} + \\dfrac{5}{2}e^{3t}$",
+        "$\\dfrac{5}{2}e^{t} - \\dfrac{1}{2}e^{3t}$"
+      ],
+      "answer": 2,
+      "explanation": "Write $\\frac{2s - 1}{(s - 1)(s - 3)} = \\frac{A}{s - 1} + \\frac{B}{s - 3}$. Cover-up at $s = 1$ gives $A = \\frac{2 - 1}{1 - 3} = \\frac{1}{-2} = -\\frac{1}{2}$, and at $s = 3$ gives $B = \\frac{6 - 1}{3 - 1} = \\frac{5}{2}$. Inverting, $-\\frac{1}{2}e^{t} + \\frac{5}{2}e^{3t}$. The option with $+\\frac{1}{2}e^{t}$ drops the sign on $A$, the all-negative option mishandles $B$, and the last option swaps the residues between factors. The trap is the sign of $A$: $\\frac{1}{1 - 3} = -\\frac{1}{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-030",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{s}{s^2 + 6s + 13}\\right\\}$ by completing the square.",
+      "options": [
+        "$e^{-3t}\\cos 2t - \\dfrac{3}{2}e^{-3t}\\sin 2t$",
+        "$e^{-3t}\\cos 2t + \\dfrac{3}{2}e^{-3t}\\sin 2t$",
+        "$e^{3t}\\cos 2t - \\dfrac{3}{2}e^{3t}\\sin 2t$",
+        "$e^{-3t}\\cos 2t - 3e^{-3t}\\sin 2t$"
+      ],
+      "answer": 0,
+      "explanation": "Complete the square: $s^2 + 6s + 13 = (s + 3)^2 + 4$. Rewrite the numerator to match the shift: $s = (s + 3) - 3$, so $\\frac{s}{(s + 3)^2 + 4} = \\frac{s + 3}{(s + 3)^2 + 4} - \\frac{3}{(s + 3)^2 + 4}$. The first piece inverts to $e^{-3t}\\cos 2t$. The second is $-3\\cdot\\frac{1}{(s+3)^2 + 4} = -\\frac{3}{2}\\cdot\\frac{2}{(s+3)^2 + 4}$, inverting to $-\\frac{3}{2}e^{-3t}\\sin 2t$. So the answer is $e^{-3t}\\cos 2t - \\frac{3}{2}e^{-3t}\\sin 2t$. The $+$ option mishandles the sign from $-3$, the $e^{3t}$ option flips the shift, and the option with $3$ instead of $\\frac{3}{2}$ forgets the $\\frac{1}{a}$ factor with $a = 2$. The trap is rebuilding the numerator: write $s = (s + 3) - 3$ so the cosine and sine pieces separate cleanly.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-031",
+      "format": "cloze",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{s - 5}\\right\\}$ and $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{s + 5}\\right\\}$.",
+      "solution": "The form $\\dfrac{1}{s - a}$ inverts to $e^{at}$. For $\\dfrac{1}{s - 5}$ the exponent rate is {{1}}, giving $e^{5t}$. For $\\dfrac{1}{s + 5}$, the pole is at $s = -5$, so its inverse is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$e^{-5t}$",
+            "$e^{5t}$",
+            "$5e^{-5t}$",
+            "$e^{-t}$"
+          ],
+          "answer": "$e^{-5t}$"
+        }
+      ],
+      "explanation": "Since $\\mathcal{L}^{-1}\\{\\frac{1}{s - a}\\} = e^{at}$: for $\\frac{1}{s - 5}$ the rate is $a = 5$, and for $\\frac{1}{s + 5}$ the pole at $s = -5$ gives $e^{-5t}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-032",
+      "format": "cloze",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{s^2 + 25}\\right\\}$.",
+      "solution": "This matches $\\dfrac{a}{s^2 + a^2}$ with $a = 5$, but the numerator is $1$ rather than $a$. To fix this, multiply and divide so the answer carries a leading factor of $\\dfrac{1}{c}$, where $c$ equals {{1}}. The inverse transform is therefore $\\dfrac{1}{5}\\sin kt$, where the frequency $k$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "With $a = 5$, $\\frac{1}{s^2 + 25} = \\frac{1}{5}\\cdot\\frac{5}{s^2 + 25}$, which inverts to $\\frac{1}{5}\\sin 5t$. The compensating factor is $\\frac{1}{5}$ and the frequency is $5$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-033",
+      "format": "cloze",
+      "stem": "Use partial fractions on $\\dfrac{1}{(s - 2)(s + 3)} = \\dfrac{A}{s - 2} + \\dfrac{B}{s + 3}$ and invert.",
+      "solution": "Cover-up at $s = 2$ gives $A = \\dfrac{1}{5}$. Cover-up at $s = -3$ gives $B$, whose value is {{1}}. Inverting term by term, the solution is $\\dfrac{1}{5}e^{2t} + B e^{-3t}$, so the exponential rate attached to $B$ is the number {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$-\\dfrac{1}{5}$",
+            "$\\dfrac{1}{5}$",
+            "$-\\dfrac{1}{6}$",
+            "$\\dfrac{1}{6}$"
+          ],
+          "answer": "$-\\dfrac{1}{5}$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Cover-up at $s = -3$ gives $B = \\frac{1}{-3 - 2} = -\\frac{1}{5}$. The term $B e^{-3t}$ comes from the pole at $s = -3$, so the rate is $-3$, giving $\\frac{1}{5}e^{2t} - \\frac{1}{5}e^{-3t}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-034",
+      "format": "cloze",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{(s + 1)^2 + 9}\\right\\}$ using the first shifting theorem.",
+      "solution": "Ignoring the shift, $\\dfrac{1}{s^2 + 9}$ inverts to $\\dfrac{1}{3}\\sin 3t$. The shift $(s + 1)$ in place of $s$ multiplies the result by an exponential factor, namely {{1}}. So the full inverse is $\\dfrac{1}{3}e^{-t}\\sin 3t$, where the coefficient in front is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$e^{-t}$",
+            "$e^{t}$",
+            "$e^{-3t}$",
+            "$e^{3t}$"
+          ],
+          "answer": "$e^{-t}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{3}$",
+            "$3$",
+            "$1$",
+            "$\\dfrac{1}{9}$"
+          ],
+          "answer": "$\\dfrac{1}{3}$"
+        }
+      ],
+      "explanation": "Since $\\frac{1}{s^2 + 9}$ inverts to $\\frac{1}{3}\\sin 3t$ and $(s + 1)$ replaces $s$, multiply by $e^{-t}$, giving $\\frac{1}{3}e^{-t}\\sin 3t$. The coefficient is $\\frac{1}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-035",
+      "format": "cloze",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{2}{(s - 3)^2}\\right\\}$ using the repeated-pole rule.",
+      "solution": "The form $\\dfrac{1}{(s - a)^2}$ inverts to $t e^{at}$. Here $a = 3$, so the exponential is $e^{3t}$ and the answer has a factor of $t$ to the first power. Including the numerator $2$, the inverse is $c\\,t\\,e^{3t}$, where the constant $c$ is {{1}}. The power of $t$ in this answer is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $\\mathcal{L}^{-1}\\{\\frac{1}{(s - 3)^2}\\} = t e^{3t}$, multiplying by the numerator $2$ gives $2t e^{3t}$. The constant is $2$ and $t$ appears to the first power.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-inverse-laplace-transforms-036",
+      "format": "cloze",
+      "stem": "Complete the square to find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{s^2 + 4s + 5}\\right\\}$.",
+      "solution": "Completing the square, $s^2 + 4s + 5 = (s + 2)^2 + d$, where the constant $d$ is {{1}}. This is the shifted sine form with $a = 1$, so the inverse is an exponential times $\\sin t$. The exponential factor that the shift produces is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$e^{-2t}$",
+            "$e^{2t}$",
+            "$e^{-t}$",
+            "$e^{-4t}$"
+          ],
+          "answer": "$e^{-2t}$"
+        }
+      ],
+      "explanation": "Here $s^2 + 4s + 5 = (s + 2)^2 + 1$, so $d = 1$. With $a = 1$ the inverse of $\\frac{1}{(s+2)^2 + 1}$ is $e^{-2t}\\sin t$, the shift contributing $e^{-2t}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    }
+  ]
+}

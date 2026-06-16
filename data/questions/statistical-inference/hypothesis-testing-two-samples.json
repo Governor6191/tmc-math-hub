@@ -1,0 +1,491 @@
+{
+  "courseId": "statistical-inference",
+  "topicId": "hypothesis-testing-two-samples",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-001",
+      "stem": "When comparing the means of two independent samples, the null hypothesis is usually written as which of the following?",
+      "options": [
+        "$H_0: \\mu_1 - \\mu_2 = 0$",
+        "$H_0: \\mu_1 - \\mu_2 \\ne 0$",
+        "$H_0: \\bar{x}_1 = \\bar{x}_2$",
+        "$H_0: \\mu_1 \\ne \\mu_2$"
+      ],
+      "answer": 0,
+      "explanation": "The usual null for a two-sample mean comparison is no difference, $H_0: \\mu_1 - \\mu_2 = 0$, equivalently $\\mu_1 = \\mu_2$. Hypotheses are about population parameters, so writing them with the sample means $\\bar{x}_1, \\bar{x}_2$ is incorrect. The inequality versions belong to the alternative hypothesis.",
+      "difficulty": "warmup",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-002",
+      "stem": "For two independent samples with known variances, the standard error of $\\bar{X}_1 - \\bar{X}_2$ is which of the following?",
+      "options": [
+        "$\\sqrt{\\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}}$",
+        "$\\frac{\\sigma_1}{\\sqrt{n_1}} + \\frac{\\sigma_2}{\\sqrt{n_2}}$",
+        "$\\sqrt{\\frac{\\sigma_1^2}{n_1} - \\frac{\\sigma_2^2}{n_2}}$",
+        "$\\frac{\\sigma_1^2 + \\sigma_2^2}{n_1 + n_2}$"
+      ],
+      "answer": 0,
+      "explanation": "For independent samples the variances add, so $\\operatorname{Var}(\\bar{X}_1 - \\bar{X}_2) = \\frac{\\sigma_1^2}{n_1} + \\frac{\\sigma_2^2}{n_2}$, and the standard error is its square root. Standard errors themselves do not add directly, and subtracting the variances is wrong because variances of a difference of independent variables add.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-003",
+      "stem": "Two independent samples each of size $50$ have $\\bar{x}_1 = 85$, $\\bar{x}_2 = 80$, and known $\\sigma_1 = \\sigma_2 = 10$. What is the value of the two-sample $z$ statistic for $H_0: \\mu_1 = \\mu_2$?",
+      "options": [
+        "$2.5$",
+        "$0.5$",
+        "$5.0$",
+        "$1.25$"
+      ],
+      "answer": 0,
+      "explanation": "The standard error is $\\sqrt{\\frac{100}{50} + \\frac{100}{50}} = \\sqrt{2 + 2} = \\sqrt{4} = 2$, so $z = \\frac{85 - 80}{2} = 2.5$. The option $5.0$ reports the raw difference without standardizing, and $0.5$ divides the difference by $10$ rather than the standard error.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-004",
+      "stem": "The pooled estimate of variance for two independent samples (assuming equal population variances) is which of the following?",
+      "options": [
+        "$\\frac{s_1^2 + s_2^2}{n_1 + n_2}$",
+        "$\\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}$",
+        "$\\frac{(n_1)s_1^2 + (n_2)s_2^2}{n_1 + n_2}$",
+        "$\\frac{s_1^2 + s_2^2}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "The pooled variance is a weighted average of the two sample variances using degrees of freedom as weights: $s_p^2 = \\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}$. A simple average ignores unequal sample sizes, and the versions dividing by $n_1 + n_2$ use the wrong weights and denominator.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-005",
+      "stem": "Two samples have $n_1 = 10$, $s_1^2 = 4$ and $n_2 = 12$, $s_2^2 = 6$. What is the pooled variance $s_p^2$?",
+      "options": [
+        "$4.6$",
+        "$10.0$",
+        "$5.0$",
+        "$5.1$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $s_p^2 = \\frac{(10-1)(4) + (12-1)(6)}{10 + 12 - 2} = \\frac{36 + 66}{20} = \\frac{102}{20} = 5.1$. The option $5.0$ is the unweighted average of $4$ and $6$, which ignores the different sample sizes.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-006",
+      "stem": "For the pooled two-sample $t$ test with sample sizes $n_1$ and $n_2$, the number of degrees of freedom is which of the following?",
+      "options": [
+        "$n_1 + n_2$",
+        "$n_1 + n_2 - 1$",
+        "$n_1 + n_2 - 2$",
+        "$\\min(n_1, n_2) - 1$"
+      ],
+      "answer": 2,
+      "explanation": "Two means are estimated, one from each sample, so two degrees of freedom are lost, giving $n_1 + n_2 - 2$. Subtracting only one would be correct for a single-sample test, not a two-sample pooled test. This is the degrees of freedom for both the pooled variance and the $t$ statistic.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-007",
+      "stem": "Two samples have $n_1 = 10$, $s_1^2 = 8$ and $n_2 = 10$, $s_2^2 = 12$. The pooled variance and its degrees of freedom are which of the following?",
+      "options": [
+        "$s_p^2 = 20$, df $= 18$",
+        "$s_p^2 = 10$, df $= 20$",
+        "$s_p^2 = 10$, df $= 19$",
+        "$s_p^2 = 10$, df $= 18$"
+      ],
+      "answer": 3,
+      "explanation": "Here $s_p^2 = \\frac{9(8) + 9(12)}{10 + 10 - 2} = \\frac{72 + 108}{18} = \\frac{180}{18} = 10$ with degrees of freedom $n_1 + n_2 - 2 = 18$. The option with df $= 20$ forgets to subtract $2$, and $s_p^2 = 20$ doubles the correct pooled value.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-008",
+      "stem": "A paired-samples (matched pairs) test analyzes which quantity?",
+      "options": [
+        "the two sample means separately",
+        "the differences within each matched pair",
+        "the ratio of the two variances",
+        "the sum of the paired observations"
+      ],
+      "answer": 1,
+      "explanation": "A paired test reduces each matched pair to a single difference $d_i = x_i - y_i$ and then performs a one-sample test on those differences. This removes the pair-to-pair variability that the design controls for. Treating the samples as independent would ignore the pairing.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-009",
+      "stem": "For a paired test on $n$ pairs, the test statistic is $t = \\frac{\\bar{d}}{s_d / \\sqrt{n}}$ with how many degrees of freedom?",
+      "options": [
+        "$n$",
+        "$n - 1$",
+        "$n - 2$",
+        "$2n - 2$"
+      ],
+      "answer": 1,
+      "explanation": "After forming the $n$ differences the analysis is a one-sample $t$ test on them, so the degrees of freedom are $n - 1$. The value $2n - 2$ would apply to an independent two-sample pooled test, not a paired test. The pairing collapses two columns into one sample of differences.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-010",
+      "stem": "A paired study on $n = 25$ pairs has mean difference $\\bar{d} = 4$ and standard deviation of differences $s_d = 5$. What is the value of the paired $t$ statistic?",
+      "options": [
+        "$4.0$",
+        "$20.0$",
+        "$0.16$",
+        "$0.8$"
+      ],
+      "answer": 0,
+      "explanation": "The standard error of $\\bar{d}$ is $\\frac{s_d}{\\sqrt{n}} = \\frac{5}{\\sqrt{25}} = \\frac{5}{5} = 1$, so $t = \\frac{4}{1} = 4.0$ with $n - 1 = 24$ degrees of freedom. The option $0.8$ divides $4$ by $5$ instead of by the standard error, and $20$ multiplies by $\\sqrt{n}$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-011",
+      "stem": "When testing the difference of two proportions $H_0: p_1 = p_2$, the standard error is best estimated using which quantity?",
+      "options": [
+        "each sample proportion separately, never combined",
+        "a pooled (combined) proportion $\\hat{p}$ computed from both samples",
+        "the difference $\\hat{p}_1 - \\hat{p}_2$ itself",
+        "only the larger of the two sample proportions"
+      ],
+      "answer": 1,
+      "explanation": "Under $H_0: p_1 = p_2$ the common proportion is best estimated by pooling: $\\hat{p} = \\frac{x_1 + x_2}{n_1 + n_2}$, and the standard error uses this $\\hat{p}$ for both samples. The pooled estimate is appropriate precisely because the null assumes a single common proportion. Using the raw difference is not a standard error.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-012",
+      "stem": "In two samples, $x_1 = 30$ successes out of $n_1 = 100$ and $x_2 = 50$ out of $n_2 = 100$. What is the pooled proportion $\\hat{p}$?",
+      "options": [
+        "$0.80$",
+        "$0.40$",
+        "$0.50$",
+        "$0.30$"
+      ],
+      "answer": 1,
+      "explanation": "The pooled proportion combines all successes over all trials: $\\hat{p} = \\frac{30 + 50}{100 + 100} = \\frac{80}{200} = 0.40$. The values $0.30$ and $0.50$ are the individual sample proportions, and $0.80$ is the total number of successes mistaken for a proportion.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-013",
+      "stem": "Using the pooled proportion $\\hat{p} = 0.40$ from samples of $n_1 = n_2 = 100$, the standard error of $\\hat{p}_1 - \\hat{p}_2$ is closest to which value?",
+      "options": [
+        "$0.49$",
+        "$0.069$",
+        "$0.24$",
+        "$0.0048$"
+      ],
+      "answer": 1,
+      "explanation": "The standard error is $\\sqrt{\\hat{p}(1-\\hat{p})\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)} = \\sqrt{0.24 \\times (0.01 + 0.01)} = \\sqrt{0.24 \\times 0.02} = \\sqrt{0.0048} \\approx 0.069$. The value $0.24$ is $\\hat{p}(1-\\hat{p})$ before scaling, and $0.0048$ is the variance before the square root.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-014",
+      "stem": "With $\\hat{p}_1 - \\hat{p}_2 = 0.30 - 0.50 = -0.20$ and standard error $0.069$, the value of the $z$ statistic is closest to which of the following?",
+      "options": [
+        "$-0.069$",
+        "$-1.45$",
+        "$-0.20$",
+        "$-2.90$"
+      ],
+      "answer": 3,
+      "explanation": "Standardizing the difference: $z = \\frac{-0.20}{0.069} \\approx -2.90$. Since $|z| = 2.90 > 1.96$, the difference is significant at the $5\\%$ level. The option $-0.20$ is the unstandardized difference, and $-1.45$ would use twice the correct standard error.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-015",
+      "stem": "Choosing a paired design over two independent samples is most advantageous when which of the following holds?",
+      "options": [
+        "the pairs are matched so that within-pair variation is much smaller than between-subject variation",
+        "the two groups are completely unrelated",
+        "the sample sizes are very large",
+        "the population variances are known"
+      ],
+      "answer": 0,
+      "explanation": "Pairing pays off when matched units are similar, so differencing cancels a large source of nuisance variation and sharpens the comparison. If the groups were unrelated there would be nothing to gain from pairing. The benefit is about reducing variance through the matching, not about sample size or known variances.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-016",
+      "stem": "A two-sample $z$ test gives $z = 2.5$ for $H_0: \\mu_1 = \\mu_2$ against a two-sided alternative at $\\alpha = 0.05$. What is the conclusion?",
+      "options": [
+        "the test is invalid",
+        "fail to reject $H_0$",
+        "reject $H_0$; the means differ",
+        "the means are exactly equal"
+      ],
+      "answer": 2,
+      "explanation": "Since $|z| = 2.5$ exceeds the two-tailed critical value $1.96$, the statistic is in the rejection region and we reject $H_0$, concluding the means differ. Rejecting does not say the means are equal; it says the evidence is against equality. The test is perfectly valid for independent samples with known variances.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-017",
+      "stem": "For an upper-tailed two-sample test $H_a: \\mu_1 > \\mu_2$, a positive test statistic far in the upper tail leads to which decision?",
+      "options": [
+        "switch to a two-tailed test",
+        "fail to reject $H_0$",
+        "accept $H_0$",
+        "reject $H_0$ in favour of $H_a$"
+      ],
+      "answer": 3,
+      "explanation": "An upper-tailed alternative places the rejection region in the upper tail, so a large positive statistic falls there and we reject $H_0$ in favour of $\\mu_1 > \\mu_2$. The direction of the alternative was fixed in advance, so there is no switching mid-test. We never 'accept' $H_0$; at most we fail to reject it.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-018",
+      "stem": "The unpooled (Welch) two-sample $t$ test is preferred over the pooled version when which condition holds?",
+      "options": [
+        "the variances are known exactly",
+        "the population variances are clearly unequal",
+        "both populations are known to be identical",
+        "the sample sizes are exactly equal"
+      ],
+      "answer": 1,
+      "explanation": "The pooled test assumes a common variance, so when the population variances are clearly unequal the unpooled Welch procedure, with its adjusted degrees of freedom, is the safer choice. Equal sample sizes make the pooled test fairly robust but do not require Welch. If variances were known exactly a $z$ test would be used instead.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-019",
+      "stem": "A pooled two-sample $t$ test has $n_1 = 8$ and $n_2 = 14$. What are the degrees of freedom?",
+      "options": [
+        "$20$",
+        "$22$",
+        "$21$",
+        "$13$"
+      ],
+      "answer": 0,
+      "explanation": "The degrees of freedom are $n_1 + n_2 - 2 = 8 + 14 - 2 = 20$. The value $22$ forgets to subtract two for the two estimated means, and $21$ subtracts only one. The pooled test always uses $n_1 + n_2 - 2$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-020",
+      "stem": "If a $95\\%$ confidence interval for $\\mu_1 - \\mu_2$ is entirely above zero, what does the corresponding two-sided test conclude at $\\alpha = 0.05$?",
+      "options": [
+        "reject $H_0: \\mu_1 = \\mu_2$",
+        "fail to reject $H_0: \\mu_1 = \\mu_2$",
+        "the means are equal",
+        "the interval is uninformative about the test"
+      ],
+      "answer": 0,
+      "explanation": "By the duality between confidence intervals and two-sided tests, an interval that excludes $0$ corresponds to rejecting $H_0: \\mu_1 - \\mu_2 = 0$ at the matching level. Because the whole interval is above zero, the data indicate $\\mu_1 > \\mu_2$. An interval containing $0$ would instead lead to failing to reject.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-021",
+      "stem": "Two independent samples have $\\bar{x}_1 = 20$, $\\bar{x}_2 = 17$, with standard error of the difference equal to $1.5$ and large samples. The value of the test statistic for $H_0: \\mu_1 = \\mu_2$ is which of the following?",
+      "options": [
+        "$3.0$",
+        "$4.5$",
+        "$0.5$",
+        "$2.0$"
+      ],
+      "answer": 3,
+      "explanation": "The statistic is $\\frac{\\bar{x}_1 - \\bar{x}_2}{\\text{SE}} = \\frac{20 - 17}{1.5} = \\frac{3}{1.5} = 2.0$. The option $3.0$ is the unstandardized difference, and $4.5$ multiplies the difference by the standard error rather than dividing by it.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-022",
+      "stem": "Which scenario calls for a paired test rather than an independent two-sample test?",
+      "options": [
+        "comparing each student's score before and after a training course",
+        "comparing yields of two different fields planted once",
+        "comparing heights of men and women",
+        "comparing test scores of two unrelated classes"
+      ],
+      "answer": 0,
+      "explanation": "Measuring the same students before and after training produces naturally matched pairs, so a paired test on the within-student differences is appropriate. Two unrelated classes, separate groups of men and women, and two distinct fields give independent samples with no natural pairing. The repeated measurement on the same unit is the signal for pairing.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-023",
+      "format": "cloze",
+      "stem": "Two independent samples of sizes $n_1 = 40$ and $n_2 = 40$ have $\\bar{x}_1 = 72$, $\\bar{x}_2 = 68$, with known $\\sigma_1 = \\sigma_2 = 8$. Test $H_0: \\mu_1 = \\mu_2$ against a two-sided alternative.",
+      "solution": "The standard error of the difference is $\\sqrt{\\frac{64}{40} + \\frac{64}{40}} = \\sqrt{3.2}$, which is about $1.789$. The test statistic is $z = \\frac{72 - 68}{1.789} \\approx$ {{1}} (to two decimal places). Compared with the critical value $1.96$, the decision is to {{2}} the null hypothesis.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.24,
+          "tolerance": 0.05
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "reject",
+            "fail to reject",
+            "accept"
+          ],
+          "answer": "reject"
+        }
+      ],
+      "explanation": "Standard error $= \\sqrt{1.6 + 1.6} = \\sqrt{3.2} \\approx 1.789$, so $z = \\frac{4}{1.789} \\approx 2.24$. Since $2.24 > 1.96$, the statistic is in the rejection region and we reject $H_0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-024",
+      "format": "cloze",
+      "stem": "Two samples have $n_1 = 13$, $s_1^2 = 10$ and $n_2 = 9$, $s_2^2 = 6$. Find the pooled variance and the degrees of freedom for a pooled $t$ test.",
+      "solution": "The pooled variance is $s_p^2 = \\frac{(13 - 1)(10) + (9 - 1)(6)}{13 + 9 - 2}$. The numerator is $120 + 48 = 168$ and the denominator is {{1}}, so $s_p^2 =$ {{2}}. The degrees of freedom for the test equal this same denominator.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 8.4,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Numerator $= 12 \\times 10 + 8 \\times 6 = 120 + 48 = 168$. Denominator $= n_1 + n_2 - 2 = 20$, so $s_p^2 = \\frac{168}{20} = 8.4$, and the test carries $20$ degrees of freedom.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-025",
+      "format": "cloze",
+      "stem": "A paired study on $n = 16$ subjects gives mean difference $\\bar{d} = 3$ and standard deviation of differences $s_d = 6$. Test whether the mean difference is zero.",
+      "solution": "This reduces to a one-sample test on the differences, so the degrees of freedom are $n - 1 =$ {{1}}. The standard error of $\\bar{d}$ is $\\frac{6}{\\sqrt{16}} =$ {{2}}, so the paired statistic is $t = \\frac{3}{1.5} =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 15,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Degrees of freedom $= 16 - 1 = 15$. Standard error $= \\frac{6}{4} = 1.5$, so $t = \\frac{3}{1.5} = 2$. The pairing turns the comparison into a single-sample $t$ test on the differences.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-026",
+      "format": "cloze",
+      "stem": "In two samples, $x_1 = 45$ successes out of $n_1 = 150$ and $x_2 = 60$ out of $n_2 = 150$. Set up the test of $H_0: p_1 = p_2$.",
+      "solution": "The pooled proportion is $\\hat{p} = \\frac{45 + 60}{150 + 150} = \\frac{105}{300} =$ {{1}}. The two individual proportions are $\\hat{p}_1 = 0.30$ and $\\hat{p}_2 = 0.40$, so the difference $\\hat{p}_1 - \\hat{p}_2$ is {{2}}. Because the test uses a common proportion under the null, this pooled value is used in the {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.35,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -0.1,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "standard error",
+            "point estimate",
+            "degrees of freedom"
+          ],
+          "answer": "standard error"
+        }
+      ],
+      "explanation": "Pooled $\\hat{p} = \\frac{105}{300} = 0.35$. The difference is $0.30 - 0.40 = -0.10$. The pooled proportion enters the standard error $\\sqrt{\\hat{p}(1-\\hat{p})(\\frac{1}{n_1}+\\frac{1}{n_2})}$ used to standardize the difference.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-027",
+      "format": "cloze",
+      "stem": "Decide which test design fits each situation.",
+      "solution": "Comparing cholesterol for the same patients before and after a diet calls for a {{1}} test. Comparing average marks of two different and unrelated KNUST classes calls for an {{2}} two-sample test.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "paired",
+            "independent",
+            "chi-square"
+          ],
+          "answer": "paired"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "independent",
+            "paired",
+            "goodness-of-fit"
+          ],
+          "answer": "independent"
+        }
+      ],
+      "explanation": "Before-and-after measurements on the same patients are matched pairs, so a paired test fits. Two separate, unrelated classes give independent samples, so an independent two-sample test fits.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-two-samples-028",
+      "format": "cloze",
+      "stem": "Two large independent samples give $\\bar{x}_1 = 105$, $\\bar{x}_2 = 100$, and the standard error of the difference is $2$. Carry out the two-sided test at $\\alpha = 0.05$.",
+      "solution": "The test statistic is $z = \\frac{105 - 100}{2} =$ {{1}}. Since this exceeds the critical value $1.96$, we {{2}} the null hypothesis of equal means. The corresponding $95\\%$ confidence interval for $\\mu_1 - \\mu_2$ is $5 \\pm 1.96 \\times 2$, whose lower limit is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "reject",
+            "fail to reject",
+            "accept"
+          ],
+          "answer": "reject"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.08,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Statistic $z = \\frac{5}{2} = 2.5 > 1.96$, so we reject $H_0$. The interval is $5 \\pm 1.96 \\times 2 = 5 \\pm 3.92 = (1.08, 8.92)$, whose lower limit $1.08$ is above zero, consistent with rejecting equality.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    }
+  ]
+}

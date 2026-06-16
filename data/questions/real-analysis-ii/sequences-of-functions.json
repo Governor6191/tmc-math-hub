@@ -1,0 +1,458 @@
+{
+  "courseId": "real-analysis-ii",
+  "topicId": "sequences-of-functions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-analysis-ii-sequences-of-functions-001",
+      "stem": "What does it mean for a sequence of functions $(f_n)$ to converge pointwise to $f$ on a set $A$?",
+      "options": [
+        "There is a single $N$ working for all $x \\in A$ at once.",
+        "Each $f_n$ is continuous.",
+        "$\\sup_{x \\in A} |f_n(x) - f(x)| \\to 0$.",
+        "For each fixed $x \\in A$, the numerical sequence $f_n(x)$ converges to $f(x)$."
+      ],
+      "answer": 3,
+      "explanation": "Pointwise convergence means that for every individual point $x$ in $A$, the sequence of numbers $f_n(x)$ tends to $f(x)$; the index $N$ in the definition may depend on both $\\varepsilon$ and $x$. Requiring one $N$ for all $x$, or that the supremum of the error tends to $0$, is the stronger notion of uniform convergence. Continuity of the $f_n$ is a separate matter entirely.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-002",
+      "stem": "Find the pointwise limit of $f_n(x) = x^n$ on the interval $[0, 1]$.",
+      "options": [
+        "$f(x) = 0$ for all $x \\in [0,1]$",
+        "$f(x) = 1$ for all $x \\in [0,1]$",
+        "$f(x) = 0$ for $0 \\leq x < 1$ and $f(1) = 1$",
+        "The sequence diverges everywhere"
+      ],
+      "answer": 2,
+      "explanation": "For $0 \\leq x < 1$, $x^n \\to 0$ since $|x| < 1$; at $x = 1$, $1^n = 1$ for all $n$, so the limit is $1$. Hence the pointwise limit is the function that is $0$ on $[0,1)$ and jumps to $1$ at $x = 1$. This is the classic example where each $f_n$ is continuous but the pointwise limit is discontinuous.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-003",
+      "stem": "Why is the limit function in the example $f_n(x) = x^n$ on $[0,1]$ significant?",
+      "options": [
+        "It shows that a pointwise limit of continuous functions can be discontinuous.",
+        "It shows the functions diverge.",
+        "It shows that every pointwise limit is continuous.",
+        "It shows the limit is differentiable everywhere."
+      ],
+      "answer": 0,
+      "explanation": "Each $f_n(x) = x^n$ is continuous on $[0,1]$, yet the pointwise limit is $0$ on $[0,1)$ and $1$ at $x = 1$, which has a jump at $x = 1$. So pointwise convergence does NOT preserve continuity in general. This failure is exactly the motivation for introducing uniform convergence, under which continuity is preserved.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-004",
+      "stem": "Find the pointwise limit of $f_n(x) = \\dfrac{x}{n}$ on $\\mathbb{R}$.",
+      "options": [
+        "$f(x) = 0$ for all $x$",
+        "$f(x) = 1$",
+        "The limit does not exist for $x \\neq 0$",
+        "$f(x) = x$"
+      ],
+      "answer": 0,
+      "explanation": "For any fixed $x$, $\\frac{x}{n} \\to 0$ as $n \\to \\infty$, since $x$ is constant and the denominator grows without bound. So the pointwise limit is the zero function. On any bounded set this convergence is in fact uniform, but the pointwise limit itself is simply $0$.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-005",
+      "stem": "Find the pointwise limit of $f_n(x) = \\dfrac{\\sin(nx)}{n}$ on $\\mathbb{R}$.",
+      "options": [
+        "The limit oscillates and does not exist",
+        "$f(x) = \\sin x$",
+        "$f(x) = \\cos x$",
+        "$f(x) = 0$ for all $x$"
+      ],
+      "answer": 3,
+      "explanation": "Since $|\\sin(nx)| \\leq 1$, we have $\\left|\\frac{\\sin(nx)}{n}\\right| \\leq \\frac{1}{n} \\to 0$ for every $x$. By the squeeze, the pointwise limit is the zero function. The numerator oscillates but is bounded, and dividing by $n$ forces the whole expression to $0$ uniformly in $x$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-006",
+      "stem": "Find the pointwise limit of $f_n(x) = \\dfrac{nx}{1 + n^2 x^2}$ on $\\mathbb{R}$.",
+      "options": [
+        "$f(x) = \\dfrac{1}{2}$",
+        "$f(x) = 0$ for all $x$",
+        "$f(x) = \\dfrac{1}{x}$",
+        "$f(x) = x$"
+      ],
+      "answer": 1,
+      "explanation": "At $x = 0$, $f_n(0) = 0$ for all $n$. For fixed $x \\neq 0$, divide top and bottom by $n^2$: $\\frac{nx}{1 + n^2x^2} = \\frac{x/n}{1/n^2 + x^2} \\to \\frac{0}{x^2} = 0$. So the pointwise limit is $0$ everywhere. (The convergence is not uniform near $0$, since each $f_n$ peaks at height $\\frac12$, but pointwise the limit is $0$.)",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-007",
+      "stem": "Find the pointwise limit of $f_n(x) = x^n$ on the smaller interval $\\left[0, \\tfrac{1}{2}\\right]$.",
+      "options": [
+        "The sequence diverges",
+        "$f(x) = 1$ at the right endpoint",
+        "$f(x) = 0$ for all $x \\in [0, \\tfrac12]$",
+        "$f(x) = \\tfrac12$"
+      ],
+      "answer": 2,
+      "explanation": "On $[0, \\frac12]$ every point satisfies $0 \\leq x \\leq \\frac12 < 1$, so $x^n \\to 0$ for all of them, including the endpoint where $(\\frac12)^n \\to 0$. Hence the pointwise limit is the zero function. Removing the troublesome point $x = 1$ makes the limit continuous and, in fact, the convergence uniform here.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-008",
+      "stem": "Find the pointwise limit of $f_n(x) = \\left(1 + \\dfrac{x}{n}\\right)^n$ for each fixed $x \\in \\mathbb{R}$.",
+      "options": [
+        "$f(x) = 1$",
+        "$f(x) = e$",
+        "$f(x) = e^x$",
+        "$f(x) = 1 + x$"
+      ],
+      "answer": 2,
+      "explanation": "This is the classical limit $\\lim_{n \\to \\infty}\\left(1 + \\frac{x}{n}\\right)^n = e^x$, valid for every real $x$. So the sequence of polynomials converges pointwise to the exponential function. The limit is $e^x$, not the constant $e$ or the linear $1 + x$, which is only the first-order approximation.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-009",
+      "stem": "Find the pointwise limit of $f_n(x) = \\dfrac{x^n}{n}$ on $[0, 1]$.",
+      "options": [
+        "The sequence diverges at $x = 1$",
+        "$f(x) = 0$ for all $x \\in [0,1]$",
+        "$f(x) = x$",
+        "$f(x) = 0$ on $[0,1)$ and $f(1) = 1$"
+      ],
+      "answer": 1,
+      "explanation": "For $0 \\leq x < 1$, both $x^n \\to 0$ and the extra $\\frac1n$ push the term to $0$. At $x = 1$, $f_n(1) = \\frac{1^n}{n} = \\frac1n \\to 0$ as well. So unlike $x^n$ alone, here the limit is $0$ at every point including $x = 1$; the damping factor $\\frac1n$ heals the endpoint discontinuity.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-010",
+      "stem": "Find the pointwise limit of $f_n(x) = \\arctan(nx)$ on $\\mathbb{R}$.",
+      "options": [
+        "$f(x) = 0$ for all $x$",
+        "$f(x) = \\dfrac{\\pi}{2}$ for all $x$",
+        "$f(x) = \\arctan x$",
+        "$f(x) = \\dfrac{\\pi}{2}\\,\\mathrm{sgn}(x)$, with $f(0) = 0$"
+      ],
+      "answer": 3,
+      "explanation": "For fixed $x > 0$, $nx \\to +\\infty$ so $\\arctan(nx) \\to \\frac{\\pi}{2}$; for $x < 0$, $nx \\to -\\infty$ so $\\arctan(nx) \\to -\\frac{\\pi}{2}$; and $\\arctan(0) = 0$. Thus the limit is the step function $\\frac{\\pi}{2}\\,\\mathrm{sgn}(x)$ with value $0$ at the origin. Continuous functions $\\arctan(nx)$ converge pointwise to a discontinuous step.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-011",
+      "stem": "Find the pointwise limit of $f_n(x) = \\dfrac{1}{1 + x^n}$ on $[0, \\infty)$.",
+      "options": [
+        "$f(x) = \\tfrac12$ everywhere",
+        "$f(x) = 1$ everywhere",
+        "$f(x) = 0$ everywhere",
+        "$f(x) = 1$ on $[0,1)$, $f(1) = \\tfrac12$, and $f(x) = 0$ on $(1, \\infty)$"
+      ],
+      "answer": 3,
+      "explanation": "Consider three regions. For $0 \\leq x < 1$, $x^n \\to 0$ so $f_n \\to \\frac{1}{1+0} = 1$. At $x = 1$, $f_n(1) = \\frac{1}{1+1} = \\frac12$ for all $n$. For $x > 1$, $x^n \\to \\infty$ so $f_n \\to 0$. The pointwise limit is therefore a step that is $1$, then $\\frac12$, then $0$, discontinuous at $x = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-012",
+      "stem": "For the pointwise limit $f$ of a sequence $(f_n)$, which of these is guaranteed without extra hypotheses?",
+      "options": [
+        "$\\int f_n \\to \\int f$ always holds.",
+        "$f$ is always continuous.",
+        "$f$ is always differentiable.",
+        "Nothing strong: $f$ need not be continuous, integrable in the same way, or differentiable."
+      ],
+      "answer": 3,
+      "explanation": "Pointwise convergence by itself preserves almost no analytic structure: the limit can be discontinuous (as with $x^n$), the limit of integrals can differ from the integral of the limit, and differentiability can be lost. Securing continuity of $f$, or interchange of limit with integral or derivative, requires the stronger hypothesis of uniform convergence (plus, for derivatives, convergence of the derivative sequence).",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-013",
+      "stem": "Consider $f_n(x) = n x (1 - x)^n$ on $[0, 1]$. What is the pointwise limit?",
+      "options": [
+        "$f(x) = x$",
+        "$f(x) = 1$",
+        "$f(x) = 0$ for all $x \\in [0,1]$",
+        "$f(x) = e^{-x}$"
+      ],
+      "answer": 2,
+      "explanation": "At $x = 0$ and $x = 1$, $f_n = 0$ for all $n$. For fixed $x \\in (0,1)$, write $f_n(x) = nx\\,(1-x)^n$; since $0 < 1-x < 1$, the geometric factor $(1-x)^n$ decays exponentially and dominates the linear growth of $n$, so $f_n(x) \\to 0$. Thus the pointwise limit is $0$ throughout, even though $\\int_0^1 f_n$ does not tend to $0$, a hint that the convergence is not uniform.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-014",
+      "stem": "Find the pointwise limit of $f_n(x) = \\cos^n(x)$ at the point $x = \\dfrac{\\pi}{3}$.",
+      "options": [
+        "$1$",
+        "$\\dfrac{1}{2}$",
+        "$0$",
+        "Does not exist"
+      ],
+      "answer": 2,
+      "explanation": "Since $\\cos\\frac{\\pi}{3} = \\frac12$ and $\\left|\\frac12\\right| < 1$, the powers $\\left(\\frac12\\right)^n \\to 0$. So $f_n\\!\\left(\\frac{\\pi}{3}\\right) \\to 0$. More generally $\\cos^n x \\to 0$ wherever $|\\cos x| < 1$, while it stays $1$ at integer multiples of $2\\pi$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-015",
+      "stem": "Find the pointwise limit of $f_n(x) = \\dfrac{x^2 + nx}{n}$ on $\\mathbb{R}$.",
+      "options": [
+        "$f(x) = 0$",
+        "$f(x) = x$",
+        "$f(x) = x^2$",
+        "$f(x) = x^2 + x$"
+      ],
+      "answer": 1,
+      "explanation": "Split the fraction: $\\frac{x^2 + nx}{n} = \\frac{x^2}{n} + x$. For fixed $x$, the first term $\\frac{x^2}{n} \\to 0$ while the second is the constant $x$, so the pointwise limit is $f(x) = x$. The quadratic part is suppressed by the denominator, leaving the linear term.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-016",
+      "stem": "Find the pointwise limit of $f_n(x) = \\dfrac{1}{1 + nx}$ on the interval $(0, 1]$.",
+      "options": [
+        "The limit does not exist",
+        "$f(x) = \\dfrac{1}{x}$",
+        "$f(x) = 1$",
+        "$f(x) = 0$ for all $x \\in (0,1]$"
+      ],
+      "answer": 3,
+      "explanation": "For any fixed $x > 0$, the denominator $1 + nx \\to \\infty$ as $n \\to \\infty$, so $\\frac{1}{1+nx} \\to 0$. Hence the pointwise limit on $(0,1]$ is the zero function. (At $x = 0$ the value would be $1$ for every $n$, which is why the convergence is not uniform on sets that include $0$.)",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-017",
+      "stem": "Which statement correctly distinguishes pointwise from uniform convergence?",
+      "options": [
+        "Pointwise convergence is always faster than uniform convergence.",
+        "They are the same notion.",
+        "In pointwise convergence $N$ may depend on $x$; in uniform convergence one $N$ works for all $x$ simultaneously.",
+        "Uniform convergence allows $N$ to depend on $x$, pointwise does not."
+      ],
+      "answer": 2,
+      "explanation": "The whole distinction lives in the quantifiers. Pointwise: for each $x$, given $\\varepsilon$ there is $N = N(\\varepsilon, x)$ beyond which $|f_n(x) - f(x)| < \\varepsilon$. Uniform: given $\\varepsilon$ there is a single $N = N(\\varepsilon)$ that works for every $x$ at once. Uniform convergence implies pointwise but not conversely, so they are genuinely different.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-018",
+      "stem": "For $f_n(x) = x^n$ on $[0,1]$, compute $\\displaystyle\\lim_{n \\to \\infty} \\int_0^1 f_n(x)\\,dx$.",
+      "options": [
+        "$0$",
+        "Does not exist",
+        "$\\dfrac{1}{2}$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "Compute first, then take the limit: $\\int_0^1 x^n\\,dx = \\frac{1}{n+1}$, which tends to $0$ as $n \\to \\infty$. Here this happens to equal $\\int_0^1 f$, since the pointwise limit $f$ is $0$ except at the single point $x = 1$ (a set of measure zero), so $\\int_0^1 f = 0$. The two agree in this example even though the convergence is not uniform.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-019",
+      "stem": "Find the pointwise limit of $f_n(x) = \\sqrt[n]{x}$ (the $n$-th root) on $(0, \\infty)$.",
+      "options": [
+        "$f(x) = 0$",
+        "$f(x) = 1$ for all $x > 0$",
+        "$f(x) = x$",
+        "$f(x) = \\sqrt{x}$"
+      ],
+      "answer": 1,
+      "explanation": "For any fixed $x > 0$, $x^{1/n} = e^{(\\ln x)/n} \\to e^0 = 1$ as $n \\to \\infty$. So the pointwise limit on $(0,\\infty)$ is the constant function $1$. Intuitively, taking ever-higher roots pulls every positive number toward $1$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-020",
+      "stem": "If each $f_n$ is bounded by $|f_n(x)| \\leq \\frac{1}{n}$ for all $x \\in A$, what is the pointwise limit on $A$?",
+      "options": [
+        "$f(x) = 1$",
+        "$f(x) = 0$ for all $x \\in A$",
+        "The limit need not exist",
+        "$f(x)$ may be any bounded function"
+      ],
+      "answer": 1,
+      "explanation": "Since $0 \\leq |f_n(x)| \\leq \\frac{1}{n} \\to 0$ for each $x$, the squeeze theorem forces $f_n(x) \\to 0$ at every point. So the pointwise limit is the zero function. A uniform bound $\\frac1n$ that shrinks to $0$ actually gives uniform convergence to $0$ as well, but at minimum the pointwise limit is $0$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-021",
+      "stem": "Find the pointwise limit of $f_n(x) = \\dfrac{nx + 1}{nx + 2}$ on $(0, \\infty)$.",
+      "options": [
+        "$f(x) = 0$",
+        "$f(x) = 1$ for all $x > 0$",
+        "$f(x) = \\dfrac{x}{x+1}$",
+        "$f(x) = \\dfrac{1}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "For fixed $x > 0$, divide numerator and denominator by $n$: $\\frac{nx+1}{nx+2} = \\frac{x + 1/n}{x + 2/n} \\to \\frac{x}{x} = 1$ as $n \\to \\infty$. So the pointwise limit on $(0,\\infty)$ is the constant $1$; the additive constants $1$ and $2$ become negligible against $nx$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-022",
+      "stem": "A sequence $(f_n)$ converges pointwise on $A$ if and only if it satisfies which Cauchy-type condition?",
+      "options": [
+        "For each $x \\in A$, the numerical sequence $(f_n(x))$ is a Cauchy sequence in $\\mathbb{R}$.",
+        "$\\sup_x |f_n(x) - f_m(x)| \\to 0$ as $n, m \\to \\infty$.",
+        "Each $f_n$ is a Cauchy-continuous function.",
+        "The functions are uniformly bounded."
+      ],
+      "answer": 0,
+      "explanation": "Because $\\mathbb{R}$ is complete, the numerical sequence $f_n(x)$ converges if and only if it is Cauchy. Applying this at each point gives the pointwise Cauchy criterion: $(f_n)$ converges pointwise iff $(f_n(x))$ is Cauchy for every $x$. The supremum condition in option two is the uniform Cauchy criterion, which is strictly stronger and characterizes uniform convergence.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-023",
+      "stem": "Find the pointwise limit of $f_n(x) = \\dfrac{x^n}{1 + x^n}$ on $[0, \\infty)$.",
+      "options": [
+        "$f(x) = 1$ everywhere",
+        "$f(x) = 0$ everywhere",
+        "$f(x) = 0$ on $[0,1)$, $f(1) = \\tfrac12$, $f(x) = 1$ on $(1,\\infty)$",
+        "$f(x) = x$"
+      ],
+      "answer": 2,
+      "explanation": "For $0 \\leq x < 1$, $x^n \\to 0$ so $\\frac{x^n}{1+x^n} \\to \\frac{0}{1} = 0$. At $x = 1$ the value is $\\frac{1}{1+1} = \\frac12$ for every $n$. For $x > 1$, divide by $x^n$: $\\frac{1}{x^{-n} + 1} \\to \\frac{1}{0 + 1} = 1$. The pointwise limit is therefore the step $0, \\tfrac12, 1$, discontinuous at $x = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-024",
+      "stem": "Find the pointwise limit of $f_n(x) = \\dfrac{n + \\cos x}{2n + 1}$ on $\\mathbb{R}$.",
+      "options": [
+        "$f(x) = \\dfrac{1}{2}$ for all $x$",
+        "$f(x) = \\dfrac{\\cos x}{2}$",
+        "$f(x) = 0$",
+        "$f(x) = \\cos x$"
+      ],
+      "answer": 0,
+      "explanation": "Divide numerator and denominator by $n$: $\\frac{n + \\cos x}{2n + 1} = \\frac{1 + (\\cos x)/n}{2 + 1/n}$. For each fixed $x$, $\\frac{\\cos x}{n} \\to 0$ and $\\frac{1}{n} \\to 0$, so the expression tends to $\\frac{1}{2}$. The bounded oscillating term $\\cos x$ washes out, leaving the constant $\\frac12$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-025",
+      "format": "cloze",
+      "stem": "Determine the pointwise limit of $f_n(x) = x^n$ on $[0,1]$ at specific points.",
+      "solution": "At the point $x = \\tfrac12$, the values $(\\tfrac12)^n$ tend to the number {{1}}. At the right endpoint $x = 1$, the values $1^n$ are constant and tend to {{2}}. Because these two limits differ from one another across the interval, the limit function is {{3}} at $x = 1$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "discontinuous",
+            "continuous",
+            "differentiable"
+          ],
+          "answer": "discontinuous"
+        }
+      ],
+      "explanation": "Since $|\\tfrac12| < 1$, $(\\tfrac12)^n \\to 0$; and $1^n = 1 \\to 1$. The limit is $0$ on $[0,1)$ but $1$ at $x=1$, so it has a jump and is discontinuous there.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-026",
+      "format": "cloze",
+      "stem": "Find the pointwise limit of $f_n(x) = \\dfrac{nx}{1 + nx}$ on $[0, \\infty)$ at two points.",
+      "solution": "At $x = 0$ every term equals $0$, so the limit there is {{1}}. For a fixed $x > 0$, dividing by $n$ shows the ratio tends to {{2}} as $n$ grows. The limit function therefore jumps at the origin. Is the convergence on a set containing $0$ uniform? Answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "At $x=0$, $f_n(0)=0$ for all $n$, limit $0$. For $x>0$, $\\frac{nx}{1+nx} = \\frac{x}{1/n + x} \\to 1$. The limit is $0$ at $0$ and $1$ for $x>0$, a discontinuous limit; a uniform limit of continuous functions would be continuous, so convergence is not uniform (no).",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-027",
+      "format": "cloze",
+      "stem": "Evaluate the limit of integrals for $f_n(x) = x^n$ on $[0,1]$.",
+      "solution": "For each $n$, $\\int_0^1 x^n\\,dx = \\frac{1}{n+1}$. Taking $n \\to \\infty$, this sequence of integrals tends to the number {{1}}. Since the pointwise limit function is $0$ except at a single point, its integral over $[0,1]$ is {{2}}, so the two values agree here.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The integrals are $\\frac{1}{n+1} \\to 0$. The pointwise limit equals $0$ on $[0,1)$ and $1$ only at $x=1$, so $\\int_0^1 f = 0$. Both equal $0$, an instance where interchange of limit and integral happens to hold.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-sequences-of-functions-028",
+      "format": "cloze",
+      "stem": "Identify a familiar pointwise limit of a sequence of polynomials.",
+      "solution": "For each fixed real $x$, the sequence $\\left(1 + \\tfrac{x}{n}\\right)^n$ converges pointwise to the function named {{1}}. Evaluating that limit function at $x = 0$ gives the number {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$e^x$",
+            "$1 + x$",
+            "$e$"
+          ],
+          "answer": "$e^x$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The classical limit $\\left(1 + \\frac{x}{n}\\right)^n \\to e^x$ holds for every real $x$. At $x = 0$ the limit is $e^0 = 1$, consistent with each term equalling $1$ there.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    }
+  ]
+}

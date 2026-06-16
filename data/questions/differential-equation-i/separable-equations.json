@@ -1,0 +1,501 @@
+{
+  "courseId": "differential-equation-i",
+  "topicId": "separable-equations",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "differential-equation-i-separable-equations-001",
+      "stem": "Which of the following first order equations is separable?",
+      "options": [
+        "$\\dfrac{dy}{dx} = \\sin(x + y)$",
+        "$\\dfrac{dy}{dx} = x + y$",
+        "$\\dfrac{dy}{dx} = x + y^2 + xy$",
+        "$\\dfrac{dy}{dx} = xy$"
+      ],
+      "answer": 3,
+      "explanation": "A first order equation is separable when its right side factors as a product of a function of $x$ alone and a function of $y$ alone, $\\frac{dy}{dx} = g(x)h(y)$. The right side $xy$ factors as $g(x) = x$ times $h(y) = y$, so it separates to $\\frac{dy}{y} = x\\,dx$. The sum $x + y$ cannot be written as such a product, $x + y^2 + xy$ mixes the variables in a sum, and $\\sin(x + y)$ buries them inside one function. Only $xy$ splits cleanly into a product.",
+      "difficulty": "warmup",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-002",
+      "stem": "Solve $\\dfrac{dy}{dx} = \\dfrac{x}{y}$.",
+      "options": [
+        "$y - x = C$",
+        "$xy = C$",
+        "$y^2 + x^2 = C$",
+        "$y^2 - x^2 = C$"
+      ],
+      "answer": 3,
+      "explanation": "Separate the variables: $y\\,dy = x\\,dx$. Integrating both sides gives $\\frac{y^2}{2} = \\frac{x^2}{2} + C_1$. Multiplying through by $2$ and absorbing constants, $y^2 - x^2 = C$. Differentiating implicitly, $2y y' - 2x = 0$, so $y' = \\frac{x}{y}$, which matches. The sign matters: moving $x^2$ to the left makes it $y^2 - x^2$, not $y^2 + x^2$, which would come from $\\frac{dy}{dx} = -\\frac{x}{y}$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-003",
+      "stem": "Solve the separable equation $\\dfrac{dy}{dx} = 3y$.",
+      "options": [
+        "$y = 3x + C$",
+        "$y = e^{3x} + C$",
+        "$y = Ce^{3x}$",
+        "$y = Cx^3$"
+      ],
+      "answer": 2,
+      "explanation": "Separate to $\\frac{dy}{y} = 3\\,dx$ and integrate: $\\ln|y| = 3x + C_1$. Exponentiating, $|y| = e^{C_1}e^{3x}$, so $y = Ce^{3x}$ where $C = \\pm e^{C_1}$ absorbs the sign and constant. Checking, $y' = 3Ce^{3x} = 3y$. The constant must multiply the exponential, since it arises from exponentiating an additive constant, so $y = e^{3x} + C$ with $C$ added is wrong.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-004",
+      "stem": "Solve $\\dfrac{dy}{dx} = \\dfrac{y}{x}$ for $x > 0$.",
+      "options": [
+        "$y = \\dfrac{C}{x}$",
+        "$y = Cx^2$",
+        "$y = Cx$",
+        "$y = x + C$"
+      ],
+      "answer": 2,
+      "explanation": "Separate: $\\frac{dy}{y} = \\frac{dx}{x}$. Integrating, $\\ln|y| = \\ln|x| + C_1$. Exponentiating gives $|y| = e^{C_1}|x|$, hence $y = Cx$. Verification: $y' = C = \\frac{Cx}{x} = \\frac{y}{x}$. The two logarithms combine into $\\ln|x|$, not $\\ln x^2$, so the solution is linear in $x$, not quadratic, and the constant multiplies rather than adds.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-005",
+      "stem": "Solve $\\dfrac{dy}{dx} = e^{x - y}$.",
+      "options": [
+        "$y = e^x + C$",
+        "$e^y = e^x + C$",
+        "$e^{-y} = e^x + C$",
+        "$e^y = -e^x + C$"
+      ],
+      "answer": 1,
+      "explanation": "Write $e^{x - y} = e^x e^{-y}$, so the equation becomes $\\frac{dy}{dx} = e^x e^{-y}$. Separating, $e^y\\,dy = e^x\\,dx$. Integrating both sides yields $e^y = e^x + C$. Differentiating implicitly, $e^y y' = e^x$, so $y' = e^x e^{-y} = e^{x-y}$, confirming the answer. The factor $e^{-y}$ moves to the left as $e^{y}\\,dy$, giving $e^y$ on integration, not $e^{-y}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-006",
+      "stem": "Solve the initial value problem $\\dfrac{dy}{dx} = xy$, $y(0) = 1$.",
+      "options": [
+        "$y = 1 + \\dfrac{x^2}{2}$",
+        "$y = e^{x^2/2}$",
+        "$y = e^{x}$",
+        "$y = e^{x^2}$"
+      ],
+      "answer": 1,
+      "explanation": "Separate: $\\frac{dy}{y} = x\\,dx$. Integrate to get $\\ln|y| = \\frac{x^2}{2} + C_1$, so $y = Ce^{x^2/2}$. Apply $y(0) = 1$: $1 = Ce^{0} = C$, giving $C = 1$, so $y = e^{x^2/2}$. Check: $y' = e^{x^2/2}\\cdot x = xy$, and $y(0) = e^0 = 1$. The exponent is $\\frac{x^2}{2}$, since $\\int x\\,dx = \\frac{x^2}{2}$, not $x^2$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-007",
+      "stem": "Solve $\\dfrac{dy}{dx} = -\\dfrac{x}{y}$ with $y(0) = 3$.",
+      "options": [
+        "$x^2 + y^2 = 9$",
+        "$x^2 + y^2 = 3$",
+        "$x^2 - y^2 = 9$",
+        "$y^2 - x^2 = 9$"
+      ],
+      "answer": 0,
+      "explanation": "Separate: $y\\,dy = -x\\,dx$. Integrating, $\\frac{y^2}{2} = -\\frac{x^2}{2} + C_1$, which rearranges to $x^2 + y^2 = C$. Apply $y(0) = 3$: $0 + 9 = C$, so $C = 9$ and $x^2 + y^2 = 9$, a circle of radius $3$. Check the constant against the point $(0,3)$, which lies on the circle. The negative sign sends $x^2$ to the same side as $y^2$, producing a sum, not a difference.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-008",
+      "stem": "Solve $\\dfrac{dy}{dx} = y^2$.",
+      "options": [
+        "$y = e^{x} + C$",
+        "$y = -\\dfrac{1}{x + C}$",
+        "$y = \\dfrac{1}{x} + C$",
+        "$y = \\dfrac{x^3}{3} + C$"
+      ],
+      "answer": 1,
+      "explanation": "Separate: $\\frac{dy}{y^2} = dx$, that is $y^{-2}\\,dy = dx$. Integrating, $-y^{-1} = x + C_1$, so $-\\frac{1}{y} = x + C_1$ and $y = -\\frac{1}{x + C}$. Verification: $y = -(x+C)^{-1}$ gives $y' = (x+C)^{-2} = \\frac{1}{(x+C)^2} = y^2$. The integral of $y^{-2}$ is $-y^{-1}$, which inverts to give a reciprocal solution, not a cube or an exponential.",
+      "difficulty": "stretch",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-009",
+      "stem": "After separating $\\dfrac{dy}{dx} = \\dfrac{2x}{1 + y^2}$, which integral relation results?",
+      "options": [
+        "$\\arctan y = x^2 + C$",
+        "$y + y^2 = x^2 + C$",
+        "$y + \\dfrac{y^3}{3} = x^2 + C$",
+        "$\\ln(1 + y^2) = x^2 + C$"
+      ],
+      "answer": 2,
+      "explanation": "Separating gives $(1 + y^2)\\,dy = 2x\\,dx$. Integrating the left side, $\\int (1 + y^2)\\,dy = y + \\frac{y^3}{3}$, and the right side, $\\int 2x\\,dx = x^2$. So the relation is $y + \\frac{y^3}{3} = x^2 + C$. The factor $1 + y^2$ multiplies $dy$ here, so it is integrated directly as a polynomial; it does not produce $\\arctan y$, which would arise only if $1 + y^2$ sat in a denominator.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-010",
+      "stem": "Solve $\\dfrac{dy}{dx} = \\dfrac{\\cos x}{y}$.",
+      "options": [
+        "$y = \\sin x + C$",
+        "$y^2 = 2\\sin x + C$",
+        "$y^2 = -2\\cos x + C$",
+        "$y^2 = \\sin x + C$"
+      ],
+      "answer": 1,
+      "explanation": "Separate: $y\\,dy = \\cos x\\,dx$. Integrating, $\\frac{y^2}{2} = \\sin x + C_1$. Multiplying by $2$, $y^2 = 2\\sin x + C$. Check implicitly: $2y y' = 2\\cos x$, so $y' = \\frac{\\cos x}{y}$. The factor of $2$ appears because clearing the $\\frac{1}{2}$ from $\\frac{y^2}{2}$ scales the right side, so $\\sin x$ becomes $2\\sin x$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-011",
+      "stem": "Solve the growth model $\\dfrac{dP}{dt} = 0.05P$ with $P(0) = 200$.",
+      "options": [
+        "$P = 0.05 e^{200t}$",
+        "$P = 200 e^{t}$",
+        "$P = 200 + 0.05t$",
+        "$P = 200 e^{0.05t}$"
+      ],
+      "answer": 3,
+      "explanation": "This is exponential growth. Separate: $\\frac{dP}{P} = 0.05\\,dt$, integrate to $\\ln P = 0.05t + C_1$, so $P = Ce^{0.05t}$. Apply $P(0) = 200$: $200 = Ce^{0} = C$, giving $P = 200e^{0.05t}$. Check: $P' = 200(0.05)e^{0.05t} = 0.05P$, and $P(0) = 200$. The rate constant $0.05$ belongs in the exponent multiplying $t$, while the initial amount $200$ is the leading coefficient.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-012",
+      "stem": "Solve $\\dfrac{dy}{dx} = (1 + y)(1 - x)$ in implicit form.",
+      "options": [
+        "$\\ln|1 + y| = x - \\dfrac{x^2}{2} + C$",
+        "$\\ln|1 + y| = x + \\dfrac{x^2}{2} + C$",
+        "$1 + y = x - \\dfrac{x^2}{2} + C$",
+        "$\\ln|1 - x| = y - \\dfrac{y^2}{2} + C$"
+      ],
+      "answer": 0,
+      "explanation": "Separate the product: $\\frac{dy}{1 + y} = (1 - x)\\,dx$. Integrate the left side to $\\ln|1 + y|$ and the right side to $x - \\frac{x^2}{2}$. So $\\ln|1 + y| = x - \\frac{x^2}{2} + C$. Differentiating implicitly, $\\frac{y'}{1+y} = 1 - x$, so $y' = (1+y)(1-x)$. The right side integrates with a minus on the quadratic because $\\int (1 - x)\\,dx = x - \\frac{x^2}{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-013",
+      "stem": "Which expression is the integrated form of the left side of $\\dfrac{dy}{y} = k\\,dt$?",
+      "options": [
+        "$e^y$",
+        "$\\ln|y|$",
+        "$\\dfrac{1}{y}$",
+        "$y^2$"
+      ],
+      "answer": 1,
+      "explanation": "The integral $\\int \\frac{dy}{y} = \\int y^{-1}\\,dy$ is the natural logarithm $\\ln|y|$, by the standard antiderivative of $\\frac{1}{y}$. It is not $\\frac{1}{y}$, which would be the integral of $-y^{-2}$, and not $y^2$ or $e^y$. This logarithm is the key step in solving every exponential growth or decay model, since exponentiating $\\ln|y| = kt + C$ returns $y = Ce^{kt}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-014",
+      "stem": "Solve $\\dfrac{dy}{dx} = \\dfrac{x^2}{y}$.",
+      "options": [
+        "$y^2 = \\dfrac{2x^3}{3} + C$",
+        "$y^2 = 2x^3 + C$",
+        "$y^2 = \\dfrac{x^3}{3} + C$",
+        "$y = \\dfrac{x^3}{3} + C$"
+      ],
+      "answer": 0,
+      "explanation": "Separate: $y\\,dy = x^2\\,dx$. Integrating, $\\frac{y^2}{2} = \\frac{x^3}{3} + C_1$. Multiplying both sides by $2$, $y^2 = \\frac{2x^3}{3} + C$. Implicit check: $2y y' = 2x^2$, so $y' = \\frac{x^2}{y}$. Clearing the $\\frac{1}{2}$ on the left scales $\\frac{x^3}{3}$ to $\\frac{2x^3}{3}$, which is why the coefficient is $\\frac{2}{3}$ and not $\\frac{1}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-015",
+      "stem": "A radioactive sample decays per $\\dfrac{dN}{dt} = -\\lambda N$. What is the general solution?",
+      "options": [
+        "$N = N_0 e^{\\lambda t}$",
+        "$N = N_0 - \\lambda t$",
+        "$N = \\dfrac{N_0}{\\lambda t}$",
+        "$N = N_0 e^{-\\lambda t}$"
+      ],
+      "answer": 3,
+      "explanation": "Separate: $\\frac{dN}{N} = -\\lambda\\,dt$. Integrate to $\\ln N = -\\lambda t + C_1$, so $N = Ce^{-\\lambda t}$, and writing $C = N_0$ for the amount at $t = 0$ gives $N = N_0 e^{-\\lambda t}$. Check: $N' = -\\lambda N_0 e^{-\\lambda t} = -\\lambda N$. The decay constant carries a minus sign in the exponent, distinguishing decay $e^{-\\lambda t}$ from growth $e^{+\\lambda t}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-016",
+      "stem": "Solve $(1 + x)\\,dy = y\\,dx$ for $x > -1$.",
+      "options": [
+        "$y = Cx$",
+        "$y = \\dfrac{C}{1 + x}$",
+        "$y = C(1 + x)$",
+        "$y = C + \\ln(1 + x)$"
+      ],
+      "answer": 2,
+      "explanation": "Rearrange to separate: $\\frac{dy}{y} = \\frac{dx}{1 + x}$. Integrating, $\\ln|y| = \\ln|1 + x| + C_1$. Exponentiating, $|y| = e^{C_1}|1 + x|$, so $y = C(1 + x)$. Verification: $y' = C$ and $\\frac{y}{1+x} = \\frac{C(1+x)}{1+x} = C$, so $(1+x)y' = y$. Both logarithms combine to put $1 + x$ as a multiplying factor, not a denominator.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-017",
+      "stem": "Solve $\\dfrac{dy}{dx} = \\dfrac{1 + y^2}{1 + x^2}$.",
+      "options": [
+        "$\\arctan y = \\ln(1 + x^2) + C$",
+        "$\\arctan y = \\arctan x + C$",
+        "$\\ln(1 + y^2) = \\ln(1 + x^2) + C$",
+        "$y = x + C$"
+      ],
+      "answer": 1,
+      "explanation": "Separate: $\\frac{dy}{1 + y^2} = \\frac{dx}{1 + x^2}$. Each side integrates to an arctangent: $\\arctan y = \\arctan x + C$. Differentiating, $\\frac{y'}{1+y^2} = \\frac{1}{1+x^2}$, giving $y' = \\frac{1+y^2}{1+x^2}$. The standard form $\\int \\frac{du}{1+u^2} = \\arctan u$ applies on both sides, so the answer is in arctangents, not logarithms.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-018",
+      "stem": "Solve $\\dfrac{dy}{dx} = 6x^2 y$ with $y(0) = 5$.",
+      "options": [
+        "$y = 5e^{2x^3}$",
+        "$y = 5 + 2x^3$",
+        "$y = 5e^{6x^3}$",
+        "$y = 5e^{x^3}$"
+      ],
+      "answer": 0,
+      "explanation": "Separate: $\\frac{dy}{y} = 6x^2\\,dx$. Integrate: $\\ln y = 6\\cdot\\frac{x^3}{3} + C_1 = 2x^3 + C_1$, so $y = Ce^{2x^3}$. Apply $y(0) = 5$: $5 = Ce^{0} = C$, giving $y = 5e^{2x^3}$. Check: $y' = 5e^{2x^3}\\cdot 6x^2 = 6x^2 y$. The exponent is $2x^3$ because $\\int 6x^2\\,dx = 6\\cdot\\frac{x^3}{3} = 2x^3$, not $6x^3$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-019",
+      "stem": "Solve $\\dfrac{dy}{dx} = \\dfrac{2y}{x}$ for $x > 0$.",
+      "options": [
+        "$y = Cx$",
+        "$y = Cx^2$",
+        "$y = 2x + C$",
+        "$y = \\dfrac{C}{x^2}$"
+      ],
+      "answer": 1,
+      "explanation": "Separate: $\\frac{dy}{y} = \\frac{2\\,dx}{x}$. Integrate: $\\ln|y| = 2\\ln|x| + C_1 = \\ln x^2 + C_1$. Exponentiating, $y = Cx^2$. Check: $y' = 2Cx$ and $\\frac{2y}{x} = \\frac{2Cx^2}{x} = 2Cx$, so they agree. The coefficient $2$ becomes the exponent on $x$ through $2\\ln|x| = \\ln x^2$, giving a quadratic rather than a linear solution.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-020",
+      "stem": "For the initial value problem $\\dfrac{dy}{dx} = \\dfrac{x}{y}$, $y(0) = 2$, find the value of $y$ when $x = \\sqrt{5}$ (take $y > 0$).",
+      "options": [
+        "$5$",
+        "$3$",
+        "$\\sqrt{5}$",
+        "$2$"
+      ],
+      "answer": 1,
+      "explanation": "From $y\\,dy = x\\,dx$ the solution is $\\frac{y^2}{2} = \\frac{x^2}{2} + C_1$, that is $y^2 = x^2 + C$. Apply $y(0) = 2$: $4 = 0 + C$, so $C = 4$ and $y^2 = x^2 + 4$. At $x = \\sqrt{5}$, $y^2 = 5 + 4 = 9$, so $y = 3$ for the positive branch. The trap is forgetting the constant $C = 4$ from the initial value, which shifts $y^2$ up by $4$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-021",
+      "format": "cloze",
+      "stem": "Solve $\\dfrac{dy}{dx} = 4y$ by separation of variables.",
+      "solution": "Separate to $\\dfrac{dy}{y} = 4\\,dx$ and integrate. The left side gives $\\ln|y|$ and the right gives $4x$ plus a constant, so $\\ln|y| = 4x + C_1$. Exponentiating, the solution is $y =$ {{1}} $e^{4x}$, where the leading factor is the {{2}}. The exponent equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$C$",
+            "$4$",
+            "$\\ln$"
+          ],
+          "answer": "$C$"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "arbitrary constant",
+            "constant",
+            "C"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Separating gives $\\frac{dy}{y} = 4\\,dx$, and integrating yields $\\ln|y| = 4x + C_1$. Exponentiating both sides gives $y = Ce^{4x}$, where $C = \\pm e^{C_1}$ is the arbitrary constant. The exponent multiplying $x$ is $4$, the coefficient from the original equation $y' = 4y$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-022",
+      "format": "cloze",
+      "stem": "Solve $\\dfrac{dy}{dx} = \\dfrac{x}{y}$ in implicit form.",
+      "solution": "Separating gives $y\\,dy = x\\,dx$. Integrating the left side gives $\\dfrac{y^2}{2}$ and the right gives $\\dfrac{x^2}{2}$, so after clearing the halves the relation is $y^2 -$ {{1}} $= C$. The curves are a family of {{2}}. Differentiating implicitly recovers $y' = \\dfrac{x}{y}$, confirming the {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$x^2$",
+            "$2x$",
+            "$x$"
+          ],
+          "answer": "$x^2$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "hyperbolas",
+            "circles",
+            "lines"
+          ],
+          "answer": "hyperbolas"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "solution",
+            "answer"
+          ]
+        }
+      ],
+      "explanation": "Separating $y\\,dy = x\\,dx$ and integrating gives $\\frac{y^2}{2} = \\frac{x^2}{2} + C_1$, which after doubling becomes $y^2 - x^2 = C$. This is a family of hyperbolas. Implicit differentiation gives $2yy' - 2x = 0$, so $y' = \\frac{x}{y}$, confirming the solution.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-023",
+      "format": "cloze",
+      "stem": "Solve the initial value problem $\\dfrac{dy}{dx} = xy$, $y(0) = 1$.",
+      "solution": "Separate to $\\dfrac{dy}{y} = x\\,dx$ and integrate to $\\ln|y| = \\dfrac{x^2}{2} + C_1$. The general solution is $y =$ {{1}} $e^{x^2/2}$. Applying $y(0) = 1$ fixes the constant to {{2}}, so the particular solution is $y = e^{x^2/2}$. The exponent comes from $\\int x\\,dx$, which gives a denominator of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$C$",
+            "$x$",
+            "$1$"
+          ],
+          "answer": "$C$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Separation gives $\\frac{dy}{y} = x\\,dx$, so $\\ln|y| = \\frac{x^2}{2} + C_1$ and $y = Ce^{x^2/2}$. The condition $y(0) = 1$ gives $1 = Ce^{0} = C$, so $C = 1$. The exponent $\\frac{x^2}{2}$ has denominator $2$ because $\\int x\\,dx = \\frac{x^2}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-024",
+      "format": "cloze",
+      "stem": "Solve $\\dfrac{dy}{dx} = -\\dfrac{x}{y}$ with $y(0) = 5$.",
+      "solution": "Separating gives $y\\,dy = -x\\,dx$. Integrating and clearing halves yields $x^2 + y^2 = C$, a family of {{1}} centered at the origin. The condition $y(0) = 5$ gives $C =$ {{2}}, so the radius is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "circles",
+            "hyperbolas",
+            "parabolas"
+          ],
+          "answer": "circles"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 25,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Separating $y\\,dy = -x\\,dx$ and integrating gives $\\frac{y^2}{2} = -\\frac{x^2}{2} + C_1$, so $x^2 + y^2 = C$, a family of circles. The condition $y(0) = 5$ gives $0 + 25 = C$, so $C = 25$ and the radius is $\\sqrt{25} = 5$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-025",
+      "format": "cloze",
+      "stem": "Solve $\\dfrac{dy}{dx} = y^2$ and note where the solution fails to exist.",
+      "solution": "Separate to $y^{-2}\\,dy = dx$. Integrating the left side gives $-y^{-1}$, so $-\\dfrac{1}{y} = x + C_1$ and solving gives $y = -\\dfrac{1}{x +}$ {{1}}. This solution is undefined when the denominator equals {{2}}, showing that even a simple equation can have a solution that {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$C$",
+            "$y$",
+            "$1$"
+          ],
+          "answer": "$C$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "blows up",
+            "diverges",
+            "becomes infinite",
+            "is undefined"
+          ]
+        }
+      ],
+      "explanation": "Separating $y^{-2}\\,dy = dx$ and integrating gives $-\\frac{1}{y} = x + C_1$, so $y = -\\frac{1}{x + C}$. The solution is undefined where the denominator $x + C = 0$, that is where it equals $0$, so the solution blows up at $x = -C$. This shows nonlinear equations can have solutions that escape to infinity in finite range.",
+      "difficulty": "stretch",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-separable-equations-026",
+      "format": "cloze",
+      "stem": "Solve the decay model $\\dfrac{dN}{dt} = -2N$ with $N(0) = 100$.",
+      "solution": "Separating gives $\\dfrac{dN}{N} = -2\\,dt$, so $\\ln N = -2t + C_1$ and $N = N_0 e^{-2t}$. The initial value $N(0) = 100$ sets the leading coefficient to {{1}}. Because the exponent is {{2}}, the quantity {{3}} over time.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 100,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "negative",
+            "positive",
+            "zero"
+          ],
+          "answer": "negative"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "decays",
+            "decreases",
+            "shrinks"
+          ]
+        }
+      ],
+      "explanation": "Separating gives $\\frac{dN}{N} = -2\\,dt$, so $\\ln N = -2t + C_1$ and $N = N_0 e^{-2t}$. The condition $N(0) = 100$ gives $N_0 = 100$, so $N = 100e^{-2t}$. The exponent $-2t$ is negative, so the quantity decays toward zero over time.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    }
+  ]
+}

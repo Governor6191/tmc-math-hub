@@ -1,0 +1,463 @@
+{
+  "courseId": "real-analysis-ii",
+  "topicId": "uniform-convergence",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-analysis-ii-uniform-convergence-001",
+      "stem": "Which statement is the definition of $(f_n)$ converging uniformly to $f$ on a set $A$?",
+      "options": [
+        "For each $x \\in A$, $f_n(x) \\to f(x)$.",
+        "$f_n$ and $f$ are continuous on $A$.",
+        "For every $\\varepsilon > 0$ there exists $N$ (depending only on $\\varepsilon$) such that $n \\geq N$ implies $|f_n(x) - f(x)| < \\varepsilon$ for all $x \\in A$.",
+        "For every $\\varepsilon > 0$ and each $x$ there exists $N$ with $|f_n(x) - f(x)| < \\varepsilon$ for $n \\geq N$."
+      ],
+      "answer": 2,
+      "explanation": "Uniform convergence requires a single threshold $N = N(\\varepsilon)$, independent of $x$, beyond which the error $|f_n(x) - f(x)|$ stays below $\\varepsilon$ simultaneously for every $x \\in A$. Options one and three allow $N$ to vary with $x$, which is only pointwise convergence. The defining feature of uniform convergence is the uniform-in-$x$ choice of $N$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-002",
+      "stem": "The sup-norm criterion says $(f_n)$ converges uniformly to $f$ on $A$ if and only if which quantity tends to $0$?",
+      "options": [
+        "$f_n(x_0) - f(x_0)$ at one fixed point $x_0$",
+        "$\\displaystyle\\sup_{x \\in A} |f_n(x) - f(x)|$",
+        "$\\displaystyle\\int_A |f_n - f|$",
+        "$|f_n'(x) - f'(x)|$"
+      ],
+      "answer": 1,
+      "explanation": "Let $M_n = \\sup_{x \\in A}|f_n(x) - f(x)|$. Uniform convergence is exactly the statement $M_n \\to 0$, because $M_n < \\varepsilon$ packages the uniform-in-$x$ bound into a single number. Checking one point only detects pointwise behaviour, an integral measures average rather than worst-case error, and derivatives are a separate consideration.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-003",
+      "stem": "For $f_n(x) = x^n$ on $[0,1]$ with pointwise limit $f$, compute $\\sup_{x \\in [0,1)} |f_n(x) - f(x)|$ and decide uniform convergence.",
+      "options": [
+        "The sup is $\\tfrac12$, so the convergence is uniform.",
+        "The sup is $1$, so the convergence is NOT uniform.",
+        "The sup is $0$, so the convergence is uniform.",
+        "The sup is $\\tfrac1n$, so the convergence is uniform."
+      ],
+      "answer": 1,
+      "explanation": "On $[0,1)$ the limit is $f = 0$, so $|f_n(x) - f(x)| = x^n$, whose supremum over $[0,1)$ is $1$ (approached as $x \\to 1^-$). Since this supremum is $1$ for every $n$ and does not tend to $0$, the convergence is not uniform on $[0,1)$. This is the canonical failure of uniform convergence, traceable to the discontinuity of the limit at $x = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-004",
+      "stem": "For $f_n(x) = x^n$, on which interval IS the convergence to $0$ uniform?",
+      "options": [
+        "$\\left[0, \\tfrac12\\right]$",
+        "$[0, 1]$",
+        "$(0, 1)$",
+        "$[0, 1)$"
+      ],
+      "answer": 0,
+      "explanation": "On $[0, \\frac12]$ the supremum of $x^n$ is $(\\frac12)^n$, attained at the right endpoint, and $(\\frac12)^n \\to 0$, so the convergence is uniform. On any interval whose closure reaches up to $1$, such as $[0,1)$ or $(0,1)$, the supremum stays at $1$ and uniform convergence fails. Staying away from $1$ is exactly what restores uniformity.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-005",
+      "stem": "For $f_n(x) = \\dfrac{x}{n}$ on the interval $[0, 1]$, is the convergence to $0$ uniform, and why?",
+      "options": [
+        "Yes, because $\\sup_{[0,1]} |x/n| = \\tfrac1n \\to 0$.",
+        "No, because each $f_n$ is unbounded.",
+        "Yes, but only at $x = 0$.",
+        "No, because the limit is discontinuous."
+      ],
+      "answer": 0,
+      "explanation": "On $[0,1]$, $\\sup_x \\left|\\frac{x}{n}\\right| = \\frac{1}{n}$, attained at $x = 1$, and $\\frac1n \\to 0$. By the sup-norm criterion the convergence is uniform. The limit $0$ is continuous, and each $f_n$ is bounded on $[0,1]$, so the proposed objections do not apply.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-006",
+      "stem": "For $f_n(x) = \\dfrac{x}{n}$ on all of $\\mathbb{R}$, is the convergence to $0$ uniform?",
+      "options": [
+        "No, because $\\sup_{x \\in \\mathbb{R}} |x/n| = +\\infty$ for every $n$.",
+        "Yes, because $\\tfrac1n \\to 0$.",
+        "No, because the limit does not exist.",
+        "Yes, uniform on $\\mathbb{R}$."
+      ],
+      "answer": 0,
+      "explanation": "On the whole line the supremum of $\\left|\\frac{x}{n}\\right|$ is $+\\infty$ for every fixed $n$, since $x$ ranges without bound. As this never shrinks to $0$, the convergence is not uniform on $\\mathbb{R}$, even though it is uniform on every bounded interval. The pointwise limit does exist (it is $0$); the obstruction is the unbounded domain.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-007",
+      "stem": "For $f_n(x) = \\dfrac{\\sin(nx)}{n}$ on $\\mathbb{R}$, is the convergence to $0$ uniform?",
+      "options": [
+        "No, because $\\sin(nx)$ oscillates.",
+        "Yes, because $\\sup_{x} \\left|\\frac{\\sin(nx)}{n}\\right| \\leq \\frac1n \\to 0$.",
+        "No, because the domain is unbounded.",
+        "Yes, but only on bounded sets."
+      ],
+      "answer": 1,
+      "explanation": "Since $|\\sin(nx)| \\leq 1$ everywhere, $\\sup_x \\left|\\frac{\\sin(nx)}{n}\\right| \\leq \\frac1n \\to 0$. The worst-case error is controlled uniformly by $\\frac1n$ regardless of how the sine oscillates or how large the domain is, so the convergence is uniform on all of $\\mathbb{R}$. Bounded numerators over a growing denominator are a reliable source of uniform convergence.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-008",
+      "stem": "For $f_n(x) = \\dfrac{nx}{1 + n^2 x^2}$ on $\\mathbb{R}$, the maximum of $|f_n|$ is attained at $x = 1/n$. What is that maximum, and is the convergence uniform?",
+      "options": [
+        "Maximum $0$; uniform.",
+        "Maximum $1$; NOT uniform.",
+        "Maximum $\\tfrac1n$; uniform.",
+        "Maximum $\\tfrac12$; NOT uniform."
+      ],
+      "answer": 3,
+      "explanation": "At $x = 1/n$, $f_n(1/n) = \\frac{n\\cdot(1/n)}{1 + n^2(1/n)^2} = \\frac{1}{1 + 1} = \\frac12$. So $\\sup_x |f_n| = \\frac12$ for every $n$, which does not tend to $0$. Hence although $f_n \\to 0$ pointwise, the convergence is not uniform: the moving bump of height $\\frac12$ never flattens.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-009",
+      "stem": "The Uniform Limit Theorem states that if each $f_n$ is continuous on $A$ and $f_n \\to f$ uniformly on $A$, then:",
+      "options": [
+        "$f$ is constant on $A$.",
+        "$f$ is differentiable on $A$.",
+        "$f$ is bounded but possibly discontinuous.",
+        "$f$ is continuous on $A$."
+      ],
+      "answer": 3,
+      "explanation": "Uniform convergence transfers continuity to the limit: if every $f_n$ is continuous and $f_n \\to f$ uniformly, then $f$ is continuous. The standard three-epsilon argument bounds $|f(x) - f(y)|$ using a single $f_n$ close to $f$ everywhere plus continuity of that $f_n$. Differentiability or constancy are not implied, and continuity (not mere boundedness) is precisely what is gained.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-010",
+      "stem": "The contrapositive of the Uniform Limit Theorem gives a practical test. If continuous functions $f_n$ converge pointwise to a discontinuous $f$, then:",
+      "options": [
+        "the convergence cannot be uniform.",
+        "the $f_n$ cannot be continuous.",
+        "the convergence is automatically uniform.",
+        "$f$ must actually be continuous."
+      ],
+      "answer": 0,
+      "explanation": "Since a uniform limit of continuous functions is continuous, a discontinuous pointwise limit forces the convergence to be non-uniform. This is the quickest way to rule out uniform convergence: spot a continuous sequence whose limit has a jump (as with $x^n$ on $[0,1]$), and uniformity is immediately impossible.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-011",
+      "stem": "Under which hypothesis can one interchange limit and integral, concluding $\\displaystyle\\lim_n \\int_a^b f_n = \\int_a^b \\lim_n f_n$?",
+      "options": [
+        "Monotonicity of each $f_n$.",
+        "Uniform convergence of $(f_n)$ to $f$ on $[a,b]$ with each $f_n$ integrable.",
+        "Pointwise convergence of $(f_n)$ alone.",
+        "Boundedness of each $f_n$ alone."
+      ],
+      "answer": 1,
+      "explanation": "If $f_n \\to f$ uniformly on the bounded interval $[a,b]$ and each $f_n$ is (Riemann) integrable, then $f$ is integrable and $\\int_a^b f_n \\to \\int_a^b f$. The proof bounds $\\left|\\int f_n - \\int f\\right| \\leq (b-a)\\sup|f_n - f| \\to 0$. Pointwise convergence is not enough in the Riemann setting; uniform convergence is the clean sufficient condition.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-012",
+      "stem": "Which is the correct statement of the Weierstrass M-test for a series $\\sum f_n$ on a set $A$?",
+      "options": [
+        "If each $f_n$ is bounded, then $\\sum f_n$ converges uniformly.",
+        "If $\\sum f_n$ converges at one point, it converges uniformly.",
+        "If $f_n \\to 0$ pointwise, then $\\sum f_n$ converges uniformly.",
+        "If $|f_n(x)| \\leq M_n$ for all $x \\in A$ and $\\sum M_n$ converges, then $\\sum f_n$ converges uniformly (and absolutely) on $A$."
+      ],
+      "answer": 3,
+      "explanation": "The M-test: find constants $M_n$ with $\\sup_{x \\in A}|f_n(x)| \\leq M_n$ such that the numerical series $\\sum M_n$ converges; then $\\sum f_n$ converges uniformly and absolutely on $A$. The dominating convergent series of constants is the whole point. Mere pointwise decay, convergence at one point, or boundedness of terms does not suffice.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-013",
+      "stem": "Apply the Weierstrass M-test to $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{\\sin(nx)}{n^2}$ on $\\mathbb{R}$. Which dominating constants work?",
+      "options": [
+        "$M_n = \\dfrac{1}{n^2}$, and since $\\sum \\frac{1}{n^2}$ converges, the series converges uniformly.",
+        "$M_n = 1$, and the test succeeds.",
+        "$M_n = \\dfrac{1}{n}$, and the test succeeds.",
+        "No constants work; the series is not uniformly convergent."
+      ],
+      "answer": 0,
+      "explanation": "Since $|\\sin(nx)| \\leq 1$, we have $\\left|\\frac{\\sin(nx)}{n^2}\\right| \\leq \\frac{1}{n^2}$ for all $x$. Taking $M_n = \\frac{1}{n^2}$ and noting $\\sum \\frac{1}{n^2}$ converges (a $p$-series with $p = 2$), the M-test gives uniform convergence on $\\mathbb{R}$. The choice $M_n = \\frac1n$ would not converge, so it fails to certify the test.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-014",
+      "stem": "Use the M-test on $\\displaystyle\\sum_{n=0}^{\\infty} x^n$ over the interval $\\left[0, \\tfrac12\\right]$. Which bound certifies uniform convergence?",
+      "options": [
+        "No bound works on $[0, \\tfrac12]$.",
+        "$|x^n| \\leq 1$ with $\\sum 1$ convergent.",
+        "$|x^n| \\leq \\left(\\tfrac12\\right)^n$ with $\\sum \\left(\\tfrac12\\right)^n$ convergent.",
+        "$|x^n| \\leq \\tfrac1n$ with $\\sum \\tfrac1n$ convergent."
+      ],
+      "answer": 2,
+      "explanation": "On $[0, \\frac12]$, $|x^n| \\leq (\\frac12)^n$ since $0 \\leq x \\leq \\frac12$. The geometric series $\\sum (\\frac12)^n$ converges, so by the M-test $\\sum x^n$ converges uniformly on $[0, \\frac12]$. Note $\\sum 1$ and $\\sum \\frac1n$ both diverge, so those proposed bounds, even if valid pointwise, do not satisfy the test.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-015",
+      "stem": "Does $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{1}{n^2 + x^2}$ converge uniformly on $\\mathbb{R}$ by the M-test?",
+      "options": [
+        "No, because $x$ ranges over all of $\\mathbb{R}$.",
+        "Yes, with $M_n = \\dfrac{1}{n}$.",
+        "No, because the terms do not tend to $0$.",
+        "Yes, with $M_n = \\dfrac{1}{n^2}$ since $\\frac{1}{n^2 + x^2} \\leq \\frac{1}{n^2}$ and $\\sum \\frac{1}{n^2}$ converges."
+      ],
+      "answer": 3,
+      "explanation": "For every $x$, $\\frac{1}{n^2 + x^2} \\leq \\frac{1}{n^2}$, since adding $x^2 \\geq 0$ to the denominator only decreases the fraction. With $M_n = \\frac{1}{n^2}$ and $\\sum \\frac{1}{n^2}$ convergent, the M-test yields uniform convergence on all of $\\mathbb{R}$. The unbounded domain is no obstacle here precisely because the bound $M_n$ is independent of $x$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-016",
+      "stem": "Which dominating series shows $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{\\cos(nx)}{2^n}$ converges uniformly on $\\mathbb{R}$?",
+      "options": [
+        "$\\sum \\dfrac{1}{2^n}$",
+        "$\\sum \\dfrac{1}{n}$",
+        "$\\sum \\dfrac{1}{\\sqrt{n}}$",
+        "$\\sum 1$"
+      ],
+      "answer": 0,
+      "explanation": "Since $|\\cos(nx)| \\leq 1$, $\\left|\\frac{\\cos(nx)}{2^n}\\right| \\leq \\frac{1}{2^n}$, and the geometric series $\\sum \\frac{1}{2^n}$ converges. So $M_n = \\frac{1}{2^n}$ certifies uniform convergence by the M-test. The other candidates ($\\sum \\frac1n$, $\\sum 1$, $\\sum \\frac{1}{\\sqrt n}$) all diverge and cannot serve as dominating series.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-017",
+      "stem": "On $[-1, 1]$, which bound from the M-test establishes uniform convergence of $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{x^n}{n^2}$?",
+      "options": [
+        "$\\left|\\dfrac{x^n}{n^2}\\right| \\leq \\dfrac{1}{n}$, and $\\sum \\frac1n$ converges.",
+        "$\\left|\\dfrac{x^n}{n^2}\\right| \\leq 1$, and $\\sum 1$ converges.",
+        "$\\left|\\dfrac{x^n}{n^2}\\right| \\leq \\dfrac{1}{n^2}$ since $|x| \\leq 1$, and $\\sum \\frac{1}{n^2}$ converges.",
+        "No bound works because $x$ can be negative."
+      ],
+      "answer": 2,
+      "explanation": "For $|x| \\leq 1$ we have $|x^n| \\leq 1$, hence $\\left|\\frac{x^n}{n^2}\\right| \\leq \\frac{1}{n^2}$. Since $\\sum \\frac{1}{n^2}$ converges, the M-test gives uniform convergence on $[-1,1]$. Negative $x$ is handled automatically because the bound uses the absolute value $|x| \\leq 1$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-018",
+      "stem": "The term-by-term differentiation theorem for $f_n \\to f$ requires which hypotheses to conclude $f' = \\lim f_n'$?",
+      "options": [
+        "That each $f_n$ is bounded.",
+        "That $(f_n')$ converges uniformly and $(f_n(x_0))$ converges at some point $x_0$.",
+        "Only that $f_n \\to f$ pointwise.",
+        "That $(f_n)$ converges uniformly but nothing about $f_n'$."
+      ],
+      "answer": 1,
+      "explanation": "Differentiation does not pass through limits under uniform convergence of $(f_n)$ alone. The correct theorem requires the derivative sequence $(f_n')$ to converge uniformly, together with convergence of $(f_n)$ at a single point $x_0$ to anchor the constant. Then $f_n \\to f$ uniformly and $f' = \\lim f_n'$. Uniform convergence of $f_n$ by itself does not even guarantee $f$ is differentiable.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-019",
+      "stem": "The uniform Cauchy criterion states that $(f_n)$ converges uniformly on $A$ if and only if:",
+      "options": [
+        "for every $\\varepsilon > 0$ there is $N$ such that $m, n \\geq N$ implies $\\sup_{x \\in A}|f_n(x) - f_m(x)| < \\varepsilon$.",
+        "$\\sum f_n$ converges.",
+        "$f_n$ is bounded for each $n$.",
+        "for each $x$, $(f_n(x))$ is Cauchy."
+      ],
+      "answer": 0,
+      "explanation": "The uniform Cauchy criterion replaces the limit $f$ with the terms themselves: $(f_n)$ converges uniformly iff for each $\\varepsilon$ there is an $N$ making the uniform distance $\\sup_x |f_n - f_m|$ less than $\\varepsilon$ for all $m, n \\geq N$. This is exactly the pointwise Cauchy condition strengthened to hold uniformly in $x$, and it is what underlies the proof of the M-test.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-020",
+      "stem": "Dini's Theorem gives uniform convergence under which set of hypotheses?",
+      "options": [
+        "$f_n \\to f$ pointwise on any set, with no continuity assumed.",
+        "$f_n \\to f$ pointwise with each $f_n$ merely bounded.",
+        "$f_n \\to f$ pointwise on a compact set $K$, each $f_n$ and $f$ continuous, and $(f_n)$ monotone in $n$ at each point.",
+        "$f_n \\to f$ uniformly already, on an open set."
+      ],
+      "answer": 2,
+      "explanation": "Dini's Theorem: if $K$ is compact, each $f_n$ is continuous, the limit $f$ is continuous, the convergence is pointwise, and $(f_n(x))$ is monotone in $n$ for each $x$, then the convergence is automatically uniform. All five conditions (compactness, continuity of the $f_n$, continuity of $f$, pointwise convergence, monotonicity) are essential; dropping any one allows counterexamples.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-021",
+      "stem": "Why does uniform convergence imply pointwise convergence, but not conversely?",
+      "options": [
+        "They are actually equivalent.",
+        "Pointwise convergence is stronger than uniform convergence.",
+        "A single $N$ working for all $x$ certainly works for each individual $x$; the converse fails because $N$ may have to grow without bound as $x$ varies.",
+        "Uniform convergence only holds on finite sets."
+      ],
+      "answer": 2,
+      "explanation": "If one threshold $N(\\varepsilon)$ controls the error for every $x$ at once, then in particular it controls the error at each fixed $x$, so uniform convergence implies pointwise. The converse can fail when no finite $N$ suffices uniformly, for example $f_n(x) = x^n$ on $[0,1)$, where the required $N$ blows up as $x \\to 1^-$. Hence uniform is strictly stronger.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-022",
+      "stem": "If $f_n \\to f$ uniformly on $[a,b]$ and each $f_n$ is continuous, which interchange is justified for $c \\in [a,b]$?",
+      "options": [
+        "Only interchange with the integral, never with limits.",
+        "$\\displaystyle\\frac{d}{dx}\\lim_n f_n = \\lim_n \\frac{d}{dx} f_n$ always",
+        "$\\displaystyle\\lim_{x \\to c} \\lim_{n} f_n(x) = \\lim_{n} \\lim_{x \\to c} f_n(x)$",
+        "No interchange of any kind is valid."
+      ],
+      "answer": 2,
+      "explanation": "Uniform convergence lets the limit in $n$ commute with the limit in $x$: $\\lim_{x \\to c}\\lim_n f_n(x) = \\lim_n \\lim_{x \\to c} f_n(x)$, which is essentially the statement that the (continuous) limit function is continuous at $c$. Interchange with the derivative needs the extra hypothesis that $(f_n')$ converges uniformly, so it does not hold merely from uniform convergence of $(f_n)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-023",
+      "stem": "Compute $\\displaystyle\\lim_{n \\to \\infty} \\int_0^1 \\frac{x}{n}\\,dx$ and compare with $\\int_0^1 \\left(\\lim_n \\frac{x}{n}\\right)dx$.",
+      "options": [
+        "The first is $\\tfrac12$, the second is $0$; they disagree.",
+        "The limit of integrals does not exist.",
+        "Both equal $0$, consistent with uniform convergence permitting the interchange.",
+        "Both equal $\\tfrac12$."
+      ],
+      "answer": 2,
+      "explanation": "Directly, $\\int_0^1 \\frac{x}{n}\\,dx = \\frac{1}{n}\\cdot\\frac12 = \\frac{1}{2n} \\to 0$. The pointwise (indeed uniform) limit of $\\frac{x}{n}$ on $[0,1]$ is $0$, whose integral is $0$. The two agree, illustrating that under uniform convergence the limit and the integral may be exchanged.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-024",
+      "stem": "Which series does the M-test FAIL to certify as uniformly convergent on the given set?",
+      "options": [
+        "$\\sum \\dfrac{\\sin(nx)}{n^2}$ on $\\mathbb{R}$",
+        "$\\sum \\dfrac{\\cos(nx)}{3^n}$ on $\\mathbb{R}$",
+        "$\\sum \\dfrac{x^n}{n^2}$ on $[-1, 1]$",
+        "$\\sum \\dfrac{1}{n}\\,x^n$ on $[0, 1)$ (full interval up to $1$)"
+      ],
+      "answer": 3,
+      "explanation": "On $[0,1)$, $\\sup_{x}\\left|\\frac{x^n}{n}\\right| = \\frac{1}{n}$ (as $x \\to 1^-$), and the dominating series would be $\\sum \\frac1n$, which diverges, so the M-test cannot certify uniform convergence there. The other three each admit a convergent dominating series ($\\frac{1}{n^2}$, $\\frac{1}{3^n}$, $\\frac{1}{n^2}$), so the M-test succeeds for them.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-025",
+      "format": "cloze",
+      "stem": "Use the sup-norm criterion for $f_n(x) = \\dfrac{x}{n}$ on $[0, 1]$.",
+      "solution": "The error $|f_n(x) - 0|$ is largest at $x = 1$, where it equals $1/n$. Thus $\\sup_{[0,1]} |f_n|$ equals $1/n$, whose limit as $n \\to \\infty$ is the number {{1}}. Because that supremum tends to $0$, the convergence on $[0,1]$ is uniform: answer {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        }
+      ],
+      "explanation": "On $[0,1]$ the supremum of $|x/n|$ is $1/n$, attained at $x=1$, and $1/n \\to 0$. By the sup-norm criterion the convergence is uniform (yes).",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-026",
+      "format": "cloze",
+      "stem": "Analyze uniform convergence of $f_n(x) = \\dfrac{nx}{1 + n^2 x^2}$ on $\\mathbb{R}$ via its peak value.",
+      "solution": "Each $f_n$ attains its maximum at $x = 1/n$, where the value is $\\dfrac{n\\cdot(1/n)}{1 + 1}$, equal to the number {{1}}. Since this peak does not shrink as $n$ grows, the supremum of the error stays fixed, so the convergence to $0$ is uniform: answer {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "At $x = 1/n$, $f_n = \\frac{1}{1+1} = \\frac12$, so $\\sup_x |f_n| = \\frac12$ for all $n$, which does not tend to $0$. Hence the convergence is not uniform (no), despite pointwise convergence to $0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-027",
+      "format": "cloze",
+      "stem": "Apply the Weierstrass M-test to $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{\\sin(nx)}{n^2}$ on $\\mathbb{R}$.",
+      "solution": "Because $|\\sin(nx)| \\le 1$, each term is bounded by $M_n = 1/n^2$. The series of constants $\\sum M_n$ is a $p$-series with $p$ equal to {{1}}, which converges. Therefore the M-test concludes that the function series converges uniformly: answer {{2}}. The name of this test is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "the Weierstrass M-test",
+            "Dini's Theorem",
+            "the ratio test"
+          ],
+          "answer": "the Weierstrass M-test"
+        }
+      ],
+      "explanation": "With $M_n = 1/n^2$, the dominating series is the $p$-series with $p = 2$, which converges. The Weierstrass M-test then gives uniform convergence (yes).",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-uniform-convergence-028",
+      "format": "cloze",
+      "stem": "Interchange limit and integral for $f_n(x) = x^n$ on $[0,1]$, and contrast with the uniform-convergence requirement.",
+      "solution": "For each $n$, $\\int_0^1 x^n\\,dx = \\frac{1}{n+1}$, and the limit of these integrals as $n \\to \\infty$ is the number {{1}}. The integral of the pointwise limit function over $[0,1]$ is also {{2}}. Even though the values match, the convergence of $x^n$ on $[0,1]$ is uniform: answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "The integrals $\\frac{1}{n+1} \\to 0$, and the limit function is $0$ except at one point so its integral is $0$; both are $0$. But the limit on $[0,1]$ is discontinuous at $x=1$, so by the Uniform Limit Theorem the convergence is not uniform (no), even though the integral interchange happens to work.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    }
+  ]
+}

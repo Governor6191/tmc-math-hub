@@ -1,0 +1,501 @@
+{
+  "courseId": "statistical-inference",
+  "topicId": "anova",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "statistical-inference-anova-001",
+      "stem": "One-way analysis of variance (ANOVA) is used to compare which of the following?",
+      "options": [
+        "the variances of two populations",
+        "the means of three or more populations simultaneously",
+        "two proportions",
+        "a single mean against a constant"
+      ],
+      "answer": 1,
+      "explanation": "ANOVA tests whether the means of three or more groups are all equal in a single analysis, controlling the overall error rate. Comparing two variances uses an $F$ test of variances, and a single mean against a constant is a one-sample test. The name refers to using variances to compare means.",
+      "difficulty": "warmup",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-002",
+      "stem": "The null hypothesis in one-way ANOVA with $k$ groups is which of the following?",
+      "options": [
+        "$\\mu_1 = \\mu_2 = \\cdots = \\mu_k$",
+        "all sample means are equal",
+        "all group variances are equal",
+        "at least one mean differs"
+      ],
+      "answer": 0,
+      "explanation": "The null states that all $k$ population means are equal, $\\mu_1 = \\mu_2 = \\cdots = \\mu_k$. The claim that at least one differs is the alternative hypothesis. Equal variances is an assumption of the procedure, not the hypothesis being tested, and the hypotheses concern population means, not sample means.",
+      "difficulty": "warmup",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-003",
+      "stem": "The ANOVA $F$ statistic is the ratio of which two quantities?",
+      "options": [
+        "sum of squares total to sum of squares within",
+        "between degrees of freedom to within degrees of freedom",
+        "mean square between (treatment) to mean square within (error)",
+        "mean square within to mean square between"
+      ],
+      "answer": 2,
+      "explanation": "The test statistic is $F = \\frac{\\text{MS between}}{\\text{MS within}} = \\frac{\\text{MSB}}{\\text{MSW}}$, comparing variation among the group means to variation within the groups. Putting MSW on top inverts the ratio. A ratio of degrees of freedom is not the $F$ statistic.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-004",
+      "stem": "In one-way ANOVA with $k$ groups and a total of $N$ observations, the between-groups (treatment) degrees of freedom are which of the following?",
+      "options": [
+        "$N - 1$",
+        "$k - 1$",
+        "$k$",
+        "$N - k$"
+      ],
+      "answer": 1,
+      "explanation": "The between-groups degrees of freedom equal the number of groups minus one, $k - 1$. The within-groups (error) degrees of freedom are $N - k$, and the total is $N - 1$. These satisfy $(k - 1) + (N - k) = N - 1$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-005",
+      "stem": "With $k$ groups and $N$ total observations, the within-groups (error) degrees of freedom are which of the following?",
+      "options": [
+        "$N - k - 1$",
+        "$N - k$",
+        "$k - 1$",
+        "$N - 1$"
+      ],
+      "answer": 1,
+      "explanation": "The error degrees of freedom are the total observations minus the number of group means estimated: $N - k$. The value $k - 1$ is the between-groups degrees of freedom. Together they add to the total $N - 1$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-006",
+      "stem": "An experiment has $k = 3$ groups with $5$ observations each. What are the between, within, and total degrees of freedom?",
+      "options": [
+        "$3,\\ 12,\\ 15$",
+        "$3,\\ 11,\\ 14$",
+        "$2,\\ 12,\\ 14$",
+        "$2,\\ 13,\\ 15$"
+      ],
+      "answer": 2,
+      "explanation": "Here $N = 3 \\times 5 = 15$. Between $= k - 1 = 2$, within $= N - k = 15 - 3 = 12$, total $= N - 1 = 14$. The check $2 + 12 = 14$ confirms the split. The other options miscount one or more of the three.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-007",
+      "stem": "The fundamental sum-of-squares identity in one-way ANOVA is which of the following?",
+      "options": [
+        "$\\text{SSB} = \\text{SST} + \\text{SSW}$",
+        "$\\text{SST} = \\text{SSB} + \\text{SSW}$",
+        "$\\text{SSW} = \\text{SST} + \\text{SSB}$",
+        "$\\text{SST} = \\text{SSB} - \\text{SSW}$"
+      ],
+      "answer": 1,
+      "explanation": "Total variation partitions into between-groups and within-groups parts: $\\text{SST} = \\text{SSB} + \\text{SSW}$. This additive decomposition is the heart of ANOVA. The subtractive forms misstate which quantity is the whole.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-008",
+      "stem": "A mean square in ANOVA is computed as which of the following?",
+      "options": [
+        "the square root of a sum of squares",
+        "a sum of squares times its degrees of freedom",
+        "a sum of squares divided by its degrees of freedom",
+        "the total sum of squares divided by $N$"
+      ],
+      "answer": 2,
+      "explanation": "A mean square is a sum of squares divided by its degrees of freedom, for example $\\text{MSB} = \\frac{\\text{SSB}}{k - 1}$ and $\\text{MSW} = \\frac{\\text{SSW}}{N - k}$. Mean squares are variance-like quantities. Multiplying by degrees of freedom or taking a square root does not give a mean square.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-009",
+      "stem": "An ANOVA has $\\text{SSB} = 60$ with $2$ degrees of freedom and $\\text{SSW} = 48$ with $12$ degrees of freedom. What is the $F$ statistic?",
+      "options": [
+        "$7.5$",
+        "$1.25$",
+        "$30.0$",
+        "$0.133$"
+      ],
+      "answer": 0,
+      "explanation": "$\\text{MSB} = \\frac{60}{2} = 30$ and $\\text{MSW} = \\frac{48}{12} = 4$, so $F = \\frac{30}{4} = 7.5$. The option $1.25$ divides the raw sums of squares $\\frac{60}{48}$, and $0.133$ inverts the correct ratio.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-010",
+      "stem": "In the ANOVA above with $\\text{SSB} = 60$ and $\\text{SSW} = 48$, what is the total sum of squares?",
+      "options": [
+        "$60$",
+        "$48$",
+        "$108$",
+        "$12$"
+      ],
+      "answer": 2,
+      "explanation": "By the identity $\\text{SST} = \\text{SSB} + \\text{SSW} = 60 + 48 = 108$. The value $12$ subtracts them instead of adding, and the single sums of squares $60$ and $48$ are only the parts, not the total.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-011",
+      "stem": "A large value of the ANOVA $F$ statistic indicates which of the following?",
+      "options": [
+        "the group means are all equal",
+        "the within-groups variation dominates",
+        "between-groups variation is large relative to within-groups variation, evidence against equal means",
+        "the sample sizes were too small"
+      ],
+      "answer": 2,
+      "explanation": "A large $F$ means the spread among the group means (MSB) is large compared with the spread within groups (MSW), which is evidence against the null of equal means. If all means were equal, $F$ would tend to be near $1$. The magnitude of $F$ reflects the signal-to-noise ratio, not sample size directly.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-012",
+      "stem": "The ANOVA $F$ test is which kind of test?",
+      "options": [
+        "always two-tailed",
+        "two-tailed for large samples",
+        "right-tailed (upper-tailed) only",
+        "left-tailed only"
+      ],
+      "answer": 2,
+      "explanation": "We reject the null only when $F$ is large, so the rejection region is the upper tail, making the ANOVA $F$ test right-tailed. Small $F$ values are consistent with equal means and never lead to rejection. There is no lower-tail rejection region.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-013",
+      "stem": "If the computed $F = 7.5$ exceeds the critical value $F_{0.05,\\,2,\\,12} = 3.89$, what is the conclusion?",
+      "options": [
+        "fail to reject $H_0$; means are equal",
+        "the test is inconclusive",
+        "reject $H_0$; at least one group mean differs",
+        "all group means are different"
+      ],
+      "answer": 2,
+      "explanation": "Since $7.5 > 3.89$, the statistic lies in the upper-tail rejection region and we reject $H_0$, concluding that at least one group mean differs from the others. ANOVA does not by itself say which means differ; that needs follow-up comparisons, so 'all are different' overstates the result.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-014",
+      "stem": "Which of the following is an assumption of one-way ANOVA?",
+      "options": [
+        "the groups have very different variances",
+        "the data must be counts",
+        "the sample sizes must all differ",
+        "the observations are independent and the groups have equal (homogeneous) variances"
+      ],
+      "answer": 3,
+      "explanation": "ANOVA assumes independent observations, approximately normal populations, and equal variances across groups (homogeneity of variance). Markedly unequal variances violate the assumptions. The data are measured responses, not required to be counts, and equal or unequal sample sizes are both allowed.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-015",
+      "stem": "An experiment with $k = 4$ groups and $6$ observations per group gives $\\text{SSB} = 90$ and $\\text{SSW} = 100$. What is the $F$ statistic?",
+      "options": [
+        "$5.0$",
+        "$30.0$",
+        "$0.9$",
+        "$6.0$"
+      ],
+      "answer": 3,
+      "explanation": "With $N = 24$, the degrees of freedom are $k - 1 = 3$ and $N - k = 20$. Then $\\text{MSB} = \\frac{90}{3} = 30$, $\\text{MSW} = \\frac{100}{20} = 5$, so $F = \\frac{30}{5} = 6.0$. The option $0.9$ divides the raw sums of squares, and $5.0$ reports MSW alone.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-016",
+      "stem": "Three groups have means $10$, $20$, and $30$, each based on the same number of observations. What is the grand mean?",
+      "options": [
+        "$60$",
+        "$15$",
+        "$30$",
+        "$20$"
+      ],
+      "answer": 3,
+      "explanation": "With equal group sizes the grand mean is the simple average of the group means: $\\frac{10 + 20 + 30}{3} = \\frac{60}{3} = 20$. The value $60$ is the sum of the means, and $30$ is just the largest group mean. The grand mean is the overall centre used to compute the total and between sums of squares.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-017",
+      "stem": "Why is ANOVA preferred over running many separate two-sample $t$ tests to compare several group means?",
+      "options": [
+        "it does not need the data to be numeric",
+        "it always gives a smaller $p$-value",
+        "it controls the overall Type I error rate that many pairwise tests would inflate",
+        "it requires fewer assumptions about the data"
+      ],
+      "answer": 2,
+      "explanation": "Running many pairwise $t$ tests inflates the chance of at least one false positive, raising the family-wise Type I error rate. A single ANOVA tests overall equality at one controlled level. It does not relax the usual assumptions, nor guarantee smaller $p$-values.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-018",
+      "stem": "In an ANOVA table, the within-groups mean square (MSW) is also known as which of the following?",
+      "options": [
+        "the total mean square",
+        "the grand mean",
+        "the treatment mean square",
+        "the error mean square, an estimate of the common variance $\\sigma^2$"
+      ],
+      "answer": 3,
+      "explanation": "MSW is the error mean square, and under the assumptions it is an unbiased estimate of the common within-group variance $\\sigma^2$ whether or not the null is true. The treatment (between) mean square estimates $\\sigma^2$ only when the null holds. There is no 'total mean square' row used as such.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-019",
+      "stem": "An ANOVA table is partly filled: $\\text{SSB} = 120$ with df $= 3$, and $\\text{MSW} = 8$ with within df $= 16$. What is the $F$ statistic?",
+      "options": [
+        "$40.0$",
+        "$0.2$",
+        "$15.0$",
+        "$5.0$"
+      ],
+      "answer": 3,
+      "explanation": "$\\text{MSB} = \\frac{120}{3} = 40$, and with $\\text{MSW} = 8$ the ratio is $F = \\frac{40}{8} = 5.0$. The value $40$ is MSB alone before dividing by MSW, and $0.2$ inverts the ratio.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-020",
+      "stem": "The $F$ distribution used as the reference for one-way ANOVA is characterized by which pair of parameters?",
+      "options": [
+        "the sample size $N$ only",
+        "numerator and denominator degrees of freedom, $(k-1,\\ N-k)$",
+        "the number of groups $k$ only",
+        "a single degrees-of-freedom value"
+      ],
+      "answer": 1,
+      "explanation": "The $F$ distribution has two parameters: numerator degrees of freedom $k - 1$ (from MSB) and denominator degrees of freedom $N - k$ (from MSW). Both are needed to find the critical value. A single degrees-of-freedom value describes a $t$ or chi-square distribution, not $F$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-021",
+      "stem": "After a significant ANOVA result, what is the appropriate next step to find which specific group means differ?",
+      "options": [
+        "increase the significance level to $0.5$",
+        "switch to a chi-square test",
+        "carry out post hoc multiple comparisons (for example Tukey's procedure)",
+        "stop, since ANOVA already identifies the differing groups"
+      ],
+      "answer": 2,
+      "explanation": "A significant ANOVA only signals that some means differ; post hoc multiple-comparison procedures such as Tukey's method then identify which pairs differ while controlling the error rate. ANOVA itself does not pinpoint the pairs. Raising $\\alpha$ to $0.5$ or switching to chi-square would not answer the question.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-022",
+      "stem": "If the between-groups and within-groups mean squares are roughly equal, the $F$ statistic will be close to which value, and what does this suggest?",
+      "options": [
+        "close to $\\infty$; reject $H_0$",
+        "close to $-1$; the test failed",
+        "close to $0$; strong evidence against $H_0$",
+        "close to $1$; little evidence against equal means"
+      ],
+      "answer": 3,
+      "explanation": "When MSB $\\approx$ MSW the ratio $F \\approx 1$, which is what we expect if the group means are equal and both mean squares estimate the same $\\sigma^2$. Such a value gives little reason to reject the null. $F$ is a ratio of non-negative quantities, so it cannot be negative.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-023",
+      "format": "cloze",
+      "stem": "An experiment uses $k = 3$ groups with $8$ observations in each group. Fill in the degrees of freedom for the ANOVA table.",
+      "solution": "The total number of observations is $N = 3 \\times 8 = 24$. The between-groups degrees of freedom are $k - 1 =$ {{1}}, the within-groups degrees of freedom are $N - k =$ {{2}}, and the total degrees of freedom are $N - 1 =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 21,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 23,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "With $N = 24$: between $= 3 - 1 = 2$, within $= 24 - 3 = 21$, total $= 24 - 1 = 23$. As a check $2 + 21 = 23$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-024",
+      "format": "cloze",
+      "stem": "An ANOVA has $\\text{SSB} = 84$ with $3$ degrees of freedom and $\\text{SSW} = 96$ with $24$ degrees of freedom. Complete the table.",
+      "solution": "The between-groups mean square is $\\text{MSB} = \\frac{84}{3} =$ {{1}}. The within-groups mean square is $\\text{MSW} = \\frac{96}{24} =$ {{2}}. The $F$ statistic is then $\\frac{28}{4} =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 28,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "$\\text{MSB} = \\frac{84}{3} = 28$, $\\text{MSW} = \\frac{96}{24} = 4$, so $F = \\frac{28}{4} = 7$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-025",
+      "format": "cloze",
+      "stem": "Use the sum-of-squares identity to fill the missing entries. An ANOVA reports $\\text{SST} = 150$ and $\\text{SSW} = 90$.",
+      "solution": "Since total variation splits as $\\text{SST} = \\text{SSB} + \\text{SSW}$, the between-groups sum of squares is $\\text{SSB} = 150 - 90 =$ {{1}}. The component that measures variation among the group means is the {{2}} sum of squares.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 60,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "between-groups",
+            "within-groups",
+            "error"
+          ],
+          "answer": "between-groups"
+        }
+      ],
+      "explanation": "From $\\text{SST} = \\text{SSB} + \\text{SSW}$, $\\text{SSB} = 150 - 90 = 60$. The between-groups sum of squares captures how far the group means sit from the grand mean.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-026",
+      "format": "cloze",
+      "stem": "Interpret the ANOVA decision. A study compares $4$ teaching methods with a computed $F = 4.2$ against the critical value $F_{0.05,\\,3,\\,36} = 2.87$.",
+      "solution": "The ANOVA $F$ test is a {{1}} test, so we reject only for large $F$. Since $4.2$ is greater than $2.87$, we {{2}} the null hypothesis and conclude that at least one teaching-method mean differs.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "right-tailed",
+            "left-tailed",
+            "two-tailed"
+          ],
+          "answer": "right-tailed"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "reject",
+            "fail to reject",
+            "accept"
+          ],
+          "answer": "reject"
+        }
+      ],
+      "explanation": "ANOVA rejects only in the upper tail, so it is a right-tailed test. Because $4.2 > 2.87$, the statistic is in the rejection region and we reject $H_0$, concluding some method mean differs.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-027",
+      "format": "cloze",
+      "stem": "A one-way ANOVA with $5$ groups is run on $N = 45$ total observations, giving $\\text{SSB} = 160$ and $\\text{SSW} = 200$.",
+      "solution": "The between-groups degrees of freedom are $5 - 1 =$ {{1}} and the within-groups degrees of freedom are $45 - 5 =$ {{2}}. Therefore $\\text{MSB} = \\frac{160}{4} = 40$ and $\\text{MSW} = \\frac{200}{40} = 5$, giving $F =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 40,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Between df $= 4$, within df $= 40$. Then $\\text{MSB} = \\frac{160}{4} = 40$, $\\text{MSW} = \\frac{200}{40} = 5$, so $F = \\frac{40}{5} = 8$.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-anova-028",
+      "format": "cloze",
+      "stem": "Identify the roles of the two mean squares in ANOVA.",
+      "solution": "The within-groups mean square estimates the common variance $\\sigma^2$ whether or not the null is true, so it serves as the {{1}} term in the $F$ ratio. The between-groups mean square sits in the {{2}} of the ratio, and a large value of $F$ points toward {{3}} group means.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "denominator",
+            "numerator",
+            "exponent"
+          ],
+          "answer": "denominator"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "numerator",
+            "denominator",
+            "base"
+          ],
+          "answer": "numerator"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "unequal",
+            "equal",
+            "identical"
+          ],
+          "answer": "unequal"
+        }
+      ],
+      "explanation": "MSW (error) is the denominator and estimates $\\sigma^2$ regardless of the null. MSB (treatment) is the numerator. A large $F = \\frac{\\text{MSB}}{\\text{MSW}}$ indicates the group means are unequal.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    }
+  ]
+}

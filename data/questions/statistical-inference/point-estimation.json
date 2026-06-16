@@ -1,0 +1,491 @@
+{
+  "courseId": "statistical-inference",
+  "topicId": "point-estimation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "statistical-inference-point-estimation-001",
+      "stem": "A random sample gives the values $2,\\ 4,\\ 6,\\ 8,\\ 10$. What is the sample mean $\\bar{x}$, the usual point estimate of the population mean $\\mu$?",
+      "options": [
+        "$6$",
+        "$5$",
+        "$30$",
+        "$8$"
+      ],
+      "answer": 0,
+      "explanation": "The sample mean is $\\bar{x} = \\frac{\\sum x_i}{n}$. The sum is $2 + 4 + 6 + 8 + 10 = 30$ and $n = 5$, so $\\bar{x} = \\frac{30}{5} = 6$. The option $30$ stops at the total without dividing, and $5$ is the count $n$ rather than the average. The sample mean is the standard unbiased point estimator of $\\mu$.",
+      "difficulty": "warmup",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-002",
+      "stem": "An estimator $\\hat{\\theta}$ of a parameter $\\theta$ is said to be unbiased when which condition holds?",
+      "options": [
+        "$\\operatorname{Var}(\\hat{\\theta}) = 0$",
+        "$E(\\hat{\\theta}) = \\theta$",
+        "$\\hat{\\theta} = \\theta$ for every sample",
+        "$E(\\hat{\\theta}) = 0$"
+      ],
+      "answer": 1,
+      "explanation": "Unbiasedness means the sampling distribution of the estimator is centred on the true value, that is $E(\\hat{\\theta}) = \\theta$. It does not require the estimate to equal $\\theta$ in any single sample, nor that its variance be zero. The condition $E(\\hat{\\theta}) = 0$ describes an estimator centred at zero, which is unrelated to $\\theta$.",
+      "difficulty": "warmup",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-003",
+      "stem": "The bias of an estimator $\\hat{\\theta}$ for $\\theta$ is defined as which of the following?",
+      "options": [
+        "$\\operatorname{Var}(\\hat{\\theta})$",
+        "$E(\\hat{\\theta}) - \\theta$",
+        "$\\hat{\\theta} - \\theta$",
+        "$E(\\hat{\\theta}^2) - \\theta^2$"
+      ],
+      "answer": 1,
+      "explanation": "Bias is the systematic part of the error: $B(\\hat{\\theta}) = E(\\hat{\\theta}) - \\theta$. The quantity $\\hat{\\theta} - \\theta$ is the error in one sample, not its expected value, and $\\operatorname{Var}(\\hat{\\theta})$ measures spread rather than centring. An unbiased estimator has bias zero.",
+      "difficulty": "warmup",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-004",
+      "stem": "For a sample of size $n$, which divisor makes the sample variance $S^2 = \\frac{1}{?}\\sum (x_i - \\bar{x})^2$ an unbiased estimator of the population variance $\\sigma^2$?",
+      "options": [
+        "$n + 1$",
+        "$n$",
+        "$n - 1$",
+        "$n - 2$"
+      ],
+      "answer": 2,
+      "explanation": "Dividing the sum of squared deviations by $n - 1$ gives $E(S^2) = \\sigma^2$, so $n - 1$ is the correct divisor for an unbiased estimator. Dividing by $n$ produces a biased estimator that underestimates $\\sigma^2$ on average, because one degree of freedom is spent estimating $\\bar{x}$. The value $n - 1$ is the number of degrees of freedom.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-005",
+      "stem": "For the sample $2,\\ 4,\\ 6,\\ 8,\\ 10$ with mean $\\bar{x} = 6$, compute the sample variance $S^2$ using the divisor $n - 1$.",
+      "options": [
+        "$10$",
+        "$6.32$",
+        "$40$",
+        "$8$"
+      ],
+      "answer": 0,
+      "explanation": "The deviations from $\\bar{x} = 6$ are $-4, -2, 0, 2, 4$, whose squares are $16, 4, 0, 4, 16$ summing to $40$. With $n - 1 = 4$, the sample variance is $S^2 = \\frac{40}{4} = 10$. The option $8$ wrongly divides by $n = 5$, and $40$ reports the sum of squares without dividing.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-006",
+      "stem": "The standard error of the sample mean $\\bar{X}$ for a sample of size $n$ from a population with standard deviation $\\sigma$ is which of the following?",
+      "options": [
+        "$\\sigma$",
+        "$\\frac{\\sigma}{\\sqrt{n}}$",
+        "$\\frac{\\sigma}{n}$",
+        "$\\sigma \\sqrt{n}$"
+      ],
+      "answer": 1,
+      "explanation": "The variance of $\\bar{X}$ is $\\frac{\\sigma^2}{n}$, so its standard deviation, called the standard error, is $\\frac{\\sigma}{\\sqrt{n}}$. Dividing by $n$ instead of $\\sqrt{n}$ confuses the variance with the standard error, and multiplying by $\\sqrt{n}$ inflates the spread instead of shrinking it as the sample grows.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-007",
+      "stem": "A population has standard deviation $\\sigma = 10$. For a random sample of size $n = 25$, what is the standard error of the sample mean?",
+      "options": [
+        "$10$",
+        "$2$",
+        "$0.4$",
+        "$50$"
+      ],
+      "answer": 1,
+      "explanation": "The standard error is $\\frac{\\sigma}{\\sqrt{n}} = \\frac{10}{\\sqrt{25}} = \\frac{10}{5} = 2$. The option $0.4$ divides by $n = 25$ rather than $\\sqrt{n} = 5$, and $10$ forgets the sample size entirely. The standard error shrinks as the sample grows.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-008",
+      "stem": "In a sample of $20$ KNUST students, $7$ own a graphing calculator. What is the maximum likelihood estimate of the population proportion $p$ who own one?",
+      "options": [
+        "$0.5$",
+        "$7$",
+        "$0.65$",
+        "$0.35$"
+      ],
+      "answer": 3,
+      "explanation": "For Bernoulli or binomial sampling the MLE of $p$ is the sample proportion $\\hat{p} = \\frac{x}{n} = \\frac{7}{20} = 0.35$. The option $0.65$ is the complement $1 - \\hat{p}$ (the proportion who do not own one), and $7$ is the raw count rather than a proportion.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-009",
+      "stem": "Which estimator is the maximum likelihood estimator of the rate parameter $\\lambda$ of a Poisson distribution, given a random sample $X_1, \\dots, X_n$?",
+      "options": [
+        "the sample mean $\\bar{X}$",
+        "the sample range",
+        "the largest observation",
+        "the sample median"
+      ],
+      "answer": 0,
+      "explanation": "Maximizing the Poisson log-likelihood gives $\\hat{\\lambda} = \\bar{X}$, the sample mean. This also matches the method of moments, since the Poisson mean equals $\\lambda$. The median, range, and maximum are not the maximizers of the Poisson likelihood.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-010",
+      "stem": "A random sample from a uniform distribution on $(0, \\theta)$ has sample mean $\\bar{x} = 4$. Using the method of moments, what is the estimate of $\\theta$?",
+      "options": [
+        "$8$",
+        "$4$",
+        "$16$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "The mean of a uniform on $(0, \\theta)$ is $\\frac{\\theta}{2}$. Setting $\\frac{\\theta}{2} = \\bar{x}$ gives $\\hat{\\theta} = 2\\bar{x} = 2 \\times 4 = 8$. The option $4$ forgets to double the mean, and $16$ doubles it twice.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-011",
+      "stem": "The method of moments estimates parameters by doing which of the following?",
+      "options": [
+        "minimizing the sample variance",
+        "equating sample moments to population moments and solving",
+        "maximizing the likelihood function",
+        "setting the sample median equal to the mean"
+      ],
+      "answer": 1,
+      "explanation": "The method of moments sets the first few sample moments equal to the corresponding population moments (which are functions of the parameters) and solves the resulting equations. Maximizing the likelihood is a different method (MLE). The other choices do not describe a general estimation principle.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-012",
+      "stem": "An estimator $\\hat{\\theta}_n$ is consistent for $\\theta$ when which of the following happens as the sample size $n$ grows?",
+      "options": [
+        "its bias increases without bound",
+        "it converges in probability to $\\theta$",
+        "it equals $\\theta$ for all finite $n$",
+        "its variance stays constant"
+      ],
+      "answer": 1,
+      "explanation": "Consistency means $\\hat{\\theta}_n \\xrightarrow{P} \\theta$, that is the estimator concentrates on the true value as $n \\to \\infty$. A sufficient condition is that both the bias and the variance tend to zero. A constant variance or a growing bias would prevent this concentration.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-013",
+      "stem": "Two unbiased estimators $\\hat{\\theta}_1$ and $\\hat{\\theta}_2$ of $\\theta$ have variances $4$ and $9$ respectively. Which is more efficient, and what is the relative efficiency of $\\hat{\\theta}_1$ to $\\hat{\\theta}_2$?",
+      "options": [
+        "$\\hat{\\theta}_2$ is more efficient; efficiency $= 9/4$",
+        "$\\hat{\\theta}_1$ is more efficient; efficiency $= 9/4$",
+        "both are equally efficient; efficiency $= 1$",
+        "$\\hat{\\theta}_1$ is more efficient; efficiency $= 4/9$"
+      ],
+      "answer": 1,
+      "explanation": "Among unbiased estimators the one with smaller variance is more efficient, so $\\hat{\\theta}_1$ (variance $4$) wins. The relative efficiency of $\\hat{\\theta}_1$ to $\\hat{\\theta}_2$ is $\\frac{\\operatorname{Var}(\\hat{\\theta}_2)}{\\operatorname{Var}(\\hat{\\theta}_1)} = \\frac{9}{4}$, a number greater than $1$ confirming $\\hat{\\theta}_1$ is better. The ratio $4/9$ inverts the comparison.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-014",
+      "stem": "The mean squared error of an estimator $\\hat{\\theta}$ decomposes into which two parts?",
+      "options": [
+        "the variance plus the squared bias",
+        "the bias plus the variance",
+        "the mean plus the median",
+        "the standard error minus the bias"
+      ],
+      "answer": 0,
+      "explanation": "The identity is $\\text{MSE}(\\hat{\\theta}) = \\operatorname{Var}(\\hat{\\theta}) + [B(\\hat{\\theta})]^2$, the variance plus the square of the bias. The bias itself (not its square) does not have the right units to add to a variance, so 'bias plus variance' is incorrect. For an unbiased estimator the MSE equals the variance.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-015",
+      "stem": "An estimator $\\hat{\\theta}$ has $E(\\hat{\\theta}) = \\theta + 3$ and $\\operatorname{Var}(\\hat{\\theta}) = 16$. What is its mean squared error?",
+      "options": [
+        "$16$",
+        "$9$",
+        "$19$",
+        "$25$"
+      ],
+      "answer": 3,
+      "explanation": "The bias is $E(\\hat{\\theta}) - \\theta = 3$, so the squared bias is $9$. Then $\\text{MSE} = \\operatorname{Var} + (\\text{bias})^2 = 16 + 9 = 25$. The option $19$ adds the bias itself ($16 + 3$) instead of its square, and $16$ ignores the bias.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-016",
+      "stem": "By the central limit theorem, for a large sample the sampling distribution of $\\bar{X}$ is approximately which of the following?",
+      "options": [
+        "uniform on the data range",
+        "exactly the same shape as the population",
+        "normal with mean $\\mu$ and variance $\\sigma^2$",
+        "approximately normal with mean $\\mu$ and variance $\\sigma^2 / n$"
+      ],
+      "answer": 3,
+      "explanation": "The central limit theorem says that for large $n$, $\\bar{X}$ is approximately normal with mean $\\mu$ and variance $\\frac{\\sigma^2}{n}$, regardless of the population shape. Using variance $\\sigma^2$ forgets the division by $n$, and the population shape only matters for the mean and variance, not the limiting normal form.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-017",
+      "stem": "A normal population has mean $\\mu = 50$ and standard deviation $\\sigma = 12$. For samples of size $n = 36$, what is the standard deviation of the sampling distribution of $\\bar{X}$?",
+      "options": [
+        "$0.33$",
+        "$2$",
+        "$6$",
+        "$12$"
+      ],
+      "answer": 1,
+      "explanation": "The standard deviation of $\\bar{X}$ is $\\frac{\\sigma}{\\sqrt{n}} = \\frac{12}{\\sqrt{36}} = \\frac{12}{6} = 2$. The option $6$ is $\\sqrt{n}$ mistaken for the answer, and $12$ is the population standard deviation that ignores the sample size.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-018",
+      "stem": "When the population standard deviation is unknown and the sample is small, which sampling distribution describes the standardized sample mean $\\frac{\\bar{X} - \\mu}{S / \\sqrt{n}}$?",
+      "options": [
+        "the $t$ distribution with $n - 1$ degrees of freedom",
+        "the chi-square distribution with $n$ degrees of freedom",
+        "the $F$ distribution",
+        "the standard normal distribution"
+      ],
+      "answer": 0,
+      "explanation": "Replacing $\\sigma$ by the sample standard deviation $S$ introduces extra variability, so the statistic follows a Student $t$ distribution with $n - 1$ degrees of freedom rather than the standard normal. The chi-square and $F$ distributions arise for variances and variance ratios, not for a single standardized mean.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-019",
+      "stem": "The sample proportion $\\hat{p}$ from $n$ independent trials is an unbiased estimator of $p$. What is its variance?",
+      "options": [
+        "$np(1-p)$",
+        "$\\frac{p}{n}$",
+        "$\\frac{p(1-p)}{n}$",
+        "$p(1-p)$"
+      ],
+      "answer": 2,
+      "explanation": "Writing $\\hat{p} = \\frac{X}{n}$ with $X$ binomial gives $\\operatorname{Var}(\\hat{p}) = \\frac{\\operatorname{Var}(X)}{n^2} = \\frac{np(1-p)}{n^2} = \\frac{p(1-p)}{n}$. The expression $np(1-p)$ is the variance of the count $X$, not of the proportion, and $p(1-p)$ omits the division by $n$.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-020",
+      "stem": "Which statement about the sample mean $\\bar{X}$ as an estimator of $\\mu$ is correct?",
+      "options": [
+        "it is unbiased and consistent",
+        "it is biased but consistent",
+        "it is neither unbiased nor consistent",
+        "it is unbiased but not consistent"
+      ],
+      "answer": 0,
+      "explanation": "The sample mean satisfies $E(\\bar{X}) = \\mu$, so it is unbiased, and its variance $\\frac{\\sigma^2}{n} \\to 0$ as $n \\to \\infty$, so it is also consistent. It is one of the standard examples of an estimator that is both unbiased and consistent.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-021",
+      "stem": "The number of degrees of freedom associated with the sample variance $S^2$ computed from $n$ observations is which of the following?",
+      "options": [
+        "$2n$",
+        "$n - 1$",
+        "$n + 1$",
+        "$n$"
+      ],
+      "answer": 1,
+      "explanation": "One degree of freedom is lost because the deviations are taken about the sample mean $\\bar{x}$, which is itself estimated from the data, leaving $n - 1$ free deviations. This is why the unbiased divisor is $n - 1$ and why the relevant $t$ and chi-square distributions carry $n - 1$ degrees of freedom.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-022",
+      "stem": "A random sample of size $n = 4$ gives observations $3,\\ 5,\\ 7,\\ 9$. What is the point estimate of the population standard deviation, that is the sample standard deviation $S$ (to two decimal places)?",
+      "options": [
+        "$6.67$",
+        "$5.00$",
+        "$2.24$",
+        "$2.58$"
+      ],
+      "answer": 3,
+      "explanation": "The mean is $\\frac{3+5+7+9}{4} = 6$. Squared deviations are $9, 1, 1, 9$ summing to $20$, so $S^2 = \\frac{20}{4 - 1} = \\frac{20}{3} \\approx 6.667$ and $S = \\sqrt{6.667} \\approx 2.58$. The option $2.24$ comes from dividing by $n = 4$ instead of $n - 1 = 3$, and $6.67$ is the variance left unrooted.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-023",
+      "format": "cloze",
+      "stem": "A random sample of size $n = 5$ gives the values $4,\\ 6,\\ 8,\\ 10,\\ 12$. Estimate the population mean and the population variance.",
+      "solution": "The point estimate of the mean is the sample mean. The sum is $4 + 6 + 8 + 10 + 12 = 40$, so dividing by $n = 5$ gives $\\bar{x} =$ {{1}}. The unbiased estimate of the variance divides the sum of squared deviations, which is $40$, by $n - 1 =$ {{2}}, giving $S^2 =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The mean is $\\frac{40}{5} = 8$. Deviations from $8$ are $-4, -2, 0, 2, 4$ with squares $16, 4, 0, 4, 16 = 40$. Dividing by $n - 1 = 4$ gives $S^2 = \\frac{40}{4} = 10$. Using $n = 5$ instead would understate the variance.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-024",
+      "format": "cloze",
+      "stem": "In a survey of $n = 200$ voters, $80$ say they support a proposal. Estimate the population proportion and the standard error of the estimate.",
+      "solution": "The maximum likelihood point estimate of the proportion is $\\hat{p} = \\frac{80}{200} =$ {{1}}. The estimated standard error is $\\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}}$, and with $\\hat{p}(1 - \\hat{p}) = 0.24$ and $n = 200$ this works out to about {{2}} (to three decimal places).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.4,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.035,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "The sample proportion is $\\frac{80}{200} = 0.4$. Then $\\hat{p}(1-\\hat{p}) = 0.4 \\times 0.6 = 0.24$, so the standard error is $\\sqrt{\\frac{0.24}{200}} = \\sqrt{0.0012} \\approx 0.0346$, about $0.035$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-025",
+      "format": "cloze",
+      "stem": "A population has standard deviation $\\sigma = 15$. Consider the sample mean $\\bar{X}$ for a sample of size $n = 9$.",
+      "solution": "The sample mean is an {{1}} estimator of $\\mu$, since $E(\\bar{X}) = \\mu$. Its standard error is $\\frac{\\sigma}{\\sqrt{n}} = \\frac{15}{\\sqrt{9}}$, which equals {{2}}. As $n$ increases this standard error {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "unbiased",
+            "biased",
+            "inconsistent"
+          ],
+          "answer": "unbiased"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "decreases",
+            "increases",
+            "stays the same"
+          ],
+          "answer": "decreases"
+        }
+      ],
+      "explanation": "Since $E(\\bar{X}) = \\mu$ the sample mean is unbiased. The standard error is $\\frac{15}{\\sqrt{9}} = \\frac{15}{3} = 5$. Because $\\sqrt{n}$ sits in the denominator, a larger $n$ makes the standard error smaller, which is why $\\bar{X}$ is also consistent.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-026",
+      "format": "cloze",
+      "stem": "An estimator $\\hat{\\theta}$ of $\\theta$ satisfies $E(\\hat{\\theta}) = \\theta + 2$ and $\\operatorname{Var}(\\hat{\\theta}) = 21$. Find its bias and mean squared error.",
+      "solution": "The bias is $E(\\hat{\\theta}) - \\theta =$ {{1}}. The mean squared error is the variance plus the squared bias, so $\\text{MSE} = 21 + (2)^2 =$ {{2}}. Because the bias is not zero, this estimator is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 25,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "biased",
+            "unbiased",
+            "efficient"
+          ],
+          "answer": "biased"
+        }
+      ],
+      "explanation": "Bias $= (\\theta + 2) - \\theta = 2$. Then $\\text{MSE} = \\operatorname{Var} + (\\text{bias})^2 = 21 + 4 = 25$. A nonzero bias means the estimator is biased; the MSE still combines both spread and centring error.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-027",
+      "format": "cloze",
+      "stem": "Identify the estimation method and the resulting estimate. A random sample from a Poisson population has sample mean $\\bar{x} = 3.5$.",
+      "solution": "For the Poisson distribution the population mean equals the parameter $\\lambda$. Setting the sample mean equal to the population mean is the method of {{1}}, and it gives $\\hat{\\lambda} =$ {{2}}. This estimate happens to coincide with the maximum likelihood estimate.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "moments",
+            "Moments",
+            "the moments",
+            "method of moments"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3.5,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Equating the sample moment $\\bar{x}$ to the population mean $\\lambda$ is the method of moments, giving $\\hat{\\lambda} = 3.5$. For the Poisson the mean and variance both equal $\\lambda$, so the maximum likelihood estimate is the same value.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-point-estimation-028",
+      "format": "cloze",
+      "stem": "Two unbiased estimators of $\\theta$ have variances $\\operatorname{Var}(\\hat{\\theta}_1) = 8$ and $\\operatorname{Var}(\\hat{\\theta}_2) = 2$. Compare them.",
+      "solution": "Among unbiased estimators, smaller variance means greater efficiency, so the more efficient estimator is {{1}}. The relative efficiency of $\\hat{\\theta}_2$ to $\\hat{\\theta}_1$ is $\\frac{8}{2} =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\hat{\\theta}_2$",
+            "$\\hat{\\theta}_1$",
+            "neither"
+          ],
+          "answer": "$\\hat{\\theta}_2$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $\\operatorname{Var}(\\hat{\\theta}_2) = 2 < 8$, the estimator $\\hat{\\theta}_2$ is more efficient. The relative efficiency of $\\hat{\\theta}_2$ to $\\hat{\\theta}_1$ is the ratio $\\frac{\\operatorname{Var}(\\hat{\\theta}_1)}{\\operatorname{Var}(\\hat{\\theta}_2)} = \\frac{8}{2} = 4$, confirming $\\hat{\\theta}_2$ is four times as efficient.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    }
+  ]
+}

@@ -1,0 +1,449 @@
+{
+  "courseId": "real-analysis-ii",
+  "topicId": "continuity",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-analysis-ii-continuity-001",
+      "stem": "Which statement is the correct epsilon-delta definition of $f$ being continuous at a point $c$ in its domain?",
+      "options": [
+        "There exists $\\varepsilon > 0$ such that for every $\\delta > 0$, $|x - c| < \\delta$ implies $|f(x) - f(c)| < \\varepsilon$.",
+        "For every $\\varepsilon > 0$ there exists $\\delta > 0$ such that $|f(x) - f(c)| < \\delta$ implies $|x - c| < \\varepsilon$.",
+        "For every $\\varepsilon > 0$ there exists $\\delta > 0$ such that $|x - c| < \\delta$ implies $|f(x) - f(c)| < \\varepsilon$.",
+        "For every $\\delta > 0$ there exists $\\varepsilon > 0$ such that $|x - c| < \\delta$ implies $|f(x) - f(c)| < \\varepsilon$."
+      ],
+      "answer": 2,
+      "explanation": "Continuity of $f$ at $c$ means: given any target tolerance $\\varepsilon > 0$ on the output, one can find an input radius $\\delta > 0$ so that all $x$ within $\\delta$ of $c$ land within $\\varepsilon$ of $f(c)$. The quantifier order is $\\forall \\varepsilon\\, \\exists \\delta$, and $\\delta$ is allowed to depend on $\\varepsilon$ and on $c$. Swapping the roles of $\\varepsilon$ and $\\delta$, or reversing which inequality is the hypothesis, changes the meaning entirely.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-002",
+      "stem": "By the sequential criterion, $f$ is continuous at $c$ if and only if which condition holds?",
+      "options": [
+        "For every sequence $x_n \\to c$ with terms in the domain, $f(x_n) \\to f(c)$.",
+        "Every sequence $f(x_n)$ converges.",
+        "$f(x_n) \\to f(c)$ for every monotone sequence $x_n \\to c$ only.",
+        "$f(x_n) \\to f(c)$ for at least one sequence $x_n \\to c$ with $x_n \\neq c$."
+      ],
+      "answer": 0,
+      "explanation": "The sequential criterion states that $f$ is continuous at $c$ if and only if for EVERY sequence $(x_n)$ in the domain converging to $c$, the image sequence $(f(x_n))$ converges to $f(c)$. One single good sequence is not enough, and the convergence must be specifically to $f(c)$, not merely to some limit. This criterion is the standard bridge between continuity and sequence limits, and it is the usual tool for proving discontinuity by exhibiting one sequence that fails.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-003",
+      "stem": "The function $f(x) = x^2$ is continuous at $c = 3$. Using the definition, for a given $\\varepsilon > 0$ which choice of $\\delta$ works on the restricted region $|x - 3| < 1$?",
+      "options": [
+        "$\\delta = \\varepsilon^2$",
+        "$\\delta = \\min\\{1, \\varepsilon/7\\}$",
+        "$\\delta = \\varepsilon$",
+        "$\\delta = \\min\\{1, 7\\varepsilon\\}$"
+      ],
+      "answer": 1,
+      "explanation": "Write $|x^2 - 9| = |x - 3|\\,|x + 3|$. If $|x - 3| < 1$ then $2 < x < 4$, so $|x + 3| < 7$. Hence $|x^2 - 9| < 7|x - 3|$. To force this below $\\varepsilon$ it suffices that $|x - 3| < \\varepsilon/7$, so taking $\\delta = \\min\\{1, \\varepsilon/7\\}$ both keeps us in the region where the bound $7$ is valid and makes the product less than $\\varepsilon$. Choosing $\\delta = 7\\varepsilon$ goes the wrong way and $\\delta = \\varepsilon$ ignores the factor $|x+3|$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-004",
+      "stem": "Let $f(x) = \\dfrac{x^2 - 4}{x - 2}$ for $x \\neq 2$. What value must be assigned to $f(2)$ to make $f$ continuous at $2$?",
+      "options": [
+        "$4$",
+        "$0$",
+        "$2$",
+        "It cannot be made continuous at $2$."
+      ],
+      "answer": 0,
+      "explanation": "For $x \\neq 2$, $\\frac{x^2 - 4}{x - 2} = \\frac{(x-2)(x+2)}{x-2} = x + 2$, whose limit as $x \\to 2$ is $4$. Since the two-sided limit exists and equals $4$, defining $f(2) = 4$ removes the discontinuity (a removable discontinuity). Any other value would leave a jump between the limit and the assigned value, breaking continuity.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-005",
+      "stem": "Consider $f(x) = \\begin{cases} x + 1, & x \\geq 0 \\\\ x - 1, & x < 0 \\end{cases}$. What kind of discontinuity does $f$ have at $x = 0$?",
+      "options": [
+        "No discontinuity; $f$ is continuous at $0$",
+        "Infinite discontinuity",
+        "Jump discontinuity",
+        "Removable discontinuity"
+      ],
+      "answer": 2,
+      "explanation": "The right-hand limit is $\\lim_{x \\to 0^+}(x + 1) = 1$ and the left-hand limit is $\\lim_{x \\to 0^-}(x - 1) = -1$. Both one-sided limits exist and are finite but differ, which is exactly a jump discontinuity. It is not removable because no single value of $f(0)$ can reconcile two different one-sided limits, and it is not infinite since neither limit diverges.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-006",
+      "stem": "If $f$ and $g$ are both continuous at $c$, which of the following is guaranteed to be continuous at $c$ without any further hypotheses?",
+      "options": [
+        "$f \\circ g$",
+        "$fg$",
+        "$f/g$",
+        "$1/f$"
+      ],
+      "answer": 1,
+      "explanation": "Sums, differences, and products of functions continuous at $c$ are continuous at $c$, so $fg$ is always safe. The quotient $f/g$ and the reciprocal $1/f$ require the denominator to be nonzero at $c$, an extra hypothesis. The composition $f \\circ g$ needs $f$ to be continuous at the point $g(c)$, not merely at $c$, so as stated it is not guaranteed.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-007",
+      "stem": "Which is the correct statement of the composition rule for continuity?",
+      "options": [
+        "If $g$ is continuous at $c$ and $f$ is continuous at $g(c)$, then $f \\circ g$ is continuous at $c$.",
+        "If $f \\circ g$ is continuous at $c$, then both $f$ and $g$ are continuous at $c$.",
+        "If $f$ is continuous at $c$ and $g$ is continuous at $f(c)$, then $f \\circ g$ is continuous at $c$.",
+        "If $g$ is continuous at $c$ and $f$ is continuous at $c$, then $f \\circ g$ is continuous at $c$."
+      ],
+      "answer": 0,
+      "explanation": "For the composite $(f \\circ g)(x) = f(g(x))$, the inner function $g$ must be continuous at $c$ so that inputs near $c$ map near $g(c)$, and the outer function $f$ must be continuous at the value $g(c)$ so those outputs map near $f(g(c))$. Requiring $f$ continuous at $c$ rather than at $g(c)$ is the common error. The converse implication in the last option is false in general.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-008",
+      "stem": "The Intermediate Value Theorem requires $f$ to be continuous on a closed bounded interval $[a,b]$. It then guarantees that:",
+      "options": [
+        "$f$ attains a maximum and a minimum on $[a,b]$.",
+        "$f$ is differentiable on $(a,b)$.",
+        "$f$ is monotone on $[a,b]$.",
+        "$f$ takes every value between $f(a)$ and $f(b)$ at some point of $[a,b]$."
+      ],
+      "answer": 3,
+      "explanation": "The Intermediate Value Theorem says a function continuous on $[a,b]$ assumes every value $k$ lying between $f(a)$ and $f(b)$; that is, there is some $c \\in [a,b]$ with $f(c) = k$. Attaining a max and min is the separate Extreme Value Theorem, differentiability is not implied by continuity, and continuous functions need not be monotone.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-009",
+      "stem": "Why does $p(x) = x^3 - x - 1$ have a real root in the interval $[1, 2]$?",
+      "options": [
+        "Because $p'(x) > 0$ on $[1,2]$.",
+        "Because $p(1)$ and $p(2)$ have the same sign.",
+        "Because $p$ is a polynomial of odd degree.",
+        "Because $p(1) = -1 < 0$ and $p(2) = 5 > 0$, and $p$ is continuous, so the IVT applies."
+      ],
+      "answer": 3,
+      "explanation": "Evaluate the endpoints: $p(1) = 1 - 1 - 1 = -1$ and $p(2) = 8 - 2 - 1 = 5$. Since $p$ is a polynomial it is continuous on $[1,2]$, and the values have opposite signs, so by the Intermediate Value Theorem there is a $c \\in (1,2)$ with $p(c) = 0$. Odd degree guarantees a root somewhere in $\\mathbb{R}$ but not specifically in $[1,2]$, and the derivative sign is irrelevant to existence of a root here.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-010",
+      "stem": "The Extreme Value Theorem states that a continuous function on a closed bounded interval $[a,b]$:",
+      "options": [
+        "is bounded and attains both its supremum and its infimum on $[a,b]$.",
+        "is bounded but need not attain its supremum.",
+        "is bounded provided it is also differentiable.",
+        "attains its maximum only if it is also monotone."
+      ],
+      "answer": 0,
+      "explanation": "The Extreme Value Theorem (a continuous image of a compact set is compact, hence closed and bounded) guarantees that a function continuous on the compact interval $[a,b]$ is bounded and actually achieves its maximum and minimum values at points of $[a,b]$. The strength of the theorem is precisely that the supremum and infimum are attained, not merely approached; no extra monotonicity or differentiability hypothesis is needed.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-011",
+      "stem": "Which hypothesis in the Extreme Value Theorem is essential? Consider $f(x) = x$ on the open interval $(0,1)$.",
+      "options": [
+        "Continuity; $f$ is discontinuous so the theorem fails.",
+        "$f$ must be bounded in advance.",
+        "$f$ must be a polynomial.",
+        "The interval must be closed and bounded; on the open interval $(0,1)$, $f(x)=x$ attains neither a max nor a min."
+      ],
+      "answer": 3,
+      "explanation": "The function $f(x) = x$ is continuous on $(0,1)$ and bounded there, with supremum $1$ and infimum $0$, yet it attains neither because the endpoints are excluded. This shows the closed and bounded (compact) hypothesis cannot be dropped: continuity alone on a non-compact interval does not force extrema to be attained. The example is continuous, so the failure is entirely about the domain not being compact.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-012",
+      "stem": "Which statement is the correct definition of $f$ being uniformly continuous on a set $A$?",
+      "options": [
+        "For every $x \\in A$, $f$ is continuous at $x$.",
+        "For every $\\varepsilon > 0$ and every $x \\in A$ there exists $\\delta > 0$ such that $|x - u| < \\delta$ implies $|f(x) - f(u)| < \\varepsilon$.",
+        "For every $\\varepsilon > 0$ there exists $\\delta > 0$ such that for all $x, u \\in A$, $|x - u| < \\delta$ implies $|f(x) - f(u)| < \\varepsilon$.",
+        "There exists $\\delta > 0$ such that for every $\\varepsilon > 0$ and all $x,u \\in A$, $|x-u| < \\delta$ implies $|f(x)-f(u)| < \\varepsilon$."
+      ],
+      "answer": 2,
+      "explanation": "Uniform continuity requires a single $\\delta$ that works simultaneously for all pairs $x, u$ in $A$: the quantifier $\\exists \\delta$ comes before $\\forall x, u$, so $\\delta$ depends on $\\varepsilon$ alone, not on the location. Option two, where $\\delta$ may depend on the point $x$, is just ordinary (pointwise) continuity. The distinction between these two quantifier orders is the entire content of uniform continuity.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-013",
+      "stem": "By the Uniform Continuity Theorem, which condition guarantees that a continuous function is uniformly continuous?",
+      "options": [
+        "The function is monotone.",
+        "The function is defined on any interval.",
+        "The function is bounded.",
+        "The function is continuous on a closed bounded interval $[a,b]$."
+      ],
+      "answer": 3,
+      "explanation": "The Uniform Continuity Theorem states that a function continuous on a compact set, in particular a closed bounded interval $[a,b]$, is automatically uniformly continuous there. Continuity on an arbitrary or open interval is not enough (for example $1/x$ on $(0,1)$ is continuous but not uniformly continuous), and neither boundedness nor monotonicity alone yields uniform continuity.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-014",
+      "stem": "Which function is continuous on its stated domain but NOT uniformly continuous there?",
+      "options": [
+        "$f(x) = x$ on $[0, 1]$",
+        "$f(x) = \\sin x$ on $\\mathbb{R}$",
+        "$f(x) = 2x + 1$ on $\\mathbb{R}$",
+        "$f(x) = 1/x$ on $(0, 1)$"
+      ],
+      "answer": 3,
+      "explanation": "On $(0,1)$ the function $1/x$ is continuous but its slope blows up near $0$, so no single $\\delta$ controls $|f(x)-f(u)|$ for all close pairs; it fails uniform continuity. Linear functions and $\\sin x$ are Lipschitz on $\\mathbb{R}$ (bounded derivative), hence uniformly continuous, and $f(x)=x$ on the compact $[0,1]$ is uniformly continuous by the Uniform Continuity Theorem.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-015",
+      "stem": "A function $f$ is Lipschitz on $A$ if there is a constant $K \\geq 0$ with $|f(x) - f(u)| \\leq K|x - u|$ for all $x, u \\in A$. What does this imply?",
+      "options": [
+        "$f$ is monotone on $A$.",
+        "$f$ is differentiable on $A$.",
+        "$f$ is bounded on $A$.",
+        "$f$ is uniformly continuous on $A$."
+      ],
+      "answer": 3,
+      "explanation": "If $f$ is Lipschitz with constant $K$, then given $\\varepsilon > 0$ choosing $\\delta = \\varepsilon/(K+1)$ makes $|f(x)-f(u)| \\leq K|x-u| < \\varepsilon$ whenever $|x-u| < \\delta$, and this $\\delta$ works for all pairs, so $f$ is uniformly continuous. The Lipschitz condition does not force differentiability (for instance $|x|$ is Lipschitz but not differentiable at $0$), nor boundedness, nor monotonicity.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-016",
+      "stem": "Evaluate $\\displaystyle\\lim_{x \\to 0} \\frac{\\sin x}{x}$, the limit underlying the continuity of many trigonometric expressions.",
+      "options": [
+        "$1$",
+        "$0$",
+        "$\\infty$",
+        "The limit does not exist."
+      ],
+      "answer": 0,
+      "explanation": "This is the standard trigonometric limit $\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$, provable by the squeeze theorem from the inequalities $\\cos x \\leq \\frac{\\sin x}{x} \\leq 1$ for small $x \\neq 0$. The ratio is not defined at $x = 0$ itself, but the limit exists and equals $1$, which is exactly why $\\frac{\\sin x}{x}$ has a removable discontinuity there filled by the value $1$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-017",
+      "stem": "The Dirichlet function $D(x)$ equals $1$ when $x$ is rational and $0$ when $x$ is irrational. At how many points is $D$ continuous?",
+      "options": [
+        "Only at $x = 0$",
+        "At no point",
+        "At every point",
+        "Only at irrational points"
+      ],
+      "answer": 1,
+      "explanation": "At any real $c$, every neighborhood contains both rationals (where $D = 1$) and irrationals (where $D = 0$), by density of each set. So one can build a sequence $x_n \\to c$ with $D(x_n) = 1$ and another with $D(x_n) = 0$; the images cannot both converge to the single value $D(c)$. By the sequential criterion $D$ is discontinuous at every point, making it the classic example of a nowhere-continuous function.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-018",
+      "stem": "For $f(x) = \\sqrt{x}$ on $[0, \\infty)$, which statement is correct?",
+      "options": [
+        "$f$ is Lipschitz on $[0, \\infty)$.",
+        "$f$ is uniformly continuous on $[0, \\infty)$.",
+        "$f$ is continuous but not uniformly continuous on $[0, \\infty)$.",
+        "$f$ is discontinuous at $x = 0$."
+      ],
+      "answer": 1,
+      "explanation": "The square root function is uniformly continuous on $[0,\\infty)$: from $|\\sqrt{x} - \\sqrt{u}| \\leq \\sqrt{|x - u|}$ one can take $\\delta = \\varepsilon^2$ for all pairs. It is continuous everywhere on its domain including $x = 0$. It is NOT Lipschitz, however, because the difference quotient near $0$ is unbounded, so this is a textbook case of uniformly continuous but not Lipschitz.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-019",
+      "stem": "Suppose $f$ is continuous at $c$ and $f(c) > 0$. Which conclusion follows (sign-preservation)?",
+      "options": [
+        "$f$ is increasing near $c$.",
+        "There is a neighborhood of $c$ on which $f(x) > 0$.",
+        "$f(c)$ is the maximum of $f$.",
+        "$f(x) > 0$ for all $x$ in the domain."
+      ],
+      "answer": 1,
+      "explanation": "Take $\\varepsilon = f(c)/2 > 0$. By continuity there is $\\delta > 0$ such that $|x - c| < \\delta$ forces $|f(x) - f(c)| < f(c)/2$, hence $f(x) > f(c)/2 > 0$ on that neighborhood. This local sign-preservation is a standard consequence of continuity; it says nothing about the global sign, about monotonicity, or about $f(c)$ being a maximum.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-020",
+      "stem": "Let $f(x) = \\begin{cases} x \\sin(1/x), & x \\neq 0 \\\\ 0, & x = 0 \\end{cases}$. Is $f$ continuous at $0$?",
+      "options": [
+        "No, because $\\sin(1/x)$ oscillates and has no limit at $0$.",
+        "No, because $f$ is undefined at $0$.",
+        "Yes, because $|x \\sin(1/x)| \\leq |x| \\to 0 = f(0)$.",
+        "Only from the right."
+      ],
+      "answer": 2,
+      "explanation": "Although $\\sin(1/x)$ oscillates without a limit, it is bounded by $1$, so $|x \\sin(1/x)| \\leq |x|$. As $x \\to 0$ the right side tends to $0$, and by the squeeze theorem $f(x) \\to 0 = f(0)$. Hence $f$ is continuous at $0$. The bounded oscillation is tamed by the factor $x$, which is the whole point of this classic example.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-021",
+      "stem": "Which of these is a correct way to show $f$ is discontinuous at $c$ using the sequential criterion?",
+      "options": [
+        "Show $f$ is unbounded somewhere on the domain.",
+        "Show $f(c)$ is irrational.",
+        "Exhibit a sequence $x_n \\to c$ for which $f(x_n)$ fails to converge to $f(c)$.",
+        "Exhibit one sequence $x_n \\to c$ for which $f(x_n) \\to f(c)$."
+      ],
+      "answer": 2,
+      "explanation": "The contrapositive of the sequential criterion gives a discontinuity test: if there exists even one sequence $x_n \\to c$ (with terms in the domain) such that $f(x_n)$ does not converge to $f(c)$, then $f$ is discontinuous at $c$. A single sequence that does converge to $f(c)$ proves nothing about continuity, and unboundedness elsewhere or the arithmetic nature of $f(c)$ is irrelevant.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-022",
+      "stem": "If $f : [a,b] \\to \\mathbb{R}$ is continuous, what can be said about its range $f([a,b])$?",
+      "options": [
+        "It is an arbitrary set with no special structure.",
+        "It is always an unbounded set.",
+        "It is a closed bounded interval $[m, M]$.",
+        "It is an open interval."
+      ],
+      "answer": 2,
+      "explanation": "By the Extreme Value Theorem $f$ attains a minimum $m$ and a maximum $M$ on $[a,b]$, and by the Intermediate Value Theorem it takes every value between them. Together these force the range to be exactly the closed bounded interval $[m, M]$. So a continuous image of a closed bounded interval is again a closed bounded interval, never open or unbounded (unless $f$ is constant, in which case the interval degenerates to a point, still a closed interval).",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-023",
+      "stem": "Evaluate $\\displaystyle\\lim_{x \\to 2} \\left(3x^2 - 5x + 1\\right)$ using continuity of polynomials.",
+      "options": [
+        "$3$",
+        "$0$",
+        "$2$",
+        "$7$"
+      ],
+      "answer": 0,
+      "explanation": "Polynomials are continuous everywhere, so the limit is obtained by direct substitution: $3(2)^2 - 5(2) + 1 = 12 - 10 + 1 = 3$. Continuity is precisely the property that the limit of the function at a point equals the value of the function there, which licenses plugging in $x = 2$ without any further work.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-024",
+      "stem": "A continuous function $f$ maps $[0,1]$ into $[0,1]$. Which conclusion is forced by continuity?",
+      "options": [
+        "$f$ has a fixed point: some $c$ with $f(c) = c$.",
+        "$f$ is a bijection.",
+        "$f$ is increasing.",
+        "$f(0) = 0$."
+      ],
+      "answer": 0,
+      "explanation": "Define $g(x) = f(x) - x$, which is continuous on $[0,1]$. Then $g(0) = f(0) \\geq 0$ and $g(1) = f(1) - 1 \\leq 0$. If either endpoint gives $g = 0$ we are done; otherwise $g$ changes sign, and the Intermediate Value Theorem yields a $c$ with $g(c) = 0$, that is $f(c) = c$. This Brouwer fixed-point result in one dimension follows purely from continuity, with no need for monotonicity, bijectivity, or a fixed endpoint value.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-025",
+      "format": "cloze",
+      "stem": "Evaluate a limit and identify the discontinuity type for $g(x) = \\dfrac{x^2 - 9}{x - 3}$, defined for $x \\neq 3$.",
+      "solution": "For $x \\neq 3$ the expression simplifies to $x + 3$, so as $x \\to 3$ the limit equals {{1}}. Because the two-sided limit exists as a finite number, the discontinuity at $x = 3$ is {{2}}, and it is repaired by assigning $g(3)$ that limit value.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "removable",
+            "a jump",
+            "infinite"
+          ],
+          "answer": "removable"
+        }
+      ],
+      "explanation": "Factor the numerator: $\\frac{(x-3)(x+3)}{x-3} = x + 3$ for $x \\neq 3$, whose limit at $3$ is $6$. Since the finite two-sided limit exists but the point is missing, the discontinuity is removable, fixed by setting $g(3) = 6$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-026",
+      "format": "cloze",
+      "stem": "The piecewise function $h(x) = \\begin{cases} x^2, & x \\leq 1 \\\\ 2x + a, & x > 1 \\end{cases}$ is to be made continuous at $x = 1$.",
+      "solution": "The left-hand value at $1$ is $1^2 = 1$, while the right-hand limit is $2(1) + a = 2 + a$. Continuity forces these to be equal, so $a$ must equal {{1}}. With this choice the common value of $h$ at $x = 1$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Continuity at $1$ requires the left value $x^2 \\to 1$ to match the right limit $2 + a$. Setting $2 + a = 1$ gives $a = -1$, and then $h(1) = 1$, which both pieces agree on.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-027",
+      "format": "cloze",
+      "stem": "Apply the Intermediate Value Theorem to $f(x) = x^2 - 2$ on the interval $[1, 2]$ to locate a root.",
+      "solution": "At the endpoints, $f(1) = 1 - 2 = -1$ and $f(2) = 4 - 2 = 2$, so the values have opposite signs. Since $f$ is continuous, the theorem guarantees a root in the open interval, and that root is the number $\\sqrt{2}$, whose square equals {{1}}. The named theorem justifying the existence of the root is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "the Intermediate Value Theorem",
+            "the Mean Value Theorem",
+            "the Extreme Value Theorem"
+          ],
+          "answer": "the Intermediate Value Theorem"
+        }
+      ],
+      "explanation": "Since $f(1) = -1 < 0 < 2 = f(2)$ and $f$ is continuous on $[1,2]$, the Intermediate Value Theorem gives a $c$ with $f(c) = 0$, namely $c = \\sqrt 2$, and indeed $(\\sqrt 2)^2 = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-continuity-028",
+      "format": "cloze",
+      "stem": "Classify the continuity behaviour of $f(x) = 1/x$ on two different sets.",
+      "solution": "On the closed bounded interval $[1, 2]$, the function $1/x$ is uniformly continuous: answer {{1}}. On the open interval $(0, 1)$, however, the slope grows without bound near $0$, so $1/x$ is uniformly continuous there: answer {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "On the compact interval $[1,2]$ the Uniform Continuity Theorem applies, so $1/x$ is uniformly continuous (yes). On $(0,1)$ the function is continuous but the difference quotient is unbounded near $0$, so no single $\\delta$ works for all pairs, and it is not uniformly continuous (no).",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    }
+  ]
+}

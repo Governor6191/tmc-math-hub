@@ -1,0 +1,600 @@
+{
+  "courseId": "mathematical-methods-ii",
+  "topicId": "fourier-series",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-methods-ii-fourier-series-001",
+      "stem": "For a function $f(x)$ of period $2\\pi$ on $(-\\pi, \\pi)$, which formula gives the cosine coefficient $a_n$?",
+      "options": [
+        "$\\dfrac{1}{\\pi}\\displaystyle\\int_{-\\pi}^{\\pi} f(x)\\cos nx\\,dx$",
+        "$\\displaystyle\\int_{-\\pi}^{\\pi} f(x)\\cos nx\\,dx$",
+        "$\\dfrac{1}{2\\pi}\\displaystyle\\int_{-\\pi}^{\\pi} f(x)\\cos nx\\,dx$",
+        "$\\dfrac{1}{\\pi}\\displaystyle\\int_{-\\pi}^{\\pi} f(x)\\sin nx\\,dx$"
+      ],
+      "answer": 0,
+      "explanation": "On the interval $(-\\pi, \\pi)$ of length $2\\pi$, the Euler formula for the cosine coefficient is $a_n = \\frac{1}{\\pi}\\int_{-\\pi}^{\\pi} f(x)\\cos nx\\,dx$. The factor is $\\frac{1}{\\pi}$, the reciprocal of the half-period. The option with $\\frac{1}{2\\pi}$ is the factor for the constant term $\\frac{a_0}{2}$, the option with $\\sin nx$ computes $b_n$ instead, and the option without any factor omits the normalization. The trap is the normalizing constant: it is $\\frac{1}{\\pi}$, not $\\frac{1}{2\\pi}$, for $a_n$ with $n \\ge 1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-002",
+      "stem": "If $f(x)$ is an odd function on $(-\\pi, \\pi)$, which Fourier coefficients vanish?",
+      "options": [
+        "all $a_n$ and $a_0$",
+        "all $b_n$",
+        "none of them",
+        "only $a_0$"
+      ],
+      "answer": 0,
+      "explanation": "An odd function integrated against the even functions $1$ and $\\cos nx$ gives an odd integrand over a symmetric interval, so every $a_n$ (including $a_0$) is zero. Only the sine terms survive, giving a pure sine series. The option all $b_n$ describes an even function, the option only $a_0$ is incomplete since all $a_n$ vanish, and none of them ignores the symmetry. The trap is matching parity: odd times even is odd, so the cosine coefficients $a_n$ all vanish.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-003",
+      "stem": "If $f(x)$ is an even function on $(-\\pi, \\pi)$, its Fourier series contains which terms?",
+      "options": [
+        "both sine and cosine terms",
+        "no terms at all",
+        "only cosine terms and a constant",
+        "only sine terms"
+      ],
+      "answer": 2,
+      "explanation": "An even function integrated against $\\sin nx$ (odd) gives an odd integrand over a symmetric interval, so every $b_n = 0$. The series reduces to a constant plus cosine terms. The option only sine terms describes an odd function, both sine and cosine ignores the symmetry, and no terms is absurd for a nonzero function. The trap is which family survives: even functions expand in cosines, since the sine coefficients vanish.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-004",
+      "stem": "For a function of period $2L$ on $(-L, L)$, the cosine terms in its Fourier series have argument:",
+      "options": [
+        "$\\dfrac{n\\pi x}{L}$",
+        "$\\dfrac{2n\\pi x}{L}$",
+        "$n x$",
+        "$\\dfrac{n x}{L}$"
+      ],
+      "answer": 0,
+      "explanation": "On an interval of length $2L$, the fundamental angular frequency is $\\frac{\\pi}{L}$, so the $n$th harmonic is $\\cos\\frac{n\\pi x}{L}$. This reduces to $\\cos nx$ only in the special case $L = \\pi$. The option $nx$ assumes $L = \\pi$ in general, the option $\\frac{nx}{L}$ drops the $\\pi$, and $\\frac{2n\\pi x}{L}$ doubles the frequency. The trap is the general period: the argument is $\\frac{n\\pi x}{L}$, with the $\\pi$ and the $L$ both present.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-005",
+      "stem": "Compute the constant term $\\dfrac{a_0}{2}$ in the Fourier series of $f(x) = x^2$ on $(-\\pi, \\pi)$, where $a_0 = \\dfrac{1}{\\pi}\\displaystyle\\int_{-\\pi}^{\\pi} x^2\\,dx$.",
+      "options": [
+        "$\\dfrac{\\pi^2}{6}$",
+        "$\\dfrac{\\pi^2}{3}$",
+        "$\\pi^2$",
+        "$\\dfrac{2\\pi^2}{3}$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $a_0 = \\frac{1}{\\pi}\\int_{-\\pi}^{\\pi} x^2\\,dx = \\frac{1}{\\pi}\\cdot\\frac{2\\pi^3}{3} = \\frac{2\\pi^2}{3}$. The constant term of the series is $\\frac{a_0}{2} = \\frac{\\pi^2}{3}$. The option $\\frac{2\\pi^2}{3}$ reports $a_0$ itself without halving, $\\frac{\\pi^2}{6}$ halves twice, and $\\pi^2$ mishandles the integral. The trap is the factor of $2$: the series constant is $\\frac{a_0}{2}$, so $\\frac{2\\pi^2}{3}$ becomes $\\frac{\\pi^2}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-006",
+      "stem": "For $f(x) = x$ on $(-\\pi, \\pi)$, the Fourier sine coefficients are $b_n = \\dfrac{1}{\\pi}\\displaystyle\\int_{-\\pi}^{\\pi} x\\sin nx\\,dx$. What is $b_1$?",
+      "options": [
+        "$2$",
+        "$-2$",
+        "$\\dfrac{2}{\\pi}$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "Since $x$ is odd, $b_n = \\frac{2}{\\pi}\\int_0^\\pi x\\sin nx\\,dx$. Integrating by parts gives $\\int_0^\\pi x\\sin nx\\,dx = \\left[-\\frac{x\\cos nx}{n}\\right]_0^\\pi + \\frac{1}{n}\\int_0^\\pi \\cos nx\\,dx = -\\frac{\\pi\\cos n\\pi}{n}$, so $b_n = \\frac{2}{\\pi}\\cdot\\left(-\\frac{\\pi(-1)^n}{n}\\right) = \\frac{2(-1)^{n+1}}{n}$. At $n = 1$, $b_1 = \\frac{2(-1)^2}{1} = 2$. The option $1$ drops the factor of $2$, $-2$ gets the alternating sign wrong, and $\\frac{2}{\\pi}$ keeps a stray $\\pi$. The trap is the sign $(-1)^{n+1}$: at $n = 1$ it is $+1$, giving $b_1 = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-007",
+      "stem": "The square wave $f(x) = -1$ on $(-\\pi, 0)$ and $f(x) = 1$ on $(0, \\pi)$, extended with period $2\\pi$, has sine coefficients $b_n = \\dfrac{2}{\\pi}\\cdot\\dfrac{1 - (-1)^n}{n}$. What is $b_1$?",
+      "options": [
+        "$0$",
+        "$\\dfrac{4}{\\pi}$",
+        "$\\dfrac{1}{\\pi}$",
+        "$\\dfrac{2}{\\pi}$"
+      ],
+      "answer": 1,
+      "explanation": "At $n = 1$, $1 - (-1)^1 = 1 - (-1) = 2$, so $b_1 = \\frac{2}{\\pi}\\cdot\\frac{2}{1} = \\frac{4}{\\pi}$. For odd $n$ the factor $1 - (-1)^n = 2$, while for even $n$ it is $0$. The option $\\frac{2}{\\pi}$ forgets to evaluate $1 - (-1)^n = 2$, $\\frac{1}{\\pi}$ halves again, and $0$ confuses odd $n$ with even $n$. The trap is the parity factor: at odd $n$ it equals $2$, so $b_1 = \\frac{4}{\\pi}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-008",
+      "stem": "Which formula gives the constant term coefficient $a_0$ for $f(x)$ of period $2\\pi$ on $(-\\pi, \\pi)$, where the constant term is written $\\dfrac{a_0}{2}$?",
+      "options": [
+        "$\\dfrac{1}{\\pi}\\displaystyle\\int_{-\\pi}^{\\pi} f(x)\\,dx$",
+        "$\\dfrac{1}{\\pi}\\displaystyle\\int_{0}^{\\pi} f(x)\\,dx$",
+        "$\\dfrac{1}{2\\pi}\\displaystyle\\int_{-\\pi}^{\\pi} f(x)\\,dx$",
+        "$\\displaystyle\\int_{-\\pi}^{\\pi} f(x)\\,dx$"
+      ],
+      "answer": 0,
+      "explanation": "Using the same $\\frac{1}{\\pi}$ normalization as the other cosine coefficients, $a_0 = \\frac{1}{\\pi}\\int_{-\\pi}^{\\pi} f(x)\\,dx$. The constant term of the series is then $\\frac{a_0}{2}$, which equals the average value of $f$. The option $\\frac{1}{2\\pi}$ would directly give the average but not $a_0$ in this convention, the unnormalized integral omits the factor, and the half-range integral changes the limits. The trap is the convention: with the constant written $\\frac{a_0}{2}$, the coefficient $a_0$ carries the $\\frac{1}{\\pi}$ factor over the full interval.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-009",
+      "stem": "What is the period of the function whose Fourier series uses the harmonics $\\cos\\dfrac{n\\pi x}{3}$ and $\\sin\\dfrac{n\\pi x}{3}$?",
+      "options": [
+        "$2\\pi$",
+        "$6$",
+        "$\\dfrac{3}{\\pi}$",
+        "$3$"
+      ],
+      "answer": 1,
+      "explanation": "The harmonics have the form $\\frac{n\\pi x}{L}$ with $L = 3$, and the period is $2L = 6$. The fundamental term $\\cos\\frac{\\pi x}{3}$ has period $\\frac{2\\pi}{\\pi/3} = 6$, confirming this. The option $3$ reports $L$ rather than $2L$, $\\frac{3}{\\pi}$ misreads the frequency, and $2\\pi$ assumes $L = \\pi$. The trap is the relation: the half-period is $L = 3$, so the full period is $2L = 6$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-010",
+      "stem": "For $f(x) = x^2$ on $(-\\pi, \\pi)$, the cosine coefficients are $a_n = \\dfrac{4(-1)^n}{n^2}$. What is $a_2$?",
+      "options": [
+        "$-1$",
+        "$-4$",
+        "$4$",
+        "$1$"
+      ],
+      "answer": 3,
+      "explanation": "Substitute $n = 2$: $a_2 = \\frac{4(-1)^2}{2^2} = \\frac{4\\cdot 1}{4} = 1$. The sign $(-1)^2 = +1$ and the denominator $2^2 = 4$ cancel the numerator. The option $-1$ uses $(-1)^n$ at an odd $n$, $4$ forgets the $n^2$ in the denominator, and $-4$ combines both errors. The trap is evaluating both pieces: $(-1)^2 = 1$ and $n^2 = 4$, giving $a_2 = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-011",
+      "stem": "To find the half-range cosine series of $f(x)$ on $(0, L)$, how is $f$ extended to $(-L, 0)$?",
+      "options": [
+        "as a periodic copy with no reflection",
+        "as the zero function",
+        "as an odd function",
+        "as an even function"
+      ],
+      "answer": 3,
+      "explanation": "A half-range cosine series consists only of cosines, which requires the extended function to be even. So $f$ is reflected as an even function across the $y$-axis, setting $f(-x) = f(x)$. The option odd would produce a sine series, the periodic copy without reflection is the full-range case, and the zero extension discards the function. The trap is matching the extension to the desired series: cosines come from an even extension.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-012",
+      "stem": "The Fourier series of $f(x) = x$ on $(-\\pi, \\pi)$ is $2\\displaystyle\\sum_{n=1}^\\infty \\dfrac{(-1)^{n+1}}{n}\\sin nx$. Evaluating at $x = \\dfrac{\\pi}{2}$ gives a series for which constant?",
+      "options": [
+        "$\\dfrac{\\pi}{2}$",
+        "$\\dfrac{\\pi}{4}$",
+        "$\\pi$",
+        "$\\dfrac{\\pi^2}{6}$"
+      ],
+      "answer": 1,
+      "explanation": "At $x = \\frac{\\pi}{2}$, the series equals $f\\left(\\frac{\\pi}{2}\\right) = \\frac{\\pi}{2}$. The sine values are $\\sin\\frac{n\\pi}{2} = 1, 0, -1, 0, \\dots$, so $\\frac{\\pi}{2} = 2\\left(1 - \\frac{1}{3} + \\frac{1}{5} - \\cdots\\right)$, giving $1 - \\frac{1}{3} + \\frac{1}{5} - \\cdots = \\frac{\\pi}{4}$, the Leibniz series. So the bracketed series converges to $\\frac{\\pi}{4}$. The option $\\frac{\\pi}{2}$ is the value of $f$ before dividing by $2$, $\\pi$ doubles, and $\\frac{\\pi^2}{6}$ is the Basel sum from a different series. The trap is which constant the question asks for: dividing $f\\left(\\frac{\\pi}{2}\\right) = \\frac{\\pi}{2}$ by the leading $2$ gives the Leibniz value $\\frac{\\pi}{4}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-013",
+      "stem": "Using the Fourier series of $x^2$ on $(-\\pi, \\pi)$ evaluated at $x = \\pi$, one derives the value of $\\displaystyle\\sum_{n=1}^\\infty \\dfrac{1}{n^2}$. What is it?",
+      "options": [
+        "$\\dfrac{\\pi^2}{8}$",
+        "$\\dfrac{\\pi^2}{12}$",
+        "$\\dfrac{\\pi^2}{6}$",
+        "$\\dfrac{\\pi^2}{3}$"
+      ],
+      "answer": 2,
+      "explanation": "The series is $x^2 = \\frac{\\pi^2}{3} + 4\\sum_{n=1}^\\infty \\frac{(-1)^n}{n^2}\\cos nx$. At $x = \\pi$, $\\cos n\\pi = (-1)^n$, so $\\pi^2 = \\frac{\\pi^2}{3} + 4\\sum \\frac{(-1)^n(-1)^n}{n^2} = \\frac{\\pi^2}{3} + 4\\sum \\frac{1}{n^2}$. Solving, $4\\sum\\frac{1}{n^2} = \\frac{2\\pi^2}{3}$, so $\\sum\\frac{1}{n^2} = \\frac{\\pi^2}{6}$. The option $\\frac{\\pi^2}{12}$ is the alternating sum, $\\frac{\\pi^2}{3}$ is the constant term, and $\\frac{\\pi^2}{8}$ sums only the odd terms. The trap is solving for the sum: isolating it gives the Basel value $\\frac{\\pi^2}{6}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-014",
+      "stem": "At a jump discontinuity where $f$ has left limit $L^-$ and right limit $L^+$, the Fourier series of $f$ converges to:",
+      "options": [
+        "$L^-$",
+        "$L^+$",
+        "$\\dfrac{L^- + L^+}{2}$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "By the Dirichlet convergence theorem, at a jump discontinuity the Fourier series converges to the average of the one-sided limits, $\\frac{L^- + L^+}{2}$, regardless of the value assigned to $f$ at that point. The options $L^-$ and $L^+$ pick a single side, and $0$ holds only when the limits happen to be opposite. The trap is the midpoint rule: the series cannot choose a side, so it lands exactly between them.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-015",
+      "stem": "For the square wave with series $f(x) = \\dfrac{4}{\\pi}\\left(\\sin x + \\dfrac{\\sin 3x}{3} + \\dfrac{\\sin 5x}{5} + \\cdots\\right)$, which harmonics are present?",
+      "options": [
+        "only even harmonics",
+        "only odd harmonics",
+        "only the first harmonic",
+        "all integer harmonics"
+      ],
+      "answer": 1,
+      "explanation": "The series contains $\\sin x, \\sin 3x, \\sin 5x, \\dots$, that is, only odd multiples of $x$. The even sine coefficients vanish because $1 - (-1)^n = 0$ when $n$ is even. The option all integer harmonics ignores the missing even terms, only even harmonics is the opposite, and only the first harmonic stops too early. The trap is the parity of the surviving terms: the square wave's symmetry kills the even harmonics, leaving odd ones.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-016",
+      "stem": "Compute $\\displaystyle\\int_{-\\pi}^{\\pi} \\cos 2x \\cos 3x\\,dx$, an orthogonality integral.",
+      "options": [
+        "$0$",
+        "$\\dfrac{\\pi}{2}$",
+        "$\\pi$",
+        "$2\\pi$"
+      ],
+      "answer": 0,
+      "explanation": "By orthogonality of the Fourier basis, $\\int_{-\\pi}^{\\pi}\\cos mx\\cos nx\\,dx = 0$ when $m \\ne n$. Here $m = 2$ and $n = 3$ differ, so the integral is $0$. One can verify with the product-to-sum identity $\\cos 2x\\cos 3x = \\frac{1}{2}(\\cos 5x + \\cos x)$, both of which integrate to $0$ over a full period. The option $\\pi$ is the value when $m = n$, $2\\pi$ is the value for the constant term, and $\\frac{\\pi}{2}$ guesses. The trap is the orthogonality condition: distinct cosine harmonics are orthogonal, so the integral vanishes.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-017",
+      "stem": "Compute $\\displaystyle\\int_{-\\pi}^{\\pi} \\sin^2 nx\\,dx$ for a positive integer $n$.",
+      "options": [
+        "$\\pi$",
+        "$2\\pi$",
+        "$\\dfrac{\\pi}{2}$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "Use the half-angle identity $\\sin^2 nx = \\frac{1 - \\cos 2nx}{2}$. Then $\\int_{-\\pi}^{\\pi}\\sin^2 nx\\,dx = \\frac{1}{2}\\int_{-\\pi}^{\\pi}(1 - \\cos 2nx)\\,dx = \\frac{1}{2}(2\\pi - 0) = \\pi$. The cosine term integrates to zero over the full period. The option $2\\pi$ forgets the factor $\\frac{1}{2}$, $\\frac{\\pi}{2}$ halves once too often, and $0$ wrongly treats $\\sin^2$ as oscillating around zero. The trap is the average value: $\\sin^2 nx$ averages to $\\frac{1}{2}$, so over length $2\\pi$ the integral is $\\pi$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-018",
+      "stem": "Is $f(x) = x\\cos x$ on $(-\\pi, \\pi)$ even or odd, and which coefficients survive?",
+      "options": [
+        "odd; only $b_n$ survive",
+        "even; only $a_n$ survive",
+        "neither; all coefficients survive",
+        "odd; only $a_n$ survive"
+      ],
+      "answer": 0,
+      "explanation": "The product of the odd function $x$ and the even function $\\cos x$ is odd: $f(-x) = (-x)\\cos(-x) = -x\\cos x = -f(x)$. An odd function has a pure sine series, so only the $b_n$ survive. The option even misidentifies the parity, neither ignores that odd times even is odd, and the last option pairs odd with the wrong surviving coefficients. The trap is the parity product rule: odd times even is odd, forcing a sine series.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-019",
+      "stem": "For $f(x) = x$ on $(-\\pi, \\pi)$ with $b_n = \\dfrac{2(-1)^{n+1}}{n}$, what is $b_2$?",
+      "options": [
+        "$2$",
+        "$-1$",
+        "$1$",
+        "$-\\dfrac{1}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "Substitute $n = 2$: $b_2 = \\frac{2(-1)^{3}}{2} = \\frac{2(-1)}{2} = -1$. The exponent $n + 1 = 3$ is odd, so $(-1)^3 = -1$. The option $1$ uses the wrong sign, $2$ forgets to divide by $n = 2$, and $-\\frac{1}{2}$ misplaces the factor of $2$. The trap is the alternating sign at even $n$: $(-1)^{n+1}$ is negative when $n$ is even, giving $b_2 = -1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-020",
+      "stem": "By Parseval's theorem, the average power $\\dfrac{1}{2\\pi}\\displaystyle\\int_{-\\pi}^{\\pi} [f(x)]^2\\,dx$ for a pure sine series $f(x) = \\sum b_n \\sin nx$ equals:",
+      "options": [
+        "$\\displaystyle\\sum_{n=1}^\\infty b_n$",
+        "$\\dfrac{1}{2}\\displaystyle\\sum_{n=1}^\\infty b_n^2$",
+        "$\\dfrac{1}{4}\\displaystyle\\sum_{n=1}^\\infty b_n^2$",
+        "$\\displaystyle\\sum_{n=1}^\\infty b_n^2$"
+      ],
+      "answer": 1,
+      "explanation": "Parseval's theorem gives $\\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi}[f(x)]^2\\,dx = \\frac{a_0^2}{4} + \\frac{1}{2}\\sum (a_n^2 + b_n^2)$. For a pure sine series the $a$ terms vanish, leaving $\\frac{1}{2}\\sum b_n^2$. The factor $\\frac{1}{2}$ comes from the average value of $\\sin^2 nx$. The option $\\sum b_n^2$ omits the $\\frac{1}{2}$, $\\frac{1}{4}\\sum b_n^2$ uses the constant-term factor, and $\\sum b_n$ forgets to square. The trap is the $\\frac{1}{2}$: each sine harmonic contributes half its squared amplitude to the average power.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-021",
+      "stem": "Compute $\\displaystyle\\int_{-\\pi}^{\\pi} \\sin 4x \\cos 4x\\,dx$.",
+      "options": [
+        "$0$",
+        "$\\pi$",
+        "$2\\pi$",
+        "$\\dfrac{\\pi}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "Sine and cosine harmonics are orthogonal: $\\int_{-\\pi}^{\\pi}\\sin mx\\cos nx\\,dx = 0$ for all integers $m, n$, even when $m = n$. Here the integrand $\\sin 4x\\cos 4x = \\frac{1}{2}\\sin 8x$ is odd over the symmetric interval, so it integrates to $0$. The option $\\pi$ confuses this with $\\int\\sin^2$, $\\frac{\\pi}{2}$ guesses, and $2\\pi$ uses the constant-term value. The trap is sine-cosine orthogonality: any sine times any cosine integrates to zero over the full period.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-022",
+      "stem": "The half-range sine series of $f(x) = 1$ on $(0, \\pi)$ has coefficients $b_n = \\dfrac{2}{\\pi}\\displaystyle\\int_0^\\pi \\sin nx\\,dx$. What is $b_n$ for odd $n$?",
+      "options": [
+        "$\\dfrac{2}{n\\pi}$",
+        "$\\dfrac{4}{n\\pi}$",
+        "$\\dfrac{2}{\\pi}$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $\\int_0^\\pi \\sin nx\\,dx = \\left[-\\frac{\\cos nx}{n}\\right]_0^\\pi = \\frac{1 - \\cos n\\pi}{n} = \\frac{1 - (-1)^n}{n}$. For odd $n$ this is $\\frac{2}{n}$, so $b_n = \\frac{2}{\\pi}\\cdot\\frac{2}{n} = \\frac{4}{n\\pi}$. The option $\\frac{2}{n\\pi}$ forgets that $1 - (-1)^n = 2$ for odd $n$, $\\frac{2}{\\pi}$ drops the $\\frac{1}{n}$, and $0$ is the even-$n$ case. The trap is the parity factor: odd $n$ gives $1 - (-1)^n = 2$, doubling the coefficient to $\\frac{4}{n\\pi}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-023",
+      "stem": "What does $\\displaystyle\\int_{-\\pi}^{\\pi} \\cos^2 nx\\,dx$ equal for a positive integer $n$?",
+      "options": [
+        "$\\dfrac{\\pi}{2}$",
+        "$\\pi$",
+        "$0$",
+        "$2\\pi$"
+      ],
+      "answer": 1,
+      "explanation": "Use $\\cos^2 nx = \\frac{1 + \\cos 2nx}{2}$. Then $\\int_{-\\pi}^{\\pi}\\cos^2 nx\\,dx = \\frac{1}{2}\\int_{-\\pi}^{\\pi}(1 + \\cos 2nx)\\,dx = \\frac{1}{2}(2\\pi + 0) = \\pi$. The option $2\\pi$ forgets the $\\frac{1}{2}$, $\\frac{\\pi}{2}$ halves twice, and $0$ ignores the nonzero average. The trap is the average value $\\frac{1}{2}$: over length $2\\pi$ this gives $\\pi$, the normalization behind the $\\frac{1}{\\pi}$ in the Euler formulas.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-024",
+      "stem": "For $f(x) = |x|$ on $(-\\pi, \\pi)$, which kind of Fourier series results?",
+      "options": [
+        "a series with both sines and cosines",
+        "a cosine series with a constant term",
+        "no series exists",
+        "a pure sine series"
+      ],
+      "answer": 1,
+      "explanation": "The function $|x|$ is even, since $|-x| = |x|$, so all sine coefficients vanish and the series is a constant plus cosines. Concretely $|x| = \\frac{\\pi}{2} - \\frac{4}{\\pi}\\sum_{\\text{odd }n}\\frac{\\cos nx}{n^2}$. The option pure sine series describes an odd function, both sines and cosines ignores the symmetry, and no series exists is false for this continuous function. The trap is the parity of $|x|$: it is even, so only cosines and a constant appear.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-025",
+      "stem": "The complex Fourier series is $f(x) = \\displaystyle\\sum_{n=-\\infty}^{\\infty} c_n e^{inx}$. For real $f$, how do $c_n$ and $c_{-n}$ relate?",
+      "options": [
+        "$c_{-n} = \\dfrac{1}{c_n}$",
+        "$c_{-n} = \\overline{c_n}$",
+        "$c_{-n} = c_n$",
+        "$c_{-n} = -c_n$"
+      ],
+      "answer": 1,
+      "explanation": "For a real-valued function, the complex coefficients satisfy $c_{-n} = \\overline{c_n}$, the complex conjugate. This is what makes the imaginary parts cancel so that $f$ comes out real. The option $c_{-n} = c_n$ holds only for even real functions, $c_{-n} = -c_n$ would force $f$ imaginary, and the reciprocal relation has no basis. The trap is the reality condition: realness of $f$ imposes conjugate symmetry $c_{-n} = \\overline{c_n}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-026",
+      "stem": "For $f(x) = x^2$ on $(-\\pi, \\pi)$ with $a_n = \\dfrac{4(-1)^n}{n^2}$, what is $a_1$?",
+      "options": [
+        "$-4$",
+        "$1$",
+        "$-1$",
+        "$4$"
+      ],
+      "answer": 0,
+      "explanation": "Substitute $n = 1$: $a_1 = \\frac{4(-1)^1}{1^2} = \\frac{4(-1)}{1} = -4$. The sign $(-1)^1 = -1$ and the denominator $1^2 = 1$ leave $-4$. The option $4$ uses the wrong sign, $1$ and $-1$ divide by an extra factor that is not there at $n = 1$. The trap is the sign at odd $n$: $(-1)^1 = -1$, so $a_1 = -4$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-027",
+      "stem": "Which integral correctly gives the sine coefficient $b_n$ for $f(x)$ on $(-L, L)$ of period $2L$?",
+      "options": [
+        "$\\dfrac{1}{L}\\displaystyle\\int_{-L}^{L} f(x)\\cos\\dfrac{n\\pi x}{L}\\,dx$",
+        "$\\dfrac{1}{L}\\displaystyle\\int_{-L}^{L} f(x)\\sin\\dfrac{n\\pi x}{L}\\,dx$",
+        "$\\dfrac{1}{\\pi}\\displaystyle\\int_{-L}^{L} f(x)\\sin\\dfrac{n\\pi x}{L}\\,dx$",
+        "$\\dfrac{1}{2L}\\displaystyle\\int_{-L}^{L} f(x)\\sin\\dfrac{n\\pi x}{L}\\,dx$"
+      ],
+      "answer": 1,
+      "explanation": "On $(-L, L)$ the sine coefficient is $b_n = \\frac{1}{L}\\int_{-L}^{L} f(x)\\sin\\frac{n\\pi x}{L}\\,dx$, with the $\\frac{1}{L}$ normalization and the harmonic $\\frac{n\\pi x}{L}$. The option $\\frac{1}{2L}$ uses the constant-term factor, the option with $\\cos$ computes $a_n$, and the $\\frac{1}{\\pi}$ option applies the special-case factor for $L = \\pi$. The trap is matching both the normalization and the argument to the general half-period $L$: factor $\\frac{1}{L}$, argument $\\frac{n\\pi x}{L}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-028",
+      "stem": "The function $f(x) = 3$ (a constant) on $(-\\pi, \\pi)$ has what Fourier series?",
+      "options": [
+        "$3$",
+        "$3\\sin x$",
+        "$\\dfrac{3}{2}$",
+        "$3\\cos x$"
+      ],
+      "answer": 0,
+      "explanation": "A constant is already its own Fourier series: every $a_n$ for $n \\ge 1$ and every $b_n$ vanishes, while the constant term equals the average value $3$. Concretely $a_0 = \\frac{1}{\\pi}\\int_{-\\pi}^{\\pi} 3\\,dx = 6$, so the constant term $\\frac{a_0}{2} = 3$. The option $3\\sin x$ and $3\\cos x$ invent harmonics that are not present, and $\\frac{3}{2}$ halves the average incorrectly. The trap is the constant term: the series of a constant is just that constant, $3$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-029",
+      "stem": "Compute $\\displaystyle\\int_{-\\pi}^{\\pi} \\cos 5x\\,dx$, the integral of a single harmonic.",
+      "options": [
+        "$\\pi$",
+        "$\\dfrac{2}{5}$",
+        "$0$",
+        "$2\\pi$"
+      ],
+      "answer": 2,
+      "explanation": "Integrate: $\\left[\\frac{\\sin 5x}{5}\\right]_{-\\pi}^{\\pi} = \\frac{\\sin 5\\pi - \\sin(-5\\pi)}{5} = \\frac{0 - 0}{5} = 0$. Any nonconstant cosine harmonic integrates to zero over a full period. The option $2\\pi$ is the value for the constant function, $\\pi$ guesses, and $\\frac{2}{5}$ mishandles the antiderivative limits. The trap is the full-period integral of a harmonic: it is zero, which is why only the constant term survives averaging.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-030",
+      "stem": "For the half-range cosine expansion of $f(x) = x$ on $(0, \\pi)$, the constant term is $\\dfrac{a_0}{2}$ with $a_0 = \\dfrac{2}{\\pi}\\displaystyle\\int_0^\\pi x\\,dx$. What is the constant term $\\dfrac{a_0}{2}$?",
+      "options": [
+        "$\\dfrac{\\pi^2}{2}$",
+        "$\\dfrac{\\pi}{4}$",
+        "$\\pi$",
+        "$\\dfrac{\\pi}{2}$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $a_0 = \\frac{2}{\\pi}\\int_0^\\pi x\\,dx = \\frac{2}{\\pi}\\cdot\\frac{\\pi^2}{2} = \\pi$. The constant term is $\\frac{a_0}{2} = \\frac{\\pi}{2}$, which is the average value of $x$ on $(0, \\pi)$. The option $\\pi$ reports $a_0$ without halving, $\\frac{\\pi}{4}$ halves twice, and $\\frac{\\pi^2}{2}$ forgets the $\\frac{2}{\\pi}$ factor. The trap is the final halving: the constant term of the series is $\\frac{a_0}{2} = \\frac{\\pi}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-031",
+      "format": "cloze",
+      "stem": "State the parity rules for Fourier series on a symmetric interval.",
+      "solution": "An even function has a Fourier series built only from a constant and cosine terms, so all of its {{1}} coefficients are zero. An odd function has a series built only from sine terms, so all of its $a_n$ coefficients, including $a_0$, are {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$b_n$",
+            "$a_n$",
+            "$a_0$",
+            "constant"
+          ],
+          "answer": "$b_n$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "zero",
+            "nonzero",
+            "negative",
+            "equal"
+          ],
+          "answer": "zero"
+        }
+      ],
+      "explanation": "Even functions give cosine series, so their sine coefficients $b_n$ vanish. Odd functions give sine series, so their cosine coefficients $a_n$ (and $a_0$) are zero.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-032",
+      "format": "cloze",
+      "stem": "Give the Euler coefficient formulas for period $2\\pi$ on $(-\\pi, \\pi)$.",
+      "solution": "The cosine coefficient is $a_n = \\dfrac{1}{\\pi}\\displaystyle\\int_{-\\pi}^{\\pi} f(x)\\cos nx\\,dx$, so the normalizing factor in front of the integral has denominator {{1}}. The sine coefficient uses the same factor but replaces $\\cos nx$ with the function {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\pi$",
+            "$2\\pi$",
+            "$L$",
+            "$1$"
+          ],
+          "answer": "$\\pi$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\sin nx$",
+            "$\\cos nx$",
+            "$e^{inx}$",
+            "$\\tan nx$"
+          ],
+          "answer": "$\\sin nx$"
+        }
+      ],
+      "explanation": "On $(-\\pi, \\pi)$ the factor is $\\frac{1}{\\pi}$, so the denominator is $\\pi$. The coefficient $b_n$ uses $\\sin nx$ in place of $\\cos nx$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-033",
+      "format": "cloze",
+      "stem": "Compute the constant term of the Fourier series of $f(x) = x^2$ on $(-\\pi, \\pi)$, given $a_0 = \\dfrac{1}{\\pi}\\displaystyle\\int_{-\\pi}^{\\pi} x^2\\,dx$.",
+      "solution": "First, $\\displaystyle\\int_{-\\pi}^{\\pi} x^2\\,dx = \\dfrac{2\\pi^3}{3}$, so $a_0 = \\dfrac{2\\pi^2}{3}$. The series constant term is $\\dfrac{a_0}{2}$, which equals $\\dfrac{\\pi^2}{k}$, where the integer $k$ in the denominator is {{1}}. This constant term is also the {{2}} of $x^2$ over the interval.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "average value",
+            "maximum value",
+            "minimum value",
+            "derivative"
+          ],
+          "answer": "average value"
+        }
+      ],
+      "explanation": "Halving $a_0 = \\frac{2\\pi^2}{3}$ gives $\\frac{\\pi^2}{3}$, so $k = 3$. The constant term of any Fourier series equals the average value of the function.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-034",
+      "format": "cloze",
+      "stem": "Evaluate the sine coefficient $b_n = \\dfrac{2(-1)^{n+1}}{n}$ for $f(x) = x$ on $(-\\pi, \\pi)$ at small $n$.",
+      "solution": "At $n = 1$ the sign $(-1)^{n+1} = (-1)^2$ is positive, so $b_1$ equals {{1}}. At $n = 3$, the value $b_3 = \\dfrac{2(-1)^4}{3}$ simplifies to a fraction whose numerator is $2$ and whose denominator is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "At $n = 1$, $b_1 = \\frac{2(+1)}{1} = 2$. At $n = 3$, $(-1)^4 = +1$, so $b_3 = \\frac{2}{3}$, with denominator $3$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-035",
+      "format": "cloze",
+      "stem": "Apply the Dirichlet convergence theorem to the square wave that jumps from $-1$ to $+1$ at $x = 0$.",
+      "solution": "At the jump point $x = 0$, the left limit is $-1$ and the right limit is $+1$. The Fourier series converges to the average of these one-sided limits, which is the value {{1}}. Away from jumps, where $f$ is continuous, the series converges to {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$f(x)$ itself",
+            "$0$",
+            "the average value",
+            "the maximum"
+          ],
+          "answer": "$f(x)$ itself"
+        }
+      ],
+      "explanation": "The average of $-1$ and $+1$ is $\\frac{-1 + 1}{2} = 0$, so the series converges to $0$ at the jump. At points of continuity the series converges to $f(x)$ itself.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-ii-fourier-series-036",
+      "format": "cloze",
+      "stem": "Use the orthogonality relations of the Fourier basis on $(-\\pi, \\pi)$.",
+      "solution": "For distinct positive integers $m \\ne n$, the integral $\\displaystyle\\int_{-\\pi}^{\\pi}\\cos mx\\cos nx\\,dx$ equals {{1}}. But when $m = n$, the integral $\\displaystyle\\int_{-\\pi}^{\\pi}\\cos^2 nx\\,dx$ equals the value {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\pi$",
+            "$2\\pi$",
+            "$0$",
+            "$\\dfrac{\\pi}{2}$"
+          ],
+          "answer": "$\\pi$"
+        }
+      ],
+      "explanation": "Distinct cosine harmonics are orthogonal, so the integral is $0$ when $m \\ne n$. When $m = n$, $\\int_{-\\pi}^{\\pi}\\cos^2 nx\\,dx = \\pi$, the normalization constant.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    }
+  ]
+}

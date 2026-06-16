@@ -1,0 +1,506 @@
+{
+  "courseId": "statistical-inference",
+  "topicId": "hypothesis-testing-one-sample",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-001",
+      "stem": "In hypothesis testing, the null hypothesis $H_0$ is usually a statement of which kind?",
+      "options": [
+        "no effect, no difference, or status quo",
+        "a difference or effect exists",
+        "the sample mean equals the sample median",
+        "the alternative is true"
+      ],
+      "answer": 0,
+      "explanation": "The null hypothesis is the default claim of no effect, no difference, or status quo, such as $\\mu = \\mu_0$. The claim that an effect exists is carried by the alternative hypothesis $H_a$. The test asks whether the data give enough evidence to reject $H_0$ in favour of $H_a$.",
+      "difficulty": "warmup",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-002",
+      "stem": "A Type I error occurs when which of the following happens?",
+      "options": [
+        "the alternative hypothesis is rejected when true",
+        "a true null hypothesis is rejected",
+        "a false null hypothesis is not rejected",
+        "the sample size is too small"
+      ],
+      "answer": 1,
+      "explanation": "A Type I error is rejecting $H_0$ when it is actually true, a false positive, with probability $\\alpha$. Failing to reject a false $H_0$ is the Type II error with probability $\\beta$. The two error types are controlled by different parts of the test design.",
+      "difficulty": "warmup",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-003",
+      "stem": "The probability of a Type I error is denoted by which symbol?",
+      "options": [
+        "$p$",
+        "$1 - \\beta$",
+        "$\\alpha$",
+        "$\\beta$"
+      ],
+      "answer": 2,
+      "explanation": "The significance level $\\alpha$ is the probability of a Type I error, the chance of rejecting a true null. The symbol $\\beta$ is the Type II error probability, and $1 - \\beta$ is the power of the test. The $p$-value is a separate data-dependent quantity.",
+      "difficulty": "warmup",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-004",
+      "stem": "The power of a test equals which of the following?",
+      "options": [
+        "$\\beta$",
+        "$\\alpha$",
+        "$1 - \\alpha$",
+        "$1 - \\beta$"
+      ],
+      "answer": 3,
+      "explanation": "Power is the probability of correctly rejecting a false null hypothesis, which is $1 - \\beta$. It increases with sample size and with the size of the true effect. The quantity $1 - \\alpha$ is the confidence level, a different idea.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-005",
+      "stem": "For testing $H_0: \\mu = \\mu_0$ with known $\\sigma$, the test statistic is which of the following?",
+      "options": [
+        "$\\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}}$",
+        "$\\frac{\\bar{x} - \\mu_0}{\\sigma / \\sqrt{n}}$",
+        "$\\frac{\\mu_0 - \\bar{x}}{\\sigma^2}$",
+        "$\\frac{\\bar{x} - \\mu_0}{\\sigma}$"
+      ],
+      "answer": 1,
+      "explanation": "When $\\sigma$ is known the standardized statistic is $z = \\frac{\\bar{x} - \\mu_0}{\\sigma / \\sqrt{n}}$, comparing the sample mean to the hypothesized value in units of the standard error. Using $\\sigma$ without dividing by $\\sqrt{n}$ omits the sample size, and using $s$ would give the $t$ statistic for unknown $\\sigma$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-006",
+      "stem": "A sample of $n = 64$ has $\\bar{x} = 52$ from a population with $\\sigma = 8$. To test $H_0: \\mu = 50$, the value of the $z$ statistic is which of the following?",
+      "options": [
+        "$1.0$",
+        "$16.0$",
+        "$2.0$",
+        "$0.25$"
+      ],
+      "answer": 2,
+      "explanation": "The standard error is $\\frac{8}{\\sqrt{64}} = \\frac{8}{8} = 1$, so $z = \\frac{52 - 50}{1} = 2.0$. The option $0.25$ divides by $\\sigma$ rather than the standard error in the wrong way, and $16$ multiplies by $\\sqrt{n}$ instead of dividing.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-007",
+      "stem": "For a two-tailed test at $\\alpha = 0.05$, the critical $z$ values are which of the following?",
+      "options": [
+        "$\\pm 1.96$",
+        "$+1.96$ only",
+        "$\\pm 1.645$",
+        "$\\pm 2.576$"
+      ],
+      "answer": 0,
+      "explanation": "A two-tailed test at $\\alpha = 0.05$ splits the rejection region into two tails of $0.025$ each, giving critical values $\\pm 1.96$. The value $\\pm 1.645$ would be for a two-tailed test at $\\alpha = 0.10$ or a one-tailed test at $0.05$. A single positive cutoff applies only to a one-sided test.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-008",
+      "stem": "A two-tailed $z$ test gives $z = 2.0$ with critical values $\\pm 1.96$ at $\\alpha = 0.05$. What is the decision?",
+      "options": [
+        "accept $H_a$ with certainty",
+        "reject $H_0$",
+        "the test is inconclusive by design",
+        "fail to reject $H_0$"
+      ],
+      "answer": 1,
+      "explanation": "Since $|z| = 2.0$ exceeds the critical value $1.96$, the statistic falls in the rejection region and we reject $H_0$ at the $5\\%$ level. Rejecting $H_0$ is evidence for $H_a$, but statistical tests never deliver certainty, so 'with certainty' overstates the conclusion.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-009",
+      "stem": "For a two-tailed test, the $p$-value associated with $z = 2.0$ is closest to which value? (Use $P(Z > 2.0) = 0.0228$.)",
+      "options": [
+        "$0.05$",
+        "$0.0456$",
+        "$0.9772$",
+        "$0.0228$"
+      ],
+      "answer": 1,
+      "explanation": "A two-tailed $p$-value doubles the one-tail area: $2 \\times 0.0228 = 0.0456$. The value $0.0228$ is only the single upper tail, appropriate for a one-sided test, and $0.9772$ is the cumulative probability below $z = 2$. Since $0.0456 < 0.05$, the result is significant.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-010",
+      "stem": "The decision rule based on a $p$-value at significance level $\\alpha$ is which of the following?",
+      "options": [
+        "reject $H_0$ if $p \\le \\alpha$",
+        "reject $H_0$ if $p > \\alpha$",
+        "reject $H_0$ if $p = 0.5$",
+        "never reject $H_0$"
+      ],
+      "answer": 0,
+      "explanation": "A small $p$-value means the data are unlikely under $H_0$, so we reject $H_0$ when $p \\le \\alpha$. A large $p$-value ($p > \\alpha$) leaves $H_0$ standing. The $p$-value is compared directly with the chosen significance level.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-011",
+      "stem": "When $\\sigma$ is unknown and the sample is small, the one-sample test of a mean uses which statistic and reference distribution?",
+      "options": [
+        "$F$ statistic",
+        "$z$ statistic with the standard normal",
+        "$t$ statistic with $n - 1$ degrees of freedom",
+        "chi-square statistic with $n$ degrees of freedom"
+      ],
+      "answer": 2,
+      "explanation": "Replacing $\\sigma$ with the sample standard deviation $s$ gives $t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}}$, which follows a $t$ distribution with $n - 1$ degrees of freedom. The normal applies only when $\\sigma$ is known or $n$ is large. Chi-square and $F$ tests are for variances.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-012",
+      "stem": "A sample of $n = 16$ has $\\bar{x} = 12$ and $s = 4$. To test $H_0: \\mu = 10$, the $t$ statistic and its degrees of freedom are which of the following?",
+      "options": [
+        "$t = 8.0$, df $= 15$",
+        "$t = 2.0$, df $= 15$",
+        "$t = 0.5$, df $= 16$",
+        "$t = 2.0$, df $= 16$"
+      ],
+      "answer": 1,
+      "explanation": "The standard error is $\\frac{4}{\\sqrt{16}} = \\frac{4}{4} = 1$, so $t = \\frac{12 - 10}{1} = 2.0$ with degrees of freedom $n - 1 = 15$. The option using df $= 16$ forgets to subtract one, and $t = 8$ multiplies by $\\sqrt{n}$ rather than dividing.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-013",
+      "stem": "For a right-tailed test $H_a: \\mu > \\mu_0$ at $\\alpha = 0.05$ using the normal distribution, the critical value is which of the following?",
+      "options": [
+        "$-1.645$",
+        "$1.645$",
+        "$2.576$",
+        "$1.96$"
+      ],
+      "answer": 1,
+      "explanation": "A one-sided test at $\\alpha = 0.05$ places the whole $5\\%$ in the upper tail, so the critical value is $z_{0.05} = 1.645$. The value $1.96$ corresponds to a two-tailed test at $0.05$. The cutoff is positive because the rejection region is the upper tail.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-014",
+      "stem": "To test $H_0: p = 0.5$ against $H_a: p \\ne 0.5$, a sample of $n = 100$ gives $\\hat{p} = 0.55$. What is the value of the $z$ statistic?",
+      "options": [
+        "$0.05$",
+        "$1.0$",
+        "$5.0$",
+        "$0.5$"
+      ],
+      "answer": 1,
+      "explanation": "Under $H_0$ the standard error uses $p_0 = 0.5$: $\\sqrt{\\frac{0.5 \\times 0.5}{100}} = \\sqrt{0.0025} = 0.05$. Then $z = \\frac{0.55 - 0.5}{0.05} = \\frac{0.05}{0.05} = 1.0$. The option $5.0$ misplaces a decimal in the standard error, and $0.05$ reports the numerator difference instead of the standardized value.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-015",
+      "stem": "With $z = 1.0$ for the proportion test above and $\\alpha = 0.05$ (two-tailed, critical $\\pm 1.96$), what is the conclusion?",
+      "options": [
+        "the proportion is exactly $0.5$",
+        "fail to reject $H_0$; not enough evidence that $p \\ne 0.5$",
+        "reject $H_0$; the proportion differs from $0.5$",
+        "the test statistic is in the rejection region"
+      ],
+      "answer": 1,
+      "explanation": "Since $|z| = 1.0$ is less than $1.96$, the statistic lies outside the rejection region, so we fail to reject $H_0$. There is not enough evidence that $p$ differs from $0.5$. Failing to reject does not prove $p = 0.5$ exactly; it only means the data are consistent with it.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-016",
+      "stem": "Reducing the significance level $\\alpha$ from $0.05$ to $0.01$ has which effect on the two error probabilities, holding sample size fixed?",
+      "options": [
+        "it lowers $\\alpha$ and lowers $\\beta$",
+        "it lowers $\\alpha$ but raises $\\beta$",
+        "it raises both $\\alpha$ and $\\beta$",
+        "it has no effect on either"
+      ],
+      "answer": 1,
+      "explanation": "Making the test more stringent (smaller $\\alpha$) shrinks the rejection region, so a true null is rejected less often, but a false null is also rejected less often, raising $\\beta$. The two error probabilities trade off against each other for a fixed $n$. Only increasing the sample size can reduce both at once.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-017",
+      "stem": "A small $p$-value (for example $p = 0.001$) provides which of the following?",
+      "options": [
+        "strong evidence in favour of $H_0$",
+        "proof that $H_a$ is true",
+        "evidence that the sample size was too small",
+        "strong evidence against $H_0$"
+      ],
+      "answer": 3,
+      "explanation": "The $p$-value is the probability, if $H_0$ were true, of data at least as extreme as observed. A very small value means such data would be very surprising under $H_0$, so it gives strong evidence against $H_0$. Statistical evidence is not the same as proof, so it does not establish $H_a$ with certainty.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-018",
+      "stem": "Which statement about a Type II error and power is correct?",
+      "options": [
+        "increasing the sample size increases power and decreases $\\beta$",
+        "power does not depend on the true effect size",
+        "power and $\\beta$ always sum to $\\alpha$",
+        "increasing the sample size decreases power"
+      ],
+      "answer": 0,
+      "explanation": "A larger sample reduces the standard error, making it easier to detect a real effect, so power rises and $\\beta = 1 - \\text{power}$ falls. Power and $\\beta$ sum to $1$, not $\\alpha$, and power increases with the size of the true effect. Sample size is the usual lever for improving power.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-019",
+      "stem": "For a left-tailed test $H_a: \\mu < \\mu_0$, the rejection region lies where, and large negative test statistics lead to which decision?",
+      "options": [
+        "both tails; reject $H_0$",
+        "upper tail; fail to reject $H_0$",
+        "lower tail; reject $H_0$",
+        "lower tail; fail to reject $H_0$"
+      ],
+      "answer": 2,
+      "explanation": "A left-tailed alternative puts the entire rejection region in the lower (negative) tail, so a sufficiently negative test statistic falls there and leads to rejecting $H_0$. The direction of $H_a$ determines which tail is used. A two-tailed region would apply only to $H_a: \\mu \\ne \\mu_0$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-020",
+      "stem": "A one-tailed (right) $z$ test gives $z = 1.0$. Using $P(Z > 1.0) = 0.1587$, the $p$-value is which of the following?",
+      "options": [
+        "$0.3174$",
+        "$0.05$",
+        "$0.8413$",
+        "$0.1587$"
+      ],
+      "answer": 3,
+      "explanation": "For a one-sided right-tailed test the $p$-value is the single upper-tail area $P(Z > 1.0) = 0.1587$. Doubling it to $0.3174$ would be the two-tailed value, and $0.8413$ is the lower cumulative probability. Since $0.1587 > 0.05$, we fail to reject $H_0$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-021",
+      "stem": "Which of the following is a valid pair of null and alternative hypotheses?",
+      "options": [
+        "$H_0: \\mu = 50$ versus $H_a: \\mu \\ne 50$",
+        "$H_0: \\hat{p} = 0.5$ versus $H_a: \\hat{p} < 0.5$",
+        "$H_0: \\bar{x} = 50$ versus $H_a: \\bar{x} \\ne 50$",
+        "$H_0: \\mu > 50$ versus $H_a: \\mu > 50$"
+      ],
+      "answer": 0,
+      "explanation": "Hypotheses are statements about population parameters, so $H_0: \\mu = 50$ versus $H_a: \\mu \\ne 50$ is valid. Options written in terms of the sample statistics $\\bar{x}$ or $\\hat{p}$ are incorrect because those are known once the data are collected. The version with the same inequality on both sides does not partition the parameter space.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-022",
+      "stem": "A test is conducted at $\\alpha = 0.05$ and the $p$-value is $0.03$. What is the decision, and could a Type I error have been made?",
+      "options": [
+        "fail to reject $H_0$; a Type I error is possible",
+        "reject $H_0$; a Type I error is possible if $H_0$ is actually true",
+        "fail to reject $H_0$; a Type II error is possible",
+        "reject $H_0$; no error of any kind is possible"
+      ],
+      "answer": 1,
+      "explanation": "Since $p = 0.03 \\le 0.05$, we reject $H_0$. Whenever we reject, the error we risk is a Type I error, which would occur if $H_0$ were in fact true. Rejecting never guarantees correctness, so claiming no error is possible is wrong; a Type II error is only at issue when we fail to reject.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-023",
+      "format": "cloze",
+      "stem": "A sample of $n = 49$ has $\\bar{x} = 103$ from a population with known $\\sigma = 14$. Test $H_0: \\mu = 100$ against $H_a: \\mu \\ne 100$ at $\\alpha = 0.05$.",
+      "solution": "The standard error is $\\frac{14}{\\sqrt{49}} =$ {{1}}, so the test statistic is $z = \\frac{103 - 100}{2} =$ {{2}}. Comparing with the two-tailed critical value $1.96$, the decision is to {{3}} the null hypothesis.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "fail to reject",
+            "reject",
+            "accept"
+          ],
+          "answer": "fail to reject"
+        }
+      ],
+      "explanation": "Standard error $= \\frac{14}{7} = 2$, so $z = \\frac{3}{2} = 1.5$. Since $|1.5| < 1.96$, the statistic is outside the rejection region and we fail to reject $H_0$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-024",
+      "format": "cloze",
+      "stem": "A sample of $n = 25$ has $\\bar{x} = 48$ and $s = 5$. Test $H_0: \\mu = 50$ against $H_a: \\mu \\ne 50$.",
+      "solution": "Because $\\sigma$ is unknown, the {{1}} statistic is used with $n - 1 =$ {{2}} degrees of freedom. The standard error is $\\frac{5}{\\sqrt{25}} = 1$, so the statistic is $\\frac{48 - 50}{1} =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "t",
+            "T",
+            "Student t",
+            "Student's t"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 24,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Unknown $\\sigma$ means the $t$ test with $n - 1 = 24$ degrees of freedom. Standard error $= \\frac{5}{5} = 1$, so $t = \\frac{48 - 50}{1} = -2$. The negative sign shows the sample mean is below the hypothesized value.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-025",
+      "format": "cloze",
+      "stem": "Classify the two decision errors and the correct rejection of a false null.",
+      "solution": "Rejecting a true null hypothesis is a Type {{1}} error, with probability $\\alpha$. Failing to reject a false null hypothesis is a Type {{2}} error, with probability $\\beta$. Correctly rejecting a false null is measured by the {{3}} of the test.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "I",
+            "II",
+            "III"
+          ],
+          "answer": "I"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "II",
+            "I",
+            "III"
+          ],
+          "answer": "II"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "power",
+            "Power",
+            "the power"
+          ]
+        }
+      ],
+      "explanation": "Rejecting a true $H_0$ is a Type I error (probability $\\alpha$); failing to reject a false $H_0$ is a Type II error (probability $\\beta$). Correctly rejecting a false $H_0$ has probability $1 - \\beta$, which is the power.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-026",
+      "format": "cloze",
+      "stem": "To test $H_0: p = 0.30$ against $H_a: p > 0.30$, a sample of $n = 100$ gives $\\hat{p} = 0.39$. Work out the test.",
+      "solution": "Under the null the standard error is $\\sqrt{\\frac{0.30 \\times 0.70}{100}} = \\sqrt{0.0021} \\approx 0.0458$. The test statistic is $z = \\frac{0.39 - 0.30}{0.0458} \\approx$ {{1}} (to two decimal places). Against the one-tailed critical value $1.645$, the decision is to {{2}} the null hypothesis.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.96,
+          "tolerance": 0.05
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "reject",
+            "fail to reject",
+            "accept"
+          ],
+          "answer": "reject"
+        }
+      ],
+      "explanation": "The standard error under $H_0$ is $\\sqrt{\\frac{0.21}{100}} = \\sqrt{0.0021} \\approx 0.0458$, so $z = \\frac{0.09}{0.0458} \\approx 1.96$. Since $1.96 > 1.645$, the statistic is in the upper-tail rejection region and we reject $H_0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-027",
+      "format": "cloze",
+      "stem": "A two-tailed $z$ test produces a test statistic of $z = 2.5$. Find the $p$-value, using $P(Z > 2.5) = 0.0062$.",
+      "solution": "For a two-tailed test the $p$-value is twice the upper-tail area, so $p = 2 \\times 0.0062 =$ {{1}}. At significance level $\\alpha = 0.05$, since this $p$-value is {{2}} than $\\alpha$, we reject the null hypothesis.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.0124,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "smaller",
+            "larger",
+            "equal"
+          ],
+          "answer": "smaller"
+        }
+      ],
+      "explanation": "Two-tailed $p = 2 \\times 0.0062 = 0.0124$. Because $0.0124 < 0.05$, the $p$-value is smaller than $\\alpha$, so we reject $H_0$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-hypothesis-testing-one-sample-028",
+      "format": "cloze",
+      "stem": "Relate the significance level, the two error types, and how sample size affects them.",
+      "solution": "The significance level $\\alpha$ is the probability of a Type I error. With the sample size fixed, lowering $\\alpha$ makes $\\beta$ {{1}}. To reduce both $\\alpha$ and $\\beta$ at the same time, one must {{2}} the sample size.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "increase",
+            "decrease",
+            "stay the same"
+          ],
+          "answer": "increase"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "increase",
+            "decrease",
+            "ignore"
+          ],
+          "answer": "increase"
+        }
+      ],
+      "explanation": "For a fixed $n$, the two error probabilities trade off: shrinking $\\alpha$ enlarges $\\beta$. The only way to push both down together is to gather more data, that is increase the sample size.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    }
+  ]
+}

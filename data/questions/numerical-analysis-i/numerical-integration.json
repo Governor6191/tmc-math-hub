@@ -1,0 +1,514 @@
+{
+  "courseId": "numerical-analysis-i",
+  "topicId": "numerical-integration",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-i-numerical-integration-001",
+      "stem": "The single-interval trapezoidal rule approximates $\\displaystyle\\int_a^b f(x)\\,dx$ by which expression, where $h = b - a$?",
+      "options": [
+        "$\\dfrac{h}{3}\\left[f(a) + 4f\\!\\left(\\dfrac{a+b}{2}\\right) + f(b)\\right]$",
+        "$h\\,f\\!\\left(\\dfrac{a + b}{2}\\right)$",
+        "$\\dfrac{h}{2}\\left[f(a) + f(b)\\right]$",
+        "$h\\left[f(a) + f(b)\\right]$"
+      ],
+      "answer": 2,
+      "explanation": "The trapezoidal rule replaces the curve by the straight chord between the endpoints, giving the area of a trapezium $\\frac{h}{2}[f(a) + f(b)]$. The first option is the midpoint rule, the third is Simpson's rule, and the fourth omits the factor $\\frac{1}{2}$. The trap is dropping the $\\frac{1}{2}$: the average of the two end heights, not their sum, multiplies the width.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-002",
+      "stem": "Simpson's one-third rule over two equal intervals of width $h$ approximates $\\displaystyle\\int_{x_0}^{x_2} f(x)\\,dx$ by which expression?",
+      "options": [
+        "$\\dfrac{h}{3}\\left[f_0 + 4f_1 + f_2\\right]$",
+        "$\\dfrac{h}{3}\\left[f_0 + 2f_1 + f_2\\right]$",
+        "$\\dfrac{h}{2}\\left[f_0 + f_2\\right]$",
+        "$\\dfrac{3h}{8}\\left[f_0 + 3f_1 + 3f_2 + f_3\\right]$"
+      ],
+      "answer": 0,
+      "explanation": "Simpson's one-third rule fits a parabola through three equally spaced points and integrates it to $\\frac{h}{3}[f_0 + 4f_1 + f_2]$, with the centre point weighted four times the ends. The first option is the trapezoidal rule, the third is Simpson's three-eighths rule needing four points, and the fourth uses the wrong centre weight $2$ instead of $4$. The trap is the centre coefficient: the one-third rule weights the middle ordinate by $4$.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-003",
+      "stem": "Estimate $\\displaystyle\\int_0^1 x^2\\,dx$ using the trapezoidal rule with a single interval ($h = 1$).",
+      "options": [
+        "$0.3333$",
+        "$1.0000$",
+        "$0.5000$",
+        "$0.2500$"
+      ],
+      "answer": 2,
+      "explanation": "The single-interval trapezoidal estimate is $\\frac{1}{2}[f(0) + f(1)] = \\frac{1}{2}[0 + 1] = 0.5$. The exact value is $\\frac{1}{3} \\approx 0.3333$, so the rule overestimates by $0.1667$, consistent with its error $-\\frac{h^3}{12}f''(\\xi) = -\\frac{1}{12}(2) = -0.1667$. The value $0.25$ is unrelated, and $1.0$ forgets the $\\frac{1}{2}$. The trap is reporting the exact integral; the trapezoidal rule overshoots for a convex function because the chord lies above the curve.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-004",
+      "stem": "Estimate $\\displaystyle\\int_0^1 x^2\\,dx$ using Simpson's one-third rule with $h = 0.5$ (points $0, 0.5, 1$).",
+      "options": [
+        "$0.5000$",
+        "$0.4167$",
+        "$0.2500$",
+        "$0.3333$"
+      ],
+      "answer": 3,
+      "explanation": "Simpson's estimate is $\\frac{0.5}{3}[f(0) + 4f(0.5) + f(1)] = \\frac{0.5}{3}[0 + 4(0.25) + 1] = \\frac{0.5}{3}(2) = \\frac{1}{3} \\approx 0.3333$. Simpson's rule integrates any polynomial up to degree three exactly, so for the quadratic $x^2$ it is exact. The value $0.5$ is the trapezoidal result, and the others come from miscounting weights. The trap is expecting Simpson's rule to carry error on a low-degree polynomial; it is exact through cubics.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-005",
+      "stem": "The degree of precision of Simpson's one-third rule, that is the highest polynomial degree it integrates exactly, is which value?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$2$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "Although Simpson's one-third rule is derived by fitting a degree-two parabola, the symmetry of the nodes causes the cubic error term to vanish as well, giving a degree of precision of $3$: it integrates cubics exactly. A precision of $1$ describes the trapezoidal rule, $2$ understates Simpson's bonus accuracy, and $4$ overstates it, since the quartic error term $-\\frac{h^5}{90}f^{(4)}$ is generally nonzero. The trap is equating degree of precision with the degree of the fitting polynomial; symmetry earns one extra degree.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-006",
+      "stem": "The composite trapezoidal rule for $n$ equal subintervals is $\\dfrac{h}{2}\\left[f_0 + 2f_1 + 2f_2 + \\cdots + 2f_{n-1} + f_n\\right]$. The interior ordinates carry which weight?",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "$1$",
+        "$4$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "Each interior point is shared by two adjacent trapezia, so summing the panels weights every interior ordinate by $2$ while the two endpoints, belonging to only one panel each, keep weight $1$. A uniform weight of $1$ would undercount the shared points, $4$ belongs to Simpson's rule, and $\\frac{1}{2}$ confuses the per-panel factor with the assembled weight. The trap is forgetting that interior nodes are counted twice when neighbouring trapezia are added.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-007",
+      "stem": "Using the composite trapezoidal rule with $h = 1$ on $\\displaystyle\\int_0^2 x^3\\,dx$ (points $0, 1, 2$), the estimate is which value?",
+      "options": [
+        "$6$",
+        "$4$",
+        "$3$",
+        "$5$"
+      ],
+      "answer": 3,
+      "explanation": "With $f(0) = 0$, $f(1) = 1$, $f(2) = 8$, the composite trapezoidal estimate is $\\frac{1}{2}[0 + 2(1) + 8] = \\frac{1}{2}(10) = 5$. The exact value is $\\int_0^2 x^3\\,dx = \\frac{16}{4} = 4$, so the rule overestimates by $1$ because $x^3$ is convex on the interval. The value $6$ over-weights, and $3$ under-weights. The trap is omitting the factor $2$ on the interior point $f(1)$, which would give a different total.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-008",
+      "stem": "Using Simpson's one-third rule with $h = 1$ on $\\displaystyle\\int_0^2 x^3\\,dx$ (points $0, 1, 2$), the estimate is which value?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$3.5$"
+      ],
+      "answer": 0,
+      "explanation": "Simpson's estimate is $\\frac{1}{3}[f(0) + 4f(1) + f(2)] = \\frac{1}{3}[0 + 4(1) + 8] = \\frac{12}{3} = 4$. The exact value $\\int_0^2 x^3\\,dx = 4$ matches exactly, since Simpson's rule has degree of precision $3$ and integrates cubics without error. The value $5$ is the trapezoidal estimate, while $6$ and $3.5$ come from miscounting. The trap is assuming a cubic must produce error; Simpson's rule nails it exactly.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-009",
+      "stem": "Simpson's one-third rule requires the number of subintervals $n$ to satisfy which condition?",
+      "options": [
+        "$n$ must be a multiple of $3$",
+        "$n$ must be odd",
+        "$n$ can be any positive integer",
+        "$n$ must be even"
+      ],
+      "answer": 3,
+      "explanation": "Because each application of the one-third rule consumes a pair of subintervals (three points), the composite rule needs the subintervals to pair up exactly, so $n$ must be even. An odd $n$ leaves one unpaired interval, a multiple of $3$ is the requirement for the three-eighths rule, and arbitrary $n$ would break the pairing. The trap is confusing the parity requirement of the one-third rule (even $n$) with the divisibility-by-three requirement of the three-eighths rule.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-010",
+      "stem": "Simpson's three-eighths rule over three equal intervals approximates $\\displaystyle\\int_{x_0}^{x_3} f\\,dx$ by which expression?",
+      "options": [
+        "$\\dfrac{h}{2}\\left[f_0 + 2f_1 + 2f_2 + f_3\\right]$",
+        "$\\dfrac{3h}{8}\\left[f_0 + 3f_1 + 3f_2 + f_3\\right]$",
+        "$\\dfrac{3h}{8}\\left[f_0 + 2f_1 + 2f_2 + f_3\\right]$",
+        "$\\dfrac{h}{3}\\left[f_0 + 4f_1 + f_2\\right]$"
+      ],
+      "answer": 1,
+      "explanation": "The three-eighths rule fits a cubic through four equally spaced points and integrates to $\\frac{3h}{8}[f_0 + 3f_1 + 3f_2 + f_3]$, with the two interior ordinates weighted by $3$. The first option is the one-third rule, the third is composite trapezoidal, and the fourth uses interior weights $2$ instead of $3$. The trap is the interior coefficient: the three-eighths rule weights both middle points by $3$, not $2$ or $4$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-011",
+      "stem": "The leading error term of the single-interval trapezoidal rule is which expression?",
+      "options": [
+        "$-\\dfrac{h^2}{12}f''(\\xi)$",
+        "$-\\dfrac{h^5}{90}f^{(4)}(\\xi)$",
+        "$-\\dfrac{h^3}{12}f''(\\xi)$",
+        "$-\\dfrac{h^3}{6}f''(\\xi)$"
+      ],
+      "answer": 2,
+      "explanation": "Integrating the interpolation error of a linear fit over one panel gives the trapezoidal error $-\\frac{h^3}{12}f''(\\xi)$. The $h^5$ term with $f^{(4)}$ belongs to Simpson's rule, $-\\frac{h^3}{6}f''$ has the wrong constant, and $-\\frac{h^2}{12}f''$ has the wrong power of $h$ for a single panel. The trap is mismatching the constant or the power; the single-panel trapezoidal error is cubic in $h$ with denominator $12$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-012",
+      "stem": "For the composite trapezoidal rule on a fixed interval, the global error behaves like which order in $h$?",
+      "options": [
+        "$O(h^3)$",
+        "$O(h)$",
+        "$O(h^2)$",
+        "$O(h^4)$"
+      ],
+      "answer": 2,
+      "explanation": "Summing the per-panel error $-\\frac{h^3}{12}f''$ over the $n = \\frac{b - a}{h}$ panels gives a global error $-\\frac{(b - a)h^2}{12}f''(\\xi)$, which is $O(h^2)$. The single-panel error is $O(h^3)$, but accumulating over $O(1/h)$ panels loses one power of $h$. Choices $O(h)$ and $O(h^4)$ misstate this, and $O(h^3)$ forgets the panel count. The trap is quoting the local order; the composite (global) trapezoidal error is second order.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-013",
+      "stem": "For the composite Simpson's one-third rule on a fixed interval, the global error behaves like which order in $h$?",
+      "options": [
+        "$O(h^5)$",
+        "$O(h^4)$",
+        "$O(h^3)$",
+        "$O(h^2)$"
+      ],
+      "answer": 1,
+      "explanation": "The single double-panel Simpson error is $O(h^5)$, and summing over $O(1/h)$ panel pairs gives the global error $-\\frac{(b - a)h^4}{180}f^{(4)}(\\xi)$, which is $O(h^4)$. This makes Simpson's rule two orders more accurate than the composite trapezoidal rule. The options $O(h^2)$ and $O(h^3)$ understate it, and $O(h^5)$ is the local, not global, order. The trap is reporting the local order; over the whole interval Simpson's composite error is fourth order.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-014",
+      "stem": "Estimate $\\displaystyle\\int_0^4 (x^2 + 1)\\,dx$ using the composite trapezoidal rule with $h = 1$ (points $0, 1, 2, 3, 4$; values $1, 2, 5, 10, 17$).",
+      "options": [
+        "$24.000$",
+        "$27.000$",
+        "$26.000$",
+        "$25.333$"
+      ],
+      "answer": 2,
+      "explanation": "The composite trapezoidal estimate is $\\frac{1}{2}[1 + 2(2) + 2(5) + 2(10) + 17] = \\frac{1}{2}[1 + 4 + 10 + 20 + 17] = \\frac{52}{2} = 26$. The exact value is $\\int_0^4 (x^2 + 1)\\,dx = \\frac{64}{3} + 4 = 25.333$, so the rule overestimates by about $0.667$. The value $25.333$ is the exact integral, and the others come from weight errors. The trap is using the exact value as the trapezoidal answer; the rule's convexity overshoot makes them differ.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-015",
+      "stem": "Estimate $\\displaystyle\\int_0^4 (x^2 + 1)\\,dx$ using the composite Simpson's one-third rule with $h = 1$ (values $1, 2, 5, 10, 17$).",
+      "options": [
+        "$24.667$",
+        "$25.333$",
+        "$26.000$",
+        "$25.000$"
+      ],
+      "answer": 1,
+      "explanation": "Simpson's composite estimate is $\\frac{1}{3}[1 + 4(2) + 2(5) + 4(10) + 17] = \\frac{1}{3}[1 + 8 + 10 + 40 + 17] = \\frac{76}{3} = 25.333$. The exact value $\\frac{64}{3} + 4 = 25.333$ matches, since Simpson's rule integrates the quadratic exactly. The value $26$ is the trapezoidal estimate. The trap is applying the wrong alternating weights $4, 2, 4$; the odd-indexed interior points take $4$ and the even-indexed interior points take $2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-016",
+      "stem": "The midpoint rule estimate of $\\displaystyle\\int_a^b f\\,dx$ over a single interval is $h\\,f\\!\\left(\\dfrac{a+b}{2}\\right)$ with $h = b - a$. Its degree of precision is which value?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$1$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "The midpoint rule integrates constants and linear functions exactly, since the symmetric evaluation cancels the linear error, but it fails on a general quadratic, so its degree of precision is $1$, the same as the trapezoidal rule. A precision of $0$ understates it, and $2$ or $3$ would require the quadratic or cubic error to vanish, which it does not. The trap is assuming a one-point rule must have precision $0$; symmetry about the midpoint lifts it to degree $1$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-017",
+      "stem": "Estimate $\\displaystyle\\int_0^1 x^3\\,dx$ using the trapezoidal rule with a single interval ($h = 1$).",
+      "options": [
+        "$0.50$",
+        "$0.25$",
+        "$1.00$",
+        "$0.30$"
+      ],
+      "answer": 0,
+      "explanation": "The estimate is $\\frac{1}{2}[f(0) + f(1)] = \\frac{1}{2}[0 + 1] = 0.5$. The exact value is $\\frac{1}{4} = 0.25$, so the trapezoidal rule overestimates by $0.25$ on this convex cubic. The value $0.25$ is the exact integral, $0.30$ is arbitrary, and $1.0$ forgets the half. The trap is reporting the true value; the single-panel trapezoidal rule cannot capture the curvature of $x^3$.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-018",
+      "stem": "Estimate $\\displaystyle\\int_0^1 x^3\\,dx$ using Simpson's one-third rule with $h = 0.5$ (points $0, 0.5, 1$).",
+      "options": [
+        "$0.25$",
+        "$0.20$",
+        "$0.30$",
+        "$0.50$"
+      ],
+      "answer": 0,
+      "explanation": "Simpson's estimate is $\\frac{0.5}{3}[f(0) + 4f(0.5) + f(1)] = \\frac{0.5}{3}[0 + 4(0.125) + 1] = \\frac{0.5}{3}(1.5) = 0.25$. The exact value $\\frac{1}{4} = 0.25$ agrees, since Simpson's rule integrates cubics exactly. The value $0.5$ is the trapezoidal answer, and the others misweight. The trap is forgetting that the degree of precision $3$ makes Simpson's rule exact for $x^3$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-019",
+      "stem": "When the composite trapezoidal step size $h$ is halved, the dominant error of a smooth integrand is reduced by approximately which factor?",
+      "options": [
+        "$4$",
+        "$16$",
+        "$8$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "The composite trapezoidal error is $O(h^2)$, so replacing $h$ by $h/2$ multiplies the error by $\\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$, a fourfold reduction. A factor of $2$ would correspond to $O(h)$, $8$ to $O(h^3)$, and $16$ to $O(h^4)$. The trap is matching the reduction factor to the wrong order; second-order accuracy means the error drops by four when the step is halved.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-020",
+      "stem": "Estimate $\\displaystyle\\int_0^6 (x^2 + 1)\\,dx$ using Simpson's three-eighths rule with $h = 2$ (points $0, 2, 4, 6$; values $1, 5, 17, 37$).",
+      "options": [
+        "$78$",
+        "$82$",
+        "$80$",
+        "$76$"
+      ],
+      "answer": 0,
+      "explanation": "The three-eighths estimate is $\\frac{3(2)}{8}[1 + 3(5) + 3(17) + 37] = \\frac{6}{8}[1 + 15 + 51 + 37] = 0.75(104) = 78$. The exact value $\\int_0^6 (x^2 + 1)\\,dx = \\frac{216}{3} + 6 = 72 + 6 = 78$ matches, since the three-eighths rule integrates cubics exactly. The value $82$ is the trapezoidal estimate, and the others come from weight errors. The trap is using interior weights $2$ instead of $3$, which would give the wrong total.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-021",
+      "stem": "Compared with the composite trapezoidal rule for the same step size, Simpson's one-third rule is generally which of the following?",
+      "options": [
+        "More accurate, with a higher order of convergence",
+        "Less accurate because it uses more points",
+        "Equally accurate but cheaper",
+        "Only valid for linear integrands"
+      ],
+      "answer": 0,
+      "explanation": "Simpson's one-third rule converges at $O(h^4)$ against the trapezoidal rule's $O(h^2)$, so for the same step size it is markedly more accurate, and it integrates cubics exactly. It is not less accurate, not merely equal, and certainly not restricted to linear integrands (the trapezoidal rule is the one exact only through degree $1$). The trap is assuming extra evaluation points reduce accuracy; here they raise the order of convergence.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-022",
+      "stem": "The leading error term of Simpson's one-third rule over a double panel is which expression?",
+      "options": [
+        "$-\\dfrac{h^3}{12}f''(\\xi)$",
+        "$-\\dfrac{h^4}{180}f^{(4)}(\\xi)$",
+        "$-\\dfrac{h^5}{80}f^{(4)}(\\xi)$",
+        "$-\\dfrac{h^5}{90}f^{(4)}(\\xi)$"
+      ],
+      "answer": 3,
+      "explanation": "Simpson's one-third rule has local error $-\\frac{h^5}{90}f^{(4)}(\\xi)$, riding on the fourth derivative because the lower-order terms cancel by symmetry. The $h^3 f''$ term is the trapezoidal error, $-\\frac{h^5}{80}f^{(4)}$ is the three-eighths rule's constant, and the $h^4$ form is the composite (not local) order. The trap is mismatching the constant: the local one-third error has denominator $90$, while the three-eighths rule uses $80$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-023",
+      "format": "cloze",
+      "stem": "Estimate $\\displaystyle\\int_0^1 x^2\\,dx$ by two methods using $f(0) = 0$, $f(0.5) = 0.25$, $f(1) = 1$.",
+      "solution": "The single-interval trapezoidal rule with $h = 1$ gives $\\dfrac{1}{2}(0 + 1) =$ {{1}}. Simpson's one-third rule with $h = 0.5$ gives $\\dfrac{0.5}{3}\\left[0 + 4(0.25) + 1\\right] =$ {{2}}. Comparing with the exact value $\\tfrac{1}{3}$, the more accurate of the two methods here is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.3333,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Simpson's rule",
+            "the trapezoidal rule",
+            "neither, they tie",
+            "the midpoint rule"
+          ],
+          "answer": "Simpson's rule"
+        }
+      ],
+      "explanation": "Trapezoidal: $\\frac{1}{2}(1) = 0.5$. Simpson: $\\frac{0.5}{3}(0 + 1 + 1) = \\frac{0.5}{3}(2) = 0.3333$. Simpson's rule equals the exact $\\frac{1}{3}$ while the trapezoidal rule errs by $0.1667$, so Simpson's rule is more accurate.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-024",
+      "format": "cloze",
+      "stem": "Recall the standard Newton-Cotes weights and precision values.",
+      "solution": "In Simpson's one-third rule $\\dfrac{h}{3}[f_0 + c\\,f_1 + f_2]$, the centre weight $c$ is {{1}}. The degree of precision of the trapezoidal rule is {{2}}, while the degree of precision of Simpson's one-third rule is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Simpson's one-third rule weights the centre ordinate by $4$. The trapezoidal rule integrates polynomials up to degree $1$ exactly, and Simpson's one-third rule up to degree $3$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-025",
+      "format": "cloze",
+      "stem": "Estimate $\\displaystyle\\int_0^2 x^3\\,dx$ with $h = 1$ using $f(0) = 0$, $f(1) = 1$, $f(2) = 8$.",
+      "solution": "The composite trapezoidal estimate is $\\dfrac{1}{2}[0 + 2(1) + 8] =$ {{1}}. Simpson's one-third estimate is $\\dfrac{1}{3}[0 + 4(1) + 8] =$ {{2}}. The exact value of the integral is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Trapezoidal: $\\frac{1}{2}(0 + 2 + 8) = \\frac{10}{2} = 5$. Simpson: $\\frac{1}{3}(0 + 4 + 8) = \\frac{12}{3} = 4$. Exact: $\\int_0^2 x^3\\,dx = \\frac{2^4}{4} = 4$. Simpson matches exactly because it integrates cubics without error.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-026",
+      "format": "cloze",
+      "stem": "Classify Newton-Cotes rules by their global order of accuracy and structural requirements.",
+      "solution": "The composite trapezoidal rule has global error of order {{1}} in $h$. The composite Simpson's one-third rule has global error of order {{2}} in $h$. To apply the composite Simpson's one-third rule, the number of subintervals must be {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$h$",
+            "$h^2$",
+            "$h^3$",
+            "$h^4$"
+          ],
+          "answer": "$h^2$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$h^2$",
+            "$h^4$",
+            "$h^3$",
+            "$h^5$"
+          ],
+          "answer": "$h^4$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "even",
+            "odd",
+            "prime",
+            "a multiple of $3$"
+          ],
+          "answer": "even"
+        }
+      ],
+      "explanation": "Composite trapezoidal error is $O(h^2)$; composite Simpson's one-third error is $O(h^4)$. Simpson's one-third rule pairs subintervals, so the count must be even.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-027",
+      "format": "cloze",
+      "stem": "Estimate $\\displaystyle\\int_0^4 (x^2 + 1)\\,dx$ using $h = 1$ and the values $f = 1, 2, 5, 10, 17$ at $x = 0, 1, 2, 3, 4$.",
+      "solution": "The composite trapezoidal estimate is $\\dfrac{1}{2}[1 + 2(2) + 2(5) + 2(10) + 17] =$ {{1}}. The composite Simpson's one-third estimate is $\\dfrac{1}{3}[1 + 4(2) + 2(5) + 4(10) + 17] =$ {{2}}. Comparing with the exact value $\\tfrac{64}{3} + 4$, the rule that is exact here is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 26,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 25.333,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Simpson's one-third rule",
+            "the trapezoidal rule",
+            "both rules",
+            "neither rule"
+          ],
+          "answer": "Simpson's one-third rule"
+        }
+      ],
+      "explanation": "Trapezoidal: $\\frac{1}{2}(1 + 4 + 10 + 20 + 17) = \\frac{52}{2} = 26$. Simpson: $\\frac{1}{3}(1 + 8 + 10 + 40 + 17) = \\frac{76}{3} = 25.333$, which equals the exact $\\frac{64}{3} + 4 = 25.333$. Simpson's rule is exact for the quadratic; the trapezoidal rule is not.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-integration-028",
+      "format": "cloze",
+      "stem": "Apply Simpson's three-eighths rule to $\\displaystyle\\int_0^6 (x^2 + 1)\\,dx$ with $h = 2$ and values $f = 1, 5, 17, 37$ at $x = 0, 2, 4, 6$.",
+      "solution": "The interior ordinates $f_1$ and $f_2$ each carry the weight {{1}}. The estimate is $\\dfrac{3(2)}{8}[1 + 3(5) + 3(17) + 37] =$ {{2}}. Because the integrand is a quadratic and the rule integrates cubics exactly, the error of this estimate is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 78,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The three-eighths rule weights both interior points by $3$. The estimate is $\\frac{6}{8}(1 + 15 + 51 + 37) = 0.75(104) = 78$, equal to the exact $72 + 6 = 78$, so the error is $0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    }
+  ]
+}

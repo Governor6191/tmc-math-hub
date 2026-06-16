@@ -1,0 +1,493 @@
+{
+  "courseId": "statistical-inference",
+  "topicId": "chi-square-tests",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "statistical-inference-chi-square-tests-001",
+      "stem": "The chi-square test statistic for comparing observed and expected counts is which of the following?",
+      "options": [
+        "$\\sum \\frac{(O - E)^2}{O}$",
+        "$\\sum \\frac{(O - E)^2}{E}$",
+        "$\\sum (O - E)^2$",
+        "$\\sum \\frac{O - E}{E}$"
+      ],
+      "answer": 1,
+      "explanation": "The statistic is $\\chi^2 = \\sum \\frac{(O - E)^2}{E}$, summing the squared differences scaled by the expected counts. Dividing by $O$ instead of $E$ is a common slip, and omitting the division or the square changes the quantity entirely. Each term measures relative discrepancy from what the model predicts.",
+      "difficulty": "warmup",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-002",
+      "stem": "For a chi-square goodness-of-fit test with $k$ categories (no parameters estimated), the degrees of freedom are which of the following?",
+      "options": [
+        "$k + 1$",
+        "$k$",
+        "$k - 1$",
+        "$k - 2$"
+      ],
+      "answer": 2,
+      "explanation": "With $k$ categories and the constraint that the expected counts sum to the sample size, one degree of freedom is lost, giving $k - 1$. Estimating additional parameters from the data would subtract more, but with none estimated the answer is $k - 1$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-003",
+      "stem": "A fair die is rolled and the counts for its six faces are tested for uniformity. How many degrees of freedom does this goodness-of-fit test have?",
+      "options": [
+        "$5$",
+        "$4$",
+        "$6$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "There are $k = 6$ categories (the six faces), so the degrees of freedom are $k - 1 = 5$. Using $6$ forgets the single constraint that the counts total the number of rolls. No model parameters are estimated here, so nothing further is subtracted.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-004",
+      "stem": "For a chi-square test of independence in a contingency table with $r$ rows and $c$ columns, the degrees of freedom are which of the following?",
+      "options": [
+        "$r + c - 2$",
+        "$(r - 1) + (c - 1)$",
+        "$rc - 1$",
+        "$(r - 1)(c - 1)$"
+      ],
+      "answer": 3,
+      "explanation": "The degrees of freedom for a test of independence are $(r - 1)(c - 1)$, the product of the reduced row and column counts. Adding them instead of multiplying, or using $rc - 1$, gives the wrong value. The product form comes from fixing the row and column totals.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-005",
+      "stem": "A $3 \\times 4$ contingency table is tested for independence. How many degrees of freedom does the test have?",
+      "options": [
+        "$5$",
+        "$7$",
+        "$6$",
+        "$12$"
+      ],
+      "answer": 2,
+      "explanation": "With $r = 3$ rows and $c = 4$ columns, the degrees of freedom are $(3 - 1)(4 - 1) = 2 \\times 3 = 6$. The value $12$ is the total number of cells $rc$, and $5$ comes from adding $(r-1)+(c-1)$ rather than multiplying.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-006",
+      "stem": "In a contingency table, the expected count for a cell is computed as which of the following?",
+      "options": [
+        "$\\frac{\\text{row total} \\times \\text{column total}}{\\text{grand total}}$",
+        "$\\frac{\\text{grand total}}{\\text{row total} \\times \\text{column total}}$",
+        "$\\text{row total} \\times \\text{column total}$",
+        "$\\frac{\\text{row total} + \\text{column total}}{\\text{grand total}}$"
+      ],
+      "answer": 0,
+      "explanation": "Under independence the expected cell count is $\\frac{(\\text{row total})(\\text{column total})}{\\text{grand total}}$. Adding the margins instead of multiplying, or omitting the division by the grand total, gives the wrong expected value. This formula follows from multiplying the estimated marginal probabilities by $N$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-007",
+      "stem": "A contingency-table cell has a row total of $40$, a column total of $50$, and a grand total of $200$. What is its expected count?",
+      "options": [
+        "$90$",
+        "$4$",
+        "$20$",
+        "$10$"
+      ],
+      "answer": 3,
+      "explanation": "The expected count is $\\frac{40 \\times 50}{200} = \\frac{2000}{200} = 10$. The value $90$ comes from adding the margins, and $20$ divides only one margin by the grand total. The product form is required.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-008",
+      "stem": "A single cell has observed count $O = 30$ and expected count $E = 25$. What is its contribution to the chi-square statistic?",
+      "options": [
+        "$0.83$",
+        "$5.0$",
+        "$1.0$",
+        "$0.2$"
+      ],
+      "answer": 2,
+      "explanation": "The contribution is $\\frac{(O - E)^2}{E} = \\frac{(30 - 25)^2}{25} = \\frac{25}{25} = 1.0$. The value $0.2$ forgets to square the difference ($\\frac{5}{25}$), and $5.0$ is just the raw difference. Each cell contributes a non-negative amount.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-009",
+      "stem": "The chi-square test (goodness-of-fit or independence) rejects the null hypothesis in which tail?",
+      "options": [
+        "the upper (right) tail only",
+        "the lower tail only",
+        "neither tail",
+        "both tails"
+      ],
+      "answer": 0,
+      "explanation": "Large discrepancies between observed and expected counts make $\\chi^2$ large, so the rejection region is the upper tail, making it a right-tailed test. Small values indicate good agreement with the null and never lead to rejection. There is no lower-tail rejection region.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-010",
+      "stem": "Four categories have observed counts $10, 20, 30, 40$ and, under the null of equal probabilities with $n = 100$, expected counts of $25$ each. What is the chi-square statistic?",
+      "options": [
+        "$4$",
+        "$10$",
+        "$20$",
+        "$100$"
+      ],
+      "answer": 2,
+      "explanation": "The terms are $\\frac{(10-25)^2}{25} = 9$, $\\frac{(20-25)^2}{25} = 1$, $\\frac{(30-25)^2}{25} = 1$, $\\frac{(40-25)^2}{25} = 9$, summing to $9 + 1 + 1 + 9 = 20$. The value $10$ adds only the squared differences over a wrong divisor, and the test has $k - 1 = 3$ degrees of freedom.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-011",
+      "stem": "The null hypothesis in a chi-square test of independence states which of the following?",
+      "options": [
+        "the sample size is large enough",
+        "all expected counts are equal",
+        "the two categorical variables are independent",
+        "the two variables are perfectly correlated"
+      ],
+      "answer": 2,
+      "explanation": "A test of independence has $H_0$: the two categorical variables are independent (no association). The alternative is that they are associated. Equal expected counts is a feature of a uniform goodness-of-fit null, not of independence, and the sample-size adequacy is a separate condition.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-012",
+      "stem": "A $2 \\times 2$ contingency table is tested for independence. How many degrees of freedom does it have?",
+      "options": [
+        "$1$",
+        "$3$",
+        "$4$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "For a $2 \\times 2$ table the degrees of freedom are $(2 - 1)(2 - 1) = 1 \\times 1 = 1$. The value $4$ is the cell count, and $3$ would be $rc - 1$, which is not the rule for independence. Once one cell and the margins are fixed, the rest are determined.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-013",
+      "stem": "Three categories have observed counts $20, 30, 50$ with expected counts $25, 25, 50$. What is the chi-square statistic?",
+      "options": [
+        "$0$",
+        "$10$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "The contributions are $\\frac{(20-25)^2}{25} = 1$, $\\frac{(30-25)^2}{25} = 1$, and $\\frac{(50-50)^2}{50} = 0$, summing to $1 + 1 + 0 = 2$. The matched third category adds nothing. The value $1$ counts only one of the two nonzero terms.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-014",
+      "stem": "A common rule of thumb for the validity of the chi-square approximation is which of the following?",
+      "options": [
+        "the total sample size must be below $50$",
+        "every observed count must be at least $30$",
+        "every expected count should be at least $5$ (or so)",
+        "all categories must have equal observed counts"
+      ],
+      "answer": 2,
+      "explanation": "The chi-square approximation is reliable when the expected counts are not too small, with a common guideline of at least about $5$ per cell. The condition is on expected, not observed, counts, and there is no upper limit on sample size. Equal observed counts are not required.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-015",
+      "stem": "A goodness-of-fit test gives $\\chi^2 = 20$ with $3$ degrees of freedom, and the critical value is $\\chi^2_{0.05,\\,3} = 7.81$. What is the decision?",
+      "options": [
+        "the data perfectly fit the model",
+        "reject $H_0$; the observed distribution differs from the expected",
+        "the test is invalid",
+        "fail to reject $H_0$; the fit is adequate"
+      ],
+      "answer": 1,
+      "explanation": "Since $20 > 7.81$, the statistic lies in the upper-tail rejection region and we reject $H_0$, concluding the observed counts differ from those expected under the model. A large $\\chi^2$ signals poor fit, the opposite of a perfect fit. The test is valid given adequate expected counts.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-016",
+      "stem": "When some expected counts in a table are too small, a common remedy is which of the following?",
+      "options": [
+        "use the observed counts as the expected counts",
+        "combine (collapse) adjacent categories to raise the expected counts",
+        "delete the entire table",
+        "increase the significance level to $0.5$"
+      ],
+      "answer": 1,
+      "explanation": "Merging adjacent or related categories pools their counts, raising the expected values so the chi-square approximation becomes trustworthy. Deleting the table or inflating $\\alpha$ does not fix the approximation, and setting expected equal to observed would force $\\chi^2 = 0$, which is meaningless. Collapsing categories reduces the degrees of freedom accordingly.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-017",
+      "stem": "The shape of the chi-square distribution is which of the following?",
+      "options": [
+        "left-skewed",
+        "right-skewed and taking only non-negative values",
+        "symmetric about zero",
+        "uniform on $[0, 1]$"
+      ],
+      "answer": 1,
+      "explanation": "The chi-square distribution is right-skewed and supported on non-negative values, since it is built from sums of squares. It is not symmetric like the normal or $t$ distributions. As the degrees of freedom grow it becomes more symmetric but never takes negative values.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-018",
+      "stem": "In a goodness-of-fit test where one parameter is estimated from the data before computing expected counts, the degrees of freedom for $k$ categories become which of the following?",
+      "options": [
+        "$k$",
+        "$k + 1$",
+        "$k - 2$",
+        "$k - 1$"
+      ],
+      "answer": 2,
+      "explanation": "Each parameter estimated from the data costs one additional degree of freedom, so with one estimated parameter the count is $(k - 1) - 1 = k - 2$. For example, fitting a Poisson model and estimating its mean reduces the usual $k - 1$ by one. With no estimation the value would be $k - 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-019",
+      "stem": "A $4 \\times 5$ contingency table is tested for independence. How many degrees of freedom does it have?",
+      "options": [
+        "$12$",
+        "$19$",
+        "$20$",
+        "$9$"
+      ],
+      "answer": 0,
+      "explanation": "The degrees of freedom are $(4 - 1)(5 - 1) = 3 \\times 4 = 12$. The value $20$ is the number of cells $rc$, and $9$ would be $(r-1) \\times (c-1)$ miscomputed. The product of the reduced dimensions is the rule.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-020",
+      "stem": "Two cells contribute $\\frac{(40 - 50)^2}{50}$ and $\\frac{(60 - 50)^2}{50}$ to a chi-square statistic. What is the combined contribution of these two cells?",
+      "options": [
+        "$2$",
+        "$4$",
+        "$20$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "Each term is $\\frac{(\\pm 10)^2}{50} = \\frac{100}{50} = 2$, and there are two of them, so together they give $2 + 2 = 4$. The squaring removes the sign, so both over- and under-counts add positively. The value $2$ counts only one cell.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-021",
+      "stem": "A chi-square test of independence yields $\\chi^2 = 3.0$ with $2$ degrees of freedom, and $\\chi^2_{0.05,\\,2} = 5.99$. What is the conclusion?",
+      "options": [
+        "the expected counts are wrong",
+        "fail to reject $H_0$; no significant association",
+        "reject $H_0$; the variables are associated",
+        "the variables are independent for certain"
+      ],
+      "answer": 1,
+      "explanation": "Since $3.0 < 5.99$, the statistic falls below the critical value, so we fail to reject $H_0$ and find no significant evidence of association. Failing to reject does not prove independence with certainty; it only means the data are consistent with it. Nothing here indicates an error in the expected counts.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-022",
+      "stem": "Which of the following is best analyzed with a chi-square test?",
+      "options": [
+        "comparing the mean heights of three groups",
+        "testing whether eye colour and hair colour are associated in a sample, using count data in a table",
+        "estimating a population mean",
+        "comparing two variances"
+      ],
+      "answer": 1,
+      "explanation": "Chi-square tests handle categorical (count) data, so testing the association between eye colour and hair colour in a contingency table is the natural fit. Comparing means of groups uses ANOVA, estimating a mean uses a confidence interval, and comparing variances uses an $F$ test. The key signal is that the data are counts in categories.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-023",
+      "format": "cloze",
+      "stem": "A goodness-of-fit test compares observed counts $30, 50, 20$ with expected counts $40, 40, 20$ across three categories.",
+      "solution": "The first cell contributes $\\frac{(30 - 40)^2}{40} =$ {{1}}, the second contributes $\\frac{(50 - 40)^2}{40} = 2.5$, and the third contributes $0$. The total chi-square statistic is therefore {{2}}, tested against $k - 1 =$ {{3}} degrees of freedom.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "First cell $\\frac{(-10)^2}{40} = \\frac{100}{40} = 2.5$; second cell $\\frac{(10)^2}{40} = 2.5$; third cell $0$. Total $= 2.5 + 2.5 + 0 = 5$ with $3 - 1 = 2$ degrees of freedom.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-024",
+      "format": "cloze",
+      "stem": "A contingency table has a particular cell with row total $60$, column total $80$, and grand total $240$. The observed count in that cell is $30$.",
+      "solution": "The expected count is $\\frac{60 \\times 80}{240} =$ {{1}}. The contribution of this cell to the chi-square statistic is $\\frac{(30 - 20)^2}{20} =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Expected $= \\frac{60 \\times 80}{240} = \\frac{4800}{240} = 20$. Contribution $= \\frac{(30 - 20)^2}{20} = \\frac{100}{20} = 5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-025",
+      "format": "cloze",
+      "stem": "State the degrees of freedom for each chi-square test described.",
+      "solution": "A goodness-of-fit test on $5$ categories with no estimated parameters has $5 - 1 =$ {{1}} degrees of freedom. A test of independence on a $2 \\times 3$ contingency table has $(2 - 1)(3 - 1) =$ {{2}} degrees of freedom.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Goodness-of-fit: $k - 1 = 5 - 1 = 4$. Independence: $(r-1)(c-1) = 1 \\times 2 = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-026",
+      "format": "cloze",
+      "stem": "Interpret a chi-square test of independence with $\\chi^2 = 9.5$ on a $2 \\times 2$ table, where $\\chi^2_{0.05,\\,1} = 3.84$.",
+      "solution": "A $2 \\times 2$ table has $(2-1)(2-1) =$ {{1}} degree of freedom. The chi-square test is {{2}}, so we reject for large values. Since $9.5$ exceeds $3.84$, we {{3}} the null hypothesis of independence.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "right-tailed",
+            "left-tailed",
+            "two-tailed"
+          ],
+          "answer": "right-tailed"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "reject",
+            "fail to reject",
+            "accept"
+          ],
+          "answer": "reject"
+        }
+      ],
+      "explanation": "Degrees of freedom $= 1$. The chi-square test rejects in the upper tail, so it is right-tailed. Because $9.5 > 3.84$, the statistic is in the rejection region and we reject independence, concluding the variables are associated.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-027",
+      "format": "cloze",
+      "stem": "A die is rolled $120$ times to test fairness. Under the null each face is equally likely.",
+      "solution": "The expected count for each of the six faces is $\\frac{120}{6} =$ {{1}}. The goodness-of-fit test has $6 - 1 =$ {{2}} degrees of freedom. If one face shows an observed count of $30$, that face contributes $\\frac{(30 - 20)^2}{20} =$ {{3}} to the statistic.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Expected per face $= \\frac{120}{6} = 20$. Degrees of freedom $= 6 - 1 = 5$. A face with $30$ observed contributes $\\frac{(30 - 20)^2}{20} = \\frac{100}{20} = 5$.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistical-inference-chi-square-tests-028",
+      "format": "cloze",
+      "stem": "Match each study to the correct chi-square procedure and note a validity condition.",
+      "solution": "Testing whether observed blood-type frequencies match a known theoretical distribution is a {{1}} test. Testing whether smoking status and lung disease are related in a table of counts is a test of {{2}}. For the approximation to be trustworthy, each expected count should be at least about {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "goodness-of-fit",
+            "independence",
+            "two-sample t"
+          ],
+          "answer": "goodness-of-fit"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "independence",
+            "goodness-of-fit",
+            "homogeneity of variance"
+          ],
+          "answer": "independence"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Comparing observed frequencies to a fixed theoretical distribution is a goodness-of-fit test. Testing whether two categorical variables are related is a test of independence. The usual rule of thumb is expected counts of at least about $5$ per cell.",
+      "difficulty": "core",
+      "source": "in the style of Ramachandran, Mathematical Statistics with Applications"
+    }
+  ]
+}

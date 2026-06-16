@@ -1,0 +1,524 @@
+{
+  "courseId": "numerical-analysis-i",
+  "topicId": "numerical-differentiation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-001",
+      "stem": "The two-point forward difference approximation to the first derivative $f'(x_0)$ is which of the following?",
+      "options": [
+        "$\\dfrac{f(x_0 + h) - f(x_0 - h)}{2h}$",
+        "$\\dfrac{f(x_0 + h) - f(x_0)}{h}$",
+        "$\\dfrac{f(x_0 + h) - 2f(x_0) + f(x_0 - h)}{h^2}$",
+        "$\\dfrac{f(x_0) - f(x_0 - h)}{h}$"
+      ],
+      "answer": 1,
+      "explanation": "The forward difference derivative uses the next point ahead: $f'(x_0) \\approx \\frac{f(x_0 + h) - f(x_0)}{h}$. The first option is the backward difference, the third is the central difference, and the last is the second-derivative formula. The trap is confusing the one-sided forward formula with the symmetric central one; the forward version steps only forward by $h$.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-002",
+      "stem": "The central difference approximation to $f'(x_0)$ has a truncation error of which order in the step size $h$?",
+      "options": [
+        "$O(h^2)$",
+        "$O(h)$",
+        "$O(h^4)$",
+        "$O(h^3)$"
+      ],
+      "answer": 0,
+      "explanation": "Subtracting the Taylor expansions of $f(x_0 + h)$ and $f(x_0 - h)$ cancels the even-order error terms, leaving a leading error of $-\\frac{h^2}{6}f'''(\\xi)$, which is $O(h^2)$. The one-sided forward and backward formulas are only $O(h)$, while $O(h^3)$ and $O(h^4)$ overstate the accuracy of this three-point symmetric formula. The trap is assuming all simple difference quotients share the same order; symmetry buys the central formula one extra power of $h$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-003",
+      "stem": "For $f(x) = x^2$ at $x = 2$ with $h = 0.1$, the forward difference estimate of $f'(2)$ is which value?",
+      "options": [
+        "$4.0$",
+        "$4.41$",
+        "$4.1$",
+        "$3.9$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $\\frac{f(2.1) - f(2)}{0.1} = \\frac{4.41 - 4}{0.1} = \\frac{0.41}{0.1} = 4.1$. The exact derivative is $f'(2) = 4$, so the forward formula overshoots by $0.1$, consistent with its $O(h)$ error and leading term $\\frac{h}{2}f''(\\xi) = \\frac{0.1}{2}(2) = 0.1$. The value $4.0$ is the exact derivative, $3.9$ flips the error sign, and $4.41$ is a function value left undivided. The trap is reporting the exact derivative instead of the finite estimate, which differs by an $O(h)$ amount.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-004",
+      "stem": "The three-point central difference approximation to the second derivative $f''(x_0)$ is which of the following?",
+      "options": [
+        "$\\dfrac{f(x_0 + h) - 2f(x_0) + f(x_0 - h)}{h^2}$",
+        "$\\dfrac{f(x_0 + h) - 2f(x_0) + f(x_0 - h)}{2h}$",
+        "$\\dfrac{f(x_0 + h) + f(x_0 - h)}{h^2}$",
+        "$\\dfrac{f(x_0 + h) - f(x_0 - h)}{2h}$"
+      ],
+      "answer": 0,
+      "explanation": "Adding the Taylor expansions of $f(x_0 \\pm h)$ cancels the first-derivative terms and yields $f''(x_0) \\approx \\frac{f(x_0 + h) - 2f(x_0) + f(x_0 - h)}{h^2}$, with error $-\\frac{h^2}{12}f^{(4)}(\\xi)$. The first option is the first-derivative central formula, the third divides by $2h$ instead of $h^2$, and the fourth drops the $-2f(x_0)$ middle term. The trap is the denominator and the missing central term: a second derivative needs $h^2$ below and the $-2f(x_0)$ in the numerator.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-005",
+      "stem": "For $f(x) = x^3$ at $x = 1$ with $h = 0.5$, the central difference estimate of $f'(1)$ is which value?",
+      "options": [
+        "$2.75$",
+        "$3.25$",
+        "$3.00$",
+        "$3.50$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $\\frac{f(1.5) - f(0.5)}{2(0.5)} = \\frac{3.375 - 0.125}{1} = 3.25$. The exact value is $f'(1) = 3$, and the central error is $\\frac{h^2}{6}f'''(\\xi) = \\frac{0.25}{6}(6) = 0.25$, so the estimate overshoots to $3.25$. The value $3.00$ is exact, $2.75$ flips the error sign, and $3.50$ doubles the error. The trap is forgetting that even the central formula leaves an $O(h^2)$ residual for a cubic, since the third derivative is nonzero.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-006",
+      "stem": "For $f(x) = x^2$ at $x = 2$ with $h = 0.1$, the three-point central estimate of $f''(2)$ is which value?",
+      "options": [
+        "$4.0$",
+        "$2.0$",
+        "$0.0$",
+        "$1.0$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $\\frac{f(2.1) - 2f(2) + f(1.9)}{(0.1)^2} = \\frac{4.41 - 8 + 3.61}{0.01} = \\frac{0.02}{0.01} = 2.0$. The exact second derivative of $x^2$ is $2$, and since $f^{(4)} = 0$ the formula is exact. The value $1.0$ halves it, $4.0$ confuses it with the first derivative, and $0.0$ would require a linear function. The trap is arithmetic in the numerator: $4.41 - 8 + 3.61 = 0.02$ is small, and dividing by the small $h^2 = 0.01$ recovers the order-one second derivative.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-007",
+      "stem": "The three-point forward difference formula for the first derivative is $f'(x_0) \\approx \\dfrac{-3f_0 + 4f_1 - f_2}{2h}$, where $f_i = f(x_0 + ih)$. Its truncation error is of which order?",
+      "options": [
+        "$O(h)$",
+        "$O(h^4)$",
+        "$O(h^2)$",
+        "$O(h^3)$"
+      ],
+      "answer": 2,
+      "explanation": "This one-sided three-point formula is constructed to cancel the $O(h)$ error of the simple forward difference, leaving a leading error of $\\frac{h^2}{3}f'''(\\xi)$, which is $O(h^2)$, matching the accuracy of the central formula while using only points on one side. The simple two-point forward formula is $O(h)$, and $O(h^3)$ or $O(h^4)$ would need more points. The trap is assuming any forward-only formula must be first order; adding a third point raises it to second order.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-008",
+      "stem": "Given the cubes $f(1) = 1$, $f(2) = 8$, $f(3) = 27$, $f(4) = 64$, $f(5) = 125$ with $h = 1$, the central difference estimate of $f'(3)$ is which value?",
+      "options": [
+        "$27$",
+        "$26$",
+        "$28$",
+        "$37$"
+      ],
+      "answer": 2,
+      "explanation": "The central formula at $x = 3$ uses the neighbours $f(4)$ and $f(2)$: $\\frac{f(4) - f(2)}{2h} = \\frac{64 - 8}{2} = \\frac{56}{2} = 28$. The exact derivative is $f'(3) = 3(9) = 27$, and the error is $\\frac{h^2}{6}f'''(\\xi) = \\frac{1}{6}(6) = 1$, giving $28$. The value $27$ is exact, $26$ flips the sign of the error, and $37 = f(4) - f(3)$ is the one-sided forward estimate. The trap is using a one-sided difference when a centred neighbour pair is available and more accurate.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-009",
+      "stem": "Why is numerical differentiation generally considered an unstable or error-sensitive process for very small $h$?",
+      "options": [
+        "Subtractive cancellation amplifies rounding error as $h \\to 0$",
+        "The derivative does not exist for small $h$",
+        "Truncation error grows without bound as $h \\to 0$",
+        "The formula becomes exact only at large $h$"
+      ],
+      "answer": 0,
+      "explanation": "As $h$ shrinks, the function values in the numerator become nearly equal, so subtracting them loses significant digits, and dividing the contaminated difference by the tiny $h$ magnifies the rounding error roughly like $\\varepsilon/h$. Truncation error actually decreases as $h \\to 0$, the derivative still exists, and the formulas are most accurate for moderately small, not large, $h$. The trap is assuming smaller $h$ is always better; the roundoff term sets a practical floor and there is an optimal intermediate $h$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-010",
+      "stem": "The total error of the forward difference derivative behaves like $E(h) \\approx \\dfrac{M h}{2} + \\dfrac{2\\varepsilon}{h}$, with $M$ a bound on $f''$ and $\\varepsilon$ the rounding unit. The step size minimizing this total error scales like which of the following?",
+      "options": [
+        "$h \\sim \\sqrt{\\varepsilon}$",
+        "$h \\sim 1/\\varepsilon$",
+        "$h \\sim \\varepsilon$",
+        "$h \\sim \\varepsilon^{2}$"
+      ],
+      "answer": 0,
+      "explanation": "Differentiating $E(h) = \\frac{Mh}{2} + \\frac{2\\varepsilon}{h}$ and setting $E'(h) = \\frac{M}{2} - \\frac{2\\varepsilon}{h^2} = 0$ gives $h^2 = \\frac{4\\varepsilon}{M}$, so $h \\sim \\sqrt{\\varepsilon}$. The linear-in-$\\varepsilon$ option ignores the balance between the two error terms, $\\varepsilon^2$ shrinks far too fast, and $1/\\varepsilon$ grows instead of shrinks. The trap is overlooking the optimization: the best $h$ balances truncation against roundoff and lands at the square root of the machine precision.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-011",
+      "stem": "Richardson extrapolation combines a second-order central difference $D(h)$ and $D(h/2)$ to cancel the leading error term. The improved estimate is which combination?",
+      "options": [
+        "$2D(h/2) - D(h)$",
+        "$\\dfrac{4D(h/2) - D(h)}{3}$",
+        "$\\dfrac{D(h) - D(h/2)}{3}$",
+        "$\\dfrac{D(h) + D(h/2)}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "For a method whose error is $O(h^2)$, halving $h$ divides the leading error by $4$, so the combination $\\frac{4D(h/2) - D(h)}{3}$ eliminates that term and yields an $O(h^4)$ estimate. A plain average does not cancel anything, $\\frac{D(h) - D(h/2)}{3}$ has the wrong weights, and $2D(h/2) - D(h)$ is the Richardson rule for an $O(h)$ method, not $O(h^2)$. The trap is using the factor for first-order error; a second-order method needs the factor $4$ tied to $h^2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-012",
+      "stem": "For $f(x) = x^4$ at $x = 1$, the central difference $D(h)$ gives $D(1) = 8$ and $D(0.5) = 5$. Richardson extrapolation $\\dfrac{4D(0.5) - D(1)}{3}$ produces which value?",
+      "options": [
+        "$4$",
+        "$5$",
+        "$8$",
+        "$6$"
+      ],
+      "answer": 0,
+      "explanation": "Apply the rule: $\\frac{4(5) - 8}{3} = \\frac{20 - 8}{3} = \\frac{12}{3} = 4$. The exact derivative is $f'(1) = 4(1)^3 = 4$, and Richardson is exact here because the extrapolation removes the $h^2$ error and the $h^4$ term vanishes for a quartic. The value $5$ is just $D(0.5)$, $8$ is $D(1)$, and $6$ averages them. The trap is reporting one of the raw central estimates instead of carrying out the weighted combination.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-013",
+      "stem": "The leading truncation error term of the central difference first-derivative formula is which expression?",
+      "options": [
+        "$-\\dfrac{h^4}{30}f^{(5)}(\\xi)$",
+        "$-\\dfrac{h^2}{6}f'''(\\xi)$",
+        "$-\\dfrac{h^2}{12}f^{(4)}(\\xi)$",
+        "$-\\dfrac{h}{2}f''(\\xi)$"
+      ],
+      "answer": 1,
+      "explanation": "Expanding $\\frac{f(x + h) - f(x - h)}{2h}$ in Taylor series gives $f'(x) + \\frac{h^2}{6}f'''(x) + \\cdots$, so the leading error is $-\\frac{h^2}{6}f'''(\\xi)$ when written as exact minus approximate. The term $-\\frac{h}{2}f''(\\xi)$ belongs to the forward difference, $-\\frac{h^2}{12}f^{(4)}(\\xi)$ is the second-derivative formula's error, and the $h^4$ term is higher order. The trap is matching the wrong derivative and power to the central first-derivative formula, whose error rides on $f'''$ at order $h^2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-014",
+      "stem": "Using the squares $f(1) = 1$, $f(2) = 4$, $f(3) = 9$ at $x = 1$ with $h = 1$, the three-point forward estimate $\\dfrac{-3f_0 + 4f_1 - f_2}{2h}$ of $f'(1)$ gives which value?",
+      "options": [
+        "$3$",
+        "$2$",
+        "$4$",
+        "$7$"
+      ],
+      "answer": 1,
+      "explanation": "Substitute $f_0 = 1$, $f_1 = 4$, $f_2 = 9$: $\\frac{-3(1) + 4(4) - 9}{2(1)} = \\frac{-3 + 16 - 9}{2} = \\frac{4}{2} = 2$. The exact derivative is $f'(1) = 2(1) = 2$, and the three-point forward formula is exact for a quadratic because its $O(h^2)$ error rides on $f'''$, which is zero. The value $3 = f(2) - f(1)$ is the simple two-point forward estimate, $7$ uses raw cube differences, and $4$ misreads a node. The trap is reaching for the two-point forward difference when the more accurate three-point stencil is specified.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-015",
+      "stem": "The backward difference approximation $f'(x_0) \\approx \\dfrac{f(x_0) - f(x_0 - h)}{h}$ has which order of accuracy?",
+      "options": [
+        "$O(h^2)$",
+        "$O(h^3)$",
+        "Exact for all functions",
+        "$O(h)$"
+      ],
+      "answer": 3,
+      "explanation": "Like the forward difference, the two-point backward formula retains a leading error of $\\frac{h}{2}f''(\\xi)$, so it is only first order, $O(h)$. It is not $O(h^2)$ (that requires symmetry or a third point), not $O(h^3)$, and certainly not exact except for linear functions. The trap is assuming backward differencing is more accurate than forward differencing; both one-sided two-point formulas share the same first-order error.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-016",
+      "stem": "Given $f(1) = 1$, $f(2) = 8$, $f(3) = 27$ (cubes) with $h = 1$, the three-point central estimate of $f''(2)$ is which value?",
+      "options": [
+        "$12$",
+        "$6$",
+        "$18$",
+        "$9$"
+      ],
+      "answer": 0,
+      "explanation": "Apply $\\frac{f(3) - 2f(2) + f(1)}{h^2} = \\frac{27 - 16 + 1}{1} = 12$. The exact second derivative is $f''(2) = 6(2) = 12$, and the formula is exact for a cubic because $f^{(4)} = 0$. The value $6$ confuses $f''(2)$ with $f''$ evaluated elsewhere or halves the result, $18$ adds rather than subtracts the middle term, and $9$ does not arise. The trap is the numerator sign on the middle term: it is $-2f(2)$, giving $27 - 16 + 1 = 12$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-017",
+      "stem": "Differentiating an interpolating polynomial to obtain derivative formulas is the standard derivation route. Compared with interpolation, numerical differentiation is generally which of the following?",
+      "options": [
+        "Exactly as accurate as interpolation",
+        "Less accurate and more sensitive to errors than interpolation",
+        "Independent of the data errors",
+        "More accurate than interpolation"
+      ],
+      "answer": 1,
+      "explanation": "Differentiation amplifies high-frequency error: small perturbations in the data produce larger perturbations in the slope, and dividing by $h$ magnifies them further, so derivative estimates are less accurate and more error-sensitive than the interpolation they come from. They are not more accurate, not identical in accuracy, and definitely not immune to data error. The trap is treating differentiation as benign like interpolation; it is a smoothing operation in reverse and inflates noise.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-018",
+      "stem": "For $f(x) = \\sin x$ near $x = 0$, with the data $f(-h) = -\\sin h$, $f(0) = 0$, $f(h) = \\sin h$, the central difference estimate of $f'(0)$ equals which expression?",
+      "options": [
+        "$\\dfrac{2\\sin h}{h}$",
+        "$\\dfrac{\\sin h}{h}$",
+        "$\\cos h$",
+        "$\\sin h$"
+      ],
+      "answer": 1,
+      "explanation": "The central formula gives $\\frac{f(h) - f(-h)}{2h} = \\frac{\\sin h - (-\\sin h)}{2h} = \\frac{2\\sin h}{2h} = \\frac{\\sin h}{h}$. Since $\\frac{\\sin h}{h} \\to 1 = \\cos 0 = f'(0)$ as $h \\to 0$, the estimate is consistent. The option $\\cos h$ is the exact derivative function, not the difference estimate, $\\frac{2\\sin h}{h}$ forgets the $2$ in the denominator, and $\\sin h$ drops the division by $h$. The trap is cancelling the $2$ from the numerator against the $2h$ denominator incorrectly; they reduce to a single $\\frac{\\sin h}{h}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-019",
+      "stem": "For $f(x) = x^2$ tabulated at $x = 2, 3, 4$ as $4, 9, 16$ with $h = 1$, the central difference estimate of $f'(3)$ is which value?",
+      "options": [
+        "$5$",
+        "$7$",
+        "$6.5$",
+        "$6$"
+      ],
+      "answer": 3,
+      "explanation": "The central estimate at $x = 3$ is $\\frac{f(4) - f(2)}{2h} = \\frac{16 - 4}{2} = \\frac{12}{2} = 6$. The exact derivative is $f'(3) = 2(3) = 6$, and the central formula is exact for a quadratic since $f''' = 0$. The values $5 = f(3) - f(2)$ and $7 = f(4) - f(3)$ are the one-sided differences, and $6.5$ averages them improperly. The trap is using a one-sided difference; the symmetric central pair gives the exact slope here.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-020",
+      "stem": "Which step size strategy gives the best practical accuracy for a first-derivative finite difference on a computer?",
+      "options": [
+        "Take $h$ at an intermediate value balancing truncation and roundoff",
+        "The choice of $h$ has no effect on accuracy",
+        "Take $h$ as large as possible",
+        "Take $h$ as small as the machine allows"
+      ],
+      "answer": 0,
+      "explanation": "Truncation error falls as $h$ decreases while roundoff error rises like $\\varepsilon/h$, so the total error is minimized at an intermediate $h$, near $\\sqrt{\\varepsilon}$ for a first-order formula. Pushing $h$ to the smallest representable value lets roundoff dominate, a large $h$ lets truncation dominate, and claiming no effect ignores both error sources. The trap is the intuition that smaller is always better; the competition between the two errors creates a sweet spot.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-021",
+      "stem": "The leading truncation error of the three-point central second-derivative formula is which expression?",
+      "options": [
+        "$-\\dfrac{h^4}{90}f^{(6)}(\\xi)$",
+        "$-\\dfrac{h^2}{6}f'''(\\xi)$",
+        "$-\\dfrac{h^2}{12}f^{(4)}(\\xi)$",
+        "$-\\dfrac{h}{2}f''(\\xi)$"
+      ],
+      "answer": 2,
+      "explanation": "Expanding $\\frac{f(x + h) - 2f(x) + f(x - h)}{h^2}$ gives $f''(x) + \\frac{h^2}{12}f^{(4)}(x) + \\cdots$, so the leading error is $-\\frac{h^2}{12}f^{(4)}(\\xi)$. The term with $f'''$ at order $h^2$ is the first-derivative central error, the $\\frac{h}{2}f''$ term is a one-sided first-derivative error, and the $h^4$ term is higher order. The trap is attaching the wrong derivative order to the formula; the second-derivative error rides on the fourth derivative.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-022",
+      "stem": "Given $f(0) = 0$, $f(0.5) = 0.25$, $f(1.0) = 1.0$ from $f(x) = x^2$, the forward difference estimate of $f'(0)$ with $h = 0.5$ is which value?",
+      "options": [
+        "$1.0$",
+        "$0.5$",
+        "$0.25$",
+        "$0.0$"
+      ],
+      "answer": 1,
+      "explanation": "The forward estimate is $\\frac{f(0.5) - f(0)}{0.5} = \\frac{0.25 - 0}{0.5} = 0.5$. The exact derivative is $f'(0) = 0$, so the estimate is off by $0.5$, matching the $O(h)$ error $\\frac{h}{2}f'' = \\frac{0.5}{2}(2) = 0.5$. The value $0.0$ is the exact derivative, $1.0$ uses the far point $f(1)$ over the wrong span, and $0.25$ is an undivided difference. The trap is reading the exact derivative; near a flat point the one-sided estimate still carries a sizeable first-order error.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-023",
+      "format": "cloze",
+      "stem": "Apply finite difference formulas to $f(x) = x^2$ at $x = 2$ with step $h = 0.1$, using $f(1.9) = 3.61$, $f(2.0) = 4.00$, $f(2.1) = 4.41$.",
+      "solution": "The forward difference estimate of $f'(2)$ is $\\dfrac{4.41 - 4.00}{0.1} =$ {{1}}. The central difference estimate of $f'(2)$ is $\\dfrac{4.41 - 3.61}{0.2} =$ {{2}}. The three-point estimate of $f''(2)$ is $\\dfrac{4.41 - 8.00 + 3.61}{0.01} =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4.1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "Forward: $\\frac{0.41}{0.1} = 4.1$ (exact derivative $4$, error $0.1$). Central: $\\frac{0.80}{0.2} = 4.0$ (exact for a quadratic). Second derivative: $\\frac{0.02}{0.01} = 2.0$ (exact, since $f'' = 2$).",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-024",
+      "format": "cloze",
+      "stem": "Classify the accuracy of the standard finite difference formulas by order of the step size $h$.",
+      "solution": "The two-point forward difference for $f'$ is accurate to order {{1}} in $h$. The three-point central difference for $f'$ is accurate to order {{2}} in $h$. For the central second-derivative formula, the derivative appearing in its leading error term is the {{3}} derivative of $f$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$h$",
+            "$h^2$",
+            "$h^3$",
+            "$h^4$"
+          ],
+          "answer": "$h$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$h$",
+            "$h^2$",
+            "$h^3$",
+            "$h^4$"
+          ],
+          "answer": "$h^2$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "second",
+            "third",
+            "fourth",
+            "fifth"
+          ],
+          "answer": "fourth"
+        }
+      ],
+      "explanation": "Forward difference: error $\\frac{h}{2}f''$, order $h$. Central first derivative: error $\\frac{h^2}{6}f'''$, order $h^2$. Central second derivative: error $\\frac{h^2}{12}f^{(4)}$, so the fourth derivative governs the leading error.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-025",
+      "format": "cloze",
+      "stem": "Use the cubes $f(1) = 1$, $f(2) = 8$, $f(3) = 27$, $f(4) = 64$, $f(5) = 125$ with $h = 1$ to estimate derivatives at $x = 3$.",
+      "solution": "The central difference estimate of $f'(3)$ is $\\dfrac{64 - 8}{2} =$ {{1}}. Since the exact derivative is $f'(3) = 27$, the estimate carries an error of {{2}}. The three-point central estimate of $f''(3)$ is $\\dfrac{64 - 54 + 8}{1} =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 28,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 18,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Central first derivative: $\\frac{64 - 8}{2} = 28$, which exceeds the exact $27$ by an error of $1$ (the term $\\frac{h^2}{6}f''' = 1$). Central second derivative: $\\frac{f(4) - 2f(3) + f(2)}{1} = \\frac{64 - 54 + 8}{1} = 18$, matching the exact $f''(3) = 6(3) = 18$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-026",
+      "format": "cloze",
+      "stem": "Richardson extrapolation is applied to the second-order central difference for $f'$ at a point, with $D(1) = 8$ and $D(0.5) = 5$ for $f(x) = x^4$ at $x = 1$.",
+      "solution": "Because the central difference error is order $h^2$, halving $h$ divides the leading error by the factor {{1}}. The extrapolated estimate is $\\dfrac{4(5) - 8}{3} =$ {{2}}, which matches the exact derivative $f'(1) = 4(1)^3$ equal to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "An $O(h^2)$ error shrinks by $2^2 = 4$ when $h$ is halved, which is why the Richardson weights are $4$ and $1$ over $3$. The combination $\\frac{4(5) - 8}{3} = \\frac{12}{3} = 4$ equals the exact derivative $f'(1) = 4$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-027",
+      "format": "cloze",
+      "stem": "Reason about the stability of numerical differentiation as the step size changes.",
+      "solution": "As $h$ decreases, the truncation error of a finite difference formula {{1}}. At the same time, because nearly equal function values are subtracted, the rounding error {{2}}. The optimal step size for a first-order formula therefore scales like the square root of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "decreases",
+            "increases",
+            "stays constant",
+            "becomes negative"
+          ],
+          "answer": "decreases"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "increases",
+            "decreases",
+            "stays constant",
+            "vanishes"
+          ],
+          "answer": "increases"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "the machine rounding unit",
+            "the step size",
+            "the function value",
+            "the derivative order"
+          ],
+          "answer": "the machine rounding unit"
+        }
+      ],
+      "explanation": "Truncation error is proportional to a positive power of $h$, so it decreases as $h \\to 0$. Roundoff error behaves like $\\varepsilon/h$ and grows as $h \\to 0$. Balancing $\\frac{Mh}{2}$ against $\\frac{2\\varepsilon}{h}$ gives an optimal $h \\sim \\sqrt{\\varepsilon}$, the square root of the machine rounding unit.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-numerical-differentiation-028",
+      "format": "cloze",
+      "stem": "Evaluate one-sided derivative estimates for $f(x) = x^2$ at $x = 0$ using $f(0) = 0$, $f(0.5) = 0.25$, $f(1) = 1$ with $h = 0.5$.",
+      "solution": "The forward difference estimate of $f'(0)$ is $\\dfrac{0.25 - 0}{0.5} =$ {{1}}. The exact derivative is $f'(0) = 0$, so the magnitude of the error here is {{2}}. The error of the two-point forward formula is of order {{3}} in $h$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$h$",
+            "$h^2$",
+            "$h^3$",
+            "$h^4$"
+          ],
+          "answer": "$h$"
+        }
+      ],
+      "explanation": "Forward estimate: $\\frac{0.25}{0.5} = 0.5$. Exact derivative is $0$, so the error magnitude is $0.5$, consistent with $\\frac{h}{2}f'' = \\frac{0.5}{2}(2) = 0.5$. The two-point forward formula has $O(h)$ accuracy.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    }
+  ]
+}

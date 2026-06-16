@@ -1,0 +1,451 @@
+{
+  "courseId": "real-analysis-ii",
+  "topicId": "riemann-integration",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-analysis-ii-riemann-integration-001",
+      "stem": "For a bounded function $f$ on $[a,b]$ and a partition $P$, the lower Darboux sum $L(f, P)$ is formed using which value of $f$ on each subinterval $[x_{i-1}, x_i]$?",
+      "options": [
+        "The value at the right endpoint $f(x_i)$.",
+        "The average of the endpoint values.",
+        "The infimum $m_i = \\inf\\{f(x) : x \\in [x_{i-1}, x_i]\\}$.",
+        "The supremum $M_i = \\sup\\{f(x) : x \\in [x_{i-1}, x_i]\\}$."
+      ],
+      "answer": 2,
+      "explanation": "The lower sum uses the infimum on each subinterval: $L(f,P) = \\sum_i m_i\\,(x_i - x_{i-1})$ with $m_i = \\inf f$ over $[x_{i-1},x_i]$. The upper sum uses the suprema $M_i$ instead. Endpoint or average values give Riemann sums for particular tag choices, not the Darboux lower sum, which always sits at or below every Riemann sum.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-002",
+      "stem": "A bounded function $f$ on $[a,b]$ is Riemann integrable if and only if which equality holds?",
+      "options": [
+        "$f$ is continuous on $[a,b]$.",
+        "The lower integral $\\underline{\\int} f$ equals the upper integral $\\overline{\\int} f$.",
+        "Every Riemann sum equals zero.",
+        "The supremum of $f$ equals its infimum."
+      ],
+      "answer": 1,
+      "explanation": "By the Darboux characterization, $f$ is integrable exactly when the lower integral (supremum of lower sums) equals the upper integral (infimum of upper sums), and the common value is $\\int_a^b f$. Continuity is sufficient but not necessary, and equality of $\\sup f$ and $\\inf f$ would force $f$ constant. The defining condition is the squeeze of lower and upper integrals.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-003",
+      "stem": "The Riemann (Cauchy) integrability criterion states that $f$ is integrable on $[a,b]$ if and only if:",
+      "options": [
+        "$f$ is differentiable on $[a,b]$.",
+        "for every $\\varepsilon > 0$ there is a partition $P$ with $U(f,P) - L(f,P) < \\varepsilon$.",
+        "the upper sums are unbounded.",
+        "for some partition $P$, $U(f,P) = L(f,P)$."
+      ],
+      "answer": 1,
+      "explanation": "The standard criterion: $f$ is integrable iff for each $\\varepsilon > 0$ a partition $P$ exists making the gap between the upper and lower sums smaller than $\\varepsilon$, that is $U(f,P) - L(f,P) < \\varepsilon$. Demanding exact equality $U = L$ for a single partition is far too strong (it essentially forces $f$ constant), and differentiability is unrelated to integrability of a general bounded $f$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-004",
+      "stem": "Which condition is sufficient (on its own) to guarantee that a function is Riemann integrable on $[a,b]$?",
+      "options": [
+        "$f$ is nowhere continuous.",
+        "$f$ takes only irrational values.",
+        "$f$ is continuous on $[a,b]$.",
+        "$f$ is unbounded on $[a,b]$."
+      ],
+      "answer": 2,
+      "explanation": "Continuity on a closed bounded interval implies (uniform continuity and hence) Riemann integrability, so this is a clean sufficient condition. Unbounded functions are not Riemann integrable in the proper sense, and a nowhere-continuous function such as Dirichlet's is the standard non-integrable example. The arithmetic nature of the values is irrelevant.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-005",
+      "stem": "Which of the following functions on $[0,1]$ is also guaranteed to be Riemann integrable, besides continuous functions?",
+      "options": [
+        "Any unbounded function on $[0,1]$.",
+        "Only constant functions.",
+        "Any monotone function on $[0,1]$.",
+        "Only polynomials."
+      ],
+      "answer": 2,
+      "explanation": "A monotone function on a closed bounded interval is Riemann integrable: even if it has jumps, they are at most countable and the total oscillation telescopes, so the upper and lower sums can be brought within any $\\varepsilon$. Boundedness is required (an unbounded function is not integrable), and the class of integrable functions is far larger than just polynomials or constants.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-006",
+      "stem": "A bounded function on $[a,b]$ with only finitely many points of discontinuity is:",
+      "options": [
+        "integrable only if it is also monotone.",
+        "Riemann integrable.",
+        "never Riemann integrable.",
+        "integrable only if the discontinuities are removable."
+      ],
+      "answer": 1,
+      "explanation": "A bounded function with finitely many discontinuities is Riemann integrable: the misbehaving points can be enclosed in finitely many short subintervals whose total length, times the bounded oscillation, is as small as desired, while the function is well controlled elsewhere. The type of discontinuity (jump, removable, oscillatory) does not matter as long as there are finitely many and $f$ stays bounded.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-007",
+      "stem": "Why is the Dirichlet function $D$ (with $D = 1$ on rationals and $D = 0$ on irrationals) NOT Riemann integrable on $[0,1]$?",
+      "options": [
+        "Because $D$ is unbounded.",
+        "Because $D$ is continuous.",
+        "Because the rationals are uncountable.",
+        "Because on every subinterval $\\sup D = 1$ and $\\inf D = 0$, so $U(D,P) = 1$ and $L(D,P) = 0$ for all $P$."
+      ],
+      "answer": 3,
+      "explanation": "By density, every subinterval contains both rationals and irrationals, so $\\sup D = 1$ and $\\inf D = 0$ on each. Hence for every partition $U(D,P) = 1$ and $L(D,P) = 0$, giving upper integral $1$ and lower integral $0$. These never meet, so the Riemann criterion fails. The function is bounded (not unbounded) and is nowhere continuous, and the rationals are countable.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-008",
+      "stem": "Evaluate the definite integral $\\displaystyle\\int_0^1 x\\,dx$.",
+      "options": [
+        "$1$",
+        "$\\dfrac{1}{2}$",
+        "$2$",
+        "$\\dfrac{1}{3}$"
+      ],
+      "answer": 1,
+      "explanation": "By the Fundamental Theorem of Calculus, $\\int_0^1 x\\,dx = \\left[\\frac{x^2}{2}\\right]_0^1 = \\frac{1}{2} - 0 = \\frac{1}{2}$. Geometrically this is the area of the triangle under the line $y = x$ from $0$ to $1$, with base and height $1$, namely $\\frac{1}{2}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-009",
+      "stem": "Evaluate $\\displaystyle\\int_0^1 x^2\\,dx$.",
+      "options": [
+        "$\\dfrac{1}{4}$",
+        "$\\dfrac{1}{3}$",
+        "$1$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "By the Fundamental Theorem, $\\int_0^1 x^2\\,dx = \\left[\\frac{x^3}{3}\\right]_0^1 = \\frac{1}{3}$. This is also the limit of the right-endpoint Riemann sums $\\sum_{i=1}^n (i/n)^2(1/n) = \\frac{(n+1)(2n+1)}{6n^2} \\to \\frac{1}{3}$, confirming the value from the definition.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-010",
+      "stem": "Evaluate $\\displaystyle\\int_1^3 2x\\,dx$.",
+      "options": [
+        "$8$",
+        "$4$",
+        "$9$",
+        "$6$"
+      ],
+      "answer": 0,
+      "explanation": "An antiderivative of $2x$ is $x^2$, so $\\int_1^3 2x\\,dx = \\left[x^2\\right]_1^3 = 9 - 1 = 8$. Equivalently this is the area of a trapezoid under $y = 2x$ from $1$ to $3$, with parallel sides $2$ and $6$ and width $2$: $\\frac{1}{2}(2 + 6)\\cdot 2 = 8$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-011",
+      "stem": "Evaluate $\\displaystyle\\int_2^6 5\\,dx$, the integral of a constant.",
+      "options": [
+        "$5$",
+        "$30$",
+        "$10$",
+        "$20$"
+      ],
+      "answer": 3,
+      "explanation": "For a constant $c$, $\\int_a^b c\\,dx = c(b - a)$, the area of a rectangle of height $c$ and width $b - a$. Here $5 \\cdot (6 - 2) = 5 \\cdot 4 = 20$. Every Riemann sum equals $20$ exactly, since the function is constant on each subinterval.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-012",
+      "stem": "Evaluate $\\displaystyle\\int_0^{\\pi} \\sin x\\,dx$.",
+      "options": [
+        "$1$",
+        "$\\pi$",
+        "$2$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "An antiderivative of $\\sin x$ is $-\\cos x$, so $\\int_0^{\\pi} \\sin x\\,dx = \\left[-\\cos x\\right]_0^{\\pi} = -\\cos\\pi - (-\\cos 0) = -(-1) + 1 = 2$. The integral is positive because $\\sin x \\geq 0$ throughout $[0,\\pi]$, and it equals $2$, the area of one hump of the sine curve.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-013",
+      "stem": "The right-endpoint Riemann sum for $\\int_0^1 x\\,dx$ with $n$ equal subintervals is $\\sum_{i=1}^n \\frac{i}{n}\\cdot\\frac{1}{n}$. What is its limit as $n \\to \\infty$?",
+      "options": [
+        "$1$",
+        "$\\dfrac{1}{3}$",
+        "$0$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "answer": 3,
+      "explanation": "Using $\\sum_{i=1}^n i = \\frac{n(n+1)}{2}$, the sum is $\\frac{1}{n^2}\\cdot\\frac{n(n+1)}{2} = \\frac{n+1}{2n} = \\frac{1}{2} + \\frac{1}{2n}$. As $n \\to \\infty$ the second term vanishes, leaving $\\frac{1}{2}$. This is the integral $\\int_0^1 x\\,dx$ recovered as a limit of Riemann sums, matching the FTC value.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-014",
+      "stem": "The First Fundamental Theorem of Calculus says that if $f$ is continuous on $[a,b]$ and $F(x) = \\int_a^x f(t)\\,dt$, then:",
+      "options": [
+        "$F'(x) = f(x)$ for all $x \\in (a,b)$.",
+        "$F'(x) = f'(x)$.",
+        "$F(x) = f(x)$.",
+        "$F'(x) = 0$."
+      ],
+      "answer": 0,
+      "explanation": "The First Fundamental Theorem states that differentiating the accumulation function recovers the integrand: with $f$ continuous and $F(x) = \\int_a^x f$, we have $F'(x) = f(x)$. So $F$ is an antiderivative of $f$. It is not $f'$, nor $f$ itself, and $F'$ is generally nonzero.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-015",
+      "stem": "The Second Fundamental Theorem of Calculus (evaluation form) says that if $f$ is continuous on $[a,b]$ and $F$ is any antiderivative of $f$, then $\\int_a^b f$ equals:",
+      "options": [
+        "$F(b) - F(a)$",
+        "$f(b) - f(a)$",
+        "$F(b) + F(a)$",
+        "$F'(b) - F'(a)$"
+      ],
+      "answer": 0,
+      "explanation": "The evaluation form gives $\\int_a^b f(x)\\,dx = F(b) - F(a)$ for any antiderivative $F$ of $f$. This converts integration into a single subtraction of antiderivative values. Using $F'$ or $f$ at the endpoints, or adding instead of subtracting, all misstate the theorem.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-016",
+      "stem": "Using additivity of the integral, if $\\int_0^2 f = 5$ and $\\int_2^7 f = 3$, what is $\\int_0^7 f$?",
+      "options": [
+        "$15$",
+        "$8$",
+        "$2$",
+        "$5$"
+      ],
+      "answer": 1,
+      "explanation": "Additivity over adjacent intervals gives $\\int_0^7 f = \\int_0^2 f + \\int_2^7 f = 5 + 3 = 8$. This interval-additivity holds whenever $f$ is integrable on the pieces, and it is one of the basic structural properties of the Riemann integral.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-017",
+      "stem": "By linearity of the integral, if $\\int_a^b f = 4$ and $\\int_a^b g = 6$, what is $\\int_a^b (2f + g)$?",
+      "options": [
+        "$14$",
+        "$12$",
+        "$16$",
+        "$10$"
+      ],
+      "answer": 0,
+      "explanation": "Linearity gives $\\int_a^b (2f + g) = 2\\int_a^b f + \\int_a^b g = 2(4) + 6 = 14$. Constants pull out of the integral and sums split across it, so the computation is purely arithmetic once the two integrals are known.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-018",
+      "stem": "The Mean Value Theorem for Integrals states that if $f$ is continuous on $[a,b]$, then there is a point $c \\in [a,b]$ with:",
+      "options": [
+        "$\\displaystyle\\int_a^b f(x)\\,dx = f(c)$",
+        "$\\displaystyle\\int_a^b f(x)\\,dx = f(c)\\,(b - a)$",
+        "$f(c) = 0$",
+        "$\\displaystyle\\int_a^b f(x)\\,dx = f'(c)\\,(b - a)$"
+      ],
+      "answer": 1,
+      "explanation": "The Mean Value Theorem for Integrals says a continuous $f$ attains its average value: there is $c$ with $f(c) = \\frac{1}{b-a}\\int_a^b f$, equivalently $\\int_a^b f = f(c)(b-a)$. The factor is the value $f(c)$, not the derivative $f'(c)$, and the $(b-a)$ scaling is essential to balance the integral against a single function value.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-019",
+      "stem": "Find the average value of $f(x) = x^2$ over $[0, 3]$.",
+      "options": [
+        "$6$",
+        "$9$",
+        "$3$",
+        "$\\dfrac{1}{3}$"
+      ],
+      "answer": 2,
+      "explanation": "The average value is $\\frac{1}{b-a}\\int_a^b f = \\frac{1}{3}\\int_0^3 x^2\\,dx = \\frac{1}{3}\\left[\\frac{x^3}{3}\\right]_0^3 = \\frac{1}{3}\\cdot\\frac{27}{3} = \\frac{1}{3}\\cdot 9 = 3$. By the Mean Value Theorem for Integrals this average $3$ is actually attained at some $c \\in [0,3]$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-020",
+      "stem": "If $f$ is integrable on $[a,b]$ and $m \\leq f(x) \\leq M$ for all $x$, which bound on the integral holds?",
+      "options": [
+        "$\\displaystyle\\int_a^b f \\geq M(b - a)$",
+        "$m(b - a) \\leq \\displaystyle\\int_a^b f \\leq M(b - a)$",
+        "$\\displaystyle\\int_a^b f = \\frac{m + M}{2}$",
+        "$\\displaystyle\\int_a^b f \\leq m(b - a)$"
+      ],
+      "answer": 1,
+      "explanation": "Monotonicity of the integral applied to the constant bounds gives $\\int_a^b m \\leq \\int_a^b f \\leq \\int_a^b M$, that is $m(b-a) \\leq \\int_a^b f \\leq M(b-a)$. These are the standard upper and lower integral estimates from a global bound on $f$; the integral need not equal the midpoint value, only lie within the band.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-021",
+      "stem": "For a partition with mesh (norm) $\\|P\\|$, the Riemann integral is the limit of Riemann sums as:",
+      "options": [
+        "only the left endpoints are used as tags.",
+        "$\\|P\\| \\to \\infty$.",
+        "the number of subintervals stays fixed.",
+        "$\\|P\\| \\to 0$, independent of the choice of tags."
+      ],
+      "answer": 3,
+      "explanation": "The Riemann integral is the common limit of all Riemann sums as the mesh $\\|P\\|$ (the longest subinterval length) tends to $0$, and integrability means this limit exists regardless of how the sample tags are chosen within each subinterval. A fixed number of subintervals or a growing mesh would not refine the partition, and the limit must be tag-independent, not tied to left endpoints.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-022",
+      "stem": "If $f$ is Riemann integrable on $[a,b]$, which of the following is also necessarily integrable on $[a,b]$?",
+      "options": [
+        "$\\sqrt{f}$ when $f$ can be negative",
+        "$|f|$",
+        "$1/f$",
+        "a function equal to $f$ except changed to $+\\infty$ at one point"
+      ],
+      "answer": 1,
+      "explanation": "If $f$ is integrable then so is $|f|$, because the oscillation of $|f|$ on any subinterval is at most that of $f$, so the upper-minus-lower sums shrink alongside those of $f$. By contrast $1/f$ may blow up where $f$ approaches $0$, an unbounded value at a point destroys integrability, and $\\sqrt{f}$ is not even defined where $f < 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-023",
+      "stem": "Compute $\\displaystyle\\int_{-1}^{1} x^3\\,dx$ and explain the result by symmetry.",
+      "options": [
+        "$\\dfrac{2}{3}$",
+        "$2$",
+        "$0$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "answer": 2,
+      "explanation": "Directly, $\\int_{-1}^{1} x^3\\,dx = \\left[\\frac{x^4}{4}\\right]_{-1}^{1} = \\frac{1}{4} - \\frac{1}{4} = 0$. More conceptually, $x^3$ is an odd function and the interval $[-1,1]$ is symmetric about $0$, so the negative contribution on $[-1,0]$ exactly cancels the positive contribution on $[0,1]$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-024",
+      "stem": "Let $G(x) = \\displaystyle\\int_0^{x} t^2\\,dt$. What is $G'(x)$ by the Fundamental Theorem of Calculus?",
+      "options": [
+        "$2x$",
+        "$x^3$",
+        "$\\dfrac{x^3}{3}$",
+        "$x^2$"
+      ],
+      "answer": 3,
+      "explanation": "Since $t^2$ is continuous, the First Fundamental Theorem gives $G'(x) = x^2$ directly, with no need to compute the integral first. As a check, $G(x) = \\frac{x^3}{3}$, and differentiating that returns $x^2$. The point of the theorem is that you read off the integrand without evaluating the integral.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-025",
+      "format": "cloze",
+      "stem": "Evaluate a simple polynomial integral using the Fundamental Theorem of Calculus.",
+      "solution": "An antiderivative of $3x^2$ is $x^3$, so by the evaluation theorem $\\int_0^2 3x^2\\,dx$ equals $2^3 - 0^3$, which is the number {{1}}. Replacing the upper limit by $1$ instead, $\\int_0^1 3x^2\\,dx$ equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "With antiderivative $x^3$: $\\int_0^2 3x^2\\,dx = 2^3 - 0 = 8$ and $\\int_0^1 3x^2\\,dx = 1^3 - 0 = 1$. The evaluation theorem turns each integral into a difference of antiderivative values.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-026",
+      "format": "cloze",
+      "stem": "Decide Riemann integrability for two functions on $[0,1]$ and record the value where it exists.",
+      "solution": "Every continuous function on $[0,1]$ is Riemann integrable, so for $f(x) = x$ the answer is {{1}}, and its integral $\\int_0^1 x\\,dx$ has the value {{2}}. The Dirichlet function, equal to $1$ on rationals and $0$ on irrationals, is Riemann integrable on $[0,1]$: answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "Continuity gives integrability, so $f(x)=x$ is integrable (yes) with $\\int_0^1 x\\,dx = \\frac12$. The Dirichlet function has upper integral $1$ and lower integral $0$, which disagree, so it is not Riemann integrable (no).",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-027",
+      "format": "cloze",
+      "stem": "Use linearity and additivity. Suppose $\\int_0^4 f = 10$ and $\\int_0^4 g = 6$.",
+      "solution": "By linearity, $\\int_0^4 (f - g)$ equals $10 - 6$, which is {{1}}. If in addition $\\int_4^9 f = 5$, then by additivity over adjacent intervals $\\int_0^9 f$ equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 15,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Linearity: $\\int_0^4 (f - g) = 10 - 6 = 4$. Additivity: $\\int_0^9 f = \\int_0^4 f + \\int_4^9 f = 10 + 5 = 15$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-riemann-integration-028",
+      "format": "cloze",
+      "stem": "Compute the average value of $f(x) = 2x$ over the interval $[0, 4]$ and connect it to the Mean Value Theorem for Integrals.",
+      "solution": "First $\\int_0^4 2x\\,dx = \\left[x^2\\right]_0^4 = 16$. Dividing by the interval length $4$ gives the average value {{1}}. The theorem guaranteeing that this average is actually attained by $f$ at some interior point is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "the Mean Value Theorem for Integrals",
+            "the Fundamental Theorem of Calculus",
+            "the Cauchy criterion"
+          ],
+          "answer": "the Mean Value Theorem for Integrals"
+        }
+      ],
+      "explanation": "The integral is $16$ and the length is $4$, so the average value is $16/4 = 4$. Since $f(x) = 2x = 4$ at $x = 2 \\in (0,4)$, the average is attained, illustrating the Mean Value Theorem for Integrals.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    }
+  ]
+}

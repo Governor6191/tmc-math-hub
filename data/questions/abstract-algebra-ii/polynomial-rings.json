@@ -1,0 +1,444 @@
+{
+  "courseId": "abstract-algebra-ii",
+  "topicId": "polynomial-rings",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-001",
+      "stem": "For polynomials $f, g$ over an integral domain $R$, the degree of the product satisfies which relation?",
+      "options": [
+        "$\\deg(fg) = \\deg f - \\deg g$",
+        "$\\deg(fg) = \\max(\\deg f, \\deg g)$",
+        "$\\deg(fg) = \\deg f \\cdot \\deg g$",
+        "$\\deg(fg) = \\deg f + \\deg g$"
+      ],
+      "answer": 3,
+      "explanation": "Over an integral domain the leading coefficients multiply to a nonzero value (no zero divisors), so the top-degree term survives and $\\deg(fg) = \\deg f + \\deg g$. This can fail over a ring with zero divisors, where leading coefficients might multiply to zero.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-002",
+      "stem": "What is the degree of the product $(x^2 + 1)(x^3 + x)$ over $\\mathbb{Q}$?",
+      "options": [
+        "$3$",
+        "$5$",
+        "$6$",
+        "$2$"
+      ],
+      "answer": 1,
+      "explanation": "Over the field $\\mathbb{Q}$, degrees add under multiplication: $\\deg(x^2+1) + \\deg(x^3+x) = 2 + 3 = 5$. The leading term is $x^2 \\cdot x^3 = x^5$, confirming degree $5$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-003",
+      "stem": "The polynomial ring $R[x]$ is an integral domain if and only if which condition on $R$ holds?",
+      "options": [
+        "$R$ is a field.",
+        "$R$ is an integral domain.",
+        "$R$ has characteristic zero.",
+        "$R$ is finite."
+      ],
+      "answer": 1,
+      "explanation": "$R[x]$ is an integral domain exactly when $R$ is an integral domain. If $R$ has no zero divisors, then the product of two nonzero polynomials has a nonzero leading coefficient, so $R[x]$ has no zero divisors either. $R$ need not be a field for this.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-004",
+      "stem": "The Factor Theorem states that for a polynomial $f(x)$ over a field $F$ and $a \\in F$, the element $a$ is a root of $f$ if and only if which holds?",
+      "options": [
+        "$a$ divides the constant term.",
+        "$(x - a)$ divides $f(x)$.",
+        "$(x + a)$ divides $f(x)$.",
+        "$f$ has degree $1$."
+      ],
+      "answer": 1,
+      "explanation": "The Factor Theorem says $f(a) = 0$ if and only if $(x - a)$ is a factor of $f(x)$. It follows from the division algorithm: dividing $f$ by $(x - a)$ leaves remainder $f(a)$, which is zero exactly when $a$ is a root.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-005",
+      "stem": "A nonzero polynomial of degree $n$ over a field $F$ has at most how many roots in $F$?",
+      "options": [
+        "$n$",
+        "$2n$",
+        "Infinitely many",
+        "$n - 1$"
+      ],
+      "answer": 0,
+      "explanation": "Over a field, a nonzero degree-$n$ polynomial has at most $n$ roots. Each root $a$ contributes a distinct factor $(x - a)$, and the product of more than $n$ such linear factors would exceed degree $n$. This bound relies on $F$ being a field (or at least an integral domain).",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-006",
+      "stem": "When the remainder theorem is applied, dividing $f(x)$ by $(x - a)$ over a field gives a remainder equal to which value?",
+      "options": [
+        "$f(a)$",
+        "$0$",
+        "$a$",
+        "The leading coefficient of $f$."
+      ],
+      "answer": 0,
+      "explanation": "The Remainder Theorem states that the remainder upon dividing $f(x)$ by $(x - a)$ is the constant $f(a)$. Since the divisor has degree $1$, the remainder has degree $0$, and evaluating the division identity $f(x) = (x-a)q(x) + r$ at $x = a$ gives $r = f(a)$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-007",
+      "stem": "A nonconstant polynomial $f$ over a field $F$ is irreducible over $F$ when which condition holds?",
+      "options": [
+        "$f$ cannot be written as a product of two nonconstant polynomials in $F[x]$.",
+        "$f$ has degree at least $2$.",
+        "$f$ is monic.",
+        "$f$ has a root in $F$."
+      ],
+      "answer": 0,
+      "explanation": "An irreducible polynomial over $F$ is a nonconstant polynomial that cannot be factored into two polynomials of lower (positive) degree in $F[x]$. Having a root is the opposite situation for degree two or three, where a root would give a linear factor and hence reducibility.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-008",
+      "stem": "Is the polynomial $x^2 + 1$ irreducible over the real numbers $\\mathbb{R}$?",
+      "options": [
+        "No, because all quadratics are reducible.",
+        "Yes, because it has no real root.",
+        "No, it factors as $(x-1)(x+1)$.",
+        "Yes, because it is monic."
+      ],
+      "answer": 1,
+      "explanation": "Since $x^2 + 1 = 0$ has no solution in $\\mathbb{R}$ (squares are nonnegative, so $x^2 + 1 \\ge 1$), and a degree-two polynomial over a field is reducible only if it has a root, $x^2 + 1$ is irreducible over $\\mathbb{R}$. It does factor over $\\mathbb{C}$ as $(x - i)(x + i)$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-009",
+      "stem": "Is the polynomial $x^2 - 2$ irreducible over $\\mathbb{Q}$?",
+      "options": [
+        "Yes, because it has no rational root.",
+        "No, because $\\sqrt{2}$ exists.",
+        "No, it factors as $(x-1)(x-2)$.",
+        "Yes, because its degree is even."
+      ],
+      "answer": 0,
+      "explanation": "The roots of $x^2 - 2$ are $\\pm\\sqrt{2}$, which are irrational, so there is no rational root. A quadratic over a field is reducible only when it has a root in that field, so $x^2 - 2$ is irreducible over $\\mathbb{Q}$ (though it factors over $\\mathbb{R}$).",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-010",
+      "stem": "Is the polynomial $x^2 + x + 1$ irreducible over $\\mathbb{Z}_2$?",
+      "options": [
+        "No, it equals $(x+1)^2$.",
+        "No, it has a root in $\\mathbb{Z}_2$.",
+        "Yes, because it has even degree.",
+        "Yes, it has no root in $\\mathbb{Z}_2$."
+      ],
+      "answer": 3,
+      "explanation": "Test both elements of $\\mathbb{Z}_2$: at $x = 0$, $0 + 0 + 1 = 1 \\ne 0$; at $x = 1$, $1 + 1 + 1 = 1 \\ne 0$ (since $3 \\equiv 1$). With no root and degree two, $x^2 + x + 1$ is irreducible over $\\mathbb{Z}_2$. It is in fact the only irreducible quadratic over $\\mathbb{Z}_2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-011",
+      "stem": "Is the polynomial $x^2 + 1$ reducible over $\\mathbb{Z}_5$?",
+      "options": [
+        "No, it has no root in $\\mathbb{Z}_5$.",
+        "Yes, but only over $\\mathbb{C}$.",
+        "No, because $5$ is prime.",
+        "Yes, since $2^2 + 1 \\equiv 0$, it has root $2$ and factors."
+      ],
+      "answer": 3,
+      "explanation": "Evaluate at $x = 2$: $2^2 + 1 = 5 \\equiv 0 \\pmod 5$, so $2$ is a root (and $3$ is the other, since $3^2 + 1 = 10 \\equiv 0$). Thus $x^2 + 1 = (x - 2)(x - 3)$ over $\\mathbb{Z}_5$, so it is reducible there even though it is irreducible over $\\mathbb{R}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-012",
+      "stem": "The units of the polynomial ring $F[x]$, where $F$ is a field, are exactly which elements?",
+      "options": [
+        "Only the polynomial $1$.",
+        "The polynomials of degree $1$.",
+        "The nonzero constant polynomials.",
+        "All polynomials."
+      ],
+      "answer": 2,
+      "explanation": "In $F[x]$ over a field, the units are exactly the nonzero constants. If $fg = 1$, then $\\deg f + \\deg g = 0$, forcing both degrees to be $0$, so $f$ is a nonzero element of $F$, which is invertible because $F$ is a field.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-013",
+      "stem": "How many roots does the polynomial $x^2 - 1$ have in $\\mathbb{Z}_8$?",
+      "options": [
+        "$1$",
+        "$4$",
+        "$2$",
+        "$8$"
+      ],
+      "answer": 1,
+      "explanation": "Test each element: $1^2 = 1$, $3^2 = 9 \\equiv 1$, $5^2 = 25 \\equiv 1$, $7^2 = 49 \\equiv 1$, all giving $x^2 \\equiv 1$. So the roots are $1, 3, 5, 7$, a total of $4$. This exceeds the degree because $\\mathbb{Z}_8$ is not an integral domain, so the at-most-$n$-roots theorem does not apply.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-014",
+      "stem": "When $F$ is a field, the ring $F[x]$ has which important structural property?",
+      "options": [
+        "It is a principal ideal domain.",
+        "It has zero divisors.",
+        "It is a field.",
+        "It is a finite ring."
+      ],
+      "answer": 0,
+      "explanation": "For a field $F$, the ring $F[x]$ is a principal ideal domain (indeed a Euclidean domain via the division algorithm), so every ideal is generated by a single polynomial. It is not a field, since $x$ has no inverse, and it is an integral domain, so it has no zero divisors.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-015",
+      "stem": "By the Rational Root Theorem, any rational root $p/q$ (in lowest terms) of a polynomial with integer coefficients must satisfy which divisibility?",
+      "options": [
+        "$p$ and $q$ both divide the constant term.",
+        "$p$ divides the leading coefficient and $q$ the constant term.",
+        "$p$ divides the constant term and $q$ divides the leading coefficient.",
+        "$p = q$."
+      ],
+      "answer": 2,
+      "explanation": "The Rational Root Theorem says a rational root $p/q$ in lowest terms has $p$ dividing the constant term and $q$ dividing the leading coefficient. For a monic polynomial (leading coefficient $1$), this forces $q = \\pm 1$, so every rational root is an integer dividing the constant term.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-016",
+      "stem": "Is the polynomial $x^3 - 2$ irreducible over $\\mathbb{Q}$?",
+      "options": [
+        "No, it factors into three linear terms over $\\mathbb{Q}$.",
+        "Yes, because the constant term is $-2$.",
+        "Yes, it has no rational root and has degree $3$.",
+        "No, because its degree is odd."
+      ],
+      "answer": 2,
+      "explanation": "By the Rational Root Theorem, any rational root divides $2$, so the candidates are $\\pm 1, \\pm 2$; none satisfies $x^3 = 2$. A cubic over a field with no root cannot factor (a factorization would include a linear factor), so $x^3 - 2$ is irreducible over $\\mathbb{Q}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-017",
+      "stem": "Eisenstein's criterion uses a prime $p$ to test irreducibility over $\\mathbb{Q}$. Which polynomial is shown irreducible by Eisenstein with $p = 3$?",
+      "options": [
+        "$x^3 + 1$",
+        "$x^2 + x + 1$",
+        "$x^2 + 9$",
+        "$x^3 - 3x + 3$"
+      ],
+      "answer": 3,
+      "explanation": "For $x^3 - 3x + 3$ with $p = 3$: the prime $3$ divides every non-leading coefficient ($0, -3, 3$), does not divide the leading coefficient $1$, and $3^2 = 9$ does not divide the constant term $3$. Eisenstein's criterion then guarantees irreducibility over $\\mathbb{Q}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-018",
+      "stem": "What are the units of the polynomial ring $\\mathbb{Z}[x]$?",
+      "options": [
+        "All nonzero constants.",
+        "Only $1$.",
+        "All polynomials of degree $0$ or $1$.",
+        "Only $1$ and $-1$."
+      ],
+      "answer": 3,
+      "explanation": "The units of $\\mathbb{Z}[x]$ are the units of $\\mathbb{Z}$, namely $1$ and $-1$. A product of two polynomials equals $1$ only if both are constants whose product is $1$ in $\\mathbb{Z}$, and the only such integers are $\\pm 1$. (Over a field the units would be all nonzero constants, but $\\mathbb{Z}$ is not a field.)",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-019",
+      "stem": "Over a field $F$, a polynomial of degree $2$ or $3$ is reducible if and only if which condition holds?",
+      "options": [
+        "It is monic.",
+        "It has a root in $F$.",
+        "Its degree is even.",
+        "It has integer coefficients."
+      ],
+      "answer": 1,
+      "explanation": "A degree two or three polynomial over a field is reducible exactly when it has a root in $F$, because any nontrivial factorization must include a linear factor, which corresponds to a root. This test does not extend to degree four and higher, where a polynomial can factor into two irreducible quadratics with no root.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-020",
+      "stem": "What is the remainder when $f(x) = x^3 + 2x + 1$ is divided by $(x - 1)$ over $\\mathbb{Q}$?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$0$",
+        "$4$"
+      ],
+      "answer": 3,
+      "explanation": "By the Remainder Theorem the remainder is $f(1) = 1^3 + 2(1) + 1 = 1 + 2 + 1 = 4$. Since the remainder is nonzero, $1$ is not a root and $(x - 1)$ is not a factor of $f$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-021",
+      "stem": "Which statement about the degree of a sum $\\deg(f + g)$ is always correct over a field?",
+      "options": [
+        "$\\deg(f + g) = \\deg f + \\deg g$",
+        "$\\deg(f + g) = \\max(\\deg f, \\deg g)$ exactly",
+        "$\\deg(f + g) \\le \\max(\\deg f, \\deg g)$",
+        "$\\deg(f + g) = \\min(\\deg f, \\deg g)$"
+      ],
+      "answer": 2,
+      "explanation": "Addition can only cancel leading terms, never raise the degree, so $\\deg(f + g) \\le \\max(\\deg f, \\deg g)$. Equality can fail: $(x^2 + 1) + (-x^2 + x) = x + 1$ has degree $1$, below the maximum degree $2$ of the summands.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-022",
+      "stem": "Over $\\mathbb{Z}_3$, how many elements are roots of the polynomial $x^3 - x$?",
+      "options": [
+        "$1$",
+        "$3$",
+        "$2$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "Evaluate $x^3 - x$ at each element of $\\mathbb{Z}_3$: at $0$, $0 - 0 = 0$; at $1$, $1 - 1 = 0$; at $2$, $8 - 2 = 6 \\equiv 0$. All three elements are roots, consistent with $x^3 \\equiv x$ holding for every element of $\\mathbb{Z}_3$ (a case of Fermat's little theorem).",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-023",
+      "stem": "The division algorithm for $F[x]$ (with $F$ a field) guarantees that for $f, g$ with $g \\ne 0$, there exist unique $q, r$ with $f = gq + r$ and which condition on $r$?",
+      "options": [
+        "$\\deg r = \\deg g$.",
+        "$\\deg r > \\deg g$.",
+        "$\\deg r < \\deg g$ or $r = 0$.",
+        "$r = 0$ always."
+      ],
+      "answer": 2,
+      "explanation": "The division algorithm gives unique quotient $q$ and remainder $r$ with $f = gq + r$, where either $r = 0$ or $\\deg r < \\deg g$. The remainder having strictly smaller degree than the divisor is what makes the process terminate and the result unique.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-024",
+      "stem": "Is the polynomial $x^4 + 1$ reducible over $\\mathbb{Z}_2$?",
+      "options": [
+        "No, because it has no root in $\\mathbb{Z}_2$.",
+        "Yes, it equals $(x + 1)^4$ over $\\mathbb{Z}_2$.",
+        "Yes, it equals $(x^2 + 1)(x^2 - 1)$ with distinct factors.",
+        "No, it is irreducible over $\\mathbb{Z}_2$."
+      ],
+      "answer": 1,
+      "explanation": "Over $\\mathbb{Z}_2$, the Freshman's Dream gives $(x + 1)^4 = x^4 + 1$ since all the binomial middle coefficients vanish modulo $2$. So $x^4 + 1$ factors as $(x + 1)^4$ and is reducible, even though it has no repeated structure over $\\mathbb{Q}$. (Having a root at $x = 1$ already shows it is reducible.)",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-025",
+      "format": "cloze",
+      "stem": "Over the field $\\mathbb{Q}$, multiply the polynomials $f(x) = x^3 + 2x$ and $g(x) = x^2 + 5$. Find $\\deg f$ and the degree of the product $fg$.",
+      "solution": "The degree of $f(x) = x^3 + 2x$ is read off the highest power, so $\\deg f$ equals {{1}}. Over a field, degrees add under multiplication, so $\\deg(fg) = \\deg f + \\deg g = 3 + 2$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Here $\\deg f = 3$ and $\\deg g = 2$, so over the field $\\mathbb{Q}$ the product has degree $3 + 2 = 5$, with leading term $x^3 \\cdot x^2 = x^5$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-026",
+      "format": "cloze",
+      "stem": "Let $f(x) = x^3 - 4x + 2$ over $\\mathbb{Q}$. Using the Remainder Theorem, find $f(2)$, which is the remainder upon dividing by $(x - 2)$, and state whether $(x - 2)$ is a factor of $f$.",
+      "solution": "Evaluating, $f(2) = 8 - 8 + 2$, which equals {{1}}. Since this remainder is nonzero, $(x - 2)$ is {{2}} a factor of $f$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "not",
+            "indeed"
+          ],
+          "answer": "not"
+        }
+      ],
+      "explanation": "Computing $f(2) = 2^3 - 4 \\cdot 2 + 2 = 8 - 8 + 2 = 2$. By the Remainder Theorem this is the remainder mod $(x-2)$; being nonzero, $(x-2)$ is not a factor.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-027",
+      "format": "cloze",
+      "stem": "Consider $p(x) = x^2 + 1$ over the field $\\mathbb{Z}_5$. By testing elements, count the roots of $p$ in $\\mathbb{Z}_5$, and decide whether $p$ is irreducible over $\\mathbb{Z}_5$.",
+      "solution": "Testing all residues, $2^2 + 1 = 5 \\equiv 0$ and $3^2 + 1 = 10 \\equiv 0$, while $0, 1, 4$ give nonzero values, so the number of roots in $\\mathbb{Z}_5$ is {{1}}. Because it has a root, the degree-two polynomial $p$ is {{2}} over $\\mathbb{Z}_5$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "reducible",
+            "irreducible"
+          ],
+          "answer": "reducible"
+        }
+      ],
+      "explanation": "The roots are $2$ and $3$ (since $2^2 + 1 \\equiv 0$ and $3^2 + 1 \\equiv 0$ mod $5$), so there are $2$ roots. A quadratic with a root over a field is reducible: $x^2 + 1 = (x - 2)(x - 3)$ over $\\mathbb{Z}_5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-polynomial-rings-028",
+      "format": "cloze",
+      "stem": "Work over $\\mathbb{Z}_2$. For the polynomial $q(x) = x^2 + x + 1$, count its roots in $\\mathbb{Z}_2$, and state whether $q$ is irreducible over $\\mathbb{Z}_2$.",
+      "solution": "Testing the two elements: $q(0) = 1$ and $q(1) = 1 + 1 + 1 \\equiv 1$, both nonzero, so the number of roots in $\\mathbb{Z}_2$ is {{1}}. With no root and degree two, $q$ is {{2}} over $\\mathbb{Z}_2$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "reducible",
+            "irreducible"
+          ],
+          "answer": "irreducible"
+        }
+      ],
+      "explanation": "Both $q(0) = 1$ and $q(1) = 3 \\equiv 1$ are nonzero, so $q$ has $0$ roots in $\\mathbb{Z}_2$. A degree-two polynomial with no root over a field is irreducible, so $x^2 + x + 1$ is irreducible over $\\mathbb{Z}_2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    }
+  ]
+}

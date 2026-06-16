@@ -1,0 +1,442 @@
+{
+  "courseId": "real-analysis-ii",
+  "topicId": "differentiation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-analysis-ii-differentiation-001",
+      "stem": "The derivative of $f$ at an interior point $c$ is defined as which limit?",
+      "options": [
+        "$\\displaystyle\\lim_{h \\to 0} \\frac{f(c + h) - f(c)}{f(c)}$",
+        "$\\displaystyle\\lim_{h \\to 0} \\frac{f(c + h) - f(c)}{h}$, provided the limit exists.",
+        "$\\displaystyle\\lim_{h \\to \\infty} \\frac{f(c + h) - f(c)}{h}$",
+        "$\\displaystyle\\lim_{x \\to c} \\frac{f(x) - f(c)}{f(x)}$"
+      ],
+      "answer": 1,
+      "explanation": "By definition $f'(c) = \\lim_{h \\to 0} \\frac{f(c+h) - f(c)}{h}$, equivalently $\\lim_{x \\to c} \\frac{f(x) - f(c)}{x - c}$, when this limit exists. The denominator is the change in input $h = x - c$, not $f(c)$, and the limit is taken as $h \\to 0$, not $h \\to \\infty$. Dividing by $f(c)$ or $f(x)$ measures the wrong thing entirely.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-002",
+      "stem": "Compute $f'(3)$ for $f(x) = x^2$ directly from the limit definition.",
+      "options": [
+        "$9$",
+        "$3$",
+        "$6$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "Form the difference quotient: $\\frac{(3+h)^2 - 9}{h} = \\frac{9 + 6h + h^2 - 9}{h} = \\frac{6h + h^2}{h} = 6 + h$ for $h \\neq 0$. As $h \\to 0$ this tends to $6$, so $f'(3) = 6$. This matches the power rule $f'(x) = 2x$ evaluated at $x = 3$, but the point is that it falls straight out of the definition.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-003",
+      "stem": "Using the definition, find $f'(x)$ for $f(x) = x^3$.",
+      "options": [
+        "$x^2$",
+        "$3x$",
+        "$3x^2$",
+        "$2x^3$"
+      ],
+      "answer": 2,
+      "explanation": "Expand the difference quotient: $\\frac{(x+h)^3 - x^3}{h} = \\frac{3x^2 h + 3x h^2 + h^3}{h} = 3x^2 + 3xh + h^2$. Letting $h \\to 0$ kills the terms containing $h$ and leaves $3x^2$. So $f'(x) = 3x^2$, consistent with the power rule.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-004",
+      "stem": "Using the definition, compute $f'(2)$ for $f(x) = 1/x$.",
+      "options": [
+        "$-2$",
+        "$-\\dfrac{1}{4}$",
+        "$\\dfrac{1}{4}$",
+        "$-\\dfrac{1}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "The difference quotient is $\\frac{1}{h}\\left(\\frac{1}{2+h} - \\frac{1}{2}\\right) = \\frac{1}{h}\\cdot\\frac{2 - (2+h)}{2(2+h)} = \\frac{-1}{2(2+h)}$. As $h \\to 0$ this approaches $\\frac{-1}{2 \\cdot 2} = -\\frac{1}{4}$. Equivalently $f'(x) = -1/x^2$, and at $x = 2$ that is $-1/4$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-005",
+      "stem": "Which implication between differentiability and continuity is correct at a point $c$?",
+      "options": [
+        "Differentiability at $c$ implies continuity at $c$, but not conversely.",
+        "Continuity at $c$ implies differentiability at $c$.",
+        "Neither property implies the other.",
+        "The two properties are equivalent."
+      ],
+      "answer": 0,
+      "explanation": "If $f'(c)$ exists then $f(x) - f(c) = \\frac{f(x)-f(c)}{x-c}\\,(x - c) \\to f'(c)\\cdot 0 = 0$, so $f(x) \\to f(c)$ and $f$ is continuous at $c$. The converse fails: $f(x) = |x|$ is continuous at $0$ but not differentiable there. Hence differentiability is strictly stronger than continuity.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-006",
+      "stem": "Why is $f(x) = |x|$ not differentiable at $x = 0$?",
+      "options": [
+        "Because $f(0)$ is undefined.",
+        "Because $|x|$ is unbounded near $0$.",
+        "Because the left-hand difference quotient tends to $-1$ and the right-hand to $+1$, so the two-sided limit does not exist.",
+        "Because $f$ is discontinuous at $0$."
+      ],
+      "answer": 2,
+      "explanation": "For $h > 0$, $\\frac{|0+h| - 0}{h} = \\frac{h}{h} = 1$, while for $h < 0$, $\\frac{|h|}{h} = \\frac{-h}{h} = -1$. The one-sided limits of the difference quotient are $+1$ and $-1$, which disagree, so the derivative limit fails to exist. The function is perfectly continuous and bounded near $0$; the corner is the sole obstruction.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-007",
+      "stem": "Which is the correct statement of Rolle's Theorem?",
+      "options": [
+        "If $f(a) = f(b)$, then $f$ is constant on $[a,b]$.",
+        "If $f$ is continuous on $[a,b]$ and $f(a) = f(b)$, then $f'(c) = 0$ for some $c$.",
+        "If $f$ is differentiable on $(a,b)$, then $f'(c) = 0$ for some $c$.",
+        "If $f$ is continuous on $[a,b]$, differentiable on $(a,b)$, and $f(a) = f(b)$, then $f'(c) = 0$ for some $c \\in (a,b)$."
+      ],
+      "answer": 3,
+      "explanation": "Rolle's Theorem requires all three hypotheses: continuity on the closed interval $[a,b]$, differentiability on the open interval $(a,b)$, and equal endpoint values $f(a) = f(b)$. Then there is at least one interior point $c$ where the tangent is horizontal, $f'(c) = 0$. Dropping differentiability (option two) breaks the conclusion, and equal endpoints certainly do not force the whole function to be constant.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-008",
+      "stem": "Which is the correct statement of the Mean Value Theorem?",
+      "options": [
+        "If $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, then $f'(c) = \\dfrac{f(b) - f(a)}{b - a}$ for some $c \\in (a,b)$.",
+        "If $f$ is continuous on $[a,b]$, then $f'(c) = f(b) - f(a)$ for some $c$.",
+        "If $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, then $f'(c) = 0$ for some $c$.",
+        "If $f$ is differentiable on $[a,b]$, then $f(b) - f(a) = 0$."
+      ],
+      "answer": 0,
+      "explanation": "The Mean Value Theorem states that under continuity on $[a,b]$ and differentiability on $(a,b)$, there is an interior point $c$ where the instantaneous rate $f'(c)$ equals the average rate of change $\\frac{f(b)-f(a)}{b-a}$, that is, the tangent is parallel to the secant. Setting the right side to $0$ is the special case of Rolle's Theorem (when $f(a) = f(b)$), not the general statement.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-009",
+      "stem": "For $f(x) = x^2$ on $[0, 2]$, the Mean Value Theorem guarantees a point $c$ with $f'(c)$ equal to the average rate of change. Find $c$.",
+      "options": [
+        "$c = 0$",
+        "$c = \\sqrt{2}$",
+        "$c = 2$",
+        "$c = 1$"
+      ],
+      "answer": 3,
+      "explanation": "The average rate of change is $\\frac{f(2) - f(0)}{2 - 0} = \\frac{4 - 0}{2} = 2$. Since $f'(x) = 2x$, solving $2c = 2$ gives $c = 1$, which lies in $(0,2)$ as required. The MVT promises existence; here we can pin the value down exactly.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-010",
+      "stem": "For $f(x) = x^2 - 4$ on $[-2, 2]$, Rolle's Theorem applies. At which point $c$ is $f'(c) = 0$?",
+      "options": [
+        "$c = 1$",
+        "$c = -1$",
+        "$c = 2$",
+        "$c = 0$"
+      ],
+      "answer": 3,
+      "explanation": "Check the hypotheses: $f$ is a polynomial (so continuous and differentiable) and $f(-2) = 0 = f(2)$. Rolle then guarantees an interior $c$ with $f'(c) = 0$. Since $f'(x) = 2x$, the equation $2c = 0$ gives $c = 0$, which is in $(-2,2)$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-011",
+      "stem": "A standard corollary of the Mean Value Theorem states that if $f'(x) = 0$ for all $x$ in an interval $I$, then:",
+      "options": [
+        "$f$ has a maximum on $I$.",
+        "$f$ is unbounded on $I$.",
+        "$f$ is constant on $I$.",
+        "$f$ is increasing on $I$."
+      ],
+      "answer": 2,
+      "explanation": "Take any two points $x_1 < x_2$ in $I$. By the MVT, $f(x_2) - f(x_1) = f'(c)(x_2 - x_1) = 0$, so $f(x_2) = f(x_1)$. As the two points were arbitrary, $f$ takes a single value throughout $I$, that is, $f$ is constant. This is the standard way the MVT proves the zero-derivative-implies-constant fact, which requires the domain to be an interval.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-012",
+      "stem": "By the Mean Value Theorem, if $f'(x) > 0$ for all $x$ in an interval, then $f$ is:",
+      "options": [
+        "concave up on that interval.",
+        "constant on that interval.",
+        "strictly increasing on that interval.",
+        "strictly decreasing on that interval."
+      ],
+      "answer": 2,
+      "explanation": "For $x_1 < x_2$, the MVT gives $f(x_2) - f(x_1) = f'(c)(x_2 - x_1)$ with $c$ between them. Since $f'(c) > 0$ and $x_2 - x_1 > 0$, the right side is positive, so $f(x_2) > f(x_1)$: $f$ is strictly increasing. A positive first derivative governs monotonicity, while concavity is controlled by the second derivative, a separate matter.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-013",
+      "stem": "The Interior Extremum Theorem (Fermat) states that if $f$ has a local extremum at an interior point $c$ and $f'(c)$ exists, then:",
+      "options": [
+        "$f'(c) > 0$.",
+        "$f'(c) = 0$.",
+        "$f$ is not differentiable at $c$.",
+        "$f''(c) = 0$."
+      ],
+      "answer": 1,
+      "explanation": "At an interior local extremum where the derivative exists, the one-sided difference quotients have opposite (or zero) signs, forcing the two-sided limit $f'(c)$ to be $0$. This identifies interior extrema among the critical points where $f' = 0$. The condition involves the first derivative, not the second, and it presumes differentiability rather than denying it.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-014",
+      "stem": "Which is the correct product rule for $(fg)'$ at a point where $f$ and $g$ are differentiable?",
+      "options": [
+        "$f'g - fg'$",
+        "$f'g + fg'$",
+        "$f'g'$",
+        "$\\dfrac{f'g - fg'}{g^2}$"
+      ],
+      "answer": 1,
+      "explanation": "The product rule is $(fg)' = f'g + fg'$, derived by adding and subtracting $f(x)g(c)$ in the difference quotient and using continuity of $f$. The naive $f'g'$ is wrong, $f'g - fg'$ has the incorrect sign on the second term, and $\\frac{f'g - fg'}{g^2}$ is the quotient rule, a different identity.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-015",
+      "stem": "Which is the correct chain rule for the derivative of $f \\circ g$ at $c$, with $g$ differentiable at $c$ and $f$ differentiable at $g(c)$?",
+      "options": [
+        "$(f \\circ g)'(c) = f'(g(c)) + g'(c)$",
+        "$(f \\circ g)'(c) = f'(g(c)) \\cdot g'(c)$",
+        "$(f \\circ g)'(c) = f'(g'(c))$",
+        "$(f \\circ g)'(c) = f'(c) \\cdot g'(c)$"
+      ],
+      "answer": 1,
+      "explanation": "The chain rule reads $(f \\circ g)'(c) = f'(g(c)) \\cdot g'(c)$: differentiate the outer function at the inner value $g(c)$, then multiply by the derivative of the inner function. Evaluating $f'$ at $c$ instead of $g(c)$, nesting $g'$ inside $f'$, or adding rather than multiplying all give wrong results.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-016",
+      "stem": "Caratheodory's characterization says $f$ is differentiable at $c$ if and only if there is a function $\\varphi$, continuous at $c$, with $f(x) - f(c) = \\varphi(x)(x - c)$. In that case $f'(c)$ equals:",
+      "options": [
+        "$0$",
+        "$\\varphi(c)$",
+        "$\\varphi'(c)$",
+        "$\\varphi(x)$ for all $x$"
+      ],
+      "answer": 1,
+      "explanation": "Dividing the identity by $x - c$ for $x \\neq c$ gives $\\varphi(x) = \\frac{f(x)-f(c)}{x-c}$, and continuity of $\\varphi$ at $c$ means this difference quotient has a limit, namely $\\varphi(c)$. Hence $f'(c) = \\varphi(c)$. This slope-function formulation streamlines proofs of the chain rule and the inverse-function derivative.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-017",
+      "stem": "Using the definition, compute $f'(4)$ for $f(x) = \\sqrt{x}$ on $(0, \\infty)$.",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "$\\dfrac{1}{4}$",
+        "$2$",
+        "$\\dfrac{1}{8}$"
+      ],
+      "answer": 1,
+      "explanation": "Rationalize the difference quotient: $\\frac{\\sqrt{x} - \\sqrt{4}}{x - 4} = \\frac{\\sqrt{x} - 2}{(\\sqrt{x}-2)(\\sqrt{x}+2)} = \\frac{1}{\\sqrt{x} + 2}$. As $x \\to 4$ this tends to $\\frac{1}{2 + 2} = \\frac{1}{4}$. Equivalently $f'(x) = \\frac{1}{2\\sqrt{x}}$, giving $\\frac{1}{2 \\cdot 2} = \\frac{1}{4}$ at $x = 4$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-018",
+      "stem": "If $f$ is differentiable and invertible with $f'(c) \\neq 0$, the derivative of the inverse at $d = f(c)$ is:",
+      "options": [
+        "$(f^{-1})'(d) = \\dfrac{1}{f(c)}$",
+        "$(f^{-1})'(d) = f'(c)$",
+        "$(f^{-1})'(d) = -f'(c)$",
+        "$(f^{-1})'(d) = \\dfrac{1}{f'(c)}$"
+      ],
+      "answer": 3,
+      "explanation": "Differentiating the identity $f(f^{-1}(y)) = y$ by the chain rule gives $f'(f^{-1}(d)) \\cdot (f^{-1})'(d) = 1$, so $(f^{-1})'(d) = \\frac{1}{f'(c)}$ where $c = f^{-1}(d)$. The nonvanishing of $f'(c)$ is exactly what keeps the reciprocal finite. Note the answer involves $f'(c)$, not the value $f(c)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-019",
+      "stem": "Darboux's Theorem states that derivatives have which property, even when they are not continuous?",
+      "options": [
+        "They are monotone.",
+        "They are integrable.",
+        "They are bounded.",
+        "They satisfy the intermediate value property."
+      ],
+      "answer": 3,
+      "explanation": "Darboux's Theorem says that if $f$ is differentiable on $[a,b]$, then $f'$ takes every value between $f'(a)$ and $f'(b)$, even though $f'$ may fail to be continuous. So derivatives cannot have jump discontinuities; their only possible discontinuities are of oscillatory type. Boundedness, monotonicity, and integrability are not guaranteed in general.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-020",
+      "stem": "Let $f(x) = x^2 \\sin(1/x)$ for $x \\neq 0$ and $f(0) = 0$. What is $f'(0)$?",
+      "options": [
+        "$0$",
+        "$\\infty$",
+        "Does not exist",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "Compute the difference quotient at $0$: $\\frac{f(h) - f(0)}{h} = \\frac{h^2 \\sin(1/h)}{h} = h \\sin(1/h)$. Since $|h \\sin(1/h)| \\leq |h| \\to 0$, the squeeze theorem gives $f'(0) = 0$. Notably $f'$ is not continuous at $0$ (it oscillates nearby), a classic example of a differentiable function with discontinuous derivative.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-021",
+      "stem": "The Cauchy (Generalized) Mean Value Theorem relates two functions $f, g$ continuous on $[a,b]$ and differentiable on $(a,b)$ by which equation, for some $c \\in (a,b)$?",
+      "options": [
+        "$f'(c) \\cdot g'(c) = 1$",
+        "$f'(c) = g'(c)$",
+        "$f(b) - f(a) = g(b) - g(a)$",
+        "$f'(c)\\,[g(b) - g(a)] = g'(c)\\,[f(b) - f(a)]$"
+      ],
+      "answer": 3,
+      "explanation": "The Cauchy Mean Value Theorem states $f'(c)\\,[g(b)-g(a)] = g'(c)\\,[f(b)-f(a)]$ for some interior $c$; when $g(b) \\neq g(a)$ this rearranges to $\\frac{f'(c)}{g'(c)} = \\frac{f(b)-f(a)}{g(b)-g(a)}$. Taking $g(x) = x$ recovers the ordinary MVT. This generalized form is the engine behind the proof of L'Hopital's Rule.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-022",
+      "stem": "Having $f'(c) = 0$ at an interior point $c$ is which kind of condition for $c$ to be a local extremum?",
+      "options": [
+        "Necessary and sufficient",
+        "Neither necessary nor sufficient",
+        "Sufficient but not necessary",
+        "Necessary but not sufficient"
+      ],
+      "answer": 3,
+      "explanation": "By the Interior Extremum Theorem, a differentiable interior extremum must be a critical point, so $f'(c) = 0$ is necessary. It is not sufficient: $f(x) = x^3$ has $f'(0) = 0$ yet $0$ is neither a max nor a min, since $f$ is strictly increasing through it. A further test (sign change of $f'$, or the second-derivative test) is needed to confirm an extremum.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-023",
+      "stem": "Suppose $|f'(x)| \\leq M$ for all $x$ in an interval. What does the Mean Value Theorem give about $f$?",
+      "options": [
+        "$f$ is constant.",
+        "$f$ is Lipschitz with constant $M$: $|f(x) - f(y)| \\leq M|x - y|$.",
+        "$f$ has no critical points.",
+        "$f$ is unbounded."
+      ],
+      "answer": 1,
+      "explanation": "For any $x, y$ in the interval, the MVT gives $f(x) - f(y) = f'(c)(x - y)$ for some $c$ between them, so $|f(x) - f(y)| = |f'(c)|\\,|x - y| \\leq M|x - y|$. Thus a bounded derivative yields a Lipschitz bound with constant $M$. The function need not be constant (that needs $M = 0$) and may certainly have critical points.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-024",
+      "stem": "Which function is continuous everywhere but fails to be differentiable at exactly one point?",
+      "options": [
+        "$f(x) = |x - 3|$",
+        "$f(x) = 3x + 1$",
+        "$f(x) = e^x$",
+        "$f(x) = x^2$"
+      ],
+      "answer": 0,
+      "explanation": "The function $|x - 3|$ is continuous on all of $\\mathbb{R}$ but has a corner at $x = 3$, where the left and right difference quotients are $-1$ and $+1$; everywhere else it is linear and smooth. The polynomial $x^2$, the exponential $e^x$, and the line $3x + 1$ are differentiable everywhere, so they have no point of non-differentiability.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-025",
+      "format": "cloze",
+      "stem": "Differentiate $f(x) = x^2$ from first principles at a general point and then evaluate.",
+      "solution": "The difference quotient $\\frac{(x+h)^2 - x^2}{h}$ simplifies to $2x + h$, whose limit as $h \\to 0$ gives $f'(x) = 2x$. Evaluating this derivative at $x = 5$ yields the number {{1}}, and at $x = 0$ it yields {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From the definition $f'(x) = 2x$. Then $f'(5) = 10$ and $f'(0) = 0$. The vanishing derivative at $0$ reflects the horizontal tangent at the vertex of the parabola.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-026",
+      "format": "cloze",
+      "stem": "Apply the Mean Value Theorem to $f(x) = x^2$ on the interval $[1, 3]$.",
+      "solution": "The average rate of change is $\\frac{f(3) - f(1)}{3 - 1} = \\frac{9 - 1}{2}$, which equals {{1}}. Setting $f'(c) = 2c$ equal to this value and solving gives the guaranteed point $c$ equal to {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The secant slope is $\\frac{9-1}{2} = 4$. Since $f'(x) = 2x$, solving $2c = 4$ gives $c = 2$, which lies in $(1,3)$ as the MVT promises.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-027",
+      "format": "cloze",
+      "stem": "Decide differentiability of $f(x) = |x|$ at the origin using one-sided difference quotients.",
+      "solution": "For $h > 0$ the quotient $\\frac{|h|}{h}$ equals $1$, and for $h < 0$ it equals {{1}}. Because the two one-sided limits disagree, the derivative at $0$ exists: answer {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "The right-hand quotient is $+1$ and the left-hand quotient is $-1$. Since these one-sided limits differ, the two-sided derivative limit fails to exist, so $f$ is not differentiable at $0$ (answer no).",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-ii-differentiation-028",
+      "format": "cloze",
+      "stem": "Check the hypotheses and conclusion of Rolle's Theorem for $f(x) = x^2 - 6x + 5$ on $[1, 5]$.",
+      "solution": "Compute the endpoints: $f(1) = 0$ and $f(5) = 0$, so the equal-endpoint hypothesis holds. The theorem then provides an interior point where the derivative vanishes; since $f'(x) = 2x - 6$, that point $c$ equals {{1}}. The named theorem in force here is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "Rolle's Theorem",
+            "the Cauchy Mean Value Theorem",
+            "Darboux's Theorem"
+          ],
+          "answer": "Rolle's Theorem"
+        }
+      ],
+      "explanation": "Both endpoints give $0$, so $f(1) = f(5)$. With $f'(x) = 2x - 6$, solving $2c - 6 = 0$ gives $c = 3$, in $(1,5)$. The equal-endpoint, zero-derivative result is exactly Rolle's Theorem.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    }
+  ]
+}

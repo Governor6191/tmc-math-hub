@@ -1,0 +1,497 @@
+{
+  "courseId": "numerical-analysis-i",
+  "topicId": "interpolation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-i-interpolation-001",
+      "stem": "To uniquely determine an interpolating polynomial of degree at most $n$, how many distinct data points are required?",
+      "options": [
+        "$n$",
+        "$2n$",
+        "$n + 1$",
+        "$n - 1$"
+      ],
+      "answer": 2,
+      "explanation": "A polynomial of degree at most $n$ has $n + 1$ free coefficients, so $n + 1$ distinct points are needed to pin them down uniquely. The option $n$ leaves the system underdetermined, $n - 1$ even more so, and $2n$ provides more conditions than coefficients. The trap is the off-by-one between degree and number of coefficients: a line (degree 1) needs 2 points, a parabola (degree 2) needs 3.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-002",
+      "stem": "Linear interpolation between the points $(4, 2)$ and $(9, 3)$ estimates the value at $x = 6.25$ as which of the following?",
+      "options": [
+        "$2.25$",
+        "$2.50$",
+        "$2.75$",
+        "$2.45$"
+      ],
+      "answer": 3,
+      "explanation": "Linear interpolation gives $f(x) \\approx f_0 + (x - x_0)\\frac{f_1 - f_0}{x_1 - x_0} = 2 + (6.25 - 4)\\cdot\\frac{3 - 2}{9 - 4} = 2 + 2.25\\cdot\\frac{1}{5} = 2 + 0.45 = 2.45$. The value $2.50$ is the true $\\sqrt{6.25}$, which the straight-line estimate undershoots because $\\sqrt{x}$ is concave, while $2.25$ and $2.75$ misplace the fraction along the interval. The trap is expecting the interpolant to equal the exact function value; linear interpolation only matches at the two nodes.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-003",
+      "stem": "For data points $(x_0, f_0)$ and $(x_1, f_1)$, the first divided difference $f[x_0, x_1]$ is defined as which expression?",
+      "options": [
+        "$\\dfrac{f_0 - f_1}{x_1 - x_0}$",
+        "$\\dfrac{f_1 + f_0}{x_1 - x_0}$",
+        "$f_1 - f_0$",
+        "$\\dfrac{f_1 - f_0}{x_1 - x_0}$"
+      ],
+      "answer": 3,
+      "explanation": "The first divided difference is the slope between the two points, $f[x_0, x_1] = \\frac{f_1 - f_0}{x_1 - x_0}$. The plain difference $f_1 - f_0$ omits the denominator, the third option reverses the numerator sign, and the fourth adds instead of subtracts. The trap is forgetting the denominator: a divided difference is a difference quotient, not just a difference.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-004",
+      "stem": "In Newton's forward difference interpolation formula, using $p = \\dfrac{x - x_0}{h}$, the coefficient multiplying $\\Delta^2 f_0$ is which of the following?",
+      "options": [
+        "$\\dfrac{p(p - 1)}{2}$",
+        "$\\dfrac{p(p + 1)}{2}$",
+        "$p$",
+        "$p^2$"
+      ],
+      "answer": 0,
+      "explanation": "Newton's forward formula is $f(x) = f_0 + p\\,\\Delta f_0 + \\frac{p(p - 1)}{2!}\\Delta^2 f_0 + \\cdots$, so the second-order term carries $\\frac{p(p - 1)}{2}$, which is the binomial coefficient $\\binom{p}{2}$. The option $p$ belongs to the first-order term, $\\frac{p(p + 1)}{2}$ is the backward-formula coefficient, and $p^2$ is not a binomial coefficient. The trap is mixing forward and backward coefficients: forward uses $p(p - 1)$, backward uses $p(p + 1)$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-005",
+      "stem": "Using Lagrange interpolation on the points $(0, 1)$, $(1, 3)$, $(2, 9)$, estimate the value at $x = 0.5$.",
+      "options": [
+        "$1.0$",
+        "$2.5$",
+        "$1.5$",
+        "$2.0$"
+      ],
+      "answer": 2,
+      "explanation": "The Lagrange weights at $x = 0.5$ are $L_0 = \\frac{(0.5 - 1)(0.5 - 2)}{(0 - 1)(0 - 2)} = 0.375$, $L_1 = \\frac{(0.5 - 0)(0.5 - 2)}{(1 - 0)(1 - 2)} = 0.75$, and $L_2 = \\frac{(0.5 - 0)(0.5 - 1)}{(2 - 0)(2 - 1)} = -0.125$. Then $f(0.5) = 1(0.375) + 3(0.75) + 9(-0.125) = 0.375 + 2.25 - 1.125 = 1.5$. As a check the interpolating polynomial is $1 + 2x^2$, giving $1 + 2(0.25) = 1.5$. The other options drop or misweight a node. The trap is sign errors in the Lagrange denominators, which here must produce weights summing to $1$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-006",
+      "stem": "For the points $(1, 1)$, $(2, 8)$, $(4, 64)$, what is the second divided difference $f[1, 2, 4]$?",
+      "options": [
+        "$21$",
+        "$14$",
+        "$7$",
+        "$28$"
+      ],
+      "answer": 2,
+      "explanation": "First divided differences: $f[1, 2] = \\frac{8 - 1}{2 - 1} = 7$ and $f[2, 4] = \\frac{64 - 8}{4 - 2} = 28$. The second divided difference is $f[1, 2, 4] = \\frac{f[2, 4] - f[1, 2]}{4 - 1} = \\frac{28 - 7}{3} = 7$. The option $28$ and $7$ are first divided differences (the latter coincidentally), $21$ is the unreduced numerator before dividing by the span $4 - 1$, and $14$ halves the numerator. The trap is forgetting to divide by the full argument span $x_2 - x_0 = 3$, not by an adjacent gap.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-007",
+      "stem": "The Lagrange basis polynomials $L_i(x)$ for distinct nodes satisfy which fundamental property?",
+      "options": [
+        "$L_i(x_j) = \\delta_{ij}$, that is $1$ if $i = j$ and $0$ otherwise",
+        "$L_i(x_j) = 0$ for all $i, j$",
+        "$L_i(x_j) = 1$ for all $i, j$",
+        "$L_i(x_j) = x_j$"
+      ],
+      "answer": 0,
+      "explanation": "Each Lagrange basis polynomial is constructed so that $L_i(x_i) = 1$ and $L_i(x_j) = 0$ for $j \\neq i$, the Kronecker delta property $L_i(x_j) = \\delta_{ij}$. This is what makes $\\sum_i f_i L_i(x)$ pass through every data point. The option that it equals $1$ everywhere would make the sum collapse, all zeros would give the zero polynomial, and $x_j$ has no basis meaning. The trap is missing the selectivity: each basis function turns on at exactly one node and off at the others.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-008",
+      "stem": "The error of polynomial interpolation through $n + 1$ nodes is $f(x) - P_n(x) = \\dfrac{f^{(n+1)}(\\xi)}{(n + 1)!}\\,\\omega(x)$. The factor $\\omega(x)$ is which of the following?",
+      "options": [
+        "$\\displaystyle\\sum_{i=0}^{n}(x - x_i)$",
+        "$\\displaystyle\\prod_{i=0}^{n}(x_i)$",
+        "$\\displaystyle\\prod_{i=0}^{n}(x - x_i)$",
+        "$(x - x_0)^{n+1}$"
+      ],
+      "answer": 2,
+      "explanation": "The node polynomial in the interpolation error is the product $\\omega(x) = \\prod_{i=0}^{n}(x - x_i) = (x - x_0)(x - x_1)\\cdots(x - x_n)$, which vanishes at every node and so forces the error to zero there. A sum would not vanish at the nodes, $(x - x_0)^{n+1}$ uses one node repeatedly, and a product of the $x_i$ themselves drops the variable $x$. The trap is replacing the product over all nodes with a power of a single node or a sum.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-009",
+      "stem": "Newton's forward difference formula is most appropriate for interpolating at a point located where?",
+      "options": [
+        "Near the beginning of the table",
+        "Outside the table on the right",
+        "Exactly at the midpoint of the table",
+        "Near the end of the table"
+      ],
+      "answer": 0,
+      "explanation": "Newton's forward formula expands around the first node $x_0$ using differences that march forward through the table, so it is most accurate for $x$ near the start of the tabulated range. Points near the end are better served by Newton's backward formula, the midpoint favors a central formula such as Stirling's or Bessel's, and extrapolation to the right is unreliable for any of them. The trap is choosing forward differences for the end of the table, where the needed forward differences run off the available data.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-010",
+      "stem": "Using Newton's forward difference formula on $f(0) = 1$, $f(1) = 2$, $f(2) = 4$, $f(3) = 8$ with $h = 1$, estimate $f(0.5)$.",
+      "options": [
+        "$1.4142$",
+        "$1.375$",
+        "$1.4375$",
+        "$1.500$"
+      ],
+      "answer": 2,
+      "explanation": "Differences from $1, 2, 4, 8$: $\\Delta f_0 = 1$, $\\Delta^2 f_0 = 1$, $\\Delta^3 f_0 = 1$. With $p = 0.5$, $f(0.5) = 1 + 0.5(1) + \\frac{0.5(-0.5)}{2}(1) + \\frac{0.5(-0.5)(-1.5)}{6}(1) = 1 + 0.5 - 0.125 + 0.0625 = 1.4375$. The value $1.4142$ is the true $\\sqrt{2}$ that the data only loosely model, $1.5$ stops after the linear term, and $1.375$ drops the cubic term. The trap is truncating the series too early; all available differences must be included for the full cubic estimate.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-011",
+      "stem": "A key advantage of Newton's divided difference form over the Lagrange form is which of the following?",
+      "options": [
+        "It only works for equally spaced data",
+        "A new data point can be added without recomputing earlier terms",
+        "It does not require the data values $f_i$",
+        "It always gives a different polynomial"
+      ],
+      "answer": 1,
+      "explanation": "Newton's divided difference form is built incrementally, so adding one more node appends a single new term while every previously computed coefficient stays valid. The interpolating polynomial through a given set of nodes is unique, so it is not a different polynomial from Lagrange's, both forms use the data values, and the divided difference form works for unequally spaced data, which is one of its strengths. The trap is thinking the two forms yield different curves; they are two representations of the same unique interpolant.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-012",
+      "stem": "For equally spaced data with spacing $h$, the divided difference $f[x_0, x_1, \\ldots, x_n]$ relates to the forward difference by which formula?",
+      "options": [
+        "$f[x_0, \\ldots, x_n] = n!\\,\\Delta^n f_0$",
+        "$f[x_0, \\ldots, x_n] = \\Delta^n f_0$",
+        "$f[x_0, \\ldots, x_n] = \\dfrac{\\Delta^n f_0}{n!\\,h^n}$",
+        "$f[x_0, \\ldots, x_n] = \\dfrac{\\Delta^n f_0}{h^n}$"
+      ],
+      "answer": 2,
+      "explanation": "For a uniform grid the $n$th divided difference equals $\\frac{\\Delta^n f_0}{n!\\,h^n}$, since each of the $n$ denominators contributes a factor of $h$ while the combinatorial overlap contributes $n!$. Dropping the $n!$ or the $h^n$ keeps only part of that scaling, and multiplying by $n!$ inverts the relationship. The trap is omitting either the factorial or the power of $h$ when converting between divided and forward differences.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-013",
+      "stem": "Using Lagrange interpolation on $(1, 1)$, $(2, 4)$, $(3, 9)$, estimate the value at $x = 2.5$.",
+      "options": [
+        "$6.50$",
+        "$6.25$",
+        "$5.75$",
+        "$6.00$"
+      ],
+      "answer": 1,
+      "explanation": "The weights at $x = 2.5$ are $L_0 = \\frac{(2.5 - 2)(2.5 - 3)}{(1 - 2)(1 - 3)} = -0.125$, $L_1 = \\frac{(2.5 - 1)(2.5 - 3)}{(2 - 1)(2 - 3)} = 0.75$, $L_2 = \\frac{(2.5 - 1)(2.5 - 2)}{(3 - 1)(3 - 2)} = 0.375$. Then $f(2.5) = 1(-0.125) + 4(0.75) + 9(0.375) = -0.125 + 3 + 3.375 = 6.25$. Since the data are squares, the interpolant is $x^2$ and $2.5^2 = 6.25$ confirms it. The other options misweight a node. The trap is a sign slip in a Lagrange denominator, which would break the partition-of-unity check.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-014",
+      "stem": "Divided differences are symmetric in their arguments. This means which of the following holds?",
+      "options": [
+        "$f[x_0, x_1] = f[x_0]\\,f[x_1]$",
+        "$f[x_0, x_1] = f[x_1, x_0]$",
+        "$f[x_0, x_1] = -f[x_1, x_0]$",
+        "$f[x_0, x_1] = \\dfrac{1}{f[x_1, x_0]}$"
+      ],
+      "answer": 1,
+      "explanation": "Although $\\frac{f_1 - f_0}{x_1 - x_0}$ looks order-dependent, reversing both the numerator and denominator signs leaves the quotient unchanged, so $f[x_0, x_1] = f[x_1, x_0]$, and the same symmetry holds for higher orders. The negative option misreads the cancellation of signs, the reciprocal option has no basis, and the product option confuses a divided difference with a product of values. The trap is assuming the apparent asymmetry of the formula carries through; the two sign flips cancel.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-015",
+      "stem": "Newton's backward difference formula uses $p = \\dfrac{x - x_n}{h}$. The coefficient of $\\nabla^2 f_n$ in that formula is which of the following?",
+      "options": [
+        "$\\dfrac{p(p + 1)(p + 2)}{6}$",
+        "$\\dfrac{p(p + 1)}{2}$",
+        "$\\dfrac{p(p - 1)}{2}$",
+        "$p$"
+      ],
+      "answer": 1,
+      "explanation": "Newton's backward formula is $f(x) = f_n + p\\,\\nabla f_n + \\frac{p(p + 1)}{2!}\\nabla^2 f_n + \\cdots$, so the second-order coefficient is $\\frac{p(p + 1)}{2}$. The option $\\frac{p(p - 1)}{2}$ is the forward coefficient, $p$ is the first-order term, and $\\frac{p(p + 1)(p + 2)}{6}$ is the third-order backward coefficient. The trap is reusing the forward sign pattern; backward differences add $1$ inside the product rather than subtracting.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-016",
+      "stem": "Given $(2, 4)$, $(5, 1)$ as the only two nodes, the linear Lagrange interpolant evaluated at $x = 3$ gives which value?",
+      "options": [
+        "$2$",
+        "$3.5$",
+        "$5$",
+        "$3$"
+      ],
+      "answer": 3,
+      "explanation": "With two nodes the interpolant is the straight line through them. The slope is $\\frac{1 - 4}{5 - 2} = -1$, so $f(3) = 4 + (3 - 2)(-1) = 3$. Equivalently the Lagrange weights are $L_0 = \\frac{3 - 5}{2 - 5} = \\frac{2}{3}$ and $L_1 = \\frac{3 - 2}{5 - 2} = \\frac{1}{3}$, giving $4\\cdot\\frac{2}{3} + 1\\cdot\\frac{1}{3} = \\frac{8 + 1}{3} = 3$. The value $3.5$ would be the midpoint average of the two function values, ignoring that $x = 3$ is not the midpoint of $[2, 5]$; $2$ and $5$ misplace the point on the line. The trap is averaging the endpoint values instead of weighting by position.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-017",
+      "stem": "If a set of $n + 1$ data points is sampled from a polynomial of degree exactly $n$, what is the leading behaviour of the interpolating polynomial $P_n(x)$?",
+      "options": [
+        "It has degree $n + 1$",
+        "It approximates it with a nonzero error term",
+        "It is the zero polynomial",
+        "It reproduces the original polynomial exactly"
+      ],
+      "answer": 3,
+      "explanation": "Polynomial interpolation is exact for polynomials of degree at most $n$ when $n + 1$ nodes are used, because the interpolant of degree at most $n$ through those points is unique and the original polynomial already qualifies. The error term carries $f^{(n+1)}(\\xi)$, which is zero for a degree-$n$ polynomial, so there is no error. It cannot have degree $n + 1$, and it is certainly not zero unless the data are. The trap is expecting a residual error even when the underlying function is itself a polynomial of low enough degree.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-018",
+      "stem": "Inverse interpolation is used to accomplish which of the following?",
+      "options": [
+        "Find $f(x)$ for a given $x$",
+        "Compute the inverse matrix of the node system",
+        "Reverse the order of the data points",
+        "Find the $x$ at which $f$ takes a given value $y$"
+      ],
+      "answer": 3,
+      "explanation": "Inverse interpolation swaps the roles of the variables, treating $x$ as a function of $y$ so that one can estimate the argument $x$ corresponding to a prescribed function value $y$, for example to locate a root. Finding $f(x)$ for given $x$ is ordinary interpolation, inverting a matrix is unrelated, and reversing the data order changes nothing essential. The trap is reading inverse interpolation as a matrix operation rather than as interpolating $x$ against $y$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-019",
+      "stem": "For the points $(0, 2)$, $(1, 3)$, $(2, 12)$ build the divided difference table. What is the second divided difference $f[0, 1, 2]$?",
+      "options": [
+        "$4$",
+        "$9$",
+        "$8$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "First divided differences: $f[0, 1] = \\frac{3 - 2}{1 - 0} = 1$ and $f[1, 2] = \\frac{12 - 3}{2 - 1} = 9$. The second divided difference is $f[0, 1, 2] = \\frac{9 - 1}{2 - 0} = \\frac{8}{2} = 4$. The option $1$ and $9$ are first divided differences, and $8$ is the numerator before dividing by the span $2 - 0$. The trap is dividing by an adjacent gap instead of by the full span between the outermost nodes.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-020",
+      "stem": "The sum of the Lagrange basis polynomials $\\sum_{i=0}^{n} L_i(x)$ for any $x$ equals which constant?",
+      "options": [
+        "$1$",
+        "$x$",
+        "$n$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "Interpolating the constant function $f \\equiv 1$ must return $1$ everywhere, and that interpolant is exactly $\\sum_i 1\\cdot L_i(x) = \\sum_i L_i(x)$. Therefore the basis polynomials form a partition of unity, summing to $1$ for every $x$. A sum of $0$ would only hold for the zero function, while $n$ and $x$ contradict the constant-reproduction property. The trap is overlooking that the basis must reproduce constants, which forces the sum to be $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-021",
+      "stem": "When interpolating near the centre of an equally spaced table, which formula is generally preferred for best accuracy?",
+      "options": [
+        "A central difference formula such as Stirling's",
+        "Newton's backward difference formula",
+        "Newton's forward difference formula",
+        "Linear interpolation between the two end points"
+      ],
+      "answer": 0,
+      "explanation": "Central difference formulas like Stirling's and Bessel's expand about a central node and use differences that straddle the interpolation point symmetrically, which minimizes the node polynomial near the middle and gives the best accuracy there. Newton's forward and backward formulas are tuned to the start and end of the table respectively, and linear interpolation between the extreme ends ignores all the interior data. The trap is defaulting to a one-sided formula at the centre, where a symmetric stencil is more accurate.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-022",
+      "stem": "Runge's phenomenon, observed when interpolating with high-degree polynomials on equally spaced nodes, refers to which behaviour?",
+      "options": [
+        "The interpolant becomes exactly linear",
+        "Large oscillations appear near the ends of the interval",
+        "The divided differences all vanish",
+        "The interpolant converges uniformly as degree increases"
+      ],
+      "answer": 1,
+      "explanation": "Runge's phenomenon is the appearance of large, growing oscillations near the endpoints when a smooth function such as $\\frac{1}{1 + 25x^2}$ is interpolated by high-degree polynomials on uniformly spaced nodes; increasing the degree makes the swings worse rather than better. It is the opposite of uniform convergence, does not make the interpolant linear, and does not zero out the divided differences. The trap is assuming more nodes always help; on equal spacing they can degrade accuracy at the edges, which is why Chebyshev nodes are preferred.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-023",
+      "format": "cloze",
+      "stem": "Linear interpolation is applied between the points $(10, 1.000)$ and $(20, 1.301)$ to estimate the value at $x = 15$.",
+      "solution": "The interpolation fraction is $\\dfrac{15 - 10}{20 - 10}$, which equals {{1}}. Multiplying this fraction by the rise $1.301 - 1.000$ and adding to $1.000$, the estimated value is approximately $f(15) \\approx$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.1505,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "The fraction is $\\frac{5}{10} = 0.5$. The rise is $1.301 - 1.000 = 0.301$, so $f(15) \\approx 1.000 + 0.5(0.301) = 1.000 + 0.1505 = 1.1505$. This is the linear estimate of $\\log_{10} 15$.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-024",
+      "format": "cloze",
+      "stem": "Build the divided difference table for $(1, 1)$, $(2, 8)$, $(4, 64)$, then form the Newton interpolating polynomial.",
+      "solution": "The first divided differences are $f[1, 2] = 7$ and $f[2, 4] =$ {{1}}. The second divided difference $f[1, 2, 4]$ is then {{2}}. The Newton form is $P(x) = 1 + 7(x - 1) + 7(x - 1)(x - 2)$, and evaluating at $x = 4$ returns the tabulated value {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 28,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 64,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "First divided differences: $\\frac{8 - 1}{2 - 1} = 7$ and $\\frac{64 - 8}{4 - 2} = 28$. Second: $\\frac{28 - 7}{4 - 1} = 7$. Then $P(4) = 1 + 7(3) + 7(3)(2) = 1 + 21 + 42 = 64$, matching the data.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-025",
+      "format": "cloze",
+      "stem": "Evaluate the Lagrange interpolant through $(0, 1)$, $(1, 3)$, $(2, 9)$ at the point $x = 0.5$.",
+      "solution": "The basis weight $L_1(0.5) = \\dfrac{(0.5 - 0)(0.5 - 2)}{(1 - 0)(1 - 2)}$ evaluates to {{1}}. Combining all three weighted values gives the estimate $f(0.5) =$ {{2}}. As a check, the three Lagrange weights must add to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.75,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Here $L_1(0.5) = \\frac{(0.5)(-1.5)}{(1)(-1)} = \\frac{-0.75}{-1} = 0.75$. With $L_0 = 0.375$ and $L_2 = -0.125$, the estimate is $1(0.375) + 3(0.75) + 9(-0.125) = 1.5$. The weights sum to $0.375 + 0.75 - 0.125 = 1$, the partition-of-unity check.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-026",
+      "format": "cloze",
+      "stem": "State the structure of Newton's forward difference interpolation formula and its error.",
+      "solution": "With $p = \\dfrac{x - x_0}{h}$, the term following $f_0 + p\\,\\Delta f_0$ carries the coefficient {{1}} multiplying $\\Delta^2 f_0$. The formula is exact whenever the data come from a polynomial of degree at most {{2}} relative to the number of differences retained. The node polynomial appearing in the error term vanishes at every {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{p(p - 1)}{2}$",
+            "$\\dfrac{p(p + 1)}{2}$",
+            "$p^2$",
+            "$\\dfrac{p}{2}$"
+          ],
+          "answer": "$\\dfrac{p(p - 1)}{2}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "the number of intervals",
+            "the order of the highest difference used",
+            "twice the number of nodes",
+            "one"
+          ],
+          "answer": "the order of the highest difference used"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "interpolation node",
+            "midpoint",
+            "endpoint only",
+            "origin"
+          ],
+          "answer": "interpolation node"
+        }
+      ],
+      "explanation": "The second-order coefficient is $\\frac{p(p - 1)}{2}$. Retaining differences up to order $k$ makes the formula exact for polynomials of degree at most $k$. The error's node polynomial $\\prod (x - x_i)$ is zero at each interpolation node, which is why the interpolant matches the data exactly there.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-027",
+      "format": "cloze",
+      "stem": "Use Newton's forward difference formula on $f(0) = 1$, $f(1) = 2$, $f(2) = 4$, $f(3) = 8$ with $h = 1$ to estimate $f(0.5)$.",
+      "solution": "The forward differences are $\\Delta f_0 = 1$, $\\Delta^2 f_0 = 1$, and $\\Delta^3 f_0 = $ {{1}}. With $p = 0.5$, summing the four terms $1 + 0.5 - 0.125 + 0.0625$ gives the estimate $f(0.5) =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.4375,
+          "tolerance": 0.0001
+        }
+      ],
+      "explanation": "The values $1, 2, 4, 8$ have all forward differences equal to $1$, so $\\Delta^3 f_0 = 1$. With $p = 0.5$ the four terms are $1$, $0.5(1) = 0.5$, $\\frac{0.5(-0.5)}{2}(1) = -0.125$, and $\\frac{0.5(-0.5)(-1.5)}{6}(1) = 0.0625$, summing to $1.4375$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-interpolation-028",
+      "format": "cloze",
+      "stem": "Relate divided differences to forward differences and recall basis properties of interpolation.",
+      "solution": "For equally spaced data, the $n$th divided difference equals $\\Delta^n f_0$ divided by the product {{1}}. The Lagrange basis polynomial $L_i$ takes the value $1$ at node $x_i$ and the value {{2}} at every other node. To interpolate a polynomial of degree $3$ exactly, the minimum number of distinct nodes required is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$n!\\,h^n$",
+            "$n\\,h$",
+            "$h^n$",
+            "$n!$"
+          ],
+          "answer": "$n!\\,h^n$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "On a uniform grid $f[x_0, \\ldots, x_n] = \\frac{\\Delta^n f_0}{n!\\,h^n}$. Each Lagrange basis polynomial satisfies $L_i(x_j) = \\delta_{ij}$, so it is $0$ at other nodes. A degree-$3$ polynomial needs $3 + 1 = 4$ points.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    }
+  ]
+}

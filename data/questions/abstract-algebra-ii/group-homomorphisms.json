@@ -1,0 +1,441 @@
+{
+  "courseId": "abstract-algebra-ii",
+  "topicId": "group-homomorphisms",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-001",
+      "stem": "A function $\\phi : G \\to H$ between groups is a homomorphism when it satisfies which property for all $a, b \\in G$?",
+      "options": [
+        "$\\phi(a) = a$",
+        "$\\phi(ab) = \\phi(b)\\phi(a)$ always",
+        "$\\phi(ab) = \\phi(a)\\phi(b)$",
+        "$\\phi(ab) = \\phi(a) + \\phi(b)$ always"
+      ],
+      "answer": 2,
+      "explanation": "A group homomorphism preserves the operation: $\\phi(ab) = \\phi(a)\\phi(b)$, where the left product is in $G$ and the right product is in $H$. Everything else (identity preservation, inverse preservation) follows from this single condition.",
+      "difficulty": "warmup",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-002",
+      "stem": "If $\\phi : G \\to H$ is a homomorphism with identities $e_G$ and $e_H$, what must $\\phi(e_G)$ equal?",
+      "options": [
+        "$e_H$",
+        "The generator of $H$",
+        "$e_G$",
+        "An arbitrary element of $H$"
+      ],
+      "answer": 0,
+      "explanation": "From $\\phi(e_G) = \\phi(e_G e_G) = \\phi(e_G)\\phi(e_G)$, cancelling one factor gives $\\phi(e_G) = e_H$. A homomorphism always sends the identity of the domain to the identity of the codomain.",
+      "difficulty": "warmup",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-003",
+      "stem": "For a homomorphism $\\phi : G \\to H$, the kernel $\\ker \\phi$ is defined as which set?",
+      "options": [
+        "$\\{ h \\in H : h = e_H \\}$",
+        "$\\{ g \\in G : \\phi(g) = g \\}$",
+        "$\\{ \\phi(g) : g \\in G \\}$",
+        "$\\{ g \\in G : \\phi(g) = e_H \\}$"
+      ],
+      "answer": 3,
+      "explanation": "The kernel is the set of domain elements mapped to the codomain identity: $\\ker \\phi = \\{ g \\in G : \\phi(g) = e_H \\}$. The set $\\{ \\phi(g) : g \\in G \\}$ is instead the image of $\\phi$. The kernel is always a normal subgroup of $G$.",
+      "difficulty": "warmup",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-004",
+      "stem": "The kernel of a group homomorphism $\\phi : G \\to H$ is always which kind of subgroup of $G$?",
+      "options": [
+        "A cyclic subgroup.",
+        "Not necessarily a subgroup at all.",
+        "A normal subgroup.",
+        "A subgroup of prime order."
+      ],
+      "answer": 2,
+      "explanation": "The kernel is always a normal subgroup of $G$. It is a subgroup because preimages of the identity are closed under the operation and inverses, and it is normal because for $k \\in \\ker \\phi$ and any $g$, $\\phi(gkg^{-1}) = \\phi(g) e_H \\phi(g)^{-1} = e_H$. This is what lets us form $G/\\ker\\phi$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-005",
+      "stem": "A homomorphism $\\phi : G \\to H$ is injective (one-to-one) if and only if which condition holds?",
+      "options": [
+        "$\\ker \\phi = G$",
+        "$\\ker \\phi = \\{ e_G \\}$",
+        "$\\phi$ is surjective",
+        "$|G| = |H|$"
+      ],
+      "answer": 1,
+      "explanation": "A homomorphism is injective exactly when its kernel is trivial: $\\ker \\phi = \\{ e_G \\}$. If $\\phi(a) = \\phi(b)$ then $\\phi(ab^{-1}) = e_H$, so $ab^{-1} \\in \\ker\\phi$; a trivial kernel forces $a = b$. This is the standard one-step injectivity test for homomorphisms.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-006",
+      "stem": "The First Isomorphism Theorem states that for a homomorphism $\\phi : G \\to H$, which isomorphism holds?",
+      "options": [
+        "$\\ker \\phi \\cong \\operatorname{im} \\phi$",
+        "$G / \\ker \\phi \\cong \\operatorname{im} \\phi$",
+        "$G / \\operatorname{im} \\phi \\cong \\ker \\phi$",
+        "$G \\cong H$"
+      ],
+      "answer": 1,
+      "explanation": "The First Isomorphism Theorem says $G/\\ker\\phi \\cong \\operatorname{im}\\phi$. The map $g\\ker\\phi \\mapsto \\phi(g)$ is a well-defined isomorphism from the factor group onto the image. This single theorem underlies most identifications of factor groups.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-007",
+      "stem": "For a homomorphism $\\phi : G \\to H$ and $a \\in G$, what is $\\phi(a^{-1})$?",
+      "options": [
+        "$-\\phi(a)$ always",
+        "$\\phi(a)$",
+        "$\\phi(a)^{-1}$",
+        "$e_H$"
+      ],
+      "answer": 2,
+      "explanation": "Since $\\phi(a)\\phi(a^{-1}) = \\phi(aa^{-1}) = \\phi(e_G) = e_H$, the element $\\phi(a^{-1})$ is the inverse of $\\phi(a)$, that is $\\phi(a^{-1}) = \\phi(a)^{-1}$. Homomorphisms preserve inverses.",
+      "difficulty": "warmup",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-008",
+      "stem": "If $\\phi : G \\to H$ is a homomorphism and $a \\in G$ has finite order, how does the order of $\\phi(a)$ relate to the order of $a$?",
+      "options": [
+        "The order of $a$ divides the order of $\\phi(a)$.",
+        "The order of $\\phi(a)$ equals the order of $a$ always.",
+        "The order of $\\phi(a)$ divides the order of $a$.",
+        "There is no relation."
+      ],
+      "answer": 2,
+      "explanation": "If $a^n = e_G$ then $\\phi(a)^n = \\phi(a^n) = e_H$, so the order of $\\phi(a)$ divides $n$ whenever $a^n = e$, in particular it divides the order of $a$. Equality holds when $\\phi$ is injective, but in general it can be a proper divisor.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-009",
+      "stem": "How many group homomorphisms are there from $\\mathbb{Z}_{12}$ to $\\mathbb{Z}_{8}$?",
+      "options": [
+        "$8$",
+        "$4$",
+        "$12$",
+        "$2$"
+      ],
+      "answer": 1,
+      "explanation": "A homomorphism $\\phi : \\mathbb{Z}_{12} \\to \\mathbb{Z}_8$ is determined by $\\phi(1) = a$, which must satisfy $12 a \\equiv 0 \\pmod 8$. The number of such $a$ in $\\mathbb{Z}_8$ is $\\gcd(12, 8) = 4$. So there are $4$ homomorphisms.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-010",
+      "stem": "The determinant map $\\det : GL_n(\\mathbb{R}) \\to \\mathbb{R}^{*}$ (nonzero reals under multiplication) is a homomorphism. What is its kernel?",
+      "options": [
+        "All of $GL_n(\\mathbb{R})$.",
+        "The set of diagonal matrices.",
+        "The special linear group $SL_n(\\mathbb{R})$ of matrices with determinant $1$.",
+        "The identity matrix only."
+      ],
+      "answer": 2,
+      "explanation": "Since $\\det(AB) = \\det(A)\\det(B)$, the determinant is a homomorphism, and its kernel is the set of matrices with determinant $1$, namely $SL_n(\\mathbb{R})$. By the First Isomorphism Theorem $GL_n(\\mathbb{R})/SL_n(\\mathbb{R}) \\cong \\mathbb{R}^{*}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-011",
+      "stem": "An isomorphism between groups is a homomorphism that is additionally which of the following?",
+      "options": [
+        "Only injective.",
+        "Only surjective.",
+        "Bijective (one-to-one and onto).",
+        "Constant."
+      ],
+      "answer": 2,
+      "explanation": "An isomorphism is a bijective homomorphism: it preserves the operation and is both one-to-one and onto, so it has a two-sided inverse that is also a homomorphism. Isomorphic groups are algebraically indistinguishable.",
+      "difficulty": "warmup",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-012",
+      "stem": "The image $\\operatorname{im} \\phi = \\{ \\phi(g) : g \\in G \\}$ of a homomorphism $\\phi : G \\to H$ is always which of the following?",
+      "options": [
+        "Equal to all of $H$.",
+        "A subgroup of $H$.",
+        "A normal subgroup of $G$.",
+        "Equal to the kernel."
+      ],
+      "answer": 1,
+      "explanation": "The image is a subgroup of the codomain $H$: it contains $e_H = \\phi(e_G)$, is closed under the operation since $\\phi(a)\\phi(b) = \\phi(ab)$, and contains inverses. It need not be all of $H$ unless $\\phi$ is surjective, and it need not be normal in $H$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-013",
+      "stem": "Let $\\phi : G \\to H$ be a homomorphism with $|G| = 20$ and $|\\ker \\phi| = 5$. What is the order of $\\operatorname{im} \\phi$?",
+      "options": [
+        "$5$",
+        "$4$",
+        "$100$",
+        "$20$"
+      ],
+      "answer": 1,
+      "explanation": "By the First Isomorphism Theorem, $|\\operatorname{im}\\phi| = |G/\\ker\\phi| = |G|/|\\ker\\phi| = 20/5 = 4$. The image has order $4$, and this must also divide $|H|$ since the image is a subgroup of $H$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-014",
+      "stem": "The sign (parity) map $\\operatorname{sgn} : S_n \\to \\{ 1, -1 \\}$ sending even permutations to $1$ and odd to $-1$ is a homomorphism. What is its kernel?",
+      "options": [
+        "All of $S_n$.",
+        "The trivial subgroup.",
+        "The set of transpositions.",
+        "The alternating group $A_n$."
+      ],
+      "answer": 3,
+      "explanation": "The sign map sends a permutation to $1$ exactly when it is even, so the kernel is the set of even permutations, which is the alternating group $A_n$. By the First Isomorphism Theorem $S_n / A_n \\cong \\{1, -1\\} \\cong \\mathbb{Z}_2$ for $n \\ge 2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-015",
+      "stem": "How many group homomorphisms are there from $\\mathbb{Z}_{6}$ to $\\mathbb{Z}_{9}$?",
+      "options": [
+        "$1$",
+        "$6$",
+        "$3$",
+        "$9$"
+      ],
+      "answer": 2,
+      "explanation": "A homomorphism $\\phi : \\mathbb{Z}_6 \\to \\mathbb{Z}_9$ is fixed by $\\phi(1) = a$ with $6a \\equiv 0 \\pmod 9$. The number of valid $a$ is $\\gcd(6, 9) = 3$. So there are $3$ homomorphisms.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-016",
+      "stem": "Consider $\\phi : \\mathbb{Z} \\to \\mathbb{Z}_n$ given by $\\phi(k) = k \\bmod n$. What is the kernel of $\\phi$?",
+      "options": [
+        "$\\mathbb{Z}_n$",
+        "$\\{ 0 \\}$",
+        "$n\\mathbb{Z}$, the multiples of $n$.",
+        "$\\{ 1, 2, \\ldots, n-1 \\}$"
+      ],
+      "answer": 2,
+      "explanation": "The reduction map sends $k$ to $0$ in $\\mathbb{Z}_n$ exactly when $n$ divides $k$, so $\\ker\\phi = n\\mathbb{Z}$. By the First Isomorphism Theorem this recovers $\\mathbb{Z}/n\\mathbb{Z} \\cong \\mathbb{Z}_n$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-017",
+      "stem": "If $\\phi : G \\to H$ is a homomorphism and $a$ has order $12$, which of the following could NOT be the order of $\\phi(a)$?",
+      "options": [
+        "$5$",
+        "$4$",
+        "$3$",
+        "$6$"
+      ],
+      "answer": 0,
+      "explanation": "The order of $\\phi(a)$ must divide the order of $a$, which is $12$. The divisors of $12$ are $1, 2, 3, 4, 6, 12$. Since $5$ does not divide $12$, the order of $\\phi(a)$ cannot be $5$, while $6$, $4$, and $3$ all divide $12$ and are possible.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-018",
+      "stem": "A homomorphism from a group $G$ to itself is called which of the following?",
+      "options": [
+        "A quotient map, always.",
+        "A monomorphism, always.",
+        "An isomorphism, always.",
+        "An endomorphism."
+      ],
+      "answer": 3,
+      "explanation": "A homomorphism from a group to itself is an endomorphism. If it is also bijective it is an automorphism, but a general endomorphism need not be injective or surjective. (Monomorphism means injective and is not guaranteed here.)",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-019",
+      "stem": "For a homomorphism $\\phi : G \\to H$ between finite groups, the order of $\\operatorname{im} \\phi$ must divide which quantities?",
+      "options": [
+        "Neither $|G|$ nor $|H|$.",
+        "Only $|H|$.",
+        "Only $|G|$.",
+        "Both $|G|$ and $|H|$."
+      ],
+      "answer": 3,
+      "explanation": "The image has order $|G|/|\\ker\\phi|$, so it divides $|G|$. The image is also a subgroup of $H$, so by Lagrange it divides $|H|$. Hence $|\\operatorname{im}\\phi|$ divides $\\gcd(|G|, |H|)$, a useful constraint when counting homomorphisms.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-020",
+      "stem": "Suppose $\\phi : \\mathbb{Z}_{10} \\to \\mathbb{Z}_{10}$ is the homomorphism $\\phi(x) = 4x \\bmod 10$. What is $|\\ker \\phi|$?",
+      "options": [
+        "$2$",
+        "$10$",
+        "$5$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "The kernel is $\\{ x : 4x \\equiv 0 \\pmod{10} \\}$. Solving $4x \\equiv 0 \\pmod{10}$: dividing by $\\gcd(4,10)=2$ gives $2x \\equiv 0 \\pmod 5$, so $x \\equiv 0 \\pmod 5$, yielding $x \\in \\{0, 5\\}$. Thus $|\\ker\\phi| = 2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-021",
+      "stem": "Which map $\\phi : (\\mathbb{R}, +) \\to (\\mathbb{R}^{+}, \\cdot)$ (positive reals under multiplication) is an isomorphism?",
+      "options": [
+        "$\\phi(x) = |x|$",
+        "$\\phi(x) = x^2$",
+        "$\\phi(x) = e^{x}$",
+        "$\\phi(x) = x + 1$"
+      ],
+      "answer": 2,
+      "explanation": "The exponential $\\phi(x) = e^x$ satisfies $\\phi(x + y) = e^{x+y} = e^x e^y = \\phi(x)\\phi(y)$, turning addition into multiplication, and it is a bijection from $\\mathbb{R}$ onto $\\mathbb{R}^{+}$. So it is an isomorphism (its inverse is the natural logarithm). The other maps fail to preserve the operation or to be bijective.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-022",
+      "stem": "If $\\phi : G \\to H$ is a homomorphism and $G$ is cyclic generated by $a$, then $\\phi$ is completely determined by which datum?",
+      "options": [
+        "The order of $H$.",
+        "Nothing; many choices remain.",
+        "The kernel of the identity map.",
+        "The value $\\phi(a)$."
+      ],
+      "answer": 3,
+      "explanation": "If $G = \\langle a \\rangle$, then every element is $a^k$ and $\\phi(a^k) = \\phi(a)^k$. So once $\\phi(a)$ is chosen, the entire homomorphism is determined. The only constraint on $\\phi(a)$ is that its order divide the order of $a$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-023",
+      "stem": "Let $\\phi : G \\to H$ be a homomorphism with $|G| = 18$ and suppose $\\phi$ is surjective onto $H$ with $|H| = 6$. What is $|\\ker \\phi|$?",
+      "options": [
+        "$12$",
+        "$6$",
+        "$18$",
+        "$3$"
+      ],
+      "answer": 3,
+      "explanation": "Surjectivity gives $\\operatorname{im}\\phi = H$, so $|H| = |G|/|\\ker\\phi|$. Solving $6 = 18/|\\ker\\phi|$ gives $|\\ker\\phi| = 18/6 = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-024",
+      "stem": "Which of the following is the only group homomorphism from $\\mathbb{Z}_{5}$ to $\\mathbb{Z}_{7}$?",
+      "options": [
+        "The identity map.",
+        "A map sending $1$ to $1$.",
+        "The trivial map sending every element to $0$.",
+        "There are several nontrivial homomorphisms."
+      ],
+      "answer": 2,
+      "explanation": "The number of homomorphisms $\\mathbb{Z}_5 \\to \\mathbb{Z}_7$ is $\\gcd(5,7) = 1$, so the only one is the trivial map. Concretely, the order of $\\phi(1)$ must divide both $5$ and $7$, hence equal $1$, forcing $\\phi(1) = 0$ and $\\phi \\equiv 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-025",
+      "format": "cloze",
+      "stem": "Let $\\phi : G \\to H$ be a group homomorphism with $|G| = 40$ and $|\\ker \\phi| = 8$. Using the First Isomorphism Theorem, find $|G/\\ker\\phi|$ and the order of $\\operatorname{im}\\phi$.",
+      "solution": "The factor group has order $|G|/|\\ker\\phi| = 40/8$, which equals {{1}}. By the First Isomorphism Theorem $G/\\ker\\phi \\cong \\operatorname{im}\\phi$, so the order of the image is also {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Here $|G/\\ker\\phi| = 40/8 = 5$, and the First Isomorphism Theorem identifies this factor group with $\\operatorname{im}\\phi$, so the image also has order $5$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-026",
+      "format": "cloze",
+      "stem": "Count the group homomorphisms from $\\mathbb{Z}_{15}$ to $\\mathbb{Z}_{20}$, and decide whether any of them can be injective.",
+      "solution": "The number of homomorphisms from $\\mathbb{Z}_{15}$ to $\\mathbb{Z}_{20}$ is $\\gcd(15, 20)$, which equals {{1}}. An injective homomorphism would need an image of order $15$ inside $\\mathbb{Z}_{20}$, but $15$ does not divide $20$, so an injective homomorphism is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "impossible",
+            "possible"
+          ],
+          "answer": "impossible"
+        }
+      ],
+      "explanation": "The count is $\\gcd(15,20) = 5$. An injective map from $\\mathbb{Z}_{15}$ would give a subgroup of order $15$ in $\\mathbb{Z}_{20}$, but $15 \\nmid 20$, so no homomorphism here is injective.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-027",
+      "format": "cloze",
+      "stem": "Consider $\\phi : \\mathbb{Z}_{12} \\to \\mathbb{Z}_{12}$ given by $\\phi(x) = 3x \\bmod 12$. Find the order of the kernel and the order of the image of $\\phi$.",
+      "solution": "The kernel solves $3x \\equiv 0 \\pmod{12}$, i.e. $x$ a multiple of $4$, giving $x \\in \\{0, 4, 8\\}$, so the order of the kernel is {{1}}. By the First Isomorphism Theorem the image has order $|G|/|\\ker\\phi| = 12/3$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Solving $3x \\equiv 0 \\pmod{12}$ gives $x \\equiv 0 \\pmod 4$, so $\\ker\\phi = \\{0,4,8\\}$ of order $3$. Then $|\\operatorname{im}\\phi| = 12/3 = 4$, namely $\\{0,3,6,9\\}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    },
+    {
+      "id": "abstract-algebra-ii-group-homomorphisms-028",
+      "format": "cloze",
+      "stem": "Let $\\phi : G \\to H$ be a homomorphism, and suppose $a \\in G$ has order $20$. The order of $\\phi(a)$ must divide $20$. State whether $\\phi(a)$ can have order $8$, and give the largest order $\\phi(a)$ can possibly have.",
+      "solution": "The order of $\\phi(a)$ divides the order of $a$, which is $20$. Since $8$ does not divide $20$, an image element of order $8$ is {{1}}. The largest possible order of $\\phi(a)$ is the full divisor $20$ itself, namely {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "impossible",
+            "possible"
+          ],
+          "answer": "impossible"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The order of $\\phi(a)$ divides $20$, whose divisors are $1,2,4,5,10,20$. Since $8 \\nmid 20$, order $8$ is impossible. The maximum divisor is $20$, achieved when $\\phi$ is injective on $\\langle a \\rangle$.",
+      "difficulty": "core",
+      "source": "in the style of Gallian, Contemporary Abstract Algebra"
+    }
+  ]
+}

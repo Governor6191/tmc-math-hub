@@ -1,0 +1,500 @@
+{
+  "courseId": "differential-equation-i",
+  "topicId": "linear-first-order",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "differential-equation-i-linear-first-order-001",
+      "stem": "The standard form of a linear first order differential equation is $\\dfrac{dy}{dx} + P(x)y = Q(x)$. What is the integrating factor?",
+      "options": [
+        "$e^{\\int Q\\,dx}$",
+        "$\\int P\\,dx$",
+        "$e^{\\int P\\,dx}$",
+        "$e^{P x}$"
+      ],
+      "answer": 2,
+      "explanation": "For $y' + P(x)y = Q(x)$, the integrating factor is $\\mu = e^{\\int P(x)\\,dx}$, built from the coefficient $P$ of $y$. Multiplying through by $\\mu$ turns the left side into the exact derivative $\\frac{d}{dx}(\\mu y)$, since $\\mu' = P\\mu$. It uses $P$, not $Q$, and the exponent is the full integral $\\int P\\,dx$, not the bare $Px$ unless $P$ is constant.",
+      "difficulty": "warmup",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-002",
+      "stem": "Solve $\\dfrac{dy}{dx} + 2y = 0$.",
+      "options": [
+        "$y = Ce^{-x}$",
+        "$y = Ce^{2x}$",
+        "$y = Ce^{-2x}$",
+        "$y = 2x + C$"
+      ],
+      "answer": 2,
+      "explanation": "This is linear with $P = 2$, $Q = 0$, and also separable. The integrating factor is $e^{2x}$, giving $\\frac{d}{dx}(e^{2x}y) = 0$, so $e^{2x}y = C$ and $y = Ce^{-2x}$. Check: $y' = -2Ce^{-2x} = -2y$, so $y' + 2y = 0$. The exponent is $-2x$ because solving $\\frac{dy}{y} = -2\\,dx$ gives a negative sign.",
+      "difficulty": "warmup",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-003",
+      "stem": "For $\\dfrac{dy}{dx} + 3y = 6$, what is the integrating factor?",
+      "options": [
+        "$3x$",
+        "$e^{3x}$",
+        "$e^{6x}$",
+        "$e^{x}$"
+      ],
+      "answer": 1,
+      "explanation": "Here $P(x) = 3$, the coefficient of $y$. The integrating factor is $\\mu = e^{\\int 3\\,dx} = e^{3x}$. The forcing term $6$ on the right does not enter the integrating factor; only $P = 3$ does. So $\\mu = e^{3x}$, not $e^{6x}$ and not the bare $3x$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-004",
+      "stem": "Solve $\\dfrac{dy}{dx} + 3y = 6$.",
+      "options": [
+        "$y = 2 + Ce^{-3x}$",
+        "$y = 6 + Ce^{-3x}$",
+        "$y = 2x + Ce^{-3x}$",
+        "$y = 2 + Ce^{3x}$"
+      ],
+      "answer": 0,
+      "explanation": "With $\\mu = e^{3x}$, the equation becomes $\\frac{d}{dx}(e^{3x}y) = 6e^{3x}$. Integrating, $e^{3x}y = 2e^{3x} + C$, so $y = 2 + Ce^{-3x}$. Check: $y' = -3Ce^{-3x}$, and $y' + 3y = -3Ce^{-3x} + 3(2 + Ce^{-3x}) = 6$. The particular part is the constant $2 = \\frac{6}{3}$, the ratio $\\frac{Q}{P}$, while $Ce^{-3x}$ is the homogeneous part.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-005",
+      "stem": "Solve $\\dfrac{dy}{dx} + y = e^{x}$.",
+      "options": [
+        "$y = \\dfrac{1}{2}e^{x} + Ce^{-x}$",
+        "$y = e^{x} + Ce^{-x}$",
+        "$y = x e^{x} + Ce^{-x}$",
+        "$y = \\dfrac{1}{2}e^{2x} + C$"
+      ],
+      "answer": 0,
+      "explanation": "With $P = 1$, $\\mu = e^{x}$. Then $\\frac{d}{dx}(e^{x}y) = e^{x}\\cdot e^{x} = e^{2x}$. Integrating, $e^{x}y = \\frac{1}{2}e^{2x} + C$, so $y = \\frac{1}{2}e^{x} + Ce^{-x}$. Check: $y' = \\frac{1}{2}e^{x} - Ce^{-x}$, and $y' + y = \\frac{1}{2}e^{x} - Ce^{-x} + \\frac{1}{2}e^{x} + Ce^{-x} = e^{x}$. The factor $\\frac{1}{2}$ comes from $\\int e^{2x}\\,dx = \\frac{1}{2}e^{2x}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-006",
+      "stem": "Solve $x\\dfrac{dy}{dx} + y = x$ for $x > 0$.",
+      "options": [
+        "$y = x^2 + Cx$",
+        "$y = \\dfrac{x}{2} + \\dfrac{C}{x}$",
+        "$y = \\dfrac{x}{2} + C$",
+        "$y = x + \\dfrac{C}{x}$"
+      ],
+      "answer": 1,
+      "explanation": "Notice the left side is already $\\frac{d}{dx}(xy)$, since $xy' + y = (xy)'$. So $\\frac{d}{dx}(xy) = x$, and integrating gives $xy = \\frac{x^2}{2} + C$, hence $y = \\frac{x}{2} + \\frac{C}{x}$. Equivalently, dividing by $x$ gives standard form $y' + \\frac{1}{x}y = 1$ with $\\mu = e^{\\int \\frac{1}{x}dx} = x$. Check: $xy' + y = (xy)' = x$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-007",
+      "stem": "Solve $\\dfrac{dy}{dx} - y = e^{2x}$.",
+      "options": [
+        "$y = \\dfrac{1}{2}e^{2x} + Ce^{x}$",
+        "$y = e^{2x} + Ce^{x}$",
+        "$y = e^{x} + Ce^{2x}$",
+        "$y = e^{2x} + Ce^{-x}$"
+      ],
+      "answer": 1,
+      "explanation": "Here $P = -1$, so $\\mu = e^{-x}$. Then $\\frac{d}{dx}(e^{-x}y) = e^{-x}e^{2x} = e^{x}$. Integrating, $e^{-x}y = e^{x} + C$, so $y = e^{2x} + Ce^{x}$. Check: $y' = 2e^{2x} + Ce^{x}$, and $y' - y = 2e^{2x} + Ce^{x} - e^{2x} - Ce^{x} = e^{2x}$. The integral $\\int e^{x}\\,dx = e^{x}$ carries no factor of $\\frac{1}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-008",
+      "stem": "Solve the initial value problem $\\dfrac{dy}{dx} + y = 2$, $y(0) = 5$.",
+      "options": [
+        "$y = 2 + 5e^{-x}$",
+        "$y = 2 - 3e^{-x}$",
+        "$y = 2 + 3e^{-x}$",
+        "$y = 5e^{-x}$"
+      ],
+      "answer": 2,
+      "explanation": "The general solution of $y' + y = 2$ is $y = 2 + Ce^{-x}$, found with $\\mu = e^{x}$. Apply $y(0) = 5$: $5 = 2 + Ce^{0} = 2 + C$, so $C = 3$. Thus $y = 2 + 3e^{-x}$. Check: $y(0) = 2 + 3 = 5$, and $y' + y = -3e^{-x} + 2 + 3e^{-x} = 2$. The constant is $3 = 5 - 2$, the gap between the initial value and the steady state.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-009",
+      "stem": "Solve $\\dfrac{dy}{dx} + 2xy = x$.",
+      "options": [
+        "$y = x + Ce^{-x^2}$",
+        "$y = \\dfrac{1}{2}x^2 + C$",
+        "$y = \\dfrac{1}{2} + Ce^{x^2}$",
+        "$y = \\dfrac{1}{2} + Ce^{-x^2}$"
+      ],
+      "answer": 3,
+      "explanation": "Here $P = 2x$, so $\\mu = e^{\\int 2x\\,dx} = e^{x^2}$. Then $\\frac{d}{dx}(e^{x^2}y) = x e^{x^2}$. Integrating with the substitution $u = x^2$, $\\int x e^{x^2}\\,dx = \\frac{1}{2}e^{x^2}$, so $e^{x^2}y = \\frac{1}{2}e^{x^2} + C$, giving $y = \\frac{1}{2} + Ce^{-x^2}$. Check: $y' = -2xCe^{-x^2}$, and $y' + 2xy = -2xCe^{-x^2} + 2x(\\frac{1}{2} + Ce^{-x^2}) = x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-010",
+      "stem": "Solve $\\dfrac{dy}{dx} + y = x$.",
+      "options": [
+        "$y = \\dfrac{x^2}{2} + Ce^{-x}$",
+        "$y = x - 1 + Ce^{-x}$",
+        "$y = x + Ce^{-x}$",
+        "$y = x + 1 + Ce^{-x}$"
+      ],
+      "answer": 1,
+      "explanation": "With $\\mu = e^{x}$, $\\frac{d}{dx}(e^{x}y) = x e^{x}$. Integrate by parts: $\\int x e^{x}\\,dx = x e^{x} - e^{x} + C$. So $e^{x}y = x e^{x} - e^{x} + C$, giving $y = x - 1 + Ce^{-x}$. Check: $y' = 1 - Ce^{-x}$, and $y' + y = 1 - Ce^{-x} + x - 1 + Ce^{-x} = x$. The $-1$ comes from the $-e^{x}$ term in the parts integration.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-011",
+      "stem": "To put $x\\dfrac{dy}{dx} + 2y = x^3$ into standard form, what is $P(x)$?",
+      "options": [
+        "$x^2$",
+        "$x$",
+        "$\\dfrac{2}{x}$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "Standard form requires the coefficient of $y'$ to be $1$, so divide through by $x$: $\\frac{dy}{dx} + \\frac{2}{x}y = x^2$. Now $P(x) = \\frac{2}{x}$ is the coefficient of $y$. The common mistake is to read $P = 2$ from the original equation before dividing, but standard form demands dividing by the leading coefficient $x$ first.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-012",
+      "stem": "Continuing, the integrating factor for $\\dfrac{dy}{dx} + \\dfrac{2}{x}y = x^2$ is which of the following?",
+      "options": [
+        "$\\dfrac{1}{x^2}$",
+        "$2\\ln x$",
+        "$x^2$",
+        "$e^{2x}$"
+      ],
+      "answer": 2,
+      "explanation": "With $P = \\frac{2}{x}$, the integrating factor is $\\mu = e^{\\int \\frac{2}{x}\\,dx} = e^{2\\ln x} = e^{\\ln x^2} = x^2$ for $x > 0$. The exponent $2\\ln x$ simplifies to $\\ln x^2$, and exponentiating returns $x^2$. The answer is $x^2$ itself, not the exponent $2\\ln x$ and not the reciprocal $\\frac{1}{x^2}$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-013",
+      "stem": "Solve $\\dfrac{dy}{dx} + \\dfrac{2}{x}y = x^2$ for $x > 0$.",
+      "options": [
+        "$y = x^3 + \\dfrac{C}{x^2}$",
+        "$y = \\dfrac{x^3}{5} + Cx^2$",
+        "$y = \\dfrac{x^3}{5} + \\dfrac{C}{x^2}$",
+        "$y = \\dfrac{x^3}{3} + \\dfrac{C}{x^2}$"
+      ],
+      "answer": 2,
+      "explanation": "With $\\mu = x^2$, $\\frac{d}{dx}(x^2 y) = x^2\\cdot x^2 = x^4$. Integrating, $x^2 y = \\frac{x^5}{5} + C$, so $y = \\frac{x^3}{5} + \\frac{C}{x^2}$. Check: $y' = \\frac{3x^2}{5} - \\frac{2C}{x^3}$, and $y' + \\frac{2}{x}y = \\frac{3x^2}{5} - \\frac{2C}{x^3} + \\frac{2}{x}(\\frac{x^3}{5} + \\frac{C}{x^2}) = \\frac{3x^2}{5} + \\frac{2x^2}{5} = x^2$. The exponent $5$ comes from $\\int x^4\\,dx = \\frac{x^5}{5}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-014",
+      "stem": "After multiplying $y' + P(x)y = Q(x)$ by its integrating factor $\\mu$, the left side becomes which single derivative?",
+      "options": [
+        "$\\dfrac{d}{dx}(\\mu Q)$",
+        "$\\dfrac{d}{dx}(y/\\mu)$",
+        "$\\dfrac{d}{dx}(\\mu y)$",
+        "$\\mu \\dfrac{dy}{dx}$"
+      ],
+      "answer": 2,
+      "explanation": "The integrating factor is built so that $\\mu' = P\\mu$. Then $\\mu y' + \\mu P y = \\mu y' + \\mu' y = \\frac{d}{dx}(\\mu y)$ by the product rule. So the whole left side collapses to $\\frac{d}{dx}(\\mu y)$, which is the point of the method: it makes the left side a single exact derivative ready to integrate. It is not $\\frac{d}{dx}(\\mu Q)$ or $\\mu y'$ alone.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-015",
+      "stem": "Solve the initial value problem $\\dfrac{dy}{dx} - 2y = 0$, $y(0) = 4$.",
+      "options": [
+        "$y = 4e^{-2x}$",
+        "$y = 4 + 2x$",
+        "$y = 4e^{2x}$",
+        "$y = 2e^{4x}$"
+      ],
+      "answer": 2,
+      "explanation": "The equation $y' - 2y = 0$ has $P = -2$, so $\\mu = e^{-2x}$ and $\\frac{d}{dx}(e^{-2x}y) = 0$, giving $y = Ce^{2x}$. Apply $y(0) = 4$: $4 = Ce^{0} = C$, so $y = 4e^{2x}$. Check: $y' = 8e^{2x} = 2y$. The exponent is $+2x$ because moving $-2y$ to the right gives $y' = 2y$, growth not decay.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-016",
+      "stem": "Solve $\\dfrac{dy}{dx} + \\dfrac{1}{x}y = 1$ for $x > 0$.",
+      "options": [
+        "$y = \\dfrac{1}{x} + C$",
+        "$y = \\dfrac{x}{2} + \\dfrac{C}{x}$",
+        "$y = x + \\dfrac{C}{x}$",
+        "$y = \\dfrac{x}{2} + C$"
+      ],
+      "answer": 1,
+      "explanation": "Here $P = \\frac{1}{x}$, so $\\mu = e^{\\int \\frac{1}{x}\\,dx} = x$. Then $\\frac{d}{dx}(xy) = x\\cdot 1 = x$, and integrating gives $xy = \\frac{x^2}{2} + C$, so $y = \\frac{x}{2} + \\frac{C}{x}$. Check: $y' = \\frac{1}{2} - \\frac{C}{x^2}$, and $y' + \\frac{1}{x}y = \\frac{1}{2} - \\frac{C}{x^2} + \\frac{1}{2} + \\frac{C}{x^2} = 1$. The first term is $\\frac{x}{2}$ from $\\int x\\,dx = \\frac{x^2}{2}$ divided by $\\mu = x$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-017",
+      "stem": "Which equation is linear first order but not separable?",
+      "options": [
+        "$y' = \\dfrac{x}{y}$",
+        "$y' = xy$",
+        "$y' = y^2$",
+        "$y' + y = x$"
+      ],
+      "answer": 3,
+      "explanation": "The equation $y' + y = x$ is linear, since $y$ and $y'$ appear to the first power with coefficients in $x$, but it is not separable because the right side $x - y$ cannot be factored into a product of a function of $x$ and a function of $y$. By contrast $y' = xy$ is both linear and separable, $y' = y^2$ is separable but nonlinear, and $y' = \\frac{x}{y}$ is separable but nonlinear. Only $y' + y = x$ is linear yet resists separation.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-018",
+      "stem": "Solve $\\dfrac{dy}{dx} + 2y = 4x$.",
+      "options": [
+        "$y = 2x - 1 + Ce^{2x}$",
+        "$y = 2x - 1 + Ce^{-2x}$",
+        "$y = x^2 + Ce^{-2x}$",
+        "$y = 2x + 1 + Ce^{-2x}$"
+      ],
+      "answer": 1,
+      "explanation": "With $\\mu = e^{2x}$, $\\frac{d}{dx}(e^{2x}y) = 4x e^{2x}$. Integrate by parts: $\\int 4x e^{2x}\\,dx = 4(\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x}) = 2x e^{2x} - e^{2x}$. So $e^{2x}y = 2x e^{2x} - e^{2x} + C$, giving $y = 2x - 1 + Ce^{-2x}$. Check: $y' = 2 - 2Ce^{-2x}$, and $y' + 2y = 2 - 2Ce^{-2x} + 4x - 2 + 2Ce^{-2x} = 4x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-019",
+      "stem": "In the solution formula $y = \\dfrac{1}{\\mu}\\left(\\int \\mu Q\\,dx + C\\right)$, what does the arbitrary constant $C$ represent in the final answer?",
+      "options": [
+        "The particular solution",
+        "The forcing term",
+        "The integrating factor",
+        "The homogeneous part $\\dfrac{C}{\\mu}$"
+      ],
+      "answer": 3,
+      "explanation": "Dividing the constant $C$ by $\\mu$ gives the term $\\frac{C}{\\mu} = Ce^{-\\int P\\,dx}$, which is exactly the general solution of the homogeneous equation $y' + Py = 0$. So $C$ carries the homogeneous part of the solution, while $\\frac{1}{\\mu}\\int \\mu Q\\,dx$ is a particular solution driven by $Q$. The full solution is the sum of these two pieces, with $C$ tagging the homogeneous component.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-020",
+      "stem": "Solve the initial value problem $\\dfrac{dy}{dx} + y = e^{-x}$, $y(0) = 1$.",
+      "options": [
+        "$y = x e^{-x}$",
+        "$y = (x + 1)e^{-x}$",
+        "$y = (x - 1)e^{-x}$",
+        "$y = e^{-x} - x$"
+      ],
+      "answer": 1,
+      "explanation": "With $\\mu = e^{x}$, $\\frac{d}{dx}(e^{x}y) = e^{x}e^{-x} = 1$. Integrating, $e^{x}y = x + C$, so $y = (x + C)e^{-x}$. Apply $y(0) = 1$: $1 = (0 + C)e^{0} = C$, so $C = 1$ and $y = (x + 1)e^{-x}$. Check: $y' = e^{-x} - (x+1)e^{-x} = -x e^{-x}$, and $y' + y = -x e^{-x} + (x+1)e^{-x} = e^{-x}$. The resonance between the forcing $e^{-x}$ and the homogeneous $e^{-x}$ produces the factor $x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-021",
+      "format": "cloze",
+      "stem": "Solve $\\dfrac{dy}{dx} + 3y = 6$ using an integrating factor.",
+      "solution": "The coefficient of $y$ is $P = 3$, so the integrating factor is $\\mu = e^{3x}$. Multiplying gives $\\dfrac{d}{dx}(e^{3x}y) = 6e^{3x}$, and integrating yields $e^{3x}y = 2e^{3x} + C$. Dividing by $\\mu$, the general solution is $y =$ {{1}} $+ Ce^{-3x}$. The steady part equals $Q/P =$ {{2}}, and the term $Ce^{-3x}$ is the {{3}} part.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "homogeneous",
+            "particular",
+            "forcing"
+          ],
+          "answer": "homogeneous"
+        }
+      ],
+      "explanation": "With $P = 3$, $\\mu = e^{3x}$, and $\\frac{d}{dx}(e^{3x}y) = 6e^{3x}$. Integrating gives $e^{3x}y = 2e^{3x} + C$, so $y = 2 + Ce^{-3x}$. The constant steady part is $\\frac{Q}{P} = \\frac{6}{3} = 2$, and $Ce^{-3x}$ is the homogeneous part that decays.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-022",
+      "format": "cloze",
+      "stem": "Solve $\\dfrac{dy}{dx} + y = e^{x}$.",
+      "solution": "With $P = 1$, the integrating factor is $\\mu =$ {{1}}. The equation becomes $\\dfrac{d}{dx}(e^{x}y) = e^{2x}$, and integrating gives $e^{x}y = \\dfrac{1}{2}e^{2x} + C$. So $y = \\dfrac{1}{2}e^{x} + Ce^{-x}$. The coefficient $\\dfrac{1}{2}$ arises because $\\int e^{2x}\\,dx$ divides by {{2}}. The decaying term is $Ce^{-x}$, which {{3}} as $x \\to \\infty$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$e^{x}$",
+            "$e^{-x}$",
+            "$e^{2x}$"
+          ],
+          "answer": "$e^{x}$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "decays",
+            "vanishes",
+            "goes to zero",
+            "tends to zero"
+          ]
+        }
+      ],
+      "explanation": "Since $P = 1$, $\\mu = e^{x}$. Then $\\frac{d}{dx}(e^{x}y) = e^{x}e^{x} = e^{2x}$, and $\\int e^{2x}\\,dx = \\frac{1}{2}e^{2x}$, dividing by $2$. So $y = \\frac{1}{2}e^{x} + Ce^{-x}$, and the term $Ce^{-x}$ decays to zero as $x$ grows.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-023",
+      "format": "cloze",
+      "stem": "Put $x\\dfrac{dy}{dx} + 2y = x^3$ into standard form and find its integrating factor.",
+      "solution": "Divide through by $x$ to get $\\dfrac{dy}{dx} + \\dfrac{2}{x}y = x^2$, so $P(x) =$ {{1}}. The integrating factor is $\\mu = e^{\\int P\\,dx} = e^{2\\ln x} =$ {{2}} for $x > 0$. Dividing by the leading coefficient $x$ first is {{3}} before reading off $P$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{2}{x}$",
+            "$2$",
+            "$2x$"
+          ],
+          "answer": "$\\dfrac{2}{x}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$x^2$",
+            "$e^{2x}$",
+            "$2x$"
+          ],
+          "answer": "$x^2$"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "essential",
+            "necessary",
+            "required"
+          ]
+        }
+      ],
+      "explanation": "Dividing by $x$ gives $y' + \\frac{2}{x}y = x^2$, so $P = \\frac{2}{x}$. Then $\\mu = e^{\\int \\frac{2}{x}\\,dx} = e^{2\\ln x} = x^2$. Dividing by the leading coefficient $x$ before reading $P$ is essential, since otherwise one wrongly takes $P = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Rainville and Bedient, Elementary Differential Equations"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-024",
+      "format": "cloze",
+      "stem": "Solve the initial value problem $\\dfrac{dy}{dx} + y = 2$, $y(0) = 5$.",
+      "solution": "The general solution is $y = 2 + Ce^{-x}$. Applying $y(0) = 5$ gives $5 = 2 + C$, so $C =$ {{1}}. The particular solution is $y = 2 +$ {{2}} $e^{-x}$. As $x \\to \\infty$, $y$ approaches the steady value {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The general solution of $y' + y = 2$ is $y = 2 + Ce^{-x}$. Applying $y(0) = 5$ gives $C = 3$, so $y = 2 + 3e^{-x}$. As $x \\to \\infty$, the term $3e^{-x} \\to 0$, so $y$ approaches the steady value $2$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-025",
+      "format": "cloze",
+      "stem": "Solve $\\dfrac{dy}{dx} + 2xy = x$ using the integrating factor.",
+      "solution": "Here $P = 2x$, so $\\mu = e^{x^2}$. The equation becomes $\\dfrac{d}{dx}(e^{x^2}y) = x e^{x^2}$, and using the substitution $u = x^2$ the integral is $\\dfrac{1}{2}e^{x^2}$. Thus $y =$ {{1}} $+ Ce^{-x^2}$. The constant part equals {{2}}, and the integrating factor came from integrating $P =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{2}$",
+            "$x$",
+            "$\\dfrac{x^2}{2}$"
+          ],
+          "answer": "$\\dfrac{1}{2}$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$2x$",
+            "$x$",
+            "$x^2$"
+          ],
+          "answer": "$2x$"
+        }
+      ],
+      "explanation": "With $P = 2x$, $\\mu = e^{x^2}$. Then $\\frac{d}{dx}(e^{x^2}y) = x e^{x^2}$, and $\\int x e^{x^2}\\,dx = \\frac{1}{2}e^{x^2}$, so $e^{x^2}y = \\frac{1}{2}e^{x^2} + C$ and $y = \\frac{1}{2} + Ce^{-x^2}$. The constant part is $\\frac{1}{2} = 0.5$, and $\\mu$ came from integrating $P = 2x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differential-equation-i-linear-first-order-026",
+      "format": "cloze",
+      "stem": "Solve $\\dfrac{dy}{dx} - y = e^{2x}$.",
+      "solution": "The coefficient of $y$ is $P = -1$, so $\\mu = e^{-x}$. Then $\\dfrac{d}{dx}(e^{-x}y) = e^{-x}\\cdot e^{2x} = e^{x}$. Integrating gives $e^{-x}y = e^{x} + C$, so multiplying by $e^{x}$ yields $y = e^{2x} + C$ {{1}}. The particular term is {{2}}, and no factor of one half appears because $\\int e^{x}\\,dx$ has divisor {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$e^{x}$",
+            "$e^{-x}$",
+            "$e^{2x}$"
+          ],
+          "answer": "$e^{x}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$e^{2x}$",
+            "$e^{x}$",
+            "$Ce^{x}$"
+          ],
+          "answer": "$e^{2x}$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $P = -1$, $\\mu = e^{-x}$, and $\\frac{d}{dx}(e^{-x}y) = e^{x}$. Integrating gives $e^{-x}y = e^{x} + C$, so $y = e^{2x} + Ce^{x}$. The particular term is $e^{2x}$, and $\\int e^{x}\\,dx = e^{x}$ has divisor $1$, so no factor of one half appears.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    }
+  ]
+}

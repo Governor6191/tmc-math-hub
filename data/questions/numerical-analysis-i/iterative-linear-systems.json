@@ -1,0 +1,514 @@
+{
+  "courseId": "numerical-analysis-i",
+  "topicId": "iterative-linear-systems",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-001",
+      "stem": "A sufficient condition guaranteeing convergence of both the Jacobi and Gauss-Seidel methods for $Ax = b$ is that the matrix $A$ is which of the following?",
+      "options": [
+        "Upper triangular",
+        "Symmetric only",
+        "Strictly diagonally dominant",
+        "Singular"
+      ],
+      "answer": 2,
+      "explanation": "If $|a_{ii}| > \\sum_{j \\neq i} |a_{ij}|$ for every row, the matrix is strictly diagonally dominant and both classical iterations are guaranteed to converge from any starting vector. A singular matrix has no unique solution, symmetry alone does not ensure convergence (positive definiteness would, for Gauss-Seidel), and an upper triangular system would just be solved by back substitution. The trap is treating symmetry as sufficient; the row-wise dominance of the diagonal is the standard guarantee.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-002",
+      "stem": "For the system $4x_1 - x_2 = 3$, $-x_1 + 4x_2 = 3$, the Jacobi iteration formula for $x_1$ is which of the following?",
+      "options": [
+        "$x_1^{(k+1)} = \\dfrac{3 - x_2^{(k)}}{4}$",
+        "$x_1^{(k+1)} = \\dfrac{3 + x_2^{(k)}}{4}$",
+        "$x_1^{(k+1)} = 3 + x_2^{(k)}$",
+        "$x_1^{(k+1)} = \\dfrac{3 + x_2^{(k+1)}}{4}$"
+      ],
+      "answer": 1,
+      "explanation": "Solving the first equation for $x_1$ gives $4x_1 = 3 + x_2$, so $x_1^{(k+1)} = \\frac{3 + x_2^{(k)}}{4}$, using the previous sweep's $x_2$. The sign is plus because the term $-x_2$ moves to the right side as $+x_2$. The first option flips that sign, the third uses the new $x_2^{(k+1)}$ which is the Gauss-Seidel idea, and the fourth forgets to divide by the diagonal $4$. The trap is the sign when transposing the off-diagonal term and using the current rather than updated neighbour value.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-003",
+      "stem": "The essential difference between the Gauss-Seidel and Jacobi methods is that Gauss-Seidel does which of the following?",
+      "options": [
+        "Uses updated component values as soon as they are computed within a sweep",
+        "Uses only the previous iterate's values",
+        "Always diverges faster",
+        "Requires matrix inversion at each step"
+      ],
+      "answer": 0,
+      "explanation": "Gauss-Seidel immediately reuses each freshly computed component when updating the later components in the same sweep, whereas Jacobi holds the entire previous iterate fixed until the sweep finishes. This in-place updating typically speeds convergence. It does not invert the matrix, does not use only old values (that is Jacobi), and does not diverge faster. The trap is reversing the two: it is Jacobi that freezes the old vector, and Gauss-Seidel that updates on the fly.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-004",
+      "stem": "For $2x + y = 5$, $x + 2y = 4$, starting from $(0, 0)$, the first Jacobi iterate $(x^{(1)}, y^{(1)})$ is which of the following?",
+      "options": [
+        "$(2.5, 0.75)$",
+        "$(1.5, 0.75)$",
+        "$(2.5, 2.0)$",
+        "$(2.0, 1.0)$"
+      ],
+      "answer": 2,
+      "explanation": "Jacobi uses the old values $x = y = 0$ for both updates: $x^{(1)} = \\frac{5 - y^{(0)}}{2} = \\frac{5}{2} = 2.5$ and $y^{(1)} = \\frac{4 - x^{(0)}}{2} = \\frac{4}{2} = 2.0$, giving $(2.5, 2.0)$. The option $(2.5, 0.75)$ is the first Gauss-Seidel iterate because it reuses the new $x = 2.5$ in the $y$ update, $(2.0, 1.0)$ is the exact solution, and $(1.5, 0.75)$ is a later step. The trap is sneaking the updated $x$ into the $y$ formula; Jacobi must use the old $x = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-005",
+      "stem": "For $2x + y = 5$, $x + 2y = 4$, starting from $(0, 0)$, the first Gauss-Seidel iterate $(x^{(1)}, y^{(1)})$ is which of the following?",
+      "options": [
+        "$(2.5, 2.0)$",
+        "$(2.5, 1.0)$",
+        "$(2.0, 1.0)$",
+        "$(2.5, 0.75)$"
+      ],
+      "answer": 3,
+      "explanation": "Gauss-Seidel computes $x^{(1)} = \\frac{5 - y^{(0)}}{2} = \\frac{5}{2} = 2.5$, then immediately uses this new $x$ in $y^{(1)} = \\frac{4 - x^{(1)}}{2} = \\frac{4 - 2.5}{2} = \\frac{1.5}{2} = 0.75$, giving $(2.5, 0.75)$. The option $(2.5, 2.0)$ is the Jacobi iterate using the old $x$, $(2.0, 1.0)$ is the exact solution, and $(2.5, 1.0)$ mixes the two. The trap is failing to substitute the just-computed $x = 2.5$ into the $y$ update, which is the whole point of Gauss-Seidel.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-006",
+      "stem": "An iterative scheme $x^{(k+1)} = Tx^{(k)} + c$ converges for every starting vector if and only if the spectral radius $\\rho(T)$ satisfies which condition?",
+      "options": [
+        "$\\rho(T) < 1$",
+        "$\\rho(T) = 0$",
+        "$\\rho(T) = 1$",
+        "$\\rho(T) > 1$"
+      ],
+      "answer": 0,
+      "explanation": "The error after $k$ steps is $T^k$ times the initial error, and $T^k \\to 0$ exactly when the spectral radius (largest eigenvalue magnitude) is below $1$, so convergence for all starting vectors holds if and only if $\\rho(T) < 1$. A radius above $1$ causes divergence, exactly $1$ is the borderline failure case, and requiring $\\rho(T) = 0$ is far stronger than needed. The trap is demanding the eigenvalues vanish; they need only lie strictly inside the unit disc.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-007",
+      "stem": "Writing $A = D + L + U$ with $D$ the diagonal and $L, U$ the strictly lower and upper triangular parts, the Jacobi iteration matrix $T_J$ is which of the following?",
+      "options": [
+        "$-(D + U)^{-1}L$",
+        "$D^{-1}(L + U)$",
+        "$-D^{-1}(L + U)$",
+        "$-(D + L)^{-1}U$"
+      ],
+      "answer": 2,
+      "explanation": "Jacobi isolates the diagonal: $Dx^{(k+1)} = b - (L + U)x^{(k)}$, so $x^{(k+1)} = D^{-1}b - D^{-1}(L + U)x^{(k)}$ and the iteration matrix is $T_J = -D^{-1}(L + U)$. The option $-(D + L)^{-1}U$ is the Gauss-Seidel matrix, the version without the minus sign drops the sign from moving the off-diagonal terms across, and $-(D + U)^{-1}L$ inverts the wrong triangle. The trap is mixing the Jacobi splitting (diagonal only) with the Gauss-Seidel splitting (diagonal plus lower triangle).",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-008",
+      "stem": "Successive over-relaxation (SOR) with parameter $\\omega$ updates $x_i$ as $x_i^{(k+1)} = (1 - \\omega)x_i^{(k)} + \\omega\\, x_i^{\\text{GS}}$. For which value of $\\omega$ does SOR reduce exactly to Gauss-Seidel?",
+      "options": [
+        "$\\omega = 0.5$",
+        "$\\omega = 0$",
+        "$\\omega = 2$",
+        "$\\omega = 1$"
+      ],
+      "answer": 3,
+      "explanation": "Setting $\\omega = 1$ kills the $(1 - \\omega)x_i^{(k)}$ term and leaves $x_i^{(k+1)} = x_i^{\\text{GS}}$, which is precisely the Gauss-Seidel update. With $\\omega = 0$ the iterate never changes, $\\omega = 2$ is the upper limit for convergence and gives full over-relaxation, and $\\omega = 0.5$ is under-relaxation. The trap is thinking over-relaxation always means $\\omega > 1$; the special value $\\omega = 1$ recovers plain Gauss-Seidel.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-009",
+      "stem": "The over-relaxation parameter $\\omega$ in SOR must lie in which interval for the method to have a chance of converging?",
+      "options": [
+        "$1 < \\omega < 3$",
+        "$0 < \\omega < 2$",
+        "$\\omega > 2$",
+        "$0 < \\omega < 1$"
+      ],
+      "answer": 1,
+      "explanation": "A classical result (Kahan's theorem) states that SOR can converge only if $0 < \\omega < 2$; outside this range the spectral radius of the iteration matrix is at least $1$. Restricting to $0 < \\omega < 1$ excludes the over-relaxation regime that often accelerates convergence, $1 < \\omega < 3$ admits the divergent values above $2$, and $\\omega > 2$ guarantees divergence. The trap is allowing $\\omega$ past $2$; the necessary window is the open interval from $0$ to $2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-010",
+      "stem": "For the diagonally dominant system $4x_1 + x_2 + x_3 = 6$, $x_1 + 5x_2 + x_3 = 7$, $x_1 + x_2 + 3x_3 = 5$, starting from $(0, 0, 0)$, the first Jacobi value $x_1^{(1)}$ is which of the following?",
+      "options": [
+        "$6.0$",
+        "$1.0$",
+        "$1.5$",
+        "$0.5$"
+      ],
+      "answer": 2,
+      "explanation": "The Jacobi update for the first component is $x_1^{(1)} = \\frac{6 - x_2^{(0)} - x_3^{(0)}}{4} = \\frac{6 - 0 - 0}{4} = 1.5$. The exact solution is $x_1 = 1$, which the first iterate approaches, $0.5$ halves the numerator wrongly, and $6.0$ forgets to divide by the diagonal $4$. The trap is omitting the division by the diagonal entry, which scales the right-hand side down to $1.5$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-011",
+      "stem": "For the same system $4x_1 + x_2 + x_3 = 6$, $x_1 + 5x_2 + x_3 = 7$, $x_1 + x_2 + 3x_3 = 5$, starting from $(0, 0, 0)$, the first Gauss-Seidel value $x_2^{(1)}$ (computed after $x_1^{(1)} = 1.5$) is which of the following?",
+      "options": [
+        "$1.4$",
+        "$0.8$",
+        "$1.5$",
+        "$1.1$"
+      ],
+      "answer": 3,
+      "explanation": "Gauss-Seidel uses the freshly computed $x_1^{(1)} = 1.5$ while $x_3$ is still $0$: $x_2^{(1)} = \\frac{7 - x_1^{(1)} - x_3^{(0)}}{5} = \\frac{7 - 1.5 - 0}{5} = \\frac{5.5}{5} = 1.1$. The option $1.4 = \\frac{7}{5}$ is the Jacobi value that ignores the new $x_1$, $1.5$ repeats $x_1$, and $0.8$ is the next component $x_3^{(1)}$. The trap is reusing the old $x_1 = 0$ instead of the updated $1.5$ that Gauss-Seidel demands.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-012",
+      "stem": "Why might one prefer an iterative method like Gauss-Seidel over direct Gaussian elimination for a very large linear system?",
+      "options": [
+        "It never requires a convergence check",
+        "It is well suited to large sparse systems and uses less storage",
+        "It works even when the system has no solution",
+        "It always gives the exact answer in one step"
+      ],
+      "answer": 1,
+      "explanation": "For large sparse matrices, iterative methods touch only the nonzero entries and avoid the fill-in and $O(n^3)$ cost of elimination, so they save both time and memory, which is why they dominate in scientific computing. They do not produce the exact answer in one step, they do require stopping and convergence checks, and they cannot conjure a solution for an inconsistent system. The trap is expecting iteration to be exact or unconditional; its advantage is efficiency on sparse problems.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-013",
+      "stem": "If a coefficient matrix is not diagonally dominant, a common remedy before iterating is which of the following?",
+      "options": [
+        "Multiply every equation by zero",
+        "Delete the smallest equation",
+        "Rearrange (permute) the equations to bring large coefficients onto the diagonal",
+        "Replace the matrix with the identity"
+      ],
+      "answer": 2,
+      "explanation": "Often the equations can be reordered so that each row's largest-magnitude coefficient sits on the diagonal, restoring or improving diagonal dominance and giving the iteration a chance to converge. Multiplying by zero destroys the system, deleting an equation changes the problem, and replacing the matrix with the identity discards the data. The trap is assuming a non-dominant arrangement is hopeless; a simple permutation of rows can fix it.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-014",
+      "stem": "For a consistently ordered system where the Jacobi iteration matrix has spectral radius $\\rho_J$, the Gauss-Seidel spectral radius $\\rho_{GS}$ equals which expression?",
+      "options": [
+        "$\\rho_J^2$",
+        "$2\\rho_J$",
+        "$\\rho_J$",
+        "$\\sqrt{\\rho_J}$"
+      ],
+      "answer": 0,
+      "explanation": "For consistently ordered (two-cyclic) matrices the eigenvalue relation gives $\\rho_{GS} = \\rho_J^2$, so when $\\rho_J < 1$ the Gauss-Seidel method converges about twice as fast per iteration as Jacobi. Equality $\\rho_J$ would mean no speedup, $2\\rho_J$ would worsen it, and $\\sqrt{\\rho_J}$ would make it slower. The trap is assuming the two methods converge at the same rate; for this matrix class Gauss-Seidel squares the Jacobi radius.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-015",
+      "stem": "A standard stopping criterion for an iterative linear solver is to halt when which quantity falls below a tolerance?",
+      "options": [
+        "The determinant of $A$",
+        "The norm of the difference $\\left\\|x^{(k+1)} - x^{(k)}\\right\\|$",
+        "The number of equations",
+        "The trace of $A$"
+      ],
+      "answer": 1,
+      "explanation": "Iteration is stopped when successive iterates change by less than a prescribed tolerance, $\\|x^{(k+1)} - x^{(k)}\\| < \\epsilon$, often alongside a residual check $\\|b - Ax^{(k)}\\| < \\epsilon$. The determinant and trace are fixed properties of $A$ that say nothing about iterate progress, and the number of equations is constant. The trap is monitoring a static matrix property instead of the shrinking change between iterates.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-016",
+      "stem": "For the system $4x_1 - x_2 = 3$, $-x_1 + 4x_2 = 3$, the exact solution is which of the following?",
+      "options": [
+        "$(0.5, 0.5)$",
+        "$(3, 3)$",
+        "$(0.75, 0.75)$",
+        "$(1, 1)$"
+      ],
+      "answer": 3,
+      "explanation": "By the symmetry of the system $x_1 = x_2$, and substituting gives $4x_1 - x_1 = 3$, so $3x_1 = 3$ and $x_1 = x_2 = 1$, the solution $(1, 1)$. The pair $(0.75, 0.75)$ is the first Jacobi iterate from $(0, 0)$, not the converged answer, $(3, 3)$ ignores the coefficient structure, and $(0.5, 0.5)$ is unrelated. The trap is mistaking an early iterate for the fixed point; iteration only approaches $(1, 1)$ in the limit.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-017",
+      "stem": "The Gauss-Seidel iteration matrix, in the splitting $A = D + L + U$, is which of the following?",
+      "options": [
+        "$-D^{-1}(L + U)$",
+        "$(D + L)^{-1}U$",
+        "$-(D + U)^{-1}L$",
+        "$-(D + L)^{-1}U$"
+      ],
+      "answer": 3,
+      "explanation": "Gauss-Seidel groups the diagonal with the lower triangle: $(D + L)x^{(k+1)} = b - Ux^{(k)}$, so $x^{(k+1)} = (D + L)^{-1}b - (D + L)^{-1}U x^{(k)}$ and the iteration matrix is $-(D + L)^{-1}U$. The first option is the Jacobi matrix, the third inverts the wrong combination, and the fourth drops the minus sign. The trap is which triangle joins the diagonal: Gauss-Seidel inverts $D + L$ and acts on $U$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-018",
+      "stem": "For $2x + y = 5$, $x + 2y = 4$, the second Gauss-Seidel iterate $x^{(2)}$ (following $x^{(1)} = 2.5$, $y^{(1)} = 0.75$) is which value?",
+      "options": [
+        "$2.5$",
+        "$2.125$",
+        "$1.5$",
+        "$2.0$"
+      ],
+      "answer": 1,
+      "explanation": "The second sweep starts with $x^{(2)} = \\frac{5 - y^{(1)}}{2} = \\frac{5 - 0.75}{2} = \\frac{4.25}{2} = 2.125$. This is closer to the exact $x = 2$ than the first iterate $2.5$. The option $2.0$ is the exact value not yet reached, $2.5$ repeats the first iterate, and $1.5$ overshoots downward. The trap is reusing the old $y = 0$ or the wrong $y$; the current $y^{(1)} = 0.75$ must be substituted.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-019",
+      "stem": "The residual vector for an approximate solution $x^{(k)}$ of $Ax = b$ is defined as which of the following?",
+      "options": [
+        "$A^{-1}b$",
+        "$b - Ax^{(k)}$",
+        "$Ax^{(k)}$",
+        "$x^{(k)} - x^{(k-1)}$"
+      ],
+      "answer": 1,
+      "explanation": "The residual measures how far the current iterate is from satisfying the equations: $r^{(k)} = b - Ax^{(k)}$, which is zero exactly at the true solution. The difference $x^{(k)} - x^{(k-1)}$ is the iterate change, $Ax^{(k)}$ is just the left-hand side, and $A^{-1}b$ is the exact solution itself. The trap is confusing the residual (an equation mismatch) with the step between successive iterates.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-020",
+      "stem": "For the system $4x_1 + x_2 + x_3 = 6$, $x_1 + 5x_2 + x_3 = 7$, $x_1 + x_2 + 3x_3 = 5$, starting from $(0, 0, 0)$, the first Gauss-Seidel value $x_3^{(1)}$ (after $x_1^{(1)} = 1.5$, $x_2^{(1)} = 1.1$) is which value?",
+      "options": [
+        "$0.5$",
+        "$1.0$",
+        "$0.8$",
+        "$1.6667$"
+      ],
+      "answer": 2,
+      "explanation": "The third Gauss-Seidel update uses both new values: $x_3^{(1)} = \\frac{5 - x_1^{(1)} - x_2^{(1)}}{3} = \\frac{5 - 1.5 - 1.1}{3} = \\frac{2.4}{3} = 0.8$. The option $1.6667 = \\frac{5}{3}$ is the Jacobi value ignoring the updated components, $1.0$ is the exact solution, and $0.5$ is unrelated. The trap is failing to substitute the just-computed $x_1$ and $x_2$; Gauss-Seidel uses the latest available values for all earlier components.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-021",
+      "stem": "Which statement about the convergence of Jacobi and Gauss-Seidel is correct in general?",
+      "options": [
+        "If one converges, the other always converges too",
+        "There exist systems where one converges and the other does not",
+        "Both diverge for every diagonally dominant matrix",
+        "Convergence depends only on the right-hand side $b$"
+      ],
+      "answer": 1,
+      "explanation": "Convergence is governed by the spectral radius of each method's iteration matrix, and these radii can straddle $1$ differently, so there are systems where Jacobi converges but Gauss-Seidel does not, and vice versa. It is not true that one converging forces the other to, both methods do converge for strictly diagonally dominant matrices, and the right-hand side $b$ affects the solution but not whether the iteration converges. The trap is assuming the two methods always agree on convergence; they do not in general.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-022",
+      "stem": "For $2x + y = 5$, $x + 2y = 4$, the second Jacobi iterate $(x^{(2)}, y^{(2)})$ (following the first Jacobi iterate $(2.5, 2.0)$) is which of the following?",
+      "options": [
+        "$(1.5, 0.75)$",
+        "$(2.5, 0.75)$",
+        "$(2.0, 1.0)$",
+        "$(2.125, 0.9375)$"
+      ],
+      "answer": 0,
+      "explanation": "Jacobi uses both first-iterate values together: $x^{(2)} = \\frac{5 - y^{(1)}}{2} = \\frac{5 - 2.0}{2} = 1.5$ and $y^{(2)} = \\frac{4 - x^{(1)}}{2} = \\frac{4 - 2.5}{2} = 0.75$, giving $(1.5, 0.75)$. The option $(2.125, 0.9375)$ is the second Gauss-Seidel iterate, $(2.0, 1.0)$ is the exact solution, and $(2.5, 0.75)$ is the first Gauss-Seidel iterate. The trap is updating $x$ before computing $y$; Jacobi feeds the whole previous iterate into both formulas simultaneously.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-023",
+      "format": "cloze",
+      "stem": "Perform one Jacobi sweep on $2x + y = 5$, $x + 2y = 4$ starting from $(0, 0)$.",
+      "solution": "The Jacobi update for $x$ is $x^{(1)} = \\dfrac{5 - y^{(0)}}{2}$, which equals {{1}}. The update for $y$ is $y^{(1)} = \\dfrac{4 - x^{(0)}}{2}$, which equals {{2}}, since Jacobi uses the {{3}} values of both unknowns.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "previous",
+            "updated",
+            "exact",
+            "averaged"
+          ],
+          "answer": "previous"
+        }
+      ],
+      "explanation": "With $x^{(0)} = y^{(0)} = 0$: $x^{(1)} = \\frac{5 - 0}{2} = 2.5$ and $y^{(1)} = \\frac{4 - 0}{2} = 2.0$. Jacobi holds the previous iterate fixed for the entire sweep.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-024",
+      "format": "cloze",
+      "stem": "Perform one Gauss-Seidel sweep on $2x + y = 5$, $x + 2y = 4$ starting from $(0, 0)$.",
+      "solution": "First $x^{(1)} = \\dfrac{5 - y^{(0)}}{2}$ equals {{1}}. Then, using this new $x$ immediately, $y^{(1)} = \\dfrac{4 - x^{(1)}}{2}$ equals {{2}}. Compared with the Jacobi sweep, Gauss-Seidel here is {{3}} to the exact solution $(2, 1)$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.75,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "closer",
+            "farther",
+            "identical",
+            "unrelated"
+          ],
+          "answer": "closer"
+        }
+      ],
+      "explanation": "$x^{(1)} = \\frac{5}{2} = 2.5$, then $y^{(1)} = \\frac{4 - 2.5}{2} = 0.75$. The Gauss-Seidel $y$ value $0.75$ is much nearer the exact $y = 1$ than the Jacobi value $2.0$, so it is closer.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-025",
+      "format": "cloze",
+      "stem": "Recall the convergence theory for stationary iterative methods.",
+      "solution": "The iteration $x^{(k+1)} = Tx^{(k)} + c$ converges for any starting vector precisely when the spectral radius of $T$ is strictly less than {{1}}. A simple matrix condition that guarantees convergence of both Jacobi and Gauss-Seidel is that $A$ is strictly {{2}}. For consistently ordered matrices, the Gauss-Seidel spectral radius equals the Jacobi spectral radius raised to the power {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "diagonally dominant",
+            "singular",
+            "skew-symmetric",
+            "orthogonal"
+          ],
+          "answer": "diagonally dominant"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Convergence holds iff $\\rho(T) < 1$. Strict diagonal dominance guarantees both classical methods converge. For consistently ordered systems $\\rho_{GS} = \\rho_J^2$, the power being $2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-026",
+      "format": "cloze",
+      "stem": "Perform the first Jacobi sweep on $4x_1 + x_2 + x_3 = 6$, $x_1 + 5x_2 + x_3 = 7$, $x_1 + x_2 + 3x_3 = 5$ starting from the zero vector.",
+      "solution": "The update $x_1^{(1)} = \\dfrac{6 - 0 - 0}{4}$ equals {{1}}. The update $x_2^{(1)} = \\dfrac{7 - 0 - 0}{5}$ equals {{2}}. The update $x_3^{(1)} = \\dfrac{5 - 0 - 0}{3}$ equals approximately {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.4,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.6667,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "From the zero vector all off-diagonal terms vanish, so $x_1^{(1)} = \\frac{6}{4} = 1.5$, $x_2^{(1)} = \\frac{7}{5} = 1.4$, and $x_3^{(1)} = \\frac{5}{3} \\approx 1.6667$. The exact solution is $(1, 1, 1)$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-027",
+      "format": "cloze",
+      "stem": "Perform the first Gauss-Seidel sweep on $4x_1 + x_2 + x_3 = 6$, $x_1 + 5x_2 + x_3 = 7$, $x_1 + x_2 + 3x_3 = 5$ starting from the zero vector.",
+      "solution": "First $x_1^{(1)} = \\dfrac{6 - 0 - 0}{4}$ equals {{1}}. Using this new $x_1$, $x_2^{(1)} = \\dfrac{7 - x_1^{(1)} - 0}{5}$ equals {{2}}. Then using both new values, $x_3^{(1)} = \\dfrac{5 - x_1^{(1)} - x_2^{(1)}}{3}$ equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.8,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "$x_1^{(1)} = \\frac{6}{4} = 1.5$. Then $x_2^{(1)} = \\frac{7 - 1.5}{5} = \\frac{5.5}{5} = 1.1$. Finally $x_3^{(1)} = \\frac{5 - 1.5 - 1.1}{3} = \\frac{2.4}{3} = 0.8$. Each step uses the most recently computed components.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-iterative-linear-systems-028",
+      "format": "cloze",
+      "stem": "Reason about relaxation and stopping rules for iterative solvers.",
+      "solution": "In SOR the update is a weighted blend of the old iterate and the Gauss-Seidel value, and choosing the relaxation parameter $\\omega = 1$ reproduces the {{1}} method. For convergence the parameter must satisfy $0 < \\omega <$ {{2}}. A practical way to decide when to stop iterating is to monitor the norm of the {{3}} and halt once it drops below a tolerance.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "Gauss-Seidel",
+            "Jacobi",
+            "Newton",
+            "bisection"
+          ],
+          "answer": "Gauss-Seidel"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "residual $b - Ax^{(k)}$",
+            "determinant of $A$",
+            "trace of $A$",
+            "right-hand side $b$"
+          ],
+          "answer": "residual $b - Ax^{(k)}$"
+        }
+      ],
+      "explanation": "Setting $\\omega = 1$ in SOR gives Gauss-Seidel. Kahan's theorem requires $0 < \\omega < 2$. Stopping is commonly based on the residual norm $\\|b - Ax^{(k)}\\|$ falling below a tolerance.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    }
+  ]
+}

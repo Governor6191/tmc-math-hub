@@ -1,0 +1,514 @@
+{
+  "courseId": "numerical-analysis-i",
+  "topicId": "root-finding",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-i-root-finding-001",
+      "stem": "The bisection method can be started on an interval $[a, b]$ provided the continuous function $f$ satisfies which condition?",
+      "options": [
+        "$f(a)\\,f(b) < 0$",
+        "$f(a) = f(b)$",
+        "$f(a)\\,f(b) > 0$",
+        "$f'(a)\\,f'(b) < 0$"
+      ],
+      "answer": 0,
+      "explanation": "By the intermediate value theorem, a sign change $f(a)f(b) < 0$ guarantees at least one root in $(a, b)$, which is exactly the bracket bisection needs. A positive product means the endpoints share a sign and may bracket no root, equal endpoint values give no information about a crossing, and a sign change in the derivative concerns extrema, not roots. The trap is requiring the wrong sign on the product; bisection needs opposite signs at the endpoints.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-002",
+      "stem": "The Newton-Raphson iteration for solving $f(x) = 0$ is which of the following?",
+      "options": [
+        "$x_{n+1} = x_n - f(x_n)\\,f'(x_n)$",
+        "$x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}$",
+        "$x_{n+1} = x_n - \\dfrac{f'(x_n)}{f(x_n)}$",
+        "$x_{n+1} = x_n + \\dfrac{f(x_n)}{f'(x_n)}$"
+      ],
+      "answer": 1,
+      "explanation": "Newton's method follows the tangent line to its $x$-intercept, giving $x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}$. The first option has the wrong sign and would move away from the root, the third inverts the ratio, and the fourth multiplies instead of dividing. The trap is the sign and the orientation of the quotient: subtract $f/f'$, not add it or flip it.",
+      "difficulty": "warmup",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-003",
+      "stem": "For $f(x) = x^2 - 2$ on $[1, 2]$, the first bisection midpoint and the sign of $f$ there lead to which new interval?",
+      "options": [
+        "Midpoint $1.5$, new interval $[1, 2]$",
+        "Midpoint $1.5$, new interval $[1.5, 2]$",
+        "Midpoint $1.5$, new interval $[1, 1.5]$",
+        "Midpoint $1.25$, new interval $[1, 1.25]$"
+      ],
+      "answer": 2,
+      "explanation": "The midpoint is $c = \\frac{1 + 2}{2} = 1.5$, and $f(1.5) = 2.25 - 2 = 0.25 > 0$. Since $f(1) = -1 < 0$ and $f(1.5) > 0$, the sign change lies in $[1, 1.5]$, so that becomes the new bracket. Keeping $[1.5, 2]$ discards the half that actually contains the root $\\sqrt{2} \\approx 1.414$, the midpoint is not $1.25$ on the first step, and retaining $[1, 2]$ makes no progress. The trap is choosing the subinterval on the wrong side of the sign change.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-004",
+      "stem": "The order of convergence of the Newton-Raphson method near a simple root is which value?",
+      "options": [
+        "$3$ (cubic)",
+        "$2$ (quadratic)",
+        "$1.618$ (superlinear)",
+        "$1$ (linear)"
+      ],
+      "answer": 1,
+      "explanation": "Near a simple root the Newton error satisfies $e_{n+1} \\approx \\frac{f''(x^*)}{2f'(x^*)} e_n^2$, so it converges quadratically with order $2$, roughly doubling the number of correct digits each step. Linear order $1$ describes bisection or fixed-point iteration, the golden-ratio order $1.618$ describes the secant method, and cubic order would require special higher-order schemes. The trap is confusing Newton's quadratic order with the secant method's superlinear order.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-005",
+      "stem": "For $f(x) = x^2 - 2$ with $f'(x) = 2x$, one Newton-Raphson step from $x_0 = 1.5$ gives which value?",
+      "options": [
+        "$1.5000$",
+        "$1.4142$",
+        "$1.3333$",
+        "$1.4167$"
+      ],
+      "answer": 3,
+      "explanation": "Apply $x_1 = x_0 - \\frac{f(x_0)}{f'(x_0)} = 1.5 - \\frac{2.25 - 2}{2(1.5)} = 1.5 - \\frac{0.25}{3} = 1.5 - 0.08333 = 1.41667$. The value $1.5$ is the starting point, $1.3333$ is the first secant step from $(1, 2)$, and $1.4142$ is the exact $\\sqrt{2}$ that one step only approaches. The trap is stopping at $x_0$ or using the wrong derivative; the correct update subtracts $\\frac{0.25}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-006",
+      "stem": "The secant method replaces the derivative in Newton's method with which approximation?",
+      "options": [
+        "The exact derivative $f'(x_n)$",
+        "The second derivative $f''(x_n)$",
+        "A finite difference using the two most recent points",
+        "A constant equal to $1$"
+      ],
+      "answer": 2,
+      "explanation": "The secant method approximates $f'(x_n)$ by the slope of the line through the two latest iterates, $\\frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}$, so it needs no analytic derivative. Using the exact derivative would just be Newton's method, the second derivative is irrelevant here, and a constant $1$ describes a crude fixed-point scheme. The trap is thinking the secant method needs $f'$; its whole appeal is replacing the derivative with a difference quotient.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-007",
+      "stem": "For $f(x) = x^2 - 2$ with $x_0 = 1$, $x_1 = 2$, the first secant step $x_2$ is which value?",
+      "options": [
+        "$1.3333$",
+        "$1.4142$",
+        "$1.4000$",
+        "$1.5000$"
+      ],
+      "answer": 0,
+      "explanation": "With $f(1) = -1$ and $f(2) = 2$, the secant formula gives $x_2 = x_1 - f(x_1)\\frac{x_1 - x_0}{f(x_1) - f(x_0)} = 2 - 2\\cdot\\frac{2 - 1}{2 - (-1)} = 2 - \\frac{2}{3} = 1.3333$. The value $1.5$ is the bisection midpoint, $1.4$ is the next secant step $x_3$, and $1.4142$ is the exact root. The trap is mishandling the denominator $f(x_1) - f(x_0) = 3$; the step subtracts $\\frac{2}{3}$ from $2$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-008",
+      "stem": "After $n$ bisection steps starting from an interval of length $L = b - a$, the width of the bracketing interval is which expression?",
+      "options": [
+        "$\\dfrac{L}{2^n}$",
+        "$L \\cdot 2^{-n+1}$",
+        "$\\dfrac{L}{n}$",
+        "$\\dfrac{L}{2n}$"
+      ],
+      "answer": 0,
+      "explanation": "Each bisection halves the interval, so after $n$ steps the width is $\\frac{L}{2^n}$. Dividing by $n$ or $2n$ would describe a slower-than-geometric shrinkage, and $L\\cdot 2^{-n+1} = \\frac{L}{2^{n-1}}$ is off by one halving. The trap is treating the reduction as linear in $n$ rather than geometric; bisection cuts the length by a factor of two every iteration.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-009",
+      "stem": "How many bisection iterations are needed to locate a root in $[1, 2]$ to within an absolute error of $0.001$, using the bound width $\\dfrac{b - a}{2^n} \\le 0.001$?",
+      "options": [
+        "$7$",
+        "$20$",
+        "$5$",
+        "$10$"
+      ],
+      "answer": 3,
+      "explanation": "Require $\\frac{1}{2^n} \\le 0.001$, that is $2^n \\ge 1000$. Since $2^9 = 512 < 1000$ and $2^{10} = 1024 \\ge 1000$, the smallest $n$ is $10$. Equivalently $n \\ge \\frac{\\ln 1000}{\\ln 2} \\approx 9.97$, rounded up to $10$. The value $7$ gives $2^7 = 128$, far too coarse, $5$ is coarser still, and $20$ is far more than needed. The trap is rounding $9.97$ down; the ceiling, $10$, is required to meet the tolerance.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-010",
+      "stem": "A fixed-point iteration $x_{n+1} = g(x_n)$ converges to a fixed point $x^*$ provided that near $x^*$ which condition holds?",
+      "options": [
+        "$g'(x^*) = 1$",
+        "$g(x^*) = 0$",
+        "$|g'(x^*)| > 1$",
+        "$|g'(x^*)| < 1$"
+      ],
+      "answer": 3,
+      "explanation": "The iteration error satisfies $e_{n+1} \\approx g'(x^*) e_n$, so it shrinks only when $|g'(x^*)| < 1$, the contraction condition. A derivative magnitude above $1$ causes divergence, exactly $1$ is the borderline case, and $g(x^*) = 0$ confuses a fixed point ($g(x^*) = x^*$) with a root of $g$. The trap is requiring $g$ itself to vanish; convergence is controlled by the magnitude of $g'$ at the fixed point.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-011",
+      "stem": "The order of convergence of the secant method near a simple root is approximately which value?",
+      "options": [
+        "$1.618$",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "answer": 0,
+      "explanation": "The secant error obeys $e_{n+1} \\approx C\\, e_n^{1.618}$, where the exponent is the golden ratio $\\frac{1 + \\sqrt{5}}{2} \\approx 1.618$, so it is superlinear but slower than Newton's quadratic order. Order $1$ describes bisection, order $2$ Newton's method, and order $3$ special cubic schemes. The trap is rounding the secant order to $1$ or to $2$; it sits strictly between, at the golden ratio.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-012",
+      "stem": "Applying Newton's method to $f(x) = x^2 - N$ produces which classical iteration for $\\sqrt{N}$?",
+      "options": [
+        "$x_{n+1} = 2x_n - \\dfrac{N}{x_n}$",
+        "$x_{n+1} = x_n - N$",
+        "$x_{n+1} = \\dfrac{N}{x_n}$",
+        "$x_{n+1} = \\dfrac{1}{2}\\left(x_n + \\dfrac{N}{x_n}\\right)$"
+      ],
+      "answer": 3,
+      "explanation": "With $f(x) = x^2 - N$ and $f'(x) = 2x$, Newton gives $x_{n+1} = x_n - \\frac{x_n^2 - N}{2x_n} = \\frac{x_n}{2} + \\frac{N}{2x_n} = \\frac{1}{2}\\left(x_n + \\frac{N}{x_n}\\right)$, the Babylonian square-root formula. The bare $\\frac{N}{x_n}$ omits the averaging, $x_n - N$ ignores the derivative entirely, and the last option mismanages the algebra. The trap is forgetting the factor $\\frac{1}{2}$: Newton averages the guess with $\\frac{N}{x_n}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-013",
+      "stem": "A practical advantage of bisection over Newton-Raphson is which of the following?",
+      "options": [
+        "It converges faster",
+        "It requires the derivative of $f$",
+        "It needs only one starting point",
+        "It is guaranteed to converge once a sign change is bracketed"
+      ],
+      "answer": 3,
+      "explanation": "Bisection is unconditionally convergent: once $f(a)f(b) < 0$, the bracket cannot fail to shrink onto a root, making it extremely robust. It is not faster (it converges only linearly), it needs no derivative, and it actually requires two starting points forming the bracket. The trap is praising bisection for speed; its real strength is guaranteed, if slow, convergence.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-014",
+      "stem": "Newton's method can fail or converge slowly in which of the following situations?",
+      "options": [
+        "When $f$ is a straight line",
+        "When the initial guess is exactly the root",
+        "When $f'(x_n)$ is near zero or the root is a multiple root",
+        "When the function is strictly monotonic and smooth"
+      ],
+      "answer": 2,
+      "explanation": "A near-zero derivative makes the Newton step $\\frac{f}{f'}$ blow up and can throw the iterate far away, and at a multiple root the quadratic convergence degrades to merely linear. If the initial guess is the root, Newton stops there immediately, a straight line is solved in a single exact step, and a smooth strictly monotonic function is the ideal well-behaved case. The trap is overlooking the derivative in the denominator; small $f'$ is precisely where Newton misbehaves.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-015",
+      "stem": "For $f(x) = x^2 - 2$ with $x_0 = 2$, one Newton-Raphson step gives which value?",
+      "options": [
+        "$1.5000$",
+        "$2.0000$",
+        "$1.3333$",
+        "$1.4142$"
+      ],
+      "answer": 0,
+      "explanation": "Apply $x_1 = 2 - \\frac{4 - 2}{2(2)} = 2 - \\frac{2}{4} = 2 - 0.5 = 1.5$. The value $1.4142$ is the exact root reached only after more steps, $1.3333$ is the secant step, and $2.0$ is the starting point. The trap is dividing by the wrong derivative value; here $f'(2) = 4$, giving the step $0.5$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-016",
+      "stem": "The method of false position (regula falsi) differs from the secant method in which way?",
+      "options": [
+        "It retains a bracket so that the root stays enclosed",
+        "It halves the interval each step",
+        "It always uses the exact derivative",
+        "It does not use function values"
+      ],
+      "answer": 0,
+      "explanation": "False position uses the same secant-line formula but keeps the two points bracketing the root by always replacing the endpoint whose sign matches the new value, so the root remains enclosed and convergence is guaranteed. It does use function values, it uses no derivative, and it does not simply halve the interval (that is bisection). The trap is conflating it with the secant method; the bracketing discipline is the distinguishing feature.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-017",
+      "stem": "For $f(x) = x^2 - 2$ on $[1, 2]$, after the first step gives bracket $[1, 1.5]$, the second bisection midpoint and resulting interval are which of the following?",
+      "options": [
+        "Midpoint $1.25$, new interval $[1, 1.25]$",
+        "Midpoint $1.25$, new interval $[1.25, 1.5]$",
+        "Midpoint $1.25$, new interval $[1, 1.5]$",
+        "Midpoint $1.375$, new interval $[1.25, 1.375]$"
+      ],
+      "answer": 1,
+      "explanation": "The midpoint of $[1, 1.5]$ is $1.25$, and $f(1.25) = 1.5625 - 2 = -0.4375 < 0$. Since $f(1.25) < 0$ and $f(1.5) > 0$, the root lies in $[1.25, 1.5]$, the new bracket. Choosing $[1, 1.25]$ keeps the wrong half, the midpoint is not $1.375$ at this step, and retaining $[1, 1.5]$ makes no progress. The trap is, again, picking the subinterval on the side without the sign change.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-018",
+      "stem": "The Newton-Raphson update can be interpreted geometrically as which of the following?",
+      "options": [
+        "The $x$-intercept of the tangent line at $(x_n, f(x_n))$",
+        "The $x$-intercept of the secant line through two points",
+        "The average of the last two iterates",
+        "The midpoint of the current bracket"
+      ],
+      "answer": 0,
+      "explanation": "Newton's method draws the tangent to the curve at $(x_n, f(x_n))$ and takes its crossing of the $x$-axis as the next iterate, which is why the formula uses $f'(x_n)$, the tangent slope. The bracket midpoint is bisection, the average of two iterates is unrelated, and the secant-line intercept is the secant method. The trap is mixing tangent with secant; Newton uses the tangent at a single point.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-019",
+      "stem": "For $f(x) = x^2 - 2$ with iterates $x_1 = 2$, $x_2 = 1.3333$ (so $f(x_2) = -0.2222$), the next secant step $x_3$ is approximately which value?",
+      "options": [
+        "$1.5000$",
+        "$1.4000$",
+        "$1.3333$",
+        "$1.4142$"
+      ],
+      "answer": 1,
+      "explanation": "Apply $x_3 = x_2 - f(x_2)\\frac{x_2 - x_1}{f(x_2) - f(x_1)} = 1.3333 - (-0.2222)\\cdot\\frac{1.3333 - 2}{-0.2222 - 2} = 1.3333 - (-0.2222)\\cdot\\frac{-0.6667}{-2.2222} = 1.3333 + 0.0667 = 1.4000$. The value $1.3333$ repeats $x_2$, $1.5$ is the bisection midpoint, and $1.4142$ is the exact root. The trap is sign errors among the three negative quantities; carried through correctly the step adds about $0.0667$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-020",
+      "stem": "The error of the bisection method after each iteration is reduced by a constant factor, making its convergence which type?",
+      "options": [
+        "Superlinear",
+        "Quadratic",
+        "Cubic",
+        "Linear with ratio $\\tfrac{1}{2}$"
+      ],
+      "answer": 3,
+      "explanation": "Because each step halves the bracket, the error bound is multiplied by $\\frac{1}{2}$ every iteration, which is linear (first-order) convergence with ratio $\\frac{1}{2}$. It is not quadratic like Newton, not superlinear like the secant method, and not cubic. The trap is overrating bisection's speed; the steady halving is only linear convergence, gaining about one binary digit per step.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-021",
+      "stem": "To solve $x^2 - x - 2 = 0$ (with roots $-1$ and $2$) by fixed-point iteration using $g(x) = \\sqrt{x + 2}$, convergence to the root $x = 2$ is expected because $g'(2)$ has which property?",
+      "options": [
+        "$|g'(2)| = 1$",
+        "$|g'(2)| = \\tfrac{1}{4} < 1$",
+        "$g'(2) = 2$",
+        "$|g'(2)| > 1$"
+      ],
+      "answer": 1,
+      "explanation": "Here $g'(x) = \\frac{1}{2\\sqrt{x + 2}}$, so $g'(2) = \\frac{1}{2\\sqrt{4}} = \\frac{1}{4}$, whose magnitude is below $1$, guaranteeing local convergence. A magnitude above or equal to $1$ would fail the contraction test, and $g'(2) = 2$ is simply incorrect. The trap is not evaluating the derivative of the chosen iteration function; the rearrangement $\\sqrt{x + 2}$ is contractive at $x = 2$ precisely because $g'(2) = \\frac{1}{4}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-022",
+      "stem": "Which ranking of typical convergence speed near a simple root, from fastest to slowest, is correct?",
+      "options": [
+        "Bisection, secant, Newton",
+        "Secant, Newton, bisection",
+        "Newton, secant, bisection",
+        "Bisection, Newton, secant"
+      ],
+      "answer": 2,
+      "explanation": "Newton's method (order $2$) is fastest, the secant method (order $1.618$) is next, and bisection (order $1$, ratio $\\frac{1}{2}$) is slowest, so the correct order is Newton, secant, bisection. The other rankings misplace at least one method. The trap is forgetting that the secant order $1.618$ sits between Newton's $2$ and bisection's $1$, giving the strict ordering Newton then secant then bisection.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-023",
+      "format": "cloze",
+      "stem": "Carry out two bisection steps for $f(x) = x^2 - 2$ on $[1, 2]$, where $\\sqrt{2} \\approx 1.414$.",
+      "solution": "The first midpoint is $c_1 = \\dfrac{1 + 2}{2} =$ {{1}}. Because $f(c_1) > 0$ and $f(1) < 0$, the new interval is $[1, c_1]$, whose midpoint $c_2$ is {{2}}. After these two steps the bracket width has shrunk from $1$ to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "First midpoint $c_1 = 1.5$, with $f(1.5) = 0.25 > 0$, so the bracket becomes $[1, 1.5]$. Its midpoint is $c_2 = 1.25$. Two halvings reduce the width to $\\frac{1}{2^2} = 0.25$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-024",
+      "format": "cloze",
+      "stem": "Perform Newton-Raphson on $f(x) = x^2 - 2$, $f'(x) = 2x$, starting from $x_0 = 1.5$.",
+      "solution": "The first iterate is $x_1 = 1.5 - \\dfrac{0.25}{3}$, which equals approximately {{1}}. A second step yields about $1.41422$, so Newton's method roughly {{2}} the number of correct digits each iteration. This rapid behaviour is called {{3}} convergence.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.4167,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "doubles",
+            "halves",
+            "triples",
+            "keeps"
+          ],
+          "answer": "doubles"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "quadratic",
+            "linear",
+            "logarithmic",
+            "geometric"
+          ],
+          "answer": "quadratic"
+        }
+      ],
+      "explanation": "$x_1 = 1.5 - \\frac{0.25}{3} = 1.5 - 0.08333 = 1.41667$. Quadratic convergence roughly doubles the count of accurate digits per step, so the term is quadratic convergence.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-025",
+      "format": "cloze",
+      "stem": "Compute the first secant step for $f(x) = x^2 - 2$ with $x_0 = 1$, $x_1 = 2$.",
+      "solution": "Using $f(1) = -1$ and $f(2) = 2$, the slope of the secant is $\\dfrac{2 - (-1)}{2 - 1} =$ {{1}}. The next iterate $x_2 = 2 - \\dfrac{f(2)}{\\text{slope}} = 2 - \\dfrac{2}{3}$ equals approximately {{2}}. The secant method needs no value of the {{3}} of $f$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.3333,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "derivative",
+            "integral",
+            "second difference",
+            "antiderivative"
+          ],
+          "answer": "derivative"
+        }
+      ],
+      "explanation": "The secant slope is $\\frac{2 + 1}{1} = 3$. Then $x_2 = 2 - \\frac{2}{3} = 1.3333$. The secant method approximates the slope from function values, so it never requires the derivative.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-026",
+      "format": "cloze",
+      "stem": "Summarize the convergence properties of the standard root-finding methods.",
+      "solution": "The bisection method converges linearly, reducing the error bound by a factor of {{1}} each step. The Newton-Raphson method converges with order {{2}} near a simple root. The secant method converges with order approximately {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.618,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Bisection halves the error bound, a factor of $0.5$. Newton's order is $2$ (quadratic). The secant order is the golden ratio, about $1.618$.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-027",
+      "format": "cloze",
+      "stem": "Determine how many bisection steps are required on $[1, 2]$ to reach a given accuracy.",
+      "solution": "The bracket width after $n$ steps is $\\dfrac{1}{2^n}$. To guarantee an error below $0.001$ we need $2^n \\ge 1000$. Since $2^9 = 512$ and $2^{10} =$ {{1}}, the required number of steps is {{2}}. Each additional bisection step adds about one {{3}} digit of accuracy.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1024,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "binary",
+            "decimal",
+            "hexadecimal",
+            "significant"
+          ],
+          "answer": "binary"
+        }
+      ],
+      "explanation": "Since $2^{10} = 1024 \\ge 1000$ while $2^9 = 512 < 1000$, ten steps are needed. Halving the interval each time gains roughly one binary digit per step.",
+      "difficulty": "core",
+      "source": "in the style of Gupta, Numerical Methods"
+    },
+    {
+      "id": "numerical-analysis-i-root-finding-028",
+      "format": "cloze",
+      "stem": "Analyze fixed-point iteration $x_{n+1} = g(x_n)$ with $g(x) = \\sqrt{x + 2}$ for the root $x = 2$ of $x^2 - x - 2 = 0$.",
+      "solution": "The iteration converges locally when the magnitude of $g'$ at the root is less than {{1}}. Here $g'(x) = \\dfrac{1}{2\\sqrt{x + 2}}$, so at $x = 2$ the value of $g'(2)$ is {{2}}. Because this magnitude is below the threshold, the iteration {{3}} to the root.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges",
+            "oscillates without limit",
+            "stalls"
+          ],
+          "answer": "converges"
+        }
+      ],
+      "explanation": "Local convergence needs $|g'(x^*)| < 1$. Here $g'(2) = \\frac{1}{2\\sqrt{4}} = \\frac{1}{4} = 0.25 < 1$, so the iteration converges to $x = 2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Gupta, Numerical Methods"
+    }
+  ]
+}
