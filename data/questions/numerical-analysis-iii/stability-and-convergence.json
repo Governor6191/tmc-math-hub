@@ -1,0 +1,531 @@
+{
+  "courseId": "numerical-analysis-iii",
+  "topicId": "stability-and-convergence",
+  "questions": [
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-001",
+      "stem": "The Lax equivalence theorem states that, for a consistent finite-difference scheme applied to a well-posed linear initial-value problem, which property is necessary and sufficient for convergence?",
+      "options": [
+        "Stability.",
+        "Higher than first order accuracy.",
+        "Explicitness of the scheme.",
+        "A vanishing condition number."
+      ],
+      "answer": 0,
+      "explanation": "Lax's theorem is often summarized as consistency plus stability equals convergence. Given consistency and a well-posed linear problem, stability is exactly the extra ingredient that is both necessary and sufficient for the numerical solution to converge to the true one as the mesh is refined.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-002",
+      "stem": "A numerical scheme is called consistent with a differential equation when which condition holds?",
+      "options": [
+        "Its global error is zero for all step sizes.",
+        "Its local truncation error tends to zero as the step sizes tend to zero.",
+        "Its amplification factor equals one.",
+        "It uses only explicit updates."
+      ],
+      "answer": 1,
+      "explanation": "Consistency means the difference equation actually approximates the differential equation: substituting the exact solution leaves a local truncation error that vanishes as $h \\to 0$ (and $\\Delta t, \\Delta x \\to 0$ for PDEs). Consistency alone does not guarantee convergence; stability is also required.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-003",
+      "stem": "For a one-step method, the local truncation error is $O(h^{p+1})$. What is the typical order of the global error?",
+      "options": [
+        "$O(h^{p+2})$",
+        "$O(h^{p+1})$",
+        "$O(h^p)$",
+        "$O(h)$ regardless of $p$"
+      ],
+      "answer": 2,
+      "explanation": "Accumulating a local error of $O(h^{p+1})$ over $O(1/h)$ steps loses one power of $h$, giving a global error of $O(h^p)$. This one-order drop is why explicit Euler, with local error $O(h^2)$, is only first order globally.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-004",
+      "stem": "The region of absolute stability of a method for $y' = \\lambda y$ is the set of values of which complex variable for which the numerical solution stays bounded?",
+      "options": [
+        "$\\lambda$ alone.",
+        "$h$ alone.",
+        "$z = h \\lambda$.",
+        "$1/\\lambda$."
+      ],
+      "answer": 2,
+      "explanation": "Applying a method to the test equation $y' = \\lambda y$ gives $y_{n+1} = R(h\\lambda) y_n$ for an amplification factor $R$. The stability region is the set of $z = h\\lambda$ in the complex plane with $|R(z)| \\le 1$, so it ties together the step size and the eigenvalue.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-005",
+      "stem": "The region of absolute stability of the explicit (forward) Euler method is which set in the complex $z = h\\lambda$ plane?",
+      "options": [
+        "The disk $|z + 1| \\le 1$ (radius $1$, centered at $-1$).",
+        "The entire left half-plane.",
+        "The exterior of the disk $|z - 1| \\le 1$.",
+        "The imaginary axis only."
+      ],
+      "answer": 0,
+      "explanation": "Forward Euler gives $y_{n+1} = (1 + z) y_n$, so absolute stability requires $|1 + z| \\le 1$. This is the closed disk of radius $1$ centered at $z = -1$. Because it is bounded, forward Euler is only conditionally stable and needs small $h$ for stiff (large negative $\\lambda$) problems.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-006",
+      "stem": "A method is called A-stable when its region of absolute stability contains which set?",
+      "options": [
+        "Only the origin.",
+        "The entire right half-plane.",
+        "A bounded disk near the origin.",
+        "The entire left half-plane $\\mathrm{Re}(z) < 0$."
+      ],
+      "answer": 3,
+      "explanation": "A-stability means every $z = h\\lambda$ with $\\mathrm{Re}(\\lambda) < 0$ (the whole left half-plane) lies in the stability region, so any decaying test solution stays bounded for any step size. Backward Euler and the trapezoidal rule are A-stable; forward Euler is not.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-007",
+      "stem": "Why are implicit methods such as backward Euler preferred for stiff initial-value problems?",
+      "options": [
+        "Their large (often unbounded) stability regions allow large step sizes without instability.",
+        "They are explicit and cheaper per step.",
+        "They have higher order than any explicit method.",
+        "They eliminate truncation error entirely."
+      ],
+      "answer": 0,
+      "explanation": "Stiff problems have components that decay very fast, forcing explicit methods to use tiny steps for stability. A-stable implicit methods such as backward Euler stay stable for any step size, so the step can be chosen for accuracy rather than stability, despite the extra cost of solving an equation each step.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-008",
+      "stem": "What characterizes a stiff system of ordinary differential equations?",
+      "options": [
+        "All eigenvalues are equal.",
+        "The system has no equilibrium.",
+        "The solution is always oscillatory.",
+        "The Jacobian has eigenvalues whose magnitudes differ by many orders, mixing very fast and slow time scales."
+      ],
+      "answer": 3,
+      "explanation": "Stiffness arises when the eigenvalues of the Jacobian span a wide range of magnitudes (very different decay rates). The fast-decaying transients force explicit solvers into very small steps for stability even after those transients are negligible, which is the hallmark of a stiff problem.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-009",
+      "stem": "The condition number of a matrix $A$ (in a given norm) is defined as which quantity?",
+      "options": [
+        "$\\|A\\| - \\|A^{-1}\\|$",
+        "$\\det(A)$",
+        "$\\|A\\| \\, \\|A^{-1}\\|$",
+        "the largest eigenvalue of $A$"
+      ],
+      "answer": 2,
+      "explanation": "The condition number is $\\kappa(A) = \\|A\\| \\, \\|A^{-1}\\|$. It measures how much relative errors in the data of $A x = b$ can be amplified in the solution. A large $\\kappa(A)$ signals an ill-conditioned problem that is sensitive to perturbations.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-010",
+      "stem": "For the diagonal matrix $A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 0.5 \\end{pmatrix}$, what is the 2-norm condition number $\\kappa_2(A)$?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$4$",
+        "$0.25$"
+      ],
+      "answer": 2,
+      "explanation": "For a diagonal matrix the 2-norm is the largest absolute entry and the 2-norm of the inverse is $1$ over the smallest. Here $\\|A\\|_2 = 2$ and $\\|A^{-1}\\|_2 = 1/0.5 = 2$, so $\\kappa_2(A) = 2 \\times 2 = 4$. Equivalently it is the ratio of largest to smallest absolute eigenvalue, $2/0.5 = 4$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-011",
+      "stem": "If a linear system has condition number $\\kappa(A) = 100$ and the data carry a relative error of about $10^{-3}$, what is the worst-case relative error in the computed solution?",
+      "options": [
+        "About $10^{-1}$ (that is $0.1$).",
+        "About $10^{-5}$.",
+        "About $10^{-3}$.",
+        "Zero."
+      ],
+      "answer": 0,
+      "explanation": "The standard bound is (relative error in solution) $\\le \\kappa(A) \\times$ (relative error in data), so roughly $100 \\times 10^{-3} = 10^{-1}$. The condition number sets how many digits of accuracy can be lost: here up to about two digits.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-012",
+      "stem": "The CFL (Courant-Friedrichs-Lewy) condition for an explicit scheme solving the advection equation $u_t + c u_x = 0$ restricts which dimensionless quantity?",
+      "options": [
+        "The Reynolds number $\\rho u L / \\mu$.",
+        "The Courant number $C = c \\, \\Delta t / \\Delta x$.",
+        "The condition number of the update matrix.",
+        "The Peclet number."
+      ],
+      "answer": 1,
+      "explanation": "The CFL condition bounds the Courant number $C = c\\,\\Delta t / \\Delta x$, typically requiring $C \\le 1$ for an explicit scheme. It ensures the numerical domain of dependence contains the physical one, a necessary condition for stability and hence convergence.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-013",
+      "stem": "For the advection equation with wave speed $c = 2$ and grid spacing $\\Delta x = 0.1$, what is the largest time step $\\Delta t$ allowed by the CFL condition $C \\le 1$ for an explicit upwind scheme?",
+      "options": [
+        "$0.2$",
+        "$0.1$",
+        "$0.05$",
+        "$0.5$"
+      ],
+      "answer": 2,
+      "explanation": "The Courant number is $C = c \\, \\Delta t / \\Delta x = 2 \\Delta t / 0.1 = 20 \\Delta t$. Requiring $C \\le 1$ gives $\\Delta t \\le 0.1 / 2 = 0.05$. A larger step would let information cross more than one cell per step and destabilize the scheme.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-014",
+      "stem": "An explicit scheme for the advection equation uses $c = 4$, $\\Delta x = 0.2$, and $\\Delta t = 0.025$. What is the Courant number, and is the CFL condition $C \\le 1$ satisfied?",
+      "options": [
+        "$C = 2.0$; not satisfied.",
+        "$C = 0.5$; satisfied.",
+        "$C = 1.0$; marginally satisfied.",
+        "$C = 0.1$; satisfied."
+      ],
+      "answer": 1,
+      "explanation": "$C = c \\, \\Delta t / \\Delta x = 4 \\times 0.025 / 0.2 = 0.1 / 0.2 = 0.5$. Since $0.5 \\le 1$, the CFL condition holds and the explicit scheme is within its stability limit.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-015",
+      "stem": "The amplification factor of explicit Euler on $y' = \\lambda y$ is $1 + h\\lambda$. For real $\\lambda = -20$, what is the largest step size $h$ that keeps the method absolutely stable?",
+      "options": [
+        "$0.2$",
+        "$0.05$",
+        "$0.1$",
+        "$1.0$"
+      ],
+      "answer": 2,
+      "explanation": "Stability needs $|1 + h\\lambda| \\le 1$, that is $-2 \\le h\\lambda \\le 0$. With $\\lambda = -20$ this gives $h \\le 2/20 = 0.1$. For larger $h$ the factor exceeds $1$ in magnitude and the numerical solution grows even though the exact one decays.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-016",
+      "stem": "A convergent numerical method for an initial-value problem is one for which which limit holds?",
+      "options": [
+        "The numerical solution approaches the exact solution as the step size tends to zero.",
+        "The local truncation error is exactly zero.",
+        "The amplification factor is exactly one.",
+        "The method is explicit."
+      ],
+      "answer": 0,
+      "explanation": "Convergence means that, for a fixed final time, the numerical approximation tends to the true solution as $h \\to 0$. By the Lax framework this follows from consistency together with stability; neither alone is enough.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-017",
+      "stem": "A method's global error drops from $0.08$ to $0.02$ when the step size is halved. What is the order $p$ of the method?",
+      "options": [
+        "$p = 1$",
+        "$p = 2$",
+        "$p = 3$",
+        "$p = 4$"
+      ],
+      "answer": 1,
+      "explanation": "Global error behaves like $C h^p$, so halving $h$ multiplies the error by $(1/2)^p$. Here the error ratio is $0.08 / 0.02 = 4 = 2^p$, so $p = 2$: the method is second order.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-018",
+      "stem": "A method's global error drops from $2 \\times 10^{-3}$ to $2.5 \\times 10^{-4}$ when the step size is halved. What is its order $p$?",
+      "options": [
+        "$p = 1$",
+        "$p = 2$",
+        "$p = 4$",
+        "$p = 3$"
+      ],
+      "answer": 3,
+      "explanation": "The error ratio is $2 \\times 10^{-3} / (2.5 \\times 10^{-4}) = 8 = 2^p$, so $p = 3$: the method is third order. Each halving of $h$ cuts the error by a factor of $2^3 = 8$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-019",
+      "stem": "The trapezoidal rule applied to $y' = \\lambda y$ has amplification factor $R(z) = \\dfrac{1 + z/2}{1 - z/2}$ with $z = h\\lambda$. For which $z$ is $|R(z)| \\le 1$?",
+      "options": [
+        "Only for $z = 0$.",
+        "For a bounded disk centered at $-1$.",
+        "For all $z$ with $\\mathrm{Re}(z) > 0$.",
+        "For all $z$ with $\\mathrm{Re}(z) \\le 0$ (the entire left half-plane), so it is A-stable."
+      ],
+      "answer": 3,
+      "explanation": "Comparing $|1 + z/2|$ and $|1 - z/2|$, the numerator is no larger than the denominator exactly when $\\mathrm{Re}(z) \\le 0$. So the trapezoidal rule is stable throughout the left half-plane and is A-stable, which is why it handles stiff decaying problems well.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-020",
+      "stem": "What is the distinction between absolute (numerical) stability and the well-posedness of the underlying problem?",
+      "options": [
+        "Well-posedness is a property of the continuous problem; absolute stability is a property of the discrete scheme and step size.",
+        "They are the same concept.",
+        "Absolute stability depends only on the exact solution.",
+        "Well-posedness depends on the step size $h$."
+      ],
+      "answer": 0,
+      "explanation": "Well-posedness (existence, uniqueness, continuous dependence on data) is a feature of the differential equation itself. Absolute stability concerns whether a particular discretization, at a given step size, keeps errors bounded. Lax's theorem links them: for a well-posed linear problem with a consistent scheme, stability gives convergence.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-021",
+      "stem": "For a linear multistep method, zero-stability is governed by the roots of its first characteristic polynomial $\\rho(\\zeta)$. The root condition requires what?",
+      "options": [
+        "All roots lie outside the unit circle.",
+        "All roots equal zero.",
+        "There is exactly one real root.",
+        "All roots lie on or inside the unit circle, and any root on the circle is simple."
+      ],
+      "answer": 3,
+      "explanation": "Zero-stability (stability as $h \\to 0$) holds precisely when every root of $\\rho(\\zeta)$ satisfies $|\\zeta| \\le 1$ and any root with $|\\zeta| = 1$ is simple. This keeps the homogeneous numerical solution from growing and, combined with consistency, yields convergence by the Dahlquist theory.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-022",
+      "stem": "Why can a scheme be consistent yet still fail to converge?",
+      "options": [
+        "Because consistency forces the order to be zero.",
+        "Because consistency controls only the per-step truncation error, while instability lets accumulated errors grow without bound.",
+        "Because consistent schemes are never explicit.",
+        "It cannot; consistency alone guarantees convergence."
+      ],
+      "answer": 1,
+      "explanation": "Consistency only ensures the local truncation error vanishes as $h \\to 0$. If the scheme is unstable, small errors (from truncation or rounding) are amplified at each step and can blow up, so the numerical solution diverges from the exact one. Convergence needs both consistency and stability.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-023",
+      "format": "cloze",
+      "stem": "State the Lax equivalence theorem and the roles of its ingredients for a well-posed linear problem.",
+      "solution": "For a consistent scheme on a well-posed linear initial-value problem, the theorem says that stability is {{1}} for convergence. Consistency controls the {{2}} truncation error, while stability prevents accumulated errors from {{3}}. In short, consistency plus stability gives convergence.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "necessary and sufficient",
+            "neither necessary nor sufficient",
+            "only sufficient"
+          ],
+          "answer": "necessary and sufficient"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "local",
+            "global",
+            "round-off"
+          ],
+          "answer": "local"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "growing without bound",
+            "cancelling exactly",
+            "becoming zero"
+          ],
+          "answer": "growing without bound"
+        }
+      ],
+      "explanation": "Lax: for a consistent scheme on a well-posed linear problem, stability is necessary and sufficient for convergence. Consistency makes the local truncation error vanish as $h \\to 0$; stability keeps the accumulated error bounded so it cannot grow without bound.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-024",
+      "format": "cloze",
+      "stem": "Determine the explicit-Euler stability limit on $y' = \\lambda y$ for real $\\lambda = -20$, and classify the method.",
+      "solution": "Explicit Euler has amplification factor $1 + h\\lambda$, and absolute stability requires $|1 + h\\lambda| \\le 1$. With $\\lambda = -20$ this gives $h \\le$ {{1}} (two decimals). The stability region is a bounded disk, so the method is only {{2}} stable. An A-stable method like {{3}} Euler would avoid this step-size restriction.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.1,
+          "tolerance": 0.005
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "conditionally",
+            "unconditionally"
+          ],
+          "answer": "conditionally"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "backward",
+            "forward",
+            "modified"
+          ],
+          "answer": "backward"
+        }
+      ],
+      "explanation": "From $-2 \\le h\\lambda \\le 0$ with $\\lambda = -20$: $h \\le 2/20 = 0.1$. The bounded stability disk makes explicit Euler only conditionally stable, whereas backward Euler is A-stable (unconditionally stable for decaying problems).",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-025",
+      "format": "cloze",
+      "stem": "Apply the CFL condition to an explicit upwind scheme for $u_t + c u_x = 0$ with $c = 2$ and $\\Delta x = 0.1$.",
+      "solution": "The Courant number is $C = c\\,\\Delta t / \\Delta x$. Requiring $C \\le 1$ gives the largest stable step $\\Delta t =$ {{1}} (two decimals). If instead $\\Delta t = 0.025$, then $C =$ {{2}} (two decimals), and the scheme is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.05,
+          "tolerance": 0.005
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "stable",
+            "unstable"
+          ],
+          "answer": "stable"
+        }
+      ],
+      "explanation": "Largest step: $\\Delta t = \\Delta x / c = 0.1 / 2 = 0.05$. With $\\Delta t = 0.025$, $C = 2(0.025)/0.1 = 0.5 \\le 1$, so the scheme is stable.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-026",
+      "format": "cloze",
+      "stem": "Infer the order of a method from how its global error responds to step halving.",
+      "solution": "Global error scales like $C h^p$. If halving $h$ reduces the error by a factor of $4$, then $2^p = 4$ and the order is $p =$ {{1}}. If instead the error drops by a factor of {{2}}, the order is $p = 3$. A higher order means the error decreases {{3}} as the mesh is refined.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "faster",
+            "slower",
+            "at the same rate"
+          ],
+          "answer": "faster"
+        }
+      ],
+      "explanation": "A factor-$4$ reduction means $2^p = 4$, so $p = 2$. A third-order method ($p = 3$) reduces the error by $2^3 = 8$ per halving. Larger $p$ gives faster error decay as $h$ shrinks.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-027",
+      "format": "cloze",
+      "stem": "Relate the condition number to error propagation for $A x = b$ with $A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 0.5 \\end{pmatrix}$.",
+      "solution": "Here $\\|A\\|_2 = 2$ and $\\|A^{-1}\\|_2 = 2$, so the condition number is $\\kappa_2(A) =$ {{1}}. If the data carry a relative error of about $10^{-2}$, the worst-case relative error in the solution is roughly {{2}} (two decimals). A larger condition number means the problem is more {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.04,
+          "tolerance": 0.005
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "ill-conditioned",
+            "well-conditioned",
+            "singular"
+          ],
+          "answer": "ill-conditioned"
+        }
+      ],
+      "explanation": "$\\kappa_2(A) = \\|A\\|_2 \\|A^{-1}\\|_2 = 2 \\times 2 = 4$ (the ratio of largest to smallest absolute eigenvalue). The error bound gives $\\kappa \\times 10^{-2} = 4 \\times 10^{-2} = 0.04$. Larger $\\kappa$ means a more ill-conditioned, sensitive problem.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-stability-and-convergence-028",
+      "format": "cloze",
+      "stem": "Compare explicit and implicit Euler stability regions and their consequences for stiff problems.",
+      "solution": "Explicit Euler is absolutely stable only inside the disk $|1 + z| \\le 1$ in the $z = h\\lambda$ plane, a {{1}} region. Backward Euler is stable outside the disk $|1 - z| \\le 1$, which contains the whole left half-plane, so it is {{2}}. For a very stiff decaying problem, this lets the implicit method take a {{3}} step than the explicit one.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "bounded",
+            "unbounded",
+            "empty"
+          ],
+          "answer": "bounded"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "A-stable",
+            "unstable",
+            "inconsistent"
+          ],
+          "answer": "A-stable"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "much larger",
+            "much smaller",
+            "identical"
+          ],
+          "answer": "much larger"
+        }
+      ],
+      "explanation": "Forward Euler's stability region is the bounded disk $|1 + z| \\le 1$. Backward Euler's region is the exterior of $|1 - z| \\le 1$, covering the entire left half-plane, so it is A-stable. For stiff decaying problems the implicit method can use a much larger step while staying stable.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    }
+  ],
+  "status": "approved"
+}

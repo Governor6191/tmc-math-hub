@@ -1,0 +1,527 @@
+{
+  "courseId": "partial-differential-eqn",
+  "topicId": "wave-equation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "partial-differential-eqn-wave-equation-001",
+      "stem": "The one dimensional wave equation is which of the following, with wave speed $c$?",
+      "options": [
+        "$u_t = c^2 u_{xx}$",
+        "$u_{tt} = c\\,u_x$",
+        "$u_{tt} + c^2 u_{xx} = 0$",
+        "$u_{tt} = c^2 u_{xx}$"
+      ],
+      "answer": 3,
+      "explanation": "The wave equation is $u_{tt} = c^2 u_{xx}$, with a second time derivative and a second space derivative. The constant $c$ is the wave speed. The form $u_t = c^2 u_{xx}$ is the heat equation, and the plus sign version $u_{tt} + c^2 u_{xx} = 0$ would be elliptic, not a wave equation.",
+      "difficulty": "warmup",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-002",
+      "stem": "The dAlembert general solution of $u_{tt} = c^2 u_{xx}$ on the line is which form?",
+      "options": [
+        "$u = f(x - ct) + g(x + ct)$",
+        "$u = f(x)\\,g(t)$",
+        "$u = f(x - ct)$ only",
+        "$u = f(x^2 - c^2 t^2)$"
+      ],
+      "answer": 0,
+      "explanation": "Factoring the operator as $\\partial_{tt} - c^2\\partial_{xx} = (\\partial_t - c\\partial_x)(\\partial_t + c\\partial_x)$ shows the general solution is a sum of a right moving wave $f(x - ct)$ and a left moving wave $g(x + ct)$. Two arbitrary functions appear, matching the second order nature. A single travelling wave belongs to the first order transport equation.",
+      "difficulty": "warmup",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-003",
+      "stem": "The full dAlembert formula for $u(x,0) = \\phi(x)$, $u_t(x,0) = \\psi(x)$ is which expression?",
+      "options": [
+        "$u = \\phi(x - ct) + \\frac{1}{c}\\int_{x-ct}^{x+ct}\\psi\\,ds$",
+        "$u = \\frac{1}{2}[\\phi(x-ct) + \\phi(x+ct)]$ only",
+        "$u = \\frac{1}{2}[\\phi(x-ct) + \\phi(x+ct)] + \\frac{1}{2c}\\int_{x-ct}^{x+ct}\\psi(s)\\,ds$",
+        "$u = \\phi(x)\\cos(ct) + \\psi(x)\\sin(ct)$"
+      ],
+      "answer": 2,
+      "explanation": "The dAlembert solution is $u(x,t) = \\frac{1}{2}[\\phi(x-ct) + \\phi(x+ct)] + \\frac{1}{2c}\\int_{x-ct}^{x+ct}\\psi(s)\\,ds$. The first part is the averaged initial displacement split into two travelling halves, and the integral term accounts for the initial velocity $\\psi$. The factor $\\frac{1}{2c}$ in front of the integral is essential.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-004",
+      "stem": "Verify that $u(x,t) = (x - ct)^2 + (x + ct)^3$ solves $u_{tt} = c^2 u_{xx}$. Does it?",
+      "options": [
+        "No, it fails",
+        "Only if $c = 1$",
+        "Yes, it solves for any $c$",
+        "Only if $c = 0$"
+      ],
+      "answer": 2,
+      "explanation": "Any sum of a function of $x - ct$ and a function of $x + ct$ solves the wave equation. Here $f(s) = s^2$ and $g(s) = s^3$ with arguments $x \\mp ct$. Since each piece individually satisfies $u_{tt} = c^2 u_{xx}$ (the chain rule produces matching $c^2$ factors), their sum does too, for every $c$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-005",
+      "stem": "With $c = 2$, initial displacement $u(x,0) = \\sin x$, and zero initial velocity, dAlembert gives $u(x,t) = \\frac{1}{2}[\\sin(x-2t) + \\sin(x+2t)]$. This simplifies to which expression?",
+      "options": [
+        "$\\sin x\\cos 2t$",
+        "$\\cos x\\sin 2t$",
+        "$\\sin(x)\\sin(2t)$",
+        "$\\sin(2x)\\cos t$"
+      ],
+      "answer": 0,
+      "explanation": "Use the identity $\\sin(A - B) + \\sin(A + B) = 2\\sin A\\cos B$ with $A = x$, $B = 2t$. So $\\frac{1}{2}[\\sin(x-2t) + \\sin(x+2t)] = \\frac{1}{2}\\cdot 2\\sin x\\cos 2t = \\sin x\\cos 2t$. This is a standing wave: a fixed spatial shape $\\sin x$ modulated by the oscillation $\\cos 2t$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-006",
+      "stem": "Continuing with $u(x,t) = \\sin x\\cos 2t$, evaluate $u$ at $x = \\frac{\\pi}{2}$, $t = \\frac{\\pi}{4}$.",
+      "options": [
+        "$1$",
+        "$\\frac{1}{2}$",
+        "$-1$",
+        "$0$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $u(\\frac{\\pi}{2}, \\frac{\\pi}{4}) = \\sin\\frac{\\pi}{2}\\cos(2\\cdot\\frac{\\pi}{4}) = \\sin\\frac{\\pi}{2}\\cos\\frac{\\pi}{2} = 1\\cdot 0 = 0$. The spatial antinode at $x = \\frac{\\pi}{2}$ is momentarily passing through zero because the time factor $\\cos\\frac{\\pi}{2} = 0$ at that instant.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-007",
+      "stem": "The domain of dependence of the point $(x_0, t_0)$ for $u_{tt} = c^2 u_{xx}$ is which set on the initial line?",
+      "options": [
+        "The single point $x_0$",
+        "The half line $x \\ge x_0$",
+        "The whole real line",
+        "The interval $[x_0 - ct_0,\\; x_0 + ct_0]$"
+      ],
+      "answer": 3,
+      "explanation": "The dAlembert solution at $(x_0, t_0)$ uses $\\phi$ at the two endpoints $x_0 \\pm ct_0$ and $\\psi$ integrated over $[x_0 - ct_0, x_0 + ct_0]$. So the value depends exactly on this interval, bounded by the two characteristics through $(x_0, t_0)$. Signals travel at finite speed $c$, giving a bounded interval rather than the whole line.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-008",
+      "stem": "For $c = 3$, the domain of dependence of the point $(5, 2)$ is which interval?",
+      "options": [
+        "$[3, 7]$",
+        "$[-1, 11]$",
+        "$[1, 9]$",
+        "$[5, 11]$"
+      ],
+      "answer": 1,
+      "explanation": "The interval is $[x_0 - ct_0, x_0 + ct_0] = [5 - 3\\cdot 2, 5 + 3\\cdot 2] = [5 - 6, 5 + 6] = [-1, 11]$. The two characteristics of slope $\\pm 3$ through $(5,2)$ reach the initial line at $x = -1$ and $x = 11$. Only data between these points can influence $u(5,2)$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-009",
+      "stem": "A string of length $L$ with fixed ends vibrates with normal mode shapes which functions?",
+      "options": [
+        "$\\cos\\left(\\frac{n\\pi x}{L}\\right)$",
+        "$e^{-n\\pi x/L}$",
+        "$\\sin\\left(\\frac{n\\pi x}{L}\\right)$",
+        "$x^n$"
+      ],
+      "answer": 2,
+      "explanation": "Fixed ends mean $u(0,t) = u(L,t) = 0$, which are Dirichlet conditions, so the spatial eigenfunctions are $\\sin\\left(\\frac{n\\pi x}{L}\\right)$. These vanish at both ends, giving nodes there. The $n$th mode has $n - 1$ interior nodes. Cosines would correspond to free ends instead.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-010",
+      "stem": "For a string of length $L$ with fixed ends and wave speed $c$, the angular frequencies of the normal modes are which values?",
+      "options": [
+        "$\\omega_n = \\frac{n\\pi c}{L}$",
+        "$\\omega_n = \\frac{n\\pi}{L}$",
+        "$\\omega_n = \\frac{c}{nL}$",
+        "$\\omega_n = n\\pi c L$"
+      ],
+      "answer": 0,
+      "explanation": "The time factor solves $T'' + c^2\\lambda_n T = 0$ with $\\lambda_n = (n\\pi/L)^2$, so $\\omega_n = c\\sqrt{\\lambda_n} = \\frac{n\\pi c}{L}$. The frequencies are integer multiples of the fundamental $\\frac{\\pi c}{L}$, which is why a vibrating string produces a harmonic series. Higher modes vibrate proportionally faster.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-011",
+      "stem": "The ordinary frequency (in cycles per unit time) of mode $n$ on a fixed string is $f_n = \\frac{nc}{2L}$. For $L = 1$ and $c = 2$, what is the fundamental frequency $f_1$?",
+      "options": [
+        "$2$",
+        "$\\frac{1}{2}$",
+        "$1$",
+        "$4$"
+      ],
+      "answer": 2,
+      "explanation": "Using $f_n = \\frac{nc}{2L}$ with $n = 1$, $L = 1$, $c = 2$: $f_1 = \\frac{1\\cdot 2}{2\\cdot 1} = \\frac{2}{2} = 1$. The fundamental is the lowest frequency the string can sound; all higher modes are integer multiples of it.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-012",
+      "stem": "With $f_n = \\frac{nc}{2L}$, $L = 1$, $c = 2$, the third harmonic $f_3$ relates to the fundamental $f_1 = 1$ how?",
+      "options": [
+        "$f_3 = 3$",
+        "$f_3 = 1$",
+        "$f_3 = 6$",
+        "$f_3 = \\frac{1}{3}$"
+      ],
+      "answer": 0,
+      "explanation": "$f_3 = \\frac{3\\cdot 2}{2\\cdot 1} = 3$, which is $3 f_1$. Frequencies form the harmonic series $f_1, 2f_1, 3f_1, \\ldots$, so the third harmonic is three times the fundamental. This integer ratio is what makes the string sound musical.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-013",
+      "stem": "Unlike the heat equation, the wave equation does which of the following to an initial profile over time?",
+      "options": [
+        "Preserves sharp features as they propagate",
+        "Decays it to zero",
+        "Smooths it instantly",
+        "Makes it constant"
+      ],
+      "answer": 0,
+      "explanation": "The wave equation transports features along characteristics without damping or smoothing, so a kink or jump in the initial data persists and simply moves at speed $c$. There is no dissipation. The heat equation, by contrast, smooths everything instantly. This reflects the hyperbolic versus parabolic distinction.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-014",
+      "stem": "Solve $u_{tt} = c^2 u_{xx}$ with $u(x,0) = 0$ and $u_t(x,0) = 1$ (constant) using dAlembert. What is $u(x,t)$?",
+      "options": [
+        "$0$",
+        "$t$",
+        "$ct$",
+        "$\\frac{t}{c}$"
+      ],
+      "answer": 1,
+      "explanation": "With $\\phi = 0$, dAlembert gives $u = \\frac{1}{2c}\\int_{x-ct}^{x+ct}\\psi(s)\\,ds = \\frac{1}{2c}\\int_{x-ct}^{x+ct}1\\,ds = \\frac{1}{2c}\\cdot[(x+ct) - (x-ct)] = \\frac{1}{2c}\\cdot 2ct = t$. The constant initial velocity makes the displacement grow linearly in time, independent of $x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-015",
+      "stem": "The two characteristic families of the wave equation $u_{tt} = c^2 u_{xx}$ are which curves?",
+      "options": [
+        "$x = \\text{const}$ and $t = \\text{const}$",
+        "$x^2 + t^2 = \\text{const}$",
+        "$xt = \\text{const}$",
+        "$x - ct = \\text{const}$ and $x + ct = \\text{const}$"
+      ],
+      "answer": 3,
+      "explanation": "The characteristics satisfy $\\frac{dx}{dt} = \\pm c$, giving the two straight line families $x - ct = \\text{const}$ (right moving) and $x + ct = \\text{const}$ (left moving). These are exactly the arguments of $f$ and $g$ in the dAlembert solution, and signals propagate along them.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-016",
+      "stem": "The region of influence of a single initial point $x_0$ for the wave equation is which set in the $(x,t)$ plane (for $t > 0$)?",
+      "options": [
+        "Only the line $x = x_0$",
+        "A widening cone (wedge) $|x - x_0| \\le ct$",
+        "The whole upper half plane",
+        "A single characteristic line"
+      ],
+      "answer": 1,
+      "explanation": "Disturbing the data at $x_0$ affects points reachable by signals of speed $c$, namely the forward wedge $|x - x_0| \\le ct$ bounded by the two characteristics through $x_0$. Outside this cone the solution is unaffected. The region of influence is the mirror notion to the domain of dependence.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-017",
+      "stem": "A standing wave on a fixed string is written $u(x,t) = \\sin\\left(\\frac{n\\pi x}{L}\\right)\\cos(\\omega_n t)$. The points where $\\sin\\left(\\frac{n\\pi x}{L}\\right) = 0$ are called which features?",
+      "options": [
+        "Antinodes",
+        "Crests",
+        "Nodes",
+        "Troughs"
+      ],
+      "answer": 2,
+      "explanation": "Points where the spatial factor vanishes stay fixed at zero for all time; these are the nodes. The endpoints are always nodes for a fixed string, and the $n$th mode has $n - 1$ interior nodes. Antinodes are the points of maximum amplitude, where $\\sin$ reaches $\\pm 1$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-018",
+      "stem": "How many arbitrary functions appear in the general solution of the second order wave equation?",
+      "options": [
+        "One",
+        "None",
+        "Infinitely many",
+        "Two"
+      ],
+      "answer": 3,
+      "explanation": "The dAlembert form $u = f(x - ct) + g(x + ct)$ contains two arbitrary functions $f$ and $g$. A second order PDE in two variables carries two arbitrary functions, just as a second order ODE carries two arbitrary constants. The two initial data $\\phi$ and $\\psi$ are exactly what is needed to pin them down.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-019",
+      "stem": "On $[0, L]$ with $L = \\pi$ and $c = 1$, fixed ends, the angular frequency of the second mode $\\omega_2$ equals which value?",
+      "options": [
+        "$1$",
+        "$\\pi$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": 2,
+      "explanation": "Using $\\omega_n = \\frac{n\\pi c}{L}$ with $L = \\pi$, $c = 1$: $\\omega_n = \\frac{n\\pi}{\\pi} = n$. For $n = 2$, $\\omega_2 = 2$. The choice $L = \\pi$, $c = 1$ makes the angular frequencies simply equal to $n$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-020",
+      "stem": "Solve $u_{tt} = 4 u_{xx}$ with $u(x,0) = e^{-x^2}$ and $u_t(x,0) = 0$. The solution is which expression?",
+      "options": [
+        "$e^{-(x-2t)^2}$",
+        "$\\frac{1}{2}[e^{-(x-2t)^2} + e^{-(x+2t)^2}]$",
+        "$e^{-x^2}\\cos 2t$",
+        "$e^{-(x-4t)^2}$"
+      ],
+      "answer": 1,
+      "explanation": "Here $c^2 = 4$ so $c = 2$, and with zero initial velocity dAlembert gives $u = \\frac{1}{2}[\\phi(x - ct) + \\phi(x + ct)] = \\frac{1}{2}[e^{-(x-2t)^2} + e^{-(x+2t)^2}]$. The initial bump splits into two half amplitude copies moving left and right at speed $2$. It is not a single travelling pulse.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-021",
+      "stem": "The energy $E = \\frac{1}{2}\\int (u_t^2 + c^2 u_x^2)\\,dx$ of a wave on a finite string with fixed ends does which of the following over time?",
+      "options": [
+        "Decays to zero",
+        "Grows without bound",
+        "Is conserved (constant)",
+        "Oscillates between zero and infinity"
+      ],
+      "answer": 2,
+      "explanation": "For the undamped wave equation with fixed (or free) ends, the total energy is conserved: $\\frac{dE}{dt} = 0$. Energy sloshes between kinetic ($u_t^2$) and potential ($c^2 u_x^2$) parts but the sum stays constant. Unlike the dissipative heat equation, the wave equation has no mechanism to lose energy.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-022",
+      "stem": "On a fixed string the series solution is $u(x,t) = \\sum_n \\sin\\left(\\frac{n\\pi x}{L}\\right)[a_n\\cos(\\omega_n t) + b_n\\sin(\\omega_n t)]$. The coefficients $b_n$ are fixed by which initial data?",
+      "options": [
+        "The initial displacement $u(x,0)$",
+        "The initial velocity $u_t(x,0)$",
+        "The boundary conditions",
+        "The wave speed $c$"
+      ],
+      "answer": 1,
+      "explanation": "At $t = 0$, $u(x,0) = \\sum_n a_n\\sin(\\frac{n\\pi x}{L})$ fixes the $a_n$ from the displacement. Differentiating in time and setting $t = 0$ gives $u_t(x,0) = \\sum_n \\omega_n b_n\\sin(\\frac{n\\pi x}{L})$, so the $b_n$ come from the initial velocity. Both initial functions are needed because the equation is second order in time.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-023",
+      "format": "cloze",
+      "stem": "Use dAlembert on $u_{tt} = 4 u_{xx}$ with $u(x,0) = \\sin x$ and $u_t(x,0) = 0$.",
+      "solution": "The wave speed is $c =$ {{1}}. With zero initial velocity, dAlembert gives $u = \\tfrac{1}{2}[\\sin(x - ct) + \\sin(x + ct)]$, which simplifies to a standing wave $\\sin x \\cos(2t)$. Evaluating at $x = \\dfrac{\\pi}{2}$, $t = \\dfrac{\\pi}{4}$ gives the value {{2}}. The two travelling pieces each carry amplitude {{3}} of the original.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "half",
+            "the same",
+            "double"
+          ],
+          "answer": "half"
+        }
+      ],
+      "explanation": "$c^2 = 4$ so $c = 2$. The solution is $\\sin x\\cos 2t$, and at $(\\frac{\\pi}{2}, \\frac{\\pi}{4})$ it is $\\sin\\frac{\\pi}{2}\\cos\\frac{\\pi}{2} = 1\\cdot 0 = 0$. Each travelling copy has half the original amplitude.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-024",
+      "format": "cloze",
+      "stem": "Find the domain of dependence for the wave equation with $c = 3$ at the point $(5, 2)$.",
+      "solution": "The left endpoint is $x_0 - c t_0 =$ {{1}} and the right endpoint is $x_0 + c t_0 =$ {{2}}. The value at $(5,2)$ depends on the data over this {{3}}, bounded by the two characteristics.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 11,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "interval",
+            "single point",
+            "half line"
+          ],
+          "answer": "interval"
+        }
+      ],
+      "explanation": "$x_0 - ct_0 = 5 - 6 = -1$ and $x_0 + ct_0 = 5 + 6 = 11$, so the domain of dependence is the interval $[-1, 11]$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-025",
+      "format": "cloze",
+      "stem": "Find the normal mode frequencies of a fixed string of length $L = 1$ with wave speed $c = 2$.",
+      "solution": "The ordinary frequency of mode $n$ is $f_n = \\dfrac{nc}{2L}$. The fundamental frequency is $f_1 =$ {{1}}. The third harmonic is $f_3 =$ {{2}}. The frequencies form a {{3}} series, integer multiples of the fundamental.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "harmonic",
+            "harmonic series"
+          ]
+        }
+      ],
+      "explanation": "$f_1 = \\frac{1\\cdot 2}{2\\cdot 1} = 1$ and $f_3 = \\frac{3\\cdot 2}{2} = 3$. The frequencies $1, 2, 3, \\ldots$ form a harmonic series.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-026",
+      "format": "cloze",
+      "stem": "Solve $u_{tt} = c^2 u_{xx}$ with $u(x,0) = 0$ and constant initial velocity $u_t(x,0) = 1$.",
+      "solution": "With $\\phi = 0$, the dAlembert integral term gives $u = \\dfrac{1}{2c}\\displaystyle\\int_{x-ct}^{x+ct} 1\\,ds$. The length of the interval is {{1}} (in terms of $c$ and $t$), so after dividing by $2c$ the displacement is $u(x,t) =$ {{2}}. The displacement therefore {{3}} in time.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$2ct$",
+            "$ct$",
+            "$2t$"
+          ],
+          "answer": "$2ct$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$t$",
+            "$ct$",
+            "$x$"
+          ],
+          "answer": "$t$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "grows linearly",
+            "stays zero",
+            "oscillates"
+          ],
+          "answer": "grows linearly"
+        }
+      ],
+      "explanation": "The interval $[x-ct, x+ct]$ has length $2ct$, so $u = \\frac{1}{2c}(2ct) = t$. The displacement grows linearly in time.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-027",
+      "format": "cloze",
+      "stem": "Contrast the wave equation with the heat equation regarding propagation and smoothing.",
+      "solution": "The wave equation has {{1}} real characteristic families, so signals travel at finite speed $c$ without smearing, and a kink in the data {{2}}. The heat equation, being parabolic, instead {{3}} the data instantly.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "persists",
+            "disappears",
+            "doubles"
+          ],
+          "answer": "persists"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "smooths",
+            "sharpens",
+            "ignores"
+          ],
+          "answer": "smooths"
+        }
+      ],
+      "explanation": "The hyperbolic wave equation has two characteristic families and propagates kinks without smearing, so a kink persists. The parabolic heat equation smooths data instantly.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-wave-equation-028",
+      "format": "cloze",
+      "stem": "Describe the standing wave $u(x,t) = \\sin\\left(\\frac{n\\pi x}{L}\\right)\\cos(\\omega_n t)$ on a fixed string.",
+      "solution": "Points where the spatial factor vanishes never move and are called {{1}}. The $n$th mode has exactly {{2}} interior such points. With $L = \\pi$ and $c = 1$ the angular frequency of the third mode is $\\omega_3 =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "nodes",
+            "antinodes",
+            "crests"
+          ],
+          "answer": "nodes"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$n - 1$",
+            "$n$",
+            "$n + 1$"
+          ],
+          "answer": "$n - 1$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Zeros of the spatial factor are nodes; the $n$th mode has $n - 1$ interior nodes. With $L = \\pi$, $c = 1$, $\\omega_n = n$, so $\\omega_3 = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    }
+  ]
+}

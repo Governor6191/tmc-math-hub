@@ -1,0 +1,523 @@
+{
+  "courseId": "partial-differential-eqn",
+  "topicId": "first-order-pdes",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "partial-differential-eqn-first-order-pdes-001",
+      "stem": "The transport equation $u_t + c\\,u_x = 0$ with constant $c$ has general solution of which form?",
+      "options": [
+        "$u(x,t) = f(x + ct)$",
+        "$u(x,t) = f(x - ct)$",
+        "$u(x,t) = f(x)\\,g(t)$",
+        "$u(x,t) = f(ct - x^2)$"
+      ],
+      "answer": 1,
+      "explanation": "Along the characteristic lines $x - ct = \\text{const}$, the solution is constant. So $u$ depends on $x$ and $t$ only through the combination $x - ct$, giving $u(x,t) = f(x - ct)$ for an arbitrary differentiable $f$. Check: $u_t = -c f'$ and $u_x = f'$, so $u_t + c u_x = -c f' + c f' = 0$. The form $f(x + ct)$ would solve $u_t - c u_x = 0$ instead.",
+      "difficulty": "warmup",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-002",
+      "stem": "For the transport equation $u_t + c\\,u_x = 0$, the characteristic curves in the $(x,t)$ plane are which family?",
+      "options": [
+        "Lines $x - ct = \\text{const}$",
+        "Circles $x^2 + t^2 = \\text{const}$",
+        "Parabolas $x = ct^2 + \\text{const}$",
+        "Lines $x + ct = \\text{const}$"
+      ],
+      "answer": 0,
+      "explanation": "The characteristics satisfy $\\frac{dx}{dt} = c$, so $x = ct + \\text{const}$, that is $x - ct = \\text{const}$. These are straight lines of slope $c$ in the $(x,t)$ plane (taking $x$ on the vertical axis), and $u$ stays constant along each one. The combination $x - ct$ labels the characteristic through a given starting point.",
+      "difficulty": "warmup",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-003",
+      "stem": "Solve the initial value problem $u_t + 3u_x = 0$ with $u(x,0) = e^{-x^2}$.",
+      "options": [
+        "$u(x,t) = e^{-(x+3t)^2}$",
+        "$u(x,t) = e^{-x^2}\\,e^{-3t}$",
+        "$u(x,t) = e^{-(x-3t)^2}$",
+        "$u(x,t) = e^{-x^2 + 3t}$"
+      ],
+      "answer": 2,
+      "explanation": "With $c = 3$ the general solution is $u = f(x - 3t)$, and the initial data fixes $f$. At $t = 0$, $u(x,0) = f(x) = e^{-x^2}$, so $f(s) = e^{-s^2}$. Substituting $s = x - 3t$ gives $u(x,t) = e^{-(x-3t)^2}$. This is the initial bump rigidly translated to the right at speed $3$. Check: $u_t = -3\\cdot(-2)(x-3t)e^{-(x-3t)^2}$ and $3u_x = 3\\cdot(-2)(x-3t)e^{-(x-3t)^2}$ cancel.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-004",
+      "stem": "The PDE $u_t - 2u_x = 0$ describes a wave moving in which direction and at what speed?",
+      "options": [
+        "Right at speed $2$",
+        "Left at speed $2$",
+        "Right at speed $\\tfrac{1}{2}$",
+        "It does not move (steady)"
+      ],
+      "answer": 1,
+      "explanation": "Write it as $u_t + (-2)u_x = 0$, so $c = -2$. The solution is $u = f(x - ct) = f(x + 2t)$, which translates the profile in the negative $x$ direction (left) as $t$ increases, at speed $|c| = 2$. A negative transport coefficient sends the wave left; a positive one sends it right.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-005",
+      "stem": "Using the method of characteristics on $u_t + c\\,u_x = 0$, along a characteristic curve the quantity $\\frac{du}{dt}$ equals which expression?",
+      "options": [
+        "$c\\,u$",
+        "$u_t$ only",
+        "$0$",
+        "$u_x$ only"
+      ],
+      "answer": 2,
+      "explanation": "Parametrize a characteristic by $t$ with $\\frac{dx}{dt} = c$. Then by the chain rule $\\frac{du}{dt} = u_t + u_x\\frac{dx}{dt} = u_t + c\\,u_x$, which is exactly the left side of the PDE. Since the PDE says this equals $0$, $u$ is constant along each characteristic. That constancy is the whole engine of the method.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-006",
+      "stem": "Solve $u_t + 5u_x = 0$ with $u(x,0) = \\sin x$. What is $u(2, 1)$?",
+      "options": [
+        "$\\sin 7$",
+        "$\\sin 2$",
+        "$\\sin 5$",
+        "$\\sin(-3)$"
+      ],
+      "answer": 3,
+      "explanation": "Here $c = 5$, so $u(x,t) = f(x - 5t)$ with $f(x) = \\sin x$, giving $u(x,t) = \\sin(x - 5t)$. Evaluate at $(x,t) = (2,1)$: $u(2,1) = \\sin(2 - 5\\cdot 1) = \\sin(-3)$. The point $(2,1)$ lies on the characteristic that started at $x = 2 - 5 = -3$ when $t = 0$, carrying the value $\\sin(-3)$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-007",
+      "stem": "Which expression is the general solution of the linear PDE $a\\,u_x + b\\,u_y = 0$ for nonzero constants $a, b$?",
+      "options": [
+        "$u = f(bx - ay)$",
+        "$u = f(ax + by)$",
+        "$u = f(ax)\\,g(by)$",
+        "$u = f(x^2 + y^2)$"
+      ],
+      "answer": 0,
+      "explanation": "The characteristics satisfy $\\frac{dy}{dx} = \\frac{b}{a}$, so $ay - bx = \\text{const}$, that is $bx - ay = \\text{const}$. The solution is constant along these lines, so $u = f(bx - ay)$ for arbitrary $f$. Check: $u_x = b f'$ and $u_y = -a f'$, so $a u_x + b u_y = ab f' - ab f' = 0$. The combination must make the directional derivative along $(a,b)$ vanish.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-008",
+      "stem": "For the inhomogeneous transport equation $u_t + c\\,u_x = 0$ on the line, the domain of dependence of the point $(x_0, t_0)$ with $t_0 > 0$ is which set on the initial line $t = 0$?",
+      "options": [
+        "The whole line $t = 0$",
+        "The interval $[x_0 - ct_0,\\; x_0 + ct_0]$",
+        "The single point $x = x_0 - c t_0$",
+        "The single point $x = x_0$"
+      ],
+      "answer": 2,
+      "explanation": "The value at $(x_0, t_0)$ is carried unchanged along the single characteristic through that point, which meets $t = 0$ at $x = x_0 - c t_0$. So $u(x_0, t_0) = u(x_0 - c t_0, 0)$, and the solution there depends on exactly one initial point. First order transport has a point domain of dependence, unlike the wave equation whose dependence is an interval.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-009",
+      "stem": "Solve the forced transport equation $u_t + u_x = 1$ with $u(x,0) = 0$.",
+      "options": [
+        "$u(x,t) = x$",
+        "$u(x,t) = t$",
+        "$u(x,t) = x - t$",
+        "$u(x,t) = xt$"
+      ],
+      "answer": 1,
+      "explanation": "Along characteristics $\\frac{dx}{dt} = 1$, the chain rule gives $\\frac{du}{dt} = u_t + u_x = 1$. Integrating, $u = t + \\text{const}$ along each characteristic. Since $u = 0$ at $t = 0$, the constant is $0$, so $u(x,t) = t$. Check: $u_t = 1$, $u_x = 0$, and $u_t + u_x = 1$. The source term $1$ makes $u$ grow linearly in $t$ as you ride a characteristic.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-010",
+      "stem": "A PDE is called quasilinear when the highest order derivatives appear linearly but their coefficients may depend on which quantities?",
+      "options": [
+        "Only the independent variables $x, t$",
+        "Nothing; coefficients must be constant",
+        "Only the highest derivatives themselves",
+        "The independent variables, $u$, and lower derivatives"
+      ],
+      "answer": 3,
+      "explanation": "In a quasilinear first order PDE such as $a(x,t,u)u_x + b(x,t,u)u_t = c(x,t,u)$, the first derivatives $u_x, u_t$ enter to the first power, but their coefficients are allowed to depend on $x$, $t$, and the unknown $u$ itself. Inviscid Burgers $u_t + u\\,u_x = 0$ is the standard example, with coefficient $u$ on $u_x$. Pure linearity would forbid any dependence on $u$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-011",
+      "stem": "For the inviscid Burgers equation $u_t + u\\,u_x = 0$, the characteristic curves carry constant $u$ and have which speed $\\frac{dx}{dt}$?",
+      "options": [
+        "Speed equal to the local value of $u$",
+        "Speed $1$ everywhere",
+        "Speed $0$ (vertical lines)",
+        "Speed equal to $x$"
+      ],
+      "answer": 0,
+      "explanation": "Comparing $u_t + u\\,u_x = 0$ with the chain rule $\\frac{du}{dt} = u_t + \\frac{dx}{dt}u_x$, choosing $\\frac{dx}{dt} = u$ makes $\\frac{du}{dt} = 0$, so $u$ is constant along that curve. But then the speed $\\frac{dx}{dt} = u$ is itself constant on the characteristic, making each characteristic a straight line whose slope equals the carried value of $u$. Different starting values give different slopes, which is why Burgers characteristics can cross and form shocks.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-012",
+      "stem": "Solve $u_t + 4u_x = 0$ with $u(x,0) = 2x + 1$. What is $u(x,t)$?",
+      "options": [
+        "$u = 2x + 1 - 8t$",
+        "$u = 2x + 1 + 8t$",
+        "$u = 2(x - 4t) + 1 + t$",
+        "$u = 2x + 4t + 1$"
+      ],
+      "answer": 0,
+      "explanation": "With $c = 4$, $u = f(x - 4t)$ where $f(x) = 2x + 1$. Substituting $s = x - 4t$, $u = 2(x - 4t) + 1 = 2x + 1 - 8t$. Check: $u_t = -8$, $u_x = 2$, so $u_t + 4u_x = -8 + 8 = 0$, and $u(x,0) = 2x + 1$. The profile is a line that slides right at speed $4$ without changing shape.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-013",
+      "stem": "Verify which function solves $u_t + c\\,u_x = 0$. Take $u(x,t) = (x - ct)^3 + 7$.",
+      "options": [
+        "It does not solve the equation",
+        "It solves only when $c = 0$",
+        "It solves the equation for any constant $c$",
+        "It solves only when $c = 1$"
+      ],
+      "answer": 2,
+      "explanation": "Any function of the single combination $x - ct$ solves $u_t + c u_x = 0$. Here $u = g(x - ct)$ with $g(s) = s^3 + 7$. Then $u_t = -c\\,g'(x-ct)$ and $u_x = g'(x-ct)$, so $u_t + c u_x = -c g' + c g' = 0$ for every constant $c$. The added constant $7$ is harmless since its derivatives vanish.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-014",
+      "stem": "Consider $x\\,u_x + u_t = 0$. Solving $\\frac{dx}{dt} = x$ shows the characteristics are which curves?",
+      "options": [
+        "$x e^{-t} = \\text{const}$",
+        "$x - t = \\text{const}$",
+        "$x + t = \\text{const}$",
+        "$x^2 - t = \\text{const}$"
+      ],
+      "answer": 0,
+      "explanation": "Writing the PDE as $u_t + x\\,u_x = 0$, the characteristic ODE is $\\frac{dx}{dt} = x$, whose solution is $x = x_0 e^{t}$, that is $x e^{-t} = x_0 = \\text{const}$. Along these curves $u$ is constant, so the general solution is $u = f(x e^{-t})$. The variable coefficient $x$ bends the characteristics into exponentials rather than straight lines.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-015",
+      "stem": "The PDE $u_t + c\\,u_x = 0$ is first order. How many arbitrary functions appear in its general solution?",
+      "options": [
+        "Two arbitrary functions",
+        "One arbitrary function",
+        "One arbitrary constant only",
+        "No arbitrary elements"
+      ],
+      "answer": 1,
+      "explanation": "A first order PDE in two variables has a general solution containing one arbitrary function, here $u = f(x - ct)$ with $f$ free. Contrast this with first order ODEs, which carry one arbitrary constant, and second order PDEs like the wave equation, which carry two arbitrary functions. The order of the PDE matches the count of arbitrary functions.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-016",
+      "stem": "Solve $u_t + 2u_x = 0$ with $u(x,0) = H(x)$, where $H$ is the unit step (1 for $x \\ge 0$, else 0). Where is the jump located at time $t$?",
+      "options": [
+        "At $x = 0$ for all $t$",
+        "At $x = -2t$",
+        "At $x = 2t$",
+        "The jump spreads out and disappears"
+      ],
+      "answer": 2,
+      "explanation": "With $c = 2$, $u(x,t) = H(x - 2t)$, so the jump occurs where the argument is zero: $x - 2t = 0$, that is $x = 2t$. The step discontinuity is transported rigidly to the right at speed $2$ without smearing, since the transport equation has no diffusion. At $t = 1$ the jump sits at $x = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-017",
+      "stem": "Which of these is the correct interpretation of writing $u_t + c\\,u_x = 0$ as $\\frac{D u}{D t} = 0$ following a moving observer?",
+      "options": [
+        "The observer sees $u$ oscillate",
+        "An observer moving at speed $c$ sees $u$ unchanged",
+        "An observer at rest sees $u$ unchanged",
+        "An observer moving at speed $-c$ sees $u$ unchanged"
+      ],
+      "answer": 1,
+      "explanation": "The material derivative for an observer moving at velocity $c$ is $\\frac{Du}{Dt} = u_t + c\\,u_x$. The PDE says this equals zero, so an observer riding along at exactly speed $c$ measures a constant value of $u$. This is the physical meaning of \"the profile travels at speed $c$ without changing shape.\" An observer at rest would generally see $u$ change as the wave passes.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-018",
+      "stem": "Solve $u_t + c\\,u_x = 0$ with $u(x,0) = \\phi(x)$ and separately a left-moving wave with data $\\psi$. Which single formula gives the right-moving solution?",
+      "options": [
+        "$u = \\phi(x)\\cos(ct)$",
+        "$u = \\tfrac{1}{2}[\\phi(x-ct) + \\phi(x+ct)]$",
+        "$u = \\phi(x + ct)$",
+        "$u = \\phi(x - ct)$"
+      ],
+      "answer": 3,
+      "explanation": "The first order transport equation $u_t + c u_x = 0$ produces a pure right-moving (for $c > 0$) wave $u = \\phi(x - ct)$, determined by the single initial profile $\\phi$. The averaged form $\\frac{1}{2}[\\phi(x-ct)+\\phi(x+ct)]$ belongs to the second order wave equation, which carries both directions at once. Here only one direction and one arbitrary function appear.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-019",
+      "stem": "For $u_t + c\\,u_x = 0$ with $c > 0$ on $x > 0$, $t > 0$, a boundary condition is generally required on which line in addition to the initial line?",
+      "options": [
+        "On $x = 0$ (the inflow boundary)",
+        "On $x \\to \\infty$ only",
+        "No boundary condition is ever needed",
+        "On $t \\to \\infty$"
+      ],
+      "answer": 0,
+      "explanation": "Characteristics move to the right at speed $c > 0$, so they enter the quarter plane through the line $x = 0$. Points with small $x$ and large $t$ trace back to $x = 0$, not to the initial line $t = 0$, so data must be prescribed on the inflow boundary $x = 0$. Specifying data on an outflow boundary would overdetermine the problem.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-020",
+      "stem": "Solve $u_t + 3u_x = 0$ with $u(x,0) = \\cos x$. What is $u(\\pi, t)$ as a function of $t$?",
+      "options": [
+        "$\\cos(\\pi - 3t)$",
+        "$\\cos(\\pi + 3t)$",
+        "$\\cos(\\pi)\\,e^{-3t}$",
+        "$\\cos(3t)$"
+      ],
+      "answer": 0,
+      "explanation": "With $c = 3$, $u(x,t) = \\cos(x - 3t)$. Fixing $x = \\pi$ gives $u(\\pi, t) = \\cos(\\pi - 3t)$. The value seen at the fixed station $x = \\pi$ is whatever started at $x = \\pi - 3t$ on the initial line, sampled as the profile sweeps past at speed $3$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-021",
+      "stem": "Two characteristics of $u_t + c\\,u_x = 0$ (constant $c$) starting from distinct points $x_1 \\ne x_2$ at $t = 0$ will do which of the following?",
+      "options": [
+        "Cross at $t = 1/c$",
+        "Spiral around each other",
+        "Never cross; they stay parallel",
+        "Merge immediately"
+      ],
+      "answer": 2,
+      "explanation": "For constant $c$ every characteristic is a straight line of the same slope $\\frac{dx}{dt} = c$, so the lines $x = x_1 + ct$ and $x = x_2 + ct$ are parallel and never meet when $x_1 \\ne x_2$. This is why the constant coefficient transport equation never forms shocks: the carried values never collide. Shock formation needs the slope to depend on $u$, as in Burgers.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-022",
+      "stem": "Solve the variable coefficient equation $u_t + c\\,u_x = -\\lambda u$ (decay) with $u(x,0) = \\phi(x)$ and constants $c, \\lambda > 0$.",
+      "options": [
+        "$u = \\phi(x - ct)\\,e^{\\lambda t}$",
+        "$u = \\phi(x + ct)\\,e^{-\\lambda t}$",
+        "$u = \\phi(x)\\,e^{-\\lambda t}$",
+        "$u = \\phi(x - ct)\\,e^{-\\lambda t}$"
+      ],
+      "answer": 3,
+      "explanation": "Along characteristics $\\frac{dx}{dt} = c$, the equation becomes $\\frac{du}{dt} = -\\lambda u$, so $u = u_0 e^{-\\lambda t}$ where $u_0$ is the value at $t = 0$ on that characteristic, namely $\\phi(x - ct)$. Hence $u(x,t) = \\phi(x - ct)e^{-\\lambda t}$. Check: $u_t = (-c\\phi' - \\lambda\\phi)e^{-\\lambda t}$ and $c u_x = c\\phi' e^{-\\lambda t}$, summing to $-\\lambda\\phi e^{-\\lambda t} = -\\lambda u$. The profile both translates at speed $c$ and decays exponentially.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-023",
+      "format": "cloze",
+      "stem": "Solve the transport equation $u_t + 4u_x = 0$ with $u(x,0) = e^{-x^2}$ using characteristics.",
+      "solution": "The characteristics satisfy $\\dfrac{dx}{dt} = 4$, so $x - 4t$ stays constant and $u$ is constant along each line. The transport speed is {{1}}, and the wave moves to the {{2}}. Matching the data at $t = 0$ gives $u(x,t) = e^{-(x - 4t)^2}$, so the value at the point $(8, 1)$ equals $e^{-k}$ with $k =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "right",
+            "left"
+          ],
+          "answer": "right"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 16,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "With $c = 4 > 0$ the profile moves right at speed $4$, and $u(x,t) = e^{-(x-4t)^2}$. At $(8,1)$ the argument is $x - 4t = 8 - 4 = 4$, so $u = e^{-4^2} = e^{-16}$, giving $k = 16$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-024",
+      "format": "cloze",
+      "stem": "Solve $u_t + 5u_x = 0$ with $u(x,0) = \\sin x$ and evaluate at a point.",
+      "solution": "The general solution is $u(x,t) = \\sin(x - ct)$ with $c = 5$. The point $(3, 1)$ lies on the characteristic that started at $x_0 =$ {{1}} when $t = 0$. Therefore $u(3,1) = \\sin(x_0)$, and since the equation has no source term the amplitude is {{2}}. The number of arbitrary functions in the general solution of this first order PDE is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "preserved",
+            "growing",
+            "decaying"
+          ],
+          "answer": "preserved"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Tracing back along $\\frac{dx}{dt} = 5$, the foot of the characteristic is $x_0 = x - 5t = 3 - 5 = -2$. With no source the value is carried unchanged, so the amplitude is preserved. A first order PDE carries one arbitrary function.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-025",
+      "format": "cloze",
+      "stem": "Classify the structure of the equation $u_t + u\\,u_x = 0$ (inviscid Burgers) and describe its characteristics.",
+      "solution": "Because the coefficient of $u_x$ is the unknown $u$ itself, the equation is {{1}}. Along a characteristic $u$ is constant, so the characteristic speed $\\dfrac{dx}{dt}$ equals the carried value of $u$, making each characteristic a {{2}} line. When faster characteristics overtake slower ones the solution can develop a {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "quasilinear",
+            "linear",
+            "fully nonlinear"
+          ],
+          "answer": "quasilinear"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "straight",
+            "curved",
+            "circular"
+          ],
+          "answer": "straight"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "shock",
+            "shock wave",
+            "discontinuity"
+          ]
+        }
+      ],
+      "explanation": "Burgers is quasilinear: top derivative $u_x$ is linear but its coefficient depends on $u$. Since $u$ is constant on a characteristic, the speed $u$ is constant there too, so the characteristic is a straight line; crossing characteristics produce a shock.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-026",
+      "format": "cloze",
+      "stem": "Solve the forced equation $u_t + u_x = 1$ with $u(x,0) = 0$ by riding the characteristics.",
+      "solution": "Along the characteristics $\\dfrac{dx}{dt} = 1$ the chain rule gives $\\dfrac{du}{dt} =$ {{1}}. Integrating from $t = 0$ where $u = 0$, the solution is $u(x,t) =$ {{2}}. Because the right side is a nonzero source, $u$ is {{3}} along each characteristic rather than constant.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$t$",
+            "$x$",
+            "$x - t$"
+          ],
+          "answer": "$t$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "increasing",
+            "constant",
+            "decreasing"
+          ],
+          "answer": "increasing"
+        }
+      ],
+      "explanation": "The chain rule gives $\\frac{du}{dt} = u_t + u_x = 1$. With $u(x,0)=0$, integrating yields $u = t$. The source makes $u$ increase as you ride a characteristic.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-027",
+      "format": "cloze",
+      "stem": "Consider the variable coefficient equation $u_t + x\\,u_x = 0$.",
+      "solution": "The characteristic ODE is $\\dfrac{dx}{dt} = x$, whose solution is $x = x_0 e^{t}$. The constant of motion is $x e^{-t}$, so the general solution is $u = f(x e^{-t})$. Unlike the constant coefficient case, the characteristics are {{1}} rather than straight lines. The general solution contains {{2}} arbitrary function(s), as expected for a first order PDE.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "exponential curves",
+            "parallel lines",
+            "circles"
+          ],
+          "answer": "exponential curves"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Solving $\\frac{dx}{dt} = x$ gives $x = x_0 e^{t}$, so the characteristics are exponential curves and $x e^{-t}$ is constant along them. A first order PDE has one arbitrary function in its general solution.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-first-order-pdes-028",
+      "format": "cloze",
+      "stem": "Compare the domain of dependence for first order transport against second order wave propagation.",
+      "solution": "For $u_t + c\\,u_x = 0$ the value at $(x_0, t_0)$ comes from the single initial point $x =$ {{1}} (write it in terms of $x_0$, $c$, $t_0$). The domain of dependence is therefore a {{2}}. By contrast, the second order wave equation has a domain of dependence that is an {{3}} of the initial line.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$x_0 - c t_0$",
+            "$x_0 + c t_0$",
+            "$x_0$"
+          ],
+          "answer": "$x_0 - c t_0$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "single point",
+            "half line",
+            "interval"
+          ],
+          "answer": "single point"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "interval",
+            "interval of dependence"
+          ]
+        }
+      ],
+      "explanation": "The characteristic through $(x_0,t_0)$ meets $t = 0$ at $x_0 - c t_0$, a single point, so transport has a point domain of dependence. The wave equation depends on the interval $[x_0 - c t_0, x_0 + c t_0]$.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    }
+  ]
+}

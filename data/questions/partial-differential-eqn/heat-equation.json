@@ -1,0 +1,532 @@
+{
+  "courseId": "partial-differential-eqn",
+  "topicId": "heat-equation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "partial-differential-eqn-heat-equation-001",
+      "stem": "The one dimensional heat equation is written as which of the following, with $k > 0$?",
+      "options": [
+        "$u_{tt} = k u_{xx}$",
+        "$u_t = k u_x$",
+        "$u_t + k u_{xx} = 0$",
+        "$u_t = k u_{xx}$"
+      ],
+      "answer": 3,
+      "explanation": "The heat (or diffusion) equation is $u_t = k u_{xx}$ with diffusivity $k > 0$. It has a first time derivative and a second space derivative. The form $u_{tt} = k u_{xx}$ is the wave equation, and $u_t + k u_{xx} = 0$ (a sign flip) would be the backward heat equation, which is ill posed.",
+      "difficulty": "warmup",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-002",
+      "stem": "In the series solution, the $n$th mode of the heat equation on $[0, L]$ with zero ends decays in time like which factor?",
+      "options": [
+        "$e^{-k(n\\pi/L)^2 t}$",
+        "$e^{-k(n\\pi/L) t}$",
+        "$\\cos\\left(\\frac{n\\pi}{L}t\\right)$",
+        "$e^{+k(n\\pi/L)^2 t}$"
+      ],
+      "answer": 0,
+      "explanation": "Each separated mode carries the time factor $e^{-k\\lambda_n t}$ with $\\lambda_n = (n\\pi/L)^2$, so it decays like $e^{-k(n\\pi/L)^2 t}$. The exponent is quadratic in $n$, so higher modes decay much faster. There is no oscillation in time, which distinguishes heat from the wave equation.",
+      "difficulty": "warmup",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-003",
+      "stem": "On $[0, L]$ with $k$ fixed, how much faster does the $n = 3$ mode decay compared to the $n = 1$ mode?",
+      "options": [
+        "3 times faster",
+        "6 times faster",
+        "9 times faster",
+        "Same rate"
+      ],
+      "answer": 2,
+      "explanation": "The decay rate in the exponent is $k(n\\pi/L)^2$, proportional to $n^2$. For $n = 3$ versus $n = 1$ the ratio is $3^2/1^2 = 9$, so the third mode decays nine times faster. This rapid damping of high modes is why heat solutions smooth out quickly.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-004",
+      "stem": "Take $L = \\pi$ and $k = 1$. The $n = 2$ mode of the heat equation decays like which function of $t$?",
+      "options": [
+        "$e^{-2t}$",
+        "$e^{-4t}$",
+        "$e^{-t}$",
+        "$e^{-16t}$"
+      ],
+      "answer": 1,
+      "explanation": "With $L = \\pi$ and $k = 1$, the exponent is $k(n\\pi/L)^2 = (n\\pi/\\pi)^2 = n^2$. For $n = 2$ this is $4$, so the mode decays like $e^{-4t}$. The convenient choice $L = \\pi$ turns the decay rate into simply $n^2$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-005",
+      "stem": "For the heat equation on $[0, L]$ with Dirichlet conditions $u(0,t) = 0$, $u(L,t) = 0$, the steady state $u_\\infty(x)$ is which function?",
+      "options": [
+        "$u_\\infty(x) = 0$",
+        "$u_\\infty(x) = x$",
+        "$u_\\infty(x) = L$",
+        "$u_\\infty(x) = \\sin(\\pi x/L)$"
+      ],
+      "answer": 0,
+      "explanation": "The steady state satisfies $u_{xx} = 0$, so $u_\\infty(x) = a + bx$, a straight line. Applying $u_\\infty(0) = 0$ gives $a = 0$, and $u_\\infty(L) = bL = 0$ gives $b = 0$. Hence $u_\\infty(x) \\equiv 0$. With both ends held at zero, the bar cools everywhere to zero.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-006",
+      "stem": "For the heat equation with $u(0,t) = 10$ and $u(L,t) = 30$, the steady state temperature is which function?",
+      "options": [
+        "$u_\\infty(x) = 30 - 10x/L$",
+        "$u_\\infty(x) = 20 + 10x/L$",
+        "$u_\\infty(x) = 10 + 20x/L$",
+        "$u_\\infty(x) = 10 + 30x/L$"
+      ],
+      "answer": 2,
+      "explanation": "The steady state is linear, $u_\\infty(x) = a + bx$. From $u_\\infty(0) = 10$, $a = 10$. From $u_\\infty(L) = 30$, $10 + bL = 30$, so $b = 20/L$. Thus $u_\\infty(x) = 10 + 20x/L$, the straight line connecting the two end temperatures. At $x = L$ it gives $10 + 20 = 30$, as required.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-007",
+      "stem": "Continuing the previous setup with $u(0,t) = 10$, $u(L,t) = 30$ and steady state $u_\\infty(x) = 10 + 20x/L$, what is the steady temperature at the midpoint $x = L/2$?",
+      "options": [
+        "$15$",
+        "$25$",
+        "$20$",
+        "$30$"
+      ],
+      "answer": 2,
+      "explanation": "Substitute $x = L/2$: $u_\\infty(L/2) = 10 + 20\\cdot\\frac{L/2}{L} = 10 + 20\\cdot\\frac{1}{2} = 10 + 10 = 20$. The midpoint sits exactly halfway between the end temperatures $10$ and $30$, which is the average $20$, since the steady profile is linear.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-008",
+      "stem": "Neumann (insulated) boundary conditions for the heat equation on $[0, L]$ are written as which of the following?",
+      "options": [
+        "$u(0,t) = u(L,t) = 0$",
+        "$u_t(0,t) = u_t(L,t) = 0$",
+        "$u_x(0,t) = u_x(L,t) = 0$",
+        "$u(0,t) = u_x(L,t)$"
+      ],
+      "answer": 2,
+      "explanation": "An insulated end allows no heat flux through it, and by Fourier's law flux is proportional to $u_x$. So insulation means $u_x = 0$ at that end, giving Neumann conditions $u_x(0,t) = u_x(L,t) = 0$. Dirichlet conditions $u = 0$ instead fix the temperature, corresponding to ends held in a reservoir.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-009",
+      "stem": "With both ends insulated (Neumann), the heat equation conserves total thermal energy $\\int_0^L u\\,dx$. The steady state is therefore which value?",
+      "options": [
+        "Zero everywhere",
+        "A linear ramp",
+        "Undefined",
+        "The constant equal to the average of the initial data"
+      ],
+      "answer": 3,
+      "explanation": "Insulated ends trap the heat, so $\\frac{d}{dt}\\int_0^L u\\,dx = k[u_x]_0^L = 0$ and total energy is conserved. As $t \\to \\infty$ the temperature equalizes to a constant whose value is the average $\\frac{1}{L}\\int_0^L f(x)\\,dx$ of the initial data, since that constant carries the same total energy. No heat leaves, so it cannot decay to zero.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-010",
+      "stem": "The fundamental solution of the heat equation on the whole line is $u(x,t) = \\frac{1}{\\sqrt{4\\pi k t}}e^{-x^2/(4kt)}$. As $t$ increases, the width of this Gaussian grows like which power of $t$?",
+      "options": [
+        "$t$",
+        "$\\sqrt{t}$",
+        "$t^2$",
+        "It does not grow"
+      ],
+      "answer": 1,
+      "explanation": "The Gaussian $e^{-x^2/(4kt)}$ has standard deviation $\\sigma = \\sqrt{2kt}$, so its width scales like $\\sqrt{t}$. Diffusion spreads a concentrated pulse proportionally to the square root of time, a hallmark of the heat equation. Doubling the width takes four times as long.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-011",
+      "stem": "The peak height of the fundamental solution $\\frac{1}{\\sqrt{4\\pi k t}}e^{-x^2/(4kt)}$ at $x = 0$ behaves like which expression as $t$ grows?",
+      "options": [
+        "$\\frac{1}{\\sqrt{4\\pi k t}}$, decreasing like $t^{-1/2}$",
+        "Constant in $t$",
+        "Increasing like $\\sqrt{t}$",
+        "Decreasing like $t^{-2}$"
+      ],
+      "answer": 0,
+      "explanation": "At $x = 0$ the exponential equals $1$, so the height is $\\frac{1}{\\sqrt{4\\pi k t}}$, which decreases like $t^{-1/2}$. As the pulse spreads wider its peak drops, keeping the total area (total heat) constant at $1$. Height times width stays of order one.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-012",
+      "stem": "Why is the heat equation said to smooth out initial data instantly?",
+      "options": [
+        "Because it is hyperbolic",
+        "Because it conserves energy",
+        "Because high frequency modes are damped extremely fast",
+        "Because the solution is constant"
+      ],
+      "answer": 2,
+      "explanation": "Mode $n$ decays at rate $k(n\\pi/L)^2$, which grows like $n^2$, so the highest frequency (most jagged) components are killed almost immediately. Even a discontinuous initial profile becomes infinitely smooth for any $t > 0$. This strong damping of high modes is the smoothing property of diffusion.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-013",
+      "stem": "A bar of length $L$ has initial data $u(x,0) = 4\\sin\\left(\\frac{2\\pi x}{L}\\right)$ with zero ends. The solution is which expression?",
+      "options": [
+        "$u(x,t) = 4\\sin\\left(\\frac{2\\pi x}{L}\\right)e^{-k(2\\pi/L)^2 t}$",
+        "$u(x,t) = 4\\sin\\left(\\frac{2\\pi x}{L}\\right)$",
+        "$u(x,t) = 4\\sin\\left(\\frac{2\\pi x}{L}\\right)e^{-k(\\pi/L)^2 t}$",
+        "$u(x,t) = 4e^{-k t}$"
+      ],
+      "answer": 0,
+      "explanation": "The data is a single eigenfunction with $n = 2$, so only that mode appears. The solution is $u(x,t) = 4\\sin\\left(\\frac{2\\pi x}{L}\\right)e^{-k\\lambda_2 t}$ with $\\lambda_2 = (2\\pi/L)^2$. The spatial shape is frozen while the amplitude decays exponentially at the rate set by $n = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-014",
+      "stem": "In the heat equation $u_t = k u_{xx}$, the diffusivity $k$ has which effect on how fast modes decay?",
+      "options": [
+        "Larger $k$ makes modes decay faster",
+        "Larger $k$ makes modes decay slower",
+        "$k$ has no effect on decay",
+        "Larger $k$ makes modes grow"
+      ],
+      "answer": 0,
+      "explanation": "The decay exponent is $k(n\\pi/L)^2 t$, directly proportional to $k$. A larger diffusivity means heat spreads more readily, so every mode decays faster. Doubling $k$ halves the time needed to reach the same decay. Physically, a more conductive material equilibrates sooner.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-015",
+      "stem": "Which mode dominates the heat equation solution for large $t$ (with zero Dirichlet ends and a generic initial profile)?",
+      "options": [
+        "The highest mode",
+        "All modes equally",
+        "The steady state only",
+        "The $n = 1$ (lowest) mode"
+      ],
+      "answer": 3,
+      "explanation": "Since higher modes decay faster (rate $\\propto n^2$), at large $t$ the slowest decaying surviving term dominates. That is the lowest mode $n = 1$, with rate $k(\\pi/L)^2$. So for large times the profile looks like a single half sine $\\sin(\\pi x/L)$ shrinking in amplitude, regardless of the detailed initial shape (provided $b_1 \\ne 0$).",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-016",
+      "stem": "A mixed boundary condition such as $u(0,t) = 0$, $u_x(L,t) = 0$ corresponds physically to which setup?",
+      "options": [
+        "Both ends held at fixed temperature",
+        "Both ends insulated",
+        "One end held at zero temperature, the other insulated",
+        "No physical meaning"
+      ],
+      "answer": 2,
+      "explanation": "The condition $u(0,t) = 0$ fixes the temperature at the left end (Dirichlet, a reservoir), while $u_x(L,t) = 0$ sets zero flux at the right end (Neumann, insulated). So one end is held cold and the other is insulated. Such mixed conditions give eigenfunctions like $\\sin\\left(\\frac{(2n-1)\\pi x}{2L}\\right)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-017",
+      "stem": "To solve the heat equation with inhomogeneous Dirichlet data $u(0,t) = A$, $u(L,t) = B$, a standard first step is to do which of the following?",
+      "options": [
+        "Subtract the steady state $u_\\infty(x)$ to get zero boundary conditions",
+        "Differentiate the equation in $x$",
+        "Multiply by $e^{kt}$",
+        "Assume the solution is constant"
+      ],
+      "answer": 0,
+      "explanation": "Write $u = u_\\infty(x) + v(x,t)$ where $u_\\infty$ is the linear steady state matching $A$ and $B$. Then $v$ satisfies the heat equation with homogeneous (zero) boundary conditions, which separation of variables handles directly. Subtracting the steady state is the usual device to reduce inhomogeneous boundary data to the solvable zero case.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-018",
+      "stem": "Which property makes the backward heat equation $u_t = -k u_{xx}$ (with $k > 0$) ill posed?",
+      "options": [
+        "Modes decay too slowly",
+        "It conserves energy",
+        "High modes grow without bound, like $e^{+k(n\\pi/L)^2 t}$",
+        "It has no solutions at all"
+      ],
+      "answer": 2,
+      "explanation": "Flipping the sign turns the time factor into $e^{+k(n\\pi/L)^2 t}$, so high modes blow up explosively, faster for larger $n$. Tiny high frequency perturbations in the data are amplified without bound, so the solution does not depend continuously on the data. That failure of stability is what makes running heat backward in time ill posed.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-019",
+      "stem": "For the heat equation, the maximum principle states the maximum of $u$ over a space time rectangle is attained where?",
+      "options": [
+        "Strictly inside the rectangle",
+        "On the initial time or the spatial boundary",
+        "At the final time only",
+        "Nowhere in particular"
+      ],
+      "answer": 1,
+      "explanation": "The parabolic maximum principle says the maximum (and minimum) of a solution on a closed space time rectangle occurs on the parabolic boundary: the bottom (initial time) or the sides (spatial boundary), never strictly in the interior at a later time. Heat cannot spontaneously create a new hot spot inside; extremes come from the data or the boundary.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-020",
+      "stem": "Take $L = \\pi$, $k = 1$, and initial data $u(x,0) = \\sin x + \\tfrac{1}{2}\\sin 3x$ on $[0,\\pi]$ with zero ends. What is $u(x,t)$?",
+      "options": [
+        "$\\sin x\\,e^{-t} + \\tfrac{1}{2}\\sin 3x\\,e^{-3t}$",
+        "$\\sin x\\,e^{-t} + \\tfrac{1}{2}\\sin 3x\\,e^{-9t}$",
+        "$\\sin x\\,e^{-t} + \\tfrac{1}{2}\\sin 3x\\,e^{-6t}$",
+        "$(\\sin x + \\tfrac{1}{2}\\sin 3x)e^{-t}$"
+      ],
+      "answer": 1,
+      "explanation": "With $L = \\pi$, $k = 1$, mode $n$ decays like $e^{-n^2 t}$. The $n = 1$ term gives $\\sin x\\,e^{-t}$ and the $n = 3$ term gives $\\tfrac{1}{2}\\sin 3x\\,e^{-9t}$ (since $3^2 = 9$). Each mode decays at its own rate, so the answer is $\\sin x\\,e^{-t} + \\tfrac{1}{2}\\sin 3x\\,e^{-9t}$. The $n = 3$ part fades much faster.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-021",
+      "stem": "The quantity $\\int_0^L u(x,t)\\,dx$ represents the total heat in the bar. Under Dirichlet conditions $u(0,t) = u(L,t) = 0$, this total generally does which of the following over time?",
+      "options": [
+        "Stays constant",
+        "Changes, since heat can flow out the ends",
+        "Always increases",
+        "Becomes negative"
+      ],
+      "answer": 1,
+      "explanation": "Differentiating, $\\frac{d}{dt}\\int_0^L u\\,dx = k[u_x(L,t) - u_x(0,t)]$, which need not be zero under Dirichlet conditions because the end slopes can be nonzero. Heat flows out through ends held at zero temperature, so the total decreases toward zero. Only insulated (Neumann) ends conserve the total.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-022",
+      "stem": "If the initial temperature satisfies $0 \\le u(x,0) \\le M$ with zero boundary data, what bound holds for $u(x,t)$ at later times?",
+      "options": [
+        "$u$ can exceed $M$",
+        "$0 \\le u(x,t) \\le M$ for all later $t$",
+        "$u$ becomes negative",
+        "$u \\ge M$ always"
+      ],
+      "answer": 1,
+      "explanation": "By the maximum principle, the solution stays between the smallest and largest values on the parabolic boundary. Here those values are bounded by $0$ below and $M$ above (from the initial data and the zero boundary). So $0 \\le u(x,t) \\le M$ persists for all $t > 0$: diffusion never creates a value hotter than the hottest initial point or colder than the coldest.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-023",
+      "format": "cloze",
+      "stem": "Analyze mode decay for the heat equation on $[0, L]$ with diffusivity $k$.",
+      "solution": "The $n$th mode carries the time factor $e^{-k(n\\pi/L)^2 t}$. Compared with the first mode, the third mode decays {{1}} times as fast. Taking $L = \\pi$ and $k = 1$, the second mode decays like $e^{-rt}$ with $r =$ {{2}}. For large $t$ the surviving profile is dominated by the mode with $n =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Rate is proportional to $n^2$, so $n = 3$ is $9$ times faster than $n = 1$. With $L = \\pi$, $k = 1$, the rate is $n^2$, so $n = 2$ gives $r = 4$. The slowest decaying surviving mode, $n = 1$, dominates at large $t$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-024",
+      "format": "cloze",
+      "stem": "Find the steady state of the heat equation with ends held at $u(0,t) = 10$ and $u(L,t) = 30$.",
+      "solution": "The steady state solves $u_{xx} = 0$, so it is {{1}} in $x$. Matching the ends gives $u_\\infty(x) = 10 + \\dfrac{20x}{L}$, so the value at the midpoint $x = L/2$ is {{2}}. As $t \\to \\infty$ the transient part {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "linear",
+            "quadratic",
+            "exponential"
+          ],
+          "answer": "linear"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "decays to zero",
+            "grows",
+            "stays fixed"
+          ],
+          "answer": "decays to zero"
+        }
+      ],
+      "explanation": "$u_{xx} = 0$ gives a linear profile. At $x = L/2$, $u_\\infty = 10 + 20\\cdot\\frac{1}{2} = 20$. The transient decays to zero, leaving the steady line.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-025",
+      "format": "cloze",
+      "stem": "Contrast insulated and fixed temperature ends for the heat equation on $[0, L]$.",
+      "solution": "Dirichlet conditions $u = 0$ at both ends let heat escape, so the total heat $\\int_0^L u\\,dx$ {{1}} toward zero. Insulated Neumann conditions $u_x = 0$ at both ends {{2}} the total heat. In the insulated case the final uniform temperature equals the {{3}} of the initial data.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "decreases",
+            "increases",
+            "stays constant"
+          ],
+          "answer": "decreases"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "conserve",
+            "destroy",
+            "double"
+          ],
+          "answer": "conserve"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "average",
+            "mean",
+            "average value"
+          ]
+        }
+      ],
+      "explanation": "Dirichlet ends let heat flow out, so total heat decreases. Neumann ends conserve total heat, and the steady uniform temperature is the average of the initial data.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-026",
+      "format": "cloze",
+      "stem": "Solve the heat equation on $[0, \\pi]$ with $k = 1$, zero ends, and $u(x,0) = \\sin x + \\tfrac{1}{2}\\sin 3x$.",
+      "solution": "Each mode decays at its own rate $n^2$. The $n = 1$ term becomes $\\sin x\\,e^{-t}$. The $n = 3$ term becomes $\\tfrac{1}{2}\\sin 3x\\,e^{-rt}$ with $r =$ {{1}}. After a long time the term that remains visible is the {{2}} mode, because it decays {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "first",
+            "third",
+            "second"
+          ],
+          "answer": "first"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "slowest",
+            "fastest",
+            "at the same rate"
+          ],
+          "answer": "slowest"
+        }
+      ],
+      "explanation": "With $L = \\pi$, $k = 1$, rate is $n^2$, so the $n = 3$ term has $r = 9$. The first mode decays slowest, so it dominates at large $t$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-027",
+      "format": "cloze",
+      "stem": "Describe the fundamental solution $\\dfrac{1}{\\sqrt{4\\pi k t}}e^{-x^2/(4kt)}$ of the heat equation on the line.",
+      "solution": "This profile is a Gaussian whose width grows like $\\sqrt{t}$, so to double the spread you must wait {{1}} times as long. Its peak height at $x = 0$ behaves like $t^{-1/2}$, so the peak {{2}} as time passes. The total area under the curve stays equal to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "decreases",
+            "increases",
+            "stays the same"
+          ],
+          "answer": "decreases"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Width scales like $\\sqrt{t}$, so doubling it needs $2^2 = 4$ times the time. The peak height $\\propto t^{-1/2}$ decreases, while the total area (total heat) stays $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-heat-equation-028",
+      "format": "cloze",
+      "stem": "State the smoothing and maximum principle properties of the heat equation.",
+      "solution": "Because mode $n$ is damped at a rate proportional to $n^2$, the {{1}} frequency components vanish fastest, so even rough initial data becomes smooth instantly. By the maximum principle, the maximum of $u$ on a space time rectangle occurs on the {{2}} boundary, not strictly inside. Hence if the data lies in $[0, M]$ with zero ends, the solution {{3}} stays in $[0, M]$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "high",
+            "low",
+            "zero"
+          ],
+          "answer": "high"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "parabolic",
+            "interior",
+            "final"
+          ],
+          "answer": "parabolic"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "always",
+            "never",
+            "rarely"
+          ],
+          "answer": "always"
+        }
+      ],
+      "explanation": "High frequency modes decay fastest (rate $\\propto n^2$), giving instant smoothing. The maximum principle puts extremes on the parabolic boundary, so a solution starting in $[0, M]$ with zero ends always stays in $[0, M]$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    }
+  ]
+}

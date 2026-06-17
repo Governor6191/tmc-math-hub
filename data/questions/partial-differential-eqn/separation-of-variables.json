@@ -1,0 +1,527 @@
+{
+  "courseId": "partial-differential-eqn",
+  "topicId": "separation-of-variables",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "partial-differential-eqn-separation-of-variables-001",
+      "stem": "The method of separation of variables seeks a solution of $u_t = k u_{xx}$ in which product form?",
+      "options": [
+        "$u(x,t) = X(x) + T(t)$",
+        "$u(x,t) = X(x)/T(t)$",
+        "$u(x,t) = X(xt)$",
+        "$u(x,t) = X(x)\\,T(t)$"
+      ],
+      "answer": 3,
+      "explanation": "Separation of variables assumes the solution factors as a product $u(x,t) = X(x)T(t)$, a function of $x$ alone times a function of $t$ alone. Substituting this ansatz and dividing turns the PDE into two ordinary differential equations. A sum or quotient would not separate the equation cleanly into pieces depending on single variables.",
+      "difficulty": "warmup",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-002",
+      "stem": "Substituting $u = X(x)T(t)$ into $u_t = k u_{xx}$ and dividing by $kXT$ gives $\\frac{T'}{kT} = \\frac{X''}{X}$. Why must each side equal a constant?",
+      "options": [
+        "Because the left depends only on $t$ and the right only on $x$",
+        "Because $k$ is constant",
+        "Because $X$ and $T$ are both linear",
+        "Because the boundary conditions force it"
+      ],
+      "answer": 0,
+      "explanation": "The left side $\\frac{T'}{kT}$ depends only on $t$ while the right side $\\frac{X''}{X}$ depends only on $x$. A function of $t$ alone can equal a function of $x$ alone only if both are the same constant, since varying one variable would otherwise change one side but not the other. That common value is the separation constant.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-003",
+      "stem": "For the heat equation with $u(0,t) = u(L,t) = 0$, writing the separation constant as $-\\lambda$ gives the spatial problem $X'' + \\lambda X = 0$ with $X(0) = X(L) = 0$. The eigenvalues are which values?",
+      "options": [
+        "$\\lambda_n = n\\pi/L$",
+        "$\\lambda_n = (n\\pi/L)$, $n = 0, 1, 2, \\ldots$",
+        "$\\lambda_n = \\left(\\frac{n\\pi}{L}\\right)^2$, $n = 1, 2, 3, \\ldots$",
+        "$\\lambda_n = n^2$"
+      ],
+      "answer": 2,
+      "explanation": "With $\\lambda > 0$ the general solution is $X = A\\cos(\\sqrt{\\lambda}x) + B\\sin(\\sqrt{\\lambda}x)$. The condition $X(0) = 0$ forces $A = 0$, and $X(L) = B\\sin(\\sqrt{\\lambda}L) = 0$ with $B \\ne 0$ requires $\\sqrt{\\lambda}L = n\\pi$. So $\\sqrt{\\lambda} = \\frac{n\\pi}{L}$ and $\\lambda_n = \\left(\\frac{n\\pi}{L}\\right)^2$ for $n = 1, 2, 3, \\ldots$. The value $n = 0$ gives the trivial solution, so it is excluded.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-004",
+      "stem": "The eigenfunctions for $X'' + \\lambda X = 0$ with $X(0) = X(L) = 0$ are which functions?",
+      "options": [
+        "$X_n(x) = \\cos\\left(\\frac{n\\pi x}{L}\\right)$",
+        "$X_n(x) = e^{n\\pi x/L}$",
+        "$X_n(x) = x^n$",
+        "$X_n(x) = \\sin\\left(\\frac{n\\pi x}{L}\\right)$"
+      ],
+      "answer": 3,
+      "explanation": "After $A = 0$ the surviving solution is $X = B\\sin(\\sqrt{\\lambda}x)$, and with $\\sqrt{\\lambda} = \\frac{n\\pi}{L}$ the eigenfunctions are $X_n(x) = \\sin\\left(\\frac{n\\pi x}{L}\\right)$. These vanish at both $x = 0$ and $x = L$, matching the Dirichlet conditions. Cosines would be selected by Neumann conditions instead.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-005",
+      "stem": "With Neumann conditions $X'(0) = X'(L) = 0$ for $X'' + \\lambda X = 0$, the eigenfunctions are which family (including $n = 0$)?",
+      "options": [
+        "$\\sin\\left(\\frac{n\\pi x}{L}\\right)$",
+        "$e^{-n\\pi x/L}$",
+        "$x^n$",
+        "$\\cos\\left(\\frac{n\\pi x}{L}\\right)$, $n = 0, 1, 2, \\ldots$"
+      ],
+      "answer": 3,
+      "explanation": "For Neumann conditions the derivative must vanish at both ends. Starting from $X = A\\cos(\\sqrt{\\lambda}x) + B\\sin(\\sqrt{\\lambda}x)$, $X'(0) = 0$ forces $B = 0$, and $X'(L) = -A\\sqrt{\\lambda}\\sin(\\sqrt{\\lambda}L) = 0$ gives $\\sqrt{\\lambda} = \\frac{n\\pi}{L}$. The eigenfunctions are $\\cos\\left(\\frac{n\\pi x}{L}\\right)$, and now $n = 0$ is allowed, giving the constant mode $\\lambda_0 = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-006",
+      "stem": "Why does the case $\\lambda < 0$ (writing $\\lambda = -\\mu^2$) give only the trivial solution under Dirichlet conditions $X(0) = X(L) = 0$?",
+      "options": [
+        "Because hyperbolic sines cannot satisfy both zero conditions nontrivially",
+        "Because the equation becomes singular",
+        "Because $\\mu$ must be imaginary",
+        "Because the constant cancels"
+      ],
+      "answer": 0,
+      "explanation": "For $\\lambda < 0$ the solution is $X = A\\cosh(\\mu x) + B\\sinh(\\mu x)$. Then $X(0) = A = 0$, leaving $X = B\\sinh(\\mu x)$, and $X(L) = B\\sinh(\\mu L) = 0$. Since $\\sinh(\\mu L) \\ne 0$ for $\\mu L \\ne 0$, we must have $B = 0$, so $X \\equiv 0$. Negative separation constants produce no nontrivial eigenfunctions for this problem.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-007",
+      "stem": "After separating $u_t = k u_{xx}$ with constant $-\\lambda_n = -(n\\pi/L)^2$, the time factor satisfies $T_n' = -k\\lambda_n T_n$. Hence $T_n(t)$ is proportional to which expression?",
+      "options": [
+        "$\\cos(k\\lambda_n t)$",
+        "$e^{-k(n\\pi/L)^2 t}$",
+        "$e^{+k(n\\pi/L)^2 t}$",
+        "$t^{-n}$"
+      ],
+      "answer": 1,
+      "explanation": "The first order linear ODE $T_n' = -k\\lambda_n T_n$ has solution $T_n(t) = e^{-k\\lambda_n t}$ up to a constant. Substituting $\\lambda_n = (n\\pi/L)^2$ gives $T_n(t) \\propto e^{-k(n\\pi/L)^2 t}$. Each mode decays in time, and higher $n$ decay faster because $\\lambda_n$ grows like $n^2$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-008",
+      "stem": "The full series solution of the heat equation with Dirichlet conditions has the form $u(x,t) = \\sum_n b_n \\sin\\left(\\frac{n\\pi x}{L}\\right) e^{-k(n\\pi/L)^2 t}$. The coefficients $b_n$ are determined by which condition?",
+      "options": [
+        "The boundary conditions at $x = 0, L$",
+        "The decay rate of each mode",
+        "The initial condition $u(x,0) = f(x)$",
+        "The value of $k$"
+      ],
+      "answer": 2,
+      "explanation": "At $t = 0$ all exponentials equal $1$, so the series reduces to $u(x,0) = \\sum_n b_n \\sin\\left(\\frac{n\\pi x}{L}\\right) = f(x)$. Matching the initial profile $f(x)$ is exactly the Fourier sine expansion, which fixes the $b_n$. The boundary conditions were already used to pick the sine eigenfunctions; the initial data pins the coefficients.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-009",
+      "stem": "The Fourier sine coefficient formula on $[0, L]$ is $b_n = \\frac{2}{L}\\int_0^L f(x)\\sin\\left(\\frac{n\\pi x}{L}\\right)dx$. The factor $\\frac{2}{L}$ comes from which fact?",
+      "options": [
+        "$\\int_0^L \\sin^2\\left(\\frac{n\\pi x}{L}\\right)dx = \\frac{L}{2}$",
+        "$\\int_0^L \\sin^2\\left(\\frac{n\\pi x}{L}\\right)dx = L$",
+        "$\\int_0^L \\sin^2\\left(\\frac{n\\pi x}{L}\\right)dx = 2L$",
+        "There is no integral involved"
+      ],
+      "answer": 0,
+      "explanation": "By orthogonality, multiplying the series by $\\sin\\left(\\frac{m\\pi x}{L}\\right)$ and integrating leaves only the $n = m$ term, multiplied by $\\int_0^L \\sin^2\\left(\\frac{n\\pi x}{L}\\right)dx = \\frac{L}{2}$. Dividing by this norm gives the prefactor $\\frac{1}{L/2} = \\frac{2}{L}$. The half integral is the reason the coefficient carries a $2$ over $L$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-010",
+      "stem": "Compute the Fourier sine coefficient $b_n$ for $f(x) = 1$ on $[0, L]$, that is $b_n = \\frac{2}{L}\\int_0^L \\sin\\left(\\frac{n\\pi x}{L}\\right)dx$.",
+      "options": [
+        "$b_n = \\frac{2}{n\\pi}\\left(1 - \\cos(n\\pi)\\right)$",
+        "$b_n = \\frac{L}{n\\pi}$",
+        "$b_n = \\frac{2}{L}$ for all $n$",
+        "$b_n = \\cos(n\\pi)$"
+      ],
+      "answer": 0,
+      "explanation": "Integrate: $\\int_0^L \\sin\\left(\\frac{n\\pi x}{L}\\right)dx = \\left[-\\frac{L}{n\\pi}\\cos\\left(\\frac{n\\pi x}{L}\\right)\\right]_0^L = -\\frac{L}{n\\pi}(\\cos(n\\pi) - 1) = \\frac{L}{n\\pi}(1 - \\cos(n\\pi))$. Multiplying by $\\frac{2}{L}$ gives $b_n = \\frac{2}{n\\pi}(1 - \\cos(n\\pi))$. Since $\\cos(n\\pi) = (-1)^n$, this is $\\frac{4}{n\\pi}$ for odd $n$ and $0$ for even $n$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-011",
+      "stem": "Using the result $b_n = \\frac{2}{n\\pi}(1 - \\cos(n\\pi))$ for $f(x) = 1$, what is $b_2$?",
+      "options": [
+        "$\\frac{4}{\\pi}$",
+        "$\\frac{2}{\\pi}$",
+        "$0$",
+        "$\\frac{1}{\\pi}$"
+      ],
+      "answer": 2,
+      "explanation": "For $n = 2$, $\\cos(2\\pi) = 1$, so $b_2 = \\frac{2}{2\\pi}(1 - 1) = 0$. All even coefficients vanish because $\\cos(n\\pi) = 1$ for even $n$. Only odd modes contribute to the square wave expansion of the constant function on $[0, L]$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-012",
+      "stem": "Using $b_n = \\frac{2}{n\\pi}(1 - \\cos(n\\pi))$ for $f(x) = 1$, what is $b_1$?",
+      "options": [
+        "$\\frac{2}{\\pi}$",
+        "$\\frac{4}{\\pi}$",
+        "$0$",
+        "$\\frac{1}{\\pi}$"
+      ],
+      "answer": 1,
+      "explanation": "For $n = 1$, $\\cos(\\pi) = -1$, so $b_1 = \\frac{2}{\\pi}(1 - (-1)) = \\frac{2}{\\pi}\\cdot 2 = \\frac{4}{\\pi}$. The first odd mode has the largest coefficient, and odd modes follow $\\frac{4}{n\\pi}$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-013",
+      "stem": "If the initial data is exactly one eigenfunction, $f(x) = 5\\sin\\left(\\frac{3\\pi x}{L}\\right)$, how many nonzero terms appear in the heat equation series solution?",
+      "options": [
+        "Infinitely many",
+        "Three terms",
+        "Exactly one term",
+        "Zero terms"
+      ],
+      "answer": 2,
+      "explanation": "By orthogonality, the Fourier sine expansion of $5\\sin\\left(\\frac{3\\pi x}{L}\\right)$ has only the $n = 3$ coefficient nonzero, namely $b_3 = 5$, with all others zero. So the series collapses to a single term $u(x,t) = 5\\sin\\left(\\frac{3\\pi x}{L}\\right)e^{-k(3\\pi/L)^2 t}$. A pure mode stays a pure mode; it just decays.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-014",
+      "stem": "The eigenfunctions $\\sin\\left(\\frac{m\\pi x}{L}\\right)$ and $\\sin\\left(\\frac{n\\pi x}{L}\\right)$ with $m \\ne n$ satisfy which orthogonality relation on $[0, L]$?",
+      "options": [
+        "$\\int_0^L \\sin\\left(\\frac{m\\pi x}{L}\\right)\\sin\\left(\\frac{n\\pi x}{L}\\right)dx = \\frac{L}{2}$",
+        "$\\int_0^L \\sin\\left(\\frac{m\\pi x}{L}\\right)\\sin\\left(\\frac{n\\pi x}{L}\\right)dx = L$",
+        "They are never orthogonal",
+        "$\\int_0^L \\sin\\left(\\frac{m\\pi x}{L}\\right)\\sin\\left(\\frac{n\\pi x}{L}\\right)dx = 0$"
+      ],
+      "answer": 3,
+      "explanation": "Distinct sine eigenfunctions are orthogonal: $\\int_0^L \\sin\\left(\\frac{m\\pi x}{L}\\right)\\sin\\left(\\frac{n\\pi x}{L}\\right)dx = 0$ when $m \\ne n$. When $m = n$ the integral equals $\\frac{L}{2}$, the squared norm. This orthogonality is what lets each Fourier coefficient be extracted independently.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-015",
+      "stem": "Separating the wave equation $u_{tt} = c^2 u_{xx}$ as $X(x)T(t)$ with constant $-\\lambda$ gives which time equation?",
+      "options": [
+        "$T' + c^2\\lambda T = 0$",
+        "$T'' + c^2\\lambda T = 0$",
+        "$T'' - c^2\\lambda T = 0$",
+        "$T' = \\lambda T$"
+      ],
+      "answer": 1,
+      "explanation": "Substituting $u = XT$ into $u_{tt} = c^2 u_{xx}$ gives $XT'' = c^2 X''T$, and dividing by $c^2 XT$ yields $\\frac{T''}{c^2 T} = \\frac{X''}{X} = -\\lambda$. The time part is $T'' + c^2\\lambda T = 0$, a second order oscillator equation (note the second derivative), unlike the heat equation whose time part is first order.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-016",
+      "stem": "For the wave equation the time factor satisfies $T'' + c^2\\lambda_n T = 0$ with $\\lambda_n = (n\\pi/L)^2$. The solutions $T_n(t)$ involve which functions?",
+      "options": [
+        "$e^{-c\\lambda_n t}$ decay",
+        "Polynomials in $t$",
+        "$\\cos\\left(\\frac{n\\pi c}{L}t\\right)$ and $\\sin\\left(\\frac{n\\pi c}{L}t\\right)$",
+        "$\\cosh, \\sinh$"
+      ],
+      "answer": 2,
+      "explanation": "The equation $T'' + c^2\\lambda_n T = 0$ has angular frequency $\\omega_n = c\\sqrt{\\lambda_n} = \\frac{n\\pi c}{L}$, so $T_n(t) = A_n\\cos\\left(\\frac{n\\pi c}{L}t\\right) + B_n\\sin\\left(\\frac{n\\pi c}{L}t\\right)$. The wave equation gives oscillating standing waves, not decaying exponentials, because its time equation is second order with a positive coefficient.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-017",
+      "stem": "Suppose $u(x,0) = 3\\sin\\left(\\frac{\\pi x}{L}\\right) - 7\\sin\\left(\\frac{4\\pi x}{L}\\right)$ for the heat equation. What are the nonzero coefficients $b_1$ and $b_4$?",
+      "options": [
+        "$b_1 = 3$, $b_4 = -7$",
+        "$b_1 = 3$, $b_4 = 7$",
+        "$b_1 = -7$, $b_4 = 3$",
+        "$b_1 = b_4 = 0$"
+      ],
+      "answer": 0,
+      "explanation": "The initial data is already a finite sine series, so the coefficients can be read directly: $b_1 = 3$ from the $\\sin\\left(\\frac{\\pi x}{L}\\right)$ term and $b_4 = -7$ from the $\\sin\\left(\\frac{4\\pi x}{L}\\right)$ term, with all other $b_n = 0$. No integration is needed when the data is a combination of eigenfunctions; the negative sign carries through.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-018",
+      "stem": "Separation of variables works on $u_t = k u_{xx}$ chiefly because the equation and boundary conditions have which property?",
+      "options": [
+        "They are nonlinear",
+        "They are linear and homogeneous",
+        "The coefficient $k$ is large",
+        "The domain is unbounded"
+      ],
+      "answer": 1,
+      "explanation": "Separation relies on linearity and homogeneity: linearity lets solutions superpose into a series, and homogeneous boundary conditions (zero data at the ends) let each separated mode satisfy the boundary conditions individually. A nonlinear equation would not allow superposition, and inhomogeneous conditions usually require first subtracting a steady state.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-019",
+      "stem": "Reading the separation as $\\frac{X''}{X} = -\\lambda$, the spatial ODE is $X'' + \\lambda X = 0$. With $\\lambda = (n\\pi/L)^2$ and $L = \\pi$, what is the third eigenvalue $\\lambda_3$?",
+      "options": [
+        "$3$",
+        "$6$",
+        "$9$",
+        "$\\pi^2$"
+      ],
+      "answer": 2,
+      "explanation": "With $L = \\pi$, $\\lambda_n = (n\\pi/L)^2 = (n\\pi/\\pi)^2 = n^2$. For $n = 3$, $\\lambda_3 = 9$. The choice $L = \\pi$ makes the eigenvalues simply $n^2$, a common normalization in textbook problems.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-020",
+      "stem": "For the heat equation on $[0, L]$ with Dirichlet conditions, as $t \\to \\infty$ the series solution approaches which steady state?",
+      "options": [
+        "$u \\to f(x)$",
+        "$u \\to 0$",
+        "$u \\to \\frac{1}{2}f(x)$",
+        "$u \\to \\infty$"
+      ],
+      "answer": 1,
+      "explanation": "Every mode carries a factor $e^{-k(n\\pi/L)^2 t}$ that decays to zero as $t \\to \\infty$, so the whole series tends to $0$. The steady state of the heat equation with zero boundary data is the zero temperature profile. Physically the bar cools to the temperature held at its ends.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-021",
+      "stem": "Compute the Fourier sine coefficient $b_n$ of $f(x) = x$ on $[0, L]$, given $\\int_0^L x\\sin\\left(\\frac{n\\pi x}{L}\\right)dx = -\\frac{L^2}{n\\pi}\\cos(n\\pi)$.",
+      "options": [
+        "$b_n = \\frac{2L}{n\\pi}\\cos(n\\pi)$",
+        "$b_n = -\\frac{2L}{n\\pi}\\cos(n\\pi)$",
+        "$b_n = \\frac{L}{n\\pi}$",
+        "$b_n = \\frac{2}{n\\pi}$"
+      ],
+      "answer": 1,
+      "explanation": "Multiply the given integral by $\\frac{2}{L}$: $b_n = \\frac{2}{L}\\cdot\\left(-\\frac{L^2}{n\\pi}\\cos(n\\pi)\\right) = -\\frac{2L}{n\\pi}\\cos(n\\pi)$. Since $\\cos(n\\pi) = (-1)^n$, this equals $-\\frac{2L}{n\\pi}(-1)^n = \\frac{2L}{n\\pi}(-1)^{n+1}$, the standard ramp expansion. The sign alternates with $n$.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-022",
+      "stem": "Which choice of sign for the separation constant yields decaying (rather than growing) solutions for the heat equation on a finite interval with zero ends?",
+      "options": [
+        "The separation constant must be negative, giving $T \\propto e^{-k\\lambda t}$ with $\\lambda > 0$",
+        "The separation constant must be positive, giving growth",
+        "The sign does not matter",
+        "It must be zero"
+      ],
+      "answer": 0,
+      "explanation": "Writing the constant as $-\\lambda$ with $\\lambda > 0$ gives the spatial problem $X'' + \\lambda X = 0$ with oscillatory (sine) eigenfunctions and the time factor $T \\propto e^{-k\\lambda t}$, which decays. A positive constant would force hyperbolic spatial solutions that cannot meet both zero conditions and would give growth. So the physically correct, boundary compatible choice is the negative constant.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-023",
+      "format": "cloze",
+      "stem": "Separate the heat equation $u_t = k u_{xx}$ on $[0, L]$ with $u(0,t) = u(L,t) = 0$, taking the separation constant as $-\\lambda$.",
+      "solution": "The spatial equation is $X'' + \\lambda X = 0$ with $X(0) = X(L) = 0$. The nontrivial eigenvalues are $\\lambda_n = \\left(\\dfrac{n\\pi}{L}\\right)^2$ for $n = 1, 2, \\ldots$, with eigenfunctions {{1}}. The time factor solves $T' = -k\\lambda_n T$, so $T_n(t) \\propto e^{-k\\lambda_n t}$, meaning each mode {{2}} in time. The smallest allowed index is $n =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\sin\\left(\\frac{n\\pi x}{L}\\right)$",
+            "$\\cos\\left(\\frac{n\\pi x}{L}\\right)$",
+            "$e^{n\\pi x/L}$"
+          ],
+          "answer": "$\\sin\\left(\\frac{n\\pi x}{L}\\right)$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "decays",
+            "grows",
+            "oscillates forever"
+          ],
+          "answer": "decays"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Dirichlet conditions select sine eigenfunctions $\\sin\\left(\\frac{n\\pi x}{L}\\right)$. The time factor $e^{-k\\lambda_n t}$ decays. The index $n = 0$ gives the trivial solution, so the smallest allowed is $n = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-024",
+      "format": "cloze",
+      "stem": "Find the Fourier sine coefficients of $f(x) = 1$ on $[0, L]$ for a heat equation expansion.",
+      "solution": "Using $b_n = \\dfrac{2}{L}\\displaystyle\\int_0^L \\sin\\left(\\dfrac{n\\pi x}{L}\\right)dx$, the integral gives $b_n = \\dfrac{2}{n\\pi}(1 - \\cos(n\\pi))$. For even $n$ the value of $b_n$ is {{1}}. For $n = 1$ the coefficient equals $\\dfrac{4}{\\pi}$, so the numerator over $\\pi$ is {{2}}. Only the {{3}} modes survive.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "odd",
+            "even",
+            "all"
+          ],
+          "answer": "odd"
+        }
+      ],
+      "explanation": "For even $n$, $\\cos(n\\pi) = 1$ so $b_n = 0$. For $n = 1$, $b_1 = \\frac{2}{\\pi}(1-(-1)) = \\frac{4}{\\pi}$, numerator $4$. Only odd modes survive.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-025",
+      "format": "cloze",
+      "stem": "Read off coefficients when the initial data is a combination of eigenfunctions: $u(x,0) = 3\\sin\\left(\\frac{\\pi x}{L}\\right) - 7\\sin\\left(\\frac{4\\pi x}{L}\\right)$.",
+      "solution": "Because the data is already a sine series, the coefficients are read directly. The first coefficient is $b_1 =$ {{1}} and the fourth coefficient is $b_4 =$ {{2}}. Every other coefficient equals {{3}}, so no integration is needed.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -7,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "By orthogonality the coefficients match the written terms: $b_1 = 3$, $b_4 = -7$, all others $0$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-026",
+      "format": "cloze",
+      "stem": "Compare the separated time equations for the heat and wave equations on $[0, L]$ with separation constant $-\\lambda_n$.",
+      "solution": "For the heat equation the time factor solves a {{1}} order ODE, $T' = -k\\lambda_n T$, giving exponential decay. For the wave equation the time factor solves $T'' + c^2\\lambda_n T = 0$, a {{2}} order ODE, giving oscillation. The wave mode therefore behaves like a {{3}} in time rather than decaying.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "first",
+            "second",
+            "third"
+          ],
+          "answer": "first"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "second",
+            "first",
+            "zeroth"
+          ],
+          "answer": "second"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "standing wave",
+            "oscillation",
+            "sinusoid"
+          ]
+        }
+      ],
+      "explanation": "Heat has a first order time ODE (decay), wave has a second order time ODE (oscillation), so the wave mode is a standing wave in time.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-027",
+      "format": "cloze",
+      "stem": "Set up the eigenvalue problem and use orthogonality with $L = \\pi$.",
+      "solution": "On $[0, \\pi]$ the eigenvalues simplify to $\\lambda_n = n^2$, so the third eigenvalue is $\\lambda_3 =$ {{1}}. The eigenfunctions $\\sin(mx)$ and $\\sin(nx)$ with $m \\ne n$ are {{2}}, and $\\int_0^\\pi \\sin^2(nx)\\,dx$ equals $\\dfrac{\\pi}{2}$, so the norming constant denominator is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "orthogonal",
+            "identical",
+            "parallel"
+          ],
+          "answer": "orthogonal"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "With $L = \\pi$, $\\lambda_n = n^2$ so $\\lambda_3 = 9$. Distinct sine eigenfunctions are orthogonal, and $\\int_0^\\pi \\sin^2(nx)dx = \\frac{\\pi}{2}$, so the denominator under $\\pi$ is $2$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-separation-of-variables-028",
+      "format": "cloze",
+      "stem": "Explain the role of the boundary condition type in selecting eigenfunctions.",
+      "solution": "Homogeneous Dirichlet conditions $X(0) = X(L) = 0$ select {{1}} eigenfunctions, while homogeneous Neumann conditions $X'(0) = X'(L) = 0$ select {{2}} eigenfunctions. Under Neumann conditions the index $n = 0$ {{3}} allowed, giving a constant mode.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "sine",
+            "cosine",
+            "exponential"
+          ],
+          "answer": "sine"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "cosine",
+            "sine",
+            "polynomial"
+          ],
+          "answer": "cosine"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "Dirichlet selects sines (zero at ends); Neumann selects cosines (zero slope at ends), and for Neumann $n = 0$ is allowed, giving the constant mode.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    }
+  ]
+}

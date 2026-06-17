@@ -1,0 +1,534 @@
+{
+  "courseId": "partial-differential-eqn",
+  "topicId": "laplace-equation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "partial-differential-eqn-laplace-equation-001",
+      "stem": "Laplace's equation in two dimensions is which of the following?",
+      "options": [
+        "$u_{xx} + u_{yy} = 0$",
+        "$u_{xx} - u_{yy} = 0$",
+        "$u_t = u_{xx} + u_{yy}$",
+        "$u_{xx} + u_{yy} = 1$"
+      ],
+      "answer": 0,
+      "explanation": "Laplace's equation is $\\nabla^2 u = u_{xx} + u_{yy} = 0$, the homogeneous version with zero right side. The form $u_{xx} - u_{yy} = 0$ is hyperbolic (a wave equation), $u_t = u_{xx} + u_{yy}$ is the heat equation, and a nonzero right side gives Poisson's equation instead.",
+      "difficulty": "warmup",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-002",
+      "stem": "A function satisfying Laplace's equation $\\nabla^2 u = 0$ is called which of the following?",
+      "options": [
+        "Analytic",
+        "Periodic",
+        "Linear",
+        "Harmonic"
+      ],
+      "answer": 3,
+      "explanation": "Solutions of Laplace's equation are called harmonic functions. They model steady states: equilibrium temperature, electrostatic potential in charge free regions, and incompressible irrotational flow potentials. The term analytic refers to complex differentiability (closely related in 2D), but the standard name for $\\nabla^2 u = 0$ solutions is harmonic.",
+      "difficulty": "warmup",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-003",
+      "stem": "Is $u(x,y) = x^2 - y^2$ harmonic?",
+      "options": [
+        "No, $\\nabla^2 u = 4$",
+        "Only at the origin",
+        "Yes, $\\nabla^2 u = 0$",
+        "No, $\\nabla^2 u = 2$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $u_{xx} = 2$ and $u_{yy} = -2$, so $\\nabla^2 u = 2 + (-2) = 0$. The function is harmonic everywhere. It is the real part of $z^2 = (x + iy)^2 = x^2 - y^2 + 2ixy$, and real parts of analytic functions are always harmonic.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-004",
+      "stem": "Is $u(x,y) = x^2 + y^2$ harmonic?",
+      "options": [
+        "Yes, everywhere",
+        "No, $\\nabla^2 u = 4 \\ne 0$",
+        "Only on the unit circle",
+        "Yes, except at the origin"
+      ],
+      "answer": 1,
+      "explanation": "Here $u_{xx} = 2$ and $u_{yy} = 2$, so $\\nabla^2 u = 2 + 2 = 4 \\ne 0$. The function is not harmonic; it satisfies Poisson's equation $\\nabla^2 u = 4$ instead. Adding the two pure squares with the same sign gives a nonzero Laplacian, unlike the difference $x^2 - y^2$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-005",
+      "stem": "Is $u(x,y) = xy$ harmonic?",
+      "options": [
+        "No, $\\nabla^2 u = 2$",
+        "Only for $x = y$",
+        "No, $\\nabla^2 u = xy$",
+        "Yes, $\\nabla^2 u = 0$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $u_{xx} = 0$ and $u_{yy} = 0$, so $\\nabla^2 u = 0$. The product $xy$ is harmonic; it is the imaginary part of $\\frac{1}{2}z^2$ (since $z^2 = x^2 - y^2 + 2ixy$). Both pure second derivatives vanish because $u$ is linear in each variable separately.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-006",
+      "stem": "Is $u(x,y) = e^x\\cos y$ harmonic?",
+      "options": [
+        "No, $\\nabla^2 u = 2e^x\\cos y$",
+        "Only where $\\cos y = 0$",
+        "No, $\\nabla^2 u = e^x$",
+        "Yes, $\\nabla^2 u = 0$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $u_{xx} = e^x\\cos y$ and $u_{yy} = -e^x\\cos y$, so $\\nabla^2 u = e^x\\cos y - e^x\\cos y = 0$. The function is harmonic; it is the real part of $e^z = e^{x+iy} = e^x(\\cos y + i\\sin y)$. The exponential growth in $x$ is exactly cancelled by the oscillation in $y$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-007",
+      "stem": "The mean value property of harmonic functions states that $u$ at the center of a circle equals which quantity?",
+      "options": [
+        "The maximum of $u$ on the circle",
+        "Zero",
+        "The average of $u$ over the circle",
+        "The sum of $u$ over the circle"
+      ],
+      "answer": 2,
+      "explanation": "The mean value property says a harmonic function's value at the center of any circle (lying in its domain) equals the average of its values around that circle: $u(\\text{center}) = \\frac{1}{2\\pi}\\int_0^{2\\pi} u\\,d\\theta$. This averaging property is the analytic heart of why harmonic functions are so smooth and rigid.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-008",
+      "stem": "If a harmonic function on a disk equals the constant $7$ on the bounding circle, its value at the center is which number?",
+      "options": [
+        "$0$",
+        "$7$",
+        "$\\frac{7}{2}$",
+        "$14$"
+      ],
+      "answer": 1,
+      "explanation": "By the mean value property, the center value is the average of the boundary values. The average of the constant $7$ is $7$. In fact, by uniqueness the only harmonic function with boundary value $7$ is the constant $7$ everywhere, so the center is $7$.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-009",
+      "stem": "The maximum principle for Laplace's equation says a nonconstant harmonic function attains its maximum where?",
+      "options": [
+        "At an interior point",
+        "At the center only",
+        "On the boundary of the region",
+        "Nowhere"
+      ],
+      "answer": 2,
+      "explanation": "The maximum principle states that a harmonic function attains its maximum (and minimum) on the boundary of the region, never at an interior point unless it is constant. This follows from the mean value property: an interior maximum would have to equal the average of surrounding values, forcing the function to be constant. Steady states have no interior hot spots.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-010",
+      "stem": "A harmonic function on a closed bounded region has boundary values lying in $[2, 9]$. What can be said about its interior values?",
+      "options": [
+        "They can exceed $9$",
+        "They are all equal to $2$",
+        "They can be negative",
+        "They must all lie in $[2, 9]$"
+      ],
+      "answer": 3,
+      "explanation": "By the maximum (and minimum) principle, the interior values are bounded by the boundary extremes. Since the boundary values lie in $[2, 9]$, every interior value also lies in $[2, 9]$. A harmonic function cannot exceed its boundary maximum or fall below its boundary minimum.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-011",
+      "stem": "The Dirichlet problem for Laplace's equation (boundary values prescribed) has how many solutions?",
+      "options": [
+        "Exactly one (unique)",
+        "Infinitely many",
+        "None in general",
+        "Two"
+      ],
+      "answer": 0,
+      "explanation": "The Dirichlet problem has a unique solution. If $u_1$ and $u_2$ both solved it, their difference $w = u_1 - u_2$ would be harmonic with zero boundary data, and by the maximum principle $w \\equiv 0$, so $u_1 = u_2$. Uniqueness is a hallmark of well posed elliptic boundary value problems.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-012",
+      "stem": "Separating Laplace's equation $u_{xx} + u_{yy} = 0$ as $u = X(x)Y(y)$ gives $\\frac{X''}{X} = -\\frac{Y''}{Y} = \\lambda$. If $X$ is oscillatory (sines and cosines), then $Y$ involves which functions?",
+      "options": [
+        "Sines and cosines too",
+        "Polynomials only",
+        "Hyperbolic sinh and cosh",
+        "Decaying Gaussians"
+      ],
+      "answer": 2,
+      "explanation": "If the separation constant makes $X'' = \\lambda X$ with $\\lambda < 0$ give oscillatory $X$ (sines/cosines), then $Y'' = -\\lambda Y$ has $-\\lambda > 0$, so $Y$ is built from $\\sinh$ and $\\cosh$ (or growing/decaying exponentials). One direction oscillates while the other grows or decays; this pairing is characteristic of Laplace separation in a rectangle.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-013",
+      "stem": "For Laplace's equation on a rectangle with $u = 0$ on three sides and oscillatory data on the fourth, the eigenfunctions in the homogeneous direction (length $a$) are which functions?",
+      "options": [
+        "$\\sin\\left(\\frac{n\\pi x}{a}\\right)$",
+        "$\\cosh\\left(\\frac{n\\pi x}{a}\\right)$",
+        "$e^{n\\pi x/a}$",
+        "$x^n$"
+      ],
+      "answer": 0,
+      "explanation": "Two opposite sides with zero data act as Dirichlet conditions $X(0) = X(a) = 0$, selecting the sine eigenfunctions $\\sin\\left(\\frac{n\\pi x}{a}\\right)$. The orthogonal direction then carries hyperbolic functions chosen to satisfy the remaining boundary data. The homogeneous (zero) direction is the one that gives the discrete eigenfunctions.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-014",
+      "stem": "In polar coordinates Laplace's equation is $u_{rr} + \\frac{1}{r}u_r + \\frac{1}{r^2}u_{\\theta\\theta} = 0$. Separated solutions on a disk take which form?",
+      "options": [
+        "$r^n(A\\cos n\\theta + B\\sin n\\theta)$",
+        "$e^{-r}\\cos n\\theta$",
+        "$\\sin(nr)\\cos n\\theta$",
+        "$\\ln(r)\\sin n\\theta$"
+      ],
+      "answer": 0,
+      "explanation": "Separating $u = R(r)\\Theta(\\theta)$ gives $\\Theta'' + n^2\\Theta = 0$ (periodic, so $\\cos n\\theta, \\sin n\\theta$) and the Euler equation $r^2 R'' + rR' - n^2 R = 0$, with solutions $r^n$ and $r^{-n}$. On a full disk, regularity at $r = 0$ keeps only $r^n$. So bounded separated solutions are $r^n(A\\cos n\\theta + B\\sin n\\theta)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-015",
+      "stem": "On the disk, why is the $r^{-n}$ (and $\\ln r$) part of the radial solution discarded?",
+      "options": [
+        "Because it is not harmonic",
+        "Because it blows up at the center $r = 0$",
+        "Because it is too small",
+        "Because it violates periodicity"
+      ],
+      "answer": 1,
+      "explanation": "The radial Euler equation gives $r^n$ and $r^{-n}$ (plus $\\ln r$ for $n = 0$). On a solid disk the solution must remain finite at the center $r = 0$, but $r^{-n}$ and $\\ln r$ diverge there. Requiring regularity (boundedness) at the origin removes those singular pieces, leaving only $r^n$. On an annulus, by contrast, both are kept.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-016",
+      "stem": "Is $u(x,y) = x^3 - 3xy^2$ harmonic?",
+      "options": [
+        "No, $\\nabla^2 u = 6x$",
+        "Only on the $x$ axis",
+        "Yes, $\\nabla^2 u = 0$",
+        "No, $\\nabla^2 u = 12x$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $u_{xx} = 6x$ and $u_{yy} = -6x$, so $\\nabla^2 u = 6x - 6x = 0$. The function is harmonic; it is the real part of $z^3 = (x + iy)^3 = x^3 - 3xy^2 + i(3x^2 y - y^3)$. The two second derivatives cancel exactly.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-017",
+      "stem": "The boundary value problem with Neumann data $\\frac{\\partial u}{\\partial n} = g$ on the boundary is solvable only if $g$ satisfies which compatibility condition?",
+      "options": [
+        "$\\int_{\\partial\\Omega} g\\,ds = 0$",
+        "$g = 0$ everywhere",
+        "$g$ is positive",
+        "No condition is needed"
+      ],
+      "answer": 0,
+      "explanation": "Integrating $\\nabla^2 u = 0$ over the region and using the divergence theorem gives $\\int_{\\partial\\Omega}\\frac{\\partial u}{\\partial n}\\,ds = 0$. So the prescribed normal derivative $g$ must integrate to zero around the boundary; physically the net flux through the boundary must vanish in steady state. Without this the Neumann problem has no solution, and when it holds the solution is unique up to an additive constant.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-018",
+      "stem": "Why does Laplace's equation have no real characteristic curves?",
+      "options": [
+        "Because it is first order",
+        "Because its discriminant $B^2 - 4AC = -4 < 0$ (elliptic)",
+        "Because it is nonlinear",
+        "Because $u$ is constant"
+      ],
+      "answer": 1,
+      "explanation": "For $u_{xx} + u_{yy} = 0$, $A = 1$, $B = 0$, $C = 1$, so $B^2 - 4AC = -4 < 0$, making it elliptic. Elliptic equations have complex characteristic roots, hence no real characteristics. This is why Laplace problems are boundary value problems with information felt instantly everywhere, not propagated along curves.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-019",
+      "stem": "A harmonic function that is bounded on the entire plane $\\mathbb{R}^2$ must be which of the following (Liouville type result)?",
+      "options": [
+        "Constant",
+        "Linear",
+        "Periodic",
+        "Unbounded"
+      ],
+      "answer": 0,
+      "explanation": "The Liouville theorem for harmonic functions says a function harmonic and bounded on all of $\\mathbb{R}^2$ (or $\\mathbb{R}^n$) must be constant. The mean value property over ever larger circles forces the value to equal a fixed average, leaving no room to vary. Boundedness plus harmonicity on the whole plane is very restrictive.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-020",
+      "stem": "If $u$ and $v$ are both harmonic, which combination is guaranteed to be harmonic for constants $a, b$?",
+      "options": [
+        "The product $uv$",
+        "The quotient $u/v$",
+        "The linear combination $au + bv$",
+        "The composition $u(v)$"
+      ],
+      "answer": 2,
+      "explanation": "Laplace's equation is linear, so $\\nabla^2(au + bv) = a\\nabla^2 u + b\\nabla^2 v = 0$ whenever $u$ and $v$ are harmonic. Linear combinations of harmonic functions stay harmonic. Products and quotients generally are not harmonic, since $\\nabla^2(uv) = u\\nabla^2 v + v\\nabla^2 u + 2\\nabla u\\cdot\\nabla v$ has the extra gradient term.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-021",
+      "stem": "On a square $0 \\le x, y \\le \\pi$ with $u = 0$ on the sides $x = 0$, $x = \\pi$, and on $y = 0$, while $u(x, \\pi) = \\sin x$, the solution has the form which expression?",
+      "options": [
+        "$\\sin x\\cos y$",
+        "$\\sin x\\,\\dfrac{\\sinh y}{\\sinh \\pi}$",
+        "$\\sin x\\,e^{-y}$",
+        "$\\cos x\\sinh y$"
+      ],
+      "answer": 1,
+      "explanation": "The homogeneous $x$ direction gives the eigenfunction $\\sin x$ (from $n = 1$), and the $y$ part must vanish at $y = 0$ and grow to match at $y = \\pi$, so it is $\\sinh y$ normalized: $\\frac{\\sinh y}{\\sinh \\pi}$. Thus $u = \\sin x\\,\\frac{\\sinh y}{\\sinh \\pi}$. Check: harmonic since $u_{xx} = -\\sin x\\frac{\\sinh y}{\\sinh\\pi}$ and $u_{yy} = \\sin x\\frac{\\sinh y}{\\sinh\\pi}$ cancel, $u(x,\\pi) = \\sin x$, and the other three sides are zero.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-022",
+      "stem": "Poisson's integral formula expresses a harmonic function inside a disk in terms of which data?",
+      "options": [
+        "Its values on the bounding circle",
+        "Its derivatives at the center",
+        "Its Laplacian inside",
+        "Its values on a diameter"
+      ],
+      "answer": 0,
+      "explanation": "Poisson's integral formula reconstructs a harmonic function at any interior point of a disk as a weighted average of its boundary values on the circle, with the Poisson kernel as the weight. It is the explicit solution of the Dirichlet problem on a disk and generalizes the mean value property (which is the special case at the center, where the kernel is constant).",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-023",
+      "format": "cloze",
+      "stem": "Test several candidate functions for harmonicity by computing the Laplacian.",
+      "solution": "For $u = x^2 - y^2$, $u_{xx} = 2$ and $u_{yy} = -2$, so $\\nabla^2 u =$ {{1}}, meaning it {{2}} harmonic. For $u = x^2 + y^2$, the Laplacian is $4$, so it {{3}} harmonic.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is not",
+            "is"
+          ],
+          "answer": "is not"
+        }
+      ],
+      "explanation": "$x^2 - y^2$ has Laplacian $2 - 2 = 0$, so it is harmonic. $x^2 + y^2$ has Laplacian $2 + 2 = 4 \\ne 0$, so it is not harmonic.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-024",
+      "format": "cloze",
+      "stem": "Apply the mean value property and maximum principle to a harmonic function on a disk.",
+      "solution": "By the mean value property, the value at the center equals the {{1}} of the boundary values. If a harmonic function equals the constant $7$ on the bounding circle, its center value is {{2}}. By the maximum principle, a nonconstant harmonic function attains its maximum on the {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "average",
+            "maximum",
+            "sum"
+          ],
+          "answer": "average"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "boundary",
+            "center",
+            "interior"
+          ],
+          "answer": "boundary"
+        }
+      ],
+      "explanation": "The center value is the average of boundary values; for constant boundary $7$ it is $7$. The maximum of a nonconstant harmonic function lies on the boundary.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-025",
+      "format": "cloze",
+      "stem": "Separate Laplace's equation $u_{xx} + u_{yy} = 0$ on a rectangle.",
+      "solution": "Writing $u = X(x)Y(y)$ gives $\\dfrac{X''}{X} = -\\dfrac{Y''}{Y}$, a constant. If the $x$ direction has homogeneous (zero) ends, then $X$ is built from {{1}} functions and $Y$ is built from {{2}} functions. The discrete eigenfunctions come from the {{3}} direction.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "trigonometric",
+            "hyperbolic",
+            "polynomial"
+          ],
+          "answer": "trigonometric"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "hyperbolic",
+            "trigonometric",
+            "constant"
+          ],
+          "answer": "hyperbolic"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "homogeneous",
+            "inhomogeneous",
+            "diagonal"
+          ],
+          "answer": "homogeneous"
+        }
+      ],
+      "explanation": "Zero ends in $x$ select trigonometric (sine) eigenfunctions for $X$; the $Y$ direction then uses hyperbolic sinh and cosh. The discrete eigenfunctions come from the homogeneous direction.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-026",
+      "format": "cloze",
+      "stem": "Separate Laplace's equation in polar coordinates on a solid disk.",
+      "solution": "The angular part gives $\\Theta'' + n^2\\Theta = 0$, so $\\Theta$ is periodic in $\\theta$. The radial Euler equation $r^2 R'' + r R' - n^2 R = 0$ has solutions $r^n$ and $r^{-n}$. On a solid disk we keep only $r^{n}$ because the other piece {{1}} at the center. Thus the bounded separated solutions are proportional to $r^n$ times $\\cos n\\theta$ or {{2}}. The angular functions must be periodic with period {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "blows up",
+            "vanishes",
+            "stays bounded"
+          ],
+          "answer": "blows up"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\sin n\\theta$",
+            "$\\cosh n\\theta$",
+            "$e^{n\\theta}$"
+          ],
+          "answer": "$\\sin n\\theta$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 6.283185307,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "On a disk, $r^{-n}$ blows up at $r = 0$, so only $r^n$ survives, paired with $\\cos n\\theta$ and $\\sin n\\theta$. The angular period is $2\\pi \\approx 6.283$.",
+      "difficulty": "stretch",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-027",
+      "format": "cloze",
+      "stem": "Use the maximum principle to prove uniqueness of the Dirichlet problem.",
+      "solution": "Suppose $u_1$ and $u_2$ both solve Laplace's equation with the same boundary data. Their difference $w = u_1 - u_2$ is harmonic with boundary data equal to {{1}}. By the maximum and minimum principles, $w$ attains both its extremes on the boundary, where it equals that value, so $w \\equiv$ {{2}} everywhere. Hence the Dirichlet solution is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "unique",
+            "the same",
+            "identical"
+          ]
+        }
+      ],
+      "explanation": "The difference $w$ has zero boundary data, so by the max/min principles $w$ is squeezed to $0$ everywhere, making $u_1 = u_2$, hence the solution is unique.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    },
+    {
+      "id": "partial-differential-eqn-laplace-equation-028",
+      "format": "cloze",
+      "stem": "Classify Laplace's equation and connect it to how its problems are posed.",
+      "solution": "With $A = 1$, $B = 0$, $C = 1$, the discriminant $B^2 - 4AC$ equals {{1}}, so Laplace's equation is {{2}}. Having no real characteristics, it is naturally posed as a {{3}} problem rather than an initial value problem.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "elliptic",
+            "parabolic",
+            "hyperbolic"
+          ],
+          "answer": "elliptic"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "boundary value",
+            "initial value",
+            "eigenvalue"
+          ],
+          "answer": "boundary value"
+        }
+      ],
+      "explanation": "$B^2 - 4AC = 0 - 4(1)(1) = -4 < 0$, so Laplace's equation is elliptic and is posed as a boundary value problem.",
+      "difficulty": "core",
+      "source": "in the style of Haberman, Applied Partial Differential Equations"
+    }
+  ]
+}

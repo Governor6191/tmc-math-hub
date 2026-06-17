@@ -1,0 +1,528 @@
+{
+  "courseId": "numerical-analysis-iii",
+  "topicId": "eigenvalue-problems",
+  "questions": [
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-001",
+      "stem": "The power iteration method, applied to a matrix $A$ with a single dominant eigenvalue, converges to which eigenpair?",
+      "options": [
+        "The eigenvalue of smallest magnitude and its eigenvector.",
+        "The eigenvalue of largest magnitude and its eigenvector.",
+        "The eigenvalue closest to zero.",
+        "The average of all eigenvalues."
+      ],
+      "answer": 1,
+      "explanation": "Writing the start vector in the eigenvector basis, each multiplication by $A$ scales the component along eigenvector $v_j$ by $\\lambda_j$. The term with the largest $|\\lambda_j|$ grows fastest and eventually dominates, so the iterates align with the dominant eigenvector and the scaling factor approaches the dominant eigenvalue.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-002",
+      "stem": "Let $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ and start power iteration with $x_0 = (1, 0)^T$, scaling each iterate by its largest-magnitude component. What is $x_1$ after one step?",
+      "options": [
+        "$(1, 1)^T$",
+        "$(2, 1)^T$",
+        "$(1, 0.5)^T$",
+        "$(0.5, 1)^T$"
+      ],
+      "answer": 2,
+      "explanation": "$A x_0 = (2(1) + 1(0),\\ 1(1) + 2(0))^T = (2, 1)^T$. The largest-magnitude component is $2$, so dividing through gives $x_1 = (1, 0.5)^T$. The unscaled vector $(2,1)^T$ is correct before normalization.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-003",
+      "stem": "Continuing power iteration on $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ from $x_1 = (1, 0.5)^T$ (scaling by the largest component), what scaling factor (eigenvalue estimate) do you get at the next step?",
+      "options": [
+        "$2.5$",
+        "$3.0$",
+        "$2.0$",
+        "$1.5$"
+      ],
+      "answer": 0,
+      "explanation": "$A x_1 = (2(1) + 0.5,\\ 1 + 2(0.5))^T = (2.5, 2)^T$. The largest-magnitude component is $2.5$, which is the eigenvalue estimate at this step. The exact dominant eigenvalue is $3$, so the iterates $2, 2.5, \\dots$ climb toward it.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-004",
+      "stem": "The Rayleigh quotient of a symmetric matrix $A$ at a nonzero vector $x$ is defined as which expression?",
+      "options": [
+        "$\\dfrac{x^T x}{x^T A x}$",
+        "$x^T A x$",
+        "$\\dfrac{x^T A x}{x^T x}$",
+        "$\\dfrac{A x}{x}$"
+      ],
+      "answer": 2,
+      "explanation": "The Rayleigh quotient is $R(x) = \\dfrac{x^T A x}{x^T x}$. When $x$ is an eigenvector it returns the corresponding eigenvalue exactly, and for a vector near an eigenvector it gives an estimate that is accurate to second order in the error.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-005",
+      "stem": "For $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ and $x = (1, 1)^T$, what is the Rayleigh quotient $R(x)$?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$2.5$"
+      ],
+      "answer": 1,
+      "explanation": "$A x = (3, 3)^T$, so $x^T A x = 1(3) + 1(3) = 6$ and $x^T x = 2$. Then $R(x) = 6/2 = 3$. Because $(1,1)^T$ is exactly the eigenvector for the dominant eigenvalue, the Rayleigh quotient returns that eigenvalue, $3$, exactly.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-006",
+      "stem": "For $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ and the non-eigenvector $x = (2, 1)^T$, the Rayleigh quotient $R(x)$ equals which value?",
+      "options": [
+        "$3.0$",
+        "$2.0$",
+        "$3.5$",
+        "$2.8$"
+      ],
+      "answer": 3,
+      "explanation": "$A x = (2(2) + 1,\\ 2 + 2(1))^T = (5, 4)^T$, so $x^T A x = 2(5) + 1(4) = 14$ and $x^T x = 4 + 1 = 5$. Then $R(x) = 14/5 = 2.8$. This lies strictly between the eigenvalues $1$ and $3$, as the Rayleigh quotient always does for a symmetric matrix.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-007",
+      "stem": "The asymptotic convergence rate of power iteration is governed by which ratio, where $\\lambda_1$ is the dominant eigenvalue and $\\lambda_2$ the next largest in magnitude?",
+      "options": [
+        "$|\\lambda_2 / \\lambda_1|$",
+        "$|\\lambda_1 / \\lambda_2|$",
+        "$|\\lambda_1 \\lambda_2|$",
+        "$|\\lambda_1 - \\lambda_2|$"
+      ],
+      "answer": 0,
+      "explanation": "The error in the dominant-eigenvector direction shrinks by a factor of about $|\\lambda_2/\\lambda_1|$ each iteration. The closer this ratio is to $1$ (eigenvalues of similar magnitude), the slower the convergence; a small ratio means fast convergence.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-008",
+      "stem": "A matrix has eigenvalues $5$, $3$, and $-1$. Roughly what is the per-step error reduction factor for power iteration seeking the dominant eigenvalue?",
+      "options": [
+        "$0.2$",
+        "$1.67$",
+        "$0.33$",
+        "$0.6$"
+      ],
+      "answer": 3,
+      "explanation": "The dominant eigenvalue is $\\lambda_1 = 5$ and the next largest in magnitude is $\\lambda_2 = 3$. The convergence factor is $|\\lambda_2/\\lambda_1| = 3/5 = 0.6$. The eigenvalue $-1$ has smaller magnitude and does not control the rate.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-009",
+      "stem": "The inverse power method (iterating with $A^{-1}$) converges to which eigenvalue of $A$?",
+      "options": [
+        "The eigenvalue of largest magnitude.",
+        "The eigenvalue with the largest real part.",
+        "No eigenvalue; it diverges.",
+        "The eigenvalue of smallest magnitude."
+      ],
+      "answer": 3,
+      "explanation": "The eigenvalues of $A^{-1}$ are $1/\\lambda_j$. The dominant eigenvalue of $A^{-1}$ corresponds to the smallest $|\\lambda_j|$ of $A$, so power iteration on $A^{-1}$ (carried out by solving $A y = x$ each step) finds the eigenvalue of $A$ closest to zero.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-010",
+      "stem": "The shifted inverse power method iterates with $(A - \\sigma I)^{-1}$. To which eigenvalue of $A$ does it converge?",
+      "options": [
+        "The eigenvalue of largest magnitude.",
+        "The eigenvalue equal to $\\sigma$ exactly.",
+        "The eigenvalue of $A$ closest to the shift $\\sigma$.",
+        "The smallest eigenvalue regardless of $\\sigma$."
+      ],
+      "answer": 2,
+      "explanation": "The eigenvalues of $(A - \\sigma I)^{-1}$ are $1/(\\lambda_j - \\sigma)$. This is largest in magnitude when $\\lambda_j$ is nearest $\\sigma$, so the method homes in on the eigenvalue of $A$ closest to the chosen shift. A good shift makes convergence very fast.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-011",
+      "stem": "By the Gershgorin circle theorem, every eigenvalue of a matrix lies in the union of disks centered at which points, with what radii?",
+      "options": [
+        "Centered at $a_{ii}$, radius equal to the sum of the off-diagonal magnitudes in row $i$.",
+        "Centered at $0$, radius $|a_{ii}|$.",
+        "Centered at $a_{ii}$, radius $|a_{ii}|$.",
+        "Centered at the column sums, radius zero."
+      ],
+      "answer": 0,
+      "explanation": "Gershgorin's theorem places each eigenvalue in some disk $|z - a_{ii}| \\le R_i$, where $R_i = \\sum_{j \\neq i} |a_{ij}|$ is the sum of the absolute values of the off-diagonal entries in row $i$. The eigenvalues all lie in the union of these row disks (and equally in the column disks).",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-012",
+      "stem": "For $A = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$, what are the two Gershgorin row disks (as intervals on the real axis, since the centers are real)?",
+      "options": [
+        "$[3, 5]$ and $[1, 5]$",
+        "$[3, 5]$ and $[2, 4]$",
+        "$[0, 4]$ and $[0, 3]$",
+        "$[4, 4]$ and $[3, 3]$"
+      ],
+      "answer": 0,
+      "explanation": "Row 1: center $a_{11} = 4$, radius $|1| = 1$, giving $[3, 5]$. Row 2: center $a_{22} = 3$, radius $|2| = 2$, giving $[1, 5]$. The eigenvalues (which are $2$ and $5$) both fall inside the union $[1, 5]$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-013",
+      "stem": "For the upper-triangular matrix $A = \\begin{pmatrix} 3 & 5 \\\\ 0 & 2 \\end{pmatrix}$, what are its eigenvalues?",
+      "options": [
+        "$5$ and $0$",
+        "$3$ and $2$",
+        "$3$ and $5$",
+        "$1$ and $6$"
+      ],
+      "answer": 1,
+      "explanation": "The eigenvalues of a triangular matrix are exactly its diagonal entries, here $3$ and $2$. The off-diagonal entry $5$ does not affect them. This is why the QR iteration, which drives a matrix toward triangular form, can read eigenvalues off the diagonal.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-014",
+      "stem": "The basic (unshifted) QR iteration forms $A_k = Q_k R_k$ and then sets $A_{k+1} = R_k Q_k$. Why do all the $A_k$ share the same eigenvalues?",
+      "options": [
+        "Because $R_k Q_k = Q_k^T A_k Q_k$ is a similarity transformation.",
+        "Because $Q_k$ and $R_k$ commute.",
+        "Because eigenvalues of any product equal the product of eigenvalues.",
+        "Because $A_{k+1}$ is the transpose of $A_k$."
+      ],
+      "answer": 0,
+      "explanation": "Since $A_k = Q_k R_k$ with $Q_k$ orthogonal, $R_k = Q_k^T A_k$. Then $A_{k+1} = R_k Q_k = Q_k^T A_k Q_k$, an orthogonal similarity transformation, which preserves the spectrum. The iteration typically drives $A_k$ toward upper-triangular (Schur) form, exposing the eigenvalues on the diagonal.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-015",
+      "stem": "In deflation, once the dominant eigenpair $(\\lambda_1, v_1)$ of a symmetric matrix has been computed, what is the purpose of forming a modified matrix?",
+      "options": [
+        "To make the matrix singular so it can be inverted.",
+        "To double the dominant eigenvalue.",
+        "To convert the matrix to triangular form in one step.",
+        "To remove the dominant eigenvalue so power iteration can find the next one."
+      ],
+      "answer": 3,
+      "explanation": "Deflation modifies $A$ (for example $A - \\lambda_1 v_1 v_1^T$ with a unit eigenvector) so that the dominant eigenvalue is replaced by zero while the other eigenvalues are preserved. Power iteration on the deflated matrix then converges to what was the second-largest eigenvalue, and the process can be repeated.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-016",
+      "stem": "Let $A = \\begin{pmatrix} 4 & 1 \\\\ 1 & 4 \\end{pmatrix}$ with start vector $x_0 = (1, 0)^T$. Scaling by the largest-magnitude component, what is $x_1$ after one power-iteration step?",
+      "options": [
+        "$(1, 1)^T$",
+        "$(4, 1)^T$",
+        "$(1, 0.25)^T$",
+        "$(0.25, 1)^T$"
+      ],
+      "answer": 2,
+      "explanation": "$A x_0 = (4(1) + 1(0),\\ 1(1) + 4(0))^T = (4, 1)^T$. Dividing by the largest-magnitude component $4$ gives $x_1 = (1, 0.25)^T$. The unscaled $(4,1)^T$ is correct only before normalization.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-017",
+      "stem": "Continuing power iteration on $A = \\begin{pmatrix} 4 & 1 \\\\ 1 & 4 \\end{pmatrix}$ from $x_1 = (1, 0.25)^T$, what eigenvalue estimate (largest-magnitude component of $A x_1$) results?",
+      "options": [
+        "$5.00$",
+        "$4.00$",
+        "$4.50$",
+        "$4.25$"
+      ],
+      "answer": 3,
+      "explanation": "$A x_1 = (4 + 0.25,\\ 1 + 1)^T = (4.25, 2)^T$. The largest-magnitude component is $4.25$, the eigenvalue estimate at this step. The exact dominant eigenvalue is $5$ (eigenvalues are $4 \\pm 1$), so successive estimates $4, 4.25, \\dots$ rise toward $5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-018",
+      "stem": "For $A = \\begin{pmatrix} 4 & 1 \\\\ 1 & 4 \\end{pmatrix}$, what is the convergence factor $|\\lambda_2/\\lambda_1|$ of plain power iteration?",
+      "options": [
+        "$0.80$",
+        "$0.60$",
+        "$0.75$",
+        "$0.25$"
+      ],
+      "answer": 1,
+      "explanation": "The eigenvalues are $4 + 1 = 5$ and $4 - 1 = 3$, so $\\lambda_1 = 5$ and $\\lambda_2 = 3$. The factor is $|\\lambda_2/\\lambda_1| = 3/5 = 0.6$, meaning the error shrinks by about $40\\%$ per iteration.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-019",
+      "stem": "Why does the Rayleigh quotient give a more accurate eigenvalue estimate than the simple scaling factor used in power iteration, when the current vector is close to an eigenvector?",
+      "options": [
+        "Its error is second order (quadratic) in the eigenvector error, versus first order for the component ratio.",
+        "It requires no matrix-vector product.",
+        "It always returns an integer.",
+        "It converges to the smallest eigenvalue instead."
+      ],
+      "answer": 0,
+      "explanation": "For a symmetric matrix, the Rayleigh quotient is stationary at each eigenvector, so a vector with error $O(\\epsilon)$ yields an eigenvalue estimate with error $O(\\epsilon^2)$. A single component ratio only has error of order $\\epsilon$, so the Rayleigh quotient is markedly more accurate near convergence.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-020",
+      "stem": "Power iteration can fail to converge to a single dominant eigenvector in which situation?",
+      "options": [
+        "When the matrix is symmetric.",
+        "When all eigenvalues are positive.",
+        "When the two largest eigenvalues have equal magnitude (for example $\\pm \\lambda$).",
+        "When the start vector has a nonzero dominant component."
+      ],
+      "answer": 2,
+      "explanation": "Convergence relies on a strictly dominant eigenvalue, $|\\lambda_1| > |\\lambda_2|$. If the two largest eigenvalues are equal in magnitude, such as a real pair $\\pm\\lambda$ or a complex conjugate pair, the ratio $|\\lambda_2/\\lambda_1| = 1$ and the iterates do not settle to one direction.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-021",
+      "stem": "A symmetric matrix $A$ is diagonally dominant with all diagonal entries positive and Gershgorin disks $[1, 3]$, $[2, 6]$, and $[4, 8]$. What can you conclude about its eigenvalues?",
+      "options": [
+        "All eigenvalues are negative.",
+        "All eigenvalues lie in $[1, 8]$ and are therefore positive, so $A$ is positive definite.",
+        "Exactly one eigenvalue is zero.",
+        "The eigenvalues lie outside $[1, 8]$."
+      ],
+      "answer": 1,
+      "explanation": "The union of the disks is $[1, 8]$, and for a symmetric matrix the eigenvalues are real and confined to this union. Since the whole union lies in the positive reals, every eigenvalue is positive, so $A$ is positive definite. Gershgorin thus gives a quick definiteness check.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-022",
+      "stem": "The shift in a shifted QR (or shifted inverse power) iteration is used primarily to achieve what?",
+      "options": [
+        "Reduce storage by zeroing the diagonal.",
+        "Change the eigenvalues of $A$ permanently.",
+        "Make the matrix symmetric.",
+        "Accelerate convergence by targeting a chosen eigenvalue."
+      ],
+      "answer": 3,
+      "explanation": "A shift $\\sigma$ near a wanted eigenvalue makes the corresponding factor $1/(\\lambda - \\sigma)$ large (inverse iteration) or improves the eigenvalue separation in the shifted matrix (QR), greatly speeding convergence to that eigenvalue. The original spectrum is recovered by undoing the shift; it is not changed permanently.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-023",
+      "format": "cloze",
+      "stem": "Carry out two steps of power iteration on $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ with $x_0 = (1, 0)^T$, scaling each iterate by its largest-magnitude component, and identify the limit.",
+      "solution": "Step 1: $A x_0 = (2, 1)^T$, so the scaling factor is $2$ and $x_1 = (1, 0.5)^T$. Step 2: $A x_1 = (2.5, 2)^T$, so the new eigenvalue estimate is {{1}} and $x_2 = (1, 0.8)^T$. The estimates increase toward the dominant eigenvalue $\\lambda_1 =$ {{2}}, while the iterates approach the eigenvector direction {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$(1, 1)^T$",
+            "$(1, -1)^T$",
+            "$(1, 0)^T$"
+          ],
+          "answer": "$(1, 1)^T$"
+        }
+      ],
+      "explanation": "Step 1 gives $A x_0 = (2,1)^T$, scale $2$, $x_1 = (1, 0.5)^T$. Step 2 gives $A x_1 = (2.5, 2)^T$, scale $2.5$, $x_2 = (1, 0.8)^T$. The eigenvalues are $3$ and $1$ with eigenvectors $(1,1)^T$ and $(1,-1)^T$; the iterates converge to $(1,1)^T$ and the scaling factors to $3$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-024",
+      "format": "cloze",
+      "stem": "Compute Rayleigh quotients for $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ at the vectors $x = (1, 0)^T$ and $w = (1, 1)^T$.",
+      "solution": "At $x = (1,0)^T$: $A x = (2, 1)^T$, so $x^T A x = 2$, $x^T x = 1$, and $R(x) =$ {{1}}. At $w = (1,1)^T$: $A w = (3, 3)^T$, so $w^T A w = 6$, $w^T w = 2$, and $R(w) =$ {{2}}. Because $w$ is an exact eigenvector, $R(w)$ equals an eigenvalue {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "exactly",
+            "approximately"
+          ],
+          "answer": "exactly"
+        }
+      ],
+      "explanation": "$R(x) = 2/1 = 2$ for the non-eigenvector $(1,0)^T$. For $(1,1)^T$, $R(w) = 6/2 = 3$, which is the exact dominant eigenvalue because $(1,1)^T$ is its eigenvector. The Rayleigh quotient is exact at any eigenvector.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-025",
+      "format": "cloze",
+      "stem": "Use the Gershgorin circle theorem on $A = \\begin{pmatrix} 5 & 1 \\\\ 1 & 1 \\end{pmatrix}$ to bound its eigenvalues.",
+      "solution": "Row 1 gives the disk centered at $5$ with radius $1$, that is the interval $[4, 6]$. Row 2 gives the disk centered at $1$ with radius $1$, the interval $[$ {{1}} $, 2]$. Since the two intervals do not overlap, each contains exactly one eigenvalue, so one eigenvalue lies near {{2}} and the other near {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$5$",
+            "$1$",
+            "$0$"
+          ],
+          "answer": "$5$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$1$",
+            "$5$",
+            "$6$"
+          ],
+          "answer": "$1$"
+        }
+      ],
+      "explanation": "Row 1 disk: center $5$, radius $1$, interval $[4,6]$. Row 2 disk: center $1$, radius $1$, interval $[0,2]$. The disks are disjoint, so by Gershgorin each holds one eigenvalue: one near $5$, one near $1$. (The exact eigenvalues are $3 \\pm \\sqrt{5} \\approx 5.24$ and $0.76$.)",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-026",
+      "format": "cloze",
+      "stem": "Analyse convergence and method choice for finding eigenvalues of a matrix with spectrum $\\{6, 2, 1\\}$.",
+      "solution": "Plain power iteration converges to the dominant eigenvalue $\\lambda_1 = 6$ with per-step factor $|\\lambda_2/\\lambda_1| =$ {{1}} (three decimals). To instead find the eigenvalue of smallest magnitude, $1$, you would use the {{2}} power method. To target the middle eigenvalue $2$, apply the {{3}} inverse power method with a shift near $2$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.333,
+          "tolerance": 0.005
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "inverse",
+            "direct",
+            "shifted-forward"
+          ],
+          "answer": "inverse"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "shifted",
+            "unshifted",
+            "transposed"
+          ],
+          "answer": "shifted"
+        }
+      ],
+      "explanation": "$|\\lambda_2/\\lambda_1| = 2/6 = 0.333$. The inverse power method finds the smallest-magnitude eigenvalue ($1$). The shifted inverse power method with $\\sigma \\approx 2$ targets the interior eigenvalue $2$, since $1/(\\lambda - \\sigma)$ is largest for the eigenvalue nearest the shift.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-027",
+      "format": "cloze",
+      "stem": "Take two power-iteration steps on $A = \\begin{pmatrix} 4 & 1 \\\\ 1 & 4 \\end{pmatrix}$ from $x_0 = (1, 0)^T$, scaling by the largest-magnitude component.",
+      "solution": "Step 1: $A x_0 = (4, 1)^T$, scaling factor $4$, so $x_1 = (1, 0.25)^T$. Step 2: $A x_1 = (4.25, 2)^T$, so the eigenvalue estimate is {{1}} (two decimals) and $x_2 = (1, 0.4706)^T$. These estimates approach the dominant eigenvalue {{2}}, and the convergence is {{3}} because the eigenvalue ratio is $3/5$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4.25,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "linear",
+            "quadratic",
+            "cubic"
+          ],
+          "answer": "linear"
+        }
+      ],
+      "explanation": "Step 1: $(4,1)^T$, scale $4$, $x_1 = (1, 0.25)^T$. Step 2: $A x_1 = (4.25, 2)^T$, scale $4.25$, $x_2 = (1, 0.4706)^T$. Eigenvalues are $5$ and $3$; the estimates climb to $5$. Power iteration converges linearly with rate $|\\lambda_2/\\lambda_1| = 3/5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-eigenvalue-problems-028",
+      "format": "cloze",
+      "stem": "State the key facts about the QR iteration and triangular spectra.",
+      "solution": "The unshifted QR step $A_{k+1} = R_k Q_k$ is an orthogonal {{1}} of $A_k$, so it preserves eigenvalues. Under suitable conditions the iterates converge to {{2}} form, and the eigenvalues can then be read off the {{3}} of that limiting matrix.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "similarity transformation",
+            "projection",
+            "rotation only"
+          ],
+          "answer": "similarity transformation"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "upper-triangular",
+            "diagonal-zero",
+            "skew-symmetric"
+          ],
+          "answer": "upper-triangular"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "diagonal",
+            "first column",
+            "last row"
+          ],
+          "answer": "diagonal"
+        }
+      ],
+      "explanation": "From $A_k = Q_k R_k$ we get $A_{k+1} = R_k Q_k = Q_k^T A_k Q_k$, an orthogonal similarity transformation, so the spectrum is unchanged. The iteration drives $A_k$ toward upper-triangular (Schur) form, whose diagonal entries are the eigenvalues.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    }
+  ],
+  "status": "approved"
+}

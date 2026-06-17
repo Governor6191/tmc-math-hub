@@ -1,0 +1,513 @@
+{
+  "courseId": "numerical-analysis-iii",
+  "topicId": "least-squares-approximation",
+  "questions": [
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-001",
+      "stem": "To fit a model $A x = b$ in the least-squares sense (minimizing $\\|b - A x\\|_2$), which system do you solve for the coefficient vector $x$?",
+      "options": [
+        "$A x = b$ directly.",
+        "$A^T A x = A^T b$.",
+        "$A A^T x = b$.",
+        "$A^{-1} x = b$."
+      ],
+      "answer": 1,
+      "explanation": "Minimizing $\\|b - A x\\|_2^2$ leads to the normal equations $A^T A x = A^T b$. They come from setting the gradient to zero, equivalently requiring the residual $b - A x$ to be orthogonal to every column of $A$, so that $A^T(b - A x) = 0$.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-002",
+      "stem": "For fitting a straight line $y = a_0 + a_1 x$ to $n$ data points, the normal equations involve which sums?",
+      "options": [
+        "Only $\\sum y_i$ and $\\sum x_i$.",
+        "$n$, $\\sum x_i$, $\\sum x_i^2$, $\\sum y_i$, and $\\sum x_i y_i$.",
+        "Only $\\sum x_i^2$ and $\\sum x_i^3$.",
+        "$\\sum y_i^2$ alone."
+      ],
+      "answer": 1,
+      "explanation": "The two normal equations are $a_0 n + a_1 \\sum x_i = \\sum y_i$ and $a_0 \\sum x_i + a_1 \\sum x_i^2 = \\sum x_i y_i$. They require the four data sums $\\sum x_i$, $\\sum x_i^2$, $\\sum y_i$, $\\sum x_i y_i$ together with the count $n$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-003",
+      "stem": "Fit the least-squares line $y = a_0 + a_1 x$ to the points $(1,1)$, $(2,2)$, $(3,2)$. What is the slope $a_1$?",
+      "options": [
+        "$0.5$",
+        "$1.0$",
+        "$0.667$",
+        "$0.25$"
+      ],
+      "answer": 0,
+      "explanation": "Here $n = 3$, $\\sum x = 6$, $\\sum x^2 = 14$, $\\sum y = 5$, $\\sum xy = 11$. The normal equations are $3 a_0 + 6 a_1 = 5$ and $6 a_0 + 14 a_1 = 11$. Eliminating $a_0$ gives $2 a_1 = 1$, so $a_1 = 0.5$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-004",
+      "stem": "For the same fit to $(1,1)$, $(2,2)$, $(3,2)$ with slope $a_1 = 0.5$, what is the intercept $a_0$?",
+      "options": [
+        "$0.5$",
+        "$1.0$",
+        "$0.667$",
+        "$0.0$"
+      ],
+      "answer": 2,
+      "explanation": "Substituting $a_1 = 0.5$ into $3 a_0 + 6 a_1 = 5$ gives $3 a_0 + 3 = 5$, so $a_0 = 2/3 \\approx 0.667$. The fitted line is $y = 0.667 + 0.5 x$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-005",
+      "stem": "The residual at a data point in a least-squares line fit is defined as which quantity?",
+      "options": [
+        "The slope of the fitted line.",
+        "The observed value minus the fitted value, $y_i - (a_0 + a_1 x_i)$.",
+        "The fitted value minus the mean of $y$.",
+        "The square of the $x$ coordinate."
+      ],
+      "answer": 1,
+      "explanation": "The residual is $r_i = y_i - (a_0 + a_1 x_i)$, the vertical gap between the data point and the line. Least squares chooses the line that minimizes the sum of squared residuals $\\sum r_i^2$, which is the squared 2-norm of the residual vector.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-006",
+      "stem": "For the line $y = 0.667 + 0.5 x$ fitted to $(1,1)$, $(2,2)$, $(3,2)$, what is the sum of squared residuals (the least-squares error)?",
+      "options": [
+        "$0.167$",
+        "$0.333$",
+        "$0.0$",
+        "$0.5$"
+      ],
+      "answer": 0,
+      "explanation": "Fitted values are $1.167, 1.667, 2.167$, so the residuals are $-1/6, 2/6, -1/6$. Their squares sum to $\\frac{1}{36} + \\frac{4}{36} + \\frac{1}{36} = \\frac{6}{36} = \\frac{1}{6} \\approx 0.167$. This is the minimum possible value of $\\sum r_i^2$ over all lines.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-007",
+      "stem": "Fit a least-squares line to $(0,1)$, $(1,3)$, $(2,5)$. What line results, and what is the error?",
+      "options": [
+        "$y = 2 + x$, with error $1$.",
+        "$y = 1 + 3x$, with error $2$.",
+        "$y = 3x$, with zero error.",
+        "$y = 1 + 2x$, with zero error."
+      ],
+      "answer": 3,
+      "explanation": "These three points are collinear: each satisfies $y = 1 + 2x$ exactly. The normal equations give $a_1 = 2$, $a_0 = 1$, and since the line passes through every point, all residuals vanish and the least-squares error is zero.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-008",
+      "stem": "Fit a least-squares line $y = a_0 + a_1 x$ to $(1,2)$, $(2,3)$, $(3,5)$, $(4,6)$. What is the slope $a_1$?",
+      "options": [
+        "$1.0$",
+        "$1.4$",
+        "$1.5$",
+        "$2.0$"
+      ],
+      "answer": 1,
+      "explanation": "Here $n = 4$, $\\sum x = 10$, $\\sum x^2 = 30$, $\\sum y = 16$, $\\sum xy = 47$. The normal equations $4 a_0 + 10 a_1 = 16$ and $10 a_0 + 30 a_1 = 47$ reduce (eliminating $a_0$) to $5 a_1 = 7$, so $a_1 = 1.4$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-009",
+      "stem": "Continuing the fit to $(1,2)$, $(2,3)$, $(3,5)$, $(4,6)$ with $a_1 = 1.4$, what is the intercept $a_0$?",
+      "options": [
+        "$0.5$",
+        "$1.0$",
+        "$0.0$",
+        "$0.8$"
+      ],
+      "answer": 0,
+      "explanation": "From $4 a_0 + 10 a_1 = 16$ with $a_1 = 1.4$: $4 a_0 + 14 = 16$, so $4 a_0 = 2$ and $a_0 = 0.5$. The fitted line is $y = 0.5 + 1.4 x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-010",
+      "stem": "To fit a quadratic $y = a_0 + a_1 x + a_2 x^2$ by least squares, how many normal equations (unknowns) are there?",
+      "options": [
+        "One.",
+        "Two.",
+        "Three.",
+        "Equal to the number of data points."
+      ],
+      "answer": 2,
+      "explanation": "A quadratic has three coefficients $a_0, a_1, a_2$, so the normal equations $A^T A x = A^T b$ form a $3 \\times 3$ system. The design matrix $A$ has columns $1$, $x$, and $x^2$ evaluated at the data points.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-011",
+      "stem": "If you fit a least-squares quadratic to exactly three distinct data points, what happens?",
+      "options": [
+        "The system has no solution.",
+        "The fit ignores one of the points.",
+        "The quadratic reduces to a straight line.",
+        "The quadratic interpolates all three points exactly, so the error is zero."
+      ],
+      "answer": 3,
+      "explanation": "Three coefficients fitted to three distinct points give a square, generally nonsingular interpolation problem: the quadratic passes through all three, so every residual is zero. Least squares only does meaningful smoothing when there are more data points than parameters.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-012",
+      "stem": "Geometrically, the least-squares solution makes the residual vector $r = b - A x$ satisfy which condition?",
+      "options": [
+        "$r$ is parallel to every column of $A$.",
+        "$r$ has length zero.",
+        "$r$ is orthogonal to the column space of $A$ (so $A^T r = 0$).",
+        "$r$ equals $b$."
+      ],
+      "answer": 2,
+      "explanation": "The least-squares fit projects $b$ onto the column space of $A$. The residual is the part of $b$ left over, which is orthogonal to that subspace, so $A^T r = 0$. Expanding $A^T(b - A x) = 0$ is exactly the normal equations.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-013",
+      "stem": "In continuous least-squares approximation of a function $f$ on an interval $[a,b]$ by a polynomial $p$, which quantity is minimized?",
+      "options": [
+        "$\\displaystyle \\int_a^b [f(x) - p(x)]^2 \\, dx$",
+        "$\\displaystyle \\max_{a \\le x \\le b} |f(x) - p(x)|$",
+        "$\\displaystyle \\int_a^b |f(x) - p(x)| \\, dx$",
+        "$\\displaystyle f(a) - p(a)$"
+      ],
+      "answer": 0,
+      "explanation": "Continuous least squares minimizes the integral of the squared error, $\\int_a^b [f - p]^2 \\, dx$, the square of the $L^2$ norm. Minimizing the maximum error instead is the minimax (Chebyshev) problem, a different criterion.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-014",
+      "stem": "Why is it advantageous to expand the least-squares approximation in a basis of orthogonal polynomials rather than in $1, x, x^2, \\dots$?",
+      "options": [
+        "Orthogonal polynomials are always integer valued.",
+        "It changes the function being approximated.",
+        "It forces the error to be exactly zero.",
+        "Orthogonal polynomials make the normal-equation matrix diagonal, so each coefficient is found independently."
+      ],
+      "answer": 3,
+      "explanation": "With an orthogonal basis $\\{\\phi_k\\}$, the off-diagonal inner products $\\langle \\phi_j, \\phi_k \\rangle$ vanish for $j \\neq k$, so $A^T A$ is diagonal. Each coefficient is then $c_k = \\langle f, \\phi_k \\rangle / \\langle \\phi_k, \\phi_k \\rangle$, computed independently, avoiding the ill-conditioned monomial system.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-015",
+      "stem": "Applying Gram-Schmidt to $\\{1, x\\}$ on the interval $[0, 1]$ with the standard inner product $\\langle f, g \\rangle = \\int_0^1 f g \\, dx$, what is the second orthogonal polynomial (after $\\phi_0 = 1$)?",
+      "options": [
+        "$x$",
+        "$x + \\tfrac{1}{2}$",
+        "$x - \\tfrac{1}{2}$",
+        "$2x - 1$ scaled to unit length only"
+      ],
+      "answer": 2,
+      "explanation": "Subtract from $x$ its projection onto $\\phi_0 = 1$: $\\langle x, 1 \\rangle = \\int_0^1 x \\, dx = \\tfrac{1}{2}$ and $\\langle 1, 1 \\rangle = 1$, so $\\phi_1 = x - \\tfrac{1}{2}$. Check: $\\int_0^1 (x - \\tfrac{1}{2}) \\, dx = \\tfrac{1}{2} - \\tfrac{1}{2} = 0$, confirming orthogonality to the constant.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-016",
+      "stem": "The Legendre polynomials $P_0(x) = 1$ and $P_1(x) = x$ are orthogonal on $[-1, 1]$. What is $\\langle P_0, P_0 \\rangle = \\int_{-1}^1 1 \\, dx$?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$\\tfrac{2}{3}$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "$\\int_{-1}^1 1 \\, dx = [x]_{-1}^1 = 1 - (-1) = 2$. For comparison $\\langle P_1, P_1 \\rangle = \\int_{-1}^1 x^2 \\, dx = \\tfrac{2}{3}$, and $\\langle P_0, P_1 \\rangle = \\int_{-1}^1 x \\, dx = 0$, which is why the basis is orthogonal.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-017",
+      "stem": "What is the essential difference between a least-squares fit and a minimax (best uniform) approximation?",
+      "options": [
+        "They are identical for polynomials.",
+        "Least squares minimizes the 2-norm of the error; minimax minimizes the maximum (infinity-norm) error.",
+        "Least squares minimizes the maximum error; minimax minimizes the average squared error.",
+        "Minimax requires more data than least squares."
+      ],
+      "answer": 1,
+      "explanation": "Least squares minimizes $\\|e\\|_2$ (sum or integral of squared error), spreading the error to keep the average small. Minimax minimizes $\\|e\\|_\\infty$, the largest pointwise error, producing an approximation whose worst-case deviation is as small as possible. The two generally give different polynomials.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-018",
+      "stem": "When fitting a model that is linear in its parameters but nonlinear in $x$, such as $y = a_0 + a_1 x + a_2 x^2$, why can ordinary least squares still be used directly?",
+      "options": [
+        "Because the model is linear in the unknown coefficients $a_0, a_1, a_2$.",
+        "Because $x^2$ is always positive.",
+        "Because quadratics have no curvature.",
+        "It cannot; nonlinear optimization is required."
+      ],
+      "answer": 0,
+      "explanation": "Least squares requires linearity in the unknown parameters, not in $x$. Since $y$ depends linearly on $a_0, a_1, a_2$, the design matrix has fixed columns $1, x, x^2$ and the normal equations are linear. Genuinely nonlinear models (for example $y = a_0 e^{a_1 x}$) need either linearization or iterative nonlinear least squares.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-019",
+      "stem": "A practical drawback of forming and solving the normal equations $A^T A x = A^T b$ for an overdetermined system is which of the following?",
+      "options": [
+        "They always have infinitely many solutions.",
+        "They cannot represent a straight-line fit.",
+        "The matrix $A^T A$ can be much more ill-conditioned than $A$, amplifying rounding errors.",
+        "They require fewer data points than unknowns."
+      ],
+      "answer": 2,
+      "explanation": "Forming $A^T A$ squares the condition number, so for nearly dependent columns the system becomes badly conditioned and sensitive to rounding. For this reason a QR factorization of $A$ (or the SVD) is often preferred numerically, even though the normal equations are conceptually simplest.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-020",
+      "stem": "In a weighted least-squares fit, what is the effect of assigning a larger weight $w_i$ to a particular data point?",
+      "options": [
+        "It removes that point from the fit.",
+        "It has no effect on the solution.",
+        "It makes the fit follow that point more closely by penalizing its residual more heavily.",
+        "It forces the line through the origin."
+      ],
+      "answer": 2,
+      "explanation": "Weighted least squares minimizes $\\sum w_i [y_i - p(x_i)]^2$. A larger $w_i$ increases the penalty on that point's residual, so the optimal fit is pulled closer to it. Weights are typically chosen as the inverse of each measurement's variance.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-021",
+      "stem": "For the line $y = 0.5 + 1.4 x$ fitted to $(1,2)$, $(2,3)$, $(3,5)$, $(4,6)$, what is the sum of squared residuals?",
+      "options": [
+        "$0.2$",
+        "$0.1$",
+        "$0.4$",
+        "$0.0$"
+      ],
+      "answer": 0,
+      "explanation": "Fitted values: $1.9, 3.3, 4.7, 6.1$, so residuals are $0.1, -0.3, 0.3, -0.1$. Their squares sum to $0.01 + 0.09 + 0.09 + 0.01 = 0.20$. This is the minimum achievable squared error for any line through this data.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-022",
+      "stem": "A consequence of the normal equations for a line fit is that the residuals always satisfy which relation?",
+      "options": [
+        "$\\sum r_i^2 = 0$.",
+        "$\\sum r_i = 1$.",
+        "Every residual is positive.",
+        "$\\sum r_i = 0$ (the residuals sum to zero)."
+      ],
+      "answer": 3,
+      "explanation": "The first normal equation, $a_0 n + a_1 \\sum x_i = \\sum y_i$, is equivalent to $\\sum [y_i - (a_0 + a_1 x_i)] = 0$, that is $\\sum r_i = 0$. So a least-squares line fitted with an intercept term has residuals that sum to zero, balancing positive and negative deviations.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-023",
+      "format": "cloze",
+      "stem": "Fit a least-squares line $y = a_0 + a_1 x$ to the three points $(1,1)$, $(2,2)$, $(3,2)$ using the normal equations.",
+      "solution": "The data sums are $\\sum x = 6$, $\\sum x^2 = 14$, $\\sum y = 5$, $\\sum xy = 11$, with $n = 3$. The normal equations are $3 a_0 + 6 a_1 = 5$ and $6 a_0 + 14 a_1 = 11$. Solving gives slope $a_1 =$ {{1}} and intercept $a_0 =$ {{2}} (three decimals). The residuals then sum to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.667,
+          "tolerance": 0.005
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Eliminating $a_0$ from $3 a_0 + 6 a_1 = 5$ and $6 a_0 + 14 a_1 = 11$ gives $2 a_1 = 1$, so $a_1 = 0.5$ and then $a_0 = 2/3 \\approx 0.667$. A least-squares line with an intercept always has residuals summing to zero.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-024",
+      "format": "cloze",
+      "stem": "Fit a least-squares line to $(1,2)$, $(2,3)$, $(3,5)$, $(4,6)$ and report its error.",
+      "solution": "With $n = 4$, $\\sum x = 10$, $\\sum x^2 = 30$, $\\sum y = 16$, $\\sum xy = 47$, the normal equations give slope $a_1 =$ {{1}} and intercept $a_0 =$ {{2}}. The resulting sum of squared residuals is {{3}} (two decimals).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.4,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.2,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Eliminating $a_0$ gives $5 a_1 = 7$, so $a_1 = 1.4$ and $a_0 = 0.5$. Fitted values $1.9, 3.3, 4.7, 6.1$ give residuals $0.1, -0.3, 0.3, -0.1$ and squared-residual sum $0.01 + 0.09 + 0.09 + 0.01 = 0.20$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-025",
+      "format": "cloze",
+      "stem": "Classify the least-squares setup and its key properties.",
+      "solution": "Least squares minimizes the {{1}} of the residual vector. The minimizer is found by solving the normal equations $A^T A x =$ {{2}}, which express that the residual is orthogonal to the columns of $A$. Compared with the minimax criterion, least squares controls the {{3}} error rather than the worst-case error.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "2-norm",
+            "infinity-norm",
+            "1-norm"
+          ],
+          "answer": "2-norm"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "A^T b",
+            "A^Tb",
+            "$A^T b$",
+            "A transpose b"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "average squared",
+            "maximum",
+            "pointwise"
+          ],
+          "answer": "average squared"
+        }
+      ],
+      "explanation": "Least squares minimizes the 2-norm $\\|b - A x\\|_2$, solved via $A^T A x = A^T b$. This controls the aggregate (average squared) error, while the minimax criterion minimizes the maximum pointwise error instead.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-026",
+      "format": "cloze",
+      "stem": "Use Gram-Schmidt on $[0,1]$ with $\\langle f, g \\rangle = \\int_0^1 f g \\, dx$ to orthogonalize $\\{1, x\\}$.",
+      "solution": "Take $\\phi_0 = 1$, with $\\langle 1, 1 \\rangle = \\int_0^1 1 \\, dx =$ {{1}}. The projection coefficient of $x$ onto $\\phi_0$ is $\\langle x, 1 \\rangle = \\int_0^1 x \\, dx =$ {{2}}. Subtracting gives $\\phi_1 = x -$ {{3}}, which is orthogonal to the constant.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "$\\langle 1,1 \\rangle = 1$ and $\\langle x,1 \\rangle = 1/2$, so $\\phi_1 = x - \\frac{1/2}{1}\\cdot 1 = x - 1/2$. Indeed $\\int_0^1 (x - 1/2)\\, dx = 1/2 - 1/2 = 0$, confirming orthogonality.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-027",
+      "format": "cloze",
+      "stem": "Reason about fitting versus interpolation with least squares.",
+      "solution": "Fitting a quadratic ($3$ parameters) to exactly $3$ distinct points gives error {{1}}, because the quadratic interpolates the data. Genuine smoothing occurs only when there are {{2}} data points than parameters. The normal-equation matrix $A^T A$ is always {{3}}, which is why its symmetry is exploited in solvers.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "more",
+            "fewer",
+            "the same number of"
+          ],
+          "answer": "more"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "symmetric",
+            "diagonal",
+            "skew-symmetric"
+          ],
+          "answer": "symmetric"
+        }
+      ],
+      "explanation": "Three parameters fitted to three points interpolate exactly, so the error is zero. Smoothing needs more points than unknowns. $A^T A$ is always symmetric (and positive semidefinite), which solvers exploit.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-iii-least-squares-approximation-028",
+      "format": "cloze",
+      "stem": "Verify a perfect-fit case: the least-squares line through $(0,1)$, $(1,3)$, $(2,5)$.",
+      "solution": "The sums are $\\sum x = 3$, $\\sum x^2 = 5$, $\\sum y = 9$, $\\sum xy = 13$ with $n = 3$. Solving $3 a_0 + 3 a_1 = 9$ and $3 a_0 + 5 a_1 = 13$ gives slope $a_1 =$ {{1}} and intercept $a_0 =$ {{2}}. Because the points are {{3}}, the least-squares error is zero.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "collinear",
+            "scattered",
+            "duplicated"
+          ],
+          "answer": "collinear"
+        }
+      ],
+      "explanation": "Subtracting the equations gives $2 a_1 = 4$, so $a_1 = 2$ and $a_0 = 1$. The points lie exactly on $y = 1 + 2x$ (they are collinear), so all residuals are zero and the least-squares error is zero.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    }
+  ],
+  "status": "approved"
+}
