@@ -1,0 +1,502 @@
+{
+  "courseId": "math-biology-2",
+  "topicId": "epidemic-models",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "math-biology-2-epidemic-models-001",
+      "stem": "In the SIR model $\\dot{S} = -\\beta S I$, $\\dot{I} = \\beta S I - \\gamma I$, $\\dot{R} = \\gamma I$, the compartments $S$, $I$, $R$ stand for",
+      "options": [
+        "Stable, Increasing, Recovering",
+        "Source, Intermediate, Removed",
+        "Sick, Immune, Resistant",
+        "Susceptible, Infectious, Recovered"
+      ],
+      "answer": 3,
+      "explanation": "SIR partitions the population into Susceptible (can catch the disease), Infectious (currently infected and transmitting), and Recovered or Removed (immune, no longer susceptible or infectious). The flows run $S \\to I \\to R$.",
+      "difficulty": "warmup",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-002",
+      "stem": "In the SIR equations $\\dot{S} = -\\beta S I$, $\\dot{I} = \\beta S I - \\gamma I$, the parameter $\\gamma$ is the",
+      "options": [
+        "transmission rate",
+        "birth rate",
+        "recovery (removal) rate",
+        "contact number"
+      ],
+      "answer": 2,
+      "explanation": "The term $\\gamma I$ moves individuals from $I$ to $R$, so $\\gamma$ is the per capita recovery (removal) rate. Its reciprocal $1/\\gamma$ is the mean infectious period. The transmission rate is $\\beta$.",
+      "difficulty": "warmup",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-003",
+      "stem": "For the basic SIR model, the basic reproduction number is",
+      "options": [
+        "$R_0 = \\beta \\gamma$",
+        "$R_0 = \\gamma/\\beta$",
+        "$R_0 = \\beta - \\gamma$",
+        "$R_0 = \\beta/\\gamma$"
+      ],
+      "answer": 3,
+      "explanation": "The basic reproduction number is the average number of secondary infections produced by one infectious individual in a wholly susceptible population. It equals the transmission rate times the mean infectious period: $R_0 = \\beta \\cdot \\frac{1}{\\gamma} = \\frac{\\beta}{\\gamma}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-004",
+      "stem": "The mean infectious period in the SIR model (the average time an individual spends in compartment $I$) is",
+      "options": [
+        "$1/\\gamma$",
+        "$\\gamma$",
+        "$1/\\beta$",
+        "$\\beta/\\gamma$"
+      ],
+      "answer": 0,
+      "explanation": "Recovery is a constant-rate (exponential) process with rate $\\gamma$, so the average residence time in $I$ is $1/\\gamma$. This is why $R_0 = \\beta/\\gamma$ can be read as transmission rate $\\times$ infectious period.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-005",
+      "stem": "Starting from an almost entirely susceptible population ($S_0 \\approx 1$), an epidemic takes off (the number of infectives initially grows) if and only if",
+      "options": [
+        "$R_0 < 1$",
+        "$R_0 = 1$",
+        "$R_0 > 1$",
+        "$\\gamma > \\beta$"
+      ],
+      "answer": 2,
+      "explanation": "At the start $\\dot{I} = (\\beta S_0 - \\gamma) I \\approx (\\beta - \\gamma) I$. The infectives grow when $\\beta - \\gamma > 0$, that is $\\beta/\\gamma > 1$, i.e. $R_0 > 1$. This is the threshold theorem: an epidemic occurs only above $R_0 = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-006",
+      "stem": "The threshold value of $R_0$ separating a dying-out infection from an epidemic is",
+      "options": [
+        "$R_0 = 0$",
+        "$R_0 = 1$",
+        "$R_0 = 1/2$",
+        "$R_0 = \\infty$"
+      ],
+      "answer": 1,
+      "explanation": "At $R_0 = 1$ each infective replaces itself with exactly one new infective on average, so the infection neither grows nor declines. Below $1$ it fades; above $1$ it spreads. Hence $R_0 = 1$ is the critical threshold.",
+      "difficulty": "warmup",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-007",
+      "stem": "A disease has transmission rate $\\beta = 0.6$ per day and recovery rate $\\gamma = 0.2$ per day. Its basic reproduction number is",
+      "options": [
+        "3",
+        "1.2",
+        "0.33",
+        "0.12"
+      ],
+      "answer": 0,
+      "explanation": "$R_0 = \\frac{\\beta}{\\gamma} = \\frac{0.6}{0.2} = 3$. On average one infectious person generates three new infections in a fully susceptible population, so the disease will spread.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-008",
+      "stem": "The fraction of the population that must be immune to prevent an epidemic (the herd immunity threshold) is",
+      "options": [
+        "$1/R_0$",
+        "$R_0 - 1$",
+        "$1 - 1/R_0$",
+        "$1/(R_0 - 1)$"
+      ],
+      "answer": 2,
+      "explanation": "An epidemic is blocked once the susceptible fraction falls below $1/R_0$. The complementary fraction that must be immune is therefore $1 - 1/R_0$. Above this coverage, each case produces fewer than one secondary case and the infection cannot spread.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-009",
+      "stem": "Measles has $R_0 \\approx 4$. The herd immunity threshold (minimum immune fraction to stop spread) is about",
+      "options": [
+        "25%",
+        "50%",
+        "80%",
+        "75%"
+      ],
+      "answer": 3,
+      "explanation": "The herd immunity threshold is $1 - \\frac{1}{R_0} = 1 - \\frac{1}{4} = 0.75$, i.e. 75% must be immune. (Real measles has $R_0 \\approx 12$ to $18$, requiring well over 90%, but for $R_0 = 4$ the value is 75%.)",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-010",
+      "stem": "A disease has $R_0 = 5$. The minimum fraction that must be vaccinated to achieve herd immunity is",
+      "options": [
+        "0.2",
+        "0.5",
+        "0.8",
+        "0.9"
+      ],
+      "answer": 2,
+      "explanation": "$1 - \\frac{1}{R_0} = 1 - \\frac{1}{5} = 1 - 0.2 = 0.8$. So 80% of the population must be immune for the susceptible fraction to drop below the $1/R_0 = 0.2$ threshold.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-011",
+      "stem": "In the SIR model, the number of infectives $I(t)$ reaches its maximum (the epidemic peak) at the moment when",
+      "options": [
+        "$S = 1/R_0$",
+        "$S = R_0$",
+        "$I = R$",
+        "$S = 1$"
+      ],
+      "answer": 0,
+      "explanation": "The peak occurs when $\\dot{I} = 0$ with $I \\neq 0$: $\\beta S I - \\gamma I = 0$ gives $\\beta S = \\gamma$, so $S = \\gamma/\\beta = 1/R_0$. As $S$ falls through this value the epidemic turns over and infectives begin to decline.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-012",
+      "stem": "For an SIR epidemic with $R_0 = 4$, the susceptible fraction at the peak of the epidemic is",
+      "options": [
+        "0.25",
+        "0.5",
+        "0.75",
+        "4"
+      ],
+      "answer": 0,
+      "explanation": "The peak is where $S = 1/R_0 = 1/4 = 0.25$. Up to this point new infections outpace recoveries; once $S$ drops below $0.25$, recoveries dominate and $I$ declines.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-013",
+      "stem": "A key conclusion of the Kermack-McKendrick threshold theorem about how an epidemic ends is that",
+      "options": [
+        "the epidemic stops only when every individual has been infected",
+        "the epidemic stops while some susceptibles still remain uninfected",
+        "the number of infectives grows without bound",
+        "the susceptible population returns to its initial value"
+      ],
+      "answer": 1,
+      "explanation": "The epidemic dies out because $S$ falls below the threshold $1/R_0$ (so $\\dot{I} < 0$) while $I$ is still positive but declining. It burns out before exhausting the susceptibles, so a positive fraction $S_\\infty > 0$ escapes infection entirely.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-014",
+      "stem": "In the SIS model $\\dot{I} = \\beta S I - \\gamma I$ with $S = 1 - I$ (no immunity), recovered individuals",
+      "options": [
+        "gain permanent immunity",
+        "become infectious again at once",
+        "are removed from the population",
+        "return immediately to the susceptible class"
+      ],
+      "answer": 3,
+      "explanation": "SIS stands for Susceptible-Infectious-Susceptible: there is no immune compartment, so on recovery individuals flow straight back into $S$. This is appropriate for infections such as many bacterial STIs or the common cold that confer little lasting immunity.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-015",
+      "stem": "Writing the SIS model with $S = 1 - I$ gives $\\dot{I} = \\beta I(1 - I) - \\gamma I$. The nonzero endemic equilibrium is",
+      "options": [
+        "$I^* = 1 - \\gamma/\\beta$",
+        "$I^* = \\gamma/\\beta$",
+        "$I^* = \\beta/\\gamma$",
+        "$I^* = 1 + \\gamma/\\beta$"
+      ],
+      "answer": 0,
+      "explanation": "Set $\\dot{I} = I[\\beta(1 - I) - \\gamma] = 0$. The nonzero root needs $\\beta(1 - I) - \\gamma = 0$, so $1 - I = \\gamma/\\beta$ and $I^* = 1 - \\gamma/\\beta = 1 - 1/R_0$. This is positive only when $R_0 = \\beta/\\gamma > 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-016",
+      "stem": "An SIS infection has $\\beta = 0.5$ per day and $\\gamma = 0.2$ per day. The endemic equilibrium fraction infected $I^* = 1 - \\gamma/\\beta$ is",
+      "options": [
+        "0.4",
+        "0.6",
+        "0.2",
+        "2.5"
+      ],
+      "answer": 1,
+      "explanation": "First $R_0 = \\beta/\\gamma = 0.5/0.2 = 2.5 > 1$, so an endemic state exists. Then $I^* = 1 - \\gamma/\\beta = 1 - 0.4 = 0.6$. At steady state 60% of the population is infectious at any time.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-017",
+      "stem": "In the SIS model, if $R_0 = \\beta/\\gamma < 1$ then as $t \\to \\infty$ the infection",
+      "options": [
+        "settles to a positive endemic level",
+        "dies out, so $I \\to 0$",
+        "infects the whole population",
+        "oscillates forever"
+      ],
+      "answer": 1,
+      "explanation": "When $R_0 < 1$ the only nonnegative equilibrium is $I^* = 0$, and it is stable: $\\dot{I} \\approx (\\beta - \\gamma)I < 0$ near zero. So the prevalence decays to zero and the disease is eliminated. A positive endemic level requires $R_0 > 1$.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-018",
+      "stem": "A disease has a mean infectious period of $5$ days and each infectious person transmits at rate $\\beta = 0.8$ per day in a fully susceptible population. Its $R_0$ is",
+      "options": [
+        "0.16",
+        "1.6",
+        "4",
+        "6.25"
+      ],
+      "answer": 2,
+      "explanation": "With mean infectious period $1/\\gamma = 5$ days, $R_0 = \\beta \\times \\frac{1}{\\gamma} = 0.8 \\times 5 = 4$. Equivalently $\\gamma = 1/5 = 0.2$ per day and $R_0 = 0.8/0.2 = 4$.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-019",
+      "stem": "The effective reproduction number when a fraction $S$ of the population is still susceptible is $R_e = R_0 S$. The epidemic is in decline (infectives falling) when",
+      "options": [
+        "$R_e > 1$",
+        "$R_e = R_0$",
+        "$S = 1$",
+        "$R_e < 1$"
+      ],
+      "answer": 3,
+      "explanation": "Infectives change according to the sign of $R_e - 1$. When $R_e = R_0 S < 1$ each case produces fewer than one new case, so $\\dot{I} < 0$ and the epidemic recedes. This happens once $S < 1/R_0$.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-020",
+      "stem": "Dividing the SIR equations gives $\\frac{dI}{dS} = -1 + \\frac{\\gamma}{\\beta S} = -1 + \\frac{1}{R_0 S}$. Integrating this relation yields a conserved quantity that is used to derive",
+      "options": [
+        "the doubling time",
+        "the final epidemic size",
+        "the mean infectious period",
+        "the contact rate"
+      ],
+      "answer": 1,
+      "explanation": "Integrating $\\frac{dI}{dS}$ gives $I + S - \\frac{1}{R_0}\\ln S = \\text{const}$ along trajectories. Setting $I = 0$ at the start and end produces the final size relation $\\ln(S_0/S_\\infty) = R_0(S_0 - S_\\infty)$, which determines the total fraction infected over the whole epidemic.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-021",
+      "stem": "Which statement correctly distinguishes the long-run behaviour of the SIR and SIS models (with $R_0 > 1$)?",
+      "options": [
+        "Both approach an endemic steady state with $I > 0$",
+        "SIS has a single wave, SIR is endemic",
+        "Both end with $I \\to 0$",
+        "SIR has a single epidemic wave that ends with $I \\to 0$, while SIS can settle to a positive endemic level"
+      ],
+      "answer": 3,
+      "explanation": "In SIR, permanent immunity depletes susceptibles, so the infection produces one wave and then dies out ($I \\to 0$) with some susceptibles spared. In SIS, recovered individuals become susceptible again, replenishing $S$, so the infection can persist at the endemic level $I^* = 1 - 1/R_0$.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-022",
+      "format": "cloze",
+      "stem": "An SIR epidemic has transmission rate $\\beta = 0.45$ per day and recovery rate $\\gamma = 0.15$ per day.",
+      "solution": "The mean infectious period is $1/\\gamma =$ {{1}} days. The basic reproduction number is $R_0 = \\beta/\\gamma =$ {{2}}. Since this exceeds $1$, the disease initially {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6.67,
+          "tolerance": 0.05
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "spreads",
+            "dies out",
+            "stays constant"
+          ],
+          "answer": "spreads"
+        }
+      ],
+      "explanation": "Mean infectious period $1/\\gamma = 1/0.15 = 6.67$ days. $R_0 = \\beta/\\gamma = 0.45/0.15 = 3 > 1$, so $\\dot{I} > 0$ initially and the epidemic grows (spreads).",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-023",
+      "format": "cloze",
+      "stem": "A vaccination campaign targets a disease with basic reproduction number $R_0 = 5$.",
+      "solution": "The herd immunity threshold is $1 - 1/R_0$, so the minimum immune fraction needed is {{1}}. Once vaccination pushes the susceptible fraction below the critical value $1/R_0 =$ {{2}}, the effective reproduction number drops below $1$ and the epidemic cannot {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.8,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "spread",
+            "be eradicated",
+            "mutate"
+          ],
+          "answer": "spread"
+        }
+      ],
+      "explanation": "Herd immunity threshold $= 1 - 1/5 = 0.8$. The critical susceptible fraction is $1/R_0 = 1/5 = 0.2$. Below it $R_e = R_0 S < 1$, so each case yields fewer than one new case and the disease cannot spread.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-024",
+      "format": "cloze",
+      "stem": "Consider the SIS model $\\dot{I} = \\beta I(1 - I) - \\gamma I$ with $\\beta = 0.6$ and $\\gamma = 0.24$ per day.",
+      "solution": "The basic reproduction number is $R_0 = \\beta/\\gamma =$ {{1}}. Because $R_0 > 1$, there is a positive endemic equilibrium at $I^* = 1 - 1/R_0 =$ {{2}}, and this endemic state is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.6,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "stable",
+            "unstable"
+          ],
+          "answer": "stable"
+        }
+      ],
+      "explanation": "$R_0 = 0.6/0.24 = 2.5$. Endemic level $I^* = 1 - 1/R_0 = 1 - 0.4 = 0.6$. For $R_0 > 1$ the endemic equilibrium is stable while the disease-free state $I = 0$ is unstable, so prevalence settles at $I^* = 0.6$.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-025",
+      "format": "cloze",
+      "stem": "An SIR epidemic has $R_0 = 4$. Track the turning point of the outbreak.",
+      "solution": "The number of infectives peaks when the susceptible fraction falls to $S = 1/R_0 =$ {{1}}. While $S$ is above this value the infectives are {{2}}; once $S$ drops below it, the infectives {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "increasing",
+            "decreasing"
+          ],
+          "answer": "increasing"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "increase",
+            "decrease"
+          ],
+          "answer": "decrease"
+        }
+      ],
+      "explanation": "Peak at $S = 1/R_0 = 1/4 = 0.25$, where $\\dot{I} = 0$. For $S > 0.25$, $R_e = R_0 S > 1$ so infectives rise; for $S < 0.25$, $R_e < 1$ so they fall.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-026",
+      "format": "cloze",
+      "stem": "Classify the basic SIR and SIS modelling assumptions about immunity after recovery.",
+      "solution": "In the SIR model, recovered individuals are assumed to gain {{1}} immunity and never re-enter the susceptible pool. In the SIS model, recovery confers {{2}} immunity, so individuals can be reinfected. This difference is why only the {{3}} model can sustain a disease at a constant endemic level without births.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "permanent",
+            "no",
+            "partial temporary"
+          ],
+          "answer": "permanent"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "permanent",
+            "no",
+            "lifelong"
+          ],
+          "answer": "no"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "SIS",
+            "sis"
+          ]
+        }
+      ],
+      "explanation": "SIR assumes permanent immunity (one pass through $R$); SIS assumes no immunity (straight back to $S$). Because SIS recycles individuals into the susceptible pool, it alone can hold a steady endemic prevalence $I^* = 1 - 1/R_0$ in this simple closed-population setting.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-epidemic-models-027",
+      "format": "cloze",
+      "stem": "A pathogen has a mean infectious period of $4$ days and transmission rate $\\beta = 0.75$ per day in a fully susceptible population.",
+      "solution": "The recovery rate is $\\gamma = 1/4 =$ {{1}} per day. The basic reproduction number is $R_0 = \\beta/\\gamma =$ {{2}}, and the herd immunity threshold $1 - 1/R_0$ is {{3}} (as a decimal fraction, to two places).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.67,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "$\\gamma = 1/4 = 0.25$ per day. $R_0 = \\beta/\\gamma = 0.75/0.25 = 3$. Herd immunity threshold $= 1 - 1/3 = 0.6667 \\approx 0.67$.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    }
+  ]
+}

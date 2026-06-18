@@ -1,0 +1,474 @@
+{
+  "courseId": "real-function-2",
+  "topicId": "lebesgue-integration",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-function-2-lebesgue-integration-001",
+      "stem": "For a nonnegative simple function $\\varphi = \\sum_{k=1}^n c_k \\chi_{E_k}$ (with disjoint measurable $E_k$), the Lebesgue integral $\\int \\varphi\\, d\\mu$ is defined as:",
+      "options": [
+        "$\\sum_{k=1}^n c_k$.",
+        "$\\prod_{k=1}^n c_k\\, \\mu(E_k)$.",
+        "$\\max_k c_k\\, \\mu(E_k)$.",
+        "$\\sum_{k=1}^n c_k\\, \\mu(E_k)$."
+      ],
+      "answer": 3,
+      "explanation": "The Lebesgue integral of a nonnegative simple function is the weighted sum of its values by the measures of the corresponding sets: $\\int \\varphi\\,d\\mu = \\sum_k c_k\\, \\mu(E_k)$ (with the convention $0 \\cdot \\infty = 0$). This generalizes 'value times length' and is the base case from which the whole theory is built.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-002",
+      "stem": "For a nonnegative measurable function $f$, the Lebesgue integral $\\int f\\, d\\mu$ is defined as:",
+      "options": [
+        "$\\sup\\left\\{ \\int \\varphi\\, d\\mu : 0 \\le \\varphi \\le f,\\ \\varphi \\text{ simple} \\right\\}$.",
+        "$\\inf\\left\\{ \\int \\psi\\, d\\mu : \\psi \\ge f \\right\\}$.",
+        "the limit of Riemann sums.",
+        "$f(0)\\,\\mu(X)$."
+      ],
+      "answer": 0,
+      "explanation": "For nonnegative measurable $f$, the integral is the supremum of integrals of simple functions $\\varphi$ that lie below $f$: $\\int f = \\sup\\{\\int \\varphi : 0 \\le \\varphi \\le f,\\ \\varphi \\text{ simple}\\}$. Approximating from below by simple functions (not from above, and not via Riemann sums) is the hallmark of the Lebesgue construction.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-003",
+      "stem": "A measurable function $f$ (real or extended-real valued) is said to be Lebesgue integrable when:",
+      "options": [
+        "$f$ is bounded.",
+        "$f$ is continuous.",
+        "$\\int |f|\\, d\\mu < \\infty$.",
+        "$\\int f\\, d\\mu = 0$."
+      ],
+      "answer": 2,
+      "explanation": "$f$ is integrable iff $\\int |f|\\,d\\mu < \\infty$. Equivalently both $\\int f^+$ and $\\int f^-$ are finite, and then $\\int f = \\int f^+ - \\int f^-$. Boundedness, continuity, or a vanishing integral are neither necessary nor sufficient for integrability; finiteness of the integral of the absolute value is the criterion.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-004",
+      "stem": "For a general integrable $f$, the Lebesgue integral is defined via the positive and negative parts as:",
+      "options": [
+        "$\\int f = \\int f^+ + \\int f^-$.",
+        "$\\int f = \\int f^+ - \\int f^-$.",
+        "$\\int f = \\int |f|$.",
+        "$\\int f = \\int f^+ \\cdot \\int f^-$."
+      ],
+      "answer": 1,
+      "explanation": "Writing $f = f^+ - f^-$ with both parts nonnegative and integrable, linearity gives $\\int f = \\int f^+ - \\int f^-$. Adding instead of subtracting would give $\\int |f|$, since $|f| = f^+ + f^-$. The difference of the two nonnegative integrals is the correct definition.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-005",
+      "stem": "The Lebesgue integral of the indicator function $\\chi_E$ over a measure space equals:",
+      "options": [
+        "$1$ always.",
+        "$0$ always.",
+        "$\\mu(E^c)$.",
+        "$\\mu(E)$."
+      ],
+      "answer": 3,
+      "explanation": "$\\chi_E$ is the simple function $1 \\cdot \\chi_E$, so $\\int \\chi_E\\,d\\mu = 1 \\cdot \\mu(E) = \\mu(E)$. This is the most basic computation in Lebesgue theory: the integral of an indicator recovers the measure of the set. More generally $\\int_A \\chi_E = \\mu(A \\cap E)$.",
+      "difficulty": "warmup",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-006",
+      "stem": "Compute $\\int_{[0,5]} 3\\, dm$, the Lebesgue integral of the constant $3$ over $[0,5]$.",
+      "options": [
+        "$15$.",
+        "$3$.",
+        "$5$.",
+        "$8$."
+      ],
+      "answer": 0,
+      "explanation": "The constant $3$ is the simple function $3\\chi_{[0,5]}$, so $\\int_{[0,5]} 3\\,dm = 3 \\cdot m([0,5]) = 3 \\cdot 5 = 15$. For a constant $c$ on a set of measure $\\mu(E)$, the integral is $c\\,\\mu(E)$, matching the area of a rectangle.",
+      "difficulty": "warmup",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-007",
+      "stem": "Why is the Dirichlet function $D = \\chi_{\\mathbb{Q}}$ Lebesgue integrable on $[0,1]$ with $\\int_{[0,1]} D\\, dm = 0$?",
+      "options": [
+        "Because $D$ is continuous.",
+        "Because the rationals are uncountable.",
+        "Because $D = \\chi_{\\mathbb{Q} \\cap [0,1]}$ and $m(\\mathbb{Q} \\cap [0,1]) = 0$, so $\\int D = m(\\mathbb{Q}\\cap[0,1]) = 0$.",
+        "Because $D$ is unbounded."
+      ],
+      "answer": 2,
+      "explanation": "$D$ is the indicator of the rationals, so $\\int_{[0,1]} D\\,dm = m(\\mathbb{Q} \\cap [0,1]) = 0$ because the rationals form a null set. Thus $D$ is Lebesgue integrable with integral $0$, even though it is nowhere continuous and (famously) not Riemann integrable. The function is bounded, and the rationals are countable.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-008",
+      "stem": "The contrast between the Dirichlet function being Lebesgue integrable but not Riemann integrable illustrates that:",
+      "options": [
+        "the two integrals always disagree.",
+        "the Lebesgue integral handles functions whose discontinuities are too dense for Riemann integration.",
+        "Riemann integration is strictly more general.",
+        "Lebesgue integration requires continuity."
+      ],
+      "answer": 1,
+      "explanation": "Riemann integration fails for $D$ because its set of discontinuities is all of $[0,1]$ (which does not have measure zero), so upper and lower sums never agree. Lebesgue integration, working from the range side, handles it easily. The Lebesgue integral extends the Riemann integral: whenever a bounded function is Riemann integrable on a bounded interval, the two values agree.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-009",
+      "stem": "Linearity of the Lebesgue integral states that for integrable $f, g$ and scalars $a, b$:",
+      "options": [
+        "$\\int (af + bg) = \\int f \\cdot \\int g$.",
+        "$\\int (af + bg) = \\int f + \\int g$ regardless of $a, b$.",
+        "$\\int (af + bg) = ab \\int (f + g)$.",
+        "$\\int (af + bg) = a\\int f + b\\int g$."
+      ],
+      "answer": 3,
+      "explanation": "The Lebesgue integral is linear: $\\int (af + bg)\\,d\\mu = a\\int f\\,d\\mu + b\\int g\\,d\\mu$ for integrable $f, g$ and constants $a, b$. Scalars factor out and sums split. The product or other combinations do not describe linearity.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-010",
+      "stem": "Monotonicity of the Lebesgue integral states that if $f \\le g$ (both integrable), then:",
+      "options": [
+        "$\\int f \\le \\int g$.",
+        "$\\int f \\ge \\int g$.",
+        "$\\int f = \\int g$.",
+        "$\\int f \\cdot \\int g \\le 0$."
+      ],
+      "answer": 0,
+      "explanation": "If $f \\le g$ pointwise then $g - f \\ge 0$, so $\\int (g - f) \\ge 0$, giving $\\int f \\le \\int g$ by linearity. This monotonicity is one of the basic order properties of the integral and underlies many comparison estimates.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-011",
+      "stem": "Compute the Lebesgue integral of the simple function $\\varphi = 2\\chi_{[0,1]} + 5\\chi_{(1,4]}$ with respect to Lebesgue measure.",
+      "options": [
+        "$7$.",
+        "$10$.",
+        "$17$.",
+        "$22$."
+      ],
+      "answer": 2,
+      "explanation": "Apply the simple-function formula: $\\int \\varphi = 2 \\cdot m([0,1]) + 5 \\cdot m((1,4]) = 2 \\cdot 1 + 5 \\cdot 3 = 2 + 15 = 17$. The set $(1,4]$ has length $3$, contributing the larger term.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-012",
+      "stem": "If $f \\ge 0$ is measurable and $\\int f\\, d\\mu = 0$, what can be concluded?",
+      "options": [
+        "$f$ is bounded.",
+        "$f = 0$ almost everywhere.",
+        "$f$ is continuous.",
+        "$f \\equiv 0$ everywhere."
+      ],
+      "answer": 1,
+      "explanation": "For a nonnegative measurable $f$, $\\int f\\,d\\mu = 0$ forces $f = 0$ almost everywhere (the set $\\{f > 1/n\\}$ must have measure $0$ for each $n$, and their union is $\\{f > 0\\}$). The function may still be nonzero on a null set, so 'everywhere' is too strong; continuity and boundedness do not follow.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-013",
+      "stem": "If $f = g$ almost everywhere and $f$ is integrable, then:",
+      "options": [
+        "$\\int f$ and $\\int g$ may differ.",
+        "$g$ is not integrable.",
+        "$g$ must be continuous.",
+        "$\\int f\\, d\\mu = \\int g\\, d\\mu$."
+      ],
+      "answer": 3,
+      "explanation": "Changing an integrand on a null set does not change its Lebesgue integral, so $f = g$ a.e. implies $\\int f = \\int g$ (and $g$ is integrable too). This is why the Lebesgue integral naturally lives on equivalence classes of functions equal almost everywhere.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-014",
+      "stem": "Compute $\\int_{[0,2]} x\\, dm$, the Lebesgue integral of $f(x) = x$ over $[0,2]$.",
+      "options": [
+        "$2$.",
+        "$1$.",
+        "$4$.",
+        "$\\dfrac{1}{2}$."
+      ],
+      "answer": 0,
+      "explanation": "Since $f(x) = x$ is continuous on $[0,2]$, it is Riemann integrable and the Lebesgue integral agrees: $\\int_{[0,2]} x\\,dm = \\int_0^2 x\\,dx = [x^2/2]_0^2 = 2$. The Lebesgue and Riemann values coincide for such well-behaved functions.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-015",
+      "stem": "The triangle inequality for integrals states that for integrable $f$:",
+      "options": [
+        "$\\left| \\int f \\right| \\ge \\int |f|$.",
+        "$\\left| \\int f \\right| = \\int |f|$ always.",
+        "$\\left| \\int f\\, d\\mu \\right| \\le \\int |f|\\, d\\mu$.",
+        "$\\int |f| \\le \\left| \\int f \\right|$."
+      ],
+      "answer": 2,
+      "explanation": "Since $-|f| \\le f \\le |f|$, monotonicity gives $-\\int|f| \\le \\int f \\le \\int |f|$, that is $|\\int f| \\le \\int |f|$. Equality holds only when $f$ does not change sign (a.e.). The reverse inequality is false in general because cancellation can shrink $\\int f$.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-016",
+      "stem": "Compute the Lebesgue integral $\\int_{[0,10]} \\chi_{[2,5]}\\, dm$.",
+      "options": [
+        "$10$.",
+        "$3$.",
+        "$5$.",
+        "$2$."
+      ],
+      "answer": 1,
+      "explanation": "The integral of an indicator is the measure of the set (intersected with the domain): $\\int_{[0,10]} \\chi_{[2,5]}\\,dm = m([2,5]) = 5 - 2 = 3$, since $[2,5] \\subseteq [0,10]$. The surrounding interval $[0,10]$ only matters to the extent it contains $[2,5]$.",
+      "difficulty": "warmup",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-017",
+      "stem": "Countable additivity of the integral over domains states that if $E = \\bigsqcup_n E_n$ (disjoint measurable sets) and $f \\ge 0$ is measurable, then $\\int_E f\\, d\\mu$ equals:",
+      "options": [
+        "$\\int_{E_1} f$ only.",
+        "$\\max_n \\int_{E_n} f$.",
+        "$\\left(\\sum_n \\mu(E_n)\\right) f$.",
+        "$\\sum_n \\int_{E_n} f\\, d\\mu$."
+      ],
+      "answer": 3,
+      "explanation": "For nonnegative measurable $f$, the set function $E \\mapsto \\int_E f\\,d\\mu$ is itself a measure, so it is countably additive: $\\int_{\\sqcup_n E_n} f = \\sum_n \\int_{E_n} f$. This follows from the Monotone Convergence Theorem applied to partial sums of indicators.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-018",
+      "stem": "Is the function $f(x) = 1/x$ Lebesgue integrable on $(0,1]$ with respect to Lebesgue measure?",
+      "options": [
+        "No, because $\\int_{(0,1]} \\frac{1}{x}\\, dm = \\infty$.",
+        "Yes, with integral $1$.",
+        "Yes, with integral $0$.",
+        "Yes, because $f$ is continuous on $(0,1]$."
+      ],
+      "answer": 0,
+      "explanation": "Although $1/x$ is continuous on $(0,1]$, it is not Lebesgue integrable there because $\\int_{(0,1]} \\frac{1}{x}\\,dm = \\lim_{\\varepsilon \\to 0^+}\\int_\\varepsilon^1 \\frac{dx}{x} = \\lim_{\\varepsilon\\to 0^+} (-\\ln \\varepsilon) = \\infty$. Integrability requires $\\int |f| < \\infty$, which fails here. Continuity alone does not ensure integrability on a non-compact domain.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-019",
+      "stem": "Is $f(x) = 1/\\sqrt{x}$ Lebesgue integrable on $(0,1]$, and what is the integral if it exists?",
+      "options": [
+        "Not integrable; the integral diverges.",
+        "Integrable, with integral $1$.",
+        "Integrable, with integral $2$.",
+        "Integrable, with integral $\\infty$."
+      ],
+      "answer": 2,
+      "explanation": "Here $\\int_{(0,1]} x^{-1/2}\\,dm = \\lim_{\\varepsilon \\to 0^+} \\int_\\varepsilon^1 x^{-1/2}\\,dx = \\lim_{\\varepsilon\\to 0^+} [2\\sqrt{x}]_\\varepsilon^1 = 2 - 0 = 2$. The singularity at $0$ is mild enough ($p = 1/2 < 1$) that the integral converges to the finite value $2$, so $f$ is Lebesgue integrable.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-020",
+      "stem": "For a bounded function on a bounded interval, the relationship between the Riemann and Lebesgue integrals is:",
+      "options": [
+        "they never agree.",
+        "if Riemann integrable, then Lebesgue integrable with the same value.",
+        "Lebesgue integrability implies Riemann integrability.",
+        "the Lebesgue integral is always larger."
+      ],
+      "answer": 1,
+      "explanation": "If a bounded function on a bounded interval is Riemann integrable, it is also Lebesgue integrable and the two integrals coincide. The converse is false (the Dirichlet function is Lebesgue but not Riemann integrable), so Lebesgue integrability is the more general notion, and neither integral systematically exceeds the other.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-021",
+      "stem": "Lebesgue's criterion for Riemann integrability states that a bounded $f$ on $[a,b]$ is Riemann integrable if and only if:",
+      "options": [
+        "$f$ is monotone.",
+        "$f$ has finitely many discontinuities.",
+        "$f$ is continuous everywhere.",
+        "the set of discontinuities of $f$ has Lebesgue measure zero."
+      ],
+      "answer": 3,
+      "explanation": "Lebesgue's criterion: a bounded function on $[a,b]$ is Riemann integrable exactly when its set of discontinuities is a Lebesgue null set. Finitely many discontinuities is sufficient but not necessary (a function can be discontinuous on a countable dense set and still be integrable), and full continuity is far stronger than needed.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-022",
+      "stem": "Compute the Lebesgue integral of $\\varphi = 4\\chi_{[0,2]} - \\chi_{[2,5]}$ over $\\mathbb{R}$ (note: the value at the shared point $2$ does not affect the integral).",
+      "options": [
+        "$5$.",
+        "$8$.",
+        "$11$.",
+        "$3$."
+      ],
+      "answer": 0,
+      "explanation": "By linearity, $\\int \\varphi = 4\\,m([0,2]) - 1\\,m([2,5]) = 4 \\cdot 2 - 1 \\cdot 3 = 8 - 3 = 5$. Overlap at the single point $\\{2\\}$ has measure $0$ and contributes nothing, so we may treat the pieces as essentially disjoint.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-023",
+      "stem": "If $\\int_E |f|\\, d\\mu = 0$ for a measurable function $f$, what follows?",
+      "options": [
+        "$f$ is constant on $E$.",
+        "$f$ is bounded on $E$.",
+        "$f = 0$ almost everywhere on $E$.",
+        "$\\mu(E) = 0$."
+      ],
+      "answer": 2,
+      "explanation": "Since $|f| \\ge 0$, $\\int_E |f| = 0$ implies $|f| = 0$ a.e. on $E$, i.e. $f = 0$ almost everywhere on $E$. This need not force $\\mu(E) = 0$ (the set $E$ can be large; it is $f$ that vanishes a.e.), nor does it say anything about $f$ being constant or bounded beyond being $0$ a.e.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-024",
+      "stem": "Using linearity, if $\\int_E f\\, d\\mu = 10$ and $\\int_E g\\, d\\mu = 4$, what is $\\int_E (3f - 2g)\\, d\\mu$?",
+      "options": [
+        "$38$.",
+        "$22$.",
+        "$26$.",
+        "$14$."
+      ],
+      "answer": 1,
+      "explanation": "By linearity, $\\int_E (3f - 2g) = 3\\int_E f - 2\\int_E g = 3 \\cdot 10 - 2 \\cdot 4 = 30 - 8 = 22$. Constants pull out and the integral splits over the sum, so the computation is purely arithmetic.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-025",
+      "format": "cloze",
+      "stem": "Integrate simple functions and an indicator under Lebesgue measure $m$.",
+      "solution": "The integral $\\int_{[0,7]} \\chi_{[1,4]}\\, dm$ equals the measure of $[1,4]$, namely {{1}}. For the constant $6$ on $[0,3]$, the integral $\\int_{[0,3]} 6\\, dm$ equals {{2}}. For the simple function $3\\chi_{[0,2]} + 4\\chi_{(2,5]}$, the integral equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 18,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 18,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\int \\chi_{[1,4]} = m([1,4]) = 3$. $\\int_{[0,3]} 6\\,dm = 6 \\cdot 3 = 18$. For the simple function, $3 \\cdot m([0,2]) + 4 \\cdot m((2,5]) = 3 \\cdot 2 + 4 \\cdot 3 = 6 + 12 = 18$.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-026",
+      "format": "cloze",
+      "stem": "Examine the Dirichlet function $D = \\chi_{\\mathbb{Q}}$ on $[0,1]$ from both the Lebesgue and Riemann viewpoints.",
+      "solution": "The Lebesgue integral $\\int_{[0,1]} D\\, dm$ equals the measure of the rationals in $[0,1]$, which is {{1}}. So $D$ is Lebesgue integrable: answer {{2}}. However $D$ is Riemann integrable on $[0,1]$: answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "$D = \\chi_{\\mathbb{Q}\\cap[0,1]}$, so $\\int_{[0,1]} D\\,dm = m(\\mathbb{Q}\\cap[0,1]) = 0$; it is Lebesgue integrable (yes). Its set of discontinuities is all of $[0,1]$, which is not null, so it is not Riemann integrable (no).",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-027",
+      "format": "cloze",
+      "stem": "Apply linearity and monotonicity. Suppose $\\int_E f\\, dm = 12$ and $\\int_E g\\, dm = 5$.",
+      "solution": "By linearity, $\\int_E (f - g)\\, dm$ equals {{1}}, and $\\int_E 2f\\, dm$ equals {{2}}. If in addition $f \\le g$ on $E$ were claimed, would that be consistent with these integrals? Answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 24,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "Linearity: $\\int_E (f-g) = 12 - 5 = 7$ and $\\int_E 2f = 2 \\cdot 12 = 24$. If $f \\le g$ on $E$, monotonicity would force $\\int_E f \\le \\int_E g$, i.e. $12 \\le 5$, which is false, so it is not consistent (no).",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-lebesgue-integration-028",
+      "format": "cloze",
+      "stem": "Decide Lebesgue integrability on $(0,1]$ and record the integral where it converges.",
+      "solution": "For $f(x) = x^{-1/2}$ on $(0,1]$, the integral $\\int_{(0,1]} x^{-1/2}\\, dm$ converges to the value {{1}}, so $f$ is integrable: answer {{2}}. For $g(x) = x^{-1}$ on $(0,1]$, the integral diverges, so $g$ is Lebesgue integrable: answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "$\\int_{(0,1]} x^{-1/2}\\,dm = [2\\sqrt{x}]_0^1 = 2$, finite, so $x^{-1/2}$ is integrable (yes). $\\int_{(0,1]} x^{-1}\\,dm = \\infty$, so $x^{-1}$ is not Lebesgue integrable (no).",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    }
+  ]
+}

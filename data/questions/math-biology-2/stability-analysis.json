@@ -1,0 +1,512 @@
+{
+  "courseId": "math-biology-2",
+  "topicId": "stability-analysis",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "math-biology-2-stability-analysis-001",
+      "stem": "For the scalar model $\\dot{x} = f(x)$, an equilibrium (steady state) $x^*$ is a value satisfying",
+      "options": [
+        "$f''(x^*) = 0$",
+        "$f'(x^*) = 0$",
+        "$f(x^*) = x^*$",
+        "$f(x^*) = 0$"
+      ],
+      "answer": 3,
+      "explanation": "At an equilibrium the state does not change, so $\\dot{x} = 0$, that is $f(x^*) = 0$. The condition $f'(x^*) = 0$ concerns the stability or a bifurcation, and $f(x^*) = x^*$ would be a fixed point of a map, not of the flow.",
+      "difficulty": "warmup",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-002",
+      "stem": "For $\\dot{x} = f(x)$, the equilibrium $x^*$ is linearly stable when",
+      "options": [
+        "$f'(x^*) > 0$",
+        "$f'(x^*) < 0$",
+        "$f(x^*) > 0$",
+        "$f'(x^*) = 0$"
+      ],
+      "answer": 1,
+      "explanation": "Writing $x = x^* + \\eta$, the perturbation obeys $\\dot{\\eta} \\approx f'(x^*)\\eta$, so $\\eta(t) = \\eta_0 e^{f'(x^*)t}$. It decays (stability) precisely when $f'(x^*) < 0$. A positive slope gives growth, and a zero slope is the marginal case.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-003",
+      "stem": "Consider $\\dot{x} = x(1 - x)$. The equilibria and their stability are",
+      "options": [
+        "$x^* = 0$ stable, $x^* = 1$ unstable",
+        "both unstable",
+        "$x^* = 0$ unstable, $x^* = 1$ stable",
+        "both stable"
+      ],
+      "answer": 2,
+      "explanation": "Roots of $x(1-x) = 0$ are $x^* = 0$ and $x^* = 1$. With $f'(x) = 1 - 2x$: $f'(0) = 1 > 0$ (unstable) and $f'(1) = 1 - 2 = -1 < 0$ (stable). This is the logistic pattern.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-004",
+      "stem": "For $\\dot{x} = x - x^3$, classify the three equilibria.",
+      "options": [
+        "$x^* = 0$ unstable; $x^* = \\pm 1$ stable",
+        "all three stable",
+        "$x^* = 0$ stable; $x^* = \\pm 1$ unstable",
+        "all three unstable"
+      ],
+      "answer": 0,
+      "explanation": "Factor $x - x^3 = x(1 - x^2) = 0$, giving $x^* = 0, \\pm 1$. With $f'(x) = 1 - 3x^2$: $f'(0) = 1 > 0$ (unstable), and $f'(\\pm 1) = 1 - 3 = -2 < 0$ (stable). The outer two states are stable, the middle one unstable.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-005",
+      "stem": "For a planar system $\\dot{x} = f(x,y)$, $\\dot{y} = g(x,y)$, the Jacobian matrix is",
+      "options": [
+        "$\\begin{pmatrix} f_x & g_x \\\\ f_y & g_y \\end{pmatrix}$",
+        "$\\begin{pmatrix} f_{xx} & f_{xy} \\\\ g_{xx} & g_{xy} \\end{pmatrix}$",
+        "$\\begin{pmatrix} f & g \\\\ f & g \\end{pmatrix}$",
+        "$\\begin{pmatrix} f_x & f_y \\\\ g_x & g_y \\end{pmatrix}$"
+      ],
+      "answer": 3,
+      "explanation": "The Jacobian collects the first partial derivatives: row one is the gradient of $f$, row two the gradient of $g$, i.e. $J = \\begin{pmatrix} f_x & f_y \\\\ g_x & g_y \\end{pmatrix}$. Evaluated at an equilibrium it governs the linearized dynamics.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-006",
+      "stem": "For a $2 \\times 2$ Jacobian $J$ with trace $\\tau$ and determinant $\\Delta$, the eigenvalues satisfy",
+      "options": [
+        "$\\lambda^2 + \\tau\\lambda + \\Delta = 0$",
+        "$\\lambda^2 - \\tau\\lambda + \\Delta = 0$",
+        "$\\lambda = \\tau \\pm \\Delta$",
+        "$\\lambda^2 - \\Delta\\lambda + \\tau = 0$"
+      ],
+      "answer": 1,
+      "explanation": "The characteristic equation of a $2\\times 2$ matrix is $\\lambda^2 - (\\text{tr}\\,J)\\lambda + \\det J = 0$, that is $\\lambda^2 - \\tau\\lambda + \\Delta = 0$. Its roots are $\\lambda = \\tfrac{1}{2}\\left(\\tau \\pm \\sqrt{\\tau^2 - 4\\Delta}\\right)$.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-007",
+      "stem": "An equilibrium of a planar system is asymptotically stable (both eigenvalues have negative real part) if and only if",
+      "options": [
+        "$\\tau > 0$ and $\\Delta > 0$",
+        "$\\tau < 0$ and $\\Delta < 0$",
+        "$\\tau < 0$ and $\\Delta > 0$",
+        "$\\Delta < 0$"
+      ],
+      "answer": 2,
+      "explanation": "For the quadratic $\\lambda^2 - \\tau\\lambda + \\Delta = 0$, the sum of roots is $\\tau$ and the product is $\\Delta$. Both roots have negative real part exactly when $\\tau < 0$ (negative sum) and $\\Delta > 0$ (positive product). This is the trace-determinant stability criterion.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-008",
+      "stem": "If the determinant of the Jacobian at an equilibrium is negative ($\\Delta < 0$), the equilibrium is",
+      "options": [
+        "a saddle point",
+        "a stable node",
+        "a center",
+        "a stable spiral"
+      ],
+      "answer": 0,
+      "explanation": "When $\\Delta < 0$ the product of the eigenvalues is negative, so they are real with opposite signs. One direction grows, the other decays: this is a saddle point, which is always unstable.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-009",
+      "stem": "Find the eigenvalues and type of the equilibrium for the linear system with Jacobian $J = \\begin{pmatrix} -2 & 1 \\\\ 0 & -3 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 2, 3$; unstable node",
+        "$\\lambda = -2, -3$; stable node",
+        "$\\lambda = \\pm i$; center",
+        "$\\lambda = -2, 3$; saddle"
+      ],
+      "answer": 1,
+      "explanation": "The matrix is upper triangular, so the eigenvalues are the diagonal entries $\\lambda = -2$ and $\\lambda = -3$. Both are real and negative, so the equilibrium is a stable node. (Check: $\\tau = -5 < 0$, $\\Delta = 6 > 0$, $\\tau^2 - 4\\Delta = 25 - 24 = 1 > 0$.)",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-010",
+      "stem": "For the system with Jacobian $J = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$, the equilibrium is",
+      "options": [
+        "a stable node",
+        "a center",
+        "a saddle point",
+        "a stable spiral"
+      ],
+      "answer": 2,
+      "explanation": "Here $\\tau = 2$ and $\\Delta = (1)(1) - (2)(2) = 1 - 4 = -3 < 0$. A negative determinant means a saddle. (Eigenvalues: $\\lambda = \\tfrac{1}{2}(2 \\pm \\sqrt{4 + 12}) = 1 \\pm 2$, i.e. $3$ and $-1$, confirming opposite signs.)",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-011",
+      "stem": "For $J = \\begin{pmatrix} 0 & -4 \\\\ 1 & 0 \\end{pmatrix}$, the eigenvalues and equilibrium type are",
+      "options": [
+        "$\\lambda = \\pm 2$; saddle",
+        "$\\lambda = \\pm 2i$; center",
+        "$\\lambda = -2, -2$; stable node",
+        "$\\lambda = 2i$ only; spiral"
+      ],
+      "answer": 1,
+      "explanation": "$\\tau = 0$ and $\\Delta = (0)(0) - (-4)(1) = 4 > 0$. The characteristic equation is $\\lambda^2 + 4 = 0$, so $\\lambda = \\pm 2i$, purely imaginary. A zero trace with positive determinant gives a center: closed orbits around the equilibrium.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-012",
+      "stem": "For $J = \\begin{pmatrix} -1 & -2 \\\\ 2 & -1 \\end{pmatrix}$, the equilibrium is",
+      "options": [
+        "an unstable spiral",
+        "a saddle",
+        "a stable spiral (focus)",
+        "a center"
+      ],
+      "answer": 2,
+      "explanation": "$\\tau = -2 < 0$, $\\Delta = (-1)(-1) - (-2)(2) = 1 + 4 = 5 > 0$, and the discriminant $\\tau^2 - 4\\Delta = 4 - 20 = -16 < 0$. Complex eigenvalues with negative real part ($\\lambda = -1 \\pm 2i$) give a stable spiral.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-013",
+      "stem": "In the trace-determinant plane, the parabola $\\tau^2 = 4\\Delta$ separates",
+      "options": [
+        "stable from unstable equilibria",
+        "saddles from nodes",
+        "centers from spirals",
+        "nodes (real eigenvalues) from spirals (complex eigenvalues)"
+      ],
+      "answer": 3,
+      "explanation": "The eigenvalues are real when the discriminant $\\tau^2 - 4\\Delta \\ge 0$ (nodes) and complex when $\\tau^2 - 4\\Delta < 0$ (spirals/foci). The curve $\\tau^2 = 4\\Delta$ is exactly where the discriminant vanishes, so it is the node-spiral boundary.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-014",
+      "stem": "For $J = \\begin{pmatrix} 3 & 0 \\\\ 0 & 2 \\end{pmatrix}$, the equilibrium is",
+      "options": [
+        "an unstable node",
+        "a stable node",
+        "a saddle",
+        "a center"
+      ],
+      "answer": 0,
+      "explanation": "Eigenvalues are the diagonal entries $3$ and $2$, both real and positive. Two positive eigenvalues give an unstable node: every direction grows. (Check: $\\tau = 5 > 0$, $\\Delta = 6 > 0$, $\\tau^2 - 4\\Delta = 1 > 0$.)",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-015",
+      "stem": "An equilibrium with eigenvalues $\\lambda = 2 \\pm 3i$ (positive real part, nonzero imaginary part) is",
+      "options": [
+        "a stable spiral",
+        "a center",
+        "an unstable spiral (focus)",
+        "a saddle"
+      ],
+      "answer": 2,
+      "explanation": "Complex eigenvalues mean spiralling trajectories; the positive real part ($2 > 0$) means the spiral grows outward. So the equilibrium is an unstable spiral (unstable focus).",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-016",
+      "stem": "The Hartman-Grobman theorem justifies linear stability analysis by stating that, near a hyperbolic equilibrium (no eigenvalue with zero real part), the nonlinear flow is",
+      "options": [
+        "identical to its linearization everywhere",
+        "topologically equivalent to its linearization locally",
+        "always unstable",
+        "unrelated to its linearization"
+      ],
+      "answer": 1,
+      "explanation": "Hartman-Grobman says that near a hyperbolic equilibrium the nonlinear system and its linearization are topologically conjugate: their phase portraits match up to a continuous local change of coordinates. This is why the Jacobian eigenvalues correctly predict the local behaviour, provided no eigenvalue is purely imaginary.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-017",
+      "stem": "Linear stability analysis can fail to determine stability when",
+      "options": [
+        "an eigenvalue has zero real part (a non-hyperbolic equilibrium)",
+        "both eigenvalues are negative",
+        "the determinant is positive",
+        "the trace is negative"
+      ],
+      "answer": 0,
+      "explanation": "If an eigenvalue lies on the imaginary axis (zero real part), the equilibrium is non-hyperbolic and the linearization is marginal. Then nonlinear terms decide the actual stability, and methods such as a Lyapunov function or center manifold reduction are needed.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-018",
+      "stem": "A population model $\\dot{N} = rN(1 - N/K)$ is linearized about the carrying capacity $N^* = K$. The eigenvalue (slope) there is",
+      "options": [
+        "$r$",
+        "$2r$",
+        "$-r$, so $N = K$ is stable",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "With $f(N) = rN(1 - N/K)$, $f'(N) = r(1 - 2N/K)$. At $N^* = K$: $f'(K) = r(1 - 2) = -r < 0$. The negative slope confirms the carrying capacity is a stable equilibrium.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-019",
+      "stem": "The system $\\dot{x} = y$, $\\dot{y} = -x - y$ has its only equilibrium at the origin. Its type is",
+      "options": [
+        "a saddle",
+        "an unstable node",
+        "a center",
+        "a stable spiral"
+      ],
+      "answer": 3,
+      "explanation": "The Jacobian is $\\begin{pmatrix} 0 & 1 \\\\ -1 & -1 \\end{pmatrix}$, with $\\tau = -1$, $\\Delta = (0)(-1) - (1)(-1) = 1 > 0$, and $\\tau^2 - 4\\Delta = 1 - 4 = -3 < 0$. Complex eigenvalues with negative real part ($\\lambda = -\\tfrac{1}{2} \\pm \\tfrac{\\sqrt{3}}{2}i$) make the origin a stable spiral.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-020",
+      "stem": "For the linear system with $J = \\begin{pmatrix} -4 & 0 \\\\ 0 & -1 \\end{pmatrix}$, the equilibrium is a stable node. Trajectories approach the origin tangent to the",
+      "options": [
+        "$y$-axis (slow eigendirection, $\\lambda = -1$)",
+        "$x$-axis (fast eigendirection, $\\lambda = -4$)",
+        "line $y = x$",
+        "$y$-axis (fast eigendirection)"
+      ],
+      "answer": 0,
+      "explanation": "Eigenvalues are $-4$ (fast decay, along the $x$-axis) and $-1$ (slow decay, along the $y$-axis). As $t \\to \\infty$ the fast mode dies first, so trajectories align with the slow eigendirection, the $y$-axis, and come in tangent to it.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-021",
+      "stem": "A nonzero equilibrium of a predator-prey style system has Jacobian with $\\tau = 0$ and $\\Delta > 0$. The linear analysis predicts",
+      "options": [
+        "a stable node",
+        "an unstable spiral",
+        "a saddle",
+        "a center (neutral oscillations)"
+      ],
+      "answer": 3,
+      "explanation": "Zero trace with positive determinant gives purely imaginary eigenvalues $\\lambda = \\pm i\\sqrt{\\Delta}$, so the linearization is a center with closed orbits and neutral oscillations. (This is the borderline case where nonlinear terms may change the true behaviour.)",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-022",
+      "format": "cloze",
+      "stem": "Analyze $\\dot{x} = x - x^2$ on the real line.",
+      "solution": "The equilibria solve $x(1 - x) = 0$, giving $x^* = 0$ and $x^* =$ {{1}}. With $f'(x) = 1 - 2x$, the slope $f'(0) = 1$ is positive, so $x^* = 0$ is {{2}}. The slope $f'(1) = -1$ is negative, so $x^* = 1$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "stable",
+            "unstable"
+          ],
+          "answer": "unstable"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "stable",
+            "unstable"
+          ],
+          "answer": "stable"
+        }
+      ],
+      "explanation": "Equilibria $x^* = 0, 1$. $f'(x) = 1 - 2x$: $f'(0) = 1 > 0$ unstable; $f'(1) = -1 < 0$ stable.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-023",
+      "format": "cloze",
+      "stem": "A planar linear system has Jacobian $J = \\begin{pmatrix} -3 & 1 \\\\ 0 & -1 \\end{pmatrix}$.",
+      "solution": "The trace is $\\tau =$ {{1}} and the determinant is $\\Delta =$ {{2}}. Since $\\tau < 0$ and $\\Delta > 0$ with real eigenvalues, the equilibrium is a {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "stable node",
+            "saddle",
+            "center"
+          ],
+          "answer": "stable node"
+        }
+      ],
+      "explanation": "$\\tau = -3 + (-1) = -4$. $\\Delta = (-3)(-1) - (1)(0) = 3$. Eigenvalues are $-3$ and $-1$ (both real, negative), and $\\tau^2 - 4\\Delta = 16 - 12 = 4 > 0$, so a stable node.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-024",
+      "format": "cloze",
+      "stem": "Use the trace-determinant test on $J = \\begin{pmatrix} 2 & -1 \\\\ 5 & -2 \\end{pmatrix}$.",
+      "solution": "The trace is $\\tau =$ {{1}} and the determinant is $\\Delta =$ {{2}}. With $\\tau = 0$ and $\\Delta > 0$, the eigenvalues are purely imaginary and the equilibrium is a {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "center",
+            "saddle",
+            "stable spiral"
+          ],
+          "answer": "center"
+        }
+      ],
+      "explanation": "$\\tau = 2 + (-2) = 0$. $\\Delta = (2)(-2) - (-1)(5) = -4 + 5 = 1 > 0$. Characteristic equation $\\lambda^2 + 1 = 0$ gives $\\lambda = \\pm i$, a center.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-025",
+      "format": "cloze",
+      "stem": "Classify the equilibrium of $J = \\begin{pmatrix} 1 & 3 \\\\ 3 & 1 \\end{pmatrix}$.",
+      "solution": "The determinant is $\\Delta =$ {{1}}. Because the determinant is negative, the eigenvalues are real with opposite signs, so the equilibrium is a {{2}}, which is always {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -8,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "saddle",
+            "node",
+            "spiral"
+          ],
+          "answer": "saddle"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "unstable",
+            "stable"
+          ],
+          "answer": "unstable"
+        }
+      ],
+      "explanation": "$\\Delta = (1)(1) - (3)(3) = 1 - 9 = -8 < 0$. Negative determinant gives a saddle (eigenvalues $\\lambda = 1 \\pm 3 = 4, -2$ of opposite sign), and saddles are always unstable.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-026",
+      "format": "cloze",
+      "stem": "For the scalar equation $\\dot{x} = x^2 - 9$, study the two equilibria.",
+      "solution": "Setting $x^2 - 9 = 0$ gives $x^* = \\pm 3$. With $f'(x) = 2x$, the slope at $x^* = -3$ is $f'(-3) =$ {{1}}, so this equilibrium is {{2}}. The slope at $x^* = 3$ is $f'(3) =$ {{3}}, so that equilibrium is {{4}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "stable",
+            "unstable"
+          ],
+          "answer": "stable"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "stable",
+            "unstable"
+          ],
+          "answer": "unstable"
+        }
+      ],
+      "explanation": "$x^* = \\pm 3$. $f'(x) = 2x$: $f'(-3) = -6 < 0$ stable; $f'(3) = 6 > 0$ unstable.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-stability-analysis-027",
+      "format": "cloze",
+      "stem": "A planar system has Jacobian $J = \\begin{pmatrix} -1 & -5 \\\\ 1 & -1 \\end{pmatrix}$ at an equilibrium.",
+      "solution": "The trace is $\\tau =$ {{1}} and the determinant is $\\Delta = 6$. The discriminant $\\tau^2 - 4\\Delta =$ {{2}} is negative, so the eigenvalues are complex. Since the real part of the eigenvalues equals $\\tau/2 < 0$, the equilibrium is a {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -20,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "stable spiral",
+            "unstable spiral",
+            "center"
+          ],
+          "answer": "stable spiral"
+        }
+      ],
+      "explanation": "$\\tau = -1 + (-1) = -2$. $\\Delta = (-1)(-1) - (-5)(1) = 1 + 5 = 6$. $\\tau^2 - 4\\Delta = 4 - 24 = -20 < 0$, complex eigenvalues $\\lambda = -1 \\pm i\\sqrt{5}$ with negative real part, so a stable spiral.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    }
+  ]
+}

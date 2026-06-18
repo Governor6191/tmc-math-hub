@@ -1,0 +1,534 @@
+{
+  "courseId": "optimization-2",
+  "topicId": "descent-methods",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-2-descent-methods-001",
+      "stem": "The gradient descent update for minimizing $f$ with step size $\\alpha > 0$ is which of the following?",
+      "options": [
+        "$x_{k+1} = x_k - \\alpha \\nabla f(x_k)$",
+        "$x_{k+1} = x_k + \\alpha \\nabla f(x_k)$",
+        "$x_{k+1} = x_k - \\alpha f(x_k)$",
+        "$x_{k+1} = \\alpha \\nabla f(x_k)$"
+      ],
+      "answer": 0,
+      "explanation": "Gradient descent steps in the negative gradient direction, $x_{k+1} = x_k - \\alpha \\nabla f(x_k)$, because $-\\nabla f$ points downhill. Adding the gradient would ascend, subtracting the scalar $f$ value is dimensionally wrong, and dropping $x_k$ discards the current iterate. The trap is the sign: descent subtracts the gradient.",
+      "difficulty": "warmup",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-002",
+      "stem": "Why is $-\\nabla f(x_k)$ a descent direction whenever $\\nabla f(x_k) \\ne 0$?",
+      "options": [
+        "Because $\\nabla f(x_k)^\\top (-\\nabla f(x_k)) = \\|\\nabla f(x_k)\\|^2 > 0$",
+        "Because $\\nabla f(x_k)^\\top (-\\nabla f(x_k)) = -\\|\\nabla f(x_k)\\|^2 < 0$",
+        "Because it is orthogonal to the gradient",
+        "Because the Hessian is positive definite"
+      ],
+      "answer": 1,
+      "explanation": "A direction $p$ is a descent direction when $\\nabla f(x_k)^\\top p < 0$. Taking $p = -\\nabla f(x_k)$ gives $\\nabla f(x_k)^\\top(-\\nabla f(x_k)) = -\\|\\nabla f(x_k)\\|^2 < 0$, so $f$ decreases initially. The first option has the wrong sign, the negative gradient is anti-parallel rather than orthogonal, and the Hessian is irrelevant to first-order descent. The trap is the sign of the inner product, which must be negative.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-003",
+      "stem": "Newton's method for minimizing $f$ uses which update?",
+      "options": [
+        "$x_{k+1} = x_k - \\nabla^2 f(x_k) \\, \\nabla f(x_k)$",
+        "$x_{k+1} = x_k - [\\nabla^2 f(x_k)]^{-1} \\nabla f(x_k)$",
+        "$x_{k+1} = x_k - [\\nabla f(x_k)]^{-1} \\nabla^2 f(x_k)$",
+        "$x_{k+1} = x_k + [\\nabla^2 f(x_k)]^{-1} \\nabla f(x_k)$"
+      ],
+      "answer": 1,
+      "explanation": "Newton's method solves the quadratic model exactly, giving $x_{k+1} = x_k - [\\nabla^2 f(x_k)]^{-1} \\nabla f(x_k)$. Multiplying by the Hessian instead of its inverse is wrong, inverting the gradient is meaningless, and the plus sign would ascend. The trap is using the Hessian rather than its inverse, and the sign must remain a subtraction.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-004",
+      "stem": "Near a minimizer with positive definite Hessian, Newton's method converges at which rate?",
+      "options": [
+        "Linearly",
+        "Sublinearly",
+        "Quadratically",
+        "Not at all"
+      ],
+      "answer": 2,
+      "explanation": "With a Lipschitz Hessian that is positive definite at the solution, Newton's method converges quadratically once the iterates are close, roughly doubling the number of correct digits per step. Plain gradient descent is the linear-rate method, sublinear is slower still, and Newton certainly does converge locally. The trap is confusing Newton's quadratic rate with gradient descent's linear rate.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-005",
+      "stem": "For $f(x, y) = x^2 + y^2$ with $\\nabla f = (2x, 2y)$, one gradient descent step from $(1, 1)$ with $\\alpha = 0.25$ gives which point?",
+      "options": [
+        "$(0.5, 0.5)$",
+        "$(0, 0)$",
+        "$(0.75, 0.75)$",
+        "$(1.5, 1.5)$"
+      ],
+      "answer": 0,
+      "explanation": "The gradient at $(1, 1)$ is $(2, 2)$, so $x_1 = (1, 1) - 0.25 (2, 2) = (1 - 0.5,\\; 1 - 0.5) = (0.5, 0.5)$. The origin would require $\\alpha = 0.5$, the point $(0.75, 0.75)$ uses $\\alpha = 0.125$, and $(1.5, 1.5)$ adds rather than subtracts. The trap is misapplying the step size; $0.25 \\times 2 = 0.5$ is subtracted from each coordinate.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-006",
+      "stem": "For $f(x, y) = x^2 + y^2$, the exact line search step size $\\alpha$ from $(1, 1)$ along $-\\nabla f = (-2, -2)$ is which value?",
+      "options": [
+        "$0.25$",
+        "$1$",
+        "$0.5$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "Define $\\phi(\\alpha) = f((1, 1) + \\alpha(-2, -2)) = 2(1 - 2\\alpha)^2$. Then $\\phi'(\\alpha) = -8(1 - 2\\alpha) = 0$ gives $\\alpha = 0.5$, which lands exactly at the origin. The values $0.25$ and $1$ overshoot or undershoot, and $2$ is far past the minimizer. The trap is not minimizing $\\phi(\\alpha)$ along the line; the optimal step is $0.5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-007",
+      "stem": "Applied to a strictly convex quadratic, Newton's method reaches the exact minimizer in how many steps from any starting point?",
+      "options": [
+        "Infinitely many",
+        "Exactly two steps",
+        "It never converges exactly",
+        "One step"
+      ],
+      "answer": 3,
+      "explanation": "For $f(x) = \\tfrac{1}{2} x^\\top A x - b^\\top x$ the quadratic model equals $f$ exactly, so one Newton step $x_1 = x_0 - A^{-1}(A x_0 - b) = A^{-1} b$ lands on the minimizer regardless of $x_0$. It needs neither two steps nor infinitely many, and it always converges. The trap is treating Newton like an iterative approximation here; on a quadratic it is exact in a single step.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-008",
+      "stem": "For the ill-conditioned quadratic $f(x, y) = x^2 + 10 y^2$ with $\\nabla f = (2x, 20y)$, one gradient descent step from $(1, 1)$ with $\\alpha = 0.05$ gives which point?",
+      "options": [
+        "$(0.9, 0)$",
+        "$(0.9, 0.5)$",
+        "$(0.95, 0)$",
+        "$(0, 0)$"
+      ],
+      "answer": 0,
+      "explanation": "The gradient at $(1, 1)$ is $(2, 20)$, so $x_1 = (1, 1) - 0.05 (2, 20) = (1 - 0.1,\\; 1 - 1) = (0.9, 0)$. The $y$ coordinate vanishes because $0.05 \\times 20 = 1$, while $x$ moves only to $0.9$. The other options mishandle one coordinate's update. The trap is applying the same shrink to both coordinates; the steep $y$ direction moves much more.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-009",
+      "stem": "Exact line search at iterate $x_k$ along direction $p_k$ chooses $\\alpha_k$ to do which of the following?",
+      "options": [
+        "Set $\\alpha_k$ to a fixed constant",
+        "Maximize $f(x_k + \\alpha p_k)$ over $\\alpha > 0$",
+        "Minimize $\\phi(\\alpha) = f(x_k + \\alpha p_k)$ over $\\alpha > 0$",
+        "Make $p_k$ orthogonal to $\\nabla f(x_k)$"
+      ],
+      "answer": 2,
+      "explanation": "Exact line search picks the step that minimizes the one-dimensional restriction $\\phi(\\alpha) = f(x_k + \\alpha p_k)$ along the search ray. A fixed constant is a constant step, maximizing would ascend, and orthogonality is a property the optimal step induces, not the rule itself. The trap is confusing minimizing along the line with using a preset step.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-010",
+      "stem": "At the exact line search step, the new gradient $\\nabla f(x_{k+1})$ has which relationship to the search direction $p_k$?",
+      "options": [
+        "It is parallel to $p_k$",
+        "It is orthogonal to $p_k$",
+        "It equals $p_k$",
+        "It is the negative of $p_k$"
+      ],
+      "answer": 1,
+      "explanation": "At the minimizer of $\\phi(\\alpha) = f(x_k + \\alpha p_k)$ we have $\\phi'(\\alpha_k) = \\nabla f(x_{k+1})^\\top p_k = 0$, so the new gradient is orthogonal to the search direction. It is therefore neither parallel to nor equal to (nor the negation of) $p_k$ in general. The trap is forgetting this orthogonality, which is exactly the first-order optimality of the line search.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-011",
+      "stem": "If the step size in gradient descent is chosen too large, what typically happens?",
+      "options": [
+        "The iterates converge faster with no risk",
+        "The gradient becomes exactly zero",
+        "The method becomes Newton's method",
+        "The iterates may overshoot and diverge"
+      ],
+      "answer": 3,
+      "explanation": "An overly large step can overshoot the minimizer and cause the objective to increase, so the iterates oscillate or diverge. A large step is not risk-free, it does not force the gradient to zero, and it does not turn gradient descent into Newton's method. The trap is assuming bigger steps always help; stability requires the step to respect the curvature.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-012",
+      "stem": "For $f(x, y) = x^2 + xy + y^2$ with $\\nabla f = (2x + y,\\; x + 2y)$ and Hessian $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$, one Newton step from $(1, 1)$ lands at which point?",
+      "options": [
+        "$(1, 1)$",
+        "$(0.5, 0.5)$",
+        "$(-1, -1)$",
+        "$(0, 0)$"
+      ],
+      "answer": 3,
+      "explanation": "At $(1, 1)$ the gradient is $(3, 3)$ and the inverse Hessian is $\\tfrac{1}{3}\\begin{pmatrix} 2 & -1 \\\\ -1 & 2 \\end{pmatrix}$. The Newton step is $\\tfrac{1}{3}\\begin{pmatrix} 2 & -1 \\\\ -1 & 2 \\end{pmatrix}\\begin{pmatrix} 3 \\\\ 3 \\end{pmatrix} = (1, 1)$, so $x_1 = (1, 1) - (1, 1) = (0, 0)$, the exact minimizer. Staying at $(1, 1)$ ignores the step, $(0.5, 0.5)$ is a half step, and $(-1, -1)$ doubles it. The trap is not inverting the Hessian; doing so sends a quadratic to its minimum in one step.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-013",
+      "stem": "A practical reason to prefer quasi-Newton methods (like BFGS) over pure Newton is which of the following?",
+      "options": [
+        "They use exact second derivatives at every step",
+        "They always converge in one step",
+        "They ignore the gradient entirely",
+        "They avoid forming and inverting the exact Hessian"
+      ],
+      "answer": 3,
+      "explanation": "Quasi-Newton methods build an approximation to the Hessian (or its inverse) from gradient differences, avoiding the cost of computing and inverting the exact Hessian each iteration. They do not use exact second derivatives, do not converge in one step on general functions, and certainly use the gradient. The trap is thinking quasi-Newton needs the true Hessian; its whole point is to approximate it cheaply.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-014",
+      "stem": "For $f(x) = (x - 3)^2$ with $f'(x) = 2(x - 3)$, one gradient descent step from $x_0 = 0$ with $\\alpha = 0.1$ gives which value?",
+      "options": [
+        "$0.3$",
+        "$0.6$",
+        "$3$",
+        "$-0.6$"
+      ],
+      "answer": 1,
+      "explanation": "Here $f'(0) = 2(0 - 3) = -6$, so $x_1 = 0 - 0.1(-6) = 0.6$, moving toward the minimizer at $x = 3$. The value $0.3$ uses half the step, $3$ jumps straight to the minimizer (which gradient descent does not do in one step here), and $-0.6$ has the wrong sign. The trap is the double negative: subtracting a negative gradient moves $x$ in the positive direction.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-015",
+      "stem": "The steepest descent direction in the Euclidean norm at $x_k$ is which of the following?",
+      "options": [
+        "$\\nabla f(x_k)$",
+        "$-\\nabla f(x_k)$",
+        "$\\nabla^2 f(x_k)$",
+        "Any unit vector"
+      ],
+      "answer": 1,
+      "explanation": "Among all unit directions, the one minimizing the directional derivative $\\nabla f(x_k)^\\top p$ is $p = -\\nabla f(x_k)/\\|\\nabla f(x_k)\\|$, that is the negative gradient direction. The positive gradient is steepest ascent, the Hessian is not a direction, and an arbitrary unit vector need not descend. The trap is the sign once more: steepest descent is the negative gradient.",
+      "difficulty": "warmup",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-016",
+      "stem": "Newton's method may fail to be a descent method at $x_k$ when which condition holds?",
+      "options": [
+        "The Hessian $\\nabla^2 f(x_k)$ is positive definite",
+        "The Hessian $\\nabla^2 f(x_k)$ is not positive definite",
+        "The gradient is nonzero",
+        "The step size is exactly one"
+      ],
+      "answer": 1,
+      "explanation": "The Newton direction $p = -[\\nabla^2 f]^{-1}\\nabla f$ satisfies $\\nabla f^\\top p < 0$ only when the Hessian is positive definite. If the Hessian is indefinite or negative definite, the Newton direction can point uphill, so the method may fail to descend. A positive definite Hessian guarantees descent, a nonzero gradient is normal, and the unit step is Newton's natural choice. The trap is assuming Newton always descends; it needs a positive definite Hessian.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-017",
+      "stem": "The Armijo (sufficient decrease) condition for a step $\\alpha$ requires which inequality, with $c_1 \\in (0, 1)$?",
+      "options": [
+        "$f(x_k + \\alpha p_k) \\le f(x_k) + c_1 \\alpha \\nabla f(x_k)^\\top p_k$",
+        "$f(x_k + \\alpha p_k) \\ge f(x_k) + c_1 \\alpha \\nabla f(x_k)^\\top p_k$",
+        "$f(x_k + \\alpha p_k) = f(x_k)$",
+        "$\\nabla f(x_k + \\alpha p_k) = 0$"
+      ],
+      "answer": 0,
+      "explanation": "Armijo's sufficient decrease condition demands the objective drop by at least a fraction of the predicted linear decrease: $f(x_k + \\alpha p_k) \\le f(x_k) + c_1 \\alpha \\nabla f(x_k)^\\top p_k$, where the gradient term is negative for a descent direction. The reversed inequality permits insufficient progress, requiring equality is too rigid, and a zero gradient is the exact-search condition, not Armijo. The trap is the direction of the inequality, which must enforce a decrease.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-018",
+      "stem": "For $f(x) = x^2$ with $f'(x) = 2x$, gradient descent from $x_0 = 1$ with constant step $\\alpha = 0.5$ produces which iterate $x_1$?",
+      "options": [
+        "$0.5$",
+        "$1$",
+        "$0$",
+        "$-1$"
+      ],
+      "answer": 2,
+      "explanation": "We have $f'(1) = 2$, so $x_1 = 1 - 0.5(2) = 0$, exactly the minimizer. A step of $0.5$ would come from $\\alpha = 0.25$, staying at $1$ means no step, and $-1$ overshoots. The trap is choosing the wrong step size; here $\\alpha = 0.5$ happens to reach the minimum of this one-dimensional quadratic in a single step.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-019",
+      "stem": "Compared with gradient descent, Newton's method has which trade-off?",
+      "options": [
+        "Higher per-iteration cost but faster (local) convergence",
+        "Lower per-iteration cost but slower convergence",
+        "Identical cost and convergence",
+        "No use of derivatives at all"
+      ],
+      "answer": 0,
+      "explanation": "Newton's method must form and solve a system with the Hessian each step, so each iteration is more expensive, but it rewards this with local quadratic convergence rather than gradient descent's linear rate. The costs and rates are not identical, and Newton uses both first and second derivatives. The trap is ignoring the cost-versus-speed trade-off that distinguishes the two methods.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-020",
+      "stem": "For $f(x, y) = x^2 + y^2$, what does a Newton step from any point $(x_0, y_0)$ produce, given Hessian $2I$?",
+      "options": [
+        "The same point $(x_0, y_0)$",
+        "The point $(x_0/2, y_0/2)$",
+        "The minimizer $(0, 0)$",
+        "A divergent iterate"
+      ],
+      "answer": 2,
+      "explanation": "With $\\nabla f = (2x, 2y)$ and Hessian $2I$, the inverse is $\\tfrac{1}{2} I$, so the step is $\\tfrac{1}{2} I (2x_0, 2y_0) = (x_0, y_0)$, giving $x_1 = (x_0, y_0) - (x_0, y_0) = (0, 0)$. Newton reaches the minimizer of this quadratic in one step. The other options correspond to skipping the inverse or taking a half step. The trap is forgetting that a quadratic is solved exactly by one Newton step.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-021",
+      "stem": "Which statement about gradient descent convergence on a strongly convex function with a suitably small constant step is correct?",
+      "options": [
+        "It converges linearly (geometric error decay)",
+        "It converges quadratically",
+        "It does not converge",
+        "It converges in finitely many steps"
+      ],
+      "answer": 0,
+      "explanation": "On a strongly convex function with Lipschitz gradient and a small enough constant step, gradient descent contracts the error by a constant factor each iteration, which is linear (geometric) convergence. It does not achieve quadratic convergence (that is Newton), it does converge, and it generally needs infinitely many steps to reach the exact optimum. The trap is overstating the rate; first-order methods are linear, not quadratic.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-022",
+      "stem": "The general form of a line search descent iteration is $x_{k+1} = x_k + \\alpha_k p_k$. For convergence, the direction $p_k$ should satisfy which property?",
+      "options": [
+        "$\\nabla f(x_k)^\\top p_k > 0$",
+        "$\\nabla f(x_k)^\\top p_k = 0$",
+        "$p_k$ has unit length only",
+        "$\\nabla f(x_k)^\\top p_k < 0$"
+      ],
+      "answer": 3,
+      "explanation": "For $p_k$ to be a descent direction the directional derivative must be negative, $\\nabla f(x_k)^\\top p_k < 0$, so a small positive step decreases $f$. A positive product ascends, a zero product gives no first-order decrease, and unit length alone says nothing about direction. The trap is the sign condition, which is the defining requirement of a descent direction.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-023",
+      "format": "cloze",
+      "stem": "Take one gradient descent step on $f(x, y) = x^2 + y^2$ from $(2, -1)$ using $\\alpha = 0.5$, given $\\nabla f = (2x, 2y)$.",
+      "solution": "The gradient at $(2, -1)$ is $(4, -2)$. The updated $x$ coordinate is {{1}} and the updated $y$ coordinate is {{2}}. After this step the iterate sits at the origin, which is the {{3}} of $f$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "minimizer",
+            "maximizer",
+            "saddle point",
+            "inflection point"
+          ],
+          "answer": "minimizer"
+        }
+      ],
+      "explanation": "Gradient at $(2, -1)$ is $(4, -2)$. New $x = 2 - 0.5(4) = 0$; new $y = -1 - 0.5(-2) = 0$. With step $0.5$ the iterate reaches the origin, the minimizer of $x^2 + y^2$.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-024",
+      "format": "cloze",
+      "stem": "Carry out one Newton step for $f(x) = (x - 3)^2$, with $f'(x) = 2(x - 3)$ and $f''(x) = 2$, starting from $x_0 = 0$.",
+      "solution": "The first derivative is $f'(0) =$ {{1}}, and dividing by $f''(0) = 2$ gives the Newton step. The new iterate is $x_1 =$ {{2}}, which is exactly the minimizer because $f$ is a {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -6,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "quadratic",
+            "cubic",
+            "linear",
+            "rational"
+          ],
+          "answer": "quadratic"
+        }
+      ],
+      "explanation": "$f'(0) = 2(0 - 3) = -6$. Newton step: $x_1 = 0 - (-6)/2 = 0 + 3 = 3$. Since $f$ is quadratic, one Newton step reaches the exact minimizer $x = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-025",
+      "format": "cloze",
+      "stem": "State the defining property of a descent direction and identify the steepest one.",
+      "solution": "A direction $p$ at $x_k$ is a descent direction when the inner product $\\nabla f(x_k)^\\top p$ is {{1}}. The steepest descent direction is $p =$ {{2}} (up to scaling). Plugging it in gives $\\nabla f(x_k)^\\top p = -\\|\\nabla f(x_k)\\|^2$, which is {{3}} whenever the gradient is nonzero.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "negative",
+            "positive",
+            "zero",
+            "undefined"
+          ],
+          "answer": "negative"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$-\\nabla f(x_k)$",
+            "$\\nabla f(x_k)$",
+            "$\\nabla^2 f(x_k)$",
+            "$0$"
+          ],
+          "answer": "$-\\nabla f(x_k)$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "negative",
+            "positive",
+            "zero",
+            "infinite"
+          ],
+          "answer": "negative"
+        }
+      ],
+      "explanation": "Descent requires $\\nabla f(x_k)^\\top p < 0$ (negative). The steepest descent direction is $-\\nabla f(x_k)$, and substituting gives $-\\|\\nabla f(x_k)\\|^2 < 0$, which is negative when the gradient does not vanish.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-026",
+      "format": "cloze",
+      "stem": "Compare gradient descent and Newton's method on their convergence rates and per-step cost.",
+      "solution": "Gradient descent converges {{1}} on a strongly convex function, while Newton's method converges {{2}} near a minimizer with positive definite Hessian. The price for Newton's faster rate is the higher cost of forming and inverting the {{3}} each iteration.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "linearly",
+            "quadratically",
+            "cubically",
+            "in one step"
+          ],
+          "answer": "linearly"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "quadratically",
+            "linearly",
+            "sublinearly",
+            "not at all"
+          ],
+          "answer": "quadratically"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Hessian",
+            "gradient",
+            "objective value",
+            "step size"
+          ],
+          "answer": "Hessian"
+        }
+      ],
+      "explanation": "Gradient descent has a linear (geometric) rate; Newton's method has a local quadratic rate. The cost of Newton is forming and inverting (or factoring) the Hessian at each step.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-027",
+      "format": "cloze",
+      "stem": "Perform an exact line search for $f(x, y) = x^2 + 4y^2$ from $(1, 1)$ along $p = (-1, -1)$, given $\\nabla f = (2x, 8y)$.",
+      "solution": "Write $\\phi(\\alpha) = (1 - \\alpha)^2 + 4(1 - \\alpha)^2 = 5(1 - \\alpha)^2$. Setting $\\phi'(\\alpha) = 0$ gives the optimal step $\\alpha =$ {{1}}. The resulting point is $(1 - \\alpha,\\; 1 - \\alpha) = (0, 0)$, where the gradient is {{2}}. This direction $p$ was a valid descent direction because $\\nabla f(1, 1)^\\top p = -10$, which is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "negative",
+            "positive",
+            "zero",
+            "undefined"
+          ],
+          "answer": "negative"
+        }
+      ],
+      "explanation": "With $p = (-1, -1)$, $\\phi(\\alpha) = (1 - \\alpha)^2 + 4(1 - \\alpha)^2 = 5(1 - \\alpha)^2$, so $\\phi'(\\alpha) = -10(1 - \\alpha) = 0$ gives $\\alpha = 1$, landing at $(0, 0)$ where $\\nabla f = 0$. The direction was descent since $\\nabla f(1,1)^\\top p = (2)(-1) + (8)(-1) = -10 < 0$, negative.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-descent-methods-028",
+      "format": "cloze",
+      "stem": "Take two gradient descent steps on $f(x) = x^2$ from $x_0 = 1$ with $\\alpha = 0.25$, where $f'(x) = 2x$.",
+      "solution": "The first step gives $x_1 = 1 - 0.25(2) =$ {{1}}. The second step gives $x_2 = x_1 - 0.25(2 x_1) =$ {{2}}. Each step multiplies the iterate by the contraction factor {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "The update is $x_{k+1} = x_k - 0.25(2 x_k) = x_k(1 - 0.5) = 0.5 x_k$. So $x_1 = 0.5$, $x_2 = 0.5(0.5) = 0.25$, and the contraction factor is $0.5$ each step.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    }
+  ]
+}

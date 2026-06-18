@@ -1,0 +1,477 @@
+{
+  "courseId": "functional-analysis",
+  "topicId": "fundamental-theorems",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "functional-analysis-fundamental-theorems-001",
+      "stem": "The Banach fixed point (contraction mapping) theorem applies to a map $T : X \\to X$ that is a contraction, meaning there is a constant $k$ with which property for all $x, y$?",
+      "options": [
+        "$d(Tx, Ty) \\le k\\, d(x, y)$ with $0 \\le k < 1$.",
+        "$d(Tx, Ty) \\ge k\\, d(x, y)$ with $k > 1$.",
+        "$d(Tx, Ty) = d(x, y)$.",
+        "$d(Tx, Ty) \\le k\\, d(x, y)$ with $k = 1$."
+      ],
+      "answer": 0,
+      "explanation": "A contraction satisfies $d(Tx, Ty) \\le k\\, d(x,y)$ with a fixed Lipschitz constant $0 \\le k < 1$. The strict inequality $k < 1$ is essential; $k = 1$ (a nonexpansive map) is not enough to force a fixed point.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-002",
+      "stem": "On which kind of space does the Banach fixed point theorem guarantee a unique fixed point for a contraction?",
+      "options": [
+        "Any metric space.",
+        "A compact space only.",
+        "A finite set.",
+        "A complete metric space."
+      ],
+      "answer": 3,
+      "explanation": "The contraction mapping theorem requires the underlying space to be a complete metric space (or nonempty closed subset of one). Completeness ensures the Cauchy sequence of iterates converges to a point of the space, which is the fixed point.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-003",
+      "stem": "For a contraction $T$ on a complete metric space, how many fixed points does $T$ have?",
+      "options": [
+        "None.",
+        "At least two.",
+        "Exactly one.",
+        "Infinitely many."
+      ],
+      "answer": 2,
+      "explanation": "The theorem gives a unique fixed point: existence comes from the convergence of the iterates $x_{n+1} = Tx_n$, and uniqueness follows because if $x, y$ were both fixed then $d(x,y) = d(Tx, Ty) \\le k\\,d(x,y)$ with $k < 1$, forcing $d(x,y) = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-004",
+      "stem": "The uniform boundedness principle (Banach-Steinhaus theorem) concerns a family $\\{T_\\alpha\\}$ of bounded linear operators from a Banach space $X$ into a normed space $Y$. It states that pointwise boundedness implies which conclusion?",
+      "options": [
+        "Each $T_\\alpha$ is the zero operator.",
+        "The family is uniformly bounded: $\\sup_\\alpha \\|T_\\alpha\\| < \\infty$.",
+        "The operators all share the same kernel.",
+        "Each $T_\\alpha$ is compact."
+      ],
+      "answer": 1,
+      "explanation": "Banach-Steinhaus says that if $\\sup_\\alpha \\|T_\\alpha x\\| < \\infty$ for each fixed $x$ (pointwise boundedness), then $\\sup_\\alpha \\|T_\\alpha\\| < \\infty$ (uniform boundedness in norm). Completeness of the domain $X$ is essential and the proof rests on the Baire category theorem.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-005",
+      "stem": "The open mapping theorem states that a bounded linear operator $T$ from a Banach space $X$ onto a Banach space $Y$ has which property?",
+      "options": [
+        "$T$ is injective.",
+        "$T$ preserves norms.",
+        "$T$ is compact.",
+        "$T$ is an open map (it maps open sets to open sets)."
+      ],
+      "answer": 3,
+      "explanation": "The open mapping theorem: a bounded linear surjection between Banach spaces is open, i.e. it sends open sets to open sets. Both completeness and surjectivity are required; the proof uses the Baire category theorem.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-006",
+      "stem": "A corollary of the open mapping theorem (the bounded inverse theorem) states that a bounded linear bijection between Banach spaces has which property?",
+      "options": [
+        "Its inverse is unbounded.",
+        "It has no inverse.",
+        "Its inverse exists only in finite dimensions.",
+        "Its inverse is automatically bounded (continuous)."
+      ],
+      "answer": 3,
+      "explanation": "If $T$ is a bounded linear bijection between Banach spaces, the open mapping theorem makes $T$ open, which is exactly the statement that $T^{-1}$ is continuous. So a continuous linear bijection of Banach spaces automatically has a continuous inverse.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-007",
+      "stem": "The closed graph theorem states that a linear operator $T$ between Banach spaces is bounded if and only if which set is closed?",
+      "options": [
+        "Its kernel.",
+        "Its range.",
+        "Its graph $\\{(x, Tx) : x \\in X\\}$ in $X \\times Y$.",
+        "Its domain."
+      ],
+      "answer": 2,
+      "explanation": "The closed graph theorem: for a linear operator between Banach spaces, $T$ is bounded if and only if its graph $\\{(x, Tx)\\}$ is a closed subset of the product $X \\times Y$. This often simplifies boundedness proofs: one only needs that $x_n \\to x$ and $Tx_n \\to y$ together force $y = Tx$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-008",
+      "stem": "Which value is an admissible contraction constant in the Banach fixed point theorem?",
+      "options": [
+        "$1$.",
+        "$\\tfrac{1}{2}$.",
+        "$1.5$.",
+        "$2$."
+      ],
+      "answer": 1,
+      "explanation": "The contraction constant must satisfy $0 \\le k < 1$. Of the choices only $\\tfrac12$ lies in $[0, 1)$; the values $1, 1.5, 2$ are all too large to force the iteration to converge.",
+      "difficulty": "warmup",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-009",
+      "stem": "Find the fixed point of the contraction $T(x) = \\tfrac{1}{2}x + 1$ on $\\mathbb{R}$.",
+      "options": [
+        "$0$.",
+        "$1$.",
+        "$2$.",
+        "$3$."
+      ],
+      "answer": 2,
+      "explanation": "Solve $x = \\tfrac12 x + 1$, giving $\\tfrac12 x = 1$, so $x = 2$. Since the Lipschitz constant is $\\tfrac12 < 1$, $T$ is a contraction on the complete space $\\mathbb{R}$ and this fixed point is unique.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-010",
+      "stem": "What is the Lipschitz (contraction) constant of the map $T(x) = \\tfrac{1}{3}x + 2$ on $\\mathbb{R}$?",
+      "options": [
+        "$\\tfrac{1}{3}$.",
+        "$2$.",
+        "$3$.",
+        "$1$."
+      ],
+      "answer": 0,
+      "explanation": "For an affine map $T(x) = ax + b$, $|Tx - Ty| = |a|\\,|x - y|$, so the contraction constant is $|a| = \\tfrac13$. Since $\\tfrac13 < 1$, the map is a contraction.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-011",
+      "stem": "Which underlying theorem from topology powers the proofs of both the uniform boundedness principle and the open mapping theorem?",
+      "options": [
+        "The Heine-Borel theorem.",
+        "The Bolzano-Weierstrass theorem.",
+        "The Baire category theorem.",
+        "The Stone-Weierstrass theorem."
+      ],
+      "answer": 2,
+      "explanation": "Both the uniform boundedness principle and the open mapping theorem (and the closed graph theorem) rely on the Baire category theorem, which holds in complete metric spaces. This is why completeness of the domain is indispensable in these results.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-012",
+      "stem": "The iteration scheme that produces the fixed point in the Banach fixed point theorem is which sequence, starting from any $x_0$?",
+      "options": [
+        "$x_{n+1} = x_n + T x_n$.",
+        "$x_{n+1} = T x_n$ (repeated application of $T$).",
+        "$x_{n+1} = T^{-1} x_n$.",
+        "$x_{n+1} = x_n - T x_n$."
+      ],
+      "answer": 1,
+      "explanation": "The fixed point is obtained by Picard iteration $x_{n+1} = Tx_n$: the iterates form a Cauchy sequence (geometrically contracting with ratio $k$), and the limit $x^* = \\lim_n x_n$ satisfies $Tx^* = x^*$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-013",
+      "stem": "For the contraction iteration with constant $k$, the a priori error estimate bounds $d(x_n, x^*)$ by which expression in terms of the first step $d(x_0, x_1)$?",
+      "options": [
+        "$\\dfrac{k^n}{1 - k}\\, d(x_0, x_1)$.",
+        "$k^n\\, d(x_0, x_1) \\cdot n$.",
+        "$(1 - k)\\, d(x_0, x_1)$.",
+        "$\\dfrac{1}{k^n}\\, d(x_0, x_1)$."
+      ],
+      "answer": 0,
+      "explanation": "The standard a priori estimate is $d(x_n, x^*) \\le \\dfrac{k^n}{1 - k}\\, d(x_0, x_1)$. It shows geometric (linear-rate) convergence governed by the contraction constant $k$ and lets one bound the error before iterating.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-014",
+      "stem": "In the uniform boundedness principle, which space is required to be complete?",
+      "options": [
+        "Neither space need be complete.",
+        "Only the target space $Y$.",
+        "The domain space $X$ (it must be a Banach space).",
+        "Both $X$ and $Y$, plus their duals."
+      ],
+      "answer": 2,
+      "explanation": "Banach-Steinhaus requires the domain $X$ to be a Banach space (complete), since the Baire category argument is applied there. The target $Y$ only needs to be a normed space. Completeness of the domain cannot be dropped.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-015",
+      "stem": "Compute the fixed point of $T(x) = \\tfrac{1}{4}x + 3$ on $\\mathbb{R}$.",
+      "options": [
+        "$4$.",
+        "$3$.",
+        "$1$.",
+        "$12$."
+      ],
+      "answer": 0,
+      "explanation": "Solve $x = \\tfrac14 x + 3$: $\\tfrac34 x = 3$, so $x = 4$. The contraction constant is $\\tfrac14 < 1$, guaranteeing this is the unique fixed point.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-016",
+      "stem": "The Banach fixed point theorem is the standard tool to prove existence and uniqueness for which classical problem?",
+      "options": [
+        "The spectral decomposition of a matrix.",
+        "The fundamental theorem of algebra.",
+        "Diagonalization of self-adjoint operators.",
+        "Initial value problems for ODEs (Picard-Lindelof theorem)."
+      ],
+      "answer": 3,
+      "explanation": "The Picard-Lindelof existence and uniqueness theorem for ODE initial value problems is proved by writing the ODE as a fixed point equation for an integral operator and applying the contraction mapping theorem on a suitable complete function space.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-017",
+      "stem": "Why does the map $T(x) = x + 1$ on $\\mathbb{R}$ have no fixed point, consistent with the contraction theorem?",
+      "options": [
+        "Because $\\mathbb{R}$ is not complete.",
+        "Because $T$ is not linear.",
+        "Because $T$ is an isometry (constant $1$), not a contraction, so the theorem does not apply.",
+        "Because $T$ is unbounded."
+      ],
+      "answer": 2,
+      "explanation": "Here $|Tx - Ty| = |x - y|$, so the Lipschitz constant is $1$, not less than $1$: $T$ is an isometry (a translation), not a contraction. The theorem requires $k < 1$, and indeed $x = x + 1$ has no solution.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-018",
+      "stem": "A typical use of the uniform boundedness principle is to show that a pointwise-convergent sequence of bounded operators $T_n \\to T$ has which property?",
+      "options": [
+        "$T$ is unbounded.",
+        "The norms $\\|T_n\\|$ are uniformly bounded, and the limit $T$ is a bounded operator.",
+        "$T_n$ converges in operator norm.",
+        "$T = 0$."
+      ],
+      "answer": 1,
+      "explanation": "If $T_n x \\to T x$ for every $x$, then each orbit is bounded, so Banach-Steinhaus gives $\\sup_n \\|T_n\\| < \\infty$; passing to the limit shows $T$ is linear and bounded with $\\|T\\| \\le \\liminf \\|T_n\\|$. Pointwise convergence does not by itself give norm convergence of $T_n$.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-019",
+      "stem": "In the open mapping and closed graph theorems, dropping completeness of one of the spaces typically does what?",
+      "options": [
+        "Has no effect; the theorems still hold.",
+        "Strengthens the conclusion.",
+        "Makes the theorems hold only in finite dimensions.",
+        "Causes the theorems to fail; both spaces must be Banach."
+      ],
+      "answer": 3,
+      "explanation": "Completeness of both spaces is essential in the open mapping and closed graph theorems: there are counterexamples on incomplete normed spaces (for instance a discontinuous linear bijection with closed graph between non-complete spaces). The Baire category argument needs the spaces to be Banach.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-020",
+      "stem": "How does the closed graph theorem simplify proving that a given linear operator $T$ between Banach spaces is continuous?",
+      "options": [
+        "One only needs: whenever $x_n \\to x$ and $T x_n \\to y$, then $y = T x$.",
+        "One must directly exhibit the constant $c$ in $\\|Tx\\| \\le c\\|x\\|$.",
+        "One must show $T$ is surjective.",
+        "One must compute the operator norm exactly."
+      ],
+      "answer": 0,
+      "explanation": "Instead of producing a bound $\\|Tx\\| \\le c\\|x\\|$ directly, the closed graph theorem lets you assume both $x_n \\to x$ and $Tx_n \\to y$ converge and merely check $y = Tx$. Closedness of the graph then yields continuity for free (on Banach spaces).",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-021",
+      "stem": "Using the a priori estimate $d(x_n, x^*) \\le \\dfrac{k^n}{1-k} d(x_0, x_1)$ with contraction constant $k = \\tfrac12$ and $d(x_0, x_1) = 1$, what bound does it give for $d(x_1, x^*)$ (the case $n = 1$)?",
+      "options": [
+        "$2$.",
+        "$1$.",
+        "$\\tfrac{1}{4}$.",
+        "$\\tfrac{1}{2}$."
+      ],
+      "answer": 1,
+      "explanation": "With $k = \\tfrac12$, $n = 1$, and $d(x_0,x_1) = 1$: $\\dfrac{k^1}{1-k} d(x_0,x_1) = \\dfrac{1/2}{1/2}\\cdot 1 = 1$. So the estimate bounds $d(x_1, x^*)$ by $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-022",
+      "stem": "Which statement about the four fundamental theorems is correct?",
+      "options": [
+        "The Hahn-Banach theorem also requires completeness, like the others.",
+        "The uniform boundedness, open mapping, and closed graph theorems all require completeness (Baire category), whereas Hahn-Banach does not.",
+        "None of the fundamental theorems needs completeness.",
+        "The contraction mapping theorem needs no special hypothesis on the space."
+      ],
+      "answer": 1,
+      "explanation": "The uniform boundedness principle, open mapping theorem, and closed graph theorem are the Baire-category trio and need completeness. The Hahn-Banach theorem is different: it is an algebraic/order extension result and holds without any completeness or even topology in its dominated form. The contraction theorem also requires completeness.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-023",
+      "stem": "Find the fixed point of the contraction $T(x) = \\tfrac{2}{5}x + 3$ on $\\mathbb{R}$.",
+      "options": [
+        "$5$.",
+        "$3$.",
+        "$\\tfrac{2}{5}$.",
+        "$6$."
+      ],
+      "answer": 0,
+      "explanation": "Solve $x = \\tfrac25 x + 3$: $x - \\tfrac25 x = 3$, so $\\tfrac35 x = 3$ and $x = 5$. The constant $\\tfrac25 < 1$ makes $T$ a contraction with this unique fixed point.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-024",
+      "stem": "The conclusion $\\sup_\\alpha \\|T_\\alpha\\| < \\infty$ of the uniform boundedness principle can fail if which hypothesis is dropped?",
+      "options": [
+        "Linearity of the index set.",
+        "Separability of $Y$.",
+        "Reflexivity of $X$.",
+        "Completeness of the domain $X$."
+      ],
+      "answer": 3,
+      "explanation": "Completeness of the domain is the hypothesis that cannot be removed: on an incomplete normed space one can build a pointwise-bounded family of bounded operators whose norms are unbounded. The Baire category theorem, which needs completeness, is exactly what fails otherwise.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-025",
+      "format": "cloze",
+      "stem": "Analyze the contraction $T(x) = \\tfrac{1}{2}x + 1$ on $\\mathbb{R}$: identify its contraction constant and fixed point.",
+      "solution": "Writing $T(x) = ax + b$, the contraction constant is $|a|$, which equals {{1}}. Since this is less than $1$, $T$ is a contraction on the complete space $\\mathbb{R}$. Solving $x = \\tfrac12 x + 1$ gives the unique fixed point $x^*$, which equals {{2}}. Because the constant is below $1$, the fixed point is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "unique",
+            "not unique"
+          ],
+          "answer": "unique"
+        }
+      ],
+      "explanation": "The contraction constant is $|a| = \\tfrac12 = 0.5$. Solving $x = \\tfrac12 x + 1$ gives $x^* = 2$. Since $k < 1$, the Banach fixed point theorem guarantees a unique fixed point.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-026",
+      "format": "cloze",
+      "stem": "Examine $T(x) = \\tfrac{1}{3}x + 2$ on $\\mathbb{R}$ and the role of the contraction constant.",
+      "solution": "The contraction constant of $T$ is {{1}}. Solving $x = \\tfrac13 x + 2$ gives $\\tfrac23 x = 2$, so the fixed point $x^*$ equals {{2}}. If instead the constant were equal to $1$, the map would be an isometry and the existence of a fixed point {{3}} guaranteed by the theorem.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.3333,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "would not be",
+            "would still be"
+          ],
+          "answer": "would not be"
+        }
+      ],
+      "explanation": "The constant is $\\tfrac13 \\approx 0.333$. Solving $x = \\tfrac13 x + 2$ gives $x^* = 3$. With constant $1$ the map is only nonexpansive, so the theorem gives no fixed point.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-027",
+      "format": "cloze",
+      "stem": "State the requirements of the four fundamental theorems regarding completeness.",
+      "solution": "The uniform boundedness principle requires the domain to be a {{1}} space, since its proof uses the Baire category theorem. The open mapping theorem requires both spaces to be {{2}}. The closed graph theorem says a linear operator between Banach spaces is bounded exactly when its graph is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "Banach",
+            "finite-dimensional"
+          ],
+          "answer": "Banach"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "complete",
+            "compact"
+          ],
+          "answer": "complete"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "closed",
+            "open"
+          ],
+          "answer": "closed"
+        }
+      ],
+      "explanation": "Banach-Steinhaus needs a Banach (complete) domain. The open mapping theorem needs both spaces complete. The closed graph theorem characterizes boundedness by the graph being closed.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-fundamental-theorems-028",
+      "format": "cloze",
+      "stem": "Apply the a priori error estimate $d(x_n, x^*) \\le \\dfrac{k^n}{1-k}\\, d(x_0, x_1)$ for a contraction with $k = \\tfrac{1}{2}$ and $d(x_0, x_1) = 1$.",
+      "solution": "The factor $\\dfrac{1}{1-k}$ with $k = \\tfrac12$ equals {{1}}. For $n = 1$ the estimate gives $d(x_1, x^*) \\le \\dfrac{(1/2)^1}{1/2}\\cdot 1$, which equals {{2}}. As $n$ grows, the bound tends to $0$, so the iteration {{3}} to the fixed point.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges"
+          ],
+          "answer": "converges"
+        }
+      ],
+      "explanation": "$\\dfrac{1}{1 - 1/2} = 2$. For $n = 1$, $\\dfrac{1/2}{1/2}\\cdot 1 = 1$. Since $k^n \\to 0$, the bound tends to $0$ and the iterates converge to $x^*$.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    }
+  ]
+}

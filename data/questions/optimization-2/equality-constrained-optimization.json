@@ -1,0 +1,516 @@
+{
+  "courseId": "optimization-2",
+  "topicId": "equality-constrained-optimization",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-2-equality-constrained-optimization-001",
+      "stem": "To extremize $f(x)$ subject to the equality constraint $g(x) = 0$, the Lagrangian is which of the following?",
+      "options": [
+        "$L(x, \\lambda) = f(x) - \\lambda g(x)$",
+        "$L(x, \\lambda) = f(x) \\cdot g(x)$",
+        "$L(x, \\lambda) = f(x) + g(x)$",
+        "$L(x, \\lambda) = \\lambda f(x) - g(x)$"
+      ],
+      "answer": 0,
+      "explanation": "The Lagrangian adjoins the constraint with a multiplier: $L(x, \\lambda) = f(x) - \\lambda g(x)$ (the sign on $\\lambda$ is a convention). Multiplying $f$ by $g$ is not a Lagrangian, simply adding $g$ omits the multiplier, and weighting $f$ rather than $g$ is backwards. The trap is forgetting the multiplier on the constraint term.",
+      "difficulty": "warmup",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-002",
+      "stem": "The first-order (Lagrange) condition at a constrained extremum of $f$ subject to $g(x) = 0$ is which of the following?",
+      "options": [
+        "$\\nabla f = 0$ independent of $g$",
+        "$\\nabla f = \\lambda \\nabla g$ for some scalar $\\lambda$",
+        "$\\nabla f = -\\nabla g$ always",
+        "$\\nabla g = 0$"
+      ],
+      "answer": 1,
+      "explanation": "Stationarity of the Lagrangian in $x$ gives $\\nabla f = \\lambda \\nabla g$: the objective gradient is parallel to the constraint gradient. Requiring $\\nabla f = 0$ ignores the constraint, fixing $\\lambda = -1$ is a special case only, and $\\nabla g = 0$ is a constraint-qualification failure, not the optimality condition. The trap is dropping the multiplier; the gradients are parallel, not equal.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-003",
+      "stem": "For maximizing $f(x, y) = xy$ subject to $x + y = 10$, the Lagrange conditions $\\nabla f = \\lambda \\nabla g$ give which relationship between $x$ and $y$?",
+      "options": [
+        "$x = -y$",
+        "$xy = \\lambda$",
+        "$x = y$",
+        "$x = 2y$"
+      ],
+      "answer": 2,
+      "explanation": "Here $\\nabla f = (y, x)$ and $\\nabla g = (1, 1)$, so $y = \\lambda$ and $x = \\lambda$, forcing $x = y$. The conditions do not give $x = -y$ or $x = 2y$, and $xy = \\lambda$ misreads the equations. The trap is not equating the two multiplier expressions; both coordinates equal $\\lambda$, so $x = y$.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-004",
+      "stem": "Continuing the problem of maximizing $xy$ subject to $x + y = 10$, the maximizing point is which of the following?",
+      "options": [
+        "$(0, 10)$",
+        "$(2, 8)$",
+        "$(10, 0)$",
+        "$(5, 5)$"
+      ],
+      "answer": 3,
+      "explanation": "From $x = y$ and $x + y = 10$ we get $x = y = 5$, so the maximizer is $(5, 5)$ with product $25$. The endpoints $(0, 10)$ and $(10, 0)$ give product $0$, and $(2, 8)$ gives $16$. The trap is testing corner points; the interior critical point $(5, 5)$ maximizes the product on the line.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-005",
+      "stem": "The maximum value of $xy$ subject to $x + y = 10$ is which number?",
+      "options": [
+        "$25$",
+        "$50$",
+        "$100$",
+        "$10$"
+      ],
+      "answer": 0,
+      "explanation": "At the maximizer $(5, 5)$ the product is $5 \\times 5 = 25$. The value $50$ doubles it, $100$ squares the sum, and $10$ is the constraint level, not the product. The trap is confusing the constraint value or the sum with the optimal product, which is $25$.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-006",
+      "stem": "How many Lagrange multipliers are needed for a problem with $m$ independent equality constraints?",
+      "options": [
+        "Exactly one, regardless of $m$",
+        "$m$ multipliers, one per constraint",
+        "$2m$ multipliers",
+        "None",
+        "$m - 1$ multipliers"
+      ],
+      "answer": 1,
+      "explanation": "Each equality constraint contributes its own multiplier, so a problem with $m$ constraints needs $m$ multipliers, and the stationarity condition becomes $\\nabla f = \\sum_{i=1}^m \\lambda_i \\nabla g_i$. A single multiplier handles only one constraint, $2m$ or $m - 1$ miscount, and zero ignores the constraints. The trap is using one multiplier for several constraints.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-007",
+      "stem": "For minimizing $f(x, y) = x^2 + y^2$ subject to $x + y = 2$, the Lagrange conditions give which point?",
+      "options": [
+        "$(2, 0)$",
+        "$(0, 2)$",
+        "$(1, 1)$",
+        "$(-1, -1)$"
+      ],
+      "answer": 2,
+      "explanation": "With $\\nabla f = (2x, 2y)$ and $\\nabla g = (1, 1)$, we get $2x = \\lambda$ and $2y = \\lambda$, so $x = y$; combined with $x + y = 2$ this gives $(1, 1)$. The endpoints $(2, 0)$ and $(0, 2)$ have larger norm, and $(-1, -1)$ violates the constraint. The trap is not using $x = y$; the closest point on the line to the origin is $(1, 1)$.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-008",
+      "stem": "For the problem of minimizing $x^2 + y^2$ subject to $x + y = 2$, the minimum value is which number?",
+      "options": [
+        "$4$",
+        "$1$",
+        "$2$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "At $(1, 1)$ the value is $1^2 + 1^2 = 2$. The value $4$ comes from an endpoint like $(2, 0)$, $1$ uses only one coordinate, and $0$ would require the origin, which is off the line. The trap is evaluating at the wrong point; the constrained minimum of the squared norm is $2$.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-009",
+      "stem": "For minimizing $x^2 + y^2$ subject to $x + 2y = 5$, the Lagrange conditions imply which relationship?",
+      "options": [
+        "$y = 2x$",
+        "$x = 2y$",
+        "$x = y$",
+        "$x = -2y$"
+      ],
+      "answer": 0,
+      "explanation": "Here $\\nabla f = (2x, 2y)$ and $\\nabla g = (1, 2)$, so $2x = \\lambda \\cdot 1$ and $2y = \\lambda \\cdot 2$. Dividing, $y / x = 2$, that is $y = 2x$. The other relations swap or sign-flip the ratio. The trap is matching coordinates to the wrong constraint coefficients; the larger coefficient on $y$ makes $y$ twice $x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-010",
+      "stem": "Continuing the problem of minimizing $x^2 + y^2$ subject to $x + 2y = 5$, the minimizer is which point?",
+      "options": [
+        "$(2, 1)$",
+        "$(5, 0)$",
+        "$(1, 2)$",
+        "$(3, 1)$"
+      ],
+      "answer": 2,
+      "explanation": "Using $y = 2x$ in $x + 2y = 5$ gives $x + 4x = 5$, so $x = 1$ and $y = 2$, the point $(1, 2)$. The point $(2, 1)$ swaps the coordinates, $(5, 0)$ is an endpoint, and $(3, 1)$ does not satisfy the constraint. The trap is substituting the relationship incorrectly; $x + 2(2x) = 5x = 5$ yields $x = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-011",
+      "stem": "The minimum value of $x^2 + y^2$ subject to $x + 2y = 5$ is which number?",
+      "options": [
+        "$25$",
+        "$10$",
+        "$1$",
+        "$5$"
+      ],
+      "answer": 3,
+      "explanation": "At $(1, 2)$ the value is $1 + 4 = 5$. Equivalently, the squared distance from the origin to the line $x + 2y = 5$ is $5^2 / (1^2 + 2^2) = 25 / 5 = 5$. The value $25$ forgets to divide by $\\|(1, 2)\\|^2$, $10$ and $1$ misevaluate. The trap is omitting the normalization in the distance formula; the minimum is $5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-012",
+      "stem": "Geometrically, at a constrained extremum the gradient $\\nabla f$ is which of the following relative to the constraint surface $g(x) = 0$?",
+      "options": [
+        "Tangent to the surface",
+        "Zero",
+        "At a $45^\\circ$ angle to the surface",
+        "Normal (perpendicular) to the surface"
+      ],
+      "answer": 3,
+      "explanation": "At an extremum $\\nabla f = \\lambda \\nabla g$, and since $\\nabla g$ is normal to the level surface $g = 0$, the objective gradient is also normal to the surface. If $\\nabla f$ had any tangential component, moving along the surface would change $f$, contradicting optimality. It need not be zero or at a fixed angle. The trap is thinking the gradient lies along the surface; optimality forces it perpendicular.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-013",
+      "stem": "For the problem of maximizing $xy$ subject to $x + y = 10$, the value of the multiplier $\\lambda$ at the solution (using $\\nabla f = \\lambda \\nabla g$) is which number?",
+      "options": [
+        "$10$",
+        "$5$",
+        "$0$",
+        "$25$"
+      ],
+      "answer": 1,
+      "explanation": "From $y = \\lambda$ and $x = \\lambda$ at the solution $(5, 5)$, we read $\\lambda = 5$. The value $10$ is the constraint level, $0$ would mean no coupling, and $25$ is the optimal objective value, not the multiplier. The trap is confusing the multiplier with the constraint constant or the objective; here $\\lambda = x = y = 5$.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-014",
+      "stem": "The Lagrange multiplier $\\lambda$ for the constraint $g(x) = c$ measures which sensitivity at the optimum?",
+      "options": [
+        "The rate of change of the optimal value with respect to $c$",
+        "The curvature of $f$",
+        "The number of active constraints",
+        "The distance to the boundary"
+      ],
+      "answer": 0,
+      "explanation": "The multiplier is the shadow price: $\\lambda = \\partial f^* / \\partial c$, the marginal change in the optimal objective value as the constraint level $c$ shifts. It is not a curvature, a count of constraints, or a distance. The trap is treating $\\lambda$ as a purely algebraic device; it carries the economic meaning of a marginal value.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-015",
+      "stem": "Setting the partial derivative $\\partial L / \\partial \\lambda = 0$ for $L = f(x) - \\lambda g(x)$ recovers which condition?",
+      "options": [
+        "$\\nabla f = 0$",
+        "$g(x) = 0$ (primal feasibility)",
+        "$\\lambda = 0$",
+        "$f(x) = 0$"
+      ],
+      "answer": 1,
+      "explanation": "Differentiating $L$ with respect to $\\lambda$ gives $-g(x) = 0$, that is the constraint $g(x) = 0$, so the multiplier stationarity simply restores primal feasibility. It does not produce $\\nabla f = 0$, force $\\lambda = 0$, or set $f = 0$. The trap is forgetting that the $\\lambda$ derivative is exactly the constraint equation.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-016",
+      "stem": "For maximizing $f(x, y) = x + y$ subject to $x^2 + y^2 = 1$, the Lagrange conditions give which relationship?",
+      "options": [
+        "$x = -y$",
+        "$x = 0$",
+        "$y = 0$",
+        "$x = y$"
+      ],
+      "answer": 3,
+      "explanation": "Here $\\nabla f = (1, 1)$ and $\\nabla g = (2x, 2y)$, so $1 = 2\\lambda x$ and $1 = 2\\lambda y$. Equating, $x = y$. The other options would not satisfy both equations simultaneously. The trap is not recognizing that equal gradient components force the coordinates equal.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-017",
+      "stem": "Continuing the problem of maximizing $x + y$ subject to $x^2 + y^2 = 1$, the maximum value is which number?",
+      "options": [
+        "$2$",
+        "$\\sqrt{2}$",
+        "$1$",
+        "$\\dfrac{1}{\\sqrt{2}}$"
+      ],
+      "answer": 1,
+      "explanation": "With $x = y$ on the unit circle, $2x^2 = 1$ gives $x = y = 1/\\sqrt{2}$, so $x + y = 2/\\sqrt{2} = \\sqrt{2}$. The value $2$ ignores the constraint, $1$ takes only one coordinate, and $1/\\sqrt{2}$ is a single coordinate's value. The trap is forgetting to add both equal coordinates; the maximum of $x + y$ on the circle is $\\sqrt{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-018",
+      "stem": "The stationary points of the Lagrangian $L(x, \\lambda)$ are found by solving which system?",
+      "options": [
+        "$\\nabla_x L = 0$ and $\\partial L / \\partial \\lambda = 0$ together",
+        "$\\nabla_x L = 0$ only",
+        "$\\partial L / \\partial \\lambda = 0$ only",
+        "$L = 0$"
+      ],
+      "answer": 0,
+      "explanation": "Both sets of stationarity equations must hold: $\\nabla_x L = \\nabla f - \\lambda \\nabla g = 0$ gives the gradient-alignment condition, and $\\partial L / \\partial \\lambda = -g(x) = 0$ gives feasibility. Solving only one set leaves the problem underdetermined, and $L = 0$ is not a condition at all. The trap is solving the gradient equations while forgetting to impose the constraint.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-019",
+      "stem": "For minimizing $f(x, y) = x^2 + y^2$ subject to $xy = 1$, one Lagrange stationary point is which of the following?",
+      "options": [
+        "$(0, 0)$",
+        "$(2, 0.5)$",
+        "$(1, 1)$",
+        "$(4, 0.25)$"
+      ],
+      "answer": 2,
+      "explanation": "With $\\nabla f = (2x, 2y)$ and $\\nabla g = (y, x)$, the conditions $2x = \\lambda y$ and $2y = \\lambda x$ give $x^2 = y^2$; with $xy = 1 > 0$ the real solution is $x = y = 1$ (also $(-1, -1)$). The point $(0, 0)$ violates $xy = 1$, and $(2, 0.5)$, $(4, 0.25)$ satisfy the constraint but not the stationarity equations. The trap is picking any feasible point; only $(1, 1)$ and $(-1, -1)$ also satisfy $\\nabla f = \\lambda \\nabla g$.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-020",
+      "stem": "When the constraint is written $g(x) = c$ rather than $g(x) = 0$, the stationarity condition $\\nabla f = \\lambda \\nabla g$ is affected how?",
+      "options": [
+        "It changes to $\\nabla f = 0$",
+        "It is unchanged, since $\\nabla g$ does not depend on the constant $c$",
+        "It requires $\\lambda = c$",
+        "It no longer holds"
+      ],
+      "answer": 1,
+      "explanation": "The constant $c$ shifts only the level of the constraint, not its gradient, so $\\nabla(g - c) = \\nabla g$ and the stationarity condition $\\nabla f = \\lambda \\nabla g$ is unchanged; only the feasibility equation becomes $g(x) = c$. The condition does not collapse to $\\nabla f = 0$, tie $\\lambda$ to $c$, or fail. The trap is thinking the constant alters the gradient alignment; it only relocates the feasible set.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-021",
+      "stem": "A constraint qualification such as $\\nabla g \\ne 0$ at the candidate point is needed so that which of the following holds?",
+      "options": [
+        "The objective is convex",
+        "The constraint is linear",
+        "The Hessian is positive definite",
+        "The Lagrange multiplier exists (the gradients can be aligned)"
+      ],
+      "answer": 3,
+      "explanation": "If $\\nabla g = 0$ at the candidate point, the equation $\\nabla f = \\lambda \\nabla g$ may have no solution unless $\\nabla f$ also vanishes, so the multiplier need not exist; requiring $\\nabla g \\ne 0$ (a constraint qualification) guarantees the alignment can be written with a finite $\\lambda$. It does not make $f$ convex, force linearity, or control the Hessian. The trap is ignoring the regularity needed for the multiplier rule to apply.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-022",
+      "stem": "For maximizing the product $xyz$ subject to $x + y + z = 3$ with $x, y, z > 0$, symmetry of the Lagrange conditions gives which solution?",
+      "options": [
+        "$x = y = z = 1$",
+        "$x = 3, y = z = 0$",
+        "$x = y = 1.5, z = 0$",
+        "$x = 2, y = 1, z = 0$"
+      ],
+      "answer": 0,
+      "explanation": "The conditions $yz = \\lambda$, $xz = \\lambda$, $xy = \\lambda$ force $x = y = z$ by symmetry, and $x + y + z = 3$ then gives $x = y = z = 1$ with product $1$. Any solution with a zero coordinate makes the product $0$, which is the minimum on the positive simplex, not the maximum. The trap is testing boundary points; the interior symmetric point maximizes the product.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-023",
+      "format": "cloze",
+      "stem": "Maximize $f(x, y) = xy$ subject to $x + y = 8$ using Lagrange multipliers.",
+      "solution": "From $\\nabla f = \\lambda \\nabla g$ with $\\nabla f = (y, x)$ and $\\nabla g = (1, 1)$, we get $x = y$. The constraint then forces $x =$ {{1}} and $y =$ {{2}}, giving maximum product {{3}}. The multiplier is $\\lambda =$ {{4}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 16,
+          "tolerance": 0.001
+        },
+        {
+          "id": 4,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "The conditions give $y = \\lambda$ and $x = \\lambda$, so $x = y$. With $x + y = 8$, $x = y = 4$, product $= 16$, and $\\lambda = x = 4$.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-024",
+      "format": "cloze",
+      "stem": "Minimize $f(x, y) = x^2 + y^2$ subject to $x + y = 6$.",
+      "solution": "The Lagrange conditions $2x = \\lambda$ and $2y = \\lambda$ give $x = y$. The constraint then gives $x =$ {{1}} and $y = 3$, so the minimum value of $f$ is {{2}}. Because we are minimizing the squared distance, this point is the {{3}} on the line to the origin.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 18,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "closest point",
+            "farthest point",
+            "midpoint of a chord",
+            "tangent point of two circles"
+          ],
+          "answer": "closest point"
+        }
+      ],
+      "explanation": "From $x = y$ and $x + y = 6$, $x = y = 3$. Then $f = 9 + 9 = 18$. Minimizing $x^2 + y^2$ finds the point on the line closest to the origin.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-025",
+      "format": "cloze",
+      "stem": "Set up and solve: minimize $f(x, y) = x^2 + y^2$ subject to $x + 2y = 10$.",
+      "solution": "With $\\nabla f = (2x, 2y)$ and $\\nabla g = (1, 2)$, the conditions give the relationship $y = 2x$. Substituting into the constraint yields $x =$ {{1}} and $y =$ {{2}}. The minimum value of $f$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "From $2x = \\lambda$ and $2y = 2\\lambda$, $y = 2x$. Then $x + 2(2x) = 5x = 10$ gives $x = 2$, $y = 4$. So $f = 4 + 16 = 20$.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-026",
+      "format": "cloze",
+      "stem": "State the components of the Lagrange method for $f$ subject to $g(x) = 0$.",
+      "solution": "The Lagrangian is $L = f - \\lambda g$. Stationarity in $x$ gives the condition $\\nabla f = \\lambda \\nabla g$, meaning the objective gradient is {{1}} to the constraint gradient. Stationarity in $\\lambda$ recovers the constraint, namely $g(x) =$ {{2}}. For $m$ constraints, the number of multipliers needed is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "parallel",
+            "orthogonal",
+            "equal in magnitude but opposite",
+            "unrelated"
+          ],
+          "answer": "parallel"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$m$",
+            "$1$",
+            "$2m$",
+            "$m - 1$"
+          ],
+          "answer": "$m$"
+        }
+      ],
+      "explanation": "Stationarity gives $\\nabla f = \\lambda \\nabla g$, so the gradients are parallel. The $\\lambda$ derivative gives $g(x) = 0$. With $m$ constraints there are $m$ multipliers.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-027",
+      "format": "cloze",
+      "stem": "Maximize $f(x, y) = x + y$ subject to $x^2 + y^2 = 2$.",
+      "solution": "The conditions $1 = 2\\lambda x$ and $1 = 2\\lambda y$ force $x = y$. On the circle $x^2 + y^2 = 2$ this gives $x = y =$ {{1}}, so the maximum value of $x + y$ is {{2}}. The minimum value, at the antipodal point, is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "With $x = y$ and $x^2 + y^2 = 2$, $2x^2 = 2$ gives $x = y = 1$ (taking the positive root for the maximum), so $x + y = 2$. The antipodal point $(-1, -1)$ gives the minimum $x + y = -2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-equality-constrained-optimization-028",
+      "format": "cloze",
+      "stem": "Interpret the Lagrange multiplier as a shadow price for minimizing $x^2 + y^2$ subject to $x + y = c$.",
+      "solution": "Solving gives the optimal value $p^*(c) = c^2 / 2$. Its derivative with respect to $c$ is $p^{*\\prime}(c) =$ {{1}} times $c$, which equals the multiplier $\\lambda$. At $c = 4$ the multiplier is therefore $\\lambda =$ {{2}}. This confirms that $\\lambda$ measures the {{3}} of the optimal value to the constraint level.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "sensitivity",
+            "curvature",
+            "convexity",
+            "feasibility"
+          ],
+          "answer": "sensitivity"
+        }
+      ],
+      "explanation": "At the optimum $x = y = c/2$, so $p^*(c) = 2(c/2)^2 = c^2/2$, giving $p^{*\\prime}(c) = c$ (coefficient $1$ times $c$). At $c = 4$, $\\lambda = 4$. The multiplier is the sensitivity of the optimal value to the constraint level.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    }
+  ]
+}

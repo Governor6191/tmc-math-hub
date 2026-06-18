@@ -1,0 +1,477 @@
+{
+  "courseId": "real-function-2",
+  "topicId": "measurable-functions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-function-2-measurable-functions-001",
+      "stem": "Let $(X, \\mathcal{A})$ be a measurable space. An extended-real-valued function $f : X \\to [-\\infty, \\infty]$ is measurable if and only if, for every $a \\in \\mathbb{R}$, the set:",
+      "options": [
+        "$\\{x : f(x) > a\\}$ belongs to $\\mathcal{A}$.",
+        "$\\{x : f(x) = a\\}$ is finite.",
+        "$f$ is continuous at $a$.",
+        "$\\{x : f(x) > a\\}$ is open."
+      ],
+      "answer": 0,
+      "explanation": "A standard equivalent definition: $f$ is measurable iff $\\{f > a\\} = f^{-1}((a, \\infty]) \\in \\mathcal{A}$ for every real $a$. Equivalently one may use $\\{f \\ge a\\}$, $\\{f < a\\}$, or $\\{f \\le a\\}$. The set need not be open (that would be continuity) and the level sets $\\{f = a\\}$ need not be finite.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-002",
+      "stem": "Equivalently, $f : X \\to \\mathbb{R}$ is measurable with respect to $\\mathcal{A}$ when the preimage of every Borel set is measurable. Which preimages suffice to check this?",
+      "options": [
+        "Preimages of single points only.",
+        "Preimages of finite sets only.",
+        "Preimages of the rays $(a, \\infty)$ (or any generating family of the Borel $\\sigma$-algebra).",
+        "Preimages of arbitrary subsets of $\\mathbb{R}$."
+      ],
+      "answer": 2,
+      "explanation": "It suffices that preimages of a generating family for the Borel $\\sigma$-algebra are measurable, because $\\{B : f^{-1}(B) \\in \\mathcal{A}\\}$ is a $\\sigma$-algebra. The rays $(a,\\infty)$ generate $\\mathcal{B}(\\mathbb{R})$, so checking $f^{-1}((a,\\infty)) \\in \\mathcal{A}$ for all $a$ is enough. Demanding preimages of arbitrary (possibly non-Borel) subsets be measurable is too strong.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-003",
+      "stem": "Is every continuous function $f : \\mathbb{R} \\to \\mathbb{R}$ Lebesgue measurable?",
+      "options": [
+        "No, continuity is unrelated to measurability.",
+        "Yes; preimages of open sets are open, hence Borel, hence measurable.",
+        "Only if $f$ is also monotone.",
+        "Only if $f$ is bounded."
+      ],
+      "answer": 1,
+      "explanation": "If $f$ is continuous, the preimage of any open set is open, and open sets are Borel hence Lebesgue measurable. In particular $\\{f > a\\} = f^{-1}((a,\\infty))$ is open for each $a$, so $f$ is measurable. Continuity is sufficient (though not necessary) for measurability; boundedness and monotonicity are irrelevant.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-004",
+      "stem": "A simple function on $(X, \\mathcal{A})$ is best described as:",
+      "options": [
+        "any continuous function.",
+        "any bounded function.",
+        "any function with countably many values.",
+        "a measurable function taking finitely many values, writable as $\\sum_{k=1}^n c_k \\chi_{E_k}$ with $E_k \\in \\mathcal{A}$."
+      ],
+      "answer": 3,
+      "explanation": "A simple function takes only finitely many distinct values and has the form $\\varphi = \\sum_{k=1}^n c_k \\chi_{E_k}$, where the $E_k$ are measurable sets (its level sets) and $c_k$ are the values. Finiteness of the range is the key feature; functions with countably many values or merely bounded functions are not simple in general.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-005",
+      "stem": "The characteristic (indicator) function $\\chi_E$ of a set $E \\subseteq X$ is measurable if and only if:",
+      "options": [
+        "$E$ is a measurable set.",
+        "$E$ is finite.",
+        "$E$ is open.",
+        "$E = X$."
+      ],
+      "answer": 0,
+      "explanation": "For $\\chi_E$, the only nontrivial level sets are $\\{\\chi_E > a\\}$, which equals $X$, $E$, or $\\emptyset$ depending on $a$. All of these lie in $\\mathcal{A}$ precisely when $E \\in \\mathcal{A}$. So $\\chi_E$ is measurable exactly when $E$ is a measurable set, regardless of whether $E$ is finite or open.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-006",
+      "stem": "If $f$ and $g$ are measurable real-valued functions on $X$, which of the following is guaranteed to be measurable?",
+      "options": [
+        "Only $f$ itself.",
+        "None of $f + g$, $fg$, or $\\max(f,g)$ in general.",
+        "$f + g$, $fg$, $\\max(f,g)$, and $\\min(f,g)$.",
+        "Only constant multiples $cf$."
+      ],
+      "answer": 2,
+      "explanation": "Measurable functions are closed under the usual algebraic and lattice operations: sums, products, scalar multiples, and pointwise max and min of measurable functions are all measurable. For instance $\\{\\max(f,g) > a\\} = \\{f > a\\} \\cup \\{g > a\\}$ is measurable. So the whole list is guaranteed measurable.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-007",
+      "stem": "If $(f_n)$ is a sequence of measurable functions, which of the following need NOT be measurable?",
+      "options": [
+        "$\\sup_n f_n$.",
+        "A pointwise rearrangement that is not built from the $f_n$ by countable operations.",
+        "$\\limsup_n f_n$.",
+        "$\\inf_n f_n$."
+      ],
+      "answer": 1,
+      "explanation": "Countable suprema, infima, limsup, and liminf of measurable functions are measurable, because for example $\\{\\sup_n f_n > a\\} = \\bigcup_n \\{f_n > a\\}$. The pointwise limit, when it exists, is therefore measurable too. An arbitrary function not obtained from the $f_n$ by such countable operations carries no measurability guarantee.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-008",
+      "stem": "If $f_n \\to f$ pointwise and each $f_n$ is measurable, then $f$ is:",
+      "options": [
+        "continuous.",
+        "not necessarily defined.",
+        "measurable only if the convergence is uniform.",
+        "measurable."
+      ],
+      "answer": 3,
+      "explanation": "The pointwise limit of measurable functions is measurable: $f = \\limsup_n f_n = \\inf_m \\sup_{n \\ge m} f_n$ is built by countable sup/inf operations that preserve measurability. Uniform convergence is not required, and the limit need not be continuous (limits of continuous functions can be very rough).",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-009",
+      "stem": "A property holds 'almost everywhere' (a.e.) with respect to a measure $\\mu$ when:",
+      "options": [
+        "it holds except on a set of measure zero.",
+        "it holds at every point without exception.",
+        "it holds on a dense set.",
+        "it holds on an open set."
+      ],
+      "answer": 0,
+      "explanation": "A property holds $\\mu$-a.e. if the set of points where it fails has measure zero. For example $f = g$ a.e. means $\\mu(\\{x : f(x) \\neq g(x)\\}) = 0$. Holding on a dense or open set is neither necessary nor sufficient, since null sets can be dense and non-null sets can be open.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-010",
+      "stem": "On a complete measure space, if $f$ is measurable and $g = f$ almost everywhere, then $g$ is:",
+      "options": [
+        "never measurable.",
+        "measurable only if $g$ is continuous.",
+        "measurable.",
+        "measurable only if the exceptional set is empty."
+      ],
+      "answer": 2,
+      "explanation": "On a complete measure space (such as Lebesgue measure), modifying a measurable function on a null set keeps it measurable, because subsets of null sets are measurable and the level sets of $g$ differ from those of $f$ only within the null exceptional set. Completeness is what makes this work in general.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-011",
+      "stem": "The Simple Approximation Theorem states that every nonnegative measurable function $f$ is:",
+      "options": [
+        "equal to a single simple function.",
+        "the pointwise limit of an increasing sequence of nonnegative simple functions $\\varphi_n \\uparrow f$.",
+        "continuous.",
+        "bounded."
+      ],
+      "answer": 1,
+      "explanation": "Every nonnegative measurable $f$ is the pointwise limit of an increasing sequence of nonnegative simple functions $\\varphi_n$ with $\\varphi_n \\uparrow f$. This is the foundation for defining the Lebesgue integral of $f$ as $\\lim_n \\int \\varphi_n$. A general $f$ need not be bounded, continuous, or itself simple.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-012",
+      "stem": "For a measurable function $f$, its positive part $f^+ = \\max(f, 0)$ and negative part $f^- = \\max(-f, 0)$ satisfy which identity?",
+      "options": [
+        "$f = f^+ \\cdot f^-$ and $|f| = f^+ - f^-$.",
+        "$f = f^+$ only.",
+        "$f^+ = f^-$ always.",
+        "$f = f^+ - f^-$ and $|f| = f^+ + f^-$."
+      ],
+      "answer": 3,
+      "explanation": "By definition $f^+ = \\max(f,0) \\ge 0$ and $f^- = \\max(-f,0) \\ge 0$, giving $f = f^+ - f^-$ and $|f| = f^+ + f^-$. Both parts are measurable (max of measurable functions), so this decomposition reduces questions about $f$ to nonnegative functions.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-013",
+      "stem": "If $f : X \\to \\mathbb{R}$ is measurable and $\\phi : \\mathbb{R} \\to \\mathbb{R}$ is continuous, then the composition $\\phi \\circ f$ is:",
+      "options": [
+        "measurable.",
+        "measurable only if $\\phi$ is linear.",
+        "never measurable.",
+        "measurable only if $f$ is continuous."
+      ],
+      "answer": 0,
+      "explanation": "If $\\phi$ is continuous (hence Borel measurable) and $f$ is measurable, then $\\phi \\circ f$ is measurable: for open $U$, $(\\phi \\circ f)^{-1}(U) = f^{-1}(\\phi^{-1}(U))$, where $\\phi^{-1}(U)$ is open (Borel) and its preimage under $f$ is measurable. Thus continuous functions of measurable functions stay measurable; $\\phi$ need not be linear.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-014",
+      "stem": "Let $f(x) = x^2$ on $\\mathbb{R}$ with Lebesgue measure. Is $f$ measurable, and what is the set $\\{x : f(x) < 4\\}$?",
+      "options": [
+        "Not measurable; the set is empty.",
+        "Measurable, because $f$ is a polynomial (continuous); the set is the open interval $(-2, 2)$.",
+        "Measurable; but the set is $[2, \\infty)$.",
+        "Measurable only on bounded intervals; the set is $\\{2\\}$."
+      ],
+      "answer": 1,
+      "explanation": "Polynomials are continuous, hence measurable. Solving $x^2 < 4$ gives $-2 < x < 2$, the open interval $(-2,2)$, which is a Borel set as expected for a measurable function. So $f$ is measurable and the sublevel set is $(-2,2)$.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-015",
+      "stem": "The Dirichlet function $D$ on $[0,1]$ (equal to $1$ on rationals, $0$ on irrationals) is which kind of function with respect to Lebesgue measure?",
+      "options": [
+        "Not measurable, because it is discontinuous everywhere.",
+        "A simple measurable function equal to $\\chi_{\\mathbb{Q} \\cap [0,1]}$, hence measurable.",
+        "Continuous.",
+        "Measurable only if the rationals are uncountable."
+      ],
+      "answer": 1,
+      "explanation": "The Dirichlet function is exactly $\\chi_{\\mathbb{Q} \\cap [0,1]}$. Since $\\mathbb{Q} \\cap [0,1]$ is a (Borel, null) measurable set, its indicator is a simple measurable function. Discontinuity everywhere does not obstruct measurability; measurability is about preimages of Borel sets, not continuity.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-016",
+      "stem": "Which statement about measurability and continuity is correct?",
+      "options": [
+        "Every measurable function is continuous.",
+        "Continuity and measurability are equivalent.",
+        "Measurable functions are always Riemann integrable.",
+        "Every continuous function is measurable, but most measurable functions are not continuous."
+      ],
+      "answer": 3,
+      "explanation": "Continuity implies measurability, but the converse fails badly: indicator functions of measurable sets, the Dirichlet function, and pointwise limits of continuous functions are typically measurable yet discontinuous. So the class of measurable functions is far larger than the continuous ones, and measurability does not imply Riemann integrability.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-017",
+      "stem": "A monotone function $f : \\mathbb{R} \\to \\mathbb{R}$ is:",
+      "options": [
+        "always Lebesgue measurable, since $\\{f > a\\}$ is an interval (or a ray).",
+        "never measurable.",
+        "measurable only if continuous.",
+        "measurable only if bounded."
+      ],
+      "answer": 0,
+      "explanation": "For a monotone $f$, each set $\\{f > a\\}$ is an interval or ray (an order-convex set), which is Borel. Hence monotone functions are always Borel/Lebesgue measurable, even though they may have (at most countably many) jump discontinuities. Boundedness and continuity are not needed.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-018",
+      "stem": "If $f$ is measurable and $f \\neq 0$ everywhere, then $1/f$ is:",
+      "options": [
+        "never measurable.",
+        "measurable only if $f$ is bounded away from $0$.",
+        "measurable.",
+        "measurable only if $f$ is continuous."
+      ],
+      "answer": 2,
+      "explanation": "Where $f$ never vanishes, $g(x) = 1/x$ is continuous on the range, so $1/f = g \\circ f$ is a continuous function of a measurable function and hence measurable. One does not need $f$ bounded away from $0$ or continuous; only that $f$ avoids the value $0$ so that $1/f$ is defined.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-019",
+      "stem": "Consider the simple function $\\varphi = 3\\chi_{[0,2]} + 5\\chi_{(2,4]}$ on $\\mathbb{R}$. What value does $\\varphi$ take at $x = 3$?",
+      "options": [
+        "$3$.",
+        "$5$.",
+        "$8$.",
+        "$0$."
+      ],
+      "answer": 1,
+      "explanation": "At $x = 3$, we have $3 \\in (2,4]$ but $3 \\notin [0,2]$, so $\\chi_{[0,2]}(3) = 0$ and $\\chi_{(2,4]}(3) = 1$. Therefore $\\varphi(3) = 3 \\cdot 0 + 5 \\cdot 1 = 5$. The sets $[0,2]$ and $(2,4]$ are disjoint, so only one indicator fires at a time.",
+      "difficulty": "warmup",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-020",
+      "stem": "Egorov's theorem concerns a sequence $f_n \\to f$ a.e. on a set $E$ of finite measure. It asserts that:",
+      "options": [
+        "the convergence is automatically uniform on all of $E$.",
+        "$f$ must be continuous.",
+        "$f_n \\to f$ in $L^1$.",
+        "for every $\\varepsilon > 0$ there is a measurable $F \\subseteq E$ with $\\mu(E \\setminus F) < \\varepsilon$ on which $f_n \\to f$ uniformly."
+      ],
+      "answer": 3,
+      "explanation": "Egorov's theorem: on a finite-measure set, a.e. convergence is uniform off a set of arbitrarily small measure. That is, for each $\\varepsilon > 0$ there is $F \\subseteq E$ with $\\mu(E \\setminus F) < \\varepsilon$ and $f_n \\to f$ uniformly on $F$. It does not give uniform convergence everywhere, nor $L^1$ convergence, nor continuity of the limit.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-021",
+      "stem": "Which of these guarantees that $f : \\mathbb{R} \\to \\mathbb{R}$ is Lebesgue measurable?",
+      "options": [
+        "$f$ agrees almost everywhere with a continuous function.",
+        "$f$ takes irrational values only.",
+        "$f$ is unbounded.",
+        "$f$ has an uncountable range."
+      ],
+      "answer": 0,
+      "explanation": "If $f = g$ a.e. for a continuous (hence measurable) $g$, then $f$ is measurable on the complete Lebesgue measure space, since the two functions differ only on a null set. The arithmetic nature of the values, boundedness, or the size of the range say nothing about measurability.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-022",
+      "stem": "For measurable $f$ and a Borel set $B \\subseteq \\mathbb{R}$, the preimage $f^{-1}(B)$ is:",
+      "options": [
+        "open.",
+        "always equal to $B$.",
+        "measurable.",
+        "empty unless $B$ is an interval."
+      ],
+      "answer": 2,
+      "explanation": "Measurability of $f$ means precisely that $f^{-1}(B) \\in \\mathcal{A}$ for every Borel set $B$. The preimage need not be open, equal to $B$, or restricted to intervals; it is simply a measurable subset of the domain. This is the cleanest characterization of measurability.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-023",
+      "stem": "If $f$ is measurable, is $|f|$ necessarily measurable, and does measurability of $|f|$ conversely imply measurability of $f$?",
+      "options": [
+        "Neither direction holds.",
+        "Both directions always hold.",
+        "$|f|$ is measurable when $f$ is, but measurability of $|f|$ alone does not imply $f$ is measurable.",
+        "$|f|$ is never measurable."
+      ],
+      "answer": 2,
+      "explanation": "If $f$ is measurable then $|f| = \\max(f, -f)$ is measurable. The converse fails: let $A$ be a non-measurable set and define $f = 1$ on $A$ and $f = -1$ on $A^c$; then $|f| \\equiv 1$ is measurable, but $\\{f > 0\\} = A$ is not, so $f$ is not measurable.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-024",
+      "stem": "The function $f(x) = \\lfloor x \\rfloor$ (the floor, or greatest integer, function) on $\\mathbb{R}$ is:",
+      "options": [
+        "not measurable, because it is discontinuous.",
+        "continuous, hence measurable.",
+        "not a function.",
+        "measurable, being a monotone step function (each level set is an interval)."
+      ],
+      "answer": 3,
+      "explanation": "The floor function is a nondecreasing step function: $\\{ \\lfloor x \\rfloor \\ge n\\} = [n, \\infty)$ for integers $n$, and these rays are Borel. Being monotone (or a countable combination of indicators of intervals) makes it measurable, despite its jump discontinuities at the integers.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-025",
+      "format": "cloze",
+      "stem": "Work with the simple function $\\varphi = 2\\chi_{[0,1]} + 7\\chi_{(1,3]}$ on $\\mathbb{R}$ and a sublevel set.",
+      "solution": "Evaluate $\\varphi$ at $x = 2$: since $2 \\in (1,3]$, the value $\\varphi(2)$ is {{1}}. Evaluate at $x = 0.5$: since $0.5 \\in [0,1]$, the value is {{2}}. A simple function takes only finitely many values, so it is automatically measurable: answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        }
+      ],
+      "explanation": "At $x=2 \\in (1,3]$, $\\varphi(2) = 7$. At $x = 0.5 \\in [0,1]$, $\\varphi(0.5) = 2$. Since its level sets $[0,1]$ and $(1,3]$ are measurable, the simple function is measurable (yes).",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-026",
+      "format": "cloze",
+      "stem": "Decide measurability for several functions on $\\mathbb{R}$ with Lebesgue measure.",
+      "solution": "The continuous function $f(x) = x^3$ is measurable: answer {{1}}. The Dirichlet function $\\chi_{\\mathbb{Q}}$ (indicator of a measurable set) is measurable: answer {{2}}. The indicator $\\chi_V$ of a Vitali (non-measurable) set $V$ is measurable: answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "Continuous functions are measurable, so $x^3$ qualifies (yes). $\\mathbb{Q}$ is measurable, so $\\chi_{\\mathbb{Q}}$ is measurable (yes). A Vitali set is not measurable, so its indicator $\\chi_V$ is not measurable (no), since $\\{\\chi_V > 0\\} = V$.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-027",
+      "format": "cloze",
+      "stem": "Use the positive and negative part decomposition. Let $f(x) = x$ on $\\mathbb{R}$, with $f^+ = \\max(f,0)$ and $f^- = \\max(-f,0)$.",
+      "solution": "At $x = 4$, the positive part $f^+(4)$ equals {{1}} and the negative part $f^-(4)$ equals {{2}}. At $x = -3$, the value $|f|(-3) = f^+(-3) + f^-(-3)$ equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "At $x = 4$ (positive), $f^+ = 4$ and $f^- = 0$. At $x = -3$, $|f| = |-3| = 3$, consistent with $f^+ + f^- = 0 + 3 = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-measurable-functions-028",
+      "format": "cloze",
+      "stem": "Reason about closure properties and the meaning of almost everywhere.",
+      "solution": "If $f$ and $g$ are measurable, then $f + g$ is measurable: answer {{1}}. If $(f_n)$ are measurable and $f_n \\to f$ pointwise, then $f$ is measurable: answer {{2}}. A property fails 'almost everywhere' exactly when the set of failure has measure equal to the number {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Sums of measurable functions are measurable (yes), and pointwise limits of measurable functions are measurable (yes). A property holds almost everywhere when its exceptional set has measure $0$.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    }
+  ]
+}

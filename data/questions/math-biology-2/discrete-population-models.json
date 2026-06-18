@@ -1,0 +1,507 @@
+{
+  "courseId": "math-biology-2",
+  "topicId": "discrete-population-models",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "math-biology-2-discrete-population-models-001",
+      "stem": "A discrete-generation population is modelled by $x_{n+1} = f(x_n)$. A fixed point (steady state) $x^*$ satisfies",
+      "options": [
+        "$f(x^*) = 0$",
+        "$f'(x^*) = 0$",
+        "$f(x^*) = x^*$",
+        "$f(x^*) = 1$"
+      ],
+      "answer": 2,
+      "explanation": "For a map, a fixed point reproduces itself from one generation to the next, so $x_{n+1} = x_n$, that is $f(x^*) = x^*$. (Contrast the continuous case, where an equilibrium needs $f(x^*) = 0$.)",
+      "difficulty": "warmup",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-002",
+      "stem": "For the map $x_{n+1} = f(x_n)$, a fixed point $x^*$ is locally stable when",
+      "options": [
+        "$|f'(x^*)| > 1$",
+        "$|f'(x^*)| < 1$",
+        "$f'(x^*) = 0$ only",
+        "$f'(x^*) > 1$"
+      ],
+      "answer": 1,
+      "explanation": "Let $x_n = x^* + \\eta_n$. Then $\\eta_{n+1} \\approx f'(x^*)\\eta_n$, so $\\eta_n \\approx [f'(x^*)]^n \\eta_0$. This perturbation decays geometrically precisely when $|f'(x^*)| < 1$, the stability condition for a map.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-003",
+      "stem": "The discrete logistic (logistic map) is",
+      "options": [
+        "$x_{n+1} = r x_n^2$",
+        "$x_{n+1} = r x_n$",
+        "$x_{n+1} = x_n + r(1 - x_n)$",
+        "$x_{n+1} = r x_n (1 - x_n)$"
+      ],
+      "answer": 3,
+      "explanation": "The discrete logistic map is $x_{n+1} = r x_n(1 - x_n)$, the difference-equation analogue of continuous logistic growth. The factor $(1 - x_n)$ provides density dependence, and $r$ controls the dynamics.",
+      "difficulty": "warmup",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-004",
+      "stem": "The nonzero fixed point of the logistic map $x_{n+1} = r x_n(1 - x_n)$ is",
+      "options": [
+        "$x^* = 1/r$",
+        "$x^* = r - 1$",
+        "$x^* = 1 - 1/r$",
+        "$x^* = r$"
+      ],
+      "answer": 2,
+      "explanation": "Solve $x = rx(1 - x)$. Dropping the root $x = 0$: $1 = r(1 - x)$, so $1 - x = 1/r$ and $x^* = 1 - 1/r$. This is positive only when $r > 1$.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-005",
+      "stem": "For the logistic map $f(x) = rx(1 - x)$, the derivative is $f'(x) = r(1 - 2x)$. Evaluated at the fixed point $x^* = 1 - 1/r$, this equals",
+      "options": [
+        "$2 - r$",
+        "$r$",
+        "$r - 2$",
+        "$1 - r$"
+      ],
+      "answer": 0,
+      "explanation": "Substitute $x^* = 1 - 1/r$: $f'(x^*) = r(1 - 2(1 - 1/r)) = r(1 - 2 + 2/r) = r(-1 + 2/r) = -r + 2 = 2 - r$. This slope controls the stability of the nonzero fixed point.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-006",
+      "stem": "The nonzero fixed point $x^* = 1 - 1/r$ of the logistic map (with $f'(x^*) = 2 - r$) is stable for the range",
+      "options": [
+        "$0 < r < 1$",
+        "$r > 3$",
+        "$r > 4$",
+        "$1 < r < 3$"
+      ],
+      "answer": 3,
+      "explanation": "Stability requires $|f'(x^*)| = |2 - r| < 1$, i.e. $-1 < 2 - r < 1$, which gives $1 < r < 3$. Below $r = 1$ the fixed point is not positive; above $r = 3$ it loses stability to a 2-cycle.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-007",
+      "stem": "For the logistic map, the fixed point $x^* = 0$ has multiplier $f'(0) = r$. It is stable when",
+      "options": [
+        "$r < 1$",
+        "$r > 1$",
+        "$r = 2$",
+        "$r > 3$"
+      ],
+      "answer": 0,
+      "explanation": "At $x^* = 0$, $f'(0) = r(1 - 0) = r$. Stability needs $|r| < 1$; for the biologically relevant $r > 0$ this means $r < 1$. When $r < 1$ the population dies out to the extinction fixed point.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-008",
+      "stem": "For the logistic map with $r = 2.5$, the nonzero fixed point and its stability are",
+      "options": [
+        "$x^* = 0.5$, stable",
+        "$x^* = 0.4$, unstable",
+        "$x^* = 0.6$, unstable",
+        "$x^* = 0.6$, stable"
+      ],
+      "answer": 3,
+      "explanation": "$x^* = 1 - 1/r = 1 - 1/2.5 = 1 - 0.4 = 0.6$. The multiplier is $f'(x^*) = 2 - r = 2 - 2.5 = -0.5$, and $|-0.5| < 1$, so the fixed point is stable.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-009",
+      "stem": "For the logistic map with $r = 3.2$, the nonzero fixed point $x^* = 1 - 1/r$ is",
+      "options": [
+        "stable",
+        "marginal",
+        "unstable",
+        "nonexistent"
+      ],
+      "answer": 2,
+      "explanation": "The multiplier is $f'(x^*) = 2 - r = 2 - 3.2 = -1.2$, and $|-1.2| > 1$, so the fixed point is unstable. At $r = 3.2 > 3$ the dynamics have already settled onto a stable period-2 cycle.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-010",
+      "stem": "As $r$ increases past $3$ in the logistic map, the stable fixed point gives way to a stable cycle of period $2$. This event is called a",
+      "options": [
+        "saddle-node bifurcation",
+        "transcritical bifurcation",
+        "period-doubling (flip) bifurcation",
+        "Hopf bifurcation"
+      ],
+      "answer": 2,
+      "explanation": "When the multiplier passes through $-1$ (here $f'(x^*) = 2 - r = -1$ at $r = 3$), the fixed point loses stability and a period-2 orbit is born. This is a period-doubling, or flip, bifurcation, the first step of the route to chaos.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-011",
+      "stem": "Repeated period-doubling bifurcations in the logistic map, accumulating as $r$ increases, lead ultimately to",
+      "options": [
+        "a single stable fixed point",
+        "chaotic (aperiodic) dynamics",
+        "extinction",
+        "unbounded growth"
+      ],
+      "answer": 1,
+      "explanation": "The periods double as $2 \\to 4 \\to 8 \\to \\cdots$ at an accelerating sequence of $r$ values, accumulating near $r \\approx 3.57$. Beyond this point the orbit no longer settles to any finite period and the dynamics become chaotic: bounded but aperiodic and sensitive to initial conditions.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-012",
+      "stem": "The graphical technique for iterating a map by reflecting between the curve $y = f(x)$ and the diagonal $y = x$ is called",
+      "options": [
+        "a phase portrait",
+        "a cobweb diagram",
+        "a bifurcation diagram",
+        "a nullcline plot"
+      ],
+      "answer": 1,
+      "explanation": "A cobweb (or staircase) diagram visualizes iteration: from a point on $y = f(x)$ you move horizontally to the line $y = x$, then vertically back to the curve, and repeat. The resulting cobweb path shows convergence to a stable fixed point or divergence from an unstable one.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-013",
+      "stem": "On a cobweb diagram, a fixed point where the curve $y = f(x)$ crosses the diagonal with slope satisfying $|f'(x^*)| < 1$ produces a cobweb that",
+      "options": [
+        "spirals or steps outward (diverges)",
+        "stays on a closed loop",
+        "jumps to infinity immediately",
+        "steps or spirals inward toward the fixed point (converges)"
+      ],
+      "answer": 3,
+      "explanation": "When the magnitude of the slope at the crossing is less than $1$, successive iterates move closer to $x^*$, so the cobweb staircase or spiral converges onto the fixed point. A slope magnitude greater than $1$ makes it diverge.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-014",
+      "stem": "The Ricker model is $x_{n+1} = x_n e^{r(1 - x_n/K)}$. Its nonzero fixed point is",
+      "options": [
+        "$x^* = K$",
+        "$x^* = r$",
+        "$x^* = K/2$",
+        "$x^* = r/K$"
+      ],
+      "answer": 0,
+      "explanation": "Set $x = x e^{r(1 - x/K)}$. Dividing by $x \\neq 0$ gives $e^{r(1 - x/K)} = 1$, so $r(1 - x/K) = 0$, hence $x^* = K$. The Ricker map saturates at the carrying capacity $K$, just like the continuous logistic.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-015",
+      "stem": "For the Ricker map, the multiplier at the carrying-capacity fixed point is $f'(K) = 1 - r$. The fixed point $x^* = K$ is therefore stable for",
+      "options": [
+        "$r > 2$",
+        "$0 < r < 2$",
+        "$r > 1$ only",
+        "all $r > 0$"
+      ],
+      "answer": 1,
+      "explanation": "Stability requires $|f'(K)| = |1 - r| < 1$, i.e. $-1 < 1 - r < 1$, giving $0 < r < 2$. As $r$ passes $2$ the multiplier drops below $-1$ and the carrying capacity loses stability through a period-doubling bifurcation.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-016",
+      "stem": "The simple geometric (discrete Malthusian) model $x_{n+1} = \\lambda x_n$ has solution $x_n = \\lambda^n x_0$. The population grows without bound when",
+      "options": [
+        "$\\lambda = 0$",
+        "$\\lambda < 1$",
+        "$\\lambda = 1$",
+        "$\\lambda > 1$"
+      ],
+      "answer": 3,
+      "explanation": "Since $x_n = \\lambda^n x_0$, the magnitude grows geometrically when $\\lambda > 1$, stays constant when $\\lambda = 1$, and decays to zero when $0 < \\lambda < 1$. So unbounded growth requires $\\lambda > 1$. Here $\\lambda$ is the per-generation multiplication factor.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-017",
+      "stem": "Consider the map $x_{n+1} = x_n^2$ on $[0, \\infty)$. Its fixed points and their stability are",
+      "options": [
+        "$x^* = 0$ stable, $x^* = 1$ unstable",
+        "both stable",
+        "$x^* = 0$ unstable, $x^* = 1$ stable",
+        "only $x^* = 1$, stable"
+      ],
+      "answer": 0,
+      "explanation": "Fixed points satisfy $x = x^2$, so $x^* = 0$ or $x^* = 1$. With $f'(x) = 2x$: $f'(0) = 0$, and $|0| < 1$ so $x^* = 0$ is stable; $f'(1) = 2$, and $|2| > 1$ so $x^* = 1$ is unstable.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-018",
+      "stem": "For the logistic map with $r = 2$, the nonzero fixed point has multiplier $f'(x^*) = 2 - r = 0$. Such a fixed point (where the multiplier is exactly zero) is called",
+      "options": [
+        "unstable",
+        "marginal",
+        "superstable (extremely fast convergence)",
+        "a saddle"
+      ],
+      "answer": 2,
+      "explanation": "A multiplier of $0$ means perturbations are killed faster than any geometric rate; convergence is quadratic rather than linear. Such a fixed point is called superstable. Here $x^* = 1 - 1/2 = 0.5$, and iterates snap to it very quickly.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-019",
+      "stem": "A discrete model has multiplier $f'(x^*) = -0.8$ at a fixed point. The approach to the fixed point is",
+      "options": [
+        "monotonic (one-sided) decay",
+        "oscillatory (alternating) decay",
+        "monotonic growth",
+        "a steady cycle"
+      ],
+      "answer": 1,
+      "explanation": "Because the multiplier is negative, successive perturbations alternate in sign: $\\eta_{n+1} = -0.8\\,\\eta_n$ flips side each step. Since $|-0.8| < 1$ the amplitude still shrinks, so the iterates oscillate above and below $x^*$ while converging.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-020",
+      "stem": "Compared with the continuous logistic model, the discrete logistic map can additionally exhibit",
+      "options": [
+        "a stable carrying capacity",
+        "extinction at low growth rate",
+        "an unstable extinction state",
+        "oscillations, period-doubling, and chaos"
+      ],
+      "answer": 3,
+      "explanation": "The continuous logistic equation always converges monotonically to $K$. The discrete map, because each step is a finite jump, can overshoot and so produce oscillations, period-doubling cascades, and chaotic dynamics as $r$ increases. This richer behaviour is the hallmark of discrete-time density dependence.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-021",
+      "stem": "For the logistic map with $r = 1.5$, the nonzero fixed point $x^* = 1 - 1/r$ is",
+      "options": [
+        "$x^* \\approx 0.333$, stable",
+        "$x^* \\approx 0.667$, unstable",
+        "$x^* \\approx 0.333$, unstable",
+        "$x^* = 0.5$, marginal"
+      ],
+      "answer": 0,
+      "explanation": "$x^* = 1 - 1/1.5 = 1 - 0.667 = 0.333$. The multiplier is $f'(x^*) = 2 - r = 2 - 1.5 = 0.5$, and $|0.5| < 1$, so the fixed point is stable (and approached monotonically since the multiplier is positive).",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-022",
+      "format": "cloze",
+      "stem": "Consider the logistic map $x_{n+1} = r x_n(1 - x_n)$ with $r = 2.8$.",
+      "solution": "The nonzero fixed point is $x^* = 1 - 1/r =$ {{1}} (to three decimal places). The multiplier there is $f'(x^*) = 2 - r =$ {{2}}. Since its magnitude is less than $1$, the fixed point is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.643,
+          "tolerance": 0.005
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -0.8,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "stable",
+            "unstable"
+          ],
+          "answer": "stable"
+        }
+      ],
+      "explanation": "$x^* = 1 - 1/2.8 = 1 - 0.357 = 0.643$. Multiplier $= 2 - 2.8 = -0.8$, and $|-0.8| < 1$, so the fixed point is stable (approached with alternating oscillation because the multiplier is negative).",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-023",
+      "format": "cloze",
+      "stem": "Analyze the stability of fixed points of a general map $x_{n+1} = f(x_n)$ using the multiplier $f'(x^*)$.",
+      "solution": "A fixed point is stable when $|f'(x^*)|$ is {{1}} than $1$. If the multiplier is negative but of magnitude below $1$, the iterates approach the fixed point in an {{2}} manner. If $|f'(x^*)| > 1$, the fixed point is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "less",
+            "greater"
+          ],
+          "answer": "less"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "oscillatory",
+            "monotonic"
+          ],
+          "answer": "oscillatory"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "unstable",
+            "stable"
+          ],
+          "answer": "unstable"
+        }
+      ],
+      "explanation": "Stability needs $|f'(x^*)| < 1$ (less than 1). A negative multiplier flips the sign of the perturbation each step, giving oscillatory (alternating) approach. If $|f'(x^*)| > 1$ perturbations grow, so the fixed point is unstable.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-024",
+      "format": "cloze",
+      "stem": "Study the Ricker map $x_{n+1} = x_n e^{r(1 - x_n/K)}$ near its carrying capacity.",
+      "solution": "The nonzero fixed point is at $x^* = K$, found by setting the exponent to {{1}}. The multiplier there is $f'(K) = 1 - r$, so the carrying capacity is stable provided $r$ lies in the interval $0 < r <$ {{2}}. When $r$ exceeds that value, the fixed point loses stability through a {{3}} bifurcation.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "period-doubling",
+            "saddle-node",
+            "transcritical"
+          ],
+          "answer": "period-doubling"
+        }
+      ],
+      "explanation": "Setting the exponent $r(1 - x/K) = 0$ gives $x^* = K$. Stability needs $|1 - r| < 1$, i.e. $0 < r < 2$. As $r$ crosses $2$ the multiplier passes through $-1$, a period-doubling (flip) bifurcation.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-025",
+      "format": "cloze",
+      "stem": "Trace the route to chaos in the logistic map as the parameter $r$ is increased.",
+      "solution": "For $1 < r < 3$ the dynamics settle to a single stable fixed point. At $r = 3$ the multiplier of the fixed point reaches the value {{1}}, and a stable cycle of period {{2}} appears. Further increases give a cascade of period-doublings that accumulates and leads to {{3}} dynamics.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "chaotic",
+            "extinct",
+            "steady"
+          ],
+          "answer": "chaotic"
+        }
+      ],
+      "explanation": "At $r = 3$, $f'(x^*) = 2 - r = -1$, the flip threshold, where a period-2 cycle is born. Successive period-doublings ($2, 4, 8, \\ldots$) accumulate near $r \\approx 3.57$, beyond which the motion is chaotic.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-026",
+      "format": "cloze",
+      "stem": "A geometric population model is $x_{n+1} = \\lambda x_n$ with $\\lambda = 1.2$ and $x_0 = 50$.",
+      "solution": "Because $\\lambda > 1$, the population {{1}} each generation. After two generations the size is $x_2 = \\lambda^2 x_0 =$ {{2}} (to the nearest whole number). The fixed point at $x^* = 0$ is {{3}} for this value of $\\lambda$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "grows",
+            "shrinks"
+          ],
+          "answer": "grows"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 72,
+          "tolerance": 0.5
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "unstable",
+            "stable"
+          ],
+          "answer": "unstable"
+        }
+      ],
+      "explanation": "With $\\lambda = 1.2 > 1$ the population grows. $x_2 = (1.2)^2 \\times 50 = 1.44 \\times 50 = 72$. The multiplier at $x^* = 0$ is $\\lambda = 1.2$, and $|1.2| > 1$, so the extinction state is unstable.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "math-biology-2-discrete-population-models-027",
+      "format": "cloze",
+      "stem": "Examine the map $x_{n+1} = x_n^2$ on $[0, \\infty)$ by locating and classifying its fixed points.",
+      "solution": "Solving $x = x^2$ gives the fixed points $x^* = 0$ and $x^* =$ {{1}}. With $f'(x) = 2x$, the multiplier at the origin is $f'(0) = 0$, so $x^* = 0$ is {{2}}. The multiplier at the other fixed point is $f'(1) = 2$, so it is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "stable",
+            "unstable"
+          ],
+          "answer": "stable"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "stable",
+            "unstable"
+          ],
+          "answer": "unstable"
+        }
+      ],
+      "explanation": "Fixed points $x^* = 0$ and $x^* = 1$. $f'(x) = 2x$: $f'(0) = 0$ with $|0| < 1$ so $x^* = 0$ is stable; $f'(1) = 2$ with $|2| > 1$ so $x^* = 1$ is unstable.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    }
+  ]
+}

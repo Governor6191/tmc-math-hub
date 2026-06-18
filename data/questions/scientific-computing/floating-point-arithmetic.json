@@ -1,0 +1,543 @@
+{
+  "courseId": "scientific-computing",
+  "topicId": "floating-point-arithmetic",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-floating-point-arithmetic-001",
+      "stem": "An IEEE 754 double-precision number uses 64 bits in total. How are they divided among sign, exponent, and significand (stored fraction)?",
+      "options": [
+        "1 sign, 8 exponent, 55 fraction",
+        "1 sign, 11 exponent, 52 fraction",
+        "1 sign, 15 exponent, 48 fraction",
+        "1 sign, 23 exponent, 40 fraction"
+      ],
+      "answer": 1,
+      "explanation": "Double precision splits its 64 bits as 1 sign bit, 11 exponent bits, and 52 stored fraction bits, and $1 + 11 + 52 = 64$. The leading significand bit is an implicit 1 for normalized numbers, so the precision is 53 bits. The 8-exponent layout is single precision (32 bits total), and the other splits do not sum correctly with the standard sign and fraction widths. The trap is confusing the single-precision exponent width (8) with the double-precision width (11).",
+      "difficulty": "warmup",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-002",
+      "stem": "Heath defines machine epsilon $\\epsilon_{\\text{mach}}$ as the distance from $1$ to the next larger floating-point number. For IEEE double precision (53-bit significand), this is which value?",
+      "options": [
+        "$2^{-23} \\approx 1.19 \\times 10^{-7}$",
+        "$2^{-53} \\approx 1.11 \\times 10^{-16}$",
+        "$2^{-52} \\approx 2.22 \\times 10^{-16}$",
+        "$2^{-64} \\approx 5.42 \\times 10^{-20}$"
+      ],
+      "answer": 2,
+      "explanation": "The numbers near $1$ are spaced by $2^{-52}$ because the 52 stored fraction bits give a least significant bit of weight $2^{-52}$ when the exponent is $0$. So the gap from $1$ to the next double is $\\epsilon_{\\text{mach}} = 2^{-52} \\approx 2.22 \\times 10^{-16}$. The value $2^{-53}$ is the unit roundoff $u = \\epsilon_{\\text{mach}}/2$ (the maximum relative rounding error), and $2^{-23}$ is single-precision machine epsilon. The trap is reporting the unit roundoff $2^{-53}$ instead of the spacing $2^{-52}$ that Heath calls machine epsilon.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-003",
+      "stem": "For round-to-nearest in IEEE arithmetic, the relative error of representing a real number $x$ (within the normalized range) by its nearest floating-point value $fl(x)$ is bounded by the unit roundoff $u$. For double precision, $u$ equals which value?",
+      "options": [
+        "$2^{-53} \\approx 1.11 \\times 10^{-16}$",
+        "$2^{-52} \\approx 2.22 \\times 10^{-16}$",
+        "$2^{-24} \\approx 5.96 \\times 10^{-8}$",
+        "$10^{-16}$"
+      ],
+      "answer": 0,
+      "explanation": "Round-to-nearest commits an error of at most half the spacing between adjacent floats, so the relative error obeys $|fl(x) - x| / |x| \\le \\tfrac{1}{2}\\epsilon_{\\text{mach}} = 2^{-53} \\approx 1.11 \\times 10^{-16}$, which is the unit roundoff $u$. The value $2^{-52}$ is the full spacing (machine epsilon), $2^{-24}$ is the single-precision unit roundoff, and $10^{-16}$ is only a rough decimal approximation, not the exact bound. The trap is using the full epsilon rather than half of it for the rounding bound.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-004",
+      "stem": "IEEE single precision has a 24-bit significand (23 stored). Its machine epsilon is which value?",
+      "options": [
+        "$2^{-52} \\approx 2.22 \\times 10^{-16}$",
+        "$2^{-16} \\approx 1.53 \\times 10^{-5}$",
+        "$2^{-23} \\approx 1.19 \\times 10^{-7}$",
+        "$2^{-11} \\approx 4.88 \\times 10^{-4}$"
+      ],
+      "answer": 2,
+      "explanation": "With 23 stored fraction bits, the spacing of single-precision numbers near $1$ is $2^{-23} \\approx 1.19 \\times 10^{-7}$, which is single-precision machine epsilon. This is why single precision carries roughly 7 significant decimal digits. The value $2^{-52}$ is the double-precision epsilon, and the other options correspond to no standard format. The trap is using the double-precision figure when the question specifies single precision.",
+      "difficulty": "warmup",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-005",
+      "stem": "Which statement best describes catastrophic cancellation in floating-point arithmetic?",
+      "options": [
+        "Adding a very large and a very small number, so the small one is lost",
+        "Multiplying two numbers whose product overflows the exponent range",
+        "Dividing by a number very close to zero",
+        "Subtracting two nearly equal numbers, so the leading significant digits cancel and relative error is amplified"
+      ],
+      "answer": 3,
+      "explanation": "Catastrophic cancellation occurs when two nearly equal floating-point numbers are subtracted: their agreeing leading digits cancel, leaving a result dominated by the rounding errors already present in the operands, so the relative error explodes. Overflow and absorption of small addends are different phenomena (range and alignment issues), and division by a near-zero value is a separate ill-conditioning concern. The trap is conflating cancellation with overflow or with the loss of a small addend; cancellation is specifically about subtraction of close values.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-006",
+      "stem": "To compute $\\sqrt{x+1} - \\sqrt{x}$ accurately for large $x$ (avoiding cancellation), which algebraically equivalent form should be used?",
+      "options": [
+        "$\\dfrac{1}{\\sqrt{x+1} + \\sqrt{x}}$",
+        "$\\dfrac{1}{\\sqrt{x+1} - \\sqrt{x}}$",
+        "$\\sqrt{x+1} + \\sqrt{x}$",
+        "$\\dfrac{x+1}{\\sqrt{x}}$"
+      ],
+      "answer": 0,
+      "explanation": "Multiplying by the conjugate gives $(\\sqrt{x+1}-\\sqrt{x})\\cdot\\frac{\\sqrt{x+1}+\\sqrt{x}}{\\sqrt{x+1}+\\sqrt{x}} = \\frac{(x+1)-x}{\\sqrt{x+1}+\\sqrt{x}} = \\frac{1}{\\sqrt{x+1}+\\sqrt{x}}$. The new form adds two nearly equal positive numbers instead of subtracting them, so no cancellation occurs. The second option keeps the dangerous subtraction in the denominator, and the others are not equal to the original expression. The trap is rationalizing with the wrong sign and reintroducing the subtraction.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-007",
+      "stem": "A quantity has true value $x = 2.71828$ and is approximated by $\\hat{x} = 2.71800$. The absolute and relative errors are approximately which pair?",
+      "options": [
+        "Absolute $2.8 \\times 10^{-4}$, relative $1.03 \\times 10^{-4}$",
+        "Absolute $2.8 \\times 10^{-3}$, relative $1.03 \\times 10^{-3}$",
+        "Absolute $1.03 \\times 10^{-4}$, relative $2.8 \\times 10^{-4}$",
+        "Absolute $2.8 \\times 10^{-4}$, relative $2.8 \\times 10^{-4}$"
+      ],
+      "answer": 0,
+      "explanation": "The absolute error is $|x - \\hat{x}| = |2.71828 - 2.71800| = 0.00028 = 2.8 \\times 10^{-4}$. The relative error is $\\frac{0.00028}{2.71828} \\approx 1.03 \\times 10^{-4}$. The relative error is smaller than the absolute error here because the true value exceeds $1$. The third option swaps the two quantities, and the others use the wrong magnitude. The trap is dividing by the wrong base or confusing which figure is absolute versus relative.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-008",
+      "stem": "An approximation $\\hat{x}$ agrees with the true value $x$ to a relative error of about $5 \\times 10^{-6}$. Roughly how many correct significant decimal digits does $\\hat{x}$ have?",
+      "options": [
+        "About 2",
+        "About 5",
+        "About 8",
+        "About 11"
+      ],
+      "answer": 1,
+      "explanation": "The number of correct significant digits is roughly $-\\log_{10}(\\text{relative error})$. Here $-\\log_{10}(5 \\times 10^{-6}) = 6 - \\log_{10} 5 \\approx 6 - 0.70 = 5.3$, so about 5 significant digits are correct. A relative error near $10^{-6}$ would give 6 digits, but the factor of 5 trims it to roughly 5. The trap is reading the exponent $6$ directly without accounting for the leading factor of $5$, which costs nearly a full digit.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-009",
+      "stem": "Why can the decimal value $0.1$ not be stored exactly in binary IEEE floating point?",
+      "options": [
+        "Because $0.1$ is larger than machine epsilon",
+        "Because $0.1$ underflows to zero",
+        "Because $0.1$ exceeds the exponent range",
+        "Because $0.1$ has no finite binary (base-2) representation; it is a repeating binary fraction"
+      ],
+      "answer": 3,
+      "explanation": "A fraction terminates in base 2 only if its denominator in lowest terms is a power of 2. Since $0.1 = 1/10$ and $10 = 2 \\cdot 5$ has the factor 5, its binary expansion repeats forever ($0.0001100110011\\ldots_2$), so it must be rounded to the nearest representable double. Magnitude, underflow, and exponent range are irrelevant; $0.1$ sits comfortably in the normalized range. The trap is assuming a number small in decimal must fit exactly; the issue is the base-2 representability, not the size.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-010",
+      "stem": "In a floating-point system, what does underflow refer to?",
+      "options": [
+        "A number whose magnitude is too large to represent, mapped to infinity",
+        "Loss of significant digits when subtracting close numbers",
+        "A number whose magnitude is too small (closer to zero than the smallest representable value), mapped toward zero",
+        "Rounding a number to the nearest even significand"
+      ],
+      "answer": 2,
+      "explanation": "Underflow happens when a nonzero result is smaller in magnitude than the smallest representable (normalized or subnormal) value, so it is flushed toward zero or represented as a subnormal with reduced precision. Overflow is the opposite, mapping huge magnitudes to infinity, cancellation is a subtraction effect, and round-to-even is a tie-breaking rule. The trap is swapping underflow with overflow; underflow concerns magnitudes too close to zero.",
+      "difficulty": "warmup",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-011",
+      "stem": "Evaluating the polynomial $p(x) = x^2 - 2x + 1 = (x-1)^2$ at $x = 1.0001$ by the expanded form $x^2 - 2x + 1$ can lose accuracy. The chief reason is which of the following?",
+      "options": [
+        "Overflow in computing $x^2$",
+        "Cancellation: $x^2$ and $2x$ are nearly equal and large compared to the tiny true result",
+        "Underflow of the constant term $1$",
+        "The factored form $(x-1)^2$ is not differentiable"
+      ],
+      "answer": 1,
+      "explanation": "At $x = 1.0001$ the true value $(x-1)^2 = 10^{-8}$ is minuscule, yet the expanded form forms $x^2 \\approx 1.00020001$ and $2x = 2.0002$, large nearly equal numbers whose subtraction cancels almost all significant digits, leaving a result swamped by rounding error. No overflow or underflow occurs (all values are near $1$), and differentiability is irrelevant. The trap is blaming overflow; the real issue is catastrophic cancellation between two close large terms.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-012",
+      "stem": "Floating-point addition is not associative. Which expression illustrates this most directly, where $\\epsilon$ is just below machine epsilon so that $1 + \\epsilon$ rounds to $1$?",
+      "options": [
+        "$(1 + \\epsilon) + \\epsilon$ may differ from $1 + (\\epsilon + \\epsilon)$",
+        "$1 \\times \\epsilon = \\epsilon \\times 1$",
+        "$1 + 0 = 1$",
+        "$\\epsilon - \\epsilon = 0$"
+      ],
+      "answer": 0,
+      "explanation": "If $\\epsilon$ is small enough that $1 \\oplus \\epsilon$ rounds back to $1$, then $(1 \\oplus \\epsilon) \\oplus \\epsilon = 1 \\oplus \\epsilon = 1$, but $1 \\oplus (\\epsilon \\oplus \\epsilon) = 1 \\oplus 2\\epsilon$ can round to a value strictly greater than $1$. The two groupings give different results, showing non-associativity. The other identities (commutativity of multiplication, additive identity, self-subtraction) all hold exactly. The trap is assuming the exact-arithmetic associative law survives rounding; the order of summation matters.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-013",
+      "stem": "To sum a large set of positive floating-point numbers of widely varying magnitudes most accurately with naive sequential addition, the best ordering is generally which of the following?",
+      "options": [
+        "Largest to smallest",
+        "Smallest to largest",
+        "Random order",
+        "Order does not affect accuracy"
+      ],
+      "answer": 1,
+      "explanation": "Adding from smallest to largest keeps the running partial sum as small as possible for as long as possible, so each tiny addend is less likely to be lost when aligned against a large accumulator. Starting with the largest values makes the partial sum big early, and subsequent small terms fall below its trailing-digit resolution and vanish. Random order is unpredictable. The trap is thinking order is irrelevant; for finite precision the ascending sweep reduces lost-digit error (compensated summation does even better).",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-014",
+      "stem": "The exponent field of an IEEE double has 11 bits with a bias of 1023, giving a normalized exponent range from $-1022$ to $+1023$. Approximately what is the largest finite double-precision magnitude?",
+      "options": [
+        "$\\approx 3.4 \\times 10^{38}$",
+        "$\\approx 9.0 \\times 10^{15}$",
+        "$\\approx 1.0 \\times 10^{1023}$",
+        "$\\approx 1.8 \\times 10^{308}$"
+      ],
+      "answer": 3,
+      "explanation": "The largest double is just under $2^{1024}$, namely $(2 - 2^{-52}) \\cdot 2^{1023} \\approx 1.8 \\times 10^{308}$, since $2^{1024} = (2^{10})^{102.4} \\approx 10^{308}$. The value $3.4 \\times 10^{38}$ is the single-precision maximum, $9 \\times 10^{15}$ is roughly $2^{53}$ (the integer-exactness limit), and $10^{1023}$ confuses the binary exponent with a decimal one. The trap is treating the exponent $1023$ as a power of 10 rather than of 2.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-015",
+      "stem": "What is the largest consecutive integer $N$ such that every integer from $0$ to $N$ is represented exactly in IEEE double precision (53-bit significand)?",
+      "options": [
+        "$2^{23}$",
+        "$2^{52}$",
+        "$2^{53}$",
+        "$2^{63}$"
+      ],
+      "answer": 2,
+      "explanation": "With a 53-bit significand, all integers up to $2^{53}$ are exactly representable; at $2^{53}+1$ the gap between adjacent doubles becomes $2$, so odd integers beyond $2^{53}$ cannot be stored. Hence the threshold is $N = 2^{53} \\approx 9.007 \\times 10^{15}$. The value $2^{52}$ undercounts by one bit, $2^{23}$ is the single-precision figure, and $2^{63}$ relates to 64-bit integers, not double significands. The trap is using $2^{52}$ (the stored bits) instead of $2^{53}$ (the full precision including the implicit bit).",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-016",
+      "stem": "When computing $f(x) = \\dfrac{1 - \\cos x}{x^2}$ for very small $x$ in floating point, the naive formula is inaccurate. The underlying cause is which of the following?",
+      "options": [
+        "Overflow of $x^2$",
+        "Cancellation in $1 - \\cos x$, since $\\cos x \\approx 1$ for small $x$",
+        "Underflow of $\\cos x$",
+        "The function is undefined at $x = 0$ so no method works"
+      ],
+      "answer": 1,
+      "explanation": "For small $x$, $\\cos x$ is extremely close to $1$, so $1 - \\cos x$ subtracts two nearly equal numbers and loses most significant digits to cancellation, even though the true limit is $f \\to 1/2$. A stable rewrite uses $1 - \\cos x = 2\\sin^2(x/2)$, giving $f(x) = \\frac{2\\sin^2(x/2)}{x^2} = \\tfrac12\\left(\\frac{\\sin(x/2)}{x/2}\\right)^2$. There is no overflow or underflow, and the limit exists. The trap is blaming a range error rather than the cancellation in the numerator.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-017",
+      "stem": "Heath defines machine epsilon by the smallest positive $\\epsilon$ such that $fl(1 + \\epsilon) > 1$. In a hypothetical decimal floating-point system with a 4-digit significand (so the significand carries digits $d_0.d_1 d_2 d_3$), what is machine epsilon?",
+      "options": [
+        "$10^{-2}$",
+        "$10^{-3}$",
+        "$10^{-4}$",
+        "$10^{-5}$"
+      ],
+      "answer": 1,
+      "explanation": "A 4-digit significand keeps 3 digits after the leading digit, so near $1$ the representable numbers are $1.000, 1.001, 1.002, \\ldots$, spaced by $10^{-3}$. The smallest increment that changes $1$ is therefore $\\epsilon_{\\text{mach}} = 10^{-3}$. Using $10^{-4}$ assumes 4 fractional digits, and the others miscount. The trap is forgetting that one of the four significand digits is the integer part, leaving only 3 fractional digits, so the spacing is $10^{-3}$ rather than $10^{-4}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-018",
+      "stem": "Two numbers $a = 1.234567 \\times 10^0$ and $b = 1.234566 \\times 10^0$ are each accurate to 7 significant digits. About how many significant digits does the difference $a - b$ retain?",
+      "options": [
+        "About 7",
+        "About 6",
+        "About 4",
+        "About 1"
+      ],
+      "answer": 3,
+      "explanation": "The difference is $a - b = 0.000001 \\times 10^0 = 1 \\times 10^{-6}$. The first six significant digits agreed and cancelled, leaving only the single digit in the seventh place, which itself carried the rounding uncertainty. So the result has roughly 1 reliable significant digit. The other options ignore how many leading digits matched. The trap is assuming the operands' 7-digit accuracy carries into the difference; cancellation discards the agreeing digits and only the surviving low-order digit remains.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-019",
+      "stem": "In the standard model of floating-point arithmetic, a single operation satisfies $fl(a \\odot b) = (a \\odot b)(1 + \\delta)$ where $|\\delta| \\le u$. What does this statement express?",
+      "options": [
+        "Each operation is computed with no error at all",
+        "The absolute error of each operation is exactly $u$",
+        "Each elementary operation has small relative error bounded by the unit roundoff",
+        "Only addition obeys this bound, not multiplication or division"
+      ],
+      "answer": 2,
+      "explanation": "The model says the computed result of one correctly rounded operation equals the exact result scaled by $(1 + \\delta)$ with $|\\delta| \\le u$, i.e. the relative error of each elementary operation is at most the unit roundoff. It is not error-free, the bound is on relative not absolute error, and IEEE requires this for $+, -, \\times, \\div$, and $\\sqrt{}$ alike. The trap is reading it as exactness or as an absolute-error statement; it is a relative-error bound applying to all the basic operations.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-020",
+      "stem": "Which of these is NOT a special value defined by the IEEE 754 standard?",
+      "options": [
+        "$+\\infty$ and $-\\infty$",
+        "NaN (Not a Number)",
+        "Signed zeros $+0$ and $-0$",
+        "A representable largest-prime sentinel"
+      ],
+      "answer": 3,
+      "explanation": "IEEE 754 reserves encodings for $\\pm\\infty$ (overflow and division of a finite nonzero by zero), NaN (results of indeterminate forms like $0/0$ or $\\infty - \\infty$), and the two signed zeros $\\pm 0$. There is no notion of a largest-prime sentinel in the standard. The trap is the plausible-sounding invented option; the genuine special values are the infinities, NaNs, and signed zeros.",
+      "difficulty": "warmup",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-021",
+      "stem": "The smaller root of $x^2 - 26x + 1 = 0$ is computed. Using the standard quadratic formula $\\frac{26 - \\sqrt{676 - 4}}{2}$ loses accuracy through cancellation. Which equivalent expression avoids it?",
+      "options": [
+        "$\\dfrac{2}{26 + \\sqrt{672}}$",
+        "$\\dfrac{26 + \\sqrt{672}}{2}$",
+        "$\\dfrac{1}{26 - \\sqrt{672}}$",
+        "$26 - \\sqrt{672}$"
+      ],
+      "answer": 0,
+      "explanation": "For $ax^2+bx+c=0$ with $b>0$, the small root suffers cancellation in $-b+\\sqrt{b^2-4ac}$ and is better found from the product of roots $x_1 x_2 = c/a$: the small root equals $\\frac{c/a}{\\text{large root}} = \\frac{1}{(26+\\sqrt{672})/2} = \\frac{2}{26 + \\sqrt{672}}$. Numerically $\\sqrt{672}\\approx 25.923$, so this is $\\frac{2}{51.923} \\approx 0.03852$, matching the true small root. The second option is the large root, and the others reintroduce or mis-handle the subtraction. The trap is keeping the cancelling difference instead of using the conjugate or the product-of-roots identity.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-022",
+      "stem": "A measured length is $x = 100.0$ m with absolute error at most $0.5$ m. What is the corresponding relative error bound?",
+      "options": [
+        "$5\\%$",
+        "$0.05\\%$",
+        "$50\\%$",
+        "$0.5\\%$"
+      ],
+      "answer": 3,
+      "explanation": "The relative error bound is the absolute error divided by the value: $\\frac{0.5}{100.0} = 0.005 = 0.5\\%$. The other options misplace the decimal point by factors of 10. The trap is dividing incorrectly or forgetting to convert the fraction $0.005$ to a percentage, which is exactly $0.5\\%$.",
+      "difficulty": "warmup",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-023",
+      "stem": "Subnormal (denormalized) numbers in IEEE 754 serve which purpose?",
+      "options": [
+        "They extend the largest representable magnitude",
+        "They store the exponent in decimal",
+        "They fill the gap between zero and the smallest normalized number, giving gradual underflow",
+        "They speed up multiplication"
+      ],
+      "answer": 2,
+      "explanation": "Subnormals use the minimum exponent with a leading significand bit of 0, populating the range between zero and the smallest normalized value so that underflow degrades precision gradually rather than flushing abruptly to zero. They do not extend the top of the range, change the exponent base, or accelerate arithmetic (they can be slower). The trap is associating them with large magnitudes; they exist at the tiny end to provide gradual underflow.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-024",
+      "format": "cloze",
+      "stem": "Fix the precision parameters of IEEE 754 double precision.",
+      "solution": "A double occupies 64 bits, of which {{1}} are stored fraction (significand) bits, so including the implicit leading bit the precision is 53 bits. Machine epsilon, the spacing from $1$ to the next double, is $2^{-52}$, which to two significant figures is $\\epsilon_{\\text{mach}} \\approx$ {{2}}. The unit roundoff, equal to $\\tfrac12 \\epsilon_{\\text{mach}}$, equals $2$ raised to the power {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 52,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2.22e-16,
+          "tolerance": 0.05e-16
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -53,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Double precision stores 52 fraction bits ($1 + 11 + 52 = 64$). Machine epsilon is $2^{-52} \\approx 2.22 \\times 10^{-16}$. The unit roundoff is half of that, $2^{-53}$, so the exponent is $-53$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-025",
+      "format": "cloze",
+      "stem": "Compute absolute and relative error for the approximation $\\hat{x} = 3.1416$ of $x = \\pi = 3.14159265\\ldots$",
+      "solution": "The absolute error $|x - \\hat{x}| = |3.14159265 - 3.1416|$ is approximately {{1}}. Dividing by $|x|$ gives a relative error of approximately {{2}}. Because relative error compares to the size of $x$, it is the more meaningful measure when the quantities being compared have {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 7.35e-6,
+          "tolerance": 1.0e-6
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2.34e-6,
+          "tolerance": 0.3e-6
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "very different magnitudes",
+            "the same sign",
+            "integer parts",
+            "no rounding"
+          ],
+          "answer": "very different magnitudes"
+        }
+      ],
+      "explanation": "$|x - \\hat{x}| = |3.14159265 - 3.14160000| = 0.00000735 = 7.35 \\times 10^{-6}$. Relative error $= 7.35 \\times 10^{-6} / 3.14159 \\approx 2.34 \\times 10^{-6}$. Relative error is preferred when comparing quantities of very different magnitudes.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-026",
+      "format": "cloze",
+      "stem": "Identify the floating-point hazards in two expressions evaluated for very small $x > 0$.",
+      "solution": "Computing $e^x - 1$ directly for tiny $x$ suffers from {{1}}, because $e^x$ is very close to $1$; a stable alternative is the library function expm1. Likewise, evaluating $\\dfrac{1 - \\cos x}{x^2}$ near $x = 0$ is best rewritten using the identity $1 - \\cos x = 2\\sin^2(x/2)$, after which the true limiting value as $x \\to 0$ is {{2}}. Both fixes work by replacing a subtraction of nearly equal numbers with an expression that has {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "catastrophic cancellation",
+            "overflow",
+            "underflow to a subnormal",
+            "exponent bias error"
+          ],
+          "answer": "catastrophic cancellation"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "no cancellation",
+            "a larger exponent",
+            "more multiplications",
+            "fewer significant digits"
+          ],
+          "answer": "no cancellation"
+        }
+      ],
+      "explanation": "Both $e^x - 1$ and $1 - \\cos x$ subtract a value near $1$ from $1$, causing catastrophic cancellation. The limit of $(1-\\cos x)/x^2$ is $1/2 = 0.5$. The cure replaces the cancelling subtraction with a form that has no cancellation.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-027",
+      "format": "cloze",
+      "stem": "Work out a 4-digit decimal floating-point subtraction to expose cancellation. Use a system that keeps 4 significant decimal digits and rounds to nearest.",
+      "solution": "Let $a = 1.000$ and $b = 0.9994$ be exact in the system. Their true difference is $0.0006$, which normalizes to the stored value {{1}} (in the form $d.ddd \\times 10^{-4}$). Although the operands carried 4 significant digits, the result carries only about {{2}} significant digit(s), because the leading digits {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6.0e-4,
+          "tolerance": 0.01e-4
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "cancelled",
+            "overflowed",
+            "doubled",
+            "rounded up"
+          ],
+          "answer": "cancelled"
+        }
+      ],
+      "explanation": "$1.000 - 0.9994 = 0.0006 = 6.0 \\times 10^{-4}$. The three leading digits agreed and cancelled, so only one significant digit survives even though each operand had four.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-028",
+      "format": "cloze",
+      "stem": "Distinguish the IEEE single-precision and double-precision formats.",
+      "solution": "Single precision uses 32 bits with {{1}} stored fraction bits, giving machine epsilon $2^{-23} \\approx 1.19 \\times 10^{-7}$ and roughly 7 correct significant decimal digits. Double precision uses 64 bits and gives about {{2}} correct significant decimal digits. When a small number is added to a much larger one and the small one falls below the spacing of the large one, the small contribution is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 23,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 16,
+          "tolerance": 1
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "lost",
+            "doubled",
+            "rounded up to epsilon",
+            "stored exactly"
+          ],
+          "answer": "lost"
+        }
+      ],
+      "explanation": "Single precision stores 23 fraction bits ($\\epsilon = 2^{-23}$, about 7 digits). Double precision gives about 15 to 16 significant decimal digits ($2^{-52} \\approx 2.2 \\times 10^{-16}$). A small addend below the large value's spacing is lost.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-floating-point-arithmetic-029",
+      "format": "cloze",
+      "stem": "Recall the IEEE special values and the standard model of arithmetic.",
+      "solution": "Dividing a finite positive number by $+0$ yields {{1}} under IEEE rules. The indeterminate operation $0/0$ yields {{2}}. In the standard model, one correctly rounded operation satisfies $fl(a \\odot b) = (a \\odot b)(1 + \\delta)$ where the bound on $|\\delta|$ is the {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$+\\infty$",
+            "$0$",
+            "NaN",
+            "the largest finite double"
+          ],
+          "answer": "$+\\infty$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "NaN",
+            "$+\\infty$",
+            "$0$",
+            "$1$"
+          ],
+          "answer": "NaN"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "unit roundoff $u$",
+            "machine epsilon squared",
+            "absolute error",
+            "exponent bias"
+          ],
+          "answer": "unit roundoff $u$"
+        }
+      ],
+      "explanation": "A finite nonzero divided by $+0$ gives $+\\infty$. The form $0/0$ is indeterminate and gives NaN. The standard model bounds the relative perturbation $|\\delta|$ by the unit roundoff $u$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    }
+  ]
+}

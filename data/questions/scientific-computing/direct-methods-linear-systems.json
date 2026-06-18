@@ -1,0 +1,526 @@
+{
+  "courseId": "scientific-computing",
+  "topicId": "direct-methods-linear-systems",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-001",
+      "stem": "Gaussian elimination factors a general nonsingular matrix $A$ into which product?",
+      "options": [
+        "$A = LU$, with $L$ unit lower triangular and $U$ upper triangular",
+        "$A = U L$, with both factors upper triangular",
+        "$A = Q R$, with $Q$ orthogonal",
+        "$A = L L^T$, with $L$ lower triangular"
+      ],
+      "answer": 0,
+      "explanation": "Gaussian elimination without pivoting produces $A = LU$ where $L$ is unit lower triangular (ones on the diagonal, the elimination multipliers below) and $U$ is the upper triangular result of the elimination. The $QR$ factorization comes from orthogonalization, and $A = LL^T$ (Cholesky) applies only to symmetric positive definite matrices. The trap is confusing the general LU factorization with the special-purpose QR or Cholesky forms.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-002",
+      "stem": "The leading-order operation (flop) count to compute the LU factorization of a dense $n \\times n$ matrix by Gaussian elimination is approximately which expression?",
+      "options": [
+        "$n^2$",
+        "$\\tfrac{2}{3}n^3$",
+        "$2n^3$",
+        "$\\tfrac{1}{3}n^3$"
+      ],
+      "answer": 1,
+      "explanation": "Gaussian elimination requires about $\\frac{2}{3}n^3$ floating-point operations to leading order, dominated by the rank-one updates of the trailing submatrix at each of the $n$ stages. The value $\\frac{1}{3}n^3$ is the Cholesky count (half, exploiting symmetry), $2n^3$ overstates it threefold, and $n^2$ is the cost of a single triangular solve. The trap is using the Cholesky figure for general LU; the general count is $\\frac{2}{3}n^3$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-003",
+      "stem": "Once $A = LU$ is known, solving $Ax = b$ proceeds by solving $Ly = b$ then $Ux = y$. Each of these triangular solves costs approximately how many operations?",
+      "options": [
+        "$\\tfrac{2}{3}n^3$",
+        "$n^3$",
+        "$n^2$",
+        "$n \\log n$"
+      ],
+      "answer": 2,
+      "explanation": "Forward substitution for $Ly = b$ and back substitution for $Ux = y$ each cost about $n^2$ operations, so the two solves together are $O(n^2)$, far cheaper than the $O(n^3)$ factorization. This is why LU is reused across many right-hand sides: factor once, then solve in $n^2$ work per vector. The $n^3$ and $\\frac{2}{3}n^3$ figures are factorization costs, and $n\\log n$ has no place here. The trap is over-counting a triangular solve as cubic; it is quadratic.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-004",
+      "stem": "Partial pivoting in Gaussian elimination selects, at each step, the pivot as which entry?",
+      "options": [
+        "The smallest entry in the pivot column",
+        "The largest entry in the entire matrix",
+        "Always the current diagonal entry, never swapping",
+        "The largest-magnitude entry on or below the diagonal in the pivot column"
+      ],
+      "answer": 3,
+      "explanation": "Partial pivoting scans the current column at and below the diagonal, then swaps rows to bring the entry of largest absolute value into the pivot position. This keeps the elimination multipliers bounded by $1$ in magnitude, controlling error growth. Choosing the smallest entry would magnify multipliers, scanning the whole matrix is complete (not partial) pivoting, and never swapping is plain elimination. The trap is reversing the selection rule; partial pivoting maximizes the pivot magnitude within the column.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-005",
+      "stem": "Why is partial pivoting used even when the diagonal pivots are nonzero?",
+      "options": [
+        "To improve numerical stability by keeping the multipliers from becoming large",
+        "To reduce the operation count below $\\tfrac{2}{3}n^3$",
+        "To make the matrix symmetric",
+        "To guarantee the matrix is positive definite"
+      ],
+      "answer": 0,
+      "explanation": "A nonzero but tiny pivot produces large multipliers, which amplify rounding errors and can destroy accuracy; partial pivoting chooses the largest available pivot so every multiplier has magnitude at most $1$, controlling error growth and making the algorithm backward stable in practice. It does not lower the flop count, change symmetry, or impose positive definiteness. The trap is thinking a nonzero pivot is automatically safe; smallness, not just zeroness, is the danger.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-006",
+      "stem": "For $A = \\begin{pmatrix} 2 & 1 & 1 \\\\ 4 & 3 & 3 \\\\ 8 & 7 & 9 \\end{pmatrix}$ factored without pivoting, the multiplier $m_{21}$ used to eliminate the $(2,1)$ entry is which value?",
+      "options": [
+        "$4$",
+        "$2$",
+        "$0.5$",
+        "$8$"
+      ],
+      "answer": 1,
+      "explanation": "The multiplier is the entry to be eliminated divided by the pivot: $m_{21} = a_{21}/a_{11} = 4/2 = 2$. Row 2 then becomes Row 2 minus $2 \\times$ Row 1. The value $4$ is the entry itself, $0.5$ inverts the ratio, and $8$ is from the third row. The trap is dividing the pivot by the entry instead of the entry by the pivot; the multiplier here is $2$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-007",
+      "stem": "Continuing the factorization of $A = \\begin{pmatrix} 2 & 1 & 1 \\\\ 4 & 3 & 3 \\\\ 8 & 7 & 9 \\end{pmatrix}$ without pivoting (with $m_{21}=2$, $m_{31}=4$), after the first stage rows 2 and 3 become $(0,1,1)$ and $(0,3,5)$. The multiplier $m_{32}$ is which value?",
+      "options": [
+        "$1$",
+        "$5$",
+        "$3$",
+        "$\\tfrac{1}{3}$"
+      ],
+      "answer": 2,
+      "explanation": "After eliminating column 1, the pivot in column 2 is $1$ (from the updated row 2) and the entry below it is $3$, so $m_{32} = 3/1 = 3$. Subtracting $3 \\times (0,1,1)$ from $(0,3,5)$ gives $(0,0,2)$, completing $U$. The value $\\frac13$ inverts the ratio, $5$ and $1$ are matrix entries. The trap is using an original entry rather than the updated submatrix values; the multiplier is $3$.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-008",
+      "stem": "For the same $A$, the factorization yields $U = \\begin{pmatrix} 2 & 1 & 1 \\\\ 0 & 1 & 1 \\\\ 0 & 0 & 2 \\end{pmatrix}$ with no row interchanges. Since no rows were swapped, $\\det(A)$ equals which value?",
+      "options": [
+        "$1$",
+        "$8$",
+        "$0$",
+        "$4$"
+      ],
+      "answer": 3,
+      "explanation": "With $A = LU$ and $L$ unit triangular ($\\det L = 1$), $\\det A = \\det U$ = product of the pivots $= 2 \\cdot 1 \\cdot 2 = 4$. Had an odd number of row swaps occurred, a sign change would apply. The value $8$ multiplies the original diagonal $2\\cdot ?$, $1$ ignores the pivots, and $0$ would mean singular. The trap is using the original diagonal instead of the pivots of $U$; the determinant is the product of pivots, $4$.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-009",
+      "stem": "Solving the lower-triangular system $Ly = b$ with $L = \\begin{pmatrix} 1 & 0 & 0 \\\\ 2 & 1 & 0 \\\\ 4 & 3 & 1 \\end{pmatrix}$ and $b = (4, 10, 24)^T$ by forward substitution gives $y$ equal to which vector?",
+      "options": [
+        "$(4, 2, 2)^T$",
+        "$(4, 10, 24)^T$",
+        "$(1, 1, 1)^T$",
+        "$(4, 18, 50)^T$"
+      ],
+      "answer": 0,
+      "explanation": "Forward substitution: $y_1 = 4$; $y_2 = 10 - 2 y_1 = 10 - 8 = 2$; $y_3 = 24 - 4 y_1 - 3 y_2 = 24 - 16 - 6 = 2$. So $y = (4, 2, 2)^T$. The vector $(1,1,1)$ is the final solution $x$, not the intermediate $y$, and $(4,18,50)$ adds instead of subtracts. The trap is solving in the wrong direction or adding the off-diagonal terms; forward substitution subtracts already-known components.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-010",
+      "stem": "Continuing, back substitution on $U = \\begin{pmatrix} 2 & 1 & 1 \\\\ 0 & 1 & 1 \\\\ 0 & 0 & 2 \\end{pmatrix}$ with right-hand side $y = (4, 2, 2)^T$ gives the solution $x$ equal to which vector?",
+      "options": [
+        "$(4, 2, 2)^T$",
+        "$(1, 1, 1)^T$",
+        "$(2, 1, 1)^T$",
+        "$(0, 0, 1)^T$"
+      ],
+      "answer": 1,
+      "explanation": "Back substitution from the bottom: $x_3 = 2/2 = 1$; $x_2 = 2 - x_3 = 2 - 1 = 1$; $x_1 = (4 - x_2 - x_3)/2 = (4 - 1 - 1)/2 = 1$. So $x = (1,1,1)^T$, which indeed solves the original system. The vector $(4,2,2)$ is $y$, not $x$. The trap is forgetting to divide by the diagonal pivot $2$ in the first row; the solution is the all-ones vector.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-011",
+      "stem": "A matrix is symmetric positive definite (SPD). Which factorization is preferred for solving $Ax = b$, and why?",
+      "options": [
+        "QR, because it is orthogonal",
+        "LU with complete pivoting, for maximum stability",
+        "Cholesky $A = L L^T$, because it is about half the cost of LU and needs no pivoting",
+        "The SVD, because it is fastest"
+      ],
+      "answer": 2,
+      "explanation": "For SPD matrices the Cholesky factorization $A = LL^T$ exists, costs about $\\frac{1}{3}n^3$ operations (half of LU), uses half the storage by symmetry, and is numerically stable without any pivoting. QR and SVD are more expensive and unnecessary here, and complete pivoting is overkill. The trap is reaching for a general or orthogonal method when the SPD structure makes Cholesky the cheaper, stable choice.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-012",
+      "stem": "The Cholesky factor $L$ of the SPD matrix $A = \\begin{pmatrix} 4 & 2 \\\\ 2 & 5 \\end{pmatrix}$ (with $A = LL^T$, $L$ lower triangular) is which matrix?",
+      "options": [
+        "$\\begin{pmatrix} 4 & 0 \\\\ 2 & 5 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 1 \\\\ 0 & 2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 2 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 0 \\\\ 1 & 2 \\end{pmatrix}$"
+      ],
+      "answer": 3,
+      "explanation": "Cholesky: $l_{11} = \\sqrt{4} = 2$; $l_{21} = a_{21}/l_{11} = 2/2 = 1$; $l_{22} = \\sqrt{a_{22} - l_{21}^2} = \\sqrt{5 - 1} = 2$. So $L = \\begin{pmatrix} 2 & 0 \\\\ 1 & 2 \\end{pmatrix}$, and one checks $LL^T = \\begin{pmatrix} 4 & 2 \\\\ 2 & 5 \\end{pmatrix}$. The upper-triangular option is $L^T$, not $L$, and the others ignore the square roots. The trap is forgetting the square root in $l_{22} = \\sqrt{5-1} = 2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-013",
+      "stem": "When solving $Ax = b$ for many different right-hand sides $b$ with the same matrix $A$, why is computing $A = LU$ once preferable to inverting $A$?",
+      "options": [
+        "Because LU factorization plus triangular solves is cheaper and more accurate than forming and applying $A^{-1}$",
+        "Because $A^{-1}$ does not exist for square matrices",
+        "Because $A^{-1}$ requires the matrix to be symmetric",
+        "Because LU only works for one right-hand side"
+      ],
+      "answer": 0,
+      "explanation": "Factoring once ($\\frac{2}{3}n^3$) and then doing two triangular solves ($O(n^2)$) per right-hand side is both faster and numerically more accurate than explicitly computing $A^{-1}$ (which itself needs a factorization plus extra work) and multiplying. Explicit inverses lose accuracy and waste effort. The inverse does exist for nonsingular $A$, symmetry is not required, and LU handles arbitrarily many right-hand sides by reuse. The trap is the habit of forming $A^{-1}$; factor-and-solve is the standard, superior approach.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-014",
+      "stem": "With partial pivoting, Gaussian elimination produces a factorization of which form?",
+      "options": [
+        "$A = LU$ with no permutation",
+        "$PA = LU$, where $P$ is a permutation matrix recording the row swaps",
+        "$A = P L U$ with $P$ orthogonal but not a permutation",
+        "$A = U L P$"
+      ],
+      "answer": 1,
+      "explanation": "Partial pivoting interchanges rows, recorded by a permutation matrix $P$, so the factorization is $PA = LU$: applying $P$ to $A$ reorders its rows to match the pivot choices, and the result factors cleanly. Solving then uses $Ly = Pb$ followed by $Ux = y$. Without pivoting there is no $P$, and $P$ is a genuine permutation (a special orthogonal matrix), not an arbitrary one. The trap is omitting the permutation; with pivoting the clean statement is $PA = LU$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-015",
+      "stem": "For $A = \\begin{pmatrix} 2 & 4 \\\\ 1 & 1 \\end{pmatrix}$, partial pivoting at the first step does which of the following?",
+      "options": [
+        "Leaves the rows as they are, since $a_{11} = 2$ is already nonzero",
+        "Swaps rows 1 and 2 because $|a_{21}| = 1 > |a_{11}| = 2$",
+        "Leaves the rows as they are, since $|a_{11}| = 2 > |a_{21}| = 1$",
+        "Swaps columns instead of rows"
+      ],
+      "answer": 2,
+      "explanation": "Partial pivoting compares the magnitudes in column 1: $|a_{11}| = 2$ versus $|a_{21}| = 1$. Since $2 > 1$, the largest is already on the diagonal, so no swap is made. The choice claiming $|a_{21}| = 1 > |a_{11}| = 2$ misstates the inequality, the nonzero-based justification gives the right action for the wrong reason (largest magnitude, not mere nonzeroness, is the criterion), and partial pivoting never swaps columns. The trap is the reasoning: the rule is largest magnitude, which here happens to keep the rows fixed.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-016",
+      "stem": "Solving the $2 \\times 2$ system $x_1 + 2x_2 = 5$, $3x_1 + 4x_2 = 11$ by Gaussian elimination (multiplier $m_{21} = 3$), the reduced second equation and solution are which of the following?",
+      "options": [
+        "$2x_2 = 4$, giving $x = (2, 1)$",
+        "$-2x_2 = 4$, giving $x = (3, -2)$",
+        "$x_2 = 2$, giving $x = (5, 2)$",
+        "$-2x_2 = -4$, giving $x = (1, 2)$"
+      ],
+      "answer": 3,
+      "explanation": "Subtracting $3 \\times$ (row 1) from row 2: the $x_2$ coefficient becomes $4 - 3(2) = -2$ and the right side becomes $11 - 3(5) = -4$, so $-2x_2 = -4$, giving $x_2 = 2$. Back substitution: $x_1 = 5 - 2(2) = 1$. Thus $x = (1, 2)$, which checks: $1 + 4 = 5$ and $3 + 8 = 11$. The other options mishandle the elimination arithmetic. The trap is a sign slip in $11 - 15 = -4$; the correct solution is $(1,2)$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-017",
+      "stem": "A diagonal pivot of exactly zero arises during elimination of a nonsingular matrix without pivoting. What does this indicate?",
+      "options": [
+        "Elimination without pivoting breaks down here, although the matrix may still be nonsingular and solvable with row interchanges",
+        "The matrix is singular and cannot be solved",
+        "The determinant is necessarily zero",
+        "The system has infinitely many solutions"
+      ],
+      "answer": 0,
+      "explanation": "A zero pivot only means plain elimination cannot proceed at that step; the matrix can be perfectly nonsingular, and a row interchange (pivoting) restores a usable nonzero pivot so the solve continues normally. A classic example is $\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$, which is nonsingular yet has a zero first pivot. The zero pivot does not by itself make the matrix singular or the determinant zero. The trap is equating a zero pivot with singularity; pivoting often fixes it.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-018",
+      "stem": "Approximately how many operations does LU factorization of a dense $10 \\times 10$ matrix require, using the leading-order estimate $\\tfrac{2}{3}n^3$?",
+      "options": [
+        "About 100",
+        "About 667",
+        "About 2000",
+        "About 333"
+      ],
+      "answer": 1,
+      "explanation": "With $n = 10$, $\\frac{2}{3}n^3 = \\frac{2}{3}(1000) \\approx 667$ operations. The value $333$ is the Cholesky estimate $\\frac{1}{3}n^3$, $100 = n^2$ is one triangular solve, and $2000 = 2n^3$ overstates the cost. The trap is using the wrong constant in front of $n^3$; the LU coefficient is $\\frac{2}{3}$, giving roughly $667$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-019",
+      "stem": "For a banded matrix with small bandwidth $w \\ll n$, Gaussian elimination (with care to preserve the band) costs approximately which order of operations?",
+      "options": [
+        "$O(n^3)$ regardless of bandwidth",
+        "$O(n^2 w)$",
+        "$O(n w^2)$, far less than the dense cost",
+        "$O(w^3)$ independent of $n$"
+      ],
+      "answer": 2,
+      "explanation": "Exploiting the band, each of the $n$ elimination steps only touches a $w \\times w$ block, giving roughly $O(n w^2)$ operations, a huge saving over the dense $\\frac{2}{3}n^3$ when $w$ is small (for example, tridiagonal $w = 1$ gives $O(n)$). Ignoring the band wastes work, and the other scalings misstate the dependence. The trap is applying the dense cubic count to a sparse banded matrix; banded elimination scales linearly in $n$.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-020",
+      "stem": "In the factorization $PA = LU$ from partial pivoting, how is the system $Ax = b$ then solved?",
+      "options": [
+        "Solve $Ux = b$ directly, ignoring $L$ and $P$",
+        "Solve $Lx = b$ then multiply by $P$",
+        "Compute $x = U^{-1} L^{-1} b$ explicitly",
+        "Solve $Ly = Pb$ by forward substitution, then $Ux = y$ by back substitution"
+      ],
+      "answer": 3,
+      "explanation": "From $PA = LU$, the system $Ax = b$ becomes $PAx = Pb$, i.e. $LUx = Pb$. Setting $y = Ux$, first solve $Ly = Pb$ (forward substitution), then $Ux = y$ (back substitution). The permutation is applied to $b$ to match the row reordering. Ignoring $L$ or $P$ gives the wrong system, and forming explicit inverses is wasteful. The trap is forgetting to permute the right-hand side; $b$ must become $Pb$ before the forward solve.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-021",
+      "stem": "Compared with LU factorization, Gauss-Jordan elimination (reducing fully to the identity) for solving a single system costs roughly how much?",
+      "options": [
+        "About $n^3$, roughly 50 percent more than LU",
+        "Less, about $\\tfrac{1}{3}n^3$",
+        "The same, $\\tfrac{2}{3}n^3$",
+        "Far less, $O(n^2)$"
+      ],
+      "answer": 0,
+      "explanation": "Gauss-Jordan does extra work eliminating entries above the diagonal as well as below, costing about $n^3$ operations versus $\\frac{2}{3}n^3$ for LU, roughly 50 percent more. That overhead is why LU (eliminate below the diagonal, then back substitute) is the standard direct method. The other options under- or mis-state the cost. The trap is assuming reducing all the way to the identity is free; it adds about half again the operations.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-022",
+      "stem": "Which property must hold for the Cholesky factorization $A = LL^T$ (with real $L$ and positive diagonal) to exist?",
+      "options": [
+        "$A$ is any square matrix",
+        "$A$ is symmetric positive definite",
+        "$A$ is upper triangular",
+        "$A$ is orthogonal"
+      ],
+      "answer": 1,
+      "explanation": "The Cholesky factorization with a real lower-triangular factor having positive diagonal entries exists if and only if $A$ is symmetric positive definite; positive definiteness guarantees the quantities under the square roots stay positive. A general, triangular, or orthogonal matrix need not be SPD, so Cholesky may fail. The trap is applying Cholesky to a merely symmetric (indefinite) matrix; positive definiteness is essential.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-023",
+      "stem": "The growth factor in Gaussian elimination measures which of the following?",
+      "options": [
+        "How much memory the factorization uses",
+        "The number of row interchanges performed",
+        "The ratio of the largest entry arising during elimination to the largest entry of the original matrix, governing error growth",
+        "The condition number of the matrix"
+      ],
+      "answer": 2,
+      "explanation": "The growth factor compares the largest-magnitude entry encountered anywhere during elimination to the largest entry of $A$; a large growth factor signals that intermediate values blew up and rounding errors may have been amplified, which is the key quantity in the backward error bound. With partial pivoting it is usually modest in practice. It is not a memory, swap-count, or conditioning measure. The trap is confusing the growth factor with the condition number; the former tracks entry growth during elimination, the latter is intrinsic to the problem.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-024",
+      "format": "cloze",
+      "stem": "Recall the costs of the standard direct solver for a dense $n \\times n$ system.",
+      "solution": "LU factorization by Gaussian elimination costs about $\\tfrac{2}{3}n^3$ operations. Each subsequent triangular solve (forward or back substitution) costs about $n$ raised to the power {{1}}. For a symmetric positive definite matrix the cheaper Cholesky factorization costs about $\\tfrac{1}{3}n^3$, which is the LU cost multiplied by the factor {{2}}. Cholesky also requires {{3}} pivoting.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "no",
+            "complete",
+            "partial",
+            "symmetric"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "Factorization is $\\frac{2}{3}n^3$; a triangular solve is $O(n^2)$, so the power is 2. Cholesky's $\\frac{1}{3}n^3$ is half of $\\frac{2}{3}n^3$, factor $0.5$, and needs no pivoting.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-025",
+      "format": "cloze",
+      "stem": "Carry out forward and back substitution for $L = \\begin{pmatrix} 1 & 0 \\\\ 3 & 1 \\end{pmatrix}$, $U = \\begin{pmatrix} 1 & 2 \\\\ 0 & -2 \\end{pmatrix}$, and $b = (5, 11)^T$, which factor $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$.",
+      "solution": "Forward substitution $Ly = b$: $y_1 = 5$ and $y_2 = 11 - 3 y_1 =$ {{1}}. Back substitution $Ux = y$: $x_2 = y_2 / (-2) =$ {{2}}, then $x_1 = 5 - 2 x_2 =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -4,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "$y_1 = 5$, $y_2 = 11 - 3(5) = -4$. Then $x_2 = -4 / -2 = 2$ and $x_1 = 5 - 2(2) = 1$, so $x = (1,2)$, which solves the original system.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-026",
+      "format": "cloze",
+      "stem": "Perform one stage of Gaussian elimination (no pivoting) on $A = \\begin{pmatrix} 2 & 1 & 1 \\\\ 4 & 3 & 3 \\\\ 8 & 7 & 9 \\end{pmatrix}$.",
+      "solution": "The multiplier to eliminate the $(2,1)$ entry is $m_{21} = 4/2 =$ {{1}}. The multiplier to eliminate the $(3,1)$ entry is $m_{31} = 8/2 =$ {{2}}. After eliminating column 1, the new $(3,2)$ entry is $7 - m_{31}\\cdot 1 =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "$m_{21} = 4/2 = 2$ and $m_{31} = 8/2 = 4$. The updated $(3,2)$ entry is $7 - 4 \\cdot 1 = 3$ (the original $a_{32} = 7$ minus $m_{31}$ times $a_{12} = 1$).",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-027",
+      "format": "cloze",
+      "stem": "Compute the Cholesky factor of the SPD matrix $A = \\begin{pmatrix} 9 & 3 \\\\ 3 & 5 \\end{pmatrix}$ with $A = LL^T$.",
+      "solution": "The first diagonal entry is $l_{11} = \\sqrt{9} =$ {{1}}. The off-diagonal entry is $l_{21} = 3 / l_{11} =$ {{2}}. The second diagonal entry is $l_{22} = \\sqrt{5 - l_{21}^2} =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "$l_{11} = \\sqrt{9} = 3$; $l_{21} = 3/3 = 1$; $l_{22} = \\sqrt{5 - 1^2} = \\sqrt{4} = 2$. Then $LL^T = \\begin{pmatrix} 9 & 3 \\\\ 3 & 5 \\end{pmatrix}$ as required.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-028",
+      "format": "cloze",
+      "stem": "Summarize the role of pivoting and the determinant from LU.",
+      "solution": "Partial pivoting selects the entry of largest {{1}} in the pivot column, which keeps every multiplier bounded by $1$ and improves stability. The factorization is then written as {{2}}$A = LU$ with a permutation matrix in front of $A$. If $k$ row interchanges are used, then $\\det(A) = (-1)^k$ times the product of the diagonal entries of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "magnitude",
+            "sign",
+            "index",
+            "row sum"
+          ],
+          "answer": "magnitude"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "P",
+            "$P$",
+            "P "
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$U$",
+            "$L$",
+            "$A$",
+            "$P$"
+          ],
+          "answer": "$U$"
+        }
+      ],
+      "explanation": "Partial pivoting picks the largest-magnitude pivot, giving $PA = LU$. Since $\\det L = 1$ and $\\det P = (-1)^k$, $\\det A = (-1)^k \\prod U_{ii}$, the product of the pivots in $U$ with a sign from the swaps.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-direct-methods-linear-systems-029",
+      "format": "cloze",
+      "stem": "Estimate operation counts and choose methods for two scenarios.",
+      "solution": "Factoring a dense $100 \\times 100$ matrix by LU takes on the order of $\\tfrac{2}{3}(100)^3 \\approx$ {{1}} operations (to one significant figure, in units of $10^5$ this is about 6.7). For a tridiagonal system of size $n$, specialized elimination costs only $O(n)$ work, so doubling $n$ roughly multiplies the cost by {{2}}. When the matrix is symmetric positive definite, the method of choice is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 667000,
+          "tolerance": 5000
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Cholesky factorization",
+            "complete pivoting",
+            "the normal equations",
+            "Gauss-Jordan elimination"
+          ],
+          "answer": "Cholesky factorization"
+        }
+      ],
+      "explanation": "$\\frac{2}{3}(10^6) \\approx 6.67 \\times 10^5 = 667000$. Tridiagonal cost is linear, so doubling $n$ doubles the work (factor 2). SPD matrices call for Cholesky.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    }
+  ]
+}

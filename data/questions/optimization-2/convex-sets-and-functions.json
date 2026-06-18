@@ -1,0 +1,587 @@
+{
+  "courseId": "optimization-2",
+  "topicId": "convex-sets-and-functions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-2-convex-sets-and-functions-001",
+      "stem": "A set $C \\subseteq \\mathbb{R}^n$ is convex if for all $x, y \\in C$ and all $\\theta \\in [0, 1]$ which condition holds?",
+      "options": [
+        "$\\theta x + (1 - \\theta) y \\in C$",
+        "$x + y \\in C$",
+        "$\\theta x + (1 - \\theta) y \\notin C$",
+        "$x - y \\in C$"
+      ],
+      "answer": 0,
+      "explanation": "Convexity of a set means the entire line segment between any two of its points stays inside the set, which is exactly $\\theta x + (1 - \\theta) y \\in C$ for every $\\theta \\in [0, 1]$. Requiring only $x + y \\in C$ ignores the scaling, the negation describes a nonconvex situation, and $x - y \\in C$ is unrelated to segments. The trap is forgetting that the convex combination must use weights summing to one.",
+      "difficulty": "warmup",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-002",
+      "stem": "A function $f$ is convex on a convex domain if for all $x, y$ and $\\theta \\in [0, 1]$ which inequality holds?",
+      "options": [
+        "$f(\\theta x + (1 - \\theta) y) \\ge \\theta f(x) + (1 - \\theta) f(y)$",
+        "$f(\\theta x + (1 - \\theta) y) \\le \\theta f(x) + (1 - \\theta) f(y)$",
+        "$f(x + y) \\le f(x) + f(y)$",
+        "$f(\\theta x + (1 - \\theta) y) = \\theta f(x) + (1 - \\theta) f(y)$"
+      ],
+      "answer": 1,
+      "explanation": "Convexity says the graph lies below its chords: $f(\\theta x + (1 - \\theta) y) \\le \\theta f(x) + (1 - \\theta) f(y)$. The reversed inequality defines concavity, the additive form is subadditivity (a different property), and equality characterizes affine functions. The trap is flipping the inequality; convex means the function value is at most the chord value.",
+      "difficulty": "warmup",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-003",
+      "stem": "For a twice-differentiable function $f$ on a convex open set, convexity is equivalent to which condition on the Hessian?",
+      "options": [
+        "$\\nabla^2 f(x)$ is negative semidefinite everywhere",
+        "$\\nabla^2 f(x)$ is indefinite everywhere",
+        "$\\nabla^2 f(x)$ is positive semidefinite everywhere",
+        "$\\nabla^2 f(x) = 0$ everywhere"
+      ],
+      "answer": 2,
+      "explanation": "The second-order characterization of convexity is that the Hessian is positive semidefinite at every point of the domain, written $\\nabla^2 f(x) \\succeq 0$. Negative semidefiniteness characterizes concavity, indefiniteness rules out both, and a zero Hessian describes only affine functions. The trap is requiring positive definiteness; semidefiniteness (allowing zero eigenvalues, as for a linear function) is enough.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-004",
+      "stem": "A fundamental optimization property of convex functions is which of the following?",
+      "options": [
+        "Every critical point is a saddle point",
+        "They have no minimizers",
+        "Every local minimizer is a local maximizer",
+        "Any local minimizer is also a global minimizer"
+      ],
+      "answer": 3,
+      "explanation": "For a convex function any local minimizer is automatically a global minimizer, which is what makes convex optimization tractable. Convex functions certainly can have minimizers, those minimizers are not maximizers, and stationary points of a convex function are minima rather than saddles. The trap is doubting global optimality; convexity upgrades every local minimum to a global one.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-005",
+      "stem": "Which of these functions on $\\mathbb{R}$ is convex?",
+      "options": [
+        "$f(x) = x^3$",
+        "$f(x) = -x^2$",
+        "$f(x) = \\log x$",
+        "$f(x) = x^2$"
+      ],
+      "answer": 3,
+      "explanation": "The function $f(x) = x^2$ has $f''(x) = 2 > 0$ everywhere, so it is convex. By contrast $x^3$ has $f'' = 6x$ that changes sign, $-x^2$ is concave, and $\\log x$ is concave on its domain $x > 0$. The trap is mistaking a function with a positive leading coefficient for convex; only the sign of the second derivative settles it, and only $x^2$ keeps it nonnegative.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-006",
+      "stem": "Which operation always preserves convexity of functions?",
+      "options": [
+        "A nonnegative weighted sum of convex functions",
+        "The difference of two convex functions",
+        "The product of two convex functions",
+        "The reciprocal of a convex function"
+      ],
+      "answer": 0,
+      "explanation": "If $f_1, \\dots, f_k$ are convex and $w_i \\ge 0$, then $\\sum_i w_i f_i$ is convex, since the inequality is preserved under nonnegative scaling and addition. Differences can be nonconvex (for example $x^2 - 2x^2$), products of convex functions need not be convex, and reciprocals generally are not. The trap is assuming all algebraic combinations preserve convexity; only nonnegative combinations are guaranteed.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-007",
+      "stem": "The pointwise maximum $f(x) = \\max\\{f_1(x), f_2(x)\\}$ of two convex functions is which of the following?",
+      "options": [
+        "Always concave",
+        "Always convex",
+        "Always affine",
+        "Never convex"
+      ],
+      "answer": 1,
+      "explanation": "The pointwise maximum (or supremum) of any family of convex functions is convex, because the epigraph of the maximum is the intersection of the individual convex epigraphs. It is not generally concave or affine, and it certainly can be convex. The trap is confusing maximum with minimum: the pointwise minimum of convex functions need not be convex, but the maximum always is.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-008",
+      "stem": "Jensen's inequality for a convex function $f$ and a random variable $X$ states which of the following?",
+      "options": [
+        "$f(\\mathbb{E}[X]) = \\mathbb{E}[f(X)]$",
+        "$f(\\mathbb{E}[X]) \\ge \\mathbb{E}[f(X)]$",
+        "$f(\\mathbb{E}[X]) \\le \\mathbb{E}[f(X)]$",
+        "$\\mathbb{E}[f(X)] = 0$"
+      ],
+      "answer": 2,
+      "explanation": "Jensen's inequality for a convex $f$ reads $f(\\mathbb{E}[X]) \\le \\mathbb{E}[f(X)]$: the function of the mean is at most the mean of the function. Equality holds only in special cases (affine $f$ or degenerate $X$), the reversed inequality is the concave version, and the value need not be zero. The trap is reversing the inequality; for convex $f$ the expectation sits on the larger side.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-009",
+      "stem": "The intersection of two convex sets is which of the following?",
+      "options": [
+        "Always convex",
+        "Never convex",
+        "Convex only if they are disjoint",
+        "Always equal to their union"
+      ],
+      "answer": 0,
+      "explanation": "Any intersection of convex sets is convex: if $x$ and $y$ lie in both sets, the segment between them lies in both, hence in the intersection. This holds whether or not the sets overlap in special ways, the intersection is not the union, and disjointness is irrelevant (an empty intersection is vacuously convex). The trap is confusing intersection with union; unions of convex sets are generally nonconvex.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-010",
+      "stem": "The union of two convex sets is in general which of the following?",
+      "options": [
+        "Always convex",
+        "Always empty",
+        "Always a single point",
+        "Not necessarily convex"
+      ],
+      "answer": 3,
+      "explanation": "The union of convex sets need not be convex: for instance two disjoint disks form a set whose connecting segment leaves the union. So convexity is not guaranteed. The union is not generally empty nor a single point, and it is not always convex. The trap is assuming both intersection and union preserve convexity; only intersection does.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-011",
+      "stem": "An affine function $f(x) = a^\\top x + b$ is which of the following?",
+      "options": [
+        "Strictly convex only",
+        "Strictly concave only",
+        "Both convex and concave",
+        "Neither convex nor concave"
+      ],
+      "answer": 2,
+      "explanation": "An affine function satisfies the convexity inequality with equality, so it is simultaneously convex and concave; equivalently its Hessian is the zero matrix, which is both positive and negative semidefinite. It is not strictly convex or strictly concave because the inequalities are never strict. The trap is thinking a function must be one or the other; affine functions are the borderline case that is both.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-012",
+      "stem": "For $f(x, y) = x^2 + y^2$ the Hessian is $2I$, so $f$ is which of the following?",
+      "options": [
+        "Concave",
+        "Convex",
+        "Indefinite and neither",
+        "Convex only on a bounded region"
+      ],
+      "answer": 1,
+      "explanation": "The Hessian $\\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix} = 2I$ is positive definite (hence positive semidefinite) everywhere, so $f$ is convex on all of $\\mathbb{R}^2$. It is not concave, not indefinite, and convexity holds globally rather than only on a bounded region. The trap is restricting convexity to a region; a constant positive definite Hessian gives convexity everywhere.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-013",
+      "stem": "For $f(x, y) = x^2 - y^2$, examining the Hessian shows the function is which of the following?",
+      "options": [
+        "Convex",
+        "Concave",
+        "Neither convex nor concave",
+        "Strictly convex"
+      ],
+      "answer": 2,
+      "explanation": "The Hessian $\\begin{pmatrix} 2 & 0 \\\\ 0 & -2 \\end{pmatrix}$ is indefinite (eigenvalues $2$ and $-2$), so it is neither positive semidefinite nor negative semidefinite, and $f$ is neither convex nor concave. The mixed-sign curvature rules out both. The trap is assuming a quadratic must be convex or concave; an indefinite Hessian makes it a saddle-shaped function that is neither.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-014",
+      "stem": "Every norm $\\|x\\|$ on $\\mathbb{R}^n$ is which of the following?",
+      "options": [
+        "A concave function of $x$",
+        "Neither convex nor concave",
+        "A convex function of $x$",
+        "Convex only for the Euclidean norm"
+      ],
+      "answer": 2,
+      "explanation": "By the triangle inequality and absolute homogeneity, every norm satisfies $\\|\\theta x + (1 - \\theta) y\\| \\le \\theta \\|x\\| + (1 - \\theta)\\|y\\|$, so it is convex. This holds for all norms, not just the Euclidean one, and norms are not concave. The trap is restricting the result to the $2$-norm; convexity follows from the norm axioms for any norm.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-015",
+      "stem": "A sublevel set $\\{x : f(x) \\le c\\}$ of a convex function $f$ is which of the following for every $c$?",
+      "options": [
+        "Convex",
+        "Nonconvex in general",
+        "Always empty",
+        "Always unbounded"
+      ],
+      "answer": 0,
+      "explanation": "Every sublevel set of a convex function is convex: if $f(x) \\le c$ and $f(y) \\le c$, then by convexity $f(\\theta x + (1 - \\theta)y) \\le \\theta c + (1 - \\theta) c = c$. Sublevel sets can be empty or unbounded depending on $c$ and $f$, but the guaranteed property is convexity. The trap is thinking the converse (convex sublevel sets imply convex $f$) holds; it defines the weaker class of quasiconvex functions, but the stated direction is always true.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-016",
+      "stem": "The composition $h(x) = g(a^\\top x + b)$ of a convex function $g: \\mathbb{R} \\to \\mathbb{R}$ with an affine map is which of the following?",
+      "options": [
+        "Always concave",
+        "Always convex",
+        "Convex only if $a = 0$",
+        "Generally neither"
+      ],
+      "answer": 1,
+      "explanation": "Composing a convex function with an affine inner function preserves convexity, so $h(x) = g(a^\\top x + b)$ is convex. This is the affine-precomposition rule, valid for any $a$ and $b$, not only $a = 0$. It is not concave and not generally indeterminate. The trap is overlooking that affine maps preserve convexity; only nonlinear inner functions can break it.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-017",
+      "stem": "Which of the following functions on $x > 0$ is convex?",
+      "options": [
+        "$f(x) = \\log x$",
+        "$f(x) = \\sqrt{x}$",
+        "$f(x) = -\\log x$",
+        "$f(x) = x^{1/3}$"
+      ],
+      "answer": 2,
+      "explanation": "For $f(x) = -\\log x$ we have $f''(x) = 1/x^2 > 0$ on $x > 0$, so it is convex. The functions $\\log x$, $\\sqrt{x}$, and $x^{1/3}$ are all concave on the positive reals (their second derivatives are negative). The trap is forgetting the sign flip: $\\log x$ is concave, so its negative $-\\log x$ is convex.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-018",
+      "stem": "The first-order condition for convexity of a differentiable $f$ is that for all $x, y$ which inequality holds?",
+      "options": [
+        "$f(y) \\le f(x) + \\nabla f(x)^\\top (y - x)$",
+        "$f(y) \\ge f(x) + \\nabla f(x)^\\top (y - x)$",
+        "$f(y) = f(x) + \\nabla f(x)^\\top (y - x)$",
+        "$f(y) \\ge f(x) - \\nabla f(x)^\\top (y - x)$"
+      ],
+      "answer": 1,
+      "explanation": "A differentiable $f$ is convex if and only if its graph lies above every tangent plane: $f(y) \\ge f(x) + \\nabla f(x)^\\top (y - x)$ for all $x, y$. The reversed inequality would put the graph below the tangent (concave), equality is the affine case, and the last option has the wrong sign on the gradient term. The trap is the direction: convex functions sit above their linearizations, so the inequality is $\\ge$.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-019",
+      "stem": "A set $C$ for which some segment between two of its points leaves $C$ is best described as which of the following?",
+      "options": [
+        "Convex",
+        "Affine",
+        "A halfspace",
+        "Nonconvex"
+      ],
+      "answer": 3,
+      "explanation": "If some connecting segment exits the set, the defining property of convexity fails, so the set is nonconvex. It cannot be convex, an affine set (which contains entire lines through its points), or a halfspace (which is convex). The trap is the self-contradiction in the description: a genuinely convex set never lets a segment escape, so the only consistent label is nonconvex.",
+      "difficulty": "warmup",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-020",
+      "stem": "The function $f(x) = e^{x}$ on $\\mathbb{R}$ is which of the following?",
+      "options": [
+        "Concave",
+        "Neither convex nor concave",
+        "Affine",
+        "Convex"
+      ],
+      "answer": 3,
+      "explanation": "Since $f''(x) = e^{x} > 0$ for all real $x$, the exponential function is convex on $\\mathbb{R}$. It is not concave, not affine (its second derivative is nonzero), and definitely not indeterminate. The trap is second-guessing a familiar function; the strictly positive second derivative makes $e^x$ a standard example of a convex function.",
+      "difficulty": "warmup",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-021",
+      "stem": "A point of the form $\\theta_1 x_1 + \\dots + \\theta_k x_k$ with $\\theta_i \\ge 0$ and $\\sum_i \\theta_i = 1$ is called which of the following?",
+      "options": [
+        "A convex combination of the points $x_i$",
+        "An affine combination with no sign restriction",
+        "A linear combination with arbitrary coefficients",
+        "A conic combination only"
+      ],
+      "answer": 0,
+      "explanation": "Coefficients that are nonnegative and sum to one define a convex combination, and a convex set is closed under all such combinations. Dropping the sign restriction gives an affine combination, dropping the sum-to-one condition gives a general linear combination, and requiring only nonnegativity gives a conic combination. The trap is mixing up these four notions; the simultaneous conditions $\\theta_i \\ge 0$ and $\\sum \\theta_i = 1$ are exactly the convex case.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-022",
+      "stem": "The function $f(x) = |x|$ on $\\mathbb{R}$ is which of the following?",
+      "options": [
+        "Concave because it is piecewise linear",
+        "Convex, even though it is not differentiable at $0$",
+        "Neither, because of the kink at $0$",
+        "Affine on all of $\\mathbb{R}$"
+      ],
+      "answer": 1,
+      "explanation": "The absolute value is convex: it is a norm on $\\mathbb{R}$, and convexity does not require differentiability, so the kink at $0$ is no obstacle. It is not concave, the kink does not destroy convexity, and it is not affine because its slope changes. The trap is assuming a nondifferentiable point breaks convexity; convexity is defined by the chord inequality, which $|x|$ satisfies.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-023",
+      "format": "cloze",
+      "stem": "Use the Hessian test on $f(x, y) = 2x^2 + 3y^2$ and on $g(x, y) = x^2 - 4y^2$.",
+      "solution": "For $f$, the Hessian entries are $f_{xx} =$ {{1}} and $f_{yy} = 6$, both positive with zero off-diagonal, so $f$ is {{2}}. For $g$, the entry $g_{yy} =$ {{3}} is negative while $g_{xx} = 2$ is positive, so $g$ is {{4}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "concave",
+            "neither convex nor concave",
+            "affine"
+          ],
+          "answer": "convex"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -8,
+          "tolerance": 0.001
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "neither convex nor concave",
+            "convex",
+            "concave",
+            "affine"
+          ],
+          "answer": "neither convex nor concave"
+        }
+      ],
+      "explanation": "For $f$, $f_{xx} = 4$ and $f_{yy} = 6$ with $f_{xy} = 0$, giving a positive definite Hessian, so $f$ is convex. For $g$, $g_{xx} = 2$ but $g_{yy} = -8$, an indefinite Hessian, so $g$ is neither convex nor concave.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-024",
+      "format": "cloze",
+      "stem": "Fill in the definitions of convexity for sets and functions.",
+      "solution": "A set $C$ is convex when, for $x, y \\in C$ and $\\theta \\in [0, 1]$, the convex combination $\\theta x + (1 - \\theta) y$ stays in {{1}}. A function $f$ is convex when its value at such a combination is at most the {{2}} of the endpoint values. For a twice-differentiable $f$, this is equivalent to the Hessian being {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$C$",
+            "the boundary of $C$",
+            "the complement of $C$",
+            "a single point"
+          ],
+          "answer": "$C$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "corresponding convex combination",
+            "product",
+            "maximum",
+            "difference"
+          ],
+          "answer": "corresponding convex combination"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "positive semidefinite",
+            "negative semidefinite",
+            "indefinite",
+            "zero"
+          ],
+          "answer": "positive semidefinite"
+        }
+      ],
+      "explanation": "Convex set: the segment $\\theta x + (1 - \\theta) y$ stays in $C$. Convex function: $f(\\theta x + (1 - \\theta) y) \\le \\theta f(x) + (1 - \\theta) f(y)$, the convex combination of endpoint values. Twice-differentiable equivalent: $\\nabla^2 f \\succeq 0$, positive semidefinite.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-025",
+      "format": "cloze",
+      "stem": "Classify each function as convex, concave, or neither: $\\log x$ on $x > 0$, $e^{2x}$ on $\\mathbb{R}$, and $x^3$ on $\\mathbb{R}$.",
+      "solution": "On $x > 0$, the function $\\log x$ has second derivative $-1/x^2 < 0$, so it is {{1}}. The function $e^{2x}$ has second derivative $4e^{2x} > 0$, so it is {{2}}. On all of $\\mathbb{R}$, the function $x^3$ has second derivative $6x$ changing sign, so it is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "concave",
+            "convex",
+            "neither",
+            "affine"
+          ],
+          "answer": "concave"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "concave",
+            "neither",
+            "affine"
+          ],
+          "answer": "convex"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "neither",
+            "convex",
+            "concave",
+            "affine"
+          ],
+          "answer": "neither"
+        }
+      ],
+      "explanation": "$\\frac{d^2}{dx^2}\\log x = -1/x^2 < 0$, concave. $\\frac{d^2}{dx^2} e^{2x} = 4e^{2x} > 0$, convex. $\\frac{d^2}{dx^2} x^3 = 6x$ is positive for $x > 0$ and negative for $x < 0$, so $x^3$ is neither convex nor concave on $\\mathbb{R}$.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-026",
+      "format": "cloze",
+      "stem": "State the optimization consequences of convexity.",
+      "solution": "For a convex function, any local minimizer is also a {{1}} minimizer. Moreover, the set of all minimizers is a {{2}} set. Jensen's inequality says that $f(\\mathbb{E}[X])$ is {{3}} $\\mathbb{E}[f(X)]$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "global",
+            "strict",
+            "isolated",
+            "boundary"
+          ],
+          "answer": "global"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "finite",
+            "empty",
+            "open"
+          ],
+          "answer": "convex"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\leq$",
+            "$\\geq$",
+            "$=$",
+            "$>$"
+          ],
+          "answer": "$\\leq$"
+        }
+      ],
+      "explanation": "Convexity makes every local minimizer global, and the minimizer set is convex (a level set of the convex objective at the optimal value). Jensen's inequality for convex $f$ gives $f(\\mathbb{E}[X]) \\le \\mathbb{E}[f(X)]$.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-027",
+      "format": "cloze",
+      "stem": "Decide which set operations and function operations preserve convexity.",
+      "solution": "The intersection of convex sets is always {{1}}, while their union is in general {{2}}. The pointwise maximum of convex functions is always {{3}}, and a nonnegative weighted sum of convex functions is always {{4}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "nonconvex",
+            "empty",
+            "affine"
+          ],
+          "answer": "convex"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "not convex",
+            "convex",
+            "empty",
+            "affine"
+          ],
+          "answer": "not convex"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "concave",
+            "affine",
+            "nonconvex"
+          ],
+          "answer": "convex"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "concave",
+            "neither",
+            "affine"
+          ],
+          "answer": "convex"
+        }
+      ],
+      "explanation": "Intersection preserves convexity; union does not in general. The pointwise maximum of convex functions is convex (intersection of epigraphs), and nonnegative weighted sums of convex functions are convex.",
+      "difficulty": "stretch",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    },
+    {
+      "id": "optimization-2-convex-sets-and-functions-028",
+      "format": "cloze",
+      "stem": "Apply Jensen's inequality with $f(x) = x^2$ to the two-point average of $a = 1$ and $b = 3$ with equal weights.",
+      "solution": "The mean is $\\tfrac{1}{2}(1) + \\tfrac{1}{2}(3) =$ {{1}}, so $f$ of the mean is $f(2) =$ {{2}}. The mean of $f$ is $\\tfrac{1}{2}(1)^2 + \\tfrac{1}{2}(3)^2 =$ {{3}}. Since $f$ is convex, $f$ of the mean is {{4}} the mean of $f$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "less than",
+            "greater than",
+            "equal to",
+            "unrelated to"
+          ],
+          "answer": "less than"
+        }
+      ],
+      "explanation": "Mean $= \\frac{1+3}{2} = 2$, so $f(2) = 4$. Mean of $f = \\frac{1 + 9}{2} = 5$. Since $4 < 5$, Jensen's inequality $f(\\mathbb{E}[X]) \\le \\mathbb{E}[f(X)]$ holds, and here it is strict, so $f$ of the mean is less than the mean of $f$.",
+      "difficulty": "core",
+      "source": "in the style of Nocedal and Wright, Numerical Optimization"
+    }
+  ]
+}

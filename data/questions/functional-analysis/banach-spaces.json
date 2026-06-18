@@ -1,0 +1,486 @@
+{
+  "courseId": "functional-analysis",
+  "topicId": "banach-spaces",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "functional-analysis-banach-spaces-001",
+      "stem": "A Banach space is defined as which kind of space?",
+      "options": [
+        "Any normed vector space.",
+        "A complete normed vector space.",
+        "A finite-dimensional inner product space.",
+        "A compact metric space."
+      ],
+      "answer": 1,
+      "explanation": "A Banach space is a normed vector space that is complete with respect to the metric induced by its norm. Completeness, not finite dimension or compactness, is the defining extra property over a general normed space.",
+      "difficulty": "warmup",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-002",
+      "stem": "A normed space is complete when which condition holds?",
+      "options": [
+        "Every Cauchy sequence converges to a limit in the space.",
+        "Every sequence is Cauchy.",
+        "Every bounded sequence converges.",
+        "Every sequence has a bounded subsequence."
+      ],
+      "answer": 0,
+      "explanation": "Completeness means every Cauchy sequence has a limit lying inside the space. This rules out missing limit points (gaps). Bounded sequences need not converge even in a Banach space.",
+      "difficulty": "warmup",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-003",
+      "stem": "Is $\\mathbb{R}^n$ with the Euclidean norm a Banach space?",
+      "options": [
+        "No, it is only a normed space.",
+        "Only the closed unit ball is complete.",
+        "It is complete only when $n = 1$.",
+        "Yes; it is a complete normed space."
+      ],
+      "answer": 3,
+      "explanation": "$\\mathbb{R}^n$ with the Euclidean (indeed any) norm is complete: a Cauchy sequence is Cauchy coordinatewise, and each coordinate converges in the complete space $\\mathbb{R}$. Hence $\\mathbb{R}^n$ is a Banach space for every $n$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-004",
+      "stem": "Is the space $C[a,b]$ of continuous functions with the supremum norm a Banach space?",
+      "options": [
+        "Yes; a uniformly Cauchy sequence of continuous functions converges uniformly to a continuous limit.",
+        "No, because continuous functions need not be bounded.",
+        "Only the polynomials in it are complete.",
+        "It is complete only for the integral norm."
+      ],
+      "answer": 0,
+      "explanation": "Under the sup norm, a Cauchy sequence in $C[a,b]$ is uniformly Cauchy, hence converges uniformly; the uniform limit of continuous functions is continuous, so the limit stays in $C[a,b]$. Thus $C[a,b]$ with the sup norm is a Banach space.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-005",
+      "stem": "For $1 \\le p < \\infty$, the sequence space $\\ell^p$ consists of scalar sequences $(x_n)$ satisfying which condition?",
+      "options": [
+        "$\\sum_n |x_n|^p < \\infty$.",
+        "$x_n \\to 0$.",
+        "$(x_n)$ is bounded.",
+        "$\\sum_n x_n$ converges."
+      ],
+      "answer": 0,
+      "explanation": "By definition $\\ell^p = \\{ (x_n) : \\sum_n |x_n|^p < \\infty \\}$, with norm $\\|x\\|_p = ( \\sum_n |x_n|^p )^{1/p}$. Boundedness alone defines $\\ell^\\infty$, and $x_n \\to 0$ defines $c_0$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-006",
+      "stem": "Is the sequence space $\\ell^p$ (for $1 \\le p < \\infty$) with its natural norm complete?",
+      "options": [
+        "No, it is never complete.",
+        "Yes; $\\ell^p$ is a Banach space.",
+        "Only $\\ell^2$ is complete.",
+        "Only for $p$ an even integer."
+      ],
+      "answer": 1,
+      "explanation": "Each $\\ell^p$ with $1 \\le p \\le \\infty$ is complete, hence a Banach space. (For $p = 2$ it is moreover a Hilbert space.) The proof shows a Cauchy sequence converges coordinatewise to a limit that still lies in $\\ell^p$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-007",
+      "stem": "Is the space $\\mathbb{Q}$ of rationals, with the absolute value norm, complete?",
+      "options": [
+        "Yes, since $\\mathbb{Q}$ is dense in $\\mathbb{R}$.",
+        "Yes, every normed space over $\\mathbb{Q}$ is complete.",
+        "It is complete only for bounded sequences.",
+        "No; a rational sequence approaching $\\sqrt{2}$ is Cauchy but has no rational limit."
+      ],
+      "answer": 3,
+      "explanation": "$\\mathbb{Q}$ is not complete: truncated decimal approximations of $\\sqrt{2}$ form a Cauchy sequence of rationals whose limit $\\sqrt{2}$ is irrational. Density of $\\mathbb{Q}$ in $\\mathbb{R}$ does not give completeness; it is exactly the failure of completeness that $\\mathbb{R}$ repairs.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-008",
+      "stem": "A normed space $X$ is a Banach space if and only if which series condition holds?",
+      "options": [
+        "Every absolutely convergent series in $X$ converges in $X$.",
+        "Every series in $X$ converges.",
+        "Every bounded series in $X$ diverges.",
+        "Every series with terms tending to zero converges."
+      ],
+      "answer": 0,
+      "explanation": "A normed space is complete exactly when every absolutely convergent series (one with $\\sum_n \\|x_n\\| < \\infty$) is convergent in the space. This is a standard characterization of completeness via series and is often used to prove a space is Banach.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-009",
+      "stem": "In a Banach space, does absolute convergence of a series $\\sum_n x_n$ (that is, $\\sum_n \\|x_n\\| < \\infty$) imply convergence of $\\sum_n x_n$?",
+      "options": [
+        "No, the implication fails in every infinite-dimensional space.",
+        "Yes; in a Banach space absolute convergence implies convergence.",
+        "Only if the terms are orthogonal.",
+        "Only in finite dimensions."
+      ],
+      "answer": 1,
+      "explanation": "Completeness guarantees that absolute convergence implies convergence: the partial sums form a Cauchy sequence, which converges because the space is complete. This holds in every Banach space, including infinite-dimensional ones.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-010",
+      "stem": "A subspace $M$ of a Banach space $X$ is itself a Banach space (in the restricted norm) if and only if which holds?",
+      "options": [
+        "$M$ is dense in $X$.",
+        "$M$ is bounded.",
+        "$M$ is a closed subspace of $X$.",
+        "$M$ is finite-dimensional."
+      ],
+      "answer": 2,
+      "explanation": "A subspace of a complete space is complete exactly when it is closed: a Cauchy sequence in $M$ converges in $X$, and the limit lies in $M$ for all such sequences iff $M$ contains its limit points. Finite-dimensional subspaces are automatically closed and hence complete.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-011",
+      "stem": "Is every finite-dimensional normed space complete?",
+      "options": [
+        "No, completeness can fail in low dimensions.",
+        "Only those with the Euclidean norm.",
+        "Yes; every finite-dimensional normed space is a Banach space.",
+        "Only those over the complex field."
+      ],
+      "answer": 2,
+      "explanation": "Every finite-dimensional normed space is complete. Since all norms on a finite-dimensional space are equivalent to the Euclidean norm, and that space is complete, the original space is too. Thus finite-dimensional normed spaces are always Banach spaces.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-012",
+      "stem": "Consider $C[0,1]$ with the integral ($L^1$) norm $\\|f\\| = \\int_0^1 |f(t)|\\, dt$ instead of the sup norm. Is it complete?",
+      "options": [
+        "Yes, every norm on $C[0,1]$ is complete.",
+        "Yes, because $C[0,1]$ is finite-dimensional.",
+        "It is complete only on $[0, 1]$.",
+        "No; a Cauchy sequence can converge in the $L^1$ sense to a discontinuous function outside $C[0,1]$."
+      ],
+      "answer": 3,
+      "explanation": "Under the $L^1$ norm, $C[0,1]$ is not complete. Continuous functions that increasingly approximate a step function are Cauchy in the integral norm, but their natural limit is discontinuous and so lies outside $C[0,1]$. Completeness of $C[0,1]$ depends on using the sup norm.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-013",
+      "stem": "Convergence in the supremum norm on $C[a,b]$ is the same as which mode of convergence?",
+      "options": [
+        "Pointwise convergence.",
+        "Uniform convergence.",
+        "Convergence in measure.",
+        "Convergence in the mean (integral norm)."
+      ],
+      "answer": 1,
+      "explanation": "Since $\\|f_n - f\\|_\\infty = \\max_t |f_n(t) - f(t)|$, convergence in the sup norm means $\\sup_t |f_n(t) - f(t)| \\to 0$, which is precisely uniform convergence. This is why the uniform limit of continuous functions staying continuous makes $C[a,b]$ complete.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-014",
+      "stem": "The completion of a normed space $X$ is a Banach space $\\widehat{X}$ in which $X$ sits how?",
+      "options": [
+        "As the whole space, since $X$ is already complete.",
+        "As a discrete subset.",
+        "As a dense subspace.",
+        "As a closed proper subspace."
+      ],
+      "answer": 2,
+      "explanation": "Every normed space $X$ has a completion $\\widehat{X}$, a Banach space containing an isometric copy of $X$ as a dense subspace. The completion is unique up to isometric isomorphism. For example $\\mathbb{R}$ is the completion of $\\mathbb{Q}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-015",
+      "stem": "Which sequence space is the standard example of a normed space that is NOT complete?",
+      "options": [
+        "$\\ell^2$ with its usual norm.",
+        "$\\ell^\\infty$ with the sup norm.",
+        "The space $c_{00}$ of finitely supported sequences with the sup norm.",
+        "$\\mathbb{R}^n$ with the Euclidean norm."
+      ],
+      "answer": 2,
+      "explanation": "The space $c_{00}$ of eventually-zero sequences, under the sup norm, is not complete: the sequence whose $n$-th member is $(1, 1/2, \\dots, 1/n, 0, 0, \\dots)$ is Cauchy but its natural limit $(1, 1/2, 1/3, \\dots)$ has infinitely many nonzero terms and so lies outside $c_{00}$. The other three spaces are all complete.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-016",
+      "stem": "Is the space $\\ell^\\infty$ of bounded scalar sequences, with the sup norm, a Banach space?",
+      "options": [
+        "Yes; $\\ell^\\infty$ with the sup norm is complete.",
+        "No, bounded sequences cannot form a complete space.",
+        "Only its convergent sequences form a Banach space.",
+        "Only when the scalars are real."
+      ],
+      "answer": 0,
+      "explanation": "$\\ell^\\infty$ with $\\|x\\|_\\infty = \\sup_n |x_n|$ is complete. A Cauchy sequence in $\\ell^\\infty$ converges coordinatewise to a bounded limit, and the convergence is uniform in the coordinate index, so the limit lies in $\\ell^\\infty$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-017",
+      "stem": "What distinguishes a Banach space from a Hilbert space?",
+      "options": [
+        "A Banach space need not be complete.",
+        "A Hilbert space is a Banach space whose norm comes from an inner product.",
+        "A Hilbert space need not be complete.",
+        "Banach spaces are always finite-dimensional."
+      ],
+      "answer": 1,
+      "explanation": "A Hilbert space is a complete inner product space, i.e. a Banach space whose norm satisfies the parallelogram law and so arises from an inner product. Every Hilbert space is a Banach space, but not conversely (for instance $C[a,b]$ with the sup norm).",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-018",
+      "stem": "Which statement about the relationship between Cauchy and convergent sequences is true in a general normed space (not assumed complete)?",
+      "options": [
+        "Every Cauchy sequence converges.",
+        "Cauchy and convergent are equivalent.",
+        "Every convergent sequence is Cauchy, but some Cauchy sequences may fail to converge.",
+        "Convergent sequences need not be Cauchy."
+      ],
+      "answer": 2,
+      "explanation": "In any normed space convergent implies Cauchy. The converse, that every Cauchy sequence converges, is exactly completeness and can fail in an incomplete space such as $\\mathbb{Q}$ or $c_{00}$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-019",
+      "stem": "The space $c_0$ of scalar sequences converging to $0$, with the sup norm, has which property?",
+      "options": [
+        "It is not a vector space.",
+        "It is dense in $\\ell^1$.",
+        "It is incomplete.",
+        "It is a closed subspace of $\\ell^\\infty$, hence a Banach space."
+      ],
+      "answer": 3,
+      "explanation": "$c_0$ is a closed subspace of the Banach space $\\ell^\\infty$: a uniform limit of sequences tending to zero again tends to zero. A closed subspace of a Banach space is complete, so $c_0$ with the sup norm is itself a Banach space.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-020",
+      "stem": "A necessary condition for a series $\\sum_n x_n$ to converge in a Banach space is which of the following?",
+      "options": [
+        "The terms satisfy $\\|x_n\\| \\to 0$.",
+        "The series is absolutely convergent.",
+        "The terms are mutually orthogonal.",
+        "The partial sums are monotone."
+      ],
+      "answer": 0,
+      "explanation": "If $\\sum_n x_n$ converges then its partial sums are Cauchy, forcing the individual terms $x_n = s_n - s_{n-1} \\to 0$ in norm. This is necessary but not sufficient (the harmonic series shows $\\|x_n\\| \\to 0$ does not guarantee convergence). Absolute convergence is sufficient, not necessary.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-021",
+      "stem": "Which of the following spaces is NOT complete (with the indicated norm)?",
+      "options": [
+        "$\\ell^2$ with its $2$-norm.",
+        "$C[0,1]$ with the sup norm.",
+        "$\\mathbb{R}^3$ with the Euclidean norm.",
+        "The polynomials on $[0,1]$ with the sup norm."
+      ],
+      "answer": 3,
+      "explanation": "The space of polynomials with the sup norm is not complete: by the Weierstrass theorem polynomials are dense in $C[0,1]$, so a sequence of polynomials can converge uniformly to a continuous non-polynomial (such as $e^t$), which lies outside the space. The other three are standard Banach spaces.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-022",
+      "stem": "Why is completeness of a normed space such a useful hypothesis in analysis?",
+      "options": [
+        "It makes the space finite-dimensional.",
+        "It guarantees limits of Cauchy sequences exist in the space, so constructive and iterative arguments stay inside it.",
+        "It forces every bounded set to be compact.",
+        "It makes every linear operator bounded."
+      ],
+      "answer": 1,
+      "explanation": "Completeness ensures that Cauchy sequences (produced by approximation, iteration, or series) actually converge to elements of the space. This underlies fixed point arguments, the Baire-category-based theorems, and the convergence of absolutely convergent series. It does not imply compactness of bounded sets in infinite dimensions.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-023",
+      "stem": "In an infinite-dimensional Banach space, is the closed unit ball $\\{ x : \\|x\\| \\le 1 \\}$ compact?",
+      "options": [
+        "Yes, the closed unit ball is always compact.",
+        "Yes, because it is closed and bounded.",
+        "No; by Riesz's lemma the closed unit ball is compact only in finite dimensions.",
+        "It is compact only in Hilbert spaces."
+      ],
+      "answer": 2,
+      "explanation": "Riesz's lemma shows the closed unit ball of a normed space is compact if and only if the space is finite-dimensional. In infinite dimensions one can build a sequence of unit vectors that stay a fixed distance apart, so no convergent subsequence exists. Closed and bounded does not imply compact beyond finite dimensions.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-024",
+      "stem": "Is the space $C^1[a,b]$ of continuously differentiable functions complete under the plain sup norm $\\|f\\|_\\infty = \\max_t |f(t)|$?",
+      "options": [
+        "Yes, because differentiable functions are continuous.",
+        "Yes, the sup norm makes every function space complete.",
+        "It is complete only on a bounded interval.",
+        "No; a uniformly convergent sequence of $C^1$ functions can have a non-differentiable limit."
+      ],
+      "answer": 3,
+      "explanation": "Under the sup norm alone, $C^1[a,b]$ is not complete: smooth functions can converge uniformly to a continuous but non-differentiable function (uniform convergence does not preserve differentiability). To make $C^1$ a Banach space one uses the stronger norm $\\|f\\|_\\infty + \\|f'\\|_\\infty$.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-025",
+      "format": "cloze",
+      "stem": "Classify these spaces (each with its standard norm) as complete or not: $\\mathbb{R}^n$ (Euclidean), $C[a,b]$ (sup norm), $\\ell^2$, and $\\mathbb{Q}$ (absolute value). Then count the complete ones.",
+      "solution": "The spaces $\\mathbb{R}^n$, $C[a,b]$ with the sup norm, and $\\ell^2$ are all complete, while $\\mathbb{Q}$ is not. Among these four spaces, the number that are complete is {{1}}. The space $\\mathbb{Q}$ {{2}} complete, because a rational sequence approaching $\\sqrt{2}$ is Cauchy without a rational limit. A complete normed space is called a {{3}} space.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is not",
+            "is"
+          ],
+          "answer": "is not"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Banach",
+            "compact"
+          ],
+          "answer": "Banach"
+        }
+      ],
+      "explanation": "$\\mathbb{R}^n$, $C[a,b]$ (sup norm), and $\\ell^2$ are complete ($3$ of the four); $\\mathbb{Q}$ is not. A complete normed space is a Banach space.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-026",
+      "format": "cloze",
+      "stem": "Use the series characterization of completeness. Let $X$ be a normed space.",
+      "solution": "The space $X$ is complete if and only if every absolutely convergent series in $X$ {{1}}. In particular, in a Banach space, if $\\sum_n \\|x_n\\|$ converges then $\\sum_n x_n$ {{2}}. A necessary condition for any series $\\sum_n x_n$ to converge is that the norms $\\|x_n\\|$ tend to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges"
+          ],
+          "answer": "converges"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges"
+          ],
+          "answer": "converges"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Completeness is equivalent to every absolutely convergent series being convergent. So in a Banach space absolute convergence implies convergence. For any convergent series the terms must satisfy $\\|x_n\\| \\to 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-027",
+      "format": "cloze",
+      "stem": "Reason about $C[0,1]$ under two different norms.",
+      "solution": "Under the supremum norm, $C[0,1]$ {{1}} complete, since a uniformly Cauchy sequence of continuous functions has a continuous uniform limit. Under the integral ($L^1$) norm, $C[0,1]$ {{2}} complete, because continuous approximations to a step function are Cauchy but the limit is discontinuous. Convergence in the supremum norm is exactly {{3}} convergence.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is not",
+            "is"
+          ],
+          "answer": "is not"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "uniform",
+            "pointwise"
+          ],
+          "answer": "uniform"
+        }
+      ],
+      "explanation": "With the sup norm $C[0,1]$ is complete (uniform limits of continuous functions are continuous). With the $L^1$ norm it is not complete. Sup-norm convergence is uniform convergence.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-banach-spaces-028",
+      "format": "cloze",
+      "stem": "Recall when a subspace of a Banach space is itself a Banach space, and the standard sequence-space facts.",
+      "solution": "A subspace $M$ of a Banach space is itself complete if and only if $M$ is {{1}} in the ambient space. The sequence space $\\ell^p$ for $1 \\le p \\le \\infty$ {{2}} complete. The number of the spaces $\\ell^1$, $\\ell^2$, $\\ell^\\infty$ that are Banach spaces is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "closed",
+            "dense"
+          ],
+          "answer": "closed"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "A subspace of a Banach space is complete exactly when it is closed. Every $\\ell^p$ with $1 \\le p \\le \\infty$ is complete, so all three of $\\ell^1, \\ell^2, \\ell^\\infty$ are Banach spaces.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    }
+  ]
+}

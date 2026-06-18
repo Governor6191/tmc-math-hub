@@ -1,0 +1,478 @@
+{
+  "courseId": "real-function-2",
+  "topicId": "convergence-theorems",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-function-2-convergence-theorems-001",
+      "stem": "The Monotone Convergence Theorem (MCT) states that if $0 \\le f_1 \\le f_2 \\le \\cdots$ is an increasing sequence of nonnegative measurable functions with $f_n \\uparrow f$ pointwise, then:",
+      "options": [
+        "$\\int f = 0$.",
+        "$\\lim_n \\int f_n\\, d\\mu = \\int f\\, d\\mu$.",
+        "$\\int f \\le \\liminf_n \\int f_n$ with possible strict inequality.",
+        "$f$ is bounded."
+      ],
+      "answer": 1,
+      "explanation": "The MCT allows the limit and integral to be interchanged for an increasing sequence of nonnegative measurable functions: $\\lim_n \\int f_n = \\int \\lim_n f_n = \\int f$. No domination hypothesis is needed; monotonicity and nonnegativity suffice. The conclusion is an equality, not merely an inequality.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-002",
+      "stem": "Fatou's Lemma states that for any sequence of nonnegative measurable functions $f_n$:",
+      "options": [
+        "$\\int \\liminf_n f_n = \\liminf_n \\int f_n$ always.",
+        "$\\int \\liminf_n f_n \\ge \\liminf_n \\int f_n$.",
+        "$\\int \\limsup_n f_n \\le \\limsup_n \\int f_n$.",
+        "$\\int \\liminf_n f_n \\le \\liminf_n \\int f_n$."
+      ],
+      "answer": 3,
+      "explanation": "Fatou's Lemma is the inequality $\\int \\liminf_n f_n \\le \\liminf_n \\int f_n$ for nonnegative measurable $f_n$. The integral of the liminf can only be less than or equal to the liminf of the integrals; equality can fail. It is stated for $\\liminf$ (not $\\limsup$) and is an inequality, not an equality.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-003",
+      "stem": "The Dominated Convergence Theorem (DCT) requires which key hypothesis beyond $f_n \\to f$ almost everywhere?",
+      "options": [
+        "There is an integrable $g$ with $|f_n| \\le g$ for all $n$ (a dominating function).",
+        "Each $f_n$ is continuous.",
+        "The $f_n$ are increasing.",
+        "The measure space is finite."
+      ],
+      "answer": 0,
+      "explanation": "The DCT needs a single integrable dominating function $g$ with $|f_n| \\le g$ a.e. for all $n$. Then $f_n \\to f$ a.e. implies $\\int f_n \\to \\int f$ and $\\int |f_n - f| \\to 0$. Monotonicity, continuity, and finiteness of the measure are not part of the hypotheses; domination by an integrable function is the crucial control.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-004",
+      "stem": "Under the hypotheses of the Dominated Convergence Theorem, the conclusion is:",
+      "options": [
+        "$\\int f_n \\to \\infty$.",
+        "$f_n \\to f$ uniformly.",
+        "$\\lim_n \\int f_n\\, d\\mu = \\int f\\, d\\mu$ (and $\\int |f_n - f| \\to 0$).",
+        "$f = 0$."
+      ],
+      "answer": 2,
+      "explanation": "The DCT concludes that the limit and integral commute: $\\lim_n \\int f_n = \\int f$, and moreover $\\int |f_n - f|\\,d\\mu \\to 0$ ($L^1$ convergence). It does not assert uniform convergence of the functions themselves, nor that $f = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-005",
+      "stem": "Consider $f_n = n\\,\\chi_{(0, 1/n)}$ on $[0,1]$ with Lebesgue measure. What are $\\lim_n f_n(x)$ (for fixed $x$) and $\\lim_n \\int f_n$?",
+      "options": [
+        "$f_n \\to 1$ and $\\int f_n \\to 0$.",
+        "$f_n(x) \\to 0$ for every $x$, but $\\int f_n = 1$ for all $n$, so $\\int f_n \\to 1$.",
+        "$f_n \\to \\infty$ and $\\int f_n \\to \\infty$.",
+        "$f_n \\to 0$ and $\\int f_n \\to 0$."
+      ],
+      "answer": 1,
+      "explanation": "For any fixed $x > 0$, eventually $1/n < x$ so $f_n(x) = 0$; and $f_n(0) = 0$ too. Hence $f_n \\to 0$ pointwise. But $\\int f_n = n \\cdot m((0,1/n)) = n \\cdot (1/n) = 1$ for every $n$, so $\\int f_n \\to 1 \\neq 0 = \\int \\lim f_n$. This is the classic failure of interchange without domination (and Fatou holds strictly here).",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-006",
+      "stem": "In the example $f_n = n\\,\\chi_{(0,1/n)}$ with $\\int \\liminf f_n = 0 < 1 = \\liminf \\int f_n$, which principle is being illustrated?",
+      "options": [
+        "Equality in the Monotone Convergence Theorem.",
+        "Failure of measurability.",
+        "Holder's inequality.",
+        "Strict inequality in Fatou's Lemma."
+      ],
+      "answer": 3,
+      "explanation": "Here $\\liminf f_n = 0$ so $\\int \\liminf f_n = 0$, while $\\liminf \\int f_n = 1$. Fatou's Lemma $\\int \\liminf f_n \\le \\liminf \\int f_n$ holds as $0 \\le 1$, with strict inequality. The example shows Fatou cannot be improved to an equality in general; the sequence is not monotone, so the MCT does not apply.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-007",
+      "stem": "A sequence $f_n$ converges to $f$ 'in measure' if, for every $\\varepsilon > 0$:",
+      "options": [
+        "$\\mu(\\{x : |f_n(x) - f(x)| \\ge \\varepsilon\\}) \\to 0$ as $n \\to \\infty$.",
+        "$f_n(x) \\to f(x)$ for every $x$.",
+        "$\\int |f_n - f| \\to 0$.",
+        "$\\sup_x |f_n(x) - f(x)| \\to 0$."
+      ],
+      "answer": 0,
+      "explanation": "Convergence in measure means the measure of the set where $f_n$ and $f$ differ by at least $\\varepsilon$ shrinks to $0$ for each fixed $\\varepsilon$. This is distinct from pointwise convergence (a pointwise statement), $L^1$ convergence ($\\int|f_n-f|\\to 0$), and uniform convergence ($\\sup$ norm).",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-008",
+      "stem": "On a space of finite measure, almost-everywhere convergence implies:",
+      "options": [
+        "uniform convergence.",
+        "convergence of the integrals without any further hypothesis.",
+        "convergence in measure.",
+        "$L^1$ convergence automatically."
+      ],
+      "answer": 2,
+      "explanation": "On a finite measure space, $f_n \\to f$ a.e. implies $f_n \\to f$ in measure. It does not give uniform convergence, nor (without domination) convergence of the integrals or $L^1$ convergence, as the spike example $n\\chi_{(0,1/n)}$ shows: it converges a.e. (hence in measure) but the integrals do not converge to $0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-009",
+      "stem": "Convergence in measure implies which of the following?",
+      "options": [
+        "Pointwise convergence everywhere.",
+        "Some subsequence converges almost everywhere.",
+        "Uniform convergence.",
+        "Convergence of integrals."
+      ],
+      "answer": 1,
+      "explanation": "If $f_n \\to f$ in measure, then there is a subsequence $f_{n_k} \\to f$ almost everywhere (the Riesz subsequence theorem). The full sequence need not converge a.e., uniformly, or in integral; only an a.e.-convergent subsequence is guaranteed.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-010",
+      "stem": "If $f_n \\to f$ in $L^1$ (that is $\\int |f_n - f| \\to 0$), then $f_n \\to f$:",
+      "options": [
+        "pointwise everywhere.",
+        "uniformly.",
+        "almost everywhere.",
+        "in measure."
+      ],
+      "answer": 3,
+      "explanation": "By Chebyshev's inequality, $\\mu(\\{|f_n - f| \\ge \\varepsilon\\}) \\le \\frac{1}{\\varepsilon}\\int|f_n - f| \\to 0$, so $L^1$ convergence implies convergence in measure. It does not imply pointwise, a.e., or uniform convergence in general (one can move a bump around so that no point converges, while the $L^1$ norm tends to $0$).",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-011",
+      "stem": "Using the Monotone Convergence Theorem, compute $\\lim_n \\int_{[0,1]} f_n\\, dm$ where $f_n(x) = x^{1/n}$ increases to $1$ for $x \\in (0,1]$.",
+      "options": [
+        "$1$.",
+        "$0$.",
+        "$\\dfrac{1}{2}$.",
+        "$\\infty$."
+      ],
+      "answer": 0,
+      "explanation": "For $x \\in (0,1]$, $x^{1/n} \\uparrow 1$ as $n \\to \\infty$ (and the limit is the constant $1$ a.e. on $[0,1]$). The functions are nonnegative and increasing, so by the MCT $\\lim_n \\int_{[0,1]} x^{1/n}\\,dm = \\int_{[0,1]} 1\\,dm = 1$. The single point $x=0$ is a null set and does not matter.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-012",
+      "stem": "Apply the DCT: let $f_n(x) = \\frac{\\sin(nx)}{n}$ on $[0, 2\\pi]$. What is $\\lim_n \\int_0^{2\\pi} f_n\\, dm$?",
+      "options": [
+        "$2\\pi$.",
+        "$1$.",
+        "$0$.",
+        "It does not exist."
+      ],
+      "answer": 2,
+      "explanation": "Here $|f_n(x)| = |\\sin(nx)|/n \\le 1/n \\to 0$, so $f_n \\to 0$ uniformly, hence pointwise, and the constant $1$ is an integrable dominating function on the finite interval $[0,2\\pi]$. By the DCT, $\\lim_n \\int_0^{2\\pi} f_n = \\int_0^{2\\pi} 0 = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-013",
+      "stem": "The Monotone Convergence Theorem can fail if the functions are not nonnegative. Which adjustment recovers a usable statement for decreasing sequences?",
+      "options": [
+        "No adjustment is possible; decreasing sequences never allow interchange.",
+        "Require $f_1$ to be integrable and $f_n \\downarrow f$; then $\\int f_n \\to \\int f$ (monotone convergence from above).",
+        "Require the $f_n$ to be unbounded.",
+        "Require the measure to be infinite."
+      ],
+      "answer": 1,
+      "explanation": "For a decreasing sequence $f_n \\downarrow f$, the interchange $\\int f_n \\to \\int f$ holds provided $f_1$ (the largest) is integrable, so that $g = f_1$ dominates. Without an integrable majorant the conclusion can fail (e.g. $f_n = \\chi_{[n,\\infty)}$ on $\\mathbb{R}$ has $\\int f_n = \\infty$ but $f_n \\downarrow 0$).",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-014",
+      "stem": "Which chain of implications among modes of convergence is correct (on a finite measure space)?",
+      "options": [
+        "in measure $\\Rightarrow$ uniform $\\Rightarrow$ a.e.",
+        "pointwise $\\Rightarrow$ uniform.",
+        "in measure $\\Rightarrow$ $L^1$.",
+        "uniform $\\Rightarrow$ a.e. $\\Rightarrow$ in measure."
+      ],
+      "answer": 3,
+      "explanation": "Uniform convergence implies pointwise (hence a.e.) convergence, and on a finite measure space a.e. convergence implies convergence in measure. So uniform $\\Rightarrow$ a.e. $\\Rightarrow$ in measure. The reverse arrows fail, and convergence in measure does not imply $L^1$ or uniform convergence.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-015",
+      "stem": "Using term-by-term integration of a nonnegative series (a corollary of the MCT), if $f_n \\ge 0$ are measurable then $\\int \\sum_{n=1}^\\infty f_n\\, d\\mu$ equals:",
+      "options": [
+        "$\\sum_{n=1}^\\infty \\int f_n\\, d\\mu$.",
+        "$\\int f_1\\, d\\mu$ only.",
+        "$\\max_n \\int f_n\\, d\\mu$.",
+        "$0$."
+      ],
+      "answer": 0,
+      "explanation": "Applying the MCT to the increasing partial sums $S_N = \\sum_{n=1}^N f_n$ gives $\\int \\sum_n f_n = \\lim_N \\int S_N = \\lim_N \\sum_{n=1}^N \\int f_n = \\sum_{n=1}^\\infty \\int f_n$. So for nonnegative terms, integration and summation always commute (Beppo Levi).",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-016",
+      "stem": "Which is a valid integrable dominating function for $f_n(x) = \\frac{x}{1 + n x^2}$ on $[0,1]$ (where $f_n \\to 0$)?",
+      "options": [
+        "$g(x) = 1/x$, which is integrable on $[0,1]$.",
+        "No dominating function exists.",
+        "$g(x) = 1$ (the constant), which is integrable on $[0,1]$.",
+        "$g(x) = e^x - 1$ only."
+      ],
+      "answer": 2,
+      "explanation": "On $[0,1]$, $0 \\le f_n(x) = \\frac{x}{1+nx^2} \\le x \\le 1$, so the constant $g \\equiv 1$ dominates all $f_n$ and is integrable on the finite interval. The DCT then gives $\\int_0^1 f_n \\to 0$. The function $1/x$ is not integrable on $[0,1]$, so it is not a valid dominator to invoke.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-017",
+      "stem": "Pointwise convergence everywhere on $[0,1]$ guarantees which of the following about the limit function $f$?",
+      "options": [
+        "$f$ is continuous.",
+        "$f$ is measurable (as a pointwise limit of measurable functions).",
+        "$\\int f_n \\to \\int f$.",
+        "$f$ is integrable."
+      ],
+      "answer": 1,
+      "explanation": "A pointwise limit of measurable functions is always measurable. It need not be continuous, integrable, or have integrals converging to $\\int f$ (the latter requires extra hypotheses such as domination or monotonicity). Measurability is the one property that survives pointwise limits unconditionally.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-018",
+      "stem": "For the spike sequence $g_n = \\chi_{[n, n+1]}$ on $\\mathbb{R}$, we have $g_n \\to 0$ pointwise but $\\int g_n = 1$. Which theorem's hypothesis fails, explaining why $\\int g_n \\not\\to 0$?",
+      "options": [
+        "Fatou's Lemma is violated.",
+        "The functions are not measurable.",
+        "The Monotone Convergence Theorem, because the sequence is increasing.",
+        "The Dominated Convergence Theorem, because no integrable $g$ dominates all $g_n$."
+      ],
+      "answer": 3,
+      "explanation": "Each $g_n$ is the indicator of a unit interval marching off to infinity; pointwise $g_n \\to 0$ but $\\int g_n = 1$. The DCT fails because any common majorant would have to be at least $1$ on all of $[1,\\infty)$, hence non-integrable. Fatou still holds ($0 = \\int 0 \\le \\liminf \\int g_n = 1$), and the functions are perfectly measurable; the sequence is not monotone increasing.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-019",
+      "stem": "Convergence in $L^p$ (for $1 \\le p < \\infty$) means:",
+      "options": [
+        "$\\|f_n - f\\|_p = \\left(\\int |f_n - f|^p\\right)^{1/p} \\to 0$.",
+        "$f_n(x) \\to f(x)$ for almost every $x$.",
+        "$\\sup_x |f_n(x) - f(x)| \\to 0$.",
+        "$\\mu(\\{|f_n - f| > 0\\}) \\to 0$."
+      ],
+      "answer": 0,
+      "explanation": "Convergence in $L^p$ is convergence in the $L^p$ norm: $\\|f_n - f\\|_p = (\\int |f_n - f|^p\\,d\\mu)^{1/p} \\to 0$. This is a metric (norm) convergence, distinct from a.e. convergence, uniform convergence, and convergence in measure (though $L^p$ convergence does imply convergence in measure).",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-020",
+      "stem": "Apply Fatou's Lemma: if $f_n \\ge 0$ are measurable, $f_n \\to f$ pointwise, and $\\int f_n \\le 5$ for all $n$, what bound on $\\int f$ follows?",
+      "options": [
+        "$\\int f = 5$.",
+        "$\\int f \\ge 5$.",
+        "$\\int f \\le 5$.",
+        "$\\int f = 0$."
+      ],
+      "answer": 2,
+      "explanation": "By Fatou, $\\int f = \\int \\liminf f_n \\le \\liminf \\int f_n \\le 5$. So the limit's integral is bounded by the uniform bound on the integrals, but it can be strictly smaller (mass can escape), so equality is not forced.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-021",
+      "stem": "Which statement about uniform convergence and integration on a finite-measure set $E$ is correct?",
+      "options": [
+        "Uniform convergence never allows interchange of limit and integral.",
+        "If $f_n \\to f$ uniformly on $E$ with $\\mu(E) < \\infty$, then $\\int_E f_n \\to \\int_E f$.",
+        "Uniform convergence implies the $f_n$ are simple.",
+        "Uniform convergence requires $f$ to be zero."
+      ],
+      "answer": 1,
+      "explanation": "On a finite-measure set, uniform convergence lets us interchange limit and integral: $|\\int_E f_n - \\int_E f| \\le \\int_E |f_n - f| \\le \\|f_n - f\\|_\\infty\\, \\mu(E) \\to 0$. Finiteness of $\\mu(E)$ is what makes the supremum bound integrable, so the conclusion $\\int_E f_n \\to \\int_E f$ holds.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-022",
+      "stem": "In the DCT, the dominating function $g$ must satisfy which property?",
+      "options": [
+        "$g$ is continuous.",
+        "$g = f$ almost everywhere.",
+        "$g$ is bounded.",
+        "$g$ is integrable, i.e. $\\int g\\, d\\mu < \\infty$, and $|f_n| \\le g$ for all $n$."
+      ],
+      "answer": 3,
+      "explanation": "The dominating function must be integrable ($\\int g < \\infty$) and bound the whole sequence: $|f_n| \\le g$ a.e. for every $n$. It need not be continuous, bounded, or equal to $f$. Integrability of $g$ is exactly what controls the limit and licenses the interchange.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-023",
+      "stem": "Apply the DCT to compute $\\lim_n \\int_0^\\infty \\frac{e^{-x}}{1 + x/n}\\, dm(x)$, noting the integrand increases to $e^{-x}$.",
+      "options": [
+        "$1$.",
+        "$0$.",
+        "$\\infty$.",
+        "$e$."
+      ],
+      "answer": 0,
+      "explanation": "As $n \\to \\infty$, $\\frac{e^{-x}}{1 + x/n} \\to e^{-x}$ pointwise, and the integrand is dominated by the integrable function $g(x) = e^{-x}$ (since $1 + x/n \\ge 1$). By the DCT, the limit is $\\int_0^\\infty e^{-x}\\,dm = 1$. The dominating function $e^{-x}$ has total integral $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-024",
+      "stem": "Which implication is FALSE in general?",
+      "options": [
+        "$L^1$ convergence implies convergence in measure.",
+        "Uniform convergence implies pointwise convergence.",
+        "Convergence in measure implies almost-everywhere convergence of the full sequence.",
+        "Monotone increasing nonnegative sequences allow interchange of limit and integral."
+      ],
+      "answer": 2,
+      "explanation": "Convergence in measure does NOT imply a.e. convergence of the full sequence; only a subsequence converges a.e. (the typewriter sequence of indicators of shrinking dyadic intervals converges in measure to $0$ but converges nowhere). The other three statements are true: $L^1 \\Rightarrow$ in measure (Chebyshev), uniform $\\Rightarrow$ pointwise, and the MCT gives interchange for monotone nonnegative sequences.",
+      "difficulty": "stretch",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-025",
+      "format": "cloze",
+      "stem": "Analyze the spike sequence $f_n = n\\,\\chi_{(0,1/n)}$ on $[0,1]$ under Lebesgue measure.",
+      "solution": "For each fixed $x$, the pointwise limit $\\lim_n f_n(x)$ equals {{1}}. Yet the integral $\\int_{[0,1]} f_n\\, dm$ equals {{2}} for every $n$. Since the limit of the integrals differs from the integral of the limit, may we apply the Dominated Convergence Theorem here? Answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "For fixed $x$, eventually $f_n(x) = 0$, so the pointwise limit is $0$. But $\\int f_n = n \\cdot (1/n) = 1$ for all $n$. The integrals stay at $1$ while the limit integrates to $0$, so no integrable dominating function exists and the DCT does not apply (no).",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-026",
+      "format": "cloze",
+      "stem": "Use the Monotone Convergence Theorem and the Dominated Convergence Theorem to evaluate two limits.",
+      "solution": "If $f_n(x) = x^{1/n}$ on $[0,1]$ increases to the constant $1$, then by the MCT $\\lim_n \\int_{[0,1]} f_n\\, dm$ equals {{1}}. If $g_n(x) = \\frac{\\cos(nx)}{n}$ on $[0,\\pi]$, dominated by $1$ and tending to $0$, then by the DCT $\\lim_n \\int_0^\\pi g_n\\, dm$ equals {{2}}. The theorem licensing the first interchange (increasing nonnegative functions) is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "the Monotone Convergence Theorem",
+            "Fatou's Lemma",
+            "Holder's inequality"
+          ],
+          "answer": "the Monotone Convergence Theorem"
+        }
+      ],
+      "explanation": "MCT: $\\int x^{1/n} \\to \\int 1 = 1$ on $[0,1]$. DCT: $|g_n| \\le 1/n \\to 0$ with dominator $1$, so $\\int_0^\\pi g_n \\to 0$. The first interchange uses the Monotone Convergence Theorem.",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-027",
+      "format": "cloze",
+      "stem": "Reason about Fatou's Lemma quantitatively. Suppose $f_n \\ge 0$ are measurable with $\\int f_n = 3$ for all $n$ and $f_n \\to f$ pointwise.",
+      "solution": "Fatou's Lemma gives $\\int f \\le \\liminf_n \\int f_n$, so the best upper bound it provides for $\\int f$ is the number {{1}}. If instead a different sequence had $\\int h_n = 7$ for all $n$ with $h_n \\to h$ pointwise, Fatou bounds $\\int h$ above by {{2}}. Does Fatou's Lemma guarantee equality $\\int f = 3$? Answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "With $\\int f_n = 3$ constant, $\\liminf \\int f_n = 3$, so Fatou gives $\\int f \\le 3$. Likewise $\\int h \\le 7$. Fatou is only an inequality, so it does not force equality; mass can escape and make $\\int f < 3$ (no).",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    },
+    {
+      "id": "real-function-2-convergence-theorems-028",
+      "format": "cloze",
+      "stem": "Classify implications among modes of convergence (on a finite measure space) as holding or not.",
+      "solution": "Does $L^1$ convergence imply convergence in measure? Answer {{1}}. Does convergence in measure imply almost-everywhere convergence of the whole sequence? Answer {{2}}. Does uniform convergence imply pointwise convergence? Answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        }
+      ],
+      "explanation": "By Chebyshev, $L^1$ convergence implies convergence in measure (yes). Convergence in measure yields only an a.e.-convergent subsequence, not the full sequence (no). Uniform convergence trivially implies pointwise convergence (yes).",
+      "difficulty": "core",
+      "source": "in the style of Royden and Fitzpatrick, Real Analysis"
+    }
+  ]
+}

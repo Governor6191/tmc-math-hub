@@ -1,0 +1,480 @@
+{
+  "courseId": "functional-analysis",
+  "topicId": "functionals-and-dual-spaces",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-001",
+      "stem": "A linear functional on a vector space $X$ over the field $\\mathbb{K}$ is a linear map of which form?",
+      "options": [
+        "$f : X \\to X$.",
+        "$f : X \\to \\mathbb{K}$ (the scalar field).",
+        "$f : \\mathbb{K} \\to X$.",
+        "$f : X \\to X \\times X$."
+      ],
+      "answer": 1,
+      "explanation": "A linear functional is a linear map from $X$ into its scalar field $\\mathbb{K}$ (the real or complex numbers). It assigns a scalar to each vector while respecting linear combinations.",
+      "difficulty": "warmup",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-002",
+      "stem": "The dual space $X^*$ of a normed space $X$ is defined as which set?",
+      "options": [
+        "All linear functionals on $X$.",
+        "All continuous (bounded) linear functionals on $X$.",
+        "All linear operators from $X$ to $X$.",
+        "The set of unit vectors in $X$."
+      ],
+      "answer": 1,
+      "explanation": "The (topological) dual $X^*$ is the space of all bounded, equivalently continuous, linear functionals on $X$, with the operator norm. The space of all linear functionals (without continuity) is the larger algebraic dual.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-003",
+      "stem": "Is the dual space $X^*$ of a normed space always complete (a Banach space)?",
+      "options": [
+        "No, only when $X$ is complete.",
+        "No, $X^*$ is never complete.",
+        "Yes; $X^*$ is always a Banach space, because the scalar field is complete.",
+        "Only when $X$ is finite-dimensional."
+      ],
+      "answer": 2,
+      "explanation": "Since $X^* = B(X, \\mathbb{K})$ and $B(X, Y)$ is complete whenever the target $Y$ is complete, and the scalar field $\\mathbb{K}$ is complete, the dual $X^*$ is always a Banach space, regardless of whether $X$ itself is complete.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-004",
+      "stem": "The Riesz representation theorem states that every bounded linear functional $f$ on a Hilbert space $H$ has which form?",
+      "options": [
+        "$f(x) = \\langle x, z \\rangle$ for a unique $z \\in H$.",
+        "$f(x) = \\|x\\|$ for all $x$.",
+        "$f(x) = T x$ for some operator $T$.",
+        "$f(x) = \\langle x, x \\rangle$."
+      ],
+      "answer": 0,
+      "explanation": "By the Riesz representation theorem, each bounded linear functional on a Hilbert space $H$ is given by inner product against a unique fixed vector $z$: $f(x) = \\langle x, z \\rangle$, and moreover $\\|f\\| = \\|z\\|$. This identifies $H$ with its own dual.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-005",
+      "stem": "In the Riesz representation $f(x) = \\langle x, z \\rangle$ on a Hilbert space, the norm of the functional $f$ equals which quantity?",
+      "options": [
+        "$\\|z\\|^2$.",
+        "$1$.",
+        "$\\langle z, z \\rangle^2$.",
+        "$\\|z\\|$."
+      ],
+      "answer": 3,
+      "explanation": "The Riesz representation gives $\\|f\\| = \\|z\\|$. The upper bound is Cauchy-Schwarz, $|f(x)| = |\\langle x, z \\rangle| \\le \\|z\\|\\,\\|x\\|$, and equality is achieved at $x = z$, so $\\|f\\| = \\|z\\|$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-006",
+      "stem": "For $1 < p < \\infty$, the dual space of $\\ell^p$ is isometrically isomorphic to which space?",
+      "options": [
+        "$\\ell^p$ itself.",
+        "$\\ell^1$.",
+        "$\\ell^\\infty$.",
+        "$\\ell^q$, where $\\tfrac1p + \\tfrac1q = 1$."
+      ],
+      "answer": 3,
+      "explanation": "The dual of $\\ell^p$ is $\\ell^q$ with $q$ the conjugate exponent, $\\tfrac1p + \\tfrac1q = 1$. The pairing is $\\langle x, y \\rangle = \\sum_n x_n y_n$, and the identification is isometric.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-007",
+      "stem": "For $p = 2$, the conjugate exponent $q$ satisfying $\\tfrac1p + \\tfrac1q = 1$ is which value?",
+      "options": [
+        "$1$.",
+        "$2$.",
+        "$\\infty$.",
+        "$4$."
+      ],
+      "answer": 1,
+      "explanation": "Solving $\\tfrac12 + \\tfrac1q = 1$ gives $\\tfrac1q = \\tfrac12$, so $q = 2$. Hence $\\ell^2$ is its own dual, consistent with its being a Hilbert space.",
+      "difficulty": "warmup",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-008",
+      "stem": "The Hahn-Banach theorem guarantees that a bounded linear functional defined on a subspace can be extended to the whole space while preserving which quantity?",
+      "options": [
+        "Its kernel.",
+        "Its range.",
+        "Its norm.",
+        "Its injectivity."
+      ],
+      "answer": 2,
+      "explanation": "The Hahn-Banach theorem extends a bounded linear functional from a subspace to the entire space without increasing its norm: there is an extension $F$ with $F|_M = f$ and $\\|F\\| = \\|f\\|$. Norm preservation is the crucial feature.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-009",
+      "stem": "Compute the norm of the functional $f(x) = \\langle x, z \\rangle$ on $\\mathbb{R}^2$ where $z = (3, 4)$ (Euclidean inner product).",
+      "options": [
+        "$7$.",
+        "$25$.",
+        "$1$.",
+        "$5$."
+      ],
+      "answer": 3,
+      "explanation": "By Riesz representation $\\|f\\| = \\|z\\| = \\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-010",
+      "stem": "For $p = 1$, the dual of $\\ell^1$ is which space?",
+      "options": [
+        "$\\ell^\\infty$.",
+        "$\\ell^1$.",
+        "$\\ell^2$.",
+        "$c_0$."
+      ],
+      "answer": 0,
+      "explanation": "The dual of $\\ell^1$ is $\\ell^\\infty$ (formally the conjugate exponent of $1$ is $\\infty$). Note the reverse fails: the dual of $\\ell^\\infty$ is strictly larger than $\\ell^1$, so $\\ell^1$ is not reflexive.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-011",
+      "stem": "A linear functional $f$ on a normed space is bounded if and only if which set is closed?",
+      "options": [
+        "Its range.",
+        "Its kernel (null space).",
+        "The unit ball.",
+        "The whole space."
+      ],
+      "answer": 1,
+      "explanation": "A linear functional is continuous (bounded) if and only if its kernel is a closed subspace. If $f$ is unbounded, its kernel is a dense proper subspace, hence not closed. This is a clean topological test for boundedness of functionals.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-012",
+      "stem": "Compute the conjugate exponent $q$ of $p = 4$ (so that $\\tfrac1p + \\tfrac1q = 1$).",
+      "options": [
+        "$\\tfrac{4}{3}$.",
+        "$4$.",
+        "$\\tfrac{3}{4}$.",
+        "$2$."
+      ],
+      "answer": 0,
+      "explanation": "From $\\tfrac14 + \\tfrac1q = 1$ we get $\\tfrac1q = \\tfrac34$, so $q = \\tfrac43$. Thus the dual of $\\ell^4$ is $\\ell^{4/3}$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-013",
+      "stem": "One important consequence of the Hahn-Banach theorem is that the dual space $X^*$ of a nonzero normed space has which property?",
+      "options": [
+        "It is always finite-dimensional.",
+        "It contains only the zero functional.",
+        "It is isomorphic to $X$.",
+        "It separates points: for $x \\ne 0$ there is $f \\in X^*$ with $f(x) \\ne 0$."
+      ],
+      "answer": 3,
+      "explanation": "Hahn-Banach yields enough bounded functionals to separate points: for any $x \\ne 0$ there is $f \\in X^*$ with $f(x) = \\|x\\|$ and $\\|f\\| = 1$, so in particular $f(x) \\ne 0$. This shows the dual is rich enough to detect every nonzero vector.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-014",
+      "stem": "The norm of a bounded linear functional $f$ on a normed space is computed as which supremum?",
+      "options": [
+        "$\\sup_{\\|x\\| \\le 1} |f(x)|$.",
+        "$\\inf_{\\|x\\| = 1} |f(x)|$.",
+        "$\\sum_x |f(x)|$.",
+        "$|f(0)|$."
+      ],
+      "answer": 0,
+      "explanation": "As a special case of the operator norm, $\\|f\\| = \\sup_{\\|x\\| \\le 1} |f(x)| = \\sup_{x \\ne 0} |f(x)| / \\|x\\|$. The functional satisfies $|f(x)| \\le \\|f\\|\\,\\|x\\|$ for all $x$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-015",
+      "stem": "On $C[0,1]$ with the sup norm, the integration functional $f(g) = \\int_0^1 g(t)\\, dt$ has norm equal to which value?",
+      "options": [
+        "$0$.",
+        "$2$.",
+        "$1$.",
+        "$\\tfrac{1}{2}$."
+      ],
+      "answer": 2,
+      "explanation": "For $\\|g\\|_\\infty \\le 1$, $|f(g)| = |\\int_0^1 g| \\le \\int_0^1 |g| \\le 1$, so $\\|f\\| \\le 1$. Taking $g \\equiv 1$ gives $f(g) = 1$, so $\\|f\\| = 1$. The functional is bounded with norm exactly $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-016",
+      "stem": "The Riesz representation theorem identifies a Hilbert space $H$ with its dual $H^*$ via the map $z \\mapsto \\langle \\cdot, z \\rangle$. In the complex case this map is which kind of map?",
+      "options": [
+        "Linear and norm-preserving.",
+        "Nonlinear and norm-decreasing.",
+        "Linear but not norm-preserving.",
+        "Conjugate-linear (antilinear) and norm-preserving."
+      ],
+      "answer": 3,
+      "explanation": "Over the complex field, the Riesz map $z \\mapsto \\langle \\cdot, z \\rangle$ is conjugate-linear (antilinear): scaling $z$ by $\\alpha$ scales the functional by $\\overline{\\alpha}$, because of conjugate symmetry of the inner product. It is a norm-preserving bijection (an antilinear isometry).",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-017",
+      "stem": "Every Hilbert space is reflexive, meaning the natural map from $H$ into its double dual $H^{**}$ has which property?",
+      "options": [
+        "It is the zero map.",
+        "It is not even well defined.",
+        "It is a surjective isometry (an isometric isomorphism onto $H^{**}$).",
+        "It is injective but never surjective."
+      ],
+      "answer": 2,
+      "explanation": "Reflexivity means the canonical embedding $H \\to H^{**}$ is onto, hence an isometric isomorphism. Hilbert spaces are reflexive (as is every $\\ell^p$ for $1 < p < \\infty$). By contrast $\\ell^1$ and $\\ell^\\infty$ are not reflexive.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-018",
+      "stem": "Which of the following is a bounded linear functional on $\\ell^2$?",
+      "options": [
+        "$f(x) = \\sum_n n\\, x_n$.",
+        "$f(x) = x_1 + x_2$ (the sum of the first two coordinates).",
+        "$f(x) = \\sup_n x_n$.",
+        "$f(x) = \\sum_n x_n^2$."
+      ],
+      "answer": 1,
+      "explanation": "The map $f(x) = x_1 + x_2 = \\langle x, e_1 + e_2 \\rangle$ is linear and bounded with norm $\\|e_1 + e_2\\| = \\sqrt2$. The weighted sum $\\sum n x_n$ is unbounded, the supremum is not linear, and $\\sum x_n^2$ is quadratic, not linear.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-019",
+      "stem": "For $p = 3$, the conjugate exponent $q$ (with $\\tfrac1p + \\tfrac1q = 1$) equals which value?",
+      "options": [
+        "$3$.",
+        "$\\tfrac{2}{3}$.",
+        "$\\tfrac{3}{2}$.",
+        "$2$."
+      ],
+      "answer": 2,
+      "explanation": "From $\\tfrac13 + \\tfrac1q = 1$, $\\tfrac1q = \\tfrac23$, so $q = \\tfrac32$. The dual of $\\ell^3$ is $\\ell^{3/2}$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-020",
+      "stem": "On a finite-dimensional space $X$ of dimension $n$, the dual space $X^*$ has which dimension?",
+      "options": [
+        "$n$.",
+        "$0$.",
+        "$2n$.",
+        "Infinite."
+      ],
+      "answer": 0,
+      "explanation": "For a finite-dimensional space, the dual has the same dimension $n$ as the space; a basis $\\{e_1, \\dots, e_n\\}$ has a dual basis $\\{e_1^*, \\dots, e_n^*\\}$. Thus $X$ and $X^*$ are isomorphic in finite dimensions, and every linear functional is automatically bounded.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-021",
+      "stem": "The Hahn-Banach theorem, in its general (dominated extension) real form, extends a linear functional dominated by which kind of function?",
+      "options": [
+        "A sublinear functional (subadditive and positively homogeneous), such as a norm.",
+        "A linear functional.",
+        "A bounded operator.",
+        "A continuous bijection."
+      ],
+      "answer": 0,
+      "explanation": "The analytic Hahn-Banach theorem extends a linear functional $f$ on a subspace, dominated by a sublinear functional $p$ (satisfying $p(x+y) \\le p(x)+p(y)$ and $p(\\alpha x) = \\alpha p(x)$ for $\\alpha \\ge 0$), to the whole space still dominated by $p$. A norm is the standard example of such a $p$.",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-022",
+      "stem": "Which statement about the dual of $\\ell^p$ for $1 \\le p < \\infty$ is correct?",
+      "options": [
+        "It is $\\ell^q$ with $q = p$ in every case.",
+        "It is always $\\ell^2$.",
+        "It is $\\ell^q$ with $\\tfrac1p + \\tfrac1q = 1$, where $q = \\infty$ when $p = 1$.",
+        "It is the zero space."
+      ],
+      "answer": 2,
+      "explanation": "For $1 \\le p < \\infty$ the dual of $\\ell^p$ is $\\ell^q$ with the conjugate exponent given by $\\tfrac1p + \\tfrac1q = 1$; in the boundary case $p = 1$ this gives $q = \\infty$, so $(\\ell^1)^* = \\ell^\\infty$. Only when $p = 2$ does $q = p$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-023",
+      "stem": "On the Hilbert space $\\mathbb{R}^3$, the functional $f(x) = 2x_1 - x_2 + 2x_3$ can be written as $\\langle x, z \\rangle$ with $z = (2, -1, 2)$. What is $\\|f\\|$?",
+      "options": [
+        "$5$.",
+        "$3$.",
+        "$9$.",
+        "$1$."
+      ],
+      "answer": 1,
+      "explanation": "By Riesz representation $\\|f\\| = \\|z\\| = \\sqrt{2^2 + (-1)^2 + 2^2} = \\sqrt{4 + 1 + 4} = \\sqrt{9} = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-024",
+      "stem": "Why does the Riesz representation theorem NOT directly apply to give the dual of a general Banach space such as $C[0,1]$ with the sup norm?",
+      "options": [
+        "Because $C[0,1]$ is finite-dimensional.",
+        "Because $C[0,1]$ has no bounded functionals.",
+        "Because $C[0,1]$ is not complete.",
+        "Because the sup norm comes from no inner product, so $C[0,1]$ is not a Hilbert space."
+      ],
+      "answer": 3,
+      "explanation": "Riesz representation is a Hilbert-space theorem: it represents functionals via an inner product. Since the sup norm on $C[0,1]$ fails the parallelogram law, $C[0,1]$ is not a Hilbert space, so the theorem does not apply. (Its dual is described instead by the Riesz-Markov theorem in terms of measures.)",
+      "difficulty": "stretch",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-025",
+      "format": "cloze",
+      "stem": "Compute conjugate exponents for the duals of $\\ell^p$ spaces. Recall $\\tfrac1p + \\tfrac1q = 1$.",
+      "solution": "For $p = 2$ the conjugate exponent is $q$, which equals {{1}}, so $\\ell^2$ is its own dual. For $p = 4$ the conjugate exponent $q$ equals {{2}}. For $p = 1$ the dual of $\\ell^1$ is $\\ell^q$ with $q = \\infty$, and this dual is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.3333,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\ell^\\infty$",
+            "$\\ell^1$"
+          ],
+          "answer": "$\\ell^\\infty$"
+        }
+      ],
+      "explanation": "For $p = 2$, $q = 2$. For $p = 4$, $\\tfrac1q = \\tfrac34$ so $q = \\tfrac43 \\approx 1.333$. For $p = 1$ the conjugate is $q = \\infty$, so the dual of $\\ell^1$ is $\\ell^\\infty$.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-026",
+      "format": "cloze",
+      "stem": "Use the Riesz representation theorem on $\\mathbb{R}^3$ for the functional $f(x) = 2x_1 - x_2 + 2x_3 = \\langle x, z \\rangle$ with $z = (2, -1, 2)$.",
+      "solution": "The representing vector is $z = (2, -1, 2)$, whose norm is $\\sqrt{4 + 1 + 4} = \\sqrt{9}$, namely {{1}}. By the Riesz theorem the functional norm $\\|f\\|$ equals $\\|z\\|$, which is {{2}}. The Riesz representing vector $z$ for a given bounded functional on a Hilbert space is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "unique",
+            "never unique"
+          ],
+          "answer": "unique"
+        }
+      ],
+      "explanation": "$\\|z\\| = \\sqrt{2^2 + (-1)^2 + 2^2} = 3$, so $\\|f\\| = \\|z\\| = 3$. The Riesz representing vector is unique.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-027",
+      "format": "cloze",
+      "stem": "Recall the definitions: linear functionals, the dual space, and completeness of the dual.",
+      "solution": "A linear functional maps a vector space into its scalar field, and the dual space $X^*$ collects the {{1}} linear functionals on $X$. The dual space $X^*$ {{2}} a Banach space, because the scalar field is complete. The norm of a functional is computed as a supremum, which bounds $|f(x)|$ from {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "bounded",
+            "unbounded"
+          ],
+          "answer": "bounded"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "above",
+            "below"
+          ],
+          "answer": "above"
+        }
+      ],
+      "explanation": "The dual $X^*$ is the space of bounded linear functionals. It is always a Banach space since the scalar field is complete. The functional norm bounds $|f(x)| \\le \\|f\\|\\,\\|x\\|$ from above.",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    },
+    {
+      "id": "functional-analysis-functionals-and-dual-spaces-028",
+      "format": "cloze",
+      "stem": "Recall the statements of the Hahn-Banach and Riesz representation theorems.",
+      "solution": "The Hahn-Banach theorem extends a bounded linear functional from a subspace to the whole space while {{1}} its norm. The Riesz representation theorem applies to a {{2}} space, representing every bounded functional as an inner product against a fixed vector. The integration functional $g \\mapsto \\int_0^1 g$ on $C[0,1]$ (sup norm) has norm equal to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "preserving",
+            "increasing"
+          ],
+          "answer": "preserving"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "Hilbert",
+            "merely normed"
+          ],
+          "answer": "Hilbert"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Hahn-Banach preserves the norm of the extended functional. Riesz representation is a Hilbert-space theorem. The integration functional on $C[0,1]$ has norm $1$ (attained at $g \\equiv 1$).",
+      "difficulty": "core",
+      "source": "in the style of Kreyszig, Introductory Functional Analysis"
+    }
+  ]
+}

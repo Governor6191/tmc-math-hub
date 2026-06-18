@@ -1,0 +1,537 @@
+{
+  "courseId": "scientific-computing",
+  "topicId": "numerical-odes-and-quadrature",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-001",
+      "stem": "The explicit (forward) Euler method for the initial value problem $y' = f(t, y)$ uses which update formula?",
+      "options": [
+        "$y_{n+1} = y_n + h f(t_n, y_n)$",
+        "$y_{n+1} = y_n + h f(t_{n+1}, y_{n+1})$",
+        "$y_{n+1} = y_n + \\tfrac{h}{2}(f(t_n, y_n) + f(t_{n+1}, y_{n+1}))$",
+        "$y_{n+1} = y_n - h f(t_n, y_n)$"
+      ],
+      "answer": 0,
+      "explanation": "Forward Euler steps along the slope evaluated at the known left endpoint: $y_{n+1} = y_n + h f(t_n, y_n)$, an explicit formula needing no solve. Evaluating $f$ at $(t_{n+1}, y_{n+1})$ is backward (implicit) Euler, the averaged form is the trapezoidal method, and the minus sign is simply wrong. The trap is confusing the explicit method (slope at the start) with the implicit or trapezoidal variants.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-002",
+      "stem": "The forward Euler method has local truncation error of order $h^2$ and global error of which order?",
+      "options": [
+        "$h^2$",
+        "$h$",
+        "$h^3$",
+        "$h^4$"
+      ],
+      "answer": 1,
+      "explanation": "Each Euler step commits an $O(h^2)$ local error, but accumulating these over $O(1/h)$ steps to reach a fixed final time loses one power of $h$, giving global (first-order) error $O(h)$. So halving the step size roughly halves the global error. The other orders confuse local with global accuracy or overstate the method's order. The trap is reporting the local order $h^2$; the global order of Euler is $h$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-003",
+      "stem": "Apply one forward Euler step to $y' = y$, $y(0) = 1$, with step size $h = 0.5$. The value $y_1$ is which of the following?",
+      "options": [
+        "$1.0$",
+        "$1.6487$",
+        "$1.5$",
+        "$2.0$"
+      ],
+      "answer": 2,
+      "explanation": "Forward Euler: $y_1 = y_0 + h f(t_0, y_0) = 1 + 0.5 \\cdot 1 = 1.5$, since $f = y = 1$ at the start. The exact value $e^{0.5} \\approx 1.6487$ is higher, reflecting Euler's first-order error, and $2.0$ uses too large a slope. The trap is expecting the exact exponential; one Euler step undershoots to $1.5$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-004",
+      "stem": "Take two forward Euler steps for $y' = y$, $y(0) = 1$, with $h = 0.5$ (so reaching $t = 1$). The value $y_2$ is which of the following?",
+      "options": [
+        "$2.0$",
+        "$2.7183$",
+        "$1.5$",
+        "$2.25$"
+      ],
+      "answer": 3,
+      "explanation": "First step $y_1 = 1 + 0.5(1) = 1.5$; second step $y_2 = y_1 + h y_1 = 1.5 + 0.5(1.5) = 1.5(1.5) = 2.25$. The exact value is $e^1 \\approx 2.7183$, so the two-step Euler estimate $2.25$ still trails it, as expected for a first-order method. The value $1.5$ is just $y_1$. The trap is stopping after one step or expecting $e$; two Euler steps give $2.25$.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-005",
+      "stem": "A fourth-order Runge-Kutta (RK4) method has global error of which order, and how many function evaluations per step?",
+      "options": [
+        "Order $h^4$, 4 evaluations",
+        "Order $h^2$, 2 evaluations",
+        "Order $h$, 1 evaluation",
+        "Order $h^4$, 1 evaluation"
+      ],
+      "answer": 0,
+      "explanation": "Classical RK4 achieves global error $O(h^4)$ using four evaluations of $f$ per step (the slopes $k_1, k_2, k_3, k_4$), combined in a weighted average. This high order for modest cost is why RK4 is a workhorse for non-stiff problems. Order $h^2$ with 2 evaluations describes a second-order RK method, and order $h$ is Euler. The trap is pairing fourth-order accuracy with too few evaluations; RK4 needs four.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-006",
+      "stem": "Apply one step of the midpoint (second-order Runge-Kutta) method to $y' = y$, $y(0) = 1$, $h = 0.5$, using $k_1 = f(y_0)$, then $y_1 = y_0 + h f(y_0 + \\tfrac{h}{2} k_1)$. The value $y_1$ is which of the following?",
+      "options": [
+        "$1.5$",
+        "$1.625$",
+        "$1.6487$",
+        "$2.25$"
+      ],
+      "answer": 1,
+      "explanation": "Here $k_1 = f(y_0) = 1$. The midpoint state is $y_0 + \\tfrac{h}{2} k_1 = 1 + 0.25 = 1.25$, so the midpoint slope is $f(1.25) = 1.25$. Then $y_1 = y_0 + h \\cdot 1.25 = 1 + 0.5(1.25) = 1.625$. This beats Euler's $1.5$ and is closer to the exact $e^{0.5} \\approx 1.6487$. The trap is using the start-point slope (Euler, $1.5$); the midpoint method evaluates the slope at the half step, giving $1.625$.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-007",
+      "stem": "For the test equation $y' = \\lambda y$ with $\\lambda < 0$, the forward Euler method is absolutely stable (errors do not grow) when which condition holds?",
+      "options": [
+        "$h\\lambda > 0$",
+        "$|1 - h\\lambda| \\le 1$",
+        "$|1 + h\\lambda| \\le 1$",
+        "$h > 0$ always"
+      ],
+      "answer": 2,
+      "explanation": "Forward Euler on $y' = \\lambda y$ gives $y_{n+1} = (1 + h\\lambda) y_n$, so the amplification factor is $1 + h\\lambda$, and stability requires $|1 + h\\lambda| \\le 1$. For real $\\lambda < 0$ this bounds the step as $0 < h \\le -2/\\lambda$. The form $|1 - h\\lambda|$ is the backward Euler factor (always stable for $\\lambda < 0$), and the others ignore the constraint. The trap is using the implicit-method factor; explicit Euler is limited by $|1 + h\\lambda| \\le 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-008",
+      "stem": "For $y' = -2y$ solved by forward Euler, the largest step size $h$ keeping the method absolutely stable is which value?",
+      "options": [
+        "$h \\le 0.5$",
+        "$h \\le 2$",
+        "Any $h > 0$",
+        "$h \\le 1$"
+      ],
+      "answer": 3,
+      "explanation": "With $\\lambda = -2$, stability needs $|1 + h\\lambda| = |1 - 2h| \\le 1$, i.e. $-1 \\le 1 - 2h \\le 1$, giving $0 \\le h \\le 1$. A step beyond $1$ makes $|1 - 2h| > 1$ and the numerical solution blows up even though the true solution decays. The bound $0.5$ is too conservative and $2$ too large. The trap is forgetting the factor of $\\lambda$; here the limit is $h \\le 2/|\\lambda| = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-009",
+      "stem": "A stiff system of ODEs is characterized by which feature, and which kind of method is typically preferred for it?",
+      "options": [
+        "Widely separated time scales (some very fast decaying modes); implicit methods are preferred",
+        "A single slow time scale; explicit methods with tiny steps are preferred",
+        "No equilibrium; only Euler works",
+        "Purely oscillatory behaviour; the determinant must be zero"
+      ],
+      "answer": 0,
+      "explanation": "Stiffness arises when the system has components decaying on vastly different time scales, so an explicit method must take impractically tiny steps to stay stable even after the fast transients vanish. Implicit methods (backward Euler, trapezoidal, BDF) have much larger stability regions and handle stiffness efficiently. The other descriptions mischaracterize stiffness. The trap is reaching for explicit methods; stiff problems call for implicit (A-stable) solvers.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-010",
+      "stem": "The single-interval trapezoidal rule approximates $\\int_a^b f(x)\\,dx$ by which expression?",
+      "options": [
+        "$(b - a) f\\!\\left(\\tfrac{a+b}{2}\\right)$",
+        "$\\tfrac{b - a}{2}\\,(f(a) + f(b))$",
+        "$\\tfrac{b - a}{6}\\,(f(a) + 4 f(\\tfrac{a+b}{2}) + f(b))$",
+        "$(b - a)\\,f(a)$"
+      ],
+      "answer": 1,
+      "explanation": "The trapezoidal rule replaces $f$ by the straight line through the endpoints, integrating to the trapezoid area $\\frac{b-a}{2}(f(a) + f(b))$. The midpoint rule uses the center value, Simpson's rule is the three-point weighted formula, and $(b-a)f(a)$ is a crude left-rectangle rule. The trap is mixing up the quadrature rules; the trapezoidal rule averages the two endpoint values.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-011",
+      "stem": "Simpson's rule on $[a, b]$ approximates $\\int_a^b f(x)\\,dx$ by which expression (with $m = \\tfrac{a+b}{2}$)?",
+      "options": [
+        "$\\tfrac{b-a}{2}(f(a) + f(b))$",
+        "$(b-a) f(m)$",
+        "$\\tfrac{b-a}{6}\\,(f(a) + 4 f(m) + f(b))$",
+        "$\\tfrac{b-a}{3}\\,(f(a) + f(m) + f(b))$"
+      ],
+      "answer": 2,
+      "explanation": "Simpson's rule fits a parabola through the two endpoints and the midpoint, integrating to $\\frac{b-a}{6}(f(a) + 4f(m) + f(b))$, where the weights $1, 4, 1$ (scaled by $\\frac{b-a}{6}$) come from integrating the quadratic interpolant. The trapezoidal and midpoint rules are lower-order, and the equal-weight $\\frac{b-a}{3}$ form is not Simpson's. The trap is the weighting; Simpson's rule weights the midpoint four times as heavily as each endpoint.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-012",
+      "stem": "Estimate $\\int_0^1 x^2\\,dx$ using the single-interval trapezoidal rule. The result is which value?",
+      "options": [
+        "$0.3333$",
+        "$0.25$",
+        "$0.1667$",
+        "$0.5$"
+      ],
+      "answer": 3,
+      "explanation": "The trapezoidal rule gives $\\frac{1-0}{2}(f(0) + f(1)) = \\frac{1}{2}(0 + 1) = 0.5$. The exact value is $\\int_0^1 x^2\\,dx = \\tfrac13 \\approx 0.3333$, so the trapezoidal estimate overshoots because $x^2$ is convex (the chord lies above the curve). The values $0.25$ and $0.1667$ are unrelated. The trap is expecting the exact $\\tfrac13$; the trapezoidal rule yields $0.5$ here.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-013",
+      "stem": "Estimate $\\int_0^1 x^2\\,dx$ using single-interval Simpson's rule (nodes $0, 0.5, 1$). The result is which value?",
+      "options": [
+        "$0.3333$",
+        "$0.5$",
+        "$0.375$",
+        "$0.25$"
+      ],
+      "answer": 0,
+      "explanation": "Simpson's rule: $\\frac{1}{6}(f(0) + 4 f(0.5) + f(1)) = \\frac{1}{6}(0 + 4(0.25) + 1) = \\frac{1}{6}(0 + 1 + 1) = \\frac{2}{6} = \\tfrac13 \\approx 0.3333$. This is exact because Simpson's rule integrates any polynomial up to degree three exactly, and $x^2$ is degree two. The value $0.375$ is the composite trapezoidal estimate with two panels, and $0.5$ is the single trapezoid. The trap is not recognizing Simpson's exactness for quadratics; it returns the exact $\\tfrac13$.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-014",
+      "stem": "Simpson's rule integrates exactly all polynomials up to which degree?",
+      "options": [
+        "Degree 1",
+        "Degree 3",
+        "Degree 2",
+        "Degree 4"
+      ],
+      "answer": 1,
+      "explanation": "Although Simpson's rule is built from a quadratic interpolant, a symmetry cancellation makes it exact for cubics as well, so it integrates all polynomials up to degree three exactly. This extra order of accuracy is why Simpson's rule is so effective. Degree 1 is the trapezoidal rule's exactness, degree 2 understates Simpson's, and degree 4 overstates it. The trap is assuming exactness matches the interpolant degree; Simpson's reaches one degree higher, to cubics.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-015",
+      "stem": "Gaussian quadrature with $n$ nodes integrates exactly all polynomials up to which degree?",
+      "options": [
+        "$n - 1$",
+        "$n$",
+        "$2n - 1$",
+        "$2n + 1$"
+      ],
+      "answer": 2,
+      "explanation": "By choosing both the $n$ nodes and the $n$ weights optimally (nodes at the roots of the degree-$n$ Legendre polynomial), Gaussian quadrature attains exactness for all polynomials of degree up to $2n - 1$, the maximum possible with $n$ evaluations. An interpolatory rule with fixed nodes only reaches degree $n - 1$. The trap is using the fixed-node figure; the free choice of nodes doubles the exactness to $2n - 1$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-016",
+      "stem": "How many nodes does Gaussian quadrature need to integrate a degree-5 polynomial exactly?",
+      "options": [
+        "$2$ nodes",
+        "$5$ nodes",
+        "$6$ nodes",
+        "$3$ nodes"
+      ],
+      "answer": 3,
+      "explanation": "Exactness to degree $2n - 1$ requires $2n - 1 \\ge 5$, i.e. $n \\ge 3$, so $3$ Gauss nodes suffice for a degree-five polynomial. Two nodes reach only degree three, while five or six nodes are more than needed. The trap is matching the node count to the polynomial degree directly; the relation $2n - 1$ means just three nodes handle degree five.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-017",
+      "stem": "The composite trapezoidal rule has global error of which order in the step size $h$?",
+      "options": [
+        "$O(h^2)$",
+        "$O(h)$",
+        "$O(h^4)$",
+        "$O(h^3)$"
+      ],
+      "answer": 0,
+      "explanation": "The composite trapezoidal rule has error $O(h^2)$: each panel contributes $O(h^3)$ local error, and summing over $O(1/h)$ panels gives $O(h^2)$ overall. Composite Simpson's rule is the higher-order $O(h^4)$ method. The $O(h)$ and $O(h^3)$ orders are wrong for the trapezoidal rule. The trap is confusing trapezoidal ($h^2$) with Simpson ($h^4$) accuracy.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-018",
+      "stem": "Composite Simpson's rule has global error of which order in $h$?",
+      "options": [
+        "$O(h^2)$",
+        "$O(h^4)$",
+        "$O(h)$",
+        "$O(h^6)$"
+      ],
+      "answer": 1,
+      "explanation": "Composite Simpson's rule has global error $O(h^4)$, two orders better than the composite trapezoidal rule, so halving $h$ cuts the error by roughly a factor of $16$. This rapid convergence makes Simpson's a popular general-purpose rule. The $O(h^2)$ order is trapezoidal, and the others are incorrect. The trap is underrating Simpson's accuracy; its composite global order is $h^4$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-019",
+      "stem": "Estimate $\\int_0^1 x^2\\,dx$ using the composite trapezoidal rule with two equal panels ($h = 0.5$, nodes $0, 0.5, 1$). The result is which value?",
+      "options": [
+        "$0.5$",
+        "$0.3333$",
+        "$0.375$",
+        "$0.25$"
+      ],
+      "answer": 2,
+      "explanation": "Composite trapezoidal: $\\frac{h}{2}(f_0 + 2 f_1 + f_2) = \\frac{0.5}{2}(0 + 2(0.25) + 1) = 0.25(1.5) = 0.375$. This is closer to the exact $\\tfrac13 \\approx 0.3333$ than the single-panel $0.5$, illustrating the $O(h^2)$ improvement from refining. The value $0.5$ is the one-panel result. The trap is forgetting the interior weight of $2$ or the factor $\\frac{h}{2}$; the two-panel estimate is $0.375$.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-020",
+      "stem": "Backward (implicit) Euler, $y_{n+1} = y_n + h f(t_{n+1}, y_{n+1})$, is favored for stiff problems mainly because it has which property?",
+      "options": [
+        "It needs no equation solve at each step",
+        "It is higher order than RK4",
+        "It conserves energy exactly",
+        "It is A-stable, remaining stable for any step size on decaying problems"
+      ],
+      "answer": 3,
+      "explanation": "Backward Euler is A-stable: its amplification factor $1/(1 - h\\lambda)$ has magnitude below $1$ for all $h > 0$ when $\\operatorname{Re}(\\lambda) < 0$, so it stays stable no matter how large the step on stiff decaying systems. The price is solving a (possibly nonlinear) equation each step, it is only first order, and it does not conserve energy. The trap is expecting an explicit-style free step; the benefit is unconditional stability, not avoiding the solve.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-021",
+      "stem": "Apply one forward Euler step to $y' = -2y$, $y(0) = 1$, with $h = 0.1$. The value $y_1$ is which of the following?",
+      "options": [
+        "$0.8$",
+        "$0.8187$",
+        "$1.2$",
+        "$0.98$"
+      ],
+      "answer": 0,
+      "explanation": "Forward Euler: $y_1 = y_0 + h f(y_0) = 1 + 0.1(-2 \\cdot 1) = 1 - 0.2 = 0.8$. The exact value is $e^{-0.2} \\approx 0.8187$, so Euler slightly overshoots the decay. The value $1.2$ flips the sign of the slope, and $0.98$ misreads $h$. The trap is the sign or magnitude of $f = -2y$; one step gives $0.8$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-022",
+      "stem": "The local truncation error of a single-step ODE method measures which of the following?",
+      "options": [
+        "The total accumulated error at the final time",
+        "The error introduced in one step assuming exact values at the start of that step",
+        "The rounding error from floating-point arithmetic",
+        "The condition number of the ODE"
+      ],
+      "answer": 1,
+      "explanation": "Local truncation error is the error committed in a single step when the method starts from the exact solution value, isolating the per-step discretization error. The accumulated error over all steps is the global error (one order lower in $h$), rounding error is a separate finite-precision effect, and conditioning is a property of the problem. The trap is conflating local with global error; the local quantity is the one-step error from exact data.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-023",
+      "stem": "A two-point Gauss-Legendre rule on $[-1, 1]$ uses nodes $\\pm 1/\\sqrt{3}$ with weights $1, 1$. Applied to $\\int_{-1}^1 x^4\\,dx$ (true value $0.4$), it gives which result, and why is it not exact?",
+      "options": [
+        "$0.4$; it is exact",
+        "$0.6667$; weights are wrong",
+        "$0.2222$; the integrand has degree $4 > 2n - 1 = 3$",
+        "$0$; the nodes are symmetric"
+      ],
+      "answer": 2,
+      "explanation": "The two-point rule gives $1 \\cdot (1/\\sqrt3)^4 + 1 \\cdot (-1/\\sqrt3)^4 = 2 \\cdot \\frac{1}{9} = \\frac{2}{9} \\approx 0.2222$, which differs from the exact $0.4$ because $x^4$ has degree $4$, exceeding the rule's exactness limit $2n - 1 = 3$ for $n = 2$. A three-point Gauss rule would integrate $x^4$ exactly. The result is not zero (the integrand is even and positive). The trap is assuming two Gauss points handle any quartic; they only reach degree three.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-024",
+      "format": "cloze",
+      "stem": "Take two forward Euler steps for $y' = y$, $y(0) = 1$, with $h = 0.5$.",
+      "solution": "The first step gives $y_1 = 1 + 0.5(1) =$ {{1}}. The second step gives $y_2 = y_1 + 0.5 y_1 =$ {{2}}. The exact solution at $t = 1$ is $e \\approx 2.718$, so the Euler estimate is too {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "low",
+            "high",
+            "exact",
+            "negative"
+          ],
+          "answer": "low"
+        }
+      ],
+      "explanation": "$y_1 = 1 + 0.5 = 1.5$; $y_2 = 1.5 + 0.5(1.5) = 2.25$. Since $2.25 < e \\approx 2.718$, the first-order Euler estimate is too low.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-025",
+      "format": "cloze",
+      "stem": "Compare quadrature estimates of $\\int_0^1 x^2\\,dx$ (exact value $\\tfrac13 \\approx 0.3333$).",
+      "solution": "The single-interval trapezoidal rule gives $\\tfrac12(0 + 1) =$ {{1}}. Single-interval Simpson's rule gives $\\tfrac16(0 + 4(0.25) + 1) =$ {{2}}, which is exact here. Simpson's rule is exact because it integrates polynomials up to degree {{3}} exactly.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.3333,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Trapezoidal: $\\frac12(0+1) = 0.5$. Simpson: $\\frac16(0 + 1 + 1) = \\frac13 \\approx 0.3333$. Simpson's rule is exact up to degree 3, so it nails the quadratic $x^2$.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-026",
+      "format": "cloze",
+      "stem": "Recall accuracy orders for the standard ODE and quadrature methods.",
+      "solution": "Forward Euler has global error of order $h$ raised to the power {{1}}. Classical RK4 has global error of order $h$ raised to the power {{2}}. Composite Simpson's rule has global error of order $h$ raised to the power {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Euler is first order ($O(h)$). RK4 is fourth order ($O(h^4)$). Composite Simpson's rule is also fourth order ($O(h^4)$).",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-027",
+      "format": "cloze",
+      "stem": "Analyze forward Euler stability for $y' = \\lambda y$ with $\\lambda = -4$.",
+      "solution": "Forward Euler multiplies by the factor $1 + h\\lambda$ each step, so stability requires the absolute value of $1 + h\\lambda$ to be at most {{1}}. For $\\lambda = -4$ this gives the step-size bound $h \\le$ {{2}}. For stiff problems where $\\lambda$ is very large and negative, this forces an impractically {{3}} step, which is why implicit methods are used.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "small",
+            "large",
+            "negative",
+            "complex"
+          ],
+          "answer": "small"
+        }
+      ],
+      "explanation": "Stability needs $|1 + h\\lambda| \\le 1$. For $\\lambda = -4$: $|1 - 4h| \\le 1$ gives $0 \\le h \\le 2/4 = 0.5$. Large negative $\\lambda$ forces a tiny step, motivating implicit methods.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-028",
+      "format": "cloze",
+      "stem": "Recall the exactness of Gaussian quadrature.",
+      "solution": "An $n$-point Gaussian quadrature rule integrates exactly every polynomial of degree at most {{1}} (in terms of $n$). Therefore, to integrate a degree-7 polynomial exactly, the minimum number of Gauss nodes needed is {{2}}. The nodes of the rule are chosen as the roots of the appropriate {{3}} polynomial.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "2n-1",
+            "2n - 1",
+            "2*n-1",
+            "2n−1"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Legendre",
+            "Chebyshev of the second kind",
+            "Bernoulli",
+            "Hermite"
+          ],
+          "answer": "Legendre"
+        }
+      ],
+      "explanation": "Exactness is to degree $2n - 1$. For degree 7, need $2n - 1 \\ge 7$, so $n \\ge 4$, giving 4 nodes. The Gauss-Legendre nodes are the roots of the Legendre polynomials.",
+      "difficulty": "stretch",
+      "source": "in the style of Heath, Scientific Computing"
+    },
+    {
+      "id": "scientific-computing-numerical-odes-and-quadrature-029",
+      "format": "cloze",
+      "stem": "Distinguish local from global error and explicit from implicit Euler.",
+      "solution": "The error made in a single step starting from exact data is the {{1}} truncation error, which for Euler is of order $h^2$; accumulating over the steps yields a global error one power of $h$ {{2}}. For stiff problems, the method of choice is {{3}} Euler because of its unconditional stability.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "local",
+            "global",
+            "rounding",
+            "absolute"
+          ],
+          "answer": "local"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "lower",
+            "higher",
+            "unchanged",
+            "doubled"
+          ],
+          "answer": "lower"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "backward (implicit)",
+            "forward (explicit)",
+            "midpoint",
+            "modified"
+          ],
+          "answer": "backward (implicit)"
+        }
+      ],
+      "explanation": "Per-step error from exact data is the local truncation error ($O(h^2)$ for Euler); the global error is one power lower, $O(h)$. Stiff problems favor backward (implicit) Euler for its A-stability.",
+      "difficulty": "core",
+      "source": "in the style of Heath, Scientific Computing"
+    }
+  ]
+}
