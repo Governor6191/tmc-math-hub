@@ -1,0 +1,475 @@
+{
+  "courseId": "statistics-and-probability-ii",
+  "topicId": "joint-distributions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-001",
+      "stem": "For a discrete pair $(X, Y)$ with joint probability mass function $p(x, y)$, which condition must hold over all points in the support?",
+      "options": [
+        "$\\sum_x \\sum_y p(x, y) = 0$",
+        "$p(x, y) > 1$ for at least one point",
+        "$\\sum_x \\sum_y p(x, y) = 1$",
+        "$\\int \\int p(x, y)\\, dx\\, dy = 1$"
+      ],
+      "answer": 2,
+      "explanation": "A joint pmf assigns probabilities, so it must satisfy $p(x, y) \\ge 0$ and the total over all support points must be $1$: $\\sum_x \\sum_y p(x, y) = 1$. Integration is used for continuous densities, not discrete masses. A probability mass can never exceed $1$, and the total summing to $0$ would describe an impossible distribution.",
+      "difficulty": "warmup",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-002",
+      "stem": "The marginal probability mass function of $X$ is obtained from the joint pmf $p(x, y)$ by which operation?",
+      "options": [
+        "Differentiating $p(x, y)$ with respect to $x$",
+        "Summing $p(x, y)$ over all values of $y$",
+        "Multiplying $p(x, y)$ over all values of $y$",
+        "Summing $p(x, y)$ over all values of $x$"
+      ],
+      "answer": 1,
+      "explanation": "The marginal of $X$ collapses the $Y$ dimension by summing across every value of $Y$: $p_X(x) = \\sum_y p(x, y)$. Summing over $x$ instead would give the marginal of $Y$. Multiplication and differentiation are not how marginals are formed from a discrete joint pmf.",
+      "difficulty": "warmup",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-003",
+      "stem": "Two random variables $X$ and $Y$ are independent if and only if, for all $x$ and $y$,",
+      "options": [
+        "$p(x, y) = p_X(x) + p_Y(y)$",
+        "$p(x, y) = p_X(x)\\, p_Y(y)$",
+        "$\\operatorname{Cov}(X, Y) = 1$",
+        "$p(x, y) = p_X(x) - p_Y(y)$"
+      ],
+      "answer": 1,
+      "explanation": "Independence requires the joint to factor into the product of the marginals: $p(x, y) = p_X(x)\\, p_Y(y)$ for every pair. A sum or difference of marginals is not even a valid joint pmf. Zero covariance is necessary for independence but is not sufficient, and a covariance of $1$ would in fact rule independence out.",
+      "difficulty": "warmup",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-004",
+      "stem": "A joint pmf takes the values $p(0,0) = 0.1$, $p(0,1) = 0.2$, $p(1,0) = 0.3$, and $p(1,1) = 0.4$. What is $P(X = 1)$?",
+      "options": [
+        "$0.7$",
+        "$0.3$",
+        "$0.6$",
+        "$0.4$"
+      ],
+      "answer": 0,
+      "explanation": "The marginal $P(X = 1)$ sums the joint over both values of $Y$: $p(1,0) + p(1,1) = 0.3 + 0.4 = 0.7$. Choosing $0.3$ or $0.4$ keeps only one cell, and $0.6$ would be $P(Y = 1) = 0.2 + 0.4$, the marginal of the other variable.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-005",
+      "stem": "Using the joint pmf $p(0,0) = 0.1$, $p(0,1) = 0.2$, $p(1,0) = 0.3$, $p(1,1) = 0.4$, compute the conditional probability $P(Y = 1 \\mid X = 1)$.",
+      "options": [
+        "$\\frac{2}{3}$",
+        "$\\frac{3}{7}$",
+        "$0.4$",
+        "$\\frac{4}{7}$"
+      ],
+      "answer": 3,
+      "explanation": "By definition $P(Y = 1 \\mid X = 1) = \\frac{P(X = 1, Y = 1)}{P(X = 1)} = \\frac{0.4}{0.7} = \\frac{4}{7}$. The value $\\frac{3}{7}$ is the complementary conditional $P(Y = 0 \\mid X = 1)$, and $0.4$ forgets to divide by the marginal $P(X = 1) = 0.7$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-006",
+      "stem": "For the joint pmf $p(0,0) = 0.1$, $p(0,1) = 0.2$, $p(1,0) = 0.3$, $p(1,1) = 0.4$, are $X$ and $Y$ independent?",
+      "options": [
+        "Cannot be determined from a table",
+        "Yes, because all entries are positive",
+        "No, because $p(0,0) \\ne p_X(0)\\, p_Y(0)$",
+        "Yes, because the entries sum to $1$"
+      ],
+      "answer": 2,
+      "explanation": "The marginals are $p_X(0) = 0.3$ and $p_Y(0) = 0.4$, so independence would require $p(0,0) = 0.3 \\times 0.4 = 0.12$. The actual value is $0.1 \\ne 0.12$, so $X$ and $Y$ are not independent. Positivity of entries and summing to $1$ are properties of any valid joint pmf and say nothing about independence.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-007",
+      "stem": "Suppose $f(x, y) = c$ for $0 \\le x \\le 1$ and $0 \\le y \\le 1$, and $0$ elsewhere. What value of $c$ makes this a valid joint density?",
+      "options": [
+        "$0.5$",
+        "$4$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "The density must integrate to $1$ over the unit square: $\\int_0^1 \\int_0^1 c\\, dx\\, dy = c \\cdot (1)(1) = c$. Setting this equal to $1$ gives $c = 1$. The region has area $1$, so the constant equals $1$; a larger or smaller constant would make the total probability differ from $1$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-008",
+      "stem": "Let $f(x, y) = c(x + y)$ for $0 \\le x \\le 1$, $0 \\le y \\le 1$. Find the constant $c$.",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{3}{2}$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "Integrate: $\\int_0^1 \\int_0^1 c(x + y)\\, dx\\, dy = c \\int_0^1 \\left( \\frac{1}{2} + y \\right) dy = c \\left( \\frac{1}{2} + \\frac{1}{2} \\right) = c$. Setting $c = 1$ normalizes the density. The factor $\\frac{1}{2}$ comes from forgetting one of the two equal contributions.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-009",
+      "stem": "With joint density $f(x, y) = x + y$ on the unit square $0 \\le x \\le 1$, $0 \\le y \\le 1$, what is the marginal density $f_X(x)$ for $0 \\le x \\le 1$?",
+      "options": [
+        "$\\frac{x^2}{2} + x$",
+        "$x$",
+        "$x + \\frac{1}{2}$",
+        "$2x + 1$"
+      ],
+      "answer": 2,
+      "explanation": "Integrate out $y$: $f_X(x) = \\int_0^1 (x + y)\\, dy = x \\cdot 1 + \\frac{1}{2} = x + \\frac{1}{2}$. The result must be a function of $x$ alone, and it integrates to $1$ over $[0,1]$, confirming it is a valid marginal. Option $\\frac{x^2}{2} + x$ wrongly integrates with respect to $x$ rather than $y$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-010",
+      "stem": "A fair coin is tossed twice. Let $X$ be the number of heads on the first toss and $Y$ the total number of heads. What is $P(X = 1, Y = 2)$?",
+      "options": [
+        "$\\frac{1}{4}$",
+        "$\\frac{3}{4}$",
+        "$\\frac{1}{8}$",
+        "$\\frac{1}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "Two heads total with a head on the first toss requires the outcome HH, which has probability $\\frac{1}{4}$. The four equally likely outcomes are HH, HT, TH, TT; only HH gives $X = 1$ and $Y = 2$. So $P(X = 1, Y = 2) = \\frac{1}{4}$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-011",
+      "stem": "The conditional probability mass function $p_{Y \\mid X}(y \\mid x)$ is defined as",
+      "options": [
+        "$p(x, y)\\, p_X(x)$",
+        "$\\frac{p_X(x)}{p(x, y)}$",
+        "$\\frac{p(x, y)}{p_X(x)}$ for $p_X(x) > 0$",
+        "$p(x, y) - p_X(x)$"
+      ],
+      "answer": 2,
+      "explanation": "Conditioning divides the joint by the marginal of the conditioning variable: $p_{Y \\mid X}(y \\mid x) = \\frac{p(x, y)}{p_X(x)}$, valid whenever $p_X(x) > 0$. This is a probability distribution in $y$ for each fixed $x$. The reciprocal and the product forms do not yield a valid conditional distribution.",
+      "difficulty": "warmup",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-012",
+      "stem": "For continuous random variables, $X$ and $Y$ are independent if and only if, for all $x$ and $y$,",
+      "options": [
+        "$\\operatorname{Corr}(X, Y) = 1$",
+        "$f(x, y) = f_X(x) + f_Y(y)$",
+        "$F(x, y) = F_X(x) - F_Y(y)$",
+        "$f(x, y) = f_X(x)\\, f_Y(y)$"
+      ],
+      "answer": 3,
+      "explanation": "Independence for continuous variables means the joint density factors as $f(x, y) = f_X(x)\\, f_Y(y)$ for all $x, y$ (equivalently the joint cdf factors as a product). A sum of densities is not a density, a difference of cdfs is not a joint cdf, and a correlation of $1$ indicates perfect linear dependence, the opposite of independence.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-013",
+      "stem": "Given the joint density $f(x, y) = 4xy$ for $0 \\le x \\le 1$, $0 \\le y \\le 1$ and $0$ otherwise, what is the marginal $f_X(x)$ for $0 \\le x \\le 1$?",
+      "options": [
+        "$x$",
+        "$2x^2$",
+        "$4x$",
+        "$2x$"
+      ],
+      "answer": 3,
+      "explanation": "Integrate out $y$: $f_X(x) = \\int_0^1 4xy\\, dy = 4x \\cdot \\frac{1}{2} = 2x$. This integrates to $1$ over $[0,1]$ since $\\int_0^1 2x\\, dx = 1$, confirming it is a valid density. Keeping the factor $4x$ skips the integration, and $2x^2$ integrates with respect to the wrong variable.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-014",
+      "stem": "For the density $f(x, y) = 4xy$ on the unit square, the marginals are $f_X(x) = 2x$ and $f_Y(y) = 2y$. Are $X$ and $Y$ independent?",
+      "options": [
+        "Cannot be determined",
+        "Yes, because $f(x, y) = f_X(x)\\, f_Y(y)$",
+        "No, because the support is a square",
+        "No, because $4xy \\ne (2x)(2y)$"
+      ],
+      "answer": 1,
+      "explanation": "The product of the marginals is $(2x)(2y) = 4xy$, which equals the joint density exactly, and the support is a rectangle, so $X$ and $Y$ are independent. Independence holds precisely because the joint factors into the product of the marginals over a product region.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-015",
+      "stem": "A joint pmf table over $X \\in \\{0, 1\\}$ and $Y \\in \\{0, 1\\}$ has $p(0,0) = 0.2$, $p(0,1) = 0.1$, $p(1,0) = 0.1$, and $p(1,1)$ unknown. What is $p(1,1)$?",
+      "options": [
+        "$0.3$",
+        "$0.6$",
+        "$0.4$",
+        "$0.5$"
+      ],
+      "answer": 1,
+      "explanation": "All cell probabilities must sum to $1$: $0.2 + 0.1 + 0.1 + p(1,1) = 1$, so $p(1,1) = 1 - 0.4 = 0.6$. The other values ignore one or more of the known cells when subtracting from $1$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-016",
+      "stem": "The joint cumulative distribution function $F(x, y) = P(X \\le x, Y \\le y)$ satisfies which limiting value?",
+      "options": [
+        "$F(x, y)$ is decreasing in $x$",
+        "$\\lim_{x \\to \\infty,\\, y \\to \\infty} F(x, y) = 1$",
+        "$\\lim_{x \\to -\\infty} F(x, y) = 1$",
+        "$\\lim_{x \\to \\infty,\\, y \\to \\infty} F(x, y) = 0$"
+      ],
+      "answer": 1,
+      "explanation": "As both arguments grow without bound, the event $\\{X \\le x, Y \\le y\\}$ becomes certain, so $F(x, y) \\to 1$. As either argument goes to $-\\infty$ the cdf tends to $0$, not $1$. A joint cdf is non-decreasing in each argument, never decreasing.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-017",
+      "stem": "Let $f(x, y) = 6x$ for $0 \\le x \\le y \\le 1$ and $0$ elsewhere. Computing $\\int_0^1 \\int_0^y 6x\\, dx\\, dy$ should give what value if $f$ is a valid density?",
+      "options": [
+        "$2$",
+        "$1$",
+        "$\\frac{1}{2}$",
+        "$3$"
+      ],
+      "answer": 1,
+      "explanation": "Any valid joint density integrates to $1$ over its support. Checking: $\\int_0^1 \\int_0^y 6x\\, dx\\, dy = \\int_0^1 3y^2\\, dy = 1$, confirming $f$ is valid. The inner integral $\\int_0^y 6x\\, dx = 3y^2$, and $\\int_0^1 3y^2\\, dy = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-018",
+      "stem": "From a joint pmf with $P(X = 0) = 0.5$, the conditional distribution $p_{Y \\mid X}(y \\mid 0)$ for $y \\in \\{0, 1\\}$ must satisfy which property?",
+      "options": [
+        "It is always uniform",
+        "It sums to $0.5$ over $y$",
+        "It sums to $1$ over $y$",
+        "It equals $p(0, y)$ for each $y$"
+      ],
+      "answer": 2,
+      "explanation": "For each fixed $x$, the conditional pmf $p_{Y \\mid X}(y \\mid x)$ is itself a valid probability distribution in $y$, so it sums to $1$ over all $y$. It equals $\\frac{p(x, y)}{p_X(x)}$, not $p(x, y)$ alone, and there is no reason for it to be uniform in general.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-019",
+      "stem": "Two dice are rolled. Let $X$ be the value on the first die and $Y$ the value on the second. Assuming the dice are fair and independent, what is $P(X = 3, Y = 5)$?",
+      "options": [
+        "$\\frac{1}{6}$",
+        "$\\frac{1}{18}$",
+        "$\\frac{1}{12}$",
+        "$\\frac{1}{36}$"
+      ],
+      "answer": 3,
+      "explanation": "Independence lets the joint factor: $P(X = 3, Y = 5) = P(X = 3)\\, P(Y = 5) = \\frac{1}{6} \\cdot \\frac{1}{6} = \\frac{1}{36}$. Each die has six equally likely faces, and the $36$ ordered pairs are equally likely, so any specific pair has probability $\\frac{1}{36}$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-020",
+      "stem": "Given the joint density $f(x, y) = x + y$ on the unit square, compute $P\\left(X \\le \\frac{1}{2},\\ Y \\le \\frac{1}{2}\\right)$.",
+      "options": [
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{1}{8}$",
+        "$\\frac{1}{16}$"
+      ],
+      "answer": 2,
+      "explanation": "Integrate over the lower-left quarter: $\\int_0^{1/2} \\int_0^{1/2} (x + y)\\, dx\\, dy$. The inner integral is $\\int_0^{1/2}(x + y)\\, dx = \\frac{1}{8} + \\frac{y}{2}$. Then $\\int_0^{1/2}\\left(\\frac{1}{8} + \\frac{y}{2}\\right) dy = \\frac{1}{16} + \\frac{1}{16} = \\frac{1}{8}$. So the probability is $\\frac{1}{8}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-021",
+      "stem": "A joint pmf is given by the table below. Use it to find the requested quantities.\n\n| | $Y=0$ | $Y=1$ |\n|---|---|---|\n| $X=0$ | $0.1$ | $0.2$ |\n| $X=1$ | $0.3$ | $0.4$ |",
+      "format": "cloze",
+      "solution": "The marginal $P(X = 0)$ adds the top row: $0.1 + 0.2 =$ {{1}}. The marginal $P(Y = 1)$ adds the right column: $0.2 + 0.4 =$ {{2}}. The conditional $P(X = 0 \\mid Y = 1) = \\frac{0.2}{0.6}$ rounds to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.3,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.6,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.33,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Row sum: $P(X = 0) = 0.1 + 0.2 = 0.3$. Column sum: $P(Y = 1) = 0.2 + 0.4 = 0.6$. Conditional: $P(X = 0 \\mid Y = 1) = \\frac{P(X = 0, Y = 1)}{P(Y = 1)} = \\frac{0.2}{0.6} = 0.333\\ldots \\approx 0.33$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-022",
+      "stem": "The joint density $f(x, y) = 4xy$ holds on the unit square $0 \\le x \\le 1$, $0 \\le y \\le 1$. Work out the marginal and the independence check.",
+      "format": "cloze",
+      "solution": "Integrating out $y$ gives $f_X(x) = \\int_0^1 4xy\\, dy = 4x \\cdot \\frac{1}{2}$, so the coefficient of $x$ in $f_X(x)$ is {{1}}. By symmetry $f_Y(y) = 2y$. Since the product of the marginals equals $4xy$, which matches the joint density, $X$ and $Y$ are {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "independent",
+            "dependent",
+            "uncorrelated only"
+          ],
+          "answer": "independent"
+        }
+      ],
+      "explanation": "The inner integral is $\\int_0^1 4xy\\, dy = 4x \\cdot \\frac{1}{2} = 2x$, so the coefficient is $2$. Then $(2x)(2y) = 4xy = f(x, y)$ over a rectangular support, which is exactly the factorization condition for independence.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-023",
+      "stem": "The joint density $f(x, y) = c$ is constant on the unit square $0 \\le x \\le 1$, $0 \\le y \\le 1$. Determine the constant and a probability.",
+      "format": "cloze",
+      "solution": "For the density to integrate to $1$ over a region of area $1$, the constant must be $c =$ {{1}}. The probability that both variables fall below one half is $P(X \\le 0.5, Y \\le 0.5) =$ {{2}}, the area of a quarter of the square. This makes the joint distribution {{3}} on the square.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "uniform",
+            "exponential",
+            "skewed"
+          ],
+          "answer": "uniform"
+        }
+      ],
+      "explanation": "The square has area $1$, so $c \\cdot 1 = 1$ gives $c = 1$. With a uniform density, $P(X \\le 0.5, Y \\le 0.5)$ equals the area of the sub-square $[0, 0.5] \\times [0, 0.5]$, which is $0.5 \\times 0.5 = 0.25$. A constant density over a region is the uniform distribution.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-024",
+      "stem": "A coin is tossed twice. Let $X$ be the number of heads on the first toss and $Y$ the total number of heads. Examine the dependence of $X$ and $Y$.",
+      "format": "cloze",
+      "solution": "There are four equally likely outcomes, each with probability $0.25$. The joint probability $P(X = 1, Y = 2)$, which needs outcome HH, equals {{1}}. The marginal $P(X = 1) = 0.5$ and $P(Y = 2) = 0.25$, whose product is {{2}}. Because this product does not equal the joint probability, $X$ and $Y$ are {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.125,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "dependent",
+            "independent",
+            "identically distributed"
+          ],
+          "answer": "dependent"
+        }
+      ],
+      "explanation": "Only HH gives $X = 1$ and $Y = 2$, so the joint probability is $0.25$. The product of the marginals is $0.5 \\times 0.25 = 0.125$. Since $0.25 \\ne 0.125$, the factorization fails and the variables are dependent (knowing the first toss changes the distribution of the total).",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-025",
+      "stem": "The joint density $f(x, y) = x + y$ holds on the unit square. Evaluate a marginal and a region probability.",
+      "format": "cloze",
+      "solution": "The marginal density is $f_X(x) = \\int_0^1 (x + y)\\, dy = x + \\tfrac{1}{2}$, so its constant term is {{1}}. The probability $P(X \\le 0.5, Y \\le 0.5) = \\int_0^{1/2}\\int_0^{1/2}(x + y)\\, dx\\, dy$ evaluates to {{2}} when written as a fraction in lowest terms it is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.125,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{1}{8}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{2}$"
+          ],
+          "answer": "$\\frac{1}{8}$"
+        }
+      ],
+      "explanation": "Integrating out $y$: $\\int_0^1(x + y)\\, dy = x + \\frac{1}{2}$, so the constant term is $0.5$. For the region probability, the inner integral $\\int_0^{1/2}(x + y)\\, dx = \\frac{1}{8} + \\frac{y}{2}$, and $\\int_0^{1/2}\\left(\\frac{1}{8} + \\frac{y}{2}\\right)dy = \\frac{1}{16} + \\frac{1}{16} = \\frac{1}{8} = 0.125$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-joint-distributions-026",
+      "stem": "A joint pmf table is given below. Compute the marginals and check independence.\n\n| | $Y=0$ | $Y=1$ |\n|---|---|---|\n| $X=0$ | $0.25$ | $0.25$ |\n| $X=1$ | $0.25$ | $0.25$ |",
+      "format": "cloze",
+      "solution": "The marginal $P(X = 0) = 0.25 + 0.25 =$ {{1}}, and likewise $P(Y = 0) = 0.5$. The product of these marginals is $0.5 \\times 0.5 =$ {{2}}, which matches the joint value $p(0,0) = 0.25$. Since every cell equals the product of its marginals, $X$ and $Y$ are {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "independent",
+            "dependent",
+            "perfectly correlated"
+          ],
+          "answer": "independent"
+        }
+      ],
+      "explanation": "Row sum: $P(X = 0) = 0.25 + 0.25 = 0.5$. The marginals are each $0.5$, and $0.5 \\times 0.5 = 0.25$, which equals each joint cell. Because the joint factors as the product of marginals at every point, the variables are independent.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    }
+  ]
+}

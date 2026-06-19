@@ -1,0 +1,451 @@
+{
+  "courseId": "linear-algebra-ii",
+  "topicId": "diagonalization",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "linear-algebra-ii-diagonalization-001",
+      "stem": "An $n \\times n$ matrix $A$ is diagonalizable if and only if:",
+      "options": [
+        "all entries of $A$ are nonzero",
+        "$A$ has $n$ linearly independent eigenvectors",
+        "$\\det(A) \\neq 0$",
+        "$A$ is symmetric"
+      ],
+      "answer": 1,
+      "explanation": "A matrix is diagonalizable exactly when it has a basis of eigenvectors, that is $n$ linearly independent eigenvectors, which become the columns of $P$ in $A = PDP^{-1}$. Symmetry is sufficient but not necessary, and a nonzero determinant has nothing to do with diagonalizability; for instance $\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ has $\\det = 1$ but is not diagonalizable.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-002",
+      "stem": "In the factorization $A = PDP^{-1}$, what does the matrix $D$ contain?",
+      "options": [
+        "the eigenvectors of $A$ as columns",
+        "the inverse eigenvalues of $A$",
+        "the rows of $A$",
+        "the eigenvalues of $A$ on its diagonal"
+      ],
+      "answer": 3,
+      "explanation": "In $A = PDP^{-1}$, the diagonal matrix $D$ holds the eigenvalues of $A$ on its diagonal, and the columns of $P$ are the corresponding eigenvectors, in matching order. The trap option placing eigenvectors in $D$ confuses the roles of $P$ and $D$.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-003",
+      "stem": "Is the matrix $A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 5 \\end{pmatrix}$ diagonalizable?",
+      "options": [
+        "No, it has repeated eigenvalues",
+        "Only after squaring",
+        "Yes, it is already diagonal",
+        "No, because it has a zero entry"
+      ],
+      "answer": 2,
+      "explanation": "The matrix is already diagonal, so it is trivially diagonalizable with $P = I$ and $D = A$. Its eigenvalues $2$ and $5$ are distinct with eigenvectors $e_1$ and $e_2$. The trap option claiming repeated eigenvalues is wrong, since $2 \\neq 5$.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-004",
+      "stem": "Why is a $2 \\times 2$ matrix with two distinct eigenvalues always diagonalizable?",
+      "options": [
+        "Eigenvectors for distinct eigenvalues are linearly independent, giving a basis",
+        "Distinct eigenvalues force the matrix to be symmetric",
+        "Distinct eigenvalues make the matrix triangular",
+        "Its determinant is always $1$"
+      ],
+      "answer": 0,
+      "explanation": "Eigenvectors corresponding to distinct eigenvalues are linearly independent. For a $2 \\times 2$ matrix, two distinct eigenvalues give two independent eigenvectors, which form a basis of $\\mathbb{R}^2$, so the matrix is diagonalizable. The trap option about symmetry is false; distinct eigenvalues do not imply symmetry.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-005",
+      "stem": "Is the matrix $A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$ diagonalizable?",
+      "options": [
+        "No, it is not diagonalizable",
+        "Yes, with $D = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$",
+        "Yes, because it is triangular",
+        "Yes, because $\\det(A) = 1$"
+      ],
+      "answer": 0,
+      "explanation": "The only eigenvalue is $\\lambda = 1$ with algebraic multiplicity $2$. Solving $(A - I)v = \\mathbf{0}$ with $A - I = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ gives $y = 0$, so the eigenspace is just the span of $\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$, dimension $1$. With only one independent eigenvector there is no eigenbasis, so $A$ is not diagonalizable. The trap claiming $D = I$ would require $A = I$.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-006",
+      "stem": "If $A = PDP^{-1}$, what is $A^n$?",
+      "options": [
+        "$P^{-1} D^n P$",
+        "$P^n D^n P^{-n}$",
+        "$P D^n P^{-1}$",
+        "$D^n$"
+      ],
+      "answer": 2,
+      "explanation": "Telescoping the product, $A^n = (PDP^{-1})^n = P D^n P^{-1}$ because the inner $P^{-1}P$ factors cancel. Since $D$ is diagonal, $D^n$ just raises each diagonal entry to the $n$th power, making powers easy to compute. The trap option $P^{-1} D^n P$ has $P$ and $P^{-1}$ swapped.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-007",
+      "stem": "For $A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$, compute $A^3$.",
+      "options": [
+        "$\\begin{pmatrix} 8 & 0 \\\\ 0 & 27 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 6 & 0 \\\\ 0 & 9 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 27 & 0 \\\\ 0 & 8 \\end{pmatrix}$"
+      ],
+      "answer": 0,
+      "explanation": "A diagonal matrix raised to a power raises each diagonal entry to that power. So $A^3 = \\begin{pmatrix} 2^3 & 0 \\\\ 0 & 3^3 \\end{pmatrix} = \\begin{pmatrix} 8 & 0 \\\\ 0 & 27 \\end{pmatrix}$. The trap option $\\begin{pmatrix} 6 & 0 \\\\ 0 & 9 \\end{pmatrix}$ multiplies the entries by $3$ instead of cubing them.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-008",
+      "stem": "The matrix $A$ is diagonalized as $A = PDP^{-1}$ with $D = \\begin{pmatrix} 4 & 0 \\\\ 0 & 1 \\end{pmatrix}$. What is $D^2$?",
+      "options": [
+        "$\\begin{pmatrix} 8 & 0 \\\\ 0 & 2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 16 & 0 \\\\ 0 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 4 & 0 \\\\ 0 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & 16 \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "Squaring a diagonal matrix squares each diagonal entry: $D^2 = \\begin{pmatrix} 4^2 & 0 \\\\ 0 & 1^2 \\end{pmatrix} = \\begin{pmatrix} 16 & 0 \\\\ 0 & 1 \\end{pmatrix}$. The trap option $\\begin{pmatrix} 8 & 0 \\\\ 0 & 2 \\end{pmatrix}$ doubles the entries rather than squaring them.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-009",
+      "stem": "A $3 \\times 3$ matrix has eigenvalues $2, 2, 5$. The eigenspace for $\\lambda = 2$ has dimension $2$. Is the matrix diagonalizable?",
+      "options": [
+        "Yes, the total dimension of eigenspaces is $3$",
+        "No, because there are only two distinct eigenvalues",
+        "Only if it is symmetric",
+        "No, because $\\lambda = 2$ is repeated"
+      ],
+      "answer": 0,
+      "explanation": "Diagonalizability requires the eigenspace dimensions to sum to $3$. Here $\\lambda = 2$ contributes a $2$-dimensional eigenspace and $\\lambda = 5$ contributes at least $1$, giving $2 + 1 = 3$ independent eigenvectors, a full basis. So the matrix is diagonalizable. A repeated eigenvalue is fine as long as its geometric multiplicity matches its algebraic multiplicity, which it does here.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-010",
+      "stem": "For $A = \\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix}$, which matrix $P$ diagonalizes $A$, using eigenvectors for $\\lambda = 3$ and $\\lambda = 2$?",
+      "options": [
+        "$P = \\begin{pmatrix} 1 & 1 \\\\ 0 & -1 \\end{pmatrix}$",
+        "$P = \\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix}$",
+        "$P = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$",
+        "$P = \\begin{pmatrix} 1 & 0 \\\\ 1 & 1 \\end{pmatrix}$"
+      ],
+      "answer": 0,
+      "explanation": "For $\\lambda = 3$, $A - 3I = \\begin{pmatrix} 0 & 1 \\\\ 0 & -1 \\end{pmatrix}$ gives $y = 0$, so the eigenvector is $\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$. For $\\lambda = 2$, $A - 2I = \\begin{pmatrix} 1 & 1 \\\\ 0 & 0 \\end{pmatrix}$ gives $x = -y$, so the eigenvector is $\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$. Placing these as columns gives $P = \\begin{pmatrix} 1 & 1 \\\\ 0 & -1 \\end{pmatrix}$, with $D = \\operatorname{diag}(3, 2)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-011",
+      "stem": "If $A$ is diagonalizable with eigenvalues $0$ and $4$, what is $A^{10}$ expressed through its diagonalization?",
+      "options": [
+        "$P \\begin{pmatrix} 0 & 0 \\\\ 0 & 4 \\end{pmatrix} P^{-1}$",
+        "$P \\begin{pmatrix} 10 & 0 \\\\ 0 & 40 \\end{pmatrix} P^{-1}$",
+        "$P \\begin{pmatrix} 0 & 0 \\\\ 0 & 4^{10} \\end{pmatrix} P^{-1}$",
+        "the zero matrix"
+      ],
+      "answer": 2,
+      "explanation": "Using $A^{10} = P D^{10} P^{-1}$, the diagonal $D = \\operatorname{diag}(0, 4)$ gives $D^{10} = \\operatorname{diag}(0^{10}, 4^{10}) = \\operatorname{diag}(0, 4^{10})$. So $A^{10} = P \\begin{pmatrix} 0 & 0 \\\\ 0 & 4^{10} \\end{pmatrix} P^{-1}$. The trap option, the zero matrix, would require both eigenvalues to be $0$; here only one is.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-012",
+      "stem": "A $2 \\times 2$ matrix $A$ has a single eigenvalue $\\lambda = 3$ with a one-dimensional eigenspace. Is $A$ diagonalizable?",
+      "options": [
+        "Only if $\\det(A) = 9$",
+        "No, it lacks two independent eigenvectors",
+        "Yes, since it has an eigenvalue",
+        "Yes, since $\\lambda = 3 \\neq 0$"
+      ],
+      "answer": 1,
+      "explanation": "Diagonalizing a $2 \\times 2$ matrix requires two linearly independent eigenvectors. With only one eigenvalue whose eigenspace has dimension $1$, there is just one independent eigenvector, so no eigenbasis exists and $A$ is not diagonalizable. This is the defective case, where geometric multiplicity ($1$) falls short of algebraic multiplicity ($2$).",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-013",
+      "stem": "If $A = PDP^{-1}$ with $D = \\operatorname{diag}(\\lambda_1, \\lambda_2)$, what is $\\det(A)$?",
+      "options": [
+        "$0$",
+        "$\\lambda_1 \\lambda_2$",
+        "$\\lambda_1 + \\lambda_2$",
+        "$\\det(P)$"
+      ],
+      "answer": 1,
+      "explanation": "Determinants multiply, so $\\det(A) = \\det(P)\\det(D)\\det(P^{-1}) = \\det(D)$ because $\\det(P^{-1}) = 1/\\det(P)$. Since $D$ is diagonal, $\\det(D) = \\lambda_1 \\lambda_2$, the product of the eigenvalues. The trap option $\\lambda_1 + \\lambda_2$ gives the trace, not the determinant.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-014",
+      "stem": "Is $A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ diagonalizable, and what is $D$?",
+      "options": [
+        "Yes, $D = \\begin{pmatrix} 3 & 0 \\\\ 0 & -1 \\end{pmatrix}$",
+        "Yes, $D = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$",
+        "No, it is defective",
+        "Yes, $D = \\begin{pmatrix} 1 & 0 \\\\ 0 & 2 \\end{pmatrix}$"
+      ],
+      "answer": 0,
+      "explanation": "The characteristic equation is $(1 - \\lambda)^2 - 4 = \\lambda^2 - 2\\lambda - 3 = 0$, factoring as $(\\lambda - 3)(\\lambda + 1) = 0$, so $\\lambda = 3$ and $\\lambda = -1$. Two distinct eigenvalues give two independent eigenvectors, so $A$ is diagonalizable with $D = \\begin{pmatrix} 3 & 0 \\\\ 0 & -1 \\end{pmatrix}$. The trap option with $D = \\operatorname{diag}(1, 2)$ just copies entries of $A$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-015",
+      "stem": "A real symmetric matrix is always:",
+      "options": [
+        "equal to the identity",
+        "triangular",
+        "diagonalizable",
+        "singular"
+      ],
+      "answer": 2,
+      "explanation": "By the spectral theorem, every real symmetric matrix is diagonalizable, in fact by an orthogonal matrix, with real eigenvalues. Symmetry guarantees enough independent eigenvectors regardless of repeated eigenvalues. The trap option singular is false; symmetric matrices may well be invertible, as the identity itself shows.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-016",
+      "stem": "The columns of $P$ in $A = PDP^{-1}$ must be:",
+      "options": [
+        "the eigenvalues of $A$",
+        "orthonormal in every case",
+        "linearly independent eigenvectors of $A$",
+        "the rows of $A$"
+      ],
+      "answer": 2,
+      "explanation": "The columns of $P$ are linearly independent eigenvectors of $A$, ordered to match the eigenvalues in $D$. They need not be orthonormal in general; orthonormality is guaranteed only for symmetric matrices via the spectral theorem. The trap option placing eigenvalues in $P$ confuses $P$ with $D$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-017",
+      "stem": "For the diagonalizable matrix with $A = PDP^{-1}$ and $D = \\begin{pmatrix} -1 & 0 \\\\ 0 & 1 \\end{pmatrix}$, what is $A^2$?",
+      "options": [
+        "the identity matrix $I$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$ times $\\det(P)$",
+        "$P \\begin{pmatrix} -1 & 0 \\\\ 0 & 1 \\end{pmatrix} P^{-1}$",
+        "$P \\begin{pmatrix} -2 & 0 \\\\ 0 & 2 \\end{pmatrix} P^{-1}$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $D^2 = \\begin{pmatrix} (-1)^2 & 0 \\\\ 0 & 1^2 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = I$. Then $A^2 = P D^2 P^{-1} = P I P^{-1} = P P^{-1} = I$. So $A^2$ is the identity matrix. The trap option $P D^2 P^{-1}$ with $D^2 = \\operatorname{diag}(-2, 2)$ doubles the entries instead of squaring them.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-018",
+      "stem": "Why can computing $A^{20}$ be easy when $A$ is diagonalizable?",
+      "options": [
+        "because $A^{20} = 20A$ for diagonalizable matrices",
+        "because $A^{20} = A$ always",
+        "because $A^{20} = P D^{20} P^{-1}$ and $D^{20}$ just powers the diagonal entries",
+        "because diagonalizable matrices satisfy $A^{20} = I$"
+      ],
+      "answer": 2,
+      "explanation": "Writing $A = PDP^{-1}$ gives $A^{20} = P D^{20} P^{-1}$, and since $D$ is diagonal, $D^{20}$ simply raises each diagonal eigenvalue to the $20$th power, a one-step computation. Without diagonalization, $A^{20}$ would need many matrix multiplications. The trap option $A^{20} = 20A$ is generally false.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-019",
+      "stem": "A $3 \\times 3$ matrix has eigenvalues $1, 1, 1$ and its eigenspace for $\\lambda = 1$ has dimension $1$. Is it diagonalizable?",
+      "options": [
+        "No, the eigenspace is too small",
+        "Yes, it must be the identity",
+        "Yes, all eigenvalues are equal",
+        "Yes, because $\\lambda = 1$ is nonzero"
+      ],
+      "answer": 0,
+      "explanation": "Diagonalizability needs the eigenspace dimensions to total $3$. Here the only eigenvalue $\\lambda = 1$ has algebraic multiplicity $3$ but geometric multiplicity $1$, giving just one independent eigenvector instead of three. So there is no eigenbasis and the matrix is not diagonalizable. The trap option claiming it must be the identity would force a $3$-dimensional eigenspace.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-020",
+      "stem": "If $A = PDP^{-1}$, what is the trace of $A$ in terms of the eigenvalues on $D$?",
+      "options": [
+        "the trace of $P$",
+        "the sum of the diagonal entries of $D$",
+        "the product of the diagonal entries of $D$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "Trace is invariant under similarity, so $\\operatorname{tr}(A) = \\operatorname{tr}(PDP^{-1}) = \\operatorname{tr}(D)$, using $\\operatorname{tr}(XY) = \\operatorname{tr}(YX)$. The trace of $D$ is the sum of its diagonal entries, the eigenvalues. The trap option, the product of the diagonal entries, gives the determinant instead of the trace.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-021",
+      "format": "cloze",
+      "stem": "State the diagonalizability criterion for an $n \\times n$ matrix $A$.",
+      "solution": "The matrix $A$ is diagonalizable if and only if it has {{1}} linearly independent eigenvectors, which then form the columns of $P$. In the factorization $A = P D P^{-1}$, the diagonal matrix $D$ holds the {{2}} of $A$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "n",
+            "$n$"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "eigenvalues",
+            "eigenvectors",
+            "determinants"
+          ],
+          "answer": "eigenvalues"
+        }
+      ],
+      "explanation": "Diagonalizability requires a full set of $n$ independent eigenvectors. In $A = PDP^{-1}$, the columns of $P$ are eigenvectors and $D$ carries the eigenvalues on its diagonal.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-022",
+      "format": "cloze",
+      "stem": "Compute the cube of the diagonal matrix $D = \\begin{pmatrix} 2 & 0 \\\\ 0 & -1 \\end{pmatrix}$.",
+      "solution": "Each diagonal entry is raised to the third power. The top-left entry becomes $2^3 =$ {{1}}, and the bottom-right entry becomes $(-1)^3 =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Powers of a diagonal matrix act entrywise: $2^3 = 8$ and $(-1)^3 = -1$, so $D^3 = \\operatorname{diag}(8, -1)$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-023",
+      "format": "cloze",
+      "stem": "Decide whether $A = \\begin{pmatrix} 5 & 1 \\\\ 0 & 5 \\end{pmatrix}$ is diagonalizable.",
+      "solution": "The only eigenvalue is $\\lambda =$ {{1}}, with algebraic multiplicity $2$. Solving $(A - 5I)v = \\mathbf{0}$ gives the single free direction $(1, 0)$, so the eigenspace has dimension $1$. Since this is less than $2$, the matrix {{2}} diagonalizable.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is not",
+            "is"
+          ],
+          "answer": "is not"
+        }
+      ],
+      "explanation": "The matrix is triangular with repeated eigenvalue $5$. The eigenspace is only one-dimensional, short of the two independent eigenvectors needed, so $A$ is not diagonalizable.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-024",
+      "format": "cloze",
+      "stem": "Find the diagonal matrix $D$ for $A = \\begin{pmatrix} 4 & 2 \\\\ 1 & 3 \\end{pmatrix}$, which has distinct eigenvalues.",
+      "solution": "The characteristic equation $\\lambda^2 - 7\\lambda + 10 = 0$ factors as $(\\lambda - 2)(\\lambda - 5)$, giving eigenvalues $\\lambda =$ {{1}} and $\\lambda =$ {{2}}. Because the eigenvalues are distinct, $A$ {{3}} diagonalizable, and $D$ is the diagonal matrix carrying these values.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "With trace $7$ and determinant $12 - 2 = 10$, the eigenvalues are $2$ and $5$. Distinct eigenvalues guarantee diagonalizability, with $D = \\operatorname{diag}(2, 5)$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-025",
+      "format": "cloze",
+      "stem": "Use $A^n = P D^n P^{-1}$ to set up $A^4$ when $D = \\operatorname{diag}(1, 3)$.",
+      "solution": "Raising the diagonal to the fourth power, the top-left entry is $1^4 =$ {{1}} and the bottom-right entry is $3^4 =$ {{2}}. Then $A^4 = P D^4 P^{-1}$, where $D^4$ is this diagonal matrix.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 81,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Powers of $D$ act entrywise: $1^4 = 1$ and $3^4 = 81$, so $D^4 = \\operatorname{diag}(1, 81)$ and $A^4 = P D^4 P^{-1}$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-diagonalization-026",
+      "format": "cloze",
+      "stem": "Relate trace and determinant of a diagonalizable $A$ to the entries of $D = \\operatorname{diag}(\\lambda_1, \\lambda_2)$.",
+      "solution": "Because trace and determinant are similarity invariants, $\\operatorname{tr}(A)$ equals the {{1}} of $\\lambda_1$ and $\\lambda_2$, while $\\det(A)$ equals their {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "sum",
+            "product",
+            "ratio"
+          ],
+          "answer": "sum"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "product",
+            "sum",
+            "difference"
+          ],
+          "answer": "product"
+        }
+      ],
+      "explanation": "Similar matrices share trace and determinant, so $\\operatorname{tr}(A) = \\operatorname{tr}(D) = \\lambda_1 + \\lambda_2$ and $\\det(A) = \\det(D) = \\lambda_1 \\lambda_2$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    }
+  ]
+}

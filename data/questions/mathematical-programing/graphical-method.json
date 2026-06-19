@@ -1,0 +1,518 @@
+{
+  "courseId": "mathematical-programing",
+  "topicId": "graphical-method",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-programing-graphical-method-001",
+      "stem": "When solving a two-variable linear program graphically, where does the optimal solution always occur (when one exists and the region is bounded)?",
+      "options": [
+        "At the origin in every case.",
+        "Strictly inside the feasible region.",
+        "At the centroid of the feasible region.",
+        "At a corner point (vertex) of the feasible region."
+      ],
+      "answer": 3,
+      "explanation": "A fundamental result of LP is that if an optimal solution exists for a bounded feasible region, at least one optimum lies at a corner point (extreme point) of that region. This is why the graphical method evaluates the objective only at the vertices. The optimum is generally on the boundary, not the interior, and there is no reason it should sit at the origin or the centroid.",
+      "difficulty": "warmup",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-002",
+      "stem": "To plot the boundary line of the constraint $2x_1 + x_2 = 6$, two convenient points are its intercepts. What are the $x_1$- and $x_2$-intercepts?",
+      "options": [
+        "$(6, 0)$ and $(0, 6)$",
+        "$(2, 0)$ and $(0, 1)$",
+        "$(3, 0)$ and $(0, 6)$",
+        "$(0, 3)$ and $(6, 0)$"
+      ],
+      "answer": 2,
+      "explanation": "Set $x_2 = 0$ to find the $x_1$-intercept: $2x_1 = 6$ gives $x_1 = 3$, so $(3, 0)$. Set $x_1 = 0$ to find the $x_2$-intercept: $x_2 = 6$, so $(0, 6)$. The trap $(6, 0)$ forgets to divide by the coefficient $2$ on $x_1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-003",
+      "stem": "For the constraint $x_1 + x_2 \\le 5$ together with $x_1, x_2 \\ge 0$, which side of the line $x_1 + x_2 = 5$ contains the feasible points?",
+      "options": [
+        "Neither side; the region is empty.",
+        "The side farther from the origin.",
+        "Only the line itself.",
+        "The side containing the origin."
+      ],
+      "answer": 3,
+      "explanation": "Test the origin $(0, 0)$: $0 + 0 = 0 \\le 5$ is true, so the origin satisfies the constraint, and the feasible half-plane is the side containing the origin. For a $\\le$ constraint with a positive right-hand side, the origin almost always passes the test, giving the region below and to the left of the line.",
+      "difficulty": "warmup",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-004",
+      "stem": "Consider maximize $Z = 3x_1 + 2x_2$ subject to $x_1 + x_2 \\le 4$, $x_1 \\le 3$, $x_1, x_2 \\ge 0$. Evaluating $Z$ at the corner $(3, 1)$ gives what value?",
+      "options": [
+        "$9$",
+        "$11$",
+        "$6$",
+        "$8$"
+      ],
+      "answer": 1,
+      "explanation": "Substitute the corner into the objective: $Z = 3(3) + 2(1) = 9 + 2 = 11$. The point $(3, 1)$ is feasible since $3 + 1 = 4 \\le 4$ and $3 \\le 3$. The trap value $9$ comes from evaluating only $3x_1$ and forgetting the $2x_2$ term.",
+      "difficulty": "warmup",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-005",
+      "stem": "For the LP maximize $Z = 3x_1 + 2x_2$ subject to $x_1 + x_2 \\le 4$, $x_1 \\le 3$, $x_1, x_2 \\ge 0$, the corner points are $(0,0)$, $(3,0)$, $(3,1)$, and $(0,4)$. Which corner is optimal?",
+      "options": [
+        "$(0, 4)$ with $Z = 8$",
+        "$(3, 1)$ with $Z = 11$",
+        "$(3, 0)$ with $Z = 9$",
+        "$(0, 0)$ with $Z = 0$"
+      ],
+      "answer": 1,
+      "explanation": "Evaluate the objective at every corner: $(0,0)$ gives $0$, $(3,0)$ gives $9$, $(3,1)$ gives $3(3)+2(1)=11$, and $(0,4)$ gives $2(4)=8$. The largest value is $11$ at $(3, 1)$, so that vertex is optimal. Comparing all vertices is exactly how the graphical method locates the optimum.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-006",
+      "stem": "Find the intersection point of the lines $6x_1 + 4x_2 = 24$ and $x_1 + 2x_2 = 6$.",
+      "options": [
+        "$(2, 2)$",
+        "$(0, 3)$",
+        "$(4, 0)$",
+        "$(3, 1.5)$"
+      ],
+      "answer": 3,
+      "explanation": "From the second equation, $x_1 = 6 - 2x_2$. Substitute into the first: $6(6 - 2x_2) + 4x_2 = 24$ gives $36 - 12x_2 + 4x_2 = 24$, so $-8x_2 = -12$ and $x_2 = 1.5$. Then $x_1 = 6 - 3 = 3$. The intersection is $(3, 1.5)$, which can be checked in both equations.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-007",
+      "stem": "For the classic LP maximize $Z = 5x_1 + 4x_2$ subject to $6x_1 + 4x_2 \\le 24$, $x_1 + 2x_2 \\le 6$, $x_1, x_2 \\ge 0$, the candidate corners are $(0,0)$, $(4,0)$, $(3,1.5)$, and $(0,3)$. What is the optimal value of $Z$?",
+      "options": [
+        "$20$",
+        "$21$",
+        "$24$",
+        "$12$"
+      ],
+      "answer": 1,
+      "explanation": "Evaluate at the corners: $(0,0)$ gives $0$, $(4,0)$ gives $5(4)=20$, $(3,1.5)$ gives $5(3)+4(1.5)=15+6=21$, and $(0,3)$ gives $4(3)=12$. The maximum is $21$, attained at $(3, 1.5)$. The trap value $20$ stops at the vertex $(4,0)$ without checking the interior corner where both constraints bind.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-008",
+      "stem": "For the LP in the previous style, maximize $Z = 4x_1 + 3x_2$ subject to $2x_1 + x_2 \\le 10$, $x_1 + 3x_2 \\le 15$, $x_1, x_2 \\ge 0$. Find the corner where both functional constraints are binding.",
+      "options": [
+        "$(5, 0)$",
+        "$(3, 4)$",
+        "$(4, 3)$",
+        "$(0, 5)$"
+      ],
+      "answer": 1,
+      "explanation": "Both constraints bind at their intersection. From $2x_1 + x_2 = 10$, $x_2 = 10 - 2x_1$; substitute into $x_1 + 3x_2 = 15$: $x_1 + 3(10 - 2x_1) = 15$ gives $x_1 + 30 - 6x_1 = 15$, so $-5x_1 = -15$ and $x_1 = 3$, then $x_2 = 4$. The point $(3, 4)$ satisfies both equalities, while $(4, 3)$ just swaps the coordinates and fails them.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-009",
+      "stem": "Continuing the LP maximize $Z = 4x_1 + 3x_2$ subject to $2x_1 + x_2 \\le 10$, $x_1 + 3x_2 \\le 15$, $x_1, x_2 \\ge 0$ (corners $(0,0)$, $(5,0)$, $(3,4)$, $(0,5)$), what is the optimal value?",
+      "options": [
+        "$Z = 0$ at $(0, 0)$",
+        "$Z = 20$ at $(5, 0)$",
+        "$Z = 24$ at $(3, 4)$",
+        "$Z = 15$ at $(0, 5)$"
+      ],
+      "answer": 2,
+      "explanation": "Evaluate at each corner: $(5,0)$ gives $4(5)=20$, $(0,5)$ gives $3(5)=15$, $(3,4)$ gives $4(3)+3(4)=12+12=24$, and $(0,0)$ gives $0$. The maximum is $24$ at $(3, 4)$, where both resource constraints are binding.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-010",
+      "stem": "A linear program is maximize $Z = x_1 + x_2$ subject to $x_1 - x_2 \\le 1$, $x_1, x_2 \\ge 0$. What is the nature of this problem?",
+      "options": [
+        "It has a unique finite optimum.",
+        "It is unbounded.",
+        "It has multiple optima along an edge.",
+        "It is infeasible."
+      ],
+      "answer": 1,
+      "explanation": "The feasible region is unbounded: for any value of $x_2$, choosing $x_1 = 0$ satisfies $0 - x_2 \\le 1$ and $Z = x_2$ can grow without limit as $x_2 \\to \\infty$. Since the objective increases indefinitely over the feasible region, the LP is unbounded and has no finite optimal value. The single constraint cannot cap $x_2$ from above.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-011",
+      "stem": "A linear program has the constraints $x_1 + x_2 \\le 2$, $x_1 + x_2 \\ge 5$, $x_1, x_2 \\ge 0$. What can you say about it?",
+      "options": [
+        "It is infeasible (the feasible region is empty).",
+        "It has infinitely many optima.",
+        "It is unbounded.",
+        "It has a unique optimum at $(2, 0)$."
+      ],
+      "answer": 0,
+      "explanation": "The first constraint requires $x_1 + x_2 \\le 2$ while the second requires $x_1 + x_2 \\ge 5$. No point can have a sum that is simultaneously at most $2$ and at least $5$, so the two half-planes do not overlap. The feasible region is empty and the LP is infeasible, regardless of the objective.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-012",
+      "stem": "Minimize $Z = 2x_1 + 3x_2$ subject to $x_1 + x_2 \\ge 4$, $x_1 + 3x_2 \\ge 6$, $x_1, x_2 \\ge 0$. The relevant corner points are $(6, 0)$, $(3, 1)$, and $(0, 4)$. Where is the minimum?",
+      "options": [
+        "$(0, 0)$ with $Z = 0$",
+        "$(0, 4)$ with $Z = 12$",
+        "$(6, 0)$ with $Z = 12$",
+        "$(3, 1)$ with $Z = 9$"
+      ],
+      "answer": 3,
+      "explanation": "The point $(3, 1)$ is the intersection of $x_1 + x_2 = 4$ and $x_1 + 3x_2 = 6$ (subtracting gives $2x_2 = 2$, so $x_2 = 1$, $x_1 = 3$). Evaluating: $(6,0)$ gives $12$, $(0,4)$ gives $12$, and $(3,1)$ gives $2(3)+3(1)=9$. The smallest is $9$ at $(3, 1)$. The origin is not feasible since $0 \\ge 4$ fails.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-013",
+      "stem": "At the optimal corner $(3, 1.5)$ of an LP, both constraints $6x_1 + 4x_2 \\le 24$ and $x_1 + 2x_2 \\le 6$ hold with equality. What does this tell you about these constraints at the optimum?",
+      "options": [
+        "Both constraints are nonbinding.",
+        "Both constraints are redundant.",
+        "Both constraints are binding (active).",
+        "The problem is infeasible."
+      ],
+      "answer": 2,
+      "explanation": "A constraint that holds with equality at a point is binding (active) there, meaning its slack is zero and the point lies exactly on that constraint line. Since the optimum $(3, 1.5)$ sits on both lines, both constraints are binding, which is typical when an optimal vertex is the intersection of two constraint boundaries.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-014",
+      "stem": "Maximize $Z = 2x_1 + 2x_2$ subject to $x_1 + x_2 \\le 4$, $x_1, x_2 \\ge 0$. What is special about the optimal solution?",
+      "options": [
+        "The optimum is unique at $(4, 0)$.",
+        "The optimum is at the origin.",
+        "The problem is unbounded.",
+        "Every point on the segment from $(4,0)$ to $(0,4)$ is optimal."
+      ],
+      "answer": 3,
+      "explanation": "The objective $Z = 2x_1 + 2x_2 = 2(x_1 + x_2)$ is maximized by making $x_1 + x_2$ as large as possible, which is $4$. Every point on the edge $x_1 + x_2 = 4$ gives $Z = 8$, so the LP has infinitely many optimal solutions, an entire edge, because the objective line is parallel to the binding constraint. This is the alternative-optima case.",
+      "difficulty": "stretch",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-015",
+      "stem": "In the graphical method, the iso-profit (objective) line for $Z = 3x_1 + 2x_2$ is moved across the feasible region. To maximize $Z$, in which direction is the line pushed?",
+      "options": [
+        "It is kept fixed at $Z = 0$.",
+        "In the direction of the gradient, away from the origin (increasing $Z$).",
+        "Parallel to the $x_1$-axis only.",
+        "Toward the origin (decreasing $Z$)."
+      ],
+      "answer": 1,
+      "explanation": "Iso-profit lines $3x_1 + 2x_2 = Z$ are parallel, and $Z$ increases as the line moves in the direction of the objective's gradient $(3, 2)$, which points away from the origin for a maximization with positive coefficients. The line is pushed as far as possible in that direction until it last touches the feasible region, locating the optimal vertex.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-016",
+      "stem": "Maximize $Z = x_1 + 2x_2$ subject to $x_1 + x_2 \\le 6$, $x_2 \\le 4$, $x_1, x_2 \\ge 0$. The corners are $(0,0)$, $(6,0)$, $(2,4)$, and $(0,4)$. Find the optimum.",
+      "options": [
+        "$(6, 0)$ with $Z = 6$",
+        "$(0, 4)$ with $Z = 8$",
+        "$(2, 4)$ with $Z = 10$",
+        "$(0, 0)$ with $Z = 0$"
+      ],
+      "answer": 2,
+      "explanation": "The corner $(2, 4)$ comes from $x_2 = 4$ and $x_1 + x_2 = 6$, giving $x_1 = 2$. Evaluate: $(6,0)$ gives $6$, $(0,4)$ gives $8$, $(2,4)$ gives $1(2)+2(4)=2+8=10$, and $(0,0)$ gives $0$. The maximum is $10$ at $(2, 4)$. The heavier weight on $x_2$ pulls the optimum toward larger $x_2$.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-017",
+      "stem": "Which statement correctly describes a bounded feasible region in two dimensions?",
+      "options": [
+        "It must be a single line segment.",
+        "It always includes the entire first quadrant.",
+        "It is a convex polygon enclosed by the constraint lines.",
+        "It can be a non-convex star shape."
+      ],
+      "answer": 2,
+      "explanation": "The feasible region of a linear program is the intersection of half-planes, and such an intersection is always convex; when bounded, it forms a convex polygon whose vertices are the corner points. It is generally not just a segment, does not fill the whole quadrant once constraints are imposed, and can never be non-convex because intersecting half-planes cannot create indentations.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-018",
+      "stem": "Minimize $Z = 4x_1 + 5x_2$ subject to $2x_1 + x_2 \\ge 6$, $x_1 + x_2 \\ge 4$, $x_1, x_2 \\ge 0$. The corners of the feasible region are $(0, 6)$, $(2, 2)$, and $(4, 0)$. Where is the minimum?",
+      "options": [
+        "$(0, 0)$ with $Z = 0$",
+        "$(0, 6)$ with $Z = 30$",
+        "$(2, 2)$ with $Z = 18$",
+        "$(4, 0)$ with $Z = 16$"
+      ],
+      "answer": 3,
+      "explanation": "The corner $(2, 2)$ is the intersection of $2x_1 + x_2 = 6$ and $x_1 + x_2 = 4$ (subtracting gives $x_1 = 2$, then $x_2 = 2$). Evaluate the objective: $(0,6)$ gives $5(6)=30$, $(2,2)$ gives $4(2)+5(2)=18$, and $(4,0)$ gives $4(4)=16$. The smallest is $16$ at $(4, 0)$. The origin is infeasible since $0 \\ge 6$ fails.",
+      "difficulty": "stretch",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-019",
+      "stem": "For the LP maximize $Z = 2x_1 + 5x_2$ subject to $x_1 + x_2 \\le 6$, $x_2 \\le 4$, $x_1, x_2 \\ge 0$ (corners $(0,0)$, $(6,0)$, $(2,4)$, $(0,4)$), which corner is optimal?",
+      "options": [
+        "$(0, 0)$ with $Z = 0$",
+        "$(0, 4)$ with $Z = 20$",
+        "$(6, 0)$ with $Z = 12$",
+        "$(2, 4)$ with $Z = 24$"
+      ],
+      "answer": 3,
+      "explanation": "Evaluate: $(6,0)$ gives $2(6)=12$, $(0,4)$ gives $5(4)=20$, $(2,4)$ gives $2(2)+5(4)=4+20=24$, and $(0,0)$ gives $0$. The maximum is $24$ at $(2, 4)$. Although $(0,4)$ scores well on the heavy $x_2$ term, adding the available $x_1 = 2$ raises $Z$ further, so the corner where both $x_2 \\le 4$ and $x_1 + x_2 \\le 6$ bind wins.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-020",
+      "stem": "If a maximization LP has an unbounded feasible region, which conclusion is correct?",
+      "options": [
+        "The LP is automatically infeasible.",
+        "The LP must be unbounded.",
+        "The LP may still have a finite optimum, depending on the objective direction.",
+        "The optimum must be at the origin."
+      ],
+      "answer": 2,
+      "explanation": "An unbounded feasible region does not by itself make the objective unbounded. If the objective decreases (or stays bounded) in every direction the region extends, a finite optimum at a corner can still exist; for example minimizing a cost over an unbounded region often has a finite minimum. Unboundedness of the objective occurs only when the region extends in a direction that improves $Z$ without limit.",
+      "difficulty": "stretch",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-021",
+      "stem": "Maximize $Z = 3x_1 + 4x_2$ subject to $x_1 + 2x_2 \\le 8$, $3x_1 + 2x_2 \\le 12$, $x_1, x_2 \\ge 0$. Find the corner where the two functional constraints intersect.",
+      "options": [
+        "$(0, 4)$",
+        "$(4, 0)$",
+        "$(2, 3)$",
+        "$(3, 2)$"
+      ],
+      "answer": 2,
+      "explanation": "Set the two constraints to equalities. Subtract the first from the second: $(3x_1 + 2x_2) - (x_1 + 2x_2) = 12 - 8$ gives $2x_1 = 4$, so $x_1 = 2$. Then $x_1 + 2x_2 = 8$ gives $2 + 2x_2 = 8$, so $x_2 = 3$. The intersection is $(2, 3)$, while $(3, 2)$ merely swaps the coordinates and does not satisfy the equations.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-022",
+      "stem": "Continuing the LP maximize $Z = 3x_1 + 4x_2$ subject to $x_1 + 2x_2 \\le 8$, $3x_1 + 2x_2 \\le 12$, $x_1, x_2 \\ge 0$, with corners $(0,0)$, $(4,0)$, $(2,3)$, $(0,4)$, what is the optimal value of $Z$?",
+      "options": [
+        "$16$",
+        "$12$",
+        "$24$",
+        "$18$"
+      ],
+      "answer": 3,
+      "explanation": "Evaluate at the corners: $(0,0)$ gives $0$, $(4,0)$ gives $3(4)=12$, $(2,3)$ gives $3(2)+4(3)=6+12=18$, and $(0,4)$ gives $4(4)=16$. The maximum is $18$ at $(2, 3)$, the intersection of the two constraints. The trap value $16$ stops at $(0,4)$ without checking the interior vertex.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-023",
+      "format": "cloze",
+      "stem": "Plot and solve: maximize $Z = 5x_1 + 4x_2$ subject to $6x_1 + 4x_2 \\le 24$, $x_1 + 2x_2 \\le 6$, $x_1, x_2 \\ge 0$. The two constraints meet at $(3, 1.5)$.",
+      "solution": "At the corner $(4, 0)$ the objective is $Z =$ {{1}}. At the corner $(3, 1.5)$ the objective is $Z =$ {{2}}. Comparing all vertices, the optimal solution is the corner where both constraints are {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 21,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "binding",
+            "nonbinding",
+            "redundant",
+            "violated"
+          ],
+          "answer": "binding"
+        }
+      ],
+      "explanation": "At $(4,0)$, $Z = 5(4) + 4(0) = 20$; at $(3,1.5)$, $Z = 5(3) + 4(1.5) = 15 + 6 = 21$. The larger value $21$ wins, and at that corner both constraints hold with equality, so both are binding.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-024",
+      "format": "cloze",
+      "stem": "Find the intercepts and a corner. Consider the constraint $4x_1 + 5x_2 \\le 20$ in the first quadrant.",
+      "solution": "Setting $x_2 = 0$, the $x_1$-intercept is $x_1 =$ {{1}}. Setting $x_1 = 0$, the $x_2$-intercept is $x_2 =$ {{2}}. The feasible side of the line, found by testing the origin, is the side that {{3}} the origin.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "contains",
+            "excludes",
+            "is perpendicular to",
+            "is far from"
+          ],
+          "answer": "contains"
+        }
+      ],
+      "explanation": "The $x_1$-intercept is $20/4 = 5$ and the $x_2$-intercept is $20/5 = 4$. Testing the origin, $0 \\le 20$ holds, so the feasible half-plane contains the origin.",
+      "difficulty": "warmup",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-025",
+      "format": "cloze",
+      "stem": "Solve graphically: maximize $Z = 4x_1 + 3x_2$ subject to $2x_1 + x_2 \\le 10$, $x_1 + 3x_2 \\le 15$, $x_1, x_2 \\ge 0$. The binding corner is the intersection of the two constraints.",
+      "solution": "Solving the two constraint equations simultaneously gives the corner $x_1 = 3$, $x_2 =$ {{1}}. The objective there is $Z =$ {{2}}. Since this exceeds the value at every other vertex, the LP attains a {{3}} optimum.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 24,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "finite",
+            "unbounded",
+            "infeasible",
+            "negative"
+          ],
+          "answer": "finite"
+        }
+      ],
+      "explanation": "From $2x_1 + x_2 = 10$ and $x_1 + 3x_2 = 15$, we get $x_1 = 3$, $x_2 = 4$. Then $Z = 4(3) + 3(4) = 12 + 12 = 24$. The bounded region yields a finite optimum.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-026",
+      "format": "cloze",
+      "stem": "Minimize $Z = 2x_1 + 3x_2$ subject to $x_1 + x_2 \\ge 4$, $x_1 + 3x_2 \\ge 6$, $x_1, x_2 \\ge 0$. The two constraints meet at a corner.",
+      "solution": "Solving $x_1 + x_2 = 4$ and $x_1 + 3x_2 = 6$ simultaneously gives $x_2 = 1$ and $x_1 =$ {{1}}. The objective value there is $Z =$ {{2}}. For a minimization with these $\\ge$ constraints, the feasible region is {{3}}, yet the minimum is still finite at this corner.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "unbounded above",
+            "empty",
+            "a single point",
+            "bounded on all sides"
+          ],
+          "answer": "unbounded above"
+        }
+      ],
+      "explanation": "Subtracting the equations: $2x_2 = 2$, so $x_2 = 1$ and $x_1 = 3$. Then $Z = 2(3) + 3(1) = 9$. The region from $\\ge$ constraints extends infinitely upward, so it is unbounded above, but minimizing a positive-coefficient cost still has a finite minimum at a lower corner.",
+      "difficulty": "stretch",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-027",
+      "format": "cloze",
+      "stem": "Classify two small LPs by the shape of their feasible region.",
+      "solution": "LP one has constraints $x_1 + x_2 \\le 2$ and $x_1 + x_2 \\ge 5$ with $x_1, x_2 \\ge 0$; because the half-planes do not overlap, this LP is {{1}}. LP two maximizes $Z = x_1 + x_2$ with the only constraint $x_1 - x_2 \\le 1$ and $x_1, x_2 \\ge 0$; because $x_2$ can grow without limit, this LP is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "infeasible",
+            "unbounded",
+            "optimal at the origin",
+            "degenerate"
+          ],
+          "answer": "infeasible"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "unbounded",
+            "infeasible",
+            "uniquely optimal",
+            "empty"
+          ],
+          "answer": "unbounded"
+        }
+      ],
+      "explanation": "No point can satisfy both $x_1 + x_2 \\le 2$ and $x_1 + x_2 \\ge 5$, so LP one is infeasible. In LP two, setting $x_1 = 0$ lets $x_2 \\to \\infty$ with $Z \\to \\infty$, so LP two is unbounded.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-graphical-method-028",
+      "format": "cloze",
+      "stem": "Maximize $Z = x_1 + 2x_2$ subject to $x_1 + x_2 \\le 6$, $x_2 \\le 4$, $x_1, x_2 \\ge 0$. The corners include $(2, 4)$.",
+      "solution": "The corner $(2, 4)$ arises from the binding constraints $x_2 = 4$ and $x_1 + x_2 = 6$, so $x_1 =$ {{1}}. Evaluating the objective there gives $Z =$ {{2}}. Comparing with $(0,4)$ where $Z = 8$ and $(6,0)$ where $Z = 6$, the optimal corner is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$(2, 4)$",
+            "$(0, 4)$",
+            "$(6, 0)$",
+            "$(0, 0)$"
+          ],
+          "answer": "$(2, 4)$"
+        }
+      ],
+      "explanation": "With $x_2 = 4$, the constraint $x_1 + x_2 = 6$ gives $x_1 = 2$. Then $Z = 2 + 2(4) = 10$, which beats $8$ at $(0,4)$ and $6$ at $(6,0)$, so $(2, 4)$ is optimal.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    }
+  ]
+}

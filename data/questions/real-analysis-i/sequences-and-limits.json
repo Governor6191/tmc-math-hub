@@ -1,0 +1,453 @@
+{
+  "courseId": "real-analysis-i",
+  "topicId": "sequences-and-limits",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-analysis-i-sequences-and-limits-001",
+      "stem": "The $\\varepsilon$-$N$ definition states that $\\lim_{n\\to\\infty} x_n = L$ means:",
+      "options": [
+        "For every $\\varepsilon > 0$ there is $N$ with $|x_n - L| < \\varepsilon$ for some $n \\geq N$.",
+        "For some $\\varepsilon > 0$ there is $N$ with $|x_n - L| < \\varepsilon$ for all $n \\geq N$.",
+        "For every $\\varepsilon > 0$ there exists $N \\in \\mathbb{N}$ such that $|x_n - L| < \\varepsilon$ for all $n \\geq N$.",
+        "For every $N$ there is $\\varepsilon > 0$ with $|x_n - L| < \\varepsilon$."
+      ],
+      "answer": 2,
+      "explanation": "Convergence means: no matter how small $\\varepsilon > 0$ is, the terms are eventually within $\\varepsilon$ of $L$, that is, there is an index $N$ beyond which all terms satisfy $|x_n - L| < \\varepsilon$. The quantifier order ($\\forall \\varepsilon\\, \\exists N\\, \\forall n \\geq N$) is essential; weakening any quantifier changes the meaning.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-002",
+      "stem": "Compute $\\displaystyle \\lim_{n\\to\\infty} \\frac{n}{2n + 1}$.",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "$1$",
+        "$0$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "Divide numerator and denominator by $n$: $\\frac{n}{2n+1} = \\frac{1}{2 + 1/n}$. As $n \\to \\infty$, $1/n \\to 0$, so the limit is $\\frac{1}{2}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-003",
+      "stem": "Which statement is the Monotone Convergence Theorem?",
+      "options": [
+        "A monotone sequence converges if and only if it is unbounded.",
+        "Every bounded sequence converges.",
+        "Every convergent sequence is monotone.",
+        "A monotone sequence converges if and only if it is bounded."
+      ],
+      "answer": 3,
+      "explanation": "The Monotone Convergence Theorem says a monotone sequence converges precisely when it is bounded; an increasing bounded sequence converges to its supremum and a decreasing bounded one to its infimum. Bounded sequences in general need not converge (for example $(-1)^n$), so monotonicity is essential.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-004",
+      "stem": "Does the sequence $x_n = (-1)^n$ converge?",
+      "options": [
+        "Yes, it converges to $-1$.",
+        "Yes, it converges to $0$.",
+        "No, it diverges because it oscillates between $-1$ and $1$.",
+        "Yes, it converges to $1$."
+      ],
+      "answer": 2,
+      "explanation": "The terms are $-1, 1, -1, 1, \\dots$. For convergence the tail must lie in any $\\varepsilon$-neighborhood of a single $L$; taking $\\varepsilon = 1$ shows no single $L$ works because consecutive terms stay distance $2$ apart. So the sequence diverges (by oscillation).",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-005",
+      "stem": "Compute $\\displaystyle \\lim_{n\\to\\infty} \\frac{3n^2 + 1}{n^2 - 2}$.",
+      "options": [
+        "$1$",
+        "$3$",
+        "$\\infty$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "Divide top and bottom by $n^2$: $\\frac{3 + 1/n^2}{1 - 2/n^2} \\to \\frac{3 + 0}{1 - 0} = 3$. The highest-degree terms dominate, so the limit is the ratio of leading coefficients.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-006",
+      "stem": "The Squeeze Theorem for sequences allows you to conclude $\\lim x_n = L$ when:",
+      "options": [
+        "$x_n$ is bounded.",
+        "$a_n \\leq x_n \\leq b_n$ for all $n$ with $a_n \\to L$ and $b_n \\to L$.",
+        "$x_n$ is monotone.",
+        "$x_n \\leq y_n$ for all $n$ and $y_n \\to L$."
+      ],
+      "answer": 1,
+      "explanation": "The Squeeze (Sandwich) Theorem requires $x_n$ trapped between two sequences $a_n \\leq x_n \\leq b_n$ that share a common limit $L$; then $x_n \\to L$ as well. A single one-sided bound or mere boundedness is not enough.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-007",
+      "stem": "Use the Squeeze Theorem to compute $\\displaystyle \\lim_{n\\to\\infty} \\frac{\\sin n}{n}$.",
+      "options": [
+        "$0$",
+        "$1$",
+        "$\\dfrac{1}{2}$",
+        "The limit does not exist because $\\sin n$ oscillates."
+      ],
+      "answer": 0,
+      "explanation": "Since $-1 \\leq \\sin n \\leq 1$, we have $-\\frac{1}{n} \\leq \\frac{\\sin n}{n} \\leq \\frac{1}{n}$. Both outer sequences tend to $0$, so by the Squeeze Theorem $\\frac{\\sin n}{n} \\to 0$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-008",
+      "stem": "If $\\lim x_n = 3$ and $\\lim y_n = 5$, what is $\\lim (2x_n - y_n)$ by the limit laws?",
+      "options": [
+        "$11$",
+        "$8$",
+        "$1$",
+        "$-2$"
+      ],
+      "answer": 2,
+      "explanation": "The limit laws give $\\lim(2x_n - y_n) = 2\\lim x_n - \\lim y_n = 2(3) - 5 = 1$. Linearity of limits applies because both sequences converge.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-009",
+      "stem": "Compute $\\displaystyle \\lim_{n\\to\\infty} \\left( \\sqrt{n+1} - \\sqrt{n} \\right)$.",
+      "options": [
+        "$1$",
+        "$\\infty$",
+        "$0$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "answer": 2,
+      "explanation": "Rationalize: $\\sqrt{n+1} - \\sqrt{n} = \\frac{(n+1) - n}{\\sqrt{n+1} + \\sqrt{n}} = \\frac{1}{\\sqrt{n+1} + \\sqrt{n}}$. The denominator grows without bound, so the limit is $0$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-010",
+      "stem": "Every convergent sequence is:",
+      "options": [
+        "unbounded.",
+        "bounded.",
+        "monotone.",
+        "eventually constant."
+      ],
+      "answer": 1,
+      "explanation": "A convergent sequence is bounded: beyond some $N$ all terms lie within $1$ of the limit, and the finitely many earlier terms are bounded too, so the whole sequence is bounded. The converse fails, since bounded sequences need not converge.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-011",
+      "stem": "The value of $\\displaystyle \\lim_{n\\to\\infty} \\left( 1 + \\frac{1}{n} \\right)^n$ is:",
+      "options": [
+        "$e$",
+        "$0$",
+        "$1$",
+        "$\\infty$"
+      ],
+      "answer": 0,
+      "explanation": "This is the classical definition of Euler's number: $\\left(1 + \\frac{1}{n}\\right)^n \\to e \\approx 2.718$. The sequence is increasing and bounded above, so by the Monotone Convergence Theorem it converges, and its limit is named $e$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-012",
+      "stem": "Compute $\\displaystyle \\lim_{n\\to\\infty} \\frac{2^n}{n!}$.",
+      "options": [
+        "$0$",
+        "$\\infty$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "For $n \\geq 3$, $\\frac{2^n}{n!} = \\frac{2}{1}\\cdot\\frac{2}{2}\\cdot\\frac{2}{3}\\cdots\\frac{2}{n} \\leq 2 \\cdot \\left(\\frac{2}{3}\\right)^{n-2} \\to 0$. Factorials grow faster than any exponential, so the limit is $0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-013",
+      "stem": "If a sequence converges, how many limits can it have?",
+      "options": [
+        "At most two.",
+        "Exactly one (limits are unique).",
+        "Possibly two, depending on the subsequence.",
+        "Infinitely many."
+      ],
+      "answer": 1,
+      "explanation": "Limits of sequences are unique. If $x_n \\to L$ and $x_n \\to M$, then for any $\\varepsilon > 0$ the terms are eventually within $\\varepsilon$ of both, forcing $|L - M| < 2\\varepsilon$ for all $\\varepsilon$, hence $L = M$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-014",
+      "stem": "Compute $\\displaystyle \\lim_{n\\to\\infty} \\frac{n^2}{2^n}$.",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "$1$",
+        "$0$",
+        "$\\infty$"
+      ],
+      "answer": 2,
+      "explanation": "Exponential growth dominates polynomial growth: $2^n$ eventually outpaces $n^2$. One way to see it is the ratio test idea, $\\frac{(n+1)^2/2^{n+1}}{n^2/2^n} = \\frac{1}{2}\\left(\\frac{n+1}{n}\\right)^2 \\to \\frac12 < 1$, so the terms tend to $0$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-015",
+      "stem": "A sequence $(x_n)$ is bounded means:",
+      "options": [
+        "$(x_n)$ is increasing.",
+        "$x_n \\to 0$.",
+        "There exists $M > 0$ such that $|x_n| \\leq M$ for all $n$.",
+        "$x_n$ is eventually within $1$ of its limit."
+      ],
+      "answer": 2,
+      "explanation": "Boundedness means a single constant $M$ controls the whole sequence: $|x_n| \\leq M$ for every $n$. This is independent of convergence or monotonicity. (Being eventually near a limit presupposes the sequence converges, which is stronger.)",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-016",
+      "stem": "Compute $\\displaystyle \\lim_{n\\to\\infty} \\frac{\\cos n}{n^2}$.",
+      "options": [
+        "$0$",
+        "$1$",
+        "$\\dfrac{1}{2}$",
+        "Does not exist"
+      ],
+      "answer": 0,
+      "explanation": "Since $|\\cos n| \\leq 1$, we have $\\left|\\frac{\\cos n}{n^2}\\right| \\leq \\frac{1}{n^2} \\to 0$. By the Squeeze Theorem the limit is $0$, regardless of how $\\cos n$ oscillates.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-017",
+      "stem": "The value of $\\displaystyle \\lim_{n\\to\\infty} n^{1/n}$ is:",
+      "options": [
+        "$e$",
+        "$0$",
+        "$1$",
+        "$\\infty$"
+      ],
+      "answer": 2,
+      "explanation": "Writing $n^{1/n} = e^{(\\ln n)/n}$ and noting $\\frac{\\ln n}{n} \\to 0$, we get $n^{1/n} \\to e^0 = 1$. The $n$-th root tames the polynomial growth, so the limit is $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-018",
+      "stem": "Let $x_1 = 1$ and $x_{n+1} = \\sqrt{2 + x_n}$. Assuming the sequence converges, find its limit $L$.",
+      "options": [
+        "$L = \\sqrt{2}$",
+        "$L = 4$",
+        "$L = 1$",
+        "$L = 2$"
+      ],
+      "answer": 3,
+      "explanation": "If $x_n \\to L$, then taking limits in $x_{n+1} = \\sqrt{2 + x_n}$ gives $L = \\sqrt{2 + L}$, so $L^2 = 2 + L$, that is $L^2 - L - 2 = (L-2)(L+1) = 0$. Since the terms are positive, $L = 2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-019",
+      "stem": "If $\\lim x_n = 0$ and $(y_n)$ is bounded, then $\\lim (x_n y_n)$ equals:",
+      "options": [
+        "$0$.",
+        "the limit of $y_n$, which may not exist.",
+        "$1$.",
+        "undefined in general."
+      ],
+      "answer": 0,
+      "explanation": "If $|y_n| \\leq M$ for all $n$, then $|x_n y_n| \\leq M|x_n| \\to 0$. A null sequence times a bounded sequence is null, even when $(y_n)$ itself does not converge.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-020",
+      "stem": "Compute $\\displaystyle \\lim_{n\\to\\infty} \\frac{3n - 1}{n + 2}$.",
+      "options": [
+        "$3$",
+        "$-\\dfrac{1}{2}$",
+        "$1$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "Divide by $n$: $\\frac{3 - 1/n}{1 + 2/n} \\to \\frac{3 - 0}{1 + 0} = 3$. The limit is the ratio of the leading coefficients of numerator and denominator.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-021",
+      "stem": "For a decreasing sequence that is bounded below, the Monotone Convergence Theorem says the limit equals:",
+      "options": [
+        "the first term.",
+        "the infimum of the set of terms.",
+        "zero.",
+        "the supremum of the set of terms."
+      ],
+      "answer": 1,
+      "explanation": "A decreasing sequence bounded below converges to the infimum of its range. (Dually, an increasing sequence bounded above converges to the supremum.) The terms approach the greatest lower bound from above.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-022",
+      "stem": "Which of the following sequences is bounded but NOT convergent?",
+      "options": [
+        "$x_n = \\dfrac{n}{n+1}$",
+        "$x_n = n$",
+        "$x_n = (-1)^n \\dfrac{n}{n+1}$",
+        "$x_n = \\dfrac{1}{n}$"
+      ],
+      "answer": 2,
+      "explanation": "The sequence $(-1)^n \\frac{n}{n+1}$ stays in $[-1, 1]$ (bounded) but its even terms approach $1$ and odd terms approach $-1$, so it has no single limit. The others either converge ($1/n \\to 0$, $\\frac{n}{n+1}\\to 1$) or are unbounded ($n$).",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-023",
+      "stem": "Compute $\\displaystyle \\lim_{n\\to\\infty} \\frac{n!}{n^n}$.",
+      "options": [
+        "$1$",
+        "$0$",
+        "$\\dfrac{1}{e}$",
+        "$\\infty$"
+      ],
+      "answer": 1,
+      "explanation": "Write $\\frac{n!}{n^n} = \\frac{1}{n}\\cdot\\frac{2}{n}\\cdots\\frac{n}{n} \\leq \\frac{1}{n}\\cdot 1 \\cdots 1 = \\frac{1}{n} \\to 0$, since each factor after the first is at most $1$ and the first factor is $1/n$. So the limit is $0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-024",
+      "stem": "To prove $\\lim_{n\\to\\infty} \\frac{1}{n} = 0$ directly from the definition, given $\\varepsilon > 0$ you should choose $N$ so that:",
+      "options": [
+        "$N$ does not exist for small $\\varepsilon$.",
+        "$N < \\dfrac{1}{\\varepsilon}$.",
+        "$N = \\varepsilon$.",
+        "$N > \\dfrac{1}{\\varepsilon}$ (possible by the Archimedean property)."
+      ],
+      "answer": 3,
+      "explanation": "We need $|1/n - 0| = 1/n < \\varepsilon$ for all $n \\geq N$, which holds when $N > 1/\\varepsilon$. The Archimedean property guarantees such an $N \\in \\mathbb{N}$ exists. Then $n \\geq N$ gives $1/n \\leq 1/N < \\varepsilon$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-025",
+      "format": "cloze",
+      "stem": "Evaluate $\\displaystyle \\lim_{n\\to\\infty} \\frac{4n^2 - 3n}{2n^2 + 5}$ and state whether the sequence converges.",
+      "solution": "Dividing numerator and denominator by $n^2$ gives $\\frac{4 - 3/n}{2 + 5/n^2}$. As $n \\to \\infty$ the lower-order terms vanish, so the limit is {{1}}. Because the limit is a finite real number, the sequence {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges"
+          ],
+          "answer": "converges"
+        }
+      ],
+      "explanation": "The ratio of leading coefficients is $4/2 = 2$, so the limit is $2$. A sequence with a finite limit converges by definition.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-026",
+      "format": "cloze",
+      "stem": "Apply the Squeeze Theorem to $x_n = \\dfrac{(-1)^n}{n+1}$.",
+      "solution": "Since $|(-1)^n| = 1$, we have the bound $|x_n| \\leq \\frac{1}{n+1}$, and the right side tends to $0$ as $n$ grows. By the Squeeze Theorem the limit of $x_n$ equals {{1}}. Therefore the sequence {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges"
+          ],
+          "answer": "converges"
+        }
+      ],
+      "explanation": "We have $-\\frac{1}{n+1} \\leq x_n \\leq \\frac{1}{n+1}$, and both bounds go to $0$, so $x_n \\to 0$. A null limit means the sequence converges (to $0$).",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-027",
+      "format": "cloze",
+      "stem": "The recursive sequence $x_1 = 1$, $x_{n+1} = \\tfrac{1}{2}(x_n + 6)$ is increasing and bounded above by $6$.",
+      "solution": "By the Monotone Convergence Theorem the sequence converges, so a limit $L$ exists. Passing to the limit in the recursion gives $L = \\tfrac{1}{2}(L + 6)$, which solves to give $L =$ {{1}}. The Monotone Convergence Theorem applies here because the sequence is monotone and {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "bounded",
+            "unbounded"
+          ],
+          "answer": "bounded"
+        }
+      ],
+      "explanation": "Solving $L = \\frac{1}{2}(L + 6)$ gives $2L = L + 6$, so $L = 6$. The Monotone Convergence Theorem requires the sequence to be monotone and bounded, both of which hold.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-sequences-and-limits-028",
+      "format": "cloze",
+      "stem": "Consider $x_n = (-1)^n + \\dfrac{1}{n}$.",
+      "solution": "The even-indexed terms approach $1$ and the odd-indexed terms approach $-1$, so there are two distinct subsequential limits. The larger subsequential limit is {{1}} and the smaller is {{2}}. Because these differ, the sequence {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "diverges",
+            "converges"
+          ],
+          "answer": "diverges"
+        }
+      ],
+      "explanation": "For even $n$, $x_n = 1 + \\frac1n \\to 1$; for odd $n$, $x_n = -1 + \\frac1n \\to -1$. Two different subsequential limits mean the sequence has no single limit, so it diverges.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    }
+  ]
+}

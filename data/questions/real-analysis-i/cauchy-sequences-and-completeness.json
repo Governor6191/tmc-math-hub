@@ -1,0 +1,456 @@
+{
+  "courseId": "real-analysis-i",
+  "topicId": "cauchy-sequences-and-completeness",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-001",
+      "stem": "A sequence $(x_n)$ is a Cauchy sequence if:",
+      "options": [
+        "for every $\\varepsilon > 0$ there is $N$ with $|x_n - L| < \\varepsilon$ for $n \\geq N$.",
+        "for every $\\varepsilon > 0$ there exists $N$ such that $|x_m - x_n| < \\varepsilon$ for all $m, n \\geq N$.",
+        "$|x_{n+1} - x_n| \\to 0$.",
+        "the sequence is bounded."
+      ],
+      "answer": 1,
+      "explanation": "The Cauchy condition compares terms to each other, not to a limit: beyond some index $N$, any two terms $x_m, x_n$ are within $\\varepsilon$. Note that $|x_{n+1} - x_n| \\to 0$ (consecutive terms close) is weaker and does not imply Cauchy; the harmonic partial sums are the standard counterexample.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-002",
+      "stem": "Which implication holds in every metric space, including $\\mathbb{R}$?",
+      "options": [
+        "Every convergent sequence is a Cauchy sequence.",
+        "Every Cauchy sequence is monotone.",
+        "Every Cauchy sequence converges.",
+        "Every bounded sequence is Cauchy."
+      ],
+      "answer": 0,
+      "explanation": "If $x_n \\to L$, then terms eventually cluster near $L$, hence near each other, so the sequence is Cauchy. This direction is always true. The converse (Cauchy implies convergent) holds in $\\mathbb{R}$ because $\\mathbb{R}$ is complete, but fails in spaces like $\\mathbb{Q}$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-003",
+      "stem": "The completeness of $\\mathbb{R}$ (Cauchy criterion) asserts that:",
+      "options": [
+        "every monotone sequence is Cauchy.",
+        "a sequence of real numbers converges if and only if it is Cauchy.",
+        "every bounded sequence converges.",
+        "every sequence has a Cauchy subsequence."
+      ],
+      "answer": 1,
+      "explanation": "In $\\mathbb{R}$, convergence and the Cauchy property are equivalent. The hard direction, every Cauchy sequence of reals converges, is exactly the completeness of $\\mathbb{R}$. This lets you prove convergence without knowing the limit in advance.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-004",
+      "stem": "Why is $\\mathbb{Q}$ not complete?",
+      "options": [
+        "There are no Cauchy sequences in $\\mathbb{Q}$.",
+        "There exists a Cauchy sequence of rationals whose limit is irrational, so it has no limit in $\\mathbb{Q}$.",
+        "Some rational sequence is unbounded.",
+        "Cauchy sequences of rationals need not have a limit."
+      ],
+      "answer": 1,
+      "explanation": "Take rational approximations $1, 1.4, 1.41, 1.414, \\dots$ to $\\sqrt2$. This sequence is Cauchy, but its limit $\\sqrt2$ is irrational, so it does not converge within $\\mathbb{Q}$. A Cauchy sequence with no limit in the space is precisely a failure of completeness.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-005",
+      "stem": "Every Cauchy sequence in $\\mathbb{R}$ is:",
+      "options": [
+        "unbounded.",
+        "eventually constant.",
+        "monotone.",
+        "bounded."
+      ],
+      "answer": 3,
+      "explanation": "A Cauchy sequence is bounded: take $\\varepsilon = 1$ to get $N$ with all terms past $N$ within $1$ of $x_N$, and the finitely many earlier terms are bounded too. (This boundedness is a key step toward proving Cauchy sequences converge in $\\mathbb{R}$.)",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-006",
+      "stem": "A sequence $(x_n)$ is contractive if there is a constant $C$ with $0 < C < 1$ such that:",
+      "options": [
+        "$|x_{n+1} - x_n| \\leq C |x_n - x_{n-1}|$ for all $n$.",
+        "$|x_n| \\leq C$ for all $n$.",
+        "$|x_{n+1} - x_n| \\geq C |x_n - x_{n-1}|$ for all $n$.",
+        "$x_{n+1} = C x_n$ for all $n$."
+      ],
+      "answer": 0,
+      "explanation": "Contractive means each successive gap shrinks by at least a fixed factor $C \\in (0,1)$: $|x_{n+1}-x_n| \\leq C|x_n - x_{n-1}|$. The gaps then decay geometrically, which forces the sequence to be Cauchy and hence convergent in $\\mathbb{R}$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-007",
+      "stem": "Every contractive sequence in $\\mathbb{R}$:",
+      "options": [
+        "is unbounded.",
+        "is constant.",
+        "converges.",
+        "diverges."
+      ],
+      "answer": 2,
+      "explanation": "A contractive sequence is Cauchy: its consecutive differences are bounded by a geometric sequence $C^{n}|x_1 - x_0|$, so tails become small. Since $\\mathbb{R}$ is complete, every Cauchy sequence converges, hence so does every contractive sequence.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-008",
+      "stem": "In $\\mathbb{R}$, can a sequence be Cauchy but not convergent?",
+      "options": [
+        "No, since $\\mathbb{R}$ is complete every Cauchy sequence converges.",
+        "Yes, if it oscillates.",
+        "Yes, if it is unbounded.",
+        "Yes, if its terms are irrational."
+      ],
+      "answer": 0,
+      "explanation": "Completeness of $\\mathbb{R}$ means exactly that Cauchy implies convergent. So in $\\mathbb{R}$ there is no Cauchy sequence that fails to converge. (Such examples exist only in incomplete spaces like $\\mathbb{Q}$.)",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-009",
+      "stem": "Is the sequence $x_n = \\dfrac{1}{n}$ a Cauchy sequence?",
+      "options": [
+        "It cannot be determined.",
+        "No, because the terms are all distinct.",
+        "Yes, because it converges to $0$ in $\\mathbb{R}$.",
+        "No, because $1/n$ does not converge."
+      ],
+      "answer": 2,
+      "explanation": "$1/n \\to 0$, and every convergent sequence is Cauchy. So $(1/n)$ is Cauchy. Concretely, for $m, n \\geq N$ we have $|1/m - 1/n| < 1/N$, which is small for large $N$.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-010",
+      "stem": "Why are the partial sums $s_n = \\sum_{k=1}^{n} \\dfrac{1}{k}$ of the harmonic series NOT a Cauchy sequence?",
+      "options": [
+        "Because $1/k$ does not tend to $0$.",
+        "Because $s_n$ is decreasing.",
+        "Because $|s_{2n} - s_n| \\geq \\tfrac{1}{2}$ for all $n$, so the Cauchy condition fails.",
+        "Because the terms are positive."
+      ],
+      "answer": 2,
+      "explanation": "Group the new terms: $s_{2n} - s_n = \\sum_{k=n+1}^{2n}\\frac1k \\geq n\\cdot\\frac{1}{2n} = \\frac12$. Since differences of far-apart terms stay at least $\\tfrac12$, no $N$ works for $\\varepsilon = \\tfrac12$, so $(s_n)$ is not Cauchy (and the series diverges).",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-011",
+      "stem": "The Cauchy criterion for a series $\\sum a_n$ states that the series converges if and only if:",
+      "options": [
+        "the terms are positive.",
+        "$a_n \\to 0$.",
+        "the partial sums are monotone.",
+        "for every $\\varepsilon > 0$ there is $N$ with $\\left| \\sum_{k=m+1}^{n} a_k \\right| < \\varepsilon$ for all $n > m \\geq N$."
+      ],
+      "answer": 3,
+      "explanation": "A series converges iff its partial sums form a Cauchy sequence, which means the tail blocks $\\sum_{k=m+1}^n a_k$ can be made arbitrarily small. The condition $a_n \\to 0$ is the special case $n = m+1$ and is only necessary, not sufficient.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-012",
+      "stem": "Let $x_1 = 1$ and $x_{n+1} = \\tfrac{1}{3} x_n + 1$. This sequence is contractive with constant $C = \\tfrac{1}{3}$. Its limit is:",
+      "options": [
+        "$\\tfrac{1}{3}$.",
+        "$3$.",
+        "$\\tfrac{3}{2}$.",
+        "$1$."
+      ],
+      "answer": 2,
+      "explanation": "The differences satisfy $|x_{n+1} - x_n| = \\tfrac13|x_n - x_{n-1}|$, so the sequence is contractive and therefore convergent. Taking limits in $L = \\tfrac13 L + 1$ gives $\\tfrac23 L = 1$, so $L = \\tfrac32$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-013",
+      "stem": "The advantage of the Cauchy criterion over the definition of convergence is that:",
+      "options": [
+        "it requires knowing the limit in advance.",
+        "you can prove convergence without knowing the value of the limit.",
+        "it only applies to monotone sequences.",
+        "it requires the terms to be positive."
+      ],
+      "answer": 1,
+      "explanation": "The Cauchy criterion uses only the terms of the sequence, comparing them to each other, so it establishes convergence in $\\mathbb{R}$ without identifying the limit beforehand. This is invaluable when the limit has no simple closed form.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-014",
+      "stem": "Is the sequence $x_n = (-1)^n$ a Cauchy sequence?",
+      "options": [
+        "Yes, because consecutive terms differ.",
+        "Yes, because it is bounded.",
+        "No, because $|x_{n+1} - x_n| = 2$ for all $n$, so it cannot be Cauchy.",
+        "Yes, because it has subsequential limits."
+      ],
+      "answer": 2,
+      "explanation": "Consecutive terms always differ by $2$, so taking $\\varepsilon = 1$ shows no index $N$ makes all later terms within $\\varepsilon$ of each other. Hence $(-1)^n$ is not Cauchy, consistent with its divergence. Boundedness alone does not make a sequence Cauchy.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-015",
+      "stem": "Which property must any Cauchy sequence of real numbers possess?",
+      "options": [
+        "It is increasing.",
+        "It is unbounded.",
+        "It converges to a real number.",
+        "It is eventually zero."
+      ],
+      "answer": 2,
+      "explanation": "By completeness of $\\mathbb{R}$, every Cauchy sequence of reals converges to a real limit. It need not be monotone or eventually zero, and it is in fact bounded, not unbounded.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-016",
+      "stem": "If $(x_n)$ is Cauchy and has a subsequence converging to $L$, then:",
+      "options": [
+        "$(x_n)$ may diverge.",
+        "only the subsequence converges.",
+        "$(x_n)$ itself converges to $L$.",
+        "$L$ must be irrational."
+      ],
+      "answer": 2,
+      "explanation": "A Cauchy sequence with a convergent subsequence converges to the same limit: once terms are mutually close (Cauchy) and a subsequence approaches $L$, the whole sequence is dragged to $L$. This is a standard lemma in proving completeness via Bolzano-Weierstrass.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-017",
+      "stem": "For a contractive sequence with constant $C$, the gap $|x_{n+1} - x_n|$ is bounded above by:",
+      "options": [
+        "$n \\cdot |x_2 - x_1|$.",
+        "$C |x_2 - x_1|$ independent of $n$.",
+        "$|x_2 - x_1|$ for all $n$.",
+        "$C^{n-1} |x_2 - x_1|$."
+      ],
+      "answer": 3,
+      "explanation": "Iterating $|x_{n+1} - x_n| \\leq C|x_n - x_{n-1}|$ gives $|x_{n+1} - x_n| \\leq C^{n-1}|x_2 - x_1|$. The geometric decay (since $0 < C < 1$) is what makes the tails summable and the sequence Cauchy.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-018",
+      "stem": "A Cauchy sequence whose terms all lie in $\\mathbb{Q}$:",
+      "options": [
+        "always has a rational limit.",
+        "cannot exist.",
+        "always converges in $\\mathbb{R}$, but the limit may be irrational.",
+        "is never bounded."
+      ],
+      "answer": 2,
+      "explanation": "Viewed inside the complete space $\\mathbb{R}$, the sequence converges to some real number, but that limit can be irrational (as with rational approximations to $\\sqrt2$). This is exactly why $\\mathbb{Q}$ is incomplete while $\\mathbb{R}$ is complete.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-019",
+      "stem": "Which of the following is a complete ordered field?",
+      "options": [
+        "the integers $\\mathbb{Z}$.",
+        "$\\mathbb{R}$.",
+        "$\\mathbb{Q}$.",
+        "the rationals in $[0,1]$."
+      ],
+      "answer": 1,
+      "explanation": "$\\mathbb{R}$ is the (essentially unique) complete ordered field: every Cauchy sequence of reals converges, equivalently every nonempty bounded set has a supremum. $\\mathbb{Q}$ and $\\mathbb{Z}$ are not complete, and $\\mathbb{Z}$ is not even a field.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-020",
+      "stem": "To verify directly that $x_n = \\dfrac{n+1}{n}$ is Cauchy, you estimate $|x_m - x_n|$ for $m > n$ as:",
+      "options": [
+        "$m - n$.",
+        "$\\left| \\dfrac{1}{m} - \\dfrac{1}{n} \\right| \\leq \\dfrac{1}{n}$, which is small for large $n$.",
+        "always greater than $1$.",
+        "exactly $2$."
+      ],
+      "answer": 1,
+      "explanation": "Since $x_n = 1 + \\tfrac1n$, we get $|x_m - x_n| = \\left|\\tfrac1m - \\tfrac1n\\right| \\leq \\tfrac1n$. Choosing $n \\geq N > 1/\\varepsilon$ makes this less than $\\varepsilon$, confirming the Cauchy property (the sequence converges to $1$).",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-021",
+      "stem": "Which statement correctly relates Cauchy sequences and convergence in a general metric space?",
+      "options": [
+        "Cauchy and convergent are always equivalent.",
+        "Convergent implies Cauchy, but Cauchy implies convergent only in complete spaces.",
+        "Cauchy implies convergent always, but not conversely.",
+        "Neither implies the other."
+      ],
+      "answer": 1,
+      "explanation": "In any metric space, convergent sequences are Cauchy. The reverse implication, Cauchy implies convergent, characterizes completeness and can fail (e.g. in $\\mathbb{Q}$). $\\mathbb{R}$ is complete, so there both directions hold.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-022",
+      "stem": "The recursion $x_{n+1} = \\tfrac{1}{2}\\left( x_n + \\tfrac{2}{x_n} \\right)$ with $x_1 = 2$ (Newton's method for $\\sqrt2$) produces a sequence that converges to:",
+      "options": [
+        "$2$.",
+        "$\\sqrt{2}$.",
+        "$1$.",
+        "$0$."
+      ],
+      "answer": 1,
+      "explanation": "If the sequence converges to $L > 0$, then $L = \\tfrac12(L + 2/L)$, giving $2L = L + 2/L$, so $L^2 = 2$ and $L = \\sqrt2$. The iteration is contractive near $\\sqrt2$, so it converges; this is the classic case where the Cauchy criterion guarantees a limit that is irrational.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-023",
+      "stem": "Which sequence is Cauchy in $\\mathbb{R}$?",
+      "options": [
+        "$x_n = \\sin\\!\\left( \\tfrac{n\\pi}{2} \\right)$.",
+        "$x_n = \\dfrac{2n}{n+3}$.",
+        "$x_n = n$.",
+        "$x_n = (-1)^n$."
+      ],
+      "answer": 1,
+      "explanation": "$x_n = \\frac{2n}{n+3} \\to 2$, and convergent sequences are Cauchy. The others fail: $n$ is unbounded, and both $(-1)^n$ and $\\sin(n\\pi/2)$ oscillate without settling, so they are not Cauchy.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-024",
+      "stem": "The statement 'every Cauchy sequence in $\\mathbb{R}$ converges' is logically equivalent to which other completeness statement?",
+      "options": [
+        "Every nonempty subset of $\\mathbb{R}$ bounded above has a supremum.",
+        "The Archimedean property.",
+        "Every continuous function is bounded.",
+        "The triangle inequality."
+      ],
+      "answer": 0,
+      "explanation": "The Cauchy completeness of $\\mathbb{R}$ and the supremum (least-upper-bound) property are equivalent formulations of completeness; each can be derived from the other (together with the Archimedean property). The Archimedean property and the triangle inequality are separate facts, not equivalent to completeness.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-025",
+      "format": "cloze",
+      "stem": "Consider the contractive recursion $x_1 = 0$, $x_{n+1} = \\tfrac{1}{4} x_n + 3$, which has contraction constant $C = \\tfrac{1}{4}$.",
+      "solution": "Because the constant satisfies $0 < C < 1$, the sequence is contractive, hence Cauchy, hence convergent in $\\mathbb{R}$. Passing to the limit in $L = \\tfrac{1}{4} L + 3$ and solving gives $L =$ {{1}}. The sequence therefore {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges"
+          ],
+          "answer": "converges"
+        }
+      ],
+      "explanation": "Solving $L = \\tfrac14 L + 3$ gives $\\tfrac34 L = 3$, so $L = 4$. A contractive sequence is Cauchy and, by completeness of $\\mathbb{R}$, converges.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-026",
+      "format": "cloze",
+      "stem": "Decide whether $x_n = \\dfrac{3n - 2}{n}$ is a Cauchy sequence in $\\mathbb{R}$.",
+      "solution": "Rewriting, $x_n = 3 - \\tfrac{2}{n}$, so the sequence converges to the value {{1}} as $n \\to \\infty$. Since every convergent sequence in $\\mathbb{R}$ is Cauchy, this sequence {{2}} Cauchy.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "As $n \\to \\infty$, $3 - \\tfrac2n \\to 3$, so the limit is $3$. A convergent sequence is always Cauchy, so the sequence is Cauchy.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-027",
+      "format": "cloze",
+      "stem": "A sequence of rationals is built so that $x_n$ is the decimal expansion of $\\sqrt{3}$ truncated to $n$ places: $1.7,\\ 1.73,\\ 1.732,\\ \\dots$",
+      "solution": "Consecutive truncations differ by at most $10^{-n}$, so the sequence is Cauchy. Its limit in $\\mathbb{R}$ is $\\sqrt{3}$, whose square is the integer {{1}}. Because that limit is irrational, the sequence has no limit inside $\\mathbb{Q}$, which shows that $\\mathbb{Q}$ {{2}} complete.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is not",
+            "is"
+          ],
+          "answer": "is not"
+        }
+      ],
+      "explanation": "The truncations form a Cauchy sequence converging to $\\sqrt3$, and $(\\sqrt3)^2 = 3$. Since $\\sqrt3$ is irrational, the sequence has no rational limit, demonstrating that $\\mathbb{Q}$ is not complete.",
+      "difficulty": "core",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    },
+    {
+      "id": "real-analysis-i-cauchy-sequences-and-completeness-028",
+      "format": "cloze",
+      "stem": "Examine whether the harmonic partial sums $s_n = 1 + \\tfrac{1}{2} + \\cdots + \\tfrac{1}{n}$ form a Cauchy sequence.",
+      "solution": "Consider the block $s_{2n} - s_n = \\tfrac{1}{n+1} + \\cdots + \\tfrac{1}{2n}$, which has $n$ terms each at least $\\tfrac{1}{2n}$. Hence $s_{2n} - s_n$ is at least the constant {{1}} (enter as a decimal) for every $n$. Because these differences do not shrink to $0$, the sequence $(s_n)$ {{2}} Cauchy, and the harmonic series {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is not",
+            "is"
+          ],
+          "answer": "is not"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "diverges",
+            "converges"
+          ],
+          "answer": "diverges"
+        }
+      ],
+      "explanation": "Each of the $n$ terms in $s_{2n}-s_n$ is at least $\\tfrac{1}{2n}$, so the block sum is at least $n\\cdot\\tfrac{1}{2n} = \\tfrac12$. Differences bounded below by $\\tfrac12$ violate the Cauchy condition, so $(s_n)$ is not Cauchy and the harmonic series diverges.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle and Sherbert, Introduction to Real Analysis"
+    }
+  ]
+}

@@ -1,0 +1,459 @@
+{
+  "courseId": "linear-algebra-ii",
+  "topicId": "eigenvalues-and-eigenvectors",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-001",
+      "stem": "The characteristic equation used to find eigenvalues of a matrix $A$ is:",
+      "options": [
+        "$\\det(A) - \\lambda = 0$",
+        "$A - \\lambda I = 0$",
+        "$\\operatorname{tr}(A - \\lambda I) = 0$",
+        "$\\det(A - \\lambda I) = 0$"
+      ],
+      "answer": 3,
+      "explanation": "Eigenvalues are the scalars $\\lambda$ for which $Av = \\lambda v$ has a nonzero solution $v$, which forces $A - \\lambda I$ to be singular, that is $\\det(A - \\lambda I) = 0$. The trap option $A - \\lambda I = 0$ sets the whole matrix to zero, which would force $A = \\lambda I$ and is far too strong.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-002",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 5 & 2 \\\\ 2 & 5 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 10, 21$",
+        "$\\lambda = 5, 2$",
+        "$\\lambda = -3, -7$",
+        "$\\lambda = 3, 7$"
+      ],
+      "answer": 3,
+      "explanation": "The characteristic equation is $\\det(A - \\lambda I) = (5 - \\lambda)^2 - 4 = \\lambda^2 - 10\\lambda + 21 = 0$. Factoring gives $(\\lambda - 3)(\\lambda - 7) = 0$, so $\\lambda = 3$ and $\\lambda = 7$. The sum $3 + 7 = 10$ matches the trace and the product $21$ matches the determinant $25 - 4$. The trap option $\\lambda = 10, 21$ mistakes the trace and determinant for the eigenvalues.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-003",
+      "stem": "What are the eigenvalues of the upper triangular matrix $A = \\begin{pmatrix} 6 & 9 \\\\ 0 & -4 \\end{pmatrix}$?",
+      "options": [
+        "$\\lambda = 2, -6$",
+        "$\\lambda = 6, -4$",
+        "$\\lambda = -24$",
+        "$\\lambda = 6, 9$"
+      ],
+      "answer": 1,
+      "explanation": "The eigenvalues of a triangular matrix are its diagonal entries, since $\\det(A - \\lambda I) = (6 - \\lambda)(-4 - \\lambda)$ is already factored. So $\\lambda = 6$ and $\\lambda = -4$. The off-diagonal entry $9$ does not matter. The trap option $\\lambda = 6, 9$ reads a row instead of the diagonal.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-004",
+      "stem": "An eigenvalue of $A = \\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix}$ is $\\lambda = 2$. Find a corresponding eigenvector.",
+      "options": [
+        "$\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}$"
+      ],
+      "answer": 2,
+      "explanation": "Form $A - 2I = \\begin{pmatrix} 1 & 1 \\\\ 0 & 0 \\end{pmatrix}$ and solve $(A - 2I)v = \\mathbf{0}$. The first row gives $x + y = 0$, so $x = -y$; taking $y = 1$ gives $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}$, which is parallel to $\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$. Checking, $A\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ -2 \\end{pmatrix} = 2\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$. The trap $\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$ is the eigenvector for $\\lambda = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-005",
+      "stem": "The trace of a matrix $A$ is $11$ and one eigenvalue is $\\lambda = 4$. If $A$ is $2 \\times 2$, what is the other eigenvalue?",
+      "options": [
+        "$\\lambda = 44$",
+        "$\\lambda = -7$",
+        "$\\lambda = 7$",
+        "$\\lambda = 15$"
+      ],
+      "answer": 2,
+      "explanation": "For a $2 \\times 2$ matrix the eigenvalues sum to the trace, so $4 + \\lambda_2 = 11$ gives $\\lambda_2 = 7$. The trap option $\\lambda = 15$ adds the known eigenvalue to the trace rather than subtracting it.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-006",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 0 & -1 \\\\ 2 & -3 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 1, 2$",
+        "$\\lambda = 3, 2$",
+        "$\\lambda = -1, -2$",
+        "$\\lambda = 0, -3$"
+      ],
+      "answer": 2,
+      "explanation": "The characteristic equation is $\\det(A - \\lambda I) = (0 - \\lambda)(-3 - \\lambda) - (-1)(2) = \\lambda^2 + 3\\lambda + 2 = 0$. Factoring gives $(\\lambda + 1)(\\lambda + 2) = 0$, so $\\lambda = -1$ and $\\lambda = -2$. The sum $-3$ is the trace and the product $2$ is the determinant. The trap option $\\lambda = 1, 2$ flips both signs.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-007",
+      "stem": "The eigenvalues of $A$ are $\\lambda = 2$ (algebraic multiplicity $2$) and $\\lambda = 5$. The geometric multiplicity of $\\lambda = 2$ is found to be $1$. Which statement is true?",
+      "options": [
+        "$A$ has four distinct eigenvalues",
+        "the geometric multiplicity exceeds the algebraic multiplicity",
+        "$\\lambda = 2$ is a defective eigenvalue",
+        "$A$ must be the zero matrix"
+      ],
+      "answer": 2,
+      "explanation": "The geometric multiplicity ($1$) is strictly less than the algebraic multiplicity ($2$) for $\\lambda = 2$, which is exactly the meaning of a defective eigenvalue. Geometric multiplicity can never exceed algebraic multiplicity, so that option is impossible. A defective eigenvalue is the reason a matrix may fail to be diagonalizable.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-008",
+      "stem": "Find the eigenvalues of the $3 \\times 3$ matrix $A = \\begin{pmatrix} 2 & 0 & 0 \\\\ 1 & 3 & 0 \\\\ 4 & 5 & -1 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = -1, 3, 5$",
+        "$\\lambda = 2, 1, 4$",
+        "$\\lambda = 2, 3, -1$",
+        "$\\lambda = 6$"
+      ],
+      "answer": 2,
+      "explanation": "The matrix is lower triangular, so its eigenvalues are the diagonal entries: $\\lambda = 2$, $\\lambda = 3$, and $\\lambda = -1$. The characteristic polynomial is $(2 - \\lambda)(3 - \\lambda)(-1 - \\lambda)$, already factored. The entries below the diagonal play no role. The trap option $\\lambda = 2, 1, 4$ reads the first column instead of the diagonal.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-009",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 4 & 3 \\\\ 1 & 2 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 1, 5$",
+        "$\\lambda = 6, 5$",
+        "$\\lambda = -1, -5$",
+        "$\\lambda = 4, 2$"
+      ],
+      "answer": 0,
+      "explanation": "The characteristic equation is $\\det(A - \\lambda I) = (4 - \\lambda)(2 - \\lambda) - (3)(1) = \\lambda^2 - 6\\lambda + 5 = 0$. Factoring gives $(\\lambda - 1)(\\lambda - 5) = 0$, so $\\lambda = 1$ and $\\lambda = 5$. The sum $6$ is the trace and the product $5$ is the determinant. The trap option $\\lambda = 6, 5$ confuses the trace and determinant with the eigenvalues.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-010",
+      "stem": "The eigenspace of $A$ for $\\lambda = 3$ is which set?",
+      "options": [
+        "the column space of $A - 3I$",
+        "the null space of $A - 3I$, that is all $v$ with $(A - 3I)v = \\mathbf{0}$",
+        "the set of all $v$ with $\\det(A - 3I) = 0$",
+        "the set of all $v$ with $Av = 3$"
+      ],
+      "answer": 1,
+      "explanation": "The eigenspace for $\\lambda$ is the set of all vectors $v$ satisfying $Av = \\lambda v$, equivalently $(A - \\lambda I)v = \\mathbf{0}$, which is exactly the null space of $A - \\lambda I$ (including $\\mathbf{0}$). The trap writing $Av = 3$ is dimensionally wrong, since $Av$ is a vector and $3$ is a scalar.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-011",
+      "stem": "A $2 \\times 2$ matrix $A$ has eigenvalues $\\lambda = 6$ and $\\lambda = -2$. What is the determinant of $A$?",
+      "options": [
+        "$-12$",
+        "$4$",
+        "$12$",
+        "$-4$"
+      ],
+      "answer": 0,
+      "explanation": "The determinant equals the product of the eigenvalues, so $\\det(A) = 6 \\cdot (-2) = -12$. The sum $6 + (-2) = 4$ would give the trace instead. The trap option $4$ reports the trace rather than the determinant.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-012",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 2 & -1 \\\\ 1 & 2 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 2 \\pm i$",
+        "$\\lambda = 1, 3$",
+        "$\\lambda = 4, 5$",
+        "$\\lambda = 2, -1$"
+      ],
+      "answer": 0,
+      "explanation": "The characteristic equation is $\\det(A - \\lambda I) = (2 - \\lambda)^2 - (-1)(1) = \\lambda^2 - 4\\lambda + 5 = 0$. The discriminant is $16 - 20 = -4 < 0$, so the roots are complex: $\\lambda = \\frac{4 \\pm \\sqrt{-4}}{2} = 2 \\pm i$. A real matrix can have complex conjugate eigenvalues, typical of a rotation-scaling. The trap option $\\lambda = 1, 3$ would solve $\\lambda^2 - 4\\lambda + 3 = 0$, the wrong constant term.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-013",
+      "stem": "An eigenvalue of $A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$ is $\\lambda = 3$. Which is a corresponding eigenvector?",
+      "options": [
+        "$\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$"
+      ],
+      "answer": 2,
+      "explanation": "Form $A - 3I = \\begin{pmatrix} -2 & 2 \\\\ 2 & -2 \\end{pmatrix}$; the first row gives $-2x + 2y = 0$, so $x = y$, yielding $\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$. Check: $A\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 3 \\end{pmatrix} = 3\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$. The trap $\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$ is the eigenvector for the other eigenvalue $\\lambda = -1$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-014",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 7 & 0 \\\\ 4 & 7 \\end{pmatrix}$ and state the algebraic multiplicity of each.",
+      "options": [
+        "$\\lambda = 7, -7$ each with multiplicity $1$",
+        "$\\lambda = 7$ with algebraic multiplicity $2$",
+        "$\\lambda = 7, 4$ each with multiplicity $1$",
+        "$\\lambda = 11$ with multiplicity $2$"
+      ],
+      "answer": 1,
+      "explanation": "The matrix is lower triangular, so $\\det(A - \\lambda I) = (7 - \\lambda)^2$. The only root is $\\lambda = 7$, repeated, so its algebraic multiplicity is $2$. The off-diagonal entry $4$ does not change the eigenvalues. The trap option $\\lambda = 7, 4$ wrongly treats the entry $4$ as a second eigenvalue.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-015",
+      "stem": "A $2 \\times 2$ matrix has trace $0$ and determinant $-9$. What are its eigenvalues?",
+      "options": [
+        "$\\lambda = 0, -9$",
+        "$\\lambda = 3, -3$",
+        "$\\lambda = 3, 3$",
+        "$\\lambda = 9, -9$"
+      ],
+      "answer": 1,
+      "explanation": "The eigenvalues satisfy $\\lambda_1 + \\lambda_2 = 0$ and $\\lambda_1 \\lambda_2 = -9$, so they are roots of $\\lambda^2 - 0 \\cdot \\lambda - 9 = \\lambda^2 - 9 = 0$, giving $\\lambda = 3$ and $\\lambda = -3$. Indeed $3 + (-3) = 0$ and $3 \\cdot (-3) = -9$. The trap option $\\lambda = 9, -9$ uses $\\pm 9$ instead of the square roots $\\pm 3$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-016",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 8 & -1 \\\\ 2 & 5 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = -6, -7$",
+        "$\\lambda = 8, 5$",
+        "$\\lambda = 6, 7$",
+        "$\\lambda = 13, 42$"
+      ],
+      "answer": 2,
+      "explanation": "The characteristic equation is $\\det(A - \\lambda I) = (8 - \\lambda)(5 - \\lambda) - (-1)(2) = \\lambda^2 - 13\\lambda + 42 = 0$, since $40 + 2 = 42$. Factoring gives $(\\lambda - 6)(\\lambda - 7) = 0$, so $\\lambda = 6$ and $\\lambda = 7$. The sum $13$ is the trace and the product $42$ is the determinant. The trap option $\\lambda = 13, 42$ confuses trace and determinant with the eigenvalues.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-017",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 1 & 1 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 5 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 1, 2, 0$",
+        "$\\lambda = 1, 2, 5$",
+        "$\\lambda = 1, 1, 5$",
+        "$\\lambda = 8$"
+      ],
+      "answer": 1,
+      "explanation": "The matrix is upper triangular, so its eigenvalues are the diagonal entries $1$, $2$, and $5$. The characteristic polynomial is $(1 - \\lambda)(2 - \\lambda)(5 - \\lambda)$, already factored. The entry $1$ above the diagonal does not affect the eigenvalues. The trap option $\\lambda = 1, 1, 5$ reads the off-diagonal $1$ instead of the diagonal entry $2$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-018",
+      "stem": "For $A = \\begin{pmatrix} 4 & 0 \\\\ 0 & 4 \\end{pmatrix}$, what is the geometric multiplicity of the eigenvalue $\\lambda = 4$?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$4$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "Here $A = 4I$, so $A - 4I$ is the zero matrix and every vector in $\\mathbb{R}^2$ satisfies $(A - 4I)v = \\mathbf{0}$. The eigenspace is all of $\\mathbb{R}^2$, dimension $2$, so the geometric multiplicity is $2$, equal to the algebraic multiplicity. The trap option $1$ wrongly assumes a repeated eigenvalue gives only a line of eigenvectors.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-019",
+      "stem": "The matrix $A$ has eigenvalues $\\lambda = 2, 3, 4$. Using trace and determinant relations, what are $\\operatorname{tr}(A)$ and $\\det(A)$?",
+      "options": [
+        "$\\operatorname{tr} = 24$, $\\det = 24$",
+        "$\\operatorname{tr} = 9$, $\\det = 9$",
+        "$\\operatorname{tr} = 9$, $\\det = 24$",
+        "$\\operatorname{tr} = 24$, $\\det = 9$"
+      ],
+      "answer": 2,
+      "explanation": "The trace is the sum of all eigenvalues, $2 + 3 + 4 = 9$, and the determinant is their product, $2 \\cdot 3 \\cdot 4 = 24$. These relations hold for any $n \\times n$ matrix. The trap option swapping the two reports $\\operatorname{tr} = 24$, $\\det = 9$, exchanging sum and product.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-020",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 3 & 4 \\\\ 4 & -3 \\end{pmatrix}$.",
+      "options": [
+        "$\\lambda = 3, -3$",
+        "$\\lambda = 7, -1$",
+        "$\\lambda = 5, -5$",
+        "$\\lambda = 1, -1$"
+      ],
+      "answer": 2,
+      "explanation": "The characteristic equation is $\\det(A - \\lambda I) = (3 - \\lambda)(-3 - \\lambda) - (4)(4) = \\lambda^2 - 25 = 0$, since $(3 - \\lambda)(-3 - \\lambda) = \\lambda^2 - 9$ and subtracting $16$ gives $\\lambda^2 - 25$. So $\\lambda = 5$ and $\\lambda = -5$. The trace $0$ matches $5 + (-5)$ and the determinant $-25$ matches $5 \\cdot (-5)$. The trap option $\\lambda = 3, -3$ just reads the diagonal, which is invalid for this non-triangular matrix.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-021",
+      "format": "cloze",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 6 & 2 \\\\ 2 & 3 \\end{pmatrix}$.",
+      "solution": "The characteristic equation is $\\det(A - \\lambda I) = (6 - \\lambda)(3 - \\lambda) - 4 = 0$, which expands to $\\lambda^2 - 9\\lambda + 14 = 0$. Factoring gives the smaller eigenvalue $\\lambda =$ {{1}} and the larger eigenvalue $\\lambda =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The determinant is $18 - 4 = 14$ and the trace is $9$, so $\\lambda^2 - 9\\lambda + 14 = (\\lambda - 2)(\\lambda - 7) = 0$, giving $\\lambda = 2$ and $\\lambda = 7$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-022",
+      "format": "cloze",
+      "stem": "Use the trace and determinant to relate the eigenvalues of a $2 \\times 2$ matrix $A$ with eigenvalues $\\lambda = 8$ and $\\lambda = -3$.",
+      "solution": "The trace equals the {{1}} of the eigenvalues, so $\\operatorname{tr}(A) = 8 + (-3) =$ {{2}}. The determinant equals their product, so $\\det(A) =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "sum",
+            "product",
+            "difference"
+          ],
+          "answer": "sum"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -24,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Trace is the sum of eigenvalues: $8 + (-3) = 5$. Determinant is the product: $8 \\cdot (-3) = -24$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-023",
+      "format": "cloze",
+      "stem": "Find an eigenvector of $A = \\begin{pmatrix} 5 & 1 \\\\ 0 & 2 \\end{pmatrix}$ for the eigenvalue $\\lambda = 5$.",
+      "solution": "Form $A - 5I = \\begin{pmatrix} 0 & 1 \\\\ 0 & -3 \\end{pmatrix}$ and solve $(A - 5I)v = \\mathbf{0}$. Both rows force the second component $y =$ {{1}}, while the first component is free. So an eigenvector is $(1, 0)$, lying along the {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$x$-axis",
+            "$y$-axis",
+            "line $y = x$"
+          ],
+          "answer": "$x$-axis"
+        }
+      ],
+      "explanation": "The equations $y = 0$ and $-3y = 0$ both force $y = 0$, with $x$ free. So $(1, 0)$ is an eigenvector, on the $x$-axis, and $A(1,0) = (5, 0) = 5(1,0)$ confirms it.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-024",
+      "format": "cloze",
+      "stem": "Find the eigenvalues of the triangular matrix $A = \\begin{pmatrix} 4 & 7 & 1 \\\\ 0 & -2 & 9 \\\\ 0 & 0 & 6 \\end{pmatrix}$.",
+      "solution": "Because $A$ is upper triangular, its eigenvalues are the {{1}} entries. Reading them off gives $\\lambda =$ {{2}}, $\\lambda = -2$, and $\\lambda =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "diagonal",
+            "first-column",
+            "off-diagonal"
+          ],
+          "answer": "diagonal"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "For a triangular matrix the eigenvalues are the diagonal entries, so they are $4$, $-2$, and $6$. The entries above the diagonal do not matter.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-025",
+      "format": "cloze",
+      "stem": "Compare algebraic and geometric multiplicity for $\\lambda = 3$, given algebraic multiplicity $2$ and a one-dimensional eigenspace.",
+      "solution": "The algebraic multiplicity of $\\lambda = 3$ is $2$, while the geometric multiplicity, the dimension of the eigenspace, is {{1}}. Since the geometric multiplicity is strictly less than the algebraic, the eigenvalue is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "defective",
+            "simple",
+            "complex"
+          ],
+          "answer": "defective"
+        }
+      ],
+      "explanation": "Geometric multiplicity equals the eigenspace dimension, here $1$. Because $1 < 2$, the eigenvalue is defective, which blocks diagonalizability.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-eigenvalues-and-eigenvectors-026",
+      "format": "cloze",
+      "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 1 & 6 \\\\ 1 & 0 \\end{pmatrix}$.",
+      "solution": "The trace is $1$ and the determinant is $1 \\cdot 0 - 6 \\cdot 1 =$ {{1}}, so the characteristic equation is $\\lambda^2 - \\lambda - 6 = 0$. Factoring gives the positive eigenvalue $\\lambda =$ {{2}} and the negative eigenvalue $\\lambda =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The determinant is $0 - 6 = -6$ and the trace is $1$, so $\\lambda^2 - \\lambda - 6 = (\\lambda - 3)(\\lambda + 2) = 0$, giving $\\lambda = 3$ and $\\lambda = -2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    }
+  ]
+}

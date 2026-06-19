@@ -1,0 +1,452 @@
+{
+  "courseId": "linear-algebra-ii",
+  "topicId": "vector-spaces",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "linear-algebra-ii-vector-spaces-001",
+      "stem": "Which of the following is required by the vector space axioms for all vectors $u, v$ in a vector space $V$?",
+      "options": [
+        "$u \\cdot v = v \\cdot u$",
+        "$\\|u\\| = \\|v\\|$",
+        "$u \\times v = v \\times u$",
+        "$u + v = v + u$"
+      ],
+      "answer": 3,
+      "explanation": "The vector space axioms require that addition be commutative: $u + v = v + u$ for all $u, v \\in V$. The dot product and norm are extra structure that a general vector space need not have, so $u \\cdot v = v \\cdot u$ assumes an inner product that is not part of the axioms. The trap option $u \\cdot v = v \\cdot u$ is a true statement in an inner product space but is not one of the defining axioms of a vector space.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-002",
+      "stem": "In any vector space $V$, what is $0 \\cdot v$ for the scalar $0$ and a vector $v$?",
+      "options": [
+        "the scalar $0$",
+        "undefined",
+        "$v$",
+        "the zero vector $\\mathbf{0}$"
+      ],
+      "answer": 3,
+      "explanation": "A standard theorem proved from the axioms states $0 \\cdot v = \\mathbf{0}$, the zero vector. The proof uses $0 \\cdot v = (0 + 0) v = 0 \\cdot v + 0 \\cdot v$, then cancels one copy to get $\\mathbf{0} = 0 \\cdot v$. The trap option, the scalar $0$, confuses the scalar zero with the zero vector; the result of scalar multiplication is always a vector, not a scalar.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-003",
+      "stem": "Is the set $W = \\{ (x, y) : y = 2x \\}$ a subspace of $\\mathbb{R}^2$?",
+      "options": [
+        "Yes, it is a subspace",
+        "No, because it does not contain the zero vector",
+        "No, because it is not closed under addition",
+        "No, because it does not contain $(1, 2)$"
+      ],
+      "answer": 0,
+      "explanation": "Apply the subspace test. The zero vector $(0, 0)$ satisfies $0 = 2 \\cdot 0$, so it lies in $W$. If $(x_1, 2x_1)$ and $(x_2, 2x_2)$ are in $W$, their sum is $(x_1 + x_2, 2x_1 + 2x_2) = (x_1 + x_2, 2(x_1 + x_2))$, which is in $W$. For a scalar $c$, $c(x, 2x) = (cx, 2cx)$ is in $W$. All three conditions hold, so $W$ is a subspace. It is the line through the origin with slope $2$.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-004",
+      "stem": "Is the set $W = \\{ (x, y) : x + y = 1 \\}$ a subspace of $\\mathbb{R}^2$?",
+      "options": [
+        "Yes, because it contains $(1, 0)$",
+        "No, because it does not contain the zero vector",
+        "Yes, because it is closed under addition",
+        "Yes, because it is a line"
+      ],
+      "answer": 1,
+      "explanation": "Test whether the zero vector lies in $W$: substituting $(0, 0)$ gives $0 + 0 = 0 \\neq 1$, so $(0, 0) \\notin W$. Every subspace must contain the zero vector, so $W$ fails the first condition and is not a subspace. It is a line that does not pass through the origin. The trap answers calling it a subspace because it is a line ignore that only lines through the origin are subspaces.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-005",
+      "stem": "Which subset of $\\mathbb{R}^2$ is NOT a subspace?",
+      "options": [
+        "$\\{ (x, y) : x = y \\}$",
+        "$\\{ (0, 0) \\}$",
+        "$\\{ (x, y) : x^2 + y^2 \\le 1 \\}$",
+        "$\\{ (x, y) : 3x - y = 0 \\}$"
+      ],
+      "answer": 2,
+      "explanation": "The closed unit disk $\\{ (x, y) : x^2 + y^2 \\le 1 \\}$ is not closed under scalar multiplication: $(1, 0)$ is in it, but $2 \\cdot (1, 0) = (2, 0)$ has $2^2 + 0^2 = 4 > 1$, so it leaves the set. The lines $x = y$ and $3x - y = 0$ pass through the origin and are closed, and $\\{ (0, 0) \\}$ is the trivial subspace. Only the disk fails the subspace test.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-006",
+      "stem": "Is the vector $(7, 4)$ in the span of $(1, 0)$ and $(0, 1)$ in $\\mathbb{R}^2$?",
+      "options": [
+        "No, $(7, 4)$ is not a unit vector",
+        "Only if the vectors are orthogonal",
+        "No, the span is only the $x$-axis",
+        "Yes, the span is all of $\\mathbb{R}^2$"
+      ],
+      "answer": 3,
+      "explanation": "The vectors $(1, 0)$ and $(0, 1)$ are the standard basis of $\\mathbb{R}^2$, so their span is all of $\\mathbb{R}^2$. Explicitly $(7, 4) = 7(1, 0) + 4(0, 1)$, a linear combination, so it is in the span. Any vector $(a, b)$ can be written this way. The trap option claiming the span is only the $x$-axis would hold if the second generator were missing.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-007",
+      "stem": "Find the column space of $A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\end{pmatrix}$.",
+      "options": [
+        "the zero subspace",
+        "the line spanned by $\\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}$ only, excluding $\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$",
+        "the line spanned by $\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$",
+        "all of $\\mathbb{R}^2$"
+      ],
+      "answer": 2,
+      "explanation": "The column space is the span of the columns $\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$ and $\\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}$. The second column equals twice the first, so the two columns are linearly dependent and span only a single line, namely the line through $\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$. The trap answer all of $\\mathbb{R}^2$ would require two independent columns, but here the rank is $1$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-008",
+      "stem": "Find the null space of $A = \\begin{pmatrix} 1 & 1 \\\\ 1 & 1 \\end{pmatrix}$.",
+      "options": [
+        "$\\{ \\mathbf{0} \\}$ only",
+        "all of $\\mathbb{R}^2$",
+        "the line spanned by $\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$",
+        "the line spanned by $\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$"
+      ],
+      "answer": 3,
+      "explanation": "The null space solves $Ax = \\mathbf{0}$. Both rows give the same equation $x_1 + x_2 = 0$, so $x_1 = -x_2$. Taking $x_2 = 1$ gives the solution $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}$, which spans the same line as $\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$. The trap answer $\\{ \\mathbf{0} \\}$ would hold only if $A$ were invertible, but $\\det A = 0$ here.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-009",
+      "stem": "Is the set $W = \\{ (x, y, z) : x + 2y - z = 0 \\}$ a subspace of $\\mathbb{R}^3$?",
+      "options": [
+        "No, because it is not closed under scalar multiplication",
+        "No, because it does not contain the zero vector",
+        "Yes, it is a subspace (a plane through the origin)",
+        "No, because it is two-dimensional"
+      ],
+      "answer": 2,
+      "explanation": "The set is the solution set of a single homogeneous linear equation, which is always a subspace. Check: $(0,0,0)$ satisfies $0 + 0 - 0 = 0$. If $u$ and $v$ satisfy the equation then so does $u + v$ by linearity, and so does $cu$ for any scalar $c$. So $W$ is a subspace, specifically a plane through the origin. Being two-dimensional does not disqualify a subspace.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-010",
+      "stem": "Which set is a subspace of the vector space $P_2$ of polynomials of degree at most $2$?",
+      "options": [
+        "$\\{ p : p(1) = 3 \\}$",
+        "$\\{ p : \\deg p = 2 \\}$",
+        "$\\{ p : p(0) = 0 \\}$",
+        "$\\{ p : p(x) = x^2 + c, \\ c \\in \\mathbb{R} \\}$"
+      ],
+      "answer": 2,
+      "explanation": "The set $\\{ p : p(0) = 0 \\}$ is a subspace: the zero polynomial satisfies $p(0) = 0$, and if $p(0) = 0$ and $q(0) = 0$ then $(p + q)(0) = 0$ and $(cp)(0) = 0$. The set with $p(1) = 3$ excludes the zero polynomial. The set with $\\deg p = 2$ is not closed under addition, since $x^2$ and $-x^2 + x$ sum to $x$, which has degree $1$. So only $\\{ p : p(0) = 0 \\}$ works.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-011",
+      "stem": "Is $(3, 3, 3)$ in the span of $(1, 1, 0)$ and $(0, 1, 1)$ in $\\mathbb{R}^3$?",
+      "options": [
+        "Yes, with coefficients $1$ and $1$",
+        "Yes, with coefficients $3$ and $3$",
+        "Yes, with coefficients $3$ and $0$",
+        "No, it is not a linear combination of the two vectors"
+      ],
+      "answer": 3,
+      "explanation": "Seek $a, b$ with $a(1,1,0) + b(0,1,1) = (3,3,3)$. The first component gives $a = 3$, the third gives $b = 3$, but the second then gives $a + b = 6 \\neq 3$. The system is inconsistent, so $(3,3,3)$ is not in the span. The trap option with coefficients $3$ and $3$ matches the first and third components but fails the middle equation.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-012",
+      "stem": "The zero vector $\\mathbf{0}$ of a vector space $V$ has which property?",
+      "options": [
+        "$v + \\mathbf{0} = v$ for every $v \\in V$, and it is unique",
+        "It is the only vector $v$ with $v + v = v$",
+        "It must be the number $0$",
+        "There can be several zero vectors in $V$"
+      ],
+      "answer": 0,
+      "explanation": "The additive identity axiom guarantees a vector $\\mathbf{0}$ with $v + \\mathbf{0} = v$ for all $v$, and one proves it is unique: if $\\mathbf{0}'$ were another identity then $\\mathbf{0} = \\mathbf{0} + \\mathbf{0}' = \\mathbf{0}'$. So there is exactly one zero vector. The trap claiming several zero vectors exist contradicts this uniqueness proof.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-013",
+      "stem": "Is the set of all $2 \\times 2$ matrices with trace equal to $0$ a subspace of the space of all $2 \\times 2$ matrices?",
+      "options": [
+        "No, because the identity matrix is not in it",
+        "Yes, it is a subspace",
+        "No, because matrix multiplication is not commutative",
+        "No, because it is not closed under addition"
+      ],
+      "answer": 1,
+      "explanation": "Trace is a linear function: $\\operatorname{tr}(A + B) = \\operatorname{tr}(A) + \\operatorname{tr}(B)$ and $\\operatorname{tr}(cA) = c \\operatorname{tr}(A)$. The zero matrix has trace $0$, the sum of two trace-zero matrices has trace $0$, and a scalar multiple of a trace-zero matrix has trace $0$. So the set is closed and contains $\\mathbf{0}$, making it a subspace. Multiplication is irrelevant, since a subspace only needs closure under addition and scalar multiplication.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-014",
+      "stem": "Find the null space of $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$.",
+      "options": [
+        "all of $\\mathbb{R}^2$",
+        "$\\{ \\mathbf{0} \\}$",
+        "the line spanned by $\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$",
+        "the $x$-axis"
+      ],
+      "answer": 1,
+      "explanation": "Solving $I x = \\mathbf{0}$ gives $x = \\mathbf{0}$, so the only solution is the zero vector and the null space is $\\{ \\mathbf{0} \\}$. The identity matrix is invertible, and an invertible matrix has trivial null space. The trap answer all of $\\mathbb{R}^2$ would describe the null space of the zero matrix, not the identity.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-015",
+      "stem": "What is the span of the single vector $(2, 4, 6)$ in $\\mathbb{R}^3$?",
+      "options": [
+        "the single point $(2, 4, 6)$",
+        "all of $\\mathbb{R}^3$",
+        "the line through the origin and $(1, 2, 3)$",
+        "a plane through the origin"
+      ],
+      "answer": 2,
+      "explanation": "The span of one nonzero vector is the line through the origin in its direction, the set $\\{ t(2,4,6) : t \\in \\mathbb{R} \\}$. Since $(2,4,6) = 2(1,2,3)$, this is the same line as the one through $(1,2,3)$. The trap answer, the single point $(2,4,6)$, forgets that the span includes all scalar multiples, including $\\mathbf{0}$ and negatives.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-016",
+      "stem": "Is the set $W = \\{ (x, y) : xy = 0 \\}$ (the union of the two coordinate axes) a subspace of $\\mathbb{R}^2$?",
+      "options": [
+        "No, because it does not contain the origin",
+        "Yes, because it contains the origin",
+        "No, because it is not closed under addition",
+        "Yes, because each axis is a subspace"
+      ],
+      "answer": 2,
+      "explanation": "The set contains the origin and is closed under scalar multiplication, but it fails closure under addition: $(1, 0)$ and $(0, 1)$ both satisfy $xy = 0$, yet their sum $(1, 1)$ has $1 \\cdot 1 = 1 \\neq 0$, so it is not in $W$. A union of subspaces is generally not a subspace. The trap saying each axis is a subspace is true but does not make their union one.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-017",
+      "stem": "Which property fails for the set $V = \\mathbb{R}^2$ with usual addition but scalar multiplication redefined as $c \\odot (x, y) = (cx, 0)$?",
+      "options": [
+        "Addition is not commutative",
+        "$V$ has no zero vector",
+        "Addition is not associative",
+        "The identity scalar law $1 \\odot v = v$ fails"
+      ],
+      "answer": 3,
+      "explanation": "Test the axiom $1 \\odot v = v$. With $v = (x, y)$, we get $1 \\odot (x, y) = (1 \\cdot x, 0) = (x, 0)$, which equals $(x, y)$ only when $y = 0$. So the identity scalar law fails for any vector with $y \\neq 0$. Addition is unchanged and still commutative and associative with the usual zero vector, so those axioms hold; only the scalar identity axiom breaks.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-018",
+      "stem": "Find the column space of $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$.",
+      "options": [
+        "$\\{ \\mathbf{0} \\}$",
+        "the $y$-axis",
+        "all of $\\mathbb{R}^2$",
+        "the $x$-axis"
+      ],
+      "answer": 3,
+      "explanation": "The columns are $\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$ and $\\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}$. Their span is just the multiples of $\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$, which is the $x$-axis. The zero column contributes nothing. The trap answer, the $y$-axis, would be the span of $\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$, which is not a column of $A$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-019",
+      "stem": "In a vector space, the additive inverse of a vector $v$ equals which of the following?",
+      "options": [
+        "$\\mathbf{0}$",
+        "$|v|$",
+        "$v$ itself",
+        "$(-1) \\cdot v$"
+      ],
+      "answer": 3,
+      "explanation": "From the axioms one proves $(-1) \\cdot v = -v$, the additive inverse. Indeed $v + (-1)v = (1 + (-1))v = 0 \\cdot v = \\mathbf{0}$, so $(-1)v$ is the vector that adds to $v$ to give $\\mathbf{0}$, which is exactly $-v$. The trap answer $\\mathbf{0}$ confuses the inverse of $v$ with the result of adding $v$ to its inverse.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-020",
+      "stem": "Is the set of all polynomials $p$ in $P_2$ with $p(2) = 0$ a subspace, and if so does $q(x) = x^2 - 4$ belong to it?",
+      "options": [
+        "It is not a subspace because it omits the zero polynomial",
+        "It is not a subspace because $q(2) = 0$ has a solution",
+        "It is a subspace, but $q$ is not in it",
+        "It is a subspace, and $q$ is in it since $q(2) = 0$"
+      ],
+      "answer": 3,
+      "explanation": "The set $\\{ p : p(2) = 0 \\}$ is a subspace: evaluation at $2$ is linear, the zero polynomial satisfies $p(2) = 0$, and sums and scalar multiples of such polynomials again vanish at $2$. For $q(x) = x^2 - 4$, we compute $q(2) = 4 - 4 = 0$, so $q$ does belong to the set. Both claims in the chosen option are correct.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-021",
+      "format": "cloze",
+      "stem": "Apply the subspace test to $W = \\{ (x, y) : y = 3x \\}$ in $\\mathbb{R}^2$.",
+      "solution": "First, the zero vector $(0, 0)$ satisfies $0 = 3 \\cdot 0$, so it {{1}} $W$. Adding $(x_1, 3x_1)$ and $(x_2, 3x_2)$ gives $(x_1 + x_2,\\, 3(x_1 + x_2))$, which is again in $W$, so $W$ is closed under addition. Since all three conditions hold, $W$ {{2}} a subspace of $\\mathbb{R}^2$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "lies in",
+            "is excluded from",
+            "is orthogonal to"
+          ],
+          "answer": "lies in"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "The line $y = 3x$ passes through the origin and is closed under addition and scalar multiplication, so it satisfies the subspace test and is a subspace of $\\mathbb{R}^2$.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-022",
+      "format": "cloze",
+      "stem": "Decide whether $W = \\{ (x, y) : x + y = 4 \\}$ is a subspace of $\\mathbb{R}^2$.",
+      "solution": "Substituting the zero vector gives $0 + 0 = 0$, which does not equal $4$, so the zero vector value of $x + y$ here is {{1}}. Because every subspace must contain the zero vector, $W$ {{2}} a subspace.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is not",
+            "is"
+          ],
+          "answer": "is not"
+        }
+      ],
+      "explanation": "The condition $x + y = 4$ defines a line not through the origin. Since $(0,0)$ gives $x + y = 0 \\neq 4$, the zero vector is missing and $W$ fails the subspace test.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-023",
+      "format": "cloze",
+      "stem": "Find the null space of $A = \\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \\end{pmatrix}$ by solving $Ax = \\mathbf{0}$.",
+      "solution": "Both rows reduce to the single equation $x_1 + 2x_2 = 0$, so $x_1 = -2 x_2$. Taking $x_2 = 1$ gives the first component $x_1 =$ {{1}}, so the null space is the line spanned by $(-2, 1)$. Its dimension is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Row reduction collapses both rows to $x_1 + 2x_2 = 0$, giving one free variable. The null space is spanned by $(-2, 1)$, a single line, so its dimension is $1$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-024",
+      "format": "cloze",
+      "stem": "Determine whether $(5, 5)$ lies in the span of $(1, 0)$ and $(0, 1)$, and identify that span.",
+      "solution": "Write $(5, 5) = a(1, 0) + b(0, 1)$. Matching components gives $a =$ {{1}} and $b = 5$, so $(5, 5)$ is a linear combination of the two vectors. Because these are the standard basis vectors, their span is all of {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\mathbb{R}^2$",
+            "$\\mathbb{R}^3$",
+            "the $x$-axis"
+          ],
+          "answer": "$\\mathbb{R}^2$"
+        }
+      ],
+      "explanation": "Since $(5,5) = 5(1,0) + 5(0,1)$, it is in the span. The vectors $(1,0)$ and $(0,1)$ form the standard basis, so their span is all of $\\mathbb{R}^2$.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-025",
+      "format": "cloze",
+      "stem": "Identify the column space of $A = \\begin{pmatrix} 1 & 3 \\\\ 2 & 6 \\end{pmatrix}$.",
+      "solution": "The second column $\\begin{pmatrix} 3 \\\\ 6 \\end{pmatrix}$ equals the first column times the scalar {{1}}, so the two columns are linearly dependent. The column space is therefore a single {{2}} through the origin, and the rank of $A$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "line",
+            "plane",
+            "point"
+          ],
+          "answer": "line"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Column two is $3$ times column one, so the columns span a single line through the origin. With only one independent column, the rank is $1$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-vector-spaces-026",
+      "format": "cloze",
+      "stem": "Decide whether the set $W$ of $2 \\times 2$ matrices with trace $0$ is a subspace, using that trace is linear.",
+      "solution": "The zero matrix has trace {{1}}, so it lies in $W$. For trace-zero matrices $A$ and $B$, linearity gives $\\operatorname{tr}(A + B) = \\operatorname{tr}(A) + \\operatorname{tr}(B) = 0$, so $W$ is closed under addition. Hence $W$ {{2}} a subspace.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "Trace is linear, the zero matrix has trace $0$, and sums and scalar multiples of trace-zero matrices keep trace $0$. So $W$ passes the subspace test and is a subspace.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    }
+  ]
+}

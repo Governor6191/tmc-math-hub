@@ -1,0 +1,456 @@
+{
+  "courseId": "linear-algebra-ii",
+  "topicId": "linear-transformations",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "linear-algebra-ii-linear-transformations-001",
+      "stem": "A map $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ is linear if it satisfies which two conditions for all vectors $u, v$ and scalars $c$?",
+      "options": [
+        "$T(u + v) = T(u) + T(v)$ and $T(cu) = cT(u)$",
+        "$T(u + v) = T(u) + T(v)$ only",
+        "$T(uv) = T(u)T(v)$ and $T(c) = c$",
+        "$T(u + v) = T(u) \\cdot T(v)$ and $T(cu) = T(u)^c$"
+      ],
+      "answer": 0,
+      "explanation": "Linearity means $T$ preserves addition, $T(u + v) = T(u) + T(v)$, and preserves scalar multiplication, $T(cu) = cT(u)$. Both must hold. The option giving only additivity is incomplete, since a map can be additive without respecting scalar multiplication. Multiplicative conditions like $T(uv) = T(u)T(v)$ describe ring homomorphisms, not linear maps.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-002",
+      "stem": "For a linear transformation $T$, what is $T(\\mathbf{0})$?",
+      "options": [
+        "$1$",
+        "$\\mathbf{0}$",
+        "the identity vector",
+        "undefined"
+      ],
+      "answer": 1,
+      "explanation": "Every linear transformation sends the zero vector to the zero vector. Using $T(\\mathbf{0}) = T(0 \\cdot v) = 0 \\cdot T(v) = \\mathbf{0}$. This is a quick test: if a map sends $\\mathbf{0}$ anywhere other than $\\mathbf{0}$, it cannot be linear. The trap option calling it undefined ignores that $T$ is defined on the whole domain, including $\\mathbf{0}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-003",
+      "stem": "Is $T(x, y) = (x + 1, y)$ a linear transformation on $\\mathbb{R}^2$?",
+      "options": [
+        "Only on the line $x = 0$",
+        "Yes, because it is a translation",
+        "Yes, it is linear",
+        "No, because $T(\\mathbf{0}) \\neq \\mathbf{0}$"
+      ],
+      "answer": 3,
+      "explanation": "Check the zero vector: $T(0, 0) = (0 + 1, 0) = (1, 0) \\neq (0, 0)$. Since a linear map must fix the origin, $T$ is not linear. The extra $+1$ is a translation, which is affine but not linear. The trap option calling it linear because it is a translation confuses affine maps with linear ones.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-004",
+      "stem": "What is the standard matrix of the linear transformation $T(x, y) = (2x + y, \\ x - 3y)$?",
+      "options": [
+        "$\\begin{pmatrix} 2 & 1 \\\\ -3 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & -3 \\\\ 1 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 1 \\\\ 1 & -3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 2 \\\\ -3 & 1 \\end{pmatrix}$"
+      ],
+      "answer": 2,
+      "explanation": "The standard matrix has columns $T(e_1)$ and $T(e_2)$. Here $T(1, 0) = (2, 1)$ and $T(0, 1) = (1, -3)$, so the matrix is $\\begin{pmatrix} 2 & 1 \\\\ 1 & -3 \\end{pmatrix}$. Equivalently, read the coefficients of the output rows directly. The trap option transposes the matrix, placing $T(e_1)$ and $T(e_2)$ in rows instead of columns.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-005",
+      "stem": "The standard matrix of $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ is $A = \\begin{pmatrix} 3 & 0 \\\\ 0 & 3 \\end{pmatrix}$. What does $T$ do?",
+      "options": [
+        "scales every vector by $3$",
+        "reflects across the $x$-axis",
+        "rotates by $90^\\circ$",
+        "projects onto the $x$-axis"
+      ],
+      "answer": 0,
+      "explanation": "Since $A = 3I$, we have $T(v) = 3v$ for every vector $v$, so $T$ scales every vector by the factor $3$. A reflection would have a $-1$ on the diagonal, a rotation would mix the components with off-diagonal entries, and a projection would have a zero on the diagonal. Only uniform scaling matches $3I$.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-006",
+      "stem": "Find the kernel of the linear transformation with matrix $A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 4 \\end{pmatrix}$.",
+      "options": [
+        "$\\{ \\mathbf{0} \\}$",
+        "the line spanned by $\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$",
+        "all of $\\mathbb{R}^2$",
+        "the line spanned by $\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "The kernel solves $Av = \\mathbf{0}$. Both rows give $x + 2y = 0$, so $x = -2y$; taking $y = -1$ gives $\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}$, which spans the kernel. The trap option $\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$ spans the column space, not the kernel; the kernel direction is perpendicular to the row $(1, 2)$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-007",
+      "stem": "The matrix of $T$ is $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$. What is the image (range) of $T$?",
+      "options": [
+        "all of $\\mathbb{R}^2$",
+        "$\\{ \\mathbf{0} \\}$",
+        "the $x$-axis",
+        "the $y$-axis"
+      ],
+      "answer": 2,
+      "explanation": "The image is the span of the columns $\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$ and $\\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}$, which is the $x$-axis. The map projects every vector onto the $x$-axis. The trap option, the $y$-axis, would be the image of a matrix whose single nonzero column points up, which is not the case here.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-008",
+      "stem": "A linear transformation $T : \\mathbb{R}^4 \\to \\mathbb{R}^3$ has rank $3$. What is its nullity?",
+      "options": [
+        "$2$",
+        "$1$",
+        "$3$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "By the rank-nullity theorem, $\\operatorname{rank}(T) + \\operatorname{nullity}(T)$ equals the dimension of the domain, which is $4$. So $\\operatorname{nullity}(T) = 4 - 3 = 1$. The codomain dimension $3$ caps the rank but does not enter the nullity formula. The trap option $0$ would require the rank to equal the domain dimension $4$, impossible since the codomain has dimension $3$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-009",
+      "stem": "When is a linear transformation $T : V \\to W$ one-to-one?",
+      "options": [
+        "when $\\dim V = \\dim W$",
+        "always, since it is linear",
+        "when its image is all of $W$",
+        "exactly when its kernel is $\\{ \\mathbf{0} \\}$"
+      ],
+      "answer": 3,
+      "explanation": "A linear transformation is one-to-one if and only if its kernel contains only the zero vector. If $T(u) = T(v)$ then $T(u - v) = \\mathbf{0}$, so $u - v$ lies in the kernel; a trivial kernel forces $u = v$. Having image all of $W$ describes onto, a separate condition. So injectivity is exactly the trivial-kernel criterion.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-010",
+      "stem": "A linear transformation $T : \\mathbb{R}^3 \\to \\mathbb{R}^3$ has a $3 \\times 3$ matrix with $\\det = 0$. Is $T$ onto?",
+      "options": [
+        "Yes, always",
+        "No, because the rank is less than $3$",
+        "Only if $T$ is one-to-one",
+        "Yes, because the domain and codomain match"
+      ],
+      "answer": 1,
+      "explanation": "A zero determinant means the columns are dependent, so the rank is at most $2$ and the image is a proper subspace of $\\mathbb{R}^3$. Therefore $T$ does not cover all of $\\mathbb{R}^3$ and is not onto. For a square matrix, onto and one-to-one are equivalent, and both fail when the determinant is zero. The trap claiming it is always onto ignores the rank deficiency.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-011",
+      "stem": "The rotation by $90^\\circ$ counterclockwise in $\\mathbb{R}^2$ has which standard matrix?",
+      "options": [
+        "$\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "Rotation by angle $\\theta$ has matrix $\\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}$. For $\\theta = 90^\\circ$, $\\cos\\theta = 0$ and $\\sin\\theta = 1$, giving $\\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$. Check: $e_1 = (1, 0) \\mapsto (0, 1)$, which is the correct counterclockwise image. The trap option $\\begin{pmatrix} 0 & 1 \\\\ -1 & 0 \\end{pmatrix}$ is the clockwise rotation.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-012",
+      "stem": "Compute $T(2, -1)$ where $T(x, y) = (x - y, \\ 3x + 2y)$.",
+      "options": [
+        "$(3, -4)$",
+        "$(1, 4)$",
+        "$(-1, 8)$",
+        "$(3, 4)$"
+      ],
+      "answer": 3,
+      "explanation": "Substitute $x = 2$, $y = -1$. First component: $x - y = 2 - (-1) = 3$. Second component: $3x + 2y = 3(2) + 2(-1) = 6 - 2 = 4$. So $T(2, -1) = (3, 4)$. The trap option $(1, 4)$ slips on the first component by computing $2 + (-1) = 1$ instead of $2 - (-1) = 3$.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-013",
+      "stem": "A linear transformation $T : \\mathbb{R}^2 \\to \\mathbb{R}^3$ can be:",
+      "options": [
+        "both one-to-one and onto",
+        "neither, since the dimensions differ",
+        "onto but not one-to-one",
+        "one-to-one but never onto"
+      ],
+      "answer": 3,
+      "explanation": "The image of $T$ lives in $\\mathbb{R}^3$ but has dimension at most $\\dim \\mathbb{R}^2 = 2$, so it can never fill the $3$-dimensional codomain; thus $T$ is never onto. However, with rank $2$ the nullity is $0$ by rank-nullity, so $T$ can be one-to-one. The trap option claiming onto-but-not-one-to-one reverses what is possible when the codomain is larger.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-014",
+      "stem": "What is the standard matrix of the projection $T(x, y) = (x, 0)$ onto the $x$-axis?",
+      "options": [
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}$"
+      ],
+      "answer": 2,
+      "explanation": "The columns are $T(e_1)$ and $T(e_2)$. Here $T(1, 0) = (1, 0)$ and $T(0, 1) = (0, 0)$, so the matrix is $\\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$. The trap option $\\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}$ is the projection onto the $y$-axis, not the $x$-axis.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-015",
+      "stem": "Find the rank of the linear transformation with matrix $A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 0 \\end{pmatrix}$.",
+      "options": [
+        "$2$",
+        "$0$",
+        "$1$",
+        "$3$"
+      ],
+      "answer": 2,
+      "explanation": "Row reduction leaves a single nonzero row $(1, 2, 3)$, so there is one pivot and the rank is $1$. Equivalently, the column space is spanned by $\\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}$, since every column is a multiple of it. The trap option $3$ counts the columns rather than the independent rows.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-016",
+      "stem": "If $T : V \\to V$ has matrix $A$ in one basis and $B$ in another, the two matrices are related by:",
+      "options": [
+        "$B = A + P$ for some matrix $P$",
+        "$B = A^T$ always",
+        "$B = P^{-1} A P$ for some invertible $P$",
+        "$B = P A P$ for some $P$"
+      ],
+      "answer": 2,
+      "explanation": "Changing basis transforms the matrix of an operator by a similarity: $B = P^{-1} A P$, where $P$ is the change-of-basis matrix. This conjugation preserves eigenvalues, determinant, and trace. The trap option $B = P A P$ omits the inverse and is not generally a valid change of basis, since $P A P$ need not even agree with $A$ when $P = I$.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-017",
+      "stem": "Given the linear maps with $T(x, y) = (x + y, \\ y)$ and $S(x, y) = (2x, \\ x - y)$, what is $(S \\circ T)(1, 1)$?",
+      "options": [
+        "$(4, 0)$",
+        "$(2, 0)$",
+        "$(3, 1)$",
+        "$(4, 1)$"
+      ],
+      "answer": 3,
+      "explanation": "First apply $T$: $T(1, 1) = (1 + 1, \\ 1) = (2, 1)$. Then apply $S$ to $(2, 1)$: the first component is $2x = 2 \\cdot 2 = 4$ and the second is $x - y = 2 - 1 = 1$, so $S(2, 1) = (4, 1)$. The trap option $(4, 0)$ mishandles the second component as $2 - 2$ instead of $2 - 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-018",
+      "stem": "Is $T(x, y) = (x^2, \\ y)$ a linear transformation on $\\mathbb{R}^2$?",
+      "options": [
+        "Yes, it is linear",
+        "No, because of the $x^2$ term",
+        "Yes, because $T(\\mathbf{0}) = \\mathbf{0}$",
+        "Yes, on the region $x \\ge 0$"
+      ],
+      "answer": 1,
+      "explanation": "Test scaling: $T(c \\cdot (x, y)) = ((cx)^2, \\ cy) = (c^2 x^2, \\ cy)$, but $cT(x, y) = (c x^2, \\ cy)$. These differ whenever $c^2 \\neq c$, for example $c = 2$, so $T$ is not linear. The squaring breaks homogeneity. Although $T(\\mathbf{0}) = \\mathbf{0}$ holds, that alone does not make a map linear.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-019",
+      "stem": "A linear transformation $T : \\mathbb{R}^3 \\to \\mathbb{R}^3$ has nullity $2$. What is the dimension of its image?",
+      "options": [
+        "$2$",
+        "$0$",
+        "$1$",
+        "$3$"
+      ],
+      "answer": 2,
+      "explanation": "By rank-nullity, $\\operatorname{rank}(T) = \\dim(\\text{domain}) - \\operatorname{nullity}(T) = 3 - 2 = 1$. The dimension of the image equals the rank, so it is $1$. The trap option $2$ reports the nullity itself rather than the rank.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-020",
+      "stem": "The standard matrix of $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ has $T(e_1) = (1, 2)$ and $T(e_2) = (3, 4)$. What is $T(1, 1)$?",
+      "options": [
+        "$(3, 8)$",
+        "$(2, 6)$",
+        "$(4, 6)$",
+        "$(1, 2)$"
+      ],
+      "answer": 2,
+      "explanation": "By linearity, $T(1, 1) = T(e_1 + e_2) = T(e_1) + T(e_2) = (1, 2) + (3, 4) = (4, 6)$. Adding the images of the basis vectors gives the image of their sum. The trap option $(1, 2)$ returns only $T(e_1)$, forgetting the contribution of $e_2$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-021",
+      "format": "cloze",
+      "stem": "Test whether $T(x, y) = (3x, \\ x + y)$ is linear, then build its standard matrix.",
+      "solution": "Checking the origin, $T(0, 0) = (0, 0)$, and one verifies additivity and scaling hold, so $T$ {{1}} linear. Its standard matrix has columns $T(e_1) = (3, 1)$ and $T(e_2) = (0, 1)$, so the top-left entry is {{2}} and the bottom-left entry is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Each output is a linear combination of $x$ and $y$ with no constant term, so $T$ is linear. The columns are $T(e_1) = (3, 1)$ and $T(e_2) = (0, 1)$, giving the matrix with top-left $3$ and bottom-left $1$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-022",
+      "format": "cloze",
+      "stem": "Find the kernel of $A = \\begin{pmatrix} 1 & 3 \\\\ 2 & 6 \\end{pmatrix}$ by solving $Av = \\mathbf{0}$.",
+      "solution": "Both rows reduce to $x + 3y = 0$, so $x = -3y$. Taking $y = 1$ gives the first component $x =$ {{1}}, so the kernel is a line of dimension {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The two rows are proportional and reduce to $x + 3y = 0$, so $x = -3y$. With $y = 1$, the kernel is spanned by $(-3, 1)$, a single line of dimension $1$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-023",
+      "format": "cloze",
+      "stem": "Apply rank-nullity to a linear map $T : \\mathbb{R}^5 \\to \\mathbb{R}^4$ with nullity $2$.",
+      "solution": "The domain has dimension {{1}}, so by rank-nullity the rank is $5 - 2 =$ {{2}}. Since the rank is less than $4$, the map {{3}} onto.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is not",
+            "is"
+          ],
+          "answer": "is not"
+        }
+      ],
+      "explanation": "The domain is $\\mathbb{R}^5$, so rank $= 5 - 2 = 3$. The image has dimension $3 < 4$, so it cannot fill $\\mathbb{R}^4$ and the map is not onto.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-024",
+      "format": "cloze",
+      "stem": "Compute $T(3, 2)$ for $T(x, y) = (x - 2y, \\ 4x + y)$.",
+      "solution": "The first component is $x - 2y = 3 - 2 \\cdot 2 =$ {{1}}. The second component is $4x + y = 4 \\cdot 3 + 2 =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 14,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "First component: $3 - 4 = -1$. Second component: $12 + 2 = 14$. So $T(3, 2) = (-1, 14)$.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-025",
+      "format": "cloze",
+      "stem": "Decide whether $T(x, y) = (x + 2, \\ y)$ is linear by testing the origin.",
+      "solution": "Evaluating at the origin gives $T(0, 0) = (2, 0)$, whose first component is {{1}}, not zero. Because a linear map must send the origin to the origin, $T$ {{2}} linear.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is not",
+            "is"
+          ],
+          "answer": "is not"
+        }
+      ],
+      "explanation": "Since $T(0,0) = (2, 0) \\neq (0,0)$, the map fails the requirement that linear maps fix the origin. The constant $+2$ makes it affine, not linear.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-linear-transformations-026",
+      "format": "cloze",
+      "stem": "Use the basis images to evaluate a linear map. Suppose $T(e_1) = (2, 1)$ and $T(e_2) = (-1, 3)$.",
+      "solution": "By linearity $T(1, 1) = T(e_1) + T(e_2)$, whose first component is $2 + (-1) =$ {{1}} and second component is $1 + 3 =$ {{2}}. More generally the standard matrix has $T(e_1)$ and $T(e_2)$ as its {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "columns",
+            "rows",
+            "eigenvalues"
+          ],
+          "answer": "columns"
+        }
+      ],
+      "explanation": "$T(1,1) = (2,1) + (-1,3) = (1, 4)$. The standard matrix is built by placing the images of the basis vectors as its columns.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    }
+  ]
+}

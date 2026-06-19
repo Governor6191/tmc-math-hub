@@ -1,0 +1,438 @@
+{
+  "courseId": "linear-algebra-ii",
+  "topicId": "basis-and-dimension",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-001",
+      "stem": "Are the vectors $(1, 0)$ and $(0, 1)$ linearly independent in $\\mathbb{R}^2$?",
+      "options": [
+        "Only if they are scaled to unit length",
+        "No, because their sum is $(1, 1)$",
+        "No, because they are orthogonal",
+        "Yes, they are linearly independent"
+      ],
+      "answer": 3,
+      "explanation": "Set $a(1, 0) + b(0, 1) = (0, 0)$. This gives $(a, b) = (0, 0)$, so the only solution is $a = b = 0$, which is the definition of linear independence. Orthogonality is a stronger property than independence and is not required. The trap option about their sum being $(1,1)$ is irrelevant to independence.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-002",
+      "stem": "Are the vectors $(1, 2)$ and $(2, 4)$ linearly independent in $\\mathbb{R}^2$?",
+      "options": [
+        "Yes, because they are different vectors",
+        "No, they are linearly dependent",
+        "Yes, because neither is the zero vector",
+        "Yes, because they span $\\mathbb{R}^2$"
+      ],
+      "answer": 1,
+      "explanation": "The second vector is exactly twice the first: $(2, 4) = 2(1, 2)$. So $2(1,2) - 1(2,4) = (0,0)$ is a nontrivial linear combination equal to zero, which means the vectors are linearly dependent. Two vectors are dependent precisely when one is a scalar multiple of the other. The trap option claiming they span $\\mathbb{R}^2$ is false; they span only a line.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-003",
+      "stem": "What is the dimension of $\\mathbb{R}^4$?",
+      "options": [
+        "$16$",
+        "$1$",
+        "$3$",
+        "$4$"
+      ],
+      "answer": 3,
+      "explanation": "The dimension of $\\mathbb{R}^n$ is $n$, the number of vectors in any basis. The standard basis of $\\mathbb{R}^4$ is $e_1, e_2, e_3, e_4$, which has $4$ vectors, so the dimension is $4$. The trap option $16$ confuses the dimension with $4^2$, perhaps thinking of matrices.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-004",
+      "stem": "Which set is a basis for $\\mathbb{R}^2$?",
+      "options": [
+        "$\\{ (1, 1), (1, -1) \\}$",
+        "$\\{ (1, 0), (2, 0) \\}$",
+        "$\\{ (1, 1) \\}$",
+        "$\\{ (1, 0), (0, 1), (1, 1) \\}$"
+      ],
+      "answer": 0,
+      "explanation": "A basis of $\\mathbb{R}^2$ needs exactly two linearly independent vectors. The set $\\{ (1, 1), (1, -1) \\}$ is independent since neither is a multiple of the other, and two independent vectors in $\\mathbb{R}^2$ automatically span it. The single vector $(1,1)$ is too few, $\\{ (1, 0), (2, 0) \\}$ is dependent, and the three-vector set is too many to be independent.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-005",
+      "stem": "What is the dimension of the subspace $W = \\{ (x, y, z) : x + y + z = 0 \\}$ of $\\mathbb{R}^3$?",
+      "options": [
+        "$3$",
+        "$2$",
+        "$0$",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "The condition $x + y + z = 0$ is one equation in three unknowns, leaving two free variables. Solving gives $x = -y - z$, so a general solution is $y(-1, 1, 0) + z(-1, 0, 1)$. These two vectors are independent and span $W$, so $\\dim W = 2$. The trap option $3$ forgets that the single constraint cuts the dimension down from $3$ by one.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-006",
+      "stem": "A matrix $A$ is $5 \\times 7$ and has rank $4$. By the rank-nullity theorem, what is the dimension of its null space?",
+      "options": [
+        "$2$",
+        "$1$",
+        "$4$",
+        "$3$"
+      ],
+      "answer": 3,
+      "explanation": "Rank-nullity states $\\operatorname{rank}(A) + \\operatorname{nullity}(A) = n$, the number of columns. Here $n = 7$ and the rank is $4$, so $\\operatorname{nullity}(A) = 7 - 4 = 3$. The number of rows, $5$, does not enter this calculation. The trap option $2$ would come from using the rows ($5 - 4 + 1$) instead of the columns.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-007",
+      "stem": "Find the coordinate vector of $v = (5, 3)$ relative to the basis $B = \\{ (1, 0), (1, 1) \\}$ of $\\mathbb{R}^2$.",
+      "options": [
+        "$(3, 5)$",
+        "$(8, 3)$",
+        "$(2, 3)$",
+        "$(5, 3)$"
+      ],
+      "answer": 2,
+      "explanation": "Solve $a(1, 0) + b(1, 1) = (5, 3)$. The second component gives $b = 3$, and the first gives $a + b = 5$, so $a = 5 - 3 = 2$. The coordinate vector is $(a, b) = (2, 3)$. As a check, $2(1,0) + 3(1,1) = (5, 3)$. The trap option $(5, 3)$ is the coordinate vector only in the standard basis, not in $B$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-008",
+      "stem": "Are the vectors $(1, 0, 0)$, $(1, 1, 0)$, and $(1, 1, 1)$ linearly independent in $\\mathbb{R}^3$?",
+      "options": [
+        "Yes, they are linearly independent",
+        "Only if reordered",
+        "No, because they all have a $1$ in the first slot",
+        "No, because their sum is $(3, 2, 1)$"
+      ],
+      "answer": 0,
+      "explanation": "Set $a(1,0,0) + b(1,1,0) + c(1,1,1) = (0,0,0)$. The third component gives $c = 0$, the second gives $b + c = 0$ so $b = 0$, and the first gives $a + b + c = 0$ so $a = 0$. Only the trivial solution works, so the vectors are independent. They form a basis of $\\mathbb{R}^3$. Sharing a first entry of $1$ does not cause dependence.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-009",
+      "stem": "What is the dimension of the vector space $P_3$ of polynomials of degree at most $3$?",
+      "options": [
+        "$3$",
+        "$2$",
+        "$5$",
+        "$4$"
+      ],
+      "answer": 3,
+      "explanation": "A polynomial of degree at most $3$ has the form $a_0 + a_1 x + a_2 x^2 + a_3 x^3$, with four free coefficients. The standard basis is $\\{ 1, x, x^2, x^3 \\}$, which has four elements, so $\\dim P_3 = 4$. In general $\\dim P_n = n + 1$. The trap option $3$ uses the degree itself rather than $n + 1$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-010",
+      "stem": "A $4 \\times 4$ matrix $A$ has nullity $0$. What is its rank?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$0$",
+        "$4$"
+      ],
+      "answer": 3,
+      "explanation": "By rank-nullity, $\\operatorname{rank}(A) + \\operatorname{nullity}(A) = 4$ for a matrix with $4$ columns. With nullity $0$, the rank is $4 - 0 = 4$. A nullity of $0$ means the columns are independent, so the rank equals the full number of columns and $A$ is invertible. The trap option $0$ swaps rank and nullity.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-011",
+      "stem": "Can three vectors form a basis for $\\mathbb{R}^2$?",
+      "options": [
+        "Yes, always",
+        "Yes, if they are all nonzero",
+        "No, three vectors in $\\mathbb{R}^2$ are always linearly dependent",
+        "Yes, if they are pairwise orthogonal"
+      ],
+      "answer": 2,
+      "explanation": "Any basis of $\\mathbb{R}^2$ has exactly $2$ vectors, since the dimension is $2$. Three vectors in $\\mathbb{R}^2$ must be linearly dependent because the number of vectors exceeds the dimension, so they can span but never be independent, and a basis requires both. The trap option about pairwise orthogonality is impossible: $\\mathbb{R}^2$ admits at most two mutually orthogonal nonzero vectors.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-012",
+      "stem": "A set of $4$ vectors spans $\\mathbb{R}^3$. What can you conclude?",
+      "options": [
+        "They are linearly independent",
+        "They are linearly dependent",
+        "Exactly one vector is redundant",
+        "They form a basis of $\\mathbb{R}^3$"
+      ],
+      "answer": 1,
+      "explanation": "Since $\\dim \\mathbb{R}^3 = 3$, any set of more than $3$ vectors in $\\mathbb{R}^3$ is linearly dependent. Spanning with $4$ vectors is possible, but a basis needs both spanning and independence, and $4 > 3$ rules out independence. The trap option claiming exactly one vector is redundant is not guaranteed; we only know at least one is, so the safe conclusion is dependence.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-013",
+      "stem": "Find the dimension of the column space of $A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\end{pmatrix}$.",
+      "options": [
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "answer": 1,
+      "explanation": "Each column is a multiple of $\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$: the columns are $\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$, $\\begin{pmatrix} 2 \\\\ 4 \\end{pmatrix}$, $\\begin{pmatrix} 3 \\\\ 6 \\end{pmatrix}$, all proportional. So the column space is one line and its dimension, the rank, is $1$. The trap option $3$ counts the columns rather than the independent ones.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-014",
+      "stem": "Find the coordinate vector of $v = (4, 7)$ relative to the basis $B = \\{ (2, 0), (0, 1) \\}$ of $\\mathbb{R}^2$.",
+      "options": [
+        "$(4, 7)$",
+        "$(8, 7)$",
+        "$(2, 7)$",
+        "$(2, 3.5)$"
+      ],
+      "answer": 2,
+      "explanation": "Solve $a(2, 0) + b(0, 1) = (4, 7)$. The first component gives $2a = 4$ so $a = 2$, and the second gives $b = 7$. The coordinate vector is $(a, b) = (2, 7)$. Checking, $2(2,0) + 7(0,1) = (4, 7)$. The trap option $(4, 7)$ ignores that the first basis vector has length scaled by $2$, so the first coordinate is halved.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-015",
+      "stem": "The span of $\\{ (1, 2, 1), (2, 4, 2), (0, 1, 3) \\}$ in $\\mathbb{R}^3$ has what dimension?",
+      "options": [
+        "$2$",
+        "$0$",
+        "$1$",
+        "$3$"
+      ],
+      "answer": 0,
+      "explanation": "The second vector is $2$ times the first, so it adds nothing. The remaining vectors $(1, 2, 1)$ and $(0, 1, 3)$ are not multiples of each other, so they are independent and span a plane. The dimension of the span is therefore $2$. The trap option $3$ counts all three vectors without noticing the redundant second one.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-016",
+      "stem": "A matrix $A$ is $3 \\times 6$ and its columns span $\\mathbb{R}^3$. What is its nullity?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$6$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "If the columns span $\\mathbb{R}^3$, the column space is all of $\\mathbb{R}^3$, so $\\operatorname{rank}(A) = 3$. By rank-nullity with $n = 6$ columns, $\\operatorname{nullity}(A) = 6 - 3 = 3$. The trap option $0$ would require the rank to equal the column count $6$, but the rank cannot exceed the number of rows, which is $3$.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-017",
+      "stem": "Is $\\{ 1 + x, 1 - x \\}$ a basis for $P_1$, the polynomials of degree at most $1$?",
+      "options": [
+        "No, because $P_1$ has dimension $3$",
+        "No, because it has only two polynomials",
+        "Yes, it is a basis",
+        "No, because $1 + x$ and $1 - x$ are dependent"
+      ],
+      "answer": 2,
+      "explanation": "The space $P_1$ has dimension $2$, so two independent polynomials form a basis. Set $a(1 + x) + b(1 - x) = 0$, giving constant term $a + b = 0$ and $x$-coefficient $a - b = 0$, whence $a = b = 0$. The polynomials are independent, so they form a basis. The trap option claiming $\\dim P_1 = 3$ overcounts; $\\dim P_n = n + 1 = 2$ here.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-018",
+      "stem": "What is the dimension of the vector space of all $2 \\times 3$ real matrices?",
+      "options": [
+        "$5$",
+        "$2$",
+        "$9$",
+        "$6$"
+      ],
+      "answer": 3,
+      "explanation": "A $2 \\times 3$ matrix has $2 \\times 3 = 6$ independent entries, each a free real number. A basis is given by the six matrices with a single $1$ and zeros elsewhere, so the dimension is $6$. In general the space of $m \\times n$ matrices has dimension $mn$. The trap option $5$ adds $2 + 3$ instead of multiplying.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-019",
+      "stem": "A square matrix $A$ of size $n \\times n$ has rank $n$. Which statement is correct?",
+      "options": [
+        "Its columns are linearly dependent",
+        "Its null space has dimension $n$",
+        "Its rank equals its nullity",
+        "Its columns form a basis of $\\mathbb{R}^n$"
+      ],
+      "answer": 3,
+      "explanation": "Rank $n$ means the $n$ columns are linearly independent, and $n$ independent vectors in $\\mathbb{R}^n$ form a basis. By rank-nullity the nullity is $n - n = 0$, so the null space is trivial, not $n$-dimensional. The trap option saying the columns are dependent contradicts full rank.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-020",
+      "stem": "After row reduction a matrix has $2$ pivot columns and $3$ free columns. What are its rank and nullity?",
+      "options": [
+        "rank $5$, nullity $0$",
+        "rank $0$, nullity $5$",
+        "rank $3$, nullity $2$",
+        "rank $2$, nullity $3$"
+      ],
+      "answer": 3,
+      "explanation": "The rank equals the number of pivot columns, which is $2$, and the nullity equals the number of free columns, which is $3$. Their sum $2 + 3 = 5$ is the total number of columns, consistent with rank-nullity. The trap option rank $3$, nullity $2$ swaps pivots and free columns.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-021",
+      "format": "cloze",
+      "stem": "Test whether $(1, 3)$ and $(2, 6)$ are linearly independent in $\\mathbb{R}^2$.",
+      "solution": "Since $(2, 6) = 2 \\cdot (1, 3)$, the second vector is the scalar {{1}} times the first, so a nontrivial combination $2(1,3) - (2,6)$ equals zero. Therefore the vectors are linearly {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "dependent",
+            "independent"
+          ],
+          "answer": "dependent"
+        }
+      ],
+      "explanation": "One vector is a scalar multiple of the other ($(2,6) = 2(1,3)$), which is exactly the condition for two vectors to be linearly dependent.",
+      "difficulty": "warmup",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-022",
+      "format": "cloze",
+      "stem": "Apply the rank-nullity theorem to a $4 \\times 9$ matrix $A$ of rank $3$.",
+      "solution": "The theorem says rank plus nullity equals the number of columns, which here is {{1}}. With rank $3$, the nullity is therefore {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Rank-nullity uses the number of columns, $9$. Then nullity $= 9 - 3 = 6$. The row count $4$ plays no role here.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-023",
+      "format": "cloze",
+      "stem": "Find the coordinates of $v = (6, 5)$ relative to the basis $B = \\{ (1, 0), (1, 1) \\}$.",
+      "solution": "Write $v = a(1, 0) + b(1, 1)$. The second component gives $b =$ {{1}}, and the first gives $a + b = 6$, so $a =$ {{2}}. The coordinate vector is $(a, b)$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From the second coordinate, $b = 5$. Then $a + 5 = 6$ gives $a = 1$. So the coordinate vector relative to $B$ is $(1, 5)$, and indeed $1(1,0) + 5(1,1) = (6, 5)$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-024",
+      "format": "cloze",
+      "stem": "Determine the dimension of the subspace $W = \\{ (x, y, z) : 2x - y + z = 0 \\}$ of $\\mathbb{R}^3$.",
+      "solution": "The subspace is defined by {{1}} linear equation in three unknowns, leaving two free variables. Hence the dimension of $W$ is {{2}}, and it is a plane through the origin.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "One homogeneous equation in $\\mathbb{R}^3$ leaves two free variables, so $\\dim W = 3 - 1 = 2$. The solution set is a plane through the origin.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-025",
+      "format": "cloze",
+      "stem": "State the dimensions of $\\mathbb{R}^5$, $P_4$, and the space of $3 \\times 3$ matrices.",
+      "solution": "The dimension of $\\mathbb{R}^5$ is {{1}}. The dimension of $P_4$, polynomials of degree at most $4$, is {{2}} since $\\dim P_n = n + 1$. The dimension of the space of $3 \\times 3$ matrices is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\dim \\mathbb{R}^5 = 5$, $\\dim P_4 = 4 + 1 = 5$, and the $3 \\times 3$ matrices have $3 \\cdot 3 = 9$ independent entries, so dimension $9$.",
+      "difficulty": "core",
+      "source": "in the style of Friedberg, Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-ii-basis-and-dimension-026",
+      "format": "cloze",
+      "stem": "Find the dimension of the span of $\\{ (1, 1, 0), (2, 2, 0), (0, 0, 1) \\}$ in $\\mathbb{R}^3$.",
+      "solution": "The second vector equals $2$ times the first, so it is {{1}}. The independent vectors are $(1, 1, 0)$ and $(0, 0, 1)$, so the span has dimension {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "redundant",
+            "independent",
+            "the zero vector"
+          ],
+          "answer": "redundant"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $(2,2,0) = 2(1,1,0)$, it is redundant. The two surviving vectors $(1,1,0)$ and $(0,0,1)$ are independent, so the span is a plane of dimension $2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Friedberg, Linear Algebra"
+    }
+  ]
+}

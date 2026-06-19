@@ -1,0 +1,473 @@
+{
+  "courseId": "mathematical-methods-i",
+  "topicId": "partial-differentiation",
+  "questions": [
+    {
+      "id": "mathematical-methods-i-partial-differentiation-001",
+      "stem": "For $f(x, y) = x^2 y + y^3$, what is the partial derivative $f_x$?",
+      "options": [
+        "$2xy$",
+        "$x^2 + 3y^2$",
+        "$2x$",
+        "$2xy + 3y^2$"
+      ],
+      "answer": 0,
+      "explanation": "Differentiate with respect to $x$, treating $y$ as a constant: the derivative of $x^2 y$ is $2xy$, and $y^3$ is constant in $x$, so its derivative is $0$. Thus $f_x = 2xy$. The option $x^2 + 3y^2$ is $f_y$, $2xy + 3y^2$ mixes both, and $2x$ forgets the $y$ factor. The trap is holding $y$ fixed: the $y^3$ term drops out, leaving $2xy$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-002",
+      "stem": "For $f(x, y) = x^2 y + y^3$, what is $f_y$?",
+      "options": [
+        "$3y^2$",
+        "$x^2 + 3y^2$",
+        "$2xy$",
+        "$x^2 + y^2$"
+      ],
+      "answer": 1,
+      "explanation": "Differentiate with respect to $y$, treating $x$ as constant: $x^2 y$ gives $x^2$, and $y^3$ gives $3y^2$. So $f_y = x^2 + 3y^2$. The option $2xy$ is $f_x$, $3y^2$ omits the $x^2$ term, and $x^2 + y^2$ mishandles the power. The trap is differentiating both terms in $y$: $x^2 y \\to x^2$ and $y^3 \\to 3y^2$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-003",
+      "stem": "The total differential of $z = f(x, y)$ is given by:",
+      "options": [
+        "$dz = \\dfrac{f_x}{f_y}\\,dx$",
+        "$dz = f_x\\,dx - f_y\\,dy$",
+        "$dz = f_x f_y\\,dx\\,dy$",
+        "$dz = f_x\\,dx + f_y\\,dy$"
+      ],
+      "answer": 3,
+      "explanation": "The total differential sums the contributions from each variable: $dz = \\frac{\\partial f}{\\partial x}\\,dx + \\frac{\\partial f}{\\partial y}\\,dy = f_x\\,dx + f_y\\,dy$. The option with a minus sign is wrong, the product form confuses it with a double integral, and the quotient has no basis. The trap is the additive structure: each partial is multiplied by its own differential and the results add.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-004",
+      "stem": "For $f(x, y) = x^2 + y^2$, what is the gradient $\\nabla f$ at the point $(1, 2)$?",
+      "options": [
+        "$(4, 8)$",
+        "$(2, 2)$",
+        "$(1, 2)$",
+        "$(2, 4)$"
+      ],
+      "answer": 3,
+      "explanation": "The gradient is $\\nabla f = (f_x, f_y) = (2x, 2y)$. At $(1, 2)$ this is $(2\\cdot 1, 2\\cdot 2) = (2, 4)$. The option $(1, 2)$ forgets to differentiate, $(2, 2)$ uses the wrong point, and $(4, 8)$ doubles again. The trap is evaluating after differentiating: $(2x, 2y)$ at $(1, 2)$ gives $(2, 4)$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-005",
+      "stem": "For $f(x, y) = e^{xy}$, what is $f_x$?",
+      "options": [
+        "$x e^{xy}$",
+        "$xy\\, e^{xy}$",
+        "$e^{xy}$",
+        "$y e^{xy}$"
+      ],
+      "answer": 3,
+      "explanation": "By the chain rule, $\\frac{\\partial}{\\partial x} e^{xy} = e^{xy}\\cdot\\frac{\\partial}{\\partial x}(xy) = e^{xy}\\cdot y = y e^{xy}$, since $y$ is held constant. The option $x e^{xy}$ is $f_y$, $e^{xy}$ forgets the inner derivative, and $xy\\,e^{xy}$ multiplies by the whole exponent. The trap is the inner derivative $\\frac{\\partial}{\\partial x}(xy) = y$, giving $y e^{xy}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-006",
+      "stem": "For $f(x, y) = x^2 y + y^3$, what is the second partial $f_{xx}$?",
+      "options": [
+        "$2y$",
+        "$6y$",
+        "$2$",
+        "$2x$"
+      ],
+      "answer": 0,
+      "explanation": "First $f_x = 2xy$, then differentiate again in $x$: $f_{xx} = \\frac{\\partial}{\\partial x}(2xy) = 2y$. The option $2x$ is $f_{xy}$, $6y$ is $f_{yy}$, and $2$ drops the $y$. The trap is the second differentiation: $2xy$ differentiated in $x$ leaves $2y$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-007",
+      "stem": "For $f(x, y) = x^2 y + y^3$, what is the mixed partial $f_{xy}$?",
+      "options": [
+        "$2y$",
+        "$6y$",
+        "$0$",
+        "$2x$"
+      ],
+      "answer": 3,
+      "explanation": "Starting from $f_x = 2xy$, differentiate in $y$: $f_{xy} = \\frac{\\partial}{\\partial y}(2xy) = 2x$. By Clairaut's theorem this equals $f_{yx}$, since $f_y = x^2 + 3y^2$ differentiated in $x$ also gives $2x$. The option $2y$ is $f_{xx}$, $6y$ is $f_{yy}$, and $0$ ignores the cross term. The trap is the order independence: both routes give $2x$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-008",
+      "stem": "Using the chain rule, if $z = f(x, y)$ with $x = x(t)$ and $y = y(t)$, then $\\dfrac{dz}{dt}$ equals:",
+      "options": [
+        "$f_x + f_y$",
+        "$f_x\\dfrac{dy}{dt} + f_y\\dfrac{dx}{dt}$",
+        "$f_x\\dfrac{dx}{dt}\\,f_y\\dfrac{dy}{dt}$",
+        "$f_x\\dfrac{dx}{dt} + f_y\\dfrac{dy}{dt}$"
+      ],
+      "answer": 3,
+      "explanation": "The chain rule for a function of two variables each depending on $t$ is $\\frac{dz}{dt} = \\frac{\\partial f}{\\partial x}\\frac{dx}{dt} + \\frac{\\partial f}{\\partial y}\\frac{dy}{dt}$. The option $f_x + f_y$ omits the inner derivatives, the product form multiplies the two terms, and the third option pairs each partial with the wrong derivative. The trap is matching each partial to its own variable's rate: $f_x$ with $\\frac{dx}{dt}$, $f_y$ with $\\frac{dy}{dt}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-009",
+      "stem": "The directional derivative of $f$ in the direction of a unit vector $\\hat u$ is:",
+      "options": [
+        "$|\\nabla f|\\,|\\hat u|$",
+        "$\\nabla f \\times \\hat u$",
+        "$\\nabla f \\cdot \\hat u$",
+        "$\\dfrac{\\nabla f}{\\hat u}$"
+      ],
+      "answer": 2,
+      "explanation": "The directional derivative is the dot product $D_{\\hat u} f = \\nabla f \\cdot \\hat u$, the component of the gradient along $\\hat u$. The cross product is a vector and undefined here, $|\\nabla f|\\,|\\hat u|$ drops the angle factor, and dividing by a vector is meaningless. The trap is using the dot product, which projects the gradient onto the direction.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-010",
+      "stem": "Compute the directional derivative of $f(x, y) = x^2 + y^2$ at $(1, 1)$ in the direction of $(3, 4)$.",
+      "options": [
+        "$\\dfrac{14}{5}$",
+        "$\\dfrac{7}{5}$",
+        "$2$",
+        "$14$"
+      ],
+      "answer": 0,
+      "explanation": "The gradient is $\\nabla f = (2x, 2y) = (2, 2)$ at $(1, 1)$. Normalize the direction: $|(3, 4)| = 5$, so $\\hat u = \\left(\\frac{3}{5}, \\frac{4}{5}\\right)$. Then $D_{\\hat u} f = (2, 2)\\cdot\\left(\\frac{3}{5}, \\frac{4}{5}\\right) = \\frac{6}{5} + \\frac{8}{5} = \\frac{14}{5}$. The option $14$ skips normalizing, $\\frac{7}{5}$ halves, and $2$ uses only one component. The trap is dividing the direction by its length $5$ first, giving $\\frac{14}{5}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-011",
+      "stem": "The maximum rate of increase of $f$ at a point equals:",
+      "options": [
+        "$f_x + f_y$",
+        "$\\nabla f$",
+        "$0$",
+        "$|\\nabla f|$"
+      ],
+      "answer": 3,
+      "explanation": "The directional derivative $\\nabla f \\cdot \\hat u$ is largest when $\\hat u$ points along $\\nabla f$, giving the value $|\\nabla f|$. So the maximum rate of increase is the magnitude of the gradient. The option $\\nabla f$ is a vector, not a rate, $0$ is the rate perpendicular to the gradient, and $f_x + f_y$ is not the magnitude. The trap is that the steepest rate is the length $|\\nabla f|$, achieved in the gradient's direction.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-012",
+      "stem": "For $f(x, y) = x^2 + y^2$, what is the magnitude of the maximum rate of change at $(1, 2)$?",
+      "options": [
+        "$\\sqrt{5}$",
+        "$2\\sqrt{5}$",
+        "$20$",
+        "$6$"
+      ],
+      "answer": 1,
+      "explanation": "The gradient is $\\nabla f = (2x, 2y) = (2, 4)$ at $(1, 2)$. Its magnitude is $|\\nabla f| = \\sqrt{2^2 + 4^2} = \\sqrt{4 + 16} = \\sqrt{20} = 2\\sqrt{5}$. The option $20$ is $|\\nabla f|^2$, $6$ adds the components, and $\\sqrt{5}$ halves the vector first. The trap is the magnitude: $\\sqrt{20}$ simplifies to $2\\sqrt{5}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-013",
+      "stem": "In the second-derivative test, the discriminant $D$ at a critical point is:",
+      "options": [
+        "$(f_{xy})^2 - f_{xx}\\,f_{yy}$",
+        "$f_{xx} + f_{yy}$",
+        "$f_{xx}\\,f_{yy} + (f_{xy})^2$",
+        "$f_{xx}\\,f_{yy} - (f_{xy})^2$"
+      ],
+      "answer": 3,
+      "explanation": "The discriminant is $D = f_{xx}f_{yy} - (f_{xy})^2$, the determinant of the Hessian matrix. The option with a plus sign uses the wrong sign on the mixed term, the negated version flips $D$, and the sum is the trace, not the determinant. The trap is the minus sign: $D$ subtracts the square of the mixed partial.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-014",
+      "stem": "In the second-derivative test, a critical point with $D > 0$ and $f_{xx} > 0$ is a:",
+      "options": [
+        "local minimum",
+        "local maximum",
+        "saddle point",
+        "inflection point"
+      ],
+      "answer": 0,
+      "explanation": "When $D > 0$ the surface curves the same way in all directions, and $f_{xx} > 0$ means it curves upward, so the point is a local minimum. If instead $f_{xx} < 0$ it would be a maximum, and $D < 0$ gives a saddle. The trap is reading the sign of $f_{xx}$ once $D > 0$ confirms an extremum: positive curvature means a minimum.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-015",
+      "stem": "Find the critical point of $f(x, y) = x^2 + xy + y^2$.",
+      "options": [
+        "$(1, 1)$",
+        "$(-1, 1)$",
+        "$(2, -1)$",
+        "$(0, 0)$"
+      ],
+      "answer": 3,
+      "explanation": "Set the partials to zero: $f_x = 2x + y = 0$ and $f_y = x + 2y = 0$. From the first, $y = -2x$; substituting gives $x + 2(-2x) = -3x = 0$, so $x = 0$ and then $y = 0$. The only critical point is $(0, 0)$. The other points fail at least one equation. The trap is solving the linear system: it forces the origin.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-016",
+      "stem": "Classify the critical point $(0, 0)$ of $f(x, y) = x^2 + xy + y^2$.",
+      "options": [
+        "local minimum",
+        "degenerate",
+        "saddle point",
+        "local maximum"
+      ],
+      "answer": 0,
+      "explanation": "The second partials are $f_{xx} = 2$, $f_{yy} = 2$, $f_{xy} = 1$, so $D = (2)(2) - 1^2 = 3 > 0$. Since $D > 0$ and $f_{xx} = 2 > 0$, the point is a local minimum. The option saddle would need $D < 0$, maximum would need $f_{xx} < 0$, and degenerate would need $D = 0$. The trap is computing $D = 3 > 0$ with positive $f_{xx}$, giving a minimum.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-017",
+      "stem": "Classify the critical point $(0, 0)$ of $f(x, y) = x^2 - y^2$.",
+      "options": [
+        "saddle point",
+        "local maximum",
+        "local minimum",
+        "local minimum and maximum"
+      ],
+      "answer": 0,
+      "explanation": "Here $f_{xx} = 2$, $f_{yy} = -2$, $f_{xy} = 0$, so $D = (2)(-2) - 0 = -4 < 0$. A negative discriminant means a saddle point: the surface rises in the $x$ direction and falls in the $y$ direction. The extremum options require $D > 0$. The trap is the negative $D$: opposite curvatures produce a saddle.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-018",
+      "stem": "For $f(x, y) = \\sin(xy)$, what is $f_x$?",
+      "options": [
+        "$y\\cos(xy)$",
+        "$xy\\cos(xy)$",
+        "$\\cos(xy)$",
+        "$x\\cos(xy)$"
+      ],
+      "answer": 0,
+      "explanation": "By the chain rule, $\\frac{\\partial}{\\partial x}\\sin(xy) = \\cos(xy)\\cdot\\frac{\\partial}{\\partial x}(xy) = \\cos(xy)\\cdot y = y\\cos(xy)$. The option $\\cos(xy)$ omits the inner derivative, $x\\cos(xy)$ is $f_y$, and $xy\\cos(xy)$ multiplies by the whole product. The trap is the inner derivative $\\frac{\\partial}{\\partial x}(xy) = y$, giving $y\\cos(xy)$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-019",
+      "stem": "The linear approximation (tangent-plane) of $f$ near $(a, b)$ is $f(x, y) \\approx$:",
+      "options": [
+        "$f(a, b) + f_x(a, b) + f_y(a, b)$",
+        "$f_x(a, b)(x - a) + f_y(a, b)(y - b)$",
+        "$f(a, b)\\,(x - a)(y - b)$",
+        "$f(a, b) + f_x(a, b)(x - a) + f_y(a, b)(y - b)$"
+      ],
+      "answer": 3,
+      "explanation": "The tangent-plane approximation is $f(a, b) + f_x(a, b)(x - a) + f_y(a, b)(y - b)$, the value plus the linear corrections. The first option drops the increments $(x - a)$ and $(y - b)$, the second omits the base value $f(a, b)$, and the product form is not linear. The trap is including the base value and pairing each partial with its own increment.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-020",
+      "stem": "How many critical points does $f(x, y) = x^3 + y^3 - 3xy$ have?",
+      "options": [
+        "two",
+        "three",
+        "none",
+        "one"
+      ],
+      "answer": 0,
+      "explanation": "Set $f_x = 3x^2 - 3y = 0$ and $f_y = 3y^2 - 3x = 0$, so $y = x^2$ and $x = y^2$. Substituting, $x = (x^2)^2 = x^4$, giving $x^4 - x = x(x^3 - 1) = 0$, so $x = 0$ or $x = 1$. This yields the points $(0, 0)$ and $(1, 1)$, that is two critical points. The trap is solving the coupled system fully: it has exactly two real solutions.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-021",
+      "stem": "Classify the critical point $(1, 1)$ of $f(x, y) = x^3 + y^3 - 3xy$.",
+      "options": [
+        "local minimum",
+        "saddle point",
+        "degenerate point",
+        "local maximum"
+      ],
+      "answer": 0,
+      "explanation": "The second partials are $f_{xx} = 6x$, $f_{yy} = 6y$, $f_{xy} = -3$. At $(1, 1)$, $f_{xx} = 6$, $f_{yy} = 6$, so $D = (6)(6) - (-3)^2 = 36 - 9 = 27 > 0$. With $D > 0$ and $f_{xx} = 6 > 0$, the point is a local minimum. The trap is evaluating the Hessian at the point: $D = 27 > 0$ and positive $f_{xx}$ give a minimum, not the saddle that occurs at the origin.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-022",
+      "stem": "For $f(x, y) = \\ln(x^2 + y^2)$, what is $f_x$?",
+      "options": [
+        "$\\dfrac{x}{x^2 + y^2}$",
+        "$\\dfrac{2x}{x^2 + y^2}$",
+        "$\\dfrac{2x}{x^2}$",
+        "$\\dfrac{1}{x^2 + y^2}$"
+      ],
+      "answer": 1,
+      "explanation": "By the chain rule, $\\frac{\\partial}{\\partial x}\\ln(x^2 + y^2) = \\frac{1}{x^2 + y^2}\\cdot\\frac{\\partial}{\\partial x}(x^2 + y^2) = \\frac{2x}{x^2 + y^2}$. The option $\\frac{1}{x^2 + y^2}$ omits the inner derivative, $\\frac{x}{x^2 + y^2}$ forgets the factor of $2$, and $\\frac{2x}{x^2}$ drops the $y^2$. The trap is the inner derivative $2x$ over the original argument.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-023",
+      "format": "cloze",
+      "stem": "Compute the first partials of $f(x, y) = 3x^2 y - y^2$.",
+      "solution": "Holding $y$ fixed, $f_x = 6xy$, so the coefficient in front of $xy$ is {{1}}. Holding $x$ fixed, $f_y = 3x^2 - 2y$, where the coefficient of $x^2$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Differentiating $3x^2 y$ in $x$ gives $6xy$, so the coefficient is $6$. Differentiating in $y$ gives $f_y = 3x^2 - 2y$, with coefficient $3$ on $x^2$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-024",
+      "format": "cloze",
+      "stem": "Evaluate the gradient of $f(x, y) = x^2 + 3y^2$ at the point $(2, 1)$.",
+      "solution": "The gradient is $\\nabla f = (2x, 6y)$. At $(2, 1)$ the first component is {{1}} and the second component is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Here $f_x = 2x$ and $f_y = 6y$. At $(2, 1)$, $f_x = 4$ and $f_y = 6$, so $\\nabla f = (4, 6)$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-025",
+      "format": "cloze",
+      "stem": "Apply the second-derivative test to a critical point.",
+      "solution": "The discriminant is $D = f_{xx}f_{yy} - (f_{xy})^2$. If $D > 0$ and $f_{xx} > 0$, the point is a local {{1}}. If $D$ is {{2}}, the point is a saddle.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "minimum",
+            "maximum",
+            "saddle",
+            "inflection"
+          ],
+          "answer": "minimum"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "negative",
+            "positive",
+            "zero",
+            "large"
+          ],
+          "answer": "negative"
+        }
+      ],
+      "explanation": "With $D > 0$ and $f_{xx} > 0$ the point is a local minimum. A negative discriminant $D < 0$ signals a saddle point.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-026",
+      "format": "cloze",
+      "stem": "Find and classify the critical point of $f(x, y) = x^2 + y^2 - 4x$.",
+      "solution": "Setting $f_x = 2x - 4 = 0$ gives $x = $ {{1}}, and $f_y = 2y = 0$ gives $y = 0$. Since $f_{xx} = 2$, $f_{yy} = 2$, $f_{xy} = 0$, the discriminant $D = 4 > 0$ with $f_{xx} > 0$, so the point is a local {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "minimum",
+            "maximum",
+            "saddle",
+            "cusp"
+          ],
+          "answer": "minimum"
+        }
+      ],
+      "explanation": "From $2x - 4 = 0$, $x = 2$; with $y = 0$ the critical point is $(2, 0)$. Then $D = (2)(2) - 0 = 4 > 0$ and $f_{xx} = 2 > 0$, so it is a local minimum.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-027",
+      "format": "cloze",
+      "stem": "Compute a directional derivative of $f(x, y) = 2x + 3y$ in the direction of $(0, 1)$.",
+      "solution": "The gradient of this linear function is the constant vector $\\nabla f = (2, 3)$. The given direction $(0, 1)$ is already a unit vector, so the directional derivative is the dot product, equal to {{1}}. This matches the partial derivative {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$f_y$",
+            "$f_x$",
+            "$f_{xy}$",
+            "$f_{xx}$"
+          ],
+          "answer": "$f_y$"
+        }
+      ],
+      "explanation": "Here $\\nabla f = (2, 3)$ and $\\hat u = (0, 1)$, so $D_{\\hat u} f = (2)(0) + (3)(1) = 3$. Moving in the $y$ direction returns the partial $f_y = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-partial-differentiation-028",
+      "format": "cloze",
+      "stem": "Use the chain rule for $z = x^2 + y^2$ with $x = t$ and $y = t^2$.",
+      "solution": "The chain rule gives $\\dfrac{dz}{dt} = 2x\\dfrac{dx}{dt} + 2y\\dfrac{dy}{dt}$. With $\\dfrac{dx}{dt} = 1$ and $\\dfrac{dy}{dt} = 2t$, this becomes $2t + 4t^3$. Evaluated at $t = 1$, the value of $\\dfrac{dz}{dt}$ is {{1}}, and the highest power of $t$ appearing in the expression is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Substituting $x = t$, $y = t^2$ gives $\\frac{dz}{dt} = 2t(1) + 2t^2(2t) = 2t + 4t^3$. At $t = 1$ this is $2 + 4 = 6$, and the highest power is $t^3$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    }
+  ],
+  "status": "approved"
+}

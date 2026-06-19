@@ -1,0 +1,473 @@
+{
+  "courseId": "mathematical-methods-i",
+  "topicId": "infinite-series",
+  "questions": [
+    {
+      "id": "mathematical-methods-i-infinite-series-001",
+      "stem": "Evaluate the geometric series $\\displaystyle\\sum_{n=0}^{\\infty} \\left(\\dfrac{1}{2}\\right)^n$.",
+      "options": [
+        "$\\infty$",
+        "$\\dfrac{1}{2}$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "A geometric series with first term $a = 1$ (the $n = 0$ term) and ratio $r = \\frac{1}{2}$ sums to $\\frac{a}{1 - r} = \\frac{1}{1 - 1/2} = \\frac{1}{1/2} = 2$. The option $1$ would be the sum starting from $n = 1$, $\\frac{1}{2}$ is just the ratio, and $\\infty$ ignores convergence. The trap is the starting index: with $n = 0$ included, $a = 1$ and the sum is $2$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-002",
+      "stem": "The $p$-series $\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{1}{n^p}$ converges precisely when:",
+      "options": [
+        "$p > 1$",
+        "$p \\le 1$",
+        "$p = 1$",
+        "$p < 1$"
+      ],
+      "answer": 0,
+      "explanation": "By the integral test, $\\sum \\frac{1}{n^p}$ converges if and only if $p > 1$. At $p = 1$ it is the harmonic series, which diverges, so $p \\le 1$ and $p < 1$ both include divergent cases. The trap is the strict inequality: convergence requires $p$ strictly greater than $1$, the boundary $p = 1$ failing.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-003",
+      "stem": "Apply the ratio test to $\\displaystyle\\sum_{n=0}^{\\infty} \\dfrac{1}{n!}$. The limit $\\lim_{n\\to\\infty}\\left|\\dfrac{a_{n+1}}{a_n}\\right|$ equals:",
+      "options": [
+        "$\\infty$",
+        "$0$",
+        "$1$",
+        "$e$"
+      ],
+      "answer": 1,
+      "explanation": "With $a_n = \\frac{1}{n!}$, the ratio is $\\frac{a_{n+1}}{a_n} = \\frac{n!}{(n+1)!} = \\frac{1}{n+1}$, which tends to $0$ as $n \\to \\infty$. Since $0 < 1$, the series converges (its sum is $e$). The option $e$ confuses the sum with the ratio limit, $1$ is inconclusive, and $\\infty$ has the wrong direction. The trap is simplifying the factorials: the ratio collapses to $\\frac{1}{n+1} \\to 0$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-004",
+      "stem": "What is the radius of convergence of $\\displaystyle\\sum_{n=0}^{\\infty} \\dfrac{x^n}{n!}$?",
+      "options": [
+        "$\\infty$",
+        "$1$",
+        "$0$",
+        "$e$"
+      ],
+      "answer": 0,
+      "explanation": "Apply the ratio test to $\\frac{x^n}{n!}$: $\\left|\\frac{x^{n+1}/(n+1)!}{x^n/n!}\\right| = \\frac{|x|}{n+1} \\to 0$ for every $x$. The limit is below $1$ for all $x$, so the series converges everywhere and $R = \\infty$. The option $1$ would apply to $\\sum x^n$, $0$ to $\\sum n!x^n$, and $e$ confuses the sum. The trap is that the factorial in the denominator overwhelms any fixed $x$, giving infinite radius.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-005",
+      "stem": "What is the Maclaurin series of $e^x$?",
+      "options": [
+        "$\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{x^n}{n}$",
+        "$\\displaystyle\\sum_{n=0}^{\\infty} \\dfrac{(-1)^n x^n}{n!}$",
+        "$\\displaystyle\\sum_{n=0}^{\\infty} \\dfrac{x^n}{n!}$",
+        "$\\displaystyle\\sum_{n=0}^{\\infty} x^n$"
+      ],
+      "answer": 2,
+      "explanation": "Since every derivative of $e^x$ at $0$ equals $1$, the Taylor coefficients are $\\frac{f^{(n)}(0)}{n!} = \\frac{1}{n!}$, giving $e^x = \\sum_{n=0}^\\infty \\frac{x^n}{n!}$. The alternating version is $e^{-x}$, $\\sum x^n$ is the geometric series for $\\frac{1}{1-x}$, and $\\sum \\frac{x^n}{n}$ relates to $-\\ln(1 - x)$. The trap is the coefficient: each term carries $\\frac{1}{n!}$, with no alternating sign.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-006",
+      "stem": "Does the alternating harmonic series $\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{(-1)^{n+1}}{n}$ converge?",
+      "options": [
+        "yes, absolutely",
+        "no, it diverges",
+        "only if regrouped",
+        "yes, conditionally"
+      ],
+      "answer": 3,
+      "explanation": "The terms $\\frac{1}{n}$ decrease monotonically to $0$, so by the alternating series test the series converges (its sum is $\\ln 2$). But the series of absolute values is the harmonic series, which diverges, so the convergence is conditional, not absolute. The option diverges ignores the alternating test, absolutely overlooks that $\\sum\\frac{1}{n}$ diverges, and regrouping is irrelevant to convergence here. The trap is the distinction: it converges, but only conditionally.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-007",
+      "stem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{1}{n(n+1)}$, a telescoping series.",
+      "options": [
+        "$2$",
+        "diverges",
+        "$1$",
+        "$\\dfrac{1}{2}$"
+      ],
+      "answer": 2,
+      "explanation": "Use partial fractions: $\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}$. The partial sum telescopes to $1 - \\frac{1}{N+1}$, which tends to $1$ as $N \\to \\infty$. The option $\\frac{1}{2}$ is the first term alone, $2$ doubles the limit, and diverges ignores the cancellation. The trap is the telescoping: nearly every term cancels, leaving $1 - \\frac{1}{N+1} \\to 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-008",
+      "stem": "By the $n$th-term test, the series $\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{n}{n+1}$:",
+      "options": [
+        "converges to $0$",
+        "diverges",
+        "converges to $1$",
+        "converges conditionally"
+      ],
+      "answer": 1,
+      "explanation": "The general term $\\frac{n}{n+1} \\to 1 \\ne 0$ as $n \\to \\infty$. The $n$th-term (divergence) test says a series whose terms do not tend to $0$ cannot converge, so the series diverges. The options claiming convergence ignore this necessary condition. The trap is confusing the limit of the terms with the sum: the terms approach $1$, so the series diverges.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-009",
+      "stem": "Evaluate $\\displaystyle\\sum_{n=0}^{\\infty} \\left(-\\dfrac{1}{2}\\right)^n$.",
+      "options": [
+        "$\\dfrac{2}{3}$",
+        "$2$",
+        "$-2$",
+        "$\\dfrac{3}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "This geometric series has $a = 1$ and $r = -\\frac{1}{2}$, with $|r| < 1$. The sum is $\\frac{a}{1 - r} = \\frac{1}{1 - (-1/2)} = \\frac{1}{3/2} = \\frac{2}{3}$. The option $2$ uses $r = \\frac{1}{2}$ with the wrong sign, $\\frac{3}{2}$ inverts the result, and $-2$ misplaces the sign. The trap is the denominator $1 - r = 1 + \\frac{1}{2} = \\frac{3}{2}$, giving $\\frac{2}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-010",
+      "stem": "The Maclaurin series of $\\sin x$ begins with which terms?",
+      "options": [
+        "$1 - \\dfrac{x^2}{2!} + \\dfrac{x^4}{4!} - \\cdots$",
+        "$x - \\dfrac{x^3}{3!} + \\dfrac{x^5}{5!} - \\cdots$",
+        "$x - \\dfrac{x^2}{2!} + \\dfrac{x^3}{3!} - \\cdots$",
+        "$x + \\dfrac{x^3}{3!} + \\dfrac{x^5}{5!} + \\cdots$"
+      ],
+      "answer": 1,
+      "explanation": "The sine series contains only odd powers with alternating signs: $\\sin x = x - \\frac{x^3}{3!} + \\frac{x^5}{5!} - \\cdots = \\sum_{n=0}^\\infty \\frac{(-1)^n x^{2n+1}}{(2n+1)!}$. The first option is the cosine series, the third drops the alternating sign, and the fourth mixes even and odd powers. The trap is the parity: sine is odd, so only odd powers appear, alternating in sign.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-011",
+      "stem": "Use the comparison test on $\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{1}{n^2 + 1}$. The series:",
+      "options": [
+        "diverges",
+        "converges",
+        "cannot be decided",
+        "is conditionally convergent"
+      ],
+      "answer": 1,
+      "explanation": "For all $n \\ge 1$, $\\frac{1}{n^2 + 1} < \\frac{1}{n^2}$, and $\\sum \\frac{1}{n^2}$ is a convergent $p$-series with $p = 2 > 1$. By direct comparison the smaller series converges. The option diverges reverses the comparison, conditionally is irrelevant for positive terms, and cannot be decided ignores a clean bound. The trap is the direction of the inequality: bounding above by a convergent series forces convergence.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-012",
+      "stem": "Apply the comparison or integral test to $\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{1}{\\sqrt{n}}$. The series:",
+      "options": [
+        "converges to $2$",
+        "diverges",
+        "converges conditionally",
+        "converges"
+      ],
+      "answer": 1,
+      "explanation": "Here $\\frac{1}{\\sqrt{n}} = \\frac{1}{n^{1/2}}$ is a $p$-series with $p = \\frac{1}{2} \\le 1$, so it diverges. Equivalently $\\int_1^\\infty x^{-1/2}\\,dx = [2\\sqrt{x}]_1^\\infty$ is infinite. The convergence options ignore the threshold $p > 1$. The trap is the exponent: $p = \\frac{1}{2}$ is not greater than $1$, so the series diverges.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-013",
+      "stem": "What is the radius of convergence of $\\displaystyle\\sum_{n=0}^{\\infty} \\dfrac{x^n}{2^n}$?",
+      "options": [
+        "$\\infty$",
+        "$\\dfrac{1}{2}$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "Write the term as $\\left(\\frac{x}{2}\\right)^n$; this geometric form converges when $\\left|\\frac{x}{2}\\right| < 1$, that is $|x| < 2$. So the radius is $R = 2$. The option $\\frac{1}{2}$ inverts the radius, $1$ ignores the $2^n$, and $\\infty$ over-converges. The trap is the ratio $\\frac{x}{2}$: convergence needs $|x| < 2$, giving $R = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-014",
+      "stem": "For the power series $\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{(x - 3)^n}{n}$, what is the radius of convergence?",
+      "options": [
+        "$3$",
+        "$0$",
+        "$1$",
+        "$\\infty$"
+      ],
+      "answer": 2,
+      "explanation": "Apply the ratio test: $\\left|\\frac{(x-3)^{n+1}/(n+1)}{(x-3)^n/n}\\right| = |x - 3|\\cdot\\frac{n}{n+1} \\to |x - 3|$. Convergence requires $|x - 3| < 1$, so $R = 1$, centered at $3$. The option $3$ confuses the center with the radius, $0$ and $\\infty$ are the degenerate cases. The trap is reading $R$ from the ratio limit: the condition $|x - 3| < 1$ gives $R = 1$, while $3$ is only the center.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-015",
+      "stem": "The Taylor coefficient of $(x - a)^n$ in the Taylor series of $f$ about $a$ is:",
+      "options": [
+        "$n!\\,f^{(n)}(a)$",
+        "$\\dfrac{f(a)}{n!}$",
+        "$\\dfrac{f^{(n)}(a)}{n!}$",
+        "$f^{(n)}(a)$"
+      ],
+      "answer": 2,
+      "explanation": "The Taylor series is $f(x) = \\sum_{n=0}^\\infty \\frac{f^{(n)}(a)}{n!}(x - a)^n$, so the coefficient is $\\frac{f^{(n)}(a)}{n!}$. The option $f^{(n)}(a)$ omits the factorial, $n!\\,f^{(n)}(a)$ multiplies instead of divides, and $\\frac{f(a)}{n!}$ uses the wrong derivative. The trap is the factorial denominator: dividing the $n$th derivative by $n!$ produces the coefficient.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-016",
+      "stem": "Apply the ratio test to $\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{n}{2^n}$. The limit is:",
+      "options": [
+        "$1$",
+        "$\\dfrac{1}{2}$",
+        "$2$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "With $a_n = \\frac{n}{2^n}$, the ratio is $\\frac{a_{n+1}}{a_n} = \\frac{(n+1)/2^{n+1}}{n/2^n} = \\frac{n+1}{2n} \\to \\frac{1}{2}$. Since $\\frac{1}{2} < 1$, the series converges. The option $2$ inverts the ratio, $1$ forgets the factor of $2$, and $0$ ignores the linear growth in the numerator. The trap is the limit of $\\frac{n+1}{2n}$, which is $\\frac{1}{2}$, not $1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-017",
+      "stem": "The repeating decimal $0.\\overline{3} = 0.3333\\ldots$ written as a geometric series equals:",
+      "options": [
+        "$\\dfrac{3}{10}$",
+        "$\\dfrac{10}{3}$",
+        "$\\dfrac{1}{30}$",
+        "$\\dfrac{1}{3}$"
+      ],
+      "answer": 3,
+      "explanation": "Write $0.\\overline{3} = \\sum_{n=1}^\\infty \\frac{3}{10^n}$, a geometric series with $a = \\frac{3}{10}$ and $r = \\frac{1}{10}$. The sum is $\\frac{a}{1 - r} = \\frac{3/10}{9/10} = \\frac{3}{9} = \\frac{1}{3}$. The option $\\frac{3}{10}$ is only the first term, $\\frac{1}{30}$ and $\\frac{10}{3}$ mishandle the ratio. The trap is summing the full series: the repeating block gives exactly $\\frac{1}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-018",
+      "stem": "What is the Maclaurin series of $\\dfrac{1}{1 - x}$ for $|x| < 1$?",
+      "options": [
+        "$\\displaystyle\\sum_{n=0}^{\\infty} x^n$",
+        "$\\displaystyle\\sum_{n=1}^{\\infty} n x^{n-1}$",
+        "$\\displaystyle\\sum_{n=0}^{\\infty} \\dfrac{x^n}{n!}$",
+        "$\\displaystyle\\sum_{n=0}^{\\infty} (-1)^n x^n$"
+      ],
+      "answer": 0,
+      "explanation": "The standard geometric expansion is $\\frac{1}{1 - x} = 1 + x + x^2 + \\cdots = \\sum_{n=0}^\\infty x^n$ for $|x| < 1$. The alternating version is $\\frac{1}{1 + x}$, $\\sum \\frac{x^n}{n!}$ is $e^x$, and $\\sum n x^{n-1}$ is the derivative $\\frac{1}{(1-x)^2}$. The trap is the sign: $\\frac{1}{1 - x}$ has all positive coefficients equal to $1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-019",
+      "stem": "Apply the root test to $\\displaystyle\\sum_{n=1}^{\\infty} \\left(\\dfrac{1}{n}\\right)^n$. The limit $\\lim_{n\\to\\infty} (a_n)^{1/n}$ equals:",
+      "options": [
+        "$e$",
+        "$1$",
+        "$0$",
+        "$\\infty$"
+      ],
+      "answer": 2,
+      "explanation": "Here $a_n = \\left(\\frac{1}{n}\\right)^n$, so $(a_n)^{1/n} = \\frac{1}{n} \\to 0$. Since $0 < 1$, the root test confirms convergence. The option $1$ would be inconclusive, $e$ confuses a different limit, and $\\infty$ has the wrong direction. The trap is taking the $n$th root: it strips the outer power, leaving $\\frac{1}{n} \\to 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-020",
+      "stem": "By the integral test, $\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{1}{n}$ is compared with which improper integral?",
+      "options": [
+        "$\\displaystyle\\int_0^{1} \\dfrac{dx}{x}$",
+        "$\\displaystyle\\int_1^{\\infty} \\dfrac{dx}{x}$",
+        "$\\displaystyle\\int_1^{\\infty} \\dfrac{dx}{x^2}$",
+        "$\\displaystyle\\int_1^{\\infty} e^{-x}\\,dx$"
+      ],
+      "answer": 1,
+      "explanation": "The integral test compares $\\sum \\frac{1}{n}$ with $\\int_1^\\infty \\frac{dx}{x} = [\\ln x]_1^\\infty$, which diverges, so the harmonic series diverges. The $\\frac{1}{x^2}$ integral converges and matches a different series, the $[0, 1]$ integral changes the domain, and the exponential is unrelated. The trap is matching the integrand to the term: $\\frac{1}{n}$ corresponds to $\\frac{1}{x}$ on $[1, \\infty)$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-021",
+      "stem": "For what values of $x$ does the geometric series $\\displaystyle\\sum_{n=0}^{\\infty} x^n$ converge?",
+      "options": [
+        "$|x| < 1$",
+        "$|x| \\le 1$",
+        "$x > 0$",
+        "all real $x$"
+      ],
+      "answer": 0,
+      "explanation": "A geometric series converges if and only if $|r| < 1$; here $r = x$, so it converges for $|x| < 1$. At $|x| = 1$ the terms do not tend to $0$ (the series is $1 + 1 + \\cdots$ or $1 - 1 + \\cdots$), so the closed condition $|x| \\le 1$ fails at the endpoints. The trap is the strict inequality: the endpoints $x = \\pm 1$ diverge, so convergence is on the open interval $|x| < 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-022",
+      "stem": "Evaluate $\\displaystyle\\sum_{n=0}^{\\infty} 2\\left(\\dfrac{1}{4}\\right)^n$.",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "$\\dfrac{1}{3}$",
+        "$2$",
+        "$\\dfrac{8}{3}$"
+      ],
+      "answer": 3,
+      "explanation": "This is geometric with first term $a = 2$ and ratio $r = \\frac{1}{4}$. The sum is $\\frac{a}{1 - r} = \\frac{2}{1 - 1/4} = \\frac{2}{3/4} = \\frac{8}{3}$. The option $2$ is only the first term, $\\frac{1}{2}$ inverts something, and $\\frac{1}{3}$ drops the factor of $2$. The trap is the denominator $1 - \\frac{1}{4} = \\frac{3}{4}$, so the sum is $\\frac{2}{3/4} = \\frac{8}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-023",
+      "format": "cloze",
+      "stem": "Sum the geometric series $\\displaystyle\\sum_{n=0}^{\\infty} \\left(\\dfrac{2}{3}\\right)^n$.",
+      "solution": "The first term is $a = 1$ and the common ratio is $r = \\dfrac{2}{3}$. Since $|r|$ is less than {{1}}, the series converges, and its sum $\\dfrac{a}{1 - r}$ equals the integer {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Convergence of a geometric series needs $|r| < 1$. With $a = 1$ and $r = \\frac{2}{3}$, the sum is $\\frac{1}{1 - 2/3} = \\frac{1}{1/3} = 3$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-024",
+      "format": "cloze",
+      "stem": "State the convergence rule for a $p$-series and apply it.",
+      "solution": "The $p$-series $\\displaystyle\\sum \\dfrac{1}{n^p}$ converges exactly when $p$ is strictly greater than {{1}}. Therefore the series $\\displaystyle\\sum \\dfrac{1}{n^3}$ {{2}}, while the harmonic series $\\displaystyle\\sum \\dfrac{1}{n}$ does the opposite.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges",
+            "oscillates",
+            "is undefined"
+          ],
+          "answer": "converges"
+        }
+      ],
+      "explanation": "A $p$-series converges iff $p > 1$. For $\\frac{1}{n^3}$, $p = 3 > 1$, so it converges; the harmonic series has $p = 1$ and diverges.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-025",
+      "format": "cloze",
+      "stem": "Find the radius of convergence of $\\displaystyle\\sum_{n=0}^{\\infty} \\dfrac{x^n}{3^n}$ using the ratio test.",
+      "solution": "The ratio of consecutive terms simplifies to $\\dfrac{|x|}{k}$ where the constant {{1}}. Convergence requires this to be below $1$, so $|x| < 3$ and the radius of convergence is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The ratio is $\\left|\\frac{x^{n+1}/3^{n+1}}{x^n/3^n}\\right| = \\frac{|x|}{3}$, so $k = 3$. Requiring $\\frac{|x|}{3} < 1$ gives $|x| < 3$, so $R = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-026",
+      "format": "cloze",
+      "stem": "Write the first terms of the Maclaurin series of $\\cos x$.",
+      "solution": "The cosine series uses only {{1}} powers of $x$ with alternating signs. It begins $1 - \\dfrac{x^2}{2!} + \\dfrac{x^4}{m!} - \\cdots$, where the factorial in the third term has $m$ equal to {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "even",
+            "odd",
+            "prime",
+            "negative"
+          ],
+          "answer": "even"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Cosine is even, so its series has only even powers: $1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\cdots$. The third term is $\\frac{x^4}{4!}$, so $m = 4$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-027",
+      "format": "cloze",
+      "stem": "Test $\\displaystyle\\sum_{n=1}^{\\infty} \\dfrac{(-1)^{n+1}}{n}$ for convergence and the type of convergence.",
+      "solution": "By the alternating series test the series {{1}}, because the terms $\\dfrac{1}{n}$ decrease to zero. However, the series of absolute values is the harmonic series, which diverges, so the convergence is best described as {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges",
+            "is undefined",
+            "telescopes"
+          ],
+          "answer": "converges"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "conditional",
+            "absolute",
+            "uniform",
+            "geometric"
+          ],
+          "answer": "conditional"
+        }
+      ],
+      "explanation": "The alternating series test gives convergence. Since $\\sum \\frac{1}{n}$ diverges, the original series converges only conditionally.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    },
+    {
+      "id": "mathematical-methods-i-infinite-series-028",
+      "format": "cloze",
+      "stem": "Sum the telescoping series $\\displaystyle\\sum_{n=1}^{\\infty} \\left(\\dfrac{1}{n} - \\dfrac{1}{n+1}\\right)$.",
+      "solution": "The partial sum up to $N$ collapses to $1 - \\dfrac{1}{N+1}$, since the interior terms cancel. As $N \\to \\infty$, the subtracted fraction tends to {{1}}, so the full sum equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The telescoping partial sum is $1 - \\frac{1}{N+1}$. As $N \\to \\infty$, $\\frac{1}{N+1} \\to 0$, so the sum is $1 - 0 = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+    }
+  ],
+  "status": "approved"
+}

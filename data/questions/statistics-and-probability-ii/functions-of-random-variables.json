@@ -1,0 +1,479 @@
+{
+  "courseId": "statistics-and-probability-ii",
+  "topicId": "functions-of-random-variables",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-001",
+      "stem": "To find the distribution of $Y = g(X)$ by the cumulative distribution function method, you first compute",
+      "options": [
+        "$P(X = y)$",
+        "$f_Y(y) = g(f_X(x))$",
+        "$E[g(X)]$",
+        "$F_Y(y) = P(g(X) \\le y)$"
+      ],
+      "answer": 3,
+      "explanation": "The cdf method writes the event $\\{Y \\le y\\}$ in terms of $X$: $F_Y(y) = P(Y \\le y) = P(g(X) \\le y)$, then differentiates to obtain the density. Plugging the density into $g$ is not valid, and $E[g(X)]$ is a single number rather than a distribution.",
+      "difficulty": "warmup",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-002",
+      "stem": "If $X$ has density $f_X$ and $Y = aX + b$ with $a > 0$, the density of $Y$ is",
+      "options": [
+        "$a\\, f_X(y)$",
+        "$f_X(y - b)$",
+        "$f_X(ay + b)$",
+        "$\\frac{1}{a} f_X\\!\\left(\\frac{y - b}{a}\\right)$"
+      ],
+      "answer": 3,
+      "explanation": "For a linear transform with $a > 0$, inverting gives $x = \\frac{y - b}{a}$ and the Jacobian factor is $\\frac{1}{a}$, so $f_Y(y) = \\frac{1}{a} f_X\\!\\left(\\frac{y - b}{a}\\right)$. The missing Jacobian or the wrong inverse argument are the usual mistakes.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-003",
+      "stem": "The sum of two independent normal random variables $X \\sim N(\\mu_1, \\sigma_1^2)$ and $Y \\sim N(\\mu_2, \\sigma_2^2)$ is distributed as",
+      "options": [
+        "not normal in general",
+        "$N(\\mu_1 \\mu_2,\\ \\sigma_1^2 \\sigma_2^2)$",
+        "$N(\\mu_1 + \\mu_2,\\ \\sigma_1^2 + \\sigma_2^2)$",
+        "$N(\\mu_1 + \\mu_2,\\ \\sigma_1 + \\sigma_2)$"
+      ],
+      "answer": 2,
+      "explanation": "A linear combination of independent normals is normal. The means add and the variances add: $X + Y \\sim N(\\mu_1 + \\mu_2,\\ \\sigma_1^2 + \\sigma_2^2)$. Standard deviations do not add directly, and products of parameters are not how the rule works.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-004",
+      "stem": "Let $X \\sim N(3, 4)$ and $Y \\sim N(1, 9)$ be independent. What is the distribution of $X + Y$?",
+      "options": [
+        "$N(4, 36)$",
+        "$N(4, 13)$",
+        "$N(4, 5)$",
+        "$N(3, 13)$"
+      ],
+      "answer": 1,
+      "explanation": "Means add: $3 + 1 = 4$. Variances add: $4 + 9 = 13$. So $X + Y \\sim N(4, 13)$. Option $N(4, 36)$ wrongly multiplies the variances, and $N(4, 5)$ subtracts them.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-005",
+      "stem": "The sum of two independent Poisson random variables with means $\\lambda_1$ and $\\lambda_2$ is",
+      "options": [
+        "Poisson with mean $\\lambda_1 + \\lambda_2$",
+        "Poisson with mean $\\lambda_1 \\lambda_2$",
+        "not Poisson",
+        "normal with mean $\\lambda_1 + \\lambda_2$"
+      ],
+      "answer": 0,
+      "explanation": "The Poisson family is closed under sums of independent members, and the rate parameters add: the sum is Poisson with mean $\\lambda_1 + \\lambda_2$. This follows directly from multiplying the moment generating functions. The parameters do not multiply, and the result stays Poisson rather than normal.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-006",
+      "stem": "Two independent Poisson variables have means $\\lambda_1 = 2$ and $\\lambda_2 = 3$. What is $P(X + Y = 0)$?",
+      "options": [
+        "$e^{-6}$",
+        "$e^{-5}$",
+        "$e^{-2} + e^{-3}$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "The sum is Poisson with mean $\\lambda_1 + \\lambda_2 = 5$, so $P(X + Y = 0) = \\frac{5^0 e^{-5}}{0!} = e^{-5}$. Equivalently, both must be zero: $e^{-2} \\cdot e^{-3} = e^{-5}$. Multiplying the means to get $e^{-6}$ is the error.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-007",
+      "stem": "For random variables $X$ and $Y$ and constants $a, b$, $E[aX + bY]$ equals",
+      "options": [
+        "$E[X] + E[Y]$",
+        "$a^2 E[X] + b^2 E[Y]$",
+        "$aE[X] \\cdot bE[Y]$",
+        "$aE[X] + bE[Y]$"
+      ],
+      "answer": 3,
+      "explanation": "Expectation is linear regardless of dependence: $E[aX + bY] = aE[X] + bE[Y]$. No independence is required for this rule. Squaring the constants applies to variance, not expectation, and dropping the constants is incorrect.",
+      "difficulty": "warmup",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-008",
+      "stem": "For independent $X$ and $Y$ and constants $a, b$, $\\operatorname{Var}(aX + bY)$ equals",
+      "options": [
+        "$a^2 \\operatorname{Var}(X) - b^2 \\operatorname{Var}(Y)$",
+        "$a^2 \\operatorname{Var}(X) + b^2 \\operatorname{Var}(Y)$",
+        "$a \\operatorname{Var}(X) + b \\operatorname{Var}(Y)$",
+        "$(a + b)^2 \\operatorname{Var}(X + Y)$"
+      ],
+      "answer": 1,
+      "explanation": "With independence the covariance term vanishes, so $\\operatorname{Var}(aX + bY) = a^2 \\operatorname{Var}(X) + b^2 \\operatorname{Var}(Y)$. The constants are squared, and both terms are added even when one coefficient is negative, because squaring removes the sign.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-009",
+      "stem": "Let $X$ have mean $5$ and variance $4$, and $Y$ have mean $2$ and variance $9$, with $X$ and $Y$ independent. Compute $E[2X + 3Y]$.",
+      "options": [
+        "$19$",
+        "$16$",
+        "$13$",
+        "$10$"
+      ],
+      "answer": 1,
+      "explanation": "By linearity $E[2X + 3Y] = 2(5) + 3(2) = 10 + 6 = 16$. Independence is not needed for the mean. The value $19$ comes from a slip in the arithmetic, and $13$ ignores one coefficient.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-010",
+      "stem": "With $X$ having variance $4$ and $Y$ having variance $9$, independent, compute $\\operatorname{Var}(2X + 3Y)$.",
+      "options": [
+        "$97$",
+        "$26$",
+        "$13$",
+        "$30$"
+      ],
+      "answer": 0,
+      "explanation": "$\\operatorname{Var}(2X + 3Y) = 2^2 \\cdot 4 + 3^2 \\cdot 9 = 16 + 81 = 97$. The squared coefficients $4$ and $9$ multiply the variances. Forgetting to square the coefficients gives $2(4) + 3(9) = 35$, and $26$ uses the coefficients only once on one term.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-011",
+      "stem": "For independent $X$ and $Y$ with variances $4$ and $9$, what is $\\operatorname{Var}(X - Y)$?",
+      "options": [
+        "$-5$",
+        "$5$",
+        "$36$",
+        "$13$"
+      ],
+      "answer": 3,
+      "explanation": "$\\operatorname{Var}(X - Y) = \\operatorname{Var}(X) + (-1)^2 \\operatorname{Var}(Y) = 4 + 9 = 13$ for independent variables, since the covariance term is zero. Variances always add for a sum or difference of independent variables; they never subtract, so $5$ is wrong.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-012",
+      "stem": "Let $X \\sim U(0, 1)$ and define $Y = X^2$. The cdf of $Y$ for $0 \\le y \\le 1$ is",
+      "options": [
+        "$2y$",
+        "$\\sqrt{y}$",
+        "$y$",
+        "$y^2$"
+      ],
+      "answer": 1,
+      "explanation": "$F_Y(y) = P(X^2 \\le y) = P(X \\le \\sqrt{y}) = \\sqrt{y}$ for $0 \\le y \\le 1$, using $F_X(x) = x$ for the uniform. Differentiating gives the density $f_Y(y) = \\frac{1}{2\\sqrt{y}}$. The answer $y$ would be the cdf of $X$ itself, not of $X^2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-013",
+      "stem": "For $X \\sim U(0, 1)$ and $Y = X^2$, the density of $Y$ on $0 < y < 1$ is",
+      "options": [
+        "$\\frac{1}{2\\sqrt{y}}$",
+        "$1$",
+        "$2y$",
+        "$\\sqrt{y}$"
+      ],
+      "answer": 0,
+      "explanation": "Differentiating the cdf $F_Y(y) = \\sqrt{y}$ gives $f_Y(y) = \\frac{d}{dy}\\, y^{1/2} = \\frac{1}{2} y^{-1/2} = \\frac{1}{2\\sqrt{y}}$. The density grows without bound near $y = 0$, which is why it is not constant.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-014",
+      "stem": "Let $X \\sim U(0, 2)$ and $Y = 3X$. What is the density of $Y$ on its support $0 \\le y \\le 6$?",
+      "options": [
+        "$\\frac{1}{3}$",
+        "$\\frac{1}{6}$",
+        "$\\frac{1}{2}$",
+        "$3$"
+      ],
+      "answer": 1,
+      "explanation": "$X$ is uniform on $(0, 2)$ with density $\\frac{1}{2}$. Scaling by $3$ stretches the support to $(0, 6)$, and $Y$ is uniform there with density $\\frac{1}{6}$, since $\\frac{1}{a} f_X(y/a) = \\frac{1}{3} \\cdot \\frac{1}{2} = \\frac{1}{6}$. A uniform on an interval of length $6$ must have height $\\frac{1}{6}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-015",
+      "stem": "Let $X$ have mean $10$ and variance $4$. Define $Y = 2X + 1$. What are the mean and variance of $Y$?",
+      "options": [
+        "mean $21$, variance $8$",
+        "mean $11$, variance $16$",
+        "mean $20$, variance $8$",
+        "mean $21$, variance $16$"
+      ],
+      "answer": 3,
+      "explanation": "$E[Y] = 2(10) + 1 = 21$ and $\\operatorname{Var}(Y) = 2^2 \\cdot 4 = 16$; the additive constant does not affect the variance. Using $2 \\cdot 4 = 8$ forgets to square the coefficient, and mean $11$ drops a factor.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-016",
+      "stem": "The technique of finding the density of $Y = g(X)$ when $g$ is one-to-one, using $f_Y(y) = f_X(x) \\left| \\frac{dx}{dy} \\right|$, is called the",
+      "options": [
+        "moment method",
+        "convolution method",
+        "transformation (change of variable) method",
+        "rejection method"
+      ],
+      "answer": 2,
+      "explanation": "When $g$ is monotone (one-to-one) and differentiable, the transformation or change-of-variable method applies the Jacobian factor $\\left|\\frac{dx}{dy}\\right|$ directly. Convolution is for sums of independent variables, the moment method estimates parameters, and rejection is a simulation technique.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-017",
+      "stem": "The density of the sum $W = X + Y$ of two independent continuous random variables is given by the",
+      "options": [
+        "convolution $\\int f_X(w - y) f_Y(y)\\, dy$",
+        "product $f_X(w) f_Y(w)$",
+        "difference $f_X(w) - f_Y(w)$",
+        "sum $f_X(w) + f_Y(w)$"
+      ],
+      "answer": 0,
+      "explanation": "For independent continuous variables, the density of the sum is the convolution $f_W(w) = \\int f_X(w - y) f_Y(y)\\, dy$. The product or sum of the marginal densities is not the density of the sum; convolution is the correct operation.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-018",
+      "stem": "Let $X_1, \\dots, X_4$ be independent and identically distributed with mean $2.5$ and variance $2$. Let $W = X_1 + X_2 + X_3 + X_4$. What is $E[W]$?",
+      "options": [
+        "$6.25$",
+        "$8$",
+        "$2.5$",
+        "$10$"
+      ],
+      "answer": 3,
+      "explanation": "Expectation of a sum is the sum of expectations: $E[W] = 4 \\times 2.5 = 10$. The value $8$ would be $4$ times the variance, mixing the two quantities. The mean of the sum of $n$ iid variables is $n\\mu$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-019",
+      "stem": "For the same $W = X_1 + X_2 + X_3 + X_4$ with each variance equal to $2$ and independence, what is $\\operatorname{Var}(W)$?",
+      "options": [
+        "$10$",
+        "$2$",
+        "$16$",
+        "$8$"
+      ],
+      "answer": 3,
+      "explanation": "Variances of independent variables add: $\\operatorname{Var}(W) = 4 \\times 2 = 8$. The variance of a sum of $n$ iid variables is $n\\sigma^2$, not $n^2 \\sigma^2$ (that would apply to $nX_1$). So the answer is $8$, not $16$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-020",
+      "stem": "If $Z \\sim N(0, 1)$ and $Y = Z^2$, then $Y$ follows which distribution?",
+      "options": [
+        "standard normal",
+        "chi-square with $1$ degree of freedom",
+        "uniform on $(0, 1)$",
+        "exponential with mean $2$"
+      ],
+      "answer": 1,
+      "explanation": "The square of a standard normal is chi-square with one degree of freedom, $\\chi^2_1$. This is a foundational fact behind the chi-square distribution: summing squares of independent standard normals gives a chi-square whose degrees of freedom equal the number of terms.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-021",
+      "stem": "Let $X \\sim N(3, 4)$ and $Y \\sim N(1, 9)$ be independent. Describe the distribution of $X + Y$.",
+      "format": "cloze",
+      "solution": "The means add: $\\mu = 3 + 1 =$ {{1}}. The variances add: $\\sigma^2 = 4 + 9 =$ {{2}}. The sum of independent normals is again {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 13,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "normal",
+            "chi-square",
+            "Poisson"
+          ],
+          "answer": "normal"
+        }
+      ],
+      "explanation": "Means add to $4$, variances add to $13$, and a linear combination of independent normals is normal, so $X + Y \\sim N(4, 13)$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-022",
+      "stem": "Let $X$ have mean $5$ and variance $4$, and $Y$ have mean $2$ and variance $9$, independent. Evaluate the linear combination $2X + 3Y$.",
+      "format": "cloze",
+      "solution": "By linearity the mean is $E[2X + 3Y] = 2(5) + 3(2) =$ {{1}}. By independence the variance is $\\operatorname{Var}(2X + 3Y) = 4(4) + 9(9) =$ {{2}}. The covariance term is absent because $X$ and $Y$ are {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 16,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 97,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "independent",
+            "dependent",
+            "identical"
+          ],
+          "answer": "independent"
+        }
+      ],
+      "explanation": "Mean: $2(5) + 3(2) = 10 + 6 = 16$. Variance: $2^2(4) + 3^2(9) = 16 + 81 = 97$, with no covariance term because of independence.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-023",
+      "stem": "Let $X \\sim U(0, 1)$ and $Y = X^2$. Work out the distribution of $Y$ by the cdf method.",
+      "format": "cloze",
+      "solution": "For $0 \\le y \\le 1$, $F_Y(y) = P(X \\le \\sqrt{y}) = \\sqrt{y}$. At $y = 0.25$ this gives $F_Y(0.25) =$ {{1}}. Differentiating, the density is $f_Y(y) = \\frac{1}{2\\sqrt{y}}$, which {{2}} as $y$ approaches $0$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "increases without bound",
+            "approaches zero",
+            "stays constant"
+          ],
+          "answer": "increases without bound"
+        }
+      ],
+      "explanation": "$F_Y(0.25) = \\sqrt{0.25} = 0.5$. The density $\\frac{1}{2\\sqrt{y}}$ tends to infinity as $y \\to 0^+$ because $\\sqrt{y} \\to 0$ in the denominator, so it increases without bound.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-024",
+      "stem": "Two independent Poisson variables have means $\\lambda_1 = 2$ and $\\lambda_2 = 3$. Combine them.",
+      "format": "cloze",
+      "solution": "The sum is Poisson with mean $\\lambda_1 + \\lambda_2 =$ {{1}}. Hence $P(X + Y = 0) = e^{-5}$, which to three decimals is approximately {{2}}. The sum stays in the {{3}} family.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.007,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Poisson",
+            "normal",
+            "binomial"
+          ],
+          "answer": "Poisson"
+        }
+      ],
+      "explanation": "Rates add to $5$. $P(X + Y = 0) = e^{-5} \\approx 0.0067 \\approx 0.007$. The Poisson family is closed under independent sums, so the result is Poisson.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-025",
+      "stem": "Let $X$ have mean $10$ and variance $4$, and define the linear transform $Y = 2X + 1$. Find its mean and variance.",
+      "format": "cloze",
+      "solution": "The mean shifts and scales: $E[Y] = 2(10) + 1 =$ {{1}}. The variance scales by the square of the coefficient and ignores the constant: $\\operatorname{Var}(Y) = 2^2(4) =$ {{2}}. The additive constant $1$ has {{3}} effect on the variance.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 21,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 16,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "no",
+            "a doubling",
+            "a halving"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "$E[Y] = 2(10) + 1 = 21$. $\\operatorname{Var}(Y) = 4 \\cdot 4 = 16$. Adding a constant shifts every value equally, so it has no effect on the spread.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-functions-of-random-variables-026",
+      "stem": "Let $X_1, X_2, X_3, X_4$ be independent and identically distributed with mean $2.5$ and variance $2$. Let $W$ be their sum.",
+      "format": "cloze",
+      "solution": "The mean of the sum of $n = 4$ iid terms is $E[W] = 4(2.5) =$ {{1}}. The variance of the sum is $\\operatorname{Var}(W) = 4(2) =$ {{2}}. The variance grows like {{3}}, not like $n^2$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$n$",
+            "$n^2$",
+            "$\\sqrt{n}$"
+          ],
+          "answer": "$n$"
+        }
+      ],
+      "explanation": "$E[W] = n\\mu = 4 \\times 2.5 = 10$ and $\\operatorname{Var}(W) = n\\sigma^2 = 4 \\times 2 = 8$. The variance of a sum of $n$ independent terms grows linearly in $n$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    }
+  ]
+}

@@ -1,0 +1,477 @@
+{
+  "courseId": "statistics-and-probability-ii",
+  "topicId": "sampling-distributions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-001",
+      "stem": "For a random sample of size $n$ from a population with mean $\\mu$, the expected value of the sample mean $\\bar{X}$ is",
+      "options": [
+        "$\\mu$",
+        "$\\mu^2$",
+        "$n\\mu$",
+        "$\\frac{\\mu}{n}$"
+      ],
+      "answer": 0,
+      "explanation": "The sample mean is an unbiased estimator of the population mean: $E[\\bar{X}] = \\mu$ for any sample size. Dividing or multiplying by $n$ confuses the mean of the average with the mean of a sum. The expected value of $\\bar{X}$ does not depend on $n$.",
+      "difficulty": "warmup",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-002",
+      "stem": "For a random sample of size $n$ from a population with variance $\\sigma^2$, the variance of the sample mean $\\bar{X}$ is",
+      "options": [
+        "$n\\sigma^2$",
+        "$\\frac{\\sigma^2}{n}$",
+        "$\\frac{\\sigma}{n}$",
+        "$\\sigma^2$"
+      ],
+      "answer": 1,
+      "explanation": "Averaging reduces variability: $\\operatorname{Var}(\\bar{X}) = \\frac{\\sigma^2}{n}$. The spread of the sample mean shrinks as the sample grows. The option $\\frac{\\sigma}{n}$ confuses variance with a standard-deviation-like quantity, and $n\\sigma^2$ is the variance of a sum, not an average.",
+      "difficulty": "warmup",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-003",
+      "stem": "The standard error of the sample mean is",
+      "options": [
+        "$\\frac{\\sigma}{\\sqrt{n}}$",
+        "$\\frac{\\sigma^2}{n}$",
+        "$\\frac{\\sigma}{n}$",
+        "$\\sigma \\sqrt{n}$"
+      ],
+      "answer": 0,
+      "explanation": "The standard error is the standard deviation of $\\bar{X}$, namely $\\sqrt{\\operatorname{Var}(\\bar{X})} = \\sqrt{\\frac{\\sigma^2}{n}} = \\frac{\\sigma}{\\sqrt{n}}$. Dividing by $n$ instead of $\\sqrt{n}$ understates it, and $\\frac{\\sigma^2}{n}$ is the variance, not the standard error.",
+      "difficulty": "warmup",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-004",
+      "stem": "A population has standard deviation $\\sigma = 10$. For a sample of size $n = 25$, the standard error of $\\bar{X}$ is",
+      "options": [
+        "$5$",
+        "$2$",
+        "$10$",
+        "$0.4$"
+      ],
+      "answer": 1,
+      "explanation": "$\\text{SE} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{10}{\\sqrt{25}} = \\frac{10}{5} = 2$. Using $n = 25$ in the denominator instead of $\\sqrt{n} = 5$ gives $0.4$, and forgetting to divide leaves $10$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-005",
+      "stem": "A population has variance $\\sigma^2 = 225$. For a sample of size $n = 9$, the standard error of $\\bar{X}$ is",
+      "options": [
+        "$1.67$",
+        "$5$",
+        "$15$",
+        "$25$"
+      ],
+      "answer": 1,
+      "explanation": "Here $\\sigma = \\sqrt{225} = 15$, so $\\text{SE} = \\frac{15}{\\sqrt{9}} = \\frac{15}{3} = 5$. The value $25$ is the variance of $\\bar{X}$, namely $\\frac{225}{9}$, and $15$ forgets to divide by $\\sqrt{n}$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-006",
+      "stem": "If a random sample of size $n$ is drawn from a normal population $N(\\mu, \\sigma^2)$, the sampling distribution of $\\bar{X}$ is",
+      "options": [
+        "approximately normal only for large $n$",
+        "chi-square with $n - 1$ degrees of freedom",
+        "$N\\!\\left(\\mu, \\frac{\\sigma^2}{n}\\right)$",
+        "$N(\\mu, \\sigma^2)$"
+      ],
+      "answer": 2,
+      "explanation": "When the population is exactly normal, $\\bar{X}$ is exactly normal for every sample size: $\\bar{X} \\sim N\\!\\left(\\mu, \\frac{\\sigma^2}{n}\\right)$. The large-$n$ qualifier applies to non-normal populations through the central limit theorem, not to a normal population, where normality of $\\bar{X}$ is exact.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-007",
+      "stem": "A normal population has $\\mu = 50$ and $\\sigma = 10$. For samples of size $n = 25$, what is the distribution of $\\bar{X}$?",
+      "options": [
+        "$N(50, 0.4)$",
+        "$N(2, 4)$",
+        "$N(50, 100)$",
+        "$N(50, 4)$"
+      ],
+      "answer": 3,
+      "explanation": "The mean stays $50$ and the variance is $\\frac{\\sigma^2}{n} = \\frac{100}{25} = 4$, so $\\bar{X} \\sim N(50, 4)$. The variance $100$ is the population variance, not that of the sample mean, and $0.4$ wrongly divides by $n^2$-like reasoning.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-008",
+      "stem": "For the setup $\\bar{X} \\sim N(50, 4)$, compute $P(\\bar{X} > 52)$. Use $P(Z > 1) \\approx 0.1587$.",
+      "options": [
+        "$0.0228$",
+        "$0.8413$",
+        "$0.5000$",
+        "$0.1587$"
+      ],
+      "answer": 3,
+      "explanation": "Standardize with the standard error $\\sqrt{4} = 2$: $Z = \\frac{52 - 50}{2} = 1$. Then $P(\\bar{X} > 52) = P(Z > 1) \\approx 0.1587$. The complement $0.8413$ is $P(Z < 1)$, and $0.0228$ corresponds to $Z = 2$, which would use the wrong standard error.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-009",
+      "stem": "If $Z_1, \\dots, Z_k$ are independent standard normal variables, then $\\sum_{i=1}^{k} Z_i^2$ follows which distribution?",
+      "options": [
+        "chi-square with $k$ degrees of freedom",
+        "normal with mean $k$",
+        "$t$ with $k$ degrees of freedom",
+        "$F$ with $(k, k)$ degrees of freedom"
+      ],
+      "answer": 0,
+      "explanation": "The sum of squares of $k$ independent standard normals is chi-square with $k$ degrees of freedom by definition. The $t$ and $F$ distributions arise from ratios involving chi-square variables, not from a sum of squares alone.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-010",
+      "stem": "For a sample of size $n$ from a normal population, the quantity $\\frac{(n - 1)S^2}{\\sigma^2}$ has which sampling distribution?",
+      "options": [
+        "chi-square with $n - 1$ degrees of freedom",
+        "chi-square with $n$ degrees of freedom",
+        "normal",
+        "$t$ with $n - 1$ degrees of freedom"
+      ],
+      "answer": 0,
+      "explanation": "The scaled sample variance $\\frac{(n - 1)S^2}{\\sigma^2}$ follows a chi-square distribution with $n - 1$ degrees of freedom. One degree of freedom is lost because the sample mean is estimated from the data, so the count is $n - 1$, not $n$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-011",
+      "stem": "The mean of a chi-square distribution with $k$ degrees of freedom is",
+      "options": [
+        "$k$",
+        "$k^2$",
+        "$\\sqrt{k}$",
+        "$2k$"
+      ],
+      "answer": 0,
+      "explanation": "A chi-square with $k$ degrees of freedom has mean $k$ and variance $2k$. So the mean equals the degrees of freedom, while $2k$ is the variance. The answer is $k$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-012",
+      "stem": "The variance of a chi-square distribution with $10$ degrees of freedom is",
+      "options": [
+        "$5$",
+        "$20$",
+        "$10$",
+        "$100$"
+      ],
+      "answer": 1,
+      "explanation": "The variance of a chi-square is $2k$, so with $k = 10$ it is $2 \\times 10 = 20$. The value $10$ is the mean of this distribution, not its variance.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-013",
+      "stem": "The Student $t$ distribution is defined as the ratio $\\frac{Z}{\\sqrt{W / k}}$, where",
+      "options": [
+        "$Z \\sim \\chi^2_k$ and $W \\sim N(0,1)$",
+        "$Z$ and $W$ are both normal",
+        "$Z$ and $W$ are both chi-square",
+        "$Z \\sim N(0,1)$, $W \\sim \\chi^2_k$, independent"
+      ],
+      "answer": 3,
+      "explanation": "A $t$ variable with $k$ degrees of freedom is $\\frac{Z}{\\sqrt{W/k}}$ where $Z$ is standard normal, $W$ is chi-square with $k$ degrees of freedom, and the two are independent. This construction gives the heavier tails of the $t$ relative to the normal.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-014",
+      "stem": "When the population standard deviation is unknown and is replaced by the sample standard deviation $S$, the statistic $\\frac{\\bar{X} - \\mu}{S / \\sqrt{n}}$ follows a",
+      "options": [
+        "$t$ distribution with $n - 1$ degrees of freedom",
+        "standard normal distribution",
+        "$F$ distribution",
+        "chi-square distribution with $n$ degrees of freedom"
+      ],
+      "answer": 0,
+      "explanation": "Replacing $\\sigma$ by the estimate $S$ introduces extra variability, so the standardized mean follows a $t$ distribution with $n - 1$ degrees of freedom rather than a normal. The chi-square and $F$ apply to variances and ratios of variances, not to this standardized mean.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-015",
+      "stem": "A sample of size $n = 16$ is used to compute the $t$ statistic for a single mean. How many degrees of freedom does it have?",
+      "options": [
+        "$15$",
+        "$8$",
+        "$16$",
+        "$14$"
+      ],
+      "answer": 0,
+      "explanation": "The single-sample $t$ statistic has $n - 1 = 16 - 1 = 15$ degrees of freedom. One degree of freedom is lost in estimating the mean with $\\bar{X}$. The full sample size $16$ ignores that loss.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-016",
+      "stem": "As the degrees of freedom increase without bound, the $t$ distribution approaches the",
+      "options": [
+        "uniform distribution",
+        "$F$ distribution",
+        "chi-square distribution",
+        "standard normal distribution"
+      ],
+      "answer": 3,
+      "explanation": "As the degrees of freedom grow, the $t$ distribution's tails thin out and it converges to the standard normal $N(0, 1)$. This is why for large samples the $t$ and $z$ critical values are nearly identical. It does not approach the chi-square or $F$ families.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-017",
+      "stem": "The $F$ distribution arises as the ratio of",
+      "options": [
+        "two independent $t$ variables",
+        "two independent normal variables",
+        "a normal over a chi-square",
+        "two independent chi-square variables, each divided by its degrees of freedom"
+      ],
+      "answer": 3,
+      "explanation": "An $F$ variable is $\\frac{W_1 / d_1}{W_2 / d_2}$, the ratio of two independent chi-square variables each divided by its own degrees of freedom. It is used to compare two variances. A normal over a chi-square gives the $t$, not the $F$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-018",
+      "stem": "Two independent samples of sizes $n_1 = 6$ and $n_2 = 11$ are used to form an $F$ statistic comparing their sample variances. What are its degrees of freedom?",
+      "options": [
+        "$(6, 11)$",
+        "$(5, 11)$",
+        "$(5, 10)$",
+        "$(6, 10)$"
+      ],
+      "answer": 2,
+      "explanation": "Each sample variance contributes $n_i - 1$ degrees of freedom, so the $F$ statistic has numerator and denominator degrees of freedom $(n_1 - 1,\\ n_2 - 1) = (5, 10)$. Using the raw sample sizes $(6, 11)$ skips the loss of one degree of freedom per sample.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-019",
+      "stem": "Doubling the sample size $n$ changes the standard error of the sample mean by a factor of",
+      "options": [
+        "$2$",
+        "$\\frac{1}{\\sqrt{2}}$",
+        "$\\sqrt{2}$",
+        "$\\frac{1}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "Since $\\text{SE} = \\frac{\\sigma}{\\sqrt{n}}$, replacing $n$ by $2n$ multiplies the standard error by $\\frac{1}{\\sqrt{2n}} \\div \\frac{1}{\\sqrt{n}} = \\frac{1}{\\sqrt{2}}$. Halving the standard error would require quadrupling, not doubling, the sample size.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-020",
+      "stem": "A population has standard deviation $\\sigma = 12$. What sample size $n$ gives the sample mean a standard error of exactly $2$?",
+      "options": [
+        "$36$",
+        "$6$",
+        "$24$",
+        "$144$"
+      ],
+      "answer": 0,
+      "explanation": "Set $\\frac{12}{\\sqrt{n}} = 2$, so $\\sqrt{n} = 6$ and $n = 36$. Solving $\\frac{12}{\\sqrt{n}} = 2$ gives $\\sqrt{n} = \\frac{12}{2} = 6$, hence $n = 36$. The value $144$ would come from squaring $12$ rather than $6$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-021",
+      "stem": "A population has mean $\\mu = 50$ and standard deviation $\\sigma = 10$. A random sample of size $n = 25$ is drawn. Describe the sampling distribution of $\\bar{X}$ when the population is normal.",
+      "format": "cloze",
+      "solution": "The mean of $\\bar{X}$ equals the population mean, namely {{1}}. The standard error is $\\frac{10}{\\sqrt{25}} =$ {{2}}, so the variance of $\\bar{X}$ is {{3}}. The shape is exactly normal because the population is normal.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 50,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "$E[\\bar{X}] = \\mu = 50$. Standard error $= \\frac{\\sigma}{\\sqrt{n}} = \\frac{10}{5} = 2$. Variance $= \\text{SE}^2 = 2^2 = 4$. So $\\bar{X} \\sim N(50, 4)$ exactly.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-022",
+      "stem": "With $\\bar{X} \\sim N(50, 4)$, find a tail probability. Use $P(Z > 1) \\approx 0.1587$.",
+      "format": "cloze",
+      "solution": "The standard error is the square root of the variance, namely {{1}}. Standardizing the value $52$ gives $z = \\frac{52 - 50}{2} =$ {{2}}. Therefore $P(\\bar{X} > 52) \\approx$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.1587,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Standard error $= \\sqrt{4} = 2$. The $z$-score is $\\frac{52 - 50}{2} = 1$. Then $P(\\bar{X} > 52) = P(Z > 1) \\approx 0.1587$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-023",
+      "stem": "Consider the chi-square distribution that arises from the scaled sample variance for a sample of size $n = 11$ from a normal population.",
+      "format": "cloze",
+      "solution": "The quantity $\\frac{(n-1)S^2}{\\sigma^2}$ is chi-square with degrees of freedom equal to {{1}}. A chi-square with that many degrees of freedom has mean equal to {{2}} and variance equal to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Degrees of freedom $= n - 1 = 10$. For a chi-square with $k = 10$, the mean is $k = 10$ and the variance is $2k = 20$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-024",
+      "stem": "A single-sample $t$ statistic is computed from a sample of size $n = 16$ drawn from a normal population with unknown variance.",
+      "format": "cloze",
+      "solution": "The statistic $\\frac{\\bar{X} - \\mu}{S / \\sqrt{n}}$ follows a $t$ distribution with degrees of freedom equal to {{1}}. As this number grows large, the $t$ distribution approaches the {{2}} distribution. The $t$ is used instead of the normal because the population {{3}} is unknown.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 15,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "standard normal",
+            "chi-square",
+            "uniform"
+          ],
+          "answer": "standard normal"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "variance",
+            "mean",
+            "size"
+          ],
+          "answer": "variance"
+        }
+      ],
+      "explanation": "Degrees of freedom $= n - 1 = 15$. As the degrees of freedom increase, the $t$ converges to the standard normal. The $t$ replaces the $z$ precisely because $\\sigma$ (the population variance, through its square root) is unknown and is estimated by $S$.",
+      "difficulty": "core",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-025",
+      "stem": "A population has standard deviation $\\sigma = 12$. Investigate the standard error of $\\bar{X}$ at two sample sizes.",
+      "format": "cloze",
+      "solution": "For $n = 36$ the standard error is $\\frac{12}{\\sqrt{36}} =$ {{1}}. To cut this standard error in half, the sample size must increase to $n =$ {{2}}, because the standard error scales like one over the square root of $n$. Larger samples therefore make $\\bar{X}$ {{3}} the population mean.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 144,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "closer to",
+            "farther from",
+            "unrelated to"
+          ],
+          "answer": "closer to"
+        }
+      ],
+      "explanation": "$\\text{SE} = \\frac{12}{6} = 2$. Halving the standard error needs $\\sqrt{n}$ to double, so $n$ must quadruple: $36 \\times 4 = 144$. Equivalently $\\frac{12}{\\sqrt{144}} = \\frac{12}{12} = 1$, half of $2$. Smaller standard error means $\\bar{X}$ is closer to $\\mu$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    },
+    {
+      "id": "statistics-and-probability-ii-sampling-distributions-026",
+      "stem": "Two independent samples of sizes $n_1 = 6$ and $n_2 = 11$ from normal populations are used to form an $F$ statistic from their sample variances.",
+      "format": "cloze",
+      "solution": "The numerator degrees of freedom are $n_1 - 1 =$ {{1}} and the denominator degrees of freedom are $n_2 - 1 =$ {{2}}. The $F$ statistic is used to compare two population {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "variances",
+            "means",
+            "medians"
+          ],
+          "answer": "variances"
+        }
+      ],
+      "explanation": "Each sample variance has $n_i - 1$ degrees of freedom, giving numerator $6 - 1 = 5$ and denominator $11 - 1 = 10$. The $F$ ratio of two scaled chi-squares is the standard tool for comparing variances.",
+      "difficulty": "stretch",
+      "source": "in the style of Wackerly, Mathematical Statistics with Applications"
+    }
+  ]
+}

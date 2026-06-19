@@ -1,0 +1,519 @@
+{
+  "courseId": "mathematical-programing",
+  "topicId": "integer-and-network",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-programing-integer-and-network-001",
+      "stem": "An integer linear program differs from an ordinary linear program because it additionally requires that:",
+      "options": [
+        "the objective be nonlinear.",
+        "the feasible region be unbounded.",
+        "some or all decision variables take integer values.",
+        "all constraints be equalities."
+      ],
+      "answer": 2,
+      "explanation": "An integer program is a linear program with the extra restriction that some or all of the decision variables must be whole numbers. This integrality requirement rules out the fractional solutions that ordinary LP allows under the divisibility assumption. The objective and constraints stay linear; only the variable type changes.",
+      "difficulty": "warmup",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-002",
+      "stem": "A binary (0-1) variable is most naturally used to model:",
+      "options": [
+        "the slack in a constraint.",
+        "a yes-or-no decision, such as whether to build a facility.",
+        "the shadow price of a resource.",
+        "a continuous production quantity."
+      ],
+      "answer": 1,
+      "explanation": "A binary variable takes only the values $0$ or $1$ and therefore encodes a two-way decision: $1$ for yes (do it, select it, build it) and $0$ for no. Continuous quantities use ordinary nonnegative variables, slack is an auxiliary continuous variable, and shadow prices are dual quantities, none of which are inherently binary.",
+      "difficulty": "warmup",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-003",
+      "stem": "The LP relaxation of an integer program is obtained by:",
+      "options": [
+        "fixing all variables to zero.",
+        "adding more integer constraints.",
+        "dropping the integer restrictions and allowing the variables to be continuous.",
+        "removing the objective function."
+      ],
+      "answer": 2,
+      "explanation": "The LP relaxation keeps the same objective and linear constraints but relaxes (drops) the integrality requirements, letting the variables take any continuous values in their ranges. Because the relaxation has a larger feasible region, its optimum is at least as good as the integer optimum, which is the basis for the bounds used in branch-and-bound.",
+      "difficulty": "warmup",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-004",
+      "stem": "For a maximization integer program, the optimal value of its LP relaxation provides:",
+      "options": [
+        "an exact value of the integer optimum.",
+        "no information about the integer optimum.",
+        "a lower bound on the integer optimum.",
+        "an upper bound on the integer optimum."
+      ],
+      "answer": 3,
+      "explanation": "Because the relaxation enlarges the feasible region, a maximizing relaxation can do at least as well as the integer problem, so its optimal value is an upper bound on the integer optimum. Branch-and-bound uses this bound to prune branches whose relaxation cannot beat the best integer solution found so far. It is an upper, not a lower, bound for a maximization.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-005",
+      "stem": "The branch-and-bound method solves an integer program by:",
+      "options": [
+        "systematically splitting the problem into subproblems and using relaxation bounds to prune them.",
+        "enumerating every possible integer point explicitly.",
+        "rounding the LP relaxation solution and stopping.",
+        "ignoring the constraints."
+      ],
+      "answer": 0,
+      "explanation": "Branch-and-bound repeatedly partitions (branches) the feasible region, typically on a fractional variable, and solves the LP relaxation of each subproblem to obtain bounds. Subproblems whose bound cannot improve on the incumbent integer solution are pruned, avoiding full enumeration. Simple rounding can give infeasible or suboptimal answers, so it is not a substitute.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-006",
+      "stem": "Consider maximize $Z = 5x_1 + 4x_2$ subject to $6x_1 + 4x_2 \\le 24$, $x_1 + 2x_2 \\le 6$, with $x_1, x_2 \\ge 0$ and integer. The LP relaxation optimum is $(3, 1.5)$ with $Z = 21$. On which variable would you branch?",
+      "options": [
+        "$x_2$, because its value $1.5$ is fractional.",
+        "Both simultaneously.",
+        "$x_1$, because its value $3$ is fractional.",
+        "Neither; the relaxation is already integer."
+      ],
+      "answer": 0,
+      "explanation": "Branching is done on a variable whose relaxation value is fractional. Here $x_1 = 3$ is already integer, but $x_2 = 1.5$ is fractional, so the algorithm branches on $x_2$, creating subproblems with $x_2 \\le 1$ and $x_2 \\ge 2$. Branching on the integer-valued $x_1$ would accomplish nothing.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-007",
+      "stem": "Branching on a fractional variable with relaxation value $x_2 = 1.5$ creates two subproblems with the added constraints:",
+      "options": [
+        "$x_2 \\le 2$ and $x_2 \\ge 1$.",
+        "$x_2 \\le 1$ and $x_2 \\ge 2$.",
+        "$x_2 \\le 1.5$ and $x_2 \\ge 1.5$.",
+        "$x_2 = 1$ and $x_2 = 2$."
+      ],
+      "answer": 1,
+      "explanation": "To exclude the fractional value while keeping all integer points, branch-and-bound rounds the fractional value down and up: it adds $x_2 \\le \\lfloor 1.5 \\rfloor = 1$ on one branch and $x_2 \\ge \\lceil 1.5 \\rceil = 2$ on the other. Together these cover every integer value of $x_2$ but forbid $1.5$. Using equalities or the fractional bound itself would be incorrect.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-008",
+      "stem": "For the integer program maximize $Z = 5x_1 + 4x_2$ ($6x_1 + 4x_2 \\le 24$, $x_1 + 2x_2 \\le 6$), the relaxation optimum is $(3, 1.5)$ with $Z = 21$. Naively rounding $x_2$ up to get $(3, 2)$ gives what?",
+      "options": [
+        "A feasible solution with $Z = 23$.",
+        "The true integer optimum.",
+        "A feasible solution with $Z = 21$.",
+        "An infeasible point, since it violates $6x_1 + 4x_2 \\le 24$."
+      ],
+      "answer": 3,
+      "explanation": "Check $(3, 2)$ against the first constraint: $6(3) + 4(2) = 18 + 8 = 26$, which exceeds $24$, so the point is infeasible. This illustrates why naive rounding can fail: the rounded point may leave the feasible region entirely. Branch-and-bound avoids this by re-solving constrained subproblems instead.",
+      "difficulty": "stretch",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-009",
+      "stem": "Continuing that integer program, the feasible integer points include $(4, 0)$ with $Z = 20$, $(3, 1)$ with $Z = 19$, and $(2, 2)$ with $Z = 18$. What is the integer optimal value?",
+      "options": [
+        "$19$",
+        "$21$",
+        "$18$",
+        "$20$"
+      ],
+      "answer": 3,
+      "explanation": "Among the feasible integer points, the objective values are $20$ at $(4,0)$, $19$ at $(3,1)$, and $18$ at $(2,2)$. The largest is $20$ at $(4, 0)$, which can be verified feasible: $6(4) + 0 = 24 \\le 24$ and $4 + 0 \\le 6$. Note $20 \\le 21$, the relaxation bound, as expected. The value $21$ is the fractional relaxation optimum, not attainable by integers.",
+      "difficulty": "stretch",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-010",
+      "stem": "In a network (graph) representation of a problem, the nodes and arcs typically represent:",
+      "options": [
+        "points (locations or states) and the connections (links) between them.",
+        "slack and surplus variables.",
+        "rows and columns of a matrix only.",
+        "objective coefficients and constraints."
+      ],
+      "answer": 0,
+      "explanation": "A network consists of nodes (vertices) representing points such as locations, facilities, or states, and arcs (edges) representing the connections between them, often carrying data like distance, cost, or capacity. This node-arc structure underlies shortest-path, maximum-flow, and many other network optimization problems.",
+      "difficulty": "warmup",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-011",
+      "stem": "The shortest-path problem in a network seeks:",
+      "options": [
+        "the maximum amount that can flow from source to sink.",
+        "the route that visits every node exactly once.",
+        "the route between two nodes with the smallest total arc length (or cost).",
+        "the arc with the largest capacity."
+      ],
+      "answer": 2,
+      "explanation": "The shortest-path problem finds a path from an origin node to a destination node minimizing the sum of the arc lengths (distances, times, or costs) along the path. Visiting every node once describes the traveling-salesman or Hamiltonian-path idea, and maximizing flow is the maximum-flow problem, both different from shortest path.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-012",
+      "stem": "A small network has arcs A-B = 2, A-C = 4, B-C = 1, B-D = 7, C-D = 3. What is the length of the shortest path from A to D?",
+      "options": [
+        "$7$",
+        "$6$",
+        "$9$",
+        "$5$"
+      ],
+      "answer": 1,
+      "explanation": "Enumerate the candidate paths: A-B-D is $2 + 7 = 9$; A-C-D is $4 + 3 = 7$; and A-B-C-D is $2 + 1 + 3 = 6$. The smallest total is $6$ along A-B-C-D, so the shortest path length is $6$. The trap value $7$ stops at the direct A-C-D route without noticing the cheaper detour through B and C.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-013",
+      "stem": "The maximum-flow problem in a capacitated network seeks:",
+      "options": [
+        "the greatest total flow that can be sent from the source to the sink without exceeding arc capacities.",
+        "the shortest route from source to sink.",
+        "the number of nodes in the network.",
+        "the cheapest set of arcs to build."
+      ],
+      "answer": 0,
+      "explanation": "The maximum-flow problem determines the largest rate at which material can be pushed from a designated source node to a sink node, subject to each arc's capacity limit and flow conservation at intermediate nodes. It is about quantity of flow, not the length of a route or the cost of building arcs.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-014",
+      "stem": "The max-flow min-cut theorem states that in a network the maximum flow from source to sink equals:",
+      "options": [
+        "the longest path from source to sink.",
+        "the minimum capacity of a cut separating the source from the sink.",
+        "the number of arcs leaving the source.",
+        "the total capacity of all arcs."
+      ],
+      "answer": 1,
+      "explanation": "The max-flow min-cut theorem says the maximum achievable flow equals the capacity of the minimum cut, where a cut is a partition of the nodes separating source from sink and its capacity is the total capacity of the arcs crossing it forward. This duality ties the most flow you can send to the cheapest bottleneck that blocks it.",
+      "difficulty": "stretch",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-015",
+      "stem": "A mixed-integer program is one in which:",
+      "options": [
+        "the objective is mixed with the constraints.",
+        "all variables must be integers.",
+        "no variables are integer-restricted.",
+        "some variables are integer-restricted and others are continuous."
+      ],
+      "answer": 3,
+      "explanation": "A mixed-integer program (MIP) requires integrality on some variables while allowing others to remain continuous; for example, a binary build-or-not variable alongside a continuous production-amount variable. A pure integer program restricts all variables to integers, and an ordinary LP restricts none, so the mixed case lies between them.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-016",
+      "stem": "In branch-and-bound, a subproblem (node) is pruned (fathomed) when:",
+      "options": [
+        "the objective coefficients are positive.",
+        "it has more than two variables.",
+        "it is the first subproblem created.",
+        "its relaxation is infeasible, its relaxation bound cannot beat the incumbent, or its relaxation solution is integer."
+      ],
+      "answer": 3,
+      "explanation": "A node is fathomed (no further branching needed) in three situations: its relaxation has no feasible solution; its relaxation bound is no better than the best integer solution found so far (the incumbent); or its relaxation solution happens to be all-integer, in which case it is a candidate incumbent. None of these depend merely on the number of variables or the sign of coefficients.",
+      "difficulty": "stretch",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-017",
+      "stem": "To model the logical condition 'project A can be selected only if project B is selected' using binary variables $x_A, x_B \\in \\{0, 1\\}$, the correct constraint is:",
+      "options": [
+        "$x_A \\ge x_B$",
+        "$x_A = x_B$",
+        "$x_A \\le x_B$",
+        "$x_A + x_B \\le 1$"
+      ],
+      "answer": 2,
+      "explanation": "'A only if B' means that if $x_A = 1$ then $x_B$ must also be $1$, which is captured by $x_A \\le x_B$: when $x_A = 1$ this forces $x_B \\ge 1$, hence $x_B = 1$, while $x_A = 0$ leaves $x_B$ free. The constraint $x_A + x_B \\le 1$ would instead forbid choosing both, a different (mutual-exclusion) condition.",
+      "difficulty": "stretch",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-018",
+      "stem": "With $n$ binary decision variables, the number of distinct $0$-$1$ combinations (before any constraints) is:",
+      "options": [
+        "$n^2$",
+        "$2^n$",
+        "$2n$",
+        "$n!$"
+      ],
+      "answer": 1,
+      "explanation": "Each of the $n$ binary variables independently takes one of two values, $0$ or $1$, so the total number of combinations is $2 \\times 2 \\times \\cdots \\times 2 = 2^n$. This exponential growth is why explicit enumeration becomes impractical for large $n$ and why pruning methods like branch-and-bound are valuable. The other expressions grow far too slowly or describe orderings.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-019",
+      "stem": "A knapsack problem chooses items, each with a value and a weight, to maximize total value subject to a weight limit, with each item taken or not. The natural variable type is:",
+      "options": [
+        "binary $0$-$1$ variables, one per item.",
+        "continuous nonnegative variables.",
+        "a single integer counting all items.",
+        "free variables."
+      ],
+      "answer": 0,
+      "explanation": "Since each item is either included or excluded, the knapsack problem uses one binary variable per item, equal to $1$ if the item is selected and $0$ otherwise. The objective sums the values of selected items and the constraint sums their weights against the capacity. Continuous variables would allow fractional items, which the take-it-or-leave-it rule forbids.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-020",
+      "stem": "Why can simply rounding the LP relaxation solution fail to solve an integer program correctly?",
+      "options": [
+        "Because the rounded point may be infeasible or may not be the true integer optimum.",
+        "Because integer programs have no feasible points.",
+        "Because the relaxation has no solution.",
+        "Because rounding always increases the objective value."
+      ],
+      "answer": 0,
+      "explanation": "Rounding the continuous optimum can push the point outside the feasible region (violating a constraint) or land on a feasible integer point that is not the best one. Either way the rounded answer can be wrong, which is exactly why exact methods such as branch-and-bound or cutting planes are needed. Rounding does not reliably preserve feasibility or optimality.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-021",
+      "stem": "In a network flow model, the conservation-of-flow constraint at an intermediate (transshipment) node requires that:",
+      "options": [
+        "the node is the source.",
+        "all arcs into the node are saturated.",
+        "the node has zero capacity.",
+        "flow in equals flow out at that node."
+      ],
+      "answer": 3,
+      "explanation": "At a transshipment node that neither creates nor consumes flow, conservation requires the total flow entering to equal the total flow leaving, so nothing accumulates or disappears. Only the source (net outflow) and sink (net inflow) violate strict balance. This flow-conservation condition is a defining constraint of network flow formulations.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-022",
+      "stem": "Which statement comparing an integer program to its LP relaxation is always correct?",
+      "options": [
+        "The relaxation has fewer feasible points than the integer program.",
+        "The relaxation's feasible region contains all the integer feasible points.",
+        "The integer feasible region contains the relaxation's feasible region.",
+        "The two problems always have the same optimal value."
+      ],
+      "answer": 1,
+      "explanation": "Every point that satisfies the integer program (integers satisfying the constraints) also satisfies the relaxation, which has the same constraints minus integrality; hence the relaxation's feasible region contains all integer feasible points and more. This containment is why the relaxation gives a bound. The optimal values generally differ, with the integer optimum no better than the relaxation for a maximization.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-023",
+      "format": "cloze",
+      "stem": "Set up a branch-and-bound step. For maximize $Z = 5x_1 + 4x_2$ subject to $6x_1 + 4x_2 \\le 24$, $x_1 + 2x_2 \\le 6$ with integer variables, the LP relaxation optimum is $(3, 1.5)$ with $Z = 21$.",
+      "solution": "Since $x_2 = 1.5$ is fractional, branch on $x_2$. The down-branch adds the constraint $x_2 \\le$ {{1}} and the up-branch adds $x_2 \\ge$ {{2}}. For this maximization, the relaxation value $21$ serves as an {{3}} bound on the integer optimum.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "upper",
+            "lower",
+            "exact",
+            "irrelevant"
+          ],
+          "answer": "upper"
+        }
+      ],
+      "explanation": "Rounding $1.5$ down gives the branch $x_2 \\le 1$ and rounding up gives $x_2 \\ge 2$. Because the relaxation enlarges the feasible region, its value $21$ is an upper bound on the integer optimum for a maximization.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-024",
+      "format": "cloze",
+      "stem": "Test rounding and identify the integer optimum. The same integer program (maximize $Z = 5x_1 + 4x_2$, $6x_1 + 4x_2 \\le 24$, $x_1 + 2x_2 \\le 6$) has relaxation optimum $(3, 1.5)$, $Z = 21$.",
+      "solution": "Rounding to $(3, 2)$ gives $6(3) + 4(2) =$ {{1}}, which exceeds $24$, so $(3, 2)$ is {{2}}. Checking feasible integer points, the best is $(4, 0)$ with objective $Z =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 26,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "infeasible",
+            "optimal",
+            "feasible",
+            "degenerate"
+          ],
+          "answer": "infeasible"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "At $(3, 2)$ the first constraint gives $18 + 8 = 26 > 24$, so the rounded point is infeasible. The true integer optimum is $(4, 0)$ with $Z = 5(4) + 4(0) = 20$, which satisfies both constraints.",
+      "difficulty": "stretch",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-025",
+      "format": "cloze",
+      "stem": "Find a shortest path. A network has arcs A-B = 2, A-C = 4, B-C = 1, B-D = 7, C-D = 3.",
+      "solution": "The path A-C-D has length $4 + 3 =$ {{1}}. The path A-B-C-D has length $2 + 1 + 3 =$ {{2}}. Comparing all routes from A to D, the shortest path length is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "A-C-D totals $7$ and A-B-C-D totals $6$, while A-B-D totals $9$. The minimum is $6$ along A-B-C-D, so the shortest path length is $6$.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-026",
+      "format": "cloze",
+      "stem": "Classify integer-programming concepts.",
+      "solution": "A variable restricted to the values $0$ or $1$ is called a {{1}} variable. A program in which some variables are integer and others continuous is called a {{2}} integer program. With $n$ binary variables, the number of possible $0$-$1$ combinations is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "binary"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "mixed"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$2^n$",
+            "$2n$",
+            "$n^2$",
+            "$n!$"
+          ],
+          "answer": "$2^n$"
+        }
+      ],
+      "explanation": "A $0$-$1$ variable is a binary variable. A formulation mixing integer and continuous variables is a mixed-integer program. Each of $n$ binary variables doubles the count, giving $2^n$ combinations.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-027",
+      "format": "cloze",
+      "stem": "Describe network optimization ideas.",
+      "solution": "The {{1}} problem seeks the route of least total length between two nodes, while the maximum-flow problem seeks the greatest flow from source to sink. By the max-flow min-cut theorem, the maximum flow equals the capacity of the {{2}} cut. At an intermediate node, flow in must equal flow {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "shortest-path",
+            "shortest path"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "minimum",
+            "maximum",
+            "average",
+            "first"
+          ],
+          "answer": "minimum"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "out"
+          ]
+        }
+      ],
+      "explanation": "The shortest-path problem minimizes total arc length. The max-flow min-cut theorem equates the maximum flow with the minimum cut capacity. Flow conservation at a transshipment node requires inflow to equal outflow.",
+      "difficulty": "core",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    },
+    {
+      "id": "mathematical-programing-integer-and-network-028",
+      "format": "cloze",
+      "stem": "Model logical conditions with binary variables $x_A, x_B \\in \\{0, 1\\}$.",
+      "solution": "To force 'choose at most one of A and B', use $x_A + x_B \\le$ {{1}}. To require 'A only if B' (selecting A forces selecting B), use the constraint $x_A \\le$ {{2}}. To require 'select exactly one of A and B', use $x_A + x_B =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$x_B$",
+            "$1 - x_B$",
+            "$2x_B$",
+            "$0$"
+          ],
+          "answer": "$x_B$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "'At most one' is $x_A + x_B \\le 1$. 'A only if B' is $x_A \\le x_B$, since $x_A = 1$ then forces $x_B = 1$. 'Exactly one' is $x_A + x_B = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Hillier and Lieberman, Introduction to Operations Research"
+    }
+  ]
+}
