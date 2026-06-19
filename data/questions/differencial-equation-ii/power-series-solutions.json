@@ -1,0 +1,511 @@
+{
+  "courseId": "differencial-equation-ii",
+  "topicId": "power-series-solutions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "differencial-equation-ii-power-series-solutions-001",
+      "stem": "A point $x_0$ is an ordinary point of $y'' + p(x)y' + q(x)y = 0$ when which condition holds?",
+      "options": [
+        "$x_0 = 0$ always",
+        "$p$ or $q$ has a pole at $x_0$",
+        "$p(x_0) = 0$ and $q(x_0) = 0$",
+        "$p$ and $q$ are both analytic at $x_0$"
+      ],
+      "answer": 3,
+      "explanation": "An ordinary point is one where both coefficient functions $p$ and $q$ are analytic, that is, representable by convergent power series there. At such a point a power series solution $\\sum a_n (x - x_0)^n$ exists. If either coefficient fails to be analytic, the point is singular instead.",
+      "difficulty": "warmup",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-002",
+      "stem": "For $(x - 1)y'' + x y' + y = 0$, which point is a singular point?",
+      "options": [
+        "$x = 0$",
+        "$x = 1$",
+        "$x = 2$",
+        "$x = -1$"
+      ],
+      "answer": 1,
+      "explanation": "Dividing by $x - 1$ gives $p(x) = \\dfrac{x}{x - 1}$ and $q(x) = \\dfrac{1}{x - 1}$. Both blow up at $x = 1$, where the leading coefficient $x - 1$ vanishes, so $x = 1$ is a singular point. Every other point keeps the coefficients analytic, hence ordinary.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-003",
+      "stem": "Seeking $y = \\sum_{n=0}^{\\infty} a_n x^n$, what is $y'$?",
+      "options": [
+        "$\\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2}$",
+        "$\\sum_{n=1}^{\\infty} n a_n x^{n-1}$",
+        "$\\sum_{n=0}^{\\infty} a_n x^{n-1}$",
+        "$\\sum_{n=0}^{\\infty} n a_n x^{n}$"
+      ],
+      "answer": 1,
+      "explanation": "Differentiating term by term, $\\dfrac{d}{dx} a_n x^n = n a_n x^{n-1}$. The $n = 0$ term is constant and differentiates to zero, so the sum starts at $n = 1$: $y' = \\sum_{n=1}^{\\infty} n a_n x^{n-1}$. The form with $n(n-1)$ is $y''$, not $y'$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-004",
+      "stem": "For $y'' + y = 0$ with $y = \\sum a_n x^n$, the recurrence relation is which?",
+      "options": [
+        "$a_{n+2} = \\dfrac{a_n}{(n+2)(n+1)}$",
+        "$a_{n+2} = -a_n$",
+        "$a_{n+1} = -\\dfrac{a_n}{n+1}$",
+        "$a_{n+2} = -\\dfrac{a_n}{(n+2)(n+1)}$"
+      ],
+      "answer": 3,
+      "explanation": "Here $y'' = \\sum (n+2)(n+1)a_{n+2} x^n$ and $y = \\sum a_n x^n$. Adding and setting the coefficient of $x^n$ to zero gives $(n+2)(n+1)a_{n+2} + a_n = 0$, so $a_{n+2} = -\\dfrac{a_n}{(n+2)(n+1)}$. This two-step recurrence reproduces the cosine and sine series.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-005",
+      "stem": "For $y' - y = 0$ with $y = \\sum a_n x^n$, the recurrence relation is which?",
+      "options": [
+        "$a_{n+1} = a_n$",
+        "$a_{n+1} = -\\dfrac{a_n}{n+1}$",
+        "$a_{n+1} = (n+1) a_n$",
+        "$a_{n+1} = \\dfrac{a_n}{n+1}$"
+      ],
+      "answer": 3,
+      "explanation": "We have $y' = \\sum (n+1)a_{n+1} x^n$ and $y = \\sum a_n x^n$. Setting $y' - y = 0$ gives $(n+1)a_{n+1} - a_n = 0$, so $a_{n+1} = \\dfrac{a_n}{n+1}$. Iterating from $a_0$ gives $a_n = \\dfrac{a_0}{n!}$, recovering $y = a_0 e^{x}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-006",
+      "stem": "For $y'' + x y' + y = 0$ with $y = \\sum a_n x^n$, the recurrence relation is which?",
+      "options": [
+        "$a_{n+2} = \\dfrac{a_n}{n+2}$",
+        "$a_{n+2} = -\\dfrac{a_n}{(n+2)(n+1)}$",
+        "$a_{n+2} = -\\dfrac{a_n}{n+2}$",
+        "$a_{n+2} = -\\dfrac{(n+1)a_n}{n+2}$"
+      ],
+      "answer": 2,
+      "explanation": "Here $y'' = \\sum (n+2)(n+1)a_{n+2}x^n$, $x y' = \\sum n a_n x^n$, and $y = \\sum a_n x^n$. The coefficient of $x^n$ is $(n+2)(n+1)a_{n+2} + n a_n + a_n = 0$, so $(n+2)(n+1)a_{n+2} = -(n+1)a_n$. Cancelling $(n+1)$ gives $a_{n+2} = -\\dfrac{a_n}{n+2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-007",
+      "stem": "Using $a_{n+2} = -\\dfrac{a_n}{(n+2)(n+1)}$ for $y'' + y = 0$, what is $a_2$ in terms of $a_0$?",
+      "options": [
+        "$a_2 = -\\dfrac{a_0}{2}$",
+        "$a_2 = a_0$",
+        "$a_2 = -\\dfrac{a_0}{6}$",
+        "$a_2 = \\dfrac{a_0}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "Set $n = 0$ in $a_{n+2} = -\\dfrac{a_n}{(n+2)(n+1)}$: $a_2 = -\\dfrac{a_0}{(2)(1)} = -\\dfrac{a_0}{2}$. This matches the $x^2$ coefficient $-\\tfrac{1}{2}$ of the cosine series when $a_0 = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-008",
+      "stem": "Continuing $y'' + y = 0$ with $a_0 = 1, a_1 = 0$, what is $a_4$?",
+      "options": [
+        "$\\dfrac{1}{4}$",
+        "$\\dfrac{1}{24}$",
+        "$-\\dfrac{1}{24}$",
+        "$\\dfrac{1}{12}$"
+      ],
+      "answer": 1,
+      "explanation": "From $a_2 = -\\tfrac{1}{2}$, apply $n = 2$: $a_4 = -\\dfrac{a_2}{(4)(3)} = -\\dfrac{-1/2}{12} = \\dfrac{1}{24}$. This is the $x^4$ coefficient of $\\cos x$, confirming the even series is the cosine.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-009",
+      "stem": "The recurrence $a_{n+1} = \\dfrac{a_n}{n+1}$ with $a_0 = 1$ generates which function?",
+      "options": [
+        "$e^{x}$",
+        "$\\dfrac{1}{1 - x}$",
+        "$\\cos x$",
+        "$\\sin x$"
+      ],
+      "answer": 0,
+      "explanation": "Iterating gives $a_1 = 1$, $a_2 = \\tfrac{1}{2}$, $a_3 = \\tfrac{1}{6}$, so $a_n = \\dfrac{1}{n!}$. The series $\\sum \\dfrac{x^n}{n!}$ is the Maclaurin series of $e^{x}$. The geometric series would come from $a_{n+1} = a_n$ instead.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-010",
+      "stem": "For a power series solution about an ordinary point $x_0$, the radius of convergence is at least which value?",
+      "options": [
+        "Zero",
+        "One always",
+        "Infinite always",
+        "The distance from $x_0$ to the nearest singular point"
+      ],
+      "answer": 3,
+      "explanation": "A theorem on ordinary points guarantees the series solution converges at least up to the nearest singular point of the equation (in the complex plane). So the radius of convergence is at least the distance from $x_0$ to that singularity. It may be larger, but never smaller than this guaranteed value.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-011",
+      "stem": "For $(1 + x^2)y'' + 2x y' + y = 0$ expanded about $x_0 = 0$, the radius of convergence is guaranteed to be at least which value?",
+      "options": [
+        "$1$",
+        "$\\infty$",
+        "$2$",
+        "$\\tfrac{1}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "The singular points occur where $1 + x^2 = 0$, that is $x = \\pm i$, each at distance $1$ from the origin in the complex plane. The radius of convergence about $x_0 = 0$ is therefore at least $1$, the distance to the nearest singularity.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-012",
+      "stem": "For $(x^2 - 4)y'' + x y' + 3y = 0$ expanded about $x_0 = 0$, the radius of convergence is guaranteed to be at least which value?",
+      "options": [
+        "$4$",
+        "$1$",
+        "$2$",
+        "$\\tfrac{1}{2}$"
+      ],
+      "answer": 2,
+      "explanation": "The leading coefficient $x^2 - 4 = 0$ gives singular points at $x = \\pm 2$, each at distance $2$ from the origin. So the power series about $x_0 = 0$ converges at least for $|x| < 2$, a radius of at least $2$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-013",
+      "stem": "For the Airy equation $y'' - x y = 0$ with $y = \\sum a_n x^n$, what does matching the constant term force?",
+      "options": [
+        "$a_2 = 0$",
+        "$a_1 = 0$",
+        "$a_0 = 0$",
+        "$a_3 = 0$"
+      ],
+      "answer": 0,
+      "explanation": "Writing $y'' = \\sum (n+2)(n+1)a_{n+2}x^n$ and $x y = \\sum a_{n-1}x^n$, the $x^0$ coefficient comes only from $y''$ since $x y$ starts at $x^1$. That term is $(2)(1)a_2 = 2a_2$, so $2a_2 = 0$ forces $a_2 = 0$. The constants $a_0, a_1$ stay free.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-014",
+      "stem": "For the Airy equation $y'' - x y = 0$, the recurrence for $n \\geq 1$ is which?",
+      "options": [
+        "$a_{n+2} = -\\dfrac{a_{n-1}}{(n+2)(n+1)}$",
+        "$a_{n+1} = \\dfrac{a_{n}}{n+1}$",
+        "$a_{n+2} = \\dfrac{a_{n-1}}{(n+2)(n+1)}$",
+        "$a_{n+2} = \\dfrac{a_{n}}{(n+2)(n+1)}$"
+      ],
+      "answer": 2,
+      "explanation": "Matching $x^n$ for $n \\geq 1$: from $y''$ we get $(n+2)(n+1)a_{n+2}$ and from $-x y = -\\sum a_{n-1}x^n$ we get $-a_{n-1}$. Setting the sum to zero gives $(n+2)(n+1)a_{n+2} = a_{n-1}$, so $a_{n+2} = \\dfrac{a_{n-1}}{(n+2)(n+1)}$. This three-step recurrence ties indices three apart.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-015",
+      "stem": "How many linearly independent power series solutions about an ordinary point does a second-order equation have?",
+      "options": [
+        "Two",
+        "One",
+        "Three",
+        "Infinitely many"
+      ],
+      "answer": 0,
+      "explanation": "A second-order linear equation has exactly two linearly independent solutions. At an ordinary point both arise as power series, with $a_0$ and $a_1$ serving as the two free constants. Choosing $(a_0, a_1) = (1, 0)$ and $(0, 1)$ produces the two independent series.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-016",
+      "stem": "In the series solution, the two arbitrary constants are usually taken to be which coefficients?",
+      "options": [
+        "$a_0$ and $a_2$",
+        "$a_1$ and $a_2$",
+        "$a_2$ and $a_3$",
+        "$a_0$ and $a_1$"
+      ],
+      "answer": 3,
+      "explanation": "The recurrence expresses every higher coefficient in terms of the first two, $a_0$ and $a_1$, which correspond to $y(x_0)$ and $y'(x_0)$. These two play the role of the arbitrary constants, generating the two independent solutions. The rest are determined once they are fixed.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-017",
+      "stem": "For $y' - y = 0$ with $a_0 = 1$, the coefficient $a_3$ equals which value?",
+      "options": [
+        "$\\dfrac{1}{9}$",
+        "$\\dfrac{1}{6}$",
+        "$\\dfrac{1}{3}$",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "With $a_{n+1} = \\dfrac{a_n}{n+1}$ and $a_0 = 1$: $a_1 = 1$, $a_2 = \\tfrac{1}{2}$, and $a_3 = \\dfrac{a_2}{3} = \\dfrac{1}{6}$. This equals $\\dfrac{1}{3!}$, the cubic coefficient of $e^{x}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-018",
+      "stem": "Which equation has $x = 0$ as an ordinary point?",
+      "options": [
+        "$x y'' + y' + x y = 0$",
+        "$x y'' + y = 0$",
+        "$y'' + (\\sin x) y' + e^{x} y = 0$",
+        "$x^2 y'' + y = 0$"
+      ],
+      "answer": 2,
+      "explanation": "For $y'' + (\\sin x)y' + e^{x} y = 0$ the coefficients $\\sin x$ and $e^{x}$ are entire, hence analytic at $0$, so $x = 0$ is an ordinary point. The other three have the leading coefficient vanishing at $0$ (after dividing, a coefficient develops a pole), making $x = 0$ singular.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-019",
+      "stem": "For $y'' + y = 0$ with $a_0 = 0, a_1 = 1$, the resulting series is which function?",
+      "options": [
+        "$e^{x}$",
+        "$\\cos x$",
+        "$\\tan x$",
+        "$\\sin x$"
+      ],
+      "answer": 3,
+      "explanation": "With $a_0 = 0$ the even coefficients vanish, and with $a_1 = 1$ the odd ones give $a_3 = -\\tfrac{1}{6}, a_5 = \\tfrac{1}{120}$, that is $a_{2k+1} = \\dfrac{(-1)^k}{(2k+1)!}$. The series $x - \\tfrac{x^3}{6} + \\cdots$ is $\\sin x$. The choice $(a_0, a_1) = (1, 0)$ would give $\\cos x$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-020",
+      "stem": "The Legendre equation $(1 - x^2)y'' - 2x y' + \\alpha(\\alpha+1)y = 0$ has which singular points?",
+      "options": [
+        "$x = 0$ only",
+        "No singular points",
+        "$x = \\pm i$",
+        "$x = \\pm 1$"
+      ],
+      "answer": 3,
+      "explanation": "The leading coefficient $1 - x^2 = 0$ vanishes at $x = \\pm 1$, which are therefore the singular points. The point $x = 0$ is ordinary, so Legendre's equation can be solved by a power series about the origin with radius of convergence at least $1$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-021",
+      "stem": "To shift $\\sum_{n=2}^{\\infty} n(n-1)a_n x^{n-2}$ into powers $x^k$, which substitution is used?",
+      "options": [
+        "$k = n - 2$, giving $\\sum_{k=0}^{\\infty} (k+2)(k+1)a_{k+2} x^{k}$",
+        "$k = n + 2$, giving $\\sum_{k=4}^{\\infty} (k-2)(k-3)a_{k-2} x^{k}$",
+        "$k = n - 1$, giving $\\sum_{k=1}^{\\infty} (k+1)k a_{k+1} x^{k-1}$",
+        "$k = n$, giving $\\sum_{k=2}^{\\infty} k(k-1)a_k x^{k}$"
+      ],
+      "answer": 0,
+      "explanation": "Let $k = n - 2$, so $n = k + 2$. When $n = 2$, $k = 0$, and $x^{n-2} = x^k$. The coefficient $n(n-1) = (k+2)(k+1)$ and $a_n = a_{k+2}$, giving $\\sum_{k=0}^{\\infty} (k+2)(k+1)a_{k+2}x^k$. This reindexing aligns the second derivative with the plain series.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-022",
+      "stem": "For $y'' + x y' + y = 0$ with $a_0 = 1$, the coefficient $a_4$ equals which value?",
+      "options": [
+        "$\\dfrac{1}{8}$",
+        "$-\\dfrac{1}{8}$",
+        "$-\\dfrac{1}{2}$",
+        "$\\dfrac{1}{4}$"
+      ],
+      "answer": 0,
+      "explanation": "The recurrence is $a_{n+2} = -\\dfrac{a_n}{n+2}$. With $a_0 = 1$: $a_2 = -\\dfrac{1}{2}$, then $a_4 = -\\dfrac{a_2}{4} = -\\dfrac{-1/2}{4} = \\dfrac{1}{8}$. The even coefficients alternate in sign as the index climbs.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-023",
+      "stem": "For $y'' + x y' + y = 0$ with $a_1 = 1$, the coefficient $a_3$ equals which value?",
+      "options": [
+        "$-\\dfrac{1}{6}$",
+        "$-\\dfrac{1}{3}$",
+        "$\\dfrac{1}{3}$",
+        "$\\dfrac{1}{15}$"
+      ],
+      "answer": 1,
+      "explanation": "Using $a_{n+2} = -\\dfrac{a_n}{n+2}$ with $n = 1$ and $a_1 = 1$: $a_3 = -\\dfrac{a_1}{3} = -\\dfrac{1}{3}$. The odd-index coefficients form the second independent solution built on $a_1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-024",
+      "stem": "What is the value of $a_0$ if the series solution must satisfy $y(0) = 3$?",
+      "options": [
+        "$0$",
+        "$\\tfrac{1}{3}$",
+        "$1$",
+        "$3$"
+      ],
+      "answer": 3,
+      "explanation": "Evaluating $y = \\sum a_n x^n$ at $x = 0$ leaves only the constant term, so $y(0) = a_0$. The condition $y(0) = 3$ therefore sets $a_0 = 3$ directly. Similarly $y'(0)$ would fix $a_1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-025",
+      "stem": "Which statement about the two series solutions $y_1$ (even powers) and $y_2$ (odd powers) of $y'' + y = 0$ is correct?",
+      "options": [
+        "Only $y_1$ converges",
+        "They are linearly dependent",
+        "They are linearly independent and form a fundamental set",
+        "Their Wronskian is identically zero"
+      ],
+      "answer": 2,
+      "explanation": "The even series built on $a_0$ and the odd series built on $a_1$ start with $1 + \\cdots$ and $x + \\cdots$ respectively, so neither is a multiple of the other; they are linearly independent and form a fundamental set. Here $y_1 = \\cos x$ and $y_2 = \\sin x$, whose Wronskian is $1 \\neq 0$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-026",
+      "format": "cloze",
+      "stem": "Build the power series solution of $y'' + y = 0$ about $x_0 = 0$.",
+      "solution": "Substituting $y = \\sum a_n x^n$ gives $\\sum (n+2)(n+1)a_{n+2} x^n + \\sum a_n x^n = 0$, so the recurrence is $a_{n+2} = -\\dfrac{a_n}{(n+2)(n+1)}$. Taking $a_0 = 1$ and $a_1 = 0$, the coefficient $a_2 =$ {{1}}. Continuing, $a_4 = \\dfrac{1}{24}$, and this even series is the function {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\cos x$",
+            "$\\sin x$",
+            "$e^{x}$"
+          ],
+          "answer": "$\\cos x$"
+        }
+      ],
+      "explanation": "The recurrence $a_{n+2} = -\\dfrac{a_n}{(n+2)(n+1)}$ with $a_0 = 1$ gives $a_2 = -\\dfrac{1}{2}$. Then $a_4 = -\\dfrac{a_2}{12} = \\dfrac{1}{24}$. The series $1 - \\tfrac{x^2}{2} + \\tfrac{x^4}{24} - \\cdots$ is $\\cos x$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-027",
+      "format": "cloze",
+      "stem": "Find the recurrence for $y' - y = 0$ and identify the series.",
+      "solution": "With $y = \\sum a_n x^n$, $y' = \\sum (n+1)a_{n+1}x^n$, so $y' - y = 0$ gives $(n+1)a_{n+1} - a_n = 0$ and the recurrence $a_{n+1} = \\dfrac{a_n}{n+1}$. Starting from $a_0 = 1$, the coefficient $a_2 =$ {{1}}. The general coefficient is $a_n = \\dfrac{1}{n!}$, so the series sums to {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$e^{x}$",
+            "$\\cos x$",
+            "$\\dfrac{1}{1-x}$"
+          ],
+          "answer": "$e^{x}$"
+        }
+      ],
+      "explanation": "From $a_{n+1} = \\dfrac{a_n}{n+1}$ with $a_0 = 1$: $a_1 = 1$ and $a_2 = \\dfrac{a_1}{2} = \\dfrac{1}{2}$. Since $a_n = \\dfrac{1}{n!}$, the series is $\\sum \\dfrac{x^n}{n!} = e^{x}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-028",
+      "format": "cloze",
+      "stem": "Determine the radius of convergence guarantee for series solutions of $(1 + x^2)y'' + 2x y' + y = 0$ about $x_0 = 0$.",
+      "solution": "The singular points are where the leading coefficient vanishes, $1 + x^2 = 0$, that is $x = \\pm i$ in the complex plane. The distance from the origin to the nearest singularity is {{1}}. Therefore the power series about $x_0 = 0$ is guaranteed to {{2}} for $|x| < 1$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "converge",
+            "diverge",
+            "oscillate"
+          ],
+          "answer": "converge"
+        }
+      ],
+      "explanation": "Setting $1 + x^2 = 0$ gives $x = \\pm i$, each at distance $1$ from the origin. The convergence theorem guarantees the series converges at least for $|x|$ less than that distance, namely $|x| < 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-029",
+      "format": "cloze",
+      "stem": "Set up the series solution of the Airy equation $y'' - x y = 0$ about $x_0 = 0$.",
+      "solution": "Writing $y'' = \\sum (n+2)(n+1)a_{n+2}x^n$ and $x y = \\sum a_{n-1}x^n$, the constant term forces $a_2 =$ {{1}}. For $n \\geq 1$ the recurrence is $a_{n+2} = \\dfrac{a_{n-1}}{(n+2)(n+1)}$, which links coefficients whose indices differ by {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The $x^0$ term comes only from $y''$, giving $2a_2 = 0$, so $a_2 = 0$. For $n \\geq 1$, $(n+2)(n+1)a_{n+2} = a_{n-1}$, a relation between $a_{n+2}$ and $a_{n-1}$ whose indices differ by $3$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-030",
+      "format": "cloze",
+      "stem": "Find the recurrence for $y'' + x y' + y = 0$ about $x_0 = 0$ and compute a coefficient.",
+      "solution": "Combining $y'' = \\sum (n+2)(n+1)a_{n+2}x^n$, $x y' = \\sum n a_n x^n$, and $y = \\sum a_n x^n$ gives $(n+2)(n+1)a_{n+2} + (n+1)a_n = 0$. Cancelling $(n+1)$ yields $a_{n+2} = -\\dfrac{a_n}{n+2}$. With $a_0 = 1$, the coefficient $a_2 =$ {{1}}, and with $a_1 = 1$, the coefficient $a_3 =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -0.333,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "The recurrence $a_{n+2} = -\\dfrac{a_n}{n+2}$ gives, with $a_0 = 1$, $a_2 = -\\dfrac{1}{2}$. With $a_1 = 1$ and $n = 1$, $a_3 = -\\dfrac{1}{3} \\approx -0.333$. Even and odd coefficients form the two independent solutions.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-power-series-solutions-031",
+      "format": "cloze",
+      "stem": "Classify $x_0 = 0$ for the Legendre equation $(1 - x^2)y'' - 2x y' + \\alpha(\\alpha+1)y = 0$.",
+      "solution": "The leading coefficient $1 - x^2$ vanishes at $x = \\pm 1$, so the singular points are at $\\pm 1$. Since the leading coefficient does not vanish at the origin, $x_0 = 0$ is an {{1}} point. A power series about the origin is then guaranteed to converge for $|x| <$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "ordinary",
+            "singular",
+            "irregular"
+          ],
+          "answer": "ordinary"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $1 - x^2 \\neq 0$ at $x = 0$, the coefficients are analytic there, so $x_0 = 0$ is an ordinary point. The nearest singularities are $x = \\pm 1$, so the series converges at least for $|x| < 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    }
+  ]
+}

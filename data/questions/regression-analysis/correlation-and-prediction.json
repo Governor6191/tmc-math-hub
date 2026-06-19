@@ -1,0 +1,513 @@
+{
+  "courseId": "regression-analysis",
+  "topicId": "correlation-and-prediction",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "regression-analysis-correlation-and-prediction-001",
+      "stem": "The Pearson correlation coefficient $r$ measures which of the following?",
+      "options": [
+        "the size of the residuals",
+        "the strength and direction of the linear association between two variables",
+        "the slope of the regression line",
+        "the proportion of variance explained"
+      ],
+      "answer": 1,
+      "explanation": "Pearson's $r$ is a standardized measure of the strength and direction of the linear relationship between two quantitative variables. It ranges from $-1$ to $+1$. The slope and $R^2$ are related but distinct quantities.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-002",
+      "stem": "What is the range of possible values for the Pearson correlation coefficient $r$?",
+      "options": [
+        "from 0 to 100",
+        "from 0 to 1",
+        "from $-1$ to $+1$",
+        "from $-\\infty$ to $+\\infty$"
+      ],
+      "answer": 2,
+      "explanation": "The correlation coefficient always lies in $[-1, +1]$. Values near $\\pm 1$ indicate a strong linear relationship, and values near 0 indicate little or no linear relationship.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-003",
+      "stem": "In simple linear regression, the relationship between the correlation $r$ and the coefficient of determination is which of the following?",
+      "options": [
+        "$R^2 = |r|$",
+        "$R^2 = r^2$",
+        "$R^2 = 2r$",
+        "$R^2 = r$"
+      ],
+      "answer": 1,
+      "explanation": "In simple linear regression $R^2 = r^2$. The coefficient of determination is the square of the Pearson correlation between $x$ and $y$.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-004",
+      "stem": "A simple linear regression has correlation $r = 0.8$. What is the coefficient of determination $R^2$?",
+      "options": [
+        "0.64",
+        "0.40",
+        "0.89",
+        "0.80"
+      ],
+      "answer": 0,
+      "explanation": "$R^2 = r^2 = 0.8^2 = 0.64$. About 64 percent of the variation in $y$ is explained by the linear relationship with $x$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-005",
+      "stem": "A regression reports $R^2 = 0.81$, and the fitted slope is positive. What is the Pearson correlation $r$?",
+      "options": [
+        "0.81",
+        "$-0.90$",
+        "0.90",
+        "0.66"
+      ],
+      "answer": 2,
+      "explanation": "$|r| = \\sqrt{R^2} = \\sqrt{0.81} = 0.90$. Because the slope is positive, $r$ takes the positive sign: $r = +0.90$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-006",
+      "stem": "The Pearson correlation $r$ and the regression slope $\\hat{\\beta}_1$ always satisfy which relationship regarding their signs?",
+      "options": [
+        "they always have opposite signs",
+        "$r$ is always positive",
+        "they always have the same sign",
+        "their signs are unrelated"
+      ],
+      "answer": 2,
+      "explanation": "Since $\\hat{\\beta}_1 = r \\, (s_y/s_x)$ and the standard deviations are positive, $r$ and $\\hat{\\beta}_1$ share the same sign. A positive correlation corresponds to a positive slope.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-007",
+      "stem": "Data give $S_{xy} = 6$, $S_{xx} = 10$, and $S_{yy} = 6$. What is the Pearson correlation $r$ (to 4 decimals)?",
+      "options": [
+        "1.0000",
+        "0.6325",
+        "0.7746",
+        "0.6000"
+      ],
+      "answer": 2,
+      "explanation": "$r = S_{xy}/\\sqrt{S_{xx} S_{yy}} = 6/\\sqrt{10 \\times 6} = 6/\\sqrt{60} = 6/7.746 = 0.7746$. As a check, $r^2 = 0.60 = R^2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-008",
+      "stem": "A confidence interval for the mean response $E(y \\mid x_0)$ and a prediction interval for a new individual observation at $x_0$ differ in which way?",
+      "options": [
+        "the confidence interval ignores the error variance entirely",
+        "they are always the same width",
+        "the prediction interval is wider because it includes the variability of a single new observation",
+        "the prediction interval is always narrower"
+      ],
+      "answer": 2,
+      "explanation": "A prediction interval for a new observation must account for both the uncertainty in the estimated mean and the scatter of an individual point around that mean, so it is wider than the confidence interval for the mean response at the same $x_0$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-009",
+      "stem": "The variance used to build a prediction interval for a new observation at $x_0$ includes an extra term compared with the confidence interval for the mean. Which expression shows this extra term?",
+      "options": [
+        "$MS_E \\left(\\dfrac{(x_0 - \\bar{x})^2}{S_{xx}}\\right)$",
+        "$MS_E \\, n$",
+        "$MS_E \\left(1 + \\dfrac{1}{n} + \\dfrac{(x_0 - \\bar{x})^2}{S_{xx}}\\right)$",
+        "$MS_E \\left(\\dfrac{1}{n} + \\dfrac{(x_0 - \\bar{x})^2}{S_{xx}}\\right)$"
+      ],
+      "answer": 2,
+      "explanation": "The prediction-interval variance is $MS_E\\left(1 + \\dfrac{1}{n} + \\dfrac{(x_0-\\bar{x})^2}{S_{xx}}\\right)$. The leading 1 accounts for the variability of an individual new observation, which is absent from the mean-response (confidence-interval) variance.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-010",
+      "stem": "Both the confidence interval for the mean response and the prediction interval are narrowest at which value of $x_0$?",
+      "options": [
+        "at the largest observed $x$",
+        "at $x_0 = 0$",
+        "at the smallest observed $x$",
+        "at $x_0 = \\bar{x}$, the mean of the predictors"
+      ],
+      "answer": 3,
+      "explanation": "The term $(x_0 - \\bar{x})^2/S_{xx}$ is zero when $x_0 = \\bar{x}$, so both intervals are narrowest at the centre of the data and widen as $x_0$ moves away from $\\bar{x}$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-011",
+      "stem": "Using a regression to predict $y$ at an $x_0$ far outside the range of the observed predictor values is called what, and why is it risky?",
+      "options": [
+        "extrapolation; the assumed linear relationship may not hold beyond the data",
+        "centering; it shifts the intercept",
+        "studentizing; it changes the residual scale",
+        "interpolation; it is always safe"
+      ],
+      "answer": 0,
+      "explanation": "Predicting outside the observed range is extrapolation. The fitted model is only supported by data within the observed range, so the linear pattern may fail outside it, making such predictions unreliable.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-012",
+      "stem": "A correlation of $r = 0$ between $x$ and $y$ indicates which of the following?",
+      "options": [
+        "no relationship of any kind exists between $x$ and $y$",
+        "the regression slope is infinite",
+        "no linear relationship exists, though a nonlinear relationship still might",
+        "$x$ and $y$ are identical"
+      ],
+      "answer": 2,
+      "explanation": "$r = 0$ means there is no linear association. The variables could still be related in a nonlinear way (for example a U-shaped relationship can have $r$ near 0), so $r = 0$ does not imply complete independence.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-013",
+      "stem": "Which statement about correlation and causation is correct?",
+      "options": [
+        "correlation alone does not establish a cause-and-effect relationship",
+        "a strong correlation between $x$ and $y$ proves that $x$ causes $y$",
+        "a correlation of 1 means $x$ caused $y$",
+        "correlation can only occur when there is causation"
+      ],
+      "answer": 0,
+      "explanation": "Correlation measures association, not causation. A strong $r$ can arise from a lurking variable, reverse causation, or coincidence, so observing correlation does not by itself establish that one variable causes the other.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-014",
+      "stem": "A regression has $r = -0.6$. What is the value of $R^2$, and what does the sign of $r$ tell you?",
+      "options": [
+        "$R^2 = 0.6$; the relationship is positive",
+        "$R^2 = -0.36$; the relationship is negative",
+        "$R^2 = 0.36$; the relationship is positive",
+        "$R^2 = 0.36$; the relationship is negative (slope is negative)"
+      ],
+      "answer": 3,
+      "explanation": "$R^2 = r^2 = (-0.6)^2 = 0.36$, which is always non-negative. The negative sign of $r$ indicates a negative (decreasing) linear relationship, so the slope is negative.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-015",
+      "stem": "If the correlation between $x$ and $y$ is $r = 0.9$, what percentage of the variation in $y$ is explained by the linear regression on $x$?",
+      "options": [
+        "95 percent",
+        "81 percent",
+        "90 percent",
+        "45 percent"
+      ],
+      "answer": 1,
+      "explanation": "The explained fraction is $R^2 = r^2 = 0.9^2 = 0.81$, that is, 81 percent. Note this is less than 90 percent: squaring shrinks correlations below 1.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-016",
+      "stem": "At $x_0 = \\bar{x}$ a regression has $MS_E = 2.5$, $n = 5$, $S_{xx} = 10$, and $t_{0.025,3} = 3.182$. What is the half-width of the 95 percent confidence interval for the mean response (to 2 decimals)?",
+      "options": [
+        "3.18",
+        "5.51",
+        "1.58",
+        "2.25"
+      ],
+      "answer": 3,
+      "explanation": "At $x_0 = \\bar{x}$ the term $(x_0-\\bar{x})^2/S_{xx} = 0$, so the half-width is $t\\sqrt{MS_E/n} = 3.182\\sqrt{2.5/5} = 3.182\\sqrt{0.5} = 3.182 \\times 0.7071 = 2.25$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-017",
+      "stem": "At $x_0 = \\bar{x}$ with $MS_E = 2.5$, $n = 5$, and $t_{0.025,3} = 3.182$, what is the half-width of the 95 percent prediction interval for a new observation (to 2 decimals)?",
+      "options": [
+        "7.95",
+        "5.51",
+        "2.25",
+        "3.54"
+      ],
+      "answer": 1,
+      "explanation": "The half-width is $t\\sqrt{MS_E(1 + 1/n)} = 3.182\\sqrt{2.5(1 + 1/5)} = 3.182\\sqrt{2.5 \\times 1.2} = 3.182\\sqrt{3.0} = 3.182 \\times 1.732 = 5.51$. This is wider than the confidence-interval half-width of 2.25.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-018",
+      "stem": "The Pearson correlation coefficient is unaffected by which of the following changes to the data?",
+      "options": [
+        "a linear change of units (such as converting $x$ from metres to centimetres)",
+        "swapping which variable is called $x$ and which is $y$ in a way that breaks linearity",
+        "adding a strong outlier",
+        "replacing $y$ with $y^2$"
+      ],
+      "answer": 0,
+      "explanation": "Correlation is invariant to separate linear rescalings and shifts of $x$ and $y$ (it is a standardized quantity). Outliers can change it substantially, and nonlinear transformations like $y \\to y^2$ generally change it.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-019",
+      "stem": "A regression on hours studied gives $\\hat{y} = 43.5 + 6.5x$ from data with $x$ from 1 to 5 hours. The fitted value at $x_0 = 4$ is which of the following, and is this interpolation or extrapolation?",
+      "options": [
+        "56.5; extrapolation",
+        "82.5; interpolation",
+        "69.5; extrapolation (outside the data range)",
+        "69.5; interpolation (within the data range)"
+      ],
+      "answer": 3,
+      "explanation": "$\\hat{y} = 43.5 + 6.5 \\times 4 = 43.5 + 26 = 69.5$. Since $x_0 = 4$ lies inside the observed range 1 to 5, this is interpolation, which is the safe use of the model.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-020",
+      "stem": "Which of the following correlations indicates the strongest linear relationship?",
+      "options": [
+        "$r = 0.10$",
+        "$r = 0.40$",
+        "$r = -0.85$",
+        "$r = 0.65$"
+      ],
+      "answer": 2,
+      "explanation": "Strength is measured by $|r|$, regardless of sign. Here $|-0.85| = 0.85$ is the largest, so $r = -0.85$ indicates the strongest (negative) linear relationship.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-021",
+      "stem": "A regression reports $R^2 = 0.49$ with a negative slope. What is the correlation $r$?",
+      "options": [
+        "$-0.49$",
+        "$0.70$",
+        "$-0.24$",
+        "$-0.70$"
+      ],
+      "answer": 3,
+      "explanation": "$|r| = \\sqrt{0.49} = 0.70$, and since the slope is negative, $r = -0.70$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-022",
+      "stem": "For a fixed confidence level, as $x_0$ moves farther from $\\bar{x}$, what happens to the width of the confidence interval for the mean response?",
+      "options": [
+        "it gets narrower",
+        "it stays constant",
+        "it gets wider",
+        "it becomes zero"
+      ],
+      "answer": 2,
+      "explanation": "The interval half-width grows with the term $(x_0 - \\bar{x})^2/S_{xx}$, so moving $x_0$ away from the centre $\\bar{x}$ increases the width. Estimates are most precise near the middle of the data.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-023",
+      "format": "cloze",
+      "stem": "A simple linear regression of $y$ on $x$ has correlation $r = 0.8$ and a positive slope.",
+      "solution": "The coefficient of determination is $R^2 = r^2 =$ {{1}}. The fraction of variation in $y$ that remains unexplained is {{2}}. Because the slope is positive, the sign of $r$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.64,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.36,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "positive",
+            "negative",
+            "zero"
+          ],
+          "answer": "positive"
+        }
+      ],
+      "explanation": "$R^2 = 0.8^2 = 0.64$. Unexplained fraction $= 1 - 0.64 = 0.36$. A positive slope means $r > 0$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-024",
+      "format": "cloze",
+      "stem": "A regression has $S_{xy} = 6$, $S_{xx} = 10$, and $S_{yy} = 6$.",
+      "solution": "The Pearson correlation is $r = S_{xy}/\\sqrt{S_{xx} S_{yy}} =$ {{1}} (rounded to 4 decimals). Squaring gives $R^2 =$ {{2}} (rounded to 2 decimals).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.7746,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.6,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "$r = 6/\\sqrt{60} = 6/7.746 = 0.7746$. $R^2 = r^2 = 0.7746^2 = 0.60$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-025",
+      "format": "cloze",
+      "stem": "Compare a confidence interval for the mean response with a prediction interval for a new observation at the same $x_0$.",
+      "solution": "Of the two intervals, the {{1}} interval is always wider at a given $x_0$. The extra width comes from a leading term equal to {{2}} inside the variance formula. Both intervals are narrowest when $x_0$ equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "prediction",
+            "confidence",
+            "neither"
+          ],
+          "answer": "prediction"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\bar{x}$",
+            "$0$",
+            "the maximum $x$"
+          ],
+          "answer": "$\\bar{x}$"
+        }
+      ],
+      "explanation": "The prediction interval is wider because its variance has the extra leading term 1 (for an individual observation). Both are narrowest at $x_0 = \\bar{x}$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-026",
+      "format": "cloze",
+      "stem": "At the centre $x_0 = \\bar{x}$, a regression has $MS_E = 2.5$, $n = 5$, and $t_{0.025,3} = 3.182$.",
+      "solution": "The confidence-interval half-width for the mean response is $t\\sqrt{MS_E/n} =$ {{1}} (rounded to 2 decimals). The prediction-interval half-width is $t\\sqrt{MS_E(1 + 1/n)} =$ {{2}} (rounded to 2 decimals). The prediction interval is the {{3}} of the two.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.25,
+          "tolerance": 0.02
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5.51,
+          "tolerance": 0.03
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "wider",
+            "narrower",
+            "same"
+          ],
+          "answer": "wider"
+        }
+      ],
+      "explanation": "CI half-width $= 3.182\\sqrt{0.5} = 2.25$. PI half-width $= 3.182\\sqrt{2.5 \\times 1.2} = 3.182\\sqrt{3} = 5.51$. The prediction interval is wider.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-027",
+      "format": "cloze",
+      "stem": "Interpret correlation values and their meaning.",
+      "solution": "A correlation of $r =$ {{1}} would indicate a perfect positive linear relationship. A correlation of exactly 0 means there is no {{2}} relationship, although a curved relationship may still exist. The strength of association depends only on the {{3}} of $r$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "linear",
+            "Linear"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "absolute value",
+            "sign",
+            "square root"
+          ],
+          "answer": "absolute value"
+        }
+      ],
+      "explanation": "$r = +1$ is a perfect positive linear relationship. $r = 0$ means no linear relationship. Strength is governed by $|r|$, not its sign.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-correlation-and-prediction-028",
+      "format": "cloze",
+      "stem": "A regression of exam score on study hours is $\\hat{y} = 43.5 + 6.5x$, fit from data with $x$ ranging from 1 to 5 hours.",
+      "solution": "The predicted score at $x_0 = 4$ hours is {{1}}, and because $x_0$ is inside the data range this is {{2}}. A prediction at $x_0 = 10$ hours would instead be {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 69.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "interpolation",
+            "extrapolation",
+            "correlation"
+          ],
+          "answer": "interpolation"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "extrapolation",
+            "interpolation",
+            "a residual"
+          ],
+          "answer": "extrapolation"
+        }
+      ],
+      "explanation": "$\\hat{y} = 43.5 + 6.5 \\times 4 = 69.5$. Since 4 is within 1 to 5, predicting there is interpolation. Predicting at 10 (outside 1 to 5) is extrapolation.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    }
+  ]
+}

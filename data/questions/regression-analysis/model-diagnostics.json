@@ -1,0 +1,520 @@
+{
+  "courseId": "regression-analysis",
+  "topicId": "model-diagnostics",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "regression-analysis-model-diagnostics-001",
+      "stem": "Which of the following is NOT one of the standard assumptions of the linear regression model?",
+      "options": [
+        "the errors are independent",
+        "the errors are normally distributed",
+        "the errors have constant variance (homoscedasticity)",
+        "the predictor values must be normally distributed"
+      ],
+      "answer": 3,
+      "explanation": "The standard assumptions concern the errors: zero mean, constant variance, independence, and (for inference) normality. There is no requirement that the predictor $x$ be normally distributed; $x$ is treated as fixed.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-002",
+      "stem": "A plot of residuals against fitted values shows a funnel shape that widens as the fitted values increase. Which assumption is most clearly violated?",
+      "options": [
+        "independence of errors",
+        "linearity of the mean",
+        "constant variance (homoscedasticity)",
+        "normality of errors"
+      ],
+      "answer": 2,
+      "explanation": "A funnel (megaphone) pattern indicates that the spread of the residuals changes with the level of the response, that is, non-constant variance (heteroscedasticity). A curved band would instead signal a problem with the linear mean.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-003",
+      "stem": "If a residuals-versus-fitted-values plot shows a clear curved (U-shaped) pattern, what does this most strongly suggest?",
+      "options": [
+        "the relationship is nonlinear and the model is misspecified",
+        "there is an outlier in the response",
+        "the errors are autocorrelated",
+        "the errors are heteroscedastic"
+      ],
+      "answer": 0,
+      "explanation": "Systematic curvature in the residual plot means the straight-line model has not captured the true (curved) relationship, indicating nonlinearity. A transformation or adding a polynomial term may be needed.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-004",
+      "stem": "A normal probability plot (normal Q-Q plot) of the residuals is used to check which assumption?",
+      "options": [
+        "constant variance",
+        "normality of the errors",
+        "absence of multicollinearity",
+        "linearity"
+      ],
+      "answer": 1,
+      "explanation": "A normal Q-Q plot compares the ordered residuals to the quantiles of a normal distribution. Points close to a straight line support the normality assumption; strong departures (curves, heavy tails) indicate non-normal errors.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-005",
+      "stem": "The variance inflation factor (VIF) for predictor $x_j$ is defined as which of the following, where $R_j^2$ is from regressing $x_j$ on the other predictors?",
+      "options": [
+        "$VIF_j = 1/(1 - R_j^2)$",
+        "$VIF_j = R_j^2$",
+        "$VIF_j = 1/R_j^2$",
+        "$VIF_j = 1 - R_j^2$"
+      ],
+      "answer": 0,
+      "explanation": "$VIF_j = 1/(1 - R_j^2)$, where $R_j^2$ is the coefficient of determination from regressing $x_j$ on all the other predictors. A large $R_j^2$ (strong dependence on the others) gives a large VIF.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-006",
+      "stem": "When regressing $x_j$ on the remaining predictors, the result is $R_j^2 = 0.90$. What is the variance inflation factor for $x_j$?",
+      "options": [
+        "1.11",
+        "0.10",
+        "10.00",
+        "9.00"
+      ],
+      "answer": 2,
+      "explanation": "$VIF_j = 1/(1 - R_j^2) = 1/(1 - 0.90) = 1/0.10 = 10.00$. A VIF of 10 is a common rough threshold for serious multicollinearity.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-007",
+      "stem": "A predictor has $VIF = 5$. What value of $R_j^2$ (from regressing it on the other predictors) does this correspond to?",
+      "options": [
+        "0.80",
+        "0.50",
+        "0.20",
+        "0.95"
+      ],
+      "answer": 0,
+      "explanation": "From $VIF = 1/(1 - R_j^2)$, we get $R_j^2 = 1 - 1/VIF = 1 - 1/5 = 1 - 0.20 = 0.80$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-008",
+      "stem": "What does a large variance inflation factor for a predictor indicate?",
+      "options": [
+        "that predictor is highly collinear with the other predictors, inflating its coefficient's variance",
+        "that predictor is uncorrelated with all the others",
+        "the overall model has low $R^2$",
+        "the residuals are normally distributed"
+      ],
+      "answer": 0,
+      "explanation": "A large VIF means the predictor is strongly linearly related to the other predictors (multicollinearity), which inflates the variance (and standard error) of its estimated coefficient and makes it unstable.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-009",
+      "stem": "In regression diagnostics, the leverage of an observation is measured by which quantity?",
+      "options": [
+        "its fitted value $\\hat{y}_i$",
+        "the error mean square",
+        "its residual $e_i$",
+        "the diagonal element $h_{ii}$ of the hat matrix"
+      ],
+      "answer": 3,
+      "explanation": "Leverage is the $i$th diagonal element $h_{ii}$ of the hat matrix $\\mathbf{H} = \\mathbf{X}(\\mathbf{X}'\\mathbf{X})^{-1}\\mathbf{X}'$. It measures how far an observation's predictor values are from the centre of the predictor space.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-010",
+      "stem": "In a regression with $p$ parameters (including the intercept) and $n$ observations, the average leverage equals which value?",
+      "options": [
+        "$p$",
+        "$1/n$",
+        "$n/p$",
+        "$p/n$"
+      ],
+      "answer": 3,
+      "explanation": "The leverages sum to the number of parameters, $\\sum_i h_{ii} = p$, so the average leverage is $p/n$. Points with $h_{ii}$ exceeding $2p/n$ are often flagged as high-leverage.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-011",
+      "stem": "A regression has $p = 3$ parameters and $n = 30$ observations. A common cutoff flags observations whose leverage exceeds $2p/n$. What is this cutoff value?",
+      "options": [
+        "0.10",
+        "0.20",
+        "0.30",
+        "0.067"
+      ],
+      "answer": 1,
+      "explanation": "Average leverage is $p/n = 3/30 = 0.10$, and the cutoff is $2p/n = 2 \\times 0.10 = 0.20$. Observations with $h_{ii} > 0.20$ are treated as high-leverage points.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-012",
+      "stem": "What is the difference between a high-leverage point and an influential point in regression?",
+      "options": [
+        "a high-leverage point has extreme predictor values; an influential point actually changes the fitted model substantially when removed",
+        "an influential point always has a small residual",
+        "a high-leverage point always lies on the regression line",
+        "they are exactly the same thing"
+      ],
+      "answer": 0,
+      "explanation": "Leverage describes an extreme position in the predictor space. Influence describes how much the fit (coefficients, predictions) would change if the point were deleted. A high-leverage point is influential only if it also pulls the line; a point can have high leverage yet be in line with the others.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-013",
+      "stem": "Cook's distance is used in regression to measure which of the following?",
+      "options": [
+        "the overall influence of an observation on all fitted values and coefficients",
+        "the correlation between two predictors",
+        "the constant-variance assumption",
+        "the normality of the residuals"
+      ],
+      "answer": 0,
+      "explanation": "Cook's distance combines leverage and residual size into a single measure of how much an observation influences the fitted regression (the coefficients and all the fitted values). Large values flag influential cases.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-014",
+      "stem": "An outlier in regression is best described as an observation that does what?",
+      "options": [
+        "has predictor values far from the others",
+        "always has Cook's distance equal to zero",
+        "always has high leverage",
+        "has a response value that is poorly fit by the model, giving a large residual"
+      ],
+      "answer": 3,
+      "explanation": "An outlier is a point with an unusually large residual, meaning its $y$ value is not well explained by the model. That is distinct from leverage (extreme $x$) and from influence (effect on the fit), though a point can be more than one of these.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-015",
+      "stem": "The standardized (or studentized) residual is computed by dividing the raw residual by an estimate of which quantity?",
+      "options": [
+        "the slope $\\hat{\\beta}_1$",
+        "the number of observations",
+        "the total sum of squares",
+        "its own standard deviation, which involves the leverage $h_{ii}$"
+      ],
+      "answer": 3,
+      "explanation": "A standardized residual is $e_i$ divided by $\\hat{\\sigma}\\sqrt{1 - h_{ii}}$, an estimate of the residual's own standard deviation. This rescaling accounts for the fact that residuals at high-leverage points have smaller variance.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-016",
+      "stem": "An observation has raw residual $e_i = 2.0$, leverage $h_{ii} = 0.2$, and the model has $\\hat{\\sigma} = 1.0$. What is its standardized residual $e_i/(\\hat{\\sigma}\\sqrt{1 - h_{ii}})$ (to 2 decimals)?",
+      "options": [
+        "2.24",
+        "2.00",
+        "1.79",
+        "2.50"
+      ],
+      "answer": 0,
+      "explanation": "$\\sqrt{1 - h_{ii}} = \\sqrt{1 - 0.2} = \\sqrt{0.8} = 0.8944$. Standardized residual $= 2.0/(1.0 \\times 0.8944) = 2.236 \\approx 2.24$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-017",
+      "stem": "Which of the following is a reasonable remedy when residual diagnostics reveal non-constant variance in the response?",
+      "options": [
+        "apply a variance-stabilizing transformation such as the logarithm or square root to $y$",
+        "set all residuals to zero",
+        "remove the intercept from the model",
+        "increase the number of observations until variance is constant"
+      ],
+      "answer": 0,
+      "explanation": "A variance-stabilizing transformation of the response (for example $\\log y$ or $\\sqrt{y}$), or weighted least squares, is a standard remedy for heteroscedasticity. Dropping the intercept or zeroing residuals does not address the problem.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-018",
+      "stem": "When the errors in a regression on time-ordered data are positively autocorrelated, which assumption is violated, and which plot or test helps detect it?",
+      "options": [
+        "independence; checked with a plot of residuals versus time order or the Durbin-Watson statistic",
+        "normality; checked with a histogram",
+        "linearity; checked with a partial residual plot",
+        "constant variance; checked with a scale-location plot"
+      ],
+      "answer": 0,
+      "explanation": "Autocorrelation violates the independence-of-errors assumption. Plotting residuals against time order (looking for runs or cycles) or computing the Durbin-Watson statistic helps detect serial correlation.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-019",
+      "stem": "A predictor is found to have $R_j^2 = 0.75$ when regressed on the other predictors. What is its VIF, and is it usually considered problematic at the VIF > 10 rule of thumb?",
+      "options": [
+        "VIF = 1.33, not problematic",
+        "VIF = 0.25, problematic",
+        "VIF = 4, not problematic by that rule",
+        "VIF = 7.5, problematic"
+      ],
+      "answer": 2,
+      "explanation": "$VIF = 1/(1 - 0.75) = 1/0.25 = 4$. Since 4 is below the common cutoff of 10, this level of collinearity is usually not regarded as serious.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-020",
+      "stem": "For a correctly specified least-squares model with an intercept, a residuals-versus-fitted-values plot that shows no pattern (a random horizontal band centred at zero) indicates what?",
+      "options": [
+        "the model has serious multicollinearity",
+        "the response must be transformed",
+        "the linearity and constant-variance assumptions appear satisfied",
+        "the predictors are perfectly correlated"
+      ],
+      "answer": 2,
+      "explanation": "A structureless band of residuals around zero is exactly what we hope to see: it gives no evidence against linearity or constant variance. Patterns (curves, funnels) would signal trouble.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-021",
+      "stem": "Why are studentized residuals often preferred over raw residuals for identifying outliers?",
+      "options": [
+        "they are always larger than raw residuals",
+        "they put all residuals on a common scale by accounting for differing variances due to leverage",
+        "they make the residuals sum to one",
+        "they remove the need to fit the model"
+      ],
+      "answer": 1,
+      "explanation": "Raw residuals do not all have the same variance: residuals at high-leverage points are less variable. Studentizing rescales each residual by its estimated standard deviation, putting them on a common scale so that, for example, values beyond about 2 or 3 can be flagged consistently.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-022",
+      "stem": "A regression has $p = 4$ parameters and $n = 20$ observations. What is the average leverage, and what is the $2p/n$ high-leverage cutoff?",
+      "options": [
+        "average 0.20, cutoff 0.40",
+        "average 0.40, cutoff 0.80",
+        "average 0.05, cutoff 0.10",
+        "average 0.10, cutoff 0.20"
+      ],
+      "answer": 0,
+      "explanation": "Average leverage $= p/n = 4/20 = 0.20$. The cutoff is $2p/n = 8/20 = 0.40$. Observations with $h_{ii} > 0.40$ would be flagged.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-023",
+      "format": "cloze",
+      "stem": "In a multiple regression, predictor $x_2$ is regressed on the other predictors and gives $R_2^2 = 0.80$.",
+      "solution": "The variance inflation factor for $x_2$ is $VIF_2 = 1/(1 - R_2^2) =$ {{1}}. By the common rule of thumb, a VIF above 10 signals serious multicollinearity, so this VIF would be considered {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "acceptable",
+            "severe",
+            "exactly at the threshold"
+          ],
+          "answer": "acceptable"
+        }
+      ],
+      "explanation": "$VIF_2 = 1/(1 - 0.80) = 1/0.20 = 5$. Since 5 is below the threshold of 10, the multicollinearity is usually considered acceptable.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-024",
+      "format": "cloze",
+      "stem": "A fitted regression has $p = 5$ parameters and $n = 50$ observations.",
+      "solution": "The average leverage is $p/n =$ {{1}}. The $2p/n$ cutoff for flagging high-leverage points is {{2}}. An observation with extreme predictor values that also pulls the fitted line is called {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.1,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.2,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "influential",
+            "an influential point",
+            "influential point",
+            "an influential observation",
+            "influential observation"
+          ]
+        }
+      ],
+      "explanation": "Average leverage $= 5/50 = 0.1$. Cutoff $= 2 \\times 5/50 = 0.2$. A high-leverage point that changes the fit is an influential point.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-025",
+      "format": "cloze",
+      "stem": "Match each residual-plot pattern to the assumption it calls into question.",
+      "solution": "A funnel shape that widens with the fitted values indicates a problem with {{1}}. A clear curved pattern in the residuals indicates a problem with {{2}}. A normal probability plot of the residuals is used to assess {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "constant variance",
+            "linearity",
+            "normality"
+          ],
+          "answer": "constant variance"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "linearity",
+            "constant variance",
+            "independence"
+          ],
+          "answer": "linearity"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "normality",
+            "linearity",
+            "constant variance"
+          ],
+          "answer": "normality"
+        }
+      ],
+      "explanation": "A funnel signals heteroscedasticity (non-constant variance). Curvature signals a nonlinear mean (linearity). The normal Q-Q plot assesses normality of the errors.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-026",
+      "format": "cloze",
+      "stem": "An observation has raw residual $e_i = 2.0$ and leverage $h_{ii} = 0.2$, with model estimate $\\hat{\\sigma} = 1.0$.",
+      "solution": "The factor $\\sqrt{1 - h_{ii}}$ equals {{1}} (rounded to 4 decimals). The standardized residual $e_i/(\\hat{\\sigma}\\sqrt{1 - h_{ii}})$ is therefore {{2}} (rounded to 2 decimals), which is large enough to treat the point as a possible {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.8944,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2.24,
+          "tolerance": 0.02
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "outlier",
+            "high-leverage point only",
+            "reference level"
+          ],
+          "answer": "outlier"
+        }
+      ],
+      "explanation": "$\\sqrt{1 - 0.2} = \\sqrt{0.8} = 0.8944$. Standardized residual $= 2.0/(1.0 \\times 0.8944) = 2.236 \\approx 2.24$. A standardized residual beyond about 2 flags a possible outlier.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-027",
+      "format": "cloze",
+      "stem": "Complete the statements about the VIF and its relationship to collinearity.",
+      "solution": "The variance inflation factor equals $1/(1 -$ {{1}} $)$, where the quantity in the blank is the $R^2$ from regressing that predictor on the others. When a predictor is completely uncorrelated with the others, its VIF equals {{2}}. A predictor with $VIF = 4$ corresponds to an $R_j^2$ of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$R_j^2$",
+            "$VIF$",
+            "$h_{ii}$"
+          ],
+          "answer": "$R_j^2$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.75,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "$VIF = 1/(1 - R_j^2)$. If $R_j^2 = 0$ then $VIF = 1$. If $VIF = 4$ then $R_j^2 = 1 - 1/4 = 0.75$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-diagnostics-028",
+      "format": "cloze",
+      "stem": "Classify three flagged observations from a regression analysis.",
+      "solution": "A point with a very large residual but ordinary predictor values is best called an {{1}}. A point with extreme predictor values (large $h_{ii}$) but a small residual has high {{2}} but may not be influential. A single statistic that combines residual size and leverage to summarize influence is {{3}} distance.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "outlier",
+            "Outlier"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "leverage",
+            "Leverage"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "Cook's",
+            "Cook",
+            "Cooks",
+            "Cook's distance"
+          ]
+        }
+      ],
+      "explanation": "Large residual with ordinary $x$ is an outlier. Extreme $x$ with small residual is high leverage. Cook's distance blends both to measure influence.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    }
+  ]
+}

@@ -1,0 +1,532 @@
+{
+  "courseId": "numerical-analysis-ii",
+  "topicId": "nonlinear-equations",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-001",
+      "stem": "The bisection method applied to a continuous $f$ on $[a, b]$ requires which condition to guarantee a root in the interval?",
+      "options": [
+        "$f(a) = f(b)$",
+        "$f(a)\\,f(b) < 0$",
+        "$f(a)\\,f(b) > 0$",
+        "$f'(a)\\,f'(b) < 0$"
+      ],
+      "answer": 1,
+      "explanation": "By the intermediate value theorem, a sign change $f(a)f(b) < 0$ forces $f$ to cross zero somewhere in $(a, b)$. A positive product means the endpoints share a sign and need not bracket a root, equal endpoint values say nothing about a crossing, and a derivative sign change concerns extrema. The trap is the sign of the product: bisection needs opposite signs at the endpoints.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-002",
+      "stem": "Newton's method for solving $f(x) = 0$ uses which iteration?",
+      "options": [
+        "$x_{n+1} = x_n - \\dfrac{f'(x_n)}{f(x_n)}$",
+        "$x_{n+1} = x_n + \\dfrac{f(x_n)}{f'(x_n)}$",
+        "$x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}$",
+        "$x_{n+1} = x_n - f(x_n)\\,f'(x_n)$"
+      ],
+      "answer": 2,
+      "explanation": "Newton follows the tangent line at $(x_n, f(x_n))$ to its $x$-intercept, giving $x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}$. Adding instead of subtracting moves away from the root, multiplying $f$ by $f'$ is dimensionally wrong, and inverting the quotient is incorrect. The trap is the sign and orientation: subtract $f/f'$.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-003",
+      "stem": "A fixed-point iteration $x_{n+1} = g(x_n)$ converges to a fixed point $x^*$ if, near $x^*$, which condition holds?",
+      "options": [
+        "$|g'(x^*)| < 1$",
+        "$|g'(x^*)| > 1$",
+        "$g(x^*) = 0$",
+        "$g'(x^*) = 1$"
+      ],
+      "answer": 0,
+      "explanation": "The error obeys $e_{n+1} \\approx g'(x^*) e_n$, so it contracts only when $|g'(x^*)| < 1$. A magnitude above $1$ diverges, exactly $1$ is the borderline case, and $g(x^*) = 0$ confuses a fixed point ($g(x^*) = x^*$) with a root of $g$. The trap is requiring $g$ to vanish; convergence is governed by $|g'|$ at the fixed point.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-004",
+      "stem": "For $f(x) = x^3 - x - 2$ on $[1, 2]$, the first bisection midpoint and the resulting subinterval are which of the following?",
+      "options": [
+        "Midpoint $1.5$, new interval $[1, 2]$",
+        "Midpoint $1.25$, new interval $[1.25, 2]$",
+        "Midpoint $1.5$, new interval $[1, 1.5]$",
+        "Midpoint $1.5$, new interval $[1.5, 2]$"
+      ],
+      "answer": 3,
+      "explanation": "The midpoint is $c = \\frac{1+2}{2} = 1.5$, and $f(1.5) = 3.375 - 1.5 - 2 = -0.125 < 0$. Since $f(1) = -2 < 0$ and $f(2) = 4 > 0$, the sign change with $f(2)$ puts the root in $[1.5, 2]$. Keeping $[1, 1.5]$ discards the bracketing half, the first midpoint is not $1.25$, and retaining $[1, 2]$ makes no progress. The trap is choosing the half without the sign change.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-005",
+      "stem": "The order of convergence of Newton's method near a simple root is which value?",
+      "options": [
+        "$1.618$ (superlinear)",
+        "$2$ (quadratic)",
+        "$3$ (cubic)",
+        "$1$ (linear)"
+      ],
+      "answer": 1,
+      "explanation": "Near a simple root the error satisfies $e_{n+1} \\approx \\frac{f''(x^*)}{2f'(x^*)} e_n^2$, so Newton converges quadratically, order $2$, roughly doubling correct digits each step. Order $1$ is bisection or fixed-point iteration, order $1.618$ is the secant method, and cubic needs special schemes. The trap is confusing Newton's quadratic order with the secant's superlinear order.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-006",
+      "stem": "For $f(x) = x^3 - x - 2$ with $f'(x) = 3x^2 - 1$, one Newton step from $x_0 = 1.5$ gives which value?",
+      "options": [
+        "$1.4783$",
+        "$1.5000$",
+        "$1.6000$",
+        "$1.5217$"
+      ],
+      "answer": 3,
+      "explanation": "Here $f(1.5) = -0.125$ and $f'(1.5) = 3(2.25) - 1 = 5.75$, so $x_1 = 1.5 - \\frac{-0.125}{5.75} = 1.5 + 0.02174 = 1.52174$. Staying at $1.5$ ignores the step, $1.4783$ uses the wrong sign, and $1.6$ is a loose guess. The trap is the sign of $f$: a negative $f$ moves the iterate up, not down.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-007",
+      "stem": "The secant method approximates the derivative in Newton's method by which quantity?",
+      "options": [
+        "A finite difference $\\dfrac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}$ from the two latest iterates",
+        "The second derivative $f''(x_n)$",
+        "The exact derivative $f'(x_n)$",
+        "A constant slope of $1$"
+      ],
+      "answer": 0,
+      "explanation": "The secant method replaces $f'(x_n)$ with the slope of the chord through the two most recent points, $\\frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}$, so no analytic derivative is needed. Using the exact derivative would just be Newton, the second derivative is irrelevant, and a constant $1$ is a crude scheme. The trap is thinking the secant method needs $f'$; replacing it with a difference quotient is the whole point.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-008",
+      "stem": "For $f(x) = x^2 - 3$ with $x_0 = 1$, $x_1 = 2$, the first secant step $x_2$ is which value?",
+      "options": [
+        "$1.7321$",
+        "$1.6667$",
+        "$1.5000$",
+        "$1.7500$"
+      ],
+      "answer": 1,
+      "explanation": "With $f(1) = -2$ and $f(2) = 1$, the secant formula gives $x_2 = x_1 - f(x_1)\\frac{x_1 - x_0}{f(x_1) - f(x_0)} = 2 - 1\\cdot\\frac{2 - 1}{1 - (-2)} = 2 - \\frac{1}{3} = 1.6667$. The value $1.75$ is the first Newton step from $x_0 = 2$, $1.5$ is a bracket midpoint, and $1.7321$ is the exact $\\sqrt{3}$. The trap is the denominator $f(x_1) - f(x_0) = 3$; the step subtracts $\\frac{1}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-009",
+      "stem": "The order of convergence of the secant method near a simple root is approximately which value?",
+      "options": [
+        "$1.618$",
+        "$2$",
+        "$2.414$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "The secant error obeys $e_{n+1} \\approx C\\, e_n^{1.618}$, where the exponent is the golden ratio $\\frac{1 + \\sqrt{5}}{2} \\approx 1.618$, so it is superlinear but slower than Newton's order $2$. Order $1$ is bisection, order $2$ is Newton, and $2.414$ is unrelated. The trap is rounding the secant order to $1$ or $2$; it sits strictly between at the golden ratio.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-010",
+      "stem": "After $n$ bisection steps starting from interval length $L = b - a$, the bracket width is which expression?",
+      "options": [
+        "$L \\cdot 2^{-n+1}$",
+        "$\\dfrac{L}{2n}$",
+        "$\\dfrac{L}{n}$",
+        "$\\dfrac{L}{2^n}$"
+      ],
+      "answer": 3,
+      "explanation": "Each bisection halves the interval, so after $n$ steps the width is $\\frac{L}{2^n}$. Dividing by $n$ or $2n$ describes slower-than-geometric shrinkage, and $L\\cdot 2^{-n+1} = \\frac{L}{2^{n-1}}$ is off by one halving. The trap is treating the reduction as linear in $n$ rather than geometric.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-011",
+      "stem": "How many bisection iterations guarantee an absolute error below $10^{-4}$ on the interval $[1, 2]$, using $\\dfrac{b - a}{2^n} \\le 10^{-4}$?",
+      "options": [
+        "$10$",
+        "$20$",
+        "$7$",
+        "$14$"
+      ],
+      "answer": 3,
+      "explanation": "Require $\\frac{1}{2^n} \\le 10^{-4}$, that is $2^n \\ge 10000$. Since $2^{13} = 8192 < 10000$ and $2^{14} = 16384 \\ge 10000$, the smallest $n$ is $14$. Equivalently $n \\ge \\frac{\\ln 10000}{\\ln 2} \\approx 13.29$, rounded up to $14$. The value $10$ gives only $2^{10} = 1024$, $7$ is far too coarse, and $20$ is more than needed. The trap is rounding $13.29$ down.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-012",
+      "stem": "Applying Newton's method to $f(x) = x^2 - N$ yields which classical iteration for $\\sqrt{N}$?",
+      "options": [
+        "$x_{n+1} = \\dfrac{1}{2}\\left(x_n + \\dfrac{N}{x_n}\\right)$",
+        "$x_{n+1} = 2x_n - \\dfrac{N}{x_n}$",
+        "$x_{n+1} = x_n - N$",
+        "$x_{n+1} = \\dfrac{N}{x_n}$"
+      ],
+      "answer": 0,
+      "explanation": "With $f(x) = x^2 - N$ and $f'(x) = 2x$, Newton gives $x_{n+1} = x_n - \\frac{x_n^2 - N}{2x_n} = \\frac{1}{2}\\left(x_n + \\frac{N}{x_n}\\right)$, the Babylonian formula. The bare $\\frac{N}{x_n}$ omits the averaging, $2x_n - \\frac{N}{x_n}$ mishandles the algebra, and $x_n - N$ ignores the derivative. The trap is dropping the factor $\\frac{1}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-013",
+      "stem": "For $f(x) = x^2 - 3$, $f'(x) = 2x$, one Newton step from $x_0 = 2$ gives which value?",
+      "options": [
+        "$1.6667$",
+        "$1.7500$",
+        "$1.7321$",
+        "$2.0000$"
+      ],
+      "answer": 1,
+      "explanation": "Apply $x_1 = 2 - \\frac{4 - 3}{2(2)} = 2 - \\frac{1}{4} = 1.75$. The value $1.6667$ is the first secant step, $1.7321$ is the exact $\\sqrt{3}$ reached only after more steps, and $2.0$ is the starting point. The trap is using the wrong derivative value; here $f'(2) = 4$, giving the step $0.25$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-014",
+      "stem": "Newton's method can fail or converge slowly in which situation?",
+      "options": [
+        "When $f$ is smooth and strictly monotonic",
+        "When $f$ is a straight line",
+        "When the initial guess equals the root",
+        "When $f'(x_n)$ is near zero or the root is a multiple root"
+      ],
+      "answer": 3,
+      "explanation": "A near-zero derivative makes the step $\\frac{f}{f'}$ blow up and can throw the iterate far away, and at a multiple root the quadratic convergence degrades to merely linear. A straight line is solved in one exact step, an initial guess at the root stops immediately, and a smooth monotonic function is the ideal case. The trap is overlooking the derivative in the denominator.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-015",
+      "stem": "To solve $x^2 - x - 1 = 0$ (golden-ratio root near $1.618$) by fixed-point iteration with $g(x) = \\sqrt{x + 1}$, convergence is expected because $g'$ at the root has which property?",
+      "options": [
+        "$|g'| \\approx 0.31 < 1$",
+        "$|g'| > 1$",
+        "$g' = 2$",
+        "$|g'| = 1$"
+      ],
+      "answer": 0,
+      "explanation": "Here $g'(x) = \\frac{1}{2\\sqrt{x + 1}}$, so at $x^* \\approx 1.618$, $g'(x^*) = \\frac{1}{2\\sqrt{2.618}} = \\frac{1}{2(1.618)} \\approx 0.309$, magnitude below $1$, so the iteration is locally convergent. A magnitude above or equal to $1$ would fail, and $g' = 2$ is incorrect. The trap is not evaluating $g'$ at the fixed point; $\\sqrt{x + 1}$ is contractive there.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-016",
+      "stem": "Newton's method for a system $\\mathbf{F}(\\mathbf{x}) = \\mathbf{0}$ uses which update, where $J$ is the Jacobian?",
+      "options": [
+        "$\\mathbf{x}^{(k+1)} = \\mathbf{x}^{(k)} - J(\\mathbf{x}^{(k)})\\,\\mathbf{F}(\\mathbf{x}^{(k)})$",
+        "$\\mathbf{x}^{(k+1)} = \\mathbf{x}^{(k)} - J(\\mathbf{x}^{(k)})^{-1}\\,\\mathbf{F}(\\mathbf{x}^{(k)})$",
+        "$\\mathbf{x}^{(k+1)} = \\mathbf{x}^{(k)} + J(\\mathbf{x}^{(k)})^{-1}\\,\\mathbf{F}(\\mathbf{x}^{(k)})$",
+        "$\\mathbf{x}^{(k+1)} = \\mathbf{x}^{(k)} - \\mathbf{F}(\\mathbf{x}^{(k)})^{-1}\\,J(\\mathbf{x}^{(k)})$"
+      ],
+      "answer": 1,
+      "explanation": "The multivariate Newton step solves $J\\,\\Delta\\mathbf{x} = -\\mathbf{F}$, that is $\\mathbf{x}^{(k+1)} = \\mathbf{x}^{(k)} - J^{-1}\\mathbf{F}$, where $J$ collects the partial derivatives. Multiplying by $J$ rather than $J^{-1}$ is wrong, the plus sign moves away from the root, and inverting $\\mathbf{F}$ (a vector) is meaningless. The trap is forgetting that the Jacobian must be inverted (or its linear system solved), not applied directly.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-017",
+      "stem": "For the system $f_1 = x + y - 3$, $f_2 = x^2 + y^2 - 5$, the Jacobian matrix is which of the following?",
+      "options": [
+        "$\\begin{pmatrix} 1 & 2x \\\\ 1 & 2y \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 1 \\\\ 2x & 2y \\end{pmatrix}$",
+        "$\\begin{pmatrix} 1 & 1 \\\\ x^2 & y^2 \\end{pmatrix}$",
+        "$\\begin{pmatrix} x & y \\\\ 2x & 2y \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "The Jacobian has rows of partial derivatives: row 1 from $f_1$ is $(\\partial_x f_1, \\partial_y f_1) = (1, 1)$, and row 2 from $f_2$ is $(\\partial_x f_2, \\partial_y f_2) = (2x, 2y)$. The first option transposes the entries, the third uses the functions rather than their derivatives, and the fourth is incorrect. The trap is filling rows by variable instead of by function; each row holds one function's gradient.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-018",
+      "stem": "A practical advantage of bisection over Newton's method is which of the following?",
+      "options": [
+        "It converges faster than Newton",
+        "It requires the derivative $f'$",
+        "It is guaranteed to converge once a sign change is bracketed",
+        "It needs only a single starting point"
+      ],
+      "answer": 2,
+      "explanation": "Bisection is unconditionally convergent: once $f(a)f(b) < 0$, the bracket cannot fail to shrink onto a root, making it very robust. It is not faster (only linear), it needs no derivative, and it requires two points to form the bracket, not one. The trap is praising bisection for speed; its real strength is guaranteed, if slow, convergence.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-019",
+      "stem": "The bisection error bound after each step is multiplied by a constant factor, making its convergence which type?",
+      "options": [
+        "Superlinear",
+        "Linear with ratio $\\tfrac{1}{2}$",
+        "Quadratic",
+        "Cubic"
+      ],
+      "answer": 1,
+      "explanation": "Because each step halves the bracket, the error bound is multiplied by $\\frac{1}{2}$ every iteration, which is linear (first-order) convergence with ratio $\\frac{1}{2}$, gaining about one binary digit per step. It is not quadratic like Newton, not superlinear like the secant method, and not cubic. The trap is overrating bisection's speed.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-020",
+      "stem": "The Newton update is interpreted geometrically as which of the following?",
+      "options": [
+        "The average of the last two iterates",
+        "The $x$-intercept of the secant line through two points",
+        "The $x$-intercept of the tangent line at $(x_n, f(x_n))$",
+        "The midpoint of the current bracket"
+      ],
+      "answer": 2,
+      "explanation": "Newton draws the tangent to the curve at $(x_n, f(x_n))$ and takes its crossing of the $x$-axis as the next iterate, which is why the formula uses the tangent slope $f'(x_n)$. The bracket midpoint is bisection, the secant-line intercept is the secant method, and averaging two iterates is unrelated. The trap is mixing tangent with secant; Newton uses the tangent at one point.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-021",
+      "stem": "When Newton's method is applied to a root of multiplicity $m > 1$, its convergence becomes which type unless the method is modified?",
+      "options": [
+        "Cubic",
+        "Linear, with rate $1 - \\tfrac{1}{m}$",
+        "Quadratic, unchanged",
+        "Divergent always"
+      ],
+      "answer": 1,
+      "explanation": "At a root of multiplicity $m$, plain Newton loses its quadratic rate and converges only linearly with asymptotic factor $1 - \\frac{1}{m}$. Using the modified iteration $x_{n+1} = x_n - m\\frac{f}{f'}$ or applying Newton to $f/f'$ restores quadratic convergence. It does not stay quadratic, is not cubic, and does not always diverge. The trap is assuming quadratic convergence regardless of multiplicity.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-022",
+      "stem": "Which ranking of typical convergence speed near a simple root, from fastest to slowest, is correct?",
+      "options": [
+        "Newton, secant, bisection",
+        "Bisection, Newton, secant",
+        "Bisection, secant, Newton",
+        "Secant, Newton, bisection"
+      ],
+      "answer": 0,
+      "explanation": "Newton (order $2$) is fastest, the secant method (order $1.618$) is next, and bisection (order $1$, ratio $\\frac{1}{2}$) is slowest, so the order is Newton, secant, bisection. The other rankings misplace at least one method. The trap is forgetting that the secant order $1.618$ sits strictly between Newton's $2$ and bisection's $1$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-023",
+      "stem": "A sequence $\\{x_n\\}$ converges to $p$ with order $\\alpha$ and asymptotic constant $\\lambda$ when which relation holds?",
+      "options": [
+        "$\\lim_{n\\to\\infty} \\dfrac{|x_{n+1} - p|}{|x_n - p|^{\\alpha}} = \\lambda$, with $\\lambda \\ne 0$",
+        "$\\lim_{n\\to\\infty} |x_n - p|^{\\alpha} = \\lambda$",
+        "$\\lim_{n\\to\\infty} \\dfrac{|x_{n+1} - p|}{|x_n - p|} = \\alpha$",
+        "$|x_{n+1} - p| = \\alpha |x_n - p|$ for all $n$"
+      ],
+      "answer": 0,
+      "explanation": "Order of convergence is defined by $\\lim \\frac{|x_{n+1} - p|}{|x_n - p|^{\\alpha}} = \\lambda$ with $\\lambda > 0$ finite: the exponent $\\alpha$ is the order and $\\lambda$ the asymptotic error constant. The second option fixes the exponent at $1$ and mislabels the limit as $\\alpha$, the third demands exact (not asymptotic) equality, and the fourth has no ratio. The trap is putting the order in the wrong place; it is the exponent on the previous error.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-024",
+      "stem": "The method of false position (regula falsi) differs from the secant method in which way?",
+      "options": [
+        "It simply halves the interval each step",
+        "It always uses the exact derivative",
+        "It retains a bracket so the root stays enclosed",
+        "It uses no function values"
+      ],
+      "answer": 2,
+      "explanation": "False position uses the same secant-line formula but keeps the two points bracketing the root, always replacing the endpoint whose sign matches the new value, so the root remains enclosed and convergence is guaranteed. It does use function values, uses no derivative, and does not merely halve the interval (that is bisection). The trap is conflating it with the secant method; the bracketing discipline is the distinguishing feature.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-025",
+      "format": "cloze",
+      "stem": "Carry out two bisection steps for $f(x) = x^3 - x - 2$ on $[1, 2]$, where the root is near $1.521$.",
+      "solution": "The first midpoint is $c_1 = \\dfrac{1 + 2}{2} =$ {{1}}. Since $f(c_1) = -0.125 < 0$ and $f(2) > 0$, the new interval is $[c_1, 2]$, whose midpoint is $c_2 =$ {{2}}. After two halvings the bracket width has shrunk from $1$ to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.75,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "First midpoint $c_1 = 1.5$, with $f(1.5) = 3.375 - 1.5 - 2 = -0.125 < 0$, so the bracket becomes $[1.5, 2]$. Its midpoint is $c_2 = \\frac{1.5 + 2}{2} = 1.75$. Two halvings give width $\\frac{1}{2^2} = 0.25$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-026",
+      "format": "cloze",
+      "stem": "Perform Newton's method on $f(x) = x^2 - 3$, $f'(x) = 2x$, starting from $x_0 = 2$.",
+      "solution": "The first iterate is $x_1 = 2 - \\dfrac{1}{4} =$ {{1}}. A second step gives $x_2 = 1.75 - \\dfrac{0.0625}{3.5}$, about {{2}} (four decimals). Because the digit count roughly doubles each step, this convergence is called {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.75,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.7321,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "quadratic",
+            "linear",
+            "logarithmic",
+            "geometric"
+          ],
+          "answer": "quadratic"
+        }
+      ],
+      "explanation": "$x_1 = 2 - \\frac{4 - 3}{4} = 1.75$. Then $f(1.75) = 0.0625$, $f'(1.75) = 3.5$, so $x_2 = 1.75 - \\frac{0.0625}{3.5} = 1.75 - 0.017857 = 1.73214$, close to $\\sqrt{3} = 1.73205$. Newton's quadratic convergence roughly doubles the count of accurate digits per step.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-027",
+      "format": "cloze",
+      "stem": "Compute the first secant step for $f(x) = x^2 - 3$ with $x_0 = 1$, $x_1 = 2$.",
+      "solution": "Using $f(1) = -2$ and $f(2) = 1$, the secant slope is $\\dfrac{1 - (-2)}{2 - 1} =$ {{1}}. The next iterate $x_2 = 2 - \\dfrac{1}{3}$ equals approximately {{2}} (four decimals). The secant method needs no value of the {{3}} of $f$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.6667,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "derivative",
+            "integral",
+            "second difference",
+            "antiderivative"
+          ],
+          "answer": "derivative"
+        }
+      ],
+      "explanation": "The secant slope is $\\frac{1 + 2}{1} = 3$. Then $x_2 = 2 - \\frac{1}{3} = 1.6667$. The secant method approximates the slope from function values, so it never needs the derivative.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-028",
+      "format": "cloze",
+      "stem": "Summarize the convergence orders of the standard scalar root-finding methods near a simple root.",
+      "solution": "Bisection converges linearly, with error-bound ratio {{1}} per step. Newton's method has order {{2}}. The secant method has order approximately {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.618,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Bisection halves the error bound, ratio $0.5$. Newton's order is $2$ (quadratic). The secant order is the golden ratio, about $1.618$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-029",
+      "format": "cloze",
+      "stem": "Analyze the fixed-point iteration $x_{n+1} = g(x_n)$ with $g(x) = \\sqrt{x + 1}$ for the root $x^* \\approx 1.618$ of $x^2 - x - 1 = 0$.",
+      "solution": "The iteration converges locally when the magnitude of $g'$ at the root is below {{1}}. Here $g'(x) = \\dfrac{1}{2\\sqrt{x + 1}}$, so $g'(x^*)$ is about {{2}} (two decimals). Because this is under the threshold, the iteration {{3}} to the root.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.31,
+          "tolerance": 0.02
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges",
+            "oscillates without limit",
+            "stalls"
+          ],
+          "answer": "converges"
+        }
+      ],
+      "explanation": "Local convergence needs $|g'(x^*)| < 1$. With $x^* \\approx 1.618$, $g'(x^*) = \\frac{1}{2\\sqrt{2.618}} = \\frac{1}{2(1.618)} \\approx 0.309 < 1$, so the iteration converges.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-nonlinear-equations-030",
+      "format": "cloze",
+      "stem": "Take one Newton step for the system $f_1 = x + y - 3 = 0$, $f_2 = x^2 + y^2 - 5 = 0$ from $(x_0, y_0) = (3, 0)$. The Jacobian is $J = \\begin{pmatrix} 1 & 1 \\\\ 2x & 2y \\end{pmatrix}$.",
+      "solution": "At $(3, 0)$ the residual is $\\mathbf{F} = (0,\\ 4)^{T}$ and the Jacobian determinant $\\det J$ evaluates to {{1}}. Solving $J\\,\\Delta = -\\mathbf{F}$ gives the new point $x_1 =$ {{2}} and $y_1 =$ {{3}} (four decimals each).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -6,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2.3333,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.6667,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "At $(3, 0)$: $f_1 = 0$, $f_2 = 9 - 5 = 4$, so $\\mathbf{F} = (0, 4)^{T}$. The Jacobian is $J = \\begin{pmatrix} 1 & 1 \\\\ 6 & 0 \\end{pmatrix}$ with $\\det J = (1)(0) - (1)(6) = -6$. Then $\\Delta = J^{-1}\\mathbf{F} = \\frac{1}{-6}\\begin{pmatrix} 0 & -1 \\\\ -6 & 1 \\end{pmatrix}\\begin{pmatrix} 0 \\\\ 4 \\end{pmatrix} = \\begin{pmatrix} 0.6667 \\\\ -0.6667 \\end{pmatrix}$, and $(x_1, y_1) = (3, 0) - \\Delta = (2.3333, 0.6667)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    }
+  ]
+}

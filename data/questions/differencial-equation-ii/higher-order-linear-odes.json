@@ -1,0 +1,521 @@
+{
+  "courseId": "differencial-equation-ii",
+  "topicId": "higher-order-linear-odes",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-001",
+      "stem": "How many linearly independent solutions does a homogeneous linear ODE of order $n$ have?",
+      "options": [
+        "$n - 1$",
+        "$n$",
+        "Infinitely many independent ones",
+        "$2n$"
+      ],
+      "answer": 1,
+      "explanation": "An $n$th order homogeneous linear ODE has exactly $n$ linearly independent solutions, and they span the full solution space. The general solution is a linear combination $C_1 y_1 + \\cdots + C_n y_n$ with $n$ arbitrary constants, one for each order. Fewer than $n$ would fail to capture every solution, and the space cannot exceed dimension $n$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-002",
+      "stem": "What is the characteristic equation of $y''' - 6y'' + 11y' - 6y = 0$?",
+      "options": [
+        "$r^3 + 6r^2 + 11r + 6 = 0$",
+        "$r^3 - 6r^2 + 11r - 6 = 0$",
+        "$3r^2 - 12r + 11 = 0$",
+        "$r^2 - 6r + 11 = 0$"
+      ],
+      "answer": 1,
+      "explanation": "Substituting $y = e^{rx}$ turns each derivative $y^{(k)}$ into $r^k e^{rx}$. So $y''' \\to r^3$, $y'' \\to r^2$, $y' \\to r$, and $y \\to 1$, giving $r^3 - 6r^2 + 11r - 6 = 0$ after dividing by $e^{rx}$. The coefficients carry over unchanged with their signs.",
+      "difficulty": "warmup",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-003",
+      "stem": "Solve $y''' - 6y'' + 11y' - 6y = 0$.",
+      "options": [
+        "$y = C_1 e^{-x} + C_2 e^{-2x} + C_3 e^{-3x}$",
+        "$y = C_1 + C_2 e^{x} + C_3 e^{6x}$",
+        "$y = C_1 e^{x} + C_2 e^{2x} + C_3 e^{3x}$",
+        "$y = (C_1 + C_2 x + C_3 x^2)e^{x}$"
+      ],
+      "answer": 2,
+      "explanation": "The characteristic equation $r^3 - 6r^2 + 11r - 6 = 0$ has $r = 1$ as a root since $1 - 6 + 11 - 6 = 0$. Dividing out gives $r^2 - 5r + 6 = (r - 2)(r - 3)$, so the roots are $1, 2, 3$. Three distinct real roots give $y = C_1 e^{x} + C_2 e^{2x} + C_3 e^{3x}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-004",
+      "stem": "Solve $y''' - y'' = 0$.",
+      "options": [
+        "$y = C_1 e^{x} + C_2 e^{-x} + C_3$",
+        "$y = (C_1 + C_2 x + C_3 x^2)$",
+        "$y = C_1 + C_2 x + C_3 e^{x}$",
+        "$y = C_1 e^{x} + C_2 x e^{x} + C_3 x^2 e^{x}$"
+      ],
+      "answer": 2,
+      "explanation": "The characteristic equation $r^3 - r^2 = r^2(r - 1) = 0$ has a double root $r = 0$ and a simple root $r = 1$. The double root at zero contributes $C_1 + C_2 x$ (the constant and its $x$ companion), and $r = 1$ contributes $C_3 e^{x}$. So $y = C_1 + C_2 x + C_3 e^{x}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-005",
+      "stem": "Solve $y''' - 3y'' + 3y' - y = 0$.",
+      "options": [
+        "$y = C_1 + C_2 x + C_3 x^2$",
+        "$y = (C_1 + C_2 x)e^{x} + C_3 e^{-x}$",
+        "$y = C_1 e^{x} + C_2 e^{2x} + C_3 e^{3x}$",
+        "$y = (C_1 + C_2 x + C_3 x^2)e^{x}$"
+      ],
+      "answer": 3,
+      "explanation": "The characteristic equation is $r^3 - 3r^2 + 3r - 1 = (r - 1)^3 = 0$, a triple root $r = 1$. A root of multiplicity three contributes the three independent solutions $e^{x}, x e^{x}, x^2 e^{x}$, so $y = (C_1 + C_2 x + C_3 x^2)e^{x}$. The escalating powers of $x$ keep the solutions independent.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-006",
+      "stem": "Solve $y^{(4)} - y = 0$.",
+      "options": [
+        "$y = (C_1 + C_2 x)\\cos x + (C_3 + C_4 x)\\sin x$",
+        "$y = C_1 \\cos x + C_2 \\sin x + C_3 \\cos 2x + C_4 \\sin 2x$",
+        "$y = C_1 e^{x} + C_2 e^{-x} + C_3 \\cos x + C_4 \\sin x$",
+        "$y = C_1 e^{x} + C_2 e^{-x} + C_3 e^{2x} + C_4 e^{-2x}$"
+      ],
+      "answer": 2,
+      "explanation": "The characteristic equation $r^4 - 1 = 0$ factors as $(r^2 - 1)(r^2 + 1) = 0$, giving $r = \\pm 1$ and $r = \\pm i$. The real roots contribute $e^{x}$ and $e^{-x}$, while the imaginary pair $\\pm i$ contributes $\\cos x$ and $\\sin x$. So $y = C_1 e^{x} + C_2 e^{-x} + C_3 \\cos x + C_4 \\sin x$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-007",
+      "stem": "Solve $y^{(4)} + 2y'' + y = 0$.",
+      "options": [
+        "$y = C_1 \\cos x + C_2 \\sin x + C_3 \\cos x + C_4 \\sin x$",
+        "$y = (C_1 + C_2 x)\\cos x + (C_3 + C_4 x)\\sin x$",
+        "$y = C_1 e^{x} + C_2 x e^{x} + C_3 e^{-x} + C_4 x e^{-x}$",
+        "$y = C_1 \\cos x + C_2 \\sin x + C_3 \\cos \\sqrt{2}\\, x + C_4 \\sin \\sqrt{2}\\, x$"
+      ],
+      "answer": 1,
+      "explanation": "The characteristic equation $r^4 + 2r^2 + 1 = (r^2 + 1)^2 = 0$ gives $r = \\pm i$, each of multiplicity two. A repeated complex pair contributes $\\cos x, \\sin x$ and their $x$ multiples $x\\cos x, x\\sin x$. So $y = (C_1 + C_2 x)\\cos x + (C_3 + C_4 x)\\sin x$. The repeated imaginary roots force the extra factor of $x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-008",
+      "stem": "Solve $y''' + y' = 0$.",
+      "options": [
+        "$y = (C_1 + C_2 x)\\cos x + C_3$",
+        "$y = C_1 e^{x} + C_2 \\cos x + C_3 \\sin x$",
+        "$y = C_1 + C_2 e^{x} + C_3 e^{-x}$",
+        "$y = C_1 + C_2 \\cos x + C_3 \\sin x$"
+      ],
+      "answer": 3,
+      "explanation": "The characteristic equation $r^3 + r = r(r^2 + 1) = 0$ has roots $r = 0$ and $r = \\pm i$. The zero root gives the constant $C_1$, and the imaginary pair gives $\\cos x$ and $\\sin x$. So $y = C_1 + C_2 \\cos x + C_3 \\sin x$. The factor of $r$ is easy to miss but supplies the constant term.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-009",
+      "stem": "Solve $y^{(4)} = 0$.",
+      "options": [
+        "$y = C_1 e^{x} + C_2 e^{-x} + C_3 \\cos x + C_4 \\sin x$",
+        "$y = C_1 + C_2 x$",
+        "$y = C_1 + C_2 x + C_3 x^2 + C_4 x^3$",
+        "$y = (C_1 + C_2 x + C_3 x^2 + C_4 x^3)e^{x}$"
+      ],
+      "answer": 2,
+      "explanation": "The characteristic equation $r^4 = 0$ has $r = 0$ as a root of multiplicity four. A quadruple root at zero contributes $1, x, x^2, x^3$ as the four independent solutions, so $y = C_1 + C_2 x + C_3 x^2 + C_4 x^3$. Every solution is a cubic polynomial, consistent with integrating zero four times.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-010",
+      "stem": "If $r = 2$ is a root of multiplicity 3 of the characteristic equation, which solutions does it contribute?",
+      "options": [
+        "$e^{2x}, e^{2x}, e^{2x}$",
+        "$e^{2x}, e^{4x}, e^{6x}$",
+        "$e^{2x}, x e^{2x}, x^2 e^{2x}$",
+        "$e^{2x}, x^2 e^{2x}, x^4 e^{2x}$"
+      ],
+      "answer": 2,
+      "explanation": "A real root $r$ of multiplicity $m$ contributes $e^{rx}, x e^{rx}, \\ldots, x^{m-1}e^{rx}$. For $r = 2$ with $m = 3$, these are $e^{2x}, x e^{2x}, x^2 e^{2x}$. The successive factors of $x$ keep the solutions linearly independent, whereas repeating $e^{2x}$ would be dependent.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-011",
+      "stem": "The Wronskian of three solutions $y_1, y_2, y_3$ of a third-order linear ODE is which determinant?",
+      "options": [
+        "$y_1' y_2' y_3'$",
+        "$y_1 y_2 y_3$",
+        "$\\det\\begin{pmatrix} y_1 & y_2 & y_3 \\\\ y_1' & y_2' & y_3' \\\\ y_1'' & y_2'' & y_3'' \\end{pmatrix}$",
+        "$\\det\\begin{pmatrix} y_1 & y_2 \\\\ y_1' & y_2' \\end{pmatrix}$"
+      ],
+      "answer": 2,
+      "explanation": "For $n$ functions the Wronskian is the determinant of the matrix whose rows are the functions and their derivatives up to order $n - 1$. For three solutions that is the $3 \\times 3$ determinant with rows $y_i$, $y_i'$, $y_i''$. A nonzero value on the interval certifies linear independence.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-012",
+      "stem": "Compute the Wronskian $W(1, x, x^2)$.",
+      "options": [
+        "$2$",
+        "$x^2$",
+        "$1$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "The matrix has rows $(1, x, x^2)$, $(0, 1, 2x)$, $(0, 0, 2)$. Since it is upper triangular, the determinant is the product of the diagonal entries $1 \\cdot 1 \\cdot 2 = 2$. A nonzero constant Wronskian confirms that $1, x, x^2$ are linearly independent everywhere.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-013",
+      "stem": "Three solutions are linearly dependent on an interval when their Wronskian is which?",
+      "options": [
+        "Equal to $1$",
+        "Identically zero on the interval",
+        "Nonzero somewhere",
+        "Positive everywhere"
+      ],
+      "answer": 1,
+      "explanation": "For solutions of a linear homogeneous ODE on an interval, the Wronskian is either identically zero (dependent) or never zero (independent), by Abel's theorem. So linear dependence corresponds to a Wronskian that vanishes identically on the interval. A Wronskian nonzero anywhere signals independence.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-014",
+      "stem": "For $y'' - y = e^{x}$, what is the correct form of a particular solution by undetermined coefficients?",
+      "options": [
+        "$Y = A x e^{x}$",
+        "$Y = A \\cos x + B \\sin x$",
+        "$Y = A x^2 e^{x}$",
+        "$Y = A e^{x}$"
+      ],
+      "answer": 0,
+      "explanation": "The homogeneous solutions are $e^{x}$ and $e^{-x}$, so the forcing term $e^{x}$ already solves the homogeneous equation. The standard guess $A e^{x}$ would be absorbed, so we multiply by $x$ to get $Y = A x e^{x}$. Since $r = 1$ is a simple root, one factor of $x$ suffices.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-015",
+      "stem": "Find the particular solution of $y'' - y = e^{x}$ of the form $Y = A x e^{x}$.",
+      "options": [
+        "$Y = \\tfrac{1}{2} x e^{x}$",
+        "$Y = x e^{x}$",
+        "$Y = 2 x e^{x}$",
+        "$Y = -\\tfrac{1}{2} x e^{x}$"
+      ],
+      "answer": 0,
+      "explanation": "With $Y = A x e^{x}$, we get $Y' = A(x + 1)e^{x}$ and $Y'' = A(x + 2)e^{x}$. Then $Y'' - Y = A(x + 2)e^{x} - A x e^{x} = 2A e^{x}$. Setting $2A e^{x} = e^{x}$ gives $A = \\tfrac{1}{2}$, so $Y = \\tfrac{1}{2} x e^{x}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-016",
+      "stem": "For $y''' - y'' = 6$, what is the correct trial form for a particular solution by undetermined coefficients?",
+      "options": [
+        "$Y = A$",
+        "$Y = A x$",
+        "$Y = A x^2$",
+        "$Y = A x^3$"
+      ],
+      "answer": 2,
+      "explanation": "The homogeneous characteristic equation $r^3 - r^2 = r^2(r - 1) = 0$ has $r = 0$ as a double root, so constants and $x$ both solve the homogeneous equation. A constant forcing term normally suggests $Y = A$, but we must multiply by $x^2$ to clear the double zero root, giving $Y = A x^2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-017",
+      "stem": "In variation of parameters for $y'' + p y' + q y = g(x)$ with solutions $y_1, y_2$, the formula for $u_1'$ is which?",
+      "options": [
+        "$u_1' = \\dfrac{y_1 g}{W}$",
+        "$u_1' = -\\dfrac{y_1 g}{W}$",
+        "$u_1' = \\dfrac{y_2 g}{W}$",
+        "$u_1' = -\\dfrac{y_2 g}{W}$"
+      ],
+      "answer": 3,
+      "explanation": "Writing $Y = u_1 y_1 + u_2 y_2$ and imposing $u_1' y_1 + u_2' y_2 = 0$ together with $u_1' y_1' + u_2' y_2' = g$, Cramer's rule gives $u_1' = -\\dfrac{y_2 g}{W}$ and $u_2' = \\dfrac{y_1 g}{W}$, where $W = W(y_1, y_2)$. The minus sign attaches to the $u_1'$ formula.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-018",
+      "stem": "Which trial particular solution fits $y'' + y = \\cos 2x$ by undetermined coefficients?",
+      "options": [
+        "$Y = A \\cos x + B \\sin x$",
+        "$Y = A x \\cos 2x + B x \\sin 2x$",
+        "$Y = A x \\cos x$",
+        "$Y = A \\cos 2x + B \\sin 2x$"
+      ],
+      "answer": 3,
+      "explanation": "The homogeneous solutions are $\\cos x$ and $\\sin x$ (roots $\\pm i$). The forcing frequency $2$ does not match the homogeneous frequency $1$, so no resonance occurs and no extra $x$ is needed. The trial form is $Y = A \\cos 2x + B \\sin 2x$. Only matching frequencies would force an $x$ multiplier.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-019",
+      "stem": "Solve $y''' - 2y'' - y' + 2y = 0$.",
+      "options": [
+        "$y = C_1 e^{x} + C_2 e^{-x} + C_3 e^{2x}$",
+        "$y = C_1 e^{x} + C_2 e^{2x} + C_3 e^{3x}$",
+        "$y = C_1 + C_2 e^{x} + C_3 e^{2x}$",
+        "$y = (C_1 + C_2 x)e^{x} + C_3 e^{2x}$"
+      ],
+      "answer": 0,
+      "explanation": "Test $r = 1$ in $r^3 - 2r^2 - r + 2$: $1 - 2 - 1 + 2 = 0$, so $(r - 1)$ is a factor. Dividing gives $r^2 - r - 2 = (r - 2)(r + 1)$, so the roots are $1, 2, -1$. Three distinct real roots give $y = C_1 e^{x} + C_2 e^{-x} + C_3 e^{2x}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-020",
+      "stem": "Solve $y''' + 4y' = 0$.",
+      "options": [
+        "$y = C_1 + C_2 \\cos 2x + C_3 \\sin 2x$",
+        "$y = C_1 \\cos 2x + C_2 \\sin 2x + C_3 \\cos 4x$",
+        "$y = C_1 + C_2 e^{2x} + C_3 e^{-2x}$",
+        "$y = C_1 e^{2x} + C_2 \\cos 2x + C_3 \\sin 2x$"
+      ],
+      "answer": 0,
+      "explanation": "The characteristic equation $r^3 + 4r = r(r^2 + 4) = 0$ has roots $r = 0$ and $r = \\pm 2i$. The zero root contributes the constant $C_1$, and $\\pm 2i$ contribute $\\cos 2x$ and $\\sin 2x$ (frequency $\\sqrt{4} = 2$). So $y = C_1 + C_2 \\cos 2x + C_3 \\sin 2x$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-021",
+      "stem": "How many arbitrary constants appear in the general solution of $y^{(5)} + 3y''' - y = 0$?",
+      "options": [
+        "$5$",
+        "$3$",
+        "$4$",
+        "$10$"
+      ],
+      "answer": 0,
+      "explanation": "The number of arbitrary constants in the general solution of a homogeneous linear ODE equals its order. The highest derivative here is $y^{(5)}$, so the order is $5$, and the general solution carries exactly five arbitrary constants regardless of the lower-order terms.",
+      "difficulty": "warmup",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-022",
+      "stem": "A characteristic equation has roots $r = 0, 0, 3, -3$. What is the general solution?",
+      "options": [
+        "$y = C_1 + C_2 x + C_3 e^{3x} + C_4 e^{-3x}$",
+        "$y = (C_1 + C_2 x)e^{3x} + C_3 e^{-3x}$",
+        "$y = C_1 + C_2 e^{3x} + C_3 e^{-3x}$",
+        "$y = C_1 \\cos 3x + C_2 \\sin 3x + C_3 + C_4 x$"
+      ],
+      "answer": 0,
+      "explanation": "The double root $r = 0$ contributes $1$ and $x$, that is $C_1 + C_2 x$. The simple real roots $r = 3$ and $r = -3$ contribute $e^{3x}$ and $e^{-3x}$. Combining, $y = C_1 + C_2 x + C_3 e^{3x} + C_4 e^{-3x}$, with four constants for the four roots.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-023",
+      "stem": "A fourth-order equation has characteristic roots $r = 1 \\pm 2i$ each of multiplicity 2. What is the general solution?",
+      "options": [
+        "$y = e^{2x}[(C_1 + C_2 x)\\cos x + (C_3 + C_4 x)\\sin x]$",
+        "$y = e^{x}(C_1 \\cos 2x + C_2 \\sin 2x)$",
+        "$y = e^{x}[(C_1 + C_2 x)\\cos 2x + (C_3 + C_4 x)\\sin 2x]$",
+        "$y = (C_1 + C_2 x + C_3 x^2 + C_4 x^3)e^{x}\\cos 2x$"
+      ],
+      "answer": 2,
+      "explanation": "A complex pair $1 \\pm 2i$ of multiplicity two yields the envelope $e^{x}$ (real part $1$), the trig functions $\\cos 2x, \\sin 2x$ (imaginary part $2$), and one extra factor of $x$ on each because the multiplicity is two. So $y = e^{x}[(C_1 + C_2 x)\\cos 2x + (C_3 + C_4 x)\\sin 2x]$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-024",
+      "stem": "Solve $y^{(4)} - 16y = 0$.",
+      "options": [
+        "$y = (C_1 + C_2 x)e^{2x} + (C_3 + C_4 x)e^{-2x}$",
+        "$y = C_1 e^{2x} + C_2 e^{-2x} + C_3 \\cos 2x + C_4 \\sin 2x$",
+        "$y = C_1 \\cos 2x + C_2 \\sin 2x + C_3 \\cos 4x + C_4 \\sin 4x$",
+        "$y = C_1 e^{4x} + C_2 e^{-4x} + C_3 \\cos 4x + C_4 \\sin 4x$"
+      ],
+      "answer": 1,
+      "explanation": "The characteristic equation $r^4 - 16 = 0$ factors as $(r^2 - 4)(r^2 + 4) = 0$, giving $r = \\pm 2$ from the first factor and $r = \\pm 2i$ from the second. The real roots give $e^{2x}, e^{-2x}$ and the imaginary pair gives $\\cos 2x, \\sin 2x$. So $y = C_1 e^{2x} + C_2 e^{-2x} + C_3 \\cos 2x + C_4 \\sin 2x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-025",
+      "stem": "For $y'' - 3y' + 2y = e^{3x}$, what is the trial particular solution by undetermined coefficients?",
+      "options": [
+        "$Y = A x e^{3x}$",
+        "$Y = A e^{3x}$",
+        "$Y = A e^{2x}$",
+        "$Y = A x^2 e^{3x}$"
+      ],
+      "answer": 1,
+      "explanation": "The homogeneous roots solve $r^2 - 3r + 2 = (r - 1)(r - 2) = 0$, namely $r = 1, 2$. The forcing exponent $3$ is not a root, so there is no resonance and the trial form is simply $Y = A e^{3x}$ with no $x$ factor needed.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-026",
+      "format": "cloze",
+      "stem": "Solve $y''' - 6y'' + 11y' - 6y = 0$ through its characteristic equation.",
+      "solution": "Substituting $y = e^{rx}$ gives $r^3 - 6r^2 + 11r - 6 = 0$. Testing $r = 1$ gives $1 - 6 + 11 - 6 =$ {{1}}, so $r = 1$ is a root. Factoring out $(r - 1)$ leaves $r^2 - 5r + 6 = (r - 2)(r - 3)$, so the other roots are $2$ and {{2}}. The three roots are real and distinct, so the general solution carries {{3}} arbitrary constants.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "At $r = 1$ the cubic evaluates to $1 - 6 + 11 - 6 = 0$, confirming a root. Synthetic division gives $r^2 - 5r + 6 = (r - 2)(r - 3)$, so the roots are $1, 2, 3$. The general solution $y = C_1 e^{x} + C_2 e^{2x} + C_3 e^{3x}$ has three arbitrary constants, matching the third order.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-027",
+      "format": "cloze",
+      "stem": "Solve the triple-root equation $y''' - 3y'' + 3y' - y = 0$.",
+      "solution": "The characteristic equation is $r^3 - 3r^2 + 3r - 1 = (r - 1)^3 = 0$, a root $r = 1$ of multiplicity {{1}}. Because the root repeats, the independent solutions are $e^{x}$, $x e^{x}$, and {{2}}. The general solution is therefore $y = (C_1 + C_2 x + C_3 x^2)e^{x}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$x^2 e^{x}$",
+            "$e^{2x}$",
+            "$x e^{2x}$"
+          ],
+          "answer": "$x^2 e^{x}$"
+        }
+      ],
+      "explanation": "The cubic is a perfect cube $(r - 1)^3$, so $r = 1$ has multiplicity $3$. A root of multiplicity $3$ contributes $e^{x}, x e^{x}, x^2 e^{x}$, giving $y = (C_1 + C_2 x + C_3 x^2)e^{x}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-028",
+      "format": "cloze",
+      "stem": "Solve $y^{(4)} - y = 0$ by factoring its characteristic polynomial.",
+      "solution": "The characteristic equation $r^4 - 1 = 0$ factors as $(r^2 - 1)(r^2 +$ {{1}} $) = 0$. The first factor gives the real roots $r = \\pm 1$, and the second gives the purely imaginary roots $r = \\pm i$. The imaginary pair contributes the trigonometric solutions $\\cos x$ and {{2}}, so the general solution is $y = C_1 e^{x} + C_2 e^{-x} + C_3 \\cos x + C_4 \\sin x$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\sin x$",
+            "$\\sinh x$",
+            "$\\tan x$"
+          ],
+          "answer": "$\\sin x$"
+        }
+      ],
+      "explanation": "Factoring $r^4 - 1 = (r^2 - 1)(r^2 + 1)$ gives roots $\\pm 1$ and $\\pm i$. The real roots give $e^{x}, e^{-x}$ and the imaginary pair gives $\\cos x, \\sin x$. So $y = C_1 e^{x} + C_2 e^{-x} + C_3 \\cos x + C_4 \\sin x$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-029",
+      "format": "cloze",
+      "stem": "Find the particular solution of $y'' - y = e^{x}$, watching for resonance.",
+      "solution": "The homogeneous solutions are $e^{x}$ and $e^{-x}$, so the forcing term $e^{x}$ is itself a homogeneous solution. The trial form must be multiplied by $x$, giving $Y = A x e^{x}$. Substituting yields $Y'' - Y = 2A e^{x}$, so matching $e^{x}$ forces $A =$ {{1}}. The particular solution is $Y = \\tfrac{1}{2} x e^{x}$, and the resonance required an extra factor of {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$x$",
+            "$x^2$",
+            "$e^{x}$"
+          ],
+          "answer": "$x$"
+        }
+      ],
+      "explanation": "With $Y = A x e^{x}$, $Y' = A(x + 1)e^{x}$ and $Y'' = A(x + 2)e^{x}$, so $Y'' - Y = 2A e^{x}$. Setting equal to $e^{x}$ gives $A = \\tfrac{1}{2}$. Resonance with the simple root $r = 1$ required one factor of $x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-030",
+      "format": "cloze",
+      "stem": "Analyze the Wronskian of $1, x, x^2$ for a third-order equation.",
+      "solution": "The Wronskian is the determinant of the matrix with rows $(1, x, x^2)$, $(0, 1, 2x)$, $(0, 0, 2)$. Because this matrix is upper triangular, $W$ equals the product of its diagonal entries, which is {{1}}. Since $W$ is a nonzero constant, the functions are linearly {{2}} on every interval.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "independent",
+            "dependent",
+            "orthogonal"
+          ],
+          "answer": "independent"
+        }
+      ],
+      "explanation": "The matrix is upper triangular with diagonal $1, 1, 2$, so $W = 1 \\cdot 1 \\cdot 2 = 2$. A Wronskian that is a nonzero constant means $1, x, x^2$ are linearly independent on every interval.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-higher-order-linear-odes-031",
+      "format": "cloze",
+      "stem": "Solve $y''' + y' = 0$, accounting for the zero root.",
+      "solution": "The characteristic equation $r^3 + r = r(r^2 + 1) = 0$ has roots $r = 0$ and $r = \\pm i$. The zero root contributes the {{1}} solution $C_1$. The imaginary roots $\\pm i$ contribute $\\cos x$ and $\\sin x$, so the general solution is $y = C_1 + C_2 \\cos x + C_3 \\sin x$. The order of the equation, and hence the number of arbitrary constants, is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "constant",
+            "linear",
+            "exponential"
+          ],
+          "answer": "constant"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Factoring $r(r^2 + 1) = 0$ gives roots $0, i, -i$. The zero root gives $e^{0 \\cdot x} = 1$, the constant solution $C_1$, and the imaginary pair gives $\\cos x, \\sin x$. The equation is third order, so there are three arbitrary constants.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    }
+  ]
+}

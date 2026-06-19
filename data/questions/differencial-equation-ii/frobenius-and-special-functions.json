@@ -1,0 +1,519 @@
+{
+  "courseId": "differencial-equation-ii",
+  "topicId": "frobenius-and-special-functions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-001",
+      "stem": "A point $x_0$ is a regular singular point of $y'' + p(x)y' + q(x)y = 0$ when which functions are analytic at $x_0$?",
+      "options": [
+        "$(x - x_0)p(x)$ and $(x - x_0)^2 q(x)$",
+        "$p(x)$ and $q(x)$",
+        "$(x - x_0)^2 p(x)$ and $(x - x_0) q(x)$",
+        "$\\dfrac{p(x)}{x - x_0}$ and $\\dfrac{q(x)}{x - x_0}$"
+      ],
+      "answer": 0,
+      "explanation": "A singular point is regular when multiplying $p$ by $(x - x_0)$ and $q$ by $(x - x_0)^2$ removes the singularity, that is both products are analytic at $x_0$. This bounded growth of the singularity is exactly what lets the Frobenius method succeed. Otherwise the point is irregular.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-002",
+      "stem": "The Frobenius method seeks a solution of which form about a regular singular point $x_0 = 0$?",
+      "options": [
+        "$y = \\sum_{n=0}^{\\infty} a_n \\cos(n x)$",
+        "$y = \\sum_{n=0}^{\\infty} a_n x^{n}$",
+        "$y = x^{r} \\sum_{n=0}^{\\infty} a_n x^{n}$",
+        "$y = e^{rx} \\sum_{n=0}^{\\infty} a_n x^{n}$"
+      ],
+      "answer": 2,
+      "explanation": "The Frobenius ansatz is $y = x^{r}\\sum_{n=0}^{\\infty} a_n x^n = \\sum_{n=0}^{\\infty} a_n x^{n+r}$ with $a_0 \\neq 0$. The exponent $r$ is not assumed to be an integer, which lets the series handle the singularity. The plain power series of the first option only works at ordinary points.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-003",
+      "stem": "For $x^2 y'' + x p_0 y' + q_0 y = 0$ leading behavior, the indicial equation is which?",
+      "options": [
+        "$r(r + 1) + q_0 = 0$",
+        "$p_0 r^2 + q_0 = 0$",
+        "$r^2 + p_0 r = 0$",
+        "$r(r - 1) + p_0 r + q_0 = 0$"
+      ],
+      "answer": 3,
+      "explanation": "Substituting $y = x^r$ into the leading Euler part gives $r(r - 1)x^r + p_0 r x^r + q_0 x^r = 0$, so the indicial equation is $r(r - 1) + p_0 r + q_0 = 0$. Its two roots $r_1, r_2$ are the exponents that begin the Frobenius series. Here $p_0 = \\lim_{x \\to 0} x p(x)$ and $q_0 = \\lim_{x \\to 0} x^2 q(x)$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-004",
+      "stem": "Classify the point $x = 0$ for Bessel's equation $x^2 y'' + x y' + (x^2 - \\nu^2)y = 0$.",
+      "options": [
+        "Regular singular point",
+        "Ordinary point",
+        "Not defined there",
+        "Irregular singular point"
+      ],
+      "answer": 0,
+      "explanation": "Dividing gives $p = \\dfrac{1}{x}$ and $q = \\dfrac{x^2 - \\nu^2}{x^2}$. Then $x p = 1$ and $x^2 q = x^2 - \\nu^2$ are both analytic at $0$, so $x = 0$ is a regular singular point. This is why Bessel's equation is solved by the Frobenius method rather than an ordinary power series.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-005",
+      "stem": "For Bessel's equation of order $\\nu$, the indicial equation is which?",
+      "options": [
+        "$r^2 = 0$",
+        "$r^2 + \\nu^2 = 0$",
+        "$r^2 - r - \\nu^2 = 0$",
+        "$r^2 - \\nu^2 = 0$"
+      ],
+      "answer": 3,
+      "explanation": "For Bessel's equation, $p_0 = \\lim x p = 1$ and $q_0 = \\lim x^2 q = -\\nu^2$. The indicial equation $r(r - 1) + r - \\nu^2 = r^2 - \\nu^2 = 0$. So the exponents are $r = \\pm \\nu$, the two roots that generate $J_\\nu$ and (when admissible) $J_{-\\nu}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-006",
+      "stem": "For Bessel's equation of order zero, the indicial roots are which?",
+      "options": [
+        "$r = \\pm i$",
+        "$r = \\pm 1$",
+        "$r = 0, 1$",
+        "$r = 0, 0$ (double root)"
+      ],
+      "answer": 3,
+      "explanation": "Setting $\\nu = 0$ in $r^2 - \\nu^2 = 0$ gives $r^2 = 0$, a repeated root $r = 0$. With equal indicial roots the second solution involves a logarithm, which is why $Y_0$ (the Bessel function of the second kind) has a $\\ln x$ term.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-007",
+      "stem": "Find the indicial roots of the Euler equation $x^2 y'' + 2x y' - 2y = 0$.",
+      "options": [
+        "$r = 1, 2$",
+        "$r = 2, -1$",
+        "$r = -1, -2$",
+        "$r = 1, -2$"
+      ],
+      "answer": 3,
+      "explanation": "Here $p_0 = 2$ and $q_0 = -2$, so the indicial equation is $r(r - 1) + 2r - 2 = r^2 + r - 2 = (r + 2)(r - 1) = 0$. The roots are $r = 1$ and $r = -2$. The general solution is then $y = C_1 x + C_2 x^{-2}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-008",
+      "stem": "Solve the Euler equation $x^2 y'' + 2x y' - 2y = 0$ for $x > 0$.",
+      "options": [
+        "$y = C_1 x + C_2 x^2$",
+        "$y = C_1 x^2 + C_2 x^{-1}$",
+        "$y = (C_1 + C_2 \\ln x)x$",
+        "$y = C_1 x + C_2 x^{-2}$"
+      ],
+      "answer": 3,
+      "explanation": "The indicial roots are $r = 1$ and $r = -2$ (from $r^2 + r - 2 = 0$). Distinct real roots give $y = C_1 x^{r_1} + C_2 x^{r_2} = C_1 x + C_2 x^{-2}$. The logarithm form would only appear for a repeated root.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-009",
+      "stem": "Find the indicial roots of $2x^2 y'' - x y' + (1 + x)y = 0$ at $x = 0$.",
+      "options": [
+        "$r = \\tfrac{1}{2}, -\\tfrac{1}{2}$",
+        "$r = 2, 1$",
+        "$r = 1, \\tfrac{1}{2}$",
+        "$r = 1, -\\tfrac{1}{2}$"
+      ],
+      "answer": 2,
+      "explanation": "In standard form, $x p = \\dfrac{-x}{2x} = -\\tfrac{1}{2}$ so $p_0 = -\\tfrac{1}{2}$, and $x^2 q = \\dfrac{1 + x}{2} \\to \\tfrac{1}{2}$ so $q_0 = \\tfrac{1}{2}$. The indicial equation $r(r - 1) - \\tfrac{1}{2}r + \\tfrac{1}{2} = 0$ becomes $2r^2 - 3r + 1 = (2r - 1)(r - 1) = 0$, giving $r = 1$ and $r = \\tfrac{1}{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-010",
+      "stem": "When the indicial roots are equal, the second Frobenius solution must include which feature?",
+      "options": [
+        "A logarithmic term $\\ln x$",
+        "A cosine term",
+        "A factor of $x^2$",
+        "Nothing extra; both are pure power series"
+      ],
+      "answer": 0,
+      "explanation": "Equal indicial roots leave only one Frobenius series, so a linearly independent second solution must be built differently. The standard construction introduces a logarithm: $y_2 = y_1 \\ln x + x^{r}\\sum b_n x^n$. The $\\ln x$ term guarantees independence from $y_1$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-011",
+      "stem": "When the indicial roots $r_1 > r_2$ differ by a positive integer, the second solution may require which feature?",
+      "options": [
+        "A factor of $e^{x}$",
+        "Possibly a logarithmic term, depending on the coefficients",
+        "Two extra arbitrary constants",
+        "Always a logarithmic term"
+      ],
+      "answer": 1,
+      "explanation": "When $r_1 - r_2$ is a positive integer, the recurrence for the smaller root may break down at the index where the roots meet. Depending on whether a certain coefficient vanishes, the second solution either is a plain Frobenius series or picks up a multiple of $y_1 \\ln x$. It is not guaranteed either way without checking.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-012",
+      "stem": "When the indicial roots differ by a non-integer, how many Frobenius series solutions exist?",
+      "options": [
+        "None",
+        "One, plus a logarithm",
+        "Infinitely many",
+        "Two independent Frobenius series"
+      ],
+      "answer": 3,
+      "explanation": "If $r_1 - r_2$ is not an integer, each root generates its own Frobenius series with no interference between the recurrences. The two series $y_1 = x^{r_1}\\sum a_n x^n$ and $y_2 = x^{r_2}\\sum b_n x^n$ are linearly independent, so no logarithm is needed.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-013",
+      "stem": "Which equation is Bessel's equation of order 2?",
+      "options": [
+        "$x^2 y'' + x y' + (x^2 + 4)y = 0$",
+        "$(1 - x^2)y'' - 2x y' + 6y = 0$",
+        "$x^2 y'' + x y' + (x^2 - 2)y = 0$",
+        "$x^2 y'' + x y' + (x^2 - 4)y = 0$"
+      ],
+      "answer": 3,
+      "explanation": "Bessel's equation of order $\\nu$ is $x^2 y'' + x y' + (x^2 - \\nu^2)y = 0$. With $\\nu = 2$, $\\nu^2 = 4$, giving $x^2 y'' + x y' + (x^2 - 4)y = 0$. The last option is a Legendre equation, not a Bessel equation.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-014",
+      "stem": "What is the value of the Bessel function $J_0(0)$?",
+      "options": [
+        "$-1$",
+        "$\\infty$",
+        "$0$",
+        "$1$"
+      ],
+      "answer": 3,
+      "explanation": "The series $J_0(x) = \\sum_{m=0}^{\\infty} \\dfrac{(-1)^m}{(m!)^2}\\left(\\dfrac{x}{2}\\right)^{2m}$ has constant term $1$ (the $m = 0$ term). So $J_0(0) = 1$. By contrast $J_\\nu(0) = 0$ for every $\\nu > 0$, since those series start with a positive power of $x$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-015",
+      "stem": "For $\\nu > 0$, the value of $J_\\nu(0)$ is which?",
+      "options": [
+        "Undefined",
+        "$0$",
+        "$\\nu$",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "The leading term of $J_\\nu(x)$ is proportional to $x^{\\nu}$, so for any $\\nu > 0$ the function vanishes at $x = 0$: $J_\\nu(0) = 0$. Only $J_0$ starts with a nonzero constant. This distinguishes the order-zero case from all higher orders.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-016",
+      "stem": "The Legendre equation $(1 - x^2)y'' - 2x y' + n(n+1)y = 0$ has a polynomial solution when which holds?",
+      "options": [
+        "$n$ is irrational",
+        "$n$ is a non-negative integer",
+        "$n$ is negative",
+        "$n$ is any real number"
+      ],
+      "answer": 1,
+      "explanation": "When $n$ is a non-negative integer, one of the series solutions terminates, producing the Legendre polynomial $P_n(x)$ of degree $n$. For non-integer $n$ both series are infinite and do not reduce to polynomials. This termination underlies the orthogonal Legendre polynomials.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-017",
+      "stem": "Which is the Legendre polynomial $P_2(x)$?",
+      "options": [
+        "$3x^2 - 1$",
+        "$\\tfrac{1}{2}(5x^3 - 3x)$",
+        "$\\tfrac{1}{2}(3x^2 - 1)$",
+        "$x$"
+      ],
+      "answer": 2,
+      "explanation": "The Legendre polynomials are $P_0 = 1$, $P_1 = x$, and $P_2 = \\tfrac{1}{2}(3x^2 - 1)$. The normalization $P_n(1) = 1$ fixes the leading factor: $P_2(1) = \\tfrac{1}{2}(3 - 1) = 1$. The unnormalized $3x^2 - 1$ gives $2$ at $x = 1$, so it is not $P_2$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-018",
+      "stem": "Which is the Legendre polynomial $P_3(x)$?",
+      "options": [
+        "$\\tfrac{1}{2}(5x^3 - 3x)$",
+        "$x^3$",
+        "$\\tfrac{1}{2}(3x^2 - 1)$",
+        "$5x^3 - 3x$"
+      ],
+      "answer": 0,
+      "explanation": "The degree-three Legendre polynomial is $P_3(x) = \\tfrac{1}{2}(5x^3 - 3x)$. Check the normalization: $P_3(1) = \\tfrac{1}{2}(5 - 3) = 1$. The first option is $P_2$, and $5x^3 - 3x$ lacks the $\\tfrac{1}{2}$ normalization.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-019",
+      "stem": "The Rodrigues formula for Legendre polynomials is which?",
+      "options": [
+        "$P_n(x) = \\dfrac{1}{2^n n!}\\dfrac{d^n}{dx^n}(x^2 - 1)^n$",
+        "$P_n(x) = \\dfrac{1}{n!}(x^2 - 1)^n$",
+        "$P_n(x) = \\dfrac{d^n}{dx^n}(x^2 - 1)^n$",
+        "$P_n(x) = \\dfrac{1}{2^n}(x^2 - 1)^n$"
+      ],
+      "answer": 0,
+      "explanation": "Rodrigues' formula is $P_n(x) = \\dfrac{1}{2^n n!}\\dfrac{d^n}{dx^n}(x^2 - 1)^n$. The prefactor $\\dfrac{1}{2^n n!}$ enforces the normalization $P_n(1) = 1$. Dropping it or the derivative gives the wrong polynomial.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-020",
+      "stem": "Legendre polynomials $P_m$ and $P_n$ with $m \\neq n$ satisfy which orthogonality relation on $[-1, 1]$?",
+      "options": [
+        "$\\int_{-1}^{1} P_m(x) P_n(x)\\,dx = 0$",
+        "$\\int_{-1}^{1} P_m(x) P_n(x)\\,dx = 1$",
+        "$\\int_{0}^{1} P_m(x) P_n(x)\\,dx = 0$",
+        "$\\int_{-1}^{1} P_m(x) P_n(x)\\,dx = m n$"
+      ],
+      "answer": 0,
+      "explanation": "Legendre polynomials are orthogonal on $[-1, 1]$ with weight $1$: $\\int_{-1}^{1} P_m P_n\\,dx = 0$ for $m \\neq n$. For $m = n$ the integral is $\\dfrac{2}{2n + 1}$, not zero. The orthogonality interval is the full $[-1, 1]$, not $[0, 1]$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-021",
+      "stem": "Classify $x = 0$ for the equation $x^3 y'' + y = 0$.",
+      "options": [
+        "Irregular singular point",
+        "Regular singular point",
+        "Removable point",
+        "Ordinary point"
+      ],
+      "answer": 0,
+      "explanation": "Here $q(x) = \\dfrac{1}{x^3}$, so $x^2 q = \\dfrac{1}{x}$, which is not analytic at $0$ (it has a pole). Since multiplying $q$ by $x^2$ fails to remove the singularity, $x = 0$ is an irregular singular point, and the Frobenius method is not guaranteed to apply.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-022",
+      "stem": "The closed form $J_{1/2}(x) = \\sqrt{\\dfrac{2}{\\pi x}}\\,\\sin x$ shows that half-integer Bessel functions are which?",
+      "options": [
+        "Polynomials",
+        "Constant",
+        "Undefined for $x > 0$",
+        "Elementary (expressible via sine and cosine)"
+      ],
+      "answer": 3,
+      "explanation": "For half-integer orders the Bessel functions reduce to elementary functions: $J_{1/2}(x) = \\sqrt{\\dfrac{2}{\\pi x}}\\sin x$ and $J_{-1/2}(x) = \\sqrt{\\dfrac{2}{\\pi x}}\\cos x$. These spherical-Bessel cases are the exception where the otherwise transcendental Bessel functions collapse to trigonometric form.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-023",
+      "stem": "For the Euler equation $x^2 y'' - x y' + y = 0$, what is the general solution for $x > 0$?",
+      "options": [
+        "$y = C_1 x + C_2 x^2$",
+        "$y = C_1 \\cos(\\ln x) + C_2 \\sin(\\ln x)$",
+        "$y = C_1 x + C_2 x^{-1}$",
+        "$y = (C_1 + C_2 \\ln x)x$"
+      ],
+      "answer": 3,
+      "explanation": "Here $p_0 = -1$ and $q_0 = 1$, so the indicial equation is $r(r - 1) - r + 1 = r^2 - 2r + 1 = (r - 1)^2 = 0$, a repeated root $r = 1$. A repeated root gives $y = (C_1 + C_2 \\ln x)x$, where the $\\ln x$ supplies the second independent solution.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-024",
+      "stem": "The lowest power of $x$ in the Frobenius series, with $a_0 \\neq 0$, produces which equation?",
+      "options": [
+        "The indicial equation",
+        "The characteristic polynomial of a matrix",
+        "The recurrence relation",
+        "The Wronskian"
+      ],
+      "answer": 0,
+      "explanation": "Substituting $y = \\sum a_n x^{n+r}$, the coefficient of the lowest power $x^{r}$ involves only $a_0$. Setting it to zero and dividing by $a_0 \\neq 0$ yields the indicial equation in $r$. Higher powers then give the recurrence that determines $a_1, a_2, \\ldots$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-025",
+      "stem": "Find the indicial roots of $x^2 y'' + 3x y' + (1 - x)y = 0$ at $x = 0$.",
+      "options": [
+        "$r = -1, -1$ (double root)",
+        "$r = 1, 1$",
+        "$r = -1, 1$",
+        "$r = 0, -1$"
+      ],
+      "answer": 0,
+      "explanation": "Here $p_0 = 3$ and $q_0 = \\lim x^2 q = \\lim (1 - x) = 1$. The indicial equation is $r(r - 1) + 3r + 1 = r^2 + 2r + 1 = (r + 1)^2 = 0$, a repeated root $r = -1$. Equal roots signal that the second solution carries a logarithm.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-026",
+      "format": "cloze",
+      "stem": "Classify $x = 0$ for Bessel's equation $x^2 y'' + x y' + (x^2 - \\nu^2)y = 0$ and find its indicial roots.",
+      "solution": "In standard form $p = \\dfrac{1}{x}$ and $q = \\dfrac{x^2 - \\nu^2}{x^2}$. Since $x p = 1$ and $x^2 q = x^2 - \\nu^2$ are analytic at $0$, the point is a {{1}} singular point. The indicial equation reduces to $r^2 - \\nu^2 = 0$, so the roots are $r = \\pm$ {{2}}. For order $\\nu = 0$ these roots coincide, forcing a logarithm in the second solution.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "regular",
+            "irregular",
+            "ordinary"
+          ],
+          "answer": "regular"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\nu$",
+            "$\\nu^2$",
+            "$2\\nu$"
+          ],
+          "answer": "$\\nu$"
+        }
+      ],
+      "explanation": "Both $x p = 1$ and $x^2 q = x^2 - \\nu^2$ are analytic at $0$, so $x = 0$ is a regular singular point. With $p_0 = 1$ and $q_0 = -\\nu^2$, the indicial equation is $r^2 - \\nu^2 = 0$, giving $r = \\pm \\nu$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-027",
+      "format": "cloze",
+      "stem": "Solve the Euler equation $x^2 y'' + 2x y' - 2y = 0$ via its indicial equation.",
+      "solution": "Substituting $y = x^r$ gives the indicial equation $r(r - 1) + 2r - 2 = r^2 + r - 2 = 0$, which factors as $(r + 2)(r - 1) = 0$. The roots are $r = 1$ and $r =$ {{1}}. Because the roots are real and distinct, the general solution for $x > 0$ is $y = C_1 x + C_2 x^{r_2}$, with the second exponent equal to {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The indicial equation $r^2 + r - 2 = (r + 2)(r - 1) = 0$ has roots $1$ and $-2$. Distinct real roots give $y = C_1 x^{1} + C_2 x^{-2}$, so the second exponent is $-2$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-028",
+      "format": "cloze",
+      "stem": "Determine the indicial roots of $2x^2 y'' - x y' + (1 + x)y = 0$ at $x = 0$.",
+      "solution": "In standard form, $x p = -\\tfrac{1}{2}$ so $p_0 = -\\tfrac{1}{2}$, and $x^2 q = \\dfrac{1 + x}{2} \\to \\tfrac{1}{2}$ so $q_0 = \\tfrac{1}{2}$. The indicial equation $r(r - 1) - \\tfrac{1}{2}r + \\tfrac{1}{2} = 0$ clears to $2r^2 - 3r + 1 = (2r - 1)(r - 1) = 0$. The roots are $r = 1$ and $r =$ {{1}}. Since the roots differ by a non-integer, there are {{2}} independent Frobenius series.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "With $p_0 = -\\tfrac{1}{2}$ and $q_0 = \\tfrac{1}{2}$, the indicial equation $2r^2 - 3r + 1 = (2r - 1)(r - 1) = 0$ gives $r = 1, \\tfrac{1}{2}$. The difference $\\tfrac{1}{2}$ is not an integer, so two independent Frobenius series exist.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-029",
+      "format": "cloze",
+      "stem": "Recall the low-order Legendre polynomials and their normalization.",
+      "solution": "The Legendre polynomials begin $P_0(x) = 1$, $P_1(x) = x$, and $P_2(x) = \\tfrac{1}{2}(3x^2 - 1)$. Each is normalized so that $P_n(1) =$ {{1}}. Checking $P_2$: $P_2(1) = \\tfrac{1}{2}(3 - 1) = 1$. These polynomials arise when the parameter $n$ in Legendre's equation is a non-negative {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "integer",
+            "real number",
+            "fraction"
+          ],
+          "answer": "integer"
+        }
+      ],
+      "explanation": "Legendre polynomials are normalized by $P_n(1) = 1$, confirmed by $P_2(1) = \\tfrac{1}{2}(3 - 1) = 1$. They appear when $n$ is a non-negative integer, which makes one series solution terminate into a polynomial of degree $n$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-030",
+      "format": "cloze",
+      "stem": "Analyze the indicial structure of $x^2 y'' + 3x y' + (1 - x)y = 0$ at $x = 0$.",
+      "solution": "Here $p_0 = 3$ and $q_0 = \\lim_{x \\to 0}(1 - x) = 1$. The indicial equation $r(r - 1) + 3r + 1 = r^2 + 2r + 1 = (r + 1)^2 = 0$ has the repeated root $r =$ {{1}}. Because the indicial roots are equal, the second independent solution must contain a {{2}} term.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "logarithmic",
+            "exponential",
+            "trigonometric"
+          ],
+          "answer": "logarithmic"
+        }
+      ],
+      "explanation": "With $p_0 = 3$ and $q_0 = 1$, the indicial equation is $(r + 1)^2 = 0$, a repeated root $r = -1$. Equal indicial roots force the second solution to include a logarithmic term of the form $y_1 \\ln x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    },
+    {
+      "id": "differencial-equation-ii-frobenius-and-special-functions-031",
+      "format": "cloze",
+      "stem": "Classify $x = 0$ for $x^3 y'' + y = 0$ using the Frobenius criterion.",
+      "solution": "Dividing by $x^3$ gives $q(x) = \\dfrac{1}{x^3}$. Multiplying by $x^2$ yields $x^2 q = \\dfrac{1}{x}$, which is {{1}} at $x = 0$ because it still has a pole. Therefore $x = 0$ is an {{2}} singular point, where the Frobenius method is not guaranteed to produce a series solution.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "not analytic",
+            "analytic",
+            "zero"
+          ],
+          "answer": "not analytic"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "irregular",
+            "regular",
+            "ordinary"
+          ],
+          "answer": "irregular"
+        }
+      ],
+      "explanation": "Since $x^2 q = \\dfrac{1}{x}$ is not analytic at $0$ (it has a pole), multiplying by $x^2$ fails to tame the singularity. Hence $x = 0$ is an irregular singular point, outside the guarantee of the Frobenius method.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations and Boundary Value Problems"
+    }
+  ]
+}

@@ -1,0 +1,484 @@
+{
+  "courseId": "complex-analysis",
+  "topicId": "residues-and-poles",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "complex-analysis-residues-and-poles-001",
+      "stem": "The residue of $f$ at an isolated singularity $z_0$ is defined as:",
+      "options": [
+        "the coefficient $a_0$ in the Laurent expansion.",
+        "the coefficient $a_{-1}$ in the Laurent expansion of $f$ about $z_0$.",
+        "the value $f(z_0)$.",
+        "the limit $\\lim_{z\\to z_0} f(z)$."
+      ],
+      "answer": 1,
+      "explanation": "The residue $\\operatorname{Res}_{z_0} f$ is the coefficient $a_{-1}$ of $(z - z_0)^{-1}$ in the Laurent series. It is the one coefficient that survives contour integration, since $\\oint (z - z_0)^{-1}\\,dz = 2\\pi i$ while all other powers integrate to $0$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-002",
+      "stem": "For a simple pole at $z_0$, the residue is given by:",
+      "options": [
+        "$f'(z_0)$",
+        "$\\lim_{z\\to z_0} (z - z_0) f(z)$",
+        "$\\lim_{z\\to z_0} f(z)$",
+        "$\\lim_{z\\to z_0} (z - z_0)^2 f(z)$"
+      ],
+      "answer": 1,
+      "explanation": "At a simple pole, $\\operatorname{Res}_{z_0} f = \\lim_{z\\to z_0} (z - z_0) f(z)$. Multiplying by $(z - z_0)$ cancels the single negative power, and the limit extracts $a_{-1}$. The squared factor is for an order-$2$ pole, and a plain limit of $f$ diverges at a pole.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-003",
+      "stem": "Compute the residue of $f(z) = \\dfrac{1}{z - 3}$ at $z = 3$.",
+      "options": [
+        "$0$",
+        "$3$",
+        "$1$",
+        "$-3$"
+      ],
+      "answer": 2,
+      "explanation": "This is already a Laurent series about $z = 3$ with a single $(z-3)^{-1}$ term of coefficient $1$. Equivalently $\\lim_{z\\to 3}(z - 3)\\cdot\\frac{1}{z-3} = 1$. So the residue is $1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-004",
+      "stem": "Compute the residue of $f(z) = \\dfrac{z}{z^2 + 1}$ at $z = i$.",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "$\\dfrac{1}{2i}$",
+        "$\\dfrac{i}{2}$",
+        "$i$"
+      ],
+      "answer": 0,
+      "explanation": "Factor $z^2 + 1 = (z - i)(z + i)$. At the simple pole $z = i$, $\\operatorname{Res} = \\lim_{z\\to i}(z - i)\\frac{z}{(z-i)(z+i)} = \\frac{i}{i + i} = \\frac{i}{2i} = \\frac{1}{2}$. The residue is the real number $1/2$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-005",
+      "stem": "For a function $f = p/q$ with $p(z_0) \\neq 0$ and $q$ having a simple zero at $z_0$, the residue at $z_0$ equals:",
+      "options": [
+        "$\\dfrac{p(z_0)}{q'(z_0)}$",
+        "$\\dfrac{p'(z_0)}{q'(z_0)}$",
+        "$\\dfrac{p(z_0)}{q(z_0)}$",
+        "$p(z_0) q'(z_0)$"
+      ],
+      "answer": 0,
+      "explanation": "The quotient rule for residues at a simple pole gives $\\operatorname{Res}_{z_0}\\frac{p}{q} = \\frac{p(z_0)}{q'(z_0)}$. It follows from $q(z) \\approx q'(z_0)(z - z_0)$ near the simple zero. This shortcut avoids factoring $q$ explicitly.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-006",
+      "stem": "Using the $p/q'$ formula, the residue of $f(z) = \\dfrac{e^z}{z^2 + 1}$ at $z = i$ is:",
+      "options": [
+        "$\\dfrac{e^i}{2i}$",
+        "$\\dfrac{e^i}{2}$",
+        "$\\dfrac{e^{-i}}{2i}$",
+        "$e^i$"
+      ],
+      "answer": 0,
+      "explanation": "Here $p(z) = e^z$, $q(z) = z^2 + 1$, $q'(z) = 2z$. So $\\operatorname{Res}_{i} = \\frac{p(i)}{q'(i)} = \\frac{e^i}{2i}$. The derivative of the denominator evaluated at the pole supplies the factor $2i$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-007",
+      "stem": "For a pole of order $m$ at $z_0$, the residue is:",
+      "options": [
+        "$\\lim_{z\\to z_0} \\dfrac{d^{m-1}}{dz^{m-1}} f(z)$",
+        "$\\dfrac{1}{(m-1)!}\\lim_{z\\to z_0} \\dfrac{d^{m-1}}{dz^{m-1}}\\big[(z-z_0)^m f(z)\\big]$",
+        "$\\lim_{z\\to z_0} (z - z_0)^m f(z)$",
+        "$\\dfrac{1}{m!}\\lim_{z\\to z_0} \\dfrac{d^m}{dz^m}\\big[(z-z_0)^m f(z)\\big]$"
+      ],
+      "answer": 1,
+      "explanation": "The order-$m$ residue formula is $\\operatorname{Res}_{z_0} f = \\frac{1}{(m-1)!}\\lim_{z\\to z_0}\\frac{d^{m-1}}{dz^{m-1}}\\big[(z - z_0)^m f(z)\\big]$. Note the derivative order is $m - 1$ and the factorial is $(m-1)!$. For $m = 1$ it reduces to the simple-pole limit.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-008",
+      "stem": "Compute the residue of $f(z) = \\dfrac{1}{z^2}$ at $z = 0$.",
+      "options": [
+        "$2$",
+        "$\\infty$",
+        "$0$",
+        "$1$"
+      ],
+      "answer": 2,
+      "explanation": "The Laurent series of $\\frac{1}{z^2}$ about $0$ is just $\\frac{1}{z^2}$, which has no $z^{-1}$ term. Hence $a_{-1} = 0$ and the residue is $0$. A double pole can still have zero residue when the $(z-z_0)^{-1}$ coefficient is absent.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-009",
+      "stem": "Compute the residue of $f(z) = \\dfrac{e^z}{z^2}$ at $z = 0$ (a pole of order $2$).",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "$1$",
+        "$2$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "With $m = 2$: $\\operatorname{Res} = \\frac{1}{1!}\\lim_{z\\to 0}\\frac{d}{dz}\\big[z^2\\cdot\\frac{e^z}{z^2}\\big] = \\lim_{z\\to 0}\\frac{d}{dz} e^z = \\lim_{z\\to 0} e^z = 1$. Equivalently the Laurent series $\\frac{1}{z^2} + \\frac1z + \\cdots$ has $a_{-1} = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-010",
+      "stem": "The residue theorem states that $\\oint_C f(z)\\,dz$ over a simple closed contour enclosing singularities $z_1, \\dots, z_n$ equals:",
+      "options": [
+        "$2\\pi i \\sum_{k} \\operatorname{Res}_{z_k} f$",
+        "$\\sum_{k} \\operatorname{Res}_{z_k} f$",
+        "$\\dfrac{1}{2\\pi i}\\sum_{k} \\operatorname{Res}_{z_k} f$",
+        "$\\pi i \\sum_{k} \\operatorname{Res}_{z_k} f$"
+      ],
+      "answer": 0,
+      "explanation": "The residue theorem gives $\\oint_C f\\,dz = 2\\pi i \\sum_k \\operatorname{Res}_{z_k} f$, summing residues at all singularities inside $C$ (traversed counterclockwise). The factor $2\\pi i$ is essential; omitting it or using $\\pi i$ is incorrect.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-011",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=2} \\frac{dz}{z^2 + 1}$ using residues.",
+      "options": [
+        "$4\\pi i$",
+        "$2\\pi i$",
+        "$\\pi i$",
+        "$0$"
+      ],
+      "answer": 3,
+      "explanation": "The poles are $z = \\pm i$, both inside $|z| = 2$. Residues: at $i$, $\\frac{1}{2z}\\big|_i = \\frac{1}{2i}$; at $-i$, $\\frac{1}{2z}\\big|_{-i} = \\frac{1}{-2i} = -\\frac{1}{2i}$. Their sum is $0$, so $\\oint = 2\\pi i\\cdot 0 = 0$. The two residues cancel.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-012",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=2} \\frac{z}{z^2 - 1}\\,dz$.",
+      "options": [
+        "$4\\pi i$",
+        "$2\\pi i$",
+        "$\\pi i$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "Poles at $z = \\pm 1$, both inside $|z| = 2$. Using $\\frac{p}{q'} = \\frac{z}{2z} = \\frac12$ at each: $\\operatorname{Res}_1 = \\frac12$ and $\\operatorname{Res}_{-1} = \\frac12$. Sum $= 1$, so $\\oint = 2\\pi i \\cdot 1 = 2\\pi i$. Both simple poles contribute residue $1/2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-013",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=1} \\frac{\\cos z}{z}\\,dz$ by residues.",
+      "options": [
+        "$2\\pi$",
+        "$0$",
+        "$\\pi i$",
+        "$2\\pi i$"
+      ],
+      "answer": 3,
+      "explanation": "There is a simple pole at $z = 0$ inside the contour, with residue $\\lim_{z\\to 0} z\\cdot\\frac{\\cos z}{z} = \\cos 0 = 1$. By the residue theorem $\\oint = 2\\pi i\\cdot 1 = 2\\pi i$. The numerator at the pole gives residue $1$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-014",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=3} \\frac{dz}{(z-1)(z-2)}$.",
+      "options": [
+        "$4\\pi i$",
+        "$0$",
+        "$-2\\pi i$",
+        "$2\\pi i$"
+      ],
+      "answer": 1,
+      "explanation": "Both poles $z = 1, 2$ are inside $|z| = 3$. Residue at $1$: $\\frac{1}{1 - 2} = -1$. Residue at $2$: $\\frac{1}{2 - 1} = 1$. Sum $= -1 + 1 = 0$, so $\\oint = 2\\pi i \\cdot 0 = 0$. The residues cancel exactly.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-015",
+      "stem": "To evaluate a real integral $\\int_{-\\infty}^{\\infty} R(x)\\,dx$ of a rational function by residues, one typically closes the contour with a large semicircle in the upper half-plane and sums:",
+      "options": [
+        "all residues of $R$.",
+        "the residues in the upper half-plane, multiplied by $2\\pi i$.",
+        "the residues on the real axis only.",
+        "the residues in the lower half-plane, multiplied by $2\\pi i$."
+      ],
+      "answer": 1,
+      "explanation": "Closing in the upper half-plane (where the semicircular arc's contribution vanishes for suitable $R$), the integral equals $2\\pi i$ times the sum of residues at poles in the upper half-plane. Poles in the lower half-plane are not enclosed by this contour.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-016",
+      "stem": "Evaluate $\\displaystyle \\int_{-\\infty}^{\\infty} \\frac{dx}{x^2 + 1}$ by residues.",
+      "options": [
+        "$2\\pi$",
+        "$\\dfrac{\\pi}{2}$",
+        "$\\pi$",
+        "$2\\pi i$"
+      ],
+      "answer": 2,
+      "explanation": "The integrand has poles at $\\pm i$; only $i$ is in the upper half-plane. Its residue is $\\frac{1}{2z}\\big|_i = \\frac{1}{2i}$. So $\\int = 2\\pi i\\cdot\\frac{1}{2i} = \\pi$. This recovers the familiar value $\\arctan x\\big|_{-\\infty}^{\\infty} = \\pi$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-017",
+      "stem": "Evaluate $\\displaystyle \\int_{-\\infty}^{\\infty} \\frac{dx}{x^2 + 4}$ by residues.",
+      "options": [
+        "$\\pi$",
+        "$2\\pi$",
+        "$\\dfrac{\\pi}{2}$",
+        "$\\dfrac{\\pi}{4}$"
+      ],
+      "answer": 2,
+      "explanation": "Poles at $\\pm 2i$; the upper one is $2i$. Residue: $\\frac{1}{2z}\\big|_{2i} = \\frac{1}{4i}$. Hence $\\int = 2\\pi i\\cdot\\frac{1}{4i} = \\frac{\\pi}{2}$. In general $\\int_{-\\infty}^{\\infty}\\frac{dx}{x^2 + a^2} = \\frac{\\pi}{a}$, here with $a = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-018",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=1} \\frac{e^z}{z^2}\\,dz$ by residues.",
+      "options": [
+        "$2\\pi i$",
+        "$2\\pi i\\, e$",
+        "$\\pi i$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "The pole at $0$ is order $2$. From the Laurent series $\\frac{e^z}{z^2} = \\frac{1}{z^2} + \\frac1z + \\frac12 + \\cdots$, the residue is $a_{-1} = 1$. So $\\oint = 2\\pi i\\cdot 1 = 2\\pi i$. The order-$2$ pole still has residue $1$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-019",
+      "stem": "Compute the residue of $f(z) = \\cot z = \\dfrac{\\cos z}{\\sin z}$ at $z = 0$.",
+      "options": [
+        "$0$",
+        "$\\pi$",
+        "$1$",
+        "$-1$"
+      ],
+      "answer": 2,
+      "explanation": "Both $\\cos z$ and $\\sin z$ are analytic, $\\sin z$ has a simple zero at $0$. Using $\\frac{p}{q'} = \\frac{\\cos z}{\\cos z}\\big|_0 = \\frac{\\cos 0}{\\cos 0} = 1$. So the residue of $\\cot z$ at $0$ is $1$. The same value occurs at every integer multiple of $\\pi$.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-020",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=4} \\cot z\\,dz$, knowing $\\cot z$ has simple poles at $z = n\\pi$ each with residue $1$.",
+      "options": [
+        "$8\\pi i$",
+        "$2\\pi i$",
+        "$4\\pi i$",
+        "$6\\pi i$"
+      ],
+      "answer": 3,
+      "explanation": "The poles of $\\cot z$ inside $|z| = 4$ are at $z = n\\pi$ with $|n\\pi| < 4$, that is $n = -1, 0, 1$ (since $\\pi \\approx 3.14 < 4$ but $2\\pi \\approx 6.28 > 4$). That is three poles, each residue $1$. So $\\oint = 2\\pi i\\cdot 3 = 6\\pi i$.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-021",
+      "stem": "Compute the residue of $f(z) = \\dfrac{1}{z^2(z - 1)}$ at the simple pole $z = 1$.",
+      "options": [
+        "$0$",
+        "$1$",
+        "$-1$",
+        "$2$"
+      ],
+      "answer": 1,
+      "explanation": "At the simple pole $z = 1$: $\\operatorname{Res}_1 = \\lim_{z\\to 1}(z - 1)\\cdot\\frac{1}{z^2(z-1)} = \\frac{1}{1^2} = 1$. Multiplying by $(z-1)$ removes that factor and we evaluate $\\frac{1}{z^2}$ at $z = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-022",
+      "stem": "Compute the residue of $f(z) = \\dfrac{1}{z^2(z - 1)}$ at the double pole $z = 0$.",
+      "options": [
+        "$-1$",
+        "$1$",
+        "$0$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "With $m = 2$ at $z = 0$: $\\operatorname{Res}_0 = \\lim_{z\\to 0}\\frac{d}{dz}\\big[z^2\\cdot\\frac{1}{z^2(z-1)}\\big] = \\lim_{z\\to 0}\\frac{d}{dz}\\frac{1}{z - 1} = \\lim_{z\\to 0}\\frac{-1}{(z-1)^2} = \\frac{-1}{1} = -1$. So the residue is $-1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-023",
+      "stem": "For $f(z) = \\dfrac{1}{z^2(z-1)}$, the sum of the residues at $z = 0$ and $z = 1$ is:",
+      "options": [
+        "$-1$",
+        "$2$",
+        "$0$",
+        "$1$"
+      ],
+      "answer": 2,
+      "explanation": "From the previous results, $\\operatorname{Res}_0 = -1$ and $\\operatorname{Res}_1 = 1$, so their sum is $-1 + 1 = 0$. Consequently $\\oint_{|z|=2} f\\,dz = 2\\pi i\\cdot 0 = 0$, since both poles lie inside that contour.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-024",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=1} \\frac{\\sin z}{z^2}\\,dz$ by residues.",
+      "options": [
+        "$2\\pi i$",
+        "$2\\pi$",
+        "$0$",
+        "$\\pi i$"
+      ],
+      "answer": 0,
+      "explanation": "Expand $\\frac{\\sin z}{z^2} = \\frac{1}{z^2}\\big(z - \\frac{z^3}{6} + \\cdots\\big) = \\frac1z - \\frac{z}{6} + \\cdots$. The residue (coefficient of $z^{-1}$) is $1$. So $\\oint = 2\\pi i\\cdot 1 = 2\\pi i$. Although $z^2$ is in the denominator, the $\\sin z$ numerator makes the pole effectively simple with residue $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-025",
+      "format": "cloze",
+      "stem": "Compute the residue of $f(z) = \\dfrac{z}{z^2 + 1}$ at the simple pole $z = i$.",
+      "solution": "Factoring $z^2 + 1 = (z - i)(z + i)$ and taking $\\lim_{z\\to i}(z - i) f(z) = \\frac{i}{i + i}$ gives $\\frac{i}{2i}$, which simplifies to the real number {{1}}. This residue {{2}} purely real.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "$\\operatorname{Res}_i = \\frac{i}{2i} = \\frac12 = 0.5$. The imaginary units cancel, leaving a purely real residue.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-026",
+      "format": "cloze",
+      "stem": "Apply the residue theorem to $\\oint_{|z|=1} \\dfrac{\\cos z}{z}\\,dz$.",
+      "solution": "The only pole inside is $z = 0$, with residue $\\lim_{z\\to 0} z\\cdot\\frac{\\cos z}{z} = \\cos 0$, which equals the number {{1}}. Multiplying by $2\\pi i$, the integral equals $2\\pi i$ times that residue, so its value is {{2}}$\\pi i$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The residue is $\\cos 0 = 1$. By the residue theorem $\\oint = 2\\pi i\\cdot 1 = 2\\pi i$, so the coefficient of $\\pi i$ is $2$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-027",
+      "format": "cloze",
+      "stem": "Evaluate the real integral $\\int_{-\\infty}^{\\infty} \\dfrac{dx}{x^2 + 1}$ by closing in the upper half-plane.",
+      "solution": "The pole in the upper half-plane is $z = i$, with residue $\\frac{1}{2i}$. The integral is $2\\pi i$ times this residue, the $i$'s cancel, and the result is $\\pi$ times the number {{1}}. Numerically the integral equals approximately {{2}} (to two decimals).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3.14,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "$\\int = 2\\pi i\\cdot\\frac{1}{2i} = \\pi = \\pi\\cdot 1$. Numerically $\\pi \\approx 3.14$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-028",
+      "format": "cloze",
+      "stem": "Compute the residue of $f(z) = \\dfrac{e^z}{z^2}$ at the order-$2$ pole $z = 0$.",
+      "solution": "Using the order-$m$ formula with $m = 2$, the residue is $\\frac{1}{1!}\\lim_{z\\to 0}\\frac{d}{dz}\\big[z^2 f(z)\\big] = \\lim_{z\\to 0}\\frac{d}{dz} e^z$. Since $\\frac{d}{dz}e^z = e^z$ and $e^0 = 1$, the residue is the number {{1}}. Hence $\\oint_{|z|=1} f\\,dz = 2\\pi i$ times that, namely {{2}}$\\pi i$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$z^2 f(z) = e^z$, whose derivative at $0$ is $e^0 = 1$, so the residue is $1$. Then $\\oint = 2\\pi i\\cdot 1 = 2\\pi i$, coefficient $2$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-029",
+      "format": "cloze",
+      "stem": "Use the residue theorem on $\\oint_{|z|=3} \\dfrac{dz}{(z-1)(z-2)}$, where both poles lie inside.",
+      "solution": "The residue at $z = 1$ is $\\frac{1}{1 - 2}$, equal to the integer {{1}}, and the residue at $z = 2$ is $\\frac{1}{2 - 1} = 1$. Their sum is $0$, so by the residue theorem the integral equals the number {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\operatorname{Res}_1 = \\frac{1}{1-2} = -1$ and $\\operatorname{Res}_2 = \\frac{1}{2-1} = 1$; the sum is $0$, so $\\oint = 2\\pi i\\cdot 0 = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-residues-and-poles-030",
+      "format": "cloze",
+      "stem": "Count the enclosed poles and evaluate $\\oint_{|z|=4} \\cot z\\,dz$, given each pole of $\\cot z$ at $z = n\\pi$ has residue $1$.",
+      "solution": "Inside $|z| = 4$, the poles $z = n\\pi$ satisfy $|n\\pi| < 4$, giving $n = -1, 0, 1$, so the number of enclosed poles is {{1}}. Each contributes residue $1$, so the integral is $2\\pi i$ times that count, namely {{2}}$\\pi i$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $\\pi \\approx 3.14 < 4$ but $2\\pi \\approx 6.28 > 4$, the enclosed poles are at $-\\pi, 0, \\pi$, that is $3$ poles. With residue $1$ each, $\\oint = 2\\pi i\\cdot 3 = 6\\pi i$, coefficient $6$.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    }
+  ]
+}

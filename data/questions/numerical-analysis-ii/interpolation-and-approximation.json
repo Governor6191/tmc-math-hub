@@ -1,0 +1,562 @@
+{
+  "courseId": "numerical-analysis-ii",
+  "topicId": "interpolation-and-approximation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-001",
+      "stem": "The Lagrange basis polynomials $L_i(x)$ for nodes $x_0, \\dots, x_n$ satisfy which interpolation property?",
+      "options": [
+        "$L_i(x_j) = \\delta_{ij}$ (one at $x_i$, zero at the other nodes)",
+        "$L_i(x_j) = 1$ for all $j$",
+        "$L_i(x_j) = 0$ for all $j$",
+        "$L_i(x_j) = x_j$"
+      ],
+      "answer": 0,
+      "explanation": "Each Lagrange basis polynomial is built so that $L_i(x_i) = 1$ and $L_i(x_j) = 0$ for $j \\ne i$, the Kronecker delta property, which is exactly why $\\sum_i f(x_i) L_i(x)$ reproduces every data value. Being identically $1$ or $0$ would make interpolation impossible, and $L_i(x_j) = x_j$ is not a polynomial identity. The trap is forgetting that each basis function isolates a single node.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-002",
+      "stem": "The unique polynomial of degree at most $n$ that passes through $n + 1$ distinct data points is which of the following?",
+      "options": [
+        "Unique only if the nodes are equally spaced",
+        "Not unique; many exist",
+        "Unique",
+        "Unique only for $n \\le 2$"
+      ],
+      "answer": 2,
+      "explanation": "Given $n + 1$ distinct nodes, exactly one polynomial of degree $\\le n$ interpolates the data; Lagrange and Newton divided-difference forms are just two representations of that same polynomial. Uniqueness does not require equal spacing or a degree cap. The trap is thinking the different construction methods give different polynomials; they always agree.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-003",
+      "stem": "For data $(1, 1)$ and $(4, 2)$, the linear Lagrange interpolant evaluated at $x = 2$ gives which value?",
+      "options": [
+        "$1.3333$",
+        "$1.4142$",
+        "$1.5000$",
+        "$1.2500$"
+      ],
+      "answer": 0,
+      "explanation": "The basis values are $L_0(2) = \\frac{2 - 4}{1 - 4} = \\frac{2}{3}$ and $L_1(2) = \\frac{2 - 1}{4 - 1} = \\frac{1}{3}$, so $P(2) = 1\\cdot\\frac{2}{3} + 2\\cdot\\frac{1}{3} = \\frac{4}{3} = 1.3333$. The value $1.5$ is the midpoint of the $y$-values, $1.4142$ is $\\sqrt{2}$ (the function being modeled, not the line), and $1.25$ is unrelated. The trap is averaging the data instead of weighting by the Lagrange factors.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-004",
+      "stem": "The first divided difference $f[x_0, x_1]$ is defined as which expression?",
+      "options": [
+        "$\\dfrac{f(x_0) + f(x_1)}{2}$",
+        "$\\dfrac{f(x_1) - f(x_0)}{x_1 - x_0}$",
+        "$f(x_1) - f(x_0)$",
+        "$\\dfrac{x_1 - x_0}{f(x_1) - f(x_0)}$"
+      ],
+      "answer": 1,
+      "explanation": "The first divided difference is the slope $f[x_0, x_1] = \\frac{f(x_1) - f(x_0)}{x_1 - x_0}$, the building block of the Newton form. A bare difference omits the denominator, the average is unrelated, and the inverted ratio is wrong. The trap is dropping the division by $x_1 - x_0$.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-005",
+      "stem": "For $f(x) = \\ln x$ at nodes $x_0 = 1$, $x_1 = 2$, $x_2 = 4$ with $f = 0,\\ 0.6931,\\ 1.3863$, the second divided difference $f[x_0, x_1, x_2]$ is approximately which value?",
+      "options": [
+        "$0.3466$",
+        "$0.6931$",
+        "$-0.1155$",
+        "$-0.3466$"
+      ],
+      "answer": 2,
+      "explanation": "First differences: $f[x_0, x_1] = \\frac{0.6931 - 0}{2 - 1} = 0.6931$ and $f[x_1, x_2] = \\frac{1.3863 - 0.6931}{4 - 2} = 0.3466$. The second difference is $f[x_0, x_1, x_2] = \\frac{0.3466 - 0.6931}{4 - 1} = \\frac{-0.3466}{3} = -0.1155$. The values $0.6931$ and $0.3466$ are first differences, and $-0.3466$ omits the division by $3$. The trap is forgetting the denominator $x_2 - x_0 = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-006",
+      "stem": "The error of polynomial interpolation of degree $n$ at a point $x$ is given by which expression, for some $\\xi$ in the interval?",
+      "options": [
+        "$\\dfrac{f^{(n+1)}(\\xi)}{(n+1)!}(x - x_0)$",
+        "$\\dfrac{f^{(n+1)}(\\xi)}{(n+1)!}\\displaystyle\\prod_{i=0}^{n}(x - x_i)$",
+        "$\\dfrac{f^{(n)}(\\xi)}{n!}\\displaystyle\\prod_{i=0}^{n}(x - x_i)$",
+        "$f^{(n+1)}(\\xi)\\displaystyle\\prod_{i=0}^{n}(x - x_i)$"
+      ],
+      "answer": 1,
+      "explanation": "The interpolation error is $f(x) - P_n(x) = \\frac{f^{(n+1)}(\\xi)}{(n+1)!}\\prod_{i=0}^{n}(x - x_i)$, using the $(n+1)$th derivative and the node product. Using the $n$th derivative, dropping the factorial, or keeping only one factor all misstate it. The trap is the derivative order: interpolating with $n + 1$ nodes brings in the $(n+1)$th derivative.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-007",
+      "stem": "A natural cubic spline is distinguished by which boundary condition?",
+      "options": [
+        "The first derivative is zero at both endpoints",
+        "The second derivative is zero at both endpoints",
+        "The function is linear at the endpoints",
+        "The third derivative is continuous at the endpoints"
+      ],
+      "answer": 1,
+      "explanation": "A natural cubic spline sets the second derivative to zero at the two endpoints, $S''(x_0) = S''(x_n) = 0$, supplying the two extra conditions needed beyond interpolation and interior smoothness. Zero first derivative is the clamped condition with zero slope, the spline is cubic (not linear) on each piece, and third-derivative continuity is not imposed. The trap is confusing the natural ($S'' = 0$) and clamped ($S'$ specified) end conditions.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-008",
+      "stem": "A cubic spline through $n + 1$ points (so $n$ subintervals) requires how many conditions to determine all the piecewise coefficients?",
+      "options": [
+        "$3n$",
+        "$4n$",
+        "$n$",
+        "$2n$"
+      ],
+      "answer": 1,
+      "explanation": "Each of the $n$ cubic pieces has $4$ coefficients, giving $4n$ unknowns; interpolation, plus continuity of the spline and of its first and second derivatives at interior knots, plus two boundary conditions, supply exactly $4n$ equations. The smaller counts undercount the per-piece coefficients. The trap is forgetting that a cubic has four coefficients per interval.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-009",
+      "stem": "At each interior knot of a cubic spline, which quantities are required to be continuous?",
+      "options": [
+        "The spline value and all derivatives up to third order",
+        "The spline value and its first and second derivatives",
+        "The spline value and its first derivative only",
+        "Only the spline value"
+      ],
+      "answer": 1,
+      "explanation": "A cubic spline matches the data and is $C^2$: the value and the first and second derivatives all match across each interior knot, giving its characteristic smoothness. Requiring only the value or only up to the first derivative is too weak, and full third-derivative continuity would over-constrain a piecewise cubic (it would collapse to a single cubic). The trap is the smoothness order: cubic splines are $C^2$, not $C^3$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-010",
+      "stem": "The Newton divided-difference form of the interpolating polynomial has which structure?",
+      "options": [
+        "$P(x) = \\sum_k f(x_k)\\,L_k(x)$ with $L_k$ Lagrange factors",
+        "$P(x) = \\sum_k \\dfrac{f(x_k)}{x - x_k}$",
+        "$P(x) = \\sum_k f[x_0, \\dots, x_k]\\,(x - x_0)\\cdots(x - x_{k-1})$",
+        "$P(x) = \\sum_k f(x_k)\\,(x - x_k)$"
+      ],
+      "answer": 2,
+      "explanation": "The Newton form is $P(x) = f[x_0] + f[x_0, x_1](x - x_0) + f[x_0, x_1, x_2](x - x_0)(x - x_1) + \\cdots$, with divided-difference coefficients and nested node products. The second option is the Lagrange form (a different representation of the same polynomial, not the Newton form asked for), and the last two are not interpolants. The trap is mixing the Newton and Lagrange representations.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-011",
+      "stem": "Using the divided differences from $f(x) = \\ln x$ on nodes $1, 2, 4$ (with $f[x_0,x_1] = 0.6931$, $f[x_0,x_1,x_2] = -0.1155$), the Newton interpolant at $x = 3$ is approximately which value?",
+      "options": [
+        "$1.3863$",
+        "$1.0986$",
+        "$1.1552$",
+        "$0.6931$"
+      ],
+      "answer": 2,
+      "explanation": "The Newton form is $P(x) = 0 + 0.6931(x - 1) - 0.1155(x - 1)(x - 2)$. At $x = 3$: $P(3) = 0.6931(2) - 0.1155(2)(1) = 1.3863 - 0.2310 = 1.1552$. The exact value $\\ln 3 = 1.0986$ differs by the interpolation error, $0.6931$ and $1.3863$ are tabulated $f$ values. The trap is evaluating only the linear part and dropping the quadratic correction.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-012",
+      "stem": "In least-squares fitting, the normal equations are obtained by which principle?",
+      "options": [
+        "Forcing the fit to pass through every data point",
+        "Minimizing the sum of squared residuals",
+        "Maximizing the correlation coefficient directly",
+        "Minimizing the maximum residual"
+      ],
+      "answer": 1,
+      "explanation": "Least squares chooses coefficients that minimize $\\sum_i (y_i - p(x_i))^2$; setting the partial derivatives of this sum to zero yields the normal equations. Passing through every point is interpolation, minimizing the maximum residual is the minimax (Chebyshev) criterion, and maximizing correlation is not the defining principle. The trap is confusing least-squares with interpolation or with the minimax fit.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-013",
+      "stem": "For the least-squares line through $(0, 1), (1, 3), (2, 2), (3, 4)$, the slope $m$ is which value? (Use $\\sum x = 6$, $\\sum y = 10$, $\\sum xy = 19$, $\\sum x^2 = 14$, $n = 4$.)",
+      "options": [
+        "$0.5$",
+        "$1.0$",
+        "$1.3$",
+        "$0.8$"
+      ],
+      "answer": 3,
+      "explanation": "The slope is $m = \\frac{n\\sum xy - \\sum x \\sum y}{n\\sum x^2 - (\\sum x)^2} = \\frac{4(19) - 6(10)}{4(14) - 36} = \\frac{76 - 60}{56 - 36} = \\frac{16}{20} = 0.8$. The value $1.3$ is actually the intercept, and $0.5$ or $1.0$ come from arithmetic slips. The trap is mishandling the denominator $n\\sum x^2 - (\\sum x)^2 = 20$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-014",
+      "stem": "For the same data $(0, 1), (1, 3), (2, 2), (3, 4)$ with slope $m = 0.8$, the least-squares intercept $b$ is which value?",
+      "options": [
+        "$1.0$",
+        "$1.3$",
+        "$2.0$",
+        "$0.8$"
+      ],
+      "answer": 1,
+      "explanation": "The intercept is $b = \\frac{\\sum y - m\\sum x}{n} = \\frac{10 - 0.8(6)}{4} = \\frac{10 - 4.8}{4} = \\frac{5.2}{4} = 1.3$. Equivalently $b = \\bar y - m\\bar x = 2.5 - 0.8(1.5) = 1.3$. The value $0.8$ is the slope, and $1.0$ or $2.0$ are arithmetic slips. The trap is swapping slope and intercept or forgetting to divide by $n$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-015",
+      "stem": "Two families of polynomials are orthogonal on an interval with respect to a weight $w(x)$ when which condition holds for $i \\ne j$?",
+      "options": [
+        "$p_i(x)\\,p_j(x) = 0$ for all $x$",
+        "$\\displaystyle\\int w(x)\\,p_i(x)\\,dx = 0$",
+        "$\\deg p_i = \\deg p_j$",
+        "$\\displaystyle\\int w(x)\\,p_i(x)\\,p_j(x)\\,dx = 0$"
+      ],
+      "answer": 3,
+      "explanation": "Orthogonality is an inner-product condition: $\\int_a^b w(x) p_i(x) p_j(x)\\,dx = 0$ whenever $i \\ne j$. The pointwise product is not zero, integrating a single polynomial is a different statement, and equal degrees would contradict distinct members. The trap is treating orthogonality as a pointwise rather than an integrated (weighted) property.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-016",
+      "stem": "The Legendre polynomials are orthogonal on $[-1, 1]$ with respect to which weight function?",
+      "options": [
+        "$w(x) = e^{-x^2}$",
+        "$w(x) = 1$",
+        "$w(x) = e^{-x}$",
+        "$w(x) = \\dfrac{1}{\\sqrt{1 - x^2}}$"
+      ],
+      "answer": 1,
+      "explanation": "Legendre polynomials use the constant weight $w(x) = 1$ on $[-1, 1]$. The weight $\\frac{1}{\\sqrt{1 - x^2}}$ belongs to Chebyshev polynomials, $e^{-x^2}$ to Hermite (on the whole line), and $e^{-x}$ to Laguerre (on $[0, \\infty)$). The trap is mismatching each classical family with its weight; Legendre is the unweighted case.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-017",
+      "stem": "High-degree polynomial interpolation on many equally spaced nodes can produce large oscillations near the ends of the interval. This effect is known as which phenomenon?",
+      "options": [
+        "Gibbs phenomenon",
+        "Stiffness",
+        "Runge phenomenon",
+        "Aliasing"
+      ],
+      "answer": 2,
+      "explanation": "The Runge phenomenon is the wild oscillation of high-degree interpolants near the interval ends when the nodes are equally spaced, classically seen for $f(x) = \\frac{1}{1 + 25x^2}$; Chebyshev nodes or splines remedy it. The Gibbs phenomenon concerns Fourier series overshoot, aliasing concerns undersampling, and stiffness concerns ODEs. The trap is confusing Runge oscillation with the Fourier Gibbs effect.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-018",
+      "stem": "Using Chebyshev interpolation nodes instead of equally spaced nodes primarily achieves which improvement?",
+      "options": [
+        "It guarantees the polynomial has integer coefficients",
+        "It forces the interpolant to be a spline",
+        "It minimizes the maximum of the node product $\\prod (x - x_i)$, reducing the error bound",
+        "It removes the need for any function evaluations"
+      ],
+      "answer": 2,
+      "explanation": "Chebyshev nodes are the roots that minimize the maximum magnitude of $\\prod_{i}(x - x_i)$ on the interval, which shrinks the worst-case interpolation error and tames the Runge oscillation. They do not make the interpolant a spline, do not control coefficient integrality, and still need function values. The trap is missing that the benefit is reducing the node-product factor in the error formula.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-019",
+      "stem": "The sum of all Lagrange basis polynomials, $\\sum_{i=0}^{n} L_i(x)$, equals which value for every $x$?",
+      "options": [
+        "$0$",
+        "$x$",
+        "$1$",
+        "$n + 1$"
+      ],
+      "answer": 2,
+      "explanation": "Interpolating the constant function $f \\equiv 1$ reproduces it exactly, so $\\sum_i 1\\cdot L_i(x) = 1$ for all $x$. The sum is not $0$, not the count $n + 1$, and not $x$. The trap is not realizing that interpolating a constant gives a partition-of-unity identity for the Lagrange basis.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-020",
+      "stem": "Adding one more data point to a Newton divided-difference interpolant has which computational advantage over the Lagrange form?",
+      "options": [
+        "The previous coefficients are reused; only one new term is appended",
+        "It requires recomputing every basis polynomial from scratch",
+        "It lowers the degree of the polynomial",
+        "It changes the interpolating polynomial to a different one"
+      ],
+      "answer": 0,
+      "explanation": "In the Newton form the existing divided-difference coefficients stay valid when a node is added; one computes a single new highest-order difference and appends one term. The Lagrange form, by contrast, must rebuild every $L_i$. Adding a point raises (not lowers) the degree, and the underlying interpolant is the same unique polynomial. The trap is thinking new data forces a full recomputation in the Newton form.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-021",
+      "stem": "The divided difference $f[x_0, x_1, \\dots, x_n]$ of a polynomial of degree exactly $n$ equals which quantity?",
+      "options": [
+        "The value $f(x_0)$",
+        "The derivative $f'(x_0)$",
+        "The leading coefficient of the polynomial",
+        "Zero"
+      ],
+      "answer": 2,
+      "explanation": "The $n$th divided difference of a degree-$n$ polynomial equals its leading coefficient $a_n$ (equivalently $\\frac{f^{(n)}(\\xi)}{n!}$ with $f^{(n)}$ constant). It is not zero for a genuine degree-$n$ polynomial (the $(n+1)$th difference would be zero), nor a single value or first derivative. The trap is confusing the $n$th and $(n+1)$th differences; the latter vanishes, the former gives the leading coefficient.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-022",
+      "stem": "When fitting data with a least-squares polynomial of degree $m$ to $N > m + 1$ points, the resulting fit generally has which property?",
+      "options": [
+        "It passes exactly through all $N$ points",
+        "It is undefined because the system is overdetermined",
+        "It does not pass through every point but minimizes total squared error",
+        "It is identical to the interpolating polynomial of degree $N - 1$"
+      ],
+      "answer": 2,
+      "explanation": "With more data than coefficients the system is overdetermined, so the least-squares polynomial usually misses individual points but makes the sum of squared residuals as small as possible. It does not interpolate all points, is not the high-degree interpolant, and is well defined through the normal equations. The trap is expecting an overdetermined least-squares fit to interpolate.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-023",
+      "stem": "The Chebyshev polynomials $T_n(x)$ satisfy which trigonometric identity on $[-1, 1]$?",
+      "options": [
+        "$T_n(x) = \\sin(n \\arccos x)$",
+        "$T_n(x) = x^n$",
+        "$T_n(x) = \\cos(n \\arccos x)$",
+        "$T_n(x) = \\cos(n x)$"
+      ],
+      "answer": 2,
+      "explanation": "By definition $T_n(x) = \\cos(n\\,\\theta)$ where $x = \\cos\\theta$, that is $T_n(x) = \\cos(n \\arccos x)$, which makes their equioscillation property transparent. The sine version is wrong, $\\cos(nx)$ omits the $\\arccos$, and $x^n$ is the monomial. The trap is dropping the $\\arccos$ that maps $x$ into the angle.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-024",
+      "stem": "Compared with a single high-degree interpolating polynomial, a cubic spline offers which advantage on a large set of nodes?",
+      "options": [
+        "It requires no solution of any linear system",
+        "It always has lower total degree as one polynomial",
+        "It interpolates without matching the data values",
+        "It avoids the large oscillations of high-degree interpolation while staying smooth"
+      ],
+      "answer": 3,
+      "explanation": "A cubic spline keeps each piece low-degree and $C^2$ smooth, so it sidesteps the Runge oscillations that plague a single high-degree interpolant while still passing through the data. It is piecewise (not one low-degree polynomial), it does match the data, and the natural or clamped coefficients come from a tridiagonal linear system. The trap is thinking a spline avoids solving a system; it interpolates and solves a banded system.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-025",
+      "format": "cloze",
+      "stem": "Build the linear Lagrange interpolant for data $(1, 1)$ and $(4, 2)$ and evaluate it at $x = 2$.",
+      "solution": "The basis values are $L_0(2) = \\dfrac{2 - 4}{1 - 4} =$ {{1}} and $L_1(2) = \\dfrac{2 - 1}{4 - 1} =$ {{2}}. Then $P(2) = 1\\cdot L_0 + 2\\cdot L_1$ equals approximately {{3}} (four decimals).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.6667,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.3333,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.3333,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "$L_0(2) = \\frac{-2}{-3} = 0.6667$ and $L_1(2) = \\frac{1}{3} = 0.3333$. Then $P(2) = 1(0.6667) + 2(0.3333) = \\frac{4}{3} = 1.3333$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-026",
+      "format": "cloze",
+      "stem": "Form the divided-difference table for $f(x) = \\ln x$ at $x_0 = 1$, $x_1 = 2$, $x_2 = 4$, with $f = 0,\\ 0.6931,\\ 1.3863$.",
+      "solution": "The first differences are $f[x_0, x_1] =$ {{1}} and $f[x_1, x_2] = \\dfrac{1.3863 - 0.6931}{2} =$ {{2}}. The second difference $f[x_0, x_1, x_2] = \\dfrac{f[x_1,x_2] - f[x_0,x_1]}{4 - 1}$ is about {{3}} (four decimals).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.6931,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.3466,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -0.1155,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "$f[x_0, x_1] = \\frac{0.6931 - 0}{1} = 0.6931$ and $f[x_1, x_2] = \\frac{0.6932}{2} = 0.3466$. Then $f[x_0, x_1, x_2] = \\frac{0.3466 - 0.6931}{3} = \\frac{-0.3466}{3} = -0.1155$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-027",
+      "format": "cloze",
+      "stem": "Fit the least-squares line to $(0, 1), (1, 3), (2, 2), (3, 4)$ using $\\sum x = 6$, $\\sum y = 10$, $\\sum xy = 19$, $\\sum x^2 = 14$, $n = 4$.",
+      "solution": "The slope is $m = \\dfrac{4(19) - 6(10)}{4(14) - 36} =$ {{1}}. The intercept is $b = \\dfrac{10 - m(6)}{4} =$ {{2}}. Because there are more points than coefficients, the line {{3}} every data point.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.8,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.3,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "need not pass through",
+            "must pass through",
+            "is tangent to",
+            "avoids"
+          ],
+          "answer": "need not pass through"
+        }
+      ],
+      "explanation": "$m = \\frac{76 - 60}{56 - 36} = \\frac{16}{20} = 0.8$ and $b = \\frac{10 - 4.8}{4} = \\frac{5.2}{4} = 1.3$. A least-squares fit to an overdetermined system minimizes squared error and need not pass through any point.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-028",
+      "format": "cloze",
+      "stem": "Recall the structure and smoothness of a cubic spline on $n + 1$ nodes (so $n$ subintervals).",
+      "solution": "Each of the $n$ pieces is a cubic with {{1}} coefficients, for $4n$ unknowns in total. At each interior knot the spline matches in value and in its first and {{2}} derivatives. The {{3}} spline sets the second derivative to zero at both ends.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "second",
+            "third",
+            "fourth",
+            "zeroth"
+          ],
+          "answer": "second"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "natural",
+            "clamped",
+            "periodic",
+            "linear"
+          ],
+          "answer": "natural"
+        }
+      ],
+      "explanation": "A cubic has $4$ coefficients per piece, so $4n$ unknowns. Cubic splines are $C^2$, matching value and first and second derivatives at knots. The natural spline imposes $S'' = 0$ at the endpoints.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-029",
+      "format": "cloze",
+      "stem": "Recall the interpolation error formula and which nodes reduce it.",
+      "solution": "For a degree-$n$ interpolant the error is $f(x) - P_n(x) = \\dfrac{f^{(k)}(\\xi)}{k!}\\prod_i (x - x_i)$, where the derivative order $k$ equals {{1}}. Choosing {{2}} nodes minimizes the maximum of the node product. The wild end oscillation seen with equally spaced nodes is the {{3}} phenomenon.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$n + 1$",
+            "$n$",
+            "$n - 1$",
+            "$2n$"
+          ],
+          "answer": "$n + 1$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "Chebyshev",
+            "equally spaced",
+            "random",
+            "midpoint"
+          ],
+          "answer": "Chebyshev"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Runge",
+            "Gibbs",
+            "Gauss",
+            "Euler"
+          ],
+          "answer": "Runge"
+        }
+      ],
+      "explanation": "Interpolating with $n + 1$ nodes uses the $(n+1)$th derivative, so $k = n + 1$. Chebyshev nodes minimize the maximum node product. Equally spaced high-degree interpolation shows the Runge phenomenon.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-and-approximation-030",
+      "format": "cloze",
+      "stem": "Match each classical orthogonal family with its interval and weight.",
+      "solution": "Legendre polynomials are orthogonal on $[-1, 1]$ with weight {{1}}. Chebyshev polynomials use the weight $\\dfrac{1}{\\sqrt{1 - x^2}}$ and satisfy $T_n(x) = \\cos(n\\,\\theta)$ with $\\theta = $ {{2}}. Such families are orthogonal in the sense that a certain weighted {{3}} of distinct members vanishes.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$1$",
+            "$e^{-x}$",
+            "$e^{-x^2}$",
+            "$\\frac{1}{x}$"
+          ],
+          "answer": "$1$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\arccos x$",
+            "$\\arcsin x$",
+            "$\\arctan x$",
+            "$x$"
+          ],
+          "answer": "$\\arccos x$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "integral",
+            "sum",
+            "product",
+            "derivative"
+          ],
+          "answer": "integral"
+        }
+      ],
+      "explanation": "Legendre polynomials use weight $1$ on $[-1, 1]$. Chebyshev polynomials satisfy $T_n(x) = \\cos(n \\arccos x)$. Orthogonality means the weighted integral of the product of two distinct members is zero.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    }
+  ]
+}

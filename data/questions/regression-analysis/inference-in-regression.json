@@ -1,0 +1,501 @@
+{
+  "courseId": "regression-analysis",
+  "topicId": "inference-in-regression",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "regression-analysis-inference-in-regression-001",
+      "stem": "In simple linear regression the total sum of squares is partitioned as which of the following?",
+      "options": [
+        "$SSR = SST + SSE$",
+        "$SST = SSR \\times SSE$",
+        "$SST = SSR + SSE$",
+        "$SSE = SSR + SST$"
+      ],
+      "answer": 2,
+      "explanation": "The analysis-of-variance identity for regression is $SST = SSR + SSE$, where $SST$ is the total corrected sum of squares, $SSR$ is the sum of squares explained by the regression, and $SSE$ is the residual (error) sum of squares.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-002",
+      "stem": "The coefficient of determination $R^2$ is defined as which ratio?",
+      "options": [
+        "$SST / SSR$",
+        "$SSE / SST$",
+        "$SSR / SSE$",
+        "$SSR / SST$"
+      ],
+      "answer": 3,
+      "explanation": "$R^2 = SSR/SST = 1 - SSE/SST$. It is the proportion of the total variability in $y$ that is explained by the fitted regression model.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-003",
+      "stem": "In simple linear regression, the error mean square $MS_E = SSE/(n-2)$ is an estimate of what?",
+      "options": [
+        "the slope $\\beta_1$",
+        "the correlation coefficient",
+        "the total sum of squares",
+        "the error variance $\\sigma^2$"
+      ],
+      "answer": 3,
+      "explanation": "$MS_E = SSE/(n-2)$ is the unbiased estimator $\\hat{\\sigma}^2$ of the error variance $\\sigma^2$. The divisor $n-2$ is the residual degrees of freedom (two parameters, slope and intercept, are estimated).",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-004",
+      "stem": "The standard error of the slope estimator $\\hat{\\beta}_1$ in simple linear regression is given by which expression?",
+      "options": [
+        "$\\sqrt{MS_E / S_{xx}}$",
+        "$MS_E / S_{xx}$",
+        "$\\sqrt{MS_E \\, S_{xx}}$",
+        "$\\sqrt{MS_E / n}$"
+      ],
+      "answer": 0,
+      "explanation": "The variance of $\\hat{\\beta}_1$ is $\\sigma^2/S_{xx}$, estimated by $MS_E/S_{xx}$. Taking the square root gives the standard error $se(\\hat{\\beta}_1) = \\sqrt{MS_E/S_{xx}}$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-005",
+      "stem": "To test $H_0: \\beta_1 = 0$ against $H_1: \\beta_1 \\neq 0$, the usual test statistic is which of the following, and it follows what reference distribution?",
+      "options": [
+        "$z_0 = \\hat{\\beta}_1 / se(\\hat{\\beta}_1)$, a standard normal regardless of $n$",
+        "$t_0 = se(\\hat{\\beta}_1) / \\hat{\\beta}_1$, a $t$ distribution with $n-1$ degrees of freedom",
+        "$F_0 = \\hat{\\beta}_1 / se(\\hat{\\beta}_1)$, a chi-square distribution",
+        "$t_0 = \\hat{\\beta}_1 / se(\\hat{\\beta}_1)$, a $t$ distribution with $n-2$ degrees of freedom"
+      ],
+      "answer": 3,
+      "explanation": "The statistic is $t_0 = \\hat{\\beta}_1/se(\\hat{\\beta}_1)$, which under $H_0$ has a $t$ distribution with $n-2$ degrees of freedom. Large $|t_0|$ provides evidence against $\\beta_1 = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-006",
+      "stem": "A regression on $n = 5$ points yields $SSE = 7.5$. What is the error mean square $MS_E$?",
+      "options": [
+        "2.50",
+        "1.50",
+        "1.88",
+        "3.75"
+      ],
+      "answer": 0,
+      "explanation": "$MS_E = SSE/(n-2) = 7.5/(5-2) = 7.5/3 = 2.50$. The degrees of freedom for error in simple linear regression is $n-2 = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-007",
+      "stem": "With $MS_E = 2.5$ and $S_{xx} = 10$, what is the standard error of the slope $\\hat{\\beta}_1$?",
+      "options": [
+        "0.16",
+        "0.25",
+        "0.50",
+        "5.00"
+      ],
+      "answer": 2,
+      "explanation": "$se(\\hat{\\beta}_1) = \\sqrt{MS_E/S_{xx}} = \\sqrt{2.5/10} = \\sqrt{0.25} = 0.50$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-008",
+      "stem": "A fitted slope is $\\hat{\\beta}_1 = 6.5$ with standard error $se(\\hat{\\beta}_1) = 0.5$. What is the value of the $t$ statistic for testing $H_0: \\beta_1 = 0$?",
+      "options": [
+        "13.0",
+        "0.077",
+        "3.25",
+        "7.0"
+      ],
+      "answer": 0,
+      "explanation": "$t_0 = \\hat{\\beta}_1/se(\\hat{\\beta}_1) = 6.5/0.5 = 13.0$. This large value strongly rejects $H_0: \\beta_1 = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-009",
+      "stem": "In the ANOVA approach to testing significance of regression, the regression mean square has how many degrees of freedom in simple linear regression?",
+      "options": [
+        "$n - 2$",
+        "$n$",
+        "$n - 1$",
+        "$1$"
+      ],
+      "answer": 3,
+      "explanation": "In simple linear regression there is a single predictor, so the regression (model) sum of squares has $1$ degree of freedom. The error sum of squares has $n-2$, and the total has $n-1$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-010",
+      "stem": "The ANOVA $F$ statistic for significance of regression in simple linear regression is computed as which ratio?",
+      "options": [
+        "$SST / MS_E$",
+        "$MS_R / MS_E$",
+        "$SSR / SSE$",
+        "$MS_E / MS_R$"
+      ],
+      "answer": 1,
+      "explanation": "$F_0 = MS_R/MS_E$, where $MS_R = SSR/1$ and $MS_E = SSE/(n-2)$. Under $H_0: \\beta_1 = 0$ it follows an $F_{1, n-2}$ distribution.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-011",
+      "stem": "A regression gives $SSR = 422.5$, $SSE = 7.5$, and $n = 5$. What is the ANOVA $F$ statistic for significance of regression?",
+      "options": [
+        "169.0",
+        "56.3",
+        "84.5",
+        "16.9"
+      ],
+      "answer": 0,
+      "explanation": "$MS_R = SSR/1 = 422.5$ and $MS_E = SSE/(n-2) = 7.5/3 = 2.5$. Then $F_0 = MS_R/MS_E = 422.5/2.5 = 169.0$. (Note also $F_0 = t_0^2 = 13^2 = 169$.)",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-012",
+      "stem": "In simple linear regression, the ANOVA $F$ statistic and the $t$ statistic for the slope are related how?",
+      "options": [
+        "$F_0 = \\sqrt{t_0}$",
+        "$F_0 = t_0^2$",
+        "$F_0 = 2 t_0$",
+        "$F_0 = t_0$"
+      ],
+      "answer": 1,
+      "explanation": "For testing the single slope, the $F$ test and the two-sided $t$ test are equivalent, with $F_0 = t_0^2$. For example $t_0 = 13$ gives $F_0 = 169$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-013",
+      "stem": "A regression reports $SST = 430$ and $SSE = 7.5$. What is the coefficient of determination $R^2$?",
+      "options": [
+        "0.9913",
+        "0.0174",
+        "0.9826",
+        "0.5733"
+      ],
+      "answer": 2,
+      "explanation": "$R^2 = 1 - SSE/SST = 1 - 7.5/430 = 1 - 0.01744 = 0.9826$. About 98.3 percent of the variation in $y$ is explained by the model.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-014",
+      "stem": "A $100(1-\\alpha)$ percent confidence interval for the slope $\\beta_1$ has which form?",
+      "options": [
+        "$\\hat{\\beta}_1 \\pm t_{\\alpha/2, \\, n-1} \\, S_{xx}$",
+        "$\\hat{\\beta}_1 \\pm t_{\\alpha/2, \\, n-2} \\, se(\\hat{\\beta}_1)$",
+        "$\\hat{\\beta}_1 \\pm t_{\\alpha, \\, n-2} \\, MS_E$",
+        "$\\hat{\\beta}_1 \\pm z_{\\alpha/2} \\, se(\\hat{\\beta}_1)$"
+      ],
+      "answer": 1,
+      "explanation": "The confidence interval is $\\hat{\\beta}_1 \\pm t_{\\alpha/2, \\, n-2} \\, se(\\hat{\\beta}_1)$, using the $t$ distribution with $n-2$ degrees of freedom because $\\sigma^2$ is estimated by $MS_E$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-015",
+      "stem": "A slope estimate is $\\hat{\\beta}_1 = 6.5$ with $se(\\hat{\\beta}_1) = 0.5$, and $t_{0.025, 3} = 3.182$. What is the 95 percent confidence interval for $\\beta_1$?",
+      "options": [
+        "$(4.91, 8.09)$",
+        "$(6.00, 7.00)$",
+        "$(5.50, 7.50)$",
+        "$(3.32, 9.68)$"
+      ],
+      "answer": 0,
+      "explanation": "Margin $= t_{0.025,3} \\, se(\\hat{\\beta}_1) = 3.182 \\times 0.5 = 1.591$. Interval $= 6.5 \\pm 1.591 = (4.909, 8.091)$, which rounds to $(4.91, 8.09)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-016",
+      "stem": "If the 95 percent confidence interval for the slope $\\beta_1$ is $(4.91, 8.09)$, what can be concluded about the test of $H_0: \\beta_1 = 0$ at the 5 percent level?",
+      "options": [
+        "the test is inconclusive without the $F$ value",
+        "reject $H_0$, because the interval contains 0",
+        "reject $H_0$, because 0 is not contained in the interval",
+        "fail to reject $H_0$, since the interval is wide"
+      ],
+      "answer": 2,
+      "explanation": "A two-sided test at level $\\alpha$ rejects $H_0: \\beta_1 = 0$ exactly when the $100(1-\\alpha)$ percent confidence interval excludes 0. Here the interval $(4.91, 8.09)$ does not contain 0, so $H_0$ is rejected.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-017",
+      "stem": "A regression has $SSR = 44.8$, $SSE = 4.5333$, and $n = 6$. The $F$ statistic for significance of regression is approximately which value?",
+      "options": [
+        "9.88",
+        "29.65",
+        "4.48",
+        "39.53"
+      ],
+      "answer": 3,
+      "explanation": "$MS_R = 44.8/1 = 44.8$ and $MS_E = 4.5333/(6-2) = 4.5333/4 = 1.1333$. Then $F_0 = 44.8/1.1333 = 39.53$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-018",
+      "stem": "An $R^2$ of 0.98 in a regression of $y$ on $x$ tells you which of the following?",
+      "options": [
+        "the errors are exactly normally distributed",
+        "98 percent of the variation in $y$ is explained by the linear relationship with $x$",
+        "the model will predict perfectly for new data",
+        "the slope equals 0.98"
+      ],
+      "answer": 1,
+      "explanation": "$R^2 = 0.98$ means 98 percent of the total variability in the response is accounted for by the fitted model. It does not equal the slope, does not guarantee good out-of-sample prediction, and says nothing directly about normality of errors.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-019",
+      "stem": "Holding everything else fixed, increasing the spread of the predictor values (larger $S_{xx}$) has what effect on the standard error of the slope?",
+      "options": [
+        "it changes only the intercept estimate",
+        "it has no effect on the standard error",
+        "it decreases the standard error",
+        "it increases the standard error"
+      ],
+      "answer": 2,
+      "explanation": "Since $se(\\hat{\\beta}_1) = \\sqrt{MS_E/S_{xx}}$, a larger $S_{xx}$ in the denominator makes the standard error smaller. Spreading the $x$ values out gives a more precise slope estimate.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-020",
+      "stem": "In the regression ANOVA table, what are the degrees of freedom for total, regression, and error when $n = 20$ in simple linear regression?",
+      "options": [
+        "total 18, regression 2, error 16",
+        "total 19, regression 1, error 18",
+        "total 19, regression 2, error 17",
+        "total 20, regression 1, error 19"
+      ],
+      "answer": 1,
+      "explanation": "Total df $= n-1 = 19$, regression df $= 1$ (one predictor), error df $= n-2 = 18$. As a check, $1 + 18 = 19$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-021",
+      "stem": "Which statement about the relationship between the regression sum of squares and the slope is correct in simple linear regression?",
+      "options": [
+        "$SSR = \\hat{\\beta}_1 \\, S_{xy}$",
+        "$SSR = \\hat{\\beta}_1^2 \\, S_{yy}$",
+        "$SSR = S_{xy} / S_{xx}$",
+        "$SSR = \\hat{\\beta}_1 \\, S_{yy}$"
+      ],
+      "answer": 0,
+      "explanation": "Since $\\hat{\\beta}_1 = S_{xy}/S_{xx}$, the explained sum of squares is $SSR = \\hat{\\beta}_1 S_{xy} = S_{xy}^2/S_{xx}$. This is the part of $S_{yy}$ accounted for by the regression.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-022",
+      "stem": "A small $p$-value (for example $p = 0.001$) for the slope in a regression output indicates what?",
+      "options": [
+        "strong evidence against $H_0: \\beta_1 = 0$, that is, a significant linear relationship",
+        "the residuals are independent",
+        "the slope is practically large in size",
+        "the model fits the data perfectly"
+      ],
+      "answer": 0,
+      "explanation": "A small $p$-value gives strong evidence to reject $H_0: \\beta_1 = 0$, indicating a statistically significant linear relationship. Statistical significance is about evidence against the null, not the practical magnitude of the slope or perfection of fit.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-023",
+      "format": "cloze",
+      "stem": "A simple linear regression on $n = 5$ observations gives $SST = 430$, $SSR = 422.5$, and $SSE = 7.5$. Complete the ANOVA summary.",
+      "solution": "The error degrees of freedom are $n - 2 =$ {{1}}. The error mean square is $MS_E = SSE/(n-2) =$ {{2}}. The coefficient of determination is $R^2 = SSR/SST =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.983,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Error df $= 5 - 2 = 3$. $MS_E = 7.5/3 = 2.5$. $R^2 = 422.5/430 = 0.9826 \\approx 0.983$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-024",
+      "format": "cloze",
+      "stem": "Continuing the regression with $MS_E = 2.5$, slope $\\hat{\\beta}_1 = 6.5$, and $S_{xx} = 10$, carry out the slope test.",
+      "solution": "The standard error of the slope is $se(\\hat{\\beta}_1) = \\sqrt{MS_E/S_{xx}} =$ {{1}}. The test statistic is $t_0 = \\hat{\\beta}_1/se(\\hat{\\beta}_1) =$ {{2}}. The corresponding ANOVA statistic is $F_0 = t_0^2 =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 13,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 169,
+          "tolerance": 0.1
+        }
+      ],
+      "explanation": "$se = \\sqrt{2.5/10} = \\sqrt{0.25} = 0.5$. $t_0 = 6.5/0.5 = 13$. $F_0 = 13^2 = 169$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-025",
+      "format": "cloze",
+      "stem": "Fill in the structure of the regression ANOVA table for simple linear regression with sample size $n$.",
+      "solution": "The total sum of squares splits as $SST = SSR +$ {{1}}. The degrees of freedom for the regression source is {{2}}, and the degrees of freedom for error is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$SSE$",
+            "$MS_E$",
+            "$S_{xx}$"
+          ],
+          "answer": "$SSE$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "n-2",
+            "n - 2",
+            "$n-2$",
+            "n minus 2"
+          ]
+        }
+      ],
+      "explanation": "$SST = SSR + SSE$. The regression source has 1 degree of freedom (single predictor), and error has $n-2$ degrees of freedom.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-026",
+      "format": "cloze",
+      "stem": "A regression on $n = 6$ points has $SSR = 44.8$ and $SSE = 4.5333$.",
+      "solution": "The error mean square is $MS_E = SSE/(n-2) =$ {{1}} (rounded to 3 decimals). The $F$ statistic for significance of regression is $F_0 = SSR/MS_E =$ {{2}} (rounded to 2 decimals). A large $F$ value provides evidence that the slope is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.133,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 39.53,
+          "tolerance": 0.05
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "nonzero",
+            "exactly zero",
+            "negative"
+          ],
+          "answer": "nonzero"
+        }
+      ],
+      "explanation": "$MS_E = 4.5333/4 = 1.1333 \\approx 1.133$. $F_0 = 44.8/1.1333 = 39.53$. A large $F$ rejects $H_0: \\beta_1 = 0$, evidence that the slope is nonzero.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-027",
+      "format": "cloze",
+      "stem": "Interpret a regression output where $R^2 = 0.60$ and the residual sum of squares is $SSE = 2.4$ on $n = 5$ observations.",
+      "solution": "The fraction of variation in $y$ explained by the model is {{1}}. The total sum of squares is $SST = SSE/(1 - R^2) =$ {{2}}. The unexplained sum of squares as a fraction of the total is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.6,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.4,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "$R^2 = 0.60$ is the explained fraction. Since $SSE/SST = 1 - R^2 = 0.4$, we get $SST = 2.4/0.4 = 6$. The unexplained fraction is $1 - R^2 = 0.4$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-inference-in-regression-028",
+      "format": "cloze",
+      "stem": "A 95 percent confidence interval for the slope is built from $\\hat{\\beta}_1 = 6.5$, $se(\\hat{\\beta}_1) = 0.5$, and $t_{0.025, 3} = 3.182$.",
+      "solution": "The margin of error is $t \\times se =$ {{1}} (rounded to 3 decimals). The lower confidence limit is {{2}} and the upper confidence limit is {{3}} (each rounded to 3 decimals).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.591,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4.909,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 8.091,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Margin $= 3.182 \\times 0.5 = 1.591$. Lower $= 6.5 - 1.591 = 4.909$, upper $= 6.5 + 1.591 = 8.091$. Since 0 lies outside, the slope is significant at the 5 percent level.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    }
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "courseId": "complex-analysis",
+  "topicId": "complex-integration",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "complex-analysis-complex-integration-001",
+      "stem": "For a contour $C$ parametrized by $z(t)$, $a \\le t \\le b$, the contour integral $\\int_C f(z)\\,dz$ equals:",
+      "options": [
+        "$\\int_a^b f(z(t)) z'(t)\\,dt$",
+        "$\\int_a^b f(z(t))\\,dt$",
+        "$\\int_a^b f'(z(t)) z'(t)\\,dt$",
+        "$\\int_a^b f(z(t))\\,|z'(t)|\\,dt$"
+      ],
+      "answer": 0,
+      "explanation": "The contour integral is computed by substitution: $\\int_C f(z)\\,dz = \\int_a^b f(z(t)) z'(t)\\,dt$, where $dz = z'(t)\\,dt$. The factor $|z'(t)|$ (arc length) appears for integration with respect to $ds$, not $dz$, and there is no derivative on $f$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-002",
+      "stem": "A natural parametrization of the circle $|z| = R$, traversed once counterclockwise, is:",
+      "options": [
+        "$z(t) = R e^{-it}$, $0 \\le t \\le 2\\pi$",
+        "$z(t) = R + e^{it}$, $0 \\le t \\le 2\\pi$",
+        "$z(t) = R e^{it}$, $0 \\le t \\le 2\\pi$",
+        "$z(t) = R t$, $0 \\le t \\le 2\\pi$"
+      ],
+      "answer": 2,
+      "explanation": "The standard counterclockwise circle of radius $R$ centered at the origin is $z(t) = R e^{it}$ for $t \\in [0, 2\\pi]$, with $z'(t) = iR e^{it}$. The form $R e^{-it}$ goes clockwise, $R + e^{it}$ is a unit circle centered at $R$, and $Rt$ is a line segment.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-003",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=1} \\frac{dz}{z}$ counterclockwise.",
+      "options": [
+        "$0$",
+        "$1$",
+        "$\\pi i$",
+        "$2\\pi i$"
+      ],
+      "answer": 3,
+      "explanation": "Parametrize $z = e^{it}$, $dz = i e^{it}\\,dt$, so $\\oint \\frac{dz}{z} = \\int_0^{2\\pi} \\frac{i e^{it}}{e^{it}}\\,dt = \\int_0^{2\\pi} i\\,dt = 2\\pi i$. This is the fundamental integral underlying the residue theorem; the integral of $1/z$ around the origin is $2\\pi i$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-004",
+      "stem": "For integer $n \\neq -1$, the value of $\\displaystyle \\oint_{|z|=1} z^n\\,dz$ is:",
+      "options": [
+        "$2\\pi i$",
+        "$0$",
+        "$\\pi i$",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "With $z = e^{it}$, $\\oint z^n\\,dz = \\int_0^{2\\pi} e^{int}\\cdot i e^{it}\\,dt = i\\int_0^{2\\pi} e^{i(n+1)t}\\,dt$. For $n \\neq -1$ the exponent $n+1 \\neq 0$, and the integral of $e^{i(n+1)t}$ over a full period is $0$. Only $n = -1$ gives the nonzero answer $2\\pi i$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-005",
+      "stem": "The Cauchy-Goursat theorem states that if $f$ is analytic on and inside a simple closed contour $C$, then:",
+      "options": [
+        "$\\oint_C f(z)\\,dz = 2\\pi i$.",
+        "$\\oint_C f(z)\\,dz = \\pi i\\, f'(0)$.",
+        "$\\oint_C f(z)\\,dz = 0$.",
+        "$\\oint_C f(z)\\,dz = f(0)$."
+      ],
+      "answer": 2,
+      "explanation": "The Cauchy-Goursat theorem asserts $\\oint_C f(z)\\,dz = 0$ whenever $f$ is analytic on a simply connected region containing the closed contour $C$. Analyticity throughout the enclosed region is the key hypothesis; if there is a singularity inside, the integral need not vanish.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-006",
+      "stem": "Why is $\\displaystyle \\oint_{|z|=1} e^z\\,dz = 0$?",
+      "options": [
+        "Because $e^z$ is entire, so Cauchy-Goursat applies.",
+        "Because $e^z$ has a pole at the origin.",
+        "Because the residue of $e^z$ at $0$ is $1$.",
+        "Because $e^z$ is bounded on the circle."
+      ],
+      "answer": 0,
+      "explanation": "The function $e^z$ is entire (analytic everywhere), so on and inside any simple closed contour it satisfies the Cauchy-Goursat theorem, forcing the integral to be $0$. There is no singularity inside the circle; mere boundedness would not suffice, and an entire function has no poles or residues.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-007",
+      "stem": "The Cauchy integral formula states that for $f$ analytic on and inside $C$ and $z_0$ interior to $C$:",
+      "options": [
+        "$f(z_0) = \\dfrac{1}{2\\pi i}\\oint_C f(z)(z - z_0)\\,dz$",
+        "$f(z_0) = \\dfrac{1}{2\\pi i}\\oint_C \\dfrac{f(z)}{z - z_0}\\,dz$",
+        "$f(z_0) = \\oint_C \\dfrac{f(z)}{z - z_0}\\,dz$",
+        "$f(z_0) = \\dfrac{1}{2\\pi}\\oint_C \\dfrac{f(z)}{z - z_0}\\,dz$"
+      ],
+      "answer": 1,
+      "explanation": "The Cauchy integral formula is $f(z_0) = \\frac{1}{2\\pi i}\\oint_C \\frac{f(z)}{z - z_0}\\,dz$. The factor $\\frac{1}{2\\pi i}$ is essential (not $\\frac{1}{2\\pi}$ or absent), and the integrand has $z - z_0$ in the denominator, not multiplied.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-008",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=2} \\frac{e^z}{z - 1}\\,dz$.",
+      "options": [
+        "$0$",
+        "$2\\pi i\\, e$",
+        "$2\\pi i$",
+        "$\\pi i\\, e$"
+      ],
+      "answer": 1,
+      "explanation": "The point $z_0 = 1$ lies inside $|z| = 2$, and $f(z) = e^z$ is analytic there. By the Cauchy integral formula, $\\oint \\frac{e^z}{z-1}\\,dz = 2\\pi i\\, f(1) = 2\\pi i\\, e^1 = 2\\pi i\\, e$. The integral picks out the value of $e^z$ at the singularity.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-009",
+      "stem": "The derivative form of the Cauchy integral formula gives $f^{(n)}(z_0) =$",
+      "options": [
+        "$\\dfrac{1}{n!}\\oint_C \\dfrac{f(z)}{(z-z_0)^{n+1}}\\,dz$",
+        "$\\dfrac{n!}{2\\pi i}\\oint_C \\dfrac{f(z)}{(z-z_0)^{n}}\\,dz$",
+        "$\\dfrac{1}{2\\pi i}\\oint_C \\dfrac{f(z)}{(z-z_0)^{n}}\\,dz$",
+        "$\\dfrac{n!}{2\\pi i}\\oint_C \\dfrac{f(z)}{(z-z_0)^{n+1}}\\,dz$"
+      ],
+      "answer": 3,
+      "explanation": "The generalized formula is $f^{(n)}(z_0) = \\frac{n!}{2\\pi i}\\oint_C \\frac{f(z)}{(z - z_0)^{n+1}}\\,dz$. Note the factorial $n!$ in the numerator and the exponent $n+1$ on $z - z_0$. Both features are needed; the exponent being $n+1$ (not $n$) is a common slip.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-010",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=1} \\frac{\\cos z}{z^2}\\,dz$.",
+      "options": [
+        "$2\\pi$",
+        "$\\pi i$",
+        "$0$",
+        "$2\\pi i$"
+      ],
+      "answer": 2,
+      "explanation": "With $f(z) = \\cos z$ and $n = 1$ at $z_0 = 0$: $\\oint \\frac{\\cos z}{z^2}\\,dz = \\frac{2\\pi i}{1!} f'(0)$. Since $f'(z) = -\\sin z$ and $f'(0) = -\\sin 0 = 0$, the integral is $2\\pi i \\cdot 0 = 0$. The order-$2$ pole picks out the first derivative, which happens to vanish here.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-011",
+      "stem": "The ML inequality bounds a contour integral by:",
+      "options": [
+        "$\\left|\\int_C f\\,dz\\right| = M L$ always.",
+        "$\\left|\\int_C f\\,dz\\right| \\le M L$, where $M = \\max|f|$ on $C$ and $L$ is the length of $C$.",
+        "$\\left|\\int_C f\\,dz\\right| \\le \\dfrac{M}{L}$.",
+        "$\\left|\\int_C f\\,dz\\right| \\le M + L$, where $M = \\max|f|$ on $C$ and $L$ is the length of $C$."
+      ],
+      "answer": 1,
+      "explanation": "The ML inequality (estimation lemma) states $\\left|\\int_C f\\,dz\\right| \\le M L$, where $M$ is an upper bound for $|f(z)|$ on $C$ and $L$ is the arc length of $C$. It is an inequality, not an equality, and uses the product $M L$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-012",
+      "stem": "Using the ML inequality, an upper bound for $\\left|\\displaystyle\\oint_{|z|=2} \\frac{dz}{z^2 + 1}\\right|$ uses which $M$ and $L$?",
+      "options": [
+        "$M = \\dfrac{1}{3},\\ L = 4\\pi$, giving $\\dfrac{4\\pi}{3}$.",
+        "$M = \\dfrac{1}{4},\\ L = 4\\pi$, giving $\\pi$.",
+        "$M = 1,\\ L = 4\\pi$, giving $4\\pi$.",
+        "$M = \\dfrac{1}{5},\\ L = 2\\pi$, giving $\\dfrac{2\\pi}{5}$."
+      ],
+      "answer": 0,
+      "explanation": "On $|z| = 2$, $|z^2 + 1| \\ge |z|^2 - 1 = 4 - 1 = 3$, so $|f(z)| = \\frac{1}{|z^2+1|} \\le \\frac{1}{3}$, giving $M = 1/3$. The length is $L = 2\\pi(2) = 4\\pi$. Hence the bound is $ML = \\frac{4\\pi}{3}$. The reverse triangle inequality supplies the lower bound on the denominator.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-013",
+      "stem": "Evaluate $\\displaystyle \\int_C 2z\\,dz$ where $C$ is any contour from $0$ to $1 + i$.",
+      "options": [
+        "$1 + i$",
+        "$(1+i)^2 = 2i$",
+        "$0$",
+        "$2(1+i)$"
+      ],
+      "answer": 1,
+      "explanation": "Since $2z$ has the antiderivative $z^2$, the integral is path-independent: $\\int_C 2z\\,dz = z^2\\big|_0^{1+i} = (1+i)^2 - 0$. Now $(1+i)^2 = 1 + 2i + i^2 = 2i$. The fundamental theorem for contour integrals applies because the integrand is entire.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-014",
+      "stem": "When does a contour integral $\\int_C f(z)\\,dz$ depend only on the endpoints, not the path?",
+      "options": [
+        "When $f$ has an antiderivative on a domain containing $C$.",
+        "Only when $C$ is a straight line.",
+        "Never, for nonconstant $f$.",
+        "Always, for any continuous $f$."
+      ],
+      "answer": 0,
+      "explanation": "A contour integral is path-independent precisely when the integrand possesses an antiderivative $F$ (with $F' = f$) on a domain containing the contour; then $\\int_C f\\,dz = F(\\text{end}) - F(\\text{start})$. Analyticity on a simply connected domain guarantees such an antiderivative exists. Mere continuity is not enough.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-015",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=3} \\frac{dz}{z - 5}$.",
+      "options": [
+        "$\\pi i$",
+        "$0$",
+        "$-2\\pi i$",
+        "$2\\pi i$"
+      ],
+      "answer": 1,
+      "explanation": "The singularity at $z = 5$ lies outside $|z| = 3$ (since $5 > 3$), so the integrand $\\frac{1}{z-5}$ is analytic on and inside the contour. By Cauchy-Goursat the integral is $0$. The formula gives a nonzero answer only when the singularity is enclosed.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-016",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=2} \\frac{z}{z - 1}\\,dz$.",
+      "options": [
+        "$2\\pi i$",
+        "$4\\pi i$",
+        "$0$",
+        "$\\pi i$"
+      ],
+      "answer": 0,
+      "explanation": "Here $f(z) = z$ is analytic and $z_0 = 1$ lies inside $|z| = 2$. By the Cauchy integral formula $\\oint \\frac{z}{z-1}\\,dz = 2\\pi i\\, f(1) = 2\\pi i \\cdot 1 = 2\\pi i$. The numerator evaluated at the pole gives the residue $1$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-017",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=1} \\frac{e^{z}}{z}\\,dz$.",
+      "options": [
+        "$2\\pi i$",
+        "$0$",
+        "$\\pi i$",
+        "$2\\pi i\\, e$"
+      ],
+      "answer": 0,
+      "explanation": "With $f(z) = e^z$ analytic and $z_0 = 0$ inside the unit circle, the Cauchy integral formula gives $\\oint \\frac{e^z}{z}\\,dz = 2\\pi i\\, f(0) = 2\\pi i\\, e^0 = 2\\pi i$. The exponential evaluated at the origin is $1$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-018",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=1} \\frac{e^{z}}{z^3}\\,dz$.",
+      "options": [
+        "$0$",
+        "$\\pi i$",
+        "$2\\pi i$",
+        "$2\\pi i\\, e$"
+      ],
+      "answer": 1,
+      "explanation": "Use the derivative formula with $f(z) = e^z$, $n = 2$, $z_0 = 0$: $\\oint \\frac{e^z}{z^3}\\,dz = \\frac{2\\pi i}{2!} f''(0)$. Since $f''(z) = e^z$ and $f''(0) = 1$, this is $\\frac{2\\pi i}{2}\\cdot 1 = \\pi i$. The pole of order $3$ extracts the second derivative.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-019",
+      "stem": "On the contour $C$ given by $|z| = 1$, what is the arc length $L$ used in the ML inequality?",
+      "options": [
+        "$2\\pi$",
+        "$4\\pi$",
+        "$\\pi$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "The length of the full unit circle is its circumference $L = 2\\pi r = 2\\pi(1) = 2\\pi$. This is the $L$ that multiplies the maximum modulus $M$ in the estimate $|\\int_C f\\,dz| \\le ML$. A radius-$1$ circle has length $2\\pi$, not $1$ or $4\\pi$.",
+      "difficulty": "warmup",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-020",
+      "stem": "Evaluate $\\displaystyle \\int_C \\frac{dz}{z}$ where $C$ is the upper semicircle $z = e^{it}$, $0 \\le t \\le \\pi$, from $1$ to $-1$.",
+      "options": [
+        "$-\\pi i$",
+        "$2\\pi i$",
+        "$\\pi i$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "Parametrize directly: $\\int_C \\frac{dz}{z} = \\int_0^{\\pi} \\frac{i e^{it}}{e^{it}}\\,dt = \\int_0^{\\pi} i\\,dt = i\\pi$. Equivalently $\\operatorname{Log}(-1) - \\operatorname{Log}(1) = i\\pi - 0 = i\\pi$ along this branch. This is half the full-circle value of $2\\pi i$.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-021",
+      "stem": "Reversing the orientation of a contour $C$ to $-C$ changes the integral how?",
+      "options": [
+        "$\\int_{-C} f\\,dz = -\\int_C f\\,dz$",
+        "$\\int_{-C} f\\,dz = 0$",
+        "$\\int_{-C} f\\,dz = \\overline{\\int_C f\\,dz}$",
+        "$\\int_{-C} f\\,dz = \\int_C f\\,dz$"
+      ],
+      "answer": 0,
+      "explanation": "Reversing orientation negates the integral: $\\int_{-C} f\\,dz = -\\int_C f\\,dz$. This follows from reversing the limits in the parametrized integral. Orientation matters in contour integration, so a clockwise traversal flips the sign of the counterclockwise result.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-022",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=2} \\frac{\\sin z}{z}\\,dz$.",
+      "options": [
+        "$2\\pi$",
+        "$2\\pi i$",
+        "$0$",
+        "$\\pi i$"
+      ],
+      "answer": 2,
+      "explanation": "By the Cauchy integral formula with $f(z) = \\sin z$ and $z_0 = 0$: $\\oint \\frac{\\sin z}{z}\\,dz = 2\\pi i\\, f(0) = 2\\pi i\\,\\sin 0 = 2\\pi i \\cdot 0 = 0$. Although the formula applies, the value $\\sin 0 = 0$ makes the integral vanish.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-023",
+      "stem": "The principle of deformation of contours says that if $f$ is analytic in the region between two contours $C_1$ and $C_2$ (both enclosing the same singularities), then:",
+      "options": [
+        "both integrals are zero.",
+        "$\\oint_{C_1} f\\,dz = -\\oint_{C_2} f\\,dz$.",
+        "$\\oint_{C_1} f\\,dz$ and $\\oint_{C_2} f\\,dz$ are unrelated.",
+        "$\\oint_{C_1} f\\,dz = \\oint_{C_2} f\\,dz$ (same orientation)."
+      ],
+      "answer": 3,
+      "explanation": "If $f$ is analytic in the annular region between $C_1$ and $C_2$, the integral is unchanged under continuous deformation: $\\oint_{C_1} f\\,dz = \\oint_{C_2} f\\,dz$ when both are traversed in the same sense. This lets one replace an awkward contour with a convenient circle around a singularity.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-024",
+      "stem": "Evaluate $\\displaystyle \\oint_{|z|=3} \\left( \\frac{1}{z - 1} + \\frac{1}{z - 2} \\right) dz$.",
+      "options": [
+        "$0$",
+        "$6\\pi i$",
+        "$2\\pi i$",
+        "$4\\pi i$"
+      ],
+      "answer": 3,
+      "explanation": "Both singularities $z = 1$ and $z = 2$ lie inside $|z| = 3$. Each term contributes $\\oint \\frac{dz}{z - z_0} = 2\\pi i$ by the Cauchy integral formula (with $f \\equiv 1$). Summing, $2\\pi i + 2\\pi i = 4\\pi i$. The integral is additive over the two simple poles.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-025",
+      "format": "cloze",
+      "stem": "Evaluate the basic contour integral $\\oint_{|z|=1} z^{-1}\\,dz$ by direct parametrization.",
+      "solution": "Using $z = e^{it}$ with $dz = i e^{it}\\,dt$, the integrand $z^{-1}\\,dz$ becomes $i\\,dt$. Integrating from $0$ to $2\\pi$ gives $i$ times the number {{1}}, so the integral equals $2\\pi i$. Its real part is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6.283185307,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\oint \\frac{dz}{z} = \\int_0^{2\\pi} i\\,dt = i(2\\pi) = 2\\pi i$. Here $2\\pi \\approx 6.2832$, and the result $2\\pi i$ is purely imaginary, so its real part is $0$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-026",
+      "format": "cloze",
+      "stem": "Apply the Cauchy integral formula to $\\oint_{|z|=2} \\frac{e^z}{z - 1}\\,dz$.",
+      "solution": "The singularity $z_0 = 1$ {{1}} inside $|z| = 2$, and $f(z) = e^z$ is analytic there. The formula gives $2\\pi i\\, f(1)$, where $f(1) = e^1$. So the integral is $2\\pi i$ times $e$, and the coefficient of $\\pi i$ in the answer is {{2}} times $e$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "lies",
+            "does not lie"
+          ],
+          "answer": "lies"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $|1| = 1 < 2$, the pole lies inside the contour. The Cauchy integral formula yields $2\\pi i\\, e^1 = 2\\pi i\\, e$, so the coefficient of $\\pi i$ is $2e$, that is $2$ times $e$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-027",
+      "format": "cloze",
+      "stem": "Use the derivative form of the Cauchy integral formula on $\\oint_{|z|=1} \\frac{e^z}{z^3}\\,dz$.",
+      "solution": "Matching $\\frac{f(z)}{(z-z_0)^{n+1}}$ with $z_0 = 0$ and exponent $3$ gives $n$ equal to the integer {{1}}. The formula gives $\\frac{2\\pi i}{n!} f^{(n)}(0)$ with $f(z) = e^z$, so $f^{(n)}(0) = 1$, and the integral equals $\\pi i$ times the number {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The exponent $n + 1 = 3$ gives $n = 2$. Then $\\frac{2\\pi i}{2!} f''(0) = \\frac{2\\pi i}{2}\\cdot 1 = \\pi i$. So the integral is $\\pi i$, that is $\\pi i$ times $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-028",
+      "format": "cloze",
+      "stem": "Decide the value of $\\oint_{|z|=3} \\frac{dz}{z - 5}$ from the location of the singularity.",
+      "solution": "The singularity at $z = 5$ {{1}} the contour $|z| = 3$, since $5 > 3$. With the integrand analytic on and inside $C$, the Cauchy-Goursat theorem makes the integral equal to the number {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "lies outside",
+            "lies inside",
+            "lies on"
+          ],
+          "answer": "lies outside"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Because $5 > 3$, the pole at $z = 5$ is outside $|z| = 3$, so $\\frac{1}{z-5}$ is analytic inside the contour. Cauchy-Goursat then gives integral $0$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-029",
+      "format": "cloze",
+      "stem": "Bound $\\left|\\oint_{|z|=2} \\frac{dz}{z^2+1}\\right|$ with the ML inequality.",
+      "solution": "On $|z| = 2$, the reverse triangle inequality gives $|z^2 + 1| \\ge 4 - 1 = 3$, so $M = 1/3$. The contour length is $L = 2\\pi(2)$, so writing $L = c\\pi$ the coefficient $c$ is the integer {{1}}. The bound $ML$ is then $\\frac{4\\pi}{3}$, whose denominator is the integer {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Here $M = 1/3$ and $L = 2\\pi(2) = 4\\pi$, so $L = 4\\pi$ means the coefficient of $\\pi$ is $4$. The bound is $ML = \\frac{1}{3}\\cdot 4\\pi = \\frac{4\\pi}{3}$, with denominator $3$.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-complex-integration-030",
+      "format": "cloze",
+      "stem": "Evaluate $\\int_C 2z\\,dz$ along any path from $0$ to $1 + i$ using an antiderivative.",
+      "solution": "An antiderivative of $2z$ is $z^2$, so the integral equals $(1+i)^2 - 0^2$. Expanding $(1+i)^2 = 1 + 2i + i^2$ gives a purely imaginary result whose imaginary coefficient is {{1}}, so the value is {{2}}$i$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $z^2$ is an antiderivative, the integral is path-independent: $z^2\\big|_0^{1+i} = (1+i)^2 = 1 + 2i - 1 = 2i$. The imaginary coefficient is $2$, so the value is $2i$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    }
+  ]
+}

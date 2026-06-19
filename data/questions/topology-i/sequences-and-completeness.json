@@ -1,0 +1,483 @@
+{
+  "courseId": "topology-i",
+  "topicId": "sequences-and-completeness",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "topology-i-sequences-and-completeness-001",
+      "stem": "A sequence $(x_n)$ in a metric space $(X, d)$ converges to $x$ when:",
+      "options": [
+        "the sequence is bounded.",
+        "$d(x_{n+1}, x_n) \\to 0$.",
+        "the terms are eventually constant.",
+        "for every $\\varepsilon > 0$ there is $N$ such that $d(x_n, x) < \\varepsilon$ for all $n \\ge N$."
+      ],
+      "answer": 3,
+      "explanation": "Convergence $x_n \\to x$ means the terms eventually stay within every prescribed distance of $x$: for each $\\varepsilon > 0$ there is $N$ with $d(x_n, x) < \\varepsilon$ once $n \\ge N$. Bounded or consecutive-terms-close are weaker conditions.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-002",
+      "stem": "A sequence $(x_n)$ in $(X, d)$ is a Cauchy sequence when:",
+      "options": [
+        "for every $\\varepsilon > 0$ there is $N$ such that $d(x_m, x_n) < \\varepsilon$ for all $m, n \\ge N$.",
+        "it converges to a limit in $X$.",
+        "it is monotone.",
+        "it is bounded."
+      ],
+      "answer": 0,
+      "explanation": "The Cauchy condition compares terms to each other: beyond some index $N$, any two terms are within $\\varepsilon$. It does not mention a limit, which is what makes it useful when the limit is unknown.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-003",
+      "stem": "In any metric space, every convergent sequence is:",
+      "options": [
+        "unbounded.",
+        "eventually constant.",
+        "a Cauchy sequence.",
+        "monotone."
+      ],
+      "answer": 2,
+      "explanation": "If $x_n \\to x$, then for large $m, n$ both terms are within $\\varepsilon/2$ of $x$, so $d(x_m, x_n) < \\varepsilon$ by the triangle inequality. Hence convergent implies Cauchy in every metric space.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-004",
+      "stem": "A metric space is complete when:",
+      "options": [
+        "every Cauchy sequence converges to a point of the space.",
+        "it is compact.",
+        "it is bounded.",
+        "every sequence converges."
+      ],
+      "answer": 0,
+      "explanation": "Completeness means every Cauchy sequence has a limit inside the space. It says the space has no missing limit points (no gaps), and it is the property that makes Cauchy and convergent coincide.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-005",
+      "stem": "Which implication can FAIL in a general (possibly incomplete) metric space?",
+      "options": [
+        "Cauchy implies convergent.",
+        "Eventually constant implies convergent.",
+        "Convergent implies Cauchy.",
+        "Convergent implies bounded."
+      ],
+      "answer": 0,
+      "explanation": "The implication Cauchy implies convergent is exactly what completeness guarantees, and it fails in incomplete spaces like $\\mathbb{Q}$. The other three implications hold in every metric space.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-006",
+      "stem": "The space $\\mathbb{R}^n$ with the Euclidean metric is:",
+      "options": [
+        "incomplete.",
+        "complete only for $n = 1$.",
+        "complete for every $n$.",
+        "never complete."
+      ],
+      "answer": 2,
+      "explanation": "$\\mathbb{R}^n$ is complete for all $n$: a sequence of vectors is Cauchy iff each coordinate sequence is Cauchy in $\\mathbb{R}$, and $\\mathbb{R}$ is complete, so the coordinate limits assemble into a limit vector. Completeness of $\\mathbb{R}$ extends to $\\mathbb{R}^n$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-007",
+      "stem": "Why is $\\mathbb{Q}$ (usual metric) not complete?",
+      "options": [
+        "Some rational sequence is unbounded.",
+        "It has no Cauchy sequences.",
+        "Convergent sequences in $\\mathbb{Q}$ are not Cauchy.",
+        "A sequence of rationals approaching $\\sqrt{2}$ is Cauchy but has no rational limit."
+      ],
+      "answer": 3,
+      "explanation": "Rational truncations $1, 1.4, 1.41, \\dots$ of $\\sqrt{2}$ form a Cauchy sequence whose limit is irrational, so it has no limit within $\\mathbb{Q}$. A Cauchy sequence with no limit in the space is precisely a failure of completeness.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-008",
+      "stem": "Every Cauchy sequence in a metric space is:",
+      "options": [
+        "eventually constant.",
+        "monotone.",
+        "convergent.",
+        "bounded."
+      ],
+      "answer": 3,
+      "explanation": "A Cauchy sequence is bounded: take $\\varepsilon = 1$ to confine all terms past some $N$ to a single ball, and the finitely many earlier terms are bounded too. Boundedness holds even in incomplete spaces, but convergence may not.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-009",
+      "stem": "In a metric space, the limit of a convergent sequence is:",
+      "options": [
+        "not necessarily unique.",
+        "always $0$.",
+        "always a point of the sequence.",
+        "unique."
+      ],
+      "answer": 3,
+      "explanation": "Limits are unique in any metric space: if $x_n \\to x$ and $x_n \\to y$, then $d(x, y) \\le d(x, x_n) + d(x_n, y) \\to 0$, forcing $d(x,y) = 0$, so $x = y$. Uniqueness uses that metric spaces are Hausdorff.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-010",
+      "stem": "A closed subset $F$ of a complete metric space $X$ is:",
+      "options": [
+        "open in $X$.",
+        "never complete.",
+        "itself complete (in the inherited metric).",
+        "complete only if bounded."
+      ],
+      "answer": 2,
+      "explanation": "A closed subset of a complete space is complete: a Cauchy sequence in $F$ converges in $X$, and since $F$ is closed it contains its limit. This is why closedness, not boundedness, is the key to completeness of subspaces.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-011",
+      "stem": "A map $T : X \\to X$ on a metric space is a contraction when there is a constant $0 \\le k < 1$ such that:",
+      "options": [
+        "$T$ is surjective.",
+        "$d(Tx, Ty) \\le k \\, d(x, y)$ for all $x, y$.",
+        "$d(Tx, Ty) = d(x, y)$ for all $x, y$.",
+        "$d(Tx, Ty) \\ge k \\, d(x, y)$ for all $x, y$."
+      ],
+      "answer": 1,
+      "explanation": "A contraction shrinks distances by a fixed factor $k < 1$: $d(Tx, Ty) \\le k\\, d(x,y)$. The strict bound $k < 1$ (not merely $\\le 1$) is essential for the fixed-point theorem.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-012",
+      "stem": "The Banach contraction principle guarantees that a contraction on a complete metric space has:",
+      "options": [
+        "infinitely many fixed points.",
+        "a fixed point only if the space is compact.",
+        "no fixed points.",
+        "a unique fixed point."
+      ],
+      "answer": 3,
+      "explanation": "On a complete metric space, every contraction $T$ has exactly one fixed point $x^* = Tx^*$, found as the limit of iterates $x, Tx, T^2x, \\dots$ Completeness supplies the limit, and the contraction property forces uniqueness.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-013",
+      "stem": "In the Banach fixed-point theorem, the fixed point is obtained as:",
+      "options": [
+        "the limit of the iterates $x_0, Tx_0, T^2 x_0, \\dots$ for any starting point $x_0$.",
+        "any periodic point of $T$.",
+        "the midpoint of the space.",
+        "the supremum of the space."
+      ],
+      "answer": 0,
+      "explanation": "Starting from any $x_0$, the Picard iterates $x_{n+1} = T x_n$ form a Cauchy sequence (their gaps decay geometrically like $k^n$), so by completeness they converge to the unique fixed point, independent of $x_0$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-014",
+      "stem": "Why must the space be complete for the Banach contraction principle to apply?",
+      "options": [
+        "To ensure the space is bounded.",
+        "To make $T$ continuous.",
+        "To guarantee the Cauchy sequence of iterates actually converges to a point of the space.",
+        "To bound the iterates."
+      ],
+      "answer": 2,
+      "explanation": "The iterates form a Cauchy sequence in any case, but only completeness ensures that Cauchy sequence has a limit inside the space, which becomes the fixed point. On an incomplete space the iterates can converge to a missing point.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-015",
+      "stem": "The contraction $T(x) = \\tfrac{1}{2} x + 3$ on $\\mathbb{R}$ has fixed point:",
+      "options": [
+        "$0$.",
+        "$3$.",
+        "$6$.",
+        "$2$."
+      ],
+      "answer": 2,
+      "explanation": "Solving $x = \\tfrac12 x + 3$ gives $\\tfrac12 x = 3$, so $x = 6$. Since $T$ has Lipschitz constant $\\tfrac12 < 1$ and $\\mathbb{R}$ is complete, the iterates from any start converge to this unique fixed point $6$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-016",
+      "stem": "Is the open interval $(0, 1)$, with the usual metric, a complete metric space?",
+      "options": [
+        "Yes, because it is an open set.",
+        "Yes, because it is bounded.",
+        "No; the Cauchy sequence $1/n$ has no limit in $(0,1)$.",
+        "Yes, every interval is complete."
+      ],
+      "answer": 2,
+      "explanation": "$(0,1)$ is not complete: $x_n = 1/n$ is Cauchy but its limit $0$ lies outside $(0,1)$. The interval is not closed in $\\mathbb{R}$, which is why completeness fails despite boundedness.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-017",
+      "stem": "A subset $A$ of a complete metric space $X$ is complete (in the inherited metric) if and only if:",
+      "options": [
+        "$A$ is closed in $X$.",
+        "$A$ is open in $X$.",
+        "$A$ is bounded.",
+        "$A$ is dense in $X$."
+      ],
+      "answer": 0,
+      "explanation": "Within a complete space, a subset is complete exactly when it is closed: closed subsets contain their limit points, so Cauchy sequences stay inside; conversely a complete subset must be closed. Boundedness is neither necessary nor sufficient.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-018",
+      "stem": "If a Cauchy sequence has a subsequence converging to $L$, then the whole sequence:",
+      "options": [
+        "is eventually constant.",
+        "converges to a different limit.",
+        "may diverge.",
+        "converges to $L$."
+      ],
+      "answer": 3,
+      "explanation": "A Cauchy sequence with a convergent subsequence converges to the same limit $L$: once the terms are mutually close (Cauchy) and a subsequence is near $L$, the entire sequence is forced toward $L$. This lemma underlies proofs that compact metric spaces are complete.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-019",
+      "stem": "An isometry $T$ (a map preserving distances, $d(Tx, Ty) = d(x, y)$) is:",
+      "options": [
+        "not a contraction, since its Lipschitz constant is $1$, not less than $1$.",
+        "always a contraction.",
+        "always has a unique fixed point.",
+        "never injective."
+      ],
+      "answer": 0,
+      "explanation": "An isometry has Lipschitz constant exactly $1$, so it is not a contraction (which needs $k < 1$). For example a translation of $\\mathbb{R}$ is an isometry with no fixed point, showing the Banach theorem genuinely needs the strict inequality.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-020",
+      "stem": "Is the sequence $x_n = (-1)^n$ a Cauchy sequence in $\\mathbb{R}$?",
+      "options": [
+        "No, because $|x_{n+1} - x_n| = 2$ for all $n$, so the Cauchy condition fails.",
+        "It cannot be determined.",
+        "Yes, because it has subsequential limits.",
+        "Yes, because it is bounded."
+      ],
+      "answer": 0,
+      "explanation": "Consecutive terms always differ by $2$, so taking $\\varepsilon = 1$ shows no $N$ makes all later terms mutually within $\\varepsilon$. Hence $(-1)^n$ is not Cauchy, matching its divergence. Boundedness alone does not give Cauchy.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-021",
+      "stem": "Which of the following metric spaces is complete?",
+      "options": [
+        "$\\mathbb{Q}$ with the usual metric.",
+        "The open interval $(0, 1)$ with the usual metric.",
+        "$\\mathbb{Q} \\cap [0,1]$ with the usual metric.",
+        "The closed interval $[0, 1]$ with the usual metric."
+      ],
+      "answer": 3,
+      "explanation": "$[0,1]$ is closed in the complete space $\\mathbb{R}$, hence complete (it is also compact). The other three are incomplete: $\\mathbb{Q}$ and $\\mathbb{Q} \\cap [0,1]$ miss irrational limits, and $(0,1)$ misses its endpoints.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-022",
+      "stem": "The discrete metric space on an infinite set $X$ is:",
+      "options": [
+        "complete only if $X$ is finite.",
+        "not a metric space.",
+        "complete, because every Cauchy sequence is eventually constant.",
+        "incomplete."
+      ],
+      "answer": 2,
+      "explanation": "Under the discrete metric a Cauchy sequence must have its terms eventually within distance $< 1$, hence equal, so it is eventually constant and therefore convergent. Thus every discrete metric space is complete (though an infinite one is not compact).",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-023",
+      "stem": "In $\\mathbb{R}^n$, a sequence of vectors $(x_k)$ converges if and only if:",
+      "options": [
+        "it is monotone in each coordinate.",
+        "each coordinate sequence converges in $\\mathbb{R}$.",
+        "its norms converge.",
+        "it is bounded."
+      ],
+      "answer": 1,
+      "explanation": "Convergence in $\\mathbb{R}^n$ is equivalent to coordinate-wise convergence: $x_k \\to x$ iff each component $x_k^{(i)} \\to x^{(i)}$. This componentwise principle, with completeness of $\\mathbb{R}$, gives completeness of $\\mathbb{R}^n$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-024",
+      "stem": "Which statement is TRUE?",
+      "options": [
+        "Completeness is preserved under arbitrary continuous bijections.",
+        "Every bounded metric space is complete.",
+        "Every complete metric space is compact.",
+        "Every compact metric space is complete."
+      ],
+      "answer": 3,
+      "explanation": "Every compact metric space is complete (a Cauchy sequence has a convergent subsequence, and a Cauchy sequence with a convergent subsequence converges). The converse fails ($\\mathbb{R}$ is complete but not compact), boundedness does not imply completeness, and completeness is not a topological invariant.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-025",
+      "format": "cloze",
+      "stem": "Apply the Banach contraction principle to $T(x) = \\tfrac{1}{3} x + 4$ on the complete space $\\mathbb{R}$.",
+      "solution": "The map has Lipschitz constant $\\tfrac{1}{3}$, which is less than $1$, so $T$ {{1}} a contraction. By the Banach principle it has a unique fixed point; solving $x = \\tfrac{1}{3} x + 4$ gives the value {{2}}. Because $\\mathbb{R}$ is complete, the iterates from any start {{3}} to that fixed point.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "converge",
+            "diverge"
+          ],
+          "answer": "converge"
+        }
+      ],
+      "explanation": "Since $|T'| = \\tfrac13 < 1$, $T$ is a contraction. Solving $x = \\tfrac13 x + 4$ gives $\\tfrac23 x = 4$, so $x = 6$. Completeness of $\\mathbb{R}$ makes the iterates converge to $6$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-026",
+      "format": "cloze",
+      "stem": "Examine the sequence $x_n = 1/n$ inside the open interval $(0, 1)$ with the usual metric.",
+      "solution": "As $n \\to \\infty$, the terms approach the value {{1}}, so the sequence is Cauchy. However, that limit lies outside the open interval $(0,1)$, so within $(0,1)$ the sequence {{2}} a limit. This shows the space $(0,1)$ {{3}} complete.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "has",
+            "has no"
+          ],
+          "answer": "has no"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is not"
+        }
+      ],
+      "explanation": "$1/n \\to 0$, so the sequence is Cauchy, but $0 \\notin (0,1)$, so it has no limit in $(0,1)$. Hence $(0,1)$ is not complete.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-027",
+      "format": "cloze",
+      "stem": "Decide whether $x_n = \\dfrac{4n + 1}{n}$ is Cauchy in $\\mathbb{R}$, then relate Cauchy and convergence.",
+      "solution": "Rewriting, $x_n = 4 + \\tfrac{1}{n}$, so the sequence converges to the value {{1}}. Since every convergent sequence in a metric space is Cauchy, this sequence {{2}} Cauchy. Because $\\mathbb{R}$ is complete, a Cauchy sequence of reals {{3}} converge in $\\mathbb{R}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "must",
+            "need not"
+          ],
+          "answer": "must"
+        }
+      ],
+      "explanation": "$x_n = 4 + 1/n \\to 4$, so the limit is $4$ and the sequence is Cauchy. By completeness of $\\mathbb{R}$, every Cauchy sequence of reals must converge.",
+      "difficulty": "warmup",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-sequences-and-completeness-028",
+      "format": "cloze",
+      "stem": "Compare $\\mathbb{R}$, $\\mathbb{Q}$, and $\\mathbb{R}^2$ (usual metrics) for completeness, then count.",
+      "solution": "The real line $\\mathbb{R}$ is complete, and the plane $\\mathbb{R}^2$ is complete because convergence is coordinate-wise, but $\\mathbb{Q}$ {{1}} complete since a sequence approaching $\\sqrt{2}$ is Cauchy with no rational limit. Among the three spaces $\\mathbb{R}$, $\\mathbb{Q}$, and $\\mathbb{R}^2$, the number that are complete is {{2}}. A closed subset of any complete space {{3}} complete in the inherited metric.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is not"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "$\\mathbb{R}$ and $\\mathbb{R}^2$ are complete ($2$ of the three); $\\mathbb{Q}$ is not. Closed subsets of complete spaces are complete.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    }
+  ]
+}

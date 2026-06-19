@@ -1,0 +1,489 @@
+{
+  "courseId": "regression-analysis",
+  "topicId": "multiple-regression",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "regression-analysis-multiple-regression-001",
+      "stem": "The multiple linear regression model with $k$ predictors is written as which of the following?",
+      "options": [
+        "$y = \\beta_0 x_1 x_2 \\cdots x_k + \\varepsilon$",
+        "$y = \\beta_1 x_1 \\beta_2 x_2 \\cdots \\beta_k x_k + \\varepsilon$",
+        "$y = \\beta_0 + \\beta_1 x + \\varepsilon$",
+        "$y = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\cdots + \\beta_k x_k + \\varepsilon$"
+      ],
+      "answer": 3,
+      "explanation": "Multiple linear regression adds several predictors linearly: $y = \\beta_0 + \\beta_1 x_1 + \\cdots + \\beta_k x_k + \\varepsilon$. It is linear in the parameters $\\beta_j$, even if the predictors are transformed variables.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-002",
+      "stem": "In the matrix form of the regression model $\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}$, what is $\\mathbf{X}$ usually called?",
+      "options": [
+        "the response vector",
+        "the residual vector",
+        "the model (design) matrix",
+        "the variance-covariance matrix"
+      ],
+      "answer": 2,
+      "explanation": "$\\mathbf{X}$ is the model matrix (also called the design matrix). Its rows are the observations and its columns are the predictor variables, typically including a leading column of ones for the intercept.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-003",
+      "stem": "The least-squares estimator of $\\boldsymbol{\\beta}$ in the model $\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}$ is given by which formula?",
+      "options": [
+        "$\\hat{\\boldsymbol{\\beta}} = \\mathbf{X}'(\\mathbf{X}\\mathbf{X}')^{-1}\\mathbf{y}$",
+        "$\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}'\\mathbf{y})^{-1}\\mathbf{X}'\\mathbf{X}$",
+        "$\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}'\\mathbf{X})^{-1}\\mathbf{X}'\\mathbf{y}$",
+        "$\\hat{\\boldsymbol{\\beta}} = \\mathbf{X}'\\mathbf{X}\\mathbf{y}$"
+      ],
+      "answer": 2,
+      "explanation": "Solving the normal equations $\\mathbf{X}'\\mathbf{X}\\hat{\\boldsymbol{\\beta}} = \\mathbf{X}'\\mathbf{y}$ gives $\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}'\\mathbf{X})^{-1}\\mathbf{X}'\\mathbf{y}$, provided $\\mathbf{X}'\\mathbf{X}$ is invertible.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-004",
+      "stem": "In a multiple regression, how is a partial regression coefficient $\\beta_j$ interpreted?",
+      "options": [
+        "the total effect of all predictors combined",
+        "the change in mean $y$ per unit change in $x_j$, holding the other predictors fixed",
+        "the change in mean $y$ per unit change in $x_j$, ignoring the other predictors",
+        "the correlation between $x_j$ and $y$"
+      ],
+      "answer": 1,
+      "explanation": "Each $\\beta_j$ measures the change in the mean response for a one-unit increase in $x_j$ while all other predictors are held constant. This 'holding others fixed' interpretation is what distinguishes partial coefficients from simple regression slopes.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-005",
+      "stem": "A fitted model is $\\hat{y} = 5 + 2x_1 + 3x_2$. What is the predicted response at $x_1 = 4$ and $x_2 = 2$?",
+      "options": [
+        "19",
+        "14",
+        "10",
+        "25"
+      ],
+      "answer": 0,
+      "explanation": "$\\hat{y} = 5 + 2(4) + 3(2) = 5 + 8 + 6 = 19$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-006",
+      "stem": "In the model $\\hat{y} = 5 + 2x_1 + 3x_2$, what does the coefficient 2 on $x_1$ mean?",
+      "options": [
+        "the intercept is 2",
+        "$y$ increases by 2 for each unit increase in $x_2$",
+        "$y$ increases by 2 for each unit increase in $x_1$ when $x_2$ is held fixed",
+        "$x_1$ and $x_2$ are uncorrelated"
+      ],
+      "answer": 2,
+      "explanation": "The coefficient 2 is the partial effect of $x_1$: the mean of $y$ rises by 2 units per unit increase in $x_1$, with $x_2$ held constant.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-007",
+      "stem": "The overall $F$-test in multiple regression tests which hypothesis?",
+      "options": [
+        "$H_0: \\beta_0 = 0$",
+        "$H_0: \\beta_1 = 1$",
+        "$H_0: \\beta_1 = \\beta_2 = \\cdots = \\beta_k = 0$ (all slopes zero)",
+        "$H_0:$ the errors are normal"
+      ],
+      "answer": 2,
+      "explanation": "The overall (global) $F$-test of significance of regression tests $H_0: \\beta_1 = \\beta_2 = \\cdots = \\beta_k = 0$ against the alternative that at least one slope is nonzero. The intercept is not part of this hypothesis.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-008",
+      "stem": "For a multiple regression with $k$ predictors and $n$ observations, the error (residual) degrees of freedom are which of the following?",
+      "options": [
+        "$n - k$",
+        "$n - k - 1$",
+        "$k$",
+        "$n - 1$"
+      ],
+      "answer": 1,
+      "explanation": "With $k$ slopes plus one intercept, $k+1$ parameters are estimated, so the error degrees of freedom are $n - k - 1$. The regression source has $k$ degrees of freedom and the total has $n - 1$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-009",
+      "stem": "The adjusted coefficient of determination is defined as which of the following?",
+      "options": [
+        "$R^2_{adj} = R^2 + k$",
+        "$R^2_{adj} = 1 - \\dfrac{SSE}{SST}$",
+        "$R^2_{adj} = \\dfrac{SSR}{SST}$",
+        "$R^2_{adj} = 1 - \\dfrac{SSE/(n-k-1)}{SST/(n-1)}$"
+      ],
+      "answer": 3,
+      "explanation": "Adjusted $R^2$ penalizes for the number of predictors by using mean squares: $R^2_{adj} = 1 - \\dfrac{SSE/(n-k-1)}{SST/(n-1)}$. Unlike $R^2$, it can decrease when a predictor adds little.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-010",
+      "stem": "A model with $k = 3$ predictors fit on $n = 20$ observations has $R^2 = 0.80$. What is the adjusted $R^2$?",
+      "options": [
+        "0.8000",
+        "0.7625",
+        "0.7400",
+        "0.8400"
+      ],
+      "answer": 1,
+      "explanation": "$R^2_{adj} = 1 - (1-R^2)\\dfrac{n-1}{n-k-1} = 1 - 0.20 \\times \\dfrac{19}{16} = 1 - 0.2375 = 0.7625$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-011",
+      "stem": "A regression with $k = 4$ predictors on $n = 25$ observations gives $SSR = 240$ and $SSE = 60$. What is the overall $F$ statistic?",
+      "options": [
+        "60.00",
+        "12.00",
+        "20.00",
+        "4.00"
+      ],
+      "answer": 2,
+      "explanation": "$MS_R = SSR/k = 240/4 = 60$ and $MS_E = SSE/(n-k-1) = 60/(25-4-1) = 60/20 = 3$. Then $F = MS_R/MS_E = 60/3 = 20.00$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-012",
+      "stem": "Why is adjusted $R^2$ often preferred over $R^2$ when comparing models with different numbers of predictors?",
+      "options": [
+        "$R^2$ always decreases when predictors are added",
+        "$R^2$ can only increase when predictors are added, even useless ones, while adjusted $R^2$ penalizes for added terms",
+        "$R^2$ never changes when predictors are added",
+        "adjusted $R^2$ is always larger than $R^2$"
+      ],
+      "answer": 1,
+      "explanation": "Adding any predictor can never reduce $R^2$, so it favors larger models. Adjusted $R^2$ includes a penalty for the number of parameters, so it rises only if the new predictor improves fit more than expected by chance.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-013",
+      "stem": "A categorical variable with 3 levels (for example, three regions) is included in a regression using dummy (indicator) variables. How many dummy variables are needed?",
+      "options": [
+        "1",
+        "3",
+        "4",
+        "2"
+      ],
+      "answer": 3,
+      "explanation": "A categorical variable with $c$ levels is coded with $c - 1$ dummy variables to avoid perfect collinearity with the intercept. With 3 levels, $3 - 1 = 2$ dummies are used, and the omitted level serves as the reference (baseline).",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-014",
+      "stem": "In a regression with a single dummy variable $D$ (coded 0 or 1), the fitted model is $\\hat{y} = 12 + 3x + 5D$. What does the coefficient 5 represent?",
+      "options": [
+        "the intercept for both groups",
+        "the correlation between $x$ and $D$",
+        "the average difference in $y$ between the group with $D = 1$ and the group with $D = 0$, holding $x$ fixed",
+        "the slope of $x$"
+      ],
+      "answer": 2,
+      "explanation": "The dummy coefficient 5 shifts the intercept: for $D = 1$ the line is $17 + 3x$ and for $D = 0$ it is $12 + 3x$. So 5 is the estimated mean difference in $y$ between the two groups at any fixed $x$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-015",
+      "stem": "For the regression $\\mathbf{y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\varepsilon}$ with $n$ observations and $k$ predictors plus intercept, what are the dimensions of the model matrix $\\mathbf{X}$?",
+      "options": [
+        "$n \\times (k+1)$",
+        "$k \\times n$",
+        "$n \\times n$",
+        "$(k+1) \\times (k+1)$"
+      ],
+      "answer": 0,
+      "explanation": "Each of the $n$ observations is a row, and there are $k+1$ columns: one for the intercept plus one per predictor. So $\\mathbf{X}$ is $n \\times (k+1)$, and $\\mathbf{X}'\\mathbf{X}$ is $(k+1) \\times (k+1)$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-016",
+      "stem": "A model with $k = 2$ predictors on $n = 10$ observations has $R^2 = 0.60$. What is the adjusted $R^2$ (rounded to 4 decimals)?",
+      "options": [
+        "0.4000",
+        "0.5200",
+        "0.4857",
+        "0.6000"
+      ],
+      "answer": 2,
+      "explanation": "$R^2_{adj} = 1 - (1-0.60)\\dfrac{n-1}{n-k-1} = 1 - 0.40 \\times \\dfrac{9}{7} = 1 - 0.5143 = 0.4857$. The drop from 0.60 reflects the penalty for using 2 predictors with only 10 points.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-017",
+      "stem": "The vector of fitted values can be written as $\\hat{\\mathbf{y}} = \\mathbf{H}\\mathbf{y}$. What is the matrix $\\mathbf{H} = \\mathbf{X}(\\mathbf{X}'\\mathbf{X})^{-1}\\mathbf{X}'$ commonly called?",
+      "options": [
+        "the hat matrix",
+        "the residual matrix",
+        "the correlation matrix",
+        "the inverse matrix"
+      ],
+      "answer": 0,
+      "explanation": "$\\mathbf{H} = \\mathbf{X}(\\mathbf{X}'\\mathbf{X})^{-1}\\mathbf{X}'$ is the hat matrix, so named because it puts the 'hat' on $\\mathbf{y}$ to produce fitted values $\\hat{\\mathbf{y}}$. Its diagonal elements are the leverages.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-018",
+      "stem": "In multiple regression, a test of $H_0: \\beta_j = 0$ for a single coefficient (with the other predictors in the model) is most directly carried out with which statistic?",
+      "options": [
+        "the correlation between $x_j$ and $y$",
+        "the overall $F$ statistic",
+        "a chi-square goodness-of-fit statistic",
+        "a $t$ statistic $t_0 = \\hat{\\beta}_j / se(\\hat{\\beta}_j)$ with $n - k - 1$ degrees of freedom"
+      ],
+      "answer": 3,
+      "explanation": "Each individual coefficient is tested with $t_0 = \\hat{\\beta}_j/se(\\hat{\\beta}_j)$, compared to a $t$ distribution with $n - k - 1$ degrees of freedom. This is a partial test, given the other predictors are present.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-019",
+      "stem": "A regression with $k = 5$ predictors on $n = 30$ observations has $R^2 = 0.95$. The adjusted $R^2$ is approximately which value?",
+      "options": [
+        "0.9396",
+        "0.9500",
+        "0.9100",
+        "0.9700"
+      ],
+      "answer": 0,
+      "explanation": "$R^2_{adj} = 1 - (1-0.95)\\dfrac{29}{24} = 1 - 0.05 \\times 1.2083 = 1 - 0.0604 = 0.9396$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-020",
+      "stem": "Which of the following is true about the column of ones in the model matrix $\\mathbf{X}$?",
+      "options": [
+        "it corresponds to the error variance",
+        "it is the response variable",
+        "it corresponds to the intercept term $\\beta_0$",
+        "it must be removed before fitting"
+      ],
+      "answer": 2,
+      "explanation": "The leading column of ones lets the model include an intercept $\\beta_0$, since multiplying $\\beta_0$ by 1 for every observation reproduces the constant term. Dropping it forces the line through the origin.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-021",
+      "stem": "A regression with $k = 3$ predictors on $n = 20$ observations gives $SSR = 90$ and $SSE = 10$. What is the overall $F$ statistic for significance of regression?",
+      "options": [
+        "30.00",
+        "48.00",
+        "16.00",
+        "9.00"
+      ],
+      "answer": 1,
+      "explanation": "$MS_R = 90/3 = 30$ and $MS_E = 10/(20-3-1) = 10/16 = 0.625$. Then $F = 30/0.625 = 48.00$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-022",
+      "stem": "If two predictors $x_1$ and $x_2$ are highly correlated with each other, what is a likely consequence for the fitted multiple regression?",
+      "options": [
+        "the model matrix becomes the identity matrix",
+        "the overall $F$-test will always be insignificant",
+        "$R^2$ will be exactly zero",
+        "the individual coefficient estimates can have large standard errors and be unstable"
+      ],
+      "answer": 3,
+      "explanation": "Strong correlation among predictors is multicollinearity. It inflates the standard errors of the affected coefficients, making them imprecise and unstable, even when the overall model still fits well and has high $R^2$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-023",
+      "format": "cloze",
+      "stem": "A multiple regression uses $k = 4$ predictors and $n = 25$ observations.",
+      "solution": "The total degrees of freedom are $n - 1 =$ {{1}}. The regression degrees of freedom equal the number of predictors, which is {{2}}. The error degrees of freedom are $n - k - 1 =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 24,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Total df $= 25 - 1 = 24$. Regression df $= k = 4$. Error df $= 25 - 4 - 1 = 20$. Check: $4 + 20 = 24$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-024",
+      "format": "cloze",
+      "stem": "A model with $k = 3$ predictors on $n = 20$ observations reports $R^2 = 0.80$.",
+      "solution": "The adjusted coefficient of determination is $R^2_{adj} =$ {{1}} (rounded to 4 decimals). Because adjusted $R^2$ is {{2}} than $R^2$ here, the penalty for the extra predictors has taken effect.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.7625,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "smaller",
+            "larger",
+            "equal"
+          ],
+          "answer": "smaller"
+        }
+      ],
+      "explanation": "$R^2_{adj} = 1 - 0.20 \\times 19/16 = 1 - 0.2375 = 0.7625$, which is smaller than $R^2 = 0.80$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-025",
+      "format": "cloze",
+      "stem": "A regression with $k = 4$ predictors on $n = 25$ observations gives $SSR = 240$ and $SSE = 60$.",
+      "solution": "The regression mean square is $MS_R = SSR/k =$ {{1}}. The error mean square is $MS_E = SSE/(n-k-1) =$ {{2}}. The overall $F$ statistic is $F = MS_R/MS_E =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 60,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "$MS_R = 240/4 = 60$. $MS_E = 60/(25-4-1) = 60/20 = 3$. $F = 60/3 = 20$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-026",
+      "format": "cloze",
+      "stem": "Complete the statements about the model matrix and least-squares solution in multiple regression.",
+      "solution": "The least-squares estimator is $\\hat{\\boldsymbol{\\beta}} = (\\mathbf{X}'\\mathbf{X})^{-1}\\mathbf{X}'\\mathbf{y}$, which solves the {{1}} equations. For a model with an intercept and $k$ predictors, the model matrix has $k + 1$ {{2}}. A categorical factor with 4 levels needs {{3}} dummy variables.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "normal",
+            "Normal",
+            "the normal",
+            "least squares normal"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "columns",
+            "rows",
+            "inverses"
+          ],
+          "answer": "columns"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The estimator solves the normal equations $\\mathbf{X}'\\mathbf{X}\\hat{\\boldsymbol{\\beta}} = \\mathbf{X}'\\mathbf{y}$. With an intercept and $k$ predictors there are $k+1$ columns. A 4-level factor uses $4 - 1 = 3$ dummies.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-027",
+      "format": "cloze",
+      "stem": "A fitted model with a dummy variable is $\\hat{y} = 12 + 3x + 5D$, where $D = 1$ for treatment and $D = 0$ for control.",
+      "solution": "For the control group ($D = 0$) at $x = 4$, the predicted value is {{1}}. For the treatment group ($D = 1$) at the same $x = 4$, the predicted value is {{2}}. The vertical gap between the two group lines at any $x$ equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 24,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 29,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Control: $12 + 3(4) + 5(0) = 24$. Treatment: $12 + 3(4) + 5(1) = 29$. The difference is the dummy coefficient, $5$, at every $x$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-multiple-regression-028",
+      "format": "cloze",
+      "stem": "A model with $k = 5$ predictors on $n = 30$ observations has $R^2 = 0.95$.",
+      "solution": "The adjusted $R^2$ is {{1}} (rounded to 4 decimals). The error degrees of freedom available for estimating $\\sigma^2$ are {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.9396,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 24,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$R^2_{adj} = 1 - (1-0.95) \\times 29/24 = 1 - 0.05 \\times 1.2083 = 0.9396$. Error df $= n - k - 1 = 30 - 5 - 1 = 24$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    }
+  ]
+}

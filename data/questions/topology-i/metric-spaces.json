@@ -1,0 +1,471 @@
+{
+  "courseId": "topology-i",
+  "topicId": "metric-spaces",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "topology-i-metric-spaces-001",
+      "stem": "A metric on a set $X$ is a function $d : X \\times X \\to \\mathbb{R}$ satisfying non-negativity, the identity of indiscernibles, symmetry, and:",
+      "options": [
+        "the parallelogram law.",
+        "the triangle inequality.",
+        "the Cauchy-Schwarz inequality.",
+        "linearity in each argument."
+      ],
+      "answer": 1,
+      "explanation": "The four metric axioms are $d \\ge 0$, $d(x,y) = 0 \\Leftrightarrow x = y$, symmetry $d(x,y) = d(y,x)$, and the triangle inequality $d(x,z) \\le d(x,y) + d(y,z)$. The parallelogram law and Cauchy-Schwarz belong to inner product spaces, not general metrics.",
+      "difficulty": "warmup",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-002",
+      "stem": "The identity of indiscernibles axiom for a metric states that:",
+      "options": [
+        "$d(x, y) \\le 1$ for all $x, y$.",
+        "$d(x, y) = 0$ if and only if $x = y$.",
+        "$d(x, y) \\ge 0$ for all $x, y$.",
+        "$d(x, y) = d(y, x)$."
+      ],
+      "answer": 1,
+      "explanation": "This axiom requires that the distance between two points is zero exactly when the points coincide: $d(x,y) = 0 \\Leftrightarrow x = y$. It rules out distinct points at distance $0$ (which a pseudometric would allow).",
+      "difficulty": "warmup",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-003",
+      "stem": "In a metric space $(X, d)$, the open ball $B(x, r)$ of radius $r > 0$ centred at $x$ is:",
+      "options": [
+        "$\\{ y \\in X : d(x, y) < r \\}$.",
+        "$\\{ y \\in X : d(x, y) = r \\}$.",
+        "$\\{ y \\in X : d(x, y) > r \\}$.",
+        "$\\{ y \\in X : d(x, y) \\le r \\}$."
+      ],
+      "answer": 0,
+      "explanation": "The open ball uses strict inequality: $B(x, r) = \\{ y : d(x, y) < r \\}$. Replacing $<$ with $\\le$ gives the closed ball, and $= r$ gives the sphere.",
+      "difficulty": "warmup",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-004",
+      "stem": "On $\\mathbb{R}^n$, the Euclidean metric between $x = (x_1, \\dots, x_n)$ and $y = (y_1, \\dots, y_n)$ is:",
+      "options": [
+        "$\\sum_{i=1}^n (x_i - y_i)^2$.",
+        "$\\sum_{i=1}^n |x_i - y_i|$.",
+        "$\\max_i |x_i - y_i|$.",
+        "$\\sqrt{ \\sum_{i=1}^n (x_i - y_i)^2 }$."
+      ],
+      "answer": 3,
+      "explanation": "The Euclidean (standard) metric is $d_2(x,y) = \\sqrt{\\sum_i (x_i - y_i)^2}$. Dropping the square root gives $(x-y)^2$-type sums, which fail the triangle inequality; the first option is the taxicab metric and the second is the sup metric.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-005",
+      "stem": "The taxicab (Manhattan) metric $d_1$ on $\\mathbb{R}^n$ is given by:",
+      "options": [
+        "$\\max_i |x_i - y_i|$.",
+        "$\\sum_{i=1}^n |x_i - y_i|$.",
+        "$\\sqrt{ \\sum_{i=1}^n (x_i - y_i)^2 }$.",
+        "$\\prod_{i=1}^n |x_i - y_i|$."
+      ],
+      "answer": 1,
+      "explanation": "The taxicab metric sums the coordinate-wise distances: $d_1(x,y) = \\sum_i |x_i - y_i|$. It measures distance as if travelling along a grid of streets.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-006",
+      "stem": "The sup metric (Chebyshev metric) $d_\\infty$ on $\\mathbb{R}^n$ is:",
+      "options": [
+        "$\\max_{1 \\le i \\le n} |x_i - y_i|$.",
+        "the number of coordinates where $x$ and $y$ differ.",
+        "$\\sum_{i=1}^n |x_i - y_i|$.",
+        "$\\sqrt{ \\sum_{i=1}^n (x_i - y_i)^2 }$."
+      ],
+      "answer": 0,
+      "explanation": "The sup metric takes the largest coordinate difference: $d_\\infty(x,y) = \\max_i |x_i - y_i|$. On $\\mathbb{R}^n$ it is topologically equivalent to the Euclidean and taxicab metrics.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-007",
+      "stem": "The discrete metric on a set $X$ is defined by:",
+      "options": [
+        "$d(x, y) = |x - y|$.",
+        "$d(x, y) = x + y$.",
+        "$d(x, y) = 0$ for all $x, y$.",
+        "$d(x, y) = 1$ if $x \\ne y$ and $0$ if $x = y$."
+      ],
+      "answer": 3,
+      "explanation": "The discrete metric assigns distance $1$ to any two distinct points and $0$ to a point and itself. It is a genuine metric on any set and makes every subset open.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-008",
+      "stem": "Under the discrete metric, what is $d(a, b)$ for two distinct points $a \\ne b$?",
+      "options": [
+        "It depends on the points.",
+        "$0$.",
+        "$|a - b|$.",
+        "$1$."
+      ],
+      "answer": 3,
+      "explanation": "By definition the discrete metric gives $d(a,b) = 1$ whenever $a \\ne b$, regardless of which distinct points they are. Only $d(a,a) = 0$.",
+      "difficulty": "warmup",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-009",
+      "stem": "Which function fails to be a metric on $\\mathbb{R}$ because it violates the triangle inequality?",
+      "options": [
+        "$d(x, y) = \\min(|x - y|, 1)$.",
+        "$d(x, y) = |x - y|$.",
+        "$d(x, y) = 2 |x - y|$.",
+        "$d(x, y) = (x - y)^2$."
+      ],
+      "answer": 3,
+      "explanation": "With $x = 0, y = 1, z = 2$, the squared distance gives $d(0,2) = 4$ but $d(0,1) + d(1,2) = 1 + 1 = 2$, and $4 \\le 2$ is false. The other three satisfy all metric axioms.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-010",
+      "stem": "Which property of $d(x, y) = |x - y|$ on $\\mathbb{R}$ relies on the inequality $|a + b| \\le |a| + |b|$?",
+      "options": [
+        "Non-negativity.",
+        "The triangle inequality.",
+        "The identity of indiscernibles.",
+        "Symmetry."
+      ],
+      "answer": 1,
+      "explanation": "Writing $x - z = (x - y) + (y - z)$ and applying $|a + b| \\le |a| + |b|$ gives $|x - z| \\le |x - y| + |y - z|$, the triangle inequality. The absolute-value inequality is exactly what makes the usual metric satisfy it.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-011",
+      "stem": "On the space $C[a,b]$ of continuous functions, the sup metric is $d(f, g) = \\sup_{t \\in [a,b]} |f(t) - g(t)|$. This is well defined (finite) because:",
+      "options": [
+        "$[a,b]$ is countable.",
+        "every continuous function on $[a,b]$ is bounded.",
+        "continuous functions are differentiable.",
+        "the integral of $|f - g|$ is finite."
+      ],
+      "answer": 1,
+      "explanation": "A continuous function on a closed bounded interval $[a,b]$ is bounded (it even attains a maximum), so $|f - g|$ is bounded and its supremum is finite. This makes the sup metric a genuine real-valued metric on $C[a,b]$.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-012",
+      "stem": "In $\\mathbb{R}^2$ with the Euclidean metric, the open ball $B((0,0), 1)$ is:",
+      "options": [
+        "the open unit disk $\\{ (x,y) : x^2 + y^2 < 1 \\}$.",
+        "the closed unit disk.",
+        "the unit circle $\\{ (x,y) : x^2 + y^2 = 1 \\}$.",
+        "the open square $(-1, 1) \\times (-1, 1)$."
+      ],
+      "answer": 0,
+      "explanation": "With the Euclidean metric, $B((0,0),1) = \\{ (x,y) : \\sqrt{x^2 + y^2} < 1 \\}$, the open unit disk. The open square is the unit ball of the sup metric, and the circle is the sphere, not the ball.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-013",
+      "stem": "In $\\mathbb{R}^2$ with the taxicab metric $d_1$, the unit ball $\\{ (x,y) : |x| + |y| < 1 \\}$ has the shape of:",
+      "options": [
+        "a diamond (square rotated $45^\\circ$).",
+        "a half-plane.",
+        "a round disk.",
+        "an axis-aligned square."
+      ],
+      "answer": 0,
+      "explanation": "The set $|x| + |y| < 1$ is bounded by the lines $\\pm x \\pm y = 1$, forming a diamond (a square with vertices on the axes at $(\\pm 1, 0)$ and $(0, \\pm 1)$). Different metrics produce different ball shapes.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-014",
+      "stem": "Compute the taxicab distance $d_1$ between $(1, 2)$ and $(4, 6)$ in $\\mathbb{R}^2$.",
+      "options": [
+        "$25$.",
+        "$7$.",
+        "$4$.",
+        "$5$."
+      ],
+      "answer": 1,
+      "explanation": "The taxicab distance sums the coordinate gaps: $|1 - 4| + |2 - 6| = 3 + 4 = 7$. (The Euclidean distance here would be $\\sqrt{9 + 16} = 5$.)",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-015",
+      "stem": "Compute the Euclidean distance $d_2$ between $(1, 2)$ and $(4, 6)$ in $\\mathbb{R}^2$.",
+      "options": [
+        "$7$.",
+        "$\\sqrt{7}$.",
+        "$25$.",
+        "$5$."
+      ],
+      "answer": 3,
+      "explanation": "The Euclidean distance is $\\sqrt{(1-4)^2 + (2-6)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$. This is the familiar $3$-$4$-$5$ right triangle.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-016",
+      "stem": "Compute the sup-metric distance $d_\\infty$ between $(1, 2)$ and $(4, 6)$ in $\\mathbb{R}^2$.",
+      "options": [
+        "$5$.",
+        "$4$.",
+        "$3$.",
+        "$7$."
+      ],
+      "answer": 1,
+      "explanation": "The sup metric takes the larger coordinate gap: $\\max(|1-4|, |2-6|) = \\max(3, 4) = 4$. For the same points, $d_\\infty = 4 \\le d_2 = 5 \\le d_1 = 7$, illustrating $d_\\infty \\le d_2 \\le d_1$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-017",
+      "stem": "Is $d(x, y) = |x^2 - y^2|$ a metric on $\\mathbb{R}$?",
+      "options": [
+        "No, because it can be negative.",
+        "No, because it is not symmetric.",
+        "No, because $d(1, -1) = 0$ while $1 \\ne -1$.",
+        "Yes, it satisfies all four axioms."
+      ],
+      "answer": 2,
+      "explanation": "Take $x = 1, y = -1$: then $|x^2 - y^2| = |1 - 1| = 0$ even though $1 \\ne -1$. This violates the identity of indiscernibles, so $d$ is not a metric (it is only a pseudometric). The map $x \\mapsto x^2$ is not injective on $\\mathbb{R}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-018",
+      "stem": "Is $d(x, y) = |x^3 - y^3|$ a metric on $\\mathbb{R}$?",
+      "options": [
+        "No, because cubes can be negative.",
+        "No, it fails symmetry.",
+        "Yes, because $x \\mapsto x^3$ is injective, so the axioms all hold.",
+        "No, it fails the triangle inequality."
+      ],
+      "answer": 2,
+      "explanation": "Since $t \\mapsto t^3$ is a strictly increasing bijection of $\\mathbb{R}$, $d(x,y) = |x^3 - y^3|$ inherits all metric axioms from the usual metric on the image: it is non-negative, zero iff $x = y$ (injectivity), symmetric, and satisfies the triangle inequality.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-019",
+      "stem": "The bounded metric $d'(x, y) = \\min(d(x, y), 1)$ built from a metric $d$ is:",
+      "options": [
+        "equal to $d$.",
+        "always a metric, with all distances at most $1$.",
+        "never a metric.",
+        "a metric only if $d$ is the discrete metric."
+      ],
+      "answer": 1,
+      "explanation": "Truncating a metric at $1$ yields another metric in which every distance is at most $1$. This standard construction shows every metric space carries an equivalent bounded metric, so boundedness is not a topological property.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-020",
+      "stem": "Which of the following is always true in any metric space $(X, d)$?",
+      "options": [
+        "$d(x, y)$ can be negative for some pairs.",
+        "$d(x, z) \\ge d(x, y) + d(y, z)$ for all $x, y, z$.",
+        "$d(x, y) = d(x, z)$ whenever $y \\ne z$.",
+        "$|d(x, z) - d(y, z)| \\le d(x, y)$ for all $x, y, z$."
+      ],
+      "answer": 3,
+      "explanation": "The reverse triangle inequality $|d(x,z) - d(y,z)| \\le d(x,y)$ follows from the triangle inequality applied both ways. Distances are never negative, and the triangle inequality goes the other direction ($\\le$, not $\\ge$).",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-021",
+      "stem": "A subset $A$ of a metric space $(X, d)$ inherits a metric by restriction. The pair $(A, d|_{A \\times A})$ is called:",
+      "options": [
+        "a subspace (metric subspace) of $X$.",
+        "a quotient space.",
+        "a completion of $X$.",
+        "a product space."
+      ],
+      "answer": 0,
+      "explanation": "Restricting the metric to a subset $A$ makes $(A, d|_A)$ a metric subspace of $X$. For example $\\mathbb{Q}$ is a subspace of $\\mathbb{R}$ with the inherited usual metric.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-022",
+      "stem": "In a metric space, the diameter of a nonempty set $A$ is defined as:",
+      "options": [
+        "the number of points in $A$.",
+        "$\\inf \\{ d(x, y) : x, y \\in A \\}$.",
+        "$\\sup \\{ d(x, y) : x, y \\in A \\}$.",
+        "the radius of the smallest ball containing $A$."
+      ],
+      "answer": 2,
+      "explanation": "The diameter is the supremum of distances between points of the set: $\\operatorname{diam}(A) = \\sup \\{ d(x,y) : x, y \\in A \\}$. A set is bounded exactly when its diameter is finite.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-023",
+      "stem": "A subset $A$ of a metric space is bounded when:",
+      "options": [
+        "$A$ is closed.",
+        "$A$ is finite.",
+        "$A$ is contained in some open ball $B(x_0, R)$.",
+        "every sequence in $A$ converges."
+      ],
+      "answer": 2,
+      "explanation": "A set is bounded if it fits inside some ball of finite radius, equivalently if it has finite diameter. Boundedness does not require finiteness, closedness, or convergence of sequences.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-024",
+      "stem": "Which statement about the discrete metric space on a set $X$ is TRUE?",
+      "options": [
+        "Every open ball equals all of $X$.",
+        "The open ball $B(x, 1/2)$ equals $\\{x\\}$.",
+        "The open ball $B(x, 1)$ equals $\\{x\\}$.",
+        "It is not a metric space."
+      ],
+      "answer": 1,
+      "explanation": "With the discrete metric, $B(x, 1/2) = \\{ y : d(x,y) < 1/2 \\} = \\{x\\}$, since the only distance less than $1/2$ is $0$. Note $B(x, 1) = \\{ y : d(x,y) < 1 \\} = \\{x\\}$ as well (distance $1$ is excluded by strictness), but for $r > 1$ the ball is all of $X$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-025",
+      "format": "cloze",
+      "stem": "Work in $\\mathbb{R}^2$ with the points $P = (0, 0)$ and $Q = (3, 4)$, computing distance in three standard metrics.",
+      "solution": "The Euclidean distance $d_2(P, Q)$ equals {{1}}. The taxicab distance $d_1(P, Q) = |3| + |4|$ equals {{2}}. The sup-metric distance is the larger coordinate gap, so $d_\\infty(P, Q)$ equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Euclidean: $\\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$. Taxicab: $3 + 4 = 7$. Sup: $\\max(3, 4) = 4$. These confirm $d_\\infty \\le d_2 \\le d_1$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-026",
+      "format": "cloze",
+      "stem": "Use the discrete metric $d$ on a set $X$, where $d(x,y) = 1$ for $x \\ne y$ and $0$ otherwise. Let $a, b, c$ be three distinct points of $X$.",
+      "solution": "The distance $d(a, a)$ equals {{1}}, while the distance $d(a, b)$ between two distinct points equals {{2}}. The ball $B(a, 1/2)$ contains only $a$ itself, so the number of points in $B(a, 1/2)$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "In the discrete metric $d(a,a) = 0$ and $d(a,b) = 1$ for $a \\ne b$. The ball $B(a, 1/2)$ admits only points at distance $< 1/2$ from $a$, i.e. just $a$, so it has $1$ point.",
+      "difficulty": "warmup",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-027",
+      "format": "cloze",
+      "stem": "Decide whether $d(x, y) = (x - y)^2$ is a metric on $\\mathbb{R}$, using $x = 0$, $y = 1$, $z = 3$ to test the triangle inequality.",
+      "solution": "Here $d(0, 3) = 9$, while $d(0, 1) + d(1, 3) = 1 + 4$, which equals {{1}}. Since $9 \\le 5$ is false, the triangle inequality {{2}}, so $d(x,y) = (x-y)^2$ {{3}} a metric on $\\mathbb{R}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "fails",
+            "holds"
+          ],
+          "answer": "fails"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is not"
+        }
+      ],
+      "explanation": "$d(0,1) + d(1,3) = 1 + 4 = 5$, but $d(0,3) = 9 > 5$, so the triangle inequality fails. Hence $(x-y)^2$ is not a metric.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-metric-spaces-028",
+      "format": "cloze",
+      "stem": "Test whether $d(x, y) = |x^2 - y^2|$ is a metric on $\\mathbb{R}$ by examining the points $x = 2$ and $y = -2$.",
+      "solution": "Compute $d(2, -2) = |2^2 - (-2)^2| = |4 - 4|$, which equals {{1}}. Because this distance is zero even though $2 \\ne -2$, the identity-of-indiscernibles axiom {{2}}. Therefore $d(x,y) = |x^2 - y^2|$ {{3}} a metric on $\\mathbb{R}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "fails",
+            "holds"
+          ],
+          "answer": "fails"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is not"
+        }
+      ],
+      "explanation": "$d(2,-2) = |4 - 4| = 0$ with $2 \\ne -2$, so distinct points sit at distance $0$. The identity of indiscernibles fails, hence $|x^2 - y^2|$ is not a metric (only a pseudometric).",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    }
+  ]
+}

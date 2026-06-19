@@ -1,0 +1,509 @@
+{
+  "courseId": "complex-analysis",
+  "topicId": "analytic-functions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "complex-analysis-analytic-functions-001",
+      "stem": "Writing $f(z) = u(x,y) + i v(x,y)$, the Cauchy-Riemann equations are:",
+      "options": [
+        "$u_x = v_y$ and $u_y = -v_x$.",
+        "$u_x = v_x$ and $u_y = v_y$.",
+        "$u_x = -v_y$ and $u_y = v_x$.",
+        "$u_x = v_y$ and $u_y = v_x$."
+      ],
+      "answer": 0,
+      "explanation": "The Cauchy-Riemann equations are $u_x = v_y$ and $u_y = -v_x$. They arise by requiring the limit defining $f'(z)$ to agree when computed along the real and imaginary directions. The cross sign on the second equation is essential.",
+      "difficulty": "warmup",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-002",
+      "stem": "For $f(z) = z^2 = (x^2 - y^2) + i(2xy)$, verifying the Cauchy-Riemann equations gives which pair of equalities?",
+      "options": [
+        "$2x = 2y$ and $-2y = -2x$.",
+        "$x = y$ and $y = x$.",
+        "$2x = 2x$ and $-2y = -2y$.",
+        "$2x = -2x$ and $2y = 2y$."
+      ],
+      "answer": 2,
+      "explanation": "Here $u = x^2 - y^2$ and $v = 2xy$, so $u_x = 2x$, $v_y = 2x$, $u_y = -2y$, and $v_x = 2y$. The equations $u_x = v_y$ and $u_y = -v_x$ become $2x = 2x$ and $-2y = -2y$, both satisfied everywhere. Hence $z^2$ is entire.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-003",
+      "stem": "Why is $f(z) = \\bar{z} = x - iy$ nowhere analytic?",
+      "options": [
+        "Because it is unbounded.",
+        "Because $u_x = 1$ but $v_y = -1$, so $u_x = v_y$ fails at every point.",
+        "Because it is not continuous.",
+        "Because $u$ and $v$ are not differentiable."
+      ],
+      "answer": 1,
+      "explanation": "With $u = x$ and $v = -y$, we get $u_x = 1$ and $v_y = -1$, so the first Cauchy-Riemann equation $u_x = v_y$ would require $1 = -1$, which never holds. Since the equations fail at every point, $\\bar z$ has a derivative nowhere and is nowhere analytic, even though it is continuous and smooth as a function of $(x,y)$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-004",
+      "stem": "A function is called entire when it is:",
+      "options": [
+        "analytic everywhere except at isolated poles.",
+        "bounded on the complex plane.",
+        "analytic at every point of the whole complex plane.",
+        "analytic at the origin only."
+      ],
+      "answer": 2,
+      "explanation": "An entire function is one that is analytic at every point of $\\mathbb{C}$. Examples include polynomials, $e^z$, $\\sin z$, and $\\cos z$. Being analytic only at the origin, merely bounded, or analytic apart from poles (which would be meromorphic) does not qualify.",
+      "difficulty": "warmup",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-005",
+      "stem": "When the Cauchy-Riemann equations hold at a point, the derivative can be computed as:",
+      "options": [
+        "$f'(z) = u_y + i v_y$.",
+        "$f'(z) = u_x + i v_x$.",
+        "$f'(z) = v_x + i u_x$.",
+        "$f'(z) = u_x - i u_y$ only if $u$ is harmonic."
+      ],
+      "answer": 1,
+      "explanation": "Differentiating along the real axis gives $f'(z) = u_x + i v_x$. Using Cauchy-Riemann ($v_x = -u_y$, $u_x = v_y$) one can rewrite this as $f'(z) = u_x - i u_y$ as well, valid wherever $f$ is differentiable, with no separate harmonicity hypothesis. The forms in the other options mix the partials incorrectly.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-006",
+      "stem": "A real function $u(x,y)$ is harmonic on a domain when it has continuous second partials and satisfies:",
+      "options": [
+        "$u_x + u_y = 0$.",
+        "$u_{xx} - u_{yy} = 0$.",
+        "$u_{xy} = 0$.",
+        "$u_{xx} + u_{yy} = 0$."
+      ],
+      "answer": 3,
+      "explanation": "Harmonicity means $u$ satisfies Laplace's equation $u_{xx} + u_{yy} = 0$. The real and imaginary parts of any analytic function are harmonic, which is why this condition is central. The minus-sign version is the wave operator, not Laplace's equation.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-007",
+      "stem": "Is $u(x,y) = x^2 - y^2$ harmonic?",
+      "options": [
+        "No, because $u_{xx} + u_{yy} = 4$.",
+        "Yes, because $u_x = u_y$.",
+        "Yes, because $u_{xx} + u_{yy} = 2 + (-2) = 0$.",
+        "No, because it is not the real part of any analytic function."
+      ],
+      "answer": 2,
+      "explanation": "Compute $u_{xx} = 2$ and $u_{yy} = -2$, so $u_{xx} + u_{yy} = 2 - 2 = 0$. Thus $u$ is harmonic. Indeed $x^2 - y^2 = \\operatorname{Re}(z^2)$, the real part of an entire function, consistent with harmonicity.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-008",
+      "stem": "If $u = x^2 - y^2$ is the real part of an analytic $f$, a harmonic conjugate $v$ satisfying $v_x = -u_y$ and $v_y = u_x$ is:",
+      "options": [
+        "$v = xy$",
+        "$v = 2xy$",
+        "$v = x^2 + y^2$",
+        "$v = -2xy$"
+      ],
+      "answer": 1,
+      "explanation": "From $u = x^2 - y^2$: $u_x = 2x$ and $u_y = -2y$. The conjugate must satisfy $v_y = u_x = 2x$, giving $v = 2xy + g(x)$, and $v_x = -u_y = 2y$, giving $2y + g'(x) = 2y$, so $g'(x) = 0$. Hence $v = 2xy$ (up to a constant). Then $f = u + iv = z^2$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-009",
+      "stem": "The polar form of the Cauchy-Riemann equations for $f = u + iv$ in coordinates $(r, \\theta)$ is:",
+      "options": [
+        "$u_r = \\dfrac{1}{r} v_\\theta$ and $v_r = -\\dfrac{1}{r} u_\\theta$.",
+        "$u_r = -\\dfrac{1}{r} v_\\theta$ and $v_r = \\dfrac{1}{r} u_\\theta$.",
+        "$u_r = v_\\theta$ and $u_\\theta = -v_r$.",
+        "$r u_r = v_\\theta$ and $r v_r = u_\\theta$."
+      ],
+      "answer": 0,
+      "explanation": "In polar coordinates the Cauchy-Riemann equations read $u_r = \\frac{1}{r} v_\\theta$ and $v_r = -\\frac{1}{r} u_\\theta$ (for $r > 0$). These are derived from the Cartesian form via the chain rule and are convenient for functions like $\\log z$ and $z^c$.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-010",
+      "stem": "Satisfying the Cauchy-Riemann equations at a single point $z_0$ guarantees that:",
+      "options": [
+        "$f$ is differentiable at $z_0$ only if the partials are also continuous there; the equations alone are necessary but not sufficient.",
+        "$f$ is entire.",
+        "$f$ is harmonic at $z_0$.",
+        "$f$ is analytic at $z_0$."
+      ],
+      "answer": 0,
+      "explanation": "The Cauchy-Riemann equations are necessary for differentiability but not by themselves sufficient. The standard sufficient condition adds that $u, v$ have continuous first partial derivatives in a neighborhood. Holding only at one point, the equations do not even guarantee differentiability there, let alone analyticity (which requires differentiability throughout a neighborhood).",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-011",
+      "stem": "At which points is $f(z) = |z|^2 = x^2 + y^2$ differentiable?",
+      "options": [
+        "Nowhere.",
+        "Everywhere except the origin.",
+        "Only at the origin $z = 0$.",
+        "Everywhere; it is entire."
+      ],
+      "answer": 2,
+      "explanation": "With $u = x^2 + y^2$ and $v = 0$: $u_x = 2x$, $v_y = 0$, $u_y = 2y$, $v_x = 0$. The equations $u_x = v_y$ and $u_y = -v_x$ become $2x = 0$ and $2y = 0$, holding only at $x = y = 0$. So $f$ is differentiable solely at the origin, and since differentiability fails in every neighborhood, it is analytic nowhere.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-012",
+      "stem": "If $f$ is analytic on a domain and $f'(z) = 0$ throughout, then on that domain $f$ is:",
+      "options": [
+        "unbounded.",
+        "constant.",
+        "purely imaginary.",
+        "equal to $\\bar z$."
+      ],
+      "answer": 1,
+      "explanation": "When $f' \\equiv 0$ on a domain, all four partials $u_x, u_y, v_x, v_y$ vanish (since $f' = u_x + i v_x$ and Cauchy-Riemann tie the rest to these). Thus $u$ and $v$ are constant on the connected domain, so $f$ is constant. Connectedness of the domain is what lets the local conclusion extend globally.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-013",
+      "stem": "Which function is entire?",
+      "options": [
+        "$f(z) = \\dfrac{1}{z}$",
+        "$f(z) = \\bar{z}$",
+        "$f(z) = |z|$",
+        "$f(z) = e^z$"
+      ],
+      "answer": 3,
+      "explanation": "The exponential $e^z = e^x(\\cos y + i \\sin y)$ satisfies the Cauchy-Riemann equations everywhere with continuous partials, so it is entire. By contrast $1/z$ is not analytic at $0$, while $\\bar z$ and $|z|$ fail the Cauchy-Riemann equations (they are not analytic anywhere).",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-014",
+      "stem": "The function $f(z) = 1/z$ is analytic on which set?",
+      "options": [
+        "$\\mathbb{C} \\setminus \\{0\\}$, the plane with the origin removed.",
+        "Nowhere.",
+        "All of $\\mathbb{C}$.",
+        "Only inside the unit disk."
+      ],
+      "answer": 0,
+      "explanation": "For $z \\neq 0$, $1/z$ has the derivative $-1/z^2$ and satisfies the Cauchy-Riemann equations, so it is analytic on $\\mathbb{C} \\setminus \\{0\\}$. The single point $z = 0$ is an isolated singularity (a pole), so the function is not entire but is analytic on the punctured plane.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-015",
+      "stem": "If $v(x,y) = 2xy$ is given as the imaginary part of an analytic $f$, a harmonic conjugate relationship recovers $u$ satisfying $u_x = v_y$ and $u_y = -v_x$. What is $u$ (up to a constant)?",
+      "options": [
+        "$u = x^2 + y^2$",
+        "$u = 2xy$",
+        "$u = y^2 - x^2$",
+        "$u = x^2 - y^2$"
+      ],
+      "answer": 3,
+      "explanation": "From $v = 2xy$: $v_x = 2y$ and $v_y = 2x$. Then $u_x = v_y = 2x$ gives $u = x^2 + h(y)$, and $u_y = -v_x = -2y$ gives $h'(y) = -2y$, so $h(y) = -y^2$. Hence $u = x^2 - y^2$ (up to a constant), and $f = u + iv = z^2$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-016",
+      "stem": "Is $u(x,y) = x^3 - 3xy^2$ harmonic?",
+      "options": [
+        "Yes, because $u_{xy} = 0$.",
+        "Yes, because $u_{xx} + u_{yy} = 6x + (-6x) = 0$.",
+        "No, it is not twice differentiable.",
+        "No, $u_{xx} + u_{yy} = 12x$."
+      ],
+      "answer": 1,
+      "explanation": "Differentiate: $u_x = 3x^2 - 3y^2$, $u_{xx} = 6x$; and $u_y = -6xy$, $u_{yy} = -6x$. Then $u_{xx} + u_{yy} = 6x - 6x = 0$, so $u$ is harmonic. In fact $x^3 - 3xy^2 = \\operatorname{Re}(z^3)$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-017",
+      "stem": "Where is the rational function $f(z) = \\dfrac{z}{z^2 + 1}$ analytic?",
+      "options": [
+        "Everywhere; it is entire.",
+        "Nowhere.",
+        "Only on the real axis.",
+        "On all of $\\mathbb{C}$ except $z = \\pm i$."
+      ],
+      "answer": 3,
+      "explanation": "A rational function is analytic wherever its denominator is nonzero. Here $z^2 + 1 = 0$ at $z = \\pm i$, so $f$ is analytic on $\\mathbb{C} \\setminus \\{i, -i\\}$. Those two points are poles, not points of analyticity.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-018",
+      "stem": "If $f = u + iv$ is analytic, the level curves $u = \\text{const}$ and $v = \\text{const}$ meet:",
+      "options": [
+        "at $45$ degrees.",
+        "orthogonally (where $f' \\neq 0$).",
+        "tangentially.",
+        "never."
+      ],
+      "answer": 1,
+      "explanation": "The gradients $\\nabla u = (u_x, u_y)$ and $\\nabla v = (v_x, v_y)$ satisfy $\\nabla u \\cdot \\nabla v = u_x v_x + u_y v_y = u_x(-u_y) + u_y(u_x) = 0$ by Cauchy-Riemann. Orthogonal gradients mean the families of level curves intersect at right angles wherever $f'(z) \\neq 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-019",
+      "stem": "If $f(z)$ and $\\overline{f(z)}$ are both analytic on a domain, then $f$ must be:",
+      "options": [
+        "the zero function.",
+        "entire.",
+        "constant.",
+        "purely imaginary."
+      ],
+      "answer": 2,
+      "explanation": "Both $f = u + iv$ and $\\bar f = u - iv$ analytic forces both $v$ and $-v$ to be conjugates, and applying Cauchy-Riemann to each shows $u_x = v_y$ and $u_x = -v_y$, hence $u_x = 0$; similarly all partials vanish. On the connected domain $f$ is therefore constant. It need not be zero or purely imaginary.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-020",
+      "stem": "Which statement about the relationship between analyticity and continuity is correct?",
+      "options": [
+        "Analytic functions need not be continuous.",
+        "The two notions are equivalent.",
+        "Analyticity at a point implies continuity there, but continuity does not imply analyticity.",
+        "Continuity at a point implies analyticity there."
+      ],
+      "answer": 2,
+      "explanation": "Analyticity is far stronger than continuity. If $f$ is analytic at $z_0$ it is differentiable there, hence continuous. The converse fails badly: $\\bar z$ is continuous everywhere yet analytic nowhere. So analyticity implies continuity but not conversely.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-021",
+      "stem": "For the function $f(z) = e^x \\cos y + i\\, e^x \\sin y$, evaluate $f'(z)$.",
+      "options": [
+        "$e^x \\sin y + i\\, e^x \\cos y$",
+        "$-e^x \\cos y + i\\, e^x \\sin y$",
+        "$e^x \\cos y + i\\, e^x \\sin y$",
+        "$e^x \\cos y - i\\, e^x \\sin y$"
+      ],
+      "answer": 2,
+      "explanation": "Here $u = e^x \\cos y$, $v = e^x \\sin y$, so $u_x = e^x\\cos y$ and $v_x = e^x \\sin y$. Then $f'(z) = u_x + i v_x = e^x\\cos y + i e^x \\sin y = f(z)$. This is just $e^z$, whose derivative is itself.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-022",
+      "stem": "Does the function $u(x,y) = x^2 + y^2$ admit a harmonic conjugate on the plane?",
+      "options": [
+        "Yes, namely $v = 2xy$.",
+        "No, because $u$ is not harmonic.",
+        "Yes, namely $v = -2xy$.",
+        "Yes, namely $v = x^2 - y^2$."
+      ],
+      "answer": 1,
+      "explanation": "A harmonic conjugate exists only for harmonic $u$. Here $u_{xx} + u_{yy} = 2 + 2 = 4 \\neq 0$, so $u = x^2 + y^2$ is not harmonic and cannot be the real part of an analytic function. Hence no harmonic conjugate exists.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-023",
+      "stem": "Suppose $f$ is analytic on a domain $D$ and $|f(z)|$ is constant on $D$. What follows?",
+      "options": [
+        "$f'$ is constant but $f$ need not be.",
+        "$f$ is constant on $D$.",
+        "$f$ has a zero in $D$.",
+        "$D$ must be the whole plane."
+      ],
+      "answer": 1,
+      "explanation": "If $|f| = c$ is constant then $u^2 + v^2 = c^2$. Differentiating and using the Cauchy-Riemann equations forces $u_x = u_y = v_x = v_y = 0$ (the case $c = 0$ gives $f \\equiv 0$ directly). So $f$ is constant. A constant modulus pins down the whole function on a connected domain.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-024",
+      "stem": "The principal logarithm $\\operatorname{Log} z$ is analytic on which set?",
+      "options": [
+        "All of $\\mathbb{C}$.",
+        "The plane minus the origin and the negative real axis (the principal branch cut).",
+        "Only the open right half-plane.",
+        "The punctured plane $\\mathbb{C} \\setminus \\{0\\}$."
+      ],
+      "answer": 1,
+      "explanation": "The principal branch $\\operatorname{Log} z = \\ln|z| + i\\operatorname{Arg} z$ is analytic on the domain obtained by deleting the origin and the negative real axis, where $\\operatorname{Arg} z$ jumps across $\\pm\\pi$. On that slit plane it is analytic with derivative $1/z$. It is not analytic on the whole punctured plane because of the branch cut.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-025",
+      "format": "cloze",
+      "stem": "Test the Cauchy-Riemann equations for $f(z) = z^2$ at a general point.",
+      "solution": "With $u = x^2 - y^2$ and $v = 2xy$, we have $u_x$ equal to {{1}} in the form $2x$ and $v_y$ equal to the same. Since the equations hold at every point, the function $z^2$ is {{2}} on the whole plane.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$2x$",
+            "$2y$",
+            "$x^2$"
+          ],
+          "answer": "$2x$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "entire",
+            "nowhere analytic",
+            "harmonic but not analytic"
+          ],
+          "answer": "entire"
+        }
+      ],
+      "explanation": "$u_x = 2x = v_y$ and $u_y = -2y = -v_x$, so both Cauchy-Riemann equations hold everywhere with continuous partials. Thus $z^2$ is entire.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-026",
+      "format": "cloze",
+      "stem": "Check whether $u(x,y) = x^2 - y^2$ is harmonic by computing its Laplacian.",
+      "solution": "The second partials are $u_{xx} = 2$ and $u_{yy}$ equal to the integer {{1}}. Their sum is {{2}}, so $u$ {{3}} harmonic.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "$u_{xx} = 2$, $u_{yy} = -2$, and $u_{xx} + u_{yy} = 0$. A zero Laplacian means $u$ is harmonic.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-027",
+      "format": "cloze",
+      "stem": "Find a harmonic conjugate of $u(x,y) = x^2 - y^2$ using $v_y = u_x$ and $v_x = -u_y$.",
+      "solution": "Since $u_x = 2x$, integrating $v_y = 2x$ in $y$ gives $v = 2xy + g(x)$. Then $v_x = 2y + g'(x)$ must equal $-u_y = 2y$, forcing $g'(x)$ to equal the number {{1}}. The resulting conjugate is $v$ equal to {{2}} in the form $2xy$, and the analytic function is $f(z) = z^2$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$2xy$",
+            "$-2xy$",
+            "$x^2 + y^2$"
+          ],
+          "answer": "$2xy$"
+        }
+      ],
+      "explanation": "Integrating $v_y = 2x$ gives $v = 2xy + g(x)$; matching $v_x = 2y$ forces $g'(x) = 0$, so $g$ is constant. The conjugate is $v = 2xy$ and $f = u + iv = z^2$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-028",
+      "format": "cloze",
+      "stem": "Determine where $f(z) = \\bar{z}$ satisfies the Cauchy-Riemann equations.",
+      "solution": "Writing $\\bar z = x - iy$ gives $u = x$ and $v = -y$, so $u_x = 1$ while $v_y$ equals the integer {{1}}. Because $u_x = v_y$ would require $1$ to equal that value, the equations hold at {{2}} points, and $\\bar z$ is nowhere analytic.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "no",
+            "all",
+            "only the origin's"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "Here $u_x = 1$ and $v_y = -1$. The equation $u_x = v_y$ becomes $1 = -1$, which fails everywhere, so the Cauchy-Riemann equations hold at no points and $\\bar z$ is nowhere analytic.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-029",
+      "format": "cloze",
+      "stem": "Use the Cauchy-Riemann form of the derivative for $f(z) = z^3$ and evaluate at a point.",
+      "solution": "Since $f(z) = z^3$ is entire, $f'(z) = 3z^2$. At $z = i$ this gives $3i^2$, whose real part is the integer {{1}} and whose imaginary part is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$f'(z) = 3z^2$, and $f'(i) = 3i^2 = 3(-1) = -3$. This is the real number $-3$, so its real part is $-3$ and its imaginary part is $0$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-analytic-functions-030",
+      "format": "cloze",
+      "stem": "Locate the points of non-analyticity of $f(z) = \\dfrac{1}{z^2 + 4}$.",
+      "solution": "The function is analytic except where the denominator vanishes, that is $z^2 = -4$. The two such points are $z = 2i$ and $z = -2i$; the positive-imaginary one has imaginary part equal to the integer {{1}}. Away from these points the function {{2}} analytic.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "Solving $z^2 + 4 = 0$ gives $z = \\pm 2i$; the one with positive imaginary part is $2i$, imaginary part $2$. The quotient of analytic functions is analytic wherever the denominator is nonzero, so $f$ is analytic off $\\{2i, -2i\\}$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    }
+  ]
+}

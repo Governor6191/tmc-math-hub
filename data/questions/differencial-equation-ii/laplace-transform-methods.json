@@ -1,0 +1,599 @@
+{
+  "courseId": "differencial-equation-ii",
+  "topicId": "laplace-transform-methods",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-001",
+      "stem": "What is the Laplace transform $\\mathcal{L}\\{1\\}$ for $s > 0$?",
+      "options": [
+        "$1$",
+        "$s$",
+        "$\\dfrac{1}{s}$",
+        "$\\dfrac{1}{s^2}$"
+      ],
+      "answer": 2,
+      "explanation": "By definition $\\mathcal{L}\\{1\\} = \\int_0^\\infty e^{-st}\\,dt = \\left[-\\tfrac{1}{s}e^{-st}\\right]_0^\\infty$. For $s > 0$ the upper limit gives $0$ and the lower limit gives $-\\tfrac{1}{s}$, so the value is $0 - (-\\tfrac{1}{s}) = \\tfrac{1}{s}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-002",
+      "stem": "What is $\\mathcal{L}\\{e^{at}\\}$ for $s > a$?",
+      "options": [
+        "$\\dfrac{1}{s - a}$",
+        "$\\dfrac{a}{s}$",
+        "$\\dfrac{1}{s + a}$",
+        "$\\dfrac{s}{s - a}$"
+      ],
+      "answer": 0,
+      "explanation": "We compute $\\int_0^\\infty e^{-st}e^{at}\\,dt = \\int_0^\\infty e^{-(s-a)t}\\,dt$. This converges when $s - a > 0$, giving $\\left[-\\tfrac{1}{s-a}e^{-(s-a)t}\\right]_0^\\infty = \\tfrac{1}{s-a}$. So $\\mathcal{L}\\{e^{at}\\} = \\tfrac{1}{s-a}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-003",
+      "stem": "What is $\\mathcal{L}\\{t\\}$?",
+      "options": [
+        "$\\dfrac{2}{s^3}$",
+        "$\\dfrac{1}{s^2}$",
+        "$\\dfrac{1}{s - 1}$",
+        "$\\dfrac{1}{s}$"
+      ],
+      "answer": 1,
+      "explanation": "Using $\\mathcal{L}\\{t^n\\} = \\dfrac{n!}{s^{n+1}}$ with $n = 1$ gives $\\dfrac{1!}{s^2} = \\dfrac{1}{s^2}$. Equivalently, integration by parts on $\\int_0^\\infty t\\,e^{-st}\\,dt$ yields $\\tfrac{1}{s^2}$ for $s > 0$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-004",
+      "stem": "What is $\\mathcal{L}\\{t^3\\}$?",
+      "options": [
+        "$\\dfrac{6}{s^3}$",
+        "$\\dfrac{3}{s^4}$",
+        "$\\dfrac{6}{s^4}$",
+        "$\\dfrac{1}{s^4}$"
+      ],
+      "answer": 2,
+      "explanation": "The rule $\\mathcal{L}\\{t^n\\} = \\dfrac{n!}{s^{n+1}}$ with $n = 3$ gives $\\dfrac{3!}{s^4} = \\dfrac{6}{s^4}$, since $3! = 6$ and the exponent is $n + 1 = 4$.",
+      "difficulty": "warmup",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-005",
+      "stem": "What is $\\mathcal{L}\\{\\sin(\\omega t)\\}$?",
+      "options": [
+        "$\\dfrac{\\omega}{s^2 + \\omega^2}$",
+        "$\\dfrac{s}{s^2 - \\omega^2}$",
+        "$\\dfrac{\\omega}{s^2 - \\omega^2}$",
+        "$\\dfrac{s}{s^2 + \\omega^2}$"
+      ],
+      "answer": 0,
+      "explanation": "The standard transform is $\\mathcal{L}\\{\\sin(\\omega t)\\} = \\dfrac{\\omega}{s^2 + \\omega^2}$. The numerator carries the frequency $\\omega$ and the denominator is $s^2 + \\omega^2$. Note $\\mathcal{L}\\{\\cos(\\omega t)\\} = \\dfrac{s}{s^2 + \\omega^2}$ instead has $s$ on top.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-006",
+      "stem": "What is $\\mathcal{L}\\{\\cos(3t)\\}$?",
+      "options": [
+        "$\\dfrac{s}{s^2 + 9}$",
+        "$\\dfrac{s}{s^2 + 3}$",
+        "$\\dfrac{3}{s^2 + 3}$",
+        "$\\dfrac{3}{s^2 + 9}$"
+      ],
+      "answer": 0,
+      "explanation": "With $\\mathcal{L}\\{\\cos(\\omega t)\\} = \\dfrac{s}{s^2 + \\omega^2}$ and $\\omega = 3$, the transform is $\\dfrac{s}{s^2 + 9}$. The denominator uses $\\omega^2 = 9$, and cosine puts $s$ in the numerator.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-007",
+      "stem": "Using linearity, what is $\\mathcal{L}\\{3 + 2t\\}$?",
+      "options": [
+        "$\\dfrac{5}{s^2}$",
+        "$\\dfrac{3}{s} + \\dfrac{2}{s^2}$",
+        "$\\dfrac{3 + 2t}{s}$",
+        "$\\dfrac{2}{s} + \\dfrac{3}{s^2}$"
+      ],
+      "answer": 1,
+      "explanation": "Laplace transform is linear, so $\\mathcal{L}\\{3 + 2t\\} = 3\\mathcal{L}\\{1\\} + 2\\mathcal{L}\\{t\\} = 3\\cdot\\tfrac{1}{s} + 2\\cdot\\tfrac{1}{s^2} = \\tfrac{3}{s} + \\tfrac{2}{s^2}$. The constant multiples come straight through.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-008",
+      "stem": "What is $\\mathcal{L}\\{y'(t)\\}$ in terms of $Y(s) = \\mathcal{L}\\{y\\}$?",
+      "options": [
+        "$sY(s)$",
+        "$Y(s) - y(0)$",
+        "$sY(s) + y(0)$",
+        "$sY(s) - y(0)$"
+      ],
+      "answer": 3,
+      "explanation": "The derivative rule is $\\mathcal{L}\\{y'\\} = sY(s) - y(0)$. Integration by parts on $\\int_0^\\infty y'(t)e^{-st}\\,dt$ produces a boundary term $-y(0)$ plus $s$ times the transform of $y$, which is exactly $sY(s) - y(0)$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-009",
+      "stem": "What is $\\mathcal{L}\\{y''(t)\\}$ in terms of $Y(s)$?",
+      "options": [
+        "$s^2 Y(s) - y(0) - s y'(0)$",
+        "$s^2 Y(s) - y'(0)$",
+        "$s^2 Y(s) + s y(0) + y'(0)$",
+        "$s^2 Y(s) - s y(0) - y'(0)$"
+      ],
+      "answer": 3,
+      "explanation": "Applying the first-derivative rule twice gives $\\mathcal{L}\\{y''\\} = s\\mathcal{L}\\{y'\\} - y'(0) = s(sY - y(0)) - y'(0) = s^2 Y(s) - s y(0) - y'(0)$. The two initial conditions $y(0)$ and $y'(0)$ both appear.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-010",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{s - 4}\\right\\}$.",
+      "options": [
+        "$e^{4t}$",
+        "$4e^{4t}$",
+        "$e^{-4t}$",
+        "$\\cos(4t)$"
+      ],
+      "answer": 0,
+      "explanation": "Since $\\mathcal{L}\\{e^{at}\\} = \\dfrac{1}{s - a}$, reading it backward with $a = 4$ gives $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{s - 4}\\right\\} = e^{4t}$. The sign in the denominator $s - 4$ corresponds to $e^{+4t}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-011",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{6}{s^2 + 9}\\right\\}$.",
+      "options": [
+        "$6\\cos(3t)$",
+        "$2\\cos(3t)$",
+        "$2\\sin(3t)$",
+        "$6\\sin(3t)$"
+      ],
+      "answer": 2,
+      "explanation": "Match against $\\mathcal{L}\\{\\sin(3t)\\} = \\dfrac{3}{s^2 + 9}$. Writing $\\dfrac{6}{s^2 + 9} = 2\\cdot\\dfrac{3}{s^2 + 9}$ gives the inverse $2\\sin(3t)$. The factor of $2$ comes from $6/3$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-012",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{2}{s^3}\\right\\}$.",
+      "options": [
+        "$2t^2$",
+        "$t^2$",
+        "$2t$",
+        "$\\dfrac{t^2}{2}$"
+      ],
+      "answer": 1,
+      "explanation": "Since $\\mathcal{L}\\{t^2\\} = \\dfrac{2!}{s^3} = \\dfrac{2}{s^3}$, the inverse of $\\dfrac{2}{s^3}$ is exactly $t^2$. The numerator $2$ already equals $2! = 2$, so no extra scaling is needed.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-013",
+      "stem": "Solve $y' + 2y = 0$, $y(0) = 3$, by Laplace transform.",
+      "options": [
+        "$y = 3e^{2t}$",
+        "$y = 2e^{-3t}$",
+        "$y = 3e^{-2t}$",
+        "$y = 3e^{-t}$"
+      ],
+      "answer": 2,
+      "explanation": "Transforming gives $sY - 3 + 2Y = 0$, so $(s + 2)Y = 3$ and $Y = \\dfrac{3}{s + 2}$. Inverting with $a = -2$ gives $y = 3e^{-2t}$. The exponent matches the root $r = -2$ of the equation.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-014",
+      "stem": "Solve $y' - 5y = 0$, $y(0) = 1$, by Laplace transform.",
+      "options": [
+        "$y = e^{t/5}$",
+        "$y = 5e^{5t}$",
+        "$y = e^{-5t}$",
+        "$y = e^{5t}$"
+      ],
+      "answer": 3,
+      "explanation": "Transforming gives $sY - 1 - 5Y = 0$, so $(s - 5)Y = 1$ and $Y = \\dfrac{1}{s - 5}$. Inverting gives $y = e^{5t}$, consistent with the root $r = 5$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-015",
+      "stem": "Solve $y'' - y = 0$ with $y(0) = 0$, $y'(0) = 1$, by Laplace transform.",
+      "options": [
+        "$y = \\sinh t$",
+        "$y = e^{t}$",
+        "$y = \\sin t$",
+        "$y = \\cosh t$"
+      ],
+      "answer": 0,
+      "explanation": "Transforming gives $s^2 Y - s(0) - 1 - Y = 0$, so $(s^2 - 1)Y = 1$ and $Y = \\dfrac{1}{s^2 - 1}$. Since $\\mathcal{L}\\{\\sinh t\\} = \\dfrac{1}{s^2 - 1}$, the solution is $y = \\sinh t$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-016",
+      "stem": "When solving $y'' + 4y = 0$, $y(0) = 1$, $y'(0) = 0$ by Laplace, what is $Y(s)$?",
+      "options": [
+        "$\\dfrac{1}{s^2 + 4}$",
+        "$\\dfrac{1}{s^2 - 4}$",
+        "$\\dfrac{s}{s^2 - 4}$",
+        "$\\dfrac{s}{s^2 + 4}$"
+      ],
+      "answer": 3,
+      "explanation": "Transforming: $s^2 Y - s\\cdot 1 - 0 + 4Y = 0$, so $(s^2 + 4)Y = s$ and $Y = \\dfrac{s}{s^2 + 4}$. Inverting gives $y = \\cos(2t)$, the expected oscillation.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-017",
+      "stem": "Partial fractions: write $\\dfrac{1}{(s - 1)(s - 2)}$ as $\\dfrac{A}{s - 1} + \\dfrac{B}{s - 2}$. What are $A$ and $B$?",
+      "options": [
+        "$A = -1,\\ B = 1$",
+        "$A = -1,\\ B = -1$",
+        "$A = 1,\\ B = 1$",
+        "$A = 1,\\ B = -1$"
+      ],
+      "answer": 0,
+      "explanation": "Cover-up at $s = 1$: $A = \\dfrac{1}{1 - 2} = -1$. Cover-up at $s = 2$: $B = \\dfrac{1}{2 - 1} = 1$. So $\\dfrac{1}{(s-1)(s-2)} = \\dfrac{-1}{s-1} + \\dfrac{1}{s-2}$, giving $A = -1$, $B = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-018",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{(s - 1)(s - 2)}\\right\\}$.",
+      "options": [
+        "$e^{t} - e^{2t}$",
+        "$2e^{2t} - e^{t}$",
+        "$e^{t} + e^{2t}$",
+        "$e^{2t} - e^{t}$"
+      ],
+      "answer": 3,
+      "explanation": "From the partial fractions $\\dfrac{-1}{s-1} + \\dfrac{1}{s-2}$, inverting term by term gives $-e^{t} + e^{2t} = e^{2t} - e^{t}$. Each simple pole at $s = a$ contributes $e^{at}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-019",
+      "stem": "What is the Laplace transform of the unit step $u_c(t)$ (Heaviside function turning on at $t = c \\ge 0$)?",
+      "options": [
+        "$\\dfrac{e^{-cs}}{s}$",
+        "$\\dfrac{1}{s - c}$",
+        "$e^{-cs}$",
+        "$\\dfrac{e^{cs}}{s}$"
+      ],
+      "answer": 0,
+      "explanation": "By definition $\\mathcal{L}\\{u_c(t)\\} = \\int_c^\\infty e^{-st}\\,dt = \\left[-\\tfrac{1}{s}e^{-st}\\right]_c^\\infty = \\tfrac{1}{s}e^{-cs}$ for $s > 0$. The shift $c$ appears as the factor $e^{-cs}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-020",
+      "stem": "The second shifting theorem states $\\mathcal{L}\\{u_c(t)f(t - c)\\} = ?$, where $F(s) = \\mathcal{L}\\{f\\}$.",
+      "options": [
+        "$F(s - c)$",
+        "$e^{cs}F(s)$",
+        "$e^{-cs}F(s)$",
+        "$e^{-cs}F(s - c)$"
+      ],
+      "answer": 2,
+      "explanation": "Shifting a function to start at $t = c$ multiplies its transform by $e^{-cs}$: $\\mathcal{L}\\{u_c(t)f(t - c)\\} = e^{-cs}F(s)$. This pairs a time delay $c$ with the exponential factor $e^{-cs}$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-021",
+      "stem": "The first shifting (s-shift) theorem gives $\\mathcal{L}\\{e^{at}f(t)\\} = ?$",
+      "options": [
+        "$e^{-as}F(s)$",
+        "$F(s + a)$",
+        "$e^{as}F(s)$",
+        "$F(s - a)$"
+      ],
+      "answer": 3,
+      "explanation": "Multiplying by $e^{at}$ in the time domain shifts the transform variable: $\\mathcal{L}\\{e^{at}f(t)\\} = F(s - a)$. For example $\\mathcal{L}\\{e^{at}\\cos(\\omega t)\\} = \\dfrac{s - a}{(s - a)^2 + \\omega^2}$, where every $s$ becomes $s - a$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-022",
+      "stem": "Find $\\mathcal{L}\\{e^{2t}\\sin(3t)\\}$ using the first shifting theorem.",
+      "options": [
+        "$\\dfrac{3}{(s + 2)^2 + 9}$",
+        "$\\dfrac{s - 2}{(s - 2)^2 + 9}$",
+        "$\\dfrac{3}{s^2 + 9}$",
+        "$\\dfrac{3}{(s - 2)^2 + 9}$"
+      ],
+      "answer": 3,
+      "explanation": "Start from $\\mathcal{L}\\{\\sin(3t)\\} = \\dfrac{3}{s^2 + 9}$. The factor $e^{2t}$ replaces $s$ by $s - 2$, giving $\\dfrac{3}{(s - 2)^2 + 9}$. The numerator stays $3$ because sine has a constant numerator.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-023",
+      "stem": "What is the Laplace transform of the Dirac delta $\\delta(t - a)$ for $a \\ge 0$?",
+      "options": [
+        "$e^{as}$",
+        "$\\dfrac{1}{s}$",
+        "$0$",
+        "$e^{-as}$"
+      ],
+      "answer": 3,
+      "explanation": "By the sifting property $\\int_0^\\infty \\delta(t - a)e^{-st}\\,dt = e^{-sa}$, so $\\mathcal{L}\\{\\delta(t - a)\\} = e^{-as}$. In particular $\\mathcal{L}\\{\\delta(t)\\} = e^0 = 1$ when $a = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-024",
+      "stem": "The convolution theorem says $\\mathcal{L}\\{(f * g)(t)\\} = ?$",
+      "options": [
+        "$F(s)\\,G(s)$",
+        "$F(s)\\,G(s)/s$",
+        "$F(s) + G(s)$",
+        "$F(s)/G(s)$"
+      ],
+      "answer": 0,
+      "explanation": "Convolution in time becomes multiplication in the transform domain: $\\mathcal{L}\\{(f * g)(t)\\} = F(s)G(s)$, where $(f * g)(t) = \\int_0^t f(\\tau)g(t - \\tau)\\,d\\tau$. This is why convolution inverts products of transforms.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-025",
+      "stem": "Use convolution to find $\\mathcal{L}^{-1}\\left\\{\\dfrac{1}{s^2(s - 1)}\\right\\}$ via $\\mathcal{L}^{-1}\\{1/s^2\\} = t$ and $\\mathcal{L}^{-1}\\{1/(s-1)\\} = e^{t}$. What is the result?",
+      "options": [
+        "$e^{t} - t$",
+        "$t e^{t}$",
+        "$e^{t} + t + 1$",
+        "$e^{t} - t - 1$"
+      ],
+      "answer": 3,
+      "explanation": "Convolving $t$ with $e^{t}$ gives $\\int_0^t \\tau\\, e^{t - \\tau}\\,d\\tau = e^{t}\\int_0^t \\tau e^{-\\tau}\\,d\\tau$. Since $\\int_0^t \\tau e^{-\\tau}\\,d\\tau = 1 - (t + 1)e^{-t}$, the product is $e^{t}(1 - (t+1)e^{-t}) = e^{t} - t - 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-026",
+      "stem": "What is $\\mathcal{L}\\{e^{-t}t^2\\}$?",
+      "options": [
+        "$\\dfrac{2}{s^3}$",
+        "$\\dfrac{2}{(s - 1)^3}$",
+        "$\\dfrac{2}{(s + 1)^3}$",
+        "$\\dfrac{1}{(s + 1)^3}$"
+      ],
+      "answer": 2,
+      "explanation": "Start with $\\mathcal{L}\\{t^2\\} = \\dfrac{2}{s^3}$. The factor $e^{-t} = e^{at}$ with $a = -1$ shifts $s \\to s - (-1) = s + 1$, giving $\\dfrac{2}{(s + 1)^3}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-027",
+      "stem": "Solve $y' + y = 1$, $y(0) = 0$, by Laplace transform.",
+      "options": [
+        "$y = 1 - e^{t}$",
+        "$y = 1 + e^{-t}$",
+        "$y = e^{-t}$",
+        "$y = 1 - e^{-t}$"
+      ],
+      "answer": 3,
+      "explanation": "Transforming: $sY + Y = \\tfrac{1}{s}$, so $Y = \\dfrac{1}{s(s + 1)}$. Partial fractions give $\\dfrac{1}{s} - \\dfrac{1}{s + 1}$, whose inverse is $1 - e^{-t}$. The solution rises from $0$ toward the steady state $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-028",
+      "stem": "Which property explains why Laplace transforms turn a constant-coefficient linear ODE into an algebraic equation in $Y(s)$?",
+      "options": [
+        "The convolution theorem",
+        "The derivative rule converting $y^{(n)}$ into powers of $s$ times $Y(s)$ plus initial-condition terms",
+        "Periodicity of the transform",
+        "Linearity alone"
+      ],
+      "answer": 1,
+      "explanation": "Each derivative $y^{(n)}$ transforms to $s^n Y(s)$ minus initial-condition terms, so differentiation becomes multiplication by powers of $s$. That turns the differential equation into a polynomial-in-$s$ algebraic equation for $Y(s)$, which we then invert.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-029",
+      "stem": "Find $\\mathcal{L}^{-1}\\left\\{\\dfrac{s}{s^2 + 2s + 5}\\right\\}$. (Hint: complete the square.)",
+      "options": [
+        "$e^{t}\\cos(2t)$",
+        "$\\cos(2t) - \\tfrac{1}{2}\\sin(2t)$",
+        "$e^{-t}\\cos(2t)$",
+        "$e^{-t}\\cos(2t) - \\tfrac{1}{2}e^{-t}\\sin(2t)$"
+      ],
+      "answer": 3,
+      "explanation": "Complete the square: $s^2 + 2s + 5 = (s + 1)^2 + 4$. Write the numerator as $s = (s + 1) - 1$, so the expression is $\\dfrac{s + 1}{(s+1)^2 + 4} - \\dfrac{1}{(s+1)^2 + 4}$. Inverting with the $s$-shift $a = -1$ gives $e^{-t}\\cos(2t) - \\tfrac{1}{2}e^{-t}\\sin(2t)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-030",
+      "stem": "Solve $y'' + y = \\delta(t - \\pi)$ with $y(0) = 0$, $y'(0) = 0$. What is $y(t)$ for $t > \\pi$?",
+      "options": [
+        "$\\cos(t - \\pi)\\,u_\\pi(t)$",
+        "$\\sin(t)$",
+        "$e^{-(t - \\pi)}u_\\pi(t)$",
+        "$\\sin(t - \\pi)\\,u_\\pi(t)$"
+      ],
+      "answer": 3,
+      "explanation": "Transforming: $(s^2 + 1)Y = e^{-\\pi s}$, so $Y = \\dfrac{e^{-\\pi s}}{s^2 + 1}$. Since $\\mathcal{L}^{-1}\\{1/(s^2+1)\\} = \\sin t$, the second shifting theorem gives $y = u_\\pi(t)\\sin(t - \\pi)$, an impulse response that switches on at $t = \\pi$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-031",
+      "format": "cloze",
+      "stem": "Recall the basic Laplace transforms from the definition.",
+      "solution": "By the definition $\\mathcal{L}\\{f\\} = \\int_0^\\infty e^{-st}f(t)\\,dt$, we get $\\mathcal{L}\\{1\\} =$ {{1}} for $s > 0$. For the power $t^n$ the rule is $\\mathcal{L}\\{t^n\\} = n!/s^{n+1}$, so $\\mathcal{L}\\{t^2\\} =$ {{2}}. For the exponential, $\\mathcal{L}\\{e^{at}\\} = 1/(s - a)$, valid when $s > a$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{s}$",
+            "$1$",
+            "$\\dfrac{1}{s^2}$"
+          ],
+          "answer": "$\\dfrac{1}{s}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{2}{s^3}$",
+            "$\\dfrac{1}{s^3}$",
+            "$\\dfrac{2}{s^2}$"
+          ],
+          "answer": "$\\dfrac{2}{s^3}$"
+        }
+      ],
+      "explanation": "The integral $\\int_0^\\infty e^{-st}\\,dt = 1/s$. For $t^2$, $\\mathcal{L}\\{t^2\\} = 2!/s^3 = 2/s^3$. These are the standard table entries used throughout Laplace methods.",
+      "difficulty": "warmup",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-032",
+      "format": "cloze",
+      "stem": "Fill in the transforms of sine and cosine with frequency $\\omega = 5$.",
+      "solution": "Using $\\mathcal{L}\\{\\sin(\\omega t)\\} = \\omega/(s^2 + \\omega^2)$ with $\\omega = 5$, the numerator is the integer {{1}} and the denominator is $s^2 + 25$. For cosine, $\\mathcal{L}\\{\\cos(5t)\\} =$ {{2}}, which instead carries $s$ in the numerator.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{s}{s^2 + 25}$",
+            "$\\dfrac{5}{s^2 + 25}$",
+            "$\\dfrac{s}{s^2 + 5}$"
+          ],
+          "answer": "$\\dfrac{s}{s^2 + 25}$"
+        }
+      ],
+      "explanation": "With $\\omega = 5$, $\\mathcal{L}\\{\\sin(5t)\\} = 5/(s^2 + 25)$, so the numerator is $5$. Cosine gives $\\mathcal{L}\\{\\cos(5t)\\} = s/(s^2 + 25)$, with $s$ on top and $\\omega^2 = 25$ in the denominator.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-033",
+      "format": "cloze",
+      "stem": "Apply the transform of derivatives to $y'' + y' + y$.",
+      "solution": "Writing $Y = \\mathcal{L}\\{y\\}$, the first-derivative rule gives $\\mathcal{L}\\{y'\\} = sY - y(0)$. The second-derivative rule gives $\\mathcal{L}\\{y''\\} = s^2 Y - s\\,y(0) -$ {{1}}. The highest power of $s$ appearing in $\\mathcal{L}\\{y''\\}$ is {{2}}, matching the order of the highest derivative.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$y'(0)$",
+            "$y(0)$",
+            "$s\\,y'(0)$"
+          ],
+          "answer": "$y'(0)$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The second-derivative rule is $\\mathcal{L}\\{y''\\} = s^2 Y - s y(0) - y'(0)$, so the missing term is $y'(0)$. The leading factor is $s^2$, so the highest power of $s$ is $2$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-034",
+      "format": "cloze",
+      "stem": "Solve the initial value problem $y' + 3y = 0$, $y(0) = 4$, by Laplace transform.",
+      "solution": "Transforming both sides gives $sY - 4 + 3Y = 0$, so $(s + 3)Y = 4$ and $Y = 4/(s + 3)$. The pole sits at $s =$ {{1}}, and inverting gives $y(t) = 4 e^{-3t}$. At $t = 0$ this returns the value {{2}}, confirming the initial condition.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Solving the algebraic equation gives $Y = 4/(s + 3)$, whose pole is at $s = -3$. Inverting yields $y = 4e^{-3t}$, and $y(0) = 4e^0 = 4$, matching the given data.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-035",
+      "format": "cloze",
+      "stem": "Use partial fractions to invert $\\dfrac{1}{(s - 1)(s - 2)}$.",
+      "solution": "Write $\\dfrac{1}{(s-1)(s-2)} = \\dfrac{A}{s-1} + \\dfrac{B}{s-2}$. The cover-up method gives $A =$ {{1}} and $B = 1$. Inverting term by term, $\\mathcal{L}^{-1}\\{A/(s-1)\\} = A e^{t}$ and $\\mathcal{L}^{-1}\\{B/(s-2)\\} = B e^{2t}$, so the full inverse is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$e^{2t} - e^{t}$",
+            "$e^{t} - e^{2t}$",
+            "$e^{t} + e^{2t}$"
+          ],
+          "answer": "$e^{2t} - e^{t}$"
+        }
+      ],
+      "explanation": "Cover-up at $s = 1$ gives $A = 1/(1-2) = -1$ and at $s = 2$ gives $B = 1/(2-1) = 1$. Inverting $-1/(s-1) + 1/(s-2)$ yields $-e^{t} + e^{2t} = e^{2t} - e^{t}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    },
+    {
+      "id": "differencial-equation-ii-laplace-transform-methods-036",
+      "format": "cloze",
+      "stem": "Apply the shifting theorems and the Dirac delta transform.",
+      "solution": "The second shifting theorem states $\\mathcal{L}\\{u_c(t)f(t - c)\\} = e^{-cs}F(s)$, so a delay of $c$ contributes the factor {{1}}. For the impulse, the sifting property gives $\\mathcal{L}\\{\\delta(t - a)\\} =$ {{2}}. In particular $\\mathcal{L}\\{\\delta(t)\\}$ equals the number {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$e^{-cs}$",
+            "$e^{cs}$",
+            "$e^{-cs}/s$"
+          ],
+          "answer": "$e^{-cs}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$e^{-as}$",
+            "$1/s$",
+            "$e^{as}$"
+          ],
+          "answer": "$e^{-as}$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "A time delay $c$ multiplies the transform by $e^{-cs}$. The sifting property gives $\\mathcal{L}\\{\\delta(t - a)\\} = e^{-as}$, and setting $a = 0$ gives $\\mathcal{L}\\{\\delta(t)\\} = e^0 = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Boyce and DiPrima, Elementary Differential Equations"
+    }
+  ]
+}

@@ -1,0 +1,514 @@
+{
+  "courseId": "regression-analysis",
+  "topicId": "model-selection",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "regression-analysis-model-selection-001",
+      "stem": "A scatterplot of $y$ against $x$ shows multiplicative growth resembling $y = a \\, b^x$. Which transformation linearizes this relationship?",
+      "options": [
+        "take $\\ln x$ and regress $y$ on it",
+        "take the reciprocal of $x$",
+        "take $\\ln y$ and regress it on $x$",
+        "square $y$ and regress on $x$"
+      ],
+      "answer": 2,
+      "explanation": "Taking logs of $y = a b^x$ gives $\\ln y = \\ln a + (\\ln b)\\,x$, which is linear in $x$. So regressing $\\ln y$ on $x$ straightens an exponential relationship.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-002",
+      "stem": "A relationship of the form $y = a \\, x^b$ (a power law) can be linearized by which transformation?",
+      "options": [
+        "regress $y$ on $x$ directly",
+        "regress $\\ln y$ on $x$",
+        "regress $y$ on $1/x$",
+        "regress $\\ln y$ on $\\ln x$"
+      ],
+      "answer": 3,
+      "explanation": "Taking logs of $y = a x^b$ gives $\\ln y = \\ln a + b \\ln x$, linear in $\\ln x$. So a power law becomes a straight line when both variables are log-transformed (a log-log fit).",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-003",
+      "stem": "Polynomial regression of degree 2 fits which model?",
+      "options": [
+        "$y = \\beta_0 \\, x^{\\beta_1} + \\varepsilon$",
+        "$y = \\beta_0 + \\beta_1 \\ln x + \\varepsilon$",
+        "$y = \\beta_0 + \\beta_1 x + \\varepsilon$",
+        "$y = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\varepsilon$"
+      ],
+      "answer": 3,
+      "explanation": "A degree-2 (quadratic) polynomial regression is $y = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\varepsilon$. It is still a linear regression model because it is linear in the parameters $\\beta_j$, with $x$ and $x^2$ treated as two predictors.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-004",
+      "stem": "In forward selection, how does the procedure build the model?",
+      "options": [
+        "it randomly drops half the predictors",
+        "it fits every possible subset and keeps the largest",
+        "it starts with all predictors and removes them one at a time",
+        "it starts with no predictors and adds them one at a time, choosing the most useful at each step"
+      ],
+      "answer": 3,
+      "explanation": "Forward selection begins with no predictors (just the intercept) and adds, at each step, the predictor that most improves the model by some criterion, stopping when no further addition helps enough.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-005",
+      "stem": "In backward elimination, how does the procedure proceed?",
+      "options": [
+        "it adds and removes predictors at random",
+        "it starts with the full model and removes the least useful predictor one at a time",
+        "it always keeps every predictor",
+        "it starts with no predictors and adds them"
+      ],
+      "answer": 1,
+      "explanation": "Backward elimination starts with all candidate predictors in the model and removes, at each step, the least useful one (for example the one with the largest $p$-value), stopping when all remaining predictors meet the retention criterion.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-006",
+      "stem": "Why can adjusted $R^2$ be used to compare regression models with different numbers of predictors, whereas ordinary $R^2$ cannot?",
+      "options": [
+        "adjusted $R^2$ penalizes added predictors, so it does not automatically reward larger models",
+        "adjusted $R^2$ always increases with more predictors",
+        "adjusted $R^2$ ignores the residual sum of squares",
+        "ordinary $R^2$ penalizes complexity"
+      ],
+      "answer": 0,
+      "explanation": "Ordinary $R^2$ never decreases when predictors are added, so it favors big models. Adjusted $R^2$ includes a penalty for the number of parameters, allowing a fair comparison: it rises only if a new term improves fit beyond what is expected by chance.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-007",
+      "stem": "Two candidate models are compared on the same data ($n = 20$). Model 1 has $R^2 = 0.82$ with 2 predictors; Model 2 has $R^2 = 0.84$ with 4 predictors. Their adjusted $R^2$ values are 0.7988 and 0.7973 respectively. Which model does adjusted $R^2$ prefer?",
+      "options": [
+        "Model 2, because its $R^2$ is higher",
+        "Model 1, because its adjusted $R^2$ is slightly higher",
+        "neither can be compared this way",
+        "they are exactly equivalent"
+      ],
+      "answer": 1,
+      "explanation": "Adjusted $R^2$ is 0.7988 for Model 1 versus 0.7973 for Model 2, so Model 1 is preferred. The two extra predictors in Model 2 do not improve fit enough to overcome the complexity penalty, even though its raw $R^2$ is larger.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-008",
+      "stem": "The Akaike information criterion (AIC) is used for model selection. How is it interpreted when comparing models?",
+      "options": [
+        "AIC measures only the residual sum of squares",
+        "the model with the highest AIC is preferred",
+        "AIC ignores the number of parameters",
+        "the model with the lowest AIC is preferred, as it balances fit against the number of parameters"
+      ],
+      "answer": 3,
+      "explanation": "AIC trades off goodness of fit against model complexity by adding a penalty proportional to the number of parameters. Among candidate models, the one with the smallest AIC is preferred.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-009",
+      "stem": "What is overfitting in the context of regression model selection?",
+      "options": [
+        "transforming the response variable",
+        "using too few predictors so the model misses real structure",
+        "centering the predictors before fitting",
+        "including so many terms that the model fits noise in the sample and predicts poorly on new data"
+      ],
+      "answer": 3,
+      "explanation": "Overfitting means the model is too complex: it captures random noise in the training sample rather than the underlying relationship, giving an inflated in-sample fit but poor predictions on new data. Selection criteria that penalize complexity help avoid it.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-010",
+      "stem": "Two models on $n = 20$ data points have AIC contributions $n\\ln(SSE/n) + 2p$. Model 1: $SSE = 50$, $p = 3$; Model 2: $SSE = 40$, $p = 5$. Their AIC values are 24.33 and 23.86. Which model is preferred by AIC?",
+      "options": [
+        "Model 2, because its AIC is lower",
+        "Model 1, because its SSE is larger",
+        "they tie exactly",
+        "Model 1, because it has fewer parameters"
+      ],
+      "answer": 0,
+      "explanation": "AIC for Model 1 is $20\\ln(50/20) + 2(3) = 20\\ln(2.5) + 6 = 24.33$, and for Model 2 is $20\\ln(40/20) + 2(5) = 20\\ln(2) + 10 = 23.86$. Lower AIC is better, so Model 2 is preferred.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-011",
+      "stem": "A degree-3 polynomial regression with an intercept involves how many estimated parameters?",
+      "options": [
+        "4",
+        "5",
+        "2",
+        "3"
+      ],
+      "answer": 0,
+      "explanation": "A degree-3 polynomial $y = \\beta_0 + \\beta_1 x + \\beta_2 x^2 + \\beta_3 x^3$ has parameters $\\beta_0, \\beta_1, \\beta_2, \\beta_3$, that is, $3 + 1 = 4$ in total.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-012",
+      "stem": "Stepwise regression differs from pure forward selection in which way?",
+      "options": [
+        "it never uses a significance criterion",
+        "it only removes predictors, never adds",
+        "it can both add and remove predictors at each step, reconsidering earlier choices",
+        "it fits all subsets simultaneously"
+      ],
+      "answer": 2,
+      "explanation": "Stepwise selection combines forward and backward moves: at each step it can add a useful predictor or drop one that has become unnecessary, so variables entered earlier can later be removed. Pure forward selection only adds.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-013",
+      "stem": "A residual plot from a straight-line fit shows clear curvature. Which model-building step is a reasonable response?",
+      "options": [
+        "delete half the data points",
+        "increase the confidence level",
+        "remove the intercept",
+        "add a quadratic term $x^2$ or transform a variable to capture the curvature",
+        "report the model as final"
+      ],
+      "answer": 3,
+      "explanation": "Curvature in the residuals signals that the linear mean is inadequate. Adding a polynomial term such as $x^2$, or transforming $x$ or $y$, can capture the nonlinear pattern and remove the structure from the residuals.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-014",
+      "stem": "When the variance of $y$ grows with its mean, a common variance-stabilizing transformation to try before fitting is which of the following?",
+      "options": [
+        "reversing the sign of $y$",
+        "the logarithm or square root of $y$",
+        "multiplying $y$ by a constant",
+        "adding a constant to $y$"
+      ],
+      "answer": 1,
+      "explanation": "When spread increases with level, transforming the response with $\\log y$ or $\\sqrt{y}$ often stabilizes the variance, making the constant-variance assumption more reasonable. Linear shifts or rescalings of $y$ do not change the variance structure.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-015",
+      "stem": "Compared with ordinary $R^2$, what happens to adjusted $R^2$ when a predictor that has no real relationship with $y$ is added to a model?",
+      "options": [
+        "adjusted $R^2$ must increase",
+        "adjusted $R^2$ typically decreases or stays about the same",
+        "adjusted $R^2$ becomes negative for certain",
+        "adjusted $R^2$ equals ordinary $R^2$"
+      ],
+      "answer": 1,
+      "explanation": "Ordinary $R^2$ cannot decrease when a predictor is added, but adjusted $R^2$ can. Adding a useless predictor usually leaves the explained variation almost unchanged while increasing the complexity penalty, so adjusted $R^2$ tends to drop or barely move.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-016",
+      "stem": "After fitting $\\ln y = 1.2 + 0.5 x$ to linearize an exponential model, what is the predicted value of $y$ (not $\\ln y$) at $x = 2$? (Use $e^{2.2} \\approx 9.025$.)",
+      "options": [
+        "4.5",
+        "9.025",
+        "2.2",
+        "1.7"
+      ],
+      "answer": 1,
+      "explanation": "First $\\ln \\hat{y} = 1.2 + 0.5 \\times 2 = 2.2$. Then back-transform: $\\hat{y} = e^{2.2} \\approx 9.025$. Predictions on the original scale require undoing the log transformation.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-017",
+      "stem": "The principle of parsimony (Occam's razor) in regression model selection favors which of the following?",
+      "options": [
+        "the model with the most predictors",
+        "the model with the largest $R^2$ regardless of complexity",
+        "the model with the most transformations",
+        "the simplest model that adequately explains the data"
+      ],
+      "answer": 3,
+      "explanation": "Parsimony favors the simplest adequate model: among models that fit the data comparably well, prefer the one with fewer predictors. Simpler models generalize better and are easier to interpret.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-018",
+      "stem": "Two nested models are compared on the same data ($n = 15$). Model A has $R^2 = 0.70$ with 1 predictor (adjusted $R^2 = 0.6769$); Model B has $R^2 = 0.75$ with 3 predictors (adjusted $R^2 = 0.6818$). On the adjusted $R^2$ criterion, which is slightly preferred?",
+      "options": [
+        "adjusted $R^2$ cannot order them",
+        "Model A",
+        "they are exactly equal",
+        "Model B"
+      ],
+      "answer": 3,
+      "explanation": "Model B has the higher adjusted $R^2$ (0.6818 versus 0.6769), so it is preferred by that criterion. Here the two added predictors raise the fit enough to overcome their penalty, unlike in some other comparisons.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-019",
+      "stem": "A key risk of using automatic stepwise selection procedures is which of the following?",
+      "options": [
+        "they cannot be run on more than two predictors",
+        "they always select the true model",
+        "they can produce models that fit the current sample well but include spurious predictors and have optimistic statistics",
+        "they guarantee the lowest possible AIC over all subsets"
+      ],
+      "answer": 2,
+      "explanation": "Stepwise procedures make many data-driven choices, which can capitalize on chance: they may keep predictors that are significant only by luck in this sample, give over-optimistic $p$-values and $R^2$, and not generalize. They also do not guarantee the global best subset.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-020",
+      "stem": "Holding the fit ($SSE$) fixed, adding more parameters to a model changes the AIC penalty term $2p$ in which way?",
+      "options": [
+        "the penalty increases, raising AIC",
+        "the penalty decreases, lowering AIC",
+        "the penalty becomes zero",
+        "the penalty is unchanged"
+      ],
+      "answer": 0,
+      "explanation": "The penalty term $2p$ grows with the number of parameters $p$. With $SSE$ held fixed, adding parameters increases the penalty and therefore increases AIC, discouraging needless complexity.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-021",
+      "stem": "A model is fit on a training sample and then evaluated on a separate test sample. A much worse fit on the test sample than on the training sample is a sign of what?",
+      "options": [
+        "perfect generalization",
+        "underfitting",
+        "overfitting to the training data",
+        "a coding error in the intercept"
+      ],
+      "answer": 2,
+      "explanation": "A large gap between strong training performance and weak test performance indicates overfitting: the model learned patterns specific to the training sample that do not generalize. Validation on held-out data is a standard way to detect this.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-022",
+      "stem": "Which statement about polynomial regression of increasing degree is correct?",
+      "options": [
+        "a very high-degree polynomial can fit the sample almost perfectly yet behave wildly between and beyond the data points",
+        "polynomial regression is not a linear model and cannot be fit by least squares",
+        "higher-degree polynomials always generalize better to new data",
+        "increasing the degree can only decrease $R^2$"
+      ],
+      "answer": 0,
+      "explanation": "Raising the degree adds flexibility, which raises $R^2$ on the sample, but a high-degree fit can oscillate badly between points and explode outside the range (poor extrapolation). It is still a linear model in the coefficients and is fit by least squares.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-023",
+      "format": "cloze",
+      "stem": "Two models are compared on the same data with $n = 20$ observations. Model 1: $R^2 = 0.82$, 2 predictors. Model 2: $R^2 = 0.84$, 4 predictors.",
+      "solution": "Adjusted $R^2$ for Model 1 is $1 - (1 - 0.82)\\dfrac{19}{17} =$ {{1}} (rounded to 4 decimals). Adjusted $R^2$ for Model 2 is $1 - (1 - 0.84)\\dfrac{19}{15} =$ {{2}} (rounded to 4 decimals). On this criterion, the preferred model is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.7988,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.7973,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Model 1",
+            "Model 2",
+            "neither"
+          ],
+          "answer": "Model 1"
+        }
+      ],
+      "explanation": "Model 1: $1 - 0.18 \\times 19/17 = 1 - 0.2012 = 0.7988$. Model 2: $1 - 0.16 \\times 19/15 = 1 - 0.2027 = 0.7973$. Model 1 has the higher adjusted $R^2$, so it is preferred.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-024",
+      "format": "cloze",
+      "stem": "An exponential model $y = a \\, b^x$ is linearized by taking logarithms.",
+      "solution": "Taking natural logs gives $\\ln y = \\ln a + (\\ln b)\\,x$, which is linear in {{1}}. So the appropriate regression is $\\ln y$ on $x$. To linearize a power law $y = a\\,x^b$ instead, one regresses $\\ln y$ on {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$x$",
+            "$\\ln x$",
+            "$x^2$"
+          ],
+          "answer": "$x$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\ln x$",
+            "$x$",
+            "$y$"
+          ],
+          "answer": "$\\ln x$"
+        }
+      ],
+      "explanation": "For $y = ab^x$, $\\ln y = \\ln a + (\\ln b)x$ is linear in $x$. For $y = ax^b$, $\\ln y = \\ln a + b\\ln x$ is linear in $\\ln x$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-025",
+      "format": "cloze",
+      "stem": "Two models on $n = 20$ data points are scored with the criterion $\\mathrm{AIC} = n\\ln(SSE/n) + 2p$. Model 1: $SSE = 50$, $p = 3$. Model 2: $SSE = 40$, $p = 5$. Use $\\ln(2.5) = 0.9163$ and $\\ln(2) = 0.6931$.",
+      "solution": "The AIC of Model 1 is $20(0.9163) + 2(3) =$ {{1}} (rounded to 2 decimals). The AIC of Model 2 is $20(0.6931) + 2(5) =$ {{2}} (rounded to 2 decimals). Since lower AIC is better, the chosen model is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 24.33,
+          "tolerance": 0.05
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 23.86,
+          "tolerance": 0.05
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Model 2",
+            "Model 1",
+            "either"
+          ],
+          "answer": "Model 2"
+        }
+      ],
+      "explanation": "AIC1 $= 18.326 + 6 = 24.33$. AIC2 $= 13.862 + 10 = 23.86$. The smaller value, 23.86, belongs to Model 2, which is therefore chosen.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-026",
+      "format": "cloze",
+      "stem": "Name the stepwise model-building strategies.",
+      "solution": "Starting from no predictors and adding the most useful one at each step is called {{1}} selection. Starting from the full model and dropping the least useful predictor at each step is called {{2}} elimination. A degree-2 polynomial regression has {{3}} estimated parameters.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "forward",
+            "Forward"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "backward",
+            "Backward"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Adding predictors from an empty model is forward selection; removing them from the full model is backward elimination. A quadratic model $\\beta_0 + \\beta_1 x + \\beta_2 x^2$ has 3 parameters.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-027",
+      "format": "cloze",
+      "stem": "An exponential model is fit on the log scale as $\\ln \\hat{y} = 1.2 + 0.5x$. Predict on the original scale at $x = 2$, using $e^{2.2} = 9.025$.",
+      "solution": "On the log scale the fitted value is $\\ln \\hat{y} = 1.2 + 0.5(2) =$ {{1}}. Back-transforming gives $\\hat{y} = e^{2.2} =$ {{2}} (rounded to 3 decimals). The estimated growth factor per unit increase in $x$ is $e^{0.5} \\approx$ {{3}} (rounded to 3 decimals).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.2,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 9.025,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.649,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "$\\ln \\hat{y} = 1.2 + 1.0 = 2.2$. $\\hat{y} = e^{2.2} = 9.025$. The slope 0.5 on the log scale means each unit of $x$ multiplies $y$ by $e^{0.5} = 1.6487 \\approx 1.649$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-model-selection-028",
+      "format": "cloze",
+      "stem": "Fill in the model-selection vocabulary about complexity and fit.",
+      "solution": "A model that is too complex and fits the noise of the sample rather than the signal is said to suffer from {{1}}. Both AIC and adjusted $R^2$ guard against this by adding a {{2}} for the number of parameters. Among models that fit comparably well, the principle of parsimony tells us to prefer the {{3}} one.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "overfitting",
+            "Overfitting",
+            "over-fitting"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "penalty",
+            "Penalty",
+            "penalty term"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "simpler",
+            "more complex",
+            "larger"
+          ],
+          "answer": "simpler"
+        }
+      ],
+      "explanation": "Fitting noise is overfitting. AIC and adjusted $R^2$ penalize parameter count. Parsimony prefers the simpler adequate model.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    }
+  ]
+}

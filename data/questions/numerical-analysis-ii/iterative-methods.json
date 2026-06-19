@@ -1,0 +1,547 @@
+{
+  "courseId": "numerical-analysis-ii",
+  "topicId": "iterative-methods",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-ii-iterative-methods-001",
+      "stem": "The Jacobi iteration updates each component $x_i$ using which values of the other unknowns?",
+      "options": [
+        "Randomly chosen values",
+        "The exact solution values",
+        "Only the values from the previous iteration",
+        "The newest available values within the same sweep"
+      ],
+      "answer": 2,
+      "explanation": "Jacobi computes every new component from the entire previous iterate, holding all other unknowns at their old values during a sweep, so updates are independent and can be done in parallel. Using the newest values mid-sweep is Gauss-Seidel, the exact solution is unknown, and random values are nonsense. The trap is confusing Jacobi (all old values) with Gauss-Seidel (newest values).",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-002",
+      "stem": "The Gauss-Seidel iteration differs from Jacobi in which way?",
+      "options": [
+        "It works only for diagonal matrices",
+        "It requires the matrix inverse",
+        "It uses only the previous iterate's values",
+        "It uses each updated component immediately within the same sweep"
+      ],
+      "answer": 3,
+      "explanation": "Gauss-Seidel substitutes each freshly computed component into the remaining equations of the same sweep, which typically speeds convergence over Jacobi. Using only old values is Jacobi, no inverse is formed, and it applies well beyond diagonal matrices. The trap is missing the immediate reuse of updated components that defines Gauss-Seidel.",
+      "difficulty": "warmup",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-003",
+      "stem": "A sufficient condition guaranteeing convergence of both Jacobi and Gauss-Seidel iterations is that the matrix is which of the following?",
+      "options": [
+        "Upper triangular",
+        "Singular",
+        "Strictly diagonally dominant",
+        "Skew-symmetric"
+      ],
+      "answer": 2,
+      "explanation": "Strict diagonal dominance, $|a_{ii}| > \\sum_{j \\ne i} |a_{ij}|$ for every row, guarantees both Jacobi and Gauss-Seidel converge from any starting vector. A singular matrix has no unique solution, skew-symmetry does not ensure convergence, and triangularity is unrelated to the iteration matrices. The trap is forgetting that dominance must be strict and hold in every row.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-004",
+      "stem": "An iteration $x^{(k+1)} = T x^{(k)} + c$ converges for every starting vector if and only if the iteration matrix $T$ satisfies which condition?",
+      "options": [
+        "Its trace is zero",
+        "Its spectral radius $\\rho(T) < 1$",
+        "Its determinant is $1$",
+        "It is symmetric"
+      ],
+      "answer": 1,
+      "explanation": "Convergence for all initial guesses holds exactly when the spectral radius (largest eigenvalue magnitude) satisfies $\\rho(T) < 1$, since the error is multiplied by $T$ each step. A zero trace, unit determinant, or symmetry do not control the dominant eigenvalue. The trap is using a determinant or trace condition instead of the spectral radius.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-005",
+      "stem": "For the system $4x_1 + x_2 = 5$, $x_1 + 3x_2 = 6$, the Jacobi update formulas are which of the following?",
+      "options": [
+        "$x_1 = 5 - x_2$, $x_2 = 6 - x_1$",
+        "$x_1 = \\dfrac{5 - x_2}{4}$, $x_2 = \\dfrac{6 - x_1}{3}$",
+        "$x_1 = \\dfrac{5 - x_2}{1}$, $x_2 = \\dfrac{6 - x_1}{1}$",
+        "$x_1 = \\dfrac{5 + x_2}{4}$, $x_2 = \\dfrac{6 + x_1}{3}$"
+      ],
+      "answer": 1,
+      "explanation": "Solving each equation for its diagonal unknown gives $x_1 = \\frac{5 - x_2}{4}$ and $x_2 = \\frac{6 - x_1}{3}$, dividing by the diagonal coefficients $4$ and $3$. Dividing by $1$ ignores the diagonal entries, dropping the divisor is wrong, and the plus signs mishandle the moved terms. The trap is forgetting to divide by the diagonal coefficient.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-006",
+      "stem": "Starting from $x^{(0)} = (0, 0)$, the first Jacobi iterate for $4x_1 + x_2 = 5$, $x_1 + 3x_2 = 6$ is which pair?",
+      "options": [
+        "$(1.25, 2.0)$",
+        "$(0.75, 1.5833)$",
+        "$(0.8182, 1.7273)$",
+        "$(1.25, 1.5833)$"
+      ],
+      "answer": 0,
+      "explanation": "Using old values, $x_1^{(1)} = \\frac{5 - 0}{4} = 1.25$ and $x_2^{(1)} = \\frac{6 - 0}{3} = 2.0$, giving $(1.25, 2.0)$. The pair $(1.25, 1.5833)$ is the first Gauss-Seidel iterate (which reuses the new $x_1$), $(0.75, 1.5833)$ is a later step, and $(0.8182, 1.7273)$ is the exact solution. The trap is sneaking the updated $x_1$ into the $x_2$ formula, which is Gauss-Seidel, not Jacobi.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-007",
+      "stem": "Starting from $x^{(0)} = (0, 0)$, the first Gauss-Seidel iterate for $4x_1 + x_2 = 5$, $x_1 + 3x_2 = 6$ is which pair?",
+      "options": [
+        "$(1.25, 1.5833)$",
+        "$(1.25, 2.0)$",
+        "$(0.75, 1.5833)$",
+        "$(0.8182, 1.7273)$"
+      ],
+      "answer": 0,
+      "explanation": "Gauss-Seidel takes $x_1^{(1)} = \\frac{5 - 0}{4} = 1.25$, then immediately uses it: $x_2^{(1)} = \\frac{6 - 1.25}{3} = \\frac{4.75}{3} = 1.5833$, giving $(1.25, 1.5833)$. The pair $(1.25, 2.0)$ is Jacobi (old $x_1$ in the second formula), and $(0.8182, 1.7273)$ is the exact answer. The trap is using the old $x_1 = 0$ instead of the just-computed $1.25$.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-008",
+      "stem": "For the same system, the second Jacobi iterate (from $x^{(1)} = (1.25, 2.0)$) is which pair?",
+      "options": [
+        "$(1.25, 2.0)$",
+        "$(0.8182, 1.7273)$",
+        "$(0.75, 1.5833)$",
+        "$(0.85, 1.715)$"
+      ],
+      "answer": 2,
+      "explanation": "Using the first iterate's values, $x_1^{(2)} = \\frac{5 - 2.0}{4} = 0.75$ and $x_2^{(2)} = \\frac{6 - 1.25}{3} = \\frac{4.75}{3} = 1.5833$, giving $(0.75, 1.5833)$. The exact solution is $(0.8182, 1.7273)$, $(1.25, 2.0)$ repeats the first iterate, and $(0.85, 1.715)$ is the second Gauss-Seidel iterate. The trap is mixing in updated values, which Jacobi does not do.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-009",
+      "stem": "For the same system, the second Gauss-Seidel iterate (from $x^{(1)} = (1.25, 1.5833)$) is approximately which pair?",
+      "options": [
+        "$(0.75, 1.5833)$",
+        "$(1.25, 2.0)$",
+        "$(0.8542, 1.7153)$",
+        "$(0.8182, 1.7273)$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $x_1^{(2)} = \\frac{5 - 1.5833}{4} = \\frac{3.4167}{4} = 0.8542$, then $x_2^{(2)} = \\frac{6 - 0.8542}{3} = \\frac{5.1458}{3} = 1.7153$, giving $(0.8542, 1.7153)$, already close to the exact $(0.8182, 1.7273)$. The Jacobi second iterate is $(0.75, 1.5833)$, and $(1.25, 2.0)$ is an earlier value. The trap is not carrying the updated $x_1$ into the $x_2$ computation.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-010",
+      "stem": "Successive over-relaxation (SOR) forms its update from the Gauss-Seidel value $\\tilde{x}_i$ using which combination?",
+      "options": [
+        "$x_i^{(k+1)} = (1 - \\omega)x_i^{(k)} + \\omega\\,\\tilde{x}_i$",
+        "$x_i^{(k+1)} = \\omega\\,x_i^{(k)} + (1 - \\omega)\\tilde{x}_i$",
+        "$x_i^{(k+1)} = \\omega\\,\\tilde{x}_i$",
+        "$x_i^{(k+1)} = \\tilde{x}_i + \\omega$"
+      ],
+      "answer": 0,
+      "explanation": "SOR blends the old value and the Gauss-Seidel value as $x_i^{(k+1)} = (1 - \\omega)x_i^{(k)} + \\omega\\,\\tilde{x}_i$, extrapolating past the Gauss-Seidel step when $\\omega > 1$. Swapping the weights, adding $\\omega$, or scaling only $\\tilde{x}_i$ all misstate the formula. The trap is attaching the relaxation weight $\\omega$ to the wrong term.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-011",
+      "stem": "When the relaxation parameter $\\omega = 1$, the SOR method reduces to which iteration?",
+      "options": [
+        "Jacobi",
+        "The power method",
+        "Newton's method",
+        "Gauss-Seidel"
+      ],
+      "answer": 3,
+      "explanation": "Setting $\\omega = 1$ makes $x_i^{(k+1)} = \\tilde{x}_i$, exactly the Gauss-Seidel update, so SOR with $\\omega = 1$ is Gauss-Seidel. It is not Jacobi (which uses all old values), nor Newton or the power method. The trap is confusing the $\\omega = 1$ base case with Jacobi instead of Gauss-Seidel.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-012",
+      "stem": "For SOR, over-relaxation ($\\omega > 1$) versus under-relaxation ($\\omega < 1$) is distinguished by which description?",
+      "options": [
+        "Over-relaxation steps beyond the Gauss-Seidel correction; under-relaxation steps short of it",
+        "Over-relaxation always diverges; under-relaxation always converges",
+        "Over-relaxation uses old values; under-relaxation uses new values",
+        "Both are identical to Gauss-Seidel"
+      ],
+      "answer": 0,
+      "explanation": "With $\\omega > 1$ the update overshoots the Gauss-Seidel correction (over-relaxation), often accelerating convergence, while $\\omega < 1$ takes a shorter, damped step (under-relaxation). Over-relaxation does not always diverge, neither equals plain Gauss-Seidel except at $\\omega = 1$, and the old-versus-new distinction is about Jacobi versus Gauss-Seidel. The trap is thinking $\\omega > 1$ is automatically unstable.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-013",
+      "stem": "The SOR method can converge only when the relaxation parameter lies in which range?",
+      "options": [
+        "$0 < \\omega < 2$",
+        "$\\omega > 2$",
+        "$-1 < \\omega < 1$",
+        "$\\omega = 1$ only"
+      ],
+      "answer": 0,
+      "explanation": "Kahan's theorem requires $0 < \\omega < 2$ for SOR to have any chance of converging; outside this band the spectral radius of the iteration matrix is at least $1$. Values above $2$ guarantee divergence, the negative range is wrong, and restricting to $\\omega = 1$ would exclude the useful over-relaxation cases. The trap is not knowing the necessary window $0 < \\omega < 2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-014",
+      "stem": "Smaller spectral radius $\\rho(T)$ of the iteration matrix corresponds to which behavior?",
+      "options": [
+        "Divergence",
+        "Slower convergence",
+        "No effect on convergence speed",
+        "Faster convergence"
+      ],
+      "answer": 3,
+      "explanation": "The asymptotic error reduction per step is governed by $\\rho(T)$, so a smaller spectral radius means the error shrinks faster and convergence is quicker. A small $\\rho$ does not slow things down, cause divergence (that needs $\\rho \\ge 1$), or leave the rate unchanged. The trap is reversing the relationship; smaller $\\rho$ is better.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-015",
+      "stem": "For $A = \\begin{pmatrix} 2 & -1 \\\\ -1 & 2 \\end{pmatrix}$, the Jacobi iteration matrix $T_J = -D^{-1}(L + U)$ is which matrix?",
+      "options": [
+        "$\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & \\tfrac{1}{2} \\\\ \\tfrac{1}{2} & 0 \\end{pmatrix}$",
+        "$\\begin{pmatrix} \\tfrac{1}{2} & 0 \\\\ 0 & \\tfrac{1}{2} \\end{pmatrix}$",
+        "$\\begin{pmatrix} 0 & -\\tfrac{1}{2} \\\\ -\\tfrac{1}{2} & 0 \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "With $D = 2I$ and off-diagonal entries $-1$, the Jacobi matrix is $T_J = -D^{-1}(L + U) = -\\frac{1}{2}\\begin{pmatrix} 0 & -1 \\\\ -1 & 0 \\end{pmatrix} = \\begin{pmatrix} 0 & \\tfrac{1}{2} \\\\ \\tfrac{1}{2} & 0 \\end{pmatrix}$. Forgetting the $\\frac{1}{2}$, keeping the diagonal, or dropping the sign change give the other options. The trap is omitting the $-D^{-1}$ factor that both scales by $\\frac{1}{2}$ and flips the sign.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-016",
+      "stem": "The Jacobi iteration matrix of $A = \\begin{pmatrix} 2 & -1 \\\\ -1 & 2 \\end{pmatrix}$ has spectral radius equal to which value?",
+      "options": [
+        "$2$",
+        "$0.5$",
+        "$0.25$",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "The matrix $\\begin{pmatrix} 0 & \\tfrac{1}{2} \\\\ \\tfrac{1}{2} & 0 \\end{pmatrix}$ has eigenvalues $\\pm\\frac{1}{2}$, so $\\rho(T_J) = 0.5 < 1$ and Jacobi converges. The value $1$ would be the borderline case, $2$ ignores the scaling, and $0.25$ squares the radius. The trap is reporting the squared value or the unscaled entry instead of the eigenvalue magnitude $0.5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-017",
+      "stem": "Compared with direct methods such as Gaussian elimination, iterative methods are especially attractive for which kind of system?",
+      "options": [
+        "Large sparse systems",
+        "Systems that change at every step",
+        "Systems with a singular matrix",
+        "Small dense systems"
+      ],
+      "answer": 0,
+      "explanation": "Iterative methods only need matrix-vector products, so they exploit sparsity and scale well to large sparse systems where forming and storing dense LU factors would be prohibitive. Small dense systems are handled fine by direct methods, singular systems lack unique solutions, and changing systems are a separate concern. The trap is applying iterative methods to small dense problems where direct solvers win.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-018",
+      "stem": "On a strictly diagonally dominant system, how does Gauss-Seidel typically compare with Jacobi?",
+      "options": [
+        "Gauss-Seidel diverges while Jacobi converges",
+        "Gauss-Seidel usually converges in fewer iterations",
+        "They always take exactly the same number of iterations",
+        "Jacobi always converges faster"
+      ],
+      "answer": 1,
+      "explanation": "By feeding updated values back in immediately, Gauss-Seidel generally has a smaller spectral radius and converges in fewer sweeps than Jacobi on such systems. Jacobi is not faster in general, the iteration counts are not identical, and both converge under strict dominance (Gauss-Seidel does not diverge here). The trap is assuming the parallel-friendly Jacobi is also faster; usually it is not.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-019",
+      "stem": "A common stopping criterion for an iterative linear solver is which condition?",
+      "options": [
+        "The relative change $\\dfrac{\\|x^{(k+1)} - x^{(k)}\\|}{\\|x^{(k+1)}\\|}$ falls below a tolerance",
+        "The determinant falls below a tolerance",
+        "A fixed single iteration is always enough",
+        "The trace stops changing"
+      ],
+      "answer": 0,
+      "explanation": "Iterations are stopped when successive iterates barely change, measured by a small relative difference $\\frac{\\|x^{(k+1)} - x^{(k)}\\|}{\\|x^{(k+1)}\\|}$ (or a small residual). The determinant and trace are properties of $A$, not progress measures, and a single fixed iteration cannot guarantee accuracy. The trap is using a property of the matrix rather than the change between iterates.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-020",
+      "stem": "For the iteration matrices, Gauss-Seidel and Jacobi split $A$ as $A = D - L - U$. The Gauss-Seidel iteration matrix is which expression?",
+      "options": [
+        "$-D^{-1}(L + U)$",
+        "$(D + L)^{-1} U$",
+        "$(D - L)^{-1} U$",
+        "$D^{-1}(L + U)$"
+      ],
+      "answer": 2,
+      "explanation": "Gauss-Seidel solves $(D - L)x^{(k+1)} = U x^{(k)} + b$, so its iteration matrix is $T_{GS} = (D - L)^{-1} U$, folding the lower part into the inverted factor. The expression $-D^{-1}(L + U)$ is the Jacobi matrix, and the others have the wrong sign or split. The trap is reusing the Jacobi form instead of inverting $D - L$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-021",
+      "stem": "The purpose of choosing an optimal relaxation parameter $\\omega_{\\text{opt}}$ in SOR is which of the following?",
+      "options": [
+        "To make the matrix symmetric",
+        "To eliminate the need for an initial guess",
+        "To guarantee an exact solution in one step",
+        "To minimize the spectral radius of the SOR iteration matrix"
+      ],
+      "answer": 3,
+      "explanation": "The optimal $\\omega$ minimizes $\\rho(T_{SOR})$, giving the fastest asymptotic convergence; for some model problems it dramatically beats Gauss-Seidel. It does not symmetrize $A$, does not solve the system exactly in one step, and an initial guess is still required. The trap is expecting an exact one-step solve rather than an optimized convergence rate.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-022",
+      "stem": "If a coefficient matrix is symmetric positive definite, the Gauss-Seidel iteration has which guarantee?",
+      "options": [
+        "It converges for any initial guess",
+        "It diverges",
+        "It converges only if also diagonally dominant",
+        "It oscillates without converging"
+      ],
+      "answer": 0,
+      "explanation": "For a symmetric positive definite matrix, Gauss-Seidel is guaranteed to converge from any starting vector, a classical result that does not require diagonal dominance. So it neither diverges nor merely oscillates, and dominance is not an extra requirement here. The trap is adding an unnecessary diagonal-dominance condition; positive definiteness alone suffices for Gauss-Seidel.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-023",
+      "stem": "Across one full sweep, the Jacobi method has which practical advantage over Gauss-Seidel?",
+      "options": [
+        "Its component updates are independent and can be computed in parallel",
+        "It avoids storing the matrix",
+        "It always converges faster",
+        "It never needs the diagonal entries"
+      ],
+      "answer": 0,
+      "explanation": "Because every Jacobi update uses only old values, all components of a sweep are independent and can be evaluated simultaneously, which suits parallel hardware. It does not converge faster in general, it does divide by the diagonal entries, and it still needs the matrix. The trap is conflating Jacobi's parallelism with a speed advantage in iteration count.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-024",
+      "stem": "The convergence of Jacobi or Gauss-Seidel is independent of which of the following?",
+      "options": [
+        "The spectral radius of the iteration matrix",
+        "The structure of the coefficient matrix",
+        "The diagonal dominance of the matrix",
+        "The choice of initial guess (when $\\rho(T) < 1$)"
+      ],
+      "answer": 3,
+      "explanation": "When $\\rho(T) < 1$ the iteration converges for every starting vector, so the initial guess affects only the number of steps, not whether convergence occurs. The spectral radius, diagonal dominance, and matrix structure all genuinely determine convergence. The trap is thinking a bad initial guess can break convergence; once $\\rho(T) < 1$, any start works.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-025",
+      "format": "cloze",
+      "stem": "Carry out one Jacobi sweep for $4x_1 + x_2 = 5$, $x_1 + 3x_2 = 6$ starting from $x^{(0)} = (0, 0)$.",
+      "solution": "The update formulas are $x_1 = \\dfrac{5 - x_2}{4}$ and $x_2 = \\dfrac{6 - x_1}{3}$. Using the old values, $x_1^{(1)} =$ {{1}} and $x_2^{(1)} =$ {{2}}. Jacobi uses only the {{3}} iterate's values throughout the sweep.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "previous",
+            "current",
+            "exact",
+            "final"
+          ],
+          "answer": "previous"
+        }
+      ],
+      "explanation": "$x_1^{(1)} = \\frac{5 - 0}{4} = 1.25$ and $x_2^{(1)} = \\frac{6 - 0}{3} = 2.0$. Jacobi holds all other unknowns at their previous-iterate values during the sweep.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-026",
+      "format": "cloze",
+      "stem": "Carry out one Gauss-Seidel sweep for $4x_1 + x_2 = 5$, $x_1 + 3x_2 = 6$ starting from $x^{(0)} = (0, 0)$.",
+      "solution": "First $x_1^{(1)} = \\dfrac{5 - 0}{4} =$ {{1}}. Immediately reusing it, $x_2^{(1)} = \\dfrac{6 - x_1^{(1)}}{3}$ equals about {{2}} (four decimals). Gauss-Seidel uses each {{3}} value as soon as it is available.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.5833,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "updated",
+            "previous",
+            "averaged",
+            "random"
+          ],
+          "answer": "updated"
+        }
+      ],
+      "explanation": "$x_1^{(1)} = 1.25$, then $x_2^{(1)} = \\frac{6 - 1.25}{3} = \\frac{4.75}{3} = 1.5833$. Gauss-Seidel substitutes each updated component immediately.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-027",
+      "format": "cloze",
+      "stem": "Continue Gauss-Seidel for $4x_1 + x_2 = 5$, $x_1 + 3x_2 = 6$ from $x^{(1)} = (1.25, 1.5833)$ to find the second iterate. The exact solution is $(0.8182, 1.7273)$.",
+      "solution": "Compute $x_1^{(2)} = \\dfrac{5 - 1.5833}{4}$, about {{1}} (four decimals), then $x_2^{(2)} = \\dfrac{6 - x_1^{(2)}}{3}$, about {{2}} (four decimals). After two sweeps Gauss-Seidel is {{3}} the exact solution than the matching Jacobi iterate.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.8542,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.7153,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "closer to",
+            "farther from",
+            "exactly at",
+            "unrelated to"
+          ],
+          "answer": "closer to"
+        }
+      ],
+      "explanation": "$x_1^{(2)} = \\frac{3.4167}{4} = 0.8542$, then $x_2^{(2)} = \\frac{6 - 0.8542}{3} = \\frac{5.1458}{3} = 1.7153$. This $(0.8542, 1.7153)$ is closer to $(0.8182, 1.7273)$ than the Jacobi iterate $(0.75, 1.5833)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-028",
+      "format": "cloze",
+      "stem": "Recall the SOR update and its convergence window.",
+      "solution": "SOR sets $x_i^{(k+1)} = (1 - \\omega)x_i^{(k)} + \\omega\\,\\tilde{x}_i$, where $\\tilde{x}_i$ is the {{1}} value. The method reduces to Gauss-Seidel when $\\omega$ equals {{2}}. Convergence is possible only for $0 < \\omega <$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "Gauss-Seidel",
+            "Jacobi",
+            "exact",
+            "previous"
+          ],
+          "answer": "Gauss-Seidel"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The blended term $\\tilde{x}_i$ is the Gauss-Seidel value. At $\\omega = 1$ the formula is exactly Gauss-Seidel. Kahan's theorem requires $0 < \\omega < 2$ for convergence.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-029",
+      "format": "cloze",
+      "stem": "Analyze the Jacobi iteration matrix for $A = \\begin{pmatrix} 2 & -1 \\\\ -1 & 2 \\end{pmatrix}$.",
+      "solution": "The Jacobi matrix is $T_J = \\begin{pmatrix} 0 & a \\\\ a & 0 \\end{pmatrix}$ where $a =$ {{1}}. Its eigenvalues are $\\pm a$, so the spectral radius is {{2}}. Because this is below {{3}}, the Jacobi iteration converges.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "With $D = 2I$, $T_J = -D^{-1}(L + U) = \\begin{pmatrix} 0 & 0.5 \\\\ 0.5 & 0 \\end{pmatrix}$, so $a = 0.5$. Eigenvalues are $\\pm 0.5$, giving $\\rho = 0.5 < 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    },
+    {
+      "id": "numerical-analysis-ii-iterative-methods-030",
+      "format": "cloze",
+      "stem": "Recall the convergence theory for stationary iterative methods.",
+      "solution": "The iteration $x^{(k+1)} = T x^{(k)} + c$ converges for every starting vector exactly when the spectral radius $\\rho(T)$ is less than {{1}}. A sufficient and easy-to-check condition on the matrix $A$ is strict diagonal {{2}}. Among Jacobi and Gauss-Seidel, the method reusing updated values, namely {{3}}, is usually faster.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "dominance",
+            "symmetry",
+            "sparsity",
+            "singularity"
+          ],
+          "answer": "dominance"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Gauss-Seidel",
+            "Jacobi",
+            "SOR with $\\omega = 0$",
+            "the power method"
+          ],
+          "answer": "Gauss-Seidel"
+        }
+      ],
+      "explanation": "Convergence for all starts holds iff $\\rho(T) < 1$. Strict diagonal dominance is a sufficient condition. Gauss-Seidel, which reuses updated values, is typically faster than Jacobi.",
+      "difficulty": "core",
+      "source": "in the style of Burden and Faires, Numerical Analysis"
+    }
+  ]
+}

@@ -1,0 +1,510 @@
+{
+  "courseId": "regression-analysis",
+  "topicId": "simple-linear-regression",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "regression-analysis-simple-linear-regression-001",
+      "stem": "In the simple linear regression model $y = \\beta_0 + \\beta_1 x + \\varepsilon$, what does the parameter $\\beta_1$ represent?",
+      "options": [
+        "the value of $y$ when $x = 0$",
+        "the correlation between $x$ and $y$",
+        "the change in the mean of $y$ for a one-unit increase in $x$",
+        "the random error in each observation"
+      ],
+      "answer": 2,
+      "explanation": "The slope $\\beta_1$ is the change in the expected (mean) response $E(y)$ for each one-unit increase in the predictor $x$. The value of $y$ when $x = 0$ is the intercept $\\beta_0$, the per-observation noise is $\\varepsilon$, and the correlation is a separate standardized quantity.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-002",
+      "stem": "The least-squares estimator of the slope in simple linear regression is given by which formula?",
+      "options": [
+        "$\\hat{\\beta}_1 = \\bar{y} - \\bar{x}$",
+        "$\\hat{\\beta}_1 = S_{xy} / S_{yy}$",
+        "$\\hat{\\beta}_1 = S_{xx} / S_{xy}$",
+        "$\\hat{\\beta}_1 = S_{xy} / S_{xx}$"
+      ],
+      "answer": 3,
+      "explanation": "Minimizing the sum of squared residuals gives $\\hat{\\beta}_1 = S_{xy} / S_{xx}$, where $S_{xy} = \\sum (x_i - \\bar{x})(y_i - \\bar{y})$ and $S_{xx} = \\sum (x_i - \\bar{x})^2$. Dividing the cross-product corrected sum by the corrected sum of squares of $x$ yields the slope.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-003",
+      "stem": "Once the slope $\\hat{\\beta}_1$ has been computed, the least-squares intercept is found from which relation?",
+      "options": [
+        "$\\hat{\\beta}_0 = \\hat{\\beta}_1 \\bar{x} - \\bar{y}$",
+        "$\\hat{\\beta}_0 = \\bar{x} - \\hat{\\beta}_1 \\bar{y}$",
+        "$\\hat{\\beta}_0 = \\bar{y} + \\hat{\\beta}_1 \\bar{x}$",
+        "$\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x}$"
+      ],
+      "answer": 3,
+      "explanation": "The fitted line passes through the point of averages $(\\bar{x}, \\bar{y})$, so $\\bar{y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 \\bar{x}$. Solving gives $\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-004",
+      "stem": "For a data set with $\\bar{x} = 3$, $\\bar{y} = 4$, $S_{xx} = 10$, and $S_{xy} = 6$, what is the least-squares slope $\\hat{\\beta}_1$?",
+      "options": [
+        "0.40",
+        "2.20",
+        "0.60",
+        "1.67"
+      ],
+      "answer": 2,
+      "explanation": "$\\hat{\\beta}_1 = S_{xy}/S_{xx} = 6/10 = 0.60$. (Choice 0 is the reciprocal $10/6$, and choice 3 is the intercept.)",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-005",
+      "stem": "Using $\\bar{x} = 3$, $\\bar{y} = 4$, and the slope $\\hat{\\beta}_1 = 0.60$, what is the least-squares intercept $\\hat{\\beta}_0$?",
+      "options": [
+        "2.20",
+        "0.60",
+        "1.40",
+        "5.80"
+      ],
+      "answer": 0,
+      "explanation": "$\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x} = 4 - 0.60 \\times 3 = 4 - 1.8 = 2.20$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-006",
+      "stem": "A fitted regression line is $\\hat{y} = 2.2 + 0.6x$. What is the predicted response when $x = 6$?",
+      "options": [
+        "8.20",
+        "3.60",
+        "5.80",
+        "6.00"
+      ],
+      "answer": 2,
+      "explanation": "$\\hat{y} = 2.2 + 0.6 \\times 6 = 2.2 + 3.6 = 5.80$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-007",
+      "stem": "With the line $\\hat{y} = 2.2 + 0.6x$, the observed value at $x = 3$ is $y = 5$. What is the residual at that point?",
+      "options": [
+        "-1.00",
+        "1.00",
+        "4.00",
+        "0.60"
+      ],
+      "answer": 1,
+      "explanation": "The fitted value is $\\hat{y} = 2.2 + 0.6 \\times 3 = 4.0$, so the residual is $e = y - \\hat{y} = 5 - 4.0 = 1.00$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-008",
+      "stem": "Which of the following best describes a residual $e_i = y_i - \\hat{y}_i$ in regression?",
+      "options": [
+        "the slope of the line at that point",
+        "the true model error $\\varepsilon_i$, which is observable",
+        "the horizontal distance from a point to the fitted line",
+        "the vertical distance from an observed point to the fitted line"
+      ],
+      "answer": 3,
+      "explanation": "A residual is the observed value minus the fitted value, that is, the vertical gap between the data point and the regression line. It is an estimate of the unobservable error $\\varepsilon_i$, not the error itself. Least squares minimizes the sum of squared vertical residuals.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-009",
+      "stem": "Least squares estimates the regression line by minimizing which quantity?",
+      "options": [
+        "the sum of squared residuals $\\sum (y_i - \\hat{y}_i)^2$",
+        "the sum of the residuals $\\sum (y_i - \\hat{y}_i)$",
+        "the sum of the absolute residuals $\\sum |y_i - \\hat{y}_i|$",
+        "the maximum residual $\\max_i |y_i - \\hat{y}_i|$"
+      ],
+      "answer": 0,
+      "explanation": "Ordinary least squares chooses $\\hat{\\beta}_0$ and $\\hat{\\beta}_1$ to minimize the sum of squared vertical deviations $\\sum (y_i - \\hat{y}_i)^2$. The plain sum of residuals is always zero for a fitted line with an intercept, so it cannot be the criterion.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-010",
+      "stem": "For a least-squares fit that includes an intercept term, the sum of the residuals $\\sum e_i$ is always equal to what?",
+      "options": [
+        "1",
+        "0",
+        "$n \\bar{y}$",
+        "$\\hat{\\beta}_1$"
+      ],
+      "answer": 1,
+      "explanation": "One of the normal equations forces $\\sum e_i = 0$ whenever an intercept is fitted. The residuals are also orthogonal to the predictor, so $\\sum x_i e_i = 0$ as well.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-011",
+      "stem": "Five observations give $x = (10, 20, 30, 40, 50)$ and $y = (25, 40, 52, 68, 80)$, with $\\bar{x} = 30$, $\\bar{y} = 53$, $S_{xx} = 1000$, and $S_{xy} = 1380$. What is the slope $\\hat{\\beta}_1$?",
+      "options": [
+        "1.38",
+        "53.00",
+        "11.60",
+        "0.72"
+      ],
+      "answer": 0,
+      "explanation": "$\\hat{\\beta}_1 = S_{xy}/S_{xx} = 1380/1000 = 1.38$. (Choice 2 is the intercept $\\hat{\\beta}_0 = 53 - 1.38 \\times 30 = 11.6$.)",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-012",
+      "stem": "With $\\bar{x} = 30$, $\\bar{y} = 53$, and slope $\\hat{\\beta}_1 = 1.38$, the fitted line is used to predict $y$ at $x = 35$. What is the predicted value? (The intercept is $\\hat{\\beta}_0 = 11.6$.)",
+      "options": [
+        "53.00",
+        "59.90",
+        "48.30",
+        "63.30"
+      ],
+      "answer": 1,
+      "explanation": "$\\hat{y} = 11.6 + 1.38 \\times 35 = 11.6 + 48.3 = 59.90$. Equivalently $\\hat{y} = \\bar{y} + \\hat{\\beta}_1 (x - \\bar{x}) = 53 + 1.38 \\times 5 = 59.90$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-013",
+      "stem": "A study regresses exam score $y$ on hours studied $x$ and reports $\\hat{y} = 43.5 + 6.5x$. How should the slope be interpreted?",
+      "options": [
+        "the score increases by 43.5 points per hour of study",
+        "studying explains 6.5 percent of the variation in scores",
+        "each additional hour of study is associated with a 6.5-point increase in mean score",
+        "a student who studies 0 hours scores 6.5 points"
+      ],
+      "answer": 2,
+      "explanation": "The slope $6.5$ is the estimated change in mean exam score for each one-hour increase in study time. The intercept $43.5$ is the predicted score at zero hours, and $R^2$ (not the slope) measures explained variation.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-014",
+      "stem": "In the model $\\hat{y} = 43.5 + 6.5x$ for exam score on hours studied, what does the intercept $43.5$ represent?",
+      "options": [
+        "the residual for the first observation",
+        "the average number of hours studied",
+        "the increase in score per hour studied",
+        "the predicted mean score for a student who studies 0 hours"
+      ],
+      "answer": 3,
+      "explanation": "The intercept is the value of $\\hat{y}$ when $x = 0$, that is, the predicted mean score for zero hours of study. Whether this is meaningful depends on whether $x = 0$ is within or near the observed range of the data.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-015",
+      "stem": "Data give $\\bar{x} = 2.5$, $\\bar{y} = 5.5$, $S_{xx} = 5$, and $S_{xy} = 11$. What are the slope and intercept of the least-squares line?",
+      "options": [
+        "$\\hat{\\beta}_1 = 1.10$, $\\hat{\\beta}_0 = 2.75$",
+        "$\\hat{\\beta}_1 = 2.20$, $\\hat{\\beta}_0 = 0.00$",
+        "$\\hat{\\beta}_1 = 2.20$, $\\hat{\\beta}_0 = 5.50$",
+        "$\\hat{\\beta}_1 = 0.45$, $\\hat{\\beta}_0 = 4.36$"
+      ],
+      "answer": 1,
+      "explanation": "$\\hat{\\beta}_1 = 11/5 = 2.20$ and $\\hat{\\beta}_0 = 5.5 - 2.2 \\times 2.5 = 5.5 - 5.5 = 0.00$. The fitted line is $\\hat{y} = 2.2x$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-016",
+      "stem": "If every $y$ value in a data set is multiplied by 3 (the $x$ values unchanged), how does the least-squares slope $\\hat{\\beta}_1$ change?",
+      "options": [
+        "it is multiplied by 9",
+        "it is multiplied by 3",
+        "it is divided by 3",
+        "it is unchanged"
+      ],
+      "answer": 1,
+      "explanation": "Since $\\hat{\\beta}_1 = S_{xy}/S_{xx}$ and scaling $y$ by 3 multiplies $S_{xy}$ by 3 while leaving $S_{xx}$ unchanged, the slope is multiplied by 3. Rescaling the response simply rescales the slope and intercept by the same factor.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-017",
+      "stem": "The estimated slope can also be written in terms of standard deviations and the correlation $r$ as which of the following?",
+      "options": [
+        "$\\hat{\\beta}_1 = r \\, (s_y / s_x)$",
+        "$\\hat{\\beta}_1 = r^2 \\, (s_y / s_x)$",
+        "$\\hat{\\beta}_1 = r \\, (s_x / s_y)$",
+        "$\\hat{\\beta}_1 = r \\, s_x s_y$"
+      ],
+      "answer": 0,
+      "explanation": "Since $r = S_{xy}/\\sqrt{S_{xx} S_{yy}}$ and $s_y/s_x = \\sqrt{S_{yy}/S_{xx}}$, we get $\\hat{\\beta}_1 = S_{xy}/S_{xx} = r \\, (s_y/s_x)$. The slope is the correlation scaled by the ratio of the standard deviation of $y$ to that of $x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-018",
+      "stem": "Which assumption is NOT part of the standard simple linear regression model for the errors $\\varepsilon_i$?",
+      "options": [
+        "the predictor $x$ is a random variable with the same distribution as $y$",
+        "the errors have constant variance $\\sigma^2$",
+        "the errors are uncorrelated",
+        "the errors have mean zero"
+      ],
+      "answer": 0,
+      "explanation": "The standard model assumes the errors have mean zero, constant variance, and are uncorrelated (often also normal for inference). The predictor $x$ is treated as fixed or as known values, not required to share the distribution of $y$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-019",
+      "stem": "A fitted line $\\hat{y} = 50 + 6.5x$ comes from data with $x$ ranging from 1 to 5 hours. Using it to predict the score at $x = 40$ hours is an example of what?",
+      "options": [
+        "extrapolation far outside the observed range, which is risky",
+        "estimating the intercept",
+        "interpolation, which is safe",
+        "computing a residual"
+      ],
+      "answer": 0,
+      "explanation": "Predicting at $x = 40$ when the data only cover $x$ from 1 to 5 is extrapolation well beyond the observed range. The linear relationship may not hold there, so such predictions are unreliable.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-020",
+      "stem": "The two least-squares normal equations for simple linear regression are most directly obtained by doing what?",
+      "options": [
+        "setting $S_{xx} = S_{yy}$",
+        "maximizing the correlation coefficient",
+        "setting the residuals equal to the fitted values",
+        "setting the partial derivatives of the sum of squared residuals with respect to $\\beta_0$ and $\\beta_1$ to zero"
+      ],
+      "answer": 3,
+      "explanation": "Least squares differentiates $\\sum (y_i - \\beta_0 - \\beta_1 x_i)^2$ with respect to $\\beta_0$ and $\\beta_1$ and sets both partial derivatives to zero. This produces the two normal equations whose solution gives $\\hat{\\beta}_0$ and $\\hat{\\beta}_1$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-021",
+      "stem": "For the data $x = (0,1,2,3,4)$, $y = (1,3,5,7,9)$, the points lie exactly on a straight line. What are the slope and intercept?",
+      "options": [
+        "$\\hat{\\beta}_1 = 1$, $\\hat{\\beta}_0 = 2$",
+        "$\\hat{\\beta}_1 = 0.5$, $\\hat{\\beta}_0 = 1$",
+        "$\\hat{\\beta}_1 = 2$, $\\hat{\\beta}_0 = 1$",
+        "$\\hat{\\beta}_1 = 2$, $\\hat{\\beta}_0 = 0$"
+      ],
+      "answer": 2,
+      "explanation": "The points satisfy $y = 2x + 1$ exactly, so $\\hat{\\beta}_1 = 2$ and $\\hat{\\beta}_0 = 1$. Checking: $\\bar{x} = 2$, $\\bar{y} = 5$, $S_{xy} = 20$, $S_{xx} = 10$, giving slope $2$ and intercept $5 - 2 \\times 2 = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-022",
+      "stem": "Holding $S_{xy}$ fixed, increasing the spread of the predictor values (larger $S_{xx}$) has what effect on the magnitude of the estimated slope?",
+      "options": [
+        "it makes the slope larger in magnitude",
+        "it changes only the intercept",
+        "it has no effect on the slope",
+        "it makes the slope smaller in magnitude"
+      ],
+      "answer": 3,
+      "explanation": "Because $\\hat{\\beta}_1 = S_{xy}/S_{xx}$, with $S_{xy}$ held fixed a larger $S_{xx}$ in the denominator makes the slope smaller in magnitude. (A larger $S_{xx}$ also reduces the standard error of the slope, improving precision.)",
+      "difficulty": "stretch",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-023",
+      "format": "cloze",
+      "stem": "A data set has $\\bar{x} = 3$, $\\bar{y} = 4$, $S_{xx} = 10$, and $S_{xy} = 6$. Fit the least-squares line and use it.",
+      "solution": "The slope is $\\hat{\\beta}_1 = S_{xy}/S_{xx} =$ {{1}}. The intercept is $\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x} =$ {{2}}. The predicted response at $x = 5$ is $\\hat{y} =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.6,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2.2,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 5.2,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Slope $= 6/10 = 0.6$. Intercept $= 4 - 0.6 \\times 3 = 2.2$. At $x = 5$: $\\hat{y} = 2.2 + 0.6 \\times 5 = 2.2 + 3.0 = 5.2$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-024",
+      "format": "cloze",
+      "stem": "The fitted line is $\\hat{y} = 11.6 + 1.38x$. The observation at $x = 30$ has $y = 52$.",
+      "solution": "The fitted value at $x = 30$ is $\\hat{y} =$ {{1}}. The residual $e = y - \\hat{y}$ is therefore {{2}}. Because the point lies {{3}} the fitted line, the residual is negative.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 53,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "below",
+            "above",
+            "exactly on"
+          ],
+          "answer": "below"
+        }
+      ],
+      "explanation": "Fitted value $= 11.6 + 1.38 \\times 30 = 11.6 + 41.4 = 53$. Residual $= 52 - 53 = -1$. Since the observed $y = 52$ is less than the fitted $53$, the point lies below the line and the residual is negative.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-025",
+      "format": "cloze",
+      "stem": "Complete the definitions used in least-squares fitting of a simple linear regression line.",
+      "solution": "The least-squares method chooses the coefficients to minimize the sum of squared {{1}}. For a model with an intercept, the sum of the residuals always equals {{2}}. The estimated slope equals $S_{xy}$ divided by {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "residuals",
+            "vertical residuals",
+            "errors",
+            "deviations",
+            "vertical deviations"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$S_{xx}$",
+            "$S_{yy}$",
+            "$S_{xy}$"
+          ],
+          "answer": "$S_{xx}$"
+        }
+      ],
+      "explanation": "Least squares minimizes the sum of squared residuals (vertical deviations from the line). With an intercept the residuals sum to zero. The slope is $\\hat{\\beta}_1 = S_{xy}/S_{xx}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-026",
+      "format": "cloze",
+      "stem": "Hours studied $x = (1,2,3,4,5)$ give exam scores $y = (50,55,65,70,75)$, with $\\bar{x} = 3$, $\\bar{y} = 63$, $S_{xx} = 10$, and $S_{xy} = 65$.",
+      "solution": "The slope is $\\hat{\\beta}_1 =$ {{1}} points per hour. The intercept is $\\hat{\\beta}_0 =$ {{2}}. Predicting beyond the data, at $x = 8$ hours, would be an instance of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 43.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "extrapolation",
+            "interpolation",
+            "interaction"
+          ],
+          "answer": "extrapolation"
+        }
+      ],
+      "explanation": "Slope $= 65/10 = 6.5$. Intercept $= 63 - 6.5 \\times 3 = 63 - 19.5 = 43.5$. The data cover $x$ from 1 to 5, so predicting at $x = 8$ goes outside the range, which is extrapolation.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-027",
+      "format": "cloze",
+      "stem": "A least-squares line is fitted through the point of averages of the data.",
+      "solution": "Every least-squares line with an intercept passes through the point with coordinates $(\\bar{x},$ {{1}} $)$. If $\\bar{x} = 4$, $\\bar{y} = 10$, and the slope is $2$, then the intercept is $\\hat{\\beta}_0 =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\bar{y}$",
+            "$0$",
+            "$S_{xy}$"
+          ],
+          "answer": "$\\bar{y}$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "The fitted line passes through $(\\bar{x}, \\bar{y})$. With $\\bar{x} = 4$, $\\bar{y} = 10$, slope $2$: $\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1 \\bar{x} = 10 - 2 \\times 4 = 2$.",
+      "difficulty": "warmup",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    },
+    {
+      "id": "regression-analysis-simple-linear-regression-028",
+      "format": "cloze",
+      "stem": "A simple linear regression of $y$ on $x$ yields $\\hat{y} = 2.2x$ (intercept zero). Two observations are $(x, y) = (1, 2)$ and $(x, y) = (4, 9)$.",
+      "solution": "The fitted value at $x = 1$ is {{1}}, giving residual {{2}}. The fitted value at $x = 4$ is {{3}}, giving residual {{4}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.2,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -0.2,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 8.8,
+          "tolerance": 0.01
+        },
+        {
+          "id": 4,
+          "type": "number",
+          "answer": 0.2,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "At $x = 1$: $\\hat{y} = 2.2 \\times 1 = 2.2$, residual $= 2 - 2.2 = -0.2$. At $x = 4$: $\\hat{y} = 2.2 \\times 4 = 8.8$, residual $= 9 - 8.8 = 0.2$.",
+      "difficulty": "core",
+      "source": "in the style of Montgomery, Introduction to Linear Regression Analysis"
+    }
+  ]
+}

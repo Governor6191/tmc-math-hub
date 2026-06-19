@@ -1,0 +1,483 @@
+{
+  "courseId": "topology-i",
+  "topicId": "continuity-in-metric-spaces",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "topology-i-continuity-in-metric-spaces-001",
+      "stem": "A function $f : (X, d_X) \\to (Y, d_Y)$ is continuous at $x_0$ (epsilon-delta definition) when:",
+      "options": [
+        "$f$ is monotone near $x_0$.",
+        "for every $\\varepsilon > 0$ there is $\\delta > 0$ such that $d_X(x, x_0) < \\delta$ implies $d_Y(f(x), f(x_0)) < \\varepsilon$.",
+        "$f$ is bounded near $x_0$.",
+        "$f(x_0) = 0$."
+      ],
+      "answer": 1,
+      "explanation": "Continuity at $x_0$ means outputs can be kept within any tolerance $\\varepsilon$ by restricting inputs to a small ball of radius $\\delta$: $d_X(x, x_0) < \\delta \\Rightarrow d_Y(f(x), f(x_0)) < \\varepsilon$. The $\\delta$ is allowed to depend on both $\\varepsilon$ and $x_0$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-002",
+      "stem": "The global (open-set) characterization says $f : X \\to Y$ is continuous if and only if:",
+      "options": [
+        "$f$ is bounded.",
+        "the image of every open set is open.",
+        "the image of every closed set is closed.",
+        "the preimage of every open set in $Y$ is open in $X$."
+      ],
+      "answer": 3,
+      "explanation": "A function is continuous exactly when preimages of open sets are open: $f^{-1}(V)$ is open in $X$ for every open $V \\subseteq Y$. Equivalently, preimages of closed sets are closed. Images of open sets need not be open.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-003",
+      "stem": "An equivalent reformulation of continuity using closed sets is:",
+      "options": [
+        "the image of every bounded set is bounded.",
+        "the preimage of every closed set is closed.",
+        "the image of every closed set is closed.",
+        "the preimage of every closed set is open."
+      ],
+      "answer": 1,
+      "explanation": "Since preimages commute with complements, openness of $f^{-1}(\\text{open})$ is equivalent to closedness of $f^{-1}(\\text{closed})$. So $f$ is continuous iff the preimage of every closed set is closed.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-004",
+      "stem": "The sequential characterization of continuity in metric spaces states that $f$ is continuous at $x_0$ iff:",
+      "options": [
+        "whenever $x_n \\to x_0$, we have $f(x_n) \\to f(x_0)$.",
+        "$f$ maps bounded sequences to bounded sequences.",
+        "$f$ maps Cauchy sequences to Cauchy sequences.",
+        "$f$ maps convergent sequences to monotone sequences."
+      ],
+      "answer": 0,
+      "explanation": "In metric spaces continuity is equivalent to sequential continuity: $f$ is continuous at $x_0$ iff $x_n \\to x_0$ forces $f(x_n) \\to f(x_0)$. (Mapping Cauchy to Cauchy is a different, stronger-looking property related to uniform continuity.)",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-005",
+      "stem": "A function $f : X \\to Y$ is uniformly continuous when:",
+      "options": [
+        "it is bounded.",
+        "it is monotone.",
+        "it is continuous at one point.",
+        "for every $\\varepsilon > 0$ there is $\\delta > 0$ (independent of the point) such that $d_X(x, x') < \\delta$ implies $d_Y(f(x), f(x')) < \\varepsilon$."
+      ],
+      "answer": 3,
+      "explanation": "Uniform continuity demands a single $\\delta$ that works simultaneously for all pairs of points: $d_X(x, x') < \\delta \\Rightarrow d_Y(f(x), f(x')) < \\varepsilon$, with $\\delta$ depending only on $\\varepsilon$. This is stronger than ordinary (pointwise) continuity.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-006",
+      "stem": "How does uniform continuity compare to ordinary continuity?",
+      "options": [
+        "They are always equivalent.",
+        "Uniform continuity implies continuity, but not conversely.",
+        "Continuity implies uniform continuity.",
+        "They are unrelated."
+      ],
+      "answer": 1,
+      "explanation": "Every uniformly continuous function is continuous, but the converse fails in general (for example $x^2$ on $\\mathbb{R}$). The two notions coincide when the domain is compact (Heine-Cantor theorem).",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-007",
+      "stem": "A map $f : X \\to Y$ is Lipschitz (with constant $L$) when:",
+      "options": [
+        "$f$ is bounded by $L$.",
+        "$d_Y(f(x), f(x')) \\le L \\, d_X(x, x')$ for all $x, x'$.",
+        "$d_Y(f(x), f(x')) \\ge L \\, d_X(x, x')$ for all $x, x'$.",
+        "$f$ is differentiable."
+      ],
+      "answer": 1,
+      "explanation": "Lipschitz continuity bounds how fast $f$ can change: $d_Y(f(x), f(x')) \\le L\\, d_X(x, x')$. The smallest such $L$ is the Lipschitz constant. This controls distances multiplicatively.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-008",
+      "stem": "Every Lipschitz function is:",
+      "options": [
+        "uniformly continuous.",
+        "a contraction.",
+        "necessarily bounded.",
+        "an isometry."
+      ],
+      "answer": 0,
+      "explanation": "A Lipschitz map is uniformly continuous: given $\\varepsilon$, choose $\\delta = \\varepsilon / L$, and then $d_X(x, x') < \\delta$ gives $d_Y(f(x), f(x')) \\le L\\delta = \\varepsilon$, with $\\delta$ independent of the points. Lipschitz need not be a contraction (that requires $L < 1$).",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-009",
+      "stem": "The chain of implications among these continuity notions is:",
+      "options": [
+        "uniformly continuous $\\Rightarrow$ Lipschitz $\\Rightarrow$ continuous.",
+        "continuous $\\Rightarrow$ uniformly continuous $\\Rightarrow$ Lipschitz.",
+        "Lipschitz $\\Rightarrow$ uniformly continuous $\\Rightarrow$ continuous.",
+        "continuous $\\Rightarrow$ Lipschitz $\\Rightarrow$ uniformly continuous."
+      ],
+      "answer": 2,
+      "explanation": "The correct strength ordering is Lipschitz $\\Rightarrow$ uniformly continuous $\\Rightarrow$ continuous. Each implication is strict: $\\sqrt{x}$ on $[0,\\infty)$ is uniformly continuous but not Lipschitz, and $x^2$ on $\\mathbb{R}$ is continuous but not uniformly continuous.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-010",
+      "stem": "Is $f(x) = x^2$ uniformly continuous on all of $\\mathbb{R}$?",
+      "options": [
+        "Yes, because it is continuous.",
+        "Yes, because it is differentiable.",
+        "No; the same $\\delta$ cannot work for large $x$ since the slope grows without bound.",
+        "Yes, because it is a polynomial."
+      ],
+      "answer": 2,
+      "explanation": "On $\\mathbb{R}$, $x^2$ is continuous but not uniformly continuous: for a fixed gap in $x$, the gap in $x^2$ grows as $x \\to \\infty$ (the derivative $2x$ is unbounded), so no single $\\delta$ works everywhere. Restricted to a bounded interval it would be uniformly continuous.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-011",
+      "stem": "The function $f(x) = \\sqrt{x}$ on $[0, \\infty)$ is:",
+      "options": [
+        "not continuous at $0$.",
+        "uniformly continuous but not Lipschitz.",
+        "a contraction.",
+        "Lipschitz with constant $1$."
+      ],
+      "answer": 1,
+      "explanation": "$\\sqrt{x}$ is uniformly continuous on $[0,\\infty)$, yet it is not Lipschitz: near $0$ its slope $\\tfrac{1}{2\\sqrt{x}}$ blows up, so no constant $L$ bounds the difference quotient. This is the standard example separating the two notions.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-012",
+      "stem": "For the Lipschitz function $f(x) = 2x + 1$ on $\\mathbb{R}$, the smallest Lipschitz constant is:",
+      "options": [
+        "$3$.",
+        "$0$.",
+        "$2$.",
+        "$1$."
+      ],
+      "answer": 2,
+      "explanation": "Since $|f(x) - f(x')| = |2x - 2x'| = 2|x - x'|$, the difference quotient is exactly $2$, so the best (smallest) Lipschitz constant is $2$. A valid $\\delta$ for tolerance $\\varepsilon$ is $\\delta = \\varepsilon / 2$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-013",
+      "stem": "A homeomorphism between metric spaces $X$ and $Y$ is:",
+      "options": [
+        "a continuous bijection whose inverse is also continuous.",
+        "any isometry.",
+        "any continuous surjection.",
+        "any Lipschitz map."
+      ],
+      "answer": 0,
+      "explanation": "A homeomorphism is a bijection $f$ such that both $f$ and $f^{-1}$ are continuous. It is the notion of equivalence in topology: homeomorphic spaces have identical topological properties.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-014",
+      "stem": "A continuous bijection need not be a homeomorphism because:",
+      "options": [
+        "continuity cannot be defined for bijections.",
+        "it might not be injective.",
+        "its inverse may fail to be continuous.",
+        "it might not be surjective."
+      ],
+      "answer": 2,
+      "explanation": "Continuity of $f$ does not force continuity of $f^{-1}$. A standard example wraps the half-open interval $[0, 2\\pi)$ continuously and bijectively onto the circle, but the inverse is discontinuous at the join. Only when $f^{-1}$ is also continuous is $f$ a homeomorphism.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-015",
+      "stem": "Which property is preserved (invariant) under a homeomorphism?",
+      "options": [
+        "Boundedness of the space.",
+        "Completeness of the space.",
+        "Distances between points.",
+        "Openness of sets (the topology)."
+      ],
+      "answer": 3,
+      "explanation": "Homeomorphisms preserve exactly the topological structure: open sets, closed sets, connectedness, compactness, convergence. Distances, boundedness, and completeness are metric (not topological) properties and can change, since $\\mathbb{R}$ is homeomorphic to the bounded interval $(-1, 1)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-016",
+      "stem": "An isometry $f : X \\to Y$ satisfies $d_Y(f(x), f(x')) = d_X(x, x')$. Every isometry is:",
+      "options": [
+        "never a homeomorphism.",
+        "a contraction.",
+        "surjective.",
+        "injective and continuous."
+      ],
+      "answer": 3,
+      "explanation": "Preserving distances forces injectivity (distinct points stay at positive distance) and continuity (it is Lipschitz with constant $1$). An isometry need not be surjective, but a surjective isometry is a homeomorphism.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-017",
+      "stem": "The composition of two continuous functions is:",
+      "options": [
+        "continuous.",
+        "rarely continuous.",
+        "continuous only if both are bijective.",
+        "uniformly continuous."
+      ],
+      "answer": 0,
+      "explanation": "If $f : X \\to Y$ and $g : Y \\to Z$ are continuous, so is $g \\circ f$: the preimage $(g \\circ f)^{-1}(W) = f^{-1}(g^{-1}(W))$ of an open set is open, being a preimage of an open set under $f$. Continuity is preserved under composition.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-018",
+      "stem": "A constant function $f : X \\to Y$, $f(x) = c$ for all $x$, is:",
+      "options": [
+        "continuous only if $X$ is connected.",
+        "continuous only if $X$ is compact.",
+        "never continuous.",
+        "continuous, indeed Lipschitz with constant $0$."
+      ],
+      "answer": 3,
+      "explanation": "A constant map is trivially continuous: every preimage of an open set is either $\\varnothing$ or $X$, both open. It is Lipschitz with constant $0$ since $d_Y(f(x), f(x')) = 0 \\le 0 \\cdot d_X(x, x')$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-019",
+      "stem": "On a discrete metric space $X$, every function $f : X \\to Y$ is:",
+      "options": [
+        "continuous.",
+        "continuous only if monotone.",
+        "rarely continuous.",
+        "uniformly continuous only if bounded."
+      ],
+      "answer": 0,
+      "explanation": "In the discrete metric every subset of $X$ is open, so every preimage $f^{-1}(V)$ is automatically open. Hence every map out of a discrete space is continuous, regardless of $f$ or the target $Y$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-020",
+      "stem": "The distance-to-a-fixed-point function $x \\mapsto d(x, a)$ on a metric space is:",
+      "options": [
+        "Lipschitz with constant $1$, hence uniformly continuous.",
+        "bounded.",
+        "constant.",
+        "discontinuous in general."
+      ],
+      "answer": 0,
+      "explanation": "By the reverse triangle inequality, $|d(x, a) - d(x', a)| \\le d(x, x')$, so $x \\mapsto d(x, a)$ is Lipschitz with constant $1$ and therefore uniformly continuous. This is a basic source of continuous real-valued functions on any metric space.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-021",
+      "stem": "By the Heine-Cantor theorem, a continuous function on a compact metric space is:",
+      "options": [
+        "necessarily a homeomorphism.",
+        "necessarily Lipschitz.",
+        "necessarily constant.",
+        "automatically uniformly continuous."
+      ],
+      "answer": 3,
+      "explanation": "On a compact domain, continuity upgrades to uniform continuity: this is the Heine-Cantor theorem. Compactness lets one extract a single $\\delta$ from the local ones. It does not force the map to be Lipschitz or constant.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-022",
+      "stem": "Is the identity map from $(\\mathbb{R}, d_{\\text{discrete}})$ to $(\\mathbb{R}, d_{\\text{usual}})$ continuous?",
+      "options": [
+        "Only at $0$.",
+        "No, identity maps are never continuous.",
+        "Yes, because the domain is discrete so every preimage is open.",
+        "It depends on the point."
+      ],
+      "answer": 2,
+      "explanation": "With the discrete metric on the domain, every subset is open, so every preimage is open and the identity is continuous. Note the reverse map (usual to discrete) is not continuous, illustrating that continuity depends on the metrics chosen, not just the underlying map.",
+      "difficulty": "stretch",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-023",
+      "stem": "Which statement is TRUE?",
+      "options": [
+        "Every Lipschitz function is uniformly continuous.",
+        "Every continuous function on $\\mathbb{R}$ is uniformly continuous.",
+        "Every uniformly continuous function is Lipschitz.",
+        "Every continuous bijection is a homeomorphism."
+      ],
+      "answer": 0,
+      "explanation": "Lipschitz functions are uniformly continuous (use $\\delta = \\varepsilon / L$). The others are false: $x^2$ is continuous on $\\mathbb{R}$ but not uniformly continuous, $\\sqrt{x}$ is uniformly continuous but not Lipschitz, and a continuous bijection need not have a continuous inverse.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-024",
+      "stem": "For the Lipschitz map $f(x) = 3x$ on $\\mathbb{R}$ with tolerance $\\varepsilon$, a valid choice of $\\delta$ guaranteeing $|f(x) - f(x')| < \\varepsilon$ whenever $|x - x'| < \\delta$ is:",
+      "options": [
+        "$\\delta = \\varepsilon / 3$.",
+        "$\\delta = 3\\varepsilon$.",
+        "$\\delta = \\varepsilon$.",
+        "$\\delta = \\varepsilon^2$."
+      ],
+      "answer": 0,
+      "explanation": "Here $|f(x) - f(x')| = 3|x - x'|$, so requiring $3|x - x'| < \\varepsilon$ means $|x - x'| < \\varepsilon / 3$. Thus $\\delta = \\varepsilon / 3$ works (independently of the point), confirming uniform continuity with Lipschitz constant $3$.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-025",
+      "format": "cloze",
+      "stem": "Consider $f(x) = 5x - 2$ on $\\mathbb{R}$ with the usual metric, regarding its Lipschitz behaviour.",
+      "solution": "Since $|f(x) - f(x')| = 5 |x - x'|$, the smallest Lipschitz constant of $f$ is {{1}}. For a tolerance $\\varepsilon = 1$, a working delta is $\\varepsilon$ divided by that constant, which equals {{2}} (enter as a decimal). Because $f$ is Lipschitz, it {{3}} uniformly continuous on $\\mathbb{R}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "$|f(x) - f(x')| = 5|x - x'|$ gives Lipschitz constant $5$. For $\\varepsilon = 1$, $\\delta = 1/5 = 0.2$ works. Lipschitz maps are uniformly continuous.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-026",
+      "format": "cloze",
+      "stem": "Classify $f(x) = x^2$ on $\\mathbb{R}$ and on the compact interval $[0, 1]$ for uniform continuity.",
+      "solution": "On all of $\\mathbb{R}$, the slope $2x$ grows without bound, so $f$ {{1}} uniformly continuous there. Restricted to the compact interval $[0,1]$, the Heine-Cantor theorem applies, so $f$ {{2}} uniformly continuous on $[0,1]$. The number of these two domains on which $f$ is uniformly continuous is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is not"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$x^2$ is not uniformly continuous on $\\mathbb{R}$ (unbounded slope) but is uniformly continuous on the compact $[0,1]$ by Heine-Cantor. So it is uniformly continuous on exactly $1$ of the two domains.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-027",
+      "format": "cloze",
+      "stem": "Examine $f(x) = \\sqrt{x}$ on $[0, \\infty)$ for the Lipschitz and uniform-continuity properties.",
+      "solution": "Near $x = 0$ the difference quotient $\\tfrac{1}{2\\sqrt{x}}$ becomes arbitrarily large, so $f$ {{1}} Lipschitz on $[0, \\infty)$. Nevertheless $f$ {{2}} uniformly continuous on $[0, \\infty)$. Of the two properties (Lipschitz, uniformly continuous), the number that $\\sqrt{x}$ satisfies on this domain is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is not"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\sqrt{x}$ is not Lipschitz (slope unbounded near $0$) but is uniformly continuous on $[0, \\infty)$. So it has exactly $1$ of the two properties.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    },
+    {
+      "id": "topology-i-continuity-in-metric-spaces-028",
+      "format": "cloze",
+      "stem": "Use the implication chain among continuity notions and a discrete-domain fact.",
+      "solution": "Among the properties Lipschitz, uniformly continuous, and continuous, the strongest is {{1}}. Every uniformly continuous function {{2}} continuous, but the converse can fail. If the domain carries the discrete metric, then every function out of it {{3}} continuous, since all preimages are open.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "Lipschitz",
+            "continuous"
+          ],
+          "answer": "Lipschitz"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "The ordering is Lipschitz (strongest) implies uniformly continuous implies continuous. Uniform continuity implies continuity. On a discrete domain every function is continuous because every subset is open.",
+      "difficulty": "core",
+      "source": "in the style of Rudin, Principles of Mathematical Analysis"
+    }
+  ]
+}

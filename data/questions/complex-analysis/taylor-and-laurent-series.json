@@ -1,0 +1,491 @@
+{
+  "courseId": "complex-analysis",
+  "topicId": "taylor-and-laurent-series",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-001",
+      "stem": "The Taylor series of a function $f$ analytic at $z_0$ is $\\sum_{n=0}^{\\infty} a_n (z - z_0)^n$ with coefficient $a_n$ equal to:",
+      "options": [
+        "$n!\\, f^{(n)}(z_0)$",
+        "$f^{(n)}(z_0)$",
+        "$\\dfrac{f^{(n)}(z_0)}{(n+1)!}$",
+        "$\\dfrac{f^{(n)}(z_0)}{n!}$"
+      ],
+      "answer": 3,
+      "explanation": "The Taylor coefficients are $a_n = \\frac{f^{(n)}(z_0)}{n!}$, exactly as in the real case. Dividing by $n!$ (not $(n+1)!$) and not multiplying by $n!$ is what makes the series reproduce $f$ and its derivatives at $z_0$.",
+      "difficulty": "warmup",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-002",
+      "stem": "The Maclaurin series of $e^z$ is:",
+      "options": [
+        "$\\sum_{n=0}^{\\infty} \\dfrac{z^n}{n!}$",
+        "$\\sum_{n=0}^{\\infty} z^n$",
+        "$\\sum_{n=0}^{\\infty} n!\\, z^n$",
+        "$\\sum_{n=0}^{\\infty} \\dfrac{z^n}{n}$"
+      ],
+      "answer": 0,
+      "explanation": "Since every derivative of $e^z$ is $e^z$ with value $1$ at $0$, the Maclaurin series is $e^z = \\sum_{n=0}^{\\infty} \\frac{z^n}{n!}$. It converges for all $z$, so $e^z$ is entire. The geometric-style $\\sum z^n$ and the harmonic-style $\\sum z^n/n$ are different functions.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-003",
+      "stem": "The Maclaurin series of $\\sin z$ is:",
+      "options": [
+        "$\\sum_{n=0}^{\\infty} \\dfrac{(-1)^n z^{2n+1}}{(2n+1)!}$",
+        "$\\sum_{n=0}^{\\infty} \\dfrac{z^n}{n!}$",
+        "$\\sum_{n=0}^{\\infty} (-1)^n z^{2n+1}$",
+        "$\\sum_{n=0}^{\\infty} \\dfrac{z^{2n}}{(2n)!}$"
+      ],
+      "answer": 0,
+      "explanation": "The sine series keeps only odd powers with alternating signs: $\\sin z = z - \\frac{z^3}{3!} + \\frac{z^5}{5!} - \\cdots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n z^{2n+1}}{(2n+1)!}$. The even-power version is $\\cos z$, and dropping the factorials destroys convergence and correctness.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-004",
+      "stem": "The geometric series $\\dfrac{1}{1 - z} = \\sum_{n=0}^{\\infty} z^n$ converges for:",
+      "options": [
+        "all $z$.",
+        "$|z| > 1$.",
+        "$|z| = 1$.",
+        "$|z| < 1$."
+      ],
+      "answer": 3,
+      "explanation": "The geometric series $\\sum_{n=0}^{\\infty} z^n$ converges precisely when $|z| < 1$, to the sum $\\frac{1}{1-z}$. On or outside the unit circle the terms do not tend to $0$, so it diverges. The radius of convergence is $1$, set by the singularity at $z = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-005",
+      "stem": "The radius of convergence of the Taylor series of $f(z) = \\dfrac{1}{z - 2}$ about $z_0 = 0$ is:",
+      "options": [
+        "$2$",
+        "$\\infty$",
+        "$\\dfrac{1}{2}$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "The Taylor series about $0$ converges in the largest disk centered at $0$ free of singularities. The only singularity of $\\frac{1}{z-2}$ is at $z = 2$, a distance $2$ from the center. Hence the radius of convergence equals $2$, the distance to the nearest singularity.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-006",
+      "stem": "A Laurent series of $f$ about $z_0$ in an annulus has the form $\\sum_{n=-\\infty}^{\\infty} a_n (z - z_0)^n$. The part with negative powers is called the:",
+      "options": [
+        "regular part.",
+        "analytic part.",
+        "principal part.",
+        "Taylor part."
+      ],
+      "answer": 2,
+      "explanation": "The negative-power terms $\\sum_{n=1}^{\\infty} a_{-n}(z - z_0)^{-n}$ constitute the principal part of the Laurent series. It encodes the singular behavior at $z_0$; the non-negative powers form the analytic (regular) part. Classifying the singularity amounts to inspecting the principal part.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-007",
+      "stem": "An isolated singularity $z_0$ is a removable singularity when the principal part of the Laurent series:",
+      "options": [
+        "has finitely many nonzero terms.",
+        "has infinitely many nonzero terms.",
+        "has no nonzero terms (is absent).",
+        "has exactly one nonzero term."
+      ],
+      "answer": 2,
+      "explanation": "A removable singularity has an empty principal part: all negative-power coefficients vanish, so the Laurent series is actually a Taylor series and $f$ extends analytically to $z_0$. One term gives a simple pole, finitely many a pole, and infinitely many an essential singularity.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-008",
+      "stem": "An isolated singularity is a pole of order $m$ when the principal part:",
+      "options": [
+        "is empty.",
+        "terminates, with $a_{-m} \\neq 0$ the lowest nonzero coefficient.",
+        "has $a_{-1}$ as its only nonzero term, for any $m$.",
+        "has infinitely many nonzero terms."
+      ],
+      "answer": 1,
+      "explanation": "A pole of order $m$ has a finite principal part ending at the $(z - z_0)^{-m}$ term, with $a_{-m} \\neq 0$ and $a_{-n} = 0$ for $n > m$. An empty principal part is removable, infinitely many terms is essential, and a single $a_{-1}$ term is specifically a simple pole ($m = 1$).",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-009",
+      "stem": "An essential singularity is characterized by a principal part that:",
+      "options": [
+        "has finitely many terms.",
+        "equals the analytic part.",
+        "is empty.",
+        "has infinitely many nonzero terms."
+      ],
+      "answer": 3,
+      "explanation": "At an essential singularity the principal part has infinitely many nonzero negative-power coefficients. The standard example is $e^{1/z}$, whose Laurent series $\\sum_{n=0}^{\\infty} \\frac{1}{n!\\,z^n}$ has infinitely many negative powers. By the Casorati-Weierstrass theorem the function behaves wildly near such a point.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-010",
+      "stem": "Classify the singularity of $f(z) = \\dfrac{\\sin z}{z}$ at $z = 0$.",
+      "options": [
+        "Removable singularity.",
+        "Essential singularity.",
+        "Pole of order $2$.",
+        "Simple pole."
+      ],
+      "answer": 0,
+      "explanation": "Using $\\sin z = z - \\frac{z^3}{3!} + \\cdots$, we get $\\frac{\\sin z}{z} = 1 - \\frac{z^2}{3!} + \\frac{z^4}{5!} - \\cdots$, a power series with no negative powers. The principal part is empty, so $z = 0$ is removable; defining $f(0) = 1$ makes $f$ entire.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-011",
+      "stem": "Classify the singularity of $f(z) = \\dfrac{e^z}{z^2}$ at $z = 0$.",
+      "options": [
+        "Simple pole.",
+        "Pole of order $2$.",
+        "Essential singularity.",
+        "Removable singularity."
+      ],
+      "answer": 1,
+      "explanation": "Since $e^z = 1 + z + \\frac{z^2}{2} + \\cdots$, dividing by $z^2$ gives $\\frac{1}{z^2} + \\frac{1}{z} + \\frac{1}{2} + \\cdots$. The most negative power is $z^{-2}$ with nonzero coefficient, and the principal part stops there, so $z = 0$ is a pole of order $2$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-012",
+      "stem": "Classify the singularity of $f(z) = e^{1/z}$ at $z = 0$.",
+      "options": [
+        "Removable singularity.",
+        "Simple pole.",
+        "Pole of order $1$.",
+        "Essential singularity."
+      ],
+      "answer": 3,
+      "explanation": "Substituting $1/z$ into the exponential series gives $e^{1/z} = \\sum_{n=0}^{\\infty} \\frac{1}{n!\\,z^n} = 1 + \\frac{1}{z} + \\frac{1}{2! z^2} + \\cdots$. The principal part has infinitely many nonzero terms, so $z = 0$ is an essential singularity, not any finite-order pole.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-013",
+      "stem": "For $f(z) = \\dfrac{1}{z(z-1)}$, the Laurent series valid in the annulus $0 < |z| < 1$ begins (using partial fractions $-\\frac{1}{z} + \\frac{1}{z-1}$ rewritten) as:",
+      "options": [
+        "$-\\dfrac{1}{z} + 1 + z + z^2 + \\cdots$",
+        "$\\dfrac{1}{z} + 1 + z + z^2 + \\cdots$",
+        "$-\\dfrac{1}{z} - 1 - z - z^2 - \\cdots$",
+        "$\\dfrac{1}{z} - 1 - z - z^2 - \\cdots$"
+      ],
+      "answer": 2,
+      "explanation": "Partial fractions give $\\frac{1}{z(z-1)} = -\\frac{1}{z} + \\frac{1}{z-1}$. For $|z| < 1$, $\\frac{1}{z-1} = -\\frac{1}{1-z} = -(1 + z + z^2 + \\cdots)$. Adding $-\\frac{1}{z}$ yields $-\\frac{1}{z} - 1 - z - z^2 - \\cdots$. The single negative power shows a simple pole at $0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-014",
+      "stem": "Taylor's theorem guarantees that a function analytic in a disk $|z - z_0| < R$ equals its Taylor series there. This is in contrast to real analysis, where a smooth function:",
+      "options": [
+        "always equals its Taylor series.",
+        "is never equal to its Taylor series.",
+        "has no Taylor series.",
+        "may have a Taylor series that does not converge to it."
+      ],
+      "answer": 3,
+      "explanation": "Complex analyticity is rigid: differentiable once on a disk implies equal to the convergent Taylor series. In real analysis a $C^\\infty$ function like $e^{-1/x^2}$ (with value $0$ at $0$) has an identically zero Taylor series at $0$ that fails to represent it. So real smoothness does not force series representation.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-015",
+      "stem": "The radius of convergence of the Maclaurin series of $f(z) = \\dfrac{1}{1 + z^2}$ is:",
+      "options": [
+        "$\\dfrac{1}{2}$",
+        "$1$",
+        "$2$",
+        "$\\infty$"
+      ],
+      "answer": 1,
+      "explanation": "The singularities of $\\frac{1}{1+z^2}$ are at $z = \\pm i$, each a distance $1$ from the origin. The Maclaurin series therefore converges in $|z| < 1$ and the radius is $1$. Notably this is invisible on the real axis, where the function is perfectly smooth; the complex singularities set the radius.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-016",
+      "stem": "The Maclaurin series of $\\cos z$ is:",
+      "options": [
+        "$\\sum_{n=0}^{\\infty} \\dfrac{(-1)^n z^{2n}}{(2n)!}$",
+        "$\\sum_{n=0}^{\\infty} \\dfrac{(-1)^n z^{2n+1}}{(2n+1)!}$",
+        "$\\sum_{n=0}^{\\infty} \\dfrac{z^{2n}}{(2n)!}$",
+        "$\\sum_{n=0}^{\\infty} \\dfrac{z^n}{n!}$"
+      ],
+      "answer": 0,
+      "explanation": "The cosine series uses even powers with alternating signs: $\\cos z = 1 - \\frac{z^2}{2!} + \\frac{z^4}{4!} - \\cdots = \\sum_{n=0}^{\\infty} \\frac{(-1)^n z^{2n}}{(2n)!}$. The odd-power alternating series is $\\sin z$, and dropping the $(-1)^n$ gives $\\cosh z$ instead.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-017",
+      "stem": "In the Laurent expansion of $f$ about an isolated singularity $z_0$, the residue of $f$ at $z_0$ is which coefficient?",
+      "options": [
+        "$a_{-2}$",
+        "$a_0$",
+        "$a_{-1}$",
+        "$a_1$"
+      ],
+      "answer": 2,
+      "explanation": "The residue is the coefficient $a_{-1}$ of the $(z - z_0)^{-1}$ term in the Laurent series. It is singled out because $\\oint (z - z_0)^n\\,dz = 0$ for all integer $n$ except $n = -1$, where it equals $2\\pi i$. This makes $a_{-1}$ the only term that survives integration.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-018",
+      "stem": "The function $f(z) = \\dfrac{1}{z}$ expanded about $z_0 = 0$ is its own Laurent series. Its residue at $0$ is:",
+      "options": [
+        "$0$",
+        "$2\\pi i$",
+        "$1$",
+        "$-1$"
+      ],
+      "answer": 2,
+      "explanation": "The Laurent series of $\\frac{1}{z}$ about $0$ is simply $\\frac{1}{z}$, so the coefficient $a_{-1}$ equals $1$. Hence the residue at $0$ is $1$. The value $2\\pi i$ is the integral $\\oint \\frac{dz}{z}$, which equals $2\\pi i$ times the residue.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-019",
+      "stem": "How many distinct Laurent expansions about $z_0 = 0$ does $f(z) = \\dfrac{1}{z(z-1)}$ have, corresponding to the regions determined by its singularities?",
+      "options": [
+        "Infinitely many.",
+        "Three.",
+        "One, valid everywhere.",
+        "Two: $0 < |z| < 1$ and $|z| > 1$."
+      ],
+      "answer": 3,
+      "explanation": "The singularities at $z = 0$ and $z = 1$ split the plane into two annular regions about $0$: the punctured disk $0 < |z| < 1$ and the exterior $|z| > 1$. Each region has its own Laurent series. The number of such regions is one more than... here, two regions for two relevant radii.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-020",
+      "stem": "Expanding $f(z) = \\dfrac{1}{z - 1}$ in the region $|z| > 1$ gives which series?",
+      "options": [
+        "$\\sum_{n=0}^{\\infty} z^n$",
+        "$\\sum_{n=1}^{\\infty} \\dfrac{1}{z^n}$",
+        "$-\\sum_{n=0}^{\\infty} z^n$",
+        "$\\sum_{n=0}^{\\infty} \\dfrac{1}{z^{n}}$"
+      ],
+      "answer": 1,
+      "explanation": "For $|z| > 1$ factor out $z$: $\\frac{1}{z-1} = \\frac{1}{z}\\cdot\\frac{1}{1 - 1/z} = \\frac{1}{z}\\sum_{n=0}^{\\infty} z^{-n} = \\sum_{n=0}^{\\infty} z^{-(n+1)} = \\sum_{n=1}^{\\infty} \\frac{1}{z^n}$, valid since $|1/z| < 1$. This negative-power series is the exterior Laurent expansion.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-021",
+      "stem": "If $g(z_0) \\neq 0$ and $h$ has a simple zero at $z_0$, then $f = g/h$ has at $z_0$ a:",
+      "options": [
+        "pole of order $2$.",
+        "removable singularity.",
+        "essential singularity.",
+        "simple pole."
+      ],
+      "answer": 3,
+      "explanation": "Near $z_0$, $h(z) = (z - z_0) h'(z_0) + \\cdots$ with $h'(z_0) \\neq 0$ (simple zero), so $f = g/h$ behaves like $\\frac{g(z_0)}{h'(z_0)(z - z_0)}$, a single $(z - z_0)^{-1}$ term. That is a simple pole. A zero of $h$ of order $m$ in the denominator gives a pole of order $m$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-022",
+      "stem": "The first three terms of the Taylor series of $e^z$ about $z_0 = 0$ are:",
+      "options": [
+        "$1 + z + \\dfrac{z^2}{2}$",
+        "$1 + z + z^2$",
+        "$z + \\dfrac{z^2}{2} + \\dfrac{z^3}{6}$",
+        "$1 + \\dfrac{z}{2} + \\dfrac{z^2}{6}$"
+      ],
+      "answer": 0,
+      "explanation": "From $e^z = \\sum \\frac{z^n}{n!}$, the first three terms ($n = 0, 1, 2$) are $1 + z + \\frac{z^2}{2!} = 1 + z + \\frac{z^2}{2}$. The denominators are factorials $0! = 1$, $1! = 1$, $2! = 2$, so the coefficients are $1, 1, \\frac{1}{2}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-023",
+      "stem": "Term-by-term, what is the Laurent series of $z^2 e^{1/z}$ near $z = 0$, and what type of singularity results?",
+      "options": [
+        "A simple pole.",
+        "A removable singularity.",
+        "A pole of order $2$.",
+        "An essential singularity."
+      ],
+      "answer": 3,
+      "explanation": "Multiply the series $e^{1/z} = \\sum_{n=0}^{\\infty} \\frac{1}{n! z^n}$ by $z^2$: $z^2 e^{1/z} = \\sum_{n=0}^{\\infty} \\frac{z^{2-n}}{n!} = z^2 + z + \\frac12 + \\frac{1}{6 z} + \\frac{1}{24 z^2} + \\cdots$. The principal part still has infinitely many negative powers, so $z = 0$ remains an essential singularity; multiplying by $z^2$ does not tame it.",
+      "difficulty": "stretch",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-024",
+      "stem": "The radius of convergence of the Taylor series of an entire function (such as $\\cos z$) about any point is:",
+      "options": [
+        "$0$",
+        "$1$",
+        "finite but depends on the point.",
+        "$\\infty$."
+      ],
+      "answer": 3,
+      "explanation": "An entire function has no singularities anywhere, so the distance to the nearest singularity is infinite and the Taylor series about any center converges in the whole plane: the radius of convergence is $\\infty$. This holds for $\\cos z$, $\\sin z$, $e^z$, and all polynomials.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-025",
+      "format": "cloze",
+      "stem": "Determine the radius of convergence of the Maclaurin series of $f(z) = \\dfrac{1}{z - 3}$.",
+      "solution": "The only singularity is at $z = 3$, whose distance from the center $0$ is the number {{1}}. The Maclaurin series converges in the disk $|z| < R$ with $R$ equal to that distance, so the series {{2}} at $z = 2$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges"
+          ],
+          "answer": "converges"
+        }
+      ],
+      "explanation": "The nearest (only) singularity is at $z = 3$, distance $3$ from $0$, so $R = 3$. Since $|2| = 2 < 3$, the point $z = 2$ is inside the disk and the series converges there.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-026",
+      "format": "cloze",
+      "stem": "Classify the singularity of $f(z) = \\dfrac{e^z}{z^2}$ at $z = 0$ from its Laurent series.",
+      "solution": "Dividing $e^z = 1 + z + \\tfrac{z^2}{2} + \\cdots$ by $z^2$ gives a most-negative power $z^{-m}$ with $m$ equal to the integer {{1}}. Since the principal part terminates, the singularity is a pole, and its order is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The expansion is $\\frac{1}{z^2} + \\frac{1}{z} + \\frac12 + \\cdots$, so the lowest power is $z^{-2}$, meaning $m = 2$. The principal part stops there, giving a pole of order $2$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-027",
+      "format": "cloze",
+      "stem": "Read off the residue of $f(z) = \\dfrac{e^z}{z^2}$ at $z = 0$ from its Laurent series.",
+      "solution": "The Laurent series is $\\frac{1}{z^2} + \\frac{1}{z} + \\frac{1}{2} + \\cdots$. The residue is the coefficient of $z^{-1}$, namely $a_{-1}$, which equals the number {{1}}. The coefficient of $z^{-2}$, by contrast, is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From $\\frac{e^z}{z^2} = \\frac{1}{z^2} + \\frac{1}{z} + \\frac12 + \\cdots$, the coefficient of $z^{-1}$ is $1$ (the residue) and the coefficient of $z^{-2}$ is also $1$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-028",
+      "format": "cloze",
+      "stem": "Use the geometric series to expand $f(z) = \\dfrac{1}{1 - z}$ and identify where it is valid.",
+      "solution": "The expansion is $1 + z + z^2 + \\cdots$, the sum $\\sum_{n=0}^{\\infty} z^n$. It converges when $|z|$ is less than the number {{1}}. At $z = \\tfrac12$ the sum equals $\\frac{1}{1 - 1/2}$, which is the number {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The geometric series converges for $|z| < 1$, so the bound is $1$. At $z = 1/2$, $\\frac{1}{1 - 1/2} = \\frac{1}{1/2} = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-029",
+      "format": "cloze",
+      "stem": "Classify the singularity of $f(z) = \\dfrac{\\sin z}{z}$ at $z = 0$ via its series.",
+      "solution": "Dividing $\\sin z = z - \\frac{z^3}{6} + \\cdots$ by $z$ gives $1 - \\frac{z^2}{6} + \\cdots$, a series with the most negative power being $z$ to the power {{1}} (a non-negative power). Because the principal part is empty, the singularity is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "removable",
+            "a simple pole",
+            "essential"
+          ],
+          "answer": "removable"
+        }
+      ],
+      "explanation": "$\\frac{\\sin z}{z} = 1 - \\frac{z^2}{6} + \\cdots$ has lowest power $z^0$ (the constant $1$), so there are no negative powers. An empty principal part means the singularity is removable.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    },
+    {
+      "id": "complex-analysis-taylor-and-laurent-series-030",
+      "format": "cloze",
+      "stem": "Find the radius of convergence of the Maclaurin series of $f(z) = \\dfrac{1}{1 + z^2}$ from its singularities.",
+      "solution": "The singularities solve $z^2 = -1$, giving $z = \\pm i$. The distance from the origin to each is the number {{1}}, so the radius of convergence $R$ equals that value. The series therefore {{2}} at the real point $z = 2$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges"
+          ],
+          "answer": "diverges"
+        }
+      ],
+      "explanation": "The poles $\\pm i$ are each at distance $|{\\pm i}| = 1$ from $0$, so $R = 1$. Since $|2| = 2 > 1$, the point $z = 2$ is outside the disk of convergence and the series diverges there.",
+      "difficulty": "core",
+      "source": "in the style of Churchill and Brown, Complex Variables and Applications"
+    }
+  ]
+}
