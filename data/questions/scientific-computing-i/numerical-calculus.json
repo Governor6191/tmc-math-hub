@@ -1,0 +1,476 @@
+{
+  "courseId": "scientific-computing-i",
+  "topicId": "numerical-calculus",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-i-numerical-calculus-001",
+      "stem": "The forward finite-difference approximation to $f'(x)$ is which expression?",
+      "options": [
+        "$\\dfrac{f(x + h) - f(x)}{h}$",
+        "$\\dfrac{f(x + h) - f(x - h)}{2h}$",
+        "$\\dfrac{f(x) - f(x - h)}{h}$",
+        "$\\dfrac{f(x + h) - f(x)}{2h}$"
+      ],
+      "answer": 0,
+      "explanation": "The forward difference uses the point ahead: $f'(x) \\approx \\frac{f(x + h) - f(x)}{h}$. The second expression is the backward difference, the third is the centered difference, and the fourth has the wrong denominator $2h$. The trap is confusing the forward and centered formulas; the forward difference divides by $h$, not $2h$, and looks only ahead.",
+      "difficulty": "warmup",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-002",
+      "stem": "The centered finite-difference approximation to $f'(x)$ has a truncation error of which order in the step size $h$?",
+      "options": [
+        "$O(h^4)$",
+        "$O(h)$",
+        "$O(h^3)$",
+        "$O(h^2)$"
+      ],
+      "answer": 3,
+      "explanation": "The centered difference $\\frac{f(x + h) - f(x - h)}{2h}$ has error $O(h^2)$ because the odd-order Taylor terms cancel, leaving the leading error proportional to $h^2$. The forward and backward differences are only $O(h)$, while $O(h^3)$ and $O(h^4)$ overstate the accuracy of this simple formula. The trap is treating all difference formulas as first order; centering raises the order to two.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-003",
+      "stem": "For $f(x) = x^2$ at $x = 2$ with $h = 0.1$, the forward-difference estimate of $f'(2)$ is which value (true value $4$)?",
+      "options": [
+        "$4.2$",
+        "$3.9$",
+        "$4.0$",
+        "$4.1$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $\\frac{f(2.1) - f(2)}{0.1} = \\frac{4.41 - 4}{0.1} = \\frac{0.41}{0.1} = 4.1$. The forward difference overestimates the true $4$ because $x^2$ curves upward. The value $3.9$ is the backward difference, $4.0$ is the exact centered result, and $4.2$ is too large. The trap is confusing the forward estimate with the centered one; forward gives $4.1$ here.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-004",
+      "stem": "For $f(x) = x^2$ at $x = 2$ with $h = 0.1$, the centered-difference estimate of $f'(2)$ is which value?",
+      "options": [
+        "$3.9$",
+        "$4.0$",
+        "$4.1$",
+        "$3.95$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $\\frac{f(2.1) - f(1.9)}{2(0.1)} = \\frac{4.41 - 3.61}{0.2} = \\frac{0.8}{0.2} = 4.0$, which is exact here because the centered difference is exact for quadratics. The forward $4.1$ and backward $3.9$ each carry $O(h)$ error, and $3.95$ is their average mishandled. The trap is expecting error; for a quadratic the centered formula returns the exact derivative $4$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-005",
+      "stem": "The centered second-difference approximation to $f''(x)$ is which expression?",
+      "options": [
+        "$\\dfrac{f(x + h) - f(x - h)}{2h}$",
+        "$\\dfrac{f(x + h) - 2f(x) + f(x - h)}{h}$",
+        "$\\dfrac{f(x + h) - 2f(x) + f(x - h)}{h^2}$",
+        "$\\dfrac{f(x + h) + f(x - h)}{h^2}$"
+      ],
+      "answer": 2,
+      "explanation": "The standard centered formula for the second derivative is $f''(x) \\approx \\frac{f(x + h) - 2f(x) + f(x - h)}{h^2}$, with error $O(h^2)$. The second option is the first-derivative formula, the third has the wrong power of $h$, and the fourth drops the $-2f(x)$ term. The trap is forgetting the $-2f(x)$ middle term or dividing by $h$ instead of $h^2$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-006",
+      "stem": "For $f(x) = x^2$ at $x = 2$ with $h = 1$, the centered second-difference estimate of $f''(2)$ is which value (true value $2$)?",
+      "options": [
+        "$1$",
+        "$0$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $\\frac{f(3) - 2f(2) + f(1)}{1^2} = \\frac{9 - 8 + 1}{1} = 2$, matching the exact $f''(x) = 2$. The formula is exact for quadratics regardless of $h$. The values $1$, $4$, and $0$ come from dropping or mishandling a term. The trap is mis-summing the three values; $9 - 8 + 1 = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-007",
+      "stem": "The single-application trapezoidal rule approximates $\\int_a^b f(x)\\,dx$ by which expression?",
+      "options": [
+        "$\\dfrac{b - a}{6}\\,[\\,f(a) + 4f(m) + f(b)\\,]$",
+        "$(b - a)\\,f\\!\\left(\\dfrac{a + b}{2}\\right)$",
+        "$\\dfrac{b - a}{2}\\,[\\,f(a) + f(b)\\,]$",
+        "$(b - a)\\,[\\,f(a) + f(b)\\,]$"
+      ],
+      "answer": 2,
+      "explanation": "The trapezoidal rule averages the endpoint heights times the width: $\\frac{b - a}{2}[f(a) + f(b)]$, the area of the trapezoid under the chord. The first option is the midpoint rule, the third is Simpson's rule, and the fourth omits the factor $\\frac{1}{2}$. The trap is dropping the $\\frac{1}{2}$; the trapezoid uses the average of the two end heights.",
+      "difficulty": "warmup",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-008",
+      "stem": "Applying the single trapezoidal rule to $\\int_0^2 x^2\\,dx$ gives which value (true value $2.667$)?",
+      "options": [
+        "$2.0$",
+        "$3.0$",
+        "$2.667$",
+        "$4.0$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $\\frac{2 - 0}{2}[f(0) + f(2)] = 1\\,[0 + 4] = 4.0$. The trapezoid overestimates the true $2.667$ because the chord lies above the convex parabola. The value $2.667$ is the exact integral, $3.0$ is the two-segment composite result, and $2.0$ is unrelated. The trap is expecting accuracy from one trapezoid on a curved function; here it overshoots to $4.0$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-009",
+      "stem": "The composite trapezoidal rule with $n$ equal segments of width $h$ uses which weighting of the interior points?",
+      "options": [
+        "Each interior point is weighted by $1$, endpoints by $2$",
+        "Each interior point is weighted by $2$, endpoints by $1$",
+        "Interior points alternate weights $4$ and $2$",
+        "All points are weighted equally by $1$"
+      ],
+      "answer": 1,
+      "explanation": "The composite trapezoidal rule is $\\frac{h}{2}[f_0 + 2(f_1 + \\cdots + f_{n-1}) + f_n]$, so interior points get weight $2$ and the two endpoints get weight $1$. Reversing the weights is wrong, equal weights describe a crude rectangle sum, and the alternating $4, 2$ pattern belongs to Simpson's rule. The trap is importing Simpson's alternating weights; the trapezoidal rule doubles only the interior values.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-010",
+      "stem": "Applying the composite trapezoidal rule with two segments ($h = 1$) to $\\int_0^2 x^2\\,dx$ gives which value?",
+      "options": [
+        "$3.0$",
+        "$2.667$",
+        "$4.0$",
+        "$2.5$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $\\frac{1}{2}[f(0) + 2f(1) + f(2)] = \\frac{1}{2}[0 + 2(1) + 4] = \\frac{1}{2}(6) = 3.0$. Using two trapezoids reduces the overestimate from $4.0$ toward the true $2.667$. The value $2.667$ is exact, and $2.5$ mishandles a term. The trap is forgetting the weight $2$ on the interior point; with it the result is $3.0$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-011",
+      "stem": "Simpson's 1/3 rule over $[a, b]$ with midpoint $m$ uses which formula?",
+      "options": [
+        "$\\dfrac{b - a}{6}\\,[\\,f(a) + 4f(m) + f(b)\\,]$",
+        "$\\dfrac{b - a}{2}\\,[\\,f(a) + f(b)\\,]$",
+        "$(b - a)\\,f(m)$",
+        "$\\dfrac{b - a}{3}\\,[\\,f(a) + f(b)\\,]$"
+      ],
+      "answer": 0,
+      "explanation": "Simpson's 1/3 rule fits a parabola through the two ends and the midpoint: $\\frac{b - a}{6}[f(a) + 4f(m) + f(b)]$, equivalently $\\frac{h}{3}[f_0 + 4f_1 + f_2]$ with $h = \\frac{b - a}{2}$. The plain endpoint average $\\frac{b - a}{2}[f(a) + f(b)]$ is the trapezoidal rule, the $\\frac{b - a}{3}$ version misweights, and $(b - a)f(m)$ is the midpoint rule. The trap is forgetting the weight $4$ on the midpoint, which is the heart of Simpson's rule.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-012",
+      "stem": "Applying Simpson's 1/3 rule to $\\int_0^2 x^2\\,dx$ (nodes $0, 1, 2$, $h = 1$) gives which value?",
+      "options": [
+        "$3.0$",
+        "$4.0$",
+        "$2.667$",
+        "$2.5$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $\\frac{1}{3}[f(0) + 4f(1) + f(2)] = \\frac{1}{3}[0 + 4(1) + 4] = \\frac{8}{3} = 2.667$, which is exact because Simpson's rule integrates cubics (and hence quadratics) exactly. The trapezoidal results $4.0$ and $3.0$ carry error, and $2.5$ is wrong. The trap is doubting Simpson's exactness here; for a quadratic it returns the exact $2.667$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-013",
+      "stem": "The error term of the single trapezoidal rule is proportional to which derivative of $f$?",
+      "options": [
+        "The fourth derivative $f^{(4)}$",
+        "The third derivative $f'''$",
+        "The second derivative $f''$",
+        "The first derivative $f'$"
+      ],
+      "answer": 2,
+      "explanation": "The trapezoidal error is $-\\frac{(b - a)^3}{12}f''(\\xi)$, proportional to the second derivative, so the rule is exact for straight lines (where $f'' = 0$). It does not depend on $f'$, $f'''$, or $f^{(4)}$ at leading order. The trap is associating the trapezoidal rule with the fourth derivative; that is Simpson's rule, whereas the trapezoid depends on $f''$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-014",
+      "stem": "The error term of Simpson's 1/3 rule is proportional to which derivative of $f$, making it exact for polynomials up to which degree?",
+      "options": [
+        "$f''$, exact up to degree $1$",
+        "$f^{(5)}$, exact up to degree $4$",
+        "$f'''$, exact up to degree $2$",
+        "$f^{(4)}$, exact up to degree $3$"
+      ],
+      "answer": 3,
+      "explanation": "Simpson's 1/3 error is $-\\frac{(b - a)^5}{2880}f^{(4)}(\\xi)$ (equivalently $-\\frac{h^5}{90}f^{(4)}$ per panel), so it depends on the fourth derivative and is exact for cubics, that is polynomials up to degree $3$. The trapezoidal pairing $f''$ degree $1$ understates it, and the other options misstate either the derivative or the degree. The trap is expecting exactness only to degree $2$; the weight $4$ buys an extra degree, up to $3$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-015",
+      "stem": "Simpson's 1/3 rule, applied in composite form, requires the number of segments $n$ to satisfy which condition?",
+      "options": [
+        "$n$ can be any positive integer",
+        "$n$ must be prime",
+        "$n$ must be even",
+        "$n$ must be odd"
+      ],
+      "answer": 2,
+      "explanation": "Each Simpson 1/3 panel spans two segments (three points), so the composite rule needs an even number of segments $n$ to pair them up. An odd $n$ leaves a leftover segment that the 1/3 rule cannot cover (one would switch to the 3/8 rule there). Primality is irrelevant. The trap is ignoring the pairing requirement; composite Simpson's 1/3 demands even $n$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-016",
+      "stem": "A table gives $f(0) = 1$, $f(2) = 5$, $f(4) = 17$. The composite trapezoidal rule with $h = 2$ estimates $\\int_0^4 f\\,dx$ as which value?",
+      "options": [
+        "$28$",
+        "$44$",
+        "$20$",
+        "$25.33$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $\\frac{2}{2}[f(0) + 2f(2) + f(4)] = 1\\,[1 + 2(5) + 17] = 1 + 10 + 17 = 28$. The interior point $f(2)$ carries weight $2$. The value $25.33$ is the more accurate Simpson result, $44$ forgets to halve, and $20$ drops a term. The trap is using the wrong factor in front; $\\frac{h}{2} = 1$ here gives $28$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-017",
+      "stem": "For the same table $f(0) = 1$, $f(2) = 5$, $f(4) = 17$, Simpson's 1/3 rule with $h = 2$ estimates $\\int_0^4 f\\,dx$ as which value?",
+      "options": [
+        "$25.33$",
+        "$50.67$",
+        "$28$",
+        "$38$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $\\frac{2}{3}[f(0) + 4f(2) + f(4)] = \\frac{2}{3}[1 + 4(5) + 17] = \\frac{2}{3}(38) = 25.33$. The midpoint weight is $4$. The value $28$ is the trapezoidal estimate, $38$ is the bracket before scaling, and $50.67$ doubles it. The trap is forgetting the factor $\\frac{h}{3} = \\frac{2}{3}$; applied to $38$ it gives $25.33$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-018",
+      "stem": "Why does Simpson's 1/3 rule usually outperform the trapezoidal rule for smooth integrands?",
+      "options": [
+        "It never needs the endpoints",
+        "It uses fewer function evaluations",
+        "It fits a parabola rather than a straight line through the points",
+        "It ignores the curvature of the function"
+      ],
+      "answer": 2,
+      "explanation": "Simpson's rule passes a parabola through each triple of points, capturing curvature that the straight-line trapezoid misses, which is why its error is $O(h^4)$ versus the trapezoid's $O(h^2)$. It does not use fewer evaluations for the same accuracy, it does use the endpoints, and it explicitly accounts for curvature. The trap is thinking accuracy comes from fewer points; it comes from the higher-order parabolic fit.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-019",
+      "stem": "Halving the step size $h$ in the composite trapezoidal rule reduces its error by approximately which factor?",
+      "options": [
+        "$4$",
+        "$8$",
+        "$2$",
+        "$16$"
+      ],
+      "answer": 0,
+      "explanation": "The composite trapezoidal error scales as $h^2$, so halving $h$ multiplies the error by $\\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$, a reduction by a factor of $4$. A factor of $2$ would hold for an $O(h)$ method, while $8$ and $16$ correspond to $O(h^3)$ and $O(h^4)$. The trap is assuming error falls linearly with $h$; for the second-order trapezoid it falls as $h^2$, hence a factor of $4$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-020",
+      "stem": "The backward finite-difference approximation to $f'(x)$ is which expression?",
+      "options": [
+        "$\\dfrac{f(x) - f(x - h)}{2h}$",
+        "$\\dfrac{f(x + h) - f(x - h)}{2h}$",
+        "$\\dfrac{f(x + h) - f(x)}{h}$",
+        "$\\dfrac{f(x) - f(x - h)}{h}$"
+      ],
+      "answer": 3,
+      "explanation": "The backward difference uses the point behind: $f'(x) \\approx \\frac{f(x) - f(x - h)}{h}$, with error $O(h)$. The first option is the forward difference, the second is the centered difference, and the fourth has the wrong denominator $2h$. The trap is mixing the backward formula with the centered one; the backward difference divides by $h$ and looks only behind.",
+      "difficulty": "warmup",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-021",
+      "format": "cloze",
+      "stem": "Estimate $f'(2)$ for $f(x) = x^2$ using finite differences with $h = 0.1$ (true value $4$).",
+      "solution": "The forward difference $\\dfrac{f(2.1) - f(2)}{0.1}$ equals {{1}}. The backward difference $\\dfrac{f(2) - f(1.9)}{0.1}$ equals {{2}}. The centered difference, which averages these and is exact for a quadratic, equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4.1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3.9,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "Forward: $\\frac{4.41 - 4}{0.1} = 4.1$. Backward: $\\frac{4 - 3.61}{0.1} = 3.9$. Centered: $\\frac{4.41 - 3.61}{0.2} = 4.0$, the exact derivative.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-022",
+      "format": "cloze",
+      "stem": "State the orders of accuracy of the basic difference formulas.",
+      "solution": "The forward and backward differences for $f'$ are first order, with error $O(h)$ raised to the power {{1}}. The centered difference for $f'$ is second order, with error $O(h)$ raised to the power {{2}}. Because the centered formula has the higher order, halving $h$ shrinks its error by a larger factor, making it generally {{3}} accurate.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "more",
+            "less",
+            "equally",
+            "never"
+          ],
+          "answer": "more"
+        }
+      ],
+      "explanation": "Forward and backward differences have error $O(h^1)$; the centered difference has error $O(h^2)$. The higher order makes the centered formula generally more accurate for small $h$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-023",
+      "format": "cloze",
+      "stem": "Integrate $\\int_0^2 x^2\\,dx$ (true value $2.667$) by the trapezoidal and Simpson rules.",
+      "solution": "The single trapezoidal rule gives $\\dfrac{2}{2}[f(0) + f(2)] =$ {{1}}. Simpson's 1/3 rule with nodes $0, 1, 2$ gives $\\dfrac{1}{3}[f(0) + 4f(1) + f(2)] =$ {{2}}. Simpson's result is exact here because the rule integrates polynomials up to degree {{3}} exactly.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2.667,
+          "tolerance": 0.005
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Trapezoid: $1\\,[0 + 4] = 4.0$. Simpson: $\\frac{1}{3}[0 + 4 + 4] = \\frac{8}{3} = 2.667$. Simpson's 1/3 rule is exact for polynomials up to degree $3$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-024",
+      "format": "cloze",
+      "stem": "Integrate the table $f(0) = 1$, $f(2) = 5$, $f(4) = 17$ over $[0, 4]$ with $h = 2$.",
+      "solution": "The composite trapezoidal rule gives $\\dfrac{2}{2}[1 + 2(5) + 17] =$ {{1}}. Simpson's 1/3 rule gives $\\dfrac{2}{3}[1 + 4(5) + 17] =$ {{2}}. In the trapezoidal rule the interior point carries a weight of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 28,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 25.33,
+          "tolerance": 0.05
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Trapezoid: $1\\,[1 + 10 + 17] = 28$. Simpson: $\\frac{2}{3}[1 + 20 + 17] = \\frac{2}{3}(38) = 25.33$. The composite trapezoidal rule weights interior points by $2$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-025",
+      "format": "cloze",
+      "stem": "Approximate $f''(2)$ for $f(x) = x^2$ with the centered second difference and $h = 1$ (true value $2$).",
+      "solution": "The formula $\\dfrac{f(3) - 2f(2) + f(1)}{1^2}$ evaluates to $\\dfrac{9 - 8 + 1}{1} =$ {{1}}. This matches the exact second derivative because the formula is exact for a {{2}}. The leading truncation error of this formula is of order $h$ to the power {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "quadratic",
+            "constant",
+            "exponential",
+            "logarithm"
+          ],
+          "answer": "quadratic"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\frac{9 - 8 + 1}{1} = 2$, the exact value. The centered second difference is exact for quadratics and has error $O(h^2)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-calculus-026",
+      "format": "cloze",
+      "stem": "Summarize the error behaviour of the basic integration rules.",
+      "solution": "The trapezoidal rule has error proportional to the {{1}} derivative of $f$, so it is exact for straight lines. Simpson's 1/3 rule has error proportional to the fourth derivative, so it is exact for polynomials up to degree {{2}}. Halving the step in the composite trapezoidal rule cuts the error by a factor of about {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "second",
+            "first",
+            "third",
+            "fourth"
+          ],
+          "answer": "second"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Trapezoidal error involves $f''$ (the second derivative). Simpson's 1/3 rule is exact up to degree $3$. The trapezoidal error is $O(h^2)$, so halving $h$ reduces it by a factor of $4$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    }
+  ]
+}

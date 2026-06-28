@@ -1,0 +1,473 @@
+{
+  "courseId": "number-theory-i",
+  "topicId": "quadratic-residues",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "number-theory-i-quadratic-residues-001",
+      "stem": "An integer $a$ with $p \\nmid a$ is a quadratic residue modulo $p$ if $x^2 \\equiv a \\pmod p$ has a solution. Which one of the following is a quadratic residue modulo $7$?",
+      "options": [
+        "$3$",
+        "$6$",
+        "$5$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "Square each residue modulo $7$: $1^2 = 1$, $2^2 = 4$, $3^2 = 2$, and by symmetry the nonzero quadratic residues are $\\lbrace 1, 2, 4 \\rbrace$. Since $3^2 \\equiv 2$, the value $2$ is a residue. The others, $3, 5, 6$, are non-residues (no square hits them). The trap is guessing without squaring; only $1, 2, 4$ arise as squares modulo $7$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-002",
+      "stem": "How many nonzero quadratic residues are there modulo an odd prime $p$?",
+      "options": [
+        "$2$",
+        "$\\dfrac{p - 1}{2}$",
+        "$p - 1$",
+        "$p$"
+      ],
+      "answer": 1,
+      "explanation": "The squaring map $x \\mapsto x^2$ on the nonzero residues is two-to-one (since $x$ and $-x$ give the same square), so exactly half of the $p - 1$ nonzero residues are squares: $(p-1)/2$ of them. For $p = 7$ that is $3$, matching $\\lbrace 1, 2, 4 \\rbrace$. The value $p - 1$ counts all nonzero residues. The trap is forgetting the two-to-one pairing; only half are quadratic residues.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-003",
+      "stem": "The Legendre symbol $\\left( \\dfrac{a}{p} \\right)$ equals $1$ if $a$ is a quadratic residue, $-1$ if it is a non-residue, and $0$ if $p \\mid a$. What is $\\left( \\dfrac{2}{7} \\right)$?",
+      "options": [
+        "$1$",
+        "$0$",
+        "$2$",
+        "$-1$"
+      ],
+      "answer": 0,
+      "explanation": "Since $3^2 = 9 \\equiv 2 \\pmod 7$, the value $2$ is a quadratic residue mod $7$, so $\\left( \\tfrac{2}{7} \\right) = 1$. By Euler's criterion this also equals $2^{(7-1)/2} = 2^3 = 8 \\equiv 1 \\pmod 7$, confirming it. The value $-1$ would mark $2$ as a non-residue. The trap is misremembering the residues; $2$ is a square modulo $7$, giving $+1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-004",
+      "stem": "Euler's criterion states $\\left( \\dfrac{a}{p} \\right) \\equiv a^{(p-1)/2} \\pmod p$. Use it to evaluate $\\left( \\dfrac{3}{7} \\right)$.",
+      "options": [
+        "$1$",
+        "$-1$",
+        "$0$",
+        "$2$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $3^{(7-1)/2} = 3^3 = 27 \\equiv 6 \\equiv -1 \\pmod 7$. So $\\left( \\tfrac{3}{7} \\right) = -1$, meaning $3$ is a non-residue modulo $7$. This agrees with the residue set $\\lbrace 1, 2, 4 \\rbrace$ not containing $3$. The value $1$ would require $3^3 \\equiv 1$. The trap is mis-reducing $27$; it leaves remainder $6 \\equiv -1$, so the symbol is $-1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-005",
+      "stem": "There is a rule that $\\left( \\dfrac{-1}{p} \\right) = 1$ if $p \\equiv 1 \\pmod 4$ and $-1$ if $p \\equiv 3 \\pmod 4$. What is $\\left( \\dfrac{-1}{13} \\right)$?",
+      "options": [
+        "$-1$",
+        "$1$",
+        "$13$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "Since $13 \\equiv 1 \\pmod 4$, the rule gives $\\left( \\tfrac{-1}{13} \\right) = 1$, so $-1$ is a quadratic residue mod $13$. Indeed $5^2 = 25 \\equiv -1 \\pmod{13}$. The value $-1$ would apply to primes $\\equiv 3 \\pmod 4$. The trap is checking the wrong congruence class; $13$ leaves remainder $1$ on division by $4$, so $-1$ is a square.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-006",
+      "stem": "Using the rule for $\\left( \\dfrac{-1}{p} \\right)$, evaluate $\\left( \\dfrac{-1}{7} \\right)$.",
+      "options": [
+        "$1$",
+        "$-1$",
+        "$0$",
+        "$7$"
+      ],
+      "answer": 1,
+      "explanation": "Since $7 \\equiv 3 \\pmod 4$, the rule gives $\\left( \\tfrac{-1}{7} \\right) = -1$, so $-1$ is a non-residue mod $7$. Equivalently, $-1 \\equiv 6$ is not in $\\lbrace 1, 2, 4 \\rbrace$. The value $1$ would need $7 \\equiv 1 \\pmod 4$. The trap is misclassifying $7$ mod $4$; it is $\\equiv 3$, so $-1$ is not a square modulo $7$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-007",
+      "stem": "There is a rule that $\\left( \\dfrac{2}{p} \\right) = 1$ if $p \\equiv \\pm 1 \\pmod 8$ and $-1$ if $p \\equiv \\pm 3 \\pmod 8$. What is $\\left( \\dfrac{2}{11} \\right)$?",
+      "options": [
+        "$1$",
+        "$0$",
+        "$2$",
+        "$-1$"
+      ],
+      "answer": 3,
+      "explanation": "Since $11 \\equiv 3 \\pmod 8$, the rule gives $\\left( \\tfrac{2}{11} \\right) = -1$, so $2$ is a non-residue mod $11$. Checking, the residues mod $11$ are $\\lbrace 1, 3, 4, 5, 9 \\rbrace$, which excludes $2$. The value $1$ would require $11 \\equiv \\pm 1 \\pmod 8$. The trap is using the wrong class mod $8$; $11 \\equiv 3$, so $2$ is a non-residue.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-008",
+      "stem": "Using the supplementary rule for $2$, evaluate $\\left( \\dfrac{2}{17} \\right)$.",
+      "options": [
+        "$1$",
+        "$-1$",
+        "$0$",
+        "$17$"
+      ],
+      "answer": 0,
+      "explanation": "Since $17 \\equiv 1 \\pmod 8$, the rule gives $\\left( \\tfrac{2}{17} \\right) = 1$, so $2$ is a quadratic residue mod $17$. Indeed $6^2 = 36 \\equiv 2 \\pmod{17}$. The value $-1$ would apply to $p \\equiv \\pm 3 \\pmod 8$. The trap is misreading $17$ mod $8$; it is $\\equiv 1$, so $2$ is a square modulo $17$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-009",
+      "stem": "The Legendre symbol is multiplicative: $\\left( \\dfrac{ab}{p} \\right) = \\left( \\dfrac{a}{p} \\right)\\left( \\dfrac{b}{p} \\right)$. Given $\\left( \\dfrac{2}{7} \\right) = 1$ and $\\left( \\dfrac{3}{7} \\right) = -1$, what is $\\left( \\dfrac{6}{7} \\right)$?",
+      "options": [
+        "$1$",
+        "$-1$",
+        "$2$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "By multiplicativity, $\\left( \\tfrac{6}{7} \\right) = \\left( \\tfrac{2}{7} \\right)\\left( \\tfrac{3}{7} \\right) = 1 \\times (-1) = -1$. So $6$ is a non-residue mod $7$, consistent with $6 \\equiv -1$ being a non-residue since $7 \\equiv 3 \\pmod 4$. The value $1$ would arise from two residues or two non-residues. The trap is adding instead of multiplying the symbols; the product of $1$ and $-1$ is $-1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-010",
+      "stem": "The law of quadratic reciprocity says that for distinct odd primes $p, q$, $\\left( \\dfrac{p}{q} \\right)\\left( \\dfrac{q}{p} \\right) = (-1)^{\\frac{p-1}{2} \\cdot \\frac{q-1}{2}}$. When is $\\left( \\dfrac{p}{q} \\right) = \\left( \\dfrac{q}{p} \\right)$?",
+      "options": [
+        "When both are $\\equiv 3 \\pmod 4$",
+        "Never",
+        "When at least one of $p, q$ is $\\equiv 1 \\pmod 4$",
+        "Always"
+      ],
+      "answer": 2,
+      "explanation": "The sign $(-1)^{\\frac{p-1}{2}\\cdot\\frac{q-1}{2}}$ is $+1$ unless both exponents are odd, which happens exactly when both $p \\equiv 3$ and $q \\equiv 3 \\pmod 4$. So the two symbols are equal whenever at least one prime is $\\equiv 1 \\pmod 4$, and they differ in sign only when both are $\\equiv 3$. The trap is thinking the symbols always match; they flip sign precisely in the both-$\\equiv 3$ case.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-011",
+      "stem": "Use quadratic reciprocity to evaluate $\\left( \\dfrac{3}{11} \\right)$.",
+      "options": [
+        "$-1$",
+        "$3$",
+        "$0$",
+        "$1$"
+      ],
+      "answer": 3,
+      "explanation": "Both $3$ and $11$ are $\\equiv 3 \\pmod 4$, so reciprocity gives $\\left( \\tfrac{3}{11} \\right) = -\\left( \\tfrac{11}{3} \\right)$. Now $11 \\equiv 2 \\pmod 3$, so $\\left( \\tfrac{11}{3} \\right) = \\left( \\tfrac{2}{3} \\right) = -1$ (since $3 \\equiv 3 \\pmod 8$). Thus $\\left( \\tfrac{3}{11} \\right) = -(-1) = 1$, and indeed $5^2 = 25 \\equiv 3 \\pmod{11}$. The trap is dropping the sign flip; both primes $\\equiv 3 \\pmod 4$ force the minus, ending at $+1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-012",
+      "stem": "Use quadratic reciprocity to evaluate $\\left( \\dfrac{7}{11} \\right)$.",
+      "options": [
+        "$7$",
+        "$0$",
+        "$1$",
+        "$-1$"
+      ],
+      "answer": 3,
+      "explanation": "Both $7$ and $11$ are $\\equiv 3 \\pmod 4$, so $\\left( \\tfrac{7}{11} \\right) = -\\left( \\tfrac{11}{7} \\right)$. Reduce $11 \\equiv 4 \\pmod 7$, so $\\left( \\tfrac{11}{7} \\right) = \\left( \\tfrac{4}{7} \\right) = 1$ (as $4 = 2^2$ is a perfect square). Hence $\\left( \\tfrac{7}{11} \\right) = -1$, and indeed $7$ is among the non-residues $\\lbrace 2, 6, 7, 8, 10 \\rbrace$ mod $11$. The trap is forgetting the sign flip; the answer is $-1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-013",
+      "stem": "What is $\\left( \\dfrac{1}{p} \\right)$ for any odd prime $p$?",
+      "options": [
+        "It depends on $p$",
+        "$-1$",
+        "$1$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "Since $1 = 1^2$ is always a perfect square, $1$ is a quadratic residue modulo every prime, so $\\left( \\tfrac{1}{p} \\right) = 1$. By Euler's criterion this is $1^{(p-1)/2} = 1$. The choice 'it depends' overlooks that $1$ is universally a square. The trap is overthinking; the Legendre symbol of $1$ is always $1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-014",
+      "stem": "The product of two quadratic non-residues modulo $p$ is:",
+      "options": [
+        "Always a quadratic residue",
+        "Always a non-residue",
+        "Sometimes zero",
+        "Undetermined"
+      ],
+      "answer": 0,
+      "explanation": "Using multiplicativity, if $\\left( \\tfrac{a}{p} \\right) = \\left( \\tfrac{b}{p} \\right) = -1$, then $\\left( \\tfrac{ab}{p} \\right) = (-1)(-1) = 1$, so the product is a quadratic residue. For example, modulo $7$, both $3$ and $5$ are non-residues, and $3 \\times 5 = 15 \\equiv 1$, which is a residue. The trap is assuming non-residue times non-residue stays a non-residue; the signs multiply to $+1$, giving a residue.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-015",
+      "stem": "For which residues $a$ does the congruence $x^2 \\equiv a \\pmod p$ (with $p \\nmid a$) have a solution?",
+      "options": [
+        "Exactly when $\\left( \\dfrac{a}{p} \\right) = -1$",
+        "Only when $a = 1$",
+        "For every $a$",
+        "Exactly when $\\left( \\dfrac{a}{p} \\right) = 1$"
+      ],
+      "answer": 3,
+      "explanation": "By definition, $x^2 \\equiv a \\pmod p$ is solvable precisely when $a$ is a quadratic residue, that is $\\left( \\tfrac{a}{p} \\right) = 1$. When the symbol is $-1$, no square root exists. For instance $x^2 \\equiv 2 \\pmod 7$ solves as $x = 3$ or $4$, while $x^2 \\equiv 3 \\pmod 7$ has no solution. The trap is thinking every $a$ has a square root; solvability requires the Legendre symbol to be $+1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-016",
+      "stem": "Which one of the following is a quadratic residue modulo $11$?",
+      "options": [
+        "$3$",
+        "$7$",
+        "$2$",
+        "$10$"
+      ],
+      "answer": 0,
+      "explanation": "Square the residues modulo $11$: $1, 4, 9, 5, 3$ (from $1^2$ to $5^2$), so the residues are $\\lbrace 1, 3, 4, 5, 9 \\rbrace$. Since $5^2 = 25 \\equiv 3$, the value $3$ is a quadratic residue. The others, $2, 7, 10$, are non-residues. The trap is guessing; only $1, 3, 4, 5, 9$ are squares modulo $11$, and $3$ is the one listed.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-017",
+      "stem": "Using Euler's criterion, evaluate $\\left( \\dfrac{5}{7} \\right)$ via $5^{3} \\bmod 7$.",
+      "options": [
+        "$0$",
+        "$5$",
+        "$-1$",
+        "$1$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $5^{(7-1)/2} = 5^3 = 125 = 7 \\times 17 + 6 \\equiv 6 \\equiv -1 \\pmod 7$. So $\\left( \\tfrac{5}{7} \\right) = -1$, marking $5$ as a non-residue mod $7$, consistent with the residue set $\\lbrace 1, 2, 4 \\rbrace$. The value $1$ would need $5^3 \\equiv 1$. The trap is mis-reducing $125$; it leaves $6 \\equiv -1$, so the symbol is $-1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-018",
+      "stem": "Evaluate the Legendre symbol $\\left( \\dfrac{10}{13} \\right)$ using multiplicativity and the supplementary rules.",
+      "options": [
+        "$10$",
+        "$-1$",
+        "$0$",
+        "$1$"
+      ],
+      "answer": 3,
+      "explanation": "Factor $10 = 2 \\times 5$, so $\\left( \\tfrac{10}{13} \\right) = \\left( \\tfrac{2}{13} \\right)\\left( \\tfrac{5}{13} \\right)$. Since $13 \\equiv 5 \\pmod 8$, $\\left( \\tfrac{2}{13} \\right) = -1$. For $\\left( \\tfrac{5}{13} \\right)$, as $5 \\equiv 1 \\pmod 4$, reciprocity gives $\\left( \\tfrac{5}{13} \\right) = \\left( \\tfrac{13}{5} \\right) = \\left( \\tfrac{3}{5} \\right) = -1$. The product is $(-1)(-1) = 1$, and indeed $6^2 = 36 \\equiv 10 \\pmod{13}$. The trap is mishandling one factor; both are $-1$, so the answer is $+1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-019",
+      "stem": "What is $\\left( \\dfrac{a}{p} \\right)$ when $p \\mid a$?",
+      "options": [
+        "$0$",
+        "$-1$",
+        "$1$",
+        "Undefined"
+      ],
+      "answer": 0,
+      "explanation": "By definition the Legendre symbol is $0$ when $p \\mid a$, since then $a \\equiv 0$ and $x^2 \\equiv 0$ has only the trivial root $x \\equiv 0$, not a genuine residue or non-residue. For example $\\left( \\tfrac{14}{7} \\right) = 0$. The trap is treating $0 \\bmod p$ as a residue worth $+1$; the symbol is defined to be $0$ in this case.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-020",
+      "stem": "How many quadratic residues (counting the nonzero ones) are there modulo $13$?",
+      "options": [
+        "$6$",
+        "$13$",
+        "$7$",
+        "$12$"
+      ],
+      "answer": 0,
+      "explanation": "For an odd prime $p$, there are $(p-1)/2$ nonzero quadratic residues. With $p = 13$, that is $(13-1)/2 = 6$. Squaring confirms it: $\\lbrace 1, 4, 9, 3, 12, 10 \\rbrace$ has six elements. The value $12 = p - 1$ counts all nonzero residues. The trap is taking all units; exactly half, namely $6$, are squares modulo $13$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-021",
+      "stem": "Using Euler's criterion, evaluate $\\left( \\dfrac{3}{5} \\right)$ via $3^{2} \\bmod 5$.",
+      "options": [
+        "$1$",
+        "$3$",
+        "$-1$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $3^{(5-1)/2} = 3^2 = 9 \\equiv 4 \\equiv -1 \\pmod 5$. So $\\left( \\tfrac{3}{5} \\right) = -1$, marking $3$ as a non-residue mod $5$; the residues are $\\lbrace 1, 4 \\rbrace$. The value $1$ would need $3^2 \\equiv 1$. The trap is misreducing $9$; it is $\\equiv 4 \\equiv -1 \\pmod 5$, so the symbol is $-1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-022",
+      "stem": "For an odd prime $p$, the value of $a^{(p-1)/2} \\bmod p$ (with $p \\nmid a$) is always one of:",
+      "options": [
+        "any residue",
+        "$0$ or $1$",
+        "$2$ or $-2$",
+        "$1$ or $-1$"
+      ],
+      "answer": 3,
+      "explanation": "By Euler's criterion, $a^{(p-1)/2} \\equiv \\left( \\tfrac{a}{p} \\right) \\pmod p$, and the Legendre symbol is $+1$ or $-1$ for $p \\nmid a$. This follows because $\\left( a^{(p-1)/2} \\right)^2 = a^{p-1} \\equiv 1$, so $a^{(p-1)/2}$ is a square root of $1$, namely $\\pm 1$. The trap is expecting an arbitrary residue; the half-power always lands on $1$ or $-1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-023",
+      "stem": "Use the supplementary rule to evaluate $\\left( \\dfrac{2}{23} \\right)$.",
+      "options": [
+        "$23$",
+        "$0$",
+        "$-1$",
+        "$1$"
+      ],
+      "answer": 3,
+      "explanation": "Since $23 \\equiv 7 \\equiv -1 \\pmod 8$, the rule $\\left( \\tfrac{2}{p} \\right) = 1$ for $p \\equiv \\pm 1 \\pmod 8$ gives $\\left( \\tfrac{2}{23} \\right) = 1$, so $2$ is a quadratic residue mod $23$ (indeed $5^2 = 25 \\equiv 2$). The value $-1$ would apply to $p \\equiv \\pm 3 \\pmod 8$. The trap is misreading $23$ mod $8$; it is $\\equiv -1$, so $2$ is a residue.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-024",
+      "format": "cloze",
+      "stem": "Find all nonzero quadratic residues modulo $7$ by squaring, and count them.",
+      "solution": "Squaring the residues gives $1^2 = 1$, $2^2 = 4$, and $3^2 = 9 \\equiv$ {{1}} modulo $7$; the residues $4, 5, 6$ repeat these by symmetry. So the distinct nonzero quadratic residues modulo $7$ number {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$3^2 = 9 \\equiv 2 \\pmod 7$, so the residues are $\\lbrace 1, 2, 4 \\rbrace$, which is $(7-1)/2 = 3$ values.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-025",
+      "format": "cloze",
+      "stem": "Use Euler's criterion to evaluate $\\left( \\dfrac{3}{7} \\right)$ by computing $3^{(7-1)/2} \\bmod 7$.",
+      "solution": "The exponent is $(7-1)/2 = 3$, so compute $3^3 = 27$. Reducing, $27 \\bmod 7$ equals {{1}}. Since this represents $-1$ modulo $7$, the Legendre symbol $\\left( \\dfrac{3}{7} \\right)$ equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$3^3 = 27 \\equiv 6 \\equiv -1 \\pmod 7$, so $\\left( \\tfrac{3}{7} \\right) = -1$ and $3$ is a non-residue.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-026",
+      "format": "cloze",
+      "stem": "Apply the supplementary rules to evaluate $\\left( \\dfrac{-1}{11} \\right)$ and $\\left( \\dfrac{2}{11} \\right)$.",
+      "solution": "Since $11 \\equiv 3 \\pmod 4$, the symbol $\\left( \\dfrac{-1}{11} \\right)$ equals {{1}}. Since $11 \\equiv 3 \\pmod 8$, the symbol $\\left( \\dfrac{2}{11} \\right)$ equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "As $11 \\equiv 3 \\pmod 4$, $\\left( \\tfrac{-1}{11} \\right) = -1$. As $11 \\equiv 3 \\pmod 8$, $\\left( \\tfrac{2}{11} \\right) = -1$. Both $-1$ and $2$ are non-residues mod $11$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-027",
+      "format": "cloze",
+      "stem": "Use quadratic reciprocity to evaluate $\\left( \\dfrac{5}{7} \\right)$. (Note $5 \\equiv 1 \\pmod 4$.)",
+      "solution": "Because $5 \\equiv 1 \\pmod 4$, reciprocity gives $\\left( \\dfrac{5}{7} \\right) = \\left( \\dfrac{7}{5} \\right)$ with no sign change. Reducing $7 \\equiv 2 \\pmod 5$, we need $\\left( \\dfrac{2}{5} \\right)$, which by the rule for $2$ (since $5 \\equiv 5 \\pmod 8$) equals {{1}}. Therefore $\\left( \\dfrac{5}{7} \\right)$ equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $5 \\equiv 5 \\equiv -3 \\pmod 8$, $\\left( \\tfrac{2}{5} \\right) = -1$, so $\\left( \\tfrac{5}{7} \\right) = -1$. This matches $5$ being a non-residue mod $7$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-028",
+      "format": "cloze",
+      "stem": "Decide whether $x^2 \\equiv 5 \\pmod{11}$ is solvable, using the residues modulo $11$.",
+      "solution": "The quadratic residues modulo $11$ are $\\lbrace 1, 3, 4, 5, 9 \\rbrace$. Since $5$ appears in this set, the Legendre symbol $\\left( \\dfrac{5}{11} \\right)$ equals {{1}}, and so the congruence {{2}} a solution.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "has",
+            "does not have"
+          ],
+          "answer": "has"
+        }
+      ],
+      "explanation": "Since $5$ is a quadratic residue mod $11$ ($4^2 = 16 \\equiv 5$), $\\left( \\tfrac{5}{11} \\right) = 1$ and the congruence has a solution, namely $x \\equiv 4$ or $x \\equiv 7$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-quadratic-residues-029",
+      "format": "cloze",
+      "stem": "Evaluate $\\left( \\dfrac{6}{7} \\right)$ using the multiplicativity of the Legendre symbol.",
+      "solution": "Factor $6 = 2 \\times 3$, so $\\left( \\dfrac{6}{7} \\right) = \\left( \\dfrac{2}{7} \\right)\\left( \\dfrac{3}{7} \\right)$. Here $\\left( \\dfrac{2}{7} \\right) = 1$ and $\\left( \\dfrac{3}{7} \\right) = -1$, so their product, the value of $\\left( \\dfrac{6}{7} \\right)$, is {{1}}. This means $6$ {{2}} a quadratic residue modulo $7$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is not"
+        }
+      ],
+      "explanation": "$\\left( \\tfrac{6}{7} \\right) = (1)(-1) = -1$, so $6$ is not a quadratic residue mod $7$. The residues are $\\lbrace 1, 2, 4 \\rbrace$, excluding $6$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    }
+  ]
+}

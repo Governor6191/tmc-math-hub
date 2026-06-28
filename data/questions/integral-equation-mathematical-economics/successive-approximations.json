@@ -1,0 +1,494 @@
+{
+  "courseId": "integral-equation-mathematical-economics",
+  "topicId": "successive-approximations",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-001",
+      "stem": "In the method of successive approximations for $\\phi(x) = f(x) + \\lambda\\int_a^b K(x,t)\\phi(t)\\,dt$, the standard starting iterate is",
+      "options": [
+        "$\\phi_0(x) = 0$ always",
+        "$\\phi_0(x) = f(x)$",
+        "$\\phi_0(x) = 1$",
+        "$\\phi_0(x) = K(x,t)$"
+      ],
+      "answer": 1,
+      "explanation": "The Picard iteration begins by taking the zeroth approximation equal to the free term, $\\phi_0(x) = f(x)$, then refines it by $\\phi_{n}(x) = f(x) + \\lambda\\int_a^b K(x,t)\\phi_{n-1}(t)\\,dt$. Starting from $f$ is the natural choice because it is the part of the solution already known. Other starting points can work but $f(x)$ is standard.",
+      "difficulty": "warmup",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-002",
+      "stem": "The second iterated kernel $K_2(x,t)$ is defined by",
+      "options": [
+        "$K_2(x,t) = \\dfrac{\\partial K}{\\partial x}$",
+        "$K_2(x,t) = \\displaystyle\\int_a^b K(x,s)\\,K(s,t)\\,ds$",
+        "$K_2(x,t) = K(x,t)^2$",
+        "$K_2(x,t) = K(x,t) + K(t,x)$"
+      ],
+      "answer": 1,
+      "explanation": "Iterated kernels are formed by composition, not by squaring pointwise. The second iterated kernel is $K_2(x,t) = \\int_a^b K(x,s)K(s,t)\\,ds$, an integral over the intermediate variable $s$. Higher iterated kernels follow $K_n(x,t) = \\int_a^b K(x,s)K_{n-1}(s,t)\\,ds$, and these assemble the resolvent.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-003",
+      "stem": "The Neumann series expresses the solution of the second kind equation as",
+      "options": [
+        "a continued fraction in $\\lambda$",
+        "$\\phi = f + \\lambda\\int R(x,t;\\lambda)f(t)\\,dt$, a power series in $\\lambda$ through the resolvent",
+        "the inverse Laplace transform of $f$",
+        "a finite sum of derivatives of $f$"
+      ],
+      "answer": 1,
+      "explanation": "Successive approximations generate a power series in $\\lambda$ whose terms involve the iterated kernels. Summed, this is the resolvent $R(x,t;\\lambda) = \\sum_{n=1}^\\infty \\lambda^{n-1}K_n(x,t)$, and the solution is $\\phi(x) = f(x) + \\lambda\\int R(x,t;\\lambda)f(t)\\,dt$. The Neumann series is precisely this expansion in powers of $\\lambda$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-004",
+      "stem": "For the Volterra kernel $K(x,t) = 1$ (with integration $\\int_t^x$), the second iterated kernel $K_2(x,t)$ equals",
+      "options": [
+        "$x - t$",
+        "$1$",
+        "$\\dfrac{(x - t)^2}{2}$",
+        "$(x - t)^2$"
+      ],
+      "answer": 0,
+      "explanation": "Using $K_2(x,t) = \\int_t^x K(x,s)K(s,t)\\,ds = \\int_t^x 1\\cdot 1\\,ds = x - t$. The integration runs over the intermediate variable from $t$ to $x$, giving the length of that interval, $x - t$. This is the first step in building the resolvent $e^{\\lambda(x-t)}$ for this kernel.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-005",
+      "stem": "Continuing with $K(x,t) = 1$ on $\\int_t^x$, the third iterated kernel $K_3(x,t)$ equals",
+      "options": [
+        "$x - t$",
+        "$\\dfrac{(x - t)^3}{6}$",
+        "$(x - t)^2$",
+        "$\\dfrac{(x - t)^2}{2}$"
+      ],
+      "answer": 3,
+      "explanation": "Using $K_3(x,t) = \\int_t^x K(x,s)K_2(s,t)\\,ds = \\int_t^x 1\\cdot(s - t)\\,ds$. Substituting $u = s - t$ gives $\\int_0^{x-t} u\\,du = \\frac{(x-t)^2}{2}$. The pattern $K_n(x,t) = \\frac{(x-t)^{n-1}}{(n-1)!}$ is emerging, with $K_3$ giving the $\\frac{(x-t)^2}{2}$ term.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-006",
+      "stem": "The resolvent kernel for the Volterra kernel $K(x,t) = 1$ summed over all iterates is",
+      "options": [
+        "$\\dfrac{1}{1 - (x - t)}$",
+        "$\\cosh(x - t)$",
+        "$1 + (x - t)$",
+        "$e^{\\lambda(x - t)}$"
+      ],
+      "answer": 3,
+      "explanation": "With $K_n(x,t) = \\frac{(x-t)^{n-1}}{(n-1)!}$, the resolvent is $R(x,t;\\lambda) = \\sum_{n=1}^\\infty \\lambda^{n-1}\\frac{(x-t)^{n-1}}{(n-1)!} = \\sum_{m=0}^\\infty \\frac{[\\lambda(x-t)]^m}{m!} = e^{\\lambda(x-t)}$. The series is exactly the exponential expansion, so $R = e^{\\lambda(x-t)}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-007",
+      "stem": "Apply Picard iteration to $\\phi(x) = 1 + \\lambda\\int_0^x \\phi(t)\\,dt$ with $\\phi_0 = 1$. What is $\\phi_2(x)$?",
+      "options": [
+        "$1 + \\lambda x$",
+        "$1 + \\lambda x + \\lambda^2 x^2$",
+        "$1 + \\lambda^2 x^2$",
+        "$1 + \\lambda x + \\dfrac{\\lambda^2 x^2}{2}$"
+      ],
+      "answer": 3,
+      "explanation": "Starting from $\\phi_0 = 1$, $\\phi_1 = 1 + \\lambda\\int_0^x 1\\,dt = 1 + \\lambda x$. Then $\\phi_2 = 1 + \\lambda\\int_0^x (1 + \\lambda t)\\,dt = 1 + \\lambda x + \\frac{\\lambda^2 x^2}{2}$. These are partial sums of $e^{\\lambda x} = \\sum \\frac{(\\lambda x)^n}{n!}$, the exact solution.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-008",
+      "stem": "The Neumann series for $\\phi(x) = 1 + \\lambda\\int_0^x \\phi(t)\\,dt$ sums to",
+      "options": [
+        "$\\phi(x) = 1 + \\lambda x$",
+        "$\\phi(x) = \\cosh(\\lambda x)$",
+        "$\\phi(x) = e^{\\lambda x}$",
+        "$\\phi(x) = \\dfrac{1}{1 - \\lambda x}$"
+      ],
+      "answer": 2,
+      "explanation": "The iterates $1, 1 + \\lambda x, 1 + \\lambda x + \\frac{\\lambda^2 x^2}{2}, \\ldots$ are the partial sums of $\\sum_{n=0}^\\infty \\frac{(\\lambda x)^n}{n!} = e^{\\lambda x}$. Hence the solution is $\\phi(x) = e^{\\lambda x}$. Equivalently, differentiating the equation gives $\\phi' = \\lambda\\phi$ with $\\phi(0) = 1$, confirming $e^{\\lambda x}$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-009",
+      "stem": "For the separable Fredholm kernel $K(x,t) = xt$ on $[0,1]$, the second iterated kernel $K_2(x,t)$ is",
+      "options": [
+        "$xt$",
+        "$\\dfrac{xt}{2}$",
+        "$x^2 t^2$",
+        "$\\dfrac{xt}{3}$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $K_2(x,t) = \\int_0^1 K(x,s)K(s,t)\\,ds = \\int_0^1 (xs)(st)\\,ds = xt\\int_0^1 s^2\\,ds = xt\\cdot\\frac{1}{3} = \\frac{xt}{3}$. The factor $\\frac{1}{3}$ comes from $\\int_0^1 s^2\\,ds$, so each iteration multiplies the kernel by $\\frac{1}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-010",
+      "stem": "For $K(x,t) = xt$ on $[0,1]$, the $n$th iterated kernel is $K_n(x,t) = \\dfrac{xt}{3^{n-1}}$. The resolvent kernel is",
+      "options": [
+        "$\\dfrac{xt}{1 - \\lambda}$",
+        "$3xt$",
+        "$\\dfrac{3xt}{3 - \\lambda}$",
+        "$xt\\,e^{\\lambda}$"
+      ],
+      "answer": 2,
+      "explanation": "Summing, $R(x,t;\\lambda) = \\sum_{n=1}^\\infty \\lambda^{n-1}\\frac{xt}{3^{n-1}} = xt\\sum_{n=1}^\\infty \\left(\\frac{\\lambda}{3}\\right)^{n-1} = \\frac{xt}{1 - \\lambda/3} = \\frac{3xt}{3 - \\lambda}$, valid for $|\\lambda| < 3$. The geometric series in $\\frac{\\lambda}{3}$ converges precisely when $|\\lambda| < 3$, matching the characteristic value.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-011",
+      "stem": "Once the resolvent $R(x,t;\\lambda)$ is known, the solution of $\\phi(x) = f(x) + \\lambda\\int_a^b K(x,t)\\phi(t)\\,dt$ is",
+      "options": [
+        "$\\phi(x) = R(x,x;\\lambda)f(x)$",
+        "$\\phi(x) = f(x) + \\lambda\\displaystyle\\int_a^b R(x,t;\\lambda)f(t)\\,dt$",
+        "$\\phi(x) = \\displaystyle\\int_a^b R(x,t;\\lambda)f(t)\\,dt$",
+        "$\\phi(x) = f(x) - \\lambda\\displaystyle\\int_a^b R(x,t;\\lambda)f(t)\\,dt$"
+      ],
+      "answer": 1,
+      "explanation": "The resolvent delivers the solution in closed form as $\\phi(x) = f(x) + \\lambda\\int_a^b R(x,t;\\lambda)f(t)\\,dt$. The free term $f$ is kept, and the integral of the resolvent against $f$, scaled by $\\lambda$, supplies the correction. The sign is positive, matching the original equation's structure.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-012",
+      "stem": "Using the resolvent $R = \\dfrac{3xt}{3 - \\lambda}$ for $K(x,t) = xt$, solve $\\phi(x) = x + \\lambda\\int_0^1 xt\\,\\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = 3x$",
+        "$\\phi(x) = \\dfrac{3x}{3 - \\lambda}$",
+        "$\\phi(x) = \\dfrac{3x}{3 + \\lambda}$",
+        "$\\phi(x) = \\dfrac{x}{3 - \\lambda}$"
+      ],
+      "answer": 1,
+      "explanation": "Apply $\\phi(x) = f(x) + \\lambda\\int_0^1 R(x,t;\\lambda)f(t)\\,dt$ with $f = x$. Then $\\phi = x + \\lambda\\int_0^1 \\frac{3xt}{3-\\lambda}\\cdot t\\,dt = x + \\frac{3\\lambda x}{3-\\lambda}\\int_0^1 t^2\\,dt = x + \\frac{3\\lambda x}{3-\\lambda}\\cdot\\frac{1}{3} = x + \\frac{\\lambda x}{3-\\lambda} = \\frac{3x}{3-\\lambda}$. This matches the direct algebraic solution.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-013",
+      "stem": "A sufficient condition for the Neumann series of a Fredholm equation to converge, with $M = \\max|K(x,t)|$ on $[a,b]\\times[a,b]$, is",
+      "options": [
+        "$b - a > 1$",
+        "$M < 1$ only",
+        "$|\\lambda|\\,M(b - a) < 1$",
+        "$\\lambda > 0$"
+      ],
+      "answer": 2,
+      "explanation": "Bounding each term of the series by a geometric one gives convergence when $|\\lambda|\\,M(b-a) < 1$, that is $|\\lambda| < \\frac{1}{M(b-a)}$. This guarantees the iterated kernels shrink fast enough. It is a sufficient condition; the actual radius can be larger, but this bound is the one obtained from the basic estimate.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-014",
+      "stem": "For the geometric series in the resolvent of $K(x,t) = xt$ on $[0,1]$, the series $\\sum_{n=1}^\\infty (\\lambda/3)^{n-1}$ converges if and only if",
+      "options": [
+        "$\\lambda = 3$",
+        "$|\\lambda| < 1$",
+        "$|\\lambda| < 3$",
+        "$\\lambda > 3$"
+      ],
+      "answer": 2,
+      "explanation": "A geometric series $\\sum r^{n-1}$ converges exactly when $|r| < 1$. Here $r = \\frac{\\lambda}{3}$, so $\\left|\\frac{\\lambda}{3}\\right| < 1$ means $|\\lambda| < 3$. The boundary $|\\lambda| = 3$ is the characteristic value where the resolvent $\\frac{3xt}{3-\\lambda}$ blows up.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-015",
+      "stem": "For the Volterra difference kernel $K(x,t) = e^{x - t}$ on $\\int_t^x$, the second iterated kernel $K_2(x,t)$ is",
+      "options": [
+        "$(x - t)\\,e^{x - t}$",
+        "$e^{x - t}$",
+        "$e^{2(x - t)}$",
+        "$\\dfrac{(x - t)^2}{2}e^{x - t}$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $K_2 = \\int_t^x e^{x - s}e^{s - t}\\,ds = \\int_t^x e^{x - t}\\,ds = e^{x - t}(x - t)$, since $e^{x-s}e^{s-t} = e^{x-t}$ is constant in $s$ and the interval has length $x - t$. The exponential factors out and the linear growth in $x - t$ appears, giving $(x-t)e^{x-t}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-016",
+      "stem": "The resolvent of the Volterra kernel $K(x,t) = e^{x - t}$ is",
+      "options": [
+        "$e^{(1 + \\lambda)(x - t)}$",
+        "$e^{\\lambda(x - t)}$",
+        "$\\lambda\\,e^{x - t}$",
+        "$e^{x - t}$"
+      ],
+      "answer": 0,
+      "explanation": "The iterated kernels are $K_n = \\frac{(x-t)^{n-1}}{(n-1)!}e^{x-t}$, so $R = \\sum_{n=1}^\\infty \\lambda^{n-1}\\frac{(x-t)^{n-1}}{(n-1)!}e^{x-t} = e^{x-t}\\sum_{m=0}^\\infty \\frac{[\\lambda(x-t)]^m}{m!} = e^{x-t}e^{\\lambda(x-t)} = e^{(1+\\lambda)(x-t)}$. The two exponentials combine into one with exponent $(1 + \\lambda)(x - t)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-017",
+      "stem": "The method of successive approximations is also commonly known as",
+      "options": [
+        "the power rule",
+        "Picard iteration",
+        "Gaussian elimination",
+        "the Frobenius method"
+      ],
+      "answer": 1,
+      "explanation": "Building a sequence of approximations $\\phi_0, \\phi_1, \\phi_2, \\ldots$ by repeated substitution into the integral equation is the same iterative idea Picard used for differential equations, so the method is called Picard iteration. It generates the Neumann series for the integral equation. The other names refer to unrelated techniques.",
+      "difficulty": "warmup",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-018",
+      "stem": "Apply successive approximations to $\\phi(x) = x + \\lambda\\int_0^x \\phi(t)\\,dt$ with $\\phi_0 = x$. What is $\\phi_1(x)$?",
+      "options": [
+        "$x + \\lambda x$",
+        "$x + \\dfrac{\\lambda x^2}{2}$",
+        "$\\dfrac{\\lambda x^2}{2}$",
+        "$x + \\lambda x^2$"
+      ],
+      "answer": 1,
+      "explanation": "Substituting $\\phi_0 = t$ into the integral, $\\phi_1 = x + \\lambda\\int_0^x t\\,dt = x + \\lambda\\cdot\\frac{x^2}{2} = x + \\frac{\\lambda x^2}{2}$. The integral $\\int_0^x t\\,dt = \\frac{x^2}{2}$ supplies the quadratic term, scaled by $\\lambda$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-019",
+      "stem": "The first iterated kernel $K_1(x,t)$ is always equal to",
+      "options": [
+        "$K(x,t)$",
+        "$1$",
+        "$\\displaystyle\\int_a^b K(x,t)\\,dt$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "By definition the iteration starts with the kernel itself, $K_1(x,t) = K(x,t)$, and higher iterated kernels are built from it by $K_n = \\int K(x,s)K_{n-1}(s,t)\\,ds$. So the resolvent series begins $R = K_1 + \\lambda K_2 + \\cdots = K + \\lambda K_2 + \\cdots$. The first term is the given kernel, not $1$ or $0$.",
+      "difficulty": "warmup",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-020",
+      "stem": "Why does the Neumann series for a Volterra equation of the second kind with continuous kernel converge for every value of $\\lambda$?",
+      "options": [
+        "because $\\lambda$ must be less than $1$",
+        "because the free term is a polynomial",
+        "because the kernel is symmetric",
+        "because the iterated kernels carry a factor $\\dfrac{(x - a)^{n}}{n!}$ that decays faster than any power of $\\lambda$ grows"
+      ],
+      "answer": 3,
+      "explanation": "For a Volterra kernel the $n$th iterated kernel is bounded by $M^n\\frac{(x-a)^{n-1}}{(n-1)!}$, and the factorial in the denominator makes the series terms decay faster than $|\\lambda|^n$ can grow. Hence the series converges for all $\\lambda$, so Volterra equations of the second kind have no characteristic values. Symmetry and the form of $f$ are irrelevant to this.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-021",
+      "stem": "Using the resolvent $R = e^{\\lambda(x - t)}$ for the kernel $K = 1$, solve $\\phi(x) = 1 + \\lambda\\int_0^x \\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = \\dfrac{1}{1 - \\lambda x}$",
+        "$\\phi(x) = e^{x}$",
+        "$\\phi(x) = 1 + \\lambda x$",
+        "$\\phi(x) = e^{\\lambda x}$"
+      ],
+      "answer": 3,
+      "explanation": "With $f = 1$ and resolvent $R = e^{\\lambda(x-t)}$, $\\phi(x) = 1 + \\lambda\\int_0^x e^{\\lambda(x-t)}\\cdot 1\\,dt$. Substituting $u = x - t$, $\\int_0^x e^{\\lambda u}\\,du = \\frac{e^{\\lambda x} - 1}{\\lambda}$, so $\\phi = 1 + \\lambda\\cdot\\frac{e^{\\lambda x} - 1}{\\lambda} = 1 + e^{\\lambda x} - 1 = e^{\\lambda x}$. The resolvent reproduces the known exponential solution.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-022",
+      "stem": "In the Neumann series solution $\\phi = f + \\lambda K f + \\lambda^2 K^2 f + \\cdots$ (operator form), the term of order $\\lambda^2$ involves",
+      "options": [
+        "the resolvent only",
+        "the second iterated kernel acting on $f$",
+        "$f$ to the second power",
+        "the free term differentiated twice"
+      ],
+      "answer": 1,
+      "explanation": "Writing the operator $K[\\psi](x) = \\int K(x,t)\\psi(t)\\,dt$, the series is $\\phi = f + \\lambda Kf + \\lambda^2 K^2 f + \\cdots$, where $K^2 f$ uses the second iterated kernel $K_2$. So the $\\lambda^2$ term is $\\int K_2(x,t)f(t)\\,dt$, the second iterated kernel acting on $f$. It is linear in $f$, not a power of $f$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-023",
+      "format": "cloze",
+      "stem": "Apply Picard iteration to $\\phi(x) = 1 + \\lambda\\displaystyle\\int_0^x \\phi(t)\\,dt$ starting from $\\phi_0 = 1$.",
+      "solution": "The first approximation is $\\phi_1 = 1 + \\lambda\\int_0^x 1\\,dt = 1 + \\lambda x$. The second is $\\phi_2 = 1 + \\lambda x + \\dfrac{\\lambda^2 x^2}{2}$, whose last coefficient has denominator {{1}}. Continuing the iteration, the partial sums converge to $\\phi(x) =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$e^{\\lambda x}$",
+            "$1 + \\lambda x$",
+            "$\\cos(\\lambda x)$"
+          ],
+          "answer": "$e^{\\lambda x}$"
+        }
+      ],
+      "explanation": "From $\\phi_1 = 1 + \\lambda x$, the next iterate is $\\phi_2 = 1 + \\lambda\\int_0^x (1 + \\lambda t)\\,dt = 1 + \\lambda x + \\frac{\\lambda^2 x^2}{2}$, with denominator $2!= 2$. The iterates are partial sums of $e^{\\lambda x} = \\sum \\frac{(\\lambda x)^n}{n!}$, so they converge to $e^{\\lambda x}$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-024",
+      "format": "cloze",
+      "stem": "Build iterated kernels for the Volterra kernel $K(x,t) = 1$ with integration $\\int_t^x$.",
+      "solution": "The first iterated kernel is $K_1 = 1$. The second is $K_2 = \\int_t^x 1\\,ds =$ {{1}}. The third is $K_3 = \\int_t^x (s - t)\\,ds = \\dfrac{(x - t)^2}{2}$. In general $K_n = \\dfrac{(x - t)^{n-1}}{(n-1)!}$, and summing $\\sum \\lambda^{n-1}K_n$ gives the resolvent {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$x - t$",
+            "$1$",
+            "$(x - t)^2$"
+          ],
+          "answer": "$x - t$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$e^{\\lambda(x - t)}$",
+            "$e^{x - t}$",
+            "$\\cosh(x - t)$"
+          ],
+          "answer": "$e^{\\lambda(x - t)}$"
+        }
+      ],
+      "explanation": "Here $K_2 = \\int_t^x 1\\,ds = x - t$. The pattern $K_n = \\frac{(x-t)^{n-1}}{(n-1)!}$ sums to $R = \\sum_{n=1}^\\infty \\lambda^{n-1}\\frac{(x-t)^{n-1}}{(n-1)!} = e^{\\lambda(x-t)}$, the exponential resolvent.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-025",
+      "format": "cloze",
+      "stem": "Compute iterated kernels for the separable Fredholm kernel $K(x,t) = xt$ on $[0,1]$.",
+      "solution": "The second iterated kernel is $K_2 = \\int_0^1 (xs)(st)\\,ds = xt\\int_0^1 s^2\\,ds$, and since $\\int_0^1 s^2\\,ds = \\dfrac{1}{3}$, this equals $\\dfrac{xt}{3}$. Each iteration multiplies by a factor of $\\dfrac{1}{3}$, so $K_n = \\dfrac{xt}{3^{n-1}}$ and the resolvent is $\\dfrac{3xt}{3 -}$ {{1}}. The geometric series converges when $|\\lambda|$ is less than {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\lambda$",
+            "$3\\lambda$",
+            "$1$"
+          ],
+          "answer": "$\\lambda$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "With $\\int_0^1 s^2\\,ds = \\frac{1}{3}$, $K_2 = \\frac{xt}{3}$ and $K_n = \\frac{xt}{3^{n-1}}$. Summing, $R = xt\\sum (\\lambda/3)^{n-1} = \\frac{3xt}{3-\\lambda}$, which converges for $|\\lambda| < 3$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-026",
+      "format": "cloze",
+      "stem": "Consider the resolvent representation of the solution.",
+      "solution": "The resolvent kernel is the sum $R(x,t;\\lambda) = \\sum_{n=1}^\\infty \\lambda^{n-1} K_n(x,t)$, where $K_n$ are the {{1}} kernels. Once $R$ is found, the solution is $\\phi(x) = f(x) + \\lambda\\int_a^b R(x,t;\\lambda)\\,$ {{2}} $\\,dt$. The first term of the resolvent series, $K_1$, equals the original {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "iterated",
+            "iterate"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$f(t)$",
+            "$\\phi(t)$",
+            "$K(t,t)$"
+          ],
+          "answer": "$f(t)$"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "kernel",
+            "kernel K"
+          ]
+        }
+      ],
+      "explanation": "The resolvent sums the iterated kernels $K_n$. The solution integrates the resolvent against the free term $f(t)$, giving $\\phi = f + \\lambda\\int R f\\,dt$. The series begins with $K_1 = K$, the original kernel.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-027",
+      "format": "cloze",
+      "stem": "A sufficient condition for convergence of the Neumann series of a Fredholm equation, with $M = \\max|K|$ on $[a,b]^2$.",
+      "solution": "The series is guaranteed to converge when the product $|\\lambda|\\,M\\,(b - a)$ is less than {{1}}. Equivalently, $|\\lambda|$ must be smaller than $\\dfrac{1}{M(b - a)}$. For a Volterra equation with continuous kernel, by contrast, the series converges for {{2}} value of $\\lambda$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "every",
+            "no",
+            "only one"
+          ],
+          "answer": "every"
+        }
+      ],
+      "explanation": "The geometric bound gives convergence when $|\\lambda|M(b-a) < 1$. Volterra equations escape this restriction because the factorial in their iterated kernels forces convergence for every $\\lambda$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-successive-approximations-028",
+      "format": "cloze",
+      "stem": "Apply successive approximations to $\\phi(x) = x + \\lambda\\displaystyle\\int_0^x \\phi(t)\\,dt$ with $\\phi_0 = x$.",
+      "solution": "The first iterate is $\\phi_1 = x + \\lambda\\int_0^x t\\,dt = x + \\dfrac{\\lambda x^2}{2}$, using $\\int_0^x t\\,dt = \\dfrac{x^2}{2}$. The starting iterate $\\phi_0$ was chosen equal to the {{1}} term of the equation. The new quadratic term carries a factor of {{2}} from the parameter.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "free",
+            "forcing",
+            "data"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\lambda$",
+            "$x$",
+            "$2$"
+          ],
+          "answer": "$\\lambda$"
+        }
+      ],
+      "explanation": "With $\\phi_0 = x$ (the free term), $\\phi_1 = x + \\lambda\\int_0^x t\\,dt = x + \\frac{\\lambda x^2}{2}$. The integral contributes $\\frac{x^2}{2}$ and the parameter contributes the factor $\\lambda$ on the new term.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    }
+  ]
+}

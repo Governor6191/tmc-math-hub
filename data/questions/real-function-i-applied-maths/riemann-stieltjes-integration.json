@@ -1,0 +1,450 @@
+{
+  "courseId": "real-function-i-applied-maths",
+  "topicId": "riemann-stieltjes-integration",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-001",
+      "stem": "For a partition $P: a = x_0 < x_1 < \\cdots < x_n = b$ with tags $t_i \\in [x_{i-1}, x_i]$, a Riemann-Stieltjes sum of $f$ with respect to the integrator $g$ is:",
+      "options": [
+        "$\\sum_{i=1}^{n} [f(x_i) - f(x_{i-1})]\\,[g(x_i) - g(x_{i-1})]$",
+        "$\\sum_{i=1}^{n} f(t_i)\\,[g(x_i) - g(x_{i-1})]$",
+        "$\\sum_{i=1}^{n} g(t_i)\\,(x_i - x_{i-1})$",
+        "$\\sum_{i=1}^{n} f(t_i)\\,(x_i - x_{i-1})$"
+      ],
+      "answer": 1,
+      "explanation": "The Riemann-Stieltjes sum weights the value $f(t_i)$ by the increment of the integrator, $g(x_i) - g(x_{i-1})$, rather than by the length of the subinterval. The integral $\\int_a^b f\\,dg$ is the limit of these sums as the partition is refined.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-002",
+      "stem": "Taking the integrator $g(x) = x$ in $\\int_a^b f\\,dg$ reduces the Riemann-Stieltjes integral to:",
+      "options": [
+        "the value $f(a)\\,(b-a)$.",
+        "the sum $f(b) - f(a)$.",
+        "always zero.",
+        "the ordinary Riemann integral $\\int_a^b f(x)\\,dx$."
+      ],
+      "answer": 3,
+      "explanation": "When $g(x) = x$, each increment $g(x_i) - g(x_{i-1}) = x_i - x_{i-1}$, so the Riemann-Stieltjes sum becomes an ordinary Riemann sum. Hence $\\int_a^b f\\,dx$ is the special case $g(x) = x$ of the Riemann-Stieltjes integral.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-003",
+      "stem": "A standard existence theorem guarantees that $\\int_a^b f\\,dg$ exists when:",
+      "options": [
+        "$f$ is bounded and $g$ is arbitrary.",
+        "$f$ is continuous on $[a,b]$ and $g$ is of bounded variation on $[a,b]$.",
+        "$f$ is integrable and $g$ is unbounded.",
+        "$f$ and $g$ are both discontinuous at the same point."
+      ],
+      "answer": 1,
+      "explanation": "If $f$ is continuous on $[a,b]$ and $g$ is of bounded variation on $[a,b]$, then the Riemann-Stieltjes integral $\\int_a^b f\\,dg$ exists. Continuity of $f$ controls the oscillation while bounded variation of $g$ keeps the total weight finite.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-004",
+      "stem": "The Riemann-Stieltjes integration by parts formula states that if $\\int_a^b f\\,dg$ exists, then $\\int_a^b g\\,df$ exists and:",
+      "options": [
+        "$\\int_a^b f\\,dg + \\int_a^b g\\,df = f(b)g(b) - f(a)g(a)$",
+        "$\\int_a^b f\\,dg = \\int_a^b g\\,df$",
+        "$\\int_a^b f\\,dg - \\int_a^b g\\,df = f(b)g(b)$",
+        "$\\int_a^b f\\,dg + \\int_a^b g\\,df = 0$"
+      ],
+      "answer": 0,
+      "explanation": "Integration by parts for the Riemann-Stieltjes integral reads $\\int_a^b f\\,dg + \\int_a^b g\\,df = f(b)g(b) - f(a)g(a)$. The existence of one of the two integrals implies the existence of the other, and the roles of integrand and integrator are symmetric.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-005",
+      "stem": "If $g$ has a continuous derivative $g'$ on $[a,b]$ and $f$ is continuous, then $\\int_a^b f\\,dg$ equals:",
+      "options": [
+        "$\\int_a^b g(x)\\,f'(x)\\,dx$",
+        "$\\int_a^b f(x)\\,g'(x)\\,dx$",
+        "$\\int_a^b f(x)\\,dx$",
+        "$f(b) - f(a)$"
+      ],
+      "answer": 1,
+      "explanation": "When $g$ is continuously differentiable, $dg = g'(x)\\,dx$ and the Riemann-Stieltjes integral reduces to the ordinary Riemann integral $\\int_a^b f(x)\\,g'(x)\\,dx$. This is the principal computational tool for smooth integrators.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-006",
+      "stem": "Let $g$ be a step function on $[a,b]$ with jumps $c_1, c_2, \\ldots, c_m$ at the interior points $s_1, s_2, \\ldots, s_m$, and let $f$ be continuous. Then $\\int_a^b f\\,dg$ equals:",
+      "options": [
+        "$\\sum_{k=1}^{m} f(s_k)$",
+        "$\\sum_{k=1}^{m} c_k$",
+        "$f(b) - f(a)$",
+        "$\\sum_{k=1}^{m} f(s_k)\\,c_k$"
+      ],
+      "answer": 3,
+      "explanation": "A step-function integrator concentrates all its variation at the jump points, so the integral collapses to the weighted sum $\\sum_k f(s_k)\\,c_k$, where $c_k$ is the size of the jump of $g$ at $s_k$. This is how Riemann-Stieltjes integration encodes point masses.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-007",
+      "stem": "Let $f(x) = x^2$ and let $g$ be a step function on $[0,2]$ with a single jump of size $3$ at $x = 1$. Compute $\\int_0^2 f\\,dg$.",
+      "options": [
+        "$3$",
+        "$6$",
+        "$12$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "A single jump of size $3$ at $x=1$ gives $\\int_0^2 f\\,dg = f(1)\\cdot 3 = 1^2 \\cdot 3 = 3$. Only the value of $f$ at the jump point matters.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-008",
+      "stem": "Let $f(x) = x$ and let $g$ be a step function on $[0,3]$ with a jump of size $2$ at $x = 1$ and a jump of size $5$ at $x = 2$. Compute $\\int_0^3 f\\,dg$.",
+      "options": [
+        "$3$",
+        "$10$",
+        "$12$",
+        "$7$"
+      ],
+      "answer": 2,
+      "explanation": "Summing the weighted jumps: $\\int_0^3 f\\,dg = f(1)\\cdot 2 + f(2)\\cdot 5 = 1\\cdot 2 + 2\\cdot 5 = 2 + 10 = 12$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-009",
+      "stem": "Let $f(x) = x$ and let $g(x) = \\lfloor x \\rfloor$ be the greatest-integer function on $[0, 3]$. Compute $\\int_0^3 f\\,dg$.",
+      "options": [
+        "$9$",
+        "$3$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": 3,
+      "explanation": "The greatest-integer function has unit jumps at $x = 1, 2, 3$. Counting the jumps inside the interval at $1, 2, 3$ gives $\\int_0^3 f\\,dg = f(1) + f(2) + f(3) = 1 + 2 + 3 = 6$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-010",
+      "stem": "Let $f(x) = x$ and $g(x) = x^2$ on $[0,1]$. Using the reduction for a differentiable integrator, compute $\\int_0^1 f\\,dg$.",
+      "options": [
+        "$\\tfrac{1}{3}$",
+        "$\\tfrac{2}{3}$",
+        "$\\tfrac{1}{2}$",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "Since $g'(x) = 2x$, $\\int_0^1 x\\,d(x^2) = \\int_0^1 x\\cdot 2x\\,dx = \\int_0^1 2x^2\\,dx = \\tfrac{2}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-011",
+      "stem": "For a continuous integrand $f$ and any integrator $g$ for which the integral exists, $\\int_a^b 1\\,dg$ equals:",
+      "options": [
+        "$g(a)$",
+        "$b - a$",
+        "$g(b) - g(a)$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "With $f \\equiv 1$, every Riemann-Stieltjes sum telescopes: $\\sum [g(x_i) - g(x_{i-1})] = g(b) - g(a)$. So $\\int_a^b 1\\,dg = g(b) - g(a)$ regardless of the partition.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-012",
+      "stem": "The Riemann-Stieltjes integral is linear in the integrand. Which identity expresses this?",
+      "options": [
+        "$\\int_a^b f\\,d(g_1 g_2) = \\int_a^b f\\,dg_1 \\cdot \\int_a^b f\\,dg_2$",
+        "$\\int_a^b f\\,dg = \\int_a^b g\\,df$",
+        "$\\int_a^b (f_1 f_2)\\,dg = \\int_a^b f_1\\,dg \\cdot \\int_a^b f_2\\,dg$",
+        "$\\int_a^b (\\alpha f_1 + \\beta f_2)\\,dg = \\alpha \\int_a^b f_1\\,dg + \\beta \\int_a^b f_2\\,dg$"
+      ],
+      "answer": 3,
+      "explanation": "Linearity in the integrand: $\\int_a^b (\\alpha f_1 + \\beta f_2)\\,dg = \\alpha \\int_a^b f_1\\,dg + \\beta \\int_a^b f_2\\,dg$. There is also a matching linearity in the integrator, but the integral is not multiplicative.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-013",
+      "stem": "The Riemann-Stieltjes integral is also linear in the integrator. Which identity is correct?",
+      "options": [
+        "$\\int_a^b f\\,d(g_1 + g_2) = 0$",
+        "$\\int_a^b f\\,d(g_1 + g_2) = \\int_a^b f\\,dg_1 \\cdot \\int_a^b f\\,dg_2$",
+        "$\\int_a^b f\\,d(\\alpha g_1 + \\beta g_2) = \\alpha \\int_a^b f\\,dg_1 + \\beta \\int_a^b f\\,dg_2$",
+        "$\\int_a^b f\\,d(\\alpha g) = \\int_a^b f\\,dg$"
+      ],
+      "answer": 2,
+      "explanation": "Linearity in the integrator gives $\\int_a^b f\\,d(\\alpha g_1 + \\beta g_2) = \\alpha \\int_a^b f\\,dg_1 + \\beta \\int_a^b f\\,dg_2$, provided the individual integrals exist. The increments $d(\\alpha g_1 + \\beta g_2)$ split linearly.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-014",
+      "stem": "For $a < c < b$, when the relevant integrals exist, the Riemann-Stieltjes integral satisfies which additivity over the interval?",
+      "options": [
+        "$\\int_a^b f\\,dg = \\int_a^c f\\,dg - \\int_c^b f\\,dg$",
+        "$\\int_a^b f\\,dg = \\int_a^c f\\,dg \\cdot \\int_c^b f\\,dg$",
+        "$\\int_a^b f\\,dg = \\max\\left(\\int_a^c f\\,dg,\\ \\int_c^b f\\,dg\\right)$",
+        "$\\int_a^b f\\,dg = \\int_a^c f\\,dg + \\int_c^b f\\,dg$"
+      ],
+      "answer": 3,
+      "explanation": "The integral is additive over adjacent subintervals: $\\int_a^b f\\,dg = \\int_a^c f\\,dg + \\int_c^b f\\,dg$. Care is needed only when $g$ has a jump exactly at the splitting point $c$, where the jump must be assigned to one side.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-015",
+      "stem": "If $g$ is constant on $[a,b]$, then for any integrand $f$ the integral $\\int_a^b f\\,dg$ equals:",
+      "options": [
+        "$f(a)\\,(b-a)$",
+        "$\\int_a^b f(x)\\,dx$",
+        "$0$",
+        "$f(b) - f(a)$"
+      ],
+      "answer": 2,
+      "explanation": "If $g$ is constant, every increment $g(x_i) - g(x_{i-1}) = 0$, so every Riemann-Stieltjes sum is $0$. Hence $\\int_a^b f\\,dg = 0$. A constant integrator carries no variation.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-016",
+      "stem": "Let $f(x) = e^x$ and let $g$ have a single unit jump (size $1$) at $x = 0$ on $[-1, 1]$. Compute $\\int_{-1}^{1} f\\,dg$.",
+      "options": [
+        "$1$",
+        "$e - e^{-1}$",
+        "$e$",
+        "$0$"
+      ],
+      "answer": 0,
+      "explanation": "A unit jump at $x = 0$ gives $\\int_{-1}^{1} f\\,dg = f(0)\\cdot 1 = e^0 = 1$. The integrator behaves like a point mass at the origin.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-017",
+      "stem": "A sufficient condition for $\\int_a^b f\\,dg$ to FAIL to exist is that:",
+      "options": [
+        "$g(x) = x$.",
+        "$f$ and $g$ are both continuous.",
+        "$f$ and $g$ share a common point of discontinuity (a discontinuity from the same side).",
+        "$f$ is continuous and $g$ is monotone."
+      ],
+      "answer": 2,
+      "explanation": "If $f$ and $g$ are both discontinuous at the same point and from the same side, the Riemann-Stieltjes sums do not converge and the integral fails to exist. This is why the existence theorem pairs a continuous $f$ with a bounded-variation $g$, avoiding shared discontinuities.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-018",
+      "stem": "Using integration by parts, evaluate $\\int_0^1 g\\,df$ given $f(x) = x$, $g(x) = x^2$, and the known value $\\int_0^1 f\\,dg = \\tfrac{2}{3}$.",
+      "options": [
+        "$\\tfrac{2}{3}$",
+        "$\\tfrac{1}{2}$",
+        "$\\tfrac{1}{3}$",
+        "$1$"
+      ],
+      "answer": 2,
+      "explanation": "By parts, $\\int_0^1 f\\,dg + \\int_0^1 g\\,df = f(1)g(1) - f(0)g(0) = 1\\cdot 1 - 0 = 1$. So $\\int_0^1 g\\,df = 1 - \\tfrac{2}{3} = \\tfrac{1}{3}$. Directly, $\\int_0^1 x^2\\,d(x) = \\int_0^1 x^2\\,dx = \\tfrac{1}{3}$ confirms this.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-019",
+      "stem": "If $f$ is continuous and $g$ is monotone increasing on $[a,b]$, which estimate holds for $\\int_a^b f\\,dg$ when $m \\leq f(x) \\leq M$?",
+      "options": [
+        "$m\\,(b-a) \\leq \\int_a^b f\\,dg \\leq M\\,(b-a)$",
+        "$\\int_a^b f\\,dg \\leq 0$",
+        "$\\int_a^b f\\,dg \\geq M\\,[g(b)-g(a)]$",
+        "$m\\,[g(b) - g(a)] \\leq \\int_a^b f\\,dg \\leq M\\,[g(b) - g(a)]$"
+      ],
+      "answer": 3,
+      "explanation": "For an increasing integrator the increments $g(x_i) - g(x_{i-1})$ are nonnegative, so bounding $f$ between $m$ and $M$ and summing gives $m\\,[g(b)-g(a)] \\leq \\int_a^b f\\,dg \\leq M\\,[g(b)-g(a)]$. This is the Riemann-Stieltjes analogue of the standard integral bound.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-020",
+      "stem": "Let $f(x) = x^2$ and $g(x) = 2x + 1$ on $[0, 2]$. Compute $\\int_0^2 f\\,dg$.",
+      "options": [
+        "$\\tfrac{16}{3}$",
+        "$\\tfrac{8}{3}$",
+        "$8$",
+        "$4$"
+      ],
+      "answer": 0,
+      "explanation": "Since $g'(x) = 2$, $\\int_0^2 x^2\\,d(2x+1) = \\int_0^2 x^2 \\cdot 2\\,dx = 2 \\cdot \\tfrac{8}{3} = \\tfrac{16}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-021",
+      "stem": "The Riemann-Stieltjes integral unifies sums and integrals. A finite weighted sum $\\sum_{k} f(s_k)\\,c_k$ arises from $\\int f\\,dg$ when $g$ is:",
+      "options": [
+        "a continuously differentiable function.",
+        "a step function whose jumps are the weights $c_k$ at the points $s_k$.",
+        "the identity function $g(x) = x$.",
+        "a constant function."
+      ],
+      "answer": 1,
+      "explanation": "Choosing $g$ to be a step function with jump $c_k$ at $s_k$ makes $\\int f\\,dg = \\sum_k f(s_k)\\,c_k$. This is precisely how the Riemann-Stieltjes integral recovers discrete weighted sums as a special case.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-022",
+      "stem": "Let $f(x) = 4$ (constant) and let $g(x) = x^3$ on $[0, 2]$. Compute $\\int_0^2 f\\,dg$.",
+      "options": [
+        "$16$",
+        "$8$",
+        "$24$",
+        "$32$"
+      ],
+      "answer": 3,
+      "explanation": "For a constant integrand, $\\int_a^b c\\,dg = c\\,[g(b) - g(a)]$. Here $\\int_0^2 4\\,d(x^3) = 4\\,[2^3 - 0^3] = 4 \\cdot 8 = 32$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-023",
+      "stem": "Why does the Riemann-Stieltjes integral generalize the ordinary Riemann integral?",
+      "options": [
+        "It allows the weighting $dg$ to be governed by a general integrator $g$, with $g(x) = x$ recovering the Riemann case.",
+        "It restricts the class of admissible functions $f$.",
+        "It replaces continuous integrands with discontinuous ones.",
+        "It only applies to step functions."
+      ],
+      "answer": 0,
+      "explanation": "The Riemann-Stieltjes integral measures increments of $f$ against increments of a chosen integrator $g$. The ordinary Riemann integral is the single case $g(x) = x$, so the Stieltjes construction is a strict generalization that also captures point masses and densities.",
+      "difficulty": "warmup",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-024",
+      "stem": "Let $f(x) = x$ and let $g$ on $[0,4]$ jump by $2$ at $x = 1$, decrease so that it jumps by $-1$ at $x = 3$, and be otherwise constant. Compute $\\int_0^4 f\\,dg$.",
+      "options": [
+        "$-3$",
+        "$5$",
+        "$1$",
+        "$-1$"
+      ],
+      "answer": 3,
+      "explanation": "Negative jumps are allowed since a step function of bounded variation can decrease. Here $\\int_0^4 f\\,dg = f(1)\\cdot 2 + f(3)\\cdot(-1) = 1\\cdot 2 + 3\\cdot(-1) = 2 - 3 = -1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-025",
+      "format": "cloze",
+      "stem": "Let $f(x) = x^2$ and let $g$ be a step function on $[0,3]$ with a jump of size $4$ at $x = 1$ and a jump of size $2$ at $x = 2$.",
+      "solution": "A step-function integrator turns the integral into a weighted sum of the values of $f$ at the jump points. The contribution at $x=1$ is $f(1)$ times $4$ and at $x=2$ is $f(2)$ times $2$. Adding these, the integral $\\int_0^3 f\\,dg$ equals {{1}}. Because $g$ has only finitely many jumps it is of bounded variation, so the existence of the integral is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 12,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "guaranteed",
+            "not guaranteed"
+          ],
+          "answer": "guaranteed"
+        }
+      ],
+      "explanation": "Weighted sum: $f(1)\\cdot 4 + f(2)\\cdot 2 = 1\\cdot 4 + 4\\cdot 2 = 4 + 8 = 12$. A step function with finitely many jumps is of bounded variation, and $f$ is continuous, so the Riemann-Stieltjes integral exists.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-026",
+      "format": "cloze",
+      "stem": "Let $f(x) = x$ and $g(x) = x^2$ on $[0, 2]$, where $g$ is differentiable with $g'(x) = 2x$.",
+      "solution": "For a differentiable integrator the Riemann-Stieltjes integral reduces to a Riemann integral with $dg$ replaced by $g'(x)\\,dx$. Here the integrand becomes $x \\cdot 2x = 2x^2$, and integrating over $[0,2]$ gives the value {{1}} for $\\int_0^2 f\\,dg$. The reduction to an ordinary Riemann integral is valid here because the integrator is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5.3333,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "continuously differentiable",
+            "merely bounded"
+          ],
+          "answer": "continuously differentiable"
+        }
+      ],
+      "explanation": "$\\int_0^2 x\\,d(x^2) = \\int_0^2 2x^2\\,dx = \\tfrac{2}{3}\\,x^3 \\big|_0^2 = \\tfrac{16}{3} \\approx 5.333$. The reduction $dg = g'(x)\\,dx$ holds because $g$ is continuously differentiable.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-027",
+      "format": "cloze",
+      "stem": "Consider integration by parts with $f(x) = x$ and $g(x) = x^3$ on $[0, 1]$.",
+      "solution": "The integration-by-parts identity gives $\\int_0^1 f\\,dg + \\int_0^1 g\\,df = f(1)g(1) - f(0)g(0)$. The right-hand boundary term evaluates to {{1}}. Computing the second integral directly, $\\int_0^1 x^3\\,dx$ has the value {{2}}, so the first integral $\\int_0^1 f\\,dg$ must equal {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.75,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "Boundary term: $f(1)g(1) - f(0)g(0) = 1\\cdot 1 - 0 = 1$. Second integral: $\\int_0^1 x^3\\,dx = \\tfrac{1}{4} = 0.25$. So $\\int_0^1 f\\,dg = 1 - 0.25 = 0.75$. Check directly: $\\int_0^1 x\\,d(x^3) = \\int_0^1 x\\cdot 3x^2\\,dx = \\int_0^1 3x^3\\,dx = \\tfrac{3}{4}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-applied-maths-riemann-stieltjes-integration-028",
+      "format": "cloze",
+      "stem": "Let $f$ be continuous and let $g(x) = \\lfloor x \\rfloor$ be the greatest-integer function on $[0, 4]$, with $f(x) = x + 1$.",
+      "solution": "The greatest-integer integrator contributes a unit point mass at each integer in the interval. Counting unit jumps at $x = 1, 2, 3, 4$, the integral is the sum $f(1) + f(2) + f(3) + f(4)$, which equals {{1}}. Whether such a step integrator is of bounded variation is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 14,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        }
+      ],
+      "explanation": "Unit jumps at $1,2,3,4$ give $\\int_0^4 f\\,dg = f(1)+f(2)+f(3)+f(4) = 2 + 3 + 4 + 5 = 14$. A monotone step function is of bounded variation.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    }
+  ]
+}

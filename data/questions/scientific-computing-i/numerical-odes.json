@@ -1,0 +1,471 @@
+{
+  "courseId": "scientific-computing-i",
+  "topicId": "numerical-odes",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-i-numerical-odes-001",
+      "stem": "Euler's method advances the solution of $y' = f(x, y)$ by which update?",
+      "options": [
+        "$y_{n+1} = y_n + f(x_n, y_n)$",
+        "$y_{n+1} = y_n - h\\,f(x_n, y_n)$",
+        "$y_{n+1} = y_n + h\\,f(x_n, y_n)$",
+        "$y_{n+1} = y_n + h\\,f(x_{n+1}, y_{n+1})$"
+      ],
+      "answer": 2,
+      "explanation": "Euler's (explicit) method takes a step of size $h$ along the current slope: $y_{n+1} = y_n + h\\,f(x_n, y_n)$. Dropping the $h$ is dimensionally wrong, using $f(x_{n+1}, y_{n+1})$ is the implicit (backward) Euler method, and the minus sign reverses the step. The trap is omitting $h$ or evaluating the slope at the new point; explicit Euler uses the slope at the known point times $h$.",
+      "difficulty": "warmup",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-002",
+      "stem": "For $y' = y$ with $y(0) = 1$ and $h = 0.1$, one Euler step gives $y(0.1)$ equal to which value (true value $1.105$)?",
+      "options": [
+        "$1.100$",
+        "$1.210$",
+        "$1.000$",
+        "$1.105$"
+      ],
+      "answer": 0,
+      "explanation": "Apply $y_1 = y_0 + h\\,f(x_0, y_0) = 1 + 0.1(1) = 1.100$ since $f = y = 1$ at the start. Euler underestimates the true $1.105$ because it ignores the curving growth. The value $1.000$ is the start, $1.105$ is the exact answer, and $1.210$ would be a second step's neighbourhood. The trap is expecting Euler to match the exponential; one step gives $1.100$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-003",
+      "stem": "The local truncation error of Euler's method per step is of which order in $h$?",
+      "options": [
+        "$O(h^2)$",
+        "$O(h)$",
+        "$O(h^4)$",
+        "$O(h^3)$"
+      ],
+      "answer": 0,
+      "explanation": "Euler's method drops the Taylor series after the linear term, so its local (per-step) truncation error is $O(h^2)$, while the accumulated global error over a fixed interval is one order lower, $O(h)$. The choices $O(h^3)$ and $O(h^4)$ belong to higher-order methods, and $O(h)$ is the global, not local, order. The trap is confusing local with global error; locally Euler is $O(h^2)$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-004",
+      "stem": "Euler's method has a global (accumulated) error over a fixed interval of which order in $h$, making it a first-order method?",
+      "options": [
+        "$O(h^4)$",
+        "$O(h^3)$",
+        "$O(h)$",
+        "$O(h^2)$"
+      ],
+      "answer": 2,
+      "explanation": "Summing $O(h^2)$ local errors over $\\frac{1}{h}$ steps gives a global error $O(h)$, so Euler is a first-order method: halving $h$ roughly halves the error. The local order $O(h^2)$ is one higher, and $O(h^3)$ or $O(h^4)$ describe more accurate schemes. The trap is reporting the local order as the method's order; the global $O(h)$ defines first order.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-005",
+      "stem": "Heun's method (the improved Euler method) improves accuracy by doing which of the following?",
+      "options": [
+        "Evaluating the second derivative of $f$",
+        "Ignoring the slope at the endpoint",
+        "Using a smaller step size automatically",
+        "Averaging the slope at the start with the slope at the predicted endpoint"
+      ],
+      "answer": 3,
+      "explanation": "Heun's method first predicts $y_{n+1}^{0}$ with an Euler step, then corrects using the average of the start slope and the slope at that prediction: $y_{n+1} = y_n + \\frac{h}{2}[f(x_n, y_n) + f(x_{n+1}, y_{n+1}^{0})]$. It does not shrink $h$ by itself, needs no second derivative, and certainly does not discard the endpoint slope. The trap is thinking accuracy comes from a smaller step; it comes from averaging two slopes.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-006",
+      "stem": "For $y' = x + y$ with $y(0) = 1$ and $h = 0.1$, one Euler step gives $y(0.1)$ equal to which value?",
+      "options": [
+        "$1.100$",
+        "$1.000$",
+        "$1.210$",
+        "$1.110$"
+      ],
+      "answer": 0,
+      "explanation": "Here $f(0, 1) = 0 + 1 = 1$, so $y_1 = 1 + 0.1(1) = 1.100$. The value $1.110$ is the Heun (and RK4) result, $1.000$ is the start, and $1.210$ is unrelated. The trap is using a corrected slope; plain Euler uses only the initial slope $f(0, 1) = 1$, giving $1.100$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-007",
+      "stem": "For $y' = x + y$ with $y(0) = 1$ and $h = 0.1$, Heun's method gives $y(0.1)$ equal to which value (true value $1.1103$)?",
+      "options": [
+        "$1.210$",
+        "$1.105$",
+        "$1.100$",
+        "$1.110$"
+      ],
+      "answer": 3,
+      "explanation": "The predictor is $y^{0} = 1 + 0.1(1) = 1.1$, and the endpoint slope is $f(0.1, 1.1) = 0.1 + 1.1 = 1.2$. The corrector gives $y_1 = 1 + \\frac{0.1}{2}(1 + 1.2) = 1 + 0.05(2.2) = 1.110$. This is far closer to the true $1.1103$ than Euler's $1.100$. The value $1.105$ uses the wrong slopes. The trap is forgetting to average; Heun yields $1.110$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-008",
+      "stem": "The midpoint method (a second-order Runge-Kutta method) estimates $y_{n+1}$ using which strategy?",
+      "options": [
+        "It uses the slope at the start only",
+        "It uses the slope evaluated at the midpoint of the step",
+        "It uses the second derivative",
+        "It averages four slopes"
+      ],
+      "answer": 1,
+      "explanation": "The midpoint RK2 method takes a half-step with the initial slope to reach the midpoint, evaluates the slope there, and uses that midpoint slope for the full step: $y_{n+1} = y_n + h\\,f\\!\\left(x_n + \\frac{h}{2}, y_n + \\frac{h}{2}k_1\\right)$. Using only the start slope is Euler, averaging four slopes is RK4, and no second derivative is required. The trap is confusing it with Euler or RK4; the midpoint method hinges on the slope at the half-step.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-009",
+      "stem": "For $y' = x + y$ with $y(0) = 1$ and $h = 0.1$, the midpoint RK2 method gives $y(0.1)$ equal to which value?",
+      "options": [
+        "$1.110$",
+        "$1.105$",
+        "$1.100$",
+        "$1.210$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $k_1 = f(0, 1) = 1$, the midpoint state $y_n + \\frac{h}{2}k_1 = 1 + 0.05(1) = 1.05$ at $x = 0.05$, then $k_2 = f(0.05, 1.05) = 1.1$, so $y_1 = 1 + 0.1(1.1) = 1.110$. This matches Heun's accuracy to this precision. The value $1.100$ is Euler and $1.105$ uses a wrong midpoint slope. The trap is evaluating the slope at the start; the midpoint method uses the half-step slope $1.1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-010",
+      "stem": "Heun's method and the midpoint method are both second-order Runge-Kutta methods, so their global error is of which order in $h$?",
+      "options": [
+        "$O(h^3)$",
+        "$O(h^2)$",
+        "$O(h^4)$",
+        "$O(h)$"
+      ],
+      "answer": 1,
+      "explanation": "Second-order RK methods have global error $O(h^2)$, so halving $h$ cuts the error by about a factor of four, a clear improvement over Euler's $O(h)$. The choices $O(h^3)$ and $O(h^4)$ describe higher-order methods, and $O(h)$ is Euler's order. The trap is not distinguishing the orders; Heun and midpoint are second order, $O(h^2)$ globally.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-011",
+      "stem": "The classical fourth-order Runge-Kutta method (RK4) combines how many slope evaluations per step?",
+      "options": [
+        "$2$",
+        "$1$",
+        "$4$",
+        "$6$"
+      ],
+      "answer": 2,
+      "explanation": "RK4 computes four slopes $k_1, k_2, k_3, k_4$ at the start, two midpoint estimates, and the endpoint, then combines them in a weighted average per step. Using one slope is Euler, two is RK2, and six is not the classical method. The trap is miscounting the stages; the standard RK4 uses exactly four slope evaluations.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-012",
+      "stem": "The classical RK4 update weights the four slopes as which combination?",
+      "options": [
+        "$y_{n+1} = y_n + \\dfrac{h}{4}(k_1 + k_2 + k_3 + k_4)$",
+        "$y_{n+1} = y_n + h\\,k_1$",
+        "$y_{n+1} = y_n + \\dfrac{h}{2}(k_1 + k_4)$",
+        "$y_{n+1} = y_n + \\dfrac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)$"
+      ],
+      "answer": 3,
+      "explanation": "The classical formula is $y_{n+1} = y_n + \\frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)$, giving the two midpoint slopes double weight. A plain quarter-average misweights, $h\\,k_1$ is Euler, and $\\frac{h}{2}(k_1 + k_4)$ resembles a trapezoid using the wrong slopes. The trap is using equal weights; RK4 weights $k_2$ and $k_3$ twice and divides by $6$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-013",
+      "stem": "The global error of the classical RK4 method is of which order in $h$?",
+      "options": [
+        "$O(h)$",
+        "$O(h^2)$",
+        "$O(h^4)$",
+        "$O(h^3)$"
+      ],
+      "answer": 2,
+      "explanation": "RK4 is a fourth-order method with global error $O(h^4)$, so halving $h$ reduces the error by roughly a factor of $16$, which is why it is a workhorse for smooth problems. The lower orders $O(h)$, $O(h^2)$, $O(h^3)$ correspond to Euler, RK2, and third-order methods respectively. The trap is underrating RK4; its global error scales as $h^4$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-014",
+      "stem": "For $y' = x + y$ with $y(0) = 1$ and $h = 0.1$, the classical RK4 step gives $y(0.1) \\approx 1.110342$, matching the true value to six digits. What does this illustrate?",
+      "options": [
+        "RK4 achieves high accuracy even with a moderate step size",
+        "RK4 requires the exact solution in advance",
+        "RK4 is less accurate than Euler",
+        "RK4 only works for linear equations"
+      ],
+      "answer": 0,
+      "explanation": "RK4's fourth-order accuracy makes a single step of $h = 0.1$ reproduce the true value $1.110342$ to six digits, vastly better than Euler's $1.100$. It is not less accurate than Euler, needs no prior knowledge of the exact solution, and applies to nonlinear equations as well. The trap is doubting RK4's power; one moderate step already nails the answer here.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-015",
+      "stem": "For $y' = y$ with $y(0) = 1$ and $h = 0.1$, taking two Euler steps gives $y(0.2)$ equal to which value (true value $1.2214$)?",
+      "options": [
+        "$1.100$",
+        "$1.200$",
+        "$1.221$",
+        "$1.210$"
+      ],
+      "answer": 3,
+      "explanation": "First step $y_1 = 1 + 0.1(1) = 1.1$; second step $y_2 = 1.1 + 0.1(1.1) = 1.1 + 0.11 = 1.210$. Euler trails the true $1.2214$. The value $1.100$ is only one step, $1.221$ is the exact answer, and $1.200$ ignores the growth in the slope. The trap is reusing the first slope; the second step must use the updated $y_1 = 1.1$, giving $1.210$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-016",
+      "stem": "Reducing the step size $h$ in a convergent one-step method generally has which effect?",
+      "options": [
+        "It makes the method unstable",
+        "It decreases the truncation error but raises the computational cost",
+        "It increases the truncation error",
+        "It has no effect on accuracy"
+      ],
+      "answer": 1,
+      "explanation": "A smaller $h$ lowers the per-step truncation error and tightens the approximation, but more steps are needed to span the interval, raising the cost (and eventually letting roundoff accumulate). It does not increase truncation error or leave accuracy untouched, and shrinking $h$ does not by itself cause instability. The trap is ignoring the cost trade-off; smaller $h$ buys accuracy at the price of more work.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-017",
+      "stem": "To reduce the global error of a first-order method like Euler by a factor of about $10$, the step size should be changed in which way?",
+      "options": [
+        "Reduced by a factor of about $100$",
+        "Halved",
+        "Doubled",
+        "Reduced by a factor of about $10$"
+      ],
+      "answer": 3,
+      "explanation": "Because Euler's global error is $O(h)$, the error scales linearly with $h$, so cutting $h$ by a factor of $10$ cuts the error by about $10$. Halving only gains a factor of $2$, a factor-of-$100$ reduction in $h$ would overshoot to a factor-of-$100$ error drop, and doubling worsens the error. The trap is assuming a higher order; for first-order Euler the error falls in direct proportion to $h$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-018",
+      "stem": "Compared with Euler's method at the same step size, a key advantage of RK4 is which of the following?",
+      "options": [
+        "It needs only one function evaluation per step",
+        "It always uses a larger step size",
+        "It never requires the right-hand side $f$",
+        "It attains much higher accuracy for smooth problems"
+      ],
+      "answer": 3,
+      "explanation": "RK4's fourth-order accuracy delivers dramatically smaller error than Euler at the same $h$, which usually justifies its four function evaluations per step. It needs four evaluations (not one), it certainly requires $f$, and it does not force a larger step. The trap is weighing only the per-step cost; RK4's payoff is the steep gain in accuracy for smooth problems.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-019",
+      "stem": "In Heun's method, the first computed value $y_{n+1}^{0} = y_n + h\\,f(x_n, y_n)$ serves which role?",
+      "options": [
+        "It is the final corrected answer",
+        "It is the exact solution",
+        "It is the local truncation error",
+        "It is a predictor used to estimate the endpoint slope"
+      ],
+      "answer": 3,
+      "explanation": "The Euler-type value $y_{n+1}^{0}$ is a predictor: it provides a provisional endpoint so the slope $f(x_{n+1}, y_{n+1}^{0})$ can be estimated and averaged with the start slope in the corrector. It is not the final answer (the corrector refines it), not the exact solution, and not an error term. The trap is treating the predictor as the result; it is only an intermediate estimate.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-020",
+      "stem": "Euler's method applied to $y' = f(x, y)$ has a clear geometric interpretation as which of the following?",
+      "options": [
+        "Following the tangent line at $(x_n, y_n)$ for a step of width $h$",
+        "Fitting a parabola through three points",
+        "Taking the midpoint slope of the step",
+        "Averaging the slopes at two endpoints"
+      ],
+      "answer": 0,
+      "explanation": "Euler's method walks along the tangent line at the current point $(x_n, y_n)$ for a horizontal distance $h$, landing at $y_n + h\\,f(x_n, y_n)$. Fitting a parabola is unrelated, averaging two endpoint slopes is Heun's method, and using the midpoint slope is the midpoint RK2 method. The trap is confusing Euler with the higher-order averaging methods; Euler simply follows one tangent line.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-021",
+      "format": "cloze",
+      "stem": "Take one Euler step for $y' = x + y$, $y(0) = 1$, with $h = 0.1$.",
+      "solution": "The initial slope is $f(0, 1) = 0 + 1 =$ {{1}}. The Euler update $y_1 = 1 + 0.1\\times \\text{slope}$ gives {{2}}. Because Euler uses only the slope at the start, it tends to {{3}} the true solution of this growing system.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "underestimate",
+            "overestimate",
+            "exactly match",
+            "oscillate around"
+          ],
+          "answer": "underestimate"
+        }
+      ],
+      "explanation": "Slope $f(0, 1) = 1$. Euler: $y_1 = 1 + 0.1(1) = 1.1$. Since the slope grows over the step, using only the start slope underestimates the true value $1.1103$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-022",
+      "format": "cloze",
+      "stem": "Apply Heun's method to $y' = x + y$, $y(0) = 1$, with $h = 0.1$ (true value $1.1103$).",
+      "solution": "The predictor is the Euler value $y^{0} = 1.1$, and the endpoint slope is $f(0.1, 1.1) = 0.1 + 1.1 =$ {{1}}. The corrector averages the two slopes: $y_1 = 1 + \\dfrac{0.1}{2}(1 + 1.2) =$ {{2}}. Heun's method is second order, with global error of order $h$ to the power {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.11,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Endpoint slope $f(0.1, 1.1) = 1.2$. Corrector $y_1 = 1 + 0.05(1 + 1.2) = 1 + 0.05(2.2) = 1.11$. Heun is second order, $O(h^2)$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-023",
+      "format": "cloze",
+      "stem": "Apply the midpoint RK2 method to $y' = x + y$, $y(0) = 1$, with $h = 0.1$.",
+      "solution": "The starting slope is $k_1 = f(0, 1) = 1$, so the midpoint state is $y_n + \\dfrac{h}{2}k_1 = 1 + 0.05 =$ {{1}} at $x = 0.05$. The midpoint slope is $k_2 = f(0.05, 1.05) =$ {{2}}, and the full step gives $y_1 = 1 + 0.1\\,k_2 =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.05,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.11,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "Midpoint state $1 + 0.05(1) = 1.05$. Midpoint slope $k_2 = 0.05 + 1.05 = 1.1$. Full step $y_1 = 1 + 0.1(1.1) = 1.11$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-024",
+      "format": "cloze",
+      "stem": "Compare the global accuracy orders of the standard one-step methods.",
+      "solution": "Euler's method is first order, with global error $O(h)$ raised to the power {{1}}. Second-order Runge-Kutta methods such as Heun and midpoint have global error of order $h$ to the power {{2}}. The classical RK4 method has global error of order $h$ to the power {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Euler is $O(h^1)$, RK2 methods are $O(h^2)$, and RK4 is $O(h^4)$ in global error.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-025",
+      "format": "cloze",
+      "stem": "Take two Euler steps for $y' = y$, $y(0) = 1$, with $h = 0.1$ (true $y(0.2) = 1.2214$).",
+      "solution": "The first step gives $y_1 = 1 + 0.1(1) =$ {{1}}. The second step uses the updated slope $f = y_1$, giving $y_2 = y_1 + 0.1\\,y_1 =$ {{2}}. The gap between $1.2214$ and this estimate reflects Euler's accumulated, or {{3}}, error.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.21,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "global",
+            "local",
+            "roundoff",
+            "relative"
+          ],
+          "answer": "global"
+        }
+      ],
+      "explanation": "First step $y_1 = 1.1$. Second step $y_2 = 1.1 + 0.1(1.1) = 1.21$. The shortfall from $1.2214$ is the accumulated (global) truncation error.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-numerical-odes-026",
+      "format": "cloze",
+      "stem": "State the structure of the classical RK4 method.",
+      "solution": "RK4 evaluates the slope {{1}} times per step. The update weights the two midpoint slopes $k_2$ and $k_3$ by a factor of {{2}} relative to $k_1$ and $k_4$, then divides the weighted sum by {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "RK4 uses four slope evaluations. The formula $y_{n+1} = y_n + \\frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)$ weights $k_2, k_3$ by $2$ and divides by $6$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    }
+  ]
+}

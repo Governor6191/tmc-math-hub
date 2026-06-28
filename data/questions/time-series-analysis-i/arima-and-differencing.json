@@ -1,0 +1,516 @@
+{
+  "courseId": "time-series-analysis-i",
+  "topicId": "arima-and-differencing",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-001",
+      "stem": "The first difference of a time series $X_t$ is defined as which of the following?",
+      "options": [
+        "$\\nabla X_t = X_t \\times X_{t-1}$",
+        "$\\nabla X_t = X_t + X_{t-1}$",
+        "$\\nabla X_t = X_t / X_{t-1}$",
+        "$\\nabla X_t = X_t - X_{t-1}$"
+      ],
+      "answer": 3,
+      "explanation": "The first difference is $\\nabla X_t = X_t - X_{t-1} = (1 - B) X_t$, where $B$ is the backshift operator. Differencing removes a linear trend and is the standard device for inducing stationarity.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-002",
+      "stem": "Why is differencing applied to a non-stationary time series before fitting an ARMA model?",
+      "options": [
+        "to remove trend (and reduce other non-stationarity) so the differenced series is approximately stationary",
+        "to add a seasonal component",
+        "to increase the variance of the series",
+        "to convert it into white noise automatically"
+      ],
+      "answer": 0,
+      "explanation": "ARMA models require stationarity. Differencing removes trends and other slow-moving non-stationary behavior so that the differenced series has a stable mean and variance, making it suitable for ARMA modeling. It does not by itself guarantee white noise.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-003",
+      "stem": "In the ARIMA(p, d, q) notation, what does the middle parameter $d$ represent?",
+      "options": [
+        "the seasonal period",
+        "the number of times the series is differenced to achieve stationarity",
+        "the number of autoregressive terms",
+        "the number of moving average terms"
+      ],
+      "answer": 1,
+      "explanation": "In ARIMA(p, d, q), $d$ is the order of (non-seasonal) differencing applied to make the series stationary; $p$ is the AR order and $q$ is the MA order. After differencing $d$ times, an ARMA(p, q) is fit to the result.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-004",
+      "stem": "The random walk model $X_t = X_{t-1} + \\varepsilon_t$ becomes stationary after how many differences?",
+      "options": [
+        "two",
+        "one",
+        "zero (it is already stationary)",
+        "it can never be made stationary"
+      ],
+      "answer": 1,
+      "explanation": "Differencing once gives $\\nabla X_t = X_t - X_{t-1} = \\varepsilon_t$, which is white noise and hence stationary. So a random walk is integrated of order 1, requiring $d = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-005",
+      "stem": "A series that must be differenced $d$ times to become stationary is said to be integrated of which order?",
+      "options": [
+        "order $d$, written $I(d)$",
+        "order $1$ always",
+        "order $p + q$",
+        "order $0$, written $I(0)$"
+      ],
+      "answer": 0,
+      "explanation": "Such a series is integrated of order $d$, denoted $I(d)$. A stationary series is $I(0)$; a random walk is $I(1)$. ARIMA(p, d, q) models an $I(d)$ series.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-006",
+      "stem": "Consider the series of values $4, 7, 11, 16, 22$. What is the first-differenced series?",
+      "options": [
+        "$3, 4, 5, 6$",
+        "$4, 7, 11, 16$",
+        "$11, 18, 27, 38$",
+        "$1, 1, 1, 1$"
+      ],
+      "answer": 0,
+      "explanation": "First differences: $7 - 4 = 3$, $11 - 7 = 4$, $16 - 11 = 5$, $22 - 16 = 6$. So the differenced series is $3, 4, 5, 6$. (Note this is still trending, so a second difference would give the constant $1, 1, 1$.)",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-007",
+      "stem": "Taking the second difference of the series $4, 7, 11, 16, 22$ (whose first differences are $3, 4, 5, 6$) gives which result?",
+      "options": [
+        "$0, 0, 0$",
+        "$7, 9, 11$",
+        "$3, 4, 5, 6$",
+        "$1, 1, 1$"
+      ],
+      "answer": 3,
+      "explanation": "The first differences are $3, 4, 5, 6$; differencing again gives $4 - 3 = 1$, $5 - 4 = 1$, $6 - 5 = 1$, so $1, 1, 1$. The constant second difference signals a quadratic trend removed by $d = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-008",
+      "stem": "An ARIMA(0, 1, 0) model is equivalent to which familiar process?",
+      "options": [
+        "white noise",
+        "a random walk",
+        "a pure MA(1)",
+        "an AR(1) with $\\phi = 0.5$"
+      ],
+      "answer": 1,
+      "explanation": "ARIMA(0, 1, 0) means the first difference is white noise: $\\nabla X_t = \\varepsilon_t$, i.e. $X_t = X_{t-1} + \\varepsilon_t$. That is exactly a random walk.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-009",
+      "stem": "A unit root in the autoregressive polynomial of a series corresponds to which situation?",
+      "options": [
+        "a root of the AR characteristic equation lies on the unit circle, making the series non-stationary",
+        "the moving average part is non-invertible",
+        "the series has no autocorrelation",
+        "the series is stationary with rapidly decaying ACF"
+      ],
+      "answer": 0,
+      "explanation": "A unit root means the AR characteristic polynomial has a root on the unit circle (for example $\\phi = 1$ in an AR(1)), which makes the process non-stationary. Differencing removes the unit root and is the standard remedy.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-010",
+      "stem": "Which test is commonly used to formally check for a unit root (non-stationarity) in a time series?",
+      "options": [
+        "the Augmented Dickey-Fuller test",
+        "the chi-squared goodness-of-fit test",
+        "the Shapiro-Wilk test",
+        "the F-test for equal variances"
+      ],
+      "answer": 0,
+      "explanation": "The Augmented Dickey-Fuller (ADF) test checks the null hypothesis that a series has a unit root (is non-stationary) against the alternative of stationarity. Shapiro-Wilk tests normality, and the others address different questions.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-011",
+      "stem": "On a correlogram, which feature most strongly indicates that a series should be differenced before modeling?",
+      "options": [
+        "the ACF is exactly zero at every lag",
+        "the ACF dies out after lag 1",
+        "all autocorrelations lie inside the significance bounds",
+        "the sample ACF decays very slowly, staying large and positive over many lags"
+      ],
+      "answer": 3,
+      "explanation": "A slowly decaying ACF that remains large across many lags is the hallmark of a non-stationary (often unit-root) series and is the standard cue to apply differencing. An ACF that quickly falls inside the bounds suggests stationarity already.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-012",
+      "stem": "In backshift-operator notation, differencing $d$ times is written as which operator applied to $X_t$?",
+      "options": [
+        "$(1 + B)^d$",
+        "$(1 - B)^d$",
+        "$B^d$",
+        "$(1 - B^d)$ only"
+      ],
+      "answer": 1,
+      "explanation": "The $d$-th difference is $\\nabla^d X_t = (1 - B)^d X_t$. For example $(1 - B)^2 X_t = X_t - 2X_{t-1} + X_{t-2}$. The operator $(1 - B^d)$ is instead a seasonal-style difference at lag $d$, a different thing.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-013",
+      "stem": "What is the main risk of overdifferencing a series (differencing more times than necessary)?",
+      "options": [
+        "it makes the series perfectly seasonal",
+        "it always makes the series explosive",
+        "it can introduce artificial (often negative) autocorrelation and inflate the variance",
+        "it removes the mean of the series permanently"
+      ],
+      "answer": 2,
+      "explanation": "Overdifferencing introduces spurious moving-average structure, typically a strong negative autocorrelation at lag 1, and increases the variance of the series, complicating model identification. One should difference only enough to achieve stationarity.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-014",
+      "stem": "After differencing a series once, its sample ACF and PACF both die out quickly and the differenced series looks stationary with an ACF cutting off after lag 1. Which model for the original series is suggested?",
+      "options": [
+        "ARIMA(2, 0, 0)",
+        "ARIMA(0, 1, 1)",
+        "ARIMA(0, 0, 0)",
+        "ARIMA(1, 0, 0)"
+      ],
+      "answer": 1,
+      "explanation": "One difference achieving stationarity gives $d = 1$. An ACF on the differenced series that cuts off after lag 1 (with a tailing PACF) indicates an MA(1) on the differenced data, that is, ARIMA(0, 1, 1) overall.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-015",
+      "stem": "For a random walk with drift $X_t = \\delta + X_{t-1} + \\varepsilon_t$, what does the first difference $\\nabla X_t$ equal?",
+      "options": [
+        "$X_{t-1} + \\varepsilon_t$",
+        "$\\delta X_{t-1}$",
+        "$\\varepsilon_t$ only, with no constant",
+        "$\\delta + \\varepsilon_t$, white noise around a constant mean $\\delta$"
+      ],
+      "answer": 3,
+      "explanation": "$\\nabla X_t = X_t - X_{t-1} = \\delta + \\varepsilon_t$. The differenced series is white noise fluctuating around the constant drift $\\delta$, which produces the steady upward (or downward) movement of the level over time.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-016",
+      "stem": "Which of the following is the correct full form of an ARIMA(1, 1, 0) model, writing $W_t = \\nabla X_t$?",
+      "options": [
+        "$W_t = \\varepsilon_t$",
+        "$W_t = \\varepsilon_t + \\theta_1 \\varepsilon_{t-1}$",
+        "$X_t = \\phi_1 X_{t-1} + \\varepsilon_t$ with no differencing",
+        "$W_t = \\phi_1 W_{t-1} + \\varepsilon_t$"
+      ],
+      "answer": 3,
+      "explanation": "ARIMA(1, 1, 0) differences once ($W_t = \\nabla X_t$) and fits an AR(1) to the difference: $W_t = \\phi_1 W_{t-1} + \\varepsilon_t$. There is no MA term since $q = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-017",
+      "stem": "A random walk $X_t = X_{t-1} + \\varepsilon_t$ (with $X_0 = 0$ and $\\mathrm{Var}(\\varepsilon_t) = \\sigma^2$) has what variance at time $t$?",
+      "options": [
+        "$\\sigma^2 / t$",
+        "$t \\sigma^2$, growing linearly with $t$",
+        "zero",
+        "$\\sigma^2$, constant in $t$"
+      ],
+      "answer": 1,
+      "explanation": "Writing $X_t = \\varepsilon_1 + \\varepsilon_2 + \\dots + \\varepsilon_t$ as a sum of $t$ independent shocks gives $\\mathrm{Var}(X_t) = t\\sigma^2$. The variance grows without bound, which is why the random walk is non-stationary.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-018",
+      "stem": "Which sequence correctly describes the Box-Jenkins modeling cycle?",
+      "options": [
+        "difference exactly twice regardless of the data",
+        "identify (including differencing), estimate parameters, then check diagnostics",
+        "forecast, then identify, then estimate",
+        "estimate, then difference, then forget diagnostics"
+      ],
+      "answer": 1,
+      "explanation": "The Box-Jenkins cycle is: identification (assess stationarity, difference if needed, read ACF/PACF to choose $p, q$), estimation of parameters, and diagnostic checking of residuals, iterating as needed before forecasting.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-019",
+      "stem": "For a series exhibiting strong annual seasonality in monthly data, a seasonal difference is often taken. Which operator represents a seasonal difference at period 12?",
+      "options": [
+        "$(1 - B^{12})$",
+        "$(1 - B)^{12}$",
+        "$(1 + B^{12})$",
+        "$(1 - B)$"
+      ],
+      "answer": 0,
+      "explanation": "A seasonal difference at period 12 is $\\nabla_{12} X_t = X_t - X_{t-12} = (1 - B^{12}) X_t$, subtracting the value from the same month a year earlier to remove the seasonal pattern. This differs from $(1 - B)^{12}$, which is twelvefold ordinary differencing.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-020",
+      "stem": "An ARIMA(2, 1, 1) model has how many autoregressive, differencing, and moving-average components respectively?",
+      "options": [
+        "2 AR, 1 difference, 1 MA",
+        "2 AR, 1 difference, 2 MA",
+        "1 AR, 2 differences, 1 MA",
+        "1 AR, 1 difference, 1 MA"
+      ],
+      "answer": 0,
+      "explanation": "ARIMA(p, d, q) = ARIMA(2, 1, 1) means $p = 2$ autoregressive terms, $d = 1$ difference, and $q = 1$ moving-average term.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-021",
+      "stem": "A stationary series that needs no differencing is modeled by an ARIMA(p, d, q) with which value of $d$, equivalently an ordinary ARMA model?",
+      "options": [
+        "$d$ can be any positive integer",
+        "$d = 2$",
+        "$d = 1$",
+        "$d = 0$"
+      ],
+      "answer": 3,
+      "explanation": "If the series is already stationary, no differencing is needed, so $d = 0$ and ARIMA(p, 0, q) reduces to an ordinary ARMA(p, q).",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-022",
+      "stem": "After fitting an ARIMA model, the residuals are examined. What should they ideally look like for the model to be adequate?",
+      "options": [
+        "white noise: no significant autocorrelation left in the residual ACF",
+        "perfectly periodic with the seasonal period",
+        "a slowly decaying ACF",
+        "a strong linear trend"
+      ],
+      "answer": 0,
+      "explanation": "An adequate model leaves residuals that resemble white noise, with sample autocorrelations inside the significance bounds and a non-significant Ljung-Box statistic. Remaining structure in the residual ACF signals the model has not captured all the dependence.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-023",
+      "format": "cloze",
+      "stem": "Consider the time series of values $5, 8, 12, 17, 23$.",
+      "solution": "The first difference between the second and first observations, $8 - 5$, is {{1}}. Continuing, the full first-differenced series is $3, 4, 5,$ and {{2}}. Because these first differences are themselves increasing, the original series has a trend that is more than linear, so a {{3}} difference would be needed to reach a constant.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "second",
+            "first",
+            "third"
+          ],
+          "answer": "second"
+        }
+      ],
+      "explanation": "Differences: $8-5=3$, $12-8=4$, $17-12=5$, $23-17=6$, giving $3,4,5,6$. These rise by 1 each step, so a second difference yields the constant $1,1,1$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-024",
+      "format": "cloze",
+      "stem": "Recall the meaning of the parameters in an ARIMA(p, d, q) model.",
+      "solution": "In ARIMA(2, 1, 0), the number of autoregressive terms is {{1}}, the number of times the series is differenced is {{2}}, and the number of moving-average terms is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "ARIMA(p, d, q) = (2, 1, 0): $p = 2$ AR terms, $d = 1$ difference, $q = 0$ MA terms.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-025",
+      "format": "cloze",
+      "stem": "A random walk with drift is $X_t = \\delta + X_{t-1} + \\varepsilon_t$, where $\\varepsilon_t$ is white noise with variance $\\sigma^2$ and $\\delta = 2$.",
+      "solution": "The first difference is $\\nabla X_t = X_t - X_{t-1} =$ {{1}} $+ \\varepsilon_t$, so the differenced series fluctuates around the constant {{2}}. The original undifferenced random walk {{3}} stationary.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is not",
+            "is"
+          ],
+          "answer": "is not"
+        }
+      ],
+      "explanation": "$\\nabla X_t = \\delta + \\varepsilon_t = 2 + \\varepsilon_t$, white noise around mean $2$. The level itself has variance growing with $t$, so the random walk is not stationary; differencing makes it stationary.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-026",
+      "format": "cloze",
+      "stem": "Identify the integration order and special cases of simple ARIMA models.",
+      "solution": "A series that must be differenced twice to become stationary is integrated of order {{1}}. The ARIMA(0, 1, 0) model is exactly a {{2}}. A series that is already stationary and needs no differencing has $d$ equal to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "random walk",
+            "white noise",
+            "moving average"
+          ],
+          "answer": "random walk"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Two differences for stationarity means $I(2)$. ARIMA(0, 1, 0) is $\\nabla X_t = \\varepsilon_t$, a random walk. A stationary series has $d = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-027",
+      "format": "cloze",
+      "stem": "A random walk $X_t = X_{t-1} + \\varepsilon_t$ has $X_0 = 0$ and white noise variance $\\sigma^2 = 4$.",
+      "solution": "The variance of $X_t$ is $t \\sigma^2$, so at $t = 5$ the variance is {{1}}. Because this variance {{2}} with $t$, the process is non-stationary. After taking one first difference, the resulting series is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "grows",
+            "shrinks",
+            "stays constant"
+          ],
+          "answer": "grows"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "white noise",
+            "another random walk",
+            "a trend"
+          ],
+          "answer": "white noise"
+        }
+      ],
+      "explanation": "$\\mathrm{Var}(X_5) = 5 \\times 4 = 20$. The variance grows linearly with $t$, so the walk is non-stationary. Its first difference is $\\nabla X_t = \\varepsilon_t$, white noise.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-arima-and-differencing-028",
+      "format": "cloze",
+      "stem": "Model identification after differencing relies on the differenced series' ACF and PACF, plus a unit-root test.",
+      "solution": "A sample ACF that decays very slowly across many lags signals that the series should be {{1}}. The standard formal test for a unit root is the Augmented {{2}} test. If, after one difference, the ACF of the differenced series cuts off after lag 1, an MA(1) on the difference is implied, giving an overall ARIMA model with $q$ equal to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "differenced",
+            "squared",
+            "left unchanged"
+          ],
+          "answer": "differenced"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "Dickey-Fuller",
+            "Dickey Fuller",
+            "dickey-fuller",
+            "dickey fuller"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "A slowly decaying ACF calls for differencing. The Augmented Dickey-Fuller test checks for a unit root. An ACF cutting off after lag 1 on the differenced data implies $q = 1$ (an ARIMA(0, 1, 1) if $p = 0$).",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    }
+  ]
+}

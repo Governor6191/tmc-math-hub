@@ -1,0 +1,497 @@
+{
+  "courseId": "mathematical-biology-i",
+  "topicId": "continuous-population-models",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-biology-i-continuous-population-models-001",
+      "stem": "The solution of the exponential growth model $\\dfrac{dN}{dt} = rN$ with $N(0) = N_0$ is which of the following?",
+      "options": [
+        "$N(t) = N_0 e^{-rt}$",
+        "$N(t) = N_0 r^t$",
+        "$N(t) = N_0 e^{rt}$",
+        "$N(t) = N_0 + rt$"
+      ],
+      "answer": 2,
+      "explanation": "Separating variables in $\\frac{dN}{dt} = rN$ gives $\\frac{dN}{N} = r\\,dt$, and integrating yields $\\ln N = rt + c$, so $N = N_0 e^{rt}$ once the constant is fixed by $N(0) = N_0$. With $r > 0$ this grows without bound. A linear form $N_0 + rt$ would solve $\\frac{dN}{dt} = r$ (constant rate), and the decaying form $N_0 e^{-rt}$ would solve $\\frac{dN}{dt} = -rN$.",
+      "difficulty": "warmup",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-002",
+      "stem": "For exponential growth with per-capita rate $r$, the doubling time is given by which formula?",
+      "options": [
+        "$rT = \\ln 2$, so $T = r \\ln 2$",
+        "$T = \\dfrac{2}{r}$",
+        "$T = \\dfrac{r}{\\ln 2}$",
+        "$T = \\dfrac{\\ln 2}{r}$"
+      ],
+      "answer": 3,
+      "explanation": "Doubling means $N(T) = 2N_0$. Using $N_0 e^{rT} = 2N_0$ gives $e^{rT} = 2$, so $rT = \\ln 2$ and $T = \\frac{\\ln 2}{r}$. The doubling time is inversely proportional to the growth rate: faster growth halves the time to double. The forms $r\\ln 2$ and $r/\\ln 2$ have $r$ in the wrong place, and $2/r$ ignores the logarithm entirely.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-003",
+      "stem": "A bacterial population grows exponentially with $r = 0.05$ per minute. To two decimal places, what is its doubling time in minutes?",
+      "options": [
+        "$0.69$",
+        "$3.47$",
+        "$20.00$",
+        "$13.86$"
+      ],
+      "answer": 3,
+      "explanation": "The doubling time is $T = \\frac{\\ln 2}{r} = \\frac{0.6931}{0.05} = 13.86$ minutes. The value $20$ comes from $1/r$, which is the time for growth by a factor of $e$, not $2$. The value $0.69$ is $\\ln 2$ alone, forgetting to divide by $r$. So the population doubles roughly every $13.86$ minutes.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-004",
+      "stem": "In the logistic equation $\\dfrac{dN}{dt} = rN\\left(1 - \\dfrac{N}{K}\\right)$, what does the parameter $K$ represent?",
+      "options": [
+        "The doubling time",
+        "The intrinsic growth rate",
+        "The initial population",
+        "The carrying capacity"
+      ],
+      "answer": 3,
+      "explanation": "$K$ is the carrying capacity, the population size at which growth stops because the per-capita rate $r(1 - N/K)$ reaches zero. For $N < K$ the population grows toward $K$, and for $N > K$ it declines toward $K$. The intrinsic rate is $r$, the initial population is $N(0)$, and the doubling time is a derived quantity, none of which is $K$.",
+      "difficulty": "warmup",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-005",
+      "stem": "What are the equilibria (steady states) of the logistic equation $\\dfrac{dN}{dt} = rN\\left(1 - \\dfrac{N}{K}\\right)$?",
+      "options": [
+        "$N^* = 0$ and $N^* = K$",
+        "$N^* = K/2$ only",
+        "$N^* = 0$ only",
+        "$N^* = r$ and $N^* = K$"
+      ],
+      "answer": 0,
+      "explanation": "Equilibria satisfy $\\frac{dN}{dt} = 0$, that is $rN(1 - N/K) = 0$. This product is zero when $N = 0$ or when $1 - N/K = 0$, giving $N = K$. So there are two steady states, $N^* = 0$ (extinction) and $N^* = K$ (carrying capacity). The value $K/2$ is where growth is fastest, not where it is zero, so it is not an equilibrium.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-006",
+      "stem": "Using the sign of $f'(N)$ for $f(N) = rN(1 - N/K)$, the stability of the equilibria $N^*=0$ and $N^*=K$ is which of the following?",
+      "options": [
+        "$N^* = 0$ stable, $N^* = K$ unstable",
+        "Both unstable",
+        "$N^* = 0$ unstable, $N^* = K$ stable",
+        "Both stable"
+      ],
+      "answer": 2,
+      "explanation": "Differentiate $f(N) = rN - rN^2/K$ to get $f'(N) = r - 2rN/K$. At $N = 0$, $f'(0) = r > 0$, so small populations grow away from zero, making extinction unstable. At $N = K$, $f'(K) = r - 2r = -r < 0$, so deviations decay and the carrying capacity is stable. Populations therefore settle at $K$, not at $0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-007",
+      "stem": "At what population size does the logistic model predict the fastest absolute growth rate $\\dfrac{dN}{dt}$?",
+      "options": [
+        "$N = K/4$",
+        "$N = 0$",
+        "$N = K/2$",
+        "$N = K$"
+      ],
+      "answer": 2,
+      "explanation": "The growth rate $f(N) = rN(1 - N/K)$ is a downward parabola in $N$, zero at $N = 0$ and $N = K$, so it peaks midway at $N = K/2$. Setting $f'(N) = r - 2rN/K = 0$ confirms the maximum at $N = K/2$, where $\\frac{dN}{dt} = rK/4$. This is why $K/2$ is the population that yields the maximum sustainable harvest.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-008",
+      "stem": "For the logistic model, the maximum sustainable yield (the largest constant harvest the population can support) is which of the following?",
+      "options": [
+        "$\\dfrac{rK}{4}$",
+        "$\\dfrac{rK}{2}$",
+        "$\\dfrac{rK}{8}$",
+        "$rK$"
+      ],
+      "answer": 0,
+      "explanation": "The natural growth $f(N) = rN(1 - N/K)$ is maximised at $N = K/2$, where $f(K/2) = r\\frac{K}{2}\\left(1 - \\frac{1}{2}\\right) = \\frac{rK}{4}$. A constant harvest equal to this peak growth can be sustained indefinitely while holding the population at $K/2$, so the maximum sustainable yield is $\\frac{rK}{4}$. Harvesting faster than $rK/4$ drives the population to collapse.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-009",
+      "stem": "A fishery follows logistic dynamics with $r = 0.8$ per year and $K = 1000$ tonnes. What is the maximum sustainable yield in tonnes per year?",
+      "options": [
+        "$200$",
+        "$100$",
+        "$800$",
+        "$400$"
+      ],
+      "answer": 0,
+      "explanation": "Maximum sustainable yield is $\\frac{rK}{4} = \\frac{0.8 \\times 1000}{4} = \\frac{800}{4} = 200$ tonnes per year, harvested while keeping the stock at $K/2 = 500$ tonnes. The value $800$ is $rK$, four times too large, and $400$ is $rK/2$, twice too large. Harvesting at $200$ tonnes per year is the most that can be taken without depleting the stock.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-010",
+      "stem": "In the logistic model, the per-capita growth rate $\\dfrac{1}{N}\\dfrac{dN}{dt}$ behaves how as $N$ increases from $0$ toward $K$?",
+      "options": [
+        "It stays constant at $r$",
+        "It increases without bound",
+        "It increases toward $r$",
+        "It decreases linearly from $r$ to $0$"
+      ],
+      "answer": 3,
+      "explanation": "Dividing the logistic rate by $N$ gives the per-capita rate $r(1 - N/K)$, a straight line in $N$ that starts at $r$ when $N = 0$ and falls to $0$ when $N = K$. So crowding steadily reduces the reproduction each individual achieves, declining linearly to zero at carrying capacity. It is not constant (that is the exponential model) and it never grows without bound.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-011",
+      "stem": "A population grows exponentially and triples in $10$ hours. Which equation determines its per-capita rate $r$ (per hour)?",
+      "options": [
+        "$10 r = 3$",
+        "$e^{3 r} = 10$",
+        "$r = 3 / 10$",
+        "$e^{10 r} = 3$"
+      ],
+      "answer": 3,
+      "explanation": "Exponential growth gives $N(t) = N_0 e^{rt}$. Tripling in $10$ hours means $N_0 e^{10 r} = 3 N_0$, so $e^{10 r} = 3$, and $r = \\frac{\\ln 3}{10} \\approx 0.110$ per hour. The linear relation $10r = 3$ and the simple ratio $3/10$ both ignore the exponential, while $e^{3r} = 10$ swaps the roles of the factor and the time.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-012",
+      "stem": "The logistic solution starting below $K$ produces which characteristic curve over time?",
+      "options": [
+        "An S-shaped (sigmoidal) curve approaching $K$",
+        "A straight line",
+        "A decaying exponential to zero",
+        "An unbounded exponential"
+      ],
+      "answer": 0,
+      "explanation": "Starting from a small $N_0 < K$, growth is nearly exponential at first, then slows as $N$ approaches $K$, producing an S-shaped or sigmoidal curve that levels off at the carrying capacity. The early acceleration and later saturation are the hallmark of logistic growth. It is neither a straight line nor an unbounded exponential, and it does not decay to zero from a positive start.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-013",
+      "stem": "An exponentially growing culture has $r = \\ln 2$ per hour. What is its doubling time?",
+      "options": [
+        "$2$ hours",
+        "$1$ hour",
+        "$0.5$ hours",
+        "$\\ln 2$ hours"
+      ],
+      "answer": 1,
+      "explanation": "The doubling time is $T = \\frac{\\ln 2}{r} = \\frac{\\ln 2}{\\ln 2} = 1$ hour. Choosing $r = \\ln 2$ makes the algebra cancel, so the population doubles every hour exactly. The value $2$ would be the doubling time only if $r = \\frac{\\ln 2}{2}$, and $0.5$ would require $r = 2\\ln 2$.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-014",
+      "stem": "If a logistic population is currently above its carrying capacity, $N > K$, what does the model predict?",
+      "options": [
+        "The population crashes to zero",
+        "The population stays constant",
+        "The population grows faster",
+        "The population declines toward $K$"
+      ],
+      "answer": 3,
+      "explanation": "When $N > K$, the factor $1 - N/K$ is negative, so $\\frac{dN}{dt} = rN(1 - N/K) < 0$ and the population declines. It falls back toward the carrying capacity $K$, which is the stable equilibrium, rather than continuing to zero. So overshooting $K$ leads to a decrease, not further growth and not a total crash.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-015",
+      "stem": "A constant-effort harvest is modelled as $\\dfrac{dN}{dt} = rN\\left(1 - \\dfrac{N}{K}\\right) - EN$, where $E$ is the harvesting effort. The nonzero equilibrium population is which of the following?",
+      "options": [
+        "$N^* = \\dfrac{E}{r}$",
+        "$N^* = K\\left(1 - \\dfrac{E}{r}\\right)$",
+        "$N^* = K$",
+        "$N^* = K\\left(1 + \\dfrac{E}{r}\\right)$"
+      ],
+      "answer": 1,
+      "explanation": "Set the rate to zero for $N \\neq 0$: $r(1 - N/K) - E = 0$, so $1 - N/K = E/r$, giving $N/K = 1 - E/r$ and $N^* = K\\left(1 - \\frac{E}{r}\\right)$. Harvesting effort lowers the equilibrium below $K$, and if $E \\geq r$ the stock collapses to zero. The plain $K$ ignores harvesting, and the $1 + E/r$ form has the wrong sign.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-016",
+      "stem": "Which assumption distinguishes the logistic model from the exponential model?",
+      "options": [
+        "The population is measured in continuous time",
+        "Individuals reproduce continuously",
+        "There is a constant per-capita rate",
+        "The per-capita rate decreases as the population grows"
+      ],
+      "answer": 3,
+      "explanation": "The key new ingredient in the logistic model is density dependence: the per-capita rate $r(1 - N/K)$ falls as $N$ rises, reflecting competition for limited resources. The exponential model keeps a constant per-capita rate. Both models use continuous time and continuous reproduction, so those features do not distinguish them; only the density-dependent slowdown does.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-017",
+      "stem": "For the exponential decay model $\\dfrac{dN}{dt} = -\\mu N$ with $\\mu > 0$, the half-life (time for $N$ to fall to half) is which of the following?",
+      "options": [
+        "$\\dfrac{1}{\\mu}$",
+        "$2\\mu$",
+        "$\\dfrac{\\ln 2}{\\mu}$",
+        "$\\dfrac{\\mu}{\\ln 2}$"
+      ],
+      "answer": 2,
+      "explanation": "The solution is $N = N_0 e^{-\\mu t}$. Halving requires $e^{-\\mu T} = \\frac{1}{2}$, so $\\mu T = \\ln 2$ and $T = \\frac{\\ln 2}{\\mu}$. The half-life mirrors the doubling-time formula, with the decay constant $\\mu$ in place of the growth rate. The form $1/\\mu$ is the mean lifetime, not the half-life, and $\\mu/\\ln 2$ inverts the correct ratio.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-018",
+      "stem": "An equilibrium $N^*$ of $\\dfrac{dN}{dt} = f(N)$ is locally stable under which condition on $f'(N^*)$?",
+      "options": [
+        "$f'(N^*) > 0$",
+        "$f'(N^*) < 0$",
+        "$f'(N^*) = 0$",
+        "$f'(N^*) > 1$"
+      ],
+      "answer": 1,
+      "explanation": "Linearising about $N^*$, a small perturbation $\\eta$ obeys $\\frac{d\\eta}{dt} \\approx f'(N^*)\\eta$, which decays when $f'(N^*) < 0$ and grows when $f'(N^*) > 0$. So the equilibrium is locally stable exactly when $f'(N^*) < 0$. The condition $f'(N^*) > 0$ gives instability, while $f'(N^*) = 0$ is the borderline case where the linear test is inconclusive.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-019",
+      "stem": "In the logistic model with $r = 0.5$ per year and $K = 800$, what is the absolute growth rate $\\dfrac{dN}{dt}$ when $N = K/2 = 400$?",
+      "options": [
+        "$200$ per year",
+        "$100$ per year",
+        "$50$ per year",
+        "$400$ per year"
+      ],
+      "answer": 1,
+      "explanation": "At $N = 400$, $\\frac{dN}{dt} = rN(1 - N/K) = 0.5 \\times 400 \\times (1 - 400/800) = 0.5 \\times 400 \\times 0.5 = 100$ per year. This is the peak growth rate, equal to the maximum sustainable yield $\\frac{rK}{4} = \\frac{0.5 \\times 800}{4} = 100$. The value $200$ would be $rK/2$ and $400$ would be $rN$ without the density factor.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-020",
+      "stem": "Harvesting a logistic stock at a constant rate $H$ slightly below the maximum sustainable yield produces how many positive equilibria?",
+      "options": [
+        "Two positive equilibria",
+        "One positive equilibrium",
+        "Infinitely many",
+        "No positive equilibria"
+      ],
+      "answer": 0,
+      "explanation": "With constant-rate harvesting, equilibria solve $rN(1 - N/K) = H$, a quadratic whose left side is a parabola peaking at $H = rK/4$. For $H$ just below this peak the horizontal line $H$ cuts the parabola twice, giving two positive equilibria: a lower unstable one and an upper stable one. At exactly $H = rK/4$ they merge into one, and above it there are none, which is the collapse threshold.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-021",
+      "stem": "A population follows $\\dfrac{dN}{dt} = rN$ with $r = 0.1$ per day, starting from $N_0 = 50$.",
+      "format": "cloze",
+      "solution": "Because the per-capita rate is constant, this is the {{1}} model. The doubling time is $T =$ {{2}} days (to two decimals). After one doubling time the population reaches {{3}} individuals.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "exponential",
+            "logistic",
+            "harvesting"
+          ],
+          "answer": "exponential"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6.93,
+          "tolerance": 0.05
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 100,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "A constant per-capita rate gives the exponential model $\\frac{dN}{dt} = rN$. The doubling time is $T = \\frac{\\ln 2}{r} = \\frac{0.6931}{0.1} = 6.93$ days. By definition, after one doubling time the population is twice the start, $2 \\times 50 = 100$ individuals.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-022",
+      "stem": "Consider the logistic model $\\dfrac{dN}{dt} = rN\\left(1 - \\dfrac{N}{K}\\right)$ with $r = 0.4$ per year and $K = 600$.",
+      "format": "cloze",
+      "solution": "The two equilibria are $N^* = 0$ and $N^* =$ {{1}}. The equilibrium at $N^* = 0$ is {{2}}, while the one at carrying capacity is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 600,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "unstable",
+            "stable",
+            "neutral"
+          ],
+          "answer": "unstable"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "stable",
+            "unstable",
+            "neutral"
+          ],
+          "answer": "stable"
+        }
+      ],
+      "explanation": "Equilibria solve $rN(1 - N/K) = 0$, giving $N^* = 0$ and $N^* = K = 600$. With $f'(N) = r - 2rN/K$, we get $f'(0) = 0.4 > 0$, so extinction is unstable, and $f'(600) = 0.4 - 0.8 = -0.4 < 0$, so the carrying capacity is stable.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-023",
+      "stem": "A fish stock follows logistic dynamics with intrinsic rate $r = 0.6$ per year and carrying capacity $K = 2000$ tonnes.",
+      "format": "cloze",
+      "solution": "The maximum sustainable yield is achieved when the stock is held at $N =$ {{1}} tonnes. At that point the yield equals $\\dfrac{rK}{4} =$ {{2}} tonnes per year. Harvesting at a constant rate above this value causes the stock to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1000,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 300,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "collapse",
+            "stabilise at K",
+            "grow without bound"
+          ],
+          "answer": "collapse"
+        }
+      ],
+      "explanation": "Logistic growth peaks at $N = K/2 = 1000$ tonnes. The peak growth, equal to the maximum sustainable yield, is $\\frac{rK}{4} = \\frac{0.6 \\times 2000}{4} = 300$ tonnes per year. Any constant harvest larger than $300$ exceeds what the population can regenerate, so the stock declines to collapse.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-024",
+      "stem": "A radioactive tracer in tissue decays according to $\\dfrac{dN}{dt} = -\\mu N$ with $\\mu = 0.0231$ per hour.",
+      "format": "cloze",
+      "solution": "This is exponential {{1}}. The half-life is $T =$ {{2}} hours (to the nearest hour). After two half-lives the fraction of tracer remaining is {{3}} of the original.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "decay",
+            "growth",
+            "logistic growth"
+          ],
+          "answer": "decay"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 30,
+          "tolerance": 1
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "one quarter",
+            "one half",
+            "one eighth"
+          ],
+          "answer": "one quarter"
+        }
+      ],
+      "explanation": "A negative per-capita rate gives exponential decay. The half-life is $T = \\frac{\\ln 2}{\\mu} = \\frac{0.6931}{0.0231} \\approx 30$ hours. Each half-life halves the amount, so after two half-lives the fraction remaining is $\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}$, one quarter of the original.",
+      "difficulty": "core",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-025",
+      "stem": "Analyse the stability of a general one-dimensional model $\\dfrac{dN}{dt} = f(N)$ at an equilibrium $N^*$.",
+      "format": "cloze",
+      "solution": "A small perturbation $\\eta$ obeys $\\dfrac{d\\eta}{dt} \\approx f'(N^*)\\,\\eta$. The equilibrium is stable when $f'(N^*)$ is {{1}} and unstable when it is {{2}}. The case $f'(N^*) = 0$ makes the linear test {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "negative",
+            "positive",
+            "zero"
+          ],
+          "answer": "negative"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "positive",
+            "negative",
+            "imaginary"
+          ],
+          "answer": "positive"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "inconclusive",
+            "always stable",
+            "always unstable"
+          ],
+          "answer": "inconclusive"
+        }
+      ],
+      "explanation": "Linearising gives $\\frac{d\\eta}{dt} \\approx f'(N^*)\\eta$, whose solution $\\eta \\propto e^{f'(N^*)t}$ decays when $f'(N^*) < 0$ (stable) and grows when $f'(N^*) > 0$ (unstable). When $f'(N^*) = 0$ the linear term vanishes, so higher-order terms decide and the linear test is inconclusive.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    },
+    {
+      "id": "mathematical-biology-i-continuous-population-models-026",
+      "stem": "An exponentially growing population satisfies $N(t) = N_0 e^{rt}$ and reaches four times its initial size in $12$ hours.",
+      "format": "cloze",
+      "solution": "Reaching four times the start means $e^{12 r} =$ {{1}}. Since quadrupling is two doublings, the doubling time is {{2}} hours. The per-capita rate is therefore $r = \\dfrac{\\ln 4}{12} \\approx$ {{3}} per hour (to three decimals).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.116,
+          "tolerance": 0.003
+        }
+      ],
+      "explanation": "Quadrupling gives $N_0 e^{12r} = 4N_0$, so $e^{12r} = 4$. Quadrupling is two successive doublings, and since it took $12$ hours, one doubling takes $12/2 = 6$ hours. Solving for the rate, $r = \\frac{\\ln 4}{12} = \\frac{1.3863}{12} \\approx 0.116$ per hour, which matches $\\frac{\\ln 2}{6}$ as expected.",
+      "difficulty": "stretch",
+      "source": "in the style of Murray, Mathematical Biology"
+    }
+  ]
+}

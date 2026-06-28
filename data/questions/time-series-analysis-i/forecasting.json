@@ -1,0 +1,522 @@
+{
+  "courseId": "time-series-analysis-i",
+  "topicId": "forecasting",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "time-series-analysis-i-forecasting-001",
+      "stem": "The naive forecast for the next period sets the forecast equal to which value?",
+      "options": [
+        "the long-run trend value",
+        "zero",
+        "the most recent observation $Y_t$",
+        "the average of all past observations"
+      ],
+      "answer": 2,
+      "explanation": "The naive forecast uses the last observed value as the prediction for the next period: $\\hat{Y}_{t+1} = Y_t$. It is the optimal forecast for a pure random walk and a common benchmark.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-002",
+      "stem": "The mean forecast predicts each future value as which quantity?",
+      "options": [
+        "the previous forecast unchanged",
+        "the most recent observation",
+        "the average of all observations seen so far",
+        "the maximum observed value"
+      ],
+      "answer": 2,
+      "explanation": "The mean (average) forecast uses the sample mean of the historical data, $\\hat{Y}_{t+1} = \\bar{Y}$, as the prediction. It is sensible when the series fluctuates around a constant level with no trend.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-003",
+      "stem": "The forecast error at time $t$ is defined as which difference?",
+      "options": [
+        "$e_t = Y_t - \\hat{Y}_t$, observed minus forecast",
+        "$e_t = Y_t \\times \\hat{Y}_t$",
+        "$e_t = \\hat{Y}_t - Y_t$, forecast minus observed, always positive",
+        "$e_t = \\hat{Y}_t / Y_t$"
+      ],
+      "answer": 0,
+      "explanation": "The forecast error is the actual value minus the forecast, $e_t = Y_t - \\hat{Y}_t$. It can be positive or negative, and forecast accuracy measures summarize these errors.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-004",
+      "stem": "The simple exponential smoothing update is $\\hat{Y}_{t+1} = \\alpha Y_t + (1 - \\alpha)\\hat{Y}_t$. With $\\alpha = 0.3$, the latest observation $Y_t = 100$, and the current forecast $\\hat{Y}_t = 90$, what is the forecast for the next period?",
+      "options": [
+        "100",
+        "97",
+        "90",
+        "93"
+      ],
+      "answer": 3,
+      "explanation": "$\\hat{Y}_{t+1} = 0.3 \\times 100 + 0.7 \\times 90 = 30 + 63 = 93$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-005",
+      "stem": "In simple exponential smoothing, what is the role of the smoothing parameter $\\alpha$?",
+      "options": [
+        "it is the weight placed on the most recent observation, with $0 \\le \\alpha \\le 1$",
+        "it is the number of past terms averaged",
+        "it equals the forecast error variance",
+        "it sets the length of the seasonal period"
+      ],
+      "answer": 0,
+      "explanation": "The constant $\\alpha \\in [0, 1]$ is the weight given to the newest observation; $(1 - \\alpha)$ weights the previous forecast. A larger $\\alpha$ makes the forecast respond more quickly to recent changes.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-006",
+      "stem": "In simple exponential smoothing, a value of $\\alpha$ close to 1 produces forecasts that do what?",
+      "options": [
+        "react strongly to the most recent observation, with little smoothing",
+        "always equal the overall sample mean",
+        "depend only on the very first observation",
+        "ignore the most recent data entirely"
+      ],
+      "answer": 0,
+      "explanation": "When $\\alpha$ is near 1, almost all weight is on the latest observation, so the forecast tracks recent values closely and smooths very little (approaching the naive forecast). A small $\\alpha$ gives heavy smoothing and slow adjustment.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-007",
+      "stem": "A set of forecast errors is $2, -3, 4, -1$. What is the mean absolute error (MAE)?",
+      "options": [
+        "2.5",
+        "3.5",
+        "10",
+        "0.5"
+      ],
+      "answer": 0,
+      "explanation": "MAE $= \\frac{1}{n}\\sum |e_t| = (|2| + |-3| + |4| + |-1|)/4 = (2 + 3 + 4 + 1)/4 = 10/4 = 2.5$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-008",
+      "stem": "For the same forecast errors $2, -3, 4, -1$, what is the mean squared error (MSE)?",
+      "options": [
+        "30",
+        "2.5",
+        "7.5",
+        "5.0"
+      ],
+      "answer": 2,
+      "explanation": "MSE $= \\frac{1}{n}\\sum e_t^2 = (2^2 + (-3)^2 + 4^2 + (-1)^2)/4 = (4 + 9 + 16 + 1)/4 = 30/4 = 7.5$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-009",
+      "stem": "Given that the mean squared error is MSE $= 7.5$, what is the root mean squared error (RMSE), to three decimals?",
+      "options": [
+        "56.250",
+        "7.500",
+        "2.739",
+        "3.750"
+      ],
+      "answer": 2,
+      "explanation": "RMSE $= \\sqrt{\\text{MSE}} = \\sqrt{7.5} \\approx 2.739$. The RMSE returns the error measure to the original units of the data.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-010",
+      "stem": "Which statement correctly distinguishes MAE from MSE as forecast accuracy measures?",
+      "options": [
+        "MAE and MSE always give the same numerical value",
+        "MSE can be negative while MAE cannot",
+        "MAE penalizes large errors more heavily than MSE does",
+        "MSE penalizes large errors more heavily because errors are squared"
+      ],
+      "answer": 3,
+      "explanation": "Because MSE squares the errors, it gives disproportionately large weight to big errors, making it more sensitive to outliers than the MAE, which weights all errors linearly. Both are non-negative.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-011",
+      "stem": "A 3-period moving-average forecast uses the average of the three most recent observations. If the last three values are $20, 26, 23$, what is the moving-average forecast for the next period?",
+      "options": [
+        "23",
+        "20",
+        "69",
+        "26"
+      ],
+      "answer": 0,
+      "explanation": "The 3-period moving average is $(20 + 26 + 23)/3 = 69/3 = 23$, which serves as the forecast for the next period.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-012",
+      "stem": "For a stationary series with no trend or seasonality, forecasts from simple exponential smoothing made several steps ahead behave how?",
+      "options": [
+        "they oscillate with growing amplitude",
+        "they increase linearly with the horizon",
+        "they are flat: all future forecasts equal the most recent smoothed value",
+        "they decay to zero"
+      ],
+      "answer": 2,
+      "explanation": "Simple exponential smoothing produces a flat multi-step forecast: every forecast beyond one step ahead equals the last computed smoothed level. It does not project trend, so the forecast function is a horizontal line.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-013",
+      "stem": "Which measure expresses forecast accuracy as a percentage and is scale-free, useful for comparing across series of different magnitudes?",
+      "options": [
+        "the mean squared error (MSE)",
+        "the root mean squared error (RMSE)",
+        "the mean absolute error (MAE)",
+        "the mean absolute percentage error (MAPE)"
+      ],
+      "answer": 3,
+      "explanation": "The mean absolute percentage error, MAPE $= \\frac{1}{n}\\sum |e_t / Y_t| \\times 100$, expresses errors relative to the actual values as a percentage, making it unit-free and comparable across series. MAE, MSE, and RMSE are all scale-dependent.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-014",
+      "stem": "The forecast errors are $5, -5, 5, -5$. What is the mean error (ME), and what does it reveal here?",
+      "options": [
+        "ME $= -5$, indicating negative bias",
+        "ME $= 20$, the sum of absolute errors",
+        "ME $= 5$, indicating strong positive bias",
+        "ME $= 0$, even though the individual errors are large"
+      ],
+      "answer": 3,
+      "explanation": "ME $= (5 - 5 + 5 - 5)/4 = 0$. The mean error is zero because positive and negative errors cancel, which is why ME alone is a poor accuracy measure: it detects bias but not the size of errors. MAE or MSE would reveal the large errors.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-015",
+      "stem": "Why is the naive forecast $\\hat{Y}_{t+1} = Y_t$ the optimal one-step forecast for a random walk $Y_t = Y_{t-1} + \\varepsilon_t$?",
+      "options": [
+        "because the best prediction of $Y_{t+1}$ is $Y_t$, since the expected change $E(\\varepsilon_{t+1}) = 0$",
+        "because the random walk has a strong deterministic trend",
+        "because the mean of the whole series is the best forecast",
+        "because the variance of the series is constant"
+      ],
+      "answer": 0,
+      "explanation": "For a random walk, $Y_{t+1} = Y_t + \\varepsilon_{t+1}$ and $E(\\varepsilon_{t+1}) = 0$, so the conditional expectation of the next value given the past is exactly $Y_t$. Hence the naive forecast is optimal in the mean-squared-error sense.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-016",
+      "stem": "Simple exponential smoothing is initialized with $\\hat{Y}_1 = Y_1 = 50$. With $\\alpha = 0.4$ and the next observation $Y_1 = 50$, $Y_2 = 60$, what is the forecast $\\hat{Y}_3$?",
+      "options": [
+        "56",
+        "54",
+        "50",
+        "60"
+      ],
+      "answer": 1,
+      "explanation": "The forecast for period 3 uses $Y_2$ and $\\hat{Y}_2$. Here $\\hat{Y}_2 = \\hat{Y}_1 = 50$ (initialized), so $\\hat{Y}_3 = \\alpha Y_2 + (1 - \\alpha)\\hat{Y}_2 = 0.4 \\times 60 + 0.6 \\times 50 = 24 + 30 = 54$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-017",
+      "stem": "A forecaster computes RMSE $= 4$ for model A and RMSE $= 6$ for model B on the same test set. Which model forecasts more accurately by this criterion?",
+      "options": [
+        "model B, because its RMSE is larger",
+        "RMSE cannot be used to compare models",
+        "model A, because its RMSE is smaller",
+        "they are equally accurate"
+      ],
+      "answer": 2,
+      "explanation": "Lower error means better accuracy, so model A (RMSE 4) outperforms model B (RMSE 6) on this data. Smaller RMSE, MAE, or MSE all indicate closer agreement between forecasts and actuals.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-018",
+      "stem": "Compared with a simple moving average, a key advantage of exponential smoothing is that it does what?",
+      "options": [
+        "gives equal weight to all past observations",
+        "requires storing the entire history explicitly at each step",
+        "ignores all but the single most recent observation",
+        "gives geometrically declining weights to older observations, while using all of the past"
+      ],
+      "answer": 3,
+      "explanation": "Exponential smoothing assigns exponentially (geometrically) decreasing weights to older data, so recent observations matter most while the entire past still contributes, and it can be updated recursively without storing all history. A simple moving average weights its window equally and drops older points entirely.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-019",
+      "stem": "The actual values are $Y = 10, 12, 11$ and the forecasts are $\\hat{Y} = 9, 14, 11$. What is the MAE?",
+      "options": [
+        "0.0",
+        "2.0",
+        "1.0",
+        "3.0"
+      ],
+      "answer": 2,
+      "explanation": "Errors $e_t = Y_t - \\hat{Y}_t$ are $10-9=1$, $12-14=-2$, $11-11=0$. MAE $= (|1| + |-2| + |0|)/3 = 3/3 = 1.0$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-020",
+      "stem": "For the errors $1, -2, 0$ from the previous setup, what is the MSE?",
+      "options": [
+        "3.0",
+        "5.0",
+        "1.667",
+        "1.0"
+      ],
+      "answer": 2,
+      "explanation": "MSE $= (1^2 + (-2)^2 + 0^2)/3 = (1 + 4 + 0)/3 = 5/3 \\approx 1.667$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-021",
+      "stem": "A series fluctuates around a stable mean of 200 with no trend or seasonality. Which simple forecasting method is most naturally suited to it?",
+      "options": [
+        "fitting a steep linear trend",
+        "a high-order seasonal model",
+        "the mean (average) forecast",
+        "forecasting by extrapolating a quadratic curve"
+      ],
+      "answer": 2,
+      "explanation": "When a series varies around a constant level with no systematic trend or season, the mean forecast (predicting the overall average) is a sound, simple choice. Trend or seasonal models would fit structure that is not present.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-022",
+      "stem": "Forecast accuracy is best assessed on which data?",
+      "options": [
+        "a held-out test set the model did not see during fitting (out-of-sample)",
+        "randomly generated numbers unrelated to the series",
+        "the same data used to fit the model (in-sample)",
+        "only the single most recent observation"
+      ],
+      "answer": 0,
+      "explanation": "Genuine forecast accuracy is judged out-of-sample, on data withheld from estimation, because in-sample fit can be optimistic (a model can overfit the training data). Comparing MAE, MSE, or RMSE on a test set gives an honest measure of forecasting performance.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-023",
+      "format": "cloze",
+      "stem": "Simple exponential smoothing uses $\\hat{Y}_{t+1} = \\alpha Y_t + (1 - \\alpha)\\hat{Y}_t$. Take $\\alpha = 0.2$, the latest observation $Y_t = 120$, and the current forecast $\\hat{Y}_t = 100$.",
+      "solution": "The weight on the previous forecast is $1 - \\alpha =$ {{1}}. The forecast for the next period is $\\hat{Y}_{t+1} = \\alpha Y_t + (1 - \\alpha)\\hat{Y}_t =$ {{2}}. A larger value of $\\alpha$ would make the forecast respond {{3}} to the most recent observation.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.8,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 104,
+          "tolerance": 0.1
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "more strongly",
+            "more weakly",
+            "not at all"
+          ],
+          "answer": "more strongly"
+        }
+      ],
+      "explanation": "$1 - \\alpha = 0.8$. $\\hat{Y}_{t+1} = 0.2 \\times 120 + 0.8 \\times 100 = 24 + 80 = 104$. A larger $\\alpha$ puts more weight on the newest data, so the forecast reacts more strongly to it.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-024",
+      "format": "cloze",
+      "stem": "A model produces forecast errors $e_t = Y_t - \\hat{Y}_t$ of $3, -1, -2, 4$ over four periods.",
+      "solution": "The mean absolute error is MAE $= \\frac{1}{4}\\sum |e_t| =$ {{1}}. The mean squared error is MSE $= \\frac{1}{4}\\sum e_t^2 =$ {{2}}. The root mean squared error is RMSE $= \\sqrt{\\text{MSE}} =$ {{3}} (to three decimals).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2.739,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "MAE $= (3 + 1 + 2 + 4)/4 = 10/4 = 2.5$. MSE $= (9 + 1 + 4 + 16)/4 = 30/4 = 7.5$. RMSE $= \\sqrt{7.5} \\approx 2.739$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-025",
+      "format": "cloze",
+      "stem": "Match each simple forecasting method to how it generates its prediction for the next period.",
+      "solution": "Setting the forecast equal to the most recent observation is the {{1}} forecast. Setting it equal to the average of all past observations is the {{2}} forecast. Averaging only the $k$ most recent observations is the {{3}} forecast.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "naive",
+            "mean",
+            "moving-average"
+          ],
+          "answer": "naive"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "mean",
+            "naive",
+            "moving-average"
+          ],
+          "answer": "mean"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "moving-average",
+            "naive",
+            "mean"
+          ],
+          "answer": "moving-average"
+        }
+      ],
+      "explanation": "Naive = last observation; mean = average of all data; moving-average = average of the most recent $k$ values.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-026",
+      "format": "cloze",
+      "stem": "A 4-period moving average is used to forecast a series. The four most recent observations are $30, 34, 28, 32$.",
+      "solution": "The sum of the four most recent observations is {{1}}. The 4-period moving-average forecast for the next period is therefore {{2}}. Unlike exponential smoothing, this method gives each of the four observations a weight that is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 124,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 31,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "equal",
+            "geometrically declining",
+            "increasing"
+          ],
+          "answer": "equal"
+        }
+      ],
+      "explanation": "Sum $= 30 + 34 + 28 + 32 = 124$. Forecast $= 124/4 = 31$. A simple moving average weights each observation in its window equally.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-027",
+      "format": "cloze",
+      "stem": "Two forecasting models are compared on the same out-of-sample test set. Model A has MAE $= 3.2$ and RMSE $= 4.0$; model B has MAE $= 2.8$ and RMSE $= 5.5$.",
+      "solution": "By the MAE criterion, the better model is model {{1}}. By the RMSE criterion, the better model is model {{2}}. The fact that model B has a lower MAE but a higher RMSE suggests that model B makes a few unusually {{3}} errors.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "B",
+            "A"
+          ],
+          "answer": "B"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "A",
+            "B"
+          ],
+          "answer": "A"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "large",
+            "small"
+          ],
+          "answer": "large"
+        }
+      ],
+      "explanation": "Lower MAE (2.8) favors B; lower RMSE (4.0) favors A. RMSE penalizes large errors more heavily, so B's higher RMSE despite lower MAE points to a few large outlying errors.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-forecasting-028",
+      "format": "cloze",
+      "stem": "Simple exponential smoothing is applied with $\\alpha = 0.5$, starting from $\\hat{Y}_2 = 40$. The observation in period 2 is $Y_2 = 50$.",
+      "solution": "The forecast for period 3 is $\\hat{Y}_3 = \\alpha Y_2 + (1 - \\alpha)\\hat{Y}_2 =$ {{1}}. If period 3 then turns out to be $Y_3 = 47$, the forecast error $e_3 = Y_3 - \\hat{Y}_3$ is {{2}}. For a stationary series with no trend, the two-step-ahead forecast $\\hat{Y}_4$ made at time 2 would be {{3}} the one-step forecast $\\hat{Y}_3$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 45,
+          "tolerance": 0.1
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.1
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "equal to",
+            "greater than",
+            "less than"
+          ],
+          "answer": "equal to"
+        }
+      ],
+      "explanation": "$\\hat{Y}_3 = 0.5 \\times 50 + 0.5 \\times 40 = 25 + 20 = 45$. Error $= 47 - 45 = 2$. Simple exponential smoothing gives a flat multi-step forecast, so the two-step forecast equals the one-step forecast.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    }
+  ]
+}

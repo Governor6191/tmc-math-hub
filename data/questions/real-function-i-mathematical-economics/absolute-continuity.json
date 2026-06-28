@@ -1,0 +1,462 @@
+{
+  "courseId": "real-function-i-mathematical-economics",
+  "topicId": "absolute-continuity",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-001",
+      "stem": "A function $f:[a,b] \\to \\mathbb{R}$ is absolutely continuous if for every $\\varepsilon > 0$ there is a $\\delta > 0$ such that, for every finite collection of disjoint subintervals $(a_k, b_k)$:",
+      "options": [
+        "$f$ is differentiable with $|f'| < \\delta$.",
+        "$\\sum_k (b_k - a_k) < \\delta$ implies $\\sum_k |f(b_k) - f(a_k)| < \\varepsilon$.",
+        "$\\sum_k |f(b_k) - f(a_k)| < \\delta$ implies $\\sum_k (b_k - a_k) < \\varepsilon$.",
+        "$|x - y| < \\delta$ implies $|f(x) - f(y)| < \\varepsilon$."
+      ],
+      "answer": 1,
+      "explanation": "Absolute continuity strengthens uniform continuity by controlling the total increment over many disjoint intervals at once: whenever the total length $\\sum (b_k - a_k) < \\delta$, the total variation $\\sum |f(b_k)-f(a_k)| < \\varepsilon$. Option 1 is merely uniform continuity (a single interval).",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-002",
+      "stem": "If $f$ is absolutely continuous on $[a,b]$, which of the following must hold?",
+      "options": [
+        "$f$ is uniformly continuous on $[a,b]$.",
+        "$f$ is differentiable everywhere.",
+        "$f$ is monotone.",
+        "$f$ has unbounded variation."
+      ],
+      "answer": 0,
+      "explanation": "Taking a single interval in the definition (one term in the sum) recovers the statement of uniform continuity. Hence absolute continuity implies uniform continuity. It does not force monotonicity or differentiability at every point.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-003",
+      "stem": "Every absolutely continuous function on $[a,b]$ is also:",
+      "options": [
+        "discontinuous somewhere.",
+        "of bounded variation.",
+        "unbounded.",
+        "constant."
+      ],
+      "answer": 1,
+      "explanation": "Absolute continuity implies bounded variation. Choosing $\\varepsilon = 1$ gives a $\\delta$; partition $[a,b]$ into finitely many pieces each shorter than $\\delta$, and the variation on each is at most $1$, so the total variation is finite.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-004",
+      "stem": "The chain of implications for a function on $[a,b]$ that is correct is:",
+      "options": [
+        "bounded variation $\\Rightarrow$ absolutely continuous $\\Rightarrow$ Lipschitz.",
+        "uniformly continuous $\\Rightarrow$ absolutely continuous $\\Rightarrow$ continuous.",
+        "Lipschitz $\\Rightarrow$ absolutely continuous $\\Rightarrow$ uniformly continuous.",
+        "continuous $\\Rightarrow$ absolutely continuous $\\Rightarrow$ Lipschitz."
+      ],
+      "answer": 2,
+      "explanation": "Lipschitz functions are absolutely continuous (take $\\delta = \\varepsilon/K$), and absolutely continuous functions are uniformly continuous. None of the reverse implications hold in general, so this is the correct one-directional chain.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-005",
+      "stem": "The Cantor function (Cantor-Lebesgue function, the 'devil's staircase') on $[0,1]$ is:",
+      "options": [
+        "absolutely continuous.",
+        "not continuous.",
+        "continuous and of bounded variation but not absolutely continuous.",
+        "of unbounded variation."
+      ],
+      "answer": 2,
+      "explanation": "The Cantor function is continuous and monotone increasing (so of bounded variation with total variation $1$), yet it is not absolutely continuous: it rises from $0$ to $1$ while $f' = 0$ almost everywhere, so it cannot equal the integral of its derivative.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-006",
+      "stem": "The Cantor function $c(x)$ satisfies $c'(x) = 0$ for almost every $x \\in [0,1]$. Yet $\\int_0^1 c'(x)\\,dx$ compared with $c(1) - c(0)$ shows:",
+      "options": [
+        "both equal $0$.",
+        "$\\int_0^1 c'(x)\\,dx = 1 = c(1) - c(0)$.",
+        "both equal $1$.",
+        "$\\int_0^1 c'(x)\\,dx = 0 \\neq 1 = c(1) - c(0)$."
+      ],
+      "answer": 3,
+      "explanation": "Since $c' = 0$ a.e., $\\int_0^1 c'\\,dx = 0$. But $c(1) - c(0) = 1 - 0 = 1$. The failure of $\\int_a^b f' = f(b) - f(a)$ is exactly why the Cantor function is not absolutely continuous: the fundamental theorem of calculus breaks down.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-007",
+      "stem": "The fundamental theorem of calculus for the Lebesgue integral states that $f(x) = f(a) + \\int_a^x f'(t)\\,dt$ for all $x \\in [a,b]$ if and only if:",
+      "options": [
+        "$f$ is absolutely continuous on $[a,b]$.",
+        "$f$ is of bounded variation.",
+        "$f$ is differentiable everywhere.",
+        "$f$ is continuous."
+      ],
+      "answer": 0,
+      "explanation": "The Lebesgue version of the FTC characterizes exactly the absolutely continuous functions: $f$ is absolutely continuous on $[a,b]$ if and only if $f'$ exists a.e., is Lebesgue integrable, and $f(x) - f(a) = \\int_a^x f'$. Mere continuity or bounded variation is not enough (the Cantor function).",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-008",
+      "stem": "If $g$ is Lebesgue integrable on $[a,b]$ and $F(x) = \\int_a^x g(t)\\,dt$, then $F$ is:",
+      "options": [
+        "absolutely continuous on $[a,b]$.",
+        "discontinuous.",
+        "of unbounded variation.",
+        "never differentiable."
+      ],
+      "answer": 0,
+      "explanation": "An indefinite Lebesgue integral is always absolutely continuous. This is one direction of the FTC: the absolute continuity of $F$ follows from the absolute continuity of the integral (small total length gives small total integral). Moreover $F' = g$ almost everywhere.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-009",
+      "stem": "Which function on $[0,1]$ is absolutely continuous?",
+      "options": [
+        "a function with infinitely many jump discontinuities of total size $\\infty$.",
+        "the Cantor function.",
+        "$f(x) = x^2$.",
+        "the Dirichlet function."
+      ],
+      "answer": 2,
+      "explanation": "The function $x^2$ is continuously differentiable on $[0,1]$ with bounded derivative, hence Lipschitz, hence absolutely continuous. The Cantor function is not AC, and the Dirichlet function is not even of bounded variation.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-010",
+      "stem": "Is every continuous function of bounded variation necessarily absolutely continuous?",
+      "options": [
+        "No, because continuous BV functions are never absolutely continuous.",
+        "Yes, continuity plus bounded variation gives absolute continuity.",
+        "Yes, but only on closed intervals.",
+        "No, the Cantor function is a continuous BV function that is not absolutely continuous."
+      ],
+      "answer": 3,
+      "explanation": "The implication fails. The Cantor function is continuous and of bounded variation (it is monotone), yet it is not absolutely continuous. Absolute continuity is strictly stronger than continuity plus bounded variation.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-011",
+      "stem": "If $f$ is absolutely continuous on $[a,b]$ and $f'(x) = 0$ for almost every $x$, then $f$ is:",
+      "options": [
+        "the Cantor function.",
+        "unbounded.",
+        "constant on $[a,b]$.",
+        "strictly increasing."
+      ],
+      "answer": 2,
+      "explanation": "For an absolutely continuous function, $f(x) - f(a) = \\int_a^x f' = 0$ when $f' = 0$ a.e., so $f$ is constant. This is exactly the property the Cantor function violates: it has $f' = 0$ a.e. but is not constant, because it is not AC.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-012",
+      "stem": "A function $f$ on $[a,b]$ with $|f'(x)| \\leq M$ for all $x$ (bounded derivative) is:",
+      "options": [
+        "only uniformly continuous, never absolutely continuous.",
+        "not necessarily continuous.",
+        "of unbounded variation.",
+        "Lipschitz, hence absolutely continuous."
+      ],
+      "answer": 3,
+      "explanation": "By the mean value theorem $|f(x)-f(y)| = |f'(\\xi)||x-y| \\leq M|x-y|$, so $f$ is Lipschitz with constant $M$. Every Lipschitz function is absolutely continuous (take $\\delta = \\varepsilon/M$).",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-013",
+      "stem": "If $f$ and $g$ are absolutely continuous on $[a,b]$, then $f + g$ is:",
+      "options": [
+        "only of bounded variation.",
+        "Lipschitz.",
+        "not necessarily absolutely continuous.",
+        "absolutely continuous."
+      ],
+      "answer": 3,
+      "explanation": "The absolutely continuous functions form a vector space. Given $\\varepsilon$, pick $\\delta_f$ and $\\delta_g$ for $\\varepsilon/2$ each; then $\\delta = \\min(\\delta_f, \\delta_g)$ works for $f+g$ since $\\sum |(f+g)(b_k)-(f+g)(a_k)| \\leq \\sum|f \\ldots| + \\sum|g \\ldots| < \\varepsilon$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-014",
+      "stem": "For an absolutely continuous function, integration by parts $\\int_a^b f g' \\, dx = [fg]_a^b - \\int_a^b f' g \\, dx$ holds when:",
+      "options": [
+        "neither $f$ nor $g$ is differentiable.",
+        "$f$ is merely continuous and $g$ is merely continuous.",
+        "$f$ is the Cantor function.",
+        "both $f$ and $g$ are absolutely continuous on $[a,b]$."
+      ],
+      "answer": 3,
+      "explanation": "Integration by parts for the Lebesgue integral is valid when both factors are absolutely continuous, because then $fg$ is absolutely continuous, $(fg)' = f'g + fg'$ a.e., and the FTC applies to $fg$. Continuity alone is insufficient.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-015",
+      "stem": "The composition of two absolutely continuous functions is:",
+      "options": [
+        "always absolutely continuous.",
+        "always Lipschitz.",
+        "always monotone.",
+        "not always absolutely continuous."
+      ],
+      "answer": 3,
+      "explanation": "Composition of AC functions need not be AC in general. A classic example uses $f(x) = \\sqrt{x}$ (AC on $[0,1]$) composed with a suitable AC function to destroy absolute continuity. Composition is safe when the outer function is Lipschitz.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-016",
+      "stem": "For an absolutely continuous $f$, the total variation can be recovered as:",
+      "options": [
+        "$0$ always.",
+        "$\\int_a^b |f'(x)|\\,dx$.",
+        "$f(b) - f(a)$.",
+        "$\\sup_{[a,b]} |f|$."
+      ],
+      "answer": 1,
+      "explanation": "Since an AC function satisfies the FTC with $f' \\in L^1$, its total variation equals $V_a^b(f) = \\int_a^b |f'(x)|\\,dx$. The signed quantity $f(b)-f(a) = \\int_a^b f'$ measures only the net change.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-017",
+      "stem": "Compute $\\int_0^2 f'(x)\\,dx$ for the absolutely continuous function $f(x) = x^3 - x$ on $[0,2]$, using the fundamental theorem of calculus.",
+      "options": [
+        "$0$",
+        "$6$",
+        "$2$",
+        "$8$"
+      ],
+      "answer": 1,
+      "explanation": "Because $f$ is absolutely continuous, $\\int_0^2 f' = f(2) - f(0) = (8 - 2) - (0 - 0) = 6$. There is no need to integrate $f'(x) = 3x^2 - 1$ directly; the FTC gives the net change.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-018",
+      "stem": "Which statement about $f(x) = \\sqrt{x}$ on $[0,1]$ is correct?",
+      "options": [
+        "It is not continuous at $0$.",
+        "It is Lipschitz on $[0,1]$.",
+        "It is not of bounded variation.",
+        "It is absolutely continuous on $[0,1]$ even though it is not Lipschitz there."
+      ],
+      "answer": 3,
+      "explanation": "The function $\\sqrt{x}$ has unbounded derivative near $0$, so it is not Lipschitz on $[0,1]$. Yet it is monotone with $f' = 1/(2\\sqrt{x}) \\in L^1[0,1]$ and $f(x) = \\int_0^x f'$, so it is absolutely continuous. This shows AC is strictly weaker than Lipschitz.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-019",
+      "stem": "The Lebesgue decomposition of a function of bounded variation expresses it as a sum of an absolutely continuous part and a:",
+      "options": [
+        "singular part (whose derivative is zero almost everywhere).",
+        "Lipschitz part only.",
+        "bounded part.",
+        "polynomial part."
+      ],
+      "answer": 0,
+      "explanation": "A BV function decomposes into an absolutely continuous component plus a singular component (jump part plus a continuous singular part like the Cantor function), where the singular part has derivative $0$ almost everywhere. This separates the 'integrable derivative' behaviour from the rest.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-020",
+      "stem": "Is the function $f(x) = x \\sin(1/x)$ for $x \\neq 0$, $f(0) = 0$, absolutely continuous on $[0,1]$?",
+      "options": [
+        "No, because it is not even of bounded variation on $[0,1]$.",
+        "No, because it is discontinuous at $0$.",
+        "Yes, because it is continuous.",
+        "Yes, because it is differentiable on $(0,1]$."
+      ],
+      "answer": 0,
+      "explanation": "Absolute continuity implies bounded variation. But $x \\sin(1/x)$ has unbounded variation on $[0,1]$ (the oscillations near $0$ sum like the harmonic series), so it cannot be absolutely continuous, even though it is continuous.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-021",
+      "stem": "In the definition of absolute continuity, the difference from uniform continuity is that absolute continuity controls:",
+      "options": [
+        "finitely many disjoint intervals simultaneously through their total length.",
+        "the supremum of $f$.",
+        "only the endpoints $a$ and $b$.",
+        "a single interval at a time."
+      ],
+      "answer": 0,
+      "explanation": "Uniform continuity bounds $|f(x)-f(y)|$ for one pair at a time. Absolute continuity bounds the sum $\\sum |f(b_k)-f(a_k)|$ over arbitrarily many disjoint intervals whose total length $\\sum(b_k-a_k)$ is small. This collective control is the key strengthening.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-022",
+      "stem": "If $f$ is absolutely continuous and monotone increasing on $[a,b]$, then for a measurable set $E$ the measure of $f(E)$ relates to $E$ by:",
+      "options": [
+        "$f$ maps $[a,b]$ to a single point.",
+        "$f$ maps null sets to sets of positive measure.",
+        "$f$ maps null sets to null sets (the Luzin N property).",
+        "$f$ is never measurable."
+      ],
+      "answer": 2,
+      "explanation": "Absolutely continuous functions satisfy Luzin's condition (N): they map sets of measure zero to sets of measure zero. The Cantor function fails this, mapping the measure-zero Cantor set onto all of $[0,1]$, which is why it is not AC.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-023",
+      "stem": "Compute the net change $\\int_1^4 f'(x)\\,dx$ for the absolutely continuous function $f(x) = 2\\sqrt{x}$ on $[1,4]$.",
+      "options": [
+        "$4$",
+        "$6$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "Since $f$ is absolutely continuous, $\\int_1^4 f' = f(4) - f(1) = 2\\sqrt{4} - 2\\sqrt{1} = 4 - 2 = 2$. The FTC gives the answer directly from the endpoints.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-024",
+      "stem": "Which best summarizes why absolute continuity is the 'right' hypothesis for the fundamental theorem of calculus?",
+      "options": [
+        "It guarantees $f$ is bounded.",
+        "It guarantees $f$ is a polynomial.",
+        "It is exactly the class of functions equal to the indefinite integral of an integrable function.",
+        "It is exactly the class of continuous functions."
+      ],
+      "answer": 2,
+      "explanation": "A function on $[a,b]$ is absolutely continuous if and only if it can be written as $f(a) + \\int_a^x g$ for some $g \\in L^1$ (and then $g = f'$ a.e.). This characterization is precisely what makes $\\int_a^x f' = f(x) - f(a)$ hold, so AC is the exact hypothesis for the FTC.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-025",
+      "format": "cloze",
+      "stem": "Consider $f(x) = x^2$ on $[0, 3]$, which is continuously differentiable.",
+      "solution": "A continuously differentiable function on a closed bounded interval is Lipschitz, hence absolutely continuous, so the AC verdict is {{1}}. Because it is absolutely continuous, the fundamental theorem of calculus gives $\\int_0^3 f'(x)\\,dx = f(3) - f(0)$, which evaluates to {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "absolutely continuous",
+            "not absolutely continuous"
+          ],
+          "answer": "absolutely continuous"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "On $[0,3]$, $f'(x) = 2x$ is bounded, so $f$ is Lipschitz and therefore absolutely continuous. By the FTC, $\\int_0^3 f' = f(3) - f(0) = 9 - 0 = 9$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-026",
+      "format": "cloze",
+      "stem": "The Cantor function $c(x)$ on $[0,1]$ is continuous and monotone increasing, with $c(0) = 0$, $c(1) = 1$, and $c'(x) = 0$ for almost every $x$.",
+      "solution": "Since $c'(x) = 0$ almost everywhere, the Lebesgue integral $\\int_0^1 c'(x)\\,dx$ equals {{1}}. The actual change $c(1) - c(0)$ equals {{2}}. Because these two numbers differ, the fundamental theorem of calculus fails, so the Cantor function is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "absolutely continuous",
+            "not absolutely continuous"
+          ],
+          "answer": "not absolutely continuous"
+        }
+      ],
+      "explanation": "With $c' = 0$ a.e., $\\int_0^1 c' = 0$, but $c(1) - c(0) = 1$. Since $0 \\neq 1$, the identity $\\int_a^b f' = f(b)-f(a)$ fails, so $c$ is not absolutely continuous.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-027",
+      "format": "cloze",
+      "stem": "Let $f(x) = 3x + 5$ on $[2, 6]$, a Lipschitz function with Lipschitz constant $3$.",
+      "solution": "Every Lipschitz function is absolutely continuous, so the AC verdict is {{1}}. Using the fundamental theorem of calculus, $\\int_2^6 f'(x)\\,dx = f(6) - f(2)$ evaluates to {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "absolutely continuous",
+            "not absolutely continuous"
+          ],
+          "answer": "absolutely continuous"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 12,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "A Lipschitz function is absolutely continuous (take $\\delta = \\varepsilon / 3$). By the FTC, $\\int_2^6 f' = f(6) - f(2) = 23 - 11 = 12$. Equivalently, slope times length: $3 \\cdot 4 = 12$.",
+      "difficulty": "core",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-absolute-continuity-028",
+      "format": "cloze",
+      "stem": "Consider $f(x) = \\sqrt{x}$ on $[0, 9]$, whose derivative $f'(x) = \\tfrac{1}{2\\sqrt{x}}$ is unbounded near $0$.",
+      "solution": "Although the derivative blows up at $0$, the function is monotone with an integrable derivative, so it is absolutely continuous: the AC verdict is {{1}}. However, because the derivative is unbounded, the function is not Lipschitz on $[0,9]$, so the Lipschitz verdict is {{2}}. By the fundamental theorem of calculus the value of $\\int_0^9 f'(x)\\,dx = f(9) - f(0)$ equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "absolutely continuous",
+            "not absolutely continuous"
+          ],
+          "answer": "absolutely continuous"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "Lipschitz",
+            "not Lipschitz"
+          ],
+          "answer": "not Lipschitz"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "The function $\\sqrt{x}$ is monotone with $f' = 1/(2\\sqrt{x}) \\in L^1[0,9]$, so it is absolutely continuous, but the unbounded derivative means it is not Lipschitz. By the FTC, $\\int_0^9 f' = \\sqrt{9} - \\sqrt{0} = 3 - 0 = 3$.",
+      "difficulty": "stretch",
+      "source": "in the style of Bartle, The Elements of Real Analysis"
+    }
+  ]
+}

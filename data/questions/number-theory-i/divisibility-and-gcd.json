@@ -1,0 +1,470 @@
+{
+  "courseId": "number-theory-i",
+  "topicId": "divisibility-and-gcd",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "number-theory-i-divisibility-and-gcd-001",
+      "stem": "By the division algorithm, every integer $a$ can be written as $a = bq + r$ with $0 \\le r < b$. Writing $100 = 7q + r$, what is the quotient $q$?",
+      "options": [
+        "$2$",
+        "$13$",
+        "$14$",
+        "$15$"
+      ],
+      "answer": 2,
+      "explanation": "The quotient is the largest integer $q$ with $7q \\le 100$. Since $7 \\times 14 = 98 \\le 100$ but $7 \\times 15 = 105 > 100$, the quotient is $q = 14$, leaving $r = 100 - 98 = 2$. The value $2$ is the remainder $r$, not the quotient. The trap is swapping $q$ and $r$: $q$ counts how many whole $7$s fit into $100$, while $r$ is the small leftover.",
+      "difficulty": "warmup",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-002",
+      "stem": "Which one of the following statements about divisibility is true for all integers $a$, $b$, $c$?",
+      "options": [
+        "If $a \\mid b$ and $a \\mid c$ then $a \\mid (b + c)$",
+        "If $a \\mid b$ then $b \\mid a$",
+        "If $a \\mid bc$ then $a \\mid b$ or $a \\mid c$",
+        "If $a \\mid (b + c)$ then $a \\mid b$ and $a \\mid c$"
+      ],
+      "answer": 0,
+      "explanation": "Divisibility is closed under addition of multiples: if $a \\mid b$ and $a \\mid c$, write $b = ak$ and $c = am$, so $b + c = a(k + m)$ and thus $a \\mid (b + c)$. The converse fails: $3 \\mid (1 + 2)$ but $3 \\nmid 1$. The claim $a \\mid bc \\Rightarrow a \\mid b$ or $a \\mid c$ needs $a$ prime ($6 \\mid 4 \\times 3$ but $6$ divides neither). And $2 \\mid 4$ while $4 \\nmid 2$. The trap is assuming divisibility statements reverse; only the linear-combination rule holds in general.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-003",
+      "stem": "Apply the division algorithm to $-29$ divided by $8$, writing $-29 = 8q + r$ with $0 \\le r < 8$. What is the remainder $r$?",
+      "options": [
+        "$3$",
+        "$-5$",
+        "$5$",
+        "$-3$"
+      ],
+      "answer": 0,
+      "explanation": "The remainder must satisfy $0 \\le r < 8$, so it stays nonnegative even when the dividend is negative. Taking $q = -4$ gives $8 \\times (-4) = -32$ and $r = -29 - (-32) = 3$, which is in range. So $-29 = 8 \\times (-4) + 3$. The value $-5$ comes from $-29 = 8 \\times (-3) - 5$, but a remainder of $-5$ is not allowed. The trap is keeping a negative remainder: push the quotient down by one so the leftover lands in $\\lbrace 0, 1, \\dots, 7 \\rbrace$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-004",
+      "stem": "Use the Euclidean algorithm to find $\\gcd(252, 198)$.",
+      "options": [
+        "$9$",
+        "$18$",
+        "$54$",
+        "$6$"
+      ],
+      "answer": 1,
+      "explanation": "Run the algorithm: $252 = 198 \\times 1 + 54$, then $198 = 54 \\times 3 + 36$, then $54 = 36 \\times 1 + 18$, then $36 = 18 \\times 2 + 0$. The last nonzero remainder is $18$, so $\\gcd(252, 198) = 18$. The value $54$ is the first remainder, an intermediate step, not the final answer. The trap is stopping the algorithm early: continue until the remainder is $0$, and the gcd is the previous remainder.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-005",
+      "stem": "Use the Euclidean algorithm to find $\\gcd(1071, 462)$.",
+      "options": [
+        "$21$",
+        "$42$",
+        "$3$",
+        "$7$"
+      ],
+      "answer": 0,
+      "explanation": "Apply the algorithm: $1071 = 462 \\times 2 + 147$, then $462 = 147 \\times 3 + 21$, then $147 = 21 \\times 7 + 0$. The last nonzero remainder is $21$, so $\\gcd(1071, 462) = 21$. The value $7$ divides $21$ but is not the greatest common divisor; $1071 = 3 \\times 357 = 3 \\times 3 \\times 7 \\times 17$ and $462 = 2 \\times 3 \\times 7 \\times 11$ share $3 \\times 7 = 21$. The trap is reporting a common divisor that is not the largest.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-006",
+      "stem": "What is $\\gcd(0, 7)$?",
+      "options": [
+        "$7$",
+        "$0$",
+        "undefined",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "By convention $\\gcd(0, b) = |b|$ for $b \\ne 0$, because every integer divides $0$, so the common divisors of $0$ and $7$ are exactly the divisors of $7$, the largest being $7$. Thus $\\gcd(0, 7) = 7$. The answer $0$ wrongly treats $0$ as if it limited the divisors; in fact $0$ is divisible by all integers. The trap is thinking a zero input forces the gcd to be $0$: it is the nonzero input that controls the value.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-007",
+      "stem": "The greatest common divisor $\\gcd(17, 5) = 1$ can be written as $17x + 5y$ for integers $x, y$ (Bezout's identity). Which pair $(x, y)$ works?",
+      "options": [
+        "$(3, -10)$",
+        "$(2, -7)$",
+        "$(-2, 7)$",
+        "$(7, -2)$"
+      ],
+      "answer": 2,
+      "explanation": "Run the extended Euclidean algorithm: $17 = 5 \\times 3 + 2$ and $5 = 2 \\times 2 + 1$. Back-substitute: $1 = 5 - 2 \\times 2 = 5 - (17 - 5 \\times 3) \\times 2 = 17 \\times (-2) + 5 \\times 7$. So $(x, y) = (-2, 7)$, and indeed $-34 + 35 = 1$. The pair $(2, -7)$ gives $34 - 35 = -1$, the wrong sign. The trap is dropping a sign during back-substitution: check by computing $17x + 5y$ and confirming it equals $1$, not $-1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-008",
+      "stem": "Using $\\gcd(a, b) \\times \\operatorname{lcm}(a, b) = ab$, find $\\operatorname{lcm}(48, 36)$ given that $\\gcd(48, 36) = 12$.",
+      "options": [
+        "$432$",
+        "$1728$",
+        "$12$",
+        "$144$"
+      ],
+      "answer": 3,
+      "explanation": "Rearranging gives $\\operatorname{lcm}(a, b) = \\dfrac{ab}{\\gcd(a, b)} = \\dfrac{48 \\times 36}{12} = \\dfrac{1728}{12} = 144$. A check: $144 = 48 \\times 3 = 36 \\times 4$, so both divide it. The value $1728$ is the raw product $ab$, forgetting to divide by the gcd. The trap is leaving out the division by $\\gcd(a, b)$: the product $ab$ double-counts the shared factors, and dividing by the gcd removes the duplication.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-009",
+      "stem": "For which values of $c$ does the linear Diophantine equation $6x + 9y = c$ have an integer solution?",
+      "options": [
+        "Only multiples of $3$",
+        "Only even $c$",
+        "Only multiples of $9$",
+        "All integers $c$"
+      ],
+      "answer": 0,
+      "explanation": "The equation $ax + by = c$ has an integer solution if and only if $\\gcd(a, b) \\mid c$. Here $\\gcd(6, 9) = 3$, so a solution exists exactly when $3 \\mid c$. For instance $c = 3$ works ($x = 2, y = -1$), but $c = 1$ does not, since $6x + 9y$ is always a multiple of $3$. The trap is ignoring the gcd condition: not every $c$ is reachable, only the multiples of $\\gcd(6, 9) = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-010",
+      "stem": "Find one integer solution $(x, y)$ to the linear Diophantine equation $3x + 5y = 1$.",
+      "options": [
+        "$(-1, 1)$",
+        "$(1, -1)$",
+        "$(-3, 2)$",
+        "$(2, 1)$"
+      ],
+      "answer": 2,
+      "explanation": "Since $\\gcd(3, 5) = 1$ divides $1$, solutions exist. Test the candidates: $3(-3) + 5(2) = -9 + 10 = 1$, so $(-3, 2)$ works. The others fail: $(1, -1)$ gives $3 - 5 = -2$, $(-1, 1)$ gives $-3 + 5 = 2$, and $(2, 1)$ gives $6 + 5 = 11$. The trap is guessing without substituting: always plug the pair back in, since $3x + 5y$ must equal exactly $1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-011",
+      "stem": "Two integers $a$ and $b$ satisfy $\\gcd(a, b) = 8$ and $\\operatorname{lcm}(a, b) = 240$. If $a = 24$, what is $b$?",
+      "options": [
+        "$1920$",
+        "$30$",
+        "$80$",
+        "$48$"
+      ],
+      "answer": 2,
+      "explanation": "From $\\gcd(a, b) \\times \\operatorname{lcm}(a, b) = ab$, the product is $8 \\times 240 = 1920$. With $a = 24$, the other number is $b = 1920 / 24 = 80$. Check: $\\gcd(24, 80) = 8$ and $\\operatorname{lcm}(24, 80) = 240$. The value $30$ comes from $240 / 8$, dividing the lcm by the gcd, which uses the wrong two quantities. The trap is mishandling the identity: the missing number is $(\\gcd \\times \\operatorname{lcm})$ divided by the known number, not the lcm divided by the gcd.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-012",
+      "stem": "What is $\\gcd(n, n + 1)$ for any positive integer $n$?",
+      "options": [
+        "$n + 1$",
+        "It depends on $n$",
+        "$n$",
+        "$1$"
+      ],
+      "answer": 3,
+      "explanation": "Any common divisor $d$ of $n$ and $n + 1$ must divide their difference $(n + 1) - n = 1$, so $d \\mid 1$ and therefore $d = 1$. Hence consecutive integers are always coprime: $\\gcd(n, n + 1) = 1$. The answer 'it depends' overlooks this clean argument. The trap is testing a few cases and guessing; the difference being $1$ forces the gcd to $1$ for every $n$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-013",
+      "stem": "Two integers are coprime when their gcd is $1$. Which of the following pairs is coprime?",
+      "options": [
+        "$(15, 28)$",
+        "$(14, 21)$",
+        "$(12, 18)$",
+        "$(24, 36)$"
+      ],
+      "answer": 0,
+      "explanation": "Compute each gcd. For $(15, 28)$: $15 = 3 \\times 5$ and $28 = 2^2 \\times 7$ share no prime, so $\\gcd(15, 28) = 1$ and the pair is coprime. The others fail: $\\gcd(14, 21) = 7$, $\\gcd(12, 18) = 6$, and $\\gcd(24, 36) = 12$. The trap is assuming two numbers are coprime just because neither is prime: coprimality is about sharing no common prime factor, which only $(15, 28)$ satisfies.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-014",
+      "stem": "Given the factorizations $a = 2^4 \\times 3^2$ and $b = 2^2 \\times 3^3 \\times 5$, what is $\\gcd(a, b)$?",
+      "options": [
+        "$2^2 \\times 3^3$",
+        "$2^2 \\times 3^2$",
+        "$2^4 \\times 3^3 \\times 5$",
+        "$2^4 \\times 3^2 \\times 5$"
+      ],
+      "answer": 1,
+      "explanation": "The gcd takes the lower power of each prime that appears in both. For $2$ the powers are $4$ and $2$, so take $2^2$; for $3$ the powers are $2$ and $3$, so take $3^2$; the prime $5$ is missing from $a$, so it is excluded. Thus $\\gcd(a, b) = 2^2 \\times 3^2 = 36$. Taking the higher powers (and including $5$) gives the lcm instead. The trap is using the maximum exponent: the gcd uses the minimum exponent of each shared prime.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-015",
+      "stem": "What is $\\operatorname{lcm}(4, 6)$?",
+      "options": [
+        "$12$",
+        "$10$",
+        "$24$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "The least common multiple is the smallest positive integer divisible by both. Multiples of $6$ are $6, 12, 18, \\dots$; of these $12$ is the first also divisible by $4$, so $\\operatorname{lcm}(4, 6) = 12$. Using the identity, $\\operatorname{lcm}(4, 6) = \\dfrac{4 \\times 6}{\\gcd(4, 6)} = \\dfrac{24}{2} = 12$. The value $24$ is the product $4 \\times 6$, which forgets to divide by $\\gcd = 2$. The trap is multiplying the two numbers directly instead of dividing out their gcd.",
+      "difficulty": "warmup",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-016",
+      "stem": "A number is divisible by $9$ exactly when the sum of its digits is divisible by $9$. Which of the following is divisible by $9$?",
+      "options": [
+        "$5821$",
+        "$7218$",
+        "$4517$",
+        "$6143$"
+      ],
+      "answer": 1,
+      "explanation": "Apply the digit-sum rule. For $7218$ the digit sum is $7 + 2 + 1 + 8 = 18$, a multiple of $9$, so $7218$ is divisible by $9$ (indeed $7218 = 9 \\times 802$). The others fail: $5821 \\to 16$, $4517 \\to 17$, and $6143 \\to 14$, none a multiple of $9$. The trap is checking only the last digit or using the rule for $3$: divisibility by $9$ needs the whole digit sum to be a multiple of $9$, not just of $3$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-017",
+      "stem": "If $d \\mid a$ and $d \\mid b$, which of the following must $d$ also divide for all integers $m, n$?",
+      "options": [
+        "$a + 1$",
+        "$a / b$",
+        "$ab + 1$",
+        "$ma + nb$"
+      ],
+      "answer": 3,
+      "explanation": "Any common divisor of $a$ and $b$ divides every integer linear combination $ma + nb$: writing $a = dk$, $b = dl$ gives $ma + nb = d(mk + nl)$. This is the key fact behind the Euclidean algorithm and Bezout's identity. The expression $ab + 1$ is coprime to $d$ when $d \\mid ab$, so $d \\nmid (ab + 1)$ in general. The trap is thinking adding $1$ preserves divisibility: only linear combinations of $a$ and $b$ are guaranteed divisible by $d$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-018",
+      "stem": "How many integer solutions $(x, y)$ does $4x + 6y = 7$ have?",
+      "options": [
+        "Exactly one",
+        "Exactly two",
+        "Infinitely many",
+        "None"
+      ],
+      "answer": 3,
+      "explanation": "A solution exists only if $\\gcd(a, b) \\mid c$. Here $\\gcd(4, 6) = 2$, and $2 \\nmid 7$, so there are no integer solutions. Concretely, $4x + 6y = 2(2x + 3y)$ is always even, but $7$ is odd, so the equation can never hold. The trap is assuming a linear equation always has solutions: when the gcd of the coefficients does not divide the right side, the solution set is empty.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-019",
+      "stem": "The general solution of $3x + 5y = 1$ is $x = -3 + 5t$, $y = 2 - 3t$ for integer $t$. Which value of $t$ gives the solution with the smallest nonnegative $x$?",
+      "options": [
+        "$t = 2$",
+        "$t = -1$",
+        "$t = 1$",
+        "$t = 0$"
+      ],
+      "answer": 2,
+      "explanation": "We want the least $t$ making $x = -3 + 5t \\ge 0$, that is $5t \\ge 3$, so $t \\ge 3/5$, giving $t = 1$. Then $x = -3 + 5 = 2$ and $y = 2 - 3 = -1$, and indeed $3(2) + 5(-1) = 1$. With $t = 0$ we get $x = -3$, which is negative. The trap is taking $t = 0$ by default: solve the inequality $-3 + 5t \\ge 0$ to find the smallest qualifying $t$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-020",
+      "stem": "A farmer wants to measure exactly $1$ litre using only a $3$-litre and a $5$-litre jug, modeled by $3x + 5y = 1$ where $x, y$ count fillings (negative means emptying). Why is this possible?",
+      "options": [
+        "Because $5 - 3 = 2$",
+        "Because $\\gcd(3, 5) = 1$ divides $1$",
+        "Because $3$ and $5$ are both prime",
+        "Because $3 + 5 = 8$ is even"
+      ],
+      "answer": 1,
+      "explanation": "The equation $3x + 5y = 1$ has integer solutions exactly when $\\gcd(3, 5) \\mid 1$. Since $\\gcd(3, 5) = 1$ and $1 \\mid 1$, a solution exists, for example $x = 2, y = -1$ (fill the $3$-litre twice, pour off via the $5$-litre once). That $3$ and $5$ are prime is true but not the operative reason; coprimality is what matters. The trap is citing primality: the solvability test is whether the gcd of the jug sizes divides the target amount.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-021",
+      "stem": "Use the Euclidean algorithm to find $\\gcd(56, 42)$.",
+      "options": [
+        "$28$",
+        "$2$",
+        "$14$",
+        "$7$"
+      ],
+      "answer": 2,
+      "explanation": "Apply the algorithm: $56 = 42 \\times 1 + 14$, then $42 = 14 \\times 3 + 0$. The last nonzero remainder is $14$, so $\\gcd(56, 42) = 14$. Checking by factorization, $56 = 2^3 \\times 7$ and $42 = 2 \\times 3 \\times 7$ share $2 \\times 7 = 14$. The value $7$ is a common divisor but not the greatest. The trap is stopping at a shared prime instead of collecting all shared factors: both share a factor of $2$ as well, giving $14$.",
+      "difficulty": "warmup",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-022",
+      "stem": "If $\\gcd(a, b) = 1$ and $a \\mid bc$, what can be concluded about $a$ and $c$?",
+      "options": [
+        "$a \\mid b$",
+        "Nothing can be concluded",
+        "$c \\mid a$",
+        "$a \\mid c$"
+      ],
+      "answer": 3,
+      "explanation": "This is Euclid's lemma in its general form: if $a \\mid bc$ and $\\gcd(a, b) = 1$, then $a \\mid c$. Since $a$ shares no factor with $b$, all of $a$'s prime power factors must come from $c$. For example, $\\gcd(4, 3) = 1$ and $4 \\mid 3 \\times 8$, forcing $4 \\mid 8$. The trap is concluding $a \\mid b$: the coprimality says $a$ cannot get its factors from $b$, so they must lie in $c$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-023",
+      "stem": "Which of the following is the correct first step of the Euclidean algorithm for $\\gcd(840, 611)$?",
+      "options": [
+        "$840 = 611 \\times 2 + (-382)$",
+        "$611 = 840 \\times 0 + 611$, then stop",
+        "$840 = 611 \\times 1 + 229$",
+        "$840 = 611 + 229$, so $\\gcd = 229$"
+      ],
+      "answer": 2,
+      "explanation": "The algorithm divides the larger by the smaller with a nonnegative remainder: $840 = 611 \\times 1 + 229$, since $611 \\times 1 = 611 \\le 840$ and $611 \\times 2 = 1222 > 840$. The remainder $229$ is correct and in range $0 \\le 229 < 611$. The option giving $-382$ uses too large a quotient, producing a negative remainder. The last option stops too early; one step does not finish the algorithm. The trap is reading a single division as the final gcd: you must continue with $\\gcd(611, 229)$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-024",
+      "format": "cloze",
+      "stem": "Apply the division algorithm to write $73 = 11q + r$ with $0 \\le r < 11$. Find the quotient $q$ and the remainder $r$.",
+      "solution": "The quotient is the largest integer with $11q \\le 73$. Since $11 \\times 6 = 66$ and $11 \\times 7 = 77$ overshoots, the quotient $q$ is {{1}}. The remainder is $73 - 66$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "We need $0 \\le r < 11$, so $q = 6$ and $r = 73 - 66 = 7$, giving $73 = 11 \\times 6 + 7$. Taking $q = 7$ would force a negative remainder.",
+      "difficulty": "warmup",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-025",
+      "format": "cloze",
+      "stem": "Use the Euclidean algorithm to find $\\gcd(120, 84)$.",
+      "solution": "The algorithm replaces the pair by the smaller number and the remainder. First $120 = 84 \\times 1 + 36$, so the remainder is {{1}}. Next $84 = 36 \\times 2 + 12$, and then $36 = 12 \\times 3 + 0$. The last nonzero remainder is the gcd, so $\\gcd(120, 84)$ equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 36,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 12,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The successive remainders are $36$, then $12$, then $0$. The last nonzero one, $12$, is the gcd. Check: $120 = 2^3 \\times 3 \\times 5$ and $84 = 2^2 \\times 3 \\times 7$ share $2^2 \\times 3 = 12$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-026",
+      "format": "cloze",
+      "stem": "Using $\\gcd(a, b) \\times \\operatorname{lcm}(a, b) = ab$, find $\\operatorname{lcm}(18, 24)$ given that $\\gcd(18, 24) = 6$.",
+      "solution": "Rearrange to $\\operatorname{lcm} = \\dfrac{ab}{\\gcd}$. The product $18 \\times 24$ equals {{1}}. Dividing by the gcd $6$ gives the lcm, so $\\operatorname{lcm}(18, 24)$ equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 432,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 72,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The product $18 \\times 24 = 432$, and $432 / 6 = 72$, so $\\operatorname{lcm}(18, 24) = 72$. Check: $72 = 18 \\times 4 = 24 \\times 3$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-027",
+      "format": "cloze",
+      "stem": "Bezout's identity expresses $\\gcd(17, 5) = 1$ as $17x + 5y$. Using the back-substitution $1 = 17 \\times (-2) + 5 \\times 7$, identify the coefficients and confirm the value.",
+      "solution": "From $17 = 5 \\times 3 + 2$ and $5 = 2 \\times 2 + 1$, back-substitution gives the coefficient of $17$ as $-2$ and the coefficient of $5$ as {{1}}. Evaluating $17 \\times (-2) + 5 \\times 7$ gives {{2}}, which confirms it equals the gcd.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Back-substituting, $1 = 5 - 2 \\times 2 = 5 - (17 - 5 \\times 3) \\times 2 = 17 \\times (-2) + 5 \\times 7$, so the coefficient of $5$ is $7$ and the combination equals $-34 + 35 = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-028",
+      "format": "cloze",
+      "stem": "Consider the linear Diophantine equation $6x + 9y = c$. State the solvability condition and decide a case.",
+      "solution": "An integer solution exists if and only if $\\gcd(6, 9)$ divides $c$. The value of $\\gcd(6, 9)$ is {{1}}. Applying the rule to $c = 15$, the equation {{2}} an integer solution.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "has",
+            "does not have"
+          ],
+          "answer": "has"
+        }
+      ],
+      "explanation": "Since $\\gcd(6, 9) = 3$ and $3 \\mid 15$, the equation has a solution, for example $x = 1, y = 1$ gives $6 + 9 = 15$. The condition is $\\gcd(a, b) \\mid c$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-divisibility-and-gcd-029",
+      "format": "cloze",
+      "stem": "Apply the division algorithm to $-23$ divided by $7$, writing $-23 = 7q + r$ with $0 \\le r < 7$.",
+      "solution": "The remainder must be nonnegative and less than $7$. Choosing $q = -4$ gives $7 \\times (-4) = -28$, so the remainder $r = -23 - (-28)$ equals {{1}}. The quotient $q$ that makes this work is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "With $q = -4$, $r = -23 + 28 = 5$, which lies in $\\lbrace 0, \\dots, 6 \\rbrace$, so $-23 = 7 \\times (-4) + 5$. Using $q = -3$ would give $r = -2$, which is not allowed.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    }
+  ]
+}

@@ -1,0 +1,509 @@
+{
+  "courseId": "time-series-analysis-i",
+  "topicId": "autoregressive-models",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "time-series-analysis-i-autoregressive-models-001",
+      "stem": "The first-order autoregressive model AR(1) expresses $X_t$ in terms of which quantities?",
+      "options": [
+        "its own previous value $X_{t-1}$ plus a white noise shock $\\varepsilon_t$",
+        "a moving average of past shocks $\\varepsilon_{t-1}, \\varepsilon_{t-2}, \\dots$",
+        "the deterministic trend $t$ only",
+        "only the current white noise shock $\\varepsilon_t$"
+      ],
+      "answer": 0,
+      "explanation": "An AR(1) model is $X_t = \\phi X_{t-1} + \\varepsilon_t$ (often with a constant), regressing the series on its own one-step lag plus a white noise innovation. A model built purely from past shocks is a moving average instead.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-002",
+      "stem": "For the AR(1) model $X_t = \\phi X_{t-1} + \\varepsilon_t$, the condition for (weak) stationarity is which of the following?",
+      "options": [
+        "$|\\phi| < 1$",
+        "$\\phi > 1$",
+        "$\\phi = 1$",
+        "$\\phi = 0$ exactly"
+      ],
+      "answer": 0,
+      "explanation": "An AR(1) is stationary if and only if $|\\phi| < 1$. When $\\phi = 1$ the process is a random walk (non-stationary), and $|\\phi| > 1$ gives an explosive, non-stationary process.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-003",
+      "stem": "For a stationary AR(1) process, the autocorrelation function takes which form?",
+      "options": [
+        "$\\rho(k) = k\\phi$",
+        "$\\rho(k) = \\phi^k$",
+        "$\\rho(k) = \\phi/k$",
+        "$\\rho(k) = 1$ for all $k$"
+      ],
+      "answer": 1,
+      "explanation": "The ACF of a stationary AR(1) decays geometrically: $\\rho(k) = \\phi^k$ for $k \\ge 0$. Since $|\\phi| < 1$, this tends to zero as the lag grows.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-004",
+      "stem": "The general AR(p) model is written as which of the following?",
+      "options": [
+        "$X_t = \\varepsilon_t + \\theta_1 \\varepsilon_{t-1} + \\dots + \\theta_p \\varepsilon_{t-p}$",
+        "$X_t = \\phi_1 \\varepsilon_t \\times X_{t-1}$",
+        "$X_t = \\phi_1 X_{t+1} + \\dots + \\phi_p X_{t+p} + \\varepsilon_t$",
+        "$X_t = \\phi_1 X_{t-1} + \\phi_2 X_{t-2} + \\dots + \\phi_p X_{t-p} + \\varepsilon_t$"
+      ],
+      "answer": 3,
+      "explanation": "An AR(p) regresses $X_t$ on its own $p$ most recent past values: $X_t = \\phi_1 X_{t-1} + \\dots + \\phi_p X_{t-p} + \\varepsilon_t$. A model in past shocks $\\varepsilon$ would be a moving average.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-005",
+      "stem": "For a stationary AR(1) with mean zero, the variance of the process is given by which expression?",
+      "options": [
+        "$\\dfrac{\\sigma^2}{\\phi}$",
+        "$\\dfrac{\\sigma^2}{1 - \\phi^2}$",
+        "$\\sigma^2 \\phi^2$",
+        "$\\sigma^2 (1 - \\phi^2)$"
+      ],
+      "answer": 1,
+      "explanation": "Taking variances of $X_t = \\phi X_{t-1} + \\varepsilon_t$ gives $\\gamma(0) = \\phi^2 \\gamma(0) + \\sigma^2$, so $\\gamma(0) = \\sigma^2/(1 - \\phi^2)$. This is finite precisely when $|\\phi| < 1$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-006",
+      "stem": "An AR(1) process has $\\phi = 0.7$ and white noise variance $\\sigma^2 = 1$. What is the variance of the process, $\\gamma(0)$?",
+      "options": [
+        "1.96",
+        "0.70",
+        "1.49",
+        "0.51"
+      ],
+      "answer": 0,
+      "explanation": "$\\gamma(0) = \\sigma^2/(1 - \\phi^2) = 1/(1 - 0.49) = 1/0.51 \\approx 1.96$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-007",
+      "stem": "For an AR(1) with $\\phi = 0.5$, what is the autocorrelation at lag 3, $\\rho(3)$?",
+      "options": [
+        "1.5",
+        "0.25",
+        "0.125",
+        "0.5"
+      ],
+      "answer": 2,
+      "explanation": "$\\rho(3) = \\phi^3 = 0.5^3 = 0.125$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-008",
+      "stem": "What does the partial autocorrelation function (PACF) of a pure AR(p) process look like?",
+      "options": [
+        "it tails off gradually like the ACF",
+        "it cuts off (is zero) for lags greater than $p$",
+        "it is identically 1 at every lag",
+        "it grows linearly with the lag"
+      ],
+      "answer": 1,
+      "explanation": "For an AR(p), the PACF cuts off after lag $p$: the partial autocorrelations are nonzero up to lag $p$ and essentially zero beyond it. This is the key feature used to identify the AR order.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-009",
+      "stem": "The Yule-Walker equations relate the AR parameters to which quantities?",
+      "options": [
+        "the future forecast errors",
+        "the raw data values only",
+        "the autocorrelations (or autocovariances) of the process",
+        "the seasonal indices"
+      ],
+      "answer": 2,
+      "explanation": "The Yule-Walker equations express the autocorrelations in terms of the AR coefficients (and vice versa): for example $\\rho(k) = \\phi_1 \\rho(k-1) + \\dots + \\phi_p \\rho(k-p)$. Solving them yields parameter estimates from sample autocorrelations.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-010",
+      "stem": "For an AR(1), the single Yule-Walker equation at lag 1 gives which relation?",
+      "options": [
+        "$\\rho(1) = \\phi$",
+        "$\\rho(1) = \\phi^2$",
+        "$\\rho(1) = 1/\\phi$",
+        "$\\rho(1) = 1 - \\phi$"
+      ],
+      "answer": 0,
+      "explanation": "The lag-1 Yule-Walker equation for an AR(1) is $\\rho(1) = \\phi \\rho(0) = \\phi$, since $\\rho(0) = 1$. This is the basis for the method-of-moments estimate $\\hat{\\phi} = \\hat{\\rho}(1)$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-011",
+      "stem": "An AR(1) series gives a sample lag-1 autocorrelation $\\hat{\\rho}(1) = 0.6$. Using the Yule-Walker (method of moments) estimator, what is $\\hat{\\phi}$?",
+      "options": [
+        "1.67",
+        "0.4",
+        "0.6",
+        "0.36"
+      ],
+      "answer": 2,
+      "explanation": "For an AR(1), $\\hat{\\phi} = \\hat{\\rho}(1) = 0.6$, because the lag-1 Yule-Walker equation is $\\rho(1) = \\phi$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-012",
+      "stem": "Which of the following AR(1) processes is NOT stationary?",
+      "options": [
+        "$X_t = X_{t-1} + \\varepsilon_t$",
+        "$X_t = 0.9 X_{t-1} + \\varepsilon_t$",
+        "$X_t = 0.1 X_{t-1} + \\varepsilon_t$",
+        "$X_t = -0.5 X_{t-1} + \\varepsilon_t$"
+      ],
+      "answer": 0,
+      "explanation": "The process $X_t = X_{t-1} + \\varepsilon_t$ has $\\phi = 1$, a random walk, which is non-stationary. The other three all have $|\\phi| < 1$ and are stationary.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-013",
+      "stem": "For an AR(2) model $X_t = \\phi_1 X_{t-1} + \\phi_2 X_{t-2} + \\varepsilon_t$, the Yule-Walker equation at lag 1 reads which way (using $\\rho(0) = 1$ and $\\rho(-1) = \\rho(1)$)?",
+      "options": [
+        "$\\rho(1) = \\phi_1 + \\phi_2$",
+        "$\\rho(1) = \\phi_1 \\rho(1) + \\phi_2$",
+        "$\\rho(1) = \\phi_1 \\phi_2$",
+        "$\\rho(1) = \\phi_1 + \\phi_2 \\rho(1)$"
+      ],
+      "answer": 3,
+      "explanation": "Dividing the lag-1 autocovariance relation by $\\gamma(0)$: $\\rho(1) = \\phi_1 \\rho(0) + \\phi_2 \\rho(1) = \\phi_1 + \\phi_2 \\rho(1)$. Together with the lag-2 equation this solves for $\\phi_1, \\phi_2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-014",
+      "stem": "Looking at a correlogram and PACF, a series shows an ACF that decays gradually toward zero and a PACF with a single significant spike at lag 1 then nothing beyond. Which model is indicated?",
+      "options": [
+        "AR(2)",
+        "AR(1)",
+        "white noise",
+        "MA(1)"
+      ],
+      "answer": 1,
+      "explanation": "A tailing-off ACF together with a PACF that cuts off after lag 1 is the textbook signature of an AR(1). An MA(1) would instead show an ACF that cuts off after lag 1 and a PACF that tails off.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-015",
+      "stem": "For a stationary AR(1) with $\\phi = 0.8$, the autocorrelations $\\rho(1), \\rho(2), \\rho(3)$ are which sequence?",
+      "options": [
+        "0.2, 0.04, 0.008",
+        "0.8, 1.6, 2.4",
+        "0.8, 0.64, 0.512",
+        "0.8, 0.8, 0.8"
+      ],
+      "answer": 2,
+      "explanation": "$\\rho(k) = 0.8^k$ gives $\\rho(1) = 0.8$, $\\rho(2) = 0.64$, $\\rho(3) = 0.512$, a geometric decay.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-016",
+      "stem": "An AR(1) process $X_t = c + \\phi X_{t-1} + \\varepsilon_t$ with $|\\phi| < 1$ has what mean $\\mu = E(X_t)$?",
+      "options": [
+        "$\\mu = c (1 - \\phi)$",
+        "$\\mu = c$",
+        "$\\mu = c \\phi$",
+        "$\\mu = \\dfrac{c}{1 - \\phi}$"
+      ],
+      "answer": 3,
+      "explanation": "Taking expectations of both sides: $\\mu = c + \\phi \\mu$, so $\\mu(1 - \\phi) = c$ and $\\mu = c/(1 - \\phi)$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-017",
+      "stem": "An AR(1) model is $X_t = 4 + 0.5 X_{t-1} + \\varepsilon_t$. What is the long-run mean of the process?",
+      "options": [
+        "2",
+        "4",
+        "8",
+        "0.5"
+      ],
+      "answer": 2,
+      "explanation": "$\\mu = c/(1 - \\phi) = 4/(1 - 0.5) = 4/0.5 = 8$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-018",
+      "stem": "Why does the ACF of an AR(1) tail off rather than cut off?",
+      "options": [
+        "because each value depends on all earlier values through the recursive structure, so correlation persists at every lag",
+        "because the model has a finite number of moving-average terms",
+        "because the white noise is autocorrelated",
+        "because the process is non-stationary"
+      ],
+      "answer": 0,
+      "explanation": "Through the recursion $X_t = \\phi X_{t-1} + \\varepsilon_t$, the current value depends on the entire past, so $\\rho(k) = \\phi^k$ never becomes exactly zero, only geometrically small. An MA model, built from finitely many shocks, instead has an ACF that cuts off.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-019",
+      "stem": "For an AR(1) with $\\phi = -0.6$, what is $\\rho(2)$?",
+      "options": [
+        "0.36",
+        "-0.6",
+        "0.6",
+        "-0.36"
+      ],
+      "answer": 0,
+      "explanation": "$\\rho(2) = \\phi^2 = (-0.6)^2 = 0.36$. Even powers of a negative $\\phi$ are positive, so the alternating ACF is positive at even lags.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-020",
+      "stem": "In the operator notation $\\phi(B) X_t = \\varepsilon_t$, where $B$ is the backshift operator, an AR(1) corresponds to which polynomial $\\phi(B)$?",
+      "options": [
+        "$\\phi(B) = 1 + \\phi B$",
+        "$\\phi(B) = 1 - \\phi B$",
+        "$\\phi(B) = B - \\phi$",
+        "$\\phi(B) = \\phi B - 1$"
+      ],
+      "answer": 1,
+      "explanation": "Since $B X_t = X_{t-1}$, the AR(1) $X_t - \\phi X_{t-1} = \\varepsilon_t$ becomes $(1 - \\phi B) X_t = \\varepsilon_t$, so $\\phi(B) = 1 - \\phi B$. Stationarity requires the root of $1 - \\phi B = 0$, namely $B = 1/\\phi$, to lie outside the unit circle, i.e. $|\\phi| < 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-021",
+      "stem": "Using the operator form $(1 - \\phi B) X_t = \\varepsilon_t$, the stationarity condition can be stated as: the root of the characteristic equation $1 - \\phi B = 0$ must satisfy what?",
+      "options": [
+        "equal zero",
+        "lie outside the unit circle, $|B| > 1$",
+        "lie exactly on the unit circle, $|B| = 1$",
+        "lie inside the unit circle, $|B| < 1$"
+      ],
+      "answer": 1,
+      "explanation": "The root is $B = 1/\\phi$, and stationarity requires $|B| > 1$ (root outside the unit circle), which is equivalent to $|\\phi| < 1$. A root on the unit circle ($|\\phi| = 1$) gives a unit-root, non-stationary process.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-022",
+      "stem": "An AR(1) process has $\\phi = 0.4$. Compared with an AR(1) having $\\phi = 0.9$, its autocorrelations decay how?",
+      "options": [
+        "at exactly the same rate",
+        "they do not decay at all",
+        "more slowly, persisting over more lags",
+        "more quickly, dying out after fewer lags"
+      ],
+      "answer": 3,
+      "explanation": "A smaller $|\\phi|$ means $\\rho(k) = \\phi^k$ shrinks faster. With $\\phi = 0.4$, $\\rho(2) = 0.16$ already, whereas with $\\phi = 0.9$, $\\rho(2) = 0.81$; the smaller coefficient produces a faster-decaying, shorter-memory process.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-023",
+      "format": "cloze",
+      "stem": "Consider the stationary AR(1) model $X_t = \\phi X_{t-1} + \\varepsilon_t$ with $\\phi = 0.6$ and white noise variance $\\sigma^2 = 1$.",
+      "solution": "The autocorrelation at lag 1 is $\\rho(1) =$ {{1}}. The autocorrelation at lag 2 is $\\rho(2) =$ {{2}}. The variance of the process is $\\gamma(0) = \\sigma^2 / (1 - \\phi^2) =$ {{3}} (to two decimals).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.6,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.36,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.56,
+          "tolerance": 0.02
+        }
+      ],
+      "explanation": "$\\rho(1) = 0.6$, $\\rho(2) = 0.6^2 = 0.36$. Variance $= 1/(1 - 0.36) = 1/0.64 = 1.5625 \\approx 1.56$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-024",
+      "format": "cloze",
+      "stem": "The stationarity of an AR(1) model $X_t = \\phi X_{t-1} + \\varepsilon_t$ depends on the value of $\\phi$.",
+      "solution": "The process is stationary when the absolute value of $\\phi$ is less than {{1}}. When $\\phi = 1$ the process becomes a {{2}}, which is non-stationary. For a stationary AR(1), the ACF $\\rho(k) = \\phi^k$ {{3}} toward zero as $k$ grows.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "random walk",
+            "moving average",
+            "white noise"
+          ],
+          "answer": "random walk"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "decays",
+            "grows",
+            "stays constant"
+          ],
+          "answer": "decays"
+        }
+      ],
+      "explanation": "Stationarity requires $|\\phi| < 1$. At $\\phi = 1$ the model is $X_t = X_{t-1} + \\varepsilon_t$, a random walk. With $|\\phi| < 1$, $\\phi^k$ decays geometrically to zero.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-025",
+      "format": "cloze",
+      "stem": "An AR(1) model with a constant is $X_t = c + \\phi X_{t-1} + \\varepsilon_t$. Suppose $c = 6$ and $\\phi = 0.4$.",
+      "solution": "The long-run mean of the process is $\\mu = c / (1 - \\phi) =$ {{1}}. The lag-1 autocorrelation is $\\rho(1) =$ {{2}}. Because $|\\phi| < 1$, this AR(1) {{3}} stationary.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.4,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "$\\mu = 6/(1 - 0.4) = 6/0.6 = 10$. For an AR(1), $\\rho(1) = \\phi = 0.4$. Since $|0.4| < 1$, the process is stationary.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-026",
+      "format": "cloze",
+      "stem": "Use the Yule-Walker relationship to estimate the parameter of an AR(1) from data. A series of returns gives a sample lag-1 autocorrelation of $\\hat{\\rho}(1) = 0.45$.",
+      "solution": "The method-of-moments (Yule-Walker) estimate of the AR(1) coefficient is $\\hat{\\phi} =$ {{1}}. The implied estimate of the lag-2 autocorrelation is $\\hat{\\rho}(2) = \\hat{\\phi}^2 =$ {{2}} (to four decimals). The Yule-Walker equations relate the AR coefficients to the {{3}} of the process.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.45,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.2025,
+          "tolerance": 0.002
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "autocorrelations",
+            "forecast errors",
+            "seasonal indices"
+          ],
+          "answer": "autocorrelations"
+        }
+      ],
+      "explanation": "For an AR(1), $\\hat{\\phi} = \\hat{\\rho}(1) = 0.45$. Then $\\hat{\\rho}(2) = 0.45^2 = 0.2025$. The Yule-Walker equations link AR coefficients to the autocorrelations.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-027",
+      "format": "cloze",
+      "stem": "Identification of an autoregressive model from its correlogram and partial correlogram.",
+      "solution": "For a pure AR(p) process, the ACF {{1}}, while the PACF cuts off after lag {{2}}. Therefore a PACF with significant spikes at lags 1 and 2 and nothing beyond, paired with a slowly decaying ACF, suggests an AR model of order {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "tails off",
+            "cuts off after lag p"
+          ],
+          "answer": "tails off"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "p",
+            "P"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "AR(p): ACF tails off, PACF cuts off after lag $p$. Significant PACF spikes through lag 2 then zero indicate order $p = 2$, an AR(2).",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autoregressive-models-028",
+      "format": "cloze",
+      "stem": "An AR(1) process has parameter $\\phi = -0.5$ and white noise variance $\\sigma^2 = 3$.",
+      "solution": "The lag-1 autocorrelation is $\\rho(1) =$ {{1}}. The lag-2 autocorrelation is $\\rho(2) =$ {{2}}. The variance of the process is $\\gamma(0) = \\sigma^2 / (1 - \\phi^2) =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0.05
+        }
+      ],
+      "explanation": "$\\rho(1) = \\phi = -0.5$, $\\rho(2) = \\phi^2 = 0.25$. Variance $= 3/(1 - 0.25) = 3/0.75 = 4$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    }
+  ]
+}

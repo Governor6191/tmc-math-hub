@@ -1,0 +1,571 @@
+{
+  "courseId": "stoc-and-final-model-i",
+  "topicId": "risk-and-portfolio",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-001",
+      "stem": "A portfolio holds asset $1$ with weight $0.6$ and expected return $10\\%$, and asset $2$ with weight $0.4$ and expected return $15\\%$. What is the portfolio's expected return?",
+      "options": [
+        "$25\\%$",
+        "$12.5\\%$",
+        "$13\\%$",
+        "$12\\%$"
+      ],
+      "answer": 3,
+      "explanation": "Expected portfolio return is the weighted average of the asset returns: $E[R_p] = w_1 E[R_1] + w_2 E[R_2] = 0.6(0.10) + 0.4(0.15) = 0.06 + 0.06 = 0.12$, or $12\\%$. The value $12.5\\%$ is the simple average ignoring weights, and $25\\%$ adds the returns. Weighting each return by its portfolio share gives $12\\%$.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-002",
+      "stem": "The two-asset portfolio variance is given by which formula, with weights $w_1, w_2$, variances $\\sigma_1^2, \\sigma_2^2$, and covariance $\\sigma_{12}$?",
+      "options": [
+        "$w_1^2 \\sigma_1^2 + w_2^2 \\sigma_2^2$",
+        "$w_1 \\sigma_1^2 + w_2 \\sigma_2^2$",
+        "$w_1^2 \\sigma_1^2 + w_2^2 \\sigma_2^2 + 2 w_1 w_2 \\sigma_{12}$",
+        "$(w_1 \\sigma_1 + w_2 \\sigma_2)^2$ always"
+      ],
+      "answer": 2,
+      "explanation": "The variance of a two-asset portfolio is $\\sigma_p^2 = w_1^2 \\sigma_1^2 + w_2^2 \\sigma_2^2 + 2 w_1 w_2 \\sigma_{12}$, where the cross term carries the covariance. Dropping the covariance term holds only when the assets are uncorrelated. The squared-sum form $(w_1 \\sigma_1 + w_2 \\sigma_2)^2$ is the special case of perfect positive correlation. The covariance cross term is essential in general.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-003",
+      "stem": "Two assets have standard deviations $\\sigma_1 = 0.2$ and $\\sigma_2 = 0.3$ with correlation $\\rho = 0.5$. What is their covariance?",
+      "options": [
+        "$0.06$",
+        "$0.03$",
+        "$0.5$",
+        "$0.25$"
+      ],
+      "answer": 1,
+      "explanation": "Covariance relates to correlation by $\\sigma_{12} = \\rho \\sigma_1 \\sigma_2 = 0.5 \\times 0.2 \\times 0.3 = 0.03$. The value $0.06$ forgets the factor $\\rho = 0.5$, and $0.5$ is the correlation itself. Multiplying the correlation by both standard deviations recovers the covariance.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-004",
+      "stem": "Two assets have covariance $\\sigma_{12} = 0.02$ with $\\sigma_1 = 0.1$ and $\\sigma_2 = 0.4$. What is their correlation $\\rho$?",
+      "options": [
+        "$5$",
+        "$0.5$",
+        "$0.2$",
+        "$0.02$"
+      ],
+      "answer": 1,
+      "explanation": "Correlation is the standardized covariance: $\\rho = \\dfrac{\\sigma_{12}}{\\sigma_1 \\sigma_2} = \\dfrac{0.02}{0.1 \\times 0.4} = \\dfrac{0.02}{0.04} = 0.5$. The value $5$ forgets to multiply the standard deviations in the denominator, giving an impossible correlation above $1$. Dividing the covariance by the product of standard deviations gives $0.5$.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-005",
+      "stem": "An equally weighted portfolio of two assets has $\\sigma_1 = 0.2$, $\\sigma_2 = 0.3$, and correlation $\\rho = 0$. What is the portfolio variance?",
+      "options": [
+        "$0.065$",
+        "$0.0325$",
+        "$0.25$",
+        "$0.05$"
+      ],
+      "answer": 1,
+      "explanation": "With $\\rho = 0$ the cross term vanishes: $\\sigma_p^2 = w_1^2 \\sigma_1^2 + w_2^2 \\sigma_2^2 = (0.5)^2(0.04) + (0.5)^2(0.09) = 0.01 + 0.0225 = 0.0325$. The value $0.065$ forgets to square the weights, and $0.25$ is a weight squared. Squaring the half-weights and summing the weighted variances gives $0.0325$.",
+      "difficulty": "stretch",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-006",
+      "stem": "For the same two assets ($\\sigma_1 = 0.2$, $\\sigma_2 = 0.3$, equal weights), if the correlation is $\\rho = 1$, what is the portfolio standard deviation?",
+      "options": [
+        "$0.25$",
+        "$0.05$",
+        "$0.0625$",
+        "$0.18$"
+      ],
+      "answer": 0,
+      "explanation": "With perfect positive correlation the portfolio standard deviation is the weighted average of the individual standard deviations: $\\sigma_p = w_1 \\sigma_1 + w_2 \\sigma_2 = 0.5(0.2) + 0.5(0.3) = 0.25$. Equivalently $\\sigma_p^2 = 0.01 + 0.0225 + 2(0.5)(0.5)(1)(0.2)(0.3) = 0.0625$, whose square root is $0.25$. The value $0.0625$ is the variance, not the standard deviation. Perfect correlation gives no diversification, so risk is just the weighted average.",
+      "difficulty": "stretch",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-007",
+      "stem": "For the same two assets ($\\sigma_1 = 0.2$, $\\sigma_2 = 0.3$, equal weights), if the correlation is $\\rho = -1$, what is the portfolio standard deviation?",
+      "options": [
+        "$0.25$",
+        "$0.18$",
+        "$0.05$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "With perfect negative correlation, $\\sigma_p = |w_1 \\sigma_1 - w_2 \\sigma_2| = |0.5(0.2) - 0.5(0.3)| = |0.1 - 0.15| = 0.05$. Equivalently $\\sigma_p^2 = 0.01 + 0.0225 - 0.03 = 0.0025$, whose square root is $0.05$. The value $0.25$ is the perfectly positive case, and risk reaches zero only if the weighted standard deviations exactly cancel. Negative correlation sharply reduces portfolio risk.",
+      "difficulty": "stretch",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-008",
+      "stem": "Diversification reduces portfolio risk most effectively when the assets have which kind of correlation?",
+      "options": [
+        "Perfectly positive ($\\rho = 1$)",
+        "Low or negative correlation",
+        "Correlation exactly equal to $1$",
+        "No effect of correlation on diversification"
+      ],
+      "answer": 1,
+      "explanation": "Diversification works because combining assets that do not move in lockstep lets their fluctuations partly offset; the lower (or more negative) the correlation, the greater the risk reduction. At $\\rho = 1$ there is no diversification benefit, since risks add as a weighted average. Correlation is precisely what governs the size of the benefit. Low or negative correlation gives the strongest reduction.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-009",
+      "stem": "The Sharpe ratio of a portfolio is defined as which of the following, where $R_f$ is the risk-free rate?",
+      "options": [
+        "$\\dfrac{E[R_p]}{\\sigma_p}$",
+        "$E[R_p] - R_f$",
+        "$\\dfrac{\\sigma_p}{E[R_p] - R_f}$",
+        "$\\dfrac{E[R_p] - R_f}{\\sigma_p}$"
+      ],
+      "answer": 3,
+      "explanation": "The Sharpe ratio measures excess return per unit of risk: $\\dfrac{E[R_p] - R_f}{\\sigma_p}$. Omitting the risk-free subtraction or the denominator misses the point of reward-to-risk. Inverting the ratio measures risk per unit of return instead. Excess return divided by standard deviation is the Sharpe ratio.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-010",
+      "stem": "A portfolio has expected return $12\\%$, the risk-free rate is $4\\%$, and the portfolio standard deviation is $16\\%$. What is the Sharpe ratio?",
+      "options": [
+        "$3$",
+        "$0.5$",
+        "$0.75$",
+        "$0.08$"
+      ],
+      "answer": 1,
+      "explanation": "Compute $\\dfrac{E[R_p] - R_f}{\\sigma_p} = \\dfrac{0.12 - 0.04}{0.16} = \\dfrac{0.08}{0.16} = 0.5$. The value $0.08$ is the excess return alone without dividing by risk, and $0.75$ would use a different denominator. Dividing the $8\\%$ excess return by the $16\\%$ risk gives $0.5$.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-011",
+      "stem": "An equally weighted portfolio holds asset $1$ returning $8\\%$ and asset $2$ returning $12\\%$. What is the expected portfolio return?",
+      "options": [
+        "$12\\%$",
+        "$8\\%$",
+        "$10\\%$",
+        "$20\\%$"
+      ],
+      "answer": 2,
+      "explanation": "With equal weights $E[R_p] = 0.5(0.08) + 0.5(0.12) = 0.04 + 0.06 = 0.10$, or $10\\%$. The value $20\\%$ adds the returns rather than averaging, and $8\\%$ or $12\\%$ ignores one asset. The equal-weight average of the two returns is $10\\%$.",
+      "difficulty": "warmup",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-012",
+      "stem": "What does the covariance $\\sigma_{12}$ between two asset returns measure?",
+      "options": [
+        "The average of the two returns",
+        "The degree to which the two returns move together",
+        "The total risk of asset $1$ alone",
+        "The risk-free rate"
+      ],
+      "answer": 1,
+      "explanation": "Covariance captures the direction and degree of co-movement: positive when the returns tend to rise and fall together, negative when they move oppositely. It is not an average return, nor a single asset's standalone risk (that is its own variance), nor the risk-free rate. Co-movement of the two returns is exactly what covariance quantifies.",
+      "difficulty": "warmup",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-013",
+      "stem": "Correlation $\\rho$ between two assets always lies in which range?",
+      "options": [
+        "$[-1, 1]$",
+        "$[0, \\infty)$",
+        "$[0, 1]$",
+        "$(-\\infty, \\infty)$"
+      ],
+      "answer": 0,
+      "explanation": "Correlation is the covariance standardized by the two standard deviations, and it is bounded: $-1 \\le \\rho \\le 1$. A value of $1$ is perfect positive co-movement, $-1$ perfect negative, and $0$ no linear relationship. Covariance itself is unbounded, but dividing by the standard deviations confines correlation to $[-1, 1]$.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-014",
+      "stem": "Why can combining two risky assets produce a portfolio with lower risk than either asset alone?",
+      "options": [
+        "Because variance is always negative",
+        "Because weights must exceed $1$",
+        "Because expected returns always cancel",
+        "Because the assets' fluctuations partly offset when they are not perfectly positively correlated"
+      ],
+      "answer": 3,
+      "explanation": "When asset returns are not perfectly positively correlated, a poor outcome for one is often softened by the other, so their combined variability is less than the weighted sum of individual risks; this is the diversification effect. Expected returns combine as a weighted average and do not cancel, variance is never negative, and weights sum to one. Imperfect correlation is what enables risk below the standalone levels.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-015",
+      "stem": "A portfolio invests $70\\%$ in a stock with expected return $20\\%$ and $30\\%$ in a bond with expected return $5\\%$. What is the expected portfolio return?",
+      "options": [
+        "$17\\%$",
+        "$12.5\\%$",
+        "$15.5\\%$",
+        "$25\\%$"
+      ],
+      "answer": 2,
+      "explanation": "Weighted average: $E[R_p] = 0.7(0.20) + 0.3(0.05) = 0.14 + 0.015 = 0.155$, or $15.5\\%$. The value $12.5\\%$ is the simple average of the two returns, ignoring the heavier stock weight. The value $25\\%$ adds the returns. Weighting by the actual allocations gives $15.5\\%$.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-016",
+      "stem": "For a portfolio of two uncorrelated assets each with variance $\\sigma^2 = 0.04$ and equal weights, what is the portfolio variance?",
+      "options": [
+        "$0.01$",
+        "$0.04$",
+        "$0.08$",
+        "$0.02$"
+      ],
+      "answer": 3,
+      "explanation": "With zero correlation and equal weights, $\\sigma_p^2 = (0.5)^2(0.04) + (0.5)^2(0.04) = 0.01 + 0.01 = 0.02$. This is half the variance of a single asset, illustrating the diversification gain. The value $0.04$ is the undiversified single-asset variance, and $0.08$ adds rather than weighting. Splitting equally between uncorrelated assets halves the variance to $0.02$.",
+      "difficulty": "stretch",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-017",
+      "stem": "If two assets are perfectly positively correlated ($\\rho = 1$), the portfolio standard deviation equals which of the following?",
+      "options": [
+        "$\\sqrt{w_1^2 \\sigma_1^2 + w_2^2 \\sigma_2^2}$",
+        "$w_1 \\sigma_1 + w_2 \\sigma_2$, the weighted average of the standard deviations",
+        "The smaller of $\\sigma_1$ and $\\sigma_2$",
+        "Zero"
+      ],
+      "answer": 1,
+      "explanation": "At $\\rho = 1$ the variance becomes a perfect square, $\\sigma_p^2 = (w_1 \\sigma_1 + w_2 \\sigma_2)^2$, so $\\sigma_p = w_1 \\sigma_1 + w_2 \\sigma_2$, the weighted average of the standard deviations. There is no diversification, so risk is not reduced to zero or to the smaller standard deviation. The first option drops the covariance term and applies only when $\\rho = 0$. Perfect positive correlation makes portfolio risk a straight weighted average.",
+      "difficulty": "stretch",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-018",
+      "stem": "Between two portfolios with the same expected return, which is preferred by a risk-averse investor?",
+      "options": [
+        "The one with lower standard deviation (risk)",
+        "They are always equally good",
+        "The one with higher standard deviation",
+        "The one with more assets, regardless of risk"
+      ],
+      "answer": 0,
+      "explanation": "A risk-averse investor, comparing equal expected returns, prefers the portfolio with smaller variability, which also gives the higher Sharpe ratio. Higher standard deviation means more uncertainty for no extra expected reward. The number of assets matters only insofar as it affects risk. Lower risk at the same return is unambiguously better.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-019",
+      "stem": "A portfolio has expected return $10\\%$, risk-free rate $2\\%$, and standard deviation $20\\%$. What is its Sharpe ratio?",
+      "options": [
+        "$0.5$",
+        "$0.08$",
+        "$0.6$",
+        "$0.4$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $\\dfrac{0.10 - 0.02}{0.20} = \\dfrac{0.08}{0.20} = 0.4$. The value $0.08$ is the excess return without dividing by risk, and $0.5$ would use a $16\\%$ denominator. Dividing the $8\\%$ excess return by the $20\\%$ standard deviation gives $0.4$.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-020",
+      "stem": "In the two-asset variance formula, the term $2 w_1 w_2 \\sigma_{12}$ has what effect when the covariance $\\sigma_{12}$ is negative?",
+      "options": [
+        "It leaves portfolio variance unchanged",
+        "It makes the weights negative",
+        "It increases portfolio variance",
+        "It reduces portfolio variance, lowering risk"
+      ],
+      "answer": 3,
+      "explanation": "A negative covariance makes the cross term $2 w_1 w_2 \\sigma_{12}$ negative (for positive weights), which subtracts from the sum of the individual variance contributions and lowers $\\sigma_p^2$. This is the mathematical engine of diversification. It does not change the weights, and it certainly does not leave variance unchanged. Negative co-movement pulls portfolio risk down.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-021",
+      "stem": "What is the variance of a single asset's return a measure of?",
+      "options": [
+        "Its weight in the portfolio",
+        "Its expected return",
+        "Its total (standalone) risk, the spread of its returns",
+        "Its correlation with the market"
+      ],
+      "answer": 2,
+      "explanation": "Variance (and its square root, the standard deviation) quantifies how widely an asset's returns are dispersed about their mean, which is the standard measure of its standalone risk. It is distinct from the expected return, from correlation with other assets, and from portfolio weights. The spread of returns about the mean is total risk.",
+      "difficulty": "warmup",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-022",
+      "stem": "A portfolio puts weight $0.5$ on each of two assets with $E[R_1] = 6\\%$, $E[R_2] = 14\\%$, $\\sigma_1 = 0.1$, $\\sigma_2 = 0.2$, and $\\rho = 0$. What is the portfolio expected return?",
+      "options": [
+        "$8\\%$",
+        "$12\\%$",
+        "$20\\%$",
+        "$10\\%$"
+      ],
+      "answer": 3,
+      "explanation": "Expected return uses only the means and weights: $E[R_p] = 0.5(0.06) + 0.5(0.14) = 0.03 + 0.07 = 0.10$, or $10\\%$. The standard deviations and correlation affect risk, not the expected return. The value $20\\%$ adds the returns. The equal-weight average of $6\\%$ and $14\\%$ is $10\\%$.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-023",
+      "stem": "Continuing with the portfolio of the previous question ($w = 0.5$ each, $\\sigma_1 = 0.1$, $\\sigma_2 = 0.2$, $\\rho = 0$), what is the portfolio standard deviation?",
+      "options": [
+        "$0.1118$",
+        "$0.0125$",
+        "$0.15$",
+        "$0.05$"
+      ],
+      "answer": 0,
+      "explanation": "First the variance: $\\sigma_p^2 = (0.5)^2(0.1)^2 + (0.5)^2(0.2)^2 = 0.25(0.01) + 0.25(0.04) = 0.0025 + 0.01 = 0.0125$. Then $\\sigma_p = \\sqrt{0.0125} \\approx 0.1118$. The value $0.0125$ is the variance, not the standard deviation, and $0.15$ is the weighted average of the standard deviations, which would apply only at $\\rho = 1$. Taking the square root of the variance gives about $0.1118$.",
+      "difficulty": "stretch",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-024",
+      "stem": "As more assets with low pairwise correlation are added to an equally weighted portfolio, what happens to the portfolio's risk?",
+      "options": [
+        "It tends to increase without bound",
+        "It becomes negative",
+        "It tends to decrease toward a floor set by the average covariance",
+        "It stays exactly constant"
+      ],
+      "answer": 2,
+      "explanation": "Adding more imperfectly correlated assets averages away the asset-specific (diversifiable) risk, so portfolio variance falls toward a floor determined by the average covariance among assets; it does not vanish entirely because shared (systematic) risk remains. Risk does not grow without bound, stay constant, or go negative. Diversification drives risk down to the systematic component.",
+      "difficulty": "stretch",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-025",
+      "stem": "Two portfolios have the same standard deviation, but portfolio A has a higher expected return than portfolio B. Which has the higher Sharpe ratio (same risk-free rate)?",
+      "options": [
+        "Portfolio A",
+        "Portfolio B",
+        "Cannot be determined",
+        "They are equal"
+      ],
+      "answer": 0,
+      "explanation": "The Sharpe ratio is $\\dfrac{E[R_p] - R_f}{\\sigma_p}$; with the same denominator $\\sigma_p$ and risk-free rate, the portfolio with the larger excess return has the larger ratio, so portfolio A wins. It is fully determined here, and B cannot exceed A under these conditions. A higher numerator with equal denominator gives the higher Sharpe ratio.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-026",
+      "format": "cloze",
+      "stem": "A portfolio holds asset $1$ (weight $0.6$, expected return $10\\%$) and asset $2$ (weight $0.4$, expected return $15\\%$).",
+      "solution": "The expected portfolio return is $0.6(0.10) + 0.4(0.15)$, which equals {{1}} (as a decimal). Expressed as a percentage, this is {{2}} percent. The expected return of a portfolio is the {{3}} of the asset returns.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.12,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 12,
+          "tolerance": 0.1
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "weighted average",
+            "sum",
+            "product",
+            "maximum"
+          ],
+          "answer": "weighted average"
+        }
+      ],
+      "explanation": "$0.6(0.10) + 0.4(0.15) = 0.06 + 0.06 = 0.12 = 12\\%$. Portfolio expected return is the weighted average of the component returns.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-027",
+      "format": "cloze",
+      "stem": "Two assets have standard deviations $\\sigma_1 = 0.2$ and $\\sigma_2 = 0.3$. Relate covariance and correlation.",
+      "solution": "If the correlation is $\\rho = 0.5$, the covariance $\\rho \\sigma_1 \\sigma_2$ equals {{1}}. Conversely, if the covariance were $0.024$, the correlation $\\tfrac{0.024}{0.2 \\times 0.3}$ would equal {{2}}. Correlation always lies between $-1$ and {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.03,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.4,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\sigma_{12} = 0.5 \\times 0.2 \\times 0.3 = 0.03$. $\\rho = 0.024 / 0.06 = 0.4$. Correlation is bounded in $[-1, 1]$.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-028",
+      "format": "cloze",
+      "stem": "An equally weighted portfolio has assets with $\\sigma_1 = 0.2$ and $\\sigma_2 = 0.3$. Examine how correlation changes the risk.",
+      "solution": "With $\\rho = 0$, the variance $0.25(0.04) + 0.25(0.09)$ equals {{1}}. With $\\rho = 1$, the standard deviation equals the weighted average $0.5(0.2) + 0.5(0.3)$, which is {{2}}. Lower correlation gives a {{3}} portfolio risk.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.0325,
+          "tolerance": 0.0005
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "lower",
+            "higher",
+            "negative",
+            "constant"
+          ],
+          "answer": "lower"
+        }
+      ],
+      "explanation": "At $\\rho = 0$: $\\sigma_p^2 = 0.01 + 0.0225 = 0.0325$. At $\\rho = 1$: $\\sigma_p = 0.25$. Lower correlation reduces portfolio risk.",
+      "difficulty": "stretch",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-029",
+      "format": "cloze",
+      "stem": "A portfolio has expected return $12\\%$, the risk-free rate is $4\\%$, and the standard deviation is $16\\%$.",
+      "solution": "The excess return over the risk-free rate is {{1}} percent. The Sharpe ratio, excess return divided by standard deviation, equals {{2}}. A higher Sharpe ratio means more reward per unit of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0.1
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "risk",
+            "return",
+            "weight",
+            "time"
+          ],
+          "answer": "risk"
+        }
+      ],
+      "explanation": "Excess return $= 12 - 4 = 8\\%$. Sharpe $= 0.08 / 0.16 = 0.5$. The Sharpe ratio is reward per unit of risk.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-030",
+      "format": "cloze",
+      "stem": "A portfolio holds two uncorrelated assets, each with variance $0.04$, at equal weights.",
+      "solution": "The portfolio variance $0.25(0.04) + 0.25(0.04)$ equals {{1}}. This is exactly {{2}} of a single asset's variance, which shows the benefit of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.02,
+          "tolerance": 0.0005
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "half",
+            "twice",
+            "the same as",
+            "a quarter of"
+          ],
+          "answer": "half"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "diversification",
+            "leverage",
+            "arbitrage",
+            "compounding"
+          ],
+          "answer": "diversification"
+        }
+      ],
+      "explanation": "$\\sigma_p^2 = 0.01 + 0.01 = 0.02$, half of the single-asset variance $0.04$. Splitting across uncorrelated assets is diversification.",
+      "difficulty": "stretch",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    },
+    {
+      "id": "stoc-and-final-model-i-risk-and-portfolio-031",
+      "format": "cloze",
+      "stem": "Examine the two-asset portfolio variance formula $\\sigma_p^2 = w_1^2 \\sigma_1^2 + w_2^2 \\sigma_2^2 + 2 w_1 w_2 \\sigma_{12}$.",
+      "solution": "The third term contains the {{1}} between the two assets. When this quantity is negative, the term lowers the portfolio variance, which {{2}} risk. When the correlation equals $1$, the formula collapses to a perfect square and there is no diversification {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "covariance",
+            "expected return",
+            "risk-free rate",
+            "weight"
+          ],
+          "answer": "covariance"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "reduces",
+            "increases",
+            "fixes",
+            "doubles"
+          ],
+          "answer": "reduces"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "benefit",
+            "cost",
+            "fee",
+            "tax"
+          ],
+          "answer": "benefit"
+        }
+      ],
+      "explanation": "The cross term carries the covariance $\\sigma_{12}$. A negative covariance reduces variance. At $\\rho = 1$ the variance is a perfect square, so there is no diversification benefit.",
+      "difficulty": "core",
+      "source": "in the style of Ross, Introduction to Probability Models"
+    }
+  ]
+}

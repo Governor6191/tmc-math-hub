@@ -1,0 +1,505 @@
+{
+  "courseId": "integral-equation-mathematical-economics",
+  "topicId": "relation-to-differential-equations",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-001",
+      "stem": "Converting an initial value problem to an integral equation produces a",
+      "options": [
+        "first kind equation with no solution",
+        "Volterra equation",
+        "Fredholm equation",
+        "homogeneous algebraic equation"
+      ],
+      "answer": 1,
+      "explanation": "Integrating an initial value problem from the starting point $0$ to a variable point $x$ gives an integral with a variable upper limit, which is the defining feature of a Volterra equation. The accumulation from the initial point onward matches the forward evolution of an initial value problem. Boundary value problems, by contrast, lead to Fredholm equations.",
+      "difficulty": "warmup",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-002",
+      "stem": "Converting a boundary value problem to an integral equation produces a",
+      "options": [
+        "separable ordinary differential equation",
+        "Volterra equation of the first kind",
+        "Volterra equation of the second kind",
+        "Fredholm equation"
+      ],
+      "answer": 3,
+      "explanation": "A boundary value problem imposes conditions at two endpoints, so its Green's function couples the whole interval and the integral runs over the fixed interval $[a,b]$. Fixed limits make the resulting equation of Fredholm type. The two-point coupling is exactly what distinguishes it from the one-sided accumulation of a Volterra equation.",
+      "difficulty": "warmup",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-003",
+      "stem": "Convert the initial value problem $y'(x) = y(x)$, $y(0) = 1$ to an integral equation.",
+      "options": [
+        "$y(x) = x + \\displaystyle\\int_0^x y(t)\\,dt$",
+        "$y(x) = 1 + \\displaystyle\\int_0^x t\\,y(t)\\,dt$",
+        "$y(x) = \\displaystyle\\int_0^1 y(t)\\,dt$",
+        "$y(x) = 1 + \\displaystyle\\int_0^x y(t)\\,dt$"
+      ],
+      "answer": 3,
+      "explanation": "Integrating $y'(t) = y(t)$ from $0$ to $x$ gives $y(x) - y(0) = \\int_0^x y(t)\\,dt$. Using $y(0) = 1$, $y(x) = 1 + \\int_0^x y(t)\\,dt$, a Volterra equation of the second kind with kernel $1$. Its solution $y = e^x$ matches the differential equation directly.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-004",
+      "stem": "The Leibniz rule for differentiating $\\displaystyle\\int_{a(x)}^{b(x)} F(x,t)\\,dt$ with respect to $x$ is",
+      "options": [
+        "$F(x,b) - F(x,a)$",
+        "$F(x,b)\\,b'(x) + F(x,a)\\,a'(x)$",
+        "$F(x,b)\\,b'(x) - F(x,a)\\,a'(x) + \\displaystyle\\int_{a}^{b} \\dfrac{\\partial F}{\\partial x}\\,dt$",
+        "$\\displaystyle\\int_{a}^{b} \\dfrac{\\partial F}{\\partial x}\\,dt$ only"
+      ],
+      "answer": 2,
+      "explanation": "The full Leibniz rule accounts for the moving limits and the explicit $x$ in the integrand: $\\frac{d}{dx}\\int_{a(x)}^{b(x)} F(x,t)\\,dt = F(x,b)b'(x) - F(x,a)a'(x) + \\int_{a}^{b} \\frac{\\partial F}{\\partial x}\\,dt$. The boundary terms come from the moving endpoints, and the integral term from differentiating under the sign. This rule drives every conversion between integral and differential equations.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-005",
+      "stem": "A function $G(x,t)$ used to express the solution of a boundary value problem as $y(x) = \\int_a^b G(x,t)f(t)\\,dt$ is called",
+      "options": [
+        "the eigenfunction",
+        "the difference kernel",
+        "the resolvent kernel",
+        "the Green's function"
+      ],
+      "answer": 3,
+      "explanation": "The Green's function $G(x,t)$ is the kernel that solves a boundary value problem by integration against the data $f$. It plays the role of the kernel in the resulting Fredholm equation. The resolvent belongs to the Neumann series of an integral equation, and an eigenfunction is a solution, not a kernel.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-006",
+      "stem": "Integrating the second order problem $y''(x) = F(x)$, $y(0) = a$, $y'(0) = b$ twice gives",
+      "options": [
+        "$y(x) = a + \\displaystyle\\int_0^x F(t)\\,dt$",
+        "$y(x) = bx + \\displaystyle\\int_0^1 (x - t)F(t)\\,dt$",
+        "$y(x) = a + bx + \\displaystyle\\int_0^x F(t)\\,dt$",
+        "$y(x) = a + bx + \\displaystyle\\int_0^x (x - t)F(t)\\,dt$"
+      ],
+      "answer": 3,
+      "explanation": "Integrating once, $y'(x) = b + \\int_0^x F(s)\\,ds$. Integrating again and collapsing the double integral by reversing the order, $\\int_0^x\\int_0^s F(\\tau)\\,d\\tau\\,ds = \\int_0^x (x - t)F(t)\\,dt$. Adding the linear part from the initial data gives $y(x) = a + bx + \\int_0^x (x - t)F(t)\\,dt$. The factor $(x - t)$ is the signature of two integrations.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-007",
+      "stem": "Convert $y''(x) + y(x) = 0$, $y(0) = 0$, $y'(0) = 1$ to a Volterra integral equation.",
+      "options": [
+        "$y(x) = x + \\displaystyle\\int_0^x (x - t)y(t)\\,dt$",
+        "$y(x) = 1 - \\displaystyle\\int_0^x (x - t)y(t)\\,dt$",
+        "$y(x) = \\displaystyle\\int_0^x y(t)\\,dt$",
+        "$y(x) = x - \\displaystyle\\int_0^x (x - t)y(t)\\,dt$"
+      ],
+      "answer": 3,
+      "explanation": "Here $y'' = -y$, so $F = -y$ with $a = 0$, $b = 1$. Substituting into $y(x) = a + bx + \\int_0^x (x - t)F(t)\\,dt$ gives $y(x) = x + \\int_0^x (x - t)(-y(t))\\,dt = x - \\int_0^x (x - t)y(t)\\,dt$. This Volterra equation of the second kind has solution $y = \\sin x$, matching the differential equation.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-008",
+      "stem": "Convert $y'(x) = x + y(x)$, $y(0) = 2$ to an integral equation.",
+      "options": [
+        "$y(x) = 2 + \\displaystyle\\int_0^x (t + y(t))\\,dt$",
+        "$y(x) = 2 + x + \\displaystyle\\int_0^x y(t)\\,dt$",
+        "$y(x) = 2 + \\displaystyle\\int_0^1 (t + y(t))\\,dt$",
+        "$y(x) = x + \\displaystyle\\int_0^x y(t)\\,dt$"
+      ],
+      "answer": 0,
+      "explanation": "Integrating $y'(t) = t + y(t)$ from $0$ to $x$ gives $y(x) - y(0) = \\int_0^x (t + y(t))\\,dt$. With $y(0) = 2$, $y(x) = 2 + \\int_0^x (t + y(t))\\,dt$, a Volterra equation of the second kind. Note the integrand keeps both the known $t$ and the unknown $y(t)$; it is not yet evaluated, so the third and fourth options are premature simplifications.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-009",
+      "stem": "The Green's function for $-y'' = f(x)$ on $[0,1]$ with $y(0) = y(1) = 0$ is symmetric, meaning",
+      "options": [
+        "$G(x,t)$ depends only on $x$",
+        "$G(x,t) = G(t,x)$",
+        "$G(x,t) = -G(t,x)$",
+        "$G(x,t) = 0$ on the diagonal"
+      ],
+      "answer": 1,
+      "explanation": "The Green's function for this self-adjoint boundary value problem is $G(x,t) = t(1 - x)$ for $t \\le x$ and $x(1 - t)$ for $t \\ge x$, which satisfies $G(x,t) = G(t,x)$. Symmetry of the Green's function reflects the self-adjointness of $-d^2/dx^2$ with these boundary conditions, and it makes the resulting Fredholm kernel symmetric.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-010",
+      "stem": "The eigenvalue boundary value problem $y'' + \\lambda y = 0$, $y(0) = y(1) = 0$, converts via the Green's function to",
+      "options": [
+        "an inhomogeneous Fredholm equation",
+        "a Volterra equation of the first kind",
+        "a homogeneous Fredholm equation $y(x) = \\lambda\\displaystyle\\int_0^1 G(x,t)y(t)\\,dt$",
+        "an algebraic equation in $\\lambda$"
+      ],
+      "answer": 2,
+      "explanation": "Writing $y'' = -\\lambda y$ and inverting the operator with the Green's function gives $y(x) = \\lambda\\int_0^1 G(x,t)y(t)\\,dt$, a homogeneous Fredholm equation of the second kind. Its characteristic values are the eigenvalues $\\lambda_n = (n\\pi)^2$ and its eigenfunctions are $\\sin(n\\pi x)$, recovering the classical spectrum.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-011",
+      "stem": "Why does an initial value problem lead to a Volterra equation rather than a Fredholm equation?",
+      "options": [
+        "because the interval is infinite",
+        "because integration from the initial point gives a variable upper limit",
+        "because the equation is nonlinear",
+        "because the kernel is always symmetric"
+      ],
+      "answer": 1,
+      "explanation": "Initial conditions are imposed at a single starting point, so integrating from that point to a general point $x$ yields an integral with a variable upper limit $x$. That variable limit is precisely what makes the equation Volterra. A boundary value problem instead ties down two endpoints, producing the fixed limits of a Fredholm equation.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-012",
+      "stem": "Differentiate $\\displaystyle\\int_0^{x^2} \\sin t\\,dt$ with respect to $x$ using the Leibniz rule.",
+      "options": [
+        "$\\cos(x^2)$",
+        "$2x\\cos(x^2)$",
+        "$\\sin(x^2)$",
+        "$2x\\sin(x^2)$"
+      ],
+      "answer": 3,
+      "explanation": "Here the upper limit is $b(x) = x^2$ and the integrand has no explicit $x$. By the Leibniz rule the derivative is $\\sin(b(x))\\cdot b'(x) = \\sin(x^2)\\cdot 2x = 2x\\sin(x^2)$. The chain rule factor $b'(x) = 2x$ from the moving limit is essential and is what separates the second option from the first.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-013",
+      "stem": "The eigenfunctions of $y'' + \\lambda y = 0$, $y(0) = y(1) = 0$, equivalently of the associated Fredholm equation, are",
+      "options": [
+        "polynomials $x^n$",
+        "$e^{n x}$",
+        "$\\cos(n\\pi x)$",
+        "$\\sin(n\\pi x)$"
+      ],
+      "answer": 3,
+      "explanation": "Solving $y'' + \\lambda y = 0$ with $y(0) = 0$ forces a sine, and $y(1) = 0$ forces $\\sqrt{\\lambda} = n\\pi$, giving eigenfunctions $\\sin(n\\pi x)$ with eigenvalues $\\lambda_n = (n\\pi)^2$. These are the eigenfunctions of the Fredholm equation built from the Green's function. A cosine would violate $y(0) = 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-014",
+      "stem": "Converting $y''(x) = -y(x)$, $y(0) = 1$, $y'(0) = 0$ gives which integral equation?",
+      "options": [
+        "$y(x) = 1 - \\displaystyle\\int_0^x y(t)\\,dt$",
+        "$y(x) = x - \\displaystyle\\int_0^x (x - t)y(t)\\,dt$",
+        "$y(x) = 1 - \\displaystyle\\int_0^x (x - t)y(t)\\,dt$",
+        "$y(x) = 1 + \\displaystyle\\int_0^x (x - t)y(t)\\,dt$"
+      ],
+      "answer": 2,
+      "explanation": "With $a = 1$, $b = 0$, and $F = -y$, the formula $y = a + bx + \\int_0^x (x - t)F(t)\\,dt$ gives $y(x) = 1 + \\int_0^x (x - t)(-y(t))\\,dt = 1 - \\int_0^x (x - t)y(t)\\,dt$. This Volterra equation has solution $y = \\cos x$, consistent with the initial data $y(0) = 1$, $y'(0) = 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-015",
+      "stem": "In the conversion of a second order initial value problem, the kernel $K(x,t) = x - t$ arises from",
+      "options": [
+        "the boundary conditions",
+        "the Laplace transform",
+        "differentiating once",
+        "two successive integrations collapsed by reversing the order",
+        "a single integration"
+      ],
+      "answer": 3,
+      "explanation": "Reducing the double integral $\\int_0^x \\int_0^s F(\\tau)\\,d\\tau\\,ds$ by switching the order of integration gives $\\int_0^x (x - t)F(t)\\,dt$. The linear factor $(x - t)$ is the hallmark of two integrations. A single integration would give kernel $1$, and differentiation would remove the integral altogether.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-016",
+      "stem": "Setting $x = 0$ in the integral equation obtained from an initial value problem recovers",
+      "options": [
+        "the initial condition",
+        "the Green's function",
+        "the differential equation",
+        "the resolvent kernel"
+      ],
+      "answer": 0,
+      "explanation": "At $x = 0$ the Volterra integral $\\int_0^0 = 0$, so the integral equation reduces to $y(0) = a$, which is exactly the initial condition that was built in. Thus the conversion is consistent: evaluating at the starting point returns the data. Differentiating, not evaluating, would recover the differential equation.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-017",
+      "stem": "To recover the differential equation from the Volterra equation $y(x) = 1 + \\displaystyle\\int_0^x y(t)\\,dt$, one should",
+      "options": [
+        "integrate both sides",
+        "set $x = 1$",
+        "square both sides",
+        "differentiate both sides using the Leibniz rule"
+      ],
+      "answer": 3,
+      "explanation": "Differentiating $y(x) = 1 + \\int_0^x y(t)\\,dt$ gives $y'(x) = y(x)$ by the Leibniz rule, recovering the original differential equation. The initial condition $y(0) = 1$ comes from evaluating the integral equation at $x = 0$. Differentiation is the inverse of the integration that produced the equation.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-018",
+      "stem": "Differentiate $\\displaystyle\\int_0^x (x - t)\\,g(t)\\,dt$ with respect to $x$.",
+      "options": [
+        "$0$",
+        "$\\displaystyle\\int_0^x g(t)\\,dt$",
+        "$(x - x)g(x) = 0$",
+        "$x\\,g(x)$"
+      ],
+      "answer": 1,
+      "explanation": "By the Leibniz rule, the boundary term is $(x - x)g(x) = 0$ and the integral of $\\frac{\\partial}{\\partial x}[(x - t)g(t)] = g(t)$ gives $\\int_0^x g(t)\\,dt$. So the derivative is $\\int_0^x g(t)\\,dt$. A second differentiation would then give $g(x)$, which is why the kernel $(x - t)$ corresponds to a second order problem.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-019",
+      "stem": "Which feature most directly explains why boundary value problems give Fredholm rather than Volterra equations?",
+      "options": [
+        "the differential equation is of higher order",
+        "the Green's function is always zero",
+        "the conditions are applied at two endpoints, coupling the whole fixed interval",
+        "the unknown is nonlinear"
+      ],
+      "answer": 2,
+      "explanation": "Boundary conditions at both ends of $[a,b]$ make the Green's function nonzero across the whole interval, so the solution integrates over the fixed interval $[a,b]$. Fixed limits are the defining property of a Fredholm equation. The order of the equation and any nonlinearity are separate issues; the two-point coupling is the decisive feature.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-020",
+      "stem": "Convert $y'(x) = 3y(x)$, $y(0) = 5$ to an integral equation.",
+      "options": [
+        "$y(x) = 3 + \\displaystyle\\int_0^x 5y(t)\\,dt$",
+        "$y(x) = 5x + \\displaystyle\\int_0^x 3y(t)\\,dt$",
+        "$y(x) = 5 + \\displaystyle\\int_0^x 3y(t)\\,dt$",
+        "$y(x) = 5 + 3\\displaystyle\\int_0^1 y(t)\\,dt$"
+      ],
+      "answer": 2,
+      "explanation": "Integrating $y'(t) = 3y(t)$ from $0$ to $x$ gives $y(x) - y(0) = \\int_0^x 3y(t)\\,dt$. With $y(0) = 5$, $y(x) = 5 + \\int_0^x 3y(t)\\,dt$, a Volterra equation of the second kind. Its solution $y = 5e^{3x}$ matches the differential equation, confirming the conversion.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-021",
+      "stem": "The Green's function $G(x,t)$ for a second order boundary value problem is generally",
+      "options": [
+        "continuous in $x$, with a jump in its derivative across $x = t$",
+        "equal to the resolvent kernel",
+        "differentiable everywhere including across $x = t$",
+        "discontinuous at the endpoints"
+      ],
+      "answer": 0,
+      "explanation": "A Green's function for a second order operator is continuous across the point $x = t$ but has a unit jump in its first derivative there, reflecting the delta source. This is why $G$ is defined piecewise with matching values but mismatched slopes at $x = t$. It is not smooth across the diagonal, and it is distinct from a resolvent kernel.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-022",
+      "stem": "Evaluating $\\dfrac{d}{dx}\\displaystyle\\int_x^{2x} t^2\\,dt$ by the Leibniz rule gives",
+      "options": [
+        "$4x^2 - x^2 = 3x^2$",
+        "$(2x)^2\\cdot 2 - x^2\\cdot 1 = 7x^2$",
+        "$4x^2$",
+        "$x^2$"
+      ],
+      "answer": 1,
+      "explanation": "Both limits move and the integrand $t^2$ has no explicit $x$, so the rule gives $F(x, 2x)\\cdot(2x)' - F(x, x)\\cdot(x)' = (2x)^2\\cdot 2 - x^2\\cdot 1 = 8x^2 - x^2 = 7x^2$. The first option forgets the derivatives of the limits, which here contribute the factors $2$ and $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-023",
+      "format": "cloze",
+      "stem": "Convert the initial value problem $y'(x) = y(x)$, $y(0) = 1$ into an integral equation.",
+      "solution": "Integrating both sides from $0$ to $x$ gives $y(x) - y(0) = \\int_0^x y(t)\\,dt$. Using the initial condition, $y(x) = 1 + \\int_0^x y(t)\\,dt$. Because the upper limit is the variable $x$, this is a {{1}} equation of the second kind. Differentiating it with the Leibniz rule returns the original equation $y' =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "Volterra",
+            "Fredholm",
+            "Abel"
+          ],
+          "answer": "Volterra"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$y$",
+            "$x$",
+            "$1$"
+          ],
+          "answer": "$y$"
+        }
+      ],
+      "explanation": "Integration gives $y(x) = 1 + \\int_0^x y(t)\\,dt$, a Volterra equation because of the variable upper limit. Differentiating recovers $y'(x) = y(x)$, and setting $x = 0$ recovers $y(0) = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-024",
+      "format": "cloze",
+      "stem": "Classify the integral equations arising from each type of differential problem.",
+      "solution": "An initial value problem, integrated from its starting point, yields an integral with a variable upper limit, hence a {{1}} equation. A boundary value problem, whose Green's function couples both endpoints over a fixed interval, yields a {{2}} equation. The bridge in both directions is the {{3}} rule for differentiating an integral.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "Volterra",
+            "Fredholm",
+            "singular"
+          ],
+          "answer": "Volterra"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "Fredholm",
+            "Volterra",
+            "Abel"
+          ],
+          "answer": "Fredholm"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "Leibniz",
+            "Leibnitz"
+          ]
+        }
+      ],
+      "explanation": "Initial value problems give Volterra equations (variable limit), boundary value problems give Fredholm equations (fixed limits), and the Leibniz rule connects the integral and differential forms.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-025",
+      "format": "cloze",
+      "stem": "Reduce the second order problem $y''(x) = F(x)$, $y(0) = a$, $y'(0) = b$ to a single integral.",
+      "solution": "Integrating once gives $y'(x) = b + \\int_0^x F(s)\\,ds$. Integrating again and reversing the order of the double integral produces the single integral $\\int_0^x (x - t)F(t)\\,dt$, whose kernel is $x -$ {{1}}. Adding the contribution of the initial data, the full solution is $y(x) = a + bx + \\int_0^x (x - t)F(t)\\,dt$. The factor $(x - t)$ signals that {{2}} integrations were performed.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$t$",
+            "$s$",
+            "$a$"
+          ],
+          "answer": "$t$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Reversing the order in $\\int_0^x\\int_0^s F\\,d\\tau\\,ds$ gives $\\int_0^x (x - t)F(t)\\,dt$, kernel $x - t$. The linear factor records that two integrations were carried out, and the term $a + bx$ encodes the initial data.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-026",
+      "format": "cloze",
+      "stem": "Apply the Leibniz rule to $\\dfrac{d}{dx}\\displaystyle\\int_0^{x^2} \\sin t\\,dt$.",
+      "solution": "The upper limit is $b(x) = x^2$, whose derivative is $b'(x) = 2x$, and the integrand has no explicit $x$. The Leibniz rule gives the value $\\sin(x^2)$ times {{1}}. So the derivative equals {{2}} $\\sin(x^2)$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$2x$",
+            "$x^2$",
+            "$1$"
+          ],
+          "answer": "$2x$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$2x$",
+            "$x$",
+            "$x^2$"
+          ],
+          "answer": "$2x$"
+        }
+      ],
+      "explanation": "With no lower-limit motion and no explicit $x$ in $\\sin t$, the rule reduces to $\\sin(b(x))b'(x) = \\sin(x^2)\\cdot 2x$. So the derivative is $2x\\sin(x^2)$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-027",
+      "format": "cloze",
+      "stem": "Discuss the Green's function for $-y'' = f$ on $[0,1]$ with $y(0) = y(1) = 0$.",
+      "solution": "The Green's function satisfies $G(x,t) = G(t,x)$, that is it is {{1}}, which makes the associated Fredholm kernel of the same kind. Across the line $x = t$ the function $G$ is continuous but its first derivative has a {{2}}. The eigenvalue problem $y'' + \\lambda y = 0$ with these conditions has eigenfunctions $\\sin(n\\pi x)$ and eigenvalues $\\lambda_n = (n\\pi)^2$, so the smallest eigenvalue corresponds to $n =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "symmetric",
+            "symmetrical"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "jump",
+            "discontinuity",
+            "unit jump"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The Green's function is symmetric, so the Fredholm kernel is symmetric. $G$ is continuous with a jump in its derivative at $x = t$. The eigenvalues $\\lambda_n = (n\\pi)^2$ increase with $n$, so the smallest is at $n = 1$, giving $\\lambda_1 = \\pi^2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-mathematical-economics-relation-to-differential-equations-028",
+      "format": "cloze",
+      "stem": "Convert $y''(x) + y(x) = 0$, $y(0) = 0$, $y'(0) = 1$ to a Volterra equation.",
+      "solution": "Writing $y'' = -y$ and using $y(x) = a + bx + \\int_0^x (x - t)y''(t)\\,dt$ with $a = 0$ and $b = 1$, we get $y(x) = x + \\int_0^x (x - t)(-y(t))\\,dt$, that is $y(x) = x -$ {{1}} $\\int_0^x (x - t)y(t)\\,dt$. The known solution of this equation is $y(x) =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\sin x$",
+            "$\\cos x$",
+            "$\\sinh x$"
+          ],
+          "answer": "$\\sin x$"
+        }
+      ],
+      "explanation": "Substituting $y'' = -y$ gives $y(x) = x - 1\\cdot\\int_0^x (x - t)y(t)\\,dt$, so the coefficient is $1$. The differential problem $y'' + y = 0$ with $y(0) = 0$, $y'(0) = 1$ has solution $y(x) = \\sin x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    }
+  ]
+}

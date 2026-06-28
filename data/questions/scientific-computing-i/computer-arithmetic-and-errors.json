@@ -1,0 +1,505 @@
+{
+  "courseId": "scientific-computing-i",
+  "topicId": "computer-arithmetic-and-errors",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-001",
+      "stem": "The true error of an approximation is defined as which of the following?",
+      "options": [
+        "True value minus approximation",
+        "Approximation divided by the true value",
+        "The number of significant figures retained",
+        "Approximation minus true value, divided by the approximation"
+      ],
+      "answer": 0,
+      "explanation": "The true error is $E_t = \\text{true value} - \\text{approximation}$, an absolute (signed) quantity carrying the units of the measured value. The second choice describes a relative error and even uses the wrong base, the third is a ratio with no error meaning, and the last counts digits rather than measuring error. The trap is mixing the absolute true error with the relative error: the plain difference is the definition asked for here.",
+      "difficulty": "warmup",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-002",
+      "stem": "The true fractional relative error is the true error expressed relative to which quantity?",
+      "options": [
+        "The machine epsilon",
+        "The approximation",
+        "The previous approximation",
+        "The true value"
+      ],
+      "answer": 3,
+      "explanation": "By definition $\\varepsilon_t = \\dfrac{\\text{true error}}{\\text{true value}}$, so the reference is the true value itself. Dividing by the approximation gives a slightly different number used only when the truth is unknown, the previous approximation appears in the iterative approximate error, and the machine epsilon is unrelated. The trap is using the approximation as the base; the true relative error always normalises by the true value.",
+      "difficulty": "warmup",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-003",
+      "stem": "If the true value is $\\pi = 3.141593$ and we approximate it by $\\dfrac{22}{7} = 3.142857$, the true error $E_t$ is approximately which value?",
+      "options": [
+        "$-0.001264$",
+        "$+0.000402$",
+        "$+0.001264$",
+        "$-3.142857$"
+      ],
+      "answer": 0,
+      "explanation": "Using $E_t = \\text{true} - \\text{approx} = 3.141593 - 3.142857 = -0.001264$. The sign is negative because the approximation overshoots $\\pi$. The value $+0.001264$ flips the sign, $0.000402$ is the relative (not absolute) error, and $-3.142857$ is just the approximation. The trap is dropping the sign; true error keeps it, and here the approximation exceeds the truth so $E_t < 0$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-004",
+      "stem": "For the same approximation $\\dfrac{22}{7}$ of $\\pi = 3.141593$, the magnitude of the true percent relative error $|\\varepsilon_t|$ is approximately which value?",
+      "options": [
+        "$0.0402\\%$",
+        "$4.02\\%$",
+        "$0.1264\\%$",
+        "$1.264\\%$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $|\\varepsilon_t| = \\dfrac{|E_t|}{\\text{true}}\\times 100\\% = \\dfrac{0.001264}{3.141593}\\times 100\\% = 0.04024\\%$. The value $0.1264\\%$ mistakenly uses the absolute error as if it were already a percent, $4.02\\%$ is off by a factor of $100$, and $1.264\\%$ misplaces the decimal. The trap is forgetting to divide by the true value before scaling to a percent.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-005",
+      "stem": "When the true value is unknown, iterative methods estimate the approximate percent relative error $\\varepsilon_a$ using which quantities?",
+      "options": [
+        "The first and last approximations only",
+        "The current and previous approximations",
+        "The true value and the current approximation",
+        "The machine epsilon and the step size"
+      ],
+      "answer": 1,
+      "explanation": "The approximate error uses $\\varepsilon_a = \\left|\\dfrac{\\text{current} - \\text{previous}}{\\text{current}}\\right|\\times 100\\%$, comparing successive iterates since the truth is unavailable. The true value cannot appear (it is unknown), the machine epsilon and step size are not part of this estimate, and using only the first and last iterates ignores the per-step nature. The trap is reaching for the true value; iteration must lean on consecutive approximations instead.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-006",
+      "stem": "A successive approximation improves from $x_{\\text{old}} = 1.5000$ to $x_{\\text{new}} = 1.4167$. The approximate percent relative error $\\varepsilon_a$ is approximately which value?",
+      "options": [
+        "$5.88\\%$",
+        "$8.33\\%$",
+        "$0.0833\\%$",
+        "$5.56\\%$"
+      ],
+      "answer": 0,
+      "explanation": "Apply $\\varepsilon_a = \\left|\\dfrac{1.4167 - 1.5000}{1.4167}\\right|\\times 100\\% = \\dfrac{0.0833}{1.4167}\\times 100\\% = 5.88\\%$. Using $0.0833$ alone forgets the division and scaling, dividing by $1.5$ instead of $1.4167$ gives $5.56\\%$, and $8.33\\%$ misplaces a decimal. The trap is normalising by the old value; the approximate error divides by the newest estimate.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-007",
+      "stem": "Rounding the number $3.14159$ to four significant figures gives which value?",
+      "options": [
+        "$3.141$",
+        "$3.142$",
+        "$3.14$",
+        "$3.150$"
+      ],
+      "answer": 1,
+      "explanation": "Four significant figures means keeping $3.141$ and then rounding using the next digit $5$, which rounds the last kept digit up to give $3.142$. Truncating to $3.141$ chops rather than rounds, $3.150$ keeps only three significant figures rounded wrongly, and $3.14$ has only three significant figures. The trap is chopping instead of rounding; the discarded $5$ forces the fourth figure up.",
+      "difficulty": "warmup",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-008",
+      "stem": "Chopping (truncating) the number $2.7182818$ to four significant figures gives which value, and what is the sign of the resulting true error $E_t = \\text{true} - \\text{approx}$?",
+      "options": [
+        "$2.718$, with $E_t > 0$",
+        "$2.719$, with $E_t < 0$",
+        "$2.718$, with $E_t < 0$",
+        "$2.720$, with $E_t > 0$"
+      ],
+      "answer": 0,
+      "explanation": "Chopping simply discards trailing digits, so $2.7182818$ becomes $2.718$. Since the kept value is smaller than the true value, $E_t = 2.7182818 - 2.718 = +0.0002818 > 0$. Rounding would give $2.718$ here too, but $2.719$ and $2.720$ round up incorrectly, and a chopped value can never exceed the original so $E_t$ cannot be negative. The trap is assuming chopping rounds; it only deletes digits, leaving a positive true error.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-009",
+      "stem": "The number $0.0004520$ is written in scientific notation. How many significant figures does it contain?",
+      "options": [
+        "$7$",
+        "$3$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": 3,
+      "explanation": "Leading zeros are placeholders and never count, but the trailing zero after the $2$ is significant, so $4$, $5$, $2$, and the final $0$ give four significant figures, that is $4.520\\times 10^{-4}$. Counting only $4$, $5$, $2$ gives three, counting every digit including leading zeros gives seven, and two ignores the trailing zero. The trap is discounting the trailing zero; in $0.0004520$ it is significant.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-010",
+      "stem": "Machine epsilon (the unit roundoff that bounds relative representation error) is best described as which of the following?",
+      "options": [
+        "The largest number a computer can store",
+        "The smallest positive number a computer can store",
+        "The number of bits in the mantissa",
+        "An upper bound on the relative error of representing a real number"
+      ],
+      "answer": 3,
+      "explanation": "Machine epsilon is the gap between $1$ and the next representable number, and it bounds the relative roundoff error of storing any real value. The smallest storable positive number is the underflow limit (much tinier), the largest is the overflow limit, and the mantissa bit count is related but is a count, not an error bound. The trap is confusing machine epsilon with the smallest representable number; epsilon measures relative precision, not absolute magnitude.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-011",
+      "stem": "For a binary floating-point system that stores a normalized mantissa with $t$ bits after the leading $1$, the machine epsilon (chopping) is which expression?",
+      "options": [
+        "$2^{-t}$",
+        "$10^{-t}$",
+        "$2^{t}$",
+        "$\\dfrac{t}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "Each additional mantissa bit halves the spacing, so with $t$ fractional bits the unit roundoff for chopping is $2^{-t}$. A positive exponent $2^{t}$ grows instead of shrinks, $10^{-t}$ uses the wrong base for a binary machine, and $t/2$ has no basis. The trap is using base $10$ or the wrong exponent sign; binary precision is governed by $2^{-t}$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-012",
+      "stem": "Roundoff error in numerical computation arises chiefly from which source?",
+      "options": [
+        "Choosing the wrong root-finding method",
+        "Representing real numbers with a finite number of digits",
+        "Truncating an infinite series after finitely many terms",
+        "Using too large a step size in a derivative formula"
+      ],
+      "answer": 1,
+      "explanation": "Roundoff comes from the finite precision of the number system: only finitely many digits are kept, so most reals are stored approximately. Truncating a series and using a coarse step size are truncation errors, and the choice of method is an algorithmic issue, not roundoff. The trap is blaming the algorithm; roundoff is rooted in finite-digit representation of numbers themselves.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-013",
+      "stem": "Truncation error in numerical methods arises chiefly from which source?",
+      "options": [
+        "Storing integers exactly",
+        "Approximating a mathematical process by a finite or discrete one",
+        "The finite word length of the computer",
+        "Rounding the final printed answer"
+      ],
+      "answer": 1,
+      "explanation": "Truncation error is the discrepancy from replacing an exact mathematical operation (an infinite sum, a limit, a derivative) with a finite or discrete approximation, such as cutting off a Taylor series. Finite word length and rounding the printout are roundoff effects, and exact integer storage introduces no error at all. The trap is confusing truncation with roundoff; truncation is about the method's approximation, not the hardware's digits.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-014",
+      "stem": "As the step size $h$ in a finite-difference derivative is made smaller, the truncation error and the roundoff error typically behave in which way?",
+      "options": [
+        "Both decrease without limit",
+        "Both increase without limit",
+        "Truncation error decreases while roundoff error grows",
+        "Truncation error grows while roundoff error decreases"
+      ],
+      "answer": 2,
+      "explanation": "Shrinking $h$ reduces the truncation error of the difference formula, but dividing by a tiny $h$ amplifies the roundoff in the differenced function values, so roundoff grows. The total error therefore has a sweet spot at some optimal $h$. Saying both fall ignores the roundoff blow-up, both rising ignores the truncation gain, and the reversed statement has the trade-off backwards. The trap is assuming smaller $h$ is always better; past the optimum, roundoff dominates.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-015",
+      "stem": "Subtracting two nearly equal numbers, such as $1.2345678 - 1.2345670$, is dangerous in floating-point arithmetic because it causes which problem?",
+      "options": [
+        "An automatic increase in precision",
+        "Overflow",
+        "Underflow",
+        "Loss of significance (subtractive cancellation)"
+      ],
+      "answer": 3,
+      "explanation": "When two close numbers are subtracted, their leading digits cancel and the result keeps only the few uncertain trailing digits, so relative error is magnified. This is subtractive cancellation (loss of significance), not overflow or underflow (which concern magnitude limits), and it certainly does not raise precision. The trap is thinking subtraction is harmless; cancelling equal leading digits is exactly where significant figures are lost.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-016",
+      "stem": "When two approximate numbers are added, a useful rule of thumb is that the absolute error of the sum is bounded by which quantity?",
+      "options": [
+        "The sum of the two absolute errors",
+        "The smaller of the two absolute errors",
+        "The difference of the two absolute errors",
+        "The product of the two absolute errors"
+      ],
+      "answer": 0,
+      "explanation": "For $z = x + y$ the propagated error is $\\Delta z = \\Delta x + \\Delta y$, so the absolute errors add (and in the worst case their magnitudes add). Multiplying the errors would give a meaninglessly tiny number, the difference could falsely cancel real uncertainty, and taking only the smaller underestimates the total. The trap is letting the errors cancel; for a sum, the bounding errors accumulate.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-017",
+      "stem": "For a product $z = xy$ of two approximate numbers, the relative errors combine approximately in which way?",
+      "options": [
+        "The relative errors multiply",
+        "The relative errors add",
+        "The absolute errors add",
+        "The relative error of $z$ equals that of $x$ only"
+      ],
+      "answer": 1,
+      "explanation": "For multiplication the first-order propagation gives $\\dfrac{\\Delta z}{z} \\approx \\dfrac{\\Delta x}{x} + \\dfrac{\\Delta y}{y}$, so the relative errors add. Relative errors do not multiply, it is the absolute (not relative) errors that add for a sum, and ignoring $y$'s contribution is plainly wrong. The trap is applying the addition rule for absolute error to a product; for products and quotients it is the relative errors that sum.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-018",
+      "stem": "A length is measured as $L = 9.00\\ \\text{m}$ with an absolute error of $0.03\\ \\text{m}$. The percent relative error is which value?",
+      "options": [
+        "$0.33\\%$",
+        "$3.00\\%$",
+        "$0.03\\%$",
+        "$0.27\\%$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $\\dfrac{0.03}{9.00}\\times 100\\% = 0.3333\\%$. Reporting $3.00\\%$ misplaces the decimal by a factor of $10$, $0.03\\%$ forgets to divide by $9$, and $0.27\\%$ would come from dividing by the wrong base. The trap is skipping the normalisation; relative error always divides the absolute error by the measured value.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-019",
+      "stem": "In an iterative scheme one stops when $\\varepsilon_a$ falls below a tolerance tied to significant figures. To be confident the result is correct to $n$ significant figures, the criterion $\\varepsilon_s = (0.5\\times 10^{2-n})\\%$ for $n = 3$ gives which stopping tolerance?",
+      "options": [
+        "$0.05\\%$",
+        "$5\\%$",
+        "$0.005\\%$",
+        "$0.5\\%$"
+      ],
+      "answer": 0,
+      "explanation": "Substitute $n = 3$: $\\varepsilon_s = 0.5\\times 10^{2-3}\\% = 0.5\\times 10^{-1}\\% = 0.05\\%$. Using $10^{0}$ gives $0.5\\%$ (the $n = 2$ value), $10^{-2}$ gives $0.005\\%$ (the $n = 4$ value), and $5\\%$ is far too loose. The trap is mishandling the exponent $2 - n$; for three significant figures the tolerance is $0.05\\%$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-020",
+      "stem": "Why is the approximate relative error $\\varepsilon_a$ used as a stopping criterion instead of the true relative error $\\varepsilon_t$ in practical computation?",
+      "options": [
+        "Because $\\varepsilon_t$ requires the machine epsilon",
+        "Because $\\varepsilon_a$ ignores roundoff",
+        "Because $\\varepsilon_a$ is always smaller",
+        "Because the true value is generally unknown"
+      ],
+      "answer": 3,
+      "explanation": "In real problems the exact answer is what we are solving for, so $\\varepsilon_t$ cannot be computed; $\\varepsilon_a$ relies only on successive approximations and is therefore usable. It is not systematically smaller, it has nothing to do with machine epsilon, and it does not selectively ignore roundoff. The trap is imagining we could evaluate $\\varepsilon_t$; if we knew the true value we would not be iterating at all.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-021",
+      "format": "cloze",
+      "stem": "Approximate $\\pi = 3.141593$ by $\\dfrac{22}{7} = 3.142857$ and quantify the error.",
+      "solution": "The true error is $E_t = \\text{true} - \\text{approx} = 3.141593 - 3.142857 =$ {{1}} (keep the sign). Its magnitude as a percent relative error, $\\dfrac{|E_t|}{3.141593}\\times 100\\%$, is about {{2}}. Because the approximation is larger than the true value, the true error is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -0.001264,
+          "tolerance": 0.00005
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.0402,
+          "tolerance": 0.002
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "negative",
+            "positive",
+            "zero",
+            "undefined"
+          ],
+          "answer": "negative"
+        }
+      ],
+      "explanation": "$E_t = 3.141593 - 3.142857 = -0.001264$. Then $\\frac{0.001264}{3.141593}\\times 100\\% = 0.0402\\%$. Since the approximation overshoots $\\pi$, the true error is negative.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-022",
+      "format": "cloze",
+      "stem": "An iteration moves from $x_{\\text{old}} = 1.5000$ to $x_{\\text{new}} = 1.4167$. Estimate the error without the true value.",
+      "solution": "The approximate percent relative error is $\\varepsilon_a = \\left|\\dfrac{1.4167 - 1.5000}{1.4167}\\right|\\times 100\\%$, which equals about {{1}}. This estimate is used in place of the true error because the true value is generally {{2}}. As the iteration proceeds, a well-behaved scheme drives $\\varepsilon_a$ steadily {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5.88,
+          "tolerance": 0.1
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "unknown",
+            "negative",
+            "an integer",
+            "stored exactly"
+          ],
+          "answer": "unknown"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "downward",
+            "upward",
+            "to one",
+            "to infinity"
+          ],
+          "answer": "downward"
+        }
+      ],
+      "explanation": "$\\varepsilon_a = \\frac{|1.4167 - 1.5000|}{1.4167}\\times 100\\% = \\frac{0.0833}{1.4167}\\times 100\\% = 5.88\\%$. The true value is unknown in practice, and a convergent iteration makes $\\varepsilon_a$ decrease toward zero.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-023",
+      "format": "cloze",
+      "stem": "Compare chopping and rounding of $2.71828$ to four significant figures.",
+      "solution": "Chopping discards trailing digits, giving {{1}}. Rounding to four significant figures inspects the next digit and gives {{2}}. The chopped value is always less than or equal to the true value, so its true error $E_t = \\text{true} - \\text{approx}$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.718,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2.718,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "non-negative",
+            "always negative",
+            "always zero",
+            "undefined"
+          ],
+          "answer": "non-negative"
+        }
+      ],
+      "explanation": "Chopping $2.71828$ to four figures gives $2.718$. The fifth digit is $2$, so rounding also gives $2.718$. Because chopping never exceeds the true value, $E_t \\ge 0$ (non-negative).",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-024",
+      "format": "cloze",
+      "stem": "Identify the total error budget of a numerical computation.",
+      "solution": "Error from representing real numbers with a finite number of digits is called {{1}} error. Error from approximating a limit or an infinite series by a finite process is called {{2}} error. The total numerical error is approximately the sum of these two contributions.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "roundoff",
+            "truncation",
+            "modelling",
+            "blunder"
+          ],
+          "answer": "roundoff"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "truncation",
+            "roundoff",
+            "measurement",
+            "formatting"
+          ],
+          "answer": "truncation"
+        }
+      ],
+      "explanation": "Finite-digit representation produces roundoff error; replacing an exact mathematical process by a discrete or finite one produces truncation error. Together they make up the total numerical error.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-025",
+      "format": "cloze",
+      "stem": "A measurement gives $L = 9.00\\ \\text{m}$ with absolute error $0.03\\ \\text{m}$.",
+      "solution": "The percent relative error is $\\dfrac{0.03}{9.00}\\times 100\\%$, which equals about {{1}}. If a second independent length with the same relative error is added to this one, the relative error of the sum is found by {{2}} the relative errors. Reducing the absolute error while holding the length fixed makes the relative error {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.333,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "adding",
+            "multiplying",
+            "subtracting",
+            "averaging"
+          ],
+          "answer": "adding"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "smaller",
+            "larger",
+            "unchanged",
+            "negative"
+          ],
+          "answer": "smaller"
+        }
+      ],
+      "explanation": "$\\frac{0.03}{9.00}\\times 100\\% = 0.333\\%$. For a sum the absolute errors add, and dividing by a comparable total leaves the relative errors adding to first order. A smaller absolute error over the same length yields a smaller relative error.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-computer-arithmetic-and-errors-026",
+      "format": "cloze",
+      "stem": "Relate mantissa bits to precision in a binary floating-point system.",
+      "solution": "Suppose the normalized mantissa stores $23$ bits after the leading $1$ (single precision). The machine epsilon for chopping is $2^{-23}$, which equals about {{1}} (give the value to two significant figures, in units of $10^{-7}$, so $1.2$ means $1.2\\times 10^{-7}$). Adding one more mantissa bit would {{2}} the machine epsilon. Machine epsilon bounds the {{3}} error of storing a real number, not its absolute magnitude.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.2,
+          "tolerance": 0.05
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "halves",
+            "doubles",
+            "squares",
+            "leaves unchanged"
+          ],
+          "answer": "halves"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "relative",
+            "absolute",
+            "truncation",
+            "modelling"
+          ],
+          "answer": "relative"
+        }
+      ],
+      "explanation": "With $23$ fractional bits the unit roundoff is $2^{-23} = 1.192\\times 10^{-7}$, about $1.2$ in units of $10^{-7}$. One extra bit changes $2^{-23}$ to $2^{-24}$, halving it. Machine epsilon bounds the relative representation error.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    }
+  ]
+}

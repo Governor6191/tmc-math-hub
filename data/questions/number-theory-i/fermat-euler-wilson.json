@@ -1,0 +1,470 @@
+{
+  "courseId": "number-theory-i",
+  "topicId": "fermat-euler-wilson",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "number-theory-i-fermat-euler-wilson-001",
+      "stem": "Fermat's little theorem says that if $p$ is prime and $p \\nmid a$, then $a^{p-1} \\equiv 1 \\pmod p$. What is $2^{10} \\bmod 11$?",
+      "options": [
+        "$1$",
+        "$0$",
+        "$10$",
+        "$2$"
+      ],
+      "answer": 0,
+      "explanation": "Since $11$ is prime and $11 \\nmid 2$, Fermat gives $2^{11-1} = 2^{10} \\equiv 1 \\pmod{11}$. A direct check: $2^{10} = 1024 = 11 \\times 93 + 1$, leaving remainder $1$. The value $2$ would be $2^1$, not $2^{10}$. The trap is recomputing the whole power; Fermat's theorem tells you immediately that raising to the exponent $p - 1 = 10$ returns $1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-002",
+      "stem": "Using Fermat's little theorem, evaluate $3^{6} \\bmod 7$.",
+      "options": [
+        "$6$",
+        "$1$",
+        "$3$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "Here $7$ is prime and $7 \\nmid 3$, so $3^{7-1} = 3^6 \\equiv 1 \\pmod 7$. Checking, $3^6 = 729 = 7 \\times 104 + 1$. The value $6 \\equiv -1$ is a common slip from confusing this with Wilson's theorem. The trap is mixing up the two theorems: Fermat gives $a^{p-1} \\equiv 1$, so the answer is $1$, not $-1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-003",
+      "stem": "Euler's totient $\\phi(n)$ counts the integers from $1$ to $n$ that are coprime to $n$. What is $\\phi(12)$?",
+      "options": [
+        "$6$",
+        "$4$",
+        "$11$",
+        "$12$"
+      ],
+      "answer": 1,
+      "explanation": "Since $12 = 2^2 \\times 3$, use $\\phi(2^2 \\times 3) = \\phi(2^2)\\phi(3) = (4 - 2)(3 - 1) = 2 \\times 2 = 4$. The four integers coprime to $12$ are $1, 5, 7, 11$. The value $6$ might come from $\\phi(2 \\times 3) = 2$ scaled wrongly, or from miscounting. The trap is forgetting the prime-power rule $\\phi(p^k) = p^k - p^{k-1}$: here $\\phi(4) = 2$, giving $\\phi(12) = 4$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-004",
+      "stem": "Wilson's theorem states that $(p-1)! \\equiv -1 \\pmod p$ if and only if $p$ is prime. What is $6! \\bmod 7$?",
+      "options": [
+        "$6$",
+        "$1$",
+        "$0$",
+        "$5$"
+      ],
+      "answer": 0,
+      "explanation": "Since $7$ is prime, Wilson gives $(7-1)! = 6! \\equiv -1 \\pmod 7$, and $-1 \\equiv 6 \\pmod 7$. Checking, $6! = 720 = 7 \\times 102 + 6$. The value $1$ confuses Wilson with Fermat. The trap is reporting $-1$ as $1$ or forgetting to convert: modulo $7$, the residue $-1$ is written as $6$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-005",
+      "stem": "Euler's theorem says $a^{\\phi(n)} \\equiv 1 \\pmod n$ whenever $\\gcd(a, n) = 1$. Given $\\phi(10) = 4$, what is $3^{4} \\bmod 10$?",
+      "options": [
+        "$1$",
+        "$7$",
+        "$9$",
+        "$3$"
+      ],
+      "answer": 0,
+      "explanation": "Since $\\gcd(3, 10) = 1$, Euler gives $3^{\\phi(10)} = 3^4 \\equiv 1 \\pmod{10}$. Directly, $3^4 = 81 = 10 \\times 8 + 1$. The value $9 = 3^2 \\bmod 10$ stops at the square. The trap is not carrying the exponent to $\\phi(n) = 4$: Euler's theorem guarantees the result is $1$ once you reach the totient power.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-006",
+      "stem": "What is $\\phi(p \\cdot q)$ when $p$ and $q$ are distinct primes?",
+      "options": [
+        "$p + q$",
+        "$pq - 1$",
+        "$(p-1)(q-1)$",
+        "$pq$"
+      ],
+      "answer": 2,
+      "explanation": "The totient is multiplicative for coprime arguments, so $\\phi(pq) = \\phi(p)\\phi(q) = (p-1)(q-1)$. For example $\\phi(15) = \\phi(3)\\phi(5) = 2 \\times 4 = 8$. The value $pq - 1$ would be $\\phi$ of a prime $pq$, but $pq$ is composite. The trap is treating $pq$ as prime; instead multiply the two totients, giving $(p-1)(q-1)$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-007",
+      "stem": "Evaluate $3^{100} \\bmod 7$ using Fermat's little theorem to reduce the exponent.",
+      "options": [
+        "$1$",
+        "$2$",
+        "$5$",
+        "$4$"
+      ],
+      "answer": 3,
+      "explanation": "By Fermat $3^6 \\equiv 1 \\pmod 7$, so reduce the exponent modulo $6$: $100 = 6 \\times 16 + 4$, giving $3^{100} \\equiv 3^4 \\pmod 7$. Now $3^4 = 81 = 7 \\times 11 + 4 \\equiv 4$. So $3^{100} \\equiv 4 \\pmod 7$. The value $1$ would need the exponent divisible by $6$. The trap is reducing the exponent modulo $7$ instead of modulo $p - 1 = 6$: the cycle length is $6$, leaving $3^4 \\equiv 4$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-008",
+      "stem": "What is $\\phi(36)$, given $36 = 2^2 \\times 3^2$?",
+      "options": [
+        "$18$",
+        "$12$",
+        "$6$",
+        "$24$"
+      ],
+      "answer": 1,
+      "explanation": "Use multiplicativity and the prime-power rule: $\\phi(36) = \\phi(4)\\phi(9) = (4-2)(9-3) = 2 \\times 6 = 12$. Equivalently $\\phi(36) = 36(1 - 1/2)(1 - 1/3) = 36 \\times \\tfrac12 \\times \\tfrac23 = 12$. The value $18 = 36/2$ applies only the factor for $2$. The trap is omitting one prime's contribution: both $(1 - 1/2)$ and $(1 - 1/3)$ must be applied, giving $12$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-009",
+      "stem": "For any integer $a$ and prime $p$, Fermat's little theorem in its general form states which congruence (valid even when $p \\mid a$)?",
+      "options": [
+        "$a^{p} \\equiv 1 \\pmod p$",
+        "$a^{p} \\equiv a \\pmod p$",
+        "$a^{p+1} \\equiv a \\pmod p$",
+        "$a^{p-1} \\equiv 1 \\pmod p$"
+      ],
+      "answer": 1,
+      "explanation": "The form $a^p \\equiv a \\pmod p$ holds for every integer $a$, including multiples of $p$ (both sides are $0$ then). The version $a^{p-1} \\equiv 1$ needs $p \\nmid a$, since otherwise the left side is $0$. For instance $2^7 = 128 \\equiv 2 \\pmod 7$. The trap is quoting $a^{p-1} \\equiv 1$ as universal; the always-valid statement is $a^p \\equiv a$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-010",
+      "stem": "Evaluate $2^{200} \\bmod 13$ using Fermat's little theorem.",
+      "options": [
+        "$9$",
+        "$3$",
+        "$4$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "Since $13$ is prime, $2^{12} \\equiv 1 \\pmod{13}$, so reduce the exponent modulo $12$: $200 = 12 \\times 16 + 8$, giving $2^{200} \\equiv 2^8 \\pmod{13}$. Now $2^8 = 256 = 13 \\times 19 + 9 \\equiv 9$. So $2^{200} \\equiv 9 \\pmod{13}$. The value $1$ would require the exponent to be a multiple of $12$. The trap is using the wrong cycle length; here it is $p - 1 = 12$, leaving $2^8 \\equiv 9$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-011",
+      "stem": "A consequence of Wilson's theorem is that $(p-2)! \\equiv 1 \\pmod p$ for prime $p$. What is $5! \\bmod 7$? (Note $5 = 7 - 2$.)",
+      "options": [
+        "$5$",
+        "$6$",
+        "$1$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "From Wilson, $(p-1)! \\equiv -1$, and dividing by $(p-1) \\equiv -1$ gives $(p-2)! \\equiv 1 \\pmod p$. For $p = 7$, $(7-2)! = 5! \\equiv 1 \\pmod 7$. Checking, $5! = 120 = 7 \\times 17 + 1$. The value $6 \\equiv -1$ is $(p-1)!$, not $(p-2)!$. The trap is confusing $5!$ with $6!$: dividing the Wilson product by $6 \\equiv -1$ flips the sign, giving $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-012",
+      "stem": "What is $\\phi(100)$, given $100 = 2^2 \\times 5^2$?",
+      "options": [
+        "$50$",
+        "$60$",
+        "$40$",
+        "$20$"
+      ],
+      "answer": 2,
+      "explanation": "Apply $\\phi(100) = \\phi(4)\\phi(25) = (4-2)(25-5) = 2 \\times 20 = 40$. Equivalently $100(1 - 1/2)(1 - 1/5) = 100 \\times \\tfrac12 \\times \\tfrac45 = 40$. The value $50 = 100/2$ uses only the factor for $2$. The trap is dropping the contribution of $5$; both prime factors reduce the count, giving $40$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-013",
+      "stem": "Wilson's theorem characterizes primes. For which $n$ is $(n-1)! \\equiv -1 \\pmod n$ true?",
+      "options": [
+        "Exactly the composites",
+        "All odd $n$",
+        "All $n$",
+        "Exactly the primes"
+      ],
+      "answer": 3,
+      "explanation": "Wilson's theorem is an if-and-only-if: $(n-1)! \\equiv -1 \\pmod n$ holds precisely when $n$ is prime. For composite $n > 4$, $(n-1)!$ is actually $\\equiv 0$, since the factors include the parts of a composite. For example $(6-1)! = 120 \\equiv 0 \\pmod 6$, not $-1$. The trap is thinking the congruence holds broadly; it is a sharp test that singles out the primes.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-014",
+      "stem": "Evaluate $5^{123} \\bmod 7$ using Fermat's little theorem.",
+      "options": [
+        "$6$",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "answer": 0,
+      "explanation": "Since $5^6 \\equiv 1 \\pmod 7$, reduce the exponent modulo $6$: $123 = 6 \\times 20 + 3$, so $5^{123} \\equiv 5^3 \\pmod 7$. Now $5^3 = 125 = 7 \\times 17 + 6 \\equiv 6$. Thus $5^{123} \\equiv 6 \\pmod 7$. The value $1$ would need the exponent divisible by $6$. The trap is mishandling the leftover exponent; after reducing $123 \\bmod 6 = 3$, compute $5^3 \\equiv 6$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-015",
+      "stem": "Using Euler's theorem with $\\phi(12) = 4$, what is $7^{4} \\bmod 12$?",
+      "options": [
+        "$5$",
+        "$1$",
+        "$7$",
+        "$11$"
+      ],
+      "answer": 1,
+      "explanation": "Since $\\gcd(7, 12) = 1$, Euler gives $7^{\\phi(12)} = 7^4 \\equiv 1 \\pmod{12}$. Directly, $7^2 = 49 \\equiv 1$, so $7^4 = (7^2)^2 \\equiv 1^2 = 1$. The value $7$ is $7^1$. The trap is not reaching the totient power; Euler's theorem ensures $7^4 \\equiv 1$, consistent with $7$ being self-inverse mod $12$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-016",
+      "stem": "What is $\\phi(9)$?",
+      "options": [
+        "$3$",
+        "$9$",
+        "$8$",
+        "$6$"
+      ],
+      "answer": 3,
+      "explanation": "Since $9 = 3^2$, use $\\phi(3^2) = 3^2 - 3^1 = 9 - 3 = 6$. The six integers coprime to $9$ are $1, 2, 4, 5, 7, 8$. The value $8$ would be $\\phi(9)$ if $9$ were prime, but it is not. The trap is treating $9$ as prime (giving $9 - 1 = 8$); the prime-power rule subtracts $3$, leaving $6$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-017",
+      "stem": "Compute $4! \\bmod 5$ and relate it to Wilson's theorem.",
+      "options": [
+        "$1$",
+        "$0$",
+        "$4$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "Since $5$ is prime, Wilson gives $(5-1)! = 4! \\equiv -1 \\pmod 5$, and $-1 \\equiv 4 \\pmod 5$. Directly, $4! = 24 = 5 \\times 4 + 4$. The value $1$ misreads $-1$ as $1$. The trap is forgetting the sign or the conversion; modulo $5$, the Wilson residue $-1$ equals $4$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-018",
+      "stem": "Evaluate $7^{222} \\bmod 11$ using Fermat's little theorem.",
+      "options": [
+        "$2$",
+        "$5$",
+        "$9$",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "Since $11$ is prime, $7^{10} \\equiv 1 \\pmod{11}$, so reduce the exponent modulo $10$: $222 = 10 \\times 22 + 2$, giving $7^{222} \\equiv 7^2 \\pmod{11}$. Now $7^2 = 49 = 11 \\times 4 + 5 \\equiv 5$. So $7^{222} \\equiv 5 \\pmod{11}$. The value $1$ would need the exponent divisible by $10$. The trap is reducing modulo the wrong number; use $p - 1 = 10$, then $7^2 \\equiv 5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-019",
+      "stem": "What is $\\phi(n)$ for $n = 1$?",
+      "options": [
+        "$2$",
+        "undefined",
+        "$0$",
+        "$1$"
+      ],
+      "answer": 3,
+      "explanation": "By convention $\\phi(1) = 1$, since there is exactly one integer in the range $1$ to $1$ (namely $1$ itself) and $\\gcd(1, 1) = 1$ counts it. This keeps $\\phi$ multiplicative and consistent with summation identities. The value $0$ wrongly assumes no integer qualifies. The trap is excluding $1$; the totient of $1$ is defined to be $1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-020",
+      "stem": "Using Fermat's little theorem in the form $a^p \\equiv a \\pmod p$, what is $2^{17} \\bmod 17$?",
+      "options": [
+        "$2$",
+        "$0$",
+        "$4$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "With $p = 17$, the identity $a^p \\equiv a \\pmod p$ gives $2^{17} \\equiv 2 \\pmod{17}$ directly. The value $1$ would be $2^{16} \\equiv 1$ (the $a^{p-1}$ form), one power lower. The trap is confusing $a^p$ with $a^{p-1}$: raising to the prime $p$ itself returns $a$, so the answer is $2$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-021",
+      "stem": "What is $\\phi(30)$, given $30 = 2 \\times 3 \\times 5$?",
+      "options": [
+        "$10$",
+        "$8$",
+        "$16$",
+        "$15$"
+      ],
+      "answer": 1,
+      "explanation": "Multiplicativity gives $\\phi(30) = \\phi(2)\\phi(3)\\phi(5) = 1 \\times 2 \\times 4 = 8$. Equivalently $30(1 - 1/2)(1 - 1/3)(1 - 1/5) = 30 \\times \\tfrac12 \\times \\tfrac23 \\times \\tfrac45 = 8$. The value $15 = 30/2$ applies only the factor for $2$. The trap is stopping after one prime; all three factors $\\tfrac12, \\tfrac23, \\tfrac45$ apply, giving $8$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-022",
+      "stem": "Evaluate $3^{1000} \\bmod 100$ using Euler's theorem, given $\\phi(100) = 40$.",
+      "options": [
+        "$3$",
+        "$81$",
+        "$1$",
+        "$43$"
+      ],
+      "answer": 2,
+      "explanation": "Since $\\gcd(3, 100) = 1$, Euler gives $3^{40} \\equiv 1 \\pmod{100}$. As $1000 = 40 \\times 25$ is a multiple of $40$, $3^{1000} = (3^{40})^{25} \\equiv 1^{25} = 1 \\pmod{100}$. The value $81 = 3^4$ would arise if a nonzero remainder were left in the exponent. The trap is not noticing $1000$ is divisible by $\\phi(100) = 40$; the power collapses cleanly to $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-023",
+      "stem": "What is $\\phi(15)$?",
+      "options": [
+        "$7$",
+        "$8$",
+        "$10$",
+        "$14$"
+      ],
+      "answer": 1,
+      "explanation": "Since $15 = 3 \\times 5$, $\\phi(15) = \\phi(3)\\phi(5) = 2 \\times 4 = 8$. The eight integers coprime to $15$ are $1, 2, 4, 7, 8, 11, 13, 14$. The value $14$ would be $\\phi(15)$ if $15$ were prime. The trap is treating $15$ as prime; multiply the totients of its prime factors, giving $8$.",
+      "difficulty": "warmup",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-024",
+      "format": "cloze",
+      "stem": "Use Fermat's little theorem to evaluate $2^{50} \\bmod 13$.",
+      "solution": "Since $13$ is prime, $2^{12} \\equiv 1 \\pmod{13}$, so reduce the exponent modulo $12$. The remainder of $50$ divided by $12$ is {{1}}. Then $2^{50} \\equiv 2^{2} = 4$, so the value of $2^{50} \\bmod 13$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$50 = 12 \\times 4 + 2$, so $2^{50} \\equiv 2^2 = 4 \\pmod{13}$. The cycle length is $p - 1 = 12$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-025",
+      "format": "cloze",
+      "stem": "Compute the totient $\\phi(24)$ using the prime factorization $24 = 2^3 \\times 3$.",
+      "solution": "Apply the prime-power rule and multiplicativity: $\\phi(2^3) = 2^3 - 2^2 = 4$ and $\\phi(3) = 2$. Multiplying these gives $\\phi(24) =$ {{1}}. The number of integers from $1$ to $24$ that share no factor with $24$ is therefore {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\phi(24) = \\phi(8)\\phi(3) = 4 \\times 2 = 8$. The coprime integers are $1, 5, 7, 11, 13, 17, 19, 23$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-026",
+      "format": "cloze",
+      "stem": "Apply Wilson's theorem to evaluate $10! \\bmod 11$.",
+      "solution": "Wilson's theorem says $(p-1)! \\equiv -1 \\pmod p$ for prime $p$. With $p = 11$, the residue $-1$ modulo $11$ is written as the value {{1}}. So $10! \\equiv$ {{2}} $\\pmod{11}$, taking the representative in $\\lbrace 0, \\dots, 10 \\rbrace$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $11$ is prime, $10! \\equiv -1 \\equiv 10 \\pmod{11}$. The factorial of $p - 1$ collapses to $-1$ by Wilson's theorem.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-027",
+      "format": "cloze",
+      "stem": "Use Euler's theorem to evaluate $7^{82} \\bmod 15$, given $\\phi(15) = 8$.",
+      "solution": "Because $\\gcd(7, 15) = 1$, Euler gives $7^{8} \\equiv 1 \\pmod{15}$, so reduce the exponent modulo $8$. The remainder of $82$ divided by $8$ is {{1}}. Then $7^{82} \\equiv 7^{2} = 49 \\equiv$ {{2}} $\\pmod{15}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$82 = 8 \\times 10 + 2$, so $7^{82} \\equiv 7^2 = 49 = 45 + 4 \\equiv 4 \\pmod{15}$. The reduction uses $\\phi(15) = 8$ as the cycle length.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-028",
+      "format": "cloze",
+      "stem": "Verify Wilson's theorem for $p = 5$ by computing $(p-1)! \\bmod 5$.",
+      "solution": "Here $(5-1)! = 4! = 24$. Reducing, $24 \\bmod 5$ equals {{1}}. Since this equals $-1$ modulo $5$, the result {{2}} Wilson's theorem.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "confirms",
+            "contradicts"
+          ],
+          "answer": "confirms"
+        }
+      ],
+      "explanation": "$4! = 24 \\equiv 4 \\equiv -1 \\pmod 5$, which confirms Wilson's theorem since $5$ is prime.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-fermat-euler-wilson-029",
+      "format": "cloze",
+      "stem": "Evaluate $3^{47} \\bmod 11$ using Fermat's little theorem.",
+      "solution": "Since $11$ is prime, $3^{10} \\equiv 1 \\pmod{11}$, so reduce the exponent modulo $10$. The remainder of $47$ divided by $10$ is {{1}}. Then $3^{47} \\equiv 3^{7} \\pmod{11}$, and computing $3^7 = 2187 \\equiv$ {{2}} $\\pmod{11}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$47 = 10 \\times 4 + 7$, so $3^{47} \\equiv 3^7 \\pmod{11}$. Now $3^5 = 243 \\equiv 1$, so $3^7 = 3^5 \\times 3^2 \\equiv 1 \\times 9 = 9 \\pmod{11}$, matching $2187 = 11 \\times 198 + 9$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    }
+  ]
+}

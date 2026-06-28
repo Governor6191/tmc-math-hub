@@ -1,0 +1,491 @@
+{
+  "courseId": "scientific-computing-i",
+  "topicId": "interpolation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-i-interpolation-001",
+      "stem": "Linear interpolation estimates a value between two data points $(x_0, y_0)$ and $(x_1, y_1)$ using which formula at a point $x$?",
+      "options": [
+        "$y_0 + \\dfrac{y_1 - y_0}{x_1 - x_0}(x - x_0)$",
+        "$\\dfrac{y_0 + y_1}{2}$",
+        "$y_1 + \\dfrac{y_1 - y_0}{x_1 - x_0}(x - x_0)$",
+        "$y_0 + (y_1 - y_0)(x - x_0)$"
+      ],
+      "answer": 0,
+      "explanation": "Linear interpolation follows the straight line through the two points: $y = y_0 + \\frac{y_1 - y_0}{x_1 - x_0}(x - x_0)$, the point-slope form anchored at $(x_0, y_0)$. Dropping the run $x_1 - x_0$ in the slope is dimensionally wrong, the midpoint average ignores $x$, and anchoring at $y_1$ while still using $(x - x_0)$ is inconsistent. The trap is omitting the denominator in the slope; the rise must be divided by the run.",
+      "difficulty": "warmup",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-002",
+      "stem": "A table gives temperature $30^{\\circ}$ at $t = 0$ and $50^{\\circ}$ at $t = 10$. Linear interpolation estimates the temperature at $t = 4$ as which value?",
+      "options": [
+        "$38^{\\circ}$",
+        "$40^{\\circ}$",
+        "$42^{\\circ}$",
+        "$34^{\\circ}$"
+      ],
+      "answer": 0,
+      "explanation": "Apply $T = 30 + \\frac{50 - 30}{10 - 0}(4 - 0) = 30 + 2(4) = 38^{\\circ}$. The slope is $\\frac{20}{10} = 2$ per unit time, and four units add $8$. The midpoint $40^{\\circ}$ would be the value at $t = 5$, $34^{\\circ}$ uses the wrong slope, and $42^{\\circ}$ overshoots. The trap is using the interval midpoint instead of evaluating at $t = 4$; the line gives $38^{\\circ}$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-003",
+      "stem": "The first divided difference $f[x_0, x_1]$ is defined as which expression?",
+      "options": [
+        "$\\dfrac{f(x_1) - f(x_0)}{x_1 - x_0}$",
+        "$f(x_1) - f(x_0)$",
+        "$\\dfrac{f(x_0) + f(x_1)}{x_1 - x_0}$",
+        "$\\dfrac{x_1 - x_0}{f(x_1) - f(x_0)}$"
+      ],
+      "answer": 0,
+      "explanation": "The first divided difference is the slope $f[x_0, x_1] = \\frac{f(x_1) - f(x_0)}{x_1 - x_0}$, the building block of Newton's form. The bare difference omits the denominator, summing the values in the numerator is wrong, and the last option inverts the ratio. The trap is forgetting to divide by $x_1 - x_0$; a divided difference is a difference divided by the spacing.",
+      "difficulty": "warmup",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-004",
+      "stem": "For the data $x = \\{1, 2, 4\\}$ with $f = \\{1, 4, 16\\}$, the first divided differences $f[x_0, x_1]$ and $f[x_1, x_2]$ are which pair?",
+      "options": [
+        "$3$ and $6$",
+        "$2$ and $5$",
+        "$4$ and $8$",
+        "$3$ and $4$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $f[x_0, x_1] = \\frac{4 - 1}{2 - 1} = 3$ and $f[x_1, x_2] = \\frac{16 - 4}{4 - 2} = \\frac{12}{2} = 6$. The pair $3, 4$ mishandles the second spacing, $2, 5$ and $4, 8$ use wrong numerators or denominators. The trap is using a spacing of $1$ for the second pair when $x_2 - x_1 = 2$; the correct slopes are $3$ and $6$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-005",
+      "stem": "For the same data $x = \\{1, 2, 4\\}$, $f = \\{1, 4, 16\\}$ (with $f[x_0, x_1] = 3$, $f[x_1, x_2] = 6$), the second divided difference $f[x_0, x_1, x_2]$ is which value?",
+      "options": [
+        "$0.5$",
+        "$3$",
+        "$1$",
+        "$9$"
+      ],
+      "answer": 2,
+      "explanation": "The second divided difference is $f[x_0, x_1, x_2] = \\frac{f[x_1, x_2] - f[x_0, x_1]}{x_2 - x_0} = \\frac{6 - 3}{4 - 1} = \\frac{3}{3} = 1$. Dividing by the wrong span gives $0.5$, while $3$ and $9$ skip the outer denominator. The trap is dividing by $x_2 - x_1$ instead of $x_2 - x_0$; the second difference uses the full span of the three nodes.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-006",
+      "stem": "Newton's divided-difference interpolating polynomial through $x_0, x_1, x_2$ is written as which expression?",
+      "options": [
+        "$f[x_0] + f[x_0, x_1](x - x_1) + f[x_0, x_1, x_2](x - x_1)(x - x_2)$",
+        "$f[x_0] + f[x_0, x_1]x + f[x_0, x_1, x_2]x^2$",
+        "$f[x_0, x_1, x_2](x - x_0)(x - x_1)(x - x_2)$",
+        "$f[x_0] + f[x_0, x_1](x - x_0) + f[x_0, x_1, x_2](x - x_0)(x - x_1)$"
+      ],
+      "answer": 3,
+      "explanation": "Newton's form nests the divided differences with products of $(x - x_i)$ for the already-used nodes: $P(x) = f[x_0] + f[x_0, x_1](x - x_0) + f[x_0, x_1, x_2](x - x_0)(x - x_1)$. Using plain powers of $x$ loses the nodal structure, the single cubic-looking term drops the lower-order pieces, and anchoring at $x_1$ misorders the factors. The trap is mismatching each coefficient with its product of earlier nodes.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-007",
+      "stem": "Using the Newton polynomial for $x = \\{1, 2, 4\\}$, $f = \\{1, 4, 16\\}$ (coefficients $f[x_0] = 1$, $f[x_0, x_1] = 3$, $f[x_0, x_1, x_2] = 1$), the estimate at $x = 3$ is which value?",
+      "options": [
+        "$8$",
+        "$9$",
+        "$12$",
+        "$10$"
+      ],
+      "answer": 1,
+      "explanation": "Evaluate $P(3) = 1 + 3(3 - 1) + 1(3 - 1)(3 - 2) = 1 + 6 + 2 = 9$. The products give $3(2) = 6$ and $1(2)(1) = 2$. Since the data are $x^2$ values, the exact answer $3^2 = 9$ confirms it. The other options drop or misweight a term. The trap is forgetting the quadratic correction term; with it included, $P(3) = 9$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-008",
+      "stem": "The Lagrange interpolating polynomial is written as which kind of expression?",
+      "options": [
+        "A weighted sum $\\sum_i y_i L_i(x)$ of basis polynomials $L_i$",
+        "A nested product of divided differences",
+        "A Taylor series about $x_0$",
+        "A single straight line"
+      ],
+      "answer": 0,
+      "explanation": "The Lagrange form is $P(x) = \\sum_i y_i L_i(x)$, a sum of the data values weighted by cardinal basis polynomials $L_i$ that equal $1$ at $x_i$ and $0$ at the other nodes. The nested-product description is Newton's form, a straight line is only the two-point case, and a Taylor series uses derivatives, not data points. The trap is confusing Lagrange's explicit basis sum with Newton's nested differences.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-009",
+      "stem": "Each Lagrange basis polynomial $L_i(x)$ has which defining property at the nodes?",
+      "options": [
+        "$L_i(x_j) = 1$ for all $j$",
+        "$L_i(x_i) = 0$ and $L_i(x_j) = 1$ for $j \\neq i$",
+        "$L_i(x_i) = 1$ and $L_i(x_j) = 0$ for $j \\neq i$",
+        "$L_i(x_j) = x_j$"
+      ],
+      "answer": 2,
+      "explanation": "By construction $L_i(x_i) = 1$ and $L_i(x_j) = 0$ for every other node, which is exactly why $\\sum_i y_i L_i(x)$ reproduces each $y_i$ at $x_i$. Being $1$ everywhere or $0$ at its own node would break interpolation, and equalling $x_j$ is meaningless here. The trap is swapping which node gives $1$; the basis is $1$ only at its own node and $0$ at the rest.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-010",
+      "stem": "For nodes $x_0 = 1$, $x_1 = 2$, $x_2 = 4$, the Lagrange basis $L_1(x) = \\dfrac{(x - x_0)(x - x_2)}{(x_1 - x_0)(x_1 - x_2)}$ evaluated at $x = 3$ equals which value?",
+      "options": [
+        "$0.5$",
+        "$-1$",
+        "$1$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "Substitute: $L_1(3) = \\frac{(3 - 1)(3 - 4)}{(2 - 1)(2 - 4)} = \\frac{(2)(-1)}{(1)(-2)} = \\frac{-2}{-2} = 1$. The two negatives in numerator and denominator cancel. A value of $0$ would occur only at $x = 1$ or $x = 4$, and $0.5$ or $-1$ mishandle a sign. The trap is mismanaging the negative factors; both equal $-2$ here, giving $L_1(3) = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-011",
+      "stem": "Through three distinct data points, the interpolating polynomial is unique. Newton's and Lagrange's forms therefore relate how?",
+      "options": [
+        "They give the same polynomial, written differently",
+        "Newton requires equal spacing while Lagrange forbids it",
+        "Lagrange is always one degree higher",
+        "They give different polynomials"
+      ],
+      "answer": 0,
+      "explanation": "For a given set of nodes the interpolating polynomial of degree at most $n$ is unique, so Newton and Lagrange produce identical polynomials, differing only in how the coefficients are organized and computed. They are not different polynomials or different degrees, and neither requires nor forbids equal spacing. The trap is thinking the two methods yield distinct curves; they are two representations of the same unique polynomial.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-012",
+      "stem": "Given $\\ln 1 = 0$ and $\\ln 4 = 1.386$, linear interpolation estimates $\\ln 2$ as which value (true value $0.693$)?",
+      "options": [
+        "$0.566$",
+        "$0.347$",
+        "$0.693$",
+        "$0.462$"
+      ],
+      "answer": 3,
+      "explanation": "Apply $\\ln 2 \\approx 0 + \\frac{1.386 - 0}{4 - 1}(2 - 1) = \\frac{1.386}{3} = 0.462$. This underestimates the true $0.693$ because $\\ln$ is concave, so the chord lies below the curve. The value $0.693$ is the exact answer, $0.347$ halves the slope, and $0.566$ is the better quadratic estimate. The trap is expecting linear interpolation to be exact; over a wide interval it carries noticeable error.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-013",
+      "stem": "The error of polynomial interpolation at degree $n$ involves a term proportional to which product?",
+      "options": [
+        "The sum of the data values",
+        "$(x - x_0) + (x - x_1) + \\cdots + (x - x_n)$",
+        "$(x - x_0)(x - x_1)\\cdots(x - x_n)$",
+        "$n!$ alone"
+      ],
+      "answer": 2,
+      "explanation": "The interpolation error is $\\frac{f^{(n+1)}(\\xi)}{(n+1)!}\\prod_{i=0}^{n}(x - x_i)$, so it is proportional to the product of the node factors $(x - x_i)$. A sum of those factors, $n!$ by itself, or the data sum do not capture this structure. The trap is replacing the product by a sum; the error vanishes at the nodes precisely because the product does.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-014",
+      "stem": "The interpolation error term $\\dfrac{f^{(n+1)}(\\xi)}{(n+1)!}\\prod_i (x - x_i)$ is exactly zero at which points?",
+      "options": [
+        "Nowhere",
+        "At the data nodes $x_i$ themselves",
+        "At the midpoints between nodes",
+        "Only at $x = 0$"
+      ],
+      "answer": 1,
+      "explanation": "At any node $x = x_j$ one factor $(x - x_j)$ is zero, so the whole product and hence the error vanish, which is why the interpolant matches the data exactly there. The error is generally nonzero at midpoints, certainly not nowhere, and not tied to the origin. The trap is forgetting that interpolation is exact at the nodes; the error product forces zero error at each $x_i$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-015",
+      "stem": "Adding one more data point to a Newton divided-difference interpolation is convenient because of which feature?",
+      "options": [
+        "All previous coefficients must be recomputed",
+        "The degree decreases",
+        "The earlier terms stay the same and only one new term is appended",
+        "The basis polynomials must be rebuilt from scratch"
+      ],
+      "answer": 2,
+      "explanation": "Newton's form is incremental: the existing terms are unchanged and one new divided-difference term is simply added when a node is included, which is a practical advantage over Lagrange. The previous coefficients are not recomputed, the degree rises rather than falls, and it is the Lagrange basis (not Newton) that must be rebuilt when a node is added. The trap is attributing Lagrange's rework cost to Newton; Newton just appends a term.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-016",
+      "stem": "Interpolating a smooth function at many equally spaced nodes with a single high-degree polynomial can produce large oscillations near the interval ends. This effect is known by which name?",
+      "options": [
+        "The Lagrange remainder",
+        "Gibbs damping",
+        "Aliasing",
+        "Runge's phenomenon"
+      ],
+      "answer": 3,
+      "explanation": "Runge's phenomenon is the violent oscillation of high-degree polynomial interpolants near the ends of an interval with equally spaced nodes, which is why low-degree piecewise (spline) interpolation is often preferred. Gibbs damping is not the standard term here, aliasing concerns sampling of signals, and the Lagrange remainder is the error formula, not the oscillation effect. The trap is naming the error formula; the oscillation itself is Runge's phenomenon.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-017",
+      "stem": "Two distinct points determine an interpolating polynomial of degree at most which value?",
+      "options": [
+        "$2$",
+        "$1$",
+        "$0$",
+        "$3$"
+      ],
+      "answer": 1,
+      "explanation": "Two points determine a unique polynomial of degree at most $1$, a straight line. In general $n + 1$ points fix a polynomial of degree at most $n$, so two points (with $n = 1$) give a line. Degree $0$ is a constant (one point), and degrees $2$ or $3$ would need more data. The trap is miscounting the degree; with two points the degree is at most $1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-018",
+      "stem": "The quadratic Newton estimate of $\\ln 2$ using nodes at $1, 4, 6$ gives about $0.566$, while linear interpolation gave $0.462$ (true $0.693$). What does this comparison illustrate?",
+      "options": [
+        "The two estimates must be identical",
+        "Linear interpolation is always more accurate",
+        "Interpolation cannot approximate $\\ln$",
+        "Higher-degree interpolation moved the estimate closer to the true value"
+      ],
+      "answer": 3,
+      "explanation": "The quadratic estimate $0.566$ is nearer the true $0.693$ than the linear estimate $0.462$, showing that adding a point and raising the degree reduced the error here. Linear interpolation is not always better, the estimates are not forced to agree, and interpolation clearly does approximate $\\ln$. The trap is assuming all interpolants are equal; using more information improved the estimate.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-019",
+      "stem": "When data points are equally spaced with spacing $h$, the second divided difference relates to the forward difference $\\Delta^2 f$ by which factor?",
+      "options": [
+        "$\\dfrac{\\Delta^2 f}{h}$",
+        "$2! \\, \\Delta^2 f$",
+        "$\\dfrac{\\Delta^2 f}{2! \\, h^2}$",
+        "$\\Delta^2 f \\cdot h^2$"
+      ],
+      "answer": 2,
+      "explanation": "For equal spacing the $k$th divided difference equals $\\frac{\\Delta^k f}{k!\\,h^k}$, so the second divided difference is $\\frac{\\Delta^2 f}{2!\\,h^2}$. Multiplying by $h^2$ or by $2!$ inverts the relationship, and dividing by a single $h$ uses the wrong power. The trap is forgetting both the factorial and the power of $h$; the second divided difference divides $\\Delta^2 f$ by $2!\\,h^2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-020",
+      "stem": "A divided-difference table is built by which organizing principle?",
+      "options": [
+        "The table stores only the original data",
+        "Every column repeats the first column",
+        "Each higher-order difference is formed from two adjacent lower-order differences",
+        "Each entry is the average of the data values"
+      ],
+      "answer": 2,
+      "explanation": "The table is built column by column: each higher-order divided difference combines two adjacent entries of the previous column over the appropriate node span, cascading from the data toward a single top coefficient. It is not an average, the columns differ, and it stores far more than the raw data. The trap is treating the table as static data; its power is the recursive combination of adjacent differences.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-021",
+      "format": "cloze",
+      "stem": "Linearly interpolate a temperature table: $30^{\\circ}$ at $t = 0$ and $50^{\\circ}$ at $t = 10$.",
+      "solution": "The slope is $\\dfrac{50 - 30}{10 - 0} =$ {{1}} degrees per unit time. At $t = 4$ the estimate is $30 + \\text{slope}\\times 4 =$ {{2}} degrees. Linear interpolation assumes the data vary {{3}} between the two points.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 38,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "linearly",
+            "quadratically",
+            "exponentially",
+            "randomly"
+          ],
+          "answer": "linearly"
+        }
+      ],
+      "explanation": "Slope $= \\frac{20}{10} = 2$. At $t = 4$: $30 + 2(4) = 38^{\\circ}$. Linear interpolation assumes a straight-line (linear) variation between the points.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-022",
+      "format": "cloze",
+      "stem": "Build a divided-difference table for $x = \\{1, 2, 4\\}$, $f = \\{1, 4, 16\\}$.",
+      "solution": "The first divided differences are $f[x_0, x_1] = \\dfrac{4 - 1}{2 - 1} =$ {{1}} and $f[x_1, x_2] = \\dfrac{16 - 4}{4 - 2} =$ {{2}}. The second divided difference is $f[x_0, x_1, x_2] = \\dfrac{6 - 3}{4 - 1} =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "$f[x_0, x_1] = \\frac{3}{1} = 3$, $f[x_1, x_2] = \\frac{12}{2} = 6$, and $f[x_0, x_1, x_2] = \\frac{6 - 3}{4 - 1} = \\frac{3}{3} = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-023",
+      "format": "cloze",
+      "stem": "Evaluate the Newton polynomial for $x = \\{1, 2, 4\\}$, $f = \\{1, 4, 16\\}$ at $x = 3$, using coefficients $1$, $3$, $1$.",
+      "solution": "The polynomial is $P(x) = 1 + 3(x - 1) + 1(x - 1)(x - 2)$. At $x = 3$ the middle term is $3(3 - 1) =$ {{1}} and the last term is $1(3 - 1)(3 - 2) =$ {{2}}. Adding the constant gives $P(3) =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "Middle term $3(2) = 6$, last term $1(2)(1) = 2$, so $P(3) = 1 + 6 + 2 = 9$, which matches $3^2 = 9$ since the data are squares.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-024",
+      "format": "cloze",
+      "stem": "Evaluate a Lagrange basis polynomial for nodes $x_0 = 1$, $x_1 = 2$, $x_2 = 4$.",
+      "solution": "The basis $L_1(x) = \\dfrac{(x - 1)(x - 4)}{(2 - 1)(2 - 4)}$ has denominator $(1)(-2) =$ {{1}}. At $x = 3$ the numerator is $(2)(-1) = -2$, so $L_1(3) =$ {{2}}. By construction $L_1$ equals $1$ at the node $x =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "Denominator $(1)(-2) = -2$. At $x = 3$, numerator $(2)(-1) = -2$, so $L_1(3) = \\frac{-2}{-2} = 1$. A Lagrange basis equals $1$ at its own node, here $x_1 = 2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-025",
+      "format": "cloze",
+      "stem": "Compare linear and quadratic interpolation of $\\ln 2$ (true value $0.693$) from logarithm data.",
+      "solution": "Using $\\ln 1 = 0$ and $\\ln 4 = 1.386$, linear interpolation gives $\\dfrac{1.386}{3} \\approx$ {{1}}. A quadratic fit using an extra node improves this toward the true value, illustrating that raising the polynomial degree generally {{2}} the error. The interpolation error is exactly zero at the {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.462,
+          "tolerance": 0.005
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "reduces",
+            "increases",
+            "doubles",
+            "ignores"
+          ],
+          "answer": "reduces"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "data nodes",
+            "midpoints",
+            "endpoints only",
+            "origin"
+          ],
+          "answer": "data nodes"
+        }
+      ],
+      "explanation": "Linear estimate $= \\frac{1.386}{3} = 0.462$, below the true $0.693$ because $\\ln$ is concave. A higher-degree fit reduces the error, and interpolation error vanishes exactly at the data nodes.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-interpolation-026",
+      "format": "cloze",
+      "stem": "State key facts about interpolating polynomials.",
+      "solution": "Through $n + 1$ distinct points the interpolating polynomial has degree at most {{1}}. Newton's and Lagrange's forms give the {{2}} polynomial, written differently. High-degree interpolation on many equally spaced nodes can oscillate badly near the ends, an effect called {{3}} phenomenon.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$n$",
+            "$n + 1$",
+            "$2n$",
+            "$n - 1$"
+          ],
+          "answer": "$n$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "same",
+            "different",
+            "transposed",
+            "orthogonal"
+          ],
+          "answer": "same"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Runge's",
+            "Gibbs'",
+            "Euler's",
+            "Newton's"
+          ],
+          "answer": "Runge's"
+        }
+      ],
+      "explanation": "With $n + 1$ nodes the degree is at most $n$. Newton and Lagrange represent the same unique polynomial. The end oscillation of high-degree equally spaced interpolation is Runge's phenomenon.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    }
+  ]
+}

@@ -1,0 +1,473 @@
+{
+  "courseId": "number-theory-i",
+  "topicId": "primes-and-factorization",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "number-theory-i-primes-and-factorization-001",
+      "stem": "Which one of the following numbers is prime?",
+      "options": [
+        "$97$",
+        "$87$",
+        "$91$",
+        "$51$"
+      ],
+      "answer": 0,
+      "explanation": "A prime has no divisor other than $1$ and itself. Test $97$ against primes up to $\\sqrt{97} \\approx 9.8$, namely $2, 3, 5, 7$: none divides $97$, so it is prime. The others factor: $91 = 7 \\times 13$, $51 = 3 \\times 17$, and $87 = 3 \\times 29$. The trap is assuming an odd number with no small obvious factor is prime; checking all primes up to the square root confirms $97$ while ruling out the composites.",
+      "difficulty": "warmup",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-002",
+      "stem": "Is the number $1$ prime?",
+      "options": [
+        "Yes, because it has no factors other than itself",
+        "Yes, because it divides every integer",
+        "No, it is composite",
+        "It is neither prime nor composite"
+      ],
+      "answer": 3,
+      "explanation": "A prime is defined as an integer greater than $1$ with exactly two positive divisors, $1$ and itself. The number $1$ has only one positive divisor, so it fails the definition; it is also not composite, since composites have more than two divisors. Thus $1$ is neither prime nor composite. Excluding $1$ keeps the fundamental theorem of arithmetic stating unique factorization. The trap is calling $1$ prime: it would break uniqueness, since factors of $1$ could be inserted freely.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-003",
+      "stem": "When using the sieve of Eratosthenes to find all primes up to $50$, multiples of which primes must be crossed out?",
+      "options": [
+        "$2, 3, 5, 7$",
+        "All primes up to $50$",
+        "$2, 3, 5$",
+        "$2, 3, 5, 7, 11$"
+      ],
+      "answer": 0,
+      "explanation": "In the sieve, once you have crossed out multiples of every prime up to $\\sqrt{n}$, all remaining numbers are prime. Here $\\sqrt{50} \\approx 7.07$, so you only need the primes $2, 3, 5, 7$. Any composite up to $50$ has a prime factor at most $7$, so it is already removed. Including $11$ is unnecessary work, since $11^2 = 121 > 50$. The trap is crossing out multiples of every prime in range; stopping at $\\sqrt{n}$ suffices.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-004",
+      "stem": "What is the prime factorization of $360$?",
+      "options": [
+        "$2^3 \\times 3^2 \\times 5$",
+        "$2^3 \\times 3^3 \\times 5$",
+        "$2^2 \\times 3^2 \\times 5^2$",
+        "$2^4 \\times 3 \\times 5$"
+      ],
+      "answer": 0,
+      "explanation": "Divide out primes repeatedly: $360 = 2 \\times 180 = 2^2 \\times 90 = 2^3 \\times 45$, and $45 = 3^2 \\times 5$. So $360 = 2^3 \\times 3^2 \\times 5$, which checks as $8 \\times 9 \\times 5 = 360$. The option $2^3 \\times 3^3 \\times 5$ over-counts the factor of $3$ (that product is $1080$). The trap is mis-tallying a prime's multiplicity: $360 / 9 = 40$ is whole but $360 / 27$ is not, so $3$ appears exactly twice.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-005",
+      "stem": "Given that $360 = 2^3 \\times 3^2 \\times 5$, how many positive divisors does $360$ have? (Use $\\tau(n)$, the number-of-divisors function.)",
+      "options": [
+        "$6$",
+        "$11$",
+        "$30$",
+        "$24$"
+      ],
+      "answer": 3,
+      "explanation": "For $n = p^a q^b r^c$, the divisor count is $\\tau(n) = (a+1)(b+1)(c+1)$, since each prime's exponent in a divisor ranges from $0$ up to its value in $n$. Here $(3+1)(2+1)(1+1) = 4 \\times 3 \\times 2 = 24$. The value $11 = 3 + 2 + 1 + \\dots$ comes from adding exponents, not adding one to each then multiplying. The trap is using the exponents directly: add $1$ to each exponent first, then multiply.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-006",
+      "stem": "Given that $360 = 2^3 \\times 3^2 \\times 5$, what is the sum of all positive divisors $\\sigma(360)$?",
+      "options": [
+        "$720$",
+        "$360$",
+        "$24$",
+        "$1170$"
+      ],
+      "answer": 3,
+      "explanation": "The divisor-sum factors as $\\sigma(n) = \\prod \\dfrac{p^{a+1} - 1}{p - 1}$, that is $(1 + 2 + 4 + 8)(1 + 3 + 9)(1 + 5) = 15 \\times 13 \\times 6 = 1170$. The value $720 = 2 \\times 360$ would be the test for a perfect number, which $360$ is not. The trap is forgetting that $\\sigma$ multiplies the geometric-series sums for each prime; here that product is $1170$, well above $360$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-007",
+      "stem": "How many distinct prime factors does $360 = 2^3 \\times 3^2 \\times 5$ have?",
+      "options": [
+        "$24$",
+        "$6$",
+        "$5$",
+        "$3$"
+      ],
+      "answer": 3,
+      "explanation": "The distinct prime factors are the different primes appearing, namely $2, 3, 5$, so there are $3$. The value $6 = 3 + 2 + 1$ counts primes with multiplicity (the total number of prime factors), and $24$ is the divisor count $\\tau(360)$. The trap is confusing distinct primes with total prime factors or with the divisor count: distinct primes ignores the exponents and tallies only how many different primes occur, here $3$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-008",
+      "stem": "Euclid's theorem states there are infinitely many primes. The classic proof supposes finitely many primes $p_1, \\dots, p_n$ and considers $N = p_1 p_2 \\cdots p_n + 1$. What property of $N$ gives the contradiction?",
+      "options": [
+        "$N$ is itself always prime",
+        "$N$ leaves remainder $1$ when divided by each $p_i$, so no $p_i$ divides it",
+        "$N$ is even",
+        "$N$ is a perfect square"
+      ],
+      "answer": 1,
+      "explanation": "By construction $N = p_1 \\cdots p_n + 1$ leaves remainder $1$ on division by every $p_i$, so none of the assumed primes divides $N$. Yet $N > 1$ must have some prime factor, which then lies outside the list, contradicting completeness of the list. Note $N$ need not be prime itself: for $2 \\times 3 \\times 5 \\times 7 \\times 11 \\times 13 + 1 = 30031 = 59 \\times 509$. The trap is claiming $N$ is prime; the argument only needs that its prime factors escape the finite list.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-009",
+      "stem": "What is the smallest prime factor of $187$?",
+      "options": [
+        "$7$",
+        "$11$",
+        "$17$",
+        "$3$"
+      ],
+      "answer": 1,
+      "explanation": "Test primes in increasing order: $187$ is odd (not divisible by $2$), its digit sum $16$ is not a multiple of $3$, it does not end in $0$ or $5$, and $187 / 7 = 26.7\\ldots$ is not whole. But $187 / 11 = 17$ exactly, so $187 = 11 \\times 17$ and the smallest prime factor is $11$. The value $17$ is the larger factor. The trap is reading off the bigger factor; the smallest prime factor is found by testing primes from $2$ upward, here landing on $11$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-010",
+      "stem": "Given $84 = 2^2 \\times 3 \\times 7$, what is $\\tau(84)$, the number of positive divisors?",
+      "options": [
+        "$10$",
+        "$12$",
+        "$24$",
+        "$6$"
+      ],
+      "answer": 1,
+      "explanation": "Apply $\\tau(p^a q^b r^c) = (a+1)(b+1)(c+1) = (2+1)(1+1)(1+1) = 3 \\times 2 \\times 2 = 12$. Listing confirms it: $1, 2, 3, 4, 6, 7, 12, 14, 21, 28, 42, 84$ are $12$ divisors. The value $6$ multiplies the exponents $2 \\times 1 \\times 1 \\times \\dots$ or miscounts. The trap is forgetting to add $1$ to each exponent: every exponent contributes one extra choice (the zero power), so each factor is $a_i + 1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-011",
+      "stem": "Given $84 = 2^2 \\times 3 \\times 7$, what is $\\sigma(84)$, the sum of its positive divisors?",
+      "options": [
+        "$84$",
+        "$96$",
+        "$224$",
+        "$168$"
+      ],
+      "answer": 2,
+      "explanation": "Use $\\sigma(n) = (1 + 2 + 4)(1 + 3)(1 + 7) = 7 \\times 4 \\times 8 = 224$. Adding the divisors directly, $1 + 2 + 3 + 4 + 6 + 7 + 12 + 14 + 21 + 28 + 42 + 84 = 224$, agrees. The value $168 = 2 \\times 84$ is the perfect-number target, which $84$ misses. The trap is mishandling the product of geometric sums: $\\sigma$ multiplies $(1 + p + \\dots + p^a)$ across the distinct primes, giving $224$ here.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-012",
+      "stem": "A perfect number equals the sum of its proper divisors, equivalently $\\sigma(n) = 2n$. Which of these is a perfect number?",
+      "options": [
+        "$28$",
+        "$24$",
+        "$20$",
+        "$12$"
+      ],
+      "answer": 0,
+      "explanation": "Check $\\sigma(n) = 2n$. For $28 = 2^2 \\times 7$, $\\sigma(28) = (1 + 2 + 4)(1 + 7) = 7 \\times 8 = 56 = 2 \\times 28$, so $28$ is perfect (its proper divisors $1, 2, 4, 7, 14$ sum to $28$). The others fail: $\\sigma(12) = 28 \\ne 24$, $\\sigma(24) = 60 \\ne 48$, $\\sigma(20) = 42 \\ne 40$. The trap is guessing by size; the test is the exact equality $\\sigma(n) = 2n$, which only $28$ meets here.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-013",
+      "stem": "For a prime $p$, what is $\\sigma(p)$, the sum of the positive divisors of $p$?",
+      "options": [
+        "$p$",
+        "$2p$",
+        "$p + 1$",
+        "$p - 1$"
+      ],
+      "answer": 2,
+      "explanation": "A prime $p$ has exactly two positive divisors, $1$ and $p$, so $\\sigma(p) = 1 + p = p + 1$. For example $\\sigma(7) = 1 + 7 = 8$. The value $2p$ would mean $p$ is perfect, but no prime is perfect. The trap is reaching for a formula like $2p$; for a prime the divisor sum is simply one more than the prime itself.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-014",
+      "stem": "The function $\\tau(n)$ is odd exactly when $n$ is which kind of number?",
+      "options": [
+        "A prime",
+        "A perfect number",
+        "A perfect square",
+        "An even number"
+      ],
+      "answer": 2,
+      "explanation": "Divisors pair up as $d$ with $n/d$, so they come in twos unless $d = n/d$, that is $d = \\sqrt{n}$. An unpaired divisor exists only when $n$ is a perfect square, making the total count odd. For instance $\\tau(36) = 9$ (odd), while $\\tau(12) = 6$ (even). The trap is linking odd $\\tau$ to primality; it is squareness that leaves a divisor without a partner, forcing an odd count.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-015",
+      "stem": "What is $\\sigma(16)$, the sum of the positive divisors of $16$?",
+      "options": [
+        "$32$",
+        "$31$",
+        "$16$",
+        "$15$"
+      ],
+      "answer": 1,
+      "explanation": "Since $16 = 2^4$, its divisors are $1, 2, 4, 8, 16$, summing to $31$. By the geometric-series formula $\\sigma(2^k) = 2^{k+1} - 1 = 2^5 - 1 = 31$. The value $32 = 2^5$ forgets to subtract $1$, and $15 = 1 + 2 + 4 + 8$ drops the term $16$ itself. The trap is using $2^{k+1}$ without the $-1$: the sum of a geometric series of powers of $2$ is one less than the next power.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-016",
+      "stem": "How many positive divisors does $100$ have, given $100 = 2^2 \\times 5^2$?",
+      "options": [
+        "$10$",
+        "$9$",
+        "$4$",
+        "$6$"
+      ],
+      "answer": 1,
+      "explanation": "Apply $\\tau(100) = (2+1)(2+1) = 3 \\times 3 = 9$. The nine divisors are $1, 2, 4, 5, 10, 20, 25, 50, 100$. The value $6 = (2)(3)$ or similar comes from not adding one to both exponents. The trap is multiplying the raw exponents; each exponent $2$ becomes $3$ choices (powers $0, 1, 2$), so the count is $3 \\times 3 = 9$. Note $\\tau$ is odd here because $100$ is a perfect square.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-017",
+      "stem": "Which one of the following is NOT a valid consequence of the fundamental theorem of arithmetic?",
+      "options": [
+        "Every integer greater than $1$ factors into primes uniquely up to order",
+        "If a prime $p$ divides $ab$, then $p$ divides $a$ or $p$ divides $b$",
+        "Every odd number greater than $1$ is prime",
+        "Every integer greater than $1$ has a prime factor"
+      ],
+      "answer": 2,
+      "explanation": "The fundamental theorem gives unique prime factorization, Euclid's lemma ($p \\mid ab \\Rightarrow p \\mid a$ or $p \\mid b$), and the existence of a prime factor for any $n > 1$. It does not say odd numbers are prime: $9 = 3 \\times 3$ and $15 = 3 \\times 5$ are odd composites. The trap is overreaching from 'every prime above $2$ is odd' to its false converse; oddness does not imply primality.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-018",
+      "stem": "A Mersenne number has the form $2^p - 1$ for prime $p$. For which prime $p$ below is $2^p - 1$ NOT prime?",
+      "options": [
+        "$p = 7$",
+        "$p = 11$",
+        "$p = 5$",
+        "$p = 3$"
+      ],
+      "answer": 1,
+      "explanation": "Compute each: $2^3 - 1 = 7$ (prime), $2^5 - 1 = 31$ (prime), $2^7 - 1 = 127$ (prime), but $2^{11} - 1 = 2047 = 23 \\times 89$ (composite). So $p = 11$ gives a composite Mersenne number. This shows $p$ being prime does not force $2^p - 1$ to be prime. The trap is assuming all Mersenne numbers with prime exponent are prime; $2047$ is the first counterexample.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-019",
+      "stem": "Using prime factorizations $a = 2^2 \\times 3 \\times 5$ and $b = 2 \\times 3^2 \\times 7$, what is $\\operatorname{lcm}(a, b)$?",
+      "options": [
+        "$2^2 \\times 3^2 \\times 5 \\times 7$",
+        "$2^3 \\times 3^3 \\times 5 \\times 7$",
+        "$2^2 \\times 3^2$",
+        "$2 \\times 3$"
+      ],
+      "answer": 0,
+      "explanation": "The lcm takes the higher power of each prime appearing in either number: $2^{\\max(2,1)} = 2^2$, $3^{\\max(1,2)} = 3^2$, and $5^1$, $7^1$ each from the one number that has them. So $\\operatorname{lcm}(a, b) = 2^2 \\times 3^2 \\times 5 \\times 7 = 1260$. The option $2 \\times 3$ is the gcd (the minimum powers). The trap is taking minimum exponents: the lcm uses the maximum exponent of each prime across both numbers.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-020",
+      "stem": "How many positive divisors does the primorial $2310 = 2 \\times 3 \\times 5 \\times 7 \\times 11$ have?",
+      "options": [
+        "$32$",
+        "$5$",
+        "$11$",
+        "$10$"
+      ],
+      "answer": 0,
+      "explanation": "Each of the five distinct primes appears to the first power, so $\\tau(2310) = (1+1)^5 = 2^5 = 32$. Every divisor is formed by independently including or excluding each prime, giving $2$ choices per prime. The value $10 = 5 \\times 2$ or $5$ miscounts by not raising to the fifth power. The trap is adding instead of multiplying the $(a_i + 1)$ factors: with five primes each contributing a factor of $2$, the count is $2^5 = 32$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-021",
+      "stem": "What is the $6$th prime number (counting $2$ as the first)?",
+      "options": [
+        "$15$",
+        "$13$",
+        "$11$",
+        "$17$"
+      ],
+      "answer": 1,
+      "explanation": "List the primes in order: $2$ (1st), $3$ (2nd), $5$ (3rd), $7$ (4th), $11$ (5th), $13$ (6th). So the sixth prime is $13$. The value $11$ is the fifth prime, an off-by-one slip, and $15 = 3 \\times 5$ is not prime at all. The trap is miscounting the position or including a composite like $15$; careful listing gives $13$ as the sixth.",
+      "difficulty": "warmup",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-022",
+      "stem": "What is $\\tau(64)$, the number of positive divisors of $64$?",
+      "options": [
+        "$12$",
+        "$7$",
+        "$8$",
+        "$6$"
+      ],
+      "answer": 1,
+      "explanation": "Since $64 = 2^6$, the divisor count is $\\tau(64) = 6 + 1 = 7$: the divisors are $1, 2, 4, 8, 16, 32, 64$. The value $6$ is the exponent itself, forgetting to add $1$ for the zero power. The trap is reading $\\tau(p^k)$ as $k$ rather than $k + 1$: a single prime to the $k$th power has $k + 1$ divisors, here $7$.",
+      "difficulty": "warmup",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-023",
+      "stem": "How many positive divisors does $30$ have, and what is their sum? Using $30 = 2 \\times 3 \\times 5$, the pair $(\\tau(30), \\sigma(30))$ is:",
+      "options": [
+        "$(8, 72)$",
+        "$(4, 30)$",
+        "$(8, 48)$",
+        "$(6, 60)$"
+      ],
+      "answer": 0,
+      "explanation": "With $30 = 2 \\times 3 \\times 5$, $\\tau(30) = (1+1)(1+1)(1+1) = 8$ and $\\sigma(30) = (1+2)(1+3)(1+5) = 3 \\times 4 \\times 6 = 72$. Listing the divisors $1, 2, 3, 5, 6, 10, 15, 30$ confirms eight of them summing to $72$. The pair $(6, 60)$ undercounts both. The trap is dropping a prime or mis-multiplying: three distinct primes each to the first power give $2^3 = 8$ divisors and a divisor sum of $72$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-024",
+      "format": "cloze",
+      "stem": "Find the prime factorization of $600$ and report the exponents. Write $600 = 2^a \\times 3^b \\times 5^c$.",
+      "solution": "Divide out powers of $2$ first: $600 = 2^3 \\times 75$, so the exponent $a$ is {{1}}. Then $75 = 3 \\times 25 = 3 \\times 5^2$, so the exponent of $3$ is $1$ and the exponent $c$ of $5$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "We get $600 = 2^3 \\times 3 \\times 5^2$, so $a = 3$, $b = 1$, $c = 2$. Check: $8 \\times 3 \\times 25 = 600$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-025",
+      "format": "cloze",
+      "stem": "Given $720 = 2^4 \\times 3^2 \\times 5$, compute the number of divisors $\\tau(720)$ and the sum of divisors $\\sigma(720)$.",
+      "solution": "Add one to each exponent and multiply: $(4+1)(2+1)(1+1)$ gives $\\tau(720) =$ {{1}}. For the divisor sum, multiply the geometric series: $(1 + 2 + 4 + 8 + 16)(1 + 3 + 9)(1 + 5) = 31 \\times 13 \\times 6$, so $\\sigma(720) =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 30,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2418,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\tau(720) = 5 \\times 3 \\times 2 = 30$ and $\\sigma(720) = 31 \\times 13 \\times 6 = 2418$. Both functions are multiplicative over the prime-power factors.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-026",
+      "format": "cloze",
+      "stem": "Use the sieve of Eratosthenes to count the primes up to $30$, and identify a key fact about the largest prime needed for sieving.",
+      "solution": "The primes up to $30$ are $2, 3, 5, 7, 11, 13, 17, 19, 23, 29$, so their count is {{1}}. To sieve up to $30$ it is enough to cross out multiples of primes up to $\\sqrt{30}$, the largest such prime being {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "There are $10$ primes up to $30$. Since $\\sqrt{30} \\approx 5.48$, sieving with primes $2, 3, 5$ suffices, the largest being $5$ (the next prime $7$ has $7^2 = 49 > 30$).",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-027",
+      "format": "cloze",
+      "stem": "Verify that $6$ is a perfect number using $\\sigma(n) = 2n$, and classify it.",
+      "solution": "The proper divisors of $6$ are $1, 2, 3$, and their sum is {{1}}, which equals $6$ itself. Since the sum of proper divisors equals the number, $6$ {{2}} a perfect number.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "The proper divisors $1 + 2 + 3 = 6$, so $\\sigma(6) = 1 + 2 + 3 + 6 = 12 = 2 \\times 6$. Thus $6$ is perfect, the smallest such number.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-028",
+      "format": "cloze",
+      "stem": "Factor $1001$ into primes by trial division.",
+      "solution": "Test small primes: $1001$ is odd and not a multiple of $3$ or $5$. Dividing by $7$ gives $1001 / 7 =$ {{1}}. That quotient factors further as $11 \\times 13$, so the largest prime factor of $1001$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 143,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 13,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$1001 = 7 \\times 143 = 7 \\times 11 \\times 13$, so the prime factors are $7, 11, 13$ and the largest is $13$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primes-and-factorization-029",
+      "format": "cloze",
+      "stem": "The number $\\tau(n)$ is odd exactly when $n$ is a perfect square. Test this on $n = 36$.",
+      "solution": "Since $36 = 2^2 \\times 3^2$, the divisor count is $(2+1)(2+1)$, which equals {{1}}. Because this value is odd, the rule confirms that $36$ {{2}} a perfect square.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "$\\tau(36) = 3 \\times 3 = 9$, which is odd, and indeed $36 = 6^2$. The unpaired divisor is $\\sqrt{36} = 6$, which makes the count odd.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    }
+  ]
+}

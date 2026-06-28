@@ -1,0 +1,486 @@
+{
+  "courseId": "scientific-computing-i",
+  "topicId": "root-finding",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-i-root-finding-001",
+      "stem": "Bisection can begin on a continuous function over $[a, b]$ only when which condition holds?",
+      "options": [
+        "$f(a)\\,f(b) < 0$",
+        "$f'(a) = 0$",
+        "$f(a) = f(b)$",
+        "$f(a)\\,f(b) > 0$"
+      ],
+      "answer": 0,
+      "explanation": "A sign change $f(a)f(b) < 0$ guarantees, by the intermediate value theorem, at least one root inside $(a, b)$, which is the bracket bisection requires. A positive product means matching signs and may bracket no root, equal endpoint values give no crossing information, and a vanishing derivative concerns extrema. The trap is requiring the wrong sign of the product; opposite signs at the ends are what bisection needs.",
+      "difficulty": "warmup",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-002",
+      "stem": "For $f(x) = x^3 - x - 1$ on $[1, 2]$, the first bisection midpoint and the resulting subinterval are which of the following?",
+      "options": [
+        "Midpoint $1.5$, new interval $[1, 2]$",
+        "Midpoint $1.25$, new interval $[1, 1.25]$",
+        "Midpoint $1.5$, new interval $[1.5, 2]$",
+        "Midpoint $1.5$, new interval $[1, 1.5]$"
+      ],
+      "answer": 3,
+      "explanation": "The midpoint is $c = \\frac{1+2}{2} = 1.5$, and $f(1.5) = 3.375 - 1.5 - 1 = 0.875 > 0$. Since $f(1) = -1 < 0$, the sign change lies in $[1, 1.5]$, the new bracket. Keeping $[1.5, 2]$ discards the half holding the root, the midpoint is not $1.25$ on the first step, and retaining $[1, 2]$ makes no progress. The trap is picking the subinterval on the wrong side of the sign change.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-003",
+      "stem": "The Newton-Raphson iteration for $f(x) = 0$ is which formula?",
+      "options": [
+        "$x_{n+1} = x_n - \\dfrac{f'(x_n)}{f(x_n)}$",
+        "$x_{n+1} = x_n + \\dfrac{f(x_n)}{f'(x_n)}$",
+        "$x_{n+1} = x_n - f(x_n)\\,f'(x_n)$",
+        "$x_{n+1} = x_n - \\dfrac{f(x_n)}{f'(x_n)}$"
+      ],
+      "answer": 3,
+      "explanation": "Following the tangent line to its $x$-intercept gives $x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}$. The first option has the wrong sign and moves away from the root, the second multiplies instead of dividing, and the fourth inverts the quotient. The trap is the sign and orientation: subtract $f/f'$, never add it or flip it.",
+      "difficulty": "warmup",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-004",
+      "stem": "For $f(x) = x^2 - 3$ with $f'(x) = 2x$, one Newton step from $x_0 = 2$ gives which value?",
+      "options": [
+        "$1.7500$",
+        "$1.6667$",
+        "$1.7321$",
+        "$2.0000$"
+      ],
+      "answer": 0,
+      "explanation": "Apply $x_1 = 2 - \\frac{4 - 3}{2(2)} = 2 - \\frac{1}{4} = 1.75$. The value $2.0$ is the starting point, $1.6667$ is the first secant step from $(1, 2)$, and $1.7321$ is the exact $\\sqrt{3}$ that one step only approaches. The trap is using the wrong derivative value; here $f'(2) = 4$, so the step is $0.25$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-005",
+      "stem": "A fixed-point iteration $x_{n+1} = g(x_n)$ converges locally to a fixed point $x^*$ provided that near $x^*$ which condition holds?",
+      "options": [
+        "$g'(x^*) = 1$",
+        "$g(x^*) = 0$",
+        "$|g'(x^*)| > 1$",
+        "$|g'(x^*)| < 1$"
+      ],
+      "answer": 3,
+      "explanation": "The error obeys $e_{n+1} \\approx g'(x^*)\\,e_n$, so it shrinks only when $|g'(x^*)| < 1$, the contraction condition. A magnitude above $1$ diverges, exactly $1$ is the borderline, and $g(x^*) = 0$ confuses a fixed point ($g(x^*) = x^*$) with a root of $g$. The trap is requiring $g$ to vanish; convergence is governed by the magnitude of $g'$ at the fixed point.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-006",
+      "stem": "For $f(x) = x^3 - x - 1$ with $x_0 = 1$ and $x_1 = 2$, the first secant step $x_2$ is which value?",
+      "options": [
+        "$1.1667$",
+        "$1.3478$",
+        "$1.5000$",
+        "$1.3247$"
+      ],
+      "answer": 0,
+      "explanation": "With $f(1) = -1$ and $f(2) = 5$, the secant formula gives $x_2 = x_1 - f(x_1)\\frac{x_1 - x_0}{f(x_1) - f(x_0)} = 2 - 5\\cdot\\frac{2 - 1}{5 - (-1)} = 2 - \\frac{5}{6} = 1.1667$. The value $1.5$ is the bisection midpoint, $1.3478$ is the Newton step from $x_0 = 1.5$, and $1.3247$ is the exact root. The trap is mishandling the denominator $f(x_1) - f(x_0) = 6$; the step subtracts $\\frac{5}{6}$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-007",
+      "stem": "The order of convergence of Newton-Raphson near a simple root is which value?",
+      "options": [
+        "$2$ (quadratic)",
+        "$1$ (linear)",
+        "$3$ (cubic)",
+        "$1.618$ (superlinear)"
+      ],
+      "answer": 0,
+      "explanation": "Near a simple root the Newton error satisfies $e_{n+1} \\approx \\frac{f''(x^*)}{2f'(x^*)}\\,e_n^2$, so it converges quadratically with order $2$, roughly doubling correct digits per step. Order $1$ describes bisection or fixed-point iteration, order $1.618$ the secant method, and cubic order needs special schemes. The trap is confusing Newton's quadratic order with the secant method's superlinear order.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-008",
+      "stem": "Starting bisection on $f(x) = x^2 - 3$ over $[1, 2]$, the first two midpoints are which pair?",
+      "options": [
+        "$1.25$ then $1.5$",
+        "$1.5$ then $1.625$",
+        "$1.5$ then $1.75$",
+        "$1.5$ then $1.25$"
+      ],
+      "answer": 2,
+      "explanation": "First midpoint $c_1 = 1.5$, with $f(1.5) = 2.25 - 3 = -0.75 < 0$ and $f(2) > 0$, so the bracket becomes $[1.5, 2]$ and $c_2 = 1.75$. The pair $1.5, 1.25$ would follow if the root sat in $[1, 1.5]$, which it does not, $1.625$ misaverages, and $1.25$ first is simply wrong. The trap is keeping the left half; because $f(1.5) < 0$ here, the root lies to the right.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-009",
+      "stem": "The secant method replaces Newton's derivative by which quantity?",
+      "options": [
+        "The second derivative $f''(x_n)$",
+        "The exact derivative $f'(x_n)$",
+        "A constant equal to $1$",
+        "A finite-difference slope using the two most recent iterates"
+      ],
+      "answer": 3,
+      "explanation": "The secant method approximates $f'(x_n)$ by the slope through the two latest iterates, $\\frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}$, needing no analytic derivative. Using the exact derivative is Newton's method, the second derivative is irrelevant, and a constant $1$ is a crude fixed-point step. The trap is thinking the secant method needs $f'$; replacing it with a difference quotient is the whole point.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-010",
+      "stem": "After $n$ bisection steps on an interval of width $L = b - a$, the bracket width is which expression?",
+      "options": [
+        "$L\\,2^{-n+1}$",
+        "$\\dfrac{L}{2n}$",
+        "$\\dfrac{L}{2^n}$",
+        "$\\dfrac{L}{n}$"
+      ],
+      "answer": 2,
+      "explanation": "Each step halves the interval, so after $n$ steps the width is $\\frac{L}{2^n}$. Dividing by $n$ or $2n$ describes slower-than-geometric shrinkage, and $L\\,2^{-n+1} = \\frac{L}{2^{n-1}}$ is off by one halving. The trap is treating the reduction as linear in $n$ rather than geometric; bisection cuts the width by a factor of two each iteration.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-011",
+      "stem": "How many bisection iterations guarantee an absolute error below $0.0001$ when starting from $[1, 2]$, using $\\dfrac{b - a}{2^n} \\le 0.0001$?",
+      "options": [
+        "$13$",
+        "$14$",
+        "$20$",
+        "$10$"
+      ],
+      "answer": 1,
+      "explanation": "Require $\\frac{1}{2^n} \\le 0.0001$, that is $2^n \\ge 10000$. Since $2^{13} = 8192 < 10000$ and $2^{14} = 16384 \\ge 10000$, the smallest $n$ is $14$. Equivalently $n \\ge \\frac{\\ln 10000}{\\ln 2} \\approx 13.29$, rounded up to $14$. Ten steps reach only $2^{10} = 1024$, $13$ falls just short, and $20$ is far more than needed. The trap is rounding $13.29$ down; the ceiling $14$ is required.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-012",
+      "stem": "The method of false position (regula falsi) differs from the secant method in which respect?",
+      "options": [
+        "It halves the interval each step",
+        "It retains a bracket so the root stays enclosed",
+        "It uses no function values",
+        "It always uses the exact derivative"
+      ],
+      "answer": 1,
+      "explanation": "False position uses the secant-line formula but keeps the two points bracketing the root, always replacing the endpoint whose sign matches the new value, so the root stays enclosed and convergence is guaranteed. It does use function values, it uses no derivative, and it does not merely halve the interval (that is bisection). The trap is conflating it with the secant method; the bracketing discipline is the distinguishing feature.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-013",
+      "stem": "For $f(x) = x^2 - 3$ with $x_0 = 1$ and $x_1 = 2$, the first secant iterate $x_2$ is which value?",
+      "options": [
+        "$1.7500$",
+        "$1.7321$",
+        "$1.6667$",
+        "$1.5000$"
+      ],
+      "answer": 2,
+      "explanation": "With $f(1) = -2$ and $f(2) = 1$, the secant gives $x_2 = 2 - 1\\cdot\\frac{2 - 1}{1 - (-2)} = 2 - \\frac{1}{3} = 1.6667$. The value $1.75$ is the Newton step from $x_0 = 2$, $1.5$ is the bisection midpoint, and $1.7321$ is the exact root. The trap is the denominator $f(x_1) - f(x_0) = 3$; the step subtracts $\\frac{1}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-014",
+      "stem": "For the fixed-point iteration $x_{n+1} = \\cos(x_n)$ solving $\\cos x - x = 0$ (root $x^* \\approx 0.739$), convergence is expected because $g'(x^*) = -\\sin(x^*)$ has which property?",
+      "options": [
+        "$|g'(x^*)| \\approx 0.674 < 1$",
+        "$|g'(x^*)| > 1$",
+        "$g'(x^*) \\approx 1.5$",
+        "$g'(x^*) = 1$"
+      ],
+      "answer": 0,
+      "explanation": "Here $g'(x) = -\\sin x$, so $g'(0.739) = -\\sin(0.739) \\approx -0.674$, whose magnitude $0.674$ is below $1$, giving local convergence. A magnitude above or equal to $1$ would fail the contraction test, and $1.5$ is simply wrong since $|\\sin|$ never exceeds $1$. The trap is not evaluating $g'$ at the fixed point; $\\cos$ is contractive there because $|{-\\sin(0.739)}| < 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-015",
+      "stem": "Applying Newton's method to $f(x) = x^2 - N$ yields which classical iteration for $\\sqrt{N}$?",
+      "options": [
+        "$x_{n+1} = \\dfrac{1}{2}\\left(x_n + \\dfrac{N}{x_n}\\right)$",
+        "$x_{n+1} = x_n - N$",
+        "$x_{n+1} = 2x_n - \\dfrac{N}{x_n}$",
+        "$x_{n+1} = \\dfrac{N}{x_n}$"
+      ],
+      "answer": 0,
+      "explanation": "With $f'(x) = 2x$, Newton gives $x_{n+1} = x_n - \\frac{x_n^2 - N}{2x_n} = \\frac{1}{2}\\left(x_n + \\frac{N}{x_n}\\right)$, the Babylonian square-root formula. The bare $\\frac{N}{x_n}$ omits the averaging, $x_n - N$ ignores the derivative, and the last option mismanages the algebra. The trap is forgetting the factor $\\frac{1}{2}$; Newton averages the guess with $\\frac{N}{x_n}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-016",
+      "stem": "Newton's method may fail or slow down in which situation?",
+      "options": [
+        "When the initial guess equals the root",
+        "When $f'(x_n)$ is near zero or the root is a multiple root",
+        "When $f$ is a straight line",
+        "When the function is smooth and strictly monotonic"
+      ],
+      "answer": 1,
+      "explanation": "A near-zero derivative makes the step $\\frac{f}{f'}$ blow up and can hurl the iterate far away, and at a multiple root the quadratic rate degrades to linear. A smooth monotonic function is the ideal case, an initial guess at the root stops immediately, and a straight line is solved exactly in one step. The trap is overlooking the denominator; small $f'$ is exactly where Newton misbehaves.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-017",
+      "stem": "Bisection's error bound is multiplied by a constant factor each step, so its convergence is which type?",
+      "options": [
+        "Linear with ratio $\\tfrac{1}{2}$",
+        "Superlinear with order $1.618$",
+        "Cubic",
+        "Quadratic"
+      ],
+      "answer": 0,
+      "explanation": "Halving the bracket multiplies the error bound by $\\frac{1}{2}$ every iteration, which is linear (first-order) convergence with ratio $\\frac{1}{2}$, gaining about one binary digit per step. It is not the secant's superlinear $1.618$, not Newton's quadratic, and not cubic. The trap is overrating bisection's speed; steady halving is only linear convergence.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-018",
+      "stem": "The order of convergence of the secant method near a simple root is approximately which value?",
+      "options": [
+        "$2$",
+        "$1.618$",
+        "$1$",
+        "$3$"
+      ],
+      "answer": 1,
+      "explanation": "The secant error obeys $e_{n+1} \\approx C\\,e_n^{1.618}$, the exponent being the golden ratio $\\frac{1 + \\sqrt{5}}{2} \\approx 1.618$, so it is superlinear but slower than Newton's quadratic order. Order $1$ describes bisection, order $2$ Newton, and order $3$ special schemes. The trap is rounding the secant order to $1$ or $2$; it sits strictly between, at the golden ratio.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-019",
+      "stem": "For $f(x) = x^3 - x - 1$ with $f'(x) = 3x^2 - 1$, one Newton step from $x_0 = 1.5$ gives which value?",
+      "options": [
+        "$1.3247$",
+        "$1.1667$",
+        "$1.3478$",
+        "$1.5000$"
+      ],
+      "answer": 2,
+      "explanation": "Apply $x_1 = 1.5 - \\frac{f(1.5)}{f'(1.5)} = 1.5 - \\frac{0.875}{5.75} = 1.5 - 0.15217 = 1.34783$. Here $f(1.5) = 0.875$ and $f'(1.5) = 3(2.25) - 1 = 5.75$. The value $1.5$ is the start, $1.1667$ is the secant step from $(1, 2)$, and $1.3247$ is the exact root reached after another step. The trap is the derivative value; $f'(1.5) = 5.75$ sets the step $0.15217$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-020",
+      "stem": "Which ranking of typical convergence speed near a simple root, from fastest to slowest, is correct?",
+      "options": [
+        "Newton, secant, bisection",
+        "Bisection, Newton, secant",
+        "Secant, Newton, bisection",
+        "Bisection, secant, Newton"
+      ],
+      "answer": 0,
+      "explanation": "Newton's method (order $2$) is fastest, the secant method (order $1.618$) next, and bisection (order $1$, ratio $\\frac{1}{2}$) slowest, giving Newton, secant, bisection. The other rankings misplace at least one method. The trap is forgetting the secant order $1.618$ lies between Newton's $2$ and bisection's $1$, fixing the strict order Newton then secant then bisection.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-021",
+      "format": "cloze",
+      "stem": "Carry out two bisection steps for $f(x) = x^3 - x - 1$ on $[1, 2]$, where the root is near $1.3247$.",
+      "solution": "The first midpoint is $c_1 = \\dfrac{1 + 2}{2} =$ {{1}}, and since $f(c_1) > 0$ while $f(1) < 0$, the bracket becomes $[1, c_1]$. Its midpoint is $c_2 =$ {{2}}. After these two steps the bracket width has shrunk from $1$ to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "First midpoint $c_1 = 1.5$, with $f(1.5) = 3.375 - 1.5 - 1 = 0.875 > 0$, so the bracket becomes $[1, 1.5]$ with midpoint $c_2 = 1.25$. Two halvings reduce the width to $\\frac{1}{2^2} = 0.25$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-022",
+      "format": "cloze",
+      "stem": "Run Newton-Raphson on $f(x) = x^2 - 3$, $f'(x) = 2x$, from $x_0 = 2$.",
+      "solution": "The first iterate is $x_1 = 2 - \\dfrac{1}{4}$, which equals {{1}}. A second step gives about $1.73214$, very close to $\\sqrt{3}$, illustrating that Newton roughly {{2}} the number of correct digits each iteration. This rapid behaviour is called {{3}} convergence.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.75,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "doubles",
+            "halves",
+            "triples",
+            "keeps"
+          ],
+          "answer": "doubles"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "quadratic",
+            "linear",
+            "logarithmic",
+            "geometric"
+          ],
+          "answer": "quadratic"
+        }
+      ],
+      "explanation": "$x_1 = 2 - \\frac{4 - 3}{2(2)} = 2 - 0.25 = 1.75$. Quadratic convergence roughly doubles the count of accurate digits per step, so the term is quadratic convergence.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-023",
+      "format": "cloze",
+      "stem": "Compute the first secant step for $f(x) = x^3 - x - 1$ with $x_0 = 1$, $x_1 = 2$.",
+      "solution": "Using $f(1) = -1$ and $f(2) = 5$, the secant slope is $\\dfrac{5 - (-1)}{2 - 1} =$ {{1}}. The next iterate $x_2 = 2 - \\dfrac{f(2)}{\\text{slope}} = 2 - \\dfrac{5}{6}$ equals about {{2}}. The secant method needs no value of the {{3}} of $f$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.1667,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "derivative",
+            "integral",
+            "second difference",
+            "antiderivative"
+          ],
+          "answer": "derivative"
+        }
+      ],
+      "explanation": "The secant slope is $\\frac{5 + 1}{1} = 6$. Then $x_2 = 2 - \\frac{5}{6} = 1.1667$. The secant method estimates the slope from function values, so it never requires the derivative.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-024",
+      "format": "cloze",
+      "stem": "Summarize the convergence orders of the standard root-finding methods.",
+      "solution": "The bisection method converges linearly, shrinking the error bound by a factor of {{1}} per step. The Newton-Raphson method converges with order {{2}} near a simple root. The secant method converges with order approximately {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.618,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Bisection halves the error bound, a factor of $0.5$. Newton's order is $2$ (quadratic). The secant order is the golden ratio, about $1.618$.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-025",
+      "format": "cloze",
+      "stem": "Determine the number of bisection steps to reach a tolerance on $[1, 2]$.",
+      "solution": "The bracket width after $n$ steps is $\\dfrac{1}{2^n}$. To force the error below $0.0001$ we need $2^n \\ge 10000$. Since $2^{13} = 8192$ and $2^{14} =$ {{1}}, the required number of steps is {{2}}. Each extra bisection step adds about one {{3}} digit of accuracy.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 16384,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 14,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "binary",
+            "decimal",
+            "hexadecimal",
+            "significant"
+          ],
+          "answer": "binary"
+        }
+      ],
+      "explanation": "Since $2^{14} = 16384 \\ge 10000$ while $2^{13} = 8192 < 10000$, fourteen steps are needed. Halving each step gains roughly one binary digit.",
+      "difficulty": "core",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    },
+    {
+      "id": "scientific-computing-i-root-finding-026",
+      "format": "cloze",
+      "stem": "Analyze the fixed-point iteration $x_{n+1} = \\cos(x_n)$ for the root of $\\cos x - x = 0$ near $x^* = 0.739$.",
+      "solution": "Local convergence requires the magnitude of $g'$ at the root to be less than {{1}}. Here $g(x) = \\cos x$, so $g'(x) = -\\sin x$ and $|g'(0.739)| = |\\sin(0.739)|$ is about {{2}}. Because this magnitude is below the threshold, the iteration {{3}} to the root.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.674,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "converges",
+            "diverges",
+            "oscillates without limit",
+            "stalls"
+          ],
+          "answer": "converges"
+        }
+      ],
+      "explanation": "Local convergence needs $|g'(x^*)| < 1$. Here $|{-\\sin(0.739)}| = 0.674 < 1$, so the iteration converges to the root near $0.739$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chapra and Canale, Numerical Methods for Engineers"
+    }
+  ]
+}

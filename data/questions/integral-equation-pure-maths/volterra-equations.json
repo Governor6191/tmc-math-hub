@@ -1,0 +1,480 @@
+{
+  "courseId": "integral-equation-pure-maths",
+  "topicId": "volterra-equations",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-001",
+      "stem": "The standard form of a Volterra integral equation of the second kind is",
+      "options": [
+        "$\\phi(x) = f(x) + \\lambda\\displaystyle\\int_a^b K(x,t)\\phi(t)\\,dt$",
+        "$\\phi(x) = f(x) + \\lambda\\displaystyle\\int_a^x K(x,t)\\phi(t)\\,dt$",
+        "$f(x) = \\displaystyle\\int_a^b K(x,t)\\phi(t)\\,dt$",
+        "$\\phi(x) = \\displaystyle\\int_a^x K(x,t)\\,dt$"
+      ],
+      "answer": 1,
+      "explanation": "A Volterra equation has a variable upper limit $x$, and the second kind has the unknown both outside and inside the integral, giving $\\phi(x) = f(x) + \\lambda\\int_a^x K(x,t)\\phi(t)\\,dt$. The form with constant upper limit $b$ is Fredholm, and the form with no free $\\phi(x)$ is first kind. The last option has no unknown under the integral at all.",
+      "difficulty": "warmup",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-002",
+      "stem": "The Leibniz rule gives $\\dfrac{d}{dx}\\displaystyle\\int_a^x g(t)\\,dt = $",
+      "options": [
+        "$g(x)$",
+        "$g(a)$",
+        "$g(x) - g(a)$",
+        "$\\displaystyle\\int_a^x g'(t)\\,dt$"
+      ],
+      "answer": 0,
+      "explanation": "By the fundamental theorem of calculus, differentiating an integral whose upper limit is $x$ and whose integrand does not depend on $x$ simply evaluates the integrand at the upper limit: $\\frac{d}{dx}\\int_a^x g(t)\\,dt = g(x)$. This rule is the engine that converts a Volterra equation into a differential equation.",
+      "difficulty": "warmup",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-003",
+      "stem": "Convert $\\phi(x) = 1 + \\displaystyle\\int_0^x \\phi(t)\\,dt$ into an initial value problem by differentiation.",
+      "options": [
+        "$\\phi'(x) = 1$, $\\phi(0) = 1$",
+        "$\\phi'(x) = \\phi(x)$, $\\phi(0) = 0$",
+        "$\\phi''(x) = \\phi(x)$, $\\phi(0) = 1$",
+        "$\\phi'(x) = \\phi(x)$, $\\phi(0) = 1$"
+      ],
+      "answer": 3,
+      "explanation": "Differentiating both sides and using $\\frac{d}{dx}\\int_0^x \\phi(t)\\,dt = \\phi(x)$ gives $\\phi'(x) = \\phi(x)$. The initial condition comes from setting $x = 0$ in the original equation, where the integral vanishes, so $\\phi(0) = 1$. Hence the initial value problem is $\\phi' = \\phi$, $\\phi(0) = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-004",
+      "stem": "Solve $\\phi(x) = 1 + \\displaystyle\\int_0^x \\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = e^x$",
+        "$\\phi(x) = e^{-x}$",
+        "$\\phi(x) = 1 + x$",
+        "$\\phi(x) = \\cosh x$"
+      ],
+      "answer": 0,
+      "explanation": "The equation converts to $\\phi' = \\phi$, $\\phi(0) = 1$, whose solution is $\\phi(x) = e^x$. Checking directly, $1 + \\int_0^x e^t\\,dt = 1 + (e^x - 1) = e^x$, confirming the answer. The linear function $1 + x$ is only the second partial sum of the series for $e^x$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-005",
+      "stem": "Using successive approximations on $\\phi(x) = 1 + \\displaystyle\\int_0^x \\phi(t)\\,dt$ with $\\phi_0 = 1$, what is $\\phi_2(x)$?",
+      "options": [
+        "$1 + x + \\dfrac{x^2}{2}$",
+        "$x + \\dfrac{x^2}{2}$",
+        "$1 + x + x^2$",
+        "$1 + x$"
+      ],
+      "answer": 0,
+      "explanation": "Start with $\\phi_0 = 1$. Then $\\phi_1 = 1 + \\int_0^x 1\\,dt = 1 + x$. Next $\\phi_2 = 1 + \\int_0^x (1 + t)\\,dt = 1 + x + \\frac{x^2}{2}$. These are the partial sums of $e^x = \\sum_{n=0}^\\infty \\frac{x^n}{n!}$, confirming the iteration converges to $e^x$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-006",
+      "stem": "Solve $\\phi(x) = x + \\displaystyle\\int_0^x \\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = e^x - 1$",
+        "$\\phi(x) = e^x - x$",
+        "$\\phi(x) = e^x$",
+        "$\\phi(x) = x + \\dfrac{x^2}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "Differentiating gives $\\phi'(x) = 1 + \\phi(x)$, and setting $x = 0$ gives $\\phi(0) = 0$. Solving the linear equation $\\phi' - \\phi = 1$ with integrating factor $e^{-x}$ gives $\\phi = -1 + Ce^x$, and $\\phi(0) = 0$ forces $C = 1$, so $\\phi(x) = e^x - 1$. Check: $x + \\int_0^x (e^t - 1)\\,dt = x + (e^x - 1 - x) = e^x - 1$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-007",
+      "stem": "Solve $\\phi(x) = 2x + 2\\displaystyle\\int_0^x \\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = e^{2x} - 1$",
+        "$\\phi(x) = e^{2x}$",
+        "$\\phi(x) = 2(e^x - 1)$",
+        "$\\phi(x) = 2x + 2x^2$"
+      ],
+      "answer": 0,
+      "explanation": "Differentiating gives $\\phi'(x) = 2 + 2\\phi(x)$, with $\\phi(0) = 0$. Solving $\\phi' - 2\\phi = 2$ with integrating factor $e^{-2x}$ gives $\\phi = -1 + Ce^{2x}$, and $\\phi(0) = 0$ gives $C = 1$, so $\\phi(x) = e^{2x} - 1$. Check: $2x + 2\\int_0^x (e^{2t} - 1)\\,dt = 2x + (e^{2x} - 1 - 2x) = e^{2x} - 1$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-008",
+      "stem": "To obtain the initial condition when converting a Volterra equation $\\phi(x) = f(x) + \\int_0^x K(x,t)\\phi(t)\\,dt$ to a differential equation, one",
+      "options": [
+        "sets $x = 0$, where the integral vanishes, giving $\\phi(0) = f(0)$",
+        "integrates both sides from $0$ to $1$",
+        "sets $\\phi(0) = 0$ always",
+        "differentiates twice and sets $x = 1$"
+      ],
+      "answer": 0,
+      "explanation": "Setting $x = 0$ makes the upper and lower limits coincide, so $\\int_0^0 = 0$ and the equation collapses to $\\phi(0) = f(0)$. This supplies the initial condition needed for the resulting differential equation. The value $\\phi(0) = f(0)$ depends on $f$, so it is not always zero unless $f(0) = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-009",
+      "stem": "Convert $\\phi(x) = x + \\displaystyle\\int_0^x (x - t)\\,\\phi(t)\\,dt$ to a second order initial value problem.",
+      "options": [
+        "$\\phi' = \\phi$, $\\phi(0) = 0$",
+        "$\\phi'' = \\phi$, $\\phi(0) = 0$, $\\phi'(0) = 1$",
+        "$\\phi'' = -\\phi$, $\\phi(0) = 0$, $\\phi'(0) = 1$",
+        "$\\phi'' = \\phi$, $\\phi(0) = 1$, $\\phi'(0) = 0$"
+      ],
+      "answer": 1,
+      "explanation": "Differentiating once, $\\phi'(x) = 1 + \\int_0^x \\phi(t)\\,dt$, since the boundary term $(x - t)\\phi(t)$ at $t = x$ vanishes. Differentiating again, $\\phi''(x) = \\phi(x)$. From the original, $\\phi(0) = 0$, and from the first derivative, $\\phi'(0) = 1$. So $\\phi'' = \\phi$, $\\phi(0) = 0$, $\\phi'(0) = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-010",
+      "stem": "Solve $\\phi(x) = x + \\displaystyle\\int_0^x (x - t)\\,\\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = \\sinh x$",
+        "$\\phi(x) = \\cosh x$",
+        "$\\phi(x) = \\sin x$",
+        "$\\phi(x) = e^x$"
+      ],
+      "answer": 0,
+      "explanation": "The equation converts to $\\phi'' = \\phi$, $\\phi(0) = 0$, $\\phi'(0) = 1$. The general solution is $\\phi = A\\cosh x + B\\sinh x$; applying $\\phi(0) = 0$ gives $A = 0$ and $\\phi'(0) = 1$ gives $B = 1$, so $\\phi(x) = \\sinh x$. The positive sign on the right side of $\\phi'' = \\phi$ produces hyperbolic, not trigonometric, functions.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-011",
+      "stem": "Solve $\\phi(x) = 1 + \\displaystyle\\int_0^x (x - t)\\,\\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = \\sinh x$",
+        "$\\phi(x) = \\cos x$",
+        "$\\phi(x) = e^x$",
+        "$\\phi(x) = \\cosh x$"
+      ],
+      "answer": 3,
+      "explanation": "Differentiating once gives $\\phi'(x) = \\int_0^x \\phi(t)\\,dt$ and again $\\phi''(x) = \\phi(x)$. From the original equation $\\phi(0) = 1$, and from the first derivative $\\phi'(0) = 0$. Solving $\\phi'' = \\phi$ with these conditions gives $\\phi(x) = \\cosh x$. A positive sign yields hyperbolic cosine, distinguishing it from $\\cos x$ which solves $\\phi'' = -\\phi$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-012",
+      "stem": "Solve the Volterra equation of the first kind $x^2 = \\displaystyle\\int_0^x \\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = \\dfrac{x^3}{3}$",
+        "$\\phi(x) = 2x$",
+        "$\\phi(x) = x$",
+        "$\\phi(x) = x^2$"
+      ],
+      "answer": 1,
+      "explanation": "For a first kind equation with kernel $1$, differentiate both sides. The left gives $\\frac{d}{dx}x^2 = 2x$ and the right gives $\\frac{d}{dx}\\int_0^x \\phi(t)\\,dt = \\phi(x)$. So $\\phi(x) = 2x$. Differentiation reduces a first kind Volterra equation with kernel $1$ directly to the unknown.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-013",
+      "stem": "Solve the first kind equation $\\sin x = \\displaystyle\\int_0^x \\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = \\cos x$",
+        "$\\phi(x) = -\\cos x$",
+        "$\\phi(x) = 1 - \\cos x$",
+        "$\\phi(x) = \\sin x$"
+      ],
+      "answer": 0,
+      "explanation": "Differentiating both sides, the left gives $\\frac{d}{dx}\\sin x = \\cos x$ and the right gives $\\phi(x)$. Therefore $\\phi(x) = \\cos x$. The consistency condition holds because the left side $\\sin x$ vanishes at $x = 0$, matching $\\int_0^0 = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-014",
+      "stem": "Why are Laplace transforms especially effective for Volterra equations with a difference kernel $K(x,t) = k(x - t)$?",
+      "options": [
+        "because the equation becomes nonlinear",
+        "because the kernel is always symmetric",
+        "because the integral is a convolution, whose transform is a product",
+        "because the limits are constant"
+      ],
+      "answer": 2,
+      "explanation": "When $K(x,t) = k(x - t)$, the integral $\\int_0^x k(x - t)\\phi(t)\\,dt$ is exactly the convolution $(k * \\phi)(x)$. The Laplace transform turns convolution into the product $\\mathcal{L}\\{k\\}\\mathcal{L}\\{\\phi\\}$, so the equation becomes algebraic in the transform domain. This is why difference kernels and Laplace methods pair so naturally for Volterra problems.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-015",
+      "stem": "A Volterra equation of the second kind, $\\phi(x) = f(x) + \\lambda\\int_0^x K(x,t)\\phi(t)\\,dt$, with continuous kernel has",
+      "options": [
+        "no characteristic values, so a unique continuous solution for every $\\lambda$",
+        "characteristic values at every integer $\\lambda$",
+        "a solution only when $\\lambda = 0$",
+        "infinitely many solutions for all $\\lambda$"
+      ],
+      "answer": 0,
+      "explanation": "Unlike the Fredholm case, a Volterra equation of the second kind with a continuous (bounded) kernel has no characteristic values: its Neumann series converges for every $\\lambda$, giving a unique continuous solution. The variable upper limit forces the iterated kernels to shrink rapidly, which guarantees convergence regardless of $\\lambda$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-016",
+      "stem": "Differentiate $\\displaystyle\\int_0^x (x - t)\\,\\phi(t)\\,dt$ with respect to $x$ using the Leibniz rule.",
+      "options": [
+        "$x\\,\\phi(x)$",
+        "$(x - x)\\phi(x) = 0$",
+        "$\\displaystyle\\int_0^x \\phi(t)\\,dt$",
+        "$\\phi(x)$"
+      ],
+      "answer": 2,
+      "explanation": "By the Leibniz rule, $\\frac{d}{dx}\\int_0^x F(x,t)\\,dt = F(x,x) + \\int_0^x \\frac{\\partial F}{\\partial x}\\,dt$. Here $F = (x - t)\\phi(t)$, so the boundary term is $F(x,x) = (x - x)\\phi(x) = 0$, and the integral of $\\frac{\\partial}{\\partial x}(x - t)\\phi(t) = \\phi(t)$ gives $\\int_0^x \\phi(t)\\,dt$. The result is $\\int_0^x \\phi(t)\\,dt$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-017",
+      "stem": "Solve $\\phi(x) = e^x + \\displaystyle\\int_0^x \\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = e^{2x}$",
+        "$\\phi(x) = (1 + x)e^x$",
+        "$\\phi(x) = e^x + x^2$",
+        "$\\phi(x) = e^x + x$"
+      ],
+      "answer": 1,
+      "explanation": "Differentiating gives $\\phi'(x) = e^x + \\phi(x)$, with $\\phi(0) = e^0 = 1$. Solving $\\phi' - \\phi = e^x$ with integrating factor $e^{-x}$ gives $(\\phi e^{-x})' = 1$, so $\\phi e^{-x} = x + C$ and $\\phi = (x + C)e^x$. Then $\\phi(0) = C = 1$, so $\\phi(x) = (1 + x)e^x = e^x + xe^x$. Check at $x=0$: $\\phi(0) = 1$, matching the free term $e^0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-018",
+      "stem": "In the Neumann series for $\\phi(x) = f(x) + \\lambda\\int_0^x K(x,t)\\phi(t)\\,dt$, the first iterate beyond $\\phi_0 = f$ is $\\phi_1 = $",
+      "options": [
+        "$\\lambda\\displaystyle\\int_0^x K(x,t)\\,f(t)\\,dt$",
+        "$f(x)\\displaystyle\\int_0^x K(x,t)\\,dt$",
+        "$f(x) + \\lambda\\displaystyle\\int_0^x K(x,t)\\,dt$",
+        "$f(x) + \\lambda\\displaystyle\\int_0^x K(x,t)\\,f(t)\\,dt$"
+      ],
+      "answer": 3,
+      "explanation": "Successive approximations substitute the previous iterate into the integral. With $\\phi_0 = f$, the next is $\\phi_1 = f(x) + \\lambda\\int_0^x K(x,t)\\phi_0(t)\\,dt = f(x) + \\lambda\\int_0^x K(x,t)f(t)\\,dt$. The free term $f(x)$ is retained outside, and $f(t)$ replaces the unknown inside.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-019",
+      "stem": "Setting $x = 0$ in $\\phi(x) = 3 + 5x + \\displaystyle\\int_0^x \\sin(x - t)\\phi(t)\\,dt$ gives the initial value",
+      "options": [
+        "$\\phi(0) = 5$",
+        "$\\phi(0) = 0$",
+        "$\\phi(0) = 8$",
+        "$\\phi(0) = 3$"
+      ],
+      "answer": 3,
+      "explanation": "At $x = 0$ the integral $\\int_0^0 \\sin(0 - t)\\phi(t)\\,dt = 0$, so the equation reduces to $\\phi(0) = 3 + 5(0) = 3$. The free term evaluated at zero gives the initial value, here $\\phi(0) = 3$. The slope term $5x$ contributes nothing at $x = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-020",
+      "stem": "Solve $\\phi(x) = 1 - \\displaystyle\\int_0^x (x - t)\\,\\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = \\cos x$",
+        "$\\phi(x) = e^{-x}$",
+        "$\\phi(x) = \\cosh x$",
+        "$\\phi(x) = \\sin x$"
+      ],
+      "answer": 0,
+      "explanation": "Differentiating once gives $\\phi'(x) = -\\int_0^x \\phi(t)\\,dt$ and again $\\phi''(x) = -\\phi(x)$. From the original $\\phi(0) = 1$, and from the first derivative $\\phi'(0) = 0$. Solving $\\phi'' = -\\phi$ with these conditions gives $\\phi(x) = \\cos x$. The minus sign in the kernel produces the trigonometric solution, in contrast to the $\\cosh x$ obtained with a plus sign.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-021",
+      "stem": "What is the second partial sum $\\phi_2(x)$ from successive approximations of $\\phi(x) = x + \\displaystyle\\int_0^x \\phi(t)\\,dt$, taking $\\phi_0 = x$?",
+      "options": [
+        "$x + \\dfrac{x^2}{2}$",
+        "$x + x^2$",
+        "$x + \\dfrac{x^2}{2} + \\dfrac{x^3}{6}$",
+        "$x + \\dfrac{x^3}{6}$"
+      ],
+      "answer": 2,
+      "explanation": "With $\\phi_0 = x$, $\\phi_1 = x + \\int_0^x t\\,dt = x + \\frac{x^2}{2}$. Then $\\phi_2 = x + \\int_0^x \\left(t + \\frac{t^2}{2}\\right)dt = x + \\frac{x^2}{2} + \\frac{x^3}{6}$. These are the partial sums of $e^x - 1 = x + \\frac{x^2}{2} + \\frac{x^3}{6} + \\cdots$, the known solution.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-022",
+      "stem": "A Volterra equation differs from a Fredholm equation chiefly because its integral",
+      "options": [
+        "contains no kernel",
+        "has a fixed interval of integration",
+        "is always taken over the whole real line",
+        "accumulates contributions only up to the current point $x$"
+      ],
+      "answer": 3,
+      "explanation": "The variable upper limit $x$ means a Volterra integral $\\int_0^x K(x,t)\\phi(t)\\,dt$ sums contributions only from $t = 0$ up to the present value $x$, giving the equation a cumulative, memory-like character suited to evolution in time. A Fredholm integral over a fixed $[a,b]$ couples all points at once. This accumulation up to $x$ is the defining distinction.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-023",
+      "format": "cloze",
+      "stem": "Solve $\\phi(x) = 1 + \\displaystyle\\int_0^x \\phi(t)\\,dt$ by converting to a differential equation.",
+      "solution": "Differentiating both sides and applying the Leibniz rule gives $\\phi'(x) =$ {{1}}. Setting $x = 0$ in the original equation, where the integral vanishes, gives the initial condition $\\phi(0) =$ {{2}}. The solution of this initial value problem is $\\phi(x) = e^x$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\phi(x)$",
+            "$1$",
+            "$x$"
+          ],
+          "answer": "$\\phi(x)$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Differentiating, $\\frac{d}{dx}\\int_0^x \\phi(t)\\,dt = \\phi(x)$, so $\\phi'(x) = \\phi(x)$. At $x = 0$ the integral is zero, leaving $\\phi(0) = 1$. The problem $\\phi' = \\phi$, $\\phi(0) = 1$ has solution $\\phi(x) = e^x$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-024",
+      "format": "cloze",
+      "stem": "Apply successive approximations to $\\phi(x) = 1 + \\displaystyle\\int_0^x \\phi(t)\\,dt$ with $\\phi_0 = 1$.",
+      "solution": "The first iterate is $\\phi_1 = 1 + \\int_0^x 1\\,dt = 1 + x$. The second is $\\phi_2 = 1 + \\int_0^x (1 + t)\\,dt = 1 + x + \\dfrac{x^2}{2}$. These are the partial sums of the series for {{1}}. The coefficient of $x^2$ in the limit is $\\dfrac{1}{2!}$, that is the reciprocal of {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$e^x$",
+            "$\\cos x$",
+            "$\\dfrac{1}{1 - x}$"
+          ],
+          "answer": "$e^x$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The iterates $1, 1+x, 1+x+\\frac{x^2}{2}, \\ldots$ are the Taylor partial sums of $e^x = \\sum \\frac{x^n}{n!}$. The $x^2$ coefficient is $\\frac{1}{2!} = \\frac{1}{2}$, the reciprocal of $2$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-025",
+      "format": "cloze",
+      "stem": "Convert $\\phi(x) = x + \\displaystyle\\int_0^x (x - t)\\,\\phi(t)\\,dt$ to an initial value problem and solve.",
+      "solution": "Differentiating twice gives the second order equation $\\phi'' =$ {{1}}, with $\\phi(0) = 0$ and $\\phi'(0) = 1$. Because the sign on the right is positive, the solution is built from hyperbolic functions, and applying the conditions gives $\\phi(x) =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\phi$",
+            "$-\\phi$",
+            "$\\phi'$"
+          ],
+          "answer": "$\\phi$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\sinh x$",
+            "$\\cosh x$",
+            "$\\sin x$"
+          ],
+          "answer": "$\\sinh x$"
+        }
+      ],
+      "explanation": "First derivative: $\\phi' = 1 + \\int_0^x \\phi\\,dt$; second: $\\phi'' = \\phi$. With $\\phi(0) = 0$ and $\\phi'(0) = 1$, the solution of $\\phi'' = \\phi$ is $\\phi(x) = \\sinh x$, since $\\sinh 0 = 0$ and its derivative $\\cosh 0 = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-026",
+      "format": "cloze",
+      "stem": "Solve the Volterra equation of the first kind $x^3 = \\displaystyle\\int_0^x \\phi(t)\\,dt$.",
+      "solution": "Because the kernel is the constant $1$, differentiate both sides. The right side becomes $\\phi(x)$ by the Leibniz rule, and the left side becomes the derivative of $x^3$. Hence $\\phi(x) =$ {{1}}. The technique works here because the data $x^3$ {{2}} at $x = 0$, matching the empty integral there.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$3x^2$",
+            "$x^2$",
+            "$\\dfrac{x^4}{4}$"
+          ],
+          "answer": "$3x^2$"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "vanishes",
+            "is zero",
+            "equals zero"
+          ]
+        }
+      ],
+      "explanation": "Differentiating, $\\frac{d}{dx}x^3 = 3x^2$ and $\\frac{d}{dx}\\int_0^x \\phi\\,dt = \\phi(x)$, so $\\phi(x) = 3x^2$. The consistency condition is met because $x^3$ vanishes at $x = 0$, as the integral $\\int_0^0$ does.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-027",
+      "format": "cloze",
+      "stem": "Consider converting Volterra equations to differential equations.",
+      "solution": "A Volterra equation of the {{1}} kind, with the unknown appearing both inside and outside the integral, typically converts to a differential equation after one or more differentiations. The needed initial conditions come from evaluating the equation and its derivatives at the point $x =$ {{2}}, where every Volterra integral is zero.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "second",
+            "first",
+            "third"
+          ],
+          "answer": "second"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Second kind Volterra equations have $\\phi$ outside the integral, so differentiation yields a differential equation in $\\phi$. The lower limit is $0$, so setting $x = 0$ makes the integral vanish and supplies the initial data $\\phi(0) = f(0)$, and similarly for higher derivatives.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-volterra-equations-028",
+      "format": "cloze",
+      "stem": "Solve $\\phi(x) = x + \\displaystyle\\int_0^x \\phi(t)\\,dt$ via a first order differential equation.",
+      "solution": "Differentiating gives $\\phi'(x) = 1 + \\phi(x)$, a linear equation, with $\\phi(0) =$ {{1}}. Solving $\\phi' - \\phi = 1$ and applying the condition yields $\\phi(x) = e^x -$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Differentiating, $\\phi' = 1 + \\phi$, and the original at $x = 0$ gives $\\phi(0) = 0$. Solving $\\phi' - \\phi = 1$ gives $\\phi = -1 + Ce^x$, and $\\phi(0) = 0$ forces $C = 1$, so $\\phi(x) = e^x - 1$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    }
+  ]
+}

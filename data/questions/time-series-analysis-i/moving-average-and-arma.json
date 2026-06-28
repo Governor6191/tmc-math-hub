@@ -1,0 +1,517 @@
+{
+  "courseId": "time-series-analysis-i",
+  "topicId": "moving-average-and-arma",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-001",
+      "stem": "The first-order moving average model MA(1) expresses $X_t$ as which combination?",
+      "options": [
+        "$X_t = \\varepsilon_t + \\theta \\varepsilon_{t-1}$",
+        "$X_t = \\phi X_{t-1} + \\varepsilon_t$",
+        "$X_t = \\theta X_{t-1} + \\varepsilon_{t-1}$",
+        "$X_t = \\varepsilon_t / \\theta$"
+      ],
+      "answer": 0,
+      "explanation": "An MA(1) model is $X_t = \\varepsilon_t + \\theta \\varepsilon_{t-1}$ (with mean $\\mu$ if a constant is added): the current value is a weighted sum of the current and one past white noise shock. A model in past values of $X$ would be autoregressive.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-002",
+      "stem": "The general MA(q) model is written as which of the following?",
+      "options": [
+        "$X_t = \\varepsilon_t + \\theta_1 \\varepsilon_{t-1} + \\theta_2 \\varepsilon_{t-2} + \\dots + \\theta_q \\varepsilon_{t-q}$",
+        "$X_t = \\varepsilon_{t+q}$",
+        "$X_t = \\theta_1 X_{t-1} \\times \\varepsilon_t$",
+        "$X_t = \\phi_1 X_{t-1} + \\dots + \\phi_q X_{t-q} + \\varepsilon_t$"
+      ],
+      "answer": 0,
+      "explanation": "An MA(q) is a finite weighted sum of the current and the $q$ most recent white noise shocks: $X_t = \\varepsilon_t + \\theta_1 \\varepsilon_{t-1} + \\dots + \\theta_q \\varepsilon_{t-q}$.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-003",
+      "stem": "A key property that distinguishes the autocorrelation function of an MA(q) process is that it does what?",
+      "options": [
+        "is identically 1 at every lag",
+        "cuts off (becomes zero) for lags greater than $q$",
+        "tails off gradually toward zero",
+        "increases without bound with the lag"
+      ],
+      "answer": 1,
+      "explanation": "The ACF of an MA(q) is exactly zero for all lags beyond $q$; it cuts off after lag $q$. This sharp cutoff is the signature used to identify the MA order from a correlogram.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-004",
+      "stem": "For an MA(1) process $X_t = \\varepsilon_t + \\theta \\varepsilon_{t-1}$, the lag-1 autocorrelation is given by which formula?",
+      "options": [
+        "$\\rho(1) = \\dfrac{1 + \\theta^2}{\\theta}$",
+        "$\\rho(1) = \\theta$",
+        "$\\rho(1) = \\theta^2$",
+        "$\\rho(1) = \\dfrac{\\theta}{1 + \\theta^2}$"
+      ],
+      "answer": 3,
+      "explanation": "For an MA(1), $\\gamma(0) = (1 + \\theta^2)\\sigma^2$ and $\\gamma(1) = \\theta \\sigma^2$, so $\\rho(1) = \\theta/(1 + \\theta^2)$. All higher autocorrelations are zero.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-005",
+      "stem": "For an MA(1) with $\\theta = 0.5$, what is the lag-1 autocorrelation $\\rho(1)$?",
+      "options": [
+        "0.50",
+        "0.80",
+        "0.25",
+        "0.40"
+      ],
+      "answer": 3,
+      "explanation": "$\\rho(1) = \\theta/(1 + \\theta^2) = 0.5/(1 + 0.25) = 0.5/1.25 = 0.40$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-006",
+      "stem": "For an MA(1) process $X_t = \\varepsilon_t + \\theta \\varepsilon_{t-1}$ with white noise variance $\\sigma^2$, what is the variance $\\gamma(0)$ of the process?",
+      "options": [
+        "$\\sigma^2$",
+        "$\\theta^2 \\sigma^2$",
+        "$(1 - \\theta^2)\\sigma^2$",
+        "$(1 + \\theta^2)\\sigma^2$"
+      ],
+      "answer": 3,
+      "explanation": "Since the two shocks are uncorrelated, $\\mathrm{Var}(X_t) = \\mathrm{Var}(\\varepsilon_t) + \\theta^2 \\mathrm{Var}(\\varepsilon_{t-1}) = (1 + \\theta^2)\\sigma^2$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-007",
+      "stem": "What does invertibility of an MA process guarantee?",
+      "options": [
+        "that the process has zero mean",
+        "that the process can be rewritten as a convergent infinite-order AR process",
+        "that the ACF tails off rather than cuts off",
+        "that the process is always stationary regardless of parameters"
+      ],
+      "answer": 1,
+      "explanation": "An invertible MA process can be expressed as a convergent AR($\\infty$) representation, which makes the parameters identifiable and allows the innovations to be recovered from the observed past. Invertibility, not stationarity, is the relevant restriction for MA models (a finite MA is always stationary).",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-008",
+      "stem": "For an MA(1) model $X_t = \\varepsilon_t + \\theta \\varepsilon_{t-1}$, the invertibility condition is which of the following?",
+      "options": [
+        "$\\theta = 0$",
+        "$|\\theta| < 1$",
+        "$|\\theta| > 1$",
+        "$\\theta = 1$"
+      ],
+      "answer": 1,
+      "explanation": "The MA(1) is invertible if and only if $|\\theta| < 1$, which ensures the root of $1 + \\theta B = 0$ lies outside the unit circle and the AR($\\infty$) representation converges.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-009",
+      "stem": "Is a finite-order MA(q) process always stationary?",
+      "options": [
+        "yes, because it is a finite linear combination of white noise terms with constant mean and variance",
+        "only if $|\\theta_1| > 1$",
+        "only if it is also a random walk",
+        "no, MA processes are never stationary"
+      ],
+      "answer": 0,
+      "explanation": "A finite MA(q) is a fixed finite weighted sum of white noise shocks, giving a constant mean and a constant, finite variance, and autocovariances that depend only on the lag. Hence it is always (weakly) stationary, for any parameter values.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-010",
+      "stem": "The ARMA(p, q) model combines which two structures?",
+      "options": [
+        "two independent white noise series",
+        "a seasonal part and a trend part",
+        "a differencing part and an exponential smoothing part",
+        "an autoregressive part of order $p$ and a moving average part of order $q$"
+      ],
+      "answer": 3,
+      "explanation": "An ARMA(p, q) model is $X_t = \\phi_1 X_{t-1} + \\dots + \\phi_p X_{t-p} + \\varepsilon_t + \\theta_1 \\varepsilon_{t-1} + \\dots + \\theta_q \\varepsilon_{t-q}$, blending an AR(p) component with an MA(q) component.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-011",
+      "stem": "For an MA(2) process, beyond which lag does the autocorrelation function become zero?",
+      "options": [
+        "it never becomes zero",
+        "beyond lag 1",
+        "beyond lag 2",
+        "beyond lag 3"
+      ],
+      "answer": 2,
+      "explanation": "An MA(q) has $\\rho(k) = 0$ for $k > q$. For MA(2), the ACF is nonzero at lags 1 and 2 and zero for all lags greater than 2.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-012",
+      "stem": "When identifying a model from sample plots, the pattern ACF cuts off after lag $q$ while PACF tails off points to which model?",
+      "options": [
+        "a deterministic trend",
+        "white noise",
+        "a pure AR(p)",
+        "a pure MA(q)"
+      ],
+      "answer": 3,
+      "explanation": "An ACF that cuts off after lag $q$ combined with a gradually decaying (tailing off) PACF is the textbook signature of a pure MA(q). The mirror pattern identifies an AR.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-013",
+      "stem": "For a pure ARMA(p, q) process with both $p > 0$ and $q > 0$, what do the ACF and PACF typically look like?",
+      "options": [
+        "both cut off sharply after a few lags",
+        "the PACF is exactly 1 at every lag",
+        "both tail off (decay gradually) without a clean cutoff",
+        "the ACF is exactly zero everywhere"
+      ],
+      "answer": 2,
+      "explanation": "A mixed ARMA process generally has both an ACF and a PACF that tail off gradually, with neither cutting off cleanly. This lack of a sharp cutoff in either function is itself a clue that a mixed model may be needed.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-014",
+      "stem": "An MA(1) has $\\theta = 0.8$. What is $\\rho(1)$, to three decimal places?",
+      "options": [
+        "0.640",
+        "0.444",
+        "0.800",
+        "0.488"
+      ],
+      "answer": 3,
+      "explanation": "$\\rho(1) = \\theta/(1 + \\theta^2) = 0.8/(1 + 0.64) = 0.8/1.64 = 0.4878 \\approx 0.488$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-015",
+      "stem": "What is the maximum possible absolute value of the lag-1 autocorrelation $\\rho(1)$ for any MA(1) process?",
+      "options": [
+        "1.0",
+        "0.25",
+        "0.5",
+        "0.8"
+      ],
+      "answer": 2,
+      "explanation": "Since $\\rho(1) = \\theta/(1 + \\theta^2)$, maximizing over $\\theta$ gives a maximum of $0.5$ at $\\theta = 1$ (and $-0.5$ at $\\theta = -1$). Thus an MA(1) can never have a lag-1 autocorrelation exceeding $0.5$ in magnitude.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-016",
+      "stem": "In backshift-operator notation, the MA(1) model $X_t = \\varepsilon_t + \\theta \\varepsilon_{t-1}$ is written as which of the following?",
+      "options": [
+        "$X_t = (1 - \\theta B)\\varepsilon_t$",
+        "$X_t = (1 + \\theta B^2)\\varepsilon_t$",
+        "$X_t = (1 + \\theta B)\\varepsilon_t$",
+        "$(1 - \\theta B) X_t = \\varepsilon_t$"
+      ],
+      "answer": 2,
+      "explanation": "With $B\\varepsilon_t = \\varepsilon_{t-1}$, we have $X_t = \\varepsilon_t + \\theta \\varepsilon_{t-1} = (1 + \\theta B)\\varepsilon_t$. The MA polynomial is $\\theta(B) = 1 + \\theta B$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-017",
+      "stem": "An MA(2) process is $X_t = \\varepsilon_t + 0.5 \\varepsilon_{t-1} + 0.3 \\varepsilon_{t-2}$ with $\\sigma^2 = 1$. What is its variance $\\gamma(0)$?",
+      "options": [
+        "0.34",
+        "1.80",
+        "1.34",
+        "1.00"
+      ],
+      "answer": 2,
+      "explanation": "$\\gamma(0) = (1 + \\theta_1^2 + \\theta_2^2)\\sigma^2 = (1 + 0.25 + 0.09)(1) = 1.34$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-018",
+      "stem": "Which statement correctly contrasts the memory of AR and MA processes?",
+      "options": [
+        "neither has any autocorrelation at all",
+        "both have ACFs that cut off after a finite lag",
+        "an MA(q) has a finite-lag (cutoff) ACF while a stationary AR has an ACF that decays but never truly vanishes",
+        "an MA(q) has infinite memory while an AR(1) has finite memory"
+      ],
+      "answer": 2,
+      "explanation": "An MA(q) has only short, finite-lag dependence (its ACF is exactly zero beyond lag $q$), whereas a stationary AR carries dependence through its recursion so that $\\rho(k) = \\phi^k$ decays geometrically but is never exactly zero. This contrast underlies the ACF/PACF identification rules.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-019",
+      "stem": "An MA(1) with $\\theta = -0.5$ has what lag-1 autocorrelation?",
+      "options": [
+        "-0.25",
+        "-0.40",
+        "-0.50",
+        "0.40"
+      ],
+      "answer": 1,
+      "explanation": "$\\rho(1) = \\theta/(1 + \\theta^2) = -0.5/(1 + 0.25) = -0.5/1.25 = -0.40$. A negative $\\theta$ gives a negative lag-1 autocorrelation.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-020",
+      "stem": "A correlogram shows a single significant spike at lag 1 and essentially zero autocorrelation at all higher lags, while the PACF decays gradually. Which model is suggested?",
+      "options": [
+        "AR(1)",
+        "random walk",
+        "MA(1)",
+        "ARMA(1,1)"
+      ],
+      "answer": 2,
+      "explanation": "An ACF that is significant only at lag 1 and then cuts off, paired with a tailing-off PACF, indicates an MA(1). An AR(1) would show the opposite: a tailing-off ACF and a single PACF spike at lag 1.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-021",
+      "stem": "The ARMA(1, 1) model in backshift notation is written as which of the following?",
+      "options": [
+        "$(1 + \\phi B) X_t = (1 - \\theta B)\\varepsilon_t$",
+        "$(1 - \\phi B) X_t = (1 + \\theta B)\\varepsilon_t$",
+        "$X_t = (1 - \\phi B)(1 + \\theta B)\\varepsilon_t$",
+        "$(1 - \\phi B^2) X_t = \\varepsilon_t$"
+      ],
+      "answer": 1,
+      "explanation": "ARMA(1,1) is $X_t = \\phi X_{t-1} + \\varepsilon_t + \\theta \\varepsilon_{t-1}$, which in operator form is $(1 - \\phi B) X_t = (1 + \\theta B)\\varepsilon_t$. Stationarity is governed by the AR polynomial and invertibility by the MA polynomial.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-022",
+      "stem": "For an MA(2) process $X_t = \\varepsilon_t + \\theta_1 \\varepsilon_{t-1} + \\theta_2 \\varepsilon_{t-2}$, the lag-2 autocovariance $\\gamma(2)$ equals which expression?",
+      "options": [
+        "$0$",
+        "$\\theta_1 \\sigma^2$",
+        "$(\\theta_1 + \\theta_2)\\sigma^2$",
+        "$\\theta_2 \\sigma^2$"
+      ],
+      "answer": 3,
+      "explanation": "Matching coefficients, $\\gamma(2) = \\theta_2 \\sigma^2$ (only the $\\varepsilon_{t-2}$ term overlaps when shifting by 2). The lag-1 autocovariance is $\\gamma(1) = (\\theta_1 + \\theta_1 \\theta_2)\\sigma^2$, and $\\gamma(k) = 0$ for $k > 2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-023",
+      "format": "cloze",
+      "stem": "Consider the MA(1) process $X_t = \\varepsilon_t + \\theta \\varepsilon_{t-1}$ with $\\theta = 0.5$ and white noise variance $\\sigma^2 = 1$.",
+      "solution": "The variance of the process is $\\gamma(0) = (1 + \\theta^2)\\sigma^2 =$ {{1}}. The lag-1 autocorrelation is $\\rho(1) = \\theta/(1 + \\theta^2) =$ {{2}}. For all lags $k \\ge 2$, the autocorrelation $\\rho(k)$ equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.25,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.4,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\gamma(0) = (1 + 0.25)(1) = 1.25$. $\\rho(1) = 0.5/1.25 = 0.4$. An MA(1) has $\\rho(k) = 0$ for $k \\ge 2$ (the ACF cuts off after lag 1).",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-024",
+      "format": "cloze",
+      "stem": "Recall the identification and invertibility properties of moving average models.",
+      "solution": "The ACF of an MA(q) process cuts off after lag {{1}}, while its PACF {{2}}. An MA(1) model $X_t = \\varepsilon_t + \\theta \\varepsilon_{t-1}$ is invertible when the absolute value of $\\theta$ is less than {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "q",
+            "Q"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "tails off",
+            "cuts off after lag q"
+          ],
+          "answer": "tails off"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "MA(q): ACF cuts off after lag $q$, PACF tails off. The MA(1) invertibility condition is $|\\theta| < 1$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-025",
+      "format": "cloze",
+      "stem": "An MA(2) process is $X_t = \\varepsilon_t + 0.6 \\varepsilon_{t-1} + 0.2 \\varepsilon_{t-2}$ with white noise variance $\\sigma^2 = 1$.",
+      "solution": "The variance is $\\gamma(0) = (1 + \\theta_1^2 + \\theta_2^2)\\sigma^2 =$ {{1}}. The lag-2 autocovariance is $\\gamma(2) = \\theta_2 \\sigma^2 =$ {{2}}. For lags $k > 2$, the autocovariance $\\gamma(k)$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.4,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.2,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "zero",
+            "positive",
+            "negative"
+          ],
+          "answer": "zero"
+        }
+      ],
+      "explanation": "$\\gamma(0) = 1 + 0.36 + 0.04 = 1.4$. $\\gamma(2) = 0.2 \\times 1 = 0.2$. An MA(2) has $\\gamma(k) = 0$ for $k > 2$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-026",
+      "format": "cloze",
+      "stem": "Compare the identification signatures of pure AR, pure MA, and mixed ARMA models on the ACF and PACF.",
+      "solution": "If the ACF cuts off after a few lags but the PACF tails off, the indicated model is {{1}}. If the ACF tails off but the PACF cuts off, the indicated model is {{2}}. If both the ACF and PACF tail off with no clean cutoff, the indicated model is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "MA",
+            "AR",
+            "ARMA"
+          ],
+          "answer": "MA"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "AR",
+            "MA",
+            "ARMA"
+          ],
+          "answer": "AR"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "ARMA",
+            "AR",
+            "MA"
+          ],
+          "answer": "ARMA"
+        }
+      ],
+      "explanation": "ACF cuts off, PACF tails off implies MA. ACF tails off, PACF cuts off implies AR. Both tail off implies a mixed ARMA.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-027",
+      "format": "cloze",
+      "stem": "An MA(1) process has parameter $\\theta = -0.8$ and white noise variance $\\sigma^2 = 2$.",
+      "solution": "The variance of the process is $\\gamma(0) = (1 + \\theta^2)\\sigma^2 =$ {{1}} (to two decimals). The lag-1 autocorrelation is $\\rho(1) = \\theta/(1 + \\theta^2) =$ {{2}} (to three decimals). Because $\\theta$ is negative, this lag-1 autocorrelation is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3.28,
+          "tolerance": 0.02
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -0.488,
+          "tolerance": 0.005
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "negative",
+            "positive"
+          ],
+          "answer": "negative"
+        }
+      ],
+      "explanation": "$\\gamma(0) = (1 + 0.64)(2) = 1.64 \\times 2 = 3.28$. $\\rho(1) = -0.8/1.64 = -0.4878 \\approx -0.488$, which is negative because $\\theta < 0$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-moving-average-and-arma-028",
+      "format": "cloze",
+      "stem": "The ARMA(1, 1) model is $X_t = \\phi X_{t-1} + \\varepsilon_t + \\theta \\varepsilon_{t-1}$ with $\\phi = 0.5$ and $\\theta = 0.4$.",
+      "solution": "In backshift notation the autoregressive polynomial is $1 -$ {{1}} $B$. The process is stationary because the AR root lies {{2}} the unit circle, equivalent to $|\\phi| < 1$. The process is invertible provided $|\\theta|$ is less than {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "outside",
+            "inside",
+            "on"
+          ],
+          "answer": "outside"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The AR polynomial is $1 - \\phi B = 1 - 0.5B$. Stationarity needs the AR root outside the unit circle ($|\\phi| < 1$). Invertibility needs $|\\theta| < 1$, which holds since $0.4 < 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    }
+  ]
+}

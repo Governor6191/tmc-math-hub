@@ -1,0 +1,535 @@
+{
+  "courseId": "time-series-analysis-i",
+  "topicId": "time-series-components",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "time-series-analysis-i-time-series-components-001",
+      "stem": "In the classical decomposition of a time series, which component captures the long-term increase or decrease in the level of the series over many periods?",
+      "options": [
+        "the irregular component",
+        "the cyclical component",
+        "the trend component",
+        "the seasonal component"
+      ],
+      "answer": 2,
+      "explanation": "The trend component $T_t$ describes the long-run movement (gradual upward or downward drift) in the level of the series. Seasonality is the within-year pattern, cycles are longer wave-like swings not tied to a fixed period, and the irregular part is the leftover random noise.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-002",
+      "stem": "A series of monthly ice-cream sales peaks every July and dips every January, repeating this pattern each year. Which component does this describe?",
+      "options": [
+        "the cyclical component",
+        "the seasonal component",
+        "the trend component",
+        "the irregular component"
+      ],
+      "answer": 1,
+      "explanation": "A pattern that recurs at a fixed, known period (here, one year, with the same monthly shape) is the seasonal component $S_t$. It is distinguished from a cycle by having a fixed and known period.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-003",
+      "stem": "Business expansions and recessions produce wave-like swings in economic series that do not have a fixed period and typically last several years. Which component is this?",
+      "options": [
+        "the cyclical component",
+        "the trend component",
+        "the irregular component",
+        "the seasonal component"
+      ],
+      "answer": 0,
+      "explanation": "The cyclical component reflects medium-to-long swings (such as the business cycle) whose duration is not fixed, unlike the seasonal component, which repeats over a fixed known period such as a year.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-004",
+      "stem": "The additive decomposition model writes the observed series $Y_t$ as which combination of its components?",
+      "options": [
+        "$Y_t = T_t + S_t + C_t + I_t$",
+        "$Y_t = T_t / (S_t C_t I_t)$",
+        "$Y_t = T_t + S_t + C_t - I_t$",
+        "$Y_t = T_t \\times S_t \\times C_t \\times I_t$"
+      ],
+      "answer": 0,
+      "explanation": "In the additive model the components add: $Y_t = T_t + S_t + C_t + I_t$. The multiplicative model multiplies them, $Y_t = T_t \\times S_t \\times C_t \\times I_t$.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-005",
+      "stem": "You observe that the size of the seasonal swings grows in proportion to the level of the series: when the trend is high, the peaks and troughs are far apart, and when the level is low, they are close together. Which decomposition is more appropriate?",
+      "options": [
+        "the additive model",
+        "an additive model with no trend",
+        "a purely seasonal model with no trend",
+        "the multiplicative model"
+      ],
+      "answer": 3,
+      "explanation": "When the seasonal amplitude scales with the level of the series, the multiplicative model $Y_t = T_t \\times S_t \\times I_t$ is appropriate, since the seasonal factor multiplies the trend. An additive model assumes a seasonal swing of roughly constant size regardless of level.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-006",
+      "stem": "A multiplicative series $Y_t = T_t S_t I_t$ with strictly positive values is to be turned into an additive one. Which transformation accomplishes this?",
+      "options": [
+        "squaring $Y_t$",
+        "taking first differences of $Y_t$",
+        "taking the reciprocal of $Y_t$",
+        "taking the logarithm of $Y_t$"
+      ],
+      "answer": 3,
+      "explanation": "Since $\\log(T_t S_t I_t) = \\log T_t + \\log S_t + \\log I_t$, the logarithm converts a multiplicative structure into an additive one in the log scale, which is why log transforms are common before additive decomposition of positive series.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-007",
+      "stem": "Which of the following statements best defines a strictly (strongly) stationary process $\\{X_t\\}$?",
+      "options": [
+        "its mean is constant but its variance may change over time",
+        "every realization eventually returns to its starting value",
+        "its autocovariance depends only on the lag and not on time",
+        "the joint distribution of $(X_{t_1}, \\dots, X_{t_k})$ is unchanged by any time shift $h$"
+      ],
+      "answer": 3,
+      "explanation": "Strict stationarity requires that the joint distribution of any finite collection $(X_{t_1}, \\dots, X_{t_k})$ equals that of the shifted collection $(X_{t_1+h}, \\dots, X_{t_k+h})$ for all $h$. Constant mean and lag-only autocovariance describe weak (second-order) stationarity, which is implied by, but does not imply, strict stationarity.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-008",
+      "stem": "A process is weakly (second-order) stationary if it satisfies which set of conditions?",
+      "options": [
+        "a Gaussian joint distribution at every time point",
+        "constant mean only, with variance allowed to grow linearly",
+        "zero mean and independent observations at all lags",
+        "constant mean, finite constant variance, and autocovariance depending only on the lag"
+      ],
+      "answer": 3,
+      "explanation": "Weak stationarity requires a constant mean $E(X_t) = \\mu$, a finite variance that does not depend on $t$, and an autocovariance $\\gamma(s, t)$ that depends only on the time separation $|s - t|$. It does not require any particular distributional family or independence.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-009",
+      "stem": "Which of these series is NOT weakly stationary?",
+      "options": [
+        "i.i.d. white noise with mean $0$ and variance $\\sigma^2$",
+        "a sequence of independent draws with constant mean and variance",
+        "a stationary AR(1) process with $|\\phi| < 1$",
+        "a random walk $X_t = X_{t-1} + \\varepsilon_t$ whose variance grows with $t$"
+      ],
+      "answer": 3,
+      "explanation": "A random walk has $\\mathrm{Var}(X_t) = t\\sigma^2$, which grows without bound, so its variance is not constant and it fails weak stationarity. The other three all have constant mean and variance and lag-only autocovariance.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-010",
+      "stem": "For a quarterly series, suppose the four estimated additive seasonal effects are $S_{Q1} = -20$, $S_{Q2} = 5$, $S_{Q3} = 30$, and $S_{Q4} = ?$. If the seasonal effects are constrained to sum to zero, what is the Q4 effect?",
+      "options": [
+        "0",
+        "-15",
+        "15",
+        "45"
+      ],
+      "answer": 1,
+      "explanation": "Additive seasonal indices must sum to zero over a full cycle: $-20 + 5 + 30 + S_{Q4} = 0$, so $S_{Q4} = -15$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-011",
+      "stem": "For a multiplicative monthly model the seasonal indices are usually normalized so that they average to which value over the twelve months?",
+      "options": [
+        "1",
+        "12",
+        "0",
+        "100 in every case, never 1"
+      ],
+      "answer": 0,
+      "explanation": "Multiplicative seasonal indices are scaled so that their average over a full cycle is $1$ (equivalently they sum to $12$ for monthly data), so that on average the seasonal factor neither inflates nor deflates the trend. (They are sometimes reported as percentages averaging $100$, but the underlying factor averages $1$.)",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-012",
+      "stem": "To estimate the trend-cycle of a monthly series while smoothing away the seasonal pattern, a common first step is to apply which of the following?",
+      "options": [
+        "a single exponential smooth with a very small $\\alpha$",
+        "a centered 12-month moving average",
+        "a 3-month moving average",
+        "first-order differencing at lag 1"
+      ],
+      "answer": 1,
+      "explanation": "A centered moving average whose window equals the seasonal period (12 for monthly data) averages over a full cycle, so the seasonal ups and downs cancel and what remains estimates the trend-cycle. A short 3-month average would leave most of the seasonality intact.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-013",
+      "stem": "In an additive decomposition $Y_t = T_t + S_t + I_t$, once the trend $T_t$ and seasonal $S_t$ have been estimated, how is the irregular (residual) component obtained?",
+      "options": [
+        "$I_t = Y_t / (T_t S_t)$",
+        "$I_t = Y_t \\times T_t \\times S_t$",
+        "$I_t = T_t + S_t - Y_t$",
+        "$I_t = Y_t - T_t - S_t$"
+      ],
+      "answer": 3,
+      "explanation": "Rearranging $Y_t = T_t + S_t + I_t$ gives $I_t = Y_t - T_t - S_t$. The division form would apply to a multiplicative model, where $I_t = Y_t / (T_t S_t)$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-014",
+      "stem": "Seasonally adjusting an additive series means removing which component, and is computed how?",
+      "options": [
+        "removing the irregular effect, by computing $Y_t - I_t$",
+        "removing the trend, by computing $Y_t - T_t$",
+        "removing the seasonal effect, by computing $Y_t / S_t$",
+        "removing the seasonal effect, by computing $Y_t - S_t$"
+      ],
+      "answer": 3,
+      "explanation": "The seasonally adjusted series strips out the seasonal component. In the additive model this is $Y_t - S_t = T_t + I_t$. The division form $Y_t / S_t$ is the multiplicative-model version, not the additive one.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-015",
+      "stem": "A series $Y_t = 100 + 2t + S_t + I_t$ has a deterministic linear trend. Why is this series not stationary?",
+      "options": [
+        "because its mean $E(Y_t) = 100 + 2t$ changes with time",
+        "because its variance is infinite",
+        "because its autocovariance depends only on the lag",
+        "because it contains an irregular component $I_t$"
+      ],
+      "answer": 0,
+      "explanation": "Stationarity requires a constant mean. Here $E(Y_t) = 100 + 2t$ grows linearly with $t$, so the mean is not constant and the series is not stationary. The presence of noise alone does not break stationarity; a trending mean does.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-016",
+      "stem": "Which statement about the relationship between strict and weak stationarity is correct in general?",
+      "options": [
+        "weak stationarity always implies strict stationarity",
+        "neither notion implies anything about the mean of the process",
+        "the two notions are equivalent for every process",
+        "a strictly stationary process with finite variance is also weakly stationary"
+      ],
+      "answer": 3,
+      "explanation": "If a process is strictly stationary and has finite second moments, then its mean and autocovariance are time-invariant, so it is also weakly stationary. The converse fails in general (weak does not imply strict), except in special cases such as Gaussian processes.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-017",
+      "stem": "A multiplicative monthly series has trend value $T_t = 500$ in a given month and a seasonal index of $1.20$ for that month. Ignoring the irregular term, what is the expected level $Y_t$?",
+      "options": [
+        "520",
+        "501.2",
+        "600",
+        "416.7"
+      ],
+      "answer": 2,
+      "explanation": "In the multiplicative model $Y_t \\approx T_t \\times S_t = 500 \\times 1.20 = 600$. The seasonal index above $1$ inflates the trend by 20 percent for that month.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-018",
+      "stem": "A retailer's monthly sales show a December figure of $840$ against an estimated trend-cycle of $700$ for that month. Under a multiplicative model, what is the estimated December seasonal index (ignoring irregular variation)?",
+      "options": [
+        "0.83",
+        "140",
+        "1.14",
+        "1.20"
+      ],
+      "answer": 3,
+      "explanation": "The seasonal index estimate is the ratio of the observation to the trend-cycle: $S_t = Y_t / T_t = 840 / 700 = 1.20$, indicating December sales run 20 percent above the trend level.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-019",
+      "stem": "Which feature most clearly distinguishes the cyclical component from the seasonal component?",
+      "options": [
+        "the seasonal component lasts several years while cycles last under a year",
+        "the cyclical component is purely random while the seasonal is deterministic",
+        "cycles are always larger in amplitude than seasonal effects",
+        "the seasonal component has a fixed known period while the cyclical component does not"
+      ],
+      "answer": 3,
+      "explanation": "The defining difference is periodicity: seasonal variation repeats over a fixed, known period (such as a year), whereas cyclical variation oscillates with a variable, unknown duration typically longer than a year. Amplitude and randomness are not the distinguishing criteria.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-020",
+      "stem": "For a stationary process, which of the following must be true of the variance $\\gamma(0) = \\mathrm{Var}(X_t)$?",
+      "options": [
+        "it must equal zero",
+        "it must grow linearly with $t$",
+        "it must depend on the lag $k$",
+        "it must be the same finite constant for every $t$"
+      ],
+      "answer": 3,
+      "explanation": "Weak stationarity requires the variance $\\gamma(0)$ to be a single finite constant that does not depend on $t$. A variance that grows with $t$ (as in a random walk) violates stationarity; a zero variance would make the series deterministic.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-021",
+      "stem": "Which of the following is the clearest example of the irregular (random) component dominating a series?",
+      "options": [
+        "day-to-day fluctuations in a stock return that show no pattern or repetition",
+        "a slow multi-year swing in unemployment over a business cycle",
+        "a steady year-on-year rise in world population",
+        "monthly retail sales that peak each holiday season"
+      ],
+      "answer": 0,
+      "explanation": "The irregular component is the unpredictable, patternless residual variation. Daily stock returns with no discernible trend, season, or cycle are essentially irregular noise. The other options are textbook examples of trend, seasonality, and cycle respectively.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-022",
+      "stem": "Decomposition of a time series into trend, seasonal, cyclical, and irregular parts is primarily useful for which purposes?",
+      "options": [
+        "guaranteeing that the series becomes strictly stationary",
+        "eliminating all randomness from future observations",
+        "understanding the structure of the series and producing seasonally adjusted figures and forecasts",
+        "proving that the series is white noise"
+      ],
+      "answer": 2,
+      "explanation": "Decomposition helps us understand the separate drivers of a series, seasonally adjust it, and forecast by extrapolating the systematic components. It does not remove randomness, force stationarity, or turn the series into white noise.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-023",
+      "format": "cloze",
+      "stem": "A quarterly series is modeled additively as $Y_t = T_t + S_t + I_t$. The four additive seasonal indices are constrained to sum to zero. Three of them are $S_{Q1} = -30$, $S_{Q2} = 10$, and $S_{Q3} = 25$.",
+      "solution": "Because the additive seasonal indices must sum to zero, the fourth index is $S_{Q4} =$ {{1}}. If in some Q2 the trend is estimated as $T_t = 200$ and the irregular term is $I_t = 4$, then the fitted value $Y_t = T_t + S_{Q2} + I_t =$ {{2}}. This decomposition is the {{3}} model.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 214,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "additive",
+            "multiplicative"
+          ],
+          "answer": "additive"
+        }
+      ],
+      "explanation": "Sum-to-zero: $-30 + 10 + 25 + S_{Q4} = 0$ gives $S_{Q4} = -5$. Fitted Q2 value $= 200 + 10 + 4 = 214$. Because the components are added, this is the additive model.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-024",
+      "format": "cloze",
+      "stem": "A multiplicative monthly model is $Y_t = T_t \\times S_t \\times I_t$ with positive values. In December the trend-cycle is estimated as $T_t = 750$ and the observed sales are $Y_t = 975$.",
+      "solution": "Ignoring the irregular term, the December seasonal index is $S_t = Y_t / T_t =$ {{1}}. Because this index is greater than {{2}}, December sales run above the trend level. To convert this multiplicative model into an additive one in a transformed scale, a standard choice is to take the {{3}} of the series.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.3,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "logarithm",
+            "square",
+            "reciprocal"
+          ],
+          "answer": "logarithm"
+        }
+      ],
+      "explanation": "Index $= 975 / 750 = 1.3$, which exceeds $1$, so December is above trend by 30 percent. Since $\\log(T_t S_t I_t) = \\log T_t + \\log S_t + \\log I_t$, the logarithm makes the model additive.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-025",
+      "format": "cloze",
+      "stem": "Consider the deterministic-trend series $Y_t = 50 + 3t + \\varepsilon_t$, where $\\varepsilon_t$ is zero-mean white noise with variance $\\sigma^2$.",
+      "solution": "The mean of the series is $E(Y_t) =$ {{1}} as a function of $t$, which is not constant, so the series {{2}} weakly stationary. The feature responsible for the non-stationarity here is the {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "50 + 3t",
+            "50+3t",
+            "3t + 50",
+            "3t+50"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is not"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "trend",
+            "seasonal component",
+            "irregular component"
+          ],
+          "answer": "trend"
+        }
+      ],
+      "explanation": "Since $\\varepsilon_t$ has mean zero, $E(Y_t) = 50 + 3t$, which depends on $t$. A time-varying mean violates weak stationarity, and the culprit is the linear trend term $3t$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-026",
+      "format": "cloze",
+      "stem": "Classify each described pattern by its time-series component.",
+      "solution": "A pattern that repeats every year with a fixed known period is the {{1}} component. A long-run gradual upward drift in the level of the series is the {{2}} component. Wave-like swings of variable, unknown duration tied to expansions and recessions form the {{3}} component.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "seasonal",
+            "trend",
+            "cyclical",
+            "irregular"
+          ],
+          "answer": "seasonal"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "trend",
+            "seasonal",
+            "cyclical",
+            "irregular"
+          ],
+          "answer": "trend"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "cyclical",
+            "seasonal",
+            "trend",
+            "irregular"
+          ],
+          "answer": "cyclical"
+        }
+      ],
+      "explanation": "Fixed known period equals seasonal; long-run drift equals trend; variable-duration business-cycle swings equal cyclical. The leftover unpredictable variation would be the irregular component.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-027",
+      "format": "cloze",
+      "stem": "A multiplicative series gives trend-cycle estimates and observed values for two months. In month A, $T = 400$ and $Y = 360$; in month B, $T = 500$ and $Y = 650$.",
+      "solution": "The seasonal index for month A is $Y/T =$ {{1}}, which indicates a level {{2}} the trend. The seasonal index for month B is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.9,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "below",
+            "above",
+            "exactly on"
+          ],
+          "answer": "below"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.3,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "Month A index $= 360/400 = 0.9 < 1$, so the level is below trend. Month B index $= 650/500 = 1.3 > 1$, above trend.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-time-series-components-028",
+      "format": "cloze",
+      "stem": "Distinguish the two notions of stationarity for a process with finite second moments.",
+      "solution": "Requiring that the entire joint distribution of any finite set of observations is invariant under time shifts defines {{1}} stationarity. Requiring only a constant mean, constant finite variance, and a lag-only autocovariance defines {{2}} stationarity. A strictly stationary process with finite variance {{3}} also weakly stationary.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "strict",
+            "weak"
+          ],
+          "answer": "strict"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "weak",
+            "strict"
+          ],
+          "answer": "weak"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is",
+            "is not"
+          ],
+          "answer": "is"
+        }
+      ],
+      "explanation": "Invariance of the full joint distribution is strict stationarity; invariance of only the first two moments (with lag-only autocovariance) is weak stationarity. Strict plus finite variance implies weak stationarity.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    }
+  ]
+}

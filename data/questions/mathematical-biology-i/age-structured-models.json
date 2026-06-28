@@ -1,0 +1,553 @@
+{
+  "courseId": "mathematical-biology-i",
+  "topicId": "age-structured-models",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-biology-i-age-structured-models-001",
+      "stem": "An age-structured population is projected forward with a Leslie model. The state of the population at time $t$ is best represented by which object?",
+      "options": [
+        "A single scalar total population $N_t$",
+        "A scalar growth ratio $\\lambda$",
+        "A vector $N_t$ whose entries are the numbers in each age class",
+        "A probability between $0$ and $1$"
+      ],
+      "answer": 2,
+      "explanation": "Age structure means we must track how many individuals are in each age class, so the state is a vector $N_t = (n_1, n_2, \\ldots, n_k)^T$ with one entry per class. A single scalar would throw away the age information that the Leslie model is built to follow. The growth ratio and survival probabilities are parameters of the model, not the state.",
+      "difficulty": "warmup",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-002",
+      "stem": "The Leslie model projects the age vector forward by which rule?",
+      "options": [
+        "$N_{t+1} = \\lambda + N_t$",
+        "$N_{t+1} = L N_t$",
+        "$N_{t+1} = L^{-1} N_t$",
+        "$N_{t+1} = N_t + L$"
+      ],
+      "answer": 1,
+      "explanation": "The Leslie matrix $L$ encodes births and survival, and one time step advances the whole age vector by the matrix product $N_{t+1} = L N_t$. Repeating gives $N_t = L^t N_0$. Adding the matrix or using its inverse does not correspond to projecting a population forward one census.",
+      "difficulty": "warmup",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-003",
+      "stem": "In a Leslie matrix, where do the fecundity (per-capita birth) coefficients appear?",
+      "options": [
+        "On the main diagonal",
+        "In the last column only",
+        "In the top row",
+        "On the subdiagonal just below the main diagonal"
+      ],
+      "answer": 2,
+      "explanation": "The top row of a Leslie matrix holds the fecundities $F_i$, the average number of newborns contributed by each age class in one step. The first entry of $N_{t+1}$ is therefore the total births. Survival probabilities sit on the subdiagonal, and the main diagonal is usually zero because individuals do not stay in the same age class.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-004",
+      "stem": "In a Leslie matrix, the subdiagonal entries $P_i$ represent which quantities?",
+      "options": [
+        "The fractions of the population in each age class",
+        "The probabilities of surviving from one age class to the next",
+        "Fecundities of each age class",
+        "The eigenvalues of the matrix"
+      ],
+      "answer": 1,
+      "explanation": "The subdiagonal entry $P_i$ is the probability that an individual in class $i$ survives to enter class $i+1$ during one time step, so $0 \\le P_i \\le 1$. These survival terms move the survivors down the age vector. Fecundities live in the top row, and eigenvalues and class fractions are derived properties, not matrix entries.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-005",
+      "stem": "Survival probabilities $P_i$ on the subdiagonal of a Leslie matrix must satisfy which constraint?",
+      "options": [
+        "$P_i < 0$",
+        "$P_i$ can be any real number",
+        "$0 \\le P_i \\le 1$",
+        "$P_i > 1$"
+      ],
+      "answer": 2,
+      "explanation": "Because $P_i$ is a probability of surviving from one class to the next, it must lie between $0$ and $1$ inclusive. A value above $1$ or below $0$ would be meaningless as a survival fraction. Fecundities, by contrast, can exceed $1$ because one parent can produce many offspring.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-006",
+      "stem": "For a Leslie model $N_{t+1} = L N_t$, the long-term growth ratio of the total population equals which quantity?",
+      "options": [
+        "The sum of all entries of $L$",
+        "The trace of $L$",
+        "The dominant (largest-magnitude) eigenvalue of $L$",
+        "The smallest eigenvalue of $L$"
+      ],
+      "answer": 2,
+      "explanation": "Iterating $N_t = L^t N_0$ makes the dominant eigenvalue $\\lambda_1$ control the eventual per-step multiplication: once the population settles, every class grows by the factor $\\lambda_1$ each step. The trace and entry-sum are not the asymptotic growth rate, and the smallest eigenvalue governs transient modes that die out relative to the dominant one.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-007",
+      "stem": "If the dominant eigenvalue of a Leslie matrix is $\\lambda_1 = 1$, the long-term population does which of the following?",
+      "options": [
+        "Oscillates with growing amplitude",
+        "Grows geometrically",
+        "Declines to extinction",
+        "Approaches a constant total size (stationary)"
+      ],
+      "answer": 3,
+      "explanation": "The total population eventually multiplies by $\\lambda_1$ each step, so $\\lambda_1 = 1$ means it neither grows nor shrinks and settles to a constant size with a fixed age distribution. A value $\\lambda_1 > 1$ gives geometric growth and $\\lambda_1 < 1$ gives decline to extinction. The case $\\lambda_1 = 1$ is the stationary, replacement-level boundary.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-008",
+      "stem": "The stable age distribution of a Leslie model corresponds to which mathematical object?",
+      "options": [
+        "The determinant of $L$",
+        "The eigenvector associated with the dominant eigenvalue",
+        "The first column of $L$",
+        "The eigenvector of the smallest eigenvalue"
+      ],
+      "answer": 1,
+      "explanation": "Once transients fade, the age vector lines up with the eigenvector belonging to the dominant eigenvalue $\\lambda_1$, and the proportions in each class stop changing. That eigenvector, normalised to sum to one, is the stable age distribution. The determinant is a scalar, and other eigenvectors correspond to modes that decay relative to the dominant one.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-009",
+      "stem": "Once a Leslie population reaches its stable age distribution, the proportions in each age class do what from one step to the next?",
+      "options": [
+        "Cycle through all possible distributions",
+        "Keep changing until the population stops growing",
+        "Remain constant even though the total size may still grow",
+        "Become equal across all classes"
+      ],
+      "answer": 2,
+      "explanation": "In the stable age distribution every class is multiplied by the same factor $\\lambda_1$ each step, so the relative proportions are frozen while the absolute numbers may still grow (if $\\lambda_1 > 1$) or shrink (if $\\lambda_1 < 1$). The shape of the distribution is fixed; it does not cycle and the classes are generally not equal.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-010",
+      "stem": "Consider the $2 \\times 2$ Leslie matrix $L = \\begin{pmatrix} 1 & 4 \\\\ 0.5 & 0 \\end{pmatrix}$. Which equation determines its eigenvalues?",
+      "options": [
+        "$\\lambda^2 - 4\\lambda - 0.5 = 0$",
+        "$\\lambda^2 + \\lambda - 2 = 0$",
+        "$\\lambda^2 - \\lambda - 2 = 0$",
+        "$\\lambda^2 - \\lambda + 2 = 0$"
+      ],
+      "answer": 2,
+      "explanation": "For $L = \\begin{pmatrix} F_1 & F_2 \\\\ P_1 & 0 \\end{pmatrix}$ the characteristic equation is $\\lambda^2 - F_1\\lambda - F_2 P_1 = 0$. Here $F_1 = 1$, $F_2 = 4$, $P_1 = 0.5$, giving $\\lambda^2 - \\lambda - (4)(0.5) = \\lambda^2 - \\lambda - 2 = 0$. The product term carries a minus sign, and the coefficients come from the top row and the survival entry.",
+      "difficulty": "stretch",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-011",
+      "stem": "For the Leslie matrix $L = \\begin{pmatrix} 1 & 4 \\\\ 0.5 & 0 \\end{pmatrix}$, whose characteristic equation is $\\lambda^2 - \\lambda - 2 = 0$, what is the dominant eigenvalue?",
+      "options": [
+        "$4$",
+        "$1$",
+        "$2$",
+        "$-1$"
+      ],
+      "answer": 2,
+      "explanation": "Factor $\\lambda^2 - \\lambda - 2 = (\\lambda - 2)(\\lambda + 1) = 0$, giving roots $\\lambda = 2$ and $\\lambda = -1$. The dominant eigenvalue is the one of largest magnitude that governs growth, $\\lambda_1 = 2$. So the total population eventually doubles each time step.",
+      "difficulty": "stretch",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-012",
+      "stem": "Still using $L = \\begin{pmatrix} 1 & 4 \\\\ 0.5 & 0 \\end{pmatrix}$ with dominant eigenvalue $\\lambda_1 = 2$, the stable age distribution has the two classes in what ratio (class 1 to class 2)?",
+      "options": [
+        "$4 : 1$",
+        "$2 : 1$",
+        "$1 : 1$",
+        "$1 : 4$"
+      ],
+      "answer": 0,
+      "explanation": "Solve $(L - 2I)v = 0$. The second row reads $0.5\\,v_1 - 2\\,v_2 = 0$, so $v_1 = 4 v_2$. The eigenvector is therefore proportional to $(4, 1)$, meaning class 1 to class 2 is $4 : 1$. So in the stable state four-fifths of the population sit in the first age class.",
+      "difficulty": "stretch",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-013",
+      "stem": "For the Leslie matrix $L = \\begin{pmatrix} 0 & 6 \\\\ 0.5 & 0 \\end{pmatrix}$, what is the dominant eigenvalue?",
+      "options": [
+        "$\\sqrt{3} \\approx 1.732$",
+        "$0.5$",
+        "$3$",
+        "$6$"
+      ],
+      "answer": 0,
+      "explanation": "The characteristic equation is $\\lambda^2 - F_1\\lambda - F_2 P_1 = \\lambda^2 - 0 - (6)(0.5) = \\lambda^2 - 3 = 0$, so $\\lambda = \\pm\\sqrt{3}$. The dominant eigenvalue is $\\sqrt{3} \\approx 1.732$, meaning the population grows by about $73\\%$ per step. The value $3$ is $F_2 P_1$ before taking the square root.",
+      "difficulty": "stretch",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-014",
+      "stem": "A two-stage Leslie model has $L = \\begin{pmatrix} 0.4 & 0.9 \\\\ 0.5 & 0 \\end{pmatrix}$. The characteristic equation is $\\lambda^2 - 0.4\\lambda - 0.45 = 0$, with dominant root $\\lambda_1 = 0.9$. What is the long-term fate of the population?",
+      "options": [
+        "It stays exactly constant",
+        "It declines toward extinction",
+        "It grows geometrically",
+        "It doubles each step"
+      ],
+      "answer": 1,
+      "explanation": "Solving $\\lambda^2 - 0.4\\lambda - 0.45 = 0$ gives $\\lambda = \\frac{0.4 \\pm \\sqrt{0.16 + 1.8}}{2} = \\frac{0.4 \\pm 1.4}{2}$, so $\\lambda_1 = 0.9$ and $\\lambda_2 = -0.5$. Since $\\lambda_1 = 0.9 < 1$, the total population is multiplied by less than one each step and declines toward extinction.",
+      "difficulty": "stretch",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-015",
+      "stem": "A Leslie model has three age classes with vector $N_0 = (100, 80, 40)^T$ and matrix $L = \\begin{pmatrix} 0 & 2 & 3 \\\\ 0.6 & 0 & 0 \\\\ 0 & 0.4 & 0 \\end{pmatrix}$. How many newborns (entries of class 1) are produced in the first step?",
+      "options": [
+        "$280$",
+        "$120$",
+        "$160$",
+        "$60$"
+      ],
+      "answer": 0,
+      "explanation": "The number of newborns is the first entry of $L N_0$, namely $F_1 n_1 + F_2 n_2 + F_3 n_3 = 0(100) + 2(80) + 3(40) = 0 + 160 + 120 = 280$. The values $160$ and $120$ are the two contributions separately, not their sum, and $60$ is the survivors entering class 2.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-016",
+      "stem": "Using the same model $N_0 = (100, 80, 40)^T$ and $L = \\begin{pmatrix} 0 & 2 & 3 \\\\ 0.6 & 0 & 0 \\\\ 0 & 0.4 & 0 \\end{pmatrix}$, what is the full projected vector $N_1 = L N_0$?",
+      "options": [
+        "$(160, 60, 32)$",
+        "$(280, 60, 40)$",
+        "$(280, 100, 80)$",
+        "$(280, 60, 32)$"
+      ],
+      "answer": 3,
+      "explanation": "Multiply row by row: class 1 is $2(80) + 3(40) = 280$; class 2 is $0.6(100) = 60$ survivors of the old class 1; class 3 is $0.4(80) = 32$ survivors of the old class 2. So $N_1 = (280, 60, 32)$. The survival entries move individuals down the age vector while the top row makes the newborns.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-017",
+      "stem": "The net reproductive rate $R_0$ of a population is best described as which of the following?",
+      "options": [
+        "The dominant eigenvalue of the Leslie matrix",
+        "The probability of surviving the first year",
+        "The expected number of offspring a newborn produces over its whole lifetime",
+        "The number of age classes"
+      ],
+      "answer": 2,
+      "explanation": "The net reproductive rate $R_0 = \\sum_x l_x m_x$ is the average lifetime offspring per newborn, summing survival to each age times the fecundity at that age. It tells you whether each individual more than replaces itself ($R_0 > 1$) over a generation. It is related to but not equal to the per-step dominant eigenvalue $\\lambda_1$, which measures growth per time step rather than per generation.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-018",
+      "stem": "For the dominant eigenvalue $\\lambda_1$ and net reproductive rate $R_0$, which set of correspondences is correct?",
+      "options": [
+        "$\\lambda_1$ and $R_0$ are always exactly equal",
+        "$R_0 > 1$ always means the population declines",
+        "$\\lambda_1 > 1 \\Leftrightarrow R_0 < 1$",
+        "$\\lambda_1 > 1 \\Leftrightarrow R_0 > 1$ (growth), $\\lambda_1 = 1 \\Leftrightarrow R_0 = 1$ (stationary), $\\lambda_1 < 1 \\Leftrightarrow R_0 < 1$ (decline)"
+      ],
+      "answer": 3,
+      "explanation": "Although $\\lambda_1$ (growth per time step) and $R_0$ (offspring per generation) usually differ in value, they cross the threshold of one together: $R_0 > 1$ if and only if $\\lambda_1 > 1$, both signalling growth, with $R_0 = 1 \\Leftrightarrow \\lambda_1 = 1$ for a stationary population and $R_0 < 1 \\Leftrightarrow \\lambda_1 < 1$ for decline. They are not generally equal, and $R_0 > 1$ means growth, not decline.",
+      "difficulty": "stretch",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-019",
+      "stem": "For a triangular Leslie-type matrix $L = \\begin{pmatrix} 2 & 0 \\\\ 0.5 & 0 \\end{pmatrix}$, what is the dominant eigenvalue?",
+      "options": [
+        "$2$",
+        "$0.5$",
+        "$0$",
+        "$2.5$"
+      ],
+      "answer": 0,
+      "explanation": "A lower-triangular matrix has its eigenvalues on the diagonal, here $2$ and $0$. The dominant eigenvalue is $2$, so the population grows by a factor of $2$ each step. You can confirm with the characteristic equation $\\lambda^2 - 2\\lambda - (0)(0.5) = \\lambda(\\lambda - 2) = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-020",
+      "stem": "Why is a Leslie matrix usually NOT symmetric, and what consequence can this have for its eigenvalues?",
+      "options": [
+        "Because it can never have a real dominant eigenvalue",
+        "Because survival and fecundity play different roles, so complex-conjugate eigenvalues (and transient oscillations) are possible",
+        "Because it always has repeated eigenvalues",
+        "Because all its eigenvalues must be negative"
+      ],
+      "answer": 1,
+      "explanation": "Births sit in the top row and survival on the subdiagonal, so $L$ is not symmetric and its eigenvalues need not all be real; some can be complex conjugates, which show up as damped oscillations in the age structure before the population settles. By the Perron-Frobenius theorem a nonnegative primitive Leslie matrix still has a real positive dominant eigenvalue, so a real $\\lambda_1$ does exist.",
+      "difficulty": "stretch",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-021",
+      "stem": "A population is projected with a Leslie matrix and its dominant eigenvalue is $\\lambda_1 = 1.08$. By roughly what percentage does the total population change each time step in the long run?",
+      "options": [
+        "It grows by about $8\\%$",
+        "It falls by about $8\\%$",
+        "It grows by about $108\\%$",
+        "It stays constant"
+      ],
+      "answer": 0,
+      "explanation": "In the long run every class is multiplied by $\\lambda_1 = 1.08$ each step, which is a $1.08 - 1 = 0.08$, or $8\\%$, increase per step. A value below $1$ would mean a decline, and $108\\%$ growth would require $\\lambda_1 = 2.08$. So the population grows steadily by about $8\\%$ per step.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-022",
+      "stem": "A wildlife manager wants to slow a Leslie-modelled population whose dominant eigenvalue is $\\lambda_1 = 1.2$. Which change to the matrix would most directly reduce $\\lambda_1$?",
+      "options": [
+        "Adding more age classes without changing rates",
+        "Increasing the fecundities in the top row",
+        "Multiplying the whole population vector by a constant",
+        "Lowering survival probabilities or fecundities so that births and survival fall"
+      ],
+      "answer": 3,
+      "explanation": "The dominant eigenvalue increases with the magnitudes of the fecundities and survival probabilities, so cutting either one lowers $\\lambda_1$ toward (or below) $1$ and slows growth. Increasing fecundities would raise $\\lambda_1$, and simply scaling the population vector leaves the matrix and hence $\\lambda_1$ unchanged. Adding empty age classes without changing the vital rates does not by itself reduce the growth rate.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-023",
+      "stem": "Two different initial age vectors are projected by the same Leslie matrix with dominant eigenvalue $\\lambda_1 = 1.5$. After many steps, how do their age distributions and growth rates compare?",
+      "options": [
+        "Their totals both stay constant",
+        "Both approach the same stable age distribution and grow at the same rate $1.5$ per step",
+        "They keep different age distributions forever",
+        "They grow at different long-term rates"
+      ],
+      "answer": 1,
+      "explanation": "For a primitive Leslie matrix the dominant eigenvalue and its eigenvector are independent of the starting vector, so any positive initial population converges to the same stable age distribution and the same long-term per-step growth factor $\\lambda_1 = 1.5$. Only the transient phase and the overall scale depend on the initial condition, not the eventual shape or rate.",
+      "difficulty": "stretch",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-024",
+      "stem": "A single-class projection (one age class, no survival to a next class) reduces the Leslie model to which familiar model?",
+      "options": [
+        "The continuous logistic model",
+        "The scalar geometric model $N_{t+1} = \\lambda N_t$",
+        "The Michaelis-Menten model",
+        "The Lotka-Volterra model"
+      ],
+      "answer": 1,
+      "explanation": "With a single age class the Leslie matrix collapses to the $1 \\times 1$ matrix $(\\lambda)$, and the projection $N_{t+1} = L N_t$ becomes the scalar geometric model $N_{t+1} = \\lambda N_t$. The dominant eigenvalue is simply $\\lambda$ itself. The logistic, Michaelis-Menten, and Lotka-Volterra models describe different mechanisms entirely.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-025",
+      "stem": "A two-stage Leslie model has fecundities $F_1 = 1$, $F_2 = 4$ in the top row and survival $P_1 = 0.5$ on the subdiagonal, so $L = \\begin{pmatrix} 1 & 4 \\\\ 0.5 & 0 \\end{pmatrix}$.",
+      "format": "cloze",
+      "solution": "The characteristic equation is $\\lambda^2 - \\lambda -$ {{1}} $= 0$. Its dominant eigenvalue is $\\lambda_1 =$ {{2}}, so the long-term population is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "growing",
+            "declining",
+            "stationary"
+          ],
+          "answer": "growing"
+        }
+      ],
+      "explanation": "The characteristic equation is $\\lambda^2 - F_1\\lambda - F_2 P_1 = \\lambda^2 - \\lambda - (4)(0.5) = \\lambda^2 - \\lambda - 2 = 0$, so the constant is $2$. Factoring $(\\lambda - 2)(\\lambda + 1) = 0$ gives the dominant root $\\lambda_1 = 2$. Since $\\lambda_1 = 2 > 1$, the population is growing.",
+      "difficulty": "stretch",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-026",
+      "stem": "A Leslie projection uses $N_0 = (100, 80, 40)^T$ and $L = \\begin{pmatrix} 0 & 2 & 3 \\\\ 0.6 & 0 & 0 \\\\ 0 & 0.4 & 0 \\end{pmatrix}$.",
+      "format": "cloze",
+      "solution": "After one step the number of newborns (class 1) is {{1}}. The number entering class 2 is {{2}}, and the number entering class 3 is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 280,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 60,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 32,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Class 1 (newborns) is $0(100) + 2(80) + 3(40) = 280$. Class 2 is the survivors of the old class 1, $0.6 \\times 100 = 60$. Class 3 is the survivors of the old class 2, $0.4 \\times 80 = 32$. So $N_1 = (280, 60, 32)$.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-027",
+      "stem": "A Leslie matrix is built from a top row of fecundities and a subdiagonal of survival probabilities, and its long-term behaviour is read from its eigenstructure.",
+      "format": "cloze",
+      "solution": "The long-term growth ratio of the population is the {{1}} eigenvalue of $L$. The stable age distribution is given by the corresponding {{2}}. If that eigenvalue is less than $1$, the population will {{3}} in the long run.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "dominant",
+            "smallest",
+            "second"
+          ],
+          "answer": "dominant"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "eigenvector",
+            "determinant",
+            "trace"
+          ],
+          "answer": "eigenvector"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "decline to extinction",
+            "grow without bound",
+            "stay constant"
+          ],
+          "answer": "decline to extinction"
+        }
+      ],
+      "explanation": "The dominant eigenvalue $\\lambda_1$ sets the per-step growth ratio, and its eigenvector, normalised, is the stable age distribution that the proportions converge to. When $\\lambda_1 < 1$ the total is multiplied by less than one each step, so the population declines to extinction.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-028",
+      "stem": "For the Leslie matrix $L = \\begin{pmatrix} 1 & 4 \\\\ 0.5 & 0 \\end{pmatrix}$ with dominant eigenvalue $\\lambda_1 = 2$, find the stable age distribution.",
+      "format": "cloze",
+      "solution": "Solving $(L - 2I)v = 0$, the second-row equation gives $v_1 = $ {{1}} $\\times v_2$. So the stable ratio of class 1 to class 2 is {{2}}, which means the fraction of the population in class 1 is {{3}} (to two decimals).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$4 : 1$",
+            "$1 : 4$",
+            "$2 : 1$"
+          ],
+          "answer": "$4 : 1$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.8,
+          "tolerance": 0.01
+        }
+      ],
+      "explanation": "The second row of $(L - 2I)v = 0$ is $0.5 v_1 - 2 v_2 = 0$, so $v_1 = 4 v_2$. The eigenvector is proportional to $(4, 1)$, a ratio of $4 : 1$. The fraction in class 1 is $\\frac{4}{4 + 1} = \\frac{4}{5} = 0.80$.",
+      "difficulty": "stretch",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-029",
+      "stem": "A two-stage Leslie model has $L = \\begin{pmatrix} 0 & 6 \\\\ 0.5 & 0 \\end{pmatrix}$.",
+      "format": "cloze",
+      "solution": "The characteristic equation reduces to $\\lambda^2 =$ {{1}}. The dominant eigenvalue is therefore $\\lambda_1 =$ {{2}} (to three decimals), and since this exceeds $1$ the population is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.732,
+          "tolerance": 0.005
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "growing",
+            "declining",
+            "stationary"
+          ],
+          "answer": "growing"
+        }
+      ],
+      "explanation": "With $F_1 = 0$, the characteristic equation $\\lambda^2 - F_1\\lambda - F_2 P_1 = 0$ becomes $\\lambda^2 - (6)(0.5) = \\lambda^2 - 3 = 0$, so $\\lambda^2 = 3$. The dominant root is $\\lambda_1 = \\sqrt{3} \\approx 1.732 > 1$, so the population is growing.",
+      "difficulty": "stretch",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    },
+    {
+      "id": "mathematical-biology-i-age-structured-models-030",
+      "stem": "Compare the net reproductive rate $R_0$ with the dominant eigenvalue $\\lambda_1$ as summary measures of population growth.",
+      "format": "cloze",
+      "solution": "The quantity $R_0$ counts offspring per {{1}}, whereas $\\lambda_1$ measures growth per {{2}}. They generally differ in value but cross the value $1$ together, so $R_0 > 1$ holds exactly when $\\lambda_1$ is {{3}} $1$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "generation",
+            "time step",
+            "age class"
+          ],
+          "answer": "generation"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "time step",
+            "generation",
+            "lifetime"
+          ],
+          "answer": "time step"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "greater than",
+            "less than",
+            "equal to"
+          ],
+          "answer": "greater than"
+        }
+      ],
+      "explanation": "The net reproductive rate $R_0 = \\sum_x l_x m_x$ is offspring per newborn over a whole generation, while $\\lambda_1$ is the per-time-step multiplier. The two usually differ numerically, but both exceed $1$, equal $1$, or fall below $1$ together, so $R_0 > 1$ exactly when $\\lambda_1 > 1$.",
+      "difficulty": "core",
+      "source": "in the style of Edelstein-Keshet, Mathematical Models in Biology"
+    }
+  ]
+}

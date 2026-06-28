@@ -1,0 +1,510 @@
+{
+  "courseId": "time-series-analysis-i",
+  "topicId": "autocorrelation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "time-series-analysis-i-autocorrelation-001",
+      "stem": "For a stationary process $\\{X_t\\}$ with mean $\\mu$, the autocovariance function at lag $k$ is defined as which of the following?",
+      "options": [
+        "$E[(X_t - \\mu)/(X_{t+k} - \\mu)]$",
+        "$E[(X_t - \\mu)^2]$ for every $k$",
+        "$E[(X_t - \\mu)(X_{t+k} - \\mu)]$",
+        "$E[X_t X_{t+k}]$ with no mean subtraction"
+      ],
+      "answer": 2,
+      "explanation": "The autocovariance at lag $k$ is $\\gamma(k) = E[(X_t - \\mu)(X_{t+k} - \\mu)]$, the covariance between observations $k$ steps apart. At $k = 0$ this reduces to the variance $\\gamma(0)$.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-002",
+      "stem": "The autocorrelation function (ACF) at lag $k$ is obtained from the autocovariance by which formula?",
+      "options": [
+        "$\\rho(k) = \\gamma(k) \\times \\gamma(0)$",
+        "$\\rho(k) = \\gamma(0) / \\gamma(k)$",
+        "$\\rho(k) = \\gamma(k) - \\gamma(0)$",
+        "$\\rho(k) = \\gamma(k) / \\gamma(0)$"
+      ],
+      "answer": 3,
+      "explanation": "The ACF normalizes the autocovariance by the variance: $\\rho(k) = \\gamma(k)/\\gamma(0)$. This makes $\\rho(k)$ dimensionless and bounded between $-1$ and $1$.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-003",
+      "stem": "What is the value of the autocorrelation function at lag $0$, that is $\\rho(0)$, for any stationary process?",
+      "options": [
+        "undefined",
+        "always equal to $1$",
+        "equal to the variance $\\gamma(0)$",
+        "always equal to $0$"
+      ],
+      "answer": 1,
+      "explanation": "By definition $\\rho(0) = \\gamma(0)/\\gamma(0) = 1$. Any series is perfectly correlated with itself at lag zero.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-004",
+      "stem": "Which of the following is a correct property of the autocorrelation function of a stationary process?",
+      "options": [
+        "it is symmetric, so $\\rho(-k) = \\rho(k)$",
+        "it always increases with the lag $k$",
+        "it can exceed $1$ in absolute value for large $k$",
+        "it is an odd function, so $\\rho(-k) = -\\rho(k)$"
+      ],
+      "answer": 0,
+      "explanation": "The ACF is an even (symmetric) function: $\\rho(-k) = \\rho(k)$, because $\\mathrm{Cov}(X_t, X_{t+k}) = \\mathrm{Cov}(X_t, X_{t-k})$ under stationarity. It is bounded, $|\\rho(k)| \\le 1$, and need not be monotone.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-005",
+      "stem": "For a white noise process, what does the theoretical autocorrelation function look like?",
+      "options": [
+        "$\\rho(k) = 0$ for all $k$ including $k = 0$",
+        "$\\rho(k) = 1$ for all $k$",
+        "$\\rho(k)$ decays geometrically as $\\phi^k$",
+        "$\\rho(0) = 1$ and $\\rho(k) = 0$ for all $k \\neq 0$"
+      ],
+      "answer": 3,
+      "explanation": "White noise is uncorrelated across time, so all autocorrelations vanish except at lag zero: $\\rho(0) = 1$ and $\\rho(k) = 0$ for $k \\neq 0$. Its correlogram is a single spike at lag 0.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-006",
+      "stem": "A correlogram is a plot of which quantity against the lag?",
+      "options": [
+        "the series values $X_t$ against time",
+        "the sample autocorrelations $\\hat{\\rho}(k)$ against $k$",
+        "the histogram of the residuals",
+        "the cumulative sum of the series against time"
+      ],
+      "answer": 1,
+      "explanation": "The correlogram plots the sample autocorrelation coefficients $\\hat{\\rho}(k)$ on the vertical axis against the lag $k$ on the horizontal axis, and is the primary visual tool for identifying serial dependence.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-007",
+      "stem": "For a white noise series of length $n$, the sample autocorrelations at nonzero lags are approximately normal with mean $0$ and standard error approximately equal to which value?",
+      "options": [
+        "$1/\\sqrt{n}$",
+        "$1/n$",
+        "$\\sqrt{n}$",
+        "$n$"
+      ],
+      "answer": 0,
+      "explanation": "Under the white noise null, $\\hat{\\rho}(k)$ has approximate standard error $1/\\sqrt{n}$, so the familiar significance bounds on a correlogram are at $\\pm 1.96/\\sqrt{n}$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-008",
+      "stem": "A correlogram is drawn from a white noise series of $n = 100$ observations. The usual 95 percent significance bounds are drawn at approximately which values?",
+      "options": [
+        "$\\pm 0.500$",
+        "$\\pm 0.196$",
+        "$\\pm 0.098$",
+        "$\\pm 1.96$"
+      ],
+      "answer": 1,
+      "explanation": "The bounds are $\\pm 1.96/\\sqrt{n} = \\pm 1.96/\\sqrt{100} = \\pm 1.96/10 = \\pm 0.196$. Sample autocorrelations within these bounds are consistent with white noise.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-009",
+      "stem": "The partial autocorrelation function (PACF) at lag $k$ measures which quantity?",
+      "options": [
+        "the slope of the trend at time $k$",
+        "the raw correlation between $X_t$ and $X_{t+k}$ ignoring intermediate values",
+        "the correlation between $X_t$ and $X_{t+k}$ after removing the linear effect of the intervening observations",
+        "the variance of the series at lag $k$"
+      ],
+      "answer": 2,
+      "explanation": "The PACF at lag $k$ is the correlation between $X_t$ and $X_{t+k}$ once the linear dependence on the intermediate values $X_{t+1}, \\dots, X_{t+k-1}$ has been partialled out. It isolates the direct association at lag $k$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-010",
+      "stem": "For both the ACF and PACF, what is the value at lag 1 for an AR(1) process $X_t = \\phi X_{t-1} + \\varepsilon_t$?",
+      "options": [
+        "$1/\\phi$",
+        "$\\phi^2$",
+        "$\\phi$",
+        "$0$"
+      ],
+      "answer": 2,
+      "explanation": "For an AR(1), the lag-1 autocorrelation is $\\rho(1) = \\phi$, and the lag-1 partial autocorrelation also equals $\\phi$ (the PACF and ACF always agree at lag 1). The PACF then cuts off to zero for lags $\\ge 2$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-011",
+      "stem": "The sample autocorrelation at lag $k$ is computed as $\\hat{\\rho}(k) = c_k / c_0$. Given mean-corrected sums $c_0 = 50$ and $c_2 = 20$, what is $\\hat{\\rho}(2)$?",
+      "options": [
+        "0.40",
+        "0.70",
+        "0.20",
+        "2.5"
+      ],
+      "answer": 0,
+      "explanation": "$\\hat{\\rho}(2) = c_2 / c_0 = 20 / 50 = 0.40$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-012",
+      "stem": "If a correlogram shows large, slowly decaying positive autocorrelations that remain well outside the significance bounds for many lags, what does this most strongly suggest?",
+      "options": [
+        "the series has zero mean",
+        "the series is non-stationary or has a strong trend and may need differencing",
+        "the series is perfectly periodic with period 1",
+        "the series is white noise"
+      ],
+      "answer": 1,
+      "explanation": "A slowly decaying ACF that stays high across many lags is the classic signature of a non-stationary series (often a trend or near-unit-root behavior). The usual remedy is to difference the series before modeling.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-013",
+      "stem": "Which pair of patterns is the textbook identification signature for a pure AR(p) process?",
+      "options": [
+        "ACF cuts off after lag $p$; PACF tails off",
+        "ACF tails off (decays); PACF cuts off after lag $p$",
+        "both ACF and PACF tail off slowly forever",
+        "both ACF and PACF cut off after lag $p$"
+      ],
+      "answer": 1,
+      "explanation": "For an AR(p), the ACF decays gradually (tails off) while the PACF cuts off (drops to zero) after lag $p$. The mirror pattern, ACF cutting off and PACF tailing off, identifies an MA(q).",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-014",
+      "stem": "Which pair of patterns is the textbook identification signature for a pure MA(q) process?",
+      "options": [
+        "ACF is identically zero; PACF equals 1 everywhere",
+        "ACF tails off; PACF cuts off after lag $q$",
+        "ACF cuts off after lag $q$; PACF tails off",
+        "both cut off after lag $q$"
+      ],
+      "answer": 2,
+      "explanation": "An MA(q) has an ACF that is zero beyond lag $q$ (cuts off after $q$) and a PACF that decays gradually (tails off). This is the reverse of the AR(p) signature.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-015",
+      "stem": "A sample autocorrelation at lag 3 is $\\hat{\\rho}(3) = 0.15$ from a series of $n = 64$ observations. Using the bound $\\pm 1.96/\\sqrt{n}$, is this value statistically significant at the 5 percent level?",
+      "options": [
+        "yes, because the bound is $0.03$",
+        "it cannot be assessed without the mean",
+        "no, because $0.15$ is below the bound $0.245$",
+        "yes, because $0.15$ exceeds $0.245$"
+      ],
+      "answer": 2,
+      "explanation": "The bound is $1.96/\\sqrt{64} = 1.96/8 = 0.245$. Since $|0.15| < 0.245$, the lag-3 autocorrelation falls inside the band and is not significant; it is consistent with white noise at that lag.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-016",
+      "stem": "For a stationary AR(1) process with $\\phi = 0.6$, what is the theoretical autocorrelation at lag 2, $\\rho(2)$?",
+      "options": [
+        "1.2",
+        "0.36",
+        "0.6",
+        "0.12"
+      ],
+      "answer": 1,
+      "explanation": "The ACF of an AR(1) is $\\rho(k) = \\phi^k$, so $\\rho(2) = 0.6^2 = 0.36$.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-017",
+      "stem": "Which statement about the relationship between independence and zero autocorrelation is correct?",
+      "options": [
+        "independent observations are uncorrelated, but uncorrelated observations need not be independent",
+        "independence and zero correlation are unrelated concepts",
+        "uncorrelated observations are always independent",
+        "zero autocorrelation always implies full independence"
+      ],
+      "answer": 0,
+      "explanation": "Independence implies zero correlation, but the converse fails in general: a process can have $\\rho(k) = 0$ for all $k \\neq 0$ (uncorrelated, hence weak white noise) yet still exhibit nonlinear dependence and not be independent.",
+      "difficulty": "stretch",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-018",
+      "stem": "The Ljung-Box (or Box-Pierce) portmanteau test is used in correlogram analysis to test which hypothesis?",
+      "options": [
+        "that the variance of the series is constant over time",
+        "that a group of autocorrelations are jointly zero, that is, the series is white noise",
+        "that a single specified autocorrelation equals a given nonzero value",
+        "that the trend of the series is linear"
+      ],
+      "answer": 1,
+      "explanation": "The Ljung-Box test combines the first several sample autocorrelations into a single statistic to test the joint null that $\\rho(1) = \\rho(2) = \\dots = \\rho(m) = 0$, that is, that the (residual) series behaves like white noise.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-019",
+      "stem": "For an AR(1) with $\\phi = -0.5$, the autocorrelation function $\\rho(k) = \\phi^k$ does what as $k$ increases?",
+      "options": [
+        "alternates in sign while decaying in magnitude to zero",
+        "remains constant at $-0.5$",
+        "grows without bound",
+        "stays positive and decays to zero"
+      ],
+      "answer": 0,
+      "explanation": "With a negative $\\phi$, $\\rho(k) = (-0.5)^k$ alternates sign ($-0.5, +0.25, -0.125, \\dots$) while its magnitude $|\\phi|^k$ shrinks geometrically toward zero. This produces an oscillating, decaying correlogram.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-020",
+      "stem": "The autocovariance at lag 0, $\\gamma(0)$, of a stationary process is equal to which quantity?",
+      "options": [
+        "the lag-1 autocovariance $\\gamma(1)$",
+        "the variance of the process",
+        "the mean of the process",
+        "always 1"
+      ],
+      "answer": 1,
+      "explanation": "$\\gamma(0) = E[(X_t - \\mu)^2] = \\mathrm{Var}(X_t)$, the variance of the process. Dividing $\\gamma(k)$ by $\\gamma(0)$ gives the autocorrelation $\\rho(k)$.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-021",
+      "stem": "A series of returns has sample autocorrelations that are all small and lie inside the $\\pm 1.96/\\sqrt{n}$ bounds, with no significant spikes. What is the natural conclusion?",
+      "options": [
+        "the series must be a random walk",
+        "the series is consistent with white noise (no significant linear serial dependence)",
+        "the series has a strong linear trend",
+        "the series has a seasonal period equal to $n$"
+      ],
+      "answer": 1,
+      "explanation": "When every sample autocorrelation stays within the significance band, there is no evidence of linear serial dependence, and the series is consistent with white noise. A trend or random walk would instead produce large, slowly decaying autocorrelations.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-022",
+      "stem": "For a monthly series with strong annual seasonality, where on the correlogram would you most expect to see prominent autocorrelation spikes?",
+      "options": [
+        "only at lag 1",
+        "at no lags at all",
+        "at the seasonal lags 12, 24, 36, and so on",
+        "only at fractional lags between 0 and 1"
+      ],
+      "answer": 2,
+      "explanation": "Annual seasonality in monthly data produces large autocorrelations at multiples of the seasonal period, namely lags 12, 24, 36, and so on, because observations one or more years apart in the same month are strongly correlated.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-023",
+      "format": "cloze",
+      "stem": "A stationary AR(1) process $X_t = \\phi X_{t-1} + \\varepsilon_t$ has $\\phi = 0.8$. Its autocorrelation function is $\\rho(k) = \\phi^k$.",
+      "solution": "The autocorrelation at lag 1 is $\\rho(1) =$ {{1}}. The autocorrelation at lag 3 is $\\rho(3) =$ {{2}}. For an AR(1) process, the ACF {{3}} as the lag increases.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.8,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.512,
+          "tolerance": 0.005
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "decays geometrically",
+            "cuts off to zero after lag 1",
+            "stays constant"
+          ],
+          "answer": "decays geometrically"
+        }
+      ],
+      "explanation": "$\\rho(1) = 0.8$, $\\rho(3) = 0.8^3 = 0.512$. The AR(1) ACF $\\phi^k$ decays geometrically toward zero (it does not cut off; that is the PACF).",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-024",
+      "format": "cloze",
+      "stem": "A correlogram is constructed from a series of $n = 144$ observations to check whether it is white noise.",
+      "solution": "The approximate standard error of each sample autocorrelation under the white noise null is $1/\\sqrt{n} =$ {{1}} (to three decimals). The 95 percent significance bounds, using the factor 1.96, are at approximately $\\pm$ {{2}}. A sample autocorrelation of $0.10$ would be judged {{3}} at the 5 percent level.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.083,
+          "tolerance": 0.002
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.163,
+          "tolerance": 0.003
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "not significant",
+            "significant"
+          ],
+          "answer": "not significant"
+        }
+      ],
+      "explanation": "$1/\\sqrt{144} = 1/12 = 0.0833$. Bounds $= 1.96 \\times 0.0833 = 0.1633$. Since $0.10 < 0.163$, an autocorrelation of $0.10$ lies inside the band and is not significant.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-025",
+      "format": "cloze",
+      "stem": "Recall the Box-Jenkins identification rules based on the shapes of the ACF and PACF.",
+      "solution": "For a pure AR(p) model, the ACF {{1}} and the PACF cuts off after lag {{2}}. For a pure MA(q) model, the {{3}} cuts off after lag $q$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "tails off",
+            "cuts off after lag p"
+          ],
+          "answer": "tails off"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "p",
+            "P"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "ACF",
+            "PACF"
+          ],
+          "answer": "ACF"
+        }
+      ],
+      "explanation": "AR(p): ACF tails off, PACF cuts off after lag $p$. MA(q): ACF cuts off after lag $q$, PACF tails off. These mirror-image signatures are the core of Box-Jenkins identification.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-026",
+      "format": "cloze",
+      "stem": "The sample autocorrelation at lag $k$ is $\\hat{\\rho}(k) = c_k / c_0$, where $c_k$ is the mean-corrected lag-$k$ autocovariance. For a particular series, $c_0 = 80$, $c_1 = 48$, and $c_2 = 24$.",
+      "solution": "The lag-1 sample autocorrelation is {{1}}. The lag-2 sample autocorrelation is {{2}}. Because $\\hat{\\rho}(2)$ is {{3}} than $\\hat{\\rho}(1)$, the autocorrelations are decaying with lag.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.6,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.3,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "smaller",
+            "larger"
+          ],
+          "answer": "smaller"
+        }
+      ],
+      "explanation": "$\\hat{\\rho}(1) = 48/80 = 0.6$ and $\\hat{\\rho}(2) = 24/80 = 0.3$. Since $0.3 < 0.6$, the autocorrelation is smaller at lag 2, indicating decay.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-027",
+      "format": "cloze",
+      "stem": "Consider the theoretical autocorrelation function of pure white noise $\\{\\varepsilon_t\\}$.",
+      "solution": "The autocorrelation at lag 0 is $\\rho(0) =$ {{1}}. The autocorrelation at any lag $k \\neq 0$ is $\\rho(k) =$ {{2}}. On a correlogram, white noise therefore appears as a single spike at lag {{3}} with all other bars near zero.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "White noise has $\\rho(0) = 1$ and $\\rho(k) = 0$ for all $k \\neq 0$, so its correlogram shows a single spike at lag 0 and essentially zero elsewhere.",
+      "difficulty": "warmup",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    },
+    {
+      "id": "time-series-analysis-i-autocorrelation-028",
+      "format": "cloze",
+      "stem": "An AR(1) process has parameter $\\phi = -0.5$, so its autocorrelation function is $\\rho(k) = (-0.5)^k$.",
+      "solution": "The autocorrelation at lag 1 is $\\rho(1) =$ {{1}}. The autocorrelation at lag 2 is $\\rho(2) =$ {{2}}. Because $\\phi$ is negative, the sign of the autocorrelations {{3}} from lag to lag.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -0.5,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "alternates",
+            "stays the same"
+          ],
+          "answer": "alternates"
+        }
+      ],
+      "explanation": "$\\rho(1) = (-0.5)^1 = -0.5$ and $\\rho(2) = (-0.5)^2 = 0.25$. A negative $\\phi$ makes the autocorrelations alternate in sign while decaying in magnitude.",
+      "difficulty": "core",
+      "source": "in the style of Box and Jenkins, Time Series Analysis"
+    }
+  ]
+}

@@ -1,0 +1,514 @@
+{
+  "courseId": "integral-equation-applied-maths",
+  "topicId": "symmetric-kernels-and-eigenvalues",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-001",
+      "stem": "A kernel $K(x,t)$ is called symmetric when",
+      "options": [
+        "$K(x,t) = -K(t,x)$",
+        "$K(x,t)$ depends only on $x - t$",
+        "$K(x,t) = K(t,x)$ for all $x,t$",
+        "$K(x,t) = K(x,t)^2$"
+      ],
+      "answer": 2,
+      "explanation": "A symmetric kernel is unchanged when its two arguments are swapped: $K(x,t) = K(t,x)$. This is the real analogue of a symmetric matrix and guarantees real eigenvalues and orthogonal eigenfunctions. The condition $K = -K(t,x)$ is antisymmetry, and dependence on $x - t$ alone is a difference kernel, a separate property.",
+      "difficulty": "warmup",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-002",
+      "stem": "The homogeneous Fredholm equation whose nontrivial solutions define eigenfunctions is",
+      "options": [
+        "$\\phi(x) = f(x) + \\lambda\\displaystyle\\int_a^b K(x,t)\\phi(t)\\,dt$",
+        "$\\phi(x) = \\lambda\\displaystyle\\int_a^x K(x,t)\\phi(t)\\,dt$",
+        "$f(x) = \\displaystyle\\int_a^b K(x,t)\\phi(t)\\,dt$",
+        "$\\phi(x) = \\lambda\\displaystyle\\int_a^b K(x,t)\\phi(t)\\,dt$"
+      ],
+      "answer": 3,
+      "explanation": "Setting the free term to zero in the second kind Fredholm equation gives the homogeneous equation $\\phi(x) = \\lambda\\int_a^b K(x,t)\\phi(t)\\,dt$. The values of $\\lambda$ admitting nonzero solutions are the characteristic values (eigenvalues), and the solutions are the eigenfunctions. The form with a nonzero $f$ is inhomogeneous, and the variable upper limit would make it Volterra.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-003",
+      "stem": "For the homogeneous equation $\\phi(x) = \\lambda\\displaystyle\\int_0^1 xt\\,\\phi(t)\\,dt$, the characteristic value is",
+      "options": [
+        "$\\lambda = 3$",
+        "$\\lambda = 2$",
+        "$\\lambda = 1$",
+        "$\\lambda = \\dfrac{1}{3}$"
+      ],
+      "answer": 0,
+      "explanation": "Write $\\phi(x) = \\lambda c\\,x$ with $c = \\int_0^1 t\\,\\phi(t)\\,dt$. Then $c = \\int_0^1 t(\\lambda c\\,t)\\,dt = \\lambda c\\int_0^1 t^2\\,dt = \\frac{\\lambda c}{3}$. A nonzero $c$ forces $\\frac{\\lambda}{3} = 1$, so $\\lambda = 3$. This single characteristic value is exactly where the inhomogeneous solution $\\frac{3x}{3-\\lambda}$ blew up.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-004",
+      "stem": "The eigenfunction of $\\phi(x) = \\lambda\\displaystyle\\int_0^1 xt\\,\\phi(t)\\,dt$ corresponding to its characteristic value is proportional to",
+      "options": [
+        "$1$",
+        "$x^2$",
+        "$x$",
+        "$e^x$"
+      ],
+      "answer": 2,
+      "explanation": "From $\\phi(x) = \\lambda c\\,x$, the solution is a constant multiple of $x$. At $\\lambda = 3$ any $\\phi(x) = Cx$ satisfies the equation, so the eigenfunction is proportional to $x$. The shape of the eigenfunction is dictated by the $x$ dependent factor of the kernel, here $g(x) = x$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-005",
+      "stem": "A fundamental property of the eigenvalues (characteristic values) of a real symmetric kernel is that they are",
+      "options": [
+        "all real",
+        "always negative",
+        "all complex",
+        "all equal"
+      ],
+      "answer": 0,
+      "explanation": "Just as a real symmetric matrix has real eigenvalues, a real symmetric kernel has only real characteristic values. This follows from the self-adjointness of the integral operator with a symmetric kernel. They need not be equal, negative, or complex; reality is the guaranteed property.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-006",
+      "stem": "Eigenfunctions of a symmetric kernel that belong to distinct eigenvalues are",
+      "options": [
+        "linearly dependent",
+        "orthogonal on $[a,b]$",
+        "identical",
+        "always equal to the kernel"
+      ],
+      "answer": 1,
+      "explanation": "For a symmetric kernel, eigenfunctions $\\phi_m, \\phi_n$ corresponding to distinct eigenvalues satisfy $\\int_a^b \\phi_m(t)\\phi_n(t)\\,dt = 0$, that is they are orthogonal. This mirrors the orthogonality of eigenvectors of a symmetric matrix for distinct eigenvalues and underlies eigenfunction expansions.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-007",
+      "stem": "Which kernel is symmetric on $[0,1]\\times[0,1]$?",
+      "options": [
+        "$K(x,t) = x - t$",
+        "$K(x,t) = x t + x^2 t^2$",
+        "$K(x,t) = x^2 - t^2$",
+        "$K(x,t) = x e^{t}$"
+      ],
+      "answer": 1,
+      "explanation": "Swapping $x$ and $t$ in $xt + x^2 t^2$ gives $tx + t^2 x^2 = xt + x^2 t^2$, unchanged, so it is symmetric. By contrast $x - t \\to t - x$ and $x^2 - t^2 \\to t^2 - x^2$ both change sign, and $xe^t \\to te^x$ differs. Only the fourth kernel is symmetric.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-008",
+      "stem": "For $\\phi(x) = \\lambda\\displaystyle\\int_0^\\pi \\cos x \\cos t\\,\\phi(t)\\,dt$, the characteristic value is (use $\\int_0^\\pi \\cos^2 t\\,dt = \\tfrac{\\pi}{2}$)",
+      "options": [
+        "$\\lambda = \\dfrac{2}{\\pi}$",
+        "$\\lambda = \\dfrac{1}{\\pi}$",
+        "$\\lambda = \\pi$",
+        "$\\lambda = \\dfrac{\\pi}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "Write $\\phi(x) = \\lambda c\\cos x$ with $c = \\int_0^\\pi \\cos t\\,\\phi(t)\\,dt$. Then $c = \\int_0^\\pi \\cos t(\\lambda c\\cos t)\\,dt = \\lambda c\\int_0^\\pi \\cos^2 t\\,dt = \\lambda c\\cdot\\frac{\\pi}{2}$. A nonzero $c$ gives $\\frac{\\lambda\\pi}{2} = 1$, so $\\lambda = \\frac{2}{\\pi}$. The eigenfunction is proportional to $\\cos x$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-009",
+      "stem": "For the symmetric kernel $K(x,t) = xt + x^2 t^2$ on $[-1,1]$, how many characteristic values does it have?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "infinitely many"
+      ],
+      "answer": 2,
+      "explanation": "The kernel has two separated terms, $xt$ and $x^2 t^2$, so the reduced system is $2 \\times 2$ and yields at most two characteristic values. Computing, the equations decouple into $c_1 = \\frac{2\\lambda c_1}{3}$ and $c_2 = \\frac{2\\lambda c_2}{5}$, giving $\\lambda_1 = \\frac{3}{2}$ and $\\lambda_2 = \\frac{5}{2}$, two distinct values.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-010",
+      "stem": "For $K(x,t) = xt + x^2 t^2$ on $[-1,1]$, the characteristic values are (use $\\int_{-1}^1 t^2\\,dt = \\tfrac{2}{3}$, $\\int_{-1}^1 t^4\\,dt = \\tfrac{2}{5}$)",
+      "options": [
+        "$\\lambda_1 = \\dfrac{2}{3}, \\lambda_2 = \\dfrac{2}{5}$",
+        "$\\lambda_1 = \\dfrac{3}{2}, \\lambda_2 = \\dfrac{5}{2}$",
+        "$\\lambda_1 = 3, \\lambda_2 = 5$",
+        "$\\lambda_1 = 1, \\lambda_2 = 2$"
+      ],
+      "answer": 1,
+      "explanation": "Write $\\phi = \\lambda c_1 x + \\lambda c_2 x^2$ with $c_1 = \\int_{-1}^1 t\\phi\\,dt$, $c_2 = \\int_{-1}^1 t^2\\phi\\,dt$. Odd powers integrate to zero, so the system decouples: $c_1 = \\lambda c_1\\int_{-1}^1 t^2\\,dt = \\frac{2\\lambda c_1}{3}$ and $c_2 = \\lambda c_2\\int_{-1}^1 t^4\\,dt = \\frac{2\\lambda c_2}{5}$. Nonzero solutions require $\\lambda_1 = \\frac{3}{2}$ and $\\lambda_2 = \\frac{5}{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-011",
+      "stem": "The eigenfunctions $\\phi_1 = x$ and $\\phi_2 = x^2$ for $K(x,t) = xt + x^2 t^2$ on $[-1,1]$ are orthogonal because",
+      "options": [
+        "$\\displaystyle\\int_{-1}^1 x^3\\,dx = \\dfrac{2}{4}$",
+        "$x$ and $x^2$ have the same degree",
+        "they are both positive",
+        "$\\displaystyle\\int_{-1}^1 x\\cdot x^2\\,dx = \\displaystyle\\int_{-1}^1 x^3\\,dx = 0$"
+      ],
+      "answer": 3,
+      "explanation": "Orthogonality means $\\int_{-1}^1 \\phi_1\\phi_2\\,dx = 0$. Here $\\int_{-1}^1 x\\cdot x^2\\,dx = \\int_{-1}^1 x^3\\,dx = 0$ because $x^3$ is an odd function integrated over a symmetric interval. This confirms the general property that eigenfunctions of a symmetric kernel for distinct eigenvalues are orthogonal.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-012",
+      "stem": "For $\\phi(x) = \\lambda\\displaystyle\\int_0^1 \\phi(t)\\,dt$ with constant kernel $K = 1$, the characteristic value and eigenfunction are",
+      "options": [
+        "$\\lambda = 1$, eigenfunction a constant",
+        "$\\lambda = 2$, eigenfunction $x$",
+        "$\\lambda = \\dfrac{1}{2}$, eigenfunction $x^2$",
+        "$\\lambda = 0$, eigenfunction $0$"
+      ],
+      "answer": 0,
+      "explanation": "Write $\\phi(x) = \\lambda c$, a constant, with $c = \\int_0^1 \\phi(t)\\,dt$. Then $c = \\int_0^1 \\lambda c\\,dt = \\lambda c$, so a nonzero $c$ requires $\\lambda = 1$. The eigenfunction $\\phi = \\lambda c$ is a constant. Thus the constant kernel on $[0,1]$ has the single characteristic value $\\lambda = 1$ with constant eigenfunction.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-013",
+      "stem": "A separable kernel with $n$ distinct separated terms can have at most how many characteristic values?",
+      "options": [
+        "$n$",
+        "infinitely many",
+        "$1$",
+        "$2n$"
+      ],
+      "answer": 0,
+      "explanation": "A separable kernel $K = \\sum_{i=1}^n g_i(x)h_i(t)$ reduces the homogeneous equation to an $n \\times n$ algebraic eigenvalue problem. An $n \\times n$ system has at most $n$ eigenvalues, so the kernel has at most $n$ characteristic values. Degenerate kernels therefore have only finitely many, in contrast to general symmetric kernels.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-014",
+      "stem": "For the homogeneous equation $\\phi(x) = \\lambda\\int_a^b K(x,t)\\phi(t)\\,dt$, the trivial solution $\\phi \\equiv 0$",
+      "options": [
+        "exists only at characteristic values",
+        "is a solution for every value of $\\lambda$",
+        "never solves the equation",
+        "equals the eigenfunction"
+      ],
+      "answer": 1,
+      "explanation": "The zero function satisfies the homogeneous equation identically, since both sides are zero for any $\\lambda$. What distinguishes a characteristic value is the existence of a nontrivial solution alongside the trivial one. So $\\phi \\equiv 0$ is always available; eigenfunctions are the nonzero solutions that appear only at characteristic values.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-015",
+      "stem": "Which statement about a continuous symmetric kernel that is not identically zero is correct?",
+      "options": [
+        "its eigenfunctions are never orthogonal",
+        "it has at least one real characteristic value",
+        "all its characteristic values are complex",
+        "it has no characteristic values"
+      ],
+      "answer": 1,
+      "explanation": "A nonzero continuous symmetric kernel always possesses at least one real characteristic value, a result analogous to the spectral theorem for symmetric matrices. The eigenvalues are real and the eigenfunctions for distinct eigenvalues are orthogonal. So the existence of at least one real characteristic value is guaranteed.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-016",
+      "stem": "Is the kernel $K(x,t) = x - t$ symmetric, antisymmetric, or neither?",
+      "options": [
+        "symmetric",
+        "both",
+        "neither",
+        "antisymmetric"
+      ],
+      "answer": 3,
+      "explanation": "Swapping arguments gives $K(t,x) = t - x = -(x - t) = -K(x,t)$, so the kernel changes sign and is antisymmetric (skew-symmetric). It is not symmetric, since that would require $K(t,x) = K(x,t)$. A nonzero kernel cannot be both symmetric and antisymmetric.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-017",
+      "stem": "If $\\phi(x)$ is an eigenfunction of a kernel with characteristic value $\\lambda$, then $5\\phi(x)$ is",
+      "options": [
+        "an eigenfunction with characteristic value $5\\lambda$",
+        "no longer an eigenfunction",
+        "an eigenfunction with the same characteristic value $\\lambda$",
+        "an eigenfunction with characteristic value $\\dfrac{\\lambda}{5}$"
+      ],
+      "answer": 2,
+      "explanation": "The homogeneous equation is linear, so if $\\phi = \\lambda\\int K\\phi\\,dt$ then multiplying by $5$ gives $5\\phi = \\lambda\\int K(5\\phi)\\,dt$, the same equation with the same $\\lambda$. Hence any nonzero scalar multiple of an eigenfunction is again an eigenfunction for the same characteristic value. Scaling does not change $\\lambda$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-018",
+      "stem": "An eigenfunction $\\phi$ is said to be normalized on $[a,b]$ when",
+      "options": [
+        "$\\phi(a) = \\phi(b)$",
+        "$\\displaystyle\\int_a^b [\\phi(t)]^2\\,dt = 1$",
+        "$\\displaystyle\\int_a^b \\phi(t)\\,dt = 1$",
+        "$\\max \\phi = 1$"
+      ],
+      "answer": 1,
+      "explanation": "Normalization fixes the scale of an eigenfunction by requiring unit norm, $\\int_a^b [\\phi(t)]^2\\,dt = 1$. This uses the $L^2$ inner product, the natural setting for symmetric kernels. Requiring the plain integral or the maximum to equal $1$ does not give a unit norm, and matching endpoint values is unrelated.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-019",
+      "stem": "Normalize the eigenfunction $\\phi(x) = x$ on $[0,1]$ (use $\\int_0^1 x^2\\,dx = \\tfrac{1}{3}$).",
+      "options": [
+        "$\\phi(x) = \\dfrac{x}{3}$",
+        "$\\phi(x) = \\sqrt{3}\\,x$",
+        "$\\phi(x) = \\dfrac{x}{\\sqrt{3}}$",
+        "$\\phi(x) = 3x$"
+      ],
+      "answer": 1,
+      "explanation": "Seek $A$ with $\\int_0^1 (Ax)^2\\,dx = 1$, that is $A^2\\int_0^1 x^2\\,dx = A^2\\cdot\\frac{1}{3} = 1$. So $A^2 = 3$ and $A = \\sqrt{3}$, giving the normalized eigenfunction $\\phi(x) = \\sqrt{3}\\,x$. Checking, $\\int_0^1 3x^2\\,dx = 3\\cdot\\frac{1}{3} = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-020",
+      "stem": "Why is a symmetric kernel often compared to a symmetric matrix?",
+      "options": [
+        "the integral operator with a symmetric kernel is self-adjoint, like a symmetric matrix, giving real eigenvalues and orthogonal eigenfunctions",
+        "both have a single eigenvalue",
+        "both have only positive entries",
+        "both are always invertible"
+      ],
+      "answer": 0,
+      "explanation": "An integral operator $K[\\phi](x) = \\int_a^b K(x,t)\\phi(t)\\,dt$ with $K(x,t) = K(t,x)$ is self-adjoint with respect to the $L^2$ inner product, exactly as a symmetric matrix is self-adjoint in $\\mathbb{R}^n$. This self-adjointness yields real eigenvalues and orthogonal eigenfunctions, the continuous counterpart of the matrix spectral theorem.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-021",
+      "stem": "For $\\phi(x) = \\lambda\\displaystyle\\int_0^1 x^2 t^2\\,\\phi(t)\\,dt$, the characteristic value is (use $\\int_0^1 t^4\\,dt = \\tfrac{1}{5}$)",
+      "options": [
+        "$\\lambda = \\dfrac{5}{2}$",
+        "$\\lambda = 4$",
+        "$\\lambda = \\dfrac{1}{5}$",
+        "$\\lambda = 5$"
+      ],
+      "answer": 3,
+      "explanation": "Write $\\phi(x) = \\lambda c\\,x^2$ with $c = \\int_0^1 t^2\\phi(t)\\,dt$. Then $c = \\int_0^1 t^2(\\lambda c\\,t^2)\\,dt = \\lambda c\\int_0^1 t^4\\,dt = \\frac{\\lambda c}{5}$. A nonzero $c$ gives $\\frac{\\lambda}{5} = 1$, so $\\lambda = 5$. The eigenfunction is proportional to $x^2$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-022",
+      "stem": "The reciprocal $\\mu = \\dfrac{1}{\\lambda}$ of a characteristic value is sometimes called the eigenvalue of the operator $K$, because it satisfies",
+      "options": [
+        "$K[\\phi] = \\lambda^2\\phi$",
+        "$K[\\phi] = \\mu\\,\\phi$, that is $\\displaystyle\\int_a^b K(x,t)\\phi(t)\\,dt = \\mu\\,\\phi(x)$",
+        "$\\phi = \\mu K$",
+        "$K[\\phi] = 0$"
+      ],
+      "answer": 1,
+      "explanation": "From $\\phi = \\lambda\\int K\\phi\\,dt$, dividing by $\\lambda$ gives $\\int K(x,t)\\phi(t)\\,dt = \\frac{1}{\\lambda}\\phi = \\mu\\phi$, so $\\mu = \\frac{1}{\\lambda}$ is the eigenvalue of the operator $K$ in the usual sense $K[\\phi] = \\mu\\phi$. The characteristic value $\\lambda$ and the operator eigenvalue $\\mu$ are reciprocals of each other.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-023",
+      "format": "cloze",
+      "stem": "Find the characteristic value and eigenfunction of $\\phi(x) = \\lambda\\displaystyle\\int_0^1 xt\\,\\phi(t)\\,dt$.",
+      "solution": "Write $\\phi(x) = \\lambda c\\,x$ with $c = \\int_0^1 t\\,\\phi(t)\\,dt$. Substituting and using $\\int_0^1 t^2\\,dt = \\dfrac{1}{3}$ gives $c = \\dfrac{\\lambda c}{3}$, so a nonzero $c$ forces the characteristic value $\\lambda =$ {{1}}. The eigenfunction is proportional to {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$x$",
+            "$x^2$",
+            "$1$"
+          ],
+          "answer": "$x$"
+        }
+      ],
+      "explanation": "From $c = \\frac{\\lambda c}{3}$ a nontrivial $c$ requires $\\frac{\\lambda}{3} = 1$, so $\\lambda = 3$. The solution $\\phi = \\lambda c\\,x$ is proportional to $x$, the eigenfunction.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-024",
+      "format": "cloze",
+      "stem": "State two spectral properties of a real symmetric kernel.",
+      "solution": "All characteristic values of a real symmetric kernel are {{1}}. Moreover, eigenfunctions corresponding to distinct characteristic values are {{2}} on the interval $[a,b]$, meaning their integral product vanishes. These properties parallel those of a real symmetric {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "real",
+            "real numbers"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "orthogonal",
+            "identical",
+            "parallel"
+          ],
+          "answer": "orthogonal"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "matrix",
+            "matrices"
+          ]
+        }
+      ],
+      "explanation": "A real symmetric kernel gives a self-adjoint operator, so its characteristic values are real and eigenfunctions for distinct values are orthogonal. These are the continuous analogues of the spectral properties of a real symmetric matrix.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-025",
+      "format": "cloze",
+      "stem": "Analyze the separable symmetric kernel $K(x,t) = xt + x^2 t^2$ on $[-1,1]$, using $\\int_{-1}^1 t^2\\,dt = \\tfrac{2}{3}$ and $\\int_{-1}^1 t^4\\,dt = \\tfrac{2}{5}$.",
+      "solution": "Because the kernel has two separated terms, it has {{1}} characteristic values. The odd moments vanish, so the reduced equations decouple, giving $\\lambda_1 = \\dfrac{3}{2}$ with eigenfunction $x$ and $\\lambda_2 =$ {{2}} with eigenfunction $x^2$. The two eigenfunctions are orthogonal because $\\int_{-1}^1 x^3\\,dx =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{5}{2}$",
+            "$\\dfrac{2}{5}$",
+            "$5$"
+          ],
+          "answer": "$\\dfrac{5}{2}$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Two separated terms give a $2 \\times 2$ system, hence two characteristic values. The equations $c_1 = \\frac{2\\lambda c_1}{3}$ and $c_2 = \\frac{2\\lambda c_2}{5}$ give $\\lambda_1 = \\frac{3}{2}$ and $\\lambda_2 = \\frac{5}{2}$. Orthogonality holds since $\\int_{-1}^1 x^3\\,dx = 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-026",
+      "format": "cloze",
+      "stem": "Normalize the eigenfunction $\\phi(x) = x$ on $[0,1]$, using $\\int_0^1 x^2\\,dx = \\tfrac{1}{3}$.",
+      "solution": "Seek a constant $A$ so that $\\int_0^1 (Ax)^2\\,dx = 1$. This gives $A^2 \\cdot \\dfrac{1}{3} = 1$, so $A^2 =$ {{1}} and the normalized eigenfunction is $\\phi(x) = \\sqrt{3}\\,x$. Normalization fixes the {{2}} of the eigenfunction, which is otherwise determined only up to a constant multiple.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "scale",
+            "sign",
+            "degree"
+          ],
+          "answer": "scale"
+        }
+      ],
+      "explanation": "From $A^2\\int_0^1 x^2\\,dx = A^2\\cdot\\frac{1}{3} = 1$ we get $A^2 = 3$, so $A = \\sqrt{3}$ and $\\phi(x) = \\sqrt{3}\\,x$. Normalization sets the scale (norm) of the eigenfunction, which the homogeneous equation alone leaves free.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-027",
+      "format": "cloze",
+      "stem": "Relate the homogeneous equation to its trivial and nontrivial solutions.",
+      "solution": "The homogeneous Fredholm equation $\\phi(x) = \\lambda\\int_a^b K(x,t)\\phi(t)\\,dt$ always admits the trivial solution $\\phi \\equiv$ {{1}}. A value of $\\lambda$ is called a characteristic value precisely when a {{2}} solution also exists. The corresponding nonzero solutions are the {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "nontrivial",
+            "unique",
+            "bounded"
+          ],
+          "answer": "nontrivial"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "eigenfunctions",
+            "eigenfunction",
+            "characteristic functions"
+          ]
+        }
+      ],
+      "explanation": "The zero function solves the homogeneous equation for every $\\lambda$. Characteristic values are those $\\lambda$ for which a nontrivial solution exists, and those nonzero solutions are the eigenfunctions (characteristic functions).",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-applied-maths-symmetric-kernels-and-eigenvalues-028",
+      "format": "cloze",
+      "stem": "Determine the characteristic value of $\\phi(x) = \\lambda\\displaystyle\\int_0^\\pi \\cos x \\cos t\\,\\phi(t)\\,dt$, using $\\int_0^\\pi \\cos^2 t\\,dt = \\tfrac{\\pi}{2}$.",
+      "solution": "Setting $\\phi(x) = \\lambda c\\cos x$ and substituting gives $c = \\lambda c \\cdot \\dfrac{\\pi}{2}$, so the characteristic value is $\\lambda = \\dfrac{2}{}$ {{1}}. The eigenfunction is proportional to {{2}}, and because the kernel is symmetric this $\\lambda$ is guaranteed to be {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\pi$",
+            "$2\\pi$",
+            "$\\pi^2$"
+          ],
+          "answer": "$\\pi$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\cos x$",
+            "$\\sin x$",
+            "$x$"
+          ],
+          "answer": "$\\cos x$"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "real",
+            "a real number"
+          ]
+        }
+      ],
+      "explanation": "From $c = \\frac{\\lambda \\pi c}{2}$ a nonzero $c$ requires $\\frac{\\lambda\\pi}{2} = 1$, so $\\lambda = \\frac{2}{\\pi}$. The eigenfunction is proportional to $\\cos x$, and the symmetric kernel guarantees $\\lambda$ is real.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    }
+  ]
+}

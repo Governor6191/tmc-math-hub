@@ -1,0 +1,555 @@
+{
+  "courseId": "optimization-i-applied-maths",
+  "topicId": "convex-sets-and-functions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-001",
+      "stem": "A set $S$ in $\\mathbb{R}^n$ is convex if",
+      "options": [
+        "for any two points in $S$, the line segment joining them lies entirely in $S$",
+        "it is bounded and closed",
+        "it can be described by a single linear equation",
+        "it contains the origin"
+      ],
+      "answer": 0,
+      "explanation": "A set is convex precisely when, for every pair of points $x, y \\in S$, the whole segment $\\lambda x + (1-\\lambda) y$ for $\\lambda \\in [0,1]$ stays inside $S$. Containing the origin, being bounded, or being closed are neither necessary nor sufficient. The defining feature is closure under taking line segments between members.",
+      "difficulty": "warmup",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-002",
+      "stem": "In the convex combination $\\lambda x + (1-\\lambda) y$, the scalar $\\lambda$ must satisfy",
+      "options": [
+        "$0 \\le \\lambda \\le 1$",
+        "$\\lambda$ is any real number",
+        "$\\lambda < 0$",
+        "$\\lambda \\ge 1$"
+      ],
+      "answer": 0,
+      "explanation": "A convex combination of two points uses weights that are nonnegative and sum to one. With two points the weights are $\\lambda$ and $1 - \\lambda$, so $\\lambda$ ranges over $[0,1]$. Values outside this interval give points on the line through $x$ and $y$ but outside the segment, which are not convex combinations.",
+      "difficulty": "warmup",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-003",
+      "stem": "Which of the following sets in the plane is NOT convex?",
+      "options": [
+        "A closed disk $\\{(x,y) : x^2 + y^2 \\le 1\\}$",
+        "The circle $\\{(x,y) : x^2 + y^2 = 1\\}$ (boundary only)",
+        "A half-plane $\\{(x,y) : x + y \\le 3\\}$",
+        "A solid rectangle"
+      ],
+      "answer": 1,
+      "explanation": "The circle is just the boundary curve, so a chord joining two points on it passes through the interior, which is not part of the set. Hence it is not convex. The closed disk, the half-plane, and a solid rectangle are all convex, since any segment between two of their points stays inside.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-004",
+      "stem": "The intersection of two convex sets is",
+      "options": [
+        "never convex",
+        "convex only if the sets overlap in a single point",
+        "always convex",
+        "convex only if both sets are bounded"
+      ],
+      "answer": 2,
+      "explanation": "The intersection of any collection of convex sets is convex. If $x$ and $y$ both lie in each set, the segment between them lies in each set (by convexity), hence in the intersection. By contrast the union of convex sets need not be convex, as two disjoint disks show.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-005",
+      "stem": "A twice-differentiable function $f$ of one variable is convex on an interval if and only if",
+      "options": [
+        "$f''(x) \\ge 0$ throughout the interval",
+        "$f'(x) = 0$ throughout the interval",
+        "$f''(x) \\le 0$ throughout the interval",
+        "$f(x) \\ge 0$ throughout the interval"
+      ],
+      "answer": 0,
+      "explanation": "The second-derivative test for convexity says $f$ is convex on an interval exactly when $f''(x) \\ge 0$ there, meaning the slope is nondecreasing and the graph bends upward. A nonpositive second derivative gives concavity, and the sign of $f$ itself is irrelevant to convexity.",
+      "difficulty": "warmup",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-006",
+      "stem": "Which function is convex on all of $\\mathbb{R}$?",
+      "options": [
+        "$f(x) = e^x$",
+        "$f(x) = -x^2$",
+        "$f(x) = x^3$",
+        "$f(x) = \\ln x$"
+      ],
+      "answer": 0,
+      "explanation": "For $f(x) = e^x$, the second derivative is $f''(x) = e^x > 0$ for every $x$, so $f$ is (strictly) convex on all of $\\mathbb{R}$. In contrast $-x^2$ has $f'' = -2 < 0$ (concave), $x^3$ has $f'' = 6x$ which changes sign (neither), and $\\ln x$ has $f'' = -1/x^2 < 0$ (concave, and only defined for $x > 0$).",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-007",
+      "stem": "The function $f(x) = x^3$ on $\\mathbb{R}$ is",
+      "options": [
+        "both convex and concave",
+        "neither convex nor concave on all of $\\mathbb{R}$",
+        "concave everywhere",
+        "convex everywhere"
+      ],
+      "answer": 1,
+      "explanation": "The second derivative $f''(x) = 6x$ is negative for $x < 0$ and positive for $x > 0$. So the function is concave on $(-\\infty, 0)$ and convex on $(0, \\infty)$, and therefore neither convex nor concave over the whole real line. Only an affine function is both convex and concave.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-008",
+      "stem": "A function $f$ that is both convex and concave on $\\mathbb{R}$ must be",
+      "options": [
+        "quadratic",
+        "exponential",
+        "affine (of the form $ax + b$)",
+        "constant"
+      ],
+      "answer": 2,
+      "explanation": "Convex requires $f'' \\ge 0$ and concave requires $f'' \\le 0$, so $f'' = 0$ everywhere. Integrating twice gives $f(x) = ax + b$, an affine function. A constant is a special case ($a = 0$) but is not the most general answer; the full class of both convex and concave functions is the affine functions.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-009",
+      "stem": "For a twice-differentiable function $f(x,y)$, convexity on $\\mathbb{R}^2$ is equivalent to the Hessian being",
+      "options": [
+        "the zero matrix",
+        "positive semidefinite everywhere",
+        "negative definite everywhere",
+        "symmetric only"
+      ],
+      "answer": 1,
+      "explanation": "In several variables, $f$ is convex on a convex domain if and only if its Hessian is positive semidefinite at every point. A negative-definite Hessian gives concavity, while merely being symmetric (which Hessians always are when the second partials are continuous) says nothing about convexity by itself.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-010",
+      "stem": "Is $f(x,y) = x^2 + y^2$ convex, and how does the Hessian show it?",
+      "options": [
+        "Yes; but only on the first quadrant",
+        "No; the Hessian is indefinite",
+        "Yes; the Hessian is $\\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix}$, positive definite",
+        "No; the Hessian is negative definite"
+      ],
+      "answer": 2,
+      "explanation": "The Hessian of $x^2 + y^2$ is $\\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix}$, which has positive eigenvalues $2$ and $2$, hence is positive definite (and certainly positive semidefinite) everywhere. So $f$ is convex on all of $\\mathbb{R}^2$, a bowl opening upward with minimum at the origin.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-011",
+      "stem": "Determine the convexity of $f(x,y) = x^2 - y^2$.",
+      "options": [
+        "Convex only on the line $y = 0$",
+        "Convex everywhere",
+        "Concave everywhere",
+        "Neither convex nor concave (the Hessian is indefinite)"
+      ],
+      "answer": 3,
+      "explanation": "The Hessian is $\\begin{pmatrix} 2 & 0 \\\\ 0 & -2 \\end{pmatrix}$ with eigenvalues $2$ and $-2$ of opposite sign, so it is indefinite. A function with an indefinite Hessian is neither convex nor concave; this is a saddle-shaped surface.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-012",
+      "stem": "The most important reason convexity matters in optimization is that for a convex function on a convex set,",
+      "options": [
+        "any local minimum is also a global minimum",
+        "every stationary point has zero gradient",
+        "the function is always bounded below",
+        "the Hessian is always the identity"
+      ],
+      "answer": 0,
+      "explanation": "The defining payoff of convexity is that a local minimum is automatically a global minimum. A convex function lies above each of its tangent lines, so if no nearby point is lower, no point anywhere is lower. This is why convex problems are so tractable: finding a local optimum settles the global question.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-013",
+      "stem": "A function $f$ is concave if and only if",
+      "options": [
+        "$f$ is increasing",
+        "$f$ has a maximum",
+        "$f$ is bounded above",
+        "$-f$ is convex"
+      ],
+      "answer": 3,
+      "explanation": "Concavity is the mirror image of convexity: $f$ is concave exactly when $-f$ is convex. Equivalently the chord between two points lies below the graph. Being increasing or bounded above does not imply concavity, and a concave function on an unbounded domain need not attain a maximum.",
+      "difficulty": "warmup",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-014",
+      "stem": "The defining (Jensen) inequality for a convex function $f$ states that for $\\lambda \\in [0,1]$,",
+      "options": [
+        "$f(\\lambda x + (1-\\lambda) y) = \\lambda f(x) + (1-\\lambda) f(y)$",
+        "$f(\\lambda x + (1-\\lambda) y) \\le \\lambda f(x) + (1-\\lambda) f(y)$",
+        "$f(x + y) = f(x) + f(y)$",
+        "$f(\\lambda x + (1-\\lambda) y) \\ge \\lambda f(x) + (1-\\lambda) f(y)$"
+      ],
+      "answer": 1,
+      "explanation": "Convexity means the graph lies below its chords: the value at a convex combination of points is at most the same convex combination of the values, $f(\\lambda x + (1-\\lambda) y) \\le \\lambda f(x) + (1-\\lambda) f(y)$. The reversed inequality defines concavity, and equality for all points characterizes affine functions.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-015",
+      "stem": "Which of these is a convex set in $\\mathbb{R}^n$?",
+      "options": [
+        "A half-space $\\{x : a^T x \\le b\\}$",
+        "The boundary of a square",
+        "The set of points with exactly one nonzero coordinate",
+        "The complement of a ball"
+      ],
+      "answer": 0,
+      "explanation": "A half-space $\\{x : a^T x \\le b\\}$ is convex: if $a^T x \\le b$ and $a^T y \\le b$, then for $\\lambda \\in [0,1]$, $a^T(\\lambda x + (1-\\lambda)y) = \\lambda a^T x + (1-\\lambda) a^T y \\le b$. The complement of a ball, a coordinate-axes set, and the boundary of a square are all nonconvex.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-016",
+      "stem": "The function $f(x) = |x|$ on $\\mathbb{R}$ is",
+      "options": [
+        "neither convex nor concave",
+        "convex only for $x > 0$",
+        "concave",
+        "convex, even though it is not differentiable at $0$"
+      ],
+      "answer": 3,
+      "explanation": "Convexity does not require differentiability. The graph of $|x|$ is a V opening upward, and any chord lies above it, so $f(x) = |x|$ is convex on all of $\\mathbb{R}$. The kink at the origin means $f$ is not differentiable there, but the convexity definition (chord above graph) still holds.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-017",
+      "stem": "If $f$ and $g$ are both convex functions, then $h(x) = f(x) + g(x)$ is",
+      "options": [
+        "always concave",
+        "always convex",
+        "convex only if $f = g$",
+        "neither in general"
+      ],
+      "answer": 1,
+      "explanation": "The sum of convex functions is convex. This follows directly from the Jensen inequality: adding the two inequalities for $f$ and $g$ gives the inequality for $h = f + g$. (Likewise a nonnegative weighted sum of convex functions is convex.) This closure property is heavily used to build convex models.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-018",
+      "stem": "Is $f(x,y) = 2x^2 + 2y^2 + xy$ convex? Use the Hessian.",
+      "options": [
+        "Convex only on the first quadrant",
+        "No; the Hessian is indefinite",
+        "Yes; the Hessian $\\begin{pmatrix} 4 & 1 \\\\ 1 & 4 \\end{pmatrix}$ is positive definite",
+        "No; the Hessian is negative definite"
+      ],
+      "answer": 2,
+      "explanation": "The Hessian is $\\begin{pmatrix} 4 & 1 \\\\ 1 & 4 \\end{pmatrix}$. Its determinant is $16 - 1 = 15 > 0$ and the leading entry $4 > 0$, so by the leading-minor test it is positive definite. A positive-definite Hessian everywhere means $f$ is (strictly) convex on all of $\\mathbb{R}^2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-019",
+      "stem": "The epigraph of a function $f$ (the set of points on or above its graph) is a convex set if and only if",
+      "options": [
+        "$f$ is convex",
+        "$f$ is continuous",
+        "$f$ is bounded",
+        "$f$ is concave"
+      ],
+      "answer": 0,
+      "explanation": "There is an exact correspondence: $f$ is a convex function precisely when its epigraph $\\{(x, t) : t \\ge f(x)\\}$ is a convex set. This links the two notions of convexity. Concavity corresponds to the hypograph (points on or below the graph) being convex; boundedness and continuity are separate properties.",
+      "difficulty": "stretch",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-020",
+      "stem": "The function $f(x) = x^4$ on $\\mathbb{R}$ is",
+      "options": [
+        "convex only on $(0, \\infty)$",
+        "convex, since $f''(x) = 12x^2 \\ge 0$",
+        "neither, because $f''(0) = 0$",
+        "concave, since it grows quickly"
+      ],
+      "answer": 1,
+      "explanation": "The second derivative is $f''(x) = 12x^2$, which is nonnegative for all $x$ (zero only at the origin). Since $f'' \\ge 0$ everywhere, $f$ is convex on all of $\\mathbb{R}$. A single point where $f'' = 0$ does not break convexity; the requirement is $f'' \\ge 0$, not $f'' > 0$.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-021",
+      "stem": "Determine the convexity of $f(x,y) = x^2 + y^2 - xy$.",
+      "options": [
+        "Concave; the Hessian is negative definite",
+        "Convex; the Hessian $\\begin{pmatrix} 2 & -1 \\\\ -1 & 2 \\end{pmatrix}$ is positive definite",
+        "Convex only along $y = x$",
+        "Neither; the Hessian is indefinite"
+      ],
+      "answer": 1,
+      "explanation": "The Hessian is $\\begin{pmatrix} 2 & -1 \\\\ -1 & 2 \\end{pmatrix}$, with determinant $4 - 1 = 3 > 0$ and leading entry $2 > 0$. It is positive definite, so $f$ is convex everywhere. Off-diagonal terms do not by themselves cause indefiniteness; the leading-minor signs decide.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-022",
+      "stem": "Which statement about a strictly convex function on a convex set is correct?",
+      "options": [
+        "If it has a minimum, the minimizer is unique",
+        "It can have several distinct global minima",
+        "It must be unbounded below",
+        "Its Hessian must be the zero matrix"
+      ],
+      "answer": 0,
+      "explanation": "Strict convexity (chord strictly above the graph, or $f'' > 0$ in one variable) forces any minimizer to be unique: two distinct minimizers would let a midpoint have a strictly smaller value, a contradiction. So a strictly convex function cannot have multiple global minima, and a zero Hessian would make it merely affine, not strictly convex.",
+      "difficulty": "stretch",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-023",
+      "stem": "The function $f(x) = \\ln x$ on $(0, \\infty)$ is",
+      "options": [
+        "convex",
+        "neither convex nor concave",
+        "concave",
+        "affine"
+      ],
+      "answer": 2,
+      "explanation": "Here $f'(x) = 1/x$ and $f''(x) = -1/x^2 < 0$ for all $x > 0$. A negative second derivative throughout the domain means $f$ is concave on $(0, \\infty)$. Its graph bends downward, lying above its chords.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-024",
+      "stem": "Why might the union of two convex sets fail to be convex?",
+      "options": [
+        "Because convex sets cannot overlap",
+        "Because unions are never defined for convex sets",
+        "Because the union always equals the intersection",
+        "Because a segment joining a point in one set to a point in the other may leave both sets"
+      ],
+      "answer": 3,
+      "explanation": "Take two disjoint disks. A point in the first and a point in the second are both in the union, but the segment joining them passes through the gap, leaving the union. That violates the convexity definition. So unions of convex sets are generally nonconvex, even though intersections always stay convex.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-025",
+      "stem": "A polyhedron defined by $\\{x : Ax \\le b\\}$ (a finite intersection of half-spaces) is",
+      "options": [
+        "convex",
+        "generally nonconvex",
+        "convex only in two dimensions",
+        "convex only when bounded"
+      ],
+      "answer": 0,
+      "explanation": "Each inequality $a_i^T x \\le b_i$ defines a half-space, which is convex, and the polyhedron is their intersection. Since any intersection of convex sets is convex, the polyhedron is convex, whether or not it is bounded. This is exactly the structure of a linear-programming feasible region.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-026",
+      "format": "cloze",
+      "stem": "Use the second derivative to test the convexity of $f(x) = x^2 + e^x$.",
+      "solution": "The second derivative is $f''(x) = 2 + e^x$. Since $e^x$ is always positive, $f''(x)$ is always {{1}}, so the function is {{2}} on all of $\\mathbb{R}$. For a convex function, any local minimum is also a {{3}} minimum.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "positive",
+            "negative",
+            "zero"
+          ],
+          "answer": "positive"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "concave",
+            "affine"
+          ],
+          "answer": "convex"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "global",
+            "absolute"
+          ]
+        }
+      ],
+      "explanation": "We have $f'(x) = 2x + e^x$ and $f''(x) = 2 + e^x$. Since $e^x > 0$, the second derivative is always positive, so $f$ is convex on all of $\\mathbb{R}$. A defining benefit of convexity is that any local minimum is global.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-027",
+      "format": "cloze",
+      "stem": "Classify $f(x,y) = 3x^2 + 3y^2 + 2xy$ for convexity using its Hessian.",
+      "solution": "The Hessian is $\\begin{pmatrix} 6 & 2 \\\\ 2 & 6 \\end{pmatrix}$. Its determinant is {{1}} and its leading entry is positive, so the Hessian is positive definite. Therefore the function is {{2}} on all of $\\mathbb{R}^2$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 32,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "concave",
+            "neither convex nor concave"
+          ],
+          "answer": "convex"
+        }
+      ],
+      "explanation": "The Hessian determinant is $(6)(6) - (2)(2) = 36 - 4 = 32 > 0$, and the leading entry $6 > 0$, so the Hessian is positive definite. A positive-definite Hessian everywhere makes the function convex.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-028",
+      "format": "cloze",
+      "stem": "Decide the convexity type of $f(x) = -x^2 + 4x$.",
+      "solution": "The second derivative is $f''(x) =$ {{1}}, which is negative, so the function is {{2}}. For such a function, any local maximum is also a global {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "concave",
+            "convex",
+            "affine"
+          ],
+          "answer": "concave"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "maximum",
+            "max"
+          ]
+        }
+      ],
+      "explanation": "Here $f'(x) = -2x + 4$ and $f''(x) = -2 < 0$. A negative second derivative throughout means $f$ is concave. For a concave function, any local maximum is a global maximum (mirror image of the convex case).",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-029",
+      "format": "cloze",
+      "stem": "Fill in the definitions relating convex sets and convex combinations.",
+      "solution": "A set $S$ is convex if for all $x, y \\in S$ and all {{1}} between $0$ and $1$, the point $\\lambda x + (1-\\lambda) y$ lies in $S$. The intersection of two convex sets is always {{2}}, but their union may be {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\lambda$",
+            "$x$",
+            "$S$"
+          ],
+          "answer": "$\\lambda$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "empty",
+            "unbounded"
+          ],
+          "answer": "convex"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "nonconvex",
+            "convex",
+            "a single point"
+          ],
+          "answer": "nonconvex"
+        }
+      ],
+      "explanation": "Convexity requires that for every $\\lambda \\in [0,1]$ the convex combination $\\lambda x + (1-\\lambda)y$ stays in $S$. Intersections of convex sets are always convex; unions can be nonconvex (think of two disjoint disks).",
+      "difficulty": "warmup",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-030",
+      "format": "cloze",
+      "stem": "Examine $f(x,y) = x^2 - 3xy + y^2$ for convexity.",
+      "solution": "The Hessian is $\\begin{pmatrix} 2 & -3 \\\\ -3 & 2 \\end{pmatrix}$, whose determinant equals {{1}}. Because this determinant is negative, the Hessian is indefinite and the function is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "neither convex nor concave",
+            "convex",
+            "concave"
+          ],
+          "answer": "neither convex nor concave"
+        }
+      ],
+      "explanation": "The Hessian determinant is $(2)(2) - (-3)(-3) = 4 - 9 = -5 < 0$. A negative determinant for a 2-by-2 symmetric matrix means it is indefinite, so the function is neither convex nor concave.",
+      "difficulty": "stretch",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    },
+    {
+      "id": "optimization-i-applied-maths-convex-sets-and-functions-031",
+      "format": "cloze",
+      "stem": "State the link between convexity and global optimality.",
+      "solution": "If $f$ is a convex function defined on a convex set, then any point that is a local minimum is guaranteed to be a {{1}} minimum. The reason is that the graph of a convex function lies {{2}} each of its tangent lines, so no point anywhere can be lower than a local minimum.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "global",
+            "absolute"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "above",
+            "below",
+            "on"
+          ],
+          "answer": "above"
+        }
+      ],
+      "explanation": "For a convex function on a convex set, every local minimum is a global minimum. The supporting-line property (the graph lies above its tangent lines) guarantees no point can fall below a local minimum, so local optimality is global optimality.",
+      "difficulty": "core",
+      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+    }
+  ]
+}

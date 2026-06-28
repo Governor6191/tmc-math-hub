@@ -1,0 +1,473 @@
+{
+  "courseId": "number-theory-i",
+  "topicId": "primitive-roots",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "number-theory-i-primitive-roots-001",
+      "stem": "The multiplicative order of $a$ modulo $n$ is the smallest positive integer $k$ with $a^k \\equiv 1 \\pmod n$. What is the order of $2$ modulo $7$?",
+      "options": [
+        "$1$",
+        "$6$",
+        "$2$",
+        "$3$"
+      ],
+      "answer": 3,
+      "explanation": "Compute successive powers of $2$ modulo $7$: $2^1 = 2$, $2^2 = 4$, $2^3 = 8 \\equiv 1$. The first time we reach $1$ is at $k = 3$, so $\\operatorname{ord}_7(2) = 3$. The value $6$ is $\\phi(7)$, the order only of a primitive root. The trap is assuming the order equals $\\phi(n)$; here $2$ returns to $1$ already at the third power, so its order is $3$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-002",
+      "stem": "A primitive root modulo $n$ is an element whose order equals $\\phi(n)$. Is $3$ a primitive root modulo $7$?",
+      "options": [
+        "No, $7$ has no primitive root",
+        "No, its order is $2$",
+        "No, its order is $3$",
+        "Yes, its order is $6$"
+      ],
+      "answer": 3,
+      "explanation": "Since $\\phi(7) = 6$, a primitive root must have order $6$. Powers of $3$ modulo $7$ are $3, 2, 6, 4, 5, 1$ for exponents $1$ through $6$, reaching $1$ first at $k = 6$. So $\\operatorname{ord}_7(3) = 6 = \\phi(7)$, making $3$ a primitive root. The trap is stopping early and miscounting the order; all six powers are distinct before returning to $1$, confirming $3$ generates the group.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-003",
+      "stem": "Which of these values of $n$ does NOT have a primitive root?",
+      "options": [
+        "$7$",
+        "$8$",
+        "$9$",
+        "$10$"
+      ],
+      "answer": 1,
+      "explanation": "A primitive root exists modulo $n$ exactly when $n$ is $1, 2, 4, p^k,$ or $2p^k$ for an odd prime $p$. Now $7 = 7^1$, $9 = 3^2$, and $10 = 2 \\times 5$ all fit, but $8 = 2^3$ does not (it is a power of $2$ above $4$). Indeed every element of $(\\mathbb{Z}/8)^\\times = \\lbrace 1, 3, 5, 7 \\rbrace$ squares to $1$, so the maximum order is $2 < \\phi(8) = 4$. The trap is assuming all $n$ have primitive roots; $8$ is the smallest counterexample beyond $4$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-004",
+      "stem": "The order of $a$ modulo $n$ always divides which quantity?",
+      "options": [
+        "$n - 1$",
+        "$\\phi(n)$",
+        "$n$",
+        "$a$"
+      ],
+      "answer": 1,
+      "explanation": "By Lagrange's theorem in the group $(\\mathbb{Z}/n)^\\times$, the order of any element divides the group's size $\\phi(n)$. For example $\\operatorname{ord}_7(2) = 3$ divides $\\phi(7) = 6$. The choice $n - 1$ works only when $n$ is prime (then $\\phi(n) = n - 1$), but not in general. The trap is writing $n - 1$ for composite $n$; the order always divides $\\phi(n)$, which equals $n - 1$ only in the prime case.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-005",
+      "stem": "What is the order of $2$ modulo $5$?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$"
+      ],
+      "answer": 3,
+      "explanation": "Compute powers of $2$ modulo $5$: $2^1 = 2$, $2^2 = 4$, $2^3 = 8 \\equiv 3$, $2^4 = 16 \\equiv 1$. The first power equal to $1$ is the fourth, so $\\operatorname{ord}_5(2) = 4 = \\phi(5)$, and $2$ is a primitive root mod $5$. The value $2$ would require $2^2 \\equiv 1$, but $2^2 = 4$. The trap is stopping at $2^2$; the order is the first exponent giving $1$, here $4$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-006",
+      "stem": "How many primitive roots does a prime $p$ have modulo $p$? (Express in terms of $\\phi$.)",
+      "options": [
+        "$1$",
+        "$\\phi(p - 1)$",
+        "$p - 1$",
+        "$\\phi(p)$"
+      ],
+      "answer": 1,
+      "explanation": "If a primitive root exists, the number of primitive roots modulo $p$ is $\\phi(p - 1)$, since the generators of a cyclic group of order $m = p - 1$ number $\\phi(m)$. For $p = 7$, this is $\\phi(6) = 2$, matching the primitive roots $3$ and $5$. The value $p - 1 = \\phi(p)$ counts all nonzero residues, not just the generators. The trap is counting every unit; only $\\phi(p-1)$ of them generate the group.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-007",
+      "stem": "What is the order of $3$ modulo $11$?",
+      "options": [
+        "$5$",
+        "$10$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": 0,
+      "explanation": "Compute powers of $3$ modulo $11$: $3^1 = 3$, $3^2 = 9$, $3^3 = 27 \\equiv 5$, $3^4 = 15 \\equiv 4$, $3^5 = 12 \\equiv 1$. The order is $5$, so $3$ is NOT a primitive root mod $11$ (which would need order $\\phi(11) = 10$). The value $10$ assumes $3$ generates everything. The trap is presuming a small base is primitive; here $3^5 \\equiv 1$ already, giving order $5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-008",
+      "stem": "Verify that $2$ is a primitive root modulo $11$. What is the order of $2$ modulo $11$?",
+      "options": [
+        "$10$",
+        "$5$",
+        "$2$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "Powers of $2$ modulo $11$ run $2, 4, 8, 5, 10, 9, 7, 3, 6, 1$ for exponents $1$ through $10$, with $2^{10} \\equiv 1$ first occurring at $k = 10$. So $\\operatorname{ord}_{11}(2) = 10 = \\phi(11)$, confirming $2$ is a primitive root. The value $5$ would be the order of $3$, not $2$. The trap is mixing up which base generates; all ten powers of $2$ are distinct, so its order is $10$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-009",
+      "stem": "If $g$ is a primitive root modulo $7$ with $g = 3$, the index (discrete log) of $a$ is the exponent $k$ with $3^k \\equiv a \\pmod 7$. What is $\\operatorname{ind}_3(2)$?",
+      "options": [
+        "$1$",
+        "$4$",
+        "$2$",
+        "$5$"
+      ],
+      "answer": 2,
+      "explanation": "We need $3^k \\equiv 2 \\pmod 7$. From the power table $3^1 = 3$, $3^2 = 9 \\equiv 2$, so $k = 2$ and $\\operatorname{ind}_3(2) = 2$. The value $4$ would give $3^4 \\equiv 4$, not $2$. The trap is reading the wrong row of the table; the index of $2$ is the exponent that produces $2$, which is $2$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-010",
+      "stem": "Using the primitive root $3$ modulo $7$, what is the index $\\operatorname{ind}_3(6)$, the exponent $k$ with $3^k \\equiv 6 \\pmod 7$?",
+      "options": [
+        "$5$",
+        "$3$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": 1,
+      "explanation": "From the table of powers of $3$ modulo $7$: $3^1 = 3$, $3^2 = 2$, $3^3 = 6$. So $3^3 \\equiv 6$ and $\\operatorname{ind}_3(6) = 3$. Since $6 \\equiv -1 \\pmod 7$, this matches the fact that the index of $-1$ is $\\phi(7)/2 = 3$. The trap is guessing without the table; the exponent giving $6$ is $3$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-011",
+      "stem": "What is the order of $4$ modulo $7$? (Use that $4 = 2^2$ and $\\operatorname{ord}_7(2) = 3$.)",
+      "options": [
+        "$6$",
+        "$3$",
+        "$1$",
+        "$2$"
+      ],
+      "answer": 1,
+      "explanation": "There is a rule: if $\\operatorname{ord}_n(a) = d$, then $\\operatorname{ord}_n(a^k) = d / \\gcd(d, k)$. With $d = 3$ and $k = 2$, $\\operatorname{ord}_7(4) = 3 / \\gcd(3, 2) = 3 / 1 = 3$. Checking directly, $4^1 = 4$, $4^2 = 16 \\equiv 2$, $4^3 = 64 \\equiv 1$, order $3$. The value $6$ over-estimates. The trap is ignoring the order-of-a-power formula; here the gcd is $1$, so $4$ keeps order $3$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-012",
+      "stem": "Which one of the following is a primitive root modulo $9$? (Note $\\phi(9) = 6$.)",
+      "options": [
+        "$1$",
+        "$2$",
+        "$4$",
+        "$8$"
+      ],
+      "answer": 1,
+      "explanation": "A primitive root mod $9$ has order $6$. Test $2$: its powers are $2, 4, 8, 7, 5, 1$ modulo $9$ for exponents $1$ through $6$, reaching $1$ first at $k = 6$. So $\\operatorname{ord}_9(2) = 6$ and $2$ is a primitive root. By contrast $8 \\equiv -1$ has order $2$, and $4 = 2^2$ has order $3$. The trap is picking $-1$ or a square; only $2$ here attains the full order $6$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-013",
+      "stem": "The congruence $a^k \\equiv 1 \\pmod n$ holds if and only if which condition on $\\operatorname{ord}_n(a)$ is met?",
+      "options": [
+        "$\\operatorname{ord}_n(a)$ divides $k$",
+        "$\\operatorname{ord}_n(a) = k$",
+        "$k$ divides $\\operatorname{ord}_n(a)$",
+        "$\\gcd(k, n) = 1$"
+      ],
+      "answer": 0,
+      "explanation": "By the basic order property, $a^k \\equiv 1 \\pmod n$ exactly when $\\operatorname{ord}_n(a) \\mid k$. The order is the least exponent giving $1$, and the set of all such exponents is precisely its multiples. For instance $\\operatorname{ord}_7(2) = 3$, and $2^k \\equiv 1$ for $k = 3, 6, 9, \\dots$. The trap is requiring $k$ to equal the order; any multiple of the order works, so the order must divide $k$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-014",
+      "stem": "What is the order of $10$ modulo $11$?",
+      "options": [
+        "$10$",
+        "$2$",
+        "$1$",
+        "$5$"
+      ],
+      "answer": 1,
+      "explanation": "Since $10 \\equiv -1 \\pmod{11}$, we have $10^2 \\equiv 1$, and $10^1 = 10 \\ne 1$, so the order is $2$. The value $10$ would make $10$ a primitive root, but $-1$ never generates a group of order more than $2$. The trap is treating $10$ as a large generator; as $-1$, it squares to $1$, so its order is $2$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-015",
+      "stem": "Which of these values of $n$ HAS a primitive root?",
+      "options": [
+        "$8$",
+        "$15$",
+        "$12$",
+        "$14$"
+      ],
+      "answer": 3,
+      "explanation": "Primitive roots exist only modulo $1, 2, 4, p^k,$ or $2p^k$ for odd prime $p$. Now $14 = 2 \\times 7$ has the form $2p$, so it has a primitive root. The others fail: $15 = 3 \\times 5$ (product of two distinct odd primes), $12 = 2^2 \\times 3$, and $8 = 2^3$ are none of the allowed forms. The trap is assuming any even number times a prime works; only $2p^k$ (one odd prime power) qualifies, which $14$ satisfies.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-016",
+      "stem": "What is the order of $6$ modulo $7$?",
+      "options": [
+        "$2$",
+        "$6$",
+        "$1$",
+        "$3$"
+      ],
+      "answer": 0,
+      "explanation": "Since $6 \\equiv -1 \\pmod 7$, $6^2 = 36 \\equiv 1$ and $6^1 = 6 \\ne 1$, so the order is $2$. The value $6 = \\phi(7)$ would make $6$ a primitive root, but $-1$ has order $2$ in any modulus above $2$. The trap is confusing the residue $6$ with a generator; as $-1$ it squares to $1$, giving order $2$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-017",
+      "stem": "How many primitive roots does $13$ have modulo $13$?",
+      "options": [
+        "$6$",
+        "$12$",
+        "$1$",
+        "$4$"
+      ],
+      "answer": 3,
+      "explanation": "The count of primitive roots modulo a prime $p$ is $\\phi(p - 1)$. For $p = 13$, that is $\\phi(12) = \\phi(2^2 \\times 3) = 12 \\times \\tfrac12 \\times \\tfrac23 = 4$. So there are $4$ primitive roots mod $13$. The value $12 = \\phi(13)$ counts all nonzero residues. The trap is counting every unit; only $\\phi(12) = 4$ of them are generators.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-018",
+      "stem": "What is the order of $3$ modulo $13$?",
+      "options": [
+        "$6$",
+        "$3$",
+        "$4$",
+        "$12$"
+      ],
+      "answer": 1,
+      "explanation": "Compute powers of $3$ modulo $13$: $3^1 = 3$, $3^2 = 9$, $3^3 = 27 \\equiv 1$. The order is $3$, so $3$ is not a primitive root mod $13$ (which needs order $12$). The value $12$ assumes $3$ generates the group. The trap is presuming primitivity; $3^3 \\equiv 1$ shows the order is just $3$, a divisor of $\\phi(13) = 12$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-019",
+      "stem": "Using the primitive root $3$ modulo $7$, solve $3^x \\equiv 4 \\pmod 7$ for $x$ in the range $0 \\le x < 6$ (this is a discrete logarithm).",
+      "options": [
+        "$2$",
+        "$4$",
+        "$3$",
+        "$5$"
+      ],
+      "answer": 1,
+      "explanation": "From the power table of $3$ mod $7$: $3^1 = 3$, $3^2 = 2$, $3^3 = 6$, $3^4 = 4$. So $3^4 \\equiv 4$ and $x = 4$. The value $2$ gives $3^2 \\equiv 2$, the wrong target. The trap is reading the table at the wrong exponent; the discrete log of $4$ base $3$ is $4$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-020",
+      "stem": "If $g$ is a primitive root modulo a prime $p$, then $g^k$ is also a primitive root if and only if which condition holds?",
+      "options": [
+        "$k$ is prime",
+        "$\\gcd(k, p - 1) = 1$",
+        "$k$ divides $p - 1$",
+        "$k$ is even"
+      ],
+      "answer": 1,
+      "explanation": "The power $g^k$ has order $(p-1)/\\gcd(k, p-1)$, which equals $p - 1$ exactly when $\\gcd(k, p - 1) = 1$. So $g^k$ is a primitive root iff $k$ is coprime to $p - 1$. This is why there are $\\phi(p-1)$ primitive roots. The trap is thinking any exponent works; only those coprime to $p - 1$ preserve the full order.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-021",
+      "stem": "What is the order of $4$ modulo $5$?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "Since $4 \\equiv -1 \\pmod 5$, $4^2 = 16 \\equiv 1$ and $4^1 = 4 \\ne 1$, so the order is $2$. The value $4 = \\phi(5)$ would make $4$ a primitive root, but $-1$ has order $2$. The trap is assuming the residue $4$ is a generator; as $-1$ it squares to $1$, so the order is $2$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-022",
+      "stem": "Is $3$ a primitive root modulo $14$? (Note $\\phi(14) = 6$.)",
+      "options": [
+        "No, $14$ has no primitive root",
+        "No, its order is $2$",
+        "No, its order is $3$",
+        "Yes, its order is $6$"
+      ],
+      "answer": 3,
+      "explanation": "Since $14 = 2 \\times 7$ is of the form $2p$, it has primitive roots, and we test $3$. Powers of $3$ modulo $14$: $3^1 = 3$, $3^2 = 9$, $3^3 = 27 \\equiv 13$, $3^4 \\equiv 11$, $3^5 \\equiv 5$, $3^6 \\equiv 1$. The order is $6 = \\phi(14)$, so $3$ is a primitive root mod $14$. The trap is assuming even moduli lack primitive roots; $14 = 2p$ qualifies, and $3$ has full order $6$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-023",
+      "stem": "The residues modulo $7$ that are primitive roots are exactly:",
+      "options": [
+        "$\\lbrace 3, 5 \\rbrace$",
+        "$\\lbrace 1, 6 \\rbrace$",
+        "$\\lbrace 2, 4 \\rbrace$",
+        "all of $\\lbrace 1, 2, 3, 4, 5, 6 \\rbrace$"
+      ],
+      "answer": 0,
+      "explanation": "There are $\\phi(6) = 2$ primitive roots mod $7$. Checking orders: $3$ and $5$ each have order $6$ (their powers cycle through all nonzero residues), while $2, 4$ have order $3$, $6$ has order $2$, and $1$ has order $1$. So the primitive roots are $\\lbrace 3, 5 \\rbrace$. The trap is including low-order elements like $2$ or $4$; only $3$ and $5$ generate the full group.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-024",
+      "format": "cloze",
+      "stem": "Find the multiplicative order of $2$ modulo $7$ by listing powers.",
+      "solution": "Compute powers of $2$ modulo $7$: $2^1 = 2$, $2^2 = 4$, and $2^3 = 8 \\equiv$ {{1}}. The first exponent that returns the value $1$ is the order, so $\\operatorname{ord}_7(2) =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$2^3 = 8 \\equiv 1 \\pmod 7$, so the order is $3$. This divides $\\phi(7) = 6$, as it must.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-025",
+      "format": "cloze",
+      "stem": "Determine whether $n = 12$ has a primitive root, and state the order requirement.",
+      "solution": "A primitive root modulo $12$ would need order $\\phi(12)$, whose value is {{1}}. But every unit modulo $12$ satisfies $a^2 \\equiv 1$, so the largest possible order is $2$. Therefore $12$ {{2}} a primitive root.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "has",
+            "does not have"
+          ],
+          "answer": "does not have"
+        }
+      ],
+      "explanation": "$\\phi(12) = 4$, but the units $1, 5, 7, 11$ all square to $1$, so no element reaches order $4$. Since $12$ is not of the form $1, 2, 4, p^k, 2p^k$, it has no primitive root.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-026",
+      "format": "cloze",
+      "stem": "Using the primitive root $3$ modulo $7$, build a short index table and read off two discrete logs.",
+      "solution": "The powers of $3$ modulo $7$ are $3^1 = 3$, $3^2 = 2$, $3^3 = 6$, $3^4 = 4$, $3^5 = 5$, $3^6 = 1$. From this, the index of $4$ (the exponent giving $4$) is {{1}}, and the index of $5$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Reading the table, $3^4 \\equiv 4$ gives $\\operatorname{ind}_3(4) = 4$, and $3^5 \\equiv 5$ gives $\\operatorname{ind}_3(5) = 5$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-027",
+      "format": "cloze",
+      "stem": "Count the primitive roots modulo $11$ using the formula $\\phi(p - 1)$.",
+      "solution": "The number of primitive roots modulo the prime $11$ is $\\phi(11 - 1) = \\phi(10)$. Since $10 = 2 \\times 5$, this totient equals {{1}}. So modulo $11$ there are exactly {{2}} primitive roots.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\phi(10) = \\phi(2)\\phi(5) = 1 \\times 4 = 4$, so there are $4$ primitive roots mod $11$ (namely $2, 6, 7, 8$).",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-028",
+      "format": "cloze",
+      "stem": "Use the order-of-a-power rule to find the order of $4$ modulo $7$, given $\\operatorname{ord}_7(2) = 3$ and $4 = 2^2$.",
+      "solution": "The rule $\\operatorname{ord}_n(a^k) = \\operatorname{ord}_n(a) / \\gcd(\\operatorname{ord}_n(a), k)$ applies with order $3$ and $k = 2$. The value of $\\gcd(3, 2)$ is {{1}}. Dividing $3$ by this gcd gives the order of $4$, which is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\gcd(3, 2) = 1$, so $\\operatorname{ord}_7(4) = 3 / 1 = 3$. Direct check: $4^1 = 4$, $4^2 \\equiv 2$, $4^3 \\equiv 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-primitive-roots-029",
+      "format": "cloze",
+      "stem": "Decide whether $n = 18$ has a primitive root, and identify the relevant structural form.",
+      "solution": "Write $18 = 2 \\times 3^2$, which has the form $2p^k$ for the odd prime $p = 3$. Because $n$ matches one of the forms that admit primitive roots, $18$ {{1}} a primitive root. The order such a root must have is $\\phi(18) =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "has",
+            "does not have"
+          ],
+          "answer": "has"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Since $18 = 2 \\times 3^2 = 2p^k$, it has a primitive root. Its order is $\\phi(18) = \\phi(2)\\phi(9) = 1 \\times 6 = 6$ (for example $5$ is a primitive root mod $18$).",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    }
+  ]
+}

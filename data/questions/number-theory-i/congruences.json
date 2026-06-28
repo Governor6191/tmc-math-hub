@@ -1,0 +1,470 @@
+{
+  "courseId": "number-theory-i",
+  "topicId": "congruences",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "number-theory-i-congruences-001",
+      "stem": "Which one of the following congruences is true?",
+      "options": [
+        "$44 \\equiv 5 \\pmod 7$",
+        "$50 \\equiv 2 \\pmod 7$",
+        "$53 \\equiv 5 \\pmod 7$",
+        "$39 \\equiv 4 \\pmod 7$"
+      ],
+      "answer": 3,
+      "explanation": "By definition $a \\equiv b \\pmod m$ means $m \\mid (a - b)$. For $39 \\equiv 4 \\pmod 7$, the difference $39 - 4 = 35 = 7 \\times 5$ is divisible by $7$, so it holds. The others fail the divisibility test: $50 - 2 = 48$, $44 - 5 = 39$, and $53 - 5 = 48$, none a multiple of $7$. The trap is checking whether the numbers look close or share a last digit rather than whether $7$ divides their difference; only $35$ here is a clean multiple of $7$.",
+      "difficulty": "warmup",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-002",
+      "stem": "The linear congruence $ax \\equiv b \\pmod m$ has a solution if and only if which condition holds?",
+      "options": [
+        "$\\gcd(a, m)$ divides $b$",
+        "$a$ and $m$ are both prime",
+        "$a$ divides $m$",
+        "$\\gcd(a, b) = 1$"
+      ],
+      "answer": 0,
+      "explanation": "The congruence $ax \\equiv b \\pmod m$ is solvable exactly when $d = \\gcd(a, m)$ divides $b$, and then it has exactly $d$ incongruent solutions modulo $m$. For example $2x \\equiv 3 \\pmod 4$ has no solution since $\\gcd(2,4) = 2 \\nmid 3$, but $2x \\equiv 4 \\pmod 4$ does. The trap is requiring $\\gcd(a, m) = 1$: that guarantees a unique solution, but solutions can still exist when the gcd divides $b$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-003",
+      "stem": "Solve $3x \\equiv 2 \\pmod 7$ for the integer $x$ with $0 \\le x < 7$.",
+      "options": [
+        "$6$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "answer": 1,
+      "explanation": "Since $\\gcd(3, 7) = 1$ there is a unique solution. The inverse of $3$ modulo $7$ is $5$, because $3 \\times 5 = 15 \\equiv 1$. Multiply: $x \\equiv 5 \\times 2 = 10 \\equiv 3 \\pmod 7$, and indeed $3 \\times 3 = 9 \\equiv 2$. The value $5$ is the inverse of $3$, not the solution. The trap is stopping at the inverse: you must still multiply it by the right side $b = 2$ and reduce, giving $x = 3$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-004",
+      "stem": "How many solutions modulo $10$ does $4x \\equiv 6 \\pmod{10}$ have?",
+      "options": [
+        "None",
+        "Exactly one",
+        "Exactly two",
+        "Exactly four"
+      ],
+      "answer": 2,
+      "explanation": "Here $d = \\gcd(4, 10) = 2$, and $2 \\mid 6$, so the congruence is solvable with exactly $d = 2$ incongruent solutions modulo $10$. Dividing through by $2$ gives $2x \\equiv 3 \\pmod 5$, whose unique solution mod $5$ is $x \\equiv 4$, lifting to $x = 4$ and $x = 9$ modulo $10$. The trap is expecting one solution: when $\\gcd(a, m) = d > 1$ divides $b$, there are $d$ solutions, here two.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-005",
+      "stem": "Does the congruence $2x \\equiv 3 \\pmod 4$ have a solution?",
+      "options": [
+        "Yes, $x = 3$",
+        "No, because $\\gcd(2, 4) = 2$ does not divide $3$",
+        "Yes, it has two solutions",
+        "Yes, $x = 1$"
+      ],
+      "answer": 1,
+      "explanation": "The solvability test is whether $\\gcd(a, m) \\mid b$. Here $\\gcd(2, 4) = 2$, and $2 \\nmid 3$, so there is no solution. Concretely $2x$ is always even modulo $4$ (it gives $0$ or $2$), never the odd residue $3$. The trap is trying to solve by guessing $x$: no integer works, because the left side cannot reach an odd value when the modulus and coefficient share the factor $2$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-006",
+      "stem": "What is the multiplicative inverse of $5$ modulo $11$, that is the $x$ with $5x \\equiv 1 \\pmod{11}$ and $0 \\le x < 11$?",
+      "options": [
+        "$5$",
+        "$6$",
+        "$9$",
+        "$2$"
+      ],
+      "answer": 2,
+      "explanation": "Search for $x$ with $5x \\equiv 1 \\pmod{11}$. Testing, $5 \\times 9 = 45 = 44 + 1 \\equiv 1$, so the inverse is $9$. An inverse exists because $\\gcd(5, 11) = 1$. The value $6 = 11 - 5$ is the additive complement, not the multiplicative inverse. The trap is subtracting from the modulus: the inverse is the residue whose product with $5$ is $1$, found by search or the extended Euclidean algorithm, here $9$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-007",
+      "stem": "What is the multiplicative inverse of $7$ modulo $12$?",
+      "options": [
+        "$1$",
+        "$5$",
+        "$7$",
+        "$11$"
+      ],
+      "answer": 2,
+      "explanation": "We need $7x \\equiv 1 \\pmod{12}$. Testing, $7 \\times 7 = 49 = 48 + 1 \\equiv 1$, so $7$ is its own inverse modulo $12$. This works because $\\gcd(7, 12) = 1$. The value $5 = 12 - 7$ is the additive complement. The trap is assuming the inverse differs from the number itself; here $7$ is self-inverse, since $49 \\equiv 1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-008",
+      "stem": "By the Chinese Remainder Theorem, find the unique $x$ modulo $15$ with $x \\equiv 2 \\pmod 3$ and $x \\equiv 3 \\pmod 5$.",
+      "options": [
+        "$13$",
+        "$2$",
+        "$8$",
+        "$5$"
+      ],
+      "answer": 2,
+      "explanation": "Since $\\gcd(3, 5) = 1$, the CRT gives one solution modulo $15$. Write $x = 3 + 5t$ to satisfy the second congruence; then $3 + 5t \\equiv 2 \\pmod 3$ means $2t \\equiv 2 \\pmod 3$, so $t \\equiv 1$, giving $x = 3 + 5 = 8$. Check: $8 \\equiv 2 \\pmod 3$ and $8 \\equiv 3 \\pmod 5$. The value $2$ satisfies only the first congruence. The trap is fixing just one condition: the CRT solution must meet both, which $8$ does.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-009",
+      "stem": "By the Chinese Remainder Theorem, find the unique $x$ modulo $12$ with $x \\equiv 1 \\pmod 4$ and $x \\equiv 2 \\pmod 3$.",
+      "options": [
+        "$5$",
+        "$9$",
+        "$11$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "With coprime moduli $4$ and $3$, there is one solution modulo $12$. Set $x = 1 + 4t$; then $1 + 4t \\equiv 2 \\pmod 3$ gives $t \\equiv 1 \\pmod 3$, so $x = 1 + 4 = 5$. Check: $5 \\equiv 1 \\pmod 4$ and $5 \\equiv 2 \\pmod 3$. The value $1$ meets only the first condition. The trap is not enforcing both congruences; the correct residue $5$ satisfies each.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-010",
+      "stem": "A modular inverse of $a$ modulo $m$ exists exactly when:",
+      "options": [
+        "$a$ is even",
+        "$m$ is prime",
+        "$\\gcd(a, m) = 1$",
+        "$a < m$"
+      ],
+      "answer": 2,
+      "explanation": "The element $a$ is invertible modulo $m$ if and only if $\\gcd(a, m) = 1$, since then Bezout gives $ax + my = 1$, so $ax \\equiv 1 \\pmod m$. If $m$ is prime, every nonzero residue is coprime to $m$ and so invertible, but primality is sufficient, not necessary: $\\gcd(7, 12) = 1$ makes $7$ invertible mod the composite $12$. The trap is requiring $m$ prime; coprimality of $a$ and $m$ is the exact condition.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-011",
+      "stem": "How many incongruent solutions modulo $14$ does $8x \\equiv 6 \\pmod{14}$ have?",
+      "options": [
+        "Three",
+        "Two",
+        "One",
+        "None"
+      ],
+      "answer": 1,
+      "explanation": "Here $d = \\gcd(8, 14) = 2$, and $2 \\mid 6$, so there are exactly $d = 2$ solutions modulo $14$. Dividing by $2$: $4x \\equiv 3 \\pmod 7$, and since the inverse of $4$ mod $7$ is $2$, $x \\equiv 6 \\pmod 7$, lifting to $x = 6$ and $x = 13$ modulo $14$. The trap is expecting one solution or none; the gcd $2$ divides $6$, so two solutions appear, spaced $m/d = 7$ apart.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-012",
+      "stem": "Solve $5x \\equiv 3 \\pmod 7$ for $x$ with $0 \\le x < 7$.",
+      "options": [
+        "$4$",
+        "$1$",
+        "$6$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "Since $\\gcd(5, 7) = 1$, multiply by the inverse of $5$, which is $3$ (as $5 \\times 3 = 15 \\equiv 1$): $x \\equiv 3 \\times 3 = 9 \\equiv 2 \\pmod 7$. Check: $5 \\times 2 = 10 \\equiv 3$. The value $4$ comes from dividing the right side by $5$ as in ordinary arithmetic. The trap is treating the congruence as a real equation; you multiply by the modular inverse, not divide, giving $x = 2$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-013",
+      "stem": "If $a \\equiv b \\pmod m$ and $c \\equiv d \\pmod m$, which of the following is always valid?",
+      "options": [
+        "$a^c \\equiv b^d \\pmod m$",
+        "$ac \\equiv bd \\pmod m$",
+        "$a \\equiv b \\pmod{cm}$",
+        "$a / c \\equiv b / d \\pmod m$"
+      ],
+      "answer": 1,
+      "explanation": "Congruences may be added, subtracted, and multiplied termwise: from $a \\equiv b$ and $c \\equiv d$ it follows that $ac \\equiv bd \\pmod m$. Division is not generally allowed (it needs an invertible divisor), and exponents cannot be reduced modulo $m$ the way bases can. The trap is assuming all operations carry over: only addition, subtraction, and multiplication are guaranteed, so $ac \\equiv bd$ is the safe choice.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-014",
+      "stem": "By the Chinese Remainder Theorem, find $x$ modulo $60$ with $x \\equiv 2 \\pmod 3$, $x \\equiv 3 \\pmod 4$, and $x \\equiv 1 \\pmod 5$.",
+      "options": [
+        "$47$",
+        "$31$",
+        "$23$",
+        "$11$"
+      ],
+      "answer": 3,
+      "explanation": "Combine the first two: $x \\equiv 2 \\pmod 3$ and $x \\equiv 3 \\pmod 4$ give $x \\equiv 11 \\pmod{12}$ (since $11 \\equiv 2 \\pmod 3$ and $11 \\equiv 3 \\pmod 4$). Now solve $x \\equiv 11 \\pmod{12}$ with $x \\equiv 1 \\pmod 5$: write $x = 11 + 12s$, so $11 + 12s \\equiv 1 \\pmod 5$ means $1 + 2s \\equiv 1$, hence $s \\equiv 0$, giving $x = 11$. Check: $11 \\equiv 1 \\pmod 5$. The trap is solving the system in a way that drops one congruence; $x = 11$ meets all three.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-015",
+      "stem": "The Chinese Remainder Theorem guarantees a unique solution modulo $m_1 m_2$ to the system $x \\equiv a_1 \\pmod{m_1}$, $x \\equiv a_2 \\pmod{m_2}$ provided that:",
+      "options": [
+        "$m_1$ and $m_2$ are coprime",
+        "$m_1 < m_2$",
+        "$a_1 = a_2$",
+        "$m_1$ and $m_2$ are both prime"
+      ],
+      "answer": 0,
+      "explanation": "The CRT requires the moduli to be pairwise coprime, $\\gcd(m_1, m_2) = 1$; then there is exactly one solution modulo the product $m_1 m_2$. The moduli need not be prime: $\\gcd(4, 9) = 1$ works even though neither is prime in the needed sense. The trap is demanding primality; coprimality of the moduli is the precise condition for a unique combined solution.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-016",
+      "stem": "Does $3x \\equiv 5 \\pmod 6$ have a solution?",
+      "options": [
+        "No, since $\\gcd(3, 6) = 3$ does not divide $5$",
+        "Yes, three solutions",
+        "Yes, $x = 4$",
+        "Yes, $x = 2$"
+      ],
+      "answer": 0,
+      "explanation": "Apply the test $\\gcd(a, m) \\mid b$. Here $\\gcd(3, 6) = 3$ and $3 \\nmid 5$, so there is no solution. Indeed $3x \\pmod 6$ only takes the values $0$ and $3$, never $5$. The trap is searching for an $x$ that works: none does, because the multiples of $3$ modulo $6$ cannot equal $5$ when $3$ fails to divide $5$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-017",
+      "stem": "What is the multiplicative inverse of $3$ modulo $10$?",
+      "options": [
+        "$7$",
+        "$9$",
+        "$1$",
+        "$3$"
+      ],
+      "answer": 0,
+      "explanation": "We need $3x \\equiv 1 \\pmod{10}$. Testing, $3 \\times 7 = 21 \\equiv 1$, so the inverse is $7$. It exists because $\\gcd(3, 10) = 1$. The value $3$ would only be self-inverse if $9 \\equiv 1$, which is false. The trap is assuming a small number is its own inverse; checking the product shows $3 \\times 7 = 21 \\equiv 1$, so the inverse is $7$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-018",
+      "stem": "How many incongruent solutions modulo $15$ does $9x \\equiv 12 \\pmod{15}$ have?",
+      "options": [
+        "None",
+        "One",
+        "Three",
+        "Two"
+      ],
+      "answer": 2,
+      "explanation": "Here $d = \\gcd(9, 15) = 3$, and $3 \\mid 12$, so there are exactly $3$ solutions modulo $15$. Dividing by $3$: $3x \\equiv 4 \\pmod 5$, and the inverse of $3$ mod $5$ is $2$, so $x \\equiv 8 \\equiv 3 \\pmod 5$, lifting to $x = 3, 8, 13$ modulo $15$. The trap is expecting a single solution; when the gcd $d$ divides $b$, there are $d$ solutions spaced $m/d = 5$ apart.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-019",
+      "stem": "Reduce $7^{2} \\pmod{12}$ and use the result to describe the order-like behaviour of $7$. What is $7^2 \\bmod 12$?",
+      "options": [
+        "$7$",
+        "$11$",
+        "$1$",
+        "$5$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $7^2 = 49 = 48 + 1 \\equiv 1 \\pmod{12}$. So $7$ squared returns to $1$, which means $7$ is its own inverse modulo $12$. The value $7$ would be $7^1$, not the square. The trap is forgetting to reduce $49$: it leaves remainder $1$ on division by $12$, so $7^2 \\equiv 1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-020",
+      "stem": "A basket of eggs has the property that when grouped by $3$ there are $2$ left, and when grouped by $5$ there are $4$ left. What is the smallest positive number of eggs?",
+      "options": [
+        "$14$",
+        "$19$",
+        "$8$",
+        "$11$"
+      ],
+      "answer": 0,
+      "explanation": "Solve $x \\equiv 2 \\pmod 3$ and $x \\equiv 4 \\pmod 5$ by CRT. Write $x = 4 + 5t$; then $4 + 5t \\equiv 2 \\pmod 3$ gives $1 + 2t \\equiv 2$, so $2t \\equiv 1 \\pmod 3$, $t \\equiv 2$, and $x = 4 + 10 = 14$. Check: $14 \\equiv 2 \\pmod 3$ and $14 \\equiv 4 \\pmod 5$. The smallest positive solution is $14$. The trap is testing values against only one condition; $14$ is the least meeting both.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-021",
+      "stem": "Solve $7x \\equiv 1 \\pmod{12}$, which finds the inverse of $7$ modulo $12$. What is $x$?",
+      "options": [
+        "$7$",
+        "$11$",
+        "$5$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "Find $x$ with $7x \\equiv 1 \\pmod{12}$. Testing, $7 \\times 7 = 49 \\equiv 1$, so $x = 7$. The value $5 = 12 - 7$ is the additive complement, and $11 \\equiv -1$ is the inverse only of an element squaring to $1$ differently. The trap is confusing additive and multiplicative inverses; the residue with product $1$ is $7$ itself.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-022",
+      "stem": "When $\\gcd(a, m) = d$ and $d \\mid b$, how many incongruent solutions modulo $m$ does $ax \\equiv b \\pmod m$ have?",
+      "options": [
+        "Exactly $b$",
+        "Exactly $1$",
+        "Exactly $m$",
+        "Exactly $d$"
+      ],
+      "answer": 3,
+      "explanation": "When the solvability condition $d \\mid b$ holds, the congruence has exactly $d = \\gcd(a, m)$ incongruent solutions modulo $m$, spaced $m/d$ apart. For instance $4x \\equiv 6 \\pmod{10}$ has $\\gcd(4,10) = 2$ solutions. The trap is always expecting one solution; uniqueness happens only when $d = 1$, otherwise there are $d$ of them.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-023",
+      "stem": "What is the multiplicative inverse of $2$ modulo $9$?",
+      "options": [
+        "$8$",
+        "$5$",
+        "$7$",
+        "$2$"
+      ],
+      "answer": 1,
+      "explanation": "We need $2x \\equiv 1 \\pmod 9$. Testing, $2 \\times 5 = 10 \\equiv 1$, so the inverse is $5$. It exists since $\\gcd(2, 9) = 1$. The value $7 = 9 - 2$ is the additive complement, and $8 \\equiv -1$ squares to $1$ but is not the inverse of $2$. The trap is subtracting from the modulus; the inverse is the residue whose product with $2$ is $1$, namely $5$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-024",
+      "format": "cloze",
+      "stem": "Solve the linear congruence $4x \\equiv 5 \\pmod 7$ for $x$ with $0 \\le x < 7$, using the modular inverse of $4$.",
+      "solution": "Since $\\gcd(4, 7) = 1$, multiply by the inverse of $4$ modulo $7$. Because $4 \\times 2 = 8 \\equiv 1$, that inverse is {{1}}. Then $x \\equiv 2 \\times 5 = 10 \\equiv$ {{2}} $\\pmod 7$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The inverse of $4$ mod $7$ is $2$, so $x \\equiv 2 \\times 5 = 10 \\equiv 3 \\pmod 7$. Check: $4 \\times 3 = 12 \\equiv 5$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-025",
+      "format": "cloze",
+      "stem": "Use the Chinese Remainder Theorem to solve $x \\equiv 3 \\pmod 4$ and $x \\equiv 4 \\pmod 5$ for the unique residue modulo $20$.",
+      "solution": "Write $x = 4 + 5t$ to meet the second congruence, then require $4 + 5t \\equiv 3 \\pmod 4$. This reduces to $t \\equiv 3 \\pmod 4$, so the smallest such $t$ is {{1}}. Substituting gives $x = 4 + 5 \\times 3$, so $x \\equiv$ {{2}} $\\pmod{20}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 19,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From $4 + 5t \\equiv 3 \\pmod 4$, since $5 \\equiv 1$, we get $t \\equiv -1 \\equiv 3 \\pmod 4$, so $t = 3$ and $x = 19$. Check: $19 \\equiv 3 \\pmod 4$ and $19 \\equiv 4 \\pmod 5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-026",
+      "format": "cloze",
+      "stem": "Decide whether $6x \\equiv 4 \\pmod 8$ is solvable, and if so how many solutions it has modulo $8$.",
+      "solution": "The solvability test uses $d = \\gcd(6, 8)$, whose value is {{1}}. Since this divides $4$, the congruence is solvable, and the number of incongruent solutions modulo $8$ equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$\\gcd(6, 8) = 2$ divides $4$, so there are $2$ solutions. Dividing by $2$ gives $3x \\equiv 2 \\pmod 4$, with solution $x \\equiv 2 \\pmod 4$, lifting to $x = 2, 6$ modulo $8$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-027",
+      "format": "cloze",
+      "stem": "Find the multiplicative inverse of $6$ modulo $13$ by testing residues.",
+      "solution": "We need $6x \\equiv 1 \\pmod{13}$. Trying $x = 11$ gives $6 \\times 11 = 66$, and $66 \\bmod 13$ equals {{1}}. Since that result is $1$, the inverse of $6$ modulo $13$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 11,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$6 \\times 11 = 66 = 65 + 1 = 13 \\times 5 + 1 \\equiv 1 \\pmod{13}$, so the inverse is $11$. It exists because $\\gcd(6, 13) = 1$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-028",
+      "format": "cloze",
+      "stem": "Determine whether $2x \\equiv 3 \\pmod 4$ has a solution, stating the reason.",
+      "solution": "Compute $d = \\gcd(2, 4)$, which equals {{1}}. Because this value does not divide $3$, the congruence {{2}} a solution.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "has",
+            "does not have"
+          ],
+          "answer": "does not have"
+        }
+      ],
+      "explanation": "$\\gcd(2, 4) = 2$, and $2 \\nmid 3$, so there is no solution. The left side $2x \\pmod 4$ only equals $0$ or $2$, never $3$.",
+      "difficulty": "core",
+      "source": "in the style of Burton, Elementary Number Theory"
+    },
+    {
+      "id": "number-theory-i-congruences-029",
+      "format": "cloze",
+      "stem": "Solve the system $x \\equiv 1 \\pmod 2$, $x \\equiv 2 \\pmod 3$, $x \\equiv 3 \\pmod 5$ by the Chinese Remainder Theorem, for the residue modulo $30$.",
+      "solution": "Combining $x \\equiv 1 \\pmod 2$ and $x \\equiv 2 \\pmod 3$ gives $x \\equiv 5 \\pmod 6$. Now solve $x \\equiv 5 \\pmod 6$ with $x \\equiv 3 \\pmod 5$: writing $x = 5 + 6t$ and reducing modulo $5$ forces $t \\equiv 3 \\pmod 5$, so $t =$ {{1}}. Then $x = 5 + 6 \\times 3$, giving $x \\equiv$ {{2}} $\\pmod{30}$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 23,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From $5 + 6t \\equiv 3 \\pmod 5$, since $6 \\equiv 1$, we get $t \\equiv -2 \\equiv 3 \\pmod 5$, so $t = 3$ and $x = 23$. Check: $23$ is odd, $23 \\equiv 2 \\pmod 3$, and $23 \\equiv 3 \\pmod 5$.",
+      "difficulty": "stretch",
+      "source": "in the style of Burton, Elementary Number Theory"
+    }
+  ]
+}

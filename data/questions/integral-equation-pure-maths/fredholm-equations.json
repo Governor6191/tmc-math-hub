@@ -1,0 +1,504 @@
+{
+  "courseId": "integral-equation-pure-maths",
+  "topicId": "fredholm-equations",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-001",
+      "stem": "The standard form of the Fredholm integral equation of the second kind is",
+      "options": [
+        "$\\phi(x) = f(x) + \\lambda\\int_a^b K(x,t)\\phi(t)\\,dt$",
+        "$f(x) = \\int_a^b K(x,t)\\phi(t)\\,dt$",
+        "$\\phi(x) = f(x) + \\lambda\\int_a^x K(x,t)\\phi(t)\\,dt$",
+        "$\\phi'(x) = \\int_a^b K(x,t)\\phi(t)\\,dt$"
+      ],
+      "answer": 0,
+      "explanation": "A Fredholm equation has both limits constant, and the second kind has the unknown both outside and inside the integral. This gives $\\phi(x) = f(x) + \\lambda\\int_a^b K(x,t)\\phi(t)\\,dt$. The form with variable upper limit $x$ is Volterra, the form with no free $\\phi(x)$ is first kind, and the form with $\\phi'(x)$ is integro-differential.",
+      "difficulty": "warmup",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-002",
+      "stem": "A kernel is called separable or degenerate when it can be written as",
+      "options": [
+        "$K(x,t) = \\dfrac{1}{\\sqrt{x - t}}$",
+        "$K(x,t) = K(t,x)$",
+        "$K(x,t) = \\displaystyle\\sum_{i=1}^{n} g_i(x)\\,h_i(t)$",
+        "$K(x,t) = k(x - t)$"
+      ],
+      "answer": 2,
+      "explanation": "A separable, or degenerate, kernel is a finite sum of products of a function of $x$ with a function of $t$, $K(x,t) = \\sum_{i=1}^n g_i(x)h_i(t)$. This structure is what lets a Fredholm equation of the second kind reduce to a finite algebraic system. The form $k(x-t)$ is a difference kernel, $K(x,t) = K(t,x)$ is symmetry, and $1/\\sqrt{x-t}$ is the singular Abel kernel.",
+      "difficulty": "warmup",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-003",
+      "stem": "When a Fredholm equation of the second kind has a separable kernel, the solution method reduces the problem to",
+      "options": [
+        "a single ordinary differential equation",
+        "an infinite power series with no closed form",
+        "a Laplace transform inversion",
+        "a system of linear algebraic equations for unknown constants"
+      ],
+      "answer": 3,
+      "explanation": "With a separable kernel $K(x,t) = \\sum g_i(x)h_i(t)$, writing $\\phi(x) = f(x) + \\lambda\\sum_i c_i g_i(x)$ where $c_i = \\int_a^b h_i(t)\\phi(t)\\,dt$ turns the integral equation into a finite system of linear algebraic equations for the constants $c_i$. Solving that system and substituting back gives the closed form solution. No differential equation or transform is needed.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-004",
+      "stem": "For $\\phi(x) = x + \\lambda\\displaystyle\\int_0^1 x t\\,\\phi(t)\\,dt$, set $c = \\int_0^1 t\\,\\phi(t)\\,dt$. Which equation determines $c$?",
+      "options": [
+        "$c = 1 + \\lambda c$",
+        "$c = \\dfrac{1}{3} - \\lambda c$",
+        "$c = \\dfrac{1}{2}(1 + \\lambda c)$",
+        "$c = \\dfrac{1}{3}(1 + \\lambda c)$"
+      ],
+      "answer": 3,
+      "explanation": "Since the kernel is $xt$, write $\\phi(x) = x + \\lambda c\\,x$, so that $\\phi(t) = t + \\lambda c\\,t$. Then $c = \\int_0^1 t\\,\\phi(t)\\,dt = \\int_0^1 t(t + \\lambda c\\,t)\\,dt = \\int_0^1 (1 + \\lambda c)t^2\\,dt = (1 + \\lambda c)\\cdot\\frac{1}{3}$. So $c = \\frac{1}{3}(1 + \\lambda c)$, using $\\int_0^1 t^2\\,dt = \\frac{1}{3}$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-005",
+      "stem": "Solve $\\phi(x) = x + \\lambda\\displaystyle\\int_0^1 x t\\,\\phi(t)\\,dt$ for general $\\lambda$.",
+      "options": [
+        "$\\phi(x) = (3 - \\lambda)x$",
+        "$\\phi(x) = \\dfrac{x}{3 - \\lambda}$",
+        "$\\phi(x) = \\dfrac{3x}{3 + \\lambda}$",
+        "$\\phi(x) = \\dfrac{3x}{3 - \\lambda}$"
+      ],
+      "answer": 3,
+      "explanation": "Write $\\phi(x) = x + \\lambda c\\,x$ with $c = \\int_0^1 t\\,\\phi(t)\\,dt$. From the previous step $c = \\frac{1}{3}(1 + \\lambda c)$, so $3c = 1 + \\lambda c$, giving $c(3 - \\lambda) = 1$ and $c = \\frac{1}{3 - \\lambda}$. Then $\\phi(x) = x + \\frac{\\lambda x}{3 - \\lambda} = \\frac{(3 - \\lambda)x + \\lambda x}{3 - \\lambda} = \\frac{3x}{3 - \\lambda}$. A check at $\\lambda = 1$ gives $\\frac{3x}{2}$, consistent with direct substitution.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-006",
+      "stem": "For which value of $\\lambda$ does $\\phi(x) = x + \\lambda\\displaystyle\\int_0^1 x t\\,\\phi(t)\\,dt$ fail to have a unique solution?",
+      "options": [
+        "$\\lambda = \\dfrac{1}{3}$",
+        "$\\lambda = 3$",
+        "$\\lambda = 0$",
+        "$\\lambda = 1$"
+      ],
+      "answer": 1,
+      "explanation": "The solution is $\\phi(x) = \\frac{3x}{3 - \\lambda}$, which is undefined when the denominator $3 - \\lambda = 0$, that is at $\\lambda = 3$. This value is the characteristic value (eigenvalue) of the kernel, where the determinant of the algebraic system vanishes. Away from $\\lambda = 3$ the solution exists and is unique, so $\\lambda = 0, 1, \\frac{1}{3}$ all give valid solutions.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-007",
+      "stem": "Solve $\\phi(x) = 1 + \\displaystyle\\int_0^1 x t\\,\\phi(t)\\,dt$ (so $\\lambda = 1$).",
+      "options": [
+        "$\\phi(x) = 1 + x$",
+        "$\\phi(x) = \\dfrac{3}{4} + x$",
+        "$\\phi(x) = 1 + \\dfrac{3}{4}x$",
+        "$\\phi(x) = 1 + \\dfrac{1}{2}x$"
+      ],
+      "answer": 2,
+      "explanation": "Write $\\phi(x) = 1 + c\\,x$ with $c = \\int_0^1 t\\,\\phi(t)\\,dt$. Then $c = \\int_0^1 t(1 + c\\,t)\\,dt = \\int_0^1 (t + c\\,t^2)\\,dt = \\frac{1}{2} + \\frac{c}{3}$. So $c - \\frac{c}{3} = \\frac{1}{2}$, giving $\\frac{2c}{3} = \\frac{1}{2}$ and $c = \\frac{3}{4}$. Hence $\\phi(x) = 1 + \\frac{3}{4}x$. Substituting back confirms the integral reproduces $\\frac{3}{4}x$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-008",
+      "stem": "Solve $\\phi(x) = x^2 + 2\\displaystyle\\int_0^1 x^2 t\\,\\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = 4x^2$",
+        "$\\phi(x) = x^2$",
+        "$\\phi(x) = 2x^2$",
+        "$\\phi(x) = \\dfrac{1}{2}x^2$"
+      ],
+      "answer": 2,
+      "explanation": "The kernel $x^2 t$ gives $\\phi(x) = x^2 + 2c\\,x^2 = (1 + 2c)x^2$ with $c = \\int_0^1 t\\,\\phi(t)\\,dt$. Then $c = \\int_0^1 t(1 + 2c)t^2\\,dt = (1 + 2c)\\int_0^1 t^3\\,dt = \\frac{1 + 2c}{4}$. So $4c = 1 + 2c$, giving $2c = 1$ and $c = \\frac{1}{2}$. Hence $\\phi(x) = (1 + 1)x^2 = 2x^2$. Checking, $2\\int_0^1 x^2 t(2t^2)\\,dt = 4x^2\\cdot\\frac{1}{4} = x^2$, and $x^2 + x^2 = 2x^2$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-009",
+      "stem": "How many algebraic unknowns $c_i$ arise when solving a Fredholm equation whose kernel is $K(x,t) = 1 + xt + x^2 t^2$?",
+      "options": [
+        "infinitely many",
+        "1",
+        "3",
+        "2"
+      ],
+      "answer": 2,
+      "explanation": "The kernel splits into three separated products: $(1)(1) + (x)(t) + (x^2)(t^2)$, so $n = 3$ terms with $g_1 = 1, g_2 = x, g_3 = x^2$. Each term contributes one constant $c_i = \\int_a^b h_i(t)\\phi(t)\\,dt$, so there are $3$ unknowns and a $3 \\times 3$ linear system. The number of separated terms in the kernel sets the size of the system.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-010",
+      "stem": "Solve $\\phi(x) = x + \\displaystyle\\int_0^1 (x + t)\\,\\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = x + 1$",
+        "$\\phi(x) = -4x - 6$",
+        "$\\phi(x) = 6x + 4$",
+        "$\\phi(x) = -6x - 4$"
+      ],
+      "answer": 3,
+      "explanation": "Write $\\phi(x) = x + c_1 x + c_2$ where $c_1 = \\int_0^1 \\phi(t)\\,dt$ and $c_2 = \\int_0^1 t\\,\\phi(t)\\,dt$, so $\\phi(t) = (1 + c_1)t + c_2$. Then $c_1 = \\frac{1 + c_1}{2} + c_2$ gives $c_1 = 1 + 2c_2$, and $c_2 = \\frac{1 + c_1}{3} + \\frac{c_2}{2}$ gives $3c_2 = 2 + 2c_1$. Substituting, $3c_2 = 2 + 2(1 + 2c_2) = 4 + 4c_2$, so $c_2 = -4$ and $c_1 = -7$. Hence $\\phi(x) = (1 + c_1)x + c_2 = -6x - 4$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-011",
+      "stem": "In writing the solution of $\\phi(x) = f(x) + \\lambda\\int_a^b K(x,t)\\phi(t)\\,dt$ with separable kernel $K = \\sum_i g_i(x)h_i(t)$, the constants are defined by",
+      "options": [
+        "$c_i = \\displaystyle\\int_a^b K(x,t)\\,dt$",
+        "$c_i = g_i(x)\\,\\phi(x)$",
+        "$c_i = \\displaystyle\\int_a^b g_i(t)\\,\\phi(t)\\,dt$",
+        "$c_i = \\displaystyle\\int_a^b h_i(t)\\,\\phi(t)\\,dt$"
+      ],
+      "answer": 3,
+      "explanation": "Substituting $K = \\sum_i g_i(x)h_i(t)$ gives $\\phi(x) = f(x) + \\lambda\\sum_i g_i(x)\\int_a^b h_i(t)\\phi(t)\\,dt$. The factor that comes out as a constant is $c_i = \\int_a^b h_i(t)\\phi(t)\\,dt$, pairing the $t$ part of the kernel, $h_i$, with the unknown. Using $g_i$ instead would be incorrect, since $g_i(x)$ stays outside the integral.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-012",
+      "stem": "Solve the homogeneous equation $\\phi(x) = 3\\displaystyle\\int_0^1 x t\\,\\phi(t)\\,dt$ at its characteristic value.",
+      "options": [
+        "$\\phi(x) = Cx$ for an arbitrary constant $C$",
+        "$\\phi(x) = C$ constant",
+        "$\\phi(x) = Cx^2$",
+        "only $\\phi(x) = 0$"
+      ],
+      "answer": 0,
+      "explanation": "Write $\\phi(x) = 3c\\,x$ with $c = \\int_0^1 t\\,\\phi(t)\\,dt$. Then $c = \\int_0^1 t(3c\\,t)\\,dt = 3c\\int_0^1 t^2\\,dt = 3c\\cdot\\frac{1}{3} = c$, an identity satisfied for every $c$. So $c$ is free and any $\\phi(x) = Cx$ solves the equation, where $C = 3c$. The value $\\lambda = 3$ is the characteristic value, and $x$ is the corresponding eigenfunction up to scale.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-013",
+      "stem": "Evaluate the constant $c = \\displaystyle\\int_0^1 t\\,\\phi(t)\\,dt$ when $\\phi(t) = 6t$.",
+      "options": [
+        "$2$",
+        "$6$",
+        "$3$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "Substitute $\\phi(t) = 6t$: $c = \\int_0^1 t(6t)\\,dt = 6\\int_0^1 t^2\\,dt = 6\\cdot\\frac{1}{3} = 2$. The key integral is $\\int_0^1 t^2\\,dt = \\frac{1}{3}$, and multiplying by $6$ gives $2$. Such constant evaluations are the arithmetic core of the separable-kernel method.",
+      "difficulty": "warmup",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-014",
+      "stem": "Solve $\\phi(x) = e^x + \\lambda\\displaystyle\\int_0^1 \\phi(t)\\,dt$, where the kernel is the constant $K(x,t) = 1$.",
+      "options": [
+        "$\\phi(x) = e^x + \\lambda(e - 1)$",
+        "$\\phi(x) = e^x + \\dfrac{\\lambda(e - 1)}{1 - \\lambda}$",
+        "$\\phi(x) = \\dfrac{e^x}{1 - \\lambda}$",
+        "$\\phi(x) = e^x + \\dfrac{e - 1}{1 - \\lambda}$"
+      ],
+      "answer": 1,
+      "explanation": "With kernel $1$, write $\\phi(x) = e^x + \\lambda c$ where $c = \\int_0^1 \\phi(t)\\,dt$. Then $c = \\int_0^1 (e^t + \\lambda c)\\,dt = (e - 1) + \\lambda c$, so $c(1 - \\lambda) = e - 1$ and $c = \\frac{e - 1}{1 - \\lambda}$. Hence $\\phi(x) = e^x + \\lambda c = e^x + \\frac{\\lambda(e - 1)}{1 - \\lambda}$. The added term carries the factor $\\lambda$ from outside the integral.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-015",
+      "stem": "Solve $\\phi(x) = 1 + \\lambda\\displaystyle\\int_0^1 \\phi(t)\\,dt$ with constant kernel.",
+      "options": [
+        "$\\phi(x) = 1 - \\lambda$",
+        "$\\phi(x) = \\dfrac{\\lambda}{1 - \\lambda}$",
+        "$\\phi(x) = 1 + \\lambda$",
+        "$\\phi(x) = \\dfrac{1}{1 - \\lambda}$"
+      ],
+      "answer": 3,
+      "explanation": "Write $\\phi(x) = 1 + \\lambda c$ with $c = \\int_0^1 \\phi(t)\\,dt$. Since $\\phi$ is constant, $c = \\int_0^1 (1 + \\lambda c)\\,dt = 1 + \\lambda c$, so $c(1 - \\lambda) = 1$ and $c = \\frac{1}{1 - \\lambda}$. Then $\\phi(x) = 1 + \\lambda c = 1 + \\frac{\\lambda}{1 - \\lambda} = \\frac{1 - \\lambda + \\lambda}{1 - \\lambda} = \\frac{1}{1 - \\lambda}$, a constant as expected.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-016",
+      "stem": "For the kernel $K(x,t) = \\sin x \\cos t$ on $[0, \\pi]$, the constant in $\\phi(x) = f(x) + \\lambda\\int_0^\\pi \\sin x \\cos t\\,\\phi(t)\\,dt$ is most naturally taken as",
+      "options": [
+        "$c = \\displaystyle\\int_0^\\pi \\sin x\\,\\phi(x)\\,dx$ with $x$ fixed",
+        "$c = \\displaystyle\\int_0^\\pi \\sin t\\,\\phi(t)\\,dt$",
+        "$c = \\displaystyle\\int_0^\\pi \\cos t\\,\\phi(t)\\,dt$",
+        "$c = \\sin x \\cos x$"
+      ],
+      "answer": 2,
+      "explanation": "Separating $K = \\sin x \\cdot \\cos t$, the $x$ part $\\sin x$ stays outside and the $t$ part $\\cos t$ pairs with $\\phi(t)$ inside, so $\\phi(x) = f(x) + \\lambda \\sin x\\,c$ with $c = \\int_0^\\pi \\cos t\\,\\phi(t)\\,dt$. The constant always uses the $t$ dependent factor of the kernel, here $\\cos t$, not $\\sin t$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-017",
+      "stem": "A Fredholm equation of the second kind with a separable kernel is guaranteed to have a unique solution provided",
+      "options": [
+        "the kernel is positive everywhere",
+        "the free term $f(x)$ is a polynomial",
+        "$\\lambda$ is not a characteristic value of the kernel",
+        "the interval $[a,b]$ is symmetric about the origin"
+      ],
+      "answer": 2,
+      "explanation": "Reducing to the algebraic system $(\\mathbf{I} - \\lambda\\mathbf{A})\\mathbf{c} = \\mathbf{b}$, a unique solution exists exactly when $\\det(\\mathbf{I} - \\lambda\\mathbf{A}) \\neq 0$, that is when $\\lambda$ is not a characteristic value (eigenvalue) of the kernel. The shape of $f$, the symmetry of the interval, and the sign of the kernel do not by themselves decide uniqueness.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-018",
+      "stem": "Solve $\\phi(x) = x + \\dfrac{1}{2}\\displaystyle\\int_0^1 x t\\,\\phi(t)\\,dt$.",
+      "options": [
+        "$\\phi(x) = \\dfrac{3}{5}x$",
+        "$\\phi(x) = \\dfrac{5}{6}x$",
+        "$\\phi(x) = \\dfrac{6}{5}x$",
+        "$\\phi(x) = \\dfrac{6}{5}$"
+      ],
+      "answer": 2,
+      "explanation": "Using the general result $\\phi(x) = \\frac{3x}{3 - \\lambda}$ with $\\lambda = \\frac{1}{2}$ gives $\\phi(x) = \\frac{3x}{3 - 1/2} = \\frac{3x}{5/2} = \\frac{6x}{5}$. Directly, $c = \\frac{1}{3 - 1/2} = \\frac{2}{5}$ and $\\phi(x) = x + \\frac{1}{2}\\cdot\\frac{2}{5}x = x + \\frac{x}{5} = \\frac{6x}{5}$. Both routes agree.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-019",
+      "stem": "The algebraic system arising from a separable kernel is often written $(\\mathbf{I} - \\lambda\\mathbf{A})\\mathbf{c} = \\mathbf{b}$. The characteristic values of the kernel are the values of $\\lambda$ for which",
+      "options": [
+        "$\\det(\\mathbf{I} - \\lambda\\mathbf{A}) = 0$",
+        "$\\mathbf{c} = \\mathbf{b}$",
+        "$\\mathbf{b} = \\mathbf{0}$",
+        "$\\mathbf{A} = \\mathbf{0}$"
+      ],
+      "answer": 0,
+      "explanation": "The system $(\\mathbf{I} - \\lambda\\mathbf{A})\\mathbf{c} = \\mathbf{b}$ has a unique solution unless its coefficient matrix is singular. The characteristic values are precisely the $\\lambda$ with $\\det(\\mathbf{I} - \\lambda\\mathbf{A}) = 0$, where nontrivial solutions of the homogeneous problem appear. This is the eigenvalue condition for the integral equation, expressed through the reduced matrix.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-020",
+      "stem": "Solve $\\phi(x) = 2x + \\lambda\\displaystyle\\int_0^1 x t\\,\\phi(t)\\,dt$ for general $\\lambda$.",
+      "options": [
+        "$\\phi(x) = 2x(3 - \\lambda)$",
+        "$\\phi(x) = \\dfrac{2x}{3 - \\lambda}$",
+        "$\\phi(x) = \\dfrac{2x}{1 - \\lambda}$",
+        "$\\phi(x) = \\dfrac{6x}{3 - \\lambda}$"
+      ],
+      "answer": 3,
+      "explanation": "Write $\\phi(x) = 2x + \\lambda c\\,x$ with $c = \\int_0^1 t\\,\\phi(t)\\,dt$. Then $c = \\int_0^1 t(2t + \\lambda c\\,t)\\,dt = (2 + \\lambda c)\\int_0^1 t^2\\,dt = \\frac{2 + \\lambda c}{3}$. So $3c = 2 + \\lambda c$, giving $c = \\frac{2}{3 - \\lambda}$. Then $\\phi(x) = 2x + \\frac{2\\lambda x}{3 - \\lambda} = \\frac{2x(3 - \\lambda) + 2\\lambda x}{3 - \\lambda} = \\frac{6x}{3 - \\lambda}$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-021",
+      "stem": "Why does a Fredholm equation of the first kind, $f(x) = \\int_a^b K(x,t)\\phi(t)\\,dt$, generally pose a harder problem than the second kind?",
+      "options": [
+        "it has no kernel to work with",
+        "the unknown appears only inside the integral, so recovering it can be unstable or impossible for arbitrary $f$",
+        "the limits of integration are variable",
+        "it is always nonlinear"
+      ],
+      "answer": 1,
+      "explanation": "In the first kind the unknown $\\phi$ sits only under the integral, so the data $f$ must lie in the range of the integral operator for a solution to exist, and small changes in $f$ can produce large changes in $\\phi$. This makes first kind problems often ill posed. The second kind, with $\\phi$ also outside, is far better behaved. The limits of a Fredholm equation are constant, not variable.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-022",
+      "stem": "Evaluate $c = \\displaystyle\\int_0^1 \\phi(t)\\,dt$ when $\\phi(t) = 1 + \\dfrac{3}{4}t$.",
+      "options": [
+        "$\\dfrac{11}{8}$",
+        "$\\dfrac{3}{4}$",
+        "$\\dfrac{7}{8}$",
+        "$\\dfrac{5}{4}$"
+      ],
+      "answer": 0,
+      "explanation": "Integrate term by term: $c = \\int_0^1 \\left(1 + \\frac{3}{4}t\\right)dt = \\left[t + \\frac{3}{4}\\cdot\\frac{t^2}{2}\\right]_0^1 = 1 + \\frac{3}{8} = \\frac{8 + 3}{8} = \\frac{11}{8}$. The constant term integrates to $1$ and the linear term to $\\frac{3}{8}$, summing to $\\frac{11}{8}$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-023",
+      "format": "cloze",
+      "stem": "Solve $\\phi(x) = x + \\lambda\\displaystyle\\int_0^1 x t\\,\\phi(t)\\,dt$ by the separable-kernel method.",
+      "solution": "Because the kernel factors as $x \\cdot t$, write $\\phi(x) = x + \\lambda c\\,x$ where $c = \\int_0^1 t\\,\\phi(t)\\,dt$. Substituting and using $\\int_0^1 t^2\\,dt = \\dfrac{1}{3}$ gives $c = \\dfrac{1}{3}(1 + \\lambda c)$, so $c = \\dfrac{1}{3 -}$ {{1}}. The closed form solution is $\\phi(x) = \\dfrac{3x}{3 - \\lambda}$, which becomes singular at the characteristic value $\\lambda =$ {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\lambda$",
+            "$3\\lambda$",
+            "$c$"
+          ],
+          "answer": "$\\lambda$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The single-term kernel gives $\\phi(x) = x + \\lambda c\\,x$ with $c = \\int_0^1 t\\phi(t)\\,dt = \\frac{1}{3}(1 + \\lambda c)$, so $3c = 1 + \\lambda c$ and $c = \\frac{1}{3 - \\lambda}$. Then $\\phi(x) = \\frac{3x}{3 - \\lambda}$, undefined when $3 - \\lambda = 0$, that is at $\\lambda = 3$, the characteristic value.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-024",
+      "format": "cloze",
+      "stem": "Solve $\\phi(x) = 1 + \\displaystyle\\int_0^1 x t\\,\\phi(t)\\,dt$.",
+      "solution": "Set $\\phi(x) = 1 + c\\,x$ with $c = \\int_0^1 t\\,\\phi(t)\\,dt$. Then $c = \\int_0^1 t(1 + c\\,t)\\,dt = \\dfrac{1}{2} + \\dfrac{c}{3}$, so solving gives $c =$ {{1}}. The solution is therefore $\\phi(x) = 1 + c\\,x$, a {{2}} function of $x$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{3}{4}$",
+            "$\\dfrac{1}{2}$",
+            "$\\dfrac{2}{3}$"
+          ],
+          "answer": "$\\dfrac{3}{4}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "linear",
+            "quadratic",
+            "constant"
+          ],
+          "answer": "linear"
+        }
+      ],
+      "explanation": "From $c = \\frac{1}{2} + \\frac{c}{3}$ we get $c - \\frac{c}{3} = \\frac{1}{2}$, so $\\frac{2c}{3} = \\frac{1}{2}$ and $c = \\frac{3}{4}$. The solution $\\phi(x) = 1 + \\frac{3}{4}x$ is a linear (first degree) function of $x$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-025",
+      "format": "cloze",
+      "stem": "A Fredholm equation of the second kind with separable kernel $K(x,t) = \\sum_{i=1}^{n} g_i(x)h_i(t)$ reduces to an algebraic system.",
+      "solution": "Substituting the kernel, the solution takes the form $\\phi(x) = f(x) + \\lambda\\sum_i c_i g_i(x)$, where each constant is $c_i = \\int_a^b$ {{1}} $\\phi(t)\\,dt$. The number of equations in the resulting linear system equals the number of separated {{2}} in the kernel. A unique solution exists when the determinant of the system is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$h_i(t)$",
+            "$g_i(t)$",
+            "$K(x,t)$"
+          ],
+          "answer": "$h_i(t)$"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "terms",
+            "products",
+            "term"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "nonzero",
+            "zero",
+            "negative"
+          ],
+          "answer": "nonzero"
+        }
+      ],
+      "explanation": "The constant pairs the $t$ part of the kernel with the unknown, $c_i = \\int_a^b h_i(t)\\phi(t)\\,dt$. Each separated term contributes one equation, so $n$ terms give an $n \\times n$ system. The solution is unique exactly when the coefficient determinant is nonzero, that is when $\\lambda$ is not a characteristic value.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-026",
+      "format": "cloze",
+      "stem": "Solve $\\phi(x) = x^2 + 2\\displaystyle\\int_0^1 x^2 t\\,\\phi(t)\\,dt$.",
+      "solution": "Write $\\phi(x) = (1 + 2c)x^2$ with $c = \\int_0^1 t\\,\\phi(t)\\,dt$. Using $\\int_0^1 t^3\\,dt = \\dfrac{1}{4}$ gives $c = \\dfrac{1 + 2c}{4}$, so $c =$ {{1}}. The solution is then $\\phi(x) =$ {{2}} $x^2$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From $c = \\frac{1 + 2c}{4}$ we get $4c = 1 + 2c$, so $2c = 1$ and $c = \\frac{1}{2}$. Then $\\phi(x) = (1 + 2\\cdot\\frac{1}{2})x^2 = 2x^2$. Checking, $2\\int_0^1 x^2 t(2t^2)\\,dt = 4x^2\\cdot\\frac{1}{4} = x^2$, and $x^2 + x^2 = 2x^2$.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-027",
+      "format": "cloze",
+      "stem": "Consider the homogeneous Fredholm equation $\\phi(x) = \\lambda\\displaystyle\\int_0^1 x t\\,\\phi(t)\\,dt$.",
+      "solution": "Setting $\\phi(x) = \\lambda c\\,x$ and substituting leads to $c = \\lambda c \\cdot \\dfrac{1}{3}$, which holds nontrivially only when $\\lambda$ equals the characteristic value {{1}}. At that value the eigenfunction is proportional to {{2}}, and for any other $\\lambda$ the only solution is $\\phi \\equiv$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$x$",
+            "$x^2$",
+            "$1$"
+          ],
+          "answer": "$x$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From $c = \\frac{\\lambda c}{3}$ a nonzero $c$ requires $\\frac{\\lambda}{3} = 1$, so $\\lambda = 3$. At $\\lambda = 3$ any $\\phi(x) = Cx$ works, so the eigenfunction is proportional to $x$. For $\\lambda \\neq 3$ the equation forces $c = 0$, hence $\\phi \\equiv 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    },
+    {
+      "id": "integral-equation-pure-maths-fredholm-equations-028",
+      "format": "cloze",
+      "stem": "Solve $\\phi(x) = 1 + \\lambda\\displaystyle\\int_0^1 \\phi(t)\\,dt$ with the constant kernel $K(x,t) = 1$.",
+      "solution": "Since the right side is constant, write $\\phi(x) = 1 + \\lambda c$ with $c = \\int_0^1 \\phi(t)\\,dt$. Then $c = 1 + \\lambda c$, so $c = \\dfrac{1}{1 -}$ {{1}}. The solution $\\phi(x) = \\dfrac{1}{1 - \\lambda}$ is itself a {{2}}, and it fails to exist when $\\lambda =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\lambda$",
+            "$c$",
+            "$2\\lambda$"
+          ],
+          "answer": "$\\lambda$"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "constant",
+            "constant function"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From $c = 1 + \\lambda c$ we get $c(1 - \\lambda) = 1$, so $c = \\frac{1}{1 - \\lambda}$ and $\\phi(x) = 1 + \\lambda c = \\frac{1}{1 - \\lambda}$, a constant function. It is undefined when $1 - \\lambda = 0$, that is at $\\lambda = 1$, the characteristic value of the constant kernel.",
+      "difficulty": "core",
+      "source": "in the style of Wazwaz, A First Course in Integral Equations"
+    }
+  ]
+}
