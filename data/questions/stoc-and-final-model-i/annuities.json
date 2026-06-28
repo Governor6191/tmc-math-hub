@@ -1,0 +1,481 @@
+{
+  "courseId": "stoc-and-final-model-i",
+  "topicId": "annuities",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "stoc-and-final-model-i-annuities-001",
+      "stem": "The present value of an annuity-immediate of 1 per year for $n$ years at effective rate $i$, written $a_{\\overline{n}|}$, equals which expression?",
+      "options": [
+        "$\\dfrac{(1+i)^n - 1}{i}$",
+        "$\\dfrac{1 - v^n}{i}$",
+        "$\\dfrac{1 - v^n}{d}$",
+        "$\\dfrac{1 - v^n}{i}(1+i)$"
+      ],
+      "answer": 1,
+      "explanation": "An annuity-immediate pays at the end of each period, so $a_{\\overline{n}|} = \\frac{1 - v^n}{i}$ where $v = (1+i)^{-1}$. The first option is the accumulated value $s_{\\overline{n}|}$, the third uses $d$ (giving the annuity-due present value), and the fourth multiplies by $(1+i)$ (also the due form). The trap is the denominator: an annuity-immediate divides by $i$, while the annuity-due divides by $d$.",
+      "difficulty": "warmup",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-002",
+      "stem": "Calculate the present value of an annuity-immediate paying GHS 1 per year for 10 years at an annual effective interest rate of 5%.",
+      "options": [
+        "GHS 8.1078",
+        "GHS 7.7217",
+        "GHS 12.5779",
+        "GHS 7.3601"
+      ],
+      "answer": 1,
+      "explanation": "Here $a_{\\overline{10}|} = \\frac{1 - (1.05)^{-10}}{0.05} = \\frac{1 - 0.613913}{0.05} = \\frac{0.386087}{0.05} = 7.7217$. The value GHS 8.1078 is the annuity-due $\\ddot{a}_{\\overline{10}|}$, GHS 12.5779 is the accumulated value $s_{\\overline{10}|}$, and GHS 7.3601 uses 11 periods. The trap is confusing present value with accumulated value: $a_{\\overline{n}|}$ discounts the payments to time 0.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-003",
+      "stem": "The accumulated value of an annuity-immediate of 1 per year for $n$ years at effective rate $i$, written $s_{\\overline{n}|}$, equals which expression?",
+      "options": [
+        "$\\dfrac{1 - v^n}{i}$",
+        "$\\dfrac{(1+i)^n - 1}{i}$",
+        "$\\dfrac{(1+i)^n - 1}{d}$",
+        "$(1+i)^n \\cdot \\dfrac{1 - v^n}{d}$"
+      ],
+      "answer": 1,
+      "explanation": "The accumulated value at time $n$ of an annuity-immediate is $s_{\\overline{n}|} = \\frac{(1+i)^n - 1}{i}$. The first option is the present value $a_{\\overline{n}|}$, the third uses $d$ (the accumulated annuity-due), and the fourth is also a due form. The trap is the numerator: accumulation uses $(1+i)^n - 1$, while present value uses $1 - v^n$.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-004",
+      "stem": "Calculate the accumulated value of an annuity-immediate paying GHS 1 per year for 10 years at an annual effective interest rate of 5%.",
+      "options": [
+        "GHS 7.7217",
+        "GHS 12.5779",
+        "GHS 13.2068",
+        "GHS 12.0000"
+      ],
+      "answer": 1,
+      "explanation": "Here $s_{\\overline{10}|} = \\frac{(1.05)^{10} - 1}{0.05} = \\frac{1.628895 - 1}{0.05} = \\frac{0.628895}{0.05} = 12.5779$. The value GHS 7.7217 is the present value $a_{\\overline{10}|}$, GHS 13.2068 is the accumulated annuity-due $\\ddot{s}_{\\overline{10}|}$, and GHS 12 ignores interest. The trap is confusing accumulated value with present value: $s_{\\overline{n}|}$ rolls the payments forward to time $n$.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-005",
+      "stem": "An annuity-due differs from an annuity-immediate in which way?",
+      "options": [
+        "Payments are made at the end of each period.",
+        "Payments are made at the start of each period.",
+        "Payments are made continuously.",
+        "Payments are made only once at the end."
+      ],
+      "answer": 1,
+      "explanation": "An annuity-due pays at the start of each period, whereas an annuity-immediate pays at the end. This is why $\\ddot{a}_{\\overline{n}|} = (1+i)\\,a_{\\overline{n}|}$: every payment is one period earlier, so its present value is larger by a factor of $(1+i)$. The continuous and single-payment descriptions belong to other instruments. The trap is the timing convention; advance versus arrears is the whole distinction.",
+      "difficulty": "warmup",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-006",
+      "stem": "Calculate the present value of an annuity-due paying GHS 1 per year for 10 years at an annual effective interest rate of 5%.",
+      "options": [
+        "GHS 7.7217",
+        "GHS 8.1078",
+        "GHS 13.2068",
+        "GHS 8.0000"
+      ],
+      "answer": 1,
+      "explanation": "The annuity-due is the annuity-immediate accumulated one period: $\\ddot{a}_{\\overline{10}|} = (1+i)\\,a_{\\overline{10}|} = 1.05 \\times 7.721735 = 8.1078$. Equivalently $\\frac{1 - v^{10}}{d}$ with $d = \\frac{0.05}{1.05}$. The value GHS 7.7217 is the annuity-immediate, GHS 13.2068 is an accumulated value, and GHS 8 is a guess. The trap is forgetting the $(1+i)$ factor that shifts every payment one period earlier.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-007",
+      "stem": "Yaa pays GHS 300,000 to an insurer and in return receives level payments of GHS X at the end of each year for 15 years. The annual effective interest rate is 6%. What is X?",
+      "options": [
+        "GHS 20,000.00",
+        "GHS 30,888.83",
+        "GHS 27,000.00",
+        "GHS 32,742.16"
+      ],
+      "answer": 1,
+      "explanation": "The equation of value is $300000 = X \\cdot a_{\\overline{15}|}$ at 6%. Now $a_{\\overline{15}|} = \\frac{1 - (1.06)^{-15}}{0.06} = 9.712249$, so $X = \\frac{300000}{9.712249} = 30888.83$. The value GHS 20,000 ignores interest and just spreads the principal, GHS 27,000 is a guess, and GHS 32,742.16 uses the annuity-due factor. The trap is dividing by the correct annuity factor: payments at year-end use $a_{\\overline{15}|}$, not the principal divided by 15.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-008",
+      "stem": "Which identity correctly relates the annuity-due and annuity-immediate present values?",
+      "options": [
+        "$\\ddot{a}_{\\overline{n}|} = v \\cdot a_{\\overline{n}|}$",
+        "$\\ddot{a}_{\\overline{n}|} = (1+i)\\,a_{\\overline{n}|}$",
+        "$\\ddot{a}_{\\overline{n}|} = a_{\\overline{n}|} - 1$",
+        "$\\ddot{a}_{\\overline{n}|} = a_{\\overline{n}|} + v^n$"
+      ],
+      "answer": 1,
+      "explanation": "Because each annuity-due payment occurs one period earlier, $\\ddot{a}_{\\overline{n}|} = (1+i)\\,a_{\\overline{n}|}$. Multiplying by $v$ would discount rather than accumulate, and the additive forms are not correct here. The trap is the direction of the shift: advancing every payment increases its present value, so you multiply by $(1+i)$, not by $v$.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-009",
+      "stem": "Calculate the present value of an annuity-immediate paying GHS 1 per year for 15 years at an annual effective interest rate of 6%.",
+      "options": [
+        "GHS 10.2950",
+        "GHS 9.7122",
+        "GHS 23.2760",
+        "GHS 9.1635"
+      ],
+      "answer": 1,
+      "explanation": "Here $a_{\\overline{15}|} = \\frac{1 - (1.06)^{-15}}{0.06} = \\frac{1 - 0.417265}{0.06} = \\frac{0.582735}{0.06} = 9.7122$. The value GHS 10.2950 is the annuity-due, GHS 23.2760 is the accumulated value $s_{\\overline{15}|}$, and GHS 9.1635 uses 16 periods. The trap is reading off the accumulated value when the present value is wanted.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-010",
+      "stem": "The present value of an annuity payable $p$-thly in arrears, with total 1 per year for $n$ years, is $a^{(p)}_{\\overline{n}|} = \\dfrac{1 - v^n}{i^{(p)}}$. How does it compare with the annual annuity-immediate $a_{\\overline{n}|}$?",
+      "options": [
+        "It is smaller, because $i^{(p)} > i$.",
+        "It is larger, because $i^{(p)} < i$.",
+        "It equals $a_{\\overline{n}|}$ exactly.",
+        "It is larger, because $i^{(p)} > i$."
+      ],
+      "answer": 1,
+      "explanation": "Both have the numerator $1 - v^n$, but the $p$-thly annuity divides by $i^{(p)}$, which is smaller than $i$. A smaller denominator gives a larger value, so $a^{(p)}_{\\overline{n}|} > a_{\\overline{n}|}$. This makes sense: paying in smaller, more frequent instalments throughout the year brings the money forward in time. The trap is the inequality on nominal rates: $i^{(p)} < i$, so dividing by it increases the present value.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-011",
+      "stem": "Calculate the present value of payments of GHS 3,600 per year paid in equal monthly instalments at the end of each month for 7 years, if the annual effective interest rate is 5%.",
+      "options": [
+        "GHS 20,838.30",
+        "GHS 21,304.11",
+        "GHS 25,200.00",
+        "GHS 20,289.52"
+      ],
+      "answer": 1,
+      "explanation": "Use $a^{(12)}_{\\overline{7}|} = \\frac{1 - v^7}{i^{(12)}}$. With $i = 0.05$, $v^7 = (1.05)^{-7} = 0.710681$ and $i^{(12)} = 12[(1.05)^{1/12} - 1] = 0.048889$, so $a^{(12)}_{\\overline{7}|} = \\frac{0.289319}{0.048889} = 5.917836$. Then $PV = 3600 \\times 5.917836 = 21304.11$. The value GHS 20,838.30 uses the annual factor $a_{\\overline{7}|}$, GHS 25,200 ignores interest, and GHS 20,289.52 mis-rounds $i^{(12)}$. The trap is dividing by the nominal rate $i^{(12)}$, not the effective rate $i$.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-012",
+      "stem": "The present value of an annuity payable $p$-thly in advance is $\\ddot{a}^{(p)}_{\\overline{n}|} = \\dfrac{1 - v^n}{d^{(p)}}$. Which rate appears in the denominator?",
+      "options": [
+        "The nominal interest rate $i^{(p)}$.",
+        "The nominal discount rate $d^{(p)}$.",
+        "The annual effective rate $i$.",
+        "The force of interest $\\delta$."
+      ],
+      "answer": 1,
+      "explanation": "An annuity payable $p$-thly in advance discounts using the nominal discount rate, so the denominator is $d^{(p)}$. Payments in arrears use $i^{(p)}$, and neither the annual effective rate nor the force appears directly. The trap is matching the rate to the timing: advance (due) payments pair with the discount rate $d^{(p)}$, arrears (immediate) with $i^{(p)}$.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-013",
+      "stem": "For a level annuity-immediate, an increasing annuity $(Ia)_{\\overline{n}|}$ pays 1, 2, 3, ..., n at times 1, 2, 3, ..., n. Its present value equals which expression?",
+      "options": [
+        "$\\dfrac{a_{\\overline{n}|} - nv^n}{i}$",
+        "$\\dfrac{\\ddot{a}_{\\overline{n}|} - nv^n}{i}$",
+        "$\\dfrac{n - a_{\\overline{n}|}}{i}$",
+        "$(n+1)a_{\\overline{n}|} - (Ia)_{\\overline{n}|}$"
+      ],
+      "answer": 1,
+      "explanation": "The standard formula is $(Ia)_{\\overline{n}|} = \\frac{\\ddot{a}_{\\overline{n}|} - nv^n}{i}$, using the annuity-due in the numerator. The first option mistakenly uses $a_{\\overline{n}|}$, the third is the decreasing-annuity form $(Da)_{\\overline{n}|} = \\frac{n - a_{\\overline{n}|}}{i}$, and the fourth is a relationship between the decreasing and increasing annuities. The trap is the numerator: it is the annuity-due $\\ddot{a}_{\\overline{n}|}$, not the annuity-immediate, that appears.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-014",
+      "stem": "Measuring time in years, calculate the present value of the cashflow stream GHS 4, 6, 8, 10, 12 paid at times 1, 2, 3, 4, 5 if $i = 7\\%$ per annum.",
+      "options": [
+        "GHS 40.00",
+        "GHS 31.69",
+        "GHS 28.53",
+        "GHS 33.91"
+      ],
+      "answer": 1,
+      "explanation": "Sum the discounted payments with $v = (1.07)^{-1}$: $4v + 6v^2 + 8v^3 + 10v^4 + 12v^5 = 3.738 + 5.241 + 6.531 + 7.629 + 8.555 = 31.69$. Equivalently this is $2a_{\\overline{5}|} + 2(Ia)_{\\overline{5}|}$. The value GHS 40 ignores discounting (the undiscounted total is 40), GHS 28.53 over-discounts, and GHS 33.91 is a near miss. The trap is forgetting to discount each payment to time 0.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-015",
+      "stem": "A decreasing annuity $(Da)_{\\overline{n}|}$ pays n, n-1, ..., 1 at times 1, 2, ..., n. Its present value is given by which expression?",
+      "options": [
+        "$\\dfrac{a_{\\overline{n}|} - n}{i}$",
+        "$\\dfrac{n - a_{\\overline{n}|}}{i}$",
+        "$\\dfrac{\\ddot{a}_{\\overline{n}|} - nv^n}{i}$",
+        "$\\dfrac{n - \\ddot{a}_{\\overline{n}|}}{d}$"
+      ],
+      "answer": 1,
+      "explanation": "The decreasing-annuity present value is $(Da)_{\\overline{n}|} = \\frac{n - a_{\\overline{n}|}}{i}$. The first option has the numerator reversed in sign, the third is the increasing annuity $(Ia)_{\\overline{n}|}$, and the fourth mixes forms. The trap is the order of subtraction: for the decreasing annuity it is $n$ minus the level annuity value, divided by $i$.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-016",
+      "stem": "Find the present value as at 1 January 2005 of 10 annual payments starting at GHS 500 on 1 January 2006 and increasing by GHS 100 each year. The annual effective interest rate is 8%. Which expression in annuity functions represents this value?",
+      "options": [
+        "$500\\,a_{\\overline{10}|} + 100\\,(Ia)_{\\overline{10}|}$",
+        "$400\\,a_{\\overline{10}|} + 100\\,(Ia)_{\\overline{10}|}$",
+        "$500\\,(Ia)_{\\overline{10}|}$",
+        "$500\\,a_{\\overline{10}|} - 100\\,(Ia)_{\\overline{10}|}$"
+      ],
+      "answer": 1,
+      "explanation": "An arithmetically increasing annuity with first payment $P$ and increment $Q$ has present value $(P - Q)a_{\\overline{n}|} + Q(Ia)_{\\overline{n}|}$. Here $P = 500$, $Q = 100$, so it is $(500 - 100)a_{\\overline{10}|} + 100(Ia)_{\\overline{10}|} = 400\\,a_{\\overline{10}|} + 100\\,(Ia)_{\\overline{10}|}$. The first option forgets to subtract $Q$ from $P$, the third treats every payment as a pure multiple of its index, and the fourth subtracts the increasing part. The trap is the coefficient on $a_{\\overline{n}|}$: it must be $P - Q$, not $P$, to avoid double-counting the first unit of increase.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-017",
+      "stem": "Calculate the present value of an annuity-immediate paying GHS 1 per year for 20 years at an annual effective interest rate of 5%.",
+      "options": [
+        "GHS 13.0853",
+        "GHS 12.4622",
+        "GHS 33.0660",
+        "GHS 11.8682"
+      ],
+      "answer": 1,
+      "explanation": "Here $a_{\\overline{20}|} = \\frac{1 - (1.05)^{-20}}{0.05} = \\frac{1 - 0.376889}{0.05} = \\frac{0.623111}{0.05} = 12.4622$. The value GHS 13.0853 is the annuity-due, GHS 33.0660 is the accumulated value $s_{\\overline{20}|}$, and GHS 11.8682 uses 21 periods. The trap is again present versus accumulated value: $a_{\\overline{20}|}$ discounts to time 0.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-018",
+      "stem": "A deferred annuity-immediate payable $p$-thly that starts in $m$ years has present value $\\,_{m|}a^{(p)}_{\\overline{n}|}$. How does it relate to the non-deferred annuity $a^{(p)}_{\\overline{n}|}$?",
+      "options": [
+        "$\\,_{m|}a^{(p)}_{\\overline{n}|} = (1+i)^m \\, a^{(p)}_{\\overline{n}|}$",
+        "$\\,_{m|}a^{(p)}_{\\overline{n}|} = v^m \\, a^{(p)}_{\\overline{n}|}$",
+        "$\\,_{m|}a^{(p)}_{\\overline{n}|} = m \\, a^{(p)}_{\\overline{n}|}$",
+        "$\\,_{m|}a^{(p)}_{\\overline{n}|} = a^{(p)}_{\\overline{n}|} - m$"
+      ],
+      "answer": 1,
+      "explanation": "Deferring an annuity by $m$ years discounts its whole value back to time 0: $\\,_{m|}a^{(p)}_{\\overline{n}|} = v^m \\, a^{(p)}_{\\overline{n}|}$. Multiplying by $(1+i)^m$ would accumulate it forward, and the additive or multiplicative-by-$m$ forms are incorrect. The trap is direction: a deferral pushes payments later, so their present value is smaller by the factor $v^m$.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-019",
+      "stem": "The following payments are received: GHS 50 at time 1, GHS 45 at time 2, GHS 40 at time 3, decreasing by GHS 5, with the last payment at time 6. Which expression gives the present value?",
+      "options": [
+        "$50\\,a_{\\overline{6}|} - 5\\,(Ia)_{\\overline{6}|}$",
+        "$55\\,a_{\\overline{6}|} - 5\\,(Ia)_{\\overline{6}|}$",
+        "$50\\,a_{\\overline{6}|} + 5\\,(Ia)_{\\overline{6}|}$",
+        "$55\\,(Ia)_{\\overline{6}|}$"
+      ],
+      "answer": 1,
+      "explanation": "Decompose the decreasing stream as a level annuity minus an increasing one. Writing each payment as $55 - 5t$ for $t = 1, \\ldots, 6$ gives payments $50, 45, 40, \\ldots$, so the present value is $55\\,a_{\\overline{6}|} - 5\\,(Ia)_{\\overline{6}|}$. The first option uses the wrong level amount (50 instead of 55), the third adds rather than subtracts the increasing part, and the fourth drops the level annuity entirely. The trap is the level base: to make the time-1 payment come out to 50 as $55 - 5(1)$, the level annuity must be 55.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-020",
+      "stem": "Calculate the present value of an annuity-immediate paying GHS 1 per year for 5 years at an annual effective interest rate of 7%.",
+      "options": [
+        "GHS 4.3295",
+        "GHS 4.1002",
+        "GHS 5.7507",
+        "GHS 3.8327"
+      ],
+      "answer": 1,
+      "explanation": "Here $a_{\\overline{5}|} = \\frac{1 - (1.07)^{-5}}{0.07} = \\frac{1 - 0.712986}{0.07} = \\frac{0.287014}{0.07} = 4.1002$. The value GHS 4.3295 is the annuity-due $\\ddot{a}_{\\overline{5}|}$, GHS 5.7507 is the accumulated value $s_{\\overline{5}|}$, and GHS 3.8327 uses 6 periods. The trap is selecting the immediate (end-of-year) factor and discounting to time 0.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-021",
+      "format": "cloze",
+      "stem": "Compute the level annuity factors for 10 years at an annual effective interest rate of 5%.",
+      "solution": "The discount factor over 10 years is $v^{10} = (1.05)^{-10} \\approx$ {{1}} (to four decimals). The annuity-immediate present value is $a_{\\overline{10}|} = \\frac{1 - v^{10}}{0.05} \\approx$ {{2}} (to four decimals). The annuity-due value $\\ddot{a}_{\\overline{10}|}$ is {{3}} the annuity-immediate.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.6139,
+          "tolerance": 0.0002
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7.7217,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "larger than",
+            "smaller than",
+            "equal to"
+          ],
+          "answer": "larger than"
+        }
+      ],
+      "explanation": "Here $v^{10} = 0.613913$, so $a_{\\overline{10}|} = \\frac{0.386087}{0.05} = 7.7217$. The annuity-due is $(1.05) \\times 7.7217 = 8.1078$, larger because each payment falls one period earlier.",
+      "difficulty": "warmup",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-022",
+      "format": "cloze",
+      "stem": "Compute the accumulated value of a 10-year annuity-immediate of GHS 1 per year at 5%.",
+      "solution": "The 10-year accumulation factor is $(1.05)^{10} \\approx$ {{1}} (to four decimals). The accumulated value is $s_{\\overline{10}|} = \\frac{(1.05)^{10} - 1}{0.05} \\approx$ {{2}} (to four decimals). The numerator of $s_{\\overline{n}|}$ uses {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.6289,
+          "tolerance": 0.0002
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 12.5779,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "(1+i)^n - 1",
+            "1 - v^n",
+            "n - a-angle-n"
+          ],
+          "answer": "(1+i)^n - 1"
+        }
+      ],
+      "explanation": "Here $(1.05)^{10} = 1.628895$, so $s_{\\overline{10}|} = \\frac{0.628895}{0.05} = 12.5779$. The accumulated value uses the numerator $(1+i)^n - 1$, in contrast to $1 - v^n$ for the present value.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-023",
+      "format": "cloze",
+      "stem": "Yaa pays GHS 300,000 for a 15-year annuity-immediate at 6%, receiving level annual payments of GHS X.",
+      "solution": "The annuity factor is $a_{\\overline{15}|} = \\frac{1 - (1.06)^{-15}}{0.06} \\approx$ {{1}} (to four decimals). Solving $300000 = X \\cdot a_{\\overline{15}|}$ gives $X \\approx$ GHS {{2}} (to the nearest cedi). Because the payments are at year-end, the correct factor is the annuity-{{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 9.7122,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 30889,
+          "tolerance": 2
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "immediate",
+            "due",
+            "perpetuity"
+          ],
+          "answer": "immediate"
+        }
+      ],
+      "explanation": "Here $a_{\\overline{15}|} = 9.712249$, so $X = 300000 / 9.712249 = 30888.83$, about GHS 30,889. Year-end payments use the annuity-immediate factor.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-024",
+      "format": "cloze",
+      "stem": "Value the cashflow stream GHS 4, 6, 8, 10, 12 at times 1 to 5 with $i = 7\\%$.",
+      "solution": "Discounting each payment with $v = (1.07)^{-1}$, the present value of the stream is GHS {{1}} (to two decimals). The undiscounted total of the payments is GHS {{2}}, so the present value is {{3}} the undiscounted total.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 31.69,
+          "tolerance": 0.05
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 40,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "below",
+            "above",
+            "equal to"
+          ],
+          "answer": "below"
+        }
+      ],
+      "explanation": "The discounted sum is $4v + 6v^2 + 8v^3 + 10v^4 + 12v^5 = 31.69$. The payments add to $4+6+8+10+12 = 40$, so the present value of 31.69 is below the undiscounted total, as discounting always reduces value.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-025",
+      "format": "cloze",
+      "stem": "Value GHS 3,600 per year paid monthly in arrears for 7 years at an annual effective interest rate of 5%, using the p-thly annuity.",
+      "solution": "The nominal interest rate convertible monthly is $i^{(12)} = 12[(1.05)^{1/12} - 1] \\approx$ {{1}} as a decimal (to four places). The annuity factor is $a^{(12)}_{\\overline{7}|} = \\frac{1 - v^7}{i^{(12)}} \\approx$ {{2}} (to two decimals). The present value is GHS {{3}} (to the nearest cedi).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.0489,
+          "tolerance": 0.0003
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5.92,
+          "tolerance": 0.03
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 21304,
+          "tolerance": 5
+        }
+      ],
+      "explanation": "Here $i^{(12)} = 0.048889$ and $v^7 = 0.710681$, so $a^{(12)}_{\\overline{7}|} = \\frac{0.289319}{0.048889} = 5.9178$. Then $PV = 3600 \\times 5.9178 = 21304.11$, about GHS 21,304. The denominator is the nominal rate $i^{(12)}$, not the effective rate.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-annuities-026",
+      "format": "cloze",
+      "stem": "Express the increasing annuity that pays GHS 500 rising by GHS 100 per year for 10 years at 8% using level and increasing annuity functions.",
+      "solution": "With first payment $P = 500$ and increment $Q = 100$, the present value is $(P - Q)\\,a_{\\overline{10}|} + Q\\,(Ia)_{\\overline{10}|}$. The coefficient on $a_{\\overline{10}|}$ is GHS {{1}}, and the coefficient on $(Ia)_{\\overline{10}|}$ is GHS {{2}}. Subtracting $Q$ from $P$ prevents {{3}} the first unit of increase.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 400,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 100,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "double-counting",
+            "discounting",
+            "deferring"
+          ],
+          "answer": "double-counting"
+        }
+      ],
+      "explanation": "The decomposition $(P - Q)a_{\\overline{n}|} + Q(Ia)_{\\overline{n}|}$ gives coefficients $500 - 100 = 400$ and $100$. Subtracting $Q$ from $P$ avoids double-counting, since $(Ia)_{\\overline{n}|}$ already contributes one unit at time 1.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    }
+  ]
+}

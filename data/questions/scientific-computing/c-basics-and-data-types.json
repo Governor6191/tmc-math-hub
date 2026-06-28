@@ -1,0 +1,545 @@
+{
+  "courseId": "scientific-computing",
+  "topicId": "c-basics-and-data-types",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-c-basics-and-data-types-001",
+      "stem": "What does `printf(\"%d\", 5 / 2);` print in C?",
+      "options": [
+        "`2`",
+        "`3`",
+        "`2.0`",
+        "`2.5`"
+      ],
+      "answer": 0,
+      "explanation": "Both `5` and `2` are integer literals, so `5 / 2` uses integer division, which discards the fractional part and gives `2`. To get `2.5` you would need a floating-point operand, for example `5.0 / 2`.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-002",
+      "stem": "What does `printf(\"%d\", 7 % 3);` print?",
+      "options": [
+        "`0`",
+        "`1`",
+        "`2`",
+        "`3`"
+      ],
+      "answer": 1,
+      "explanation": "The `%` operator gives the remainder of integer division. `7` divided by `3` is `2` with a remainder of `1`, so `7 % 3` is `1`.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-003",
+      "stem": "Which format specifier does `printf` use to print a value of type `int`?",
+      "options": [
+        "`%f`",
+        "`%c`",
+        "`%d`",
+        "`%s`"
+      ],
+      "answer": 2,
+      "explanation": "`%d` (or equivalently `%i`) prints a signed decimal integer. `%f` is for `float`/`double`, `%c` for a single character, and `%s` for a string.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-004",
+      "stem": "Which format specifier should you use in `printf` to display a `double`?",
+      "options": [
+        "`%lf`",
+        "`%g`",
+        "`%d`",
+        "`%f`"
+      ],
+      "answer": 3,
+      "explanation": "In `printf`, both `float` and `double` are printed with `%f` because a `float` argument is promoted to `double` when passed. Note `scanf` is different: it needs `%lf` to read a `double`. `%d` would misinterpret the bits as an integer.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-005",
+      "stem": "What does `printf(\"%c\", 'A' + 1);` print? (ASCII of `'A'` is 65.)",
+      "options": [
+        "`B`",
+        "`66`",
+        "`A1`",
+        "`a`"
+      ],
+      "answer": 0,
+      "explanation": "A `char` literal has an integer value, so `'A' + 1` is `65 + 1 = 66`, which is the ASCII code for `B`. Because `%c` prints the value as a character, the output is `B`. Using `%d` instead would have printed `66`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-006",
+      "stem": "What does `printf(\"%f\", (float)7 / 2);` print?",
+      "options": [
+        "`3`",
+        "`3.500000`",
+        "`4.000000`",
+        "`3.000000`"
+      ],
+      "answer": 1,
+      "explanation": "The cast `(float)7` turns `7` into `7.0` before the division, so `7.0 / 2` is floating-point division giving `3.5`. With `%f` the default is six decimal places, so it prints `3.500000`. Without the cast, `7 / 2` would be integer division giving `3`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-007",
+      "stem": "How do you declare a constant named `PI` with value `3.14159` that cannot be reassigned?",
+      "options": [
+        "`constant PI = 3.14159;`",
+        "`int PI = 3.14159;`",
+        "`const double PI = 3.14159;`",
+        "`double PI := 3.14159;`"
+      ],
+      "answer": 2,
+      "explanation": "The `const` qualifier makes a variable read-only after initialization, and `double` holds the fractional value. `int` would truncate `3.14159` to `3`, and `:=` and `constant` are not C syntax.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-008",
+      "stem": "Which preprocessor directive defines a symbolic constant `MAX` equal to `100`?",
+      "options": [
+        "`#define MAX = 100`",
+        "`define MAX 100;`",
+        "`#const MAX 100`",
+        "`#define MAX 100`"
+      ],
+      "answer": 3,
+      "explanation": "`#define MAX 100` tells the preprocessor to replace every `MAX` token with `100` before compilation. There is no `=` and no trailing `;` (a `;` would become part of the replacement text). It must begin with `#`, and `#const` is not a directive.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-009",
+      "stem": "What does `printf(\"%d\", (int)3.99);` print?",
+      "options": [
+        "`3`",
+        "`0`",
+        "`4`",
+        "`3.99`"
+      ],
+      "answer": 0,
+      "explanation": "Casting a floating-point value to `int` truncates toward zero, simply dropping the fractional part. It does not round, so `(int)3.99` is `3`, not `4`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-010",
+      "stem": "Which `scanf` call correctly reads an integer into a variable declared as `int n;`?",
+      "options": [
+        "`scanf(\"%d\", n);`",
+        "`scanf(\"%d\", &n);`",
+        "`scanf(\"%f\", &n);`",
+        "`scanf(n, \"%d\");`"
+      ],
+      "answer": 1,
+      "explanation": "`scanf` needs the address of the variable so it can store the value there, so you pass `&n`. Passing `n` by itself sends only its value, which `scanf` cannot write back to. `%f` is the wrong specifier for an `int`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-011",
+      "stem": "What is the value of `x` after `int x = 10; x += 5;`?",
+      "options": [
+        "`10`",
+        "`50`",
+        "`15`",
+        "`5`"
+      ],
+      "answer": 2,
+      "explanation": "The compound assignment `x += 5` is shorthand for `x = x + 5`. Starting from `10`, adding `5` gives `15`.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-012",
+      "stem": "After `int a = 5; int b = a++;`, what are the values of `a` and `b`?",
+      "options": [
+        "`a` is `5`, `b` is `6`",
+        "`a` is `5`, `b` is `5`",
+        "`a` is `6`, `b` is `6`",
+        "`a` is `6`, `b` is `5`"
+      ],
+      "answer": 3,
+      "explanation": "The post-increment `a++` yields the old value of `a` (which is `5`) for the assignment to `b`, and only afterward increments `a` to `6`. So `b` becomes `5` and `a` becomes `6`. Pre-increment `++a` would instead give `b` the value `6`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-013",
+      "stem": "What does `printf(\"%d\", 10 > 3);` print? (A C relational expression yields an `int`.)",
+      "options": [
+        "`1`",
+        "`true`",
+        "`0`",
+        "`10`"
+      ],
+      "answer": 0,
+      "explanation": "In C a relational comparison evaluates to the `int` value `1` when true and `0` when false. Since `10 > 3` is true, it prints `1`. C has no built-in `true` keyword printed by `%d`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-014",
+      "stem": "Which line correctly declares an integer variable and gives it the value `42`?",
+      "options": [
+        "`count : int = 42;`",
+        "`int count = 42;`",
+        "`integer count = 42;`",
+        "`int count == 42;`"
+      ],
+      "answer": 1,
+      "explanation": "A C declaration is `type name = value;`. The keyword for whole numbers is `int`, not `integer`. A single `=` assigns; `==` is the equality test and would not initialize the variable.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-015",
+      "stem": "What does `printf(\"%d\", 2 + 3 * 4);` print? (`*` binds tighter than `+`.)",
+      "options": [
+        "`9`",
+        "`20`",
+        "`14`",
+        "`24`"
+      ],
+      "answer": 2,
+      "explanation": "Multiplication has higher precedence than addition, so `3 * 4` is evaluated first to get `12`, then `2 + 12` gives `14`. The answer `20` would require `(2 + 3) * 4`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-016",
+      "stem": "What does `printf(\"%d\", 5 / 2 * 2);` print? (Evaluation is left to right for equal precedence.)",
+      "options": [
+        "`2`",
+        "`1`",
+        "`5`",
+        "`4`"
+      ],
+      "answer": 3,
+      "explanation": "`/` and `*` share precedence and group left to right, so `5 / 2` is computed first as integer division giving `2`, then `2 * 2` gives `4`. The intermediate truncation is why the result is not `5`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-017",
+      "stem": "Which data type is most appropriate for storing a single character such as `'x'`?",
+      "options": [
+        "`char`",
+        "`float`",
+        "`string`",
+        "`int`"
+      ],
+      "answer": 0,
+      "explanation": "The `char` type holds a single character (one byte). C has no built-in `string` type; a string is an array of `char`. While a `char` is technically a small integer, `char` is the type that expresses the intent of one character.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-018",
+      "stem": "What does `printf(\"%d\", sizeof(char));` print on a standard C implementation?",
+      "options": [
+        "`4`",
+        "`1`",
+        "`8`",
+        "`0`"
+      ],
+      "answer": 1,
+      "explanation": "By definition in C, `sizeof(char)` is always `1`. A `char` is the unit that `sizeof` measures everything else against. An `int` is commonly `4` bytes, but a `char` is `1`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-019",
+      "stem": "What does this program print?\n\n`int a = 9, b = 4;`\n`printf(\"%d\", a - b);`",
+      "options": [
+        "`-5`",
+        "`13`",
+        "`5`",
+        "`94`"
+      ],
+      "answer": 2,
+      "explanation": "Both are integers, so `a - b` is `9 - 4 = 5`, printed with `%d` as `5`. Multiple variables can be declared in one statement separated by commas.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-020",
+      "stem": "In the assignment `double y = 5;`, what value is stored in `y`?",
+      "options": [
+        "a compiler error",
+        "`0.000000`",
+        "`5` exactly as an integer",
+        "`5.000000` as a floating-point value"
+      ],
+      "answer": 3,
+      "explanation": "Assigning the integer literal `5` to a `double` performs an implicit conversion, so `y` holds the floating-point value `5.0`. Printing it with `%f` would show `5.000000`. This is a widening conversion and is allowed without a cast.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-021",
+      "stem": "What does `printf(\"%d-%d\", 5, 10);` print?",
+      "options": [
+        "`5-10`",
+        "`510`",
+        "`5,10`",
+        "`15`"
+      ],
+      "answer": 0,
+      "explanation": "Each `%d` is replaced in order by the matching argument, and the literal `-` between the two specifiers is printed as-is. So the output is `5-10`. `printf` does not sum the values or change the separator.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-022",
+      "stem": "What does `printf(\"%.2f\", 3.14159);` print?",
+      "options": [
+        "`3`",
+        "`3.14`",
+        "`3.142`",
+        "`3.14159`"
+      ],
+      "answer": 1,
+      "explanation": "The `.2` in `%.2f` sets the precision to two digits after the decimal point, and the value is rounded to that precision, giving `3.14`. Three decimals (`%.3f`) would give `3.142`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-023",
+      "stem": "What does `printf(\"%d\", -7 / 2);` print in standard C?",
+      "options": [
+        "`-3.5`",
+        "`3`",
+        "`-3`",
+        "`-4`"
+      ],
+      "answer": 2,
+      "explanation": "Integer division in C truncates toward zero (not toward minus infinity). So `-7 / 2` is `-3.5` truncated toward zero, which is `-3`. Truncating toward minus infinity would have given `-4`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-024",
+      "stem": "Which escape sequence inside a `printf` string moves output to a new line?",
+      "options": [
+        "`\\0`",
+        "`\\\\`",
+        "`\\t`",
+        "`\\n`"
+      ],
+      "answer": 3,
+      "explanation": "`\\n` is the newline escape sequence. `\\t` inserts a horizontal tab, `\\0` is the null character that terminates strings, and `\\\\` produces a single literal backslash.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-025",
+      "format": "cloze",
+      "stem": "Predict the output of integer arithmetic and type casting in C.",
+      "solution": "Given `int a = 17, b = 5;`, the expression `a / b` evaluates to {{1}} and `a % b` evaluates to {{2}}. To get the true decimal quotient `3.4`, you would write `(double)a / b`, and the matching `printf` specifier for that `double` result is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`%f`",
+            "`%d`",
+            "`%c`"
+          ],
+          "answer": "`%f`"
+        }
+      ],
+      "explanation": "Integer division `17 / 5` truncates to `3`, and the remainder `17 % 5` is `2` (since `5 * 3 = 15` and `17 - 15 = 2`). Casting one operand with `(double)a` forces floating-point division, and a `double` is printed with `%f`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-026",
+      "format": "cloze",
+      "stem": "Choose the correct declaration and I/O calls for reading a number.",
+      "solution": "To store a whole number that can be reassigned, the keyword is {{1}}. To read such a value typed by the user into a variable `n`, the correct call is {{2}}. To then print it back, the format specifier for an integer is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`int`",
+            "`integer`",
+            "`number`"
+          ],
+          "answer": "`int`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`scanf(\"%d\", &n);`",
+            "`scanf(\"%d\", n);`",
+            "`printf(\"%d\", &n);`"
+          ],
+          "answer": "`scanf(\"%d\", &n);`"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`%d`",
+            "`%f`",
+            "`%s`"
+          ],
+          "answer": "`%d`"
+        }
+      ],
+      "explanation": "`int` declares a reassignable integer. `scanf` must receive the address `&n` to write into it, so `scanf(\"%d\", &n);` is correct. The integer is displayed with `%d`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-027",
+      "format": "cloze",
+      "stem": "Predict outputs that depend on operator precedence and casting.",
+      "solution": "The expression `2 + 6 / 3` evaluates to {{1}} because division happens before addition. The expression `(2 + 6) / 3` evaluates to {{2}} using integer division. Casting with `(int)4.7` produces {{3}} because the cast truncates rather than rounds.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Without parentheses, `6 / 3 = 2` is computed first, then `2 + 2 = 4`. With parentheses, `(2 + 6) = 8`, then `8 / 3` truncates to `2`. The cast `(int)4.7` drops the fraction to give `4`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-028",
+      "format": "cloze",
+      "stem": "Fill in the constants and character arithmetic.",
+      "solution": "The preprocessor directive that defines a symbolic constant `LIMIT` of `50` is `#define LIMIT` {{1}} (no equals sign, no semicolon). Separately, since `'A'` has ASCII code `65`, the integer value of the expression `'C' - 'A'` is {{2}}, and the `printf` specifier that would display a single character is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 50,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`%c`",
+            "`%d`",
+            "`%f`"
+          ],
+          "answer": "`%c`"
+        }
+      ],
+      "explanation": "A `#define` is written `#define LIMIT 50` with no `=` and no `;`. Character literals carry their ASCII values, so `'C' - 'A'` is `67 - 65 = 2`. A single character prints with `%c`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-029",
+      "format": "cloze",
+      "stem": "Predict the printed values and the floating-point format.",
+      "solution": "The statement `printf(\"%d\", 9 % 4);` prints {{1}}. The statement `printf(\"%d\", 8 % 4);` prints {{2}}. The statement `printf(\"%.1f\", 2.0 / 4);` prints the value {{3}} to one decimal place.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "`9 % 4` leaves remainder `1` (since `4 * 2 = 8`). `8 % 4` divides evenly, so the remainder is `0`. Because `2.0` is a `double`, `2.0 / 4` is floating-point division giving `0.5`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-030",
+      "format": "cloze",
+      "stem": "Identify the right types for scientific data.",
+      "solution": "To store a temperature like `36.6` with fractional precision, a suitable type is {{1}}. To store the count of measurements taken (a whole number), the natural type is {{2}}. The value of `sizeof(char)` in C is always {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`double`",
+            "`int`",
+            "`char`"
+          ],
+          "answer": "`double`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`int`",
+            "`double`",
+            "`char`"
+          ],
+          "answer": "`int`"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "A fractional measurement needs a floating-point type such as `double`. A whole count fits an `int`. By the C standard, `sizeof(char)` is defined to be `1`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    }
+  ]
+}

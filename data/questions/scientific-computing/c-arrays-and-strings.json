@@ -1,0 +1,560 @@
+{
+  "courseId": "scientific-computing",
+  "topicId": "c-arrays-and-strings",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-c-arrays-and-strings-001",
+      "stem": "What is the index of the first element of a C array?",
+      "options": [
+        "`0`",
+        "`-1`",
+        "It depends on the array size",
+        "`1`"
+      ],
+      "answer": 0,
+      "explanation": "C arrays are zero-indexed, so the first element is at index `0`. For an array of size `n`, the valid indices run from `0` to `n - 1`.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-002",
+      "stem": "Given `int a[5] = {10, 20, 30, 40, 50};`, what does `a[2]` equal?",
+      "options": [
+        "`20`",
+        "`30`",
+        "`40`",
+        "`2`"
+      ],
+      "answer": 1,
+      "explanation": "Indexing starts at `0`, so `a[0]` is `10`, `a[1]` is `20`, and `a[2]` is `30`. The index counts how many steps past the first element you move.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-003",
+      "stem": "For an array declared `double v[8];`, what is the largest valid index?",
+      "options": [
+        "`0`",
+        "`8`",
+        "`7`",
+        "`9`"
+      ],
+      "answer": 2,
+      "explanation": "An array of size `8` has indices `0` through `7`. The index `8` is out of bounds and accessing it is undefined behavior. The valid range is always `0` to `size - 1`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-004",
+      "stem": "What does this code print?\n\n`int a[4] = {2, 4, 6, 8};`\n`printf(\"%d\", a[0] + a[3]);`",
+      "options": [
+        "`8`",
+        "`14`",
+        "`6`",
+        "`10`"
+      ],
+      "answer": 3,
+      "explanation": "`a[0]` is `2` and `a[3]` is `8`, so their sum is `2 + 8 = 10`. The first and last elements of a four-element array are at indices `0` and `3`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-005",
+      "stem": "What does this loop print?\n\n`int a[3] = {5, 10, 15};`\n`int s = 0;`\n`for (int i = 0; i < 3; i++) s += a[i];`\n`printf(\"%d\", s);`",
+      "options": [
+        "`30`",
+        "`25`",
+        "`10`",
+        "`15`"
+      ],
+      "answer": 0,
+      "explanation": "The loop adds every element: `5 + 10 + 15 = 30`. This is the standard pattern for summing an array by iterating over its valid indices.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-006",
+      "stem": "How are character strings represented in C?",
+      "options": [
+        "As a built-in `string` type",
+        "As an array of `char` ending with a null terminator `\\0`",
+        "As a single `int`",
+        "As a linked list of characters"
+      ],
+      "answer": 1,
+      "explanation": "C has no native string type. A string is an array of `char` whose end is marked by the null character `\\0`. Functions like `printf(\"%s\", ...)` rely on that terminator to know where the string stops.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-007",
+      "stem": "Which character marks the end of a C string?",
+      "options": [
+        "A space character",
+        "The newline `\\n`",
+        "The null terminator `\\0`",
+        "A period `.`"
+      ],
+      "answer": 2,
+      "explanation": "Every C string ends with the null terminator `\\0`, an invisible character with value `0`. It tells string functions where the text stops. Spaces and newlines are ordinary characters inside a string.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-008",
+      "stem": "How many bytes of storage does `char s[] = \"cat\";` occupy?",
+      "options": [
+        "`2`",
+        "`5`",
+        "`3`",
+        "`4`"
+      ],
+      "answer": 3,
+      "explanation": "The string `\"cat\"` holds three letters plus the hidden null terminator `\\0`, so the array needs `4` bytes. Forgetting the terminator is a common source of off-by-one bugs.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-009",
+      "stem": "Which function from `<string.h>` returns the length of a string, not counting the null terminator?",
+      "options": [
+        "`strlen`",
+        "`strcmp`",
+        "`strcpy`",
+        "`strcat`"
+      ],
+      "answer": 0,
+      "explanation": "`strlen` counts the characters up to but excluding the `\\0`. `strcpy` copies a string, `strcat` joins two strings, and `strcmp` compares two strings.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-010",
+      "stem": "What does `printf(\"%d\", strlen(\"hello\"));` print?",
+      "options": [
+        "`4`",
+        "`5`",
+        "`0`",
+        "`6`"
+      ],
+      "answer": 1,
+      "explanation": "`strlen` counts the visible characters only. `\"hello\"` has five letters, so it returns `5`. The null terminator is not counted, even though it occupies storage.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-011",
+      "stem": "What does this code print?\n\n`char s[] = \"DATA\";`\n`printf(\"%c\", s[1]);`",
+      "options": [
+        "`DATA`",
+        "`D`",
+        "`A`",
+        "`T`"
+      ],
+      "answer": 2,
+      "explanation": "A string is an array of characters, so `s[0]` is `D`, `s[1]` is `A`, `s[2]` is `T`, `s[3]` is `A`. Printing `s[1]` with `%c` gives `A`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-012",
+      "stem": "Which specifier prints a whole string with `printf`?",
+      "options": [
+        "`%f`",
+        "`%c`",
+        "`%d`",
+        "`%s`"
+      ],
+      "answer": 3,
+      "explanation": "`%s` prints characters from the given address until it hits the null terminator. `%c` prints just one character, while `%d` and `%f` are for numbers.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-013",
+      "stem": "Given `int a[3][2] = {{1, 2}, {3, 4}, {5, 6}};`, what is `a[1][0]`?",
+      "options": [
+        "`3`",
+        "`4`",
+        "`5`",
+        "`2`"
+      ],
+      "answer": 0,
+      "explanation": "In a 2D array, the first index selects the row and the second selects the column. Row `1` is `{3, 4}`, and column `0` of that row is `3`. Both indices start at `0`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-014",
+      "stem": "How do you declare a 2D array of integers with 3 rows and 4 columns?",
+      "options": [
+        "`int m[3,4];`",
+        "`int m[3][4];`",
+        "`int m(3)(4);`",
+        "`int m[7];`"
+      ],
+      "answer": 1,
+      "explanation": "A 2D array uses separate bracket pairs for each dimension: `int m[3][4];`. C does not use a comma inside one bracket for multiple dimensions, so `m[3,4]` is wrong.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-015",
+      "stem": "What does this code print?\n\n`int a[5] = {0};`\n`printf(\"%d\", a[3]);`",
+      "options": [
+        "`5`",
+        "a random value",
+        "`0`",
+        "`3`"
+      ],
+      "answer": 2,
+      "explanation": "Initializing with `{0}` sets the first element to `0` and, because the rest of the initializer is empty, zero-initializes all remaining elements. So `a[3]` is `0`. This is a common way to create a zeroed array.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-016",
+      "stem": "What does this code print after modifying an element?\n\n`int a[4] = {1, 2, 3, 4};`\n`a[2] = 99;`\n`printf(\"%d\", a[2]);`",
+      "options": [
+        "`2`",
+        "`4`",
+        "`3`",
+        "`99`"
+      ],
+      "answer": 3,
+      "explanation": "The assignment `a[2] = 99;` overwrites the element at index `2`, which was `3`, with `99`. Reading `a[2]` afterward gives the new value `99`. Array elements are mutable through their index.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-017",
+      "stem": "Which `<string.h>` function copies the contents of one string into another?",
+      "options": [
+        "`strcpy`",
+        "`strchr`",
+        "`strlen`",
+        "`strcmp`"
+      ],
+      "answer": 0,
+      "explanation": "`strcpy(dest, src)` copies the characters of `src`, including its `\\0`, into `dest`. `strlen` measures length, `strcmp` compares, and `strchr` searches for a character.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-018",
+      "stem": "What does `strcmp(\"abc\", \"abc\")` return?",
+      "options": [
+        "`1`",
+        "`0`",
+        "`-1`",
+        "the length `3`"
+      ],
+      "answer": 1,
+      "explanation": "`strcmp` returns `0` when the two strings are equal. It returns a negative or positive value when they differ, depending on which string is lexicographically smaller or larger. Equal strings give exactly `0`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-019",
+      "stem": "What does this loop print?\n\n`char s[] = \"abc\";`\n`for (int i = 0; s[i] != '\\0'; i++) printf(\"%c\", s[i]);`",
+      "options": [
+        "`abcd`",
+        "`abc\\0`",
+        "`abc`",
+        "`ab`"
+      ],
+      "answer": 2,
+      "explanation": "The loop walks through the characters and stops when it reaches the null terminator `\\0`, which is the standard idiom for traversing a C string. It prints `a`, `b`, `c` and then halts, so the output is `abc`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-020",
+      "stem": "What happens when you read or write an array element outside its valid index range in C?",
+      "options": [
+        "The index automatically wraps around to a valid one",
+        "The program safely returns `0`",
+        "The compiler refuses to build the program",
+        "It is undefined behavior; C does not check array bounds"
+      ],
+      "answer": 3,
+      "explanation": "C performs no bounds checking, so accessing an out-of-range index is undefined behavior. It may crash, corrupt memory, or appear to work by accident. The programmer is responsible for staying within `0` to `size - 1`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-021",
+      "stem": "How many elements does the array `int a[] = {3, 6, 9, 12, 15};` have?",
+      "options": [
+        "`5`",
+        "`6`",
+        "`15`",
+        "`4`"
+      ],
+      "answer": 0,
+      "explanation": "When the size is omitted and an initializer list is given, the array size is the number of listed values. There are five values, so the array has `5` elements with indices `0` to `4`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-022",
+      "stem": "What does this code print (largest element search)?\n\n`int a[4] = {3, 9, 2, 7};`\n`int max = a[0];`\n`for (int i = 1; i < 4; i++) if (a[i] > max) max = a[i];`\n`printf(\"%d\", max);`",
+      "options": [
+        "`7`",
+        "`9`",
+        "`21`",
+        "`3`"
+      ],
+      "answer": 1,
+      "explanation": "The loop keeps the largest value seen so far. Starting with `3`, it updates `max` to `9` (since `9 > 3`), and `9` stays the maximum because no later element exceeds it. The output is `9`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-023",
+      "stem": "What does this code print?\n\n`char c = 'Z';`\n`char arr[2] = {c, '\\0'};`\n`printf(\"%s\", arr);`",
+      "options": [
+        "nothing",
+        "`Z\\0`",
+        "`Z`",
+        "the number `90`"
+      ],
+      "answer": 2,
+      "explanation": "The array holds the character `Z` followed by the null terminator, forming a valid one-character string. Printing it with `%s` outputs `Z` and stops at the `\\0`. The terminator itself is not displayed.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-024",
+      "format": "cloze",
+      "stem": "Work with array indexing and bounds.",
+      "solution": "For `int a[6] = {4, 8, 12, 16, 20, 24};`, the value `a[3]` equals {{1}}. The largest index you may legally access is {{2}}. The sum `a[0] + a[5]` equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 16,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 28,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Counting from index `0`, the element `a[3]` is the fourth value, `16`. A size-`6` array has indices `0` to `5`, so `5` is the largest valid index. The first and last values are `4` and `24`, summing to `28`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-025",
+      "format": "cloze",
+      "stem": "Reason about C strings and their storage.",
+      "solution": "A C string is stored as an array of `char` ending in the special terminator character {{1}}. The function that returns the number of visible characters is {{2}}. For the literal `\"hello\"`, that function returns {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`\\0`",
+            "`\\n`",
+            "`\\t`"
+          ],
+          "answer": "`\\0`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`strlen`",
+            "`strcpy`",
+            "`strcmp`"
+          ],
+          "answer": "`strlen`"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Strings end with the null terminator `\\0`. `strlen` reports the count of characters before that terminator, and `\"hello\"` has five letters, so it returns `5`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-026",
+      "format": "cloze",
+      "stem": "Predict string storage size and a comparison result.",
+      "solution": "The declaration `char w[] = \"grid\";` reserves {{1}} bytes, because the four letters need one extra byte for the terminator. The call `strcmp(\"sun\", \"sun\")` returns {{2}}, while the format specifier used to print an entire string with `printf` is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`%s`",
+            "`%c`",
+            "`%d`"
+          ],
+          "answer": "`%s`"
+        }
+      ],
+      "explanation": "`\"grid\"` is four letters plus a `\\0`, so the array is `5` bytes. `strcmp` returns `0` for equal strings. An entire string prints with `%s`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-027",
+      "format": "cloze",
+      "stem": "Index into a two-dimensional array.",
+      "solution": "For `int m[2][3] = {{1, 2, 3}, {4, 5, 6}};`, the element `m[1][2]` equals {{1}}. The first index selects the {{2}} and the second selects the column. The element `m[0][0]` equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "row",
+            "column",
+            "byte"
+          ],
+          "answer": "row"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Row `1` is `{4, 5, 6}` and column `2` of that row is `6`. By convention the first subscript is the row index and the second is the column. The top-left element `m[0][0]` is `1`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-028",
+      "format": "cloze",
+      "stem": "Trace an array sum and average.",
+      "solution": "Given `int a[4] = {10, 20, 30, 40};`, a loop summing all elements produces {{1}}. Dividing that integer sum by `4` using integer division gives {{2}}. The number of elements (the loop count) is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 100,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 25,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The elements add to `10 + 20 + 30 + 40 = 100`. Integer division `100 / 4` is exactly `25`. The array has four elements, so the summing loop runs four times.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-029",
+      "format": "cloze",
+      "stem": "Pick the right string functions for common tasks.",
+      "solution": "To join the text of one string onto the end of another, use {{1}}. To check whether two strings hold identical text, use {{2}}, expecting a return value of {{3}} when they match.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`strcat`",
+            "`strlen`",
+            "`strcmp`"
+          ],
+          "answer": "`strcat`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`strcmp`",
+            "`strcpy`",
+            "`strcat`"
+          ],
+          "answer": "`strcmp`"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "`strcat` appends one string to another. `strcmp` compares two strings and returns `0` precisely when they are equal.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-030",
+      "format": "cloze",
+      "stem": "Reason about array bounds safety.",
+      "solution": "For `double x[10];`, valid indices run from `0` up to {{1}}. Accessing `x[10]` is {{2}} because C performs no bounds checking. The total number of elements in the array is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "undefined behavior",
+            "always zero",
+            "automatically clamped"
+          ],
+          "answer": "undefined behavior"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "A size-`10` array uses indices `0` to `9`, so `9` is the largest valid one. Reading `x[10]` is out of bounds and therefore undefined behavior. The array holds ten elements in all.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    }
+  ]
+}

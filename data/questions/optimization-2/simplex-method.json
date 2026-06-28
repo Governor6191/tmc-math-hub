@@ -1,0 +1,487 @@
+{
+  "courseId": "optimization-2",
+  "topicId": "simplex-method",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-2-simplex-method-001",
+      "stem": "The simplex method is best described as:",
+      "options": [
+        "An iterative procedure that moves between basic feasible solutions until optimality",
+        "A graphical method for two variables",
+        "A way to draw the feasible region",
+        "A method that requires no constraints"
+      ],
+      "answer": 0,
+      "explanation": "The simplex method is an iterative routine that repeats the same pivoting steps, moving from one basic feasible solution (corner) to an adjacent better one, until it detects optimality. It handles many variables, unlike the graphical method.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-002",
+      "stem": "The first step in applying the simplex method to a system of $\\le$ constraints is to:",
+      "options": [
+        "Subtract surplus variables",
+        "Add slack variables to convert inequalities into equations",
+        "Compute the dual",
+        "Plot the constraints"
+      ],
+      "answer": 1,
+      "explanation": "Each $\\le$ inequality is converted into an equation by adding a non-negative slack variable, for example $30x_1 + 20x_2 + s_1 = 300$. This produces the system of linear equations the tableau operates on.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-003",
+      "stem": "For the model with $30x_1 + 20x_2 + s_1 = 300$ and $5x_1 + 10x_2 + s_2 = 110$, the initial basic feasible solution (with $x_1 = x_2 = 0$) is:",
+      "options": [
+        "$s_1 = 0, s_2 = 0$",
+        "$x_1 = 4, x_2 = 9$",
+        "$s_1 = 300, s_2 = 110$",
+        "$s_1 = 110, s_2 = 300$"
+      ],
+      "answer": 2,
+      "explanation": "Setting the non-basic decision variables to zero leaves the slacks equal to the right-hand sides: $s_1 = 300$ and $s_2 = 110$. This is the starting corner where no products are made.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-004",
+      "stem": "In a maximization simplex tableau, the entering variable is the one with the:",
+      "options": [
+        "Most negative $C_j - Z_j$",
+        "Smallest objective coefficient",
+        "Largest right-hand side",
+        "Most positive $C_j - Z_j$"
+      ],
+      "answer": 3,
+      "explanation": "For maximization, the entering variable is chosen from the column with the most positive $C_j - Z_j$ value, since that column improves the objective fastest. The procedure stops when no $C_j - Z_j$ is positive.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-005",
+      "stem": "Once the entering column is chosen, the leaving variable is determined by:",
+      "options": [
+        "The minimum ratio test: smallest non-negative ratio of RHS to the positive entries of the pivot column",
+        "The largest coefficient in the objective row",
+        "The largest ratio of RHS to pivot column",
+        "Choosing any basic variable at random"
+      ],
+      "answer": 0,
+      "explanation": "The leaving variable is found by the minimum ratio test: divide each right-hand side by the corresponding positive entry of the pivot column and pick the smallest ratio. That row becomes the pivot row, keeping the next solution feasible.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-006",
+      "stem": "In the chairs-and-tables tableau, the initial objective row gives $C_j - Z_j = 6$ for $x_1$ and $8$ for $x_2$. Which variable enters first?",
+      "options": [
+        "$x_1$",
+        "$x_2$",
+        "$s_1$",
+        "$s_2$"
+      ],
+      "answer": 1,
+      "explanation": "The most positive $C_j - Z_j$ is $8$, in the $x_2$ column, so $x_2$ enters the basis first. The simplex always selects the column with the greatest positive net contribution for a maximization problem.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-007",
+      "stem": "With $x_2$ entering and right-hand sides $300$ and $110$ over pivot-column entries $20$ and $10$, the minimum ratio test gives ratios:",
+      "options": [
+        "$10$ and $11$",
+        "$15$ and $30$",
+        "$15$ and $11$",
+        "$20$ and $10$"
+      ],
+      "answer": 2,
+      "explanation": "The ratios are $300/20 = 15$ and $110/10 = 11$. The smaller ratio $11$ identifies the pivot row (here the $s_2$ row), so $s_2$ leaves the basis.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-008",
+      "stem": "Using those ratios $15$ and $11$, which variable leaves the basis?",
+      "options": [
+        "$x_2$",
+        "$x_1$",
+        "$s_1$ (the row with ratio $15$)",
+        "$s_2$ (the row with ratio $11$)"
+      ],
+      "answer": 3,
+      "explanation": "The minimum ratio is $11$, belonging to the second row whose basic variable is $s_2$, so $s_2$ leaves. The element at the intersection of the entering column and this row is the pivot element.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-009",
+      "stem": "The element at the intersection of the entering column and the leaving (pivot) row is called the:",
+      "options": [
+        "Pivot element",
+        "Slack element",
+        "Shadow price",
+        "Reduced cost"
+      ],
+      "answer": 0,
+      "explanation": "That intersection entry is the pivot element; the pivot row is divided by it and used to eliminate the entering variable from the other rows. This Gauss-Jordan style step is the heart of one simplex iteration.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-010",
+      "stem": "For a maximization problem, the simplex tableau is optimal when:",
+      "options": [
+        "At least one $C_j - Z_j > 0$",
+        "Every $C_j - Z_j \\le 0$",
+        "Every right-hand side is zero",
+        "All slacks are basic"
+      ],
+      "answer": 1,
+      "explanation": "Optimality for a maximization problem is reached when no $C_j - Z_j$ is positive (all are $\\le 0$), so no column can further increase the objective. The current basic feasible solution is then optimal.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-011",
+      "stem": "The chairs-and-tables problem Maximize $Z = 6x_1 + 8x_2$ terminates with $x_1 = 4, x_2 = 9$. The optimal objective value is:",
+      "options": [
+        "$72$",
+        "$88$",
+        "$96$",
+        "$24$"
+      ],
+      "answer": 2,
+      "explanation": "Substituting the optimal solution gives $Z = 6(4) + 8(9) = 24 + 72 = 96$. This matches the value read from the final tableau.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-012",
+      "stem": "Why are slack variables given a coefficient of $0$ in the simplex objective row?",
+      "options": [
+        "Because they are always basic",
+        "Because they replace the objective",
+        "Because they must be negative",
+        "Because unused resources contribute nothing to profit"
+      ],
+      "answer": 3,
+      "explanation": "Slack variables stand for unused resources, which earn no profit, so they enter the objective with coefficient $0$. They keep the constraints as equations without affecting the objective value directly.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-013",
+      "stem": "In the simplex tableau, the row $Z_j$ for a column represents:",
+      "options": [
+        "The amount of objective value given up per unit of that variable brought in, based on current basics",
+        "The right-hand side",
+        "The slack of that constraint",
+        "The pivot element"
+      ],
+      "answer": 0,
+      "explanation": "Each $Z_j$ is computed from the contributions of the current basic variables and represents the rate at which objective value is exchanged when one unit of variable $j$ enters. The net effect $C_j - Z_j$ then tells whether bringing it in helps.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-014",
+      "stem": "For Maximize $Z = 5x_1 - 3x_2$ subject to $x_1 + x_2 \\le 2,\\ 5x_1 + 2x_2 \\le 10,\\ 3x_1 + 8x_2 \\le 12$, the entering variable in the first iteration is:",
+      "options": [
+        "$x_2$ (since $C_j - Z_j = -3$)",
+        "$x_1$ (since $C_j - Z_j = 5$)",
+        "$s_1$",
+        "$s_3$"
+      ],
+      "answer": 1,
+      "explanation": "The initial $C_j - Z_j$ values are $5$ for $x_1$ and $-3$ for $x_2$. The most positive is $5$, so $x_1$ enters first. The negative entry for $x_2$ would never be selected for entry in a maximization.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-015",
+      "stem": "For that same problem, the ratios in the $x_1$ column are $2/1, 10/5, 12/3$. The minimum ratio is:",
+      "options": [
+        "$4$",
+        "$1$",
+        "$2$",
+        "$5$"
+      ],
+      "answer": 2,
+      "explanation": "The ratios are $2, 2, 4$; the minimum is $2$ (a tie between the first two rows, broken arbitrarily). That row leaves the basis, and the problem terminates with $x_1 = 2, x_2 = 0, Z = 10$.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-016",
+      "stem": "The simplex method is preferred over the graphical method mainly because it:",
+      "options": [
+        "Always gives non-integer answers",
+        "Requires plotting the feasible region",
+        "Avoids the need for constraints",
+        "Handles problems with more than two decision variables"
+      ],
+      "answer": 3,
+      "explanation": "The graphical method is limited to two variables, whereas the simplex method works algebraically for any number of variables, making it the practical general-purpose LP solver.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-017",
+      "stem": "In the simplex tableau, the variables currently held in the 'basis' column are the:",
+      "options": [
+        "Basic variables that take the current solution values",
+        "Non-basic variables (set to zero)",
+        "Objective coefficients",
+        "Pivot elements"
+      ],
+      "answer": 0,
+      "explanation": "The basis column lists the basic variables, those that take nonzero solution values in the current corner; all variables not in the basis are non-basic and equal zero.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-018",
+      "stem": "After pivoting on the chosen pivot element, the pivot row is first:",
+      "options": [
+        "Multiplied by the pivot element",
+        "Divided by the pivot element so the pivot becomes $1$",
+        "Set to zero",
+        "Deleted from the tableau"
+      ],
+      "answer": 1,
+      "explanation": "The pivot row is divided through by the pivot element to make the pivot entry equal $1$; then multiples of this new row are subtracted from the other rows to clear the entering column. This is one Gauss-Jordan elimination step.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-019",
+      "stem": "A minimization LP can be solved by the same simplex machinery by:",
+      "options": [
+        "Ignoring the objective row",
+        "Always maximizing the slacks",
+        "Recognizing optimality when all $C_j - Z_j \\ge 0$ (the reverse rule)",
+        "Removing all constraints"
+      ],
+      "answer": 2,
+      "explanation": "For a minimization problem the optimality criterion reverses: the tableau is optimal when every $C_j - Z_j \\ge 0$, and the entering variable is the most negative one. The slides reach the minimum when $C_j - Z_j \\ge 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-020",
+      "stem": "In the starting simplex tableau, the basis consists of the slack variables because:",
+      "options": [
+        "They have the largest profit",
+        "They equal the objective value",
+        "They are non-negative only when basic",
+        "Setting the decision variables to zero leaves the slacks as the initial feasible basis"
+      ],
+      "answer": 3,
+      "explanation": "At the origin all decision variables are zero, so each slack equals its right-hand side and the slacks form a ready-made identity basis. This gives the simplex a feasible starting point with objective value zero.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-021",
+      "stem": "If, in a maximization tableau, an entering column has no positive entries for the ratio test, the problem is:",
+      "options": [
+        "Unbounded",
+        "Optimal",
+        "Degenerate",
+        "Infeasible"
+      ],
+      "answer": 0,
+      "explanation": "When the entering column has no positive coefficients, no ratio limits how far the variable can increase, so the objective can grow without bound and the LP is unbounded.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-022",
+      "stem": "The quantity $C_j - Z_j$ for a non-basic variable in a maximization problem tells you:",
+      "options": [
+        "The slack remaining",
+        "The net change in objective per unit if that variable enters the basis",
+        "The pivot element value",
+        "The right-hand side"
+      ],
+      "answer": 1,
+      "explanation": "$C_j - Z_j$ is the net contribution to the objective per unit of variable $j$ entering the basis. A positive value means entering it raises $Z$, which drives the choice of entering variable.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-023",
+      "format": "cloze",
+      "stem": "Maximize $Z = 6x_1 + 8x_2$ subject to $30x_1 + 20x_2 \\le 300$ and $5x_1 + 10x_2 \\le 110$, solved by simplex.",
+      "solution": "After adding slacks, the starting basis is the slack variables with values $s_1 =$ {{1}} and $s_2 =$ {{2}}. The optimal tableau gives $x_1 = 4$ and $x_2 = 9$, so the maximum objective value is $Z =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 300,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 110,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 96,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "At the origin the slacks equal the right-hand sides, $s_1 = 300, s_2 = 110$. The optimum is $x_1 = 4, x_2 = 9$ with $Z = 6(4) + 8(9) = 96$.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-024",
+      "format": "cloze",
+      "stem": "In a maximization simplex iteration the entering and leaving variables are chosen by two rules.",
+      "solution": "The entering variable is the column with the most {{1}} value of $C_j - Z_j$. The leaving variable is found by the minimum {{2}} test, dividing each right-hand side by the corresponding positive pivot-column entry.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "positive",
+            "negative",
+            "zero"
+          ],
+          "answer": "positive"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "ratio",
+            "ratio test"
+          ]
+        }
+      ],
+      "explanation": "Enter on the most positive $C_j - Z_j$; leave by the minimum ratio test (RHS divided by positive pivot-column entries).",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-025",
+      "format": "cloze",
+      "stem": "The $x_2$ column is selected to enter, with right-hand sides $300$ and $110$ over pivot entries $20$ and $10$.",
+      "solution": "The ratio for the first row is $300/20 =$ {{1}} and for the second row is $110/10 =$ {{2}}. The minimum ratio is {{3}}, so the second row leaves the basis.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 15,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 11,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 11,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Ratios are $300/20 = 15$ and $110/10 = 11$; the minimum $11$ marks the pivot row, so $s_2$ leaves.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-026",
+      "format": "cloze",
+      "stem": "Optimality criteria differ between maximization and minimization simplex tableaux.",
+      "solution": "For a maximization problem the optimum is reached when every $C_j - Z_j$ is {{1}} than or equal to zero. For a minimization problem the optimum is reached when every $C_j - Z_j$ is {{2}} than or equal to zero.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "less",
+            "greater"
+          ],
+          "answer": "less"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "greater",
+            "less"
+          ],
+          "answer": "greater"
+        }
+      ],
+      "explanation": "Maximize: stop when all $C_j - Z_j \\le 0$. Minimize: stop when all $C_j - Z_j \\ge 0$.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-027",
+      "format": "cloze",
+      "stem": "Consider Maximize $Z = 5x_1 - 3x_2$ subject to $x_1 + x_2 \\le 2,\\ 5x_1 + 2x_2 \\le 10,\\ 3x_1 + 8x_2 \\le 12$.",
+      "solution": "The initial $C_j - Z_j$ for $x_1$ is $5$, so $x_1$ {{1}} the basis first. The ratios in the $x_1$ column are $2, 2, 4$, with minimum {{2}}, and the method ends at $x_1 = 2, x_2 = 0$ with $Z =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "enters",
+            "leaves"
+          ],
+          "answer": "enters"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "$x_1$ enters on $C_j - Z_j = 5$; ratios $2,2,4$ give minimum $2$; the optimum is $x_1 = 2, x_2 = 0$, $Z = 5(2) - 3(0) = 10$.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-simplex-method-028",
+      "format": "cloze",
+      "stem": "Pivoting transforms one simplex tableau into the next.",
+      "solution": "The entry where the entering column meets the leaving row is the {{1}} element. The pivot row is divided by this element so the pivot becomes {{2}}, and multiples of the new row are subtracted from the other rows.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "pivot"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The pivot element sits at the entering-column / leaving-row intersection; dividing the pivot row by it makes the pivot equal $1$, then the column is cleared elsewhere.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    }
+  ]
+}

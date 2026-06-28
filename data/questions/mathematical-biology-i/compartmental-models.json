@@ -1,0 +1,514 @@
+{
+  "courseId": "mathematical-biology-i",
+  "topicId": "compartmental-models",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-biology-i-compartmental-models-001",
+      "stem": "In compartmental epidemic models, what does the letter $S$ stand for?",
+      "options": [
+        "The number of secondary infections per case",
+        "The susceptible class: individuals who can still contract the disease",
+        "The recovered class with permanent immunity",
+        "The total population size"
+      ],
+      "answer": 1,
+      "explanation": "The susceptible class $S(t)$ collects individuals who have never had the disease but are capable of contracting it upon contact with an infective. The infective class $I(t)$ holds those who currently carry and can transmit the disease, and the recovered class $R(t)$ holds those removed by recovery. The total population is written $N$, and the number of secondary infections per case is the basic reproduction number $R_0$, neither of which is $S$.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-002",
+      "stem": "Which model is used for a disease that confers permanent immunity after recovery, so individuals pass from susceptible to infective to recovered and stay recovered?",
+      "options": [
+        "SIS model",
+        "SIRS model",
+        "SIR model",
+        "SEIS model"
+      ],
+      "answer": 2,
+      "explanation": "The SIR model describes a disease that confers lasting immunity: individuals move $S \\to I \\to R$ and remain in $R$. The SIS model returns individuals from $I$ back to $S$ because there is no immunity. The SIRS model gives only temporary immunity, so $R$ eventually returns to $S$. The SEIS model is an SIS model with an added exposed stage. Only SIR keeps the recovered class permanently immune.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-003",
+      "stem": "A disease gives no immunity at all, so a recovered individual immediately becomes susceptible again. Which compartmental structure fits?",
+      "options": [
+        "SIR",
+        "SEIR",
+        "SIRS",
+        "SIS"
+      ],
+      "answer": 3,
+      "explanation": "With no immunity, individuals cycle $S \\to I \\to S$, which is exactly the SIS structure. According to the course notes, diseases caused by bacteria are often of SIS type, while viral diseases are often SIR. SIR and SEIR both retain a recovered class with at least some immunity, and SIRS grants temporary immunity before returning to $S$, so none of those matches a disease with no immunity.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-004",
+      "stem": "What feature distinguishes an SEIR model from an SIR model?",
+      "options": [
+        "An exposed (latent) period between being infected and becoming infectious",
+        "A vaccinated class that is fully immune from birth",
+        "Loss of immunity returning recovered people to the susceptible class",
+        "A treatment class that lowers infectivity"
+      ],
+      "answer": 0,
+      "explanation": "SEIR adds an exposed class $E$ for individuals who have been infected but are not yet infectious, capturing the latent period before symptoms and transmissibility develop. Loss of immunity returning $R$ to $S$ is the SEIRS or SIRS feature, a separate vaccinated class belongs to vaccination models, and a treatment class with reduced infectivity is the SITR extension. The defining addition in SEIR is the exposed stage.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-005",
+      "stem": "The SIRS model differs from the SIR model by including which extra transition?",
+      "options": [
+        "Susceptibles dying at a constant rate",
+        "Recovered individuals losing immunity and returning to the susceptible class",
+        "Infectives skipping the recovered class",
+        "Exposed individuals becoming infective"
+      ],
+      "answer": 1,
+      "explanation": "SIRS models temporary immunity: after recovery, individuals eventually lose immunity and move from $R$ back to $S$, usually at a loss of immunity rate $\\delta$. This lets the disease persist in the population. SIR has no return path from $R$. The exposed to infective transition belongs to SEIR, and added death of susceptibles is a vital dynamics feature, not the defining SIRS transition.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-006",
+      "stem": "An infectious disease that spreads slowly and persists in a community for a long period is best described as",
+      "options": [
+        "epidemic",
+        "pandemic",
+        "endemic",
+        "sporadic"
+      ],
+      "answer": 2,
+      "explanation": "An endemic disease spreads slowly and stays present in a community over a long period of time. An epidemic spreads fast and lasts a short time. A pandemic is a disease that spreads from one geographic area to another. The slow, long lasting description matches endemic.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-007",
+      "stem": "An infectious disease that spreads quickly and affects many people in a community over a short period is called an",
+      "options": [
+        "endemic disease",
+        "immunizing infection",
+        "asymptomatic carrier state",
+        "epidemic disease"
+      ],
+      "answer": 3,
+      "explanation": "An epidemic is an infectious disease that spreads fast and occurs in a community for a short period. This contrasts with an endemic disease, which spreads slowly and persists for a long time. A pandemic crosses geographic areas. Fast spread over a short period defines an epidemic.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-008",
+      "stem": "Epidemiology is best defined as the scientific study of",
+      "options": [
+        "the occurrence, transmission, and control of infectious disease",
+        "the chemical structure of viruses and bacteria",
+        "the genetic mutation rate of pathogens",
+        "the design of vaccines in the laboratory"
+      ],
+      "answer": 0,
+      "explanation": "Epidemiology is the scientific study of the occurrence, transmission, and control of infectious disease. It is concerned with how diseases appear in populations, how they spread, and how they can be contained, rather than with the molecular chemistry or laboratory synthesis of vaccines. That population level focus is what the compartmental models in this course aim to capture.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-009",
+      "stem": "In the basic SIR model the population size $N$ is assumed constant. Which condition makes that assumption hold?",
+      "options": [
+        "Every infective recovers within one day",
+        "Birth rate equals death rate, and immigration equals emigration",
+        "The transmission rate equals the recovery rate",
+        "No one is ever infected"
+      ],
+      "answer": 1,
+      "explanation": "A constant population requires that inflows balance outflows: the birth rate equals the death rate and immigration equals emigration. Then $S(t) + I(t) + R(t) = N$ stays fixed. The other statements concern recovery speed, parameter equality, or absence of infection, none of which is what keeps the head count constant. This balance is exactly the closed population assumption stated in the SIR derivation.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-010",
+      "stem": "The homogeneous mixing assumption in compartmental models means that",
+      "options": [
+        "only infectives move between compartments",
+        "the population is divided into many isolated subgroups",
+        "all individuals have an equal chance of contacting one another",
+        "the birth rate exceeds the death rate"
+      ],
+      "answer": 2,
+      "explanation": "Homogeneous mixing assumes that susceptibles and infectives mix uniformly, so any individual is equally likely to contact any other. This is what justifies writing the incidence as proportional to the product $S I$, since the chance of a susceptible meeting an infective is taken to be uniform across the population. Isolated subgroups, vital rate inequalities, and restrictions on who can change compartment are not part of this assumption.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-011",
+      "stem": "In the standard SIR model the rate at which individuals leave the infective class through recovery is taken to be",
+      "options": [
+        "constant, independent of how many are infected",
+        "proportional to the number of recovered individuals",
+        "proportional to the square of the susceptibles",
+        "proportional to the number of infectives $I$"
+      ],
+      "answer": 3,
+      "explanation": "One of the SIR assumptions is that the rate at which sick people recover is directly proportional to the number of infectives present at that time, giving the recovery term $\\gamma I$. It is not a fixed constant, nor tied to the susceptibles or the already recovered class. This linear recovery term is what appears as $+\\gamma I$ in the equation for $R$ and $-\\gamma I$ in the equation for $I$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-012",
+      "stem": "In the incidence term $\\beta S I$, the parameter $\\beta$ is the",
+      "options": [
+        "transmission rate",
+        "recovery rate",
+        "loss of immunity rate",
+        "mean exposed period"
+      ],
+      "answer": 0,
+      "explanation": "In $\\beta S I$ the coefficient $\\beta$ is the transmission rate, governing how quickly contacts between susceptibles and infectives produce new infections. The recovery rate is $\\gamma$, the loss of immunity rate in SIRS is $\\delta$, and the mean exposed period in SEIR relates to $1/k$. The factor multiplying the contact product $S I$ in the incidence is the transmission rate.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-013",
+      "stem": "If the average infectious period of a disease is $5$ days, the recovery rate $\\gamma$ (per day) is",
+      "options": [
+        "$5$",
+        "$0.2$",
+        "$0.5$",
+        "$25$"
+      ],
+      "answer": 1,
+      "explanation": "The recovery rate is the reciprocal of the average infectious period, $\\gamma = 1/(\\text{mean infectious period})$. With a mean period of $5$ days, $\\gamma = 1/5 = 0.2$ per day. Taking $5$ confuses the period with its rate, $0.5$ would correspond to a $2$ day period, and $25$ has no basis. The reciprocal relationship gives $0.2$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-014",
+      "stem": "If the recovery rate is $\\gamma = 0.1$ per day, the average infectious period is",
+      "options": [
+        "$1$ day",
+        "$0.1$ days",
+        "$10$ days",
+        "$0.9$ days"
+      ],
+      "answer": 2,
+      "explanation": "The average infectious period is the reciprocal of the recovery rate, $1/\\gamma$. With $\\gamma = 0.1$ per day, the mean infectious period is $1/0.1 = 10$ days. The other values misread the reciprocal. A small recovery rate corresponds to a long infectious period, here $10$ days.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-015",
+      "stem": "Why are controlled experiments often impractical in epidemiology, making mathematical models valuable?",
+      "options": [
+        "Pathogens cannot be grown in a laboratory",
+        "Differential equations cannot describe disease spread",
+        "Infectious diseases never produce usable data",
+        "Withholding treatment from a control group raises serious ethical questions"
+      ],
+      "answer": 3,
+      "explanation": "The notes point out that designing controlled experiments in epidemiology is often difficult or impossible, and that withholding treatment from a control group raises serious ethical questions. Mathematical models let us explore disease dynamics and control strategies without such experiments. The other options are false: pathogens can be cultured, epidemics do yield data (often imperfect), and differential equations are precisely the tool used here.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-016",
+      "stem": "Which of the following is a stated benefit of mathematical modelling in epidemiology?",
+      "options": [
+        "It suggests control strategies and helps estimate vaccination needs",
+        "It removes all uncertainty from disease data",
+        "It replaces the need for any public health professionals",
+        "It guarantees a cure for every disease"
+      ],
+      "answer": 0,
+      "explanation": "Modelling provides understanding of the mechanisms that drive disease spread, suggests control strategies, and is routinely used to estimate how widespread a vaccination plan must be to prevent or reduce spread. It does not eliminate data uncertainty, replace public health staff, or guarantee cures. Its value lies in informing strategy and policy, including vaccination coverage targets.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-017",
+      "stem": "According to the course notes, viral diseases are typically modelled as SIR while bacterial diseases are typically modelled as",
+      "options": [
+        "SEIR",
+        "SIS",
+        "SIRS",
+        "SITR"
+      ],
+      "answer": 1,
+      "explanation": "The notes state that diseases caused by a virus are usually of SIR type, while diseases caused by bacteria are usually of SIS type. The contrast reflects whether recovery confers lasting immunity (SIR) or leaves the individual susceptible again (SIS). SEIR, SIRS, and SITR are richer structures not singled out for the bacterial case here.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-018",
+      "stem": "A disease that spreads from one geographic area to another, across regions or countries, is termed a",
+      "options": [
+        "endemic disease",
+        "epidemic disease",
+        "pandemic disease",
+        "latent disease"
+      ],
+      "answer": 2,
+      "explanation": "A pandemic is a disease that spreads from one geographic area to another, reaching across regions. An endemic disease persists locally over long periods, and an epidemic is a fast, short lived outbreak within a community. The cross area spread is what marks a pandemic.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-019",
+      "stem": "In the SEIS model, an individual who recovers from the infective stage returns to which compartment?",
+      "options": [
+        "The recovered class $R$, permanently immune",
+        "A vaccinated class $V$",
+        "The exposed class $E$",
+        "The susceptible class $S$"
+      ],
+      "answer": 3,
+      "explanation": "SEIS is an SIS model with an added exposed period, so the cycle is $S \\to E \\to I \\to S$. After the infective stage the individual returns to the susceptible class because the disease confers no lasting immunity. There is no permanent recovered class, recovery does not send people back to $E$, and no vaccinated class is part of the basic SEIS structure.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-020",
+      "stem": "Why does the standard SIR model neglect the latent (exposed) period?",
+      "options": [
+        "Because the latent period is assumed short compared with the whole epidemic",
+        "Because exposed individuals are already immune",
+        "Because the latent period lasts longer than the epidemic",
+        "Because exposed individuals cannot be counted"
+      ],
+      "answer": 0,
+      "explanation": "The SIR model ignores the waiting period of infectivity on the grounds that it is short compared with the entire duration of the epidemic, so an infected person is treated as immediately infective. When that latent period is not negligible, the SEIR model is used instead, inserting an exposed class. The other options misstate the immunity status, the relative length of the period, or claim it cannot be measured.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-021",
+      "stem": "Which statement correctly contrasts simple and detailed disease models, as discussed in the notes?",
+      "options": [
+        "Simple models give quantitative short term forecasts; detailed models only give qualitative trends",
+        "Simple models highlight general qualitative behaviour; detailed models target specific situations but are often hard to solve analytically",
+        "Detailed models are always solvable in closed form; simple models never are",
+        "Simple and detailed models always give identical predictions"
+      ],
+      "answer": 1,
+      "explanation": "The notes describe a trade off: simple models highlight general qualitative behaviour and serve as building blocks, while detailed models are tailored to specific situations and short term quantitative predictions but are generally difficult or impossible to solve analytically, so they often need numerical simulation. The reversed claim and the absolute claims about solvability or identical predictions all contradict this trade off.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-022",
+      "stem": "In a closed population governed by an SIR model with $S(t) + I(t) + R(t) = N$, what is the value of $\\dfrac{d}{dt}\\big(S + I + R\\big)$?",
+      "options": [
+        "$\\beta S I$",
+        "$\\gamma I$",
+        "$0$",
+        "$N$"
+      ],
+      "answer": 2,
+      "explanation": "Adding the three SIR equations, $\\frac{dS}{dt} + \\frac{dI}{dt} + \\frac{dR}{dt} = -\\beta S I + (\\beta S I - \\gamma I) + \\gamma I = 0$. So the total population is constant, consistent with $S + I + R = N$ fixed. The individual incidence and recovery terms cancel, which is exactly why the population stays at $N$ in the model without vital dynamics.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-023",
+      "format": "cloze",
+      "stem": "Classify three diseases by compartmental structure and define a key term.",
+      "solution": "A disease that confers permanent immunity after recovery is modelled with the {{1}} structure, while a disease that gives no immunity at all uses the {{2}} structure. A model that adds an exposed latent stage before individuals become infectious, with permanent immunity afterward, is the {{3}} model. An infectious disease that spreads slowly and lasts a long time in a community is called {{4}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "SIR",
+            "SIS",
+            "SEIS"
+          ],
+          "answer": "SIR"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "SIR",
+            "SIS",
+            "SEIR"
+          ],
+          "answer": "SIS"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "SIRS",
+            "SEIR",
+            "SIS"
+          ],
+          "answer": "SEIR"
+        },
+        {
+          "id": 4,
+          "type": "text",
+          "accept": [
+            "endemic",
+            "an endemic disease",
+            "endemic disease"
+          ]
+        }
+      ],
+      "explanation": "Permanent immunity corresponds to $S \\to I \\to R$, the SIR model. No immunity corresponds to $S \\to I \\to S$, the SIS model. Adding an exposed latent class before infectiousness, with lasting immunity afterward, gives $S \\to E \\to I \\to R$, the SEIR model. A slow, long lasting infection in a community is endemic, in contrast with a fast, short lived epidemic.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-024",
+      "format": "cloze",
+      "stem": "Convert between infectious period and recovery rate for an SIR disease.",
+      "solution": "The recovery rate $\\gamma$ is the reciprocal of the mean infectious period. If the average infectious period is $4$ days, then $\\gamma =$ {{1}} per day. Conversely, if $\\gamma = 0.25$ per day, the mean infectious period is {{2}} days. In the standard SIR model this recovery is assumed to be proportional to the number of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "infectives",
+            "susceptibles",
+            "recovered individuals"
+          ],
+          "answer": "infectives"
+        }
+      ],
+      "explanation": "Recovery rate and mean infectious period are reciprocals. A $4$ day period gives $\\gamma = 1/4 = 0.25$ per day, and $\\gamma = 0.25$ per day gives a period of $1/0.25 = 4$ days. The SIR recovery term is $\\gamma I$, so the rate of recovery is proportional to the number of infectives present.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-025",
+      "format": "cloze",
+      "stem": "Identify the role of each parameter and the closed population condition.",
+      "solution": "In the incidence term $\\beta S I$, the parameter $\\beta$ is the {{1}} rate. In an SIRS model the rate at which recovered individuals lose immunity and return to $S$ is denoted $\\delta$ and is called the {{2}} rate. For the total population $N$ to stay constant in a model without vital dynamics, the birth rate must equal the {{3}} rate.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "transmission",
+            "recovery",
+            "exposed"
+          ],
+          "answer": "transmission"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "loss of immunity",
+            "immunity loss",
+            "rate of immunity loss"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "death",
+            "transmission",
+            "recovery"
+          ],
+          "answer": "death"
+        }
+      ],
+      "explanation": "In $\\beta S I$, $\\beta$ is the transmission rate. In SIRS, $\\delta$ is the rate of immunity loss, moving recovered individuals back to $S$. A constant population in a closed model requires birth rate equal to death rate (and immigration equal to emigration), so total $N$ does not change.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-026",
+      "format": "cloze",
+      "stem": "Reason about adding the SIR equations in a closed population.",
+      "solution": "Adding $\\dfrac{dS}{dt} = -\\beta S I$, $\\dfrac{dI}{dt} = \\beta S I - \\gamma I$, and $\\dfrac{dR}{dt} = \\gamma I$ gives a total derivative of {{1}}. This shows the total population is {{2}} over time, consistent with $S + I + R = N$. The waiting (exposed) period is ignored in this model because it is assumed {{3}} compared with the whole epidemic.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "constant",
+            "increasing",
+            "decreasing"
+          ],
+          "answer": "constant"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "short",
+            "long",
+            "negative"
+          ],
+          "answer": "short"
+        }
+      ],
+      "explanation": "Summing the equations, the $\\beta S I$ terms cancel and the $\\gamma I$ terms cancel, leaving $\\frac{d}{dt}(S + I + R) = 0$. The total population is therefore constant at $N$. The SIR model drops the latent period on the assumption that it is short relative to the entire epidemic.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-compartmental-models-027",
+      "format": "cloze",
+      "stem": "Match epidemiological terms to their meanings.",
+      "solution": "An infection that spreads fast and lasts a short time in a community is an {{1}}. One that spreads from one geographic area to another is a {{2}}. The scientific study of the occurrence, transmission, and control of infectious disease is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "epidemic",
+            "endemic",
+            "pandemic"
+          ],
+          "answer": "epidemic"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "pandemic",
+            "endemic",
+            "epidemic"
+          ],
+          "answer": "pandemic"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "epidemiology",
+            "Epidemiology"
+          ]
+        }
+      ],
+      "explanation": "Fast and short lived describes an epidemic, cross area spread describes a pandemic, and slow and long lasting would be endemic. The study of occurrence, transmission, and control of infectious disease is epidemiology, the subject framing all the compartmental models in this course.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    }
+  ]
+}

@@ -1,0 +1,510 @@
+{
+  "courseId": "mathematical-biology-i",
+  "topicId": "the-sir-model",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-biology-i-the-sir-model-001",
+      "stem": "Which system of differential equations is the SIR model without vital dynamics?",
+      "options": [
+        "$\\dfrac{dS}{dt} = \\beta S I,\\ \\dfrac{dI}{dt} = \\gamma I - \\beta S I,\\ \\dfrac{dR}{dt} = -\\gamma I$",
+        "$\\dfrac{dS}{dt} = -\\beta S I,\\ \\dfrac{dI}{dt} = \\beta S I - \\gamma I,\\ \\dfrac{dR}{dt} = \\gamma I$",
+        "$\\dfrac{dS}{dt} = -\\gamma S,\\ \\dfrac{dI}{dt} = \\gamma S - \\beta I,\\ \\dfrac{dR}{dt} = \\beta I$",
+        "$\\dfrac{dS}{dt} = -\\beta S,\\ \\dfrac{dI}{dt} = \\beta S - \\gamma,\\ \\dfrac{dR}{dt} = \\gamma$"
+      ],
+      "answer": 1,
+      "explanation": "Susceptibles fall through infection at rate $\\beta S I$, infectives gain that same flow and lose recoveries at rate $\\gamma I$, and recovered individuals accumulate at $\\gamma I$. This gives $\\frac{dS}{dt} = -\\beta S I$, $\\frac{dI}{dt} = \\beta S I - \\gamma I$, $\\frac{dR}{dt} = \\gamma I$. The other systems have wrong signs, drop the bilinear $S I$ contact term, or remove the dependence on $I$ that the law of mass action requires.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-002",
+      "stem": "What are the standard initial conditions for the SIR model without vital dynamics at the start of an epidemic?",
+      "options": [
+        "$S(0) = 0,\\ I(0) = N,\\ R(0) = 0$",
+        "$S(0) = S_0,\\ I(0) = 0,\\ R(0) = R_0$",
+        "$S(0) = S_0,\\ I(0) = I_0 > 0,\\ R(0) = 0$",
+        "$S(0) = N,\\ I(0) = N,\\ R(0) = N$"
+      ],
+      "answer": 2,
+      "explanation": "At the onset of an epidemic almost everyone is susceptible, a small positive number is infective, and no one has yet recovered: $S(0) = S_0$, $I(0) = I_0 > 0$, $R(0) = 0$. Starting with no susceptibles or with a full recovered class would not represent the beginning of an outbreak, and the population must satisfy $S_0 + I_0 + R_0 = N$, not have every class equal to $N$.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-003",
+      "stem": "Setting $\\dfrac{dI}{dt} = 0$ in the SIR model (with $I \\neq 0$) shows that the infective curve peaks when $S$ equals",
+      "options": [
+        "$N$",
+        "$\\dfrac{\\beta}{\\gamma}$",
+        "$\\beta \\gamma$",
+        "$\\dfrac{\\gamma}{\\beta}$"
+      ],
+      "answer": 3,
+      "explanation": "From $\\frac{dI}{dt} = \\beta S I - \\gamma I = 0$ with $I \\neq 0$, divide by $I$ to get $\\beta S = \\gamma$, so $S = \\gamma/\\beta$. This is the susceptible level at which the infective population stops growing and turns over. The reciprocal $\\beta/\\gamma$ and the product $\\beta\\gamma$ do not satisfy the balance, and $N$ is the whole population, not the turning point.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-004",
+      "stem": "In the SIR analysis the relative removal rate is defined as $\\rho = \\dfrac{\\gamma}{\\beta}$. The infective population grows only while $S$ exceeds",
+      "options": [
+        "$\\rho$",
+        "$2\\rho$",
+        "$\\dfrac{1}{\\rho}$",
+        "$N - \\rho$"
+      ],
+      "answer": 0,
+      "explanation": "Since $\\frac{dI}{dt} = (\\beta S - \\gamma) I$, the infectives increase exactly when $\\beta S - \\gamma > 0$, that is $S > \\gamma/\\beta = \\rho$. So the threshold susceptible level is the relative removal rate $\\rho$ itself. When $S$ drops below $\\rho$ the epidemic begins to decline. The other expressions do not match the condition $\\beta S > \\gamma$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-005",
+      "stem": "Dividing the infective equation by the susceptible equation in the SIR model gives $\\dfrac{dI}{dS}$ equal to",
+      "options": [
+        "$1 - \\dfrac{\\rho}{S}$",
+        "$-1 + \\dfrac{\\rho}{S}$",
+        "$\\dfrac{\\rho}{S}$",
+        "$-1 - \\dfrac{\\rho}{S}$"
+      ],
+      "answer": 1,
+      "explanation": "Form $\\frac{dI}{dS} = \\frac{\\beta S I - \\gamma I}{-\\beta S I} = -1 + \\frac{\\gamma}{\\beta S}$. Writing $\\rho = \\gamma/\\beta$ gives $\\frac{dI}{dS} = -1 + \\frac{\\rho}{S}$. The sign on the leading $-1$ comes from dividing by the negative $\\frac{dS}{dt}$, and the second term carries $\\rho$ over $S$. The other forms have a wrong sign or drop the $-1$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-006",
+      "stem": "Integrating $\\dfrac{dI}{dS} = -1 + \\dfrac{\\rho}{S}$ and applying the initial data yields the orbit equation",
+      "options": [
+        "$I(t) = I_0 + S_0 - S(t) - \\rho \\ln\\dfrac{S(t)}{S_0}$",
+        "$I(t) = I_0 - S_0 + S(t) + \\rho \\ln\\dfrac{S_0}{S(t)}$",
+        "$I(t) = I_0 + S_0 - S(t) + \\rho \\ln\\dfrac{S(t)}{S_0}$",
+        "$I(t) = S(t) - S_0 + \\rho \\ln\\dfrac{S(t)}{S_0}$"
+      ],
+      "answer": 2,
+      "explanation": "Integrating gives $I = -S + \\rho \\ln|S| + c$. Using $I(0) = I_0$ and $S(0) = S_0$ fixes $c = I_0 + S_0 - \\rho \\ln S_0$, so $I(t) = I_0 + S_0 - S(t) + \\rho \\ln\\frac{S(t)}{S_0}$. The logarithm carries a plus sign with argument $S(t)/S_0$, and the linear part is $S_0 - S(t)$. The distractors flip a sign or invert the logarithm argument.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-007",
+      "stem": "As $t \\to \\infty$ in an SIR epidemic, the limiting behaviour of the infective and susceptible classes is",
+      "options": [
+        "$I_\\infty \\to \\infty$ and $S_\\infty \\to \\infty$",
+        "$I_\\infty \\to N$ and $S_\\infty \\to 0$",
+        "$I_\\infty \\to 0$ and $S_\\infty \\to 0$",
+        "$I_\\infty \\to 0$ and $S_\\infty > 0$"
+      ],
+      "answer": 3,
+      "explanation": "At the end of an SIR epidemic the infectives die out, $I_\\infty \\to 0$, while a positive fraction of susceptibles is never infected, so $S_\\infty > 0$. The epidemic stops not because susceptibles run out but because $S$ falls below the threshold $\\rho$ and new infections can no longer keep pace with recoveries. The other limits contradict this final size behaviour.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-008",
+      "stem": "Dividing $\\dfrac{dS}{dt}$ by $\\dfrac{dR}{dt}$ in the SIR model and integrating gives the relation",
+      "options": [
+        "$S(t) = S_0\\, e^{-R(t)/\\rho}$",
+        "$S(t) = S_0\\, e^{R(t)/\\rho}$",
+        "$S(t) = S_0\\, e^{-\\rho R(t)}$",
+        "$R(t) = R_0\\, e^{-S(t)/\\rho}$"
+      ],
+      "answer": 0,
+      "explanation": "Since $\\frac{dS}{dR} = \\frac{-\\beta S I}{\\gamma I} = -\\frac{S}{\\rho}$ with $\\rho = \\gamma/\\beta$, separating variables gives $\\frac{dS}{S} = -\\frac{dR}{\\rho}$, so $S(t) = S_0 e^{-R(t)/\\rho}$. The exponent is negative and divides $R$ by $\\rho$. The variants use the wrong sign, multiply by $\\rho$ instead of dividing, or solve for the wrong variable.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-009",
+      "stem": "The Kermack and McKendrick final size relation for the SIR model is",
+      "options": [
+        "$\\ln\\dfrac{S_\\infty}{S_0} = R_0\\left(1 - \\dfrac{S_\\infty}{N}\\right)$",
+        "$\\ln\\dfrac{S_0}{S_\\infty} = R_0\\left(1 - \\dfrac{S_\\infty}{N}\\right)$",
+        "$\\dfrac{S_0}{S_\\infty} = R_0\\left(1 - \\dfrac{S_\\infty}{N}\\right)$",
+        "$\\ln\\dfrac{S_0}{S_\\infty} = R_0\\,\\dfrac{S_\\infty}{N}$"
+      ],
+      "answer": 1,
+      "explanation": "The final size relation is $\\ln\\frac{S_0}{S_\\infty} = R_0\\left(1 - \\frac{S_\\infty}{N}\\right)$, linking the basic reproduction number to the fraction of the population that escapes infection. It uses the logarithm of $S_0/S_\\infty$ (not its reciprocal and not the ratio itself) and the factor $1 - S_\\infty/N$. The distractors invert the logarithm argument, drop the logarithm, or omit the $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-010",
+      "stem": "In an SIR epidemic the proportion of susceptibles who eventually catch the disease is",
+      "options": [
+        "$P = 1 - \\dfrac{S_0}{S_\\infty}$",
+        "$P = \\dfrac{S_\\infty}{S_0}$",
+        "$P = 1 - \\dfrac{S_\\infty}{S_0}$",
+        "$P = \\dfrac{S_0 - N}{S_0}$"
+      ],
+      "answer": 2,
+      "explanation": "The fraction of the initial susceptibles that are eventually infected is $P = 1 - \\frac{S_\\infty}{S_0}$, since $S_\\infty$ are those never infected and $S_0 - S_\\infty$ catch the disease. Taking just $S_\\infty/S_0$ gives the escaping fraction, and inverting the ratio or using $N$ in the numerator does not represent the attack proportion.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-011",
+      "stem": "An SIR disease has $\\beta = 0.002$ per day and $\\gamma = 0.5$ per day. The relative removal rate $\\rho = \\gamma/\\beta$ is",
+      "options": [
+        "$0.001$",
+        "$0.004$",
+        "$1000$",
+        "$250$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $\\rho = \\gamma/\\beta = 0.5 / 0.002 = 250$. So the infective curve peaks when $S$ falls to $250$, and the epidemic grows only while $S > 250$. The value $0.004$ inverts the ratio, and the others come from arithmetic slips. The correct relative removal rate is $250$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-012",
+      "stem": "In an SIR model with $\\beta = 0.001$ per day and $\\gamma = 0.4$ per day, the peak of the infective curve occurs when the number of susceptibles is",
+      "options": [
+        "$400$",
+        "$2500$",
+        "$0.0025$",
+        "$40$"
+      ],
+      "answer": 0,
+      "explanation": "The peak occurs at $S = \\gamma/\\beta = 0.4 / 0.001 = 400$. At that susceptible level $\\frac{dI}{dt} = 0$ and the infectives turn from rising to falling. The value $2500$ inverts the ratio. The peak susceptible count is $400$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-013",
+      "stem": "In an SIR outbreak the population is $N = 5000$, and at the end $S_\\infty = 2000$ susceptibles were never infected. What proportion of the susceptibles caught the disease, taking $S_0 \\approx N$?",
+      "options": [
+        "$0.4$",
+        "$0.6$",
+        "$0.3$",
+        "$2.5$"
+      ],
+      "answer": 1,
+      "explanation": "With $S_0 \\approx N = 5000$, the proportion infected is $P = 1 - \\frac{S_\\infty}{S_0} = 1 - \\frac{2000}{5000} = 1 - 0.4 = 0.6$. So $60\\%$ of the susceptibles were infected and $40\\%$ escaped. Reporting $0.4$ gives the escaping fraction instead. The attack proportion is $0.6$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-014",
+      "stem": "An influenza outbreak spreads through $N = 20000$ people, and at the end $40\\%$ of them are still susceptible. Taking $S_0 \\approx N$, how many individuals contracted the virus?",
+      "options": [
+        "$8000$",
+        "$20000$",
+        "$12000$",
+        "$4000$"
+      ],
+      "answer": 2,
+      "explanation": "If $40\\%$ remain susceptible, then $S_\\infty = 0.40 \\times 20000 = 8000$ were never infected, so the number infected is $20000 - 8000 = 12000$. Equivalently $60\\%$ caught the disease. Reporting $8000$ gives those who escaped, not those infected. The number who contracted the virus is $12000$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-015",
+      "stem": "Which quantity does the final size relation of an SIR epidemic let you determine?",
+      "options": [
+        "The exact time at which the infective curve peaks",
+        "The latent period of the disease",
+        "The instantaneous transmission rate $\\beta$",
+        "The total number of people who eventually contract the disease"
+      ],
+      "answer": 3,
+      "explanation": "The final size relation connects $R_0$, $S_0$, and $S_\\infty$, so once it is solved it gives the total number of people who eventually catch the disease over the whole outbreak. It does not pin down the timing of the peak, recover the rate $\\beta$, or describe a latent period, all of which require other parts of the model. Its purpose is the final epidemic size.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-016",
+      "stem": "In the SIR model, what does the equation $\\dfrac{dR}{dt} = \\gamma I$ express?",
+      "options": [
+        "Recovered individuals accumulate at a rate proportional to the current number of infectives",
+        "Recovered individuals can become infective again",
+        "The recovered class shrinks as people lose immunity",
+        "Recovery happens at a constant rate regardless of how many are sick"
+      ],
+      "answer": 0,
+      "explanation": "The term $\\gamma I$ says recovered individuals are added at a rate proportional to the number currently infective, with proportionality constant $\\gamma$. In the basic SIR model recovery is permanent, so $R$ never decreases and no one returns to $I$ or $S$. A constant recovery rate would not depend on $I$, but here it does. The equation is a permanent, $I$ proportional inflow into $R$.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-017",
+      "stem": "Why does an SIR epidemic eventually stop even though susceptibles still remain in the population?",
+      "options": [
+        "Because every susceptible eventually becomes infected",
+        "Because the susceptible count $S$ falls below the threshold $\\rho = \\gamma/\\beta$, so recoveries outpace new infections",
+        "Because the transmission rate $\\beta$ drops to zero on its own",
+        "Because recovered people return to the susceptible class"
+      ],
+      "answer": 1,
+      "explanation": "Once $S$ drops below $\\rho = \\gamma/\\beta$, the growth factor $\\beta S - \\gamma$ becomes negative, so new infections can no longer replace those leaving through recovery and the epidemic declines to zero. Susceptibles are not exhausted, the parameter $\\beta$ is fixed, and in the basic SIR model recovery is permanent with no return to $S$. The mechanism is the susceptible level falling through the threshold.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-018",
+      "stem": "Using $S(t) = S_0 e^{-R(t)/\\rho}$ at the end of the epidemic (where $R_\\infty = N - S_\\infty$), which relation holds?",
+      "options": [
+        "$\\dfrac{S_\\infty}{S_0} = e^{-N/\\rho}$",
+        "$\\dfrac{S_\\infty}{S_0} = e^{(N - S_\\infty)/\\rho}$",
+        "$\\dfrac{S_\\infty}{S_0} = e^{-(N - S_\\infty)/\\rho}$",
+        "$S_\\infty = S_0 + e^{-(N - S_\\infty)/\\rho}$"
+      ],
+      "answer": 2,
+      "explanation": "At $t \\to \\infty$ the infectives vanish, so $R_\\infty = N - S_\\infty$. Substituting into $S(t) = S_0 e^{-R(t)/\\rho}$ gives $S_\\infty = S_0 e^{-(N - S_\\infty)/\\rho}$, that is $\\frac{S_\\infty}{S_0} = e^{-(N - S_\\infty)/\\rho}$. The exponent is negative and uses $N - S_\\infty$, the total removed by the end. The distractors flip the sign, drop $S_\\infty$ from the exponent, or turn the relation into a sum.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-019",
+      "stem": "In an SIR model with $\\beta = 0.003$ and $\\gamma = 0.6$, the infective curve is still rising when $S = 250$. Is the epidemic growing or declining at that moment?",
+      "options": [
+        "At its peak, because $S = \\rho$",
+        "Declining, because $S > \\rho$",
+        "Growing, because $S < \\rho$",
+        "Growing, because $S > \\rho$"
+      ],
+      "answer": 3,
+      "explanation": "Here $\\rho = \\gamma/\\beta = 0.6/0.003 = 200$. Since $S = 250 > 200 = \\rho$, the factor $\\beta S - \\gamma$ is positive, so $\\frac{dI}{dt} > 0$ and the epidemic is growing. It would peak at $S = 200$ and decline for $S < 200$. With $S$ above the threshold, infectives are increasing.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-020",
+      "stem": "At the very start of an SIR epidemic, why is the approximation $S_0 + I_0 \\approx N$ used?",
+      "options": [
+        "Because $R(0) = 0$, so $S_0 + I_0 + R(0) = N$ reduces to $S_0 + I_0 = N$",
+        "Because $I_0$ is assumed equal to $N$",
+        "Because the population is not yet constant",
+        "Because $S_0 = 0$ at the start"
+      ],
+      "answer": 0,
+      "explanation": "The conservation law $S(0) + I(0) + R(0) = N$ with $R(0) = 0$ gives $S_0 + I_0 = N$ exactly, and since the initial infective seed $I_0$ is small, $S_0 \\approx N$. This is why $R_0 = \\beta S_0/\\gamma$ is often written $R_0 = \\beta N/\\gamma$ at onset. The other options misstate the initial values or the constancy of the population.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-021",
+      "stem": "In the orbit relation $I(t) = I_0 + S_0 - S(t) + \\rho \\ln\\dfrac{S(t)}{S_0}$, what does the logarithmic term capture?",
+      "options": [
+        "The birth of new susceptibles",
+        "The recoveries accumulated as susceptibles are converted to infectives",
+        "The latent period of exposed individuals",
+        "The loss of immunity in recovered individuals"
+      ],
+      "answer": 1,
+      "explanation": "The term $\\rho \\ln\\frac{S(t)}{S_0}$ arises from integrating the recovery contribution along the orbit, accounting for the removals that occur while susceptibles are being infected. Because $S(t) < S_0$ the logarithm is negative, reducing $I$ below the simple difference $S_0 - S(t)$. There is no birth, latent, or immunity loss mechanism in this model without vital dynamics, so the term reflects recoveries.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-022",
+      "format": "cloze",
+      "stem": "Work out the threshold susceptible level and growth status for an SIR epidemic.",
+      "solution": "An SIR disease has $\\beta = 0.004$ per day and $\\gamma = 0.8$ per day. The relative removal rate is $\\rho = \\gamma/\\beta =$ {{1}}. The infective curve peaks when the number of susceptibles equals this value. If at some moment $S = 300$, then since $S$ is {{2}} the threshold, the epidemic is {{3}} at that moment.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 200,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "above",
+            "below",
+            "equal to"
+          ],
+          "answer": "above"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "growing",
+            "declining",
+            "at its peak"
+          ],
+          "answer": "growing"
+        }
+      ],
+      "explanation": "The relative removal rate is $\\rho = \\gamma/\\beta = 0.8/0.004 = 200$, which is the peak susceptible level. Since $S = 300 > 200$, the factor $\\beta S - \\gamma$ is positive, so $\\frac{dI}{dt} > 0$ and the epidemic is still growing.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-023",
+      "format": "cloze",
+      "stem": "Find the final epidemic size from the remaining susceptibles.",
+      "solution": "An SIR epidemic runs through a town of $N = 8000$. At the end, $S_\\infty = 2000$ people were never infected. Taking $S_0 \\approx N$, the number who contracted the disease is {{1}}. The proportion of susceptibles who caught it is $P = 1 - S_\\infty/S_0 =$ {{2}}. The infective population at the end satisfies $I_\\infty =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6000,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.75,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Those infected number $N - S_\\infty = 8000 - 2000 = 6000$. The proportion infected is $P = 1 - 2000/8000 = 1 - 0.25 = 0.75$. At the end of an SIR epidemic the infectives die out, so $I_\\infty = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-024",
+      "format": "cloze",
+      "stem": "Assemble the SIR equations and their key derived relations.",
+      "solution": "In the SIR model without vital dynamics, $\\dfrac{dS}{dt} = -\\beta S I$, and the infective equation is $\\dfrac{dI}{dt} = \\beta S I -$ {{1}}. Dividing the infective equation by the susceptible equation gives $\\dfrac{dI}{dS} = -1 +$ {{2}}, where $\\rho = \\gamma/\\beta$. At the end of the epidemic the number of infectives tends to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\gamma I$",
+            "$\\beta I$",
+            "$\\gamma S$"
+          ],
+          "answer": "$\\gamma I$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{\\rho}{S}$",
+            "$\\rho S$",
+            "$\\dfrac{S}{\\rho}$"
+          ],
+          "answer": "$\\dfrac{\\rho}{S}$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The infective equation removes recoveries at rate $\\gamma I$, giving $\\frac{dI}{dt} = \\beta S I - \\gamma I$. Dividing by $\\frac{dS}{dt} = -\\beta S I$ yields $\\frac{dI}{dS} = -1 + \\frac{\\gamma}{\\beta S} = -1 + \\frac{\\rho}{S}$. As $t \\to \\infty$ the infectives vanish, so $I_\\infty = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-025",
+      "format": "cloze",
+      "stem": "State and interpret the final size relation.",
+      "solution": "The Kermack and McKendrick final size relation is $\\ln\\dfrac{S_0}{S_\\infty} = R_0\\left(1 - \\dfrac{S_\\infty}{N}\\right)$. The quantity $N - S_\\infty$ is the total number of people who {{1}} during the outbreak. This relation is most useful for finding the {{2}} of the epidemic. The peak of the infective curve, by contrast, occurs when $S$ falls to $\\gamma/\\beta$, which equals {{3}} for $\\beta = 0.01$, $\\gamma = 5$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "contracted the disease",
+            "were vaccinated",
+            "stayed susceptible"
+          ],
+          "answer": "contracted the disease"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "final size",
+            "exact peak time",
+            "latent period"
+          ],
+          "answer": "final size"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 500,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "In the final size relation $N - S_\\infty$ counts everyone who caught the disease over the whole outbreak, so the relation gives the final epidemic size. The peak susceptible level is $\\gamma/\\beta = 5/0.01 = 500$.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-026",
+      "format": "cloze",
+      "stem": "Decide the direction of an SIR epidemic from the susceptible level.",
+      "solution": "For an SIR disease with $\\beta = 0.002$ and $\\gamma = 0.5$, the threshold susceptible level is $\\rho =$ {{1}}. The infectives grow while $S > \\rho$ and decline while $S < \\rho$. If currently $S = 200$, the epidemic is {{2}}. The largest possible value the infective curve can reach is attained exactly when $S$ equals $\\rho$, where $\\dfrac{dI}{dt}$ equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 250,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "declining",
+            "growing",
+            "at its peak"
+          ],
+          "answer": "declining"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The threshold is $\\rho = \\gamma/\\beta = 0.5/0.002 = 250$. Since $S = 200 < 250$, the growth factor $\\beta S - \\gamma$ is negative, so the epidemic is declining. At the peak $S = \\rho$, the rate $\\frac{dI}{dt} = (\\beta S - \\gamma)I = 0$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-sir-model-027",
+      "format": "cloze",
+      "stem": "Relate the relative removal rate to the basic reproduction number at onset.",
+      "solution": "In the SIR model the relative removal rate is $\\rho = \\gamma/\\beta$, and at the start of an epidemic with $S_0 \\approx N$ the basic reproduction number is $R_0 = \\beta N/\\gamma$. Therefore $R_0$ and $\\rho$ are related by $R_0 = N /$ {{1}}. If $N = 1200$ and $\\rho = 600$, then $R_0 =$ {{2}}, so an epidemic {{3}} occur.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "rho",
+            "\\rho",
+            "$\\rho$"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "will",
+            "will not",
+            "cannot"
+          ],
+          "answer": "will"
+        }
+      ],
+      "explanation": "Since $R_0 = \\beta N/\\gamma$ and $\\rho = \\gamma/\\beta$, we have $R_0 = N/\\rho$. With $N = 1200$ and $\\rho = 600$, $R_0 = 1200/600 = 2 > 1$, so an epidemic will occur.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    }
+  ]
+}

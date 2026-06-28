@@ -1,0 +1,509 @@
+{
+  "courseId": "scientific-computing-i",
+  "topicId": "file-permissions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-i-file-permissions-001",
+      "stem": "In a Linux permission string, what do the three letters `rwx` stand for?",
+      "options": [
+        "Read, write, execute",
+        "Read, wait, exit",
+        "Run, write, examine",
+        "Root, world, execute"
+      ],
+      "answer": 0,
+      "explanation": "The three permission bits are read (`r`), write (`w`) and execute (`x`). Read lets you view a file, write lets you change it, and execute lets you run it as a program or, for a directory, enter it.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-002",
+      "stem": "In the output of `ls -l`, the permissions are shown as three groups of three. Which three categories of user do they describe, in order?",
+      "options": [
+        "Owner, group, others",
+        "Others, group, owner",
+        "Root, owner, guest",
+        "Read, write, execute"
+      ],
+      "answer": 0,
+      "explanation": "After the leading file-type character, the nine permission characters are read in three triplets: the owner (user), the group, and then everyone else (others). So `rwxr-xr--` means the owner has `rwx`, the group has `r-x`, and others have `r--`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-003",
+      "stem": "What does the octal permission `chmod 755 run.sh` set the permissions to?",
+      "options": [
+        "`rw-r--r--`",
+        "`rwxr-xr-x`",
+        "`rwxrwxrwx`",
+        "`r-xr-xr-x`"
+      ],
+      "answer": 1,
+      "explanation": "Each octal digit is the sum of read (4), write (2) and execute (1). So `7 = 4+2+1 = rwx` for the owner, and `5 = 4+1 = r-x` for both group and others, giving `rwxr-xr-x`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-004",
+      "stem": "What permissions does `chmod 644 notes.txt` produce?",
+      "options": [
+        "`rwxr-xr-x`",
+        "`rw-r--r--`",
+        "`rw-rw-rw-`",
+        "`rwx------`"
+      ],
+      "answer": 1,
+      "explanation": "The digit `6 = 4+2 = rw-` gives the owner read and write, while each `4 = r--` gives group and others read only. The result is `rw-r--r--`, a very common setting for ordinary data files.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-005",
+      "stem": "Which octal number corresponds to the permission string `rwxrwxrwx` (full access for everyone)?",
+      "options": [
+        "`644`",
+        "`755`",
+        "`777`",
+        "`700`"
+      ],
+      "answer": 2,
+      "explanation": "Full access means each of the three categories has read, write and execute, which is `4+2+1 = 7`. With all three set to `7`, the octal mode is `777`, written `chmod 777`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-006",
+      "stem": "In the listing `-rwxr-xr--`, what does the very first character (`-`) indicate?",
+      "options": [
+        "That the owner has no permissions",
+        "That this is an ordinary file (not a directory)",
+        "That the file is empty",
+        "That the file is hidden"
+      ],
+      "answer": 1,
+      "explanation": "The first character of an `ls -l` line is the file type. A dash `-` marks an ordinary file, while `d` marks a directory and `l` marks a symbolic link. The permission bits begin only after this first character.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-007",
+      "stem": "In the listing `drwxr-x---`, what does the leading `d` mean?",
+      "options": [
+        "The entry is a directory",
+        "The file is to be deleted",
+        "The owner is `d`",
+        "The file is a device driver"
+      ],
+      "answer": 0,
+      "explanation": "A leading `d` in an `ls -l` line means the entry is a directory. The remaining nine characters `rwxr-x---` then give the directory permissions for owner, group and others.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-008",
+      "stem": "What does the symbolic command `chmod +x script.sh` do?",
+      "options": [
+        "Removes execute permission from `script.sh`",
+        "Deletes `script.sh`",
+        "Makes `script.sh` readable only",
+        "Adds execute permission to `script.sh`"
+      ],
+      "answer": 3,
+      "explanation": "In symbolic mode, `+` adds a permission and `x` is the execute bit, so `chmod +x script.sh` makes the script executable. To remove it again you would use `chmod -x script.sh`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-009",
+      "stem": "What does `chmod u+w data.csv` change?",
+      "options": [
+        "Gives write permission to all other users",
+        "Removes write permission from everyone",
+        "Gives write permission to the owner (user)",
+        "Gives execute permission to the group"
+      ],
+      "answer": 2,
+      "explanation": "In symbolic notation `u` means the owning user, `+` adds a permission, and `w` is write. So `chmod u+w data.csv` grants the owner write access. The letters `g`, `o` and `a` would target group, others and all.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-010",
+      "stem": "Which command changes the owner of the file `report.txt` to the user `ama`?",
+      "options": [
+        "`chmod ama report.txt`",
+        "`owner ama report.txt`",
+        "`chgrp ama report.txt`",
+        "`chown ama report.txt`"
+      ],
+      "answer": 3,
+      "explanation": "`chown` (change owner) sets the owner of a file, so `chown ama report.txt` makes `ama` the owner. `chmod` changes permission bits, not ownership, and `chgrp` changes only the group.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-011",
+      "stem": "In symbolic mode, which letter targets all three categories (owner, group and others) at once?",
+      "options": [
+        "`u`",
+        "`g`",
+        "`o`",
+        "`a`"
+      ],
+      "answer": 3,
+      "explanation": "The letter `a` means all, so `chmod a+r file` grants read to owner, group and others together. `u` is the user (owner), `g` is the group, and `o` is others.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-012",
+      "stem": "What is the octal equivalent of the permission string `rw-r--r--` ?",
+      "options": [
+        "`755`",
+        "`644`",
+        "`664`",
+        "`600`"
+      ],
+      "answer": 1,
+      "explanation": "Read is 4, write is 2, execute is 1. Owner `rw- = 4+2 = 6`, group `r-- = 4`, others `r-- = 4`, giving `644`. This is the typical mode for a plain readable file.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-013",
+      "stem": "Which value of the read-write-execute bits does the single octal digit `5` represent?",
+      "options": [
+        "`rwx`",
+        "`r-x`",
+        "`rw-`",
+        "`-wx`"
+      ],
+      "answer": 1,
+      "explanation": "The digit `5` is `4 + 1`, that is read (4) plus execute (1) but no write (2). In symbolic form that is `r-x`, exactly what each non-owner category gets under `chmod 755`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-014",
+      "stem": "You want only the owner to read and write a private file, with no access for group or others. Which command does this?",
+      "options": [
+        "`chmod 644 secret.txt`",
+        "`chmod 600 secret.txt`",
+        "`chmod 700 secret.txt`",
+        "`chmod 777 secret.txt`"
+      ],
+      "answer": 1,
+      "explanation": "Owner `rw- = 6`, group `--- = 0`, others `--- = 0` gives `600`, the standard mode for a private file. `644` would still let group and others read it, and `700` would add execute for the owner.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-015",
+      "stem": "On a directory, what does the execute (`x`) permission actually allow?",
+      "options": [
+        "Running the directory as a program",
+        "Entering the directory (with `cd`) and accessing files inside it",
+        "Deleting the directory",
+        "Listing the directory contents"
+      ],
+      "answer": 1,
+      "explanation": "For a directory, the execute bit means you may enter it and reach the files within (for example with `cd`). Listing the names needs the read bit, while creating or removing entries needs the write bit.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-016",
+      "stem": "What does the command `chmod -R 755 project` do?",
+      "options": [
+        "Sets `project` to `755` but leaves its contents unchanged",
+        "Recursively sets the mode `755` on `project` and everything inside it",
+        "Removes all permissions from `project`",
+        "Renames `project` to `755`"
+      ],
+      "answer": 1,
+      "explanation": "The `-R` option means recursive, so `chmod -R 755 project` applies the mode `755` to the directory `project` and to every file and subdirectory it contains. Without `-R`, only `project` itself would change.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-017",
+      "stem": "Given the line `-rw-r--r-- 1 kofi staff 24 Jun 2 data.txt`, who is the owner and what can the owner do?",
+      "options": [
+        "Owner `staff`; can read, write and execute",
+        "Owner `kofi`; can read and write",
+        "Owner `kofi`; can only read",
+        "Owner `staff`; can only read"
+      ],
+      "answer": 1,
+      "explanation": "In an `ls -l` line the owner name comes first (`kofi`) and the group second (`staff`). The owner triplet is `rw-`, so `kofi` can read and write the file but not execute it.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-018",
+      "stem": "What does `chmod go-w shared.txt` do?",
+      "options": [
+        "Adds write permission for group and others",
+        "Removes write permission from group and others",
+        "Removes write permission from the owner",
+        "Gives execute permission to everyone"
+      ],
+      "answer": 1,
+      "explanation": "Here `g` and `o` target group and others, `-` removes a permission, and `w` is write. So `chmod go-w shared.txt` takes write access away from both the group and others, leaving the owner unaffected.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-019",
+      "stem": "Which command would you typically run to view the permissions, owner and group of files in a directory?",
+      "options": [
+        "`pwd -l`",
+        "`chmod -l`",
+        "`ls -l`",
+        "`cat -l`"
+      ],
+      "answer": 2,
+      "explanation": "The long listing `ls -l` shows, for each entry, the type and permission bits, the owner, the group, the size and the modification time. This is how you read off the current permissions before deciding whether to change them.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-020",
+      "stem": "The permission string `r-x` corresponds to which octal digit?",
+      "options": [
+        "`7`",
+        "`6`",
+        "`5`",
+        "`4`"
+      ],
+      "answer": 2,
+      "explanation": "`r = 4`, `w = 2`, `x = 1`. For `r-x` we add read and execute only: `4 + 0 + 1 = 5`. (`6` would be `rw-` and `7` would be `rwx`.)",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-021",
+      "stem": "Why must a Bash script usually be given execute permission before you can run it as `./script.sh` ?",
+      "options": [
+        "Because the shell only runs files that have the execute (`x`) bit set",
+        "Because execute permission encrypts the file",
+        "Because without it the file cannot be read at all",
+        "Because it changes the file owner"
+      ],
+      "answer": 0,
+      "explanation": "To launch a file directly as a program, the shell requires the execute bit to be set, which is why you often run `chmod +x script.sh` first. Read permission alone lets you view the file but not execute it as `./script.sh`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-022",
+      "stem": "What does the octal mode `chmod 700 backup.sh` grant?",
+      "options": [
+        "Execute only for the owner",
+        "Read only for everyone",
+        "Read, write and execute for everyone",
+        "Read, write and execute for the owner only; nothing for group or others"
+      ],
+      "answer": 3,
+      "explanation": "Owner `7 = rwx`, group `0 = ---`, others `0 = ---`. So `chmod 700` gives the owner full read, write and execute while denying all access to the group and to others.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-023",
+      "stem": "Which command changes the group of `report.txt` to `students` without changing its owner?",
+      "options": [
+        "`chmod students report.txt`",
+        "`chgrp students report.txt`",
+        "`chown students report.txt`",
+        "`group students report.txt`"
+      ],
+      "answer": 1,
+      "explanation": "`chgrp` (change group) sets only the group, so `chgrp students report.txt` puts the file in the `students` group while leaving the owner unchanged. `chown` can also change the group, but written as `chown :students report.txt`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-024",
+      "stem": "In the string `-rwxr-x---`, what can a user who is neither the owner nor in the group do with this file?",
+      "options": [
+        "Read and execute it",
+        "Read it only",
+        "Nothing; others have no permissions",
+        "Read, write and execute it"
+      ],
+      "answer": 2,
+      "explanation": "The third triplet `---` describes others (everyone outside the owner and the group). All three bits are dashes, so others have no read, write or execute access at all.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-025",
+      "format": "cloze",
+      "stem": "Convert between octal modes and permission strings.",
+      "solution": "The mode `chmod 755 file` produces the permission string {{1}}. The owner part of that string, `rwx`, equals the single octal digit {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`rwxr-xr-x`",
+            "`rw-r--r--`",
+            "`rwxrwxrwx`"
+          ],
+          "answer": "`rwxr-xr-x`"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "`755` means owner `7 = rwx`, group `5 = r-x`, others `5 = r-x`, so the string is `rwxr-xr-x`. The owner triplet `rwx` is `4+2+1 = 7`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-026",
+      "format": "cloze",
+      "stem": "Work out the octal digits for `rw-r--r--`.",
+      "solution": "Reading `rw-r--r--` as three triplets, the owner digit is {{1}}, and both the group digit and the others digit are {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Owner `rw- = 4+2 = 6`; group `r-- = 4` and others `r-- = 4`. Together they spell the familiar mode `644`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-027",
+      "format": "cloze",
+      "stem": "Pick the command that performs each permission change.",
+      "solution": "To add execute permission to a script for everyone, run {{1}}. To make a file private so only the owner can read and write it, run {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`chmod +x script.sh`",
+            "`chmod -x script.sh`",
+            "`chown +x script.sh`"
+          ],
+          "answer": "`chmod +x script.sh`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`chmod 600 file`",
+            "`chmod 644 file`",
+            "`chmod 777 file`"
+          ],
+          "answer": "`chmod 600 file`"
+        }
+      ],
+      "explanation": "`chmod +x script.sh` adds the execute bit, and `chmod 600 file` gives the owner read and write (`6`) while denying group and others any access (`0` and `0`).",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-028",
+      "format": "cloze",
+      "stem": "Read the listing line `drwxr-x--- 2 ama staff 4096 Jun 3 work`.",
+      "solution": "The leading character `d` tells you the entry is a {{1}}. The number of permission groups (owner, group, others) shown after that first character is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "directory",
+            "ordinary file",
+            "symbolic link"
+          ],
+          "answer": "directory"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "A leading `d` marks a directory. After it, the nine characters `rwxr-x---` are read as 3 triplets, one each for the owner, the group and others.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-029",
+      "format": "cloze",
+      "stem": "Choose the ownership command for each task.",
+      "solution": "To change the owner of `data.txt` to the user `kofi`, run {{1}}. To change only the group of `data.txt` to `students`, run {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`chown kofi data.txt`",
+            "`chmod kofi data.txt`",
+            "`chgrp kofi data.txt`"
+          ],
+          "answer": "`chown kofi data.txt`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`chgrp students data.txt`",
+            "`chown students data.txt`",
+            "`chmod students data.txt`"
+          ],
+          "answer": "`chgrp students data.txt`"
+        }
+      ],
+      "explanation": "`chown` changes the owning user and `chgrp` changes only the group, so `chown kofi data.txt` and `chgrp students data.txt` are the right tools. `chmod` changes permission bits, not ownership.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-file-permissions-030",
+      "format": "cloze",
+      "stem": "Convert the mode for a fully open file.",
+      "solution": "The permission string `rwxrwxrwx` corresponds to the octal mode whose three digits are each {{1}}. The command that sets exactly this mode on `file` is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`chmod 777 file`",
+            "`chmod 755 file`",
+            "`chmod 644 file`"
+          ],
+          "answer": "`chmod 777 file`"
+        }
+      ],
+      "explanation": "Each `rwx` triplet is `4+2+1 = 7`, so `rwxrwxrwx` is `777`, set with `chmod 777 file`. This grants read, write and execute to everyone.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    }
+  ]
+}

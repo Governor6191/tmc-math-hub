@@ -1,0 +1,525 @@
+{
+  "courseId": "scientific-computing-i",
+  "topicId": "shell-scripting",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-i-shell-scripting-001",
+      "stem": "What is the purpose of the first line `#!/bin/bash` in a shell script?",
+      "options": [
+        "It is a comment that the system ignores completely",
+        "It is the shebang line, telling the system to run the script with the Bash shell",
+        "It prints the text `/bin/bash` when the script runs",
+        "It changes the file permissions"
+      ],
+      "answer": 1,
+      "explanation": "The opening `#!` followed by an interpreter path is called the shebang. `#!/bin/bash` tells the operating system to execute the rest of the file using the Bash shell at `/bin/bash`. It must be the very first line.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-002",
+      "stem": "Inside a Bash script, what does the variable `$1` hold?",
+      "options": [
+        "The name of the script",
+        "The number of arguments",
+        "The first argument passed to the script",
+        "The exit status of the last command"
+      ],
+      "answer": 2,
+      "explanation": "`$1` is the first positional parameter, the first argument given on the command line after the script name. So if you run `./run.sh data.txt`, then `$1` is `data.txt`. The script name itself is `$0`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-003",
+      "stem": "What does the special variable `$#` give you in a Bash script?",
+      "options": [
+        "The process number of the script",
+        "The exit status of the last command",
+        "The first argument",
+        "The number of arguments passed to the script"
+      ],
+      "answer": 3,
+      "explanation": "`$#` expands to the count of positional arguments supplied to the script. For example, running `./go.sh a b c` makes `$#` equal to `3`. It is commonly used to check that the right number of arguments was given.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-004",
+      "stem": "What does `$?` contain immediately after a command runs?",
+      "options": [
+        "The output text of the command",
+        "The number of the current line",
+        "The exit status (return code) of the most recent command",
+        "The first argument to the script"
+      ],
+      "answer": 2,
+      "explanation": "`$?` holds the exit status of the command that just finished. By convention `0` means success and any non-zero value indicates an error. Scripts often test `$?` to decide what to do next.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-005",
+      "stem": "By convention, what exit status does a command return when it succeeds?",
+      "options": [
+        "`1`",
+        "`255`",
+        "`-1`",
+        "`0`"
+      ],
+      "answer": 3,
+      "explanation": "A successful command returns an exit status of `0`. Any non-zero value signals some kind of failure or error. This is why `if` tests in the shell treat a `0` status as true.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-006",
+      "stem": "How do you correctly assign the value `5` to a variable named `count` in Bash?",
+      "options": [
+        "`count=5`",
+        "`count := 5`",
+        "`let count be 5`",
+        "`assign count 5`"
+      ],
+      "answer": 0,
+      "explanation": "In Bash an assignment must have no spaces around the equals sign and no extra keywords, so you write `count=5`. There is no `:=` operator and no `let count be` or `assign` syntax for a plain assignment. You drop the `$` when assigning and add it only when reading the value.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-007",
+      "stem": "If a script sets `name=Ama`, how do you print its value with `echo`?",
+      "options": [
+        "`echo $name`",
+        "`echo {name}`",
+        "`print name`",
+        "`read name`"
+      ],
+      "answer": 0,
+      "explanation": "To read a variable's value you prefix its name with a dollar sign, so `echo $name` prints `Ama`. Braces alone do not expand a variable, `print` is not a Bash command, and `read name` would instead wait to store input into `name`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-008",
+      "stem": "After writing a script `run.sh`, what must you usually do before you can execute it as `./run.sh` ?",
+      "options": [
+        "Rename it to `run.bash`",
+        "Compile it with `gcc`",
+        "Give it execute permission with `chmod +x run.sh`",
+        "Move it to the root directory"
+      ],
+      "answer": 2,
+      "explanation": "To run a script directly, it needs the execute bit set, so you first run `chmod +x run.sh`. Then `./run.sh` works. Shell scripts are interpreted, not compiled, so no compiler is involved.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-009",
+      "stem": "Why do you write `./run.sh` rather than just `run.sh` to run a script in the current directory?",
+      "options": [
+        "Because `./` deletes the old output first",
+        "Because the current directory is not normally searched for commands, so `./` says to look here",
+        "Because `./` runs the script as the root user",
+        "Because `./` compiles the script"
+      ],
+      "answer": 1,
+      "explanation": "For security, the current directory is usually not part of the command search path. The prefix `./` gives an explicit relative path meaning here, so the shell finds and runs your script in the current directory.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-010",
+      "stem": "Which character begins a comment in a Bash script?",
+      "options": [
+        "`//`",
+        "`;`",
+        "`--`",
+        "`#`"
+      ],
+      "answer": 3,
+      "explanation": "In Bash, anything from a `#` to the end of the line is a comment and is ignored when the script runs. The one special exception is the shebang `#!` on the very first line, which selects the interpreter.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-011",
+      "stem": "What does this loop print?\n```\nfor i in 1 2 3\ndo\n  echo $i\ndone\n```",
+      "options": [
+        "`1 2 3` all on one line",
+        "`1`, then `2`, then `3` each on its own line",
+        "`i i i`",
+        "Nothing"
+      ],
+      "answer": 1,
+      "explanation": "The `for` loop runs its body once for each item in the list `1 2 3`, setting `i` to each value in turn. Each pass runs `echo $i`, which prints the current value on its own line, giving `1`, `2`, `3` on separate lines.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-012",
+      "stem": "Which keyword ends an `if` block in Bash?",
+      "options": [
+        "`end`",
+        "`endif`",
+        "`fi`",
+        "`done`"
+      ],
+      "answer": 2,
+      "explanation": "A Bash `if` statement is closed with `fi`, which is `if` spelled backwards. (Likewise, `case` is closed with `esac`.) Loops such as `for` and `while` are instead closed with `done`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-013",
+      "stem": "Which keyword closes a `for` or `while` loop in Bash?",
+      "options": [
+        "`fi`",
+        "`stop`",
+        "`end`",
+        "`done`"
+      ],
+      "answer": 3,
+      "explanation": "Both `for` and `while` loops in Bash are terminated by `done`, which matches the opening `do`. The `fi` keyword is used to close an `if` block, not a loop.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-014",
+      "stem": "What does the variable `$0` refer to inside a script?",
+      "options": [
+        "The first argument",
+        "The name of the script itself",
+        "The number of arguments",
+        "The exit status"
+      ],
+      "answer": 1,
+      "explanation": "`$0` holds the name used to invoke the script, for example `./run.sh`. The actual arguments start at `$1`, `$2` and so on, while `$#` is their count.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-015",
+      "stem": "If you run `./greet.sh Ama Kofi`, what is the value of `$2` inside the script?",
+      "options": [
+        "`greet.sh`",
+        "`Ama`",
+        "`Kofi`",
+        "`2`"
+      ],
+      "answer": 2,
+      "explanation": "Positional parameters are numbered from the first argument: `$1` is `Ama` and `$2` is `Kofi`. The script name `greet.sh` is `$0`, and `$#` would be `2` here.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-016",
+      "stem": "What does the command substitution `today=$(date)` do?",
+      "options": [
+        "Stores the literal text `date` in `today`",
+        "Runs the `date` command and stores its output in `today`",
+        "Prints the date to the screen",
+        "Creates a file called `date`"
+      ],
+      "answer": 1,
+      "explanation": "The `$( )` syntax is command substitution: it runs the command inside and replaces the expression with that command's output. So `today=$(date)` runs `date` and saves the resulting date string into the variable `today`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-017",
+      "stem": "What does this read statement do?\n```\nread name\n```",
+      "options": [
+        "Prints the value of `name`",
+        "Deletes the variable `name`",
+        "Waits for the user to type a line and stores it in the variable `name`",
+        "Reads a file called `name`"
+      ],
+      "answer": 2,
+      "explanation": "The `read` builtin pauses the script and reads a line of input typed by the user, storing it in the named variable. So `read name` waits for input and puts whatever the user types into `name`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-018",
+      "stem": "In the test `if [ \"$x\" -eq 5 ]`, what does the operator `-eq` check?",
+      "options": [
+        "Whether `$x` is a file",
+        "Whether `$x` is numerically equal to `5`",
+        "Whether `$x` comes before `5` alphabetically",
+        "Whether `$x` is empty"
+      ],
+      "answer": 1,
+      "explanation": "Inside a `[ ]` test, `-eq` compares two integers for equality, so `[ \"$x\" -eq 5 ]` is true when `$x` equals `5` numerically. String equality would instead use `=`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-019",
+      "stem": "What does this script fragment print if it is run as `./check.sh a b` ?\n```\necho $#\n```",
+      "options": [
+        "`a`",
+        "`a b`",
+        "`check.sh`",
+        "`2`"
+      ],
+      "answer": 3,
+      "explanation": "`$#` is the number of arguments. Running `./check.sh a b` passes two arguments, so `$#` is `2`, and `echo $#` prints `2`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-020",
+      "stem": "Which command is most commonly used to print text or a variable's value to the screen from a Bash script?",
+      "options": [
+        "`print`",
+        "`echo`",
+        "`show`",
+        "`out`"
+      ],
+      "answer": 1,
+      "explanation": "`echo` writes its arguments to standard output, so `echo \"Hello\"` or `echo $name` prints text or a variable's value. There is no standard `print` or `show` command for this in Bash.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-021",
+      "stem": "What does this loop do?\n```\nfor f in *.txt\ndo\n  echo $f\ndone\n```",
+      "options": [
+        "Prints the literal text `*.txt` once",
+        "Prints the name of each file ending in `.txt` in the current directory",
+        "Deletes all `.txt` files",
+        "Counts the `.txt` files"
+      ],
+      "answer": 1,
+      "explanation": "The shell expands the pattern `*.txt` into the list of matching file names, and the `for` loop runs once per name, setting `f` to each one. So `echo $f` prints each `.txt` file name in turn.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-022",
+      "stem": "Where must the shebang line `#!/bin/bash` appear in a script?",
+      "options": [
+        "On the very first line of the file",
+        "On the last line of the file",
+        "Anywhere, as long as it is a comment",
+        "It must appear on every line"
+      ],
+      "answer": 0,
+      "explanation": "The shebang only has its special meaning when it is the first line of the file. If it appears later, it is treated as an ordinary comment and the system will not use it to choose the interpreter.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-023",
+      "stem": "In a Bash test, which operator checks that a file exists and is a regular file?",
+      "options": [
+        "`-e` only checks directories",
+        "`-f`",
+        "`-eq`",
+        "`-z`"
+      ],
+      "answer": 1,
+      "explanation": "The test `[ -f path ]` is true when `path` exists and is a regular file. `-eq` compares integers, and `-z` tests whether a string is empty, so neither checks a file's existence.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-024",
+      "stem": "What is the role of `then` and `fi` in a Bash `if` statement?",
+      "options": [
+        "`then` ends the block and `fi` starts it",
+        "They are optional comments",
+        "`then` introduces the commands to run when the condition is true, and `fi` closes the whole `if`",
+        "They define a loop"
+      ],
+      "answer": 2,
+      "explanation": "After `if condition`, the keyword `then` begins the body that runs when the condition succeeds, and `fi` marks the end of the `if` statement. An optional `else` provides commands for the false case.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-025",
+      "format": "cloze",
+      "stem": "Complete this Bash script that greets the first argument.",
+      "solution": "The first line that selects the Bash interpreter is {{1}}. To print the first argument passed on the command line, the script uses {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`#!/bin/bash`",
+            "`#/bin/bash`",
+            "`!/bin/bash`"
+          ],
+          "answer": "`#!/bin/bash`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`echo $1`",
+            "`echo $0`",
+            "`echo $#`"
+          ],
+          "answer": "`echo $1`"
+        }
+      ],
+      "explanation": "The shebang must be written exactly as `#!/bin/bash`, and the first positional argument is `$1`, so `echo $1` prints it.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-026",
+      "format": "cloze",
+      "stem": "Match each special variable to what it holds.",
+      "solution": "The variable that holds the number of arguments passed to the script is {{1}}. The variable that holds the exit status of the most recent command is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`$#`",
+            "`$1`",
+            "`$?`"
+          ],
+          "answer": "`$#`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`$?`",
+            "`$#`",
+            "`$0`"
+          ],
+          "answer": "`$?`"
+        }
+      ],
+      "explanation": "`$#` counts the arguments, while `$?` reports the exit status of the last command (`0` for success).",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-027",
+      "format": "cloze",
+      "stem": "The script is run as `./report.sh march april may`. Work out the values.",
+      "solution": "The value of `$#` is {{1}}. The value of `$1` is chosen here: {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`march`",
+            "`april`",
+            "`may`"
+          ],
+          "answer": "`march`"
+        }
+      ],
+      "explanation": "Three arguments are given, so `$#` is 3. The first positional argument `$1` is `march`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-028",
+      "format": "cloze",
+      "stem": "Choose the right keyword to close each Bash block.",
+      "solution": "An `if` statement is closed with the keyword {{1}}. A `for` loop is closed with the keyword {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`fi`",
+            "`done`",
+            "`end`"
+          ],
+          "answer": "`fi`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`done`",
+            "`fi`",
+            "`endfor`"
+          ],
+          "answer": "`done`"
+        }
+      ],
+      "explanation": "Bash closes an `if` with `fi` and closes a `for` or `while` loop with `done`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-029",
+      "format": "cloze",
+      "stem": "Complete the steps to make and run a new script `go.sh`.",
+      "solution": "To give the script permission to run, you use {{1}}. To then execute it from the current directory, you type {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`chmod +x go.sh`",
+            "`chmod -x go.sh`",
+            "`chown +x go.sh`"
+          ],
+          "answer": "`chmod +x go.sh`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`./go.sh`",
+            "`go.sh`",
+            "`cd go.sh`"
+          ],
+          "answer": "`./go.sh`"
+        }
+      ],
+      "explanation": "`chmod +x go.sh` adds execute permission, and `./go.sh` runs the script using the explicit `./` path because the current directory is not normally searched.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-shell-scripting-030",
+      "format": "cloze",
+      "stem": "Assign and read a variable in Bash.",
+      "solution": "The correct way to assign the value `42` to a variable `n`, with no spaces around the equals sign, is {{1}}. To then print its value, you write {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`n=42`",
+            "`n = 42`",
+            "`$n=42`"
+          ],
+          "answer": "`n=42`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`echo $n`",
+            "`echo n`",
+            "`echo \"n\"`"
+          ],
+          "answer": "`echo $n`"
+        }
+      ],
+      "explanation": "Bash assignments take no spaces around `=`, so `n=42` is correct, and you read the value back with a `$`, as in `echo $n`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    }
+  ]
+}

@@ -1,0 +1,494 @@
+{
+  "courseId": "optimization-2",
+  "topicId": "duality-and-sensitivity",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-2-duality-and-sensitivity-001",
+      "stem": "If the primal linear program is a maximization problem, then its dual is:",
+      "options": [
+        "A minimization problem",
+        "Also a maximization problem",
+        "An unconstrained problem",
+        "A transportation problem"
+      ],
+      "answer": 0,
+      "explanation": "Duality reverses the sense of optimization: the dual of a maximization primal is a minimization problem, and vice versa. This is the first of the standard primal-dual correspondences.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-002",
+      "stem": "When forming the dual, the right-hand-side constants $b_i$ of the primal become the dual's:",
+      "options": [
+        "Right-hand-side constants again",
+        "Objective function coefficients",
+        "Technological coefficients",
+        "Slack variables"
+      ],
+      "answer": 1,
+      "explanation": "In the primal-dual correspondence the primal resource constants $b_i$ become the objective coefficients of the dual, while the primal objective coefficients $c_j$ become the dual right-hand sides.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-003",
+      "stem": "If a primal maximization problem has constraints of the form $\\le$, the corresponding dual constraints are of the form:",
+      "options": [
+        "$\\le$",
+        "$=$ only",
+        "$\\ge$",
+        "strict $<$"
+      ],
+      "answer": 2,
+      "explanation": "A primal maximization with $\\le$ constraints produces a dual minimization with $\\ge$ constraints. The inequality direction flips when passing to the dual.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-004",
+      "stem": "If the primal has $n$ variables and $m$ constraints (ignoring non-negativity), the dual has:",
+      "options": [
+        "$n$ variables and $m$ constraints",
+        "$m$ variables and $m$ constraints",
+        "$n$ variables and $n$ constraints",
+        "$m$ variables and $n$ constraints"
+      ],
+      "answer": 3,
+      "explanation": "The number of dual variables equals the number of primal constraints, and the number of dual constraints equals the number of primal variables. So an $n$-variable, $m$-constraint primal yields an $m$-variable, $n$-constraint dual.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-005",
+      "stem": "The dual of the dual problem is:",
+      "options": [
+        "The original primal problem",
+        "A new third problem",
+        "Always infeasible",
+        "The transportation problem"
+      ],
+      "answer": 0,
+      "explanation": "Taking the dual twice returns the original problem: the dual of the dual is the primal. This symmetry confirms that primal and dual are two views of the same model.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-006",
+      "stem": "Consider the primal Maximize $Z = 45X_1 + 80X_2$ subject to $5X_1 + 20X_2 \\le 400$ and $10X_1 + 15X_2 \\le 450$. The dual objective is:",
+      "options": [
+        "Maximize $400y_1 + 450y_2$",
+        "Minimize $400y_1 + 450y_2$",
+        "Minimize $45y_1 + 80y_2$",
+        "Maximize $45y_1 + 80y_2$"
+      ],
+      "answer": 1,
+      "explanation": "The dual is a minimization whose objective uses the primal right-hand sides as coefficients: Minimize $400y_1 + 450y_2$. Each dual variable corresponds to one primal constraint.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-007",
+      "stem": "For that same primal, the first dual constraint (associated with primal variable $X_1$) is:",
+      "options": [
+        "$5y_1 + 20y_2 \\ge 45$",
+        "$5y_1 + 10y_2 \\le 45$",
+        "$5y_1 + 10y_2 \\ge 45$",
+        "$45y_1 + 80y_2 \\ge 5$"
+      ],
+      "answer": 2,
+      "explanation": "The dual constraint for $X_1$ uses the column of $X_1$ coefficients ($5$ and $10$) and the primal objective coefficient $45$ as its right-hand side: $5y_1 + 10y_2 \\ge 45$. The coefficients read down the primal column become the dual row.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-008",
+      "stem": "For the same primal, the second dual constraint (associated with primal variable $X_2$) is:",
+      "options": [
+        "$20y_1 + 15y_2 \\ge 80$",
+        "$10y_1 + 15y_2 \\ge 80$",
+        "$20y_1 + 15y_2 \\le 80$",
+        "$5y_1 + 20y_2 \\ge 80$"
+      ],
+      "answer": 0,
+      "explanation": "The dual constraint for $X_2$ uses the $X_2$ column coefficients ($20$ and $15$) with right-hand side $80$: $20y_1 + 15y_2 \\ge 80$. Reading the primal coefficients top-to-bottom places them left-to-right in the dual.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-009",
+      "stem": "Consider the primal Minimize $F = 28X_1 + 40X_2 + 20X_3$ subject to $X_1 + 0.9X_2 + 0.8X_3 \\ge 30$ and $0.6X_1 + 2X_2 + 0.7X_3 \\ge 23$. The dual objective is:",
+      "options": [
+        "Maximize $30y_1 + 23y_2$",
+        "Minimize $30y_1 + 23y_2$",
+        "Maximize $28y_1 + 40y_2 + 20y_3$",
+        "Minimize $28y_1 + 23y_2$"
+      ],
+      "answer": 0,
+      "explanation": "The primal is a minimization with $\\ge$ constraints, so the dual is a maximization with $\\le$ constraints. Its objective uses the primal right-hand sides: Maximize $30y_1 + 23y_2$.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-010",
+      "stem": "For that minimization primal, the dual constraint associated with $X_1$ is:",
+      "options": [
+        "$y_1 + 0.6y_2 \\ge 28$",
+        "$y_1 + 0.6y_2 \\le 28$",
+        "$y_1 + 0.9y_2 \\le 28$",
+        "$28y_1 + 0.6y_2 \\le 1$"
+      ],
+      "answer": 1,
+      "explanation": "Reading the $X_1$ column ($1$ and $0.6$) with right-hand side $28$, and noting the dual of a $\\ge$-constrained minimization has $\\le$ constraints, gives $y_1 + 0.6y_2 \\le 28$.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-011",
+      "stem": "The duality theorem states that if either the primal or the dual has a finite optimum, then:",
+      "options": [
+        "The other has no solution",
+        "The other is unbounded",
+        "The other also has a finite optimum, and the optimal objective values are equal",
+        "The primal must be re-solved graphically"
+      ],
+      "answer": 2,
+      "explanation": "By the strong duality theorem, when one problem has a finite optimal solution so does the other, and their optimal objective values coincide. The simplex method finds both optima simultaneously.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-012",
+      "stem": "According to the duality theorem, if one of the two problems has an unbounded solution, then the other problem:",
+      "options": [
+        "Also is unbounded",
+        "Has multiple optima",
+        "Has a finite optimum",
+        "Has no feasible solution"
+      ],
+      "answer": 3,
+      "explanation": "If either the primal or the dual is unbounded, the other has no feasible solution. Unboundedness in one problem signals infeasibility in its counterpart.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-013",
+      "stem": "The optimal value of a dual variable $y_i$ is interpreted economically as the:",
+      "options": [
+        "Shadow price of resource $i$, the rate of change of the optimal objective per unit of $b_i$",
+        "Slack of constraint $i$",
+        "Number of units of product $i$",
+        "Reduced cost of product $i$"
+      ],
+      "answer": 0,
+      "explanation": "Each optimal dual variable is the shadow price of the corresponding resource: it measures how much the optimal objective would change per additional unit of that resource's right-hand side. This links duality to sensitivity analysis.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-014",
+      "stem": "Sensitivity analysis (post-optimality analysis) is concerned with:",
+      "options": [
+        "Drawing the feasible region",
+        "How the optimal solution changes when model parameters such as costs or right-hand sides change",
+        "Adding slack variables",
+        "Counting the corner points"
+      ],
+      "answer": 1,
+      "explanation": "Sensitivity or post-optimality analysis studies the impact of changes in the model's parameters, such as objective coefficients and resource availabilities, on the optimal solution, without re-solving from scratch.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-015",
+      "stem": "Complementary slackness in an optimal primal-dual pair means that:",
+      "options": [
+        "All variables must be positive",
+        "The objective values differ",
+        "If a primal constraint is non-binding (has positive slack), its associated dual variable is zero",
+        "Every dual variable equals one"
+      ],
+      "answer": 2,
+      "explanation": "Complementary slackness says that for each constraint either the constraint is binding or its dual variable is zero (and symmetrically for variables and dual constraints). A resource not fully used has a zero shadow price.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-016",
+      "stem": "When forming the dual, a new set of variables is introduced. These dual variables are associated with the primal's:",
+      "options": [
+        "Objective coefficients",
+        "Non-negativity conditions",
+        "Slack variables only",
+        "Constraints"
+      ],
+      "answer": 3,
+      "explanation": "Each dual variable corresponds to one primal constraint, so a primal with $m$ constraints introduces $m$ dual variables $y_1, \\ldots, y_m$. This is why the dual has as many variables as the primal has constraints.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-017",
+      "stem": "In the primal-dual correspondence, the technological coefficient matrix of the dual is the primal matrix:",
+      "options": [
+        "Transposed (rows become columns)",
+        "Multiplied by zero",
+        "Inverted",
+        "Doubled"
+      ],
+      "answer": 0,
+      "explanation": "The coefficients that read left-to-right across a primal constraint appear top-to-bottom in the dual, that is the constraint matrix is transposed. This is the structural heart of the primal-dual relationship.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-018",
+      "stem": "Why does a decision maker study duality and sensitivity rather than just the primal optimum?",
+      "options": [
+        "To avoid solving the LP",
+        "To learn the economic value of resources and how robust the optimum is to parameter changes",
+        "To make the problem nonlinear",
+        "To remove the constraints"
+      ],
+      "answer": 1,
+      "explanation": "Beyond the optimal plan, the manager wants the economics of resource use (shadow prices from the dual) and the sensitivity of the optimum to changes in costs and availabilities. Duality and sensitivity analysis provide exactly this post-optimality information.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-019",
+      "stem": "At optimality, the relationship between the primal and dual objective values is:",
+      "options": [
+        "Primal value is always larger",
+        "Dual value is always larger",
+        "They are equal",
+        "They sum to zero"
+      ],
+      "answer": 2,
+      "explanation": "By strong duality, at the optimum the primal and dual objective functions attain the same value. This common value is what the simplex method reports for both problems.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-020",
+      "stem": "If a primal maximization constraint is satisfied with strict inequality (resource not fully used) at the optimum, its shadow price is:",
+      "options": [
+        "Greater than the cost",
+        "Equal to the profit",
+        "Negative",
+        "Zero"
+      ],
+      "answer": 3,
+      "explanation": "A resource that is not fully consumed has slack, so by complementary slackness its dual variable (shadow price) is zero, meaning an extra unit of that resource would add nothing to the optimal objective.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-021",
+      "stem": "Weak duality guarantees that for any feasible primal (maximization) solution and any feasible dual solution:",
+      "options": [
+        "The primal objective value is less than or equal to the dual objective value",
+        "The primal objective exceeds the dual objective",
+        "The two are always equal",
+        "Both are unbounded"
+      ],
+      "answer": 0,
+      "explanation": "Weak duality states that the maximization primal objective never exceeds the minimization dual objective for any feasible pair. Equality holds only at the common optimum, which is strong duality.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-022",
+      "stem": "Which statement about primal and dual is correct?",
+      "options": [
+        "The dual has the same number of constraints as the primal",
+        "The number of dual constraints equals the number of primal variables",
+        "Duality applies only to nonlinear models",
+        "The dual ignores the primal coefficients"
+      ],
+      "answer": 1,
+      "explanation": "Each primal variable gives rise to one dual constraint, so the dual has as many constraints as the primal has variables (and as many variables as the primal has constraints).",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-023",
+      "format": "cloze",
+      "stem": "Form the dual of the primal Maximize $Z = 45X_1 + 80X_2$ subject to $5X_1 + 20X_2 \\le 400$ and $10X_1 + 15X_2 \\le 450$.",
+      "solution": "Because the primal is a maximization, the dual is a {{1}} problem. Its objective is to use the primal right-hand sides as coefficients, giving objective value $400y_1 +$ {{2}} $y_2$. The dual constraint for $X_2$ reads $20y_1 + 15y_2 \\ge$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "minimization",
+            "maximization"
+          ],
+          "answer": "minimization"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 450,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 80,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The dual is Minimize $400y_1 + 450y_2$ subject to $5y_1 + 10y_2 \\ge 45$ and $20y_1 + 15y_2 \\ge 80$. The $X_2$ constraint right-hand side is the primal objective coefficient $80$.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-024",
+      "format": "cloze",
+      "stem": "The primal has $n$ variables and $m$ constraints (ignoring non-negativity).",
+      "solution": "The dual then has {{1}} variables and {{2}} constraints. Moreover, taking the dual of the dual returns the {{3}} problem.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "m",
+            "$m$"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "n",
+            "$n$"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "primal",
+            "original"
+          ]
+        }
+      ],
+      "explanation": "Dual variables match primal constraints ($m$) and dual constraints match primal variables ($n$); the dual of the dual is the primal.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-025",
+      "format": "cloze",
+      "stem": "The duality theorem links the solvability of the primal and dual.",
+      "solution": "If either problem has a finite optimum, the other also has a finite optimum and the two optimal objective values are {{1}}. If one problem is unbounded, the other has no {{2}} solution.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "equal",
+            "opposite"
+          ],
+          "answer": "equal"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "feasible"
+          ]
+        }
+      ],
+      "explanation": "Strong duality: finite optima coincide in value. Unboundedness in one means infeasibility (no feasible solution) in the other.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-026",
+      "format": "cloze",
+      "stem": "Form the dual of Minimize $F = 28X_1 + 40X_2 + 20X_3$ subject to $X_1 + 0.9X_2 + 0.8X_3 \\ge 30$ and $0.6X_1 + 2X_2 + 0.7X_3 \\ge 23$.",
+      "solution": "The dual is a {{1}} problem with objective $30y_1 +$ {{2}} $y_2$. The dual constraint coming from $X_1$ is $y_1 + 0.6y_2 \\le$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "maximization",
+            "minimization"
+          ],
+          "answer": "maximization"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 23,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 28,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The dual is Maximize $30y_1 + 23y_2$ subject to $y_1 + 0.6y_2 \\le 28$, $0.9y_1 + 2y_2 \\le 40$, $0.8y_1 + 0.7y_2 \\le 20$. The $X_1$ constraint right-hand side is $28$.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-027",
+      "format": "cloze",
+      "stem": "Optimal dual variables carry an economic meaning used in sensitivity analysis.",
+      "solution": "The optimal value of a dual variable is the {{1}} price of the corresponding resource, the rate of change of the optimal objective per unit of its right-hand side. If a resource is not fully used at the optimum, this value is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "shadow"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Dual variables are shadow prices; an under-used (non-binding) resource has shadow price $0$ by complementary slackness.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-duality-and-sensitivity-028",
+      "format": "cloze",
+      "stem": "Primal and dual objective values are related by weak and strong duality.",
+      "solution": "For any feasible solutions, the maximization primal objective is {{1}} than or equal to the minimization dual objective (weak duality). At the optimum the two values become exactly {{2}} (strong duality).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "less",
+            "greater"
+          ],
+          "answer": "less"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "equal",
+            "unbounded"
+          ],
+          "answer": "equal"
+        }
+      ],
+      "explanation": "Weak duality: primal max value is at most the dual min value. Strong duality: at optimality they are equal.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    }
+  ]
+}

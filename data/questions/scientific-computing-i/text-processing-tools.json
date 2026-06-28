@@ -1,0 +1,541 @@
+{
+  "courseId": "scientific-computing-i",
+  "topicId": "text-processing-tools",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-i-text-processing-tools-001",
+      "stem": "What does the command `grep \"error\" log.txt` do?",
+      "options": [
+        "Counts how many lines are in `log.txt`",
+        "Prints the lines of `log.txt` that contain the text `error`",
+        "Deletes every line containing `error`",
+        "Replaces `error` with a blank line"
+      ],
+      "answer": 1,
+      "explanation": "`grep` searches a file for a pattern and prints the lines that match. So `grep \"error\" log.txt` outputs every line of `log.txt` that contains the string `error`. It does not modify the file.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-002",
+      "stem": "What does the option in `grep -c \"fail\" results.txt` make `grep` do?",
+      "options": [
+        "Search case-insensitively",
+        "Print the matching lines in colour",
+        "Print only the count of matching lines",
+        "Count the characters in the file"
+      ],
+      "answer": 2,
+      "explanation": "The `-c` option makes `grep` report a count: the number of lines that match, rather than the lines themselves. So `grep -c \"fail\" results.txt` prints a single number, how many lines contain `fail`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-003",
+      "stem": "What does `wc -l names.txt` report?",
+      "options": [
+        "The number of words in `names.txt`",
+        "The number of lines in `names.txt`",
+        "The number of characters in `names.txt`",
+        "The longest line in `names.txt`"
+      ],
+      "answer": 1,
+      "explanation": "`wc` is the word-count tool, and the `-l` option restricts it to counting lines. So `wc -l names.txt` prints how many lines the file has. The options `-w` and `-c` count words and characters instead.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-004",
+      "stem": "The vertical bar in `cat data.txt | sort` is called a pipe. What does it do here?",
+      "options": [
+        "Saves the output of `cat` into a file called `sort`",
+        "Sends the output of `cat data.txt` as the input to `sort`",
+        "Runs `cat` and `sort` at completely separate times",
+        "Compares the two files `data.txt` and `sort`"
+      ],
+      "answer": 1,
+      "explanation": "A pipe `|` connects two commands so that the output of the one on the left becomes the input of the one on the right. Here the lines produced by `cat data.txt` are fed straight into `sort`, which then sorts them.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-005",
+      "stem": "What does the redirection in `ls > files.txt` do?",
+      "options": [
+        "Reads `files.txt` into `ls`",
+        "Compares `ls` output with `files.txt`",
+        "Appends the output of `ls` to `files.txt`",
+        "Writes the output of `ls` into the file `files.txt`, overwriting it"
+      ],
+      "answer": 3,
+      "explanation": "The `>` operator redirects a command's standard output into a file, creating it or replacing its contents. So `ls > files.txt` saves the directory listing into `files.txt`, discarding whatever was there before.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-006",
+      "stem": "How does `>>` differ from `>` in `echo hi >> log.txt` ?",
+      "options": [
+        "`>>` reads from the file",
+        "`>>` overwrites the file, while `>` appends",
+        "`>>` appends to the file instead of overwriting it",
+        "There is no difference"
+      ],
+      "answer": 2,
+      "explanation": "A single `>` overwrites the target file, but `>>` appends, adding the new output to the end while keeping the existing contents. So `echo hi >> log.txt` adds a line `hi` without erasing the file.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-007",
+      "stem": "Given a file `marks.txt` of numbers, what does `sort marks.txt` do by default?",
+      "options": [
+        "Sorts the lines in reverse order",
+        "Sorts the lines numerically",
+        "Removes duplicate lines",
+        "Sorts the lines in ascending order, comparing them as text"
+      ],
+      "answer": 3,
+      "explanation": "By default `sort` orders lines ascending using a text (lexicographic) comparison, so `10` would come before `9`. To compare them as numbers you must add the `-n` option, as in `sort -n marks.txt`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-008",
+      "stem": "Why is `-n` needed in `sort -n marks.txt` when the file holds numbers?",
+      "options": [
+        "It sorts in descending order",
+        "It removes the line numbers",
+        "It compares the lines as numbers rather than as text",
+        "It counts the lines"
+      ],
+      "answer": 2,
+      "explanation": "The `-n` option tells `sort` to interpret the lines as numeric values, so `9` correctly comes before `10`. Without it, a plain text sort would place `10` before `9` because it compares character by character.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-009",
+      "stem": "What is required for `uniq` to remove duplicate lines correctly, as in `sort data.txt | uniq` ?",
+      "options": [
+        "Nothing; `uniq` finds duplicates anywhere in the file",
+        "The duplicate lines must already be adjacent, which is why the input is sorted first",
+        "The file must be empty",
+        "The lines must be numbered"
+      ],
+      "answer": 1,
+      "explanation": "`uniq` only collapses duplicate lines that are next to each other, so the usual pattern is to `sort` the data first to bring identical lines together, then pipe into `uniq`. Duplicates that are not adjacent would otherwise be missed.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-010",
+      "stem": "What does the option in `uniq -c` add to each output line?",
+      "options": [
+        "A colour code",
+        "A line number from the original file",
+        "The character count of the line",
+        "A count of how many times the line occurred"
+      ],
+      "answer": 3,
+      "explanation": "`uniq -c` prefixes each distinct line with the number of times it appeared consecutively. Combined with a prior `sort`, this is the classic way to tally how often each value occurs.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-011",
+      "stem": "In a comma-separated file, what does `cut -d',' -f2 data.csv` extract?",
+      "options": [
+        "The first comma-separated field of each line",
+        "The second character of each line",
+        "The second comma-separated field of each line",
+        "Every field except the second"
+      ],
+      "answer": 2,
+      "explanation": "`-d','` sets the field delimiter to a comma, and `-f2` selects field number two. So `cut -d',' -f2 data.csv` prints the second column of each line. By default `cut` would split on tabs instead.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-012",
+      "stem": "What does `awk '{print $1}' data.txt` print?",
+      "options": [
+        "The whole of each line",
+        "The first whitespace-separated field of each line",
+        "The first character of each line",
+        "The number of fields on each line"
+      ],
+      "answer": 1,
+      "explanation": "In `awk`, `$1` is the first field of the current line (fields are separated by whitespace by default). The action `{print $1}` runs on every line, so this command prints the first column of `data.txt`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-013",
+      "stem": "In `awk`, what does the special variable `$0` refer to?",
+      "options": [
+        "The first field",
+        "The entire current line",
+        "The number of the current line",
+        "The last field"
+      ],
+      "answer": 1,
+      "explanation": "`$0` stands for the whole current record, that is the entire line. Individual fields are `$1`, `$2` and so on, while `NF` holds the number of fields and `NR` the current record number.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-014",
+      "stem": "What does the stream editor command `sed 's/cat/dog/' pets.txt` do?",
+      "options": [
+        "Deletes every line containing `cat`",
+        "Sorts the file alphabetically",
+        "Counts the occurrences of `cat`",
+        "Replaces the first `cat` on each line with `dog` in the output"
+      ],
+      "answer": 3,
+      "explanation": "The `sed` substitute command `s/old/new/` replaces the first match of `old` with `new` on each line. So `sed 's/cat/dog/' pets.txt` prints the file with the first `cat` on every line changed to `dog`. Adding a trailing `g` would replace all of them.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-015",
+      "stem": "What extra effect does the trailing `g` have in `sed 's/a/A/g' file.txt` ?",
+      "options": [
+        "It replaces only the first `a` on each line",
+        "It replaces every `a` on each line, not just the first",
+        "It makes the search case-insensitive",
+        "It deletes lines containing `a`"
+      ],
+      "answer": 1,
+      "explanation": "Without a flag, `sed` replaces only the first match on each line. The `g` (global) flag tells it to replace every occurrence on the line. So `s/a/A/g` turns all lowercase `a` characters into `A`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-016",
+      "stem": "Which command makes `grep` ignore the difference between uppercase and lowercase letters?",
+      "options": [
+        "`grep -c`",
+        "`grep -v`",
+        "`grep -i`",
+        "`grep -n`"
+      ],
+      "answer": 2,
+      "explanation": "The `-i` option makes the match case-insensitive, so `grep -i error log.txt` finds `error`, `Error` and `ERROR` alike. `-c` counts, `-n` adds line numbers, and `-v` inverts the match.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-017",
+      "stem": "What does `grep -v \"ok\" status.txt` print?",
+      "options": [
+        "Only the lines that contain `ok`",
+        "The file with `ok` removed from each line",
+        "A count of the lines containing `ok`",
+        "The lines that do not contain `ok`"
+      ],
+      "answer": 3,
+      "explanation": "The `-v` option inverts the match, so `grep -v \"ok\" status.txt` prints exactly the lines that do not contain `ok`. It is useful for filtering out unwanted lines.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-018",
+      "stem": "Suppose `data.txt` contains the three lines `banana`, `apple`, `cherry`. What does `sort data.txt | head -n 1` print?",
+      "options": [
+        "`banana`",
+        "`apple`",
+        "`cherry`",
+        "All three lines"
+      ],
+      "answer": 1,
+      "explanation": "`sort` puts the lines in ascending alphabetical order, giving `apple`, `banana`, `cherry`. Piping into `head -n 1` keeps only the first line of that sorted output, which is `apple`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-019",
+      "stem": "What does the redirection in `wc -l < data.txt` do with the `<` operator?",
+      "options": [
+        "Sends the contents of `data.txt` into `wc -l` as its input",
+        "Writes the result into `data.txt`",
+        "Appends to `data.txt`",
+        "Compares `wc` with `data.txt`"
+      ],
+      "answer": 0,
+      "explanation": "The `<` operator redirects input, feeding the contents of `data.txt` into the command's standard input. So `wc -l < data.txt` counts the lines coming from that file. (`>` and `>>` redirect output instead.)",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-020",
+      "stem": "Which command joins two files line by line, side by side into columns?",
+      "options": [
+        "`cat`",
+        "`paste`",
+        "`cut`",
+        "`uniq`"
+      ],
+      "answer": 1,
+      "explanation": "`paste` merges files horizontally, placing corresponding lines from each file next to each other separated by a tab. `cat` joins them end to end (vertically), while `cut` extracts columns from a single file.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-021",
+      "stem": "Which tool is designed to extract selected fields or columns from each line of a file?",
+      "options": [
+        "`cut`",
+        "`wc`",
+        "`man`",
+        "`touch`"
+      ],
+      "answer": 0,
+      "explanation": "`cut` extracts portions of each line, either by character position or, with `-d` and `-f`, by delimited fields. `wc` counts, `man` shows manuals, and `touch` creates or updates files.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-022",
+      "stem": "What does `awk -F',' '{print $2}' data.csv` print?",
+      "options": [
+        "The first comma-separated field of each line",
+        "The second comma-separated field of each line",
+        "The second character of each line",
+        "The number of commas on each line"
+      ],
+      "answer": 1,
+      "explanation": "The `-F','` option sets the field separator to a comma, so fields are split on commas. The action `{print $2}` then prints the second such field of every line, that is the second column of `data.csv`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-023",
+      "stem": "A common pipeline to list the unique values and how often each appears is `sort file | uniq -c`. What part does the `sort` play?",
+      "options": [
+        "It removes duplicates by itself",
+        "It groups identical lines together so that `uniq` can count them",
+        "It counts the lines",
+        "It reverses the order of the lines"
+      ],
+      "answer": 1,
+      "explanation": "Because `uniq` only merges adjacent duplicates, the `sort` first brings all identical lines next to each other. Then `uniq -c` collapses each run and prefixes it with a count, producing a frequency tally.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-024",
+      "stem": "What does `wc data.txt` print when run with no options?",
+      "options": [
+        "Only the number of lines",
+        "The contents of the file",
+        "Three numbers: the line count, word count and character count",
+        "Only the number of words"
+      ],
+      "answer": 2,
+      "explanation": "With no option, `wc` prints three counts for the file in order: the number of lines, the number of words and the number of characters (bytes), followed by the file name. The `-l`, `-w` and `-c` options select just one of these.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-025",
+      "format": "cloze",
+      "stem": "Choose the right tool for each text-processing task.",
+      "solution": "To print only the lines of `log.txt` that contain `error`, use {{1}}. To print just the first whitespace field of each line, use {{2}}. To count how many lines are in the file, use {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`grep error log.txt`",
+            "`sort error log.txt`",
+            "`cut error log.txt`"
+          ],
+          "answer": "`grep error log.txt`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`awk '{print $1}' log.txt`",
+            "`awk '{print $0}' log.txt`",
+            "`wc -l log.txt`"
+          ],
+          "answer": "`awk '{print $1}' log.txt`"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`wc -l log.txt`",
+            "`wc -w log.txt`",
+            "`grep -c log.txt`"
+          ],
+          "answer": "`wc -l log.txt`"
+        }
+      ],
+      "explanation": "`grep error` prints matching lines, `awk '{print $1}'` prints the first field of each line, and `wc -l` counts lines.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-026",
+      "format": "cloze",
+      "stem": "Pick the correct redirection or pipe operator for each goal.",
+      "solution": "To save the output of `ls` into a new file, overwriting it, use {{1}}. To add output to the end of an existing file, use {{2}}. To feed one command's output into another, use {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`>`",
+            "`>>`",
+            "`<`"
+          ],
+          "answer": "`>`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`>`",
+            "`>>`",
+            "`|`"
+          ],
+          "answer": "`>>`"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`|`",
+            "`>`",
+            "`<`"
+          ],
+          "answer": "`|`"
+        }
+      ],
+      "explanation": "`>` overwrites a file with the output, `>>` appends to it, and `|` pipes one command's output into the next command's input.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-027",
+      "format": "cloze",
+      "stem": "The file `scores.txt` contains exactly these five lines: `pass`, `fail`, `pass`, `pass`, `fail`. Predict the counts.",
+      "solution": "The number of lines printed by `grep pass scores.txt` is {{1}}. The single number printed by `grep -c fail scores.txt` is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Three of the five lines are `pass`, so `grep pass` prints 3 lines. Two lines are `fail`, and `grep -c fail` reports that count as the number 2.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-028",
+      "format": "cloze",
+      "stem": "Choose the option that gives each `grep` or `sort` behaviour.",
+      "solution": "To make `grep` ignore upper and lower case, add the option {{1}}. To make `sort` compare lines as numbers rather than text, add the option {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`-i`",
+            "`-c`",
+            "`-v`"
+          ],
+          "answer": "`-i`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`-n`",
+            "`-r`",
+            "`-l`"
+          ],
+          "answer": "`-n`"
+        }
+      ],
+      "explanation": "`grep -i` searches case-insensitively, and `sort -n` performs a numeric sort so that `9` comes before `10`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-029",
+      "format": "cloze",
+      "stem": "Select the `awk` field reference for each description.",
+      "solution": "The reference that prints the second whitespace-separated field of each line is {{1}}. The reference that prints the entire current line is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`awk '{print $2}'`",
+            "`awk '{print $1}'`",
+            "`awk '{print $0}'`"
+          ],
+          "answer": "`awk '{print $2}'`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`awk '{print $0}'`",
+            "`awk '{print $1}'`",
+            "`awk '{print $2}'`"
+          ],
+          "answer": "`awk '{print $0}'`"
+        }
+      ],
+      "explanation": "In `awk`, `$2` is the second field while `$0` is the whole line, so `{print $2}` prints the second column and `{print $0}` echoes each line in full.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-text-processing-tools-030",
+      "format": "cloze",
+      "stem": "Reason about a frequency-counting pipeline.",
+      "solution": "To list each distinct value together with how many times it occurs, the pipeline is `sort file | uniq -c`; the option that adds the count is {{1}}. The step that must come first so that identical lines are adjacent is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`-c`",
+            "`-d`",
+            "`-i`"
+          ],
+          "answer": "`-c`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`sort`",
+            "`cut`",
+            "`paste`"
+          ],
+          "answer": "`sort`"
+        }
+      ],
+      "explanation": "`uniq -c` prefixes each group with its count, and because `uniq` only merges adjacent duplicates, the lines must be `sort`ed first to bring identical values together.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    }
+  ]
+}

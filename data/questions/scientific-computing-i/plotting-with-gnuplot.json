@@ -1,0 +1,529 @@
+{
+  "courseId": "scientific-computing-i",
+  "topicId": "plotting-with-gnuplot",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-001",
+      "stem": "In GNUplot, what does the command `plot sin(x)` do?",
+      "options": [
+        "Saves `sin(x)` to a file",
+        "Draws a graph of the function `sin(x)`",
+        "Prints the value of `sin(x)` at one point",
+        "Defines a new function called `sin`"
+      ],
+      "answer": 1,
+      "explanation": "`plot` is GNUplot's main command for drawing graphs. Given a function such as `sin(x)`, `plot sin(x)` draws its curve over the current x range. It graphs the function rather than printing a single value.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-002",
+      "stem": "How do you plot the data contained in a file called `data.dat` in GNUplot?",
+      "options": [
+        "`plot data.dat`",
+        "`read \"data.dat\"`",
+        "`open data.dat`",
+        "`plot \"data.dat\"`"
+      ],
+      "answer": 3,
+      "explanation": "To plot data from a file, you give its name in quotes, as in `plot \"data.dat\"`. GNUplot then reads the columns of the file and plots them. The file name must be quoted so it is treated as a string.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-003",
+      "stem": "What does the clause `using 1:2` mean in `plot \"data.dat\" using 1:2` ?",
+      "options": [
+        "Use rows 1 to 2 of the file",
+        "Plot column 1 on the x axis against column 2 on the y axis",
+        "Use 1 line of width 2",
+        "Plot only the first two points"
+      ],
+      "answer": 1,
+      "explanation": "The `using` clause selects which columns to plot. `using 1:2` means take column 1 as the x value and column 2 as the y value for each row. It is how you choose the columns from a multi-column data file.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-004",
+      "stem": "Which command sets the range of the x axis to run from 0 to 10 in GNUplot?",
+      "options": [
+        "`xrange(0, 10)`",
+        "`set x = 0 to 10`",
+        "`set xrange [0:10]`",
+        "`set range x 0 10`"
+      ],
+      "answer": 2,
+      "explanation": "Axis ranges are set with `set xrange` and square brackets, so `set xrange [0:10]` makes the x axis span from 0 to 10. The y axis is controlled similarly with `set yrange`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-005",
+      "stem": "What does `plot [0:6] sin(x)` do with the part `[0:6]` ?",
+      "options": [
+        "Plots `sin(x)` only for x between 0 and 6",
+        "Plots the first 6 points of `sin(x)`",
+        "Plots `sin(x)` six times",
+        "Sets the line width to 6"
+      ],
+      "answer": 0,
+      "explanation": "An inline range in square brackets right after `plot` limits the x values used for this plot, so `plot [0:6] sin(x)` draws the sine curve only from x equal to 0 up to 6. It is a quick alternative to a separate `set xrange`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-006",
+      "stem": "Which option draws a data series as a connected line rather than separate points?",
+      "options": [
+        "`with points`",
+        "`with lines`",
+        "`with dots`",
+        "`with boxes`"
+      ],
+      "answer": 1,
+      "explanation": "Adding `with lines` to a plot command joins the data with a continuous line, as in `plot \"data.dat\" with lines`. `with points` would instead mark each data point separately without connecting them.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-007",
+      "stem": "What does the style `with linespoints` do?",
+      "options": [
+        "Draws only points",
+        "Draws only a line",
+        "Draws both a connecting line and a marker at each point",
+        "Draws filled boxes"
+      ],
+      "answer": 2,
+      "explanation": "`with linespoints` combines the two styles: it draws a line through the data and also places a marker at each data point. It is useful when you want to see both the trend and the individual measurements.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-008",
+      "stem": "Which pair of commands directs GNUplot output into a PNG image file instead of the screen?",
+      "options": [
+        "`set terminal png` then `set output \"fig.png\"`",
+        "`save fig.png`",
+        "`export png fig.png`",
+        "`plot > fig.png`"
+      ],
+      "answer": 0,
+      "explanation": "You first choose an output format with `set terminal png`, then name the file with `set output \"fig.png\"`. The next `plot` writes the graph into that PNG file rather than displaying it on screen.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-009",
+      "stem": "What is the role of `set terminal` in GNUplot?",
+      "options": [
+        "It closes the GNUplot program",
+        "It loads a data file",
+        "It sets the title of the plot",
+        "It selects the output format or device, such as the screen or a PNG file"
+      ],
+      "answer": 3,
+      "explanation": "`set terminal` chooses where and in what format the plot is produced, for example an interactive window or a `png`, `pdf` or `postscript` file. It is paired with `set output` when writing to a file.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-010",
+      "stem": "Which command gives the whole plot a title reading `My Graph` ?",
+      "options": [
+        "`plot title My Graph`",
+        "`title = My Graph`",
+        "`set title \"My Graph\"`",
+        "`set name \"My Graph\"`"
+      ],
+      "answer": 2,
+      "explanation": "`set title \"My Graph\"` sets the heading shown above the plot. The text is given in quotes. (Note that a `title` keyword inside a `plot` command instead labels a single curve in the legend, not the whole figure.)",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-011",
+      "stem": "Which command labels the x axis with the text `Time (s)` ?",
+      "options": [
+        "`set xtitle \"Time (s)\"`",
+        "`set label x \"Time (s)\"`",
+        "`xlabel Time (s)`",
+        "`set xlabel \"Time (s)\"`"
+      ],
+      "answer": 3,
+      "explanation": "Axis labels are set with `set xlabel` and `set ylabel`. So `set xlabel \"Time (s)\"` writes that text beneath the x axis. The text is quoted as a string.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-012",
+      "stem": "By default, how does GNUplot draw data read from a file when no style is given?",
+      "options": [
+        "As a connected line",
+        "As separate points (markers)",
+        "As filled bars",
+        "It does not draw anything"
+      ],
+      "answer": 1,
+      "explanation": "When you plot a data file without specifying a style, GNUplot draws the data as separate points by default. To connect them you must add `with lines` (or `with linespoints`).",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-013",
+      "stem": "How can you plot two curves, `sin(x)` and `cos(x)`, on the same axes in one command?",
+      "options": [
+        "`plot sin(x) and cos(x)`",
+        "`plot sin(x), cos(x)`",
+        "`plot sin(x) + cos(x)`",
+        "`plot sin(x) | cos(x)`"
+      ],
+      "answer": 1,
+      "explanation": "You list several plot elements separated by commas, so `plot sin(x), cos(x)` draws both curves together on the same axes. Using `+` would instead plot the single function that is their sum.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-014",
+      "stem": "What does the `replot` command do in GNUplot?",
+      "options": [
+        "Clears the current plot",
+        "Redraws the last plot, including any new settings or added curves",
+        "Saves the plot to a file",
+        "Deletes the data file"
+      ],
+      "answer": 1,
+      "explanation": "`replot` repeats the previous `plot` command, picking up any settings you changed in between (such as a new title or range) and any extra curve you append. It is handy for refining a graph step by step.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-015",
+      "stem": "Which character begins a comment in a GNUplot script?",
+      "options": [
+        "`//`",
+        "`#`",
+        "`--`",
+        "`%`"
+      ],
+      "answer": 1,
+      "explanation": "GNUplot, like the shell and Python, treats text after a `#` on a line as a comment that is ignored. This lets you annotate your plotting scripts.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-016",
+      "stem": "Which command turns on a grid in the background of the plot?",
+      "options": [
+        "`set lines`",
+        "`grid on`",
+        "`set grid`",
+        "`plot grid`"
+      ],
+      "answer": 2,
+      "explanation": "`set grid` switches on grid lines aligned with the axis tick marks, making values easier to read off. It can be turned off again with `unset grid`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-017",
+      "stem": "After writing to a file, why is `set output` important when using a file terminal such as PNG?",
+      "options": [
+        "It chooses the colour of the line",
+        "It names the file the plot is written to and finalises it",
+        "It sets the x range",
+        "It defines a function"
+      ],
+      "answer": 1,
+      "explanation": "When the terminal is a file format like PNG, `set output \"fig.png\"` names the destination file. Closing the output (for example with `set output` again or `unset output`) ensures the file is properly written. Without it, GNUplot would not know where to send the image.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-018",
+      "stem": "Which command would plot the function `x**2` (x squared) in GNUplot?",
+      "options": [
+        "`plot square(x)`",
+        "`graph x^2`",
+        "`draw x squared`",
+        "`plot x**2`"
+      ],
+      "answer": 3,
+      "explanation": "GNUplot uses `**` for exponentiation, so `plot x**2` draws the parabola for x squared. The drawing command is always `plot` for 2D graphs, not `graph` or `draw`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-019",
+      "stem": "What does `set yrange [-1:1]` do?",
+      "options": [
+        "Sets the x axis from -1 to 1",
+        "Plots a line from -1 to 1",
+        "Sets the y axis to run from -1 to 1",
+        "Sets the line width to 1"
+      ],
+      "answer": 2,
+      "explanation": "`set yrange [-1:1]` fixes the vertical axis to span from -1 to 1, which is convenient for functions like `sin(x)` whose values stay within that range. The x axis would be controlled by `set xrange`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-020",
+      "stem": "In `plot \"data.dat\" using 1:3`, which columns are used?",
+      "options": [
+        "Column 1 for x and column 3 for y",
+        "Columns 1 through 3",
+        "Rows 1 and 3",
+        "Column 3 for x and column 1 for y"
+      ],
+      "answer": 0,
+      "explanation": "The `using` clause is read as x:y, so `using 1:3` takes column 1 as the x coordinate and column 3 as the y coordinate, skipping column 2. It lets you pick any two columns to plot against each other.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-021",
+      "stem": "Which command gives a single curve the legend label `Speed` ?",
+      "options": [
+        "`plot \"data.dat\" title \"Speed\"`",
+        "`set legend \"Speed\"`",
+        "`plot \"data.dat\" name \"Speed\"`",
+        "`set xlabel \"Speed\"`"
+      ],
+      "answer": 0,
+      "explanation": "A `title` keyword inside a `plot` command labels that particular curve in the legend (the key). So `plot \"data.dat\" title \"Speed\"` shows `Speed` in the legend for that data. `set xlabel` would instead label the axis.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-022",
+      "stem": "Which command is used to draw a three-dimensional surface plot in GNUplot?",
+      "options": [
+        "`plot3d`",
+        "`splot`",
+        "`plot --3d`",
+        "`surface`"
+      ],
+      "answer": 1,
+      "explanation": "`splot` (surface plot) is GNUplot's command for 3D graphs of functions of two variables or three-column data, for example `splot sin(x)*cos(y)`. The ordinary `plot` command is only for 2D graphs.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-023",
+      "stem": "What does `unset key` do to a GNUplot graph?",
+      "options": [
+        "Removes the legend (key) from the plot",
+        "Deletes the data file",
+        "Clears the title",
+        "Turns off the x axis"
+      ],
+      "answer": 0,
+      "explanation": "The key is the legend that names each curve. `unset key` removes that legend box, which is useful when a single unlabelled curve does not need one. To bring it back you would use `set key`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-024",
+      "stem": "Which command would plot the data file `temps.dat` joined up as a line?",
+      "options": [
+        "`plot \"temps.dat\" as line`",
+        "`plot temps.dat lines`",
+        "`line plot \"temps.dat\"`",
+        "`plot \"temps.dat\" with lines`"
+      ],
+      "answer": 3,
+      "explanation": "You name the file in quotes and add the style, so `plot \"temps.dat\" with lines` reads the file and draws its points connected by a line. The keyword is `with lines`, and the file name must be quoted.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-025",
+      "format": "cloze",
+      "stem": "Complete these basic GNUplot commands.",
+      "solution": "To draw a graph of the function sine of x, you type {{1}}. To plot the data stored in a file named `data.dat`, you type {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`plot sin(x)`",
+            "`draw sin(x)`",
+            "`graph sin(x)`"
+          ],
+          "answer": "`plot sin(x)`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`plot \"data.dat\"`",
+            "`plot data.dat`",
+            "`open \"data.dat\"`"
+          ],
+          "answer": "`plot \"data.dat\"`"
+        }
+      ],
+      "explanation": "`plot` is the drawing command for both functions and data files; the file name must be quoted, giving `plot sin(x)` and `plot \"data.dat\"`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-026",
+      "format": "cloze",
+      "stem": "Choose the right command to set each axis range.",
+      "solution": "To make the x axis run from 0 to 10, you use {{1}}. To make the y axis run from -1 to 1, you use {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`set xrange [0:10]`",
+            "`set yrange [0:10]`",
+            "`set range x [0:10]`"
+          ],
+          "answer": "`set xrange [0:10]`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`set yrange [-1:1]`",
+            "`set xrange [-1:1]`",
+            "`set range y [-1:1]`"
+          ],
+          "answer": "`set yrange [-1:1]`"
+        }
+      ],
+      "explanation": "Ranges use `set xrange` and `set yrange` with square brackets, so `set xrange [0:10]` and `set yrange [-1:1]` set the two axes.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-027",
+      "format": "cloze",
+      "stem": "Pick the plotting style for each description.",
+      "solution": "To connect the data points with a continuous line, add {{1}}. To draw both a line and a marker at each point, add {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`with lines`",
+            "`with points`",
+            "`with boxes`"
+          ],
+          "answer": "`with lines`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`with linespoints`",
+            "`with lines`",
+            "`with dots`"
+          ],
+          "answer": "`with linespoints`"
+        }
+      ],
+      "explanation": "`with lines` draws a connected line, while `with linespoints` draws both the line and a marker at each data point.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-028",
+      "format": "cloze",
+      "stem": "Complete the steps to save a plot to a PNG file.",
+      "solution": "First you choose the output format with {{1}}. Then you name the destination file with {{2}}, and finally you run your `plot` command.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`set terminal png`",
+            "`set output png`",
+            "`set png on`"
+          ],
+          "answer": "`set terminal png`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`set output \"fig.png\"`",
+            "`set terminal \"fig.png\"`",
+            "`set file \"fig.png\"`"
+          ],
+          "answer": "`set output \"fig.png\"`"
+        }
+      ],
+      "explanation": "`set terminal png` selects the PNG format and `set output \"fig.png\"` names the file; the following `plot` then writes the image to that file.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-029",
+      "format": "cloze",
+      "stem": "Choose the command that labels the plot and an axis.",
+      "solution": "To set the overall title of the graph to `Results`, you use {{1}}. To label the x axis as `Time`, you use {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`set title \"Results\"`",
+            "`set xlabel \"Results\"`",
+            "`title \"Results\"`"
+          ],
+          "answer": "`set title \"Results\"`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`set xlabel \"Time\"`",
+            "`set title \"Time\"`",
+            "`set xtitle \"Time\"`"
+          ],
+          "answer": "`set xlabel \"Time\"`"
+        }
+      ],
+      "explanation": "`set title` sets the heading of the whole figure and `set xlabel` labels the x axis, so the two commands are `set title \"Results\"` and `set xlabel \"Time\"`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-plotting-with-gnuplot-030",
+      "format": "cloze",
+      "stem": "Reason about plotting columns and two functions together.",
+      "solution": "To plot column 1 against column 2 of `data.dat`, you add the clause {{1}}. To draw both `sin(x)` and `cos(x)` on the same axes in one command, you separate them with {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`using 1:2`",
+            "`using 2:1`",
+            "`columns 1 2`"
+          ],
+          "answer": "`using 1:2`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "a comma, as in `plot sin(x), cos(x)`",
+            "a plus, as in `plot sin(x) + cos(x)`",
+            "a pipe, as in `plot sin(x) | cos(x)`"
+          ],
+          "answer": "a comma, as in `plot sin(x), cos(x)`"
+        }
+      ],
+      "explanation": "`using 1:2` reads as x:y, plotting column 1 against column 2, and separate plot elements are listed with commas, so `plot sin(x), cos(x)` draws both curves together.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "courseId": "mathematical-biology-i",
+  "topicId": "equilibria-and-stability",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-001",
+      "stem": "The disease-free equilibrium (DFE) of a compartmental model is the steady state in which",
+      "options": [
+        "everyone is infected",
+        "no one is infected, so the infective compartments are zero",
+        "the population is zero",
+        "the transmission rate is zero"
+      ],
+      "answer": 1,
+      "explanation": "The disease free equilibrium is the steady state with no infection present, so all infected compartments (such as $I$ and $E$) are zero while susceptibles fill the population. It is not a state where everyone is infected, the population vanishes, or a parameter is set to zero. For the rescaled SIRS model the DFE is $(s^*, i^*, r^*) = (1, 0, 0)$.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-002",
+      "stem": "For the rescaled SIRS model with $s + i + r = 1$, the disease-free equilibrium point is",
+      "options": [
+        "$(s^*, i^*, r^*) = (0, 0, 1)$",
+        "$(s^*, i^*, r^*) = (0, 1, 0)$",
+        "$(s^*, i^*, r^*) = (1, 0, 0)$",
+        "$(s^*, i^*, r^*) = \\left(\\tfrac{1}{3}, \\tfrac{1}{3}, \\tfrac{1}{3}\\right)$"
+      ],
+      "answer": 2,
+      "explanation": "With populations scaled to fractions summing to one, the disease free equilibrium has all susceptibles and no infection: $s^* = 1$, $i^* = 0$, $r^* = 0$. Placing the entire population in the infective or recovered class does not correspond to a disease free steady state, and the equal split is not an equilibrium of the model. The DFE is $(1, 0, 0)$.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-003",
+      "stem": "An endemic equilibrium of a disease model is a steady state in which",
+      "options": [
+        "every individual is susceptible",
+        "the infection has been eradicated",
+        "the population grows without bound",
+        "the infection persists at a constant positive level"
+      ],
+      "answer": 3,
+      "explanation": "An endemic equilibrium is a nonzero steady state where infection remains present at a constant positive level over time, $i^* > 0$. It is the opposite of the disease free equilibrium, where infection is absent. It does not describe eradication, unbounded growth, or an all susceptible population. Persistence of infection at a fixed level defines the endemic equilibrium.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-004",
+      "stem": "For the rescaled SIRS model, the endemic equilibrium exists only when",
+      "options": [
+        "$R_0 = \\dfrac{\\beta}{\\gamma} > 1$",
+        "$R_0 = \\dfrac{\\beta}{\\gamma} < 1$",
+        "$\\beta = 0$",
+        "$\\gamma > \\beta$"
+      ],
+      "answer": 0,
+      "explanation": "The endemic equilibrium has positive components only when the parameters are positive and $R_0 = \\frac{\\beta}{\\gamma} > 1$. If $R_0 < 1$ (equivalently $\\gamma > \\beta$) the endemic point loses its positivity and only the disease free equilibrium is relevant. Setting $\\beta = 0$ removes transmission entirely. Existence of the endemic state requires $R_0 > 1$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-005",
+      "stem": "To analyze stability of a two dimensional reduced disease model with $\\dot s = f(s,i)$ and $\\dot i = g(s,i)$, one evaluates at an equilibrium the",
+      "options": [
+        "total population $N$",
+        "Jacobian matrix of partial derivatives",
+        "transmission rate $\\beta$ alone",
+        "final size relation"
+      ],
+      "answer": 1,
+      "explanation": "Local stability is determined by linearizing the system, that is by the Jacobian matrix $J = \\begin{pmatrix} \\partial f/\\partial s & \\partial f/\\partial i \\\\ \\partial g/\\partial s & \\partial g/\\partial i \\end{pmatrix}$ evaluated at the equilibrium, whose eigenvalues classify the point. The population size, a single rate, or the final size relation do not perform this role. The Jacobian governs the stability analysis.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-006",
+      "stem": "Using $r = 1 - s - i$, the rescaled SIRS model reduces to $\\dot s = -\\beta s i + \\delta(1 - s - i)$ and $\\dot i = \\beta s i - \\gamma i$. The Jacobian is",
+      "options": [
+        "$\\begin{pmatrix} -\\beta i & -\\beta s \\\\ \\beta i & \\beta s \\end{pmatrix}$",
+        "$\\begin{pmatrix} \\beta i + \\delta & \\beta s + \\delta \\\\ -\\beta i & \\gamma - \\beta s \\end{pmatrix}$",
+        "$\\begin{pmatrix} -\\beta i - \\delta & -\\beta s - \\delta \\\\ \\beta i & \\beta s - \\gamma \\end{pmatrix}$",
+        "$\\begin{pmatrix} -\\delta & -\\delta \\\\ 0 & -\\gamma \\end{pmatrix}$"
+      ],
+      "answer": 2,
+      "explanation": "Differentiate: $\\partial_s(-\\beta s i + \\delta(1 - s - i)) = -\\beta i - \\delta$, $\\partial_i(\\cdot) = -\\beta s - \\delta$, $\\partial_s(\\beta s i - \\gamma i) = \\beta i$, $\\partial_i(\\cdot) = \\beta s - \\gamma$. This gives the first matrix. The others drop the $\\delta$ contributions from the loss of immunity term or flip signs incorrectly.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-007",
+      "stem": "Evaluating that SIRS Jacobian at the disease-free equilibrium $(s^*, i^*) = (1, 0)$ gives",
+      "options": [
+        "$\\begin{pmatrix} -\\delta & -\\beta \\\\ \\beta & -\\gamma \\end{pmatrix}$",
+        "$\\begin{pmatrix} -\\delta & 0 \\\\ -\\beta - \\delta & \\beta - \\gamma \\end{pmatrix}$",
+        "$\\begin{pmatrix} \\delta & \\beta + \\delta \\\\ 0 & \\gamma - \\beta \\end{pmatrix}$",
+        "$\\begin{pmatrix} -\\delta & -\\beta - \\delta \\\\ 0 & \\beta - \\gamma \\end{pmatrix}$"
+      ],
+      "answer": 3,
+      "explanation": "Substituting $s = 1$, $i = 0$ into the Jacobian: the top left becomes $-\\beta(0) - \\delta = -\\delta$, top right $-\\beta(1) - \\delta = -\\beta - \\delta$, bottom left $\\beta(0) = 0$, bottom right $\\beta(1) - \\gamma = \\beta - \\gamma$. The matrix is upper triangular, which makes its eigenvalues easy to read. The distractors transpose entries or change signs.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-008",
+      "stem": "The eigenvalues of the SIRS disease-free Jacobian $\\begin{pmatrix} -\\delta & -\\beta - \\delta \\\\ 0 & \\beta - \\gamma \\end{pmatrix}$ are",
+      "options": [
+        "$\\lambda_1 = -\\delta,\\ \\lambda_2 = \\beta - \\gamma$",
+        "$\\lambda_1 = \\delta,\\ \\lambda_2 = \\gamma - \\beta$",
+        "$\\lambda_1 = -\\beta,\\ \\lambda_2 = -\\gamma$",
+        "$\\lambda_1 = 0,\\ \\lambda_2 = -\\delta - \\gamma$"
+      ],
+      "answer": 0,
+      "explanation": "Because the matrix is upper triangular, its eigenvalues are the diagonal entries: $\\lambda_1 = -\\delta$ and $\\lambda_2 = \\beta - \\gamma$. The zero in the lower left makes the characteristic polynomial factor as $(-\\delta - \\lambda)(\\beta - \\gamma - \\lambda)$. The other options change signs or invent values not on the diagonal.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-009",
+      "stem": "With $\\delta > 0$, the SIRS disease-free equilibrium (eigenvalues $-\\delta$ and $\\beta - \\gamma$) is asymptotically stable precisely when",
+      "options": [
+        "$\\beta > \\gamma$, so that $\\beta - \\gamma > 0$",
+        "$\\gamma > \\beta$, so that $\\beta - \\gamma < 0$",
+        "$\\beta = \\gamma$",
+        "$\\delta < 0$"
+      ],
+      "answer": 1,
+      "explanation": "Asymptotic stability requires both eigenvalues negative. The first, $-\\delta$, is already negative since $\\delta > 0$. The second, $\\beta - \\gamma$, is negative exactly when $\\gamma > \\beta$, that is $R_0 = \\beta/\\gamma < 1$. Then the DFE is a nodal sink. If $\\beta > \\gamma$ the second eigenvalue is positive and the point becomes a saddle. Stability needs $\\gamma > \\beta$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-010",
+      "stem": "When $\\delta > 0$ and $\\beta > \\gamma$ in the SIRS model, the disease-free equilibrium $(1, 0)$ is",
+      "options": [
+        "a stable spiral",
+        "a stable node",
+        "a saddle point, hence unstable",
+        "a centre"
+      ],
+      "answer": 2,
+      "explanation": "With $\\beta > \\gamma$, the eigenvalues are $-\\delta < 0$ and $\\beta - \\gamma > 0$, one negative and one positive, which is a saddle point. A saddle is unstable, so infection introduced near the DFE grows, and an endemic equilibrium exists. It is not a stable node, spiral, or centre, all of which require different eigenvalue signs. Mixed signs give an unstable saddle.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-011",
+      "stem": "The trace of the SIRS disease-free Jacobian is $\\beta - \\gamma - \\delta$ and its determinant is $\\delta(\\gamma - \\beta)$. A two dimensional equilibrium is asymptotically stable when",
+      "options": [
+        "$\\operatorname{trace} = 0$",
+        "$\\operatorname{trace} > 0$ and $\\det > 0$",
+        "$\\operatorname{trace} < 0$ and $\\det < 0$",
+        "$\\operatorname{trace} < 0$ and $\\det > 0$"
+      ],
+      "answer": 3,
+      "explanation": "For a $2 \\times 2$ system, both eigenvalues have negative real part if and only if the trace is negative and the determinant is positive. Here $\\det = \\delta(\\gamma - \\beta) > 0$ requires $\\gamma > \\beta$, i.e. $R_0 < 1$, matching the eigenvalue analysis. A positive trace or negative determinant signals instability. Stability needs trace below zero and determinant above zero.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-012",
+      "stem": "If the determinant of the SIRS disease-free Jacobian is negative, $\\det(J) < 0$, then the disease-free equilibrium is",
+      "options": [
+        "unstable, and an endemic equilibrium exists ($R_0 > 1$)",
+        "always stable",
+        "a centre",
+        "nonexistent"
+      ],
+      "answer": 0,
+      "explanation": "A negative determinant for a $2 \\times 2$ Jacobian forces eigenvalues of opposite sign, a saddle, so the disease free equilibrium is unstable. Since $\\det = \\delta(\\gamma - \\beta) < 0$ means $\\beta > \\gamma$, that is $R_0 > 1$, an endemic equilibrium then exists. The DFE is not stable, a centre, or nonexistent under this condition. Negative determinant signals an unstable DFE and an emerging endemic state.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-013",
+      "stem": "In the rescaled SIRS model the susceptible coordinate of the endemic equilibrium is $s^* = \\gamma/\\beta$. In terms of $R_0$, this equals",
+      "options": [
+        "$R_0$",
+        "$\\dfrac{1}{R_0}$",
+        "$1 - R_0$",
+        "$R_0 - 1$"
+      ],
+      "answer": 1,
+      "explanation": "Since $R_0 = \\beta/\\gamma$ in the rescaled model, the reciprocal is $1/R_0 = \\gamma/\\beta = s^*$. So at the endemic equilibrium the susceptible fraction settles to $1/R_0$. The larger the reproduction number, the smaller the susceptible fraction that remains, which is consistent with stronger transmission. The other forms do not equal $\\gamma/\\beta$.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-014",
+      "stem": "A disease has rescaled parameters $\\beta = 0.6$, $\\gamma = 0.2$, $\\delta = 0.1$. Which equilibrium is stable?",
+      "options": [
+        "Neither equilibrium is stable",
+        "The disease-free equilibrium, because $R_0 < 1$",
+        "The endemic equilibrium, because $R_0 = \\beta/\\gamma = 3 > 1$",
+        "Both equilibria are stable simultaneously"
+      ],
+      "answer": 2,
+      "explanation": "Here $R_0 = \\beta/\\gamma = 0.6/0.2 = 3 > 1$, so the disease free equilibrium is an unstable saddle and the endemic equilibrium exists and is the stable state. The DFE cannot be stable when $R_0 > 1$, and the two equilibria exchange stability at $R_0 = 1$, so they are not both stable. With $R_0 = 3$, the endemic equilibrium is stable.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-015",
+      "stem": "A disease has rescaled parameters $\\beta = 0.2$, $\\gamma = 0.5$, $\\delta = 0.1$. The disease-free equilibrium is",
+      "options": [
+        "a centre",
+        "unstable, since $R_0 > 1$",
+        "a saddle point",
+        "asymptotically stable, since $R_0 = 0.4 < 1$"
+      ],
+      "answer": 3,
+      "explanation": "Compute $R_0 = \\beta/\\gamma = 0.2/0.5 = 0.4 < 1$. The eigenvalues are $-\\delta = -0.1 < 0$ and $\\beta - \\gamma = -0.3 < 0$, both negative, so the disease free equilibrium is an asymptotically stable node. With $R_0 < 1$ it is not unstable, a saddle, or a centre. The infection dies out.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-016",
+      "stem": "At the borderline case $\\beta = \\gamma$ (with $\\delta > 0$) in the SIRS model, the eigenvalues are $\\lambda_1 = -\\delta$ and $\\lambda_2 = 0$, indicating",
+      "options": [
+        "a centre manifold, the threshold between stability and instability",
+        "a clearly stable node",
+        "a clearly unstable saddle",
+        "an exponentially growing spiral"
+      ],
+      "answer": 0,
+      "explanation": "When $\\beta = \\gamma$, one eigenvalue is $-\\delta < 0$ and the other is exactly $0$, so linearization is inconclusive and the system sits on a centre manifold. This is precisely the threshold $R_0 = 1$ separating the stable regime from the unstable one. It is neither a strict node, a saddle, nor a growing spiral. The zero eigenvalue marks the critical boundary.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-017",
+      "stem": "To find equilibria of a disease model from its ODE system, one sets",
+      "options": [
+        "the transmission rate equal to the recovery rate",
+        "every time derivative equal to zero and solves the resulting algebraic equations",
+        "the total population equal to one",
+        "all eigenvalues equal to zero"
+      ],
+      "answer": 1,
+      "explanation": "Equilibria are the constant solutions, found by setting each derivative $\\dot s, \\dot i, \\dot r$ to zero and solving the resulting algebraic system. This yields both the disease free and endemic points. Equating rates, fixing the population, or forcing eigenvalues to zero are not how the steady states are located. Setting the derivatives to zero defines the equilibria.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-018",
+      "stem": "For an equilibrium of a higher dimensional model (three or more infected stages) where eigenvalues are hard to compute directly, a practical stability test is the",
+      "options": [
+        "law of mass action",
+        "final size relation",
+        "Routh-Hurwitz criterion applied to the characteristic polynomial",
+        "herd immunity formula"
+      ],
+      "answer": 2,
+      "explanation": "When the characteristic polynomial has degree three or more and its roots are awkward to find, the Routh-Hurwitz criterion tests whether all roots have negative real parts using conditions on the coefficients, establishing stability without solving for the eigenvalues. The final size relation, mass action law, and herd immunity formula address different questions. Routh-Hurwitz is the coefficient based stability test.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-019",
+      "stem": "A necessary condition from the Routh-Hurwitz criterion for all roots of a polynomial to have negative real parts is that",
+      "options": [
+        "all coefficients are equal",
+        "the constant term is zero",
+        "the leading coefficient is negative",
+        "all coefficients of the characteristic polynomial are positive (same sign)"
+      ],
+      "answer": 3,
+      "explanation": "A necessary (though not sufficient) Routh-Hurwitz condition is that every coefficient of the characteristic polynomial be present and of the same sign, conventionally all positive. A vanishing constant term would place a root at zero, and a sign change among coefficients guarantees a root with nonnegative real part. Equality of coefficients is not required. The necessary condition is uniform positive coefficients.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-020",
+      "stem": "As $R_0$ increases through the value $1$ in the SIRS model, what happens to the stability of the equilibria?",
+      "options": [
+        "Stability transfers from the disease-free equilibrium to the endemic equilibrium",
+        "Both equilibria become unstable",
+        "The disease-free equilibrium becomes more strongly stable",
+        "Nothing changes"
+      ],
+      "answer": 0,
+      "explanation": "At $R_0 = 1$ the model undergoes an exchange of stability: for $R_0 < 1$ the disease free equilibrium is stable and the endemic point is not biologically present, while for $R_0 > 1$ the disease free equilibrium loses stability (becomes a saddle) and the endemic equilibrium becomes the stable state. This is a transcritical bifurcation at the threshold, not a case where nothing changes or the DFE strengthens.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-021",
+      "stem": "Why is the substitution $r = 1 - s - i$ used before computing the SIRS Jacobian?",
+      "options": [
+        "It removes the transmission term",
+        "It uses the conservation law to reduce three equations to two, simplifying the stability analysis",
+        "It makes the population non constant",
+        "It eliminates all equilibria"
+      ],
+      "answer": 1,
+      "explanation": "Because $s + i + r = 1$ is conserved, the recovered fraction is determined by $r = 1 - s - i$, so the third equation is redundant. Substituting reduces the system to two equations in $s$ and $i$, which is far easier to linearize and analyze. It does not remove transmission, break conservation, or delete equilibria. The reduction exploits the conservation law.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-022",
+      "format": "cloze",
+      "stem": "Classify the disease-free equilibrium of a rescaled SIRS model from its parameters.",
+      "solution": "A rescaled SIRS model has $\\beta = 0.3$, $\\gamma = 0.6$, $\\delta = 0.2$. The reproduction number is $R_0 = \\beta/\\gamma =$ {{1}}. The disease-free eigenvalues are $-\\delta$ and $\\beta - \\gamma =$ {{2}}. Since both are negative, the disease-free equilibrium is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -0.3,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "asymptotically stable",
+            "an unstable saddle",
+            "a centre"
+          ],
+          "answer": "asymptotically stable"
+        }
+      ],
+      "explanation": "Here $R_0 = 0.3/0.6 = 0.5 < 1$. The eigenvalues are $-\\delta = -0.2$ and $\\beta - \\gamma = 0.3 - 0.6 = -0.3$, both negative, so the disease free equilibrium is asymptotically stable and the infection dies out.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-023",
+      "format": "cloze",
+      "stem": "Use trace and determinant to judge stability of the SIRS disease-free point.",
+      "solution": "For the SIRS disease-free Jacobian, $\\operatorname{trace}(J) = \\beta - \\gamma - \\delta$ and $\\det(J) = \\delta(\\gamma - \\beta)$. With $\\beta = 0.5$, $\\gamma = 0.2$, $\\delta = 0.1$, the determinant equals {{1}}. Because the determinant is {{2}}, the equilibrium is an unstable saddle, which means $R_0$ is {{3}} one.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -0.03,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "negative",
+            "positive",
+            "zero"
+          ],
+          "answer": "negative"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "greater than",
+            "less than",
+            "equal to"
+          ],
+          "answer": "greater than"
+        }
+      ],
+      "explanation": "The determinant is $\\delta(\\gamma - \\beta) = 0.1(0.2 - 0.5) = 0.1 \\times (-0.3) = -0.03 < 0$. A negative determinant gives a saddle, so the disease free equilibrium is unstable, which corresponds to $R_0 = \\beta/\\gamma = 2.5 > 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-024",
+      "format": "cloze",
+      "stem": "Locate the equilibria of the rescaled SIRS model.",
+      "solution": "Setting the rescaled SIRS derivatives to zero gives two equilibria. The disease-free equilibrium is $(s^*, i^*, r^*) = ($ {{1}} $, 0, 0)$. The endemic equilibrium has susceptible coordinate $s^* = \\gamma/\\beta$, which in terms of the reproduction number equals {{2}}. The endemic equilibrium is biologically meaningful only when $R_0$ is {{3}} one.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "1/R_0",
+            "1/R0",
+            "1 / R_0",
+            "$1/R_0$"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "greater than",
+            "less than",
+            "equal to"
+          ],
+          "answer": "greater than"
+        }
+      ],
+      "explanation": "The disease free equilibrium is $(1, 0, 0)$. At the endemic equilibrium $s^* = \\gamma/\\beta = 1/R_0$ since $R_0 = \\beta/\\gamma$. Positivity of the endemic components requires $R_0 > 1$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-025",
+      "format": "cloze",
+      "stem": "Reason about the bifurcation and the stability test for larger systems.",
+      "solution": "In the SIRS model, as $R_0$ rises through one, stability passes from the {{1}} equilibrium to the endemic equilibrium. For a model with three or more infected stages whose eigenvalues are hard to find, stability can instead be checked with the {{2}} criterion, a necessary condition of which is that all coefficients of the characteristic polynomial share the {{3}} sign.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "disease-free",
+            "endemic",
+            "vaccinated"
+          ],
+          "answer": "disease-free"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "Routh-Hurwitz",
+            "Routh Hurwitz",
+            "routh-hurwitz",
+            "Routh-Hurwitz criterion"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "same",
+            "opposite",
+            "zero"
+          ],
+          "answer": "same"
+        }
+      ],
+      "explanation": "At $R_0 = 1$ stability transfers from the disease free equilibrium to the endemic equilibrium, a transcritical exchange. For larger systems the Routh-Hurwitz criterion checks stability from the coefficients, and a necessary condition is that all coefficients of the characteristic polynomial have the same sign.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-equilibria-and-stability-026",
+      "format": "cloze",
+      "stem": "Read off eigenvalues from the SIRS disease-free Jacobian and classify.",
+      "solution": "The SIRS disease-free Jacobian is upper triangular, so its eigenvalues are its diagonal entries $-\\delta$ and $\\beta - \\gamma$. For $\\beta = 0.7$, $\\gamma = 0.4$, $\\delta = 0.2$, the second eigenvalue equals {{1}}. Because one eigenvalue is positive and one is negative, the equilibrium is a {{2}}, hence {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.3,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "saddle point",
+            "stable node",
+            "centre"
+          ],
+          "answer": "saddle point"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "unstable",
+            "stable",
+            "neutral"
+          ],
+          "answer": "unstable"
+        }
+      ],
+      "explanation": "The second eigenvalue is $\\beta - \\gamma = 0.7 - 0.4 = 0.3 > 0$, while the first is $-\\delta = -0.2 < 0$. Opposite signs make the disease free equilibrium a saddle point, which is unstable. This corresponds to $R_0 = 0.7/0.4 = 1.75 > 1$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    }
+  ]
+}

@@ -1,0 +1,584 @@
+{
+  "courseId": "scientific-computing",
+  "topicId": "c-pointers-and-functions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-c-pointers-and-functions-001",
+      "stem": "What is a pointer in C?",
+      "options": [
+        "A variable that stores the memory address of another variable",
+        "A function that returns nothing",
+        "A special kind of loop",
+        "A variable that stores the value of another variable"
+      ],
+      "answer": 0,
+      "explanation": "A pointer holds the memory address where another variable lives, not the variable's value itself. Through that address you can read or change the variable it points to.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-002",
+      "stem": "What does the `&` operator do when written before a variable, as in `&x`?",
+      "options": [
+        "Gives the value stored in `x`",
+        "Gives the memory address of `x`",
+        "Performs a bitwise AND",
+        "Declares a new variable"
+      ],
+      "answer": 1,
+      "explanation": "Used as a unary operator, `&x` is the address-of operator and yields the memory address of `x`. This is exactly what you pass to `scanf` or store in a pointer. (Between two operands `&` is bitwise AND, but that is a different use.)",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-003",
+      "stem": "What does the `*` operator do when applied to a pointer, as in `*p`?",
+      "options": [
+        "Multiplies the pointer by itself",
+        "Gives the address stored in `p`",
+        "Dereferences `p`, giving the value at the address it holds",
+        "Frees the memory"
+      ],
+      "answer": 2,
+      "explanation": "The unary `*` is the dereference operator: `*p` accesses the value stored at the address held in `p`. You can read it or assign to it. The address itself is just `p`, without the star.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-004",
+      "stem": "What does this code print?\n\n`int x = 42;`\n`int *p = &x;`\n`printf(\"%d\", *p);`",
+      "options": [
+        "`0`",
+        "a compiler error",
+        "the address of `x`",
+        "`42`"
+      ],
+      "answer": 3,
+      "explanation": "`p` is set to the address of `x`, so dereferencing it with `*p` reads the value stored there, which is `42`. Printing `p` itself (without the star) would show an address instead.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-005",
+      "stem": "What does this code print?\n\n`int x = 5;`\n`int *p = &x;`\n`*p = 20;`\n`printf(\"%d\", x);`",
+      "options": [
+        "`20`",
+        "the address of `x`",
+        "`0`",
+        "`5`"
+      ],
+      "answer": 0,
+      "explanation": "Because `p` points to `x`, assigning through the pointer with `*p = 20;` changes the value of `x` itself. So reading `x` afterward prints `20`. This is how a pointer modifies the variable it refers to.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-006",
+      "stem": "How do you declare a pointer to an `int` named `p`?",
+      "options": [
+        "`int p;`",
+        "`int *p;`",
+        "`pointer p;`",
+        "`int &p;`"
+      ],
+      "answer": 1,
+      "explanation": "A pointer declaration places a `*` between the pointed-to type and the name: `int *p;` declares `p` as a pointer to `int`. The `&` form is not how C declares pointers.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-007",
+      "stem": "In C, how are arguments passed to a function by default?",
+      "options": [
+        "Randomly",
+        "By reference, so the function can change the caller's variables",
+        "By value, so the function works on a copy of each argument",
+        "By name"
+      ],
+      "answer": 2,
+      "explanation": "C uses pass by value: the function receives copies of the argument values, so changes to its parameters do not affect the caller's variables. To let a function modify a caller's variable, you pass a pointer to it.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-008",
+      "stem": "What does this program print?\n\n`void f(int a) { a = a + 10; }`\n`int main(void) { int x = 5; f(x); printf(\"%d\", x); }`",
+      "options": [
+        "`10`",
+        "`0`",
+        "`15`",
+        "`5`"
+      ],
+      "answer": 3,
+      "explanation": "Since C passes by value, `f` modifies only its local copy `a`, not the caller's `x`. So `x` is unchanged and the output is `5`. To actually change `x`, the function would need a pointer parameter.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-009",
+      "stem": "What does this program print?\n\n`void f(int *a) { *a = *a + 10; }`\n`int main(void) { int x = 5; f(&x); printf(\"%d\", x); }`",
+      "options": [
+        "`15`",
+        "`10`",
+        "the address of `x`",
+        "`5`"
+      ],
+      "answer": 0,
+      "explanation": "Here `f` receives the address of `x`, so `*a = *a + 10;` writes through the pointer and changes `x` itself from `5` to `15`. Passing `&x` and dereferencing is how C simulates pass by reference.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-010",
+      "stem": "What does this function return?\n\n`int add(int a, int b) { return a + b; }`\n... called as `add(3, 4)`",
+      "options": [
+        "`34`",
+        "`7`",
+        "`12`",
+        "nothing"
+      ],
+      "answer": 1,
+      "explanation": "The function returns the sum of its two arguments, so `add(3, 4)` returns `3 + 4 = 7`. The `return` statement sends that value back to the caller.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-011",
+      "stem": "What does the keyword `void` mean as a function's return type, as in `void greet(void)`?",
+      "options": [
+        "The function returns a pointer",
+        "The function returns an integer",
+        "The function returns no value",
+        "The function cannot be called"
+      ],
+      "answer": 2,
+      "explanation": "A `void` return type means the function produces no return value; it is called for its side effects, such as printing. Such a function does not use `return value;`. The `(void)` parameter list separately means it takes no arguments.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-012",
+      "stem": "What does a function prototype such as `double square(double);` declare?",
+      "options": [
+        "A pointer to the function",
+        "A global variable",
+        "The full body of the function",
+        "The function's name, return type, and parameter types so it can be called before being defined"
+      ],
+      "answer": 3,
+      "explanation": "A prototype announces the function's signature (return type and parameter types) without the body. It lets the compiler check calls that appear before the full definition. The body is provided separately.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-013",
+      "stem": "What is the scope of a variable declared inside a function body (a local variable)?",
+      "options": [
+        "It is visible only within that function, from its declaration onward",
+        "It is visible only in `main`",
+        "It is visible in every file of the program",
+        "It is visible everywhere in the program"
+      ],
+      "answer": 0,
+      "explanation": "A local (block-scope) variable exists only inside the function where it is declared and only after the point of declaration. Other functions cannot see it. It is created when the function runs and destroyed when it returns.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-014",
+      "stem": "What does this program print?\n\n`int square(int n) { return n * n; }`\n`int main(void) { printf(\"%d\", square(6)); }`",
+      "options": [
+        "`12`",
+        "`36`",
+        "`6`",
+        "`66`"
+      ],
+      "answer": 1,
+      "explanation": "The function multiplies its argument by itself, so `square(6)` returns `6 * 6 = 36`. That value is then printed.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-015",
+      "stem": "Why must `scanf` be given `&n` rather than `n` to read into an `int n`?",
+      "options": [
+        "Because `&n` converts `n` to a string",
+        "Because `&n` is faster",
+        "Because `scanf` needs the address of `n` to store the value there",
+        "Because `n` is reserved"
+      ],
+      "answer": 2,
+      "explanation": "`scanf` must write the input into your variable, which requires knowing where the variable lives. Passing `&n` gives it that address. Passing `n` alone sends only a copy of the value, which `scanf` cannot store back into.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-016",
+      "stem": "What does this program print?\n\n`void swap(int *a, int *b) { int t = *a; *a = *b; *b = t; }`\n`int main(void) { int x = 1, y = 2; swap(&x, &y); printf(\"%d %d\", x, y); }`",
+      "options": [
+        "`1 1`",
+        "`2 2`",
+        "`1 2`",
+        "`2 1`"
+      ],
+      "answer": 3,
+      "explanation": "Because the addresses of `x` and `y` are passed, the function exchanges their actual values through the pointers. After the swap, `x` is `2` and `y` is `1`. A version that took plain `int` parameters would leave them unchanged.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-017",
+      "stem": "An array passed to a function in C decays into what?",
+      "options": [
+        "A pointer to its first element",
+        "A single integer",
+        "A string",
+        "A full copy of the array"
+      ],
+      "answer": 0,
+      "explanation": "When you pass an array to a function, it is converted to a pointer to its first element. The function does not receive a copy of the elements, which is why it can modify the original array and why the size is not carried along.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-018",
+      "stem": "What does this code print?\n\n`int a[3] = {10, 20, 30};`\n`int *p = a;`\n`printf(\"%d\", *p);`",
+      "options": [
+        "`30`",
+        "`10`",
+        "the address of `a`",
+        "`20`"
+      ],
+      "answer": 1,
+      "explanation": "An array name like `a` acts as a pointer to its first element, so `p` points at `a[0]`. Dereferencing with `*p` gives `10`. This is the same as writing `*p = &a[0]` conceptually.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-019",
+      "stem": "In the declaration `int *p = &x;`, what is stored in `p`?",
+      "options": [
+        "The number `0`",
+        "The value of `x`",
+        "The address of `x`",
+        "A copy of `x` that is independent"
+      ],
+      "answer": 2,
+      "explanation": "`&x` produces the address of `x`, and that address is what is stored in the pointer `p`. The value of `x` is reached separately by dereferencing, as `*p`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-020",
+      "stem": "Which statement about pass by value versus passing a pointer is correct?",
+      "options": [
+        "Neither can change the caller's variable",
+        "Pass by value changes the caller's variable but passing a pointer does not",
+        "Both let the function change the caller's variable",
+        "Passing a pointer lets the function change the caller's variable; pass by value does not"
+      ],
+      "answer": 3,
+      "explanation": "With pass by value the function gets a copy and cannot affect the original. When you pass a pointer, the function can follow the address and modify the caller's variable. That is the whole reason to pass pointers for output parameters.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-021",
+      "stem": "What does this program print?\n\n`int twice(int n) { return 2 * n; }`\n`int main(void) { printf(\"%d\", twice(twice(3))); }`",
+      "options": [
+        "`12`",
+        "`9`",
+        "`3`",
+        "`6`"
+      ],
+      "answer": 0,
+      "explanation": "The inner call `twice(3)` returns `6`, and the outer call `twice(6)` returns `12`. Function results can feed directly into another call. The output is `12`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-022",
+      "stem": "A function meant to print a report but return no value should be declared with which return type?",
+      "options": [
+        "`int`",
+        "`void`",
+        "`char`",
+        "`double`"
+      ],
+      "answer": 1,
+      "explanation": "A function that performs an action without producing a result uses the `void` return type. The `int`, `char`, and `double` types all imply the function returns a value of that type.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-023",
+      "stem": "What does this program print?\n\n`void setZero(int *p) { *p = 0; }`\n`int main(void) { int v = 99; setZero(&v); printf(\"%d\", v); }`",
+      "options": [
+        "a compiler error",
+        "`99`",
+        "`0`",
+        "the address of `v`"
+      ],
+      "answer": 2,
+      "explanation": "`setZero` receives the address of `v` and writes `0` through the pointer, so `v` becomes `0`. Passing the address is what lets the function change the caller's variable.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-024",
+      "format": "cloze",
+      "stem": "Match the pointer operators to their meaning.",
+      "solution": "The operator that produces the memory address of a variable is {{1}}. The operator that retrieves the value stored at an address (dereferencing) is {{2}}. To declare a pointer to an `int`, you write `int` {{3}} `p;`.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`&`",
+            "`*`",
+            "`%`"
+          ],
+          "answer": "`&`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`*`",
+            "`&`",
+            "`->`"
+          ],
+          "answer": "`*`"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`*`",
+            "`&`",
+            "`#`"
+          ],
+          "answer": "`*`"
+        }
+      ],
+      "explanation": "`&` is the address-of operator, `*` dereferences a pointer to reach the value, and a pointer is declared with a `*` between the type and the name, as in `int *p;`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-025",
+      "format": "cloze",
+      "stem": "Predict values when a pointer modifies a variable.",
+      "solution": "Given `int x = 8; int *p = &x; *p = *p + 2;`, after these statements the value of `x` is {{1}} and the value read by `*p` is {{2}}. The pointer `p` itself still holds the {{3}} of `x`.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "address",
+            "value",
+            "type"
+          ],
+          "answer": "address"
+        }
+      ],
+      "explanation": "Writing `*p = *p + 2` changes `x` through the pointer from `8` to `10`, so both `x` and `*p` read `10`. Throughout, `p` continues to store the address of `x`, not its value.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-026",
+      "format": "cloze",
+      "stem": "Contrast pass by value with passing a pointer.",
+      "solution": "C passes arguments by {{1}} by default, meaning a function works on a copy. Therefore a function with signature `void f(int a)` {{2}} change the caller's variable. To let a function modify the caller's variable, you instead pass a {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "value",
+            "reference",
+            "name"
+          ],
+          "answer": "value"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "cannot",
+            "can",
+            "must"
+          ],
+          "answer": "cannot"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "pointer",
+            "constant",
+            "string"
+          ],
+          "answer": "pointer"
+        }
+      ],
+      "explanation": "Default argument passing in C is by value, so `void f(int a)` only edits its private copy and cannot affect the caller. Passing a pointer (the variable's address) gives the function a way to write back to the original.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-027",
+      "format": "cloze",
+      "stem": "Predict the output of value versus pointer parameters.",
+      "solution": "For `void inc(int a){ a++; }` called as `inc(x)` with `x = 4`, the value of `x` afterward is {{1}}. For `void incp(int *a){ (*a)++; }` called as `incp(&x)` with `x = 4`, the value of `x` afterward is {{2}}. The version that actually modifies the caller's variable is the one taking a {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "pointer",
+            "copy",
+            "value"
+          ],
+          "answer": "pointer"
+        }
+      ],
+      "explanation": "`inc` increments only its local copy, so `x` stays `4`. `incp` increments through the address, raising `x` to `5`. Only the pointer version reaches the caller's variable.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-028",
+      "format": "cloze",
+      "stem": "Trace return values from simple functions.",
+      "solution": "Given `int cube(int n){ return n*n*n; }`, the call `cube(3)` returns {{1}}. Given `int add(int a, int b){ return a+b; }`, the nested call `add(cube(2), 1)` returns {{2}}. A function declared `void` returns {{3}} value.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 27,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "no",
+            "an integer",
+            "a pointer"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "`cube(3)` is `3 * 3 * 3 = 27`. The inner `cube(2)` is `8`, then `add(8, 1)` is `9`. A `void` function returns no value at all.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-029",
+      "format": "cloze",
+      "stem": "Reason about scope and prototypes.",
+      "solution": "A variable declared inside a function is called a {{1}} variable and is visible only within that function. A declaration like `double area(double);` that gives only the signature is called a function {{2}}. The address-of operator that `scanf` requires for an `int n` is written {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "local",
+            "global",
+            "static"
+          ],
+          "answer": "local"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "prototype",
+            "pointer",
+            "macro"
+          ],
+          "answer": "prototype"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`&n`",
+            "`*n`",
+            "`n`"
+          ],
+          "answer": "`&n`"
+        }
+      ],
+      "explanation": "A variable confined to a function is a local variable. A signature-only declaration is a prototype. `scanf` needs the address `&n` so it can store the value into `n`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-030",
+      "format": "cloze",
+      "stem": "Trace a swap performed through pointers.",
+      "solution": "Start with `int x = 7, y = 3;` and call `swap(&x, &y)` where `swap` exchanges the values its pointer parameters refer to. Afterward `x` equals {{1}} and `y` equals {{2}}. This works because the function received the {{3}} of `x` and `y` rather than copies of their values.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "addresses",
+            "values",
+            "names"
+          ],
+          "answer": "addresses"
+        }
+      ],
+      "explanation": "Swapping through the pointers exchanges the originals, so `x` becomes `3` and `y` becomes `7`. It succeeds only because the addresses were passed, letting the function reach the caller's variables.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    }
+  ]
+}

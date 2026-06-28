@@ -1,0 +1,484 @@
+{
+  "courseId": "optimization-2",
+  "topicId": "transportation-problem",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-2-transportation-problem-001",
+      "stem": "The transportation model seeks to:",
+      "options": [
+        "Transport a product from several sources to several destinations at minimum total cost",
+        "Maximize total profit at a single plant",
+        "Assign one worker to one job",
+        "Draw the feasible region"
+      ],
+      "answer": 0,
+      "explanation": "A transportation problem ships a product from a number of supply sources to a number of demand destinations so as to minimize the total transportation cost, given fixed supplies and demands. It is a special network-flow linear program.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-002",
+      "stem": "In the wheat example the elevators supply $150, 175, 275$ tons and the mills demand $200, 100, 300$ tons. The problem is:",
+      "options": [
+        "Unbalanced, supply exceeds demand",
+        "Balanced, since total supply equals total demand",
+        "Infeasible",
+        "Unbalanced, demand exceeds supply"
+      ],
+      "answer": 1,
+      "explanation": "Total supply is $150 + 175 + 275 = 600$ and total demand is $200 + 100 + 300 = 600$. Because they are equal, the model is balanced and every supply and demand constraint is an equation.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-003",
+      "stem": "In a balanced transportation model, the supply and demand constraints are written as:",
+      "options": [
+        "Inequalities $\\le$",
+        "Inequalities $\\ge$",
+        "Equalities $=$",
+        "Strict inequalities $<$"
+      ],
+      "answer": 2,
+      "explanation": "When total supply equals total demand, all of the available supply must be shipped to satisfy demand, so each supply and demand constraint is an equation. This is the defining feature of the balanced model.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-004",
+      "stem": "Which of the following is a method for finding an initial basic feasible solution to a transportation problem?",
+      "options": [
+        "The Hungarian method",
+        "The iso-profit method",
+        "The simplex Big-M method",
+        "The north-west corner method"
+      ],
+      "answer": 3,
+      "explanation": "The north-west corner method (along with the least-cost and Vogel's approximation methods) provides an initial feasible solution for a transportation tableau. The Hungarian method belongs to the assignment problem.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-005",
+      "stem": "The north-west corner method begins by allocating as much as possible to:",
+      "options": [
+        "The upper left-hand corner cell, subject to supply and demand",
+        "The cell with the lowest cost",
+        "The cell with the highest penalty",
+        "Any empty cell"
+      ],
+      "answer": 0,
+      "explanation": "The north-west corner rule starts in the top-left cell, allocating the most it can given the rim requirements, then moves to the next adjacent feasible cell, ignoring costs. It is the simplest starting method.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-006",
+      "stem": "For the wheat problem, the north-west corner method gives a total transportation cost of:",
+      "options": [
+        "$4{,}525$",
+        "$5{,}925$",
+        "$4{,}550$",
+        "$12{,}400$"
+      ],
+      "answer": 1,
+      "explanation": "Allocating by the north-west corner rule yields shipments costing $150(6) + 50(7) + 100(11) + 25(11) + 275(12) = 5{,}925$. This initial solution is feasible but usually not optimal.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-007",
+      "stem": "The minimum cell cost (least-cost) method finds an initial solution by allocating first to:",
+      "options": [
+        "The upper-left cell",
+        "The cell with the largest demand",
+        "The feasible cell with the lowest unit transportation cost",
+        "The cell with the highest cost"
+      ],
+      "answer": 2,
+      "explanation": "The least-cost method repeatedly allocates as much as possible to the remaining feasible cell having the smallest unit cost, then adjusts the rim requirements. It generally starts closer to the optimum than the north-west corner rule.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-008",
+      "stem": "In Vogel's approximation method (VAM), the penalty cost of a row or column is:",
+      "options": [
+        "The largest cost in that row or column",
+        "Always zero",
+        "The total of all costs in that row or column",
+        "The difference between the two lowest cell costs in that row or column"
+      ],
+      "answer": 3,
+      "explanation": "A VAM penalty is the difference between the lowest and the next-lowest unit cost in a row or column; it measures the regret of not using the cheapest cell. VAM allocates in the row or column with the highest penalty.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-009",
+      "stem": "After an initial feasible solution is found, the transportation problem is driven to optimality using:",
+      "options": [
+        "The stepping-stone method or the MODI method",
+        "The graphical method",
+        "The Hungarian method",
+        "Gaussian elimination on the objective"
+      ],
+      "answer": 0,
+      "explanation": "Optimality is obtained by the stepping-stone method or the Modified Distribution (MODI) method, both of which evaluate empty cells for cost-reduction potential and reallocate until no improvement remains.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-010",
+      "stem": "In the stepping-stone method, an empty cell whose evaluation shows it would reduce total cost is called a:",
+      "options": [
+        "Leaving variable",
+        "Potential entering variable",
+        "Degenerate cell",
+        "Dummy cell"
+      ],
+      "answer": 1,
+      "explanation": "An empty cell with a negative net cost change can lower the total cost, so it is a potential entering variable. The stepping-stone method selects the empty cell with the greatest cost reduction to bring into the solution.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-011",
+      "stem": "The MODI method replaces the stepping-stone paths with the equations:",
+      "options": [
+        "$u_i v_j = c_{ij}$",
+        "$u_i - v_j = 0$",
+        "$u_i + v_j = c_{ij}$ for occupied cells",
+        "$c_{ij} = 0$ for all cells"
+      ],
+      "answer": 2,
+      "explanation": "MODI solves $u_i + v_j = c_{ij}$ over the occupied (basic) cells, conventionally setting $u_1 = 0$. The cost change for an empty cell is then $k_{ij} = c_{ij} - u_i - v_j$.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-012",
+      "stem": "In MODI, the cost change of an empty cell is computed as:",
+      "options": [
+        "$k_{ij} = c_{ij} + u_i + v_j$",
+        "$k_{ij} = c_{ij}$",
+        "$k_{ij} = u_i + v_j$",
+        "$k_{ij} = c_{ij} - u_i - v_j$"
+      ],
+      "answer": 3,
+      "explanation": "The MODI cost change is $k_{ij} = c_{ij} - u_i - v_j$. The current solution is optimal when every empty-cell value $k_{ij} \\ge 0$, since no reallocation can then reduce total cost.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-013",
+      "stem": "A transportation solution (by stepping-stone or MODI) is optimal when every empty-cell cost change is:",
+      "options": [
+        "Greater than or equal to zero",
+        "Negative",
+        "Exactly zero",
+        "Less than the largest cost"
+      ],
+      "answer": 0,
+      "explanation": "Optimality is reached when all empty-cell cost changes are non-negative ($\\ge 0$), meaning no empty cell can lower the total cost. A zero value indicates an alternative optimal solution.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-014",
+      "stem": "The optimal total transportation cost for the wheat problem (reached by MODI or stepping-stone) is:",
+      "options": [
+        "$5{,}925$",
+        "$4{,}525$",
+        "$4{,}550$",
+        "$600$"
+      ],
+      "answer": 1,
+      "explanation": "The optimal shipping plan costs $25(6) + 125(10) + 175(11) + 175(4) + 100(5) = 4{,}525$, lower than the north-west corner start of $5{,}925$. This is the minimum total cost.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-015",
+      "stem": "If a particular transportation route is prohibited, the model handles it by:",
+      "options": [
+        "Deleting the supply",
+        "Setting its cost to zero",
+        "Assigning that cell a very large relative cost so it stays out of the optimal solution",
+        "Removing the demand constraint"
+      ],
+      "answer": 2,
+      "explanation": "A prohibited route is given a very large cost coefficient (a big M), which guarantees the corresponding variable is zero in the optimal solution because of its prohibitive cost. The route is thereby effectively blocked.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-016",
+      "stem": "The supply and demand values along the outer edge of a transportation tableau are called the:",
+      "options": [
+        "Pivot elements",
+        "Penalty costs",
+        "Shadow prices",
+        "Rim requirements"
+      ],
+      "answer": 3,
+      "explanation": "The figures along the margins of the tableau, the supplies down the right and demands along the bottom, are the rim requirements. An initial solution is complete when all rim requirements are satisfied.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-017",
+      "stem": "An unbalanced transportation problem in which total demand exceeds total supply is balanced by:",
+      "options": [
+        "Adding a dummy source (row) to supply the shortfall",
+        "Deleting a destination",
+        "Adding a dummy destination (column)",
+        "Setting all costs to zero"
+      ],
+      "answer": 0,
+      "explanation": "When demand exceeds supply, a dummy source row with the needed extra supply (and zero shipping costs) is added so total supply equals total demand. A dummy destination column is used instead when supply exceeds demand.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-018",
+      "stem": "In the wheat tableau, the cost of shipping one ton from Kansas City to St. Louis is $8$. If $20$ tons are shipped on that route, the cost contributed is:",
+      "options": [
+        "$8$",
+        "$160$",
+        "$28$",
+        "$2.5$"
+      ],
+      "answer": 1,
+      "explanation": "Cost on a route is the unit cost times the tonnage: $8 \\times 20 = 160$. Each term of the objective function is computed this way and the terms are summed for the total cost.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-019",
+      "stem": "Transportation models are solved within a tableau, where each cell is analogous to:",
+      "options": [
+        "A constraint",
+        "A slack variable",
+        "A decision variable giving the amount shipped from a source to a destination",
+        "The objective coefficient"
+      ],
+      "answer": 2,
+      "explanation": "Each interior cell of the tableau corresponds to a decision variable $x_{ij}$, the quantity shipped from source $i$ to destination $j$. The method allocates values to these cells subject to the rim requirements.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-020",
+      "stem": "A transportation solution is degenerate when the number of occupied (basic) cells is:",
+      "options": [
+        "Greater than $m + n - 1$",
+        "Equal to zero always",
+        "Exactly $m \\times n$",
+        "Fewer than $m + n - 1$"
+      ],
+      "answer": 3,
+      "explanation": "For an $m$-source, $n$-destination problem a non-degenerate basic feasible solution has exactly $m + n - 1$ occupied cells. Fewer than that signals degeneracy, which is handled by placing a zero allocation in an empty cell.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-021",
+      "stem": "In the stepping-stone method, when one unit is added to an empty cell, to keep the rim requirements satisfied you must:",
+      "options": [
+        "Subtract and add one unit around a closed path of occupied cells",
+        "Add one unit to every other cell",
+        "Delete a source",
+        "Change the costs"
+      ],
+      "answer": 0,
+      "explanation": "Adding to an empty cell forces compensating subtractions and additions around a closed loop of occupied cells, alternating signs, so that every row and column total stays unchanged. The net cost of this loop is the cell's cost change.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-022",
+      "stem": "Which sequence correctly lists the two stages of solving a transportation problem?",
+      "options": [
+        "Optimize, then formulate",
+        "Find an initial feasible solution, then improve it to optimality",
+        "Draw the graph, then add slacks",
+        "Solve the dual, then the primal"
+      ],
+      "answer": 1,
+      "explanation": "First an initial basic feasible solution is found (north-west corner, least-cost, or VAM), then it is improved to the optimum using the stepping-stone or MODI method. Both stages operate inside the transportation tableau.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-023",
+      "format": "cloze",
+      "stem": "The wheat problem has elevator supplies $150, 175, 275$ and mill demands $200, 100, 300$.",
+      "solution": "Total supply is $150 + 175 + 275 =$ {{1}} tons, which equals total demand, so the problem is {{2}}. As a result every supply and demand constraint is written as an equation.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 600,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "balanced",
+            "unbalanced"
+          ],
+          "answer": "balanced"
+        }
+      ],
+      "explanation": "Supply totals $600$, equal to demand $200 + 100 + 300 = 600$, so the model is balanced with equality constraints.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-024",
+      "format": "cloze",
+      "stem": "Apply the north-west corner method to the wheat tableau.",
+      "solution": "Allocation begins in the upper {{1}} corner cell, ignoring costs, and proceeds to adjacent cells until all rim requirements are met. The resulting total transportation cost for the wheat problem, in dollars, is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "left",
+            "right"
+          ],
+          "answer": "left"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5925,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The north-west corner rule starts top-left and yields a total cost of $5{,}925$ for the wheat problem.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-025",
+      "format": "cloze",
+      "stem": "The MODI method evaluates empty cells using multipliers.",
+      "solution": "Over the occupied cells MODI solves the equations $u_i + v_j =$ {{1}}, usually setting $u_1 = 0$. For an empty cell the cost change is $k_{ij} = c_{ij} - u_i - v_j$, and the solution is optimal when every $k_{ij}$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "c_{ij}",
+            "$c_{ij}$",
+            "cij",
+            "c_ij"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "non-negative",
+            "negative"
+          ],
+          "answer": "non-negative"
+        }
+      ],
+      "explanation": "MODI uses $u_i + v_j = c_{ij}$ on occupied cells and $k_{ij} = c_{ij} - u_i - v_j$ for empty cells; optimality holds when all $k_{ij} \\ge 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-026",
+      "format": "cloze",
+      "stem": "Compare the starting and optimal costs of the wheat problem.",
+      "solution": "The north-west corner starting solution costs {{1}} dollars, while the optimal solution found by MODI or stepping-stone costs {{2}} dollars. The optimal plan is therefore cheaper than the starting plan.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5925,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4525,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "North-west corner start is $5{,}925$; the optimum is $4{,}525$, a clear reduction.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-027",
+      "format": "cloze",
+      "stem": "Vogel's approximation method (VAM) uses penalties to choose allocations.",
+      "solution": "The penalty of a row or column is the difference between its two {{1}} cell costs. VAM then allocates in the row or column having the {{2}} penalty, placing as much as possible in its lowest-cost cell.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "lowest",
+            "highest"
+          ],
+          "answer": "lowest"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "highest",
+            "lowest"
+          ],
+          "answer": "highest"
+        }
+      ],
+      "explanation": "A VAM penalty is the gap between the two lowest costs in a line; allocation goes to the line with the highest penalty, in its cheapest cell.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-transportation-problem-028",
+      "format": "cloze",
+      "stem": "An unbalanced transportation problem must be balanced before solving.",
+      "solution": "When supply exceeds demand, a dummy {{1}} is added to absorb the surplus. When demand exceeds supply, a dummy {{2}} is added to provide the shortfall. The shipping costs in any dummy cells are taken to be {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "destination",
+            "source"
+          ],
+          "answer": "destination"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "source",
+            "destination"
+          ],
+          "answer": "source"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Surplus supply needs a dummy destination; surplus demand needs a dummy source; dummy cell costs are $0$.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    }
+  ]
+}

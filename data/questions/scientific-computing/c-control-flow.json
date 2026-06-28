@@ -1,0 +1,560 @@
+{
+  "courseId": "scientific-computing",
+  "topicId": "c-control-flow",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-c-control-flow-001",
+      "stem": "What does this code print?\n\n`int x = 7;`\n`if (x > 5) printf(\"big\"); else printf(\"small\");`",
+      "options": [
+        "`big`",
+        "`bigsmall`",
+        "nothing",
+        "`small`"
+      ],
+      "answer": 0,
+      "explanation": "The condition `x > 5` is `7 > 5`, which is true, so the `if` branch runs and prints `big`. The `else` branch is skipped because only one of the two branches executes.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-002",
+      "stem": "How many times does the body of this loop execute?\n\n`for (int i = 0; i < 5; i++) { printf(\"*\"); }`",
+      "options": [
+        "`6`",
+        "`5`",
+        "`0`",
+        "`4`"
+      ],
+      "answer": 1,
+      "explanation": "The loop runs for `i` equal to `0, 1, 2, 3, 4`, which is five iterations. It stops when `i` becomes `5` because `5 < 5` is false. So `*` is printed five times.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-003",
+      "stem": "What does this loop print?\n\n`int sum = 0;`\n`for (int i = 1; i <= 4; i++) sum += i;`\n`printf(\"%d\", sum);`",
+      "options": [
+        "`24`",
+        "`6`",
+        "`10`",
+        "`4`"
+      ],
+      "answer": 2,
+      "explanation": "The loop adds `1 + 2 + 3 + 4` into `sum`. That total is `10`. The loop runs while `i <= 4`, so it includes `i = 4`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-004",
+      "stem": "What does the `break` statement do inside a loop?",
+      "options": [
+        "Restarts the loop from the beginning",
+        "Pauses the program until a key is pressed",
+        "Skips the rest of the current iteration and continues with the next one",
+        "Immediately exits the entire loop"
+      ],
+      "answer": 3,
+      "explanation": "`break` terminates the innermost loop (or `switch`) immediately and transfers control to the statement after it. The option that skips only the current iteration describes `continue`, not `break`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-005",
+      "stem": "What does the `continue` statement do inside a loop?",
+      "options": [
+        "Skips the remaining statements in the current iteration and jumps to the next iteration",
+        "Ends the program",
+        "Doubles the loop counter",
+        "Exits the loop completely"
+      ],
+      "answer": 0,
+      "explanation": "`continue` abandons the rest of the current iteration's body and proceeds to the loop's next iteration (re-evaluating the condition, and running the update part in a `for` loop). Exiting the loop entirely is what `break` does.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-006",
+      "stem": "What does this code print?\n\n`for (int i = 0; i < 5; i++) { if (i == 2) continue; printf(\"%d\", i); }`",
+      "options": [
+        "`01234`",
+        "`0134`",
+        "`01`",
+        "`234`"
+      ],
+      "answer": 1,
+      "explanation": "When `i` is `2`, `continue` skips the `printf` for that iteration only, so `2` is not printed. Every other value (`0, 1, 3, 4`) is printed, giving `0134`. The loop does not stop, so it is not `01`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-007",
+      "stem": "What does this code print?\n\n`for (int i = 0; i < 5; i++) { if (i == 3) break; printf(\"%d\", i); }`",
+      "options": [
+        "`0123`",
+        "`3`",
+        "`012`",
+        "`01234`"
+      ],
+      "answer": 2,
+      "explanation": "The loop prints `0`, `1`, `2`, then when `i` reaches `3` the `break` exits the loop before printing, so `3` and `4` never appear. The output is `012`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-008",
+      "stem": "How many times does this `while` loop run its body?\n\n`int i = 0;`\n`while (i < 3) { printf(\"x\"); i++; }`",
+      "options": [
+        "`4`",
+        "infinitely",
+        "`2`",
+        "`3`"
+      ],
+      "answer": 3,
+      "explanation": "The body runs for `i` equal to `0, 1, 2`, which is three times. After the third run `i` becomes `3`, and `3 < 3` is false, so the loop stops. Because `i++` is present, it is not infinite.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-009",
+      "stem": "What is the key difference between a `while` loop and a `do-while` loop in C?",
+      "options": [
+        "`do-while` always executes its body at least once, even if the condition is false",
+        "`while` runs faster than `do-while`",
+        "There is no difference",
+        "`do-while` cannot use a counter variable"
+      ],
+      "answer": 0,
+      "explanation": "A `do-while` checks its condition after running the body, so the body always executes at least once. A `while` checks the condition first, so its body may run zero times if the condition is false initially.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-010",
+      "stem": "How many times does this `do-while` loop print, given the condition is false at the start?\n\n`int i = 10;`\n`do { printf(\"hi\"); } while (i < 5);`",
+      "options": [
+        "`0`",
+        "`1`",
+        "`5`",
+        "infinitely"
+      ],
+      "answer": 1,
+      "explanation": "A `do-while` runs the body before testing, so `hi` is printed once. Then `10 < 5` is false, so the loop ends. A plain `while` with the same condition would have printed nothing.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-011",
+      "stem": "Given `int n = 2;`, what does this `switch` print?\n\n`switch (n) { case 1: printf(\"one\"); break; case 2: printf(\"two\"); break; default: printf(\"other\"); }`",
+      "options": [
+        "`one`",
+        "`other`",
+        "`two`",
+        "`twoother`"
+      ],
+      "answer": 2,
+      "explanation": "The `switch` jumps to `case 2`, prints `two`, and the `break` then exits the `switch` so `default` is not reached. The output is `two`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-012",
+      "stem": "Given `int n = 1;`, what does this `switch` print? (Notice there is no `break` after `case 1`.)\n\n`switch (n) { case 1: printf(\"A\"); case 2: printf(\"B\"); break; default: printf(\"C\"); }`",
+      "options": [
+        "`ABC`",
+        "`B`",
+        "`A`",
+        "`AB`"
+      ],
+      "answer": 3,
+      "explanation": "With no `break` after `case 1`, execution falls through into `case 2`, so both `A` and `B` print. The `break` after `B` then stops the fall-through before `default`. The output is `AB`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-013",
+      "stem": "What does this code print?\n\n`int x = 4;`\n`if (x % 2 == 0) printf(\"even\"); else printf(\"odd\");`",
+      "options": [
+        "`even`",
+        "`evenodd`",
+        "`4`",
+        "`odd`"
+      ],
+      "answer": 0,
+      "explanation": "`x % 2` is `4 % 2`, which is `0`. The test `0 == 0` is true, so the `if` branch runs and prints `even`. This is the standard way to test for an even number.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-014",
+      "stem": "What is wrong with this condition meant to test equality?\n\n`if (x = 5) printf(\"yes\");`",
+      "options": [
+        "Nothing, it correctly tests whether `x` equals `5`",
+        "It assigns `5` to `x` instead of comparing, so the condition is always true",
+        "It is a syntax error that will not compile",
+        "It compares `x` to the character `'5'`"
+      ],
+      "answer": 1,
+      "explanation": "A single `=` is assignment, so `x = 5` stores `5` in `x` and the condition evaluates to `5`, which is nonzero and therefore true every time. The equality comparison requires `==`. This is a classic C bug that compiles without error.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-015",
+      "stem": "What does this nested loop print in total (the number of `#` characters)?\n\n`for (int i = 0; i < 3; i++) for (int j = 0; j < 2; j++) printf(\"#\");`",
+      "options": [
+        "`2`",
+        "`5`",
+        "`6`",
+        "`3`"
+      ],
+      "answer": 2,
+      "explanation": "The inner loop runs `2` times for each of the `3` outer iterations, so the body runs `3 * 2 = 6` times, printing six `#` characters.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-016",
+      "stem": "Which loop is most natural when you know in advance exactly how many times to repeat?",
+      "options": [
+        "An `if` statement",
+        "A `switch` statement",
+        "A `do-while` loop",
+        "A `for` loop"
+      ],
+      "answer": 3,
+      "explanation": "A `for` loop puts the initialization, the stopping condition, and the update in one place, which fits counting a known number of iterations. A `while` works too, but the counted form is idiomatic with `for`. An `if` and a `switch` do not repeat at all.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-017",
+      "stem": "What does this code print?\n\n`int i = 5;`\n`while (i > 0) { printf(\"%d\", i); i--; }`",
+      "options": [
+        "`54321`",
+        "`5432`",
+        "`543210`",
+        "`12345`"
+      ],
+      "answer": 0,
+      "explanation": "Starting at `5` and decrementing, the loop prints `5`, `4`, `3`, `2`, `1`. When `i` reaches `0` the test `0 > 0` is false, so `0` is not printed. The output is `54321`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-018",
+      "stem": "Given `int score = 75;`, which branch runs?\n\n`if (score >= 80) printf(\"A\"); else if (score >= 70) printf(\"B\"); else printf(\"C\");`",
+      "options": [
+        "Prints `A`",
+        "Prints `B`",
+        "Prints `C`",
+        "Prints `BC`"
+      ],
+      "answer": 1,
+      "explanation": "`score >= 80` is `75 >= 80`, which is false, so it checks the next condition `score >= 70`, which is `75 >= 70`, true. It prints `B` and skips the rest of the chain. Only one branch in an if-else-if ladder runs.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-019",
+      "stem": "What does this loop compute in `p`?\n\n`int p = 1;`\n`for (int i = 1; i <= 4; i++) p *= i;`\n`printf(\"%d\", p);`",
+      "options": [
+        "`4`",
+        "`10`",
+        "`24`",
+        "`12`"
+      ],
+      "answer": 2,
+      "explanation": "The loop multiplies `1 * 1 * 2 * 3 * 4`, which is the factorial of `4`, equal to `24`. Starting `p` at `1` is essential so the first multiplication keeps the value correct.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-020",
+      "stem": "In C, what counts as a false condition for `if` and loops?",
+      "options": [
+        "Any negative number only",
+        "The empty string",
+        "Only the keyword `false`",
+        "The integer value `0`; any nonzero value is true"
+      ],
+      "answer": 3,
+      "explanation": "C treats the integer `0` as false and every nonzero value (including negative numbers) as true. There is no separate boolean requirement in classic C, so an expression like `if (3)` is always true.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-021",
+      "stem": "What does this code print?\n\n`int count = 0;`\n`for (int i = 1; i <= 10; i++) { if (i % 2 == 0) count++; }`\n`printf(\"%d\", count);`",
+      "options": [
+        "`5`",
+        "`6`",
+        "`10`",
+        "`4`"
+      ],
+      "answer": 0,
+      "explanation": "The loop increments `count` only when `i` is even. Between `1` and `10` the even numbers are `2, 4, 6, 8, 10`, which is five values, so `count` ends at `5`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-022",
+      "stem": "Why does this loop never terminate?\n\n`int i = 0;`\n`while (i < 5) { printf(\"loop\"); }`",
+      "options": [
+        "The condition is written incorrectly",
+        "`i` is never changed inside the loop, so `i < 5` stays true forever",
+        "`printf` blocks the loop",
+        "`while` cannot use `<`"
+      ],
+      "answer": 1,
+      "explanation": "There is no `i++` or other update to `i` inside the loop, so `i` remains `0` and the condition `i < 5` is always true. The loop runs forever. Adding `i++;` inside the body fixes it.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-023",
+      "stem": "Why is `break` important inside the cases of a `switch` statement?",
+      "options": [
+        "It prints the matched case label",
+        "It is required syntax or the program will not compile",
+        "Without it, execution falls through into the following cases",
+        "It converts the `switch` into a loop"
+      ],
+      "answer": 2,
+      "explanation": "After a matching `case` runs, execution continues into the next case unless a `break` stops it. This fall-through behavior is sometimes wanted but usually a bug, so each case typically ends with `break`. It is not a compile requirement; omitting it is legal but changes behavior.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-024",
+      "format": "cloze",
+      "stem": "Trace a counting loop and a remainder test.",
+      "solution": "Consider `int sum = 0; for (int i = 1; i <= 5; i++) sum += i;`. After the loop, `sum` holds {{1}}. The loop body executed {{2}} times. Separately, the boolean expression `7 % 2 == 0` evaluates to the integer {{3}} because `7` is odd.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 15,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Summing `1 + 2 + 3 + 4 + 5` gives `15`, and the loop ran once for each value from `1` to `5`, so five iterations. Since `7 % 2` is `1`, the test `1 == 0` is false, which in C is the integer `0`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-025",
+      "format": "cloze",
+      "stem": "Choose the right control-flow keyword for each behavior.",
+      "solution": "The statement that immediately exits the innermost loop is {{1}}. The statement that skips to the next iteration without leaving the loop is {{2}}. The loop construct that is guaranteed to run its body at least once is the {{3}} loop.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`break`",
+            "`continue`",
+            "`return`"
+          ],
+          "answer": "`break`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`continue`",
+            "`break`",
+            "`exit`"
+          ],
+          "answer": "`continue`"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`do-while`",
+            "`while`",
+            "`for`"
+          ],
+          "answer": "`do-while`"
+        }
+      ],
+      "explanation": "`break` leaves the loop entirely; `continue` jumps to the next iteration; and `do-while` tests its condition after the body, so the body always runs at least once.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-026",
+      "format": "cloze",
+      "stem": "Predict the output of a loop containing a continue.",
+      "solution": "For `for (int i = 0; i < 6; i++) { if (i == 4) continue; printf(\"%d\", i); }`, the digit that is skipped is {{1}}, so the total number of digits printed is {{2}}. The loop variable reaches a final value of {{3}} just before the condition `i < 6` becomes false.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "When `i` is `4`, `continue` skips the print, so `4` is omitted. The values `0, 1, 2, 3, 5` are printed, which is five digits. The last value that satisfies `i < 6` is `5`; after the update `i` becomes `6` and the loop stops.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-027",
+      "format": "cloze",
+      "stem": "Trace a switch with a deliberate fall-through.",
+      "solution": "Given `int n = 1;` and `switch (n) { case 1: printf(\"X\"); case 2: printf(\"Y\"); break; default: printf(\"Z\"); }`, the program prints the letters in order: first {{1}}, then {{2}}, and the total number of letters printed is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`X`",
+            "`Y`",
+            "`Z`"
+          ],
+          "answer": "`X`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`Y`",
+            "`X`",
+            "`Z`"
+          ],
+          "answer": "`Y`"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Matching `case 1` prints `X`, and with no `break` there it falls through into `case 2` and prints `Y`. The `break` after `Y` stops execution before `default`, so two letters are printed.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-028",
+      "format": "cloze",
+      "stem": "Count iterations across loop forms.",
+      "solution": "The loop `for (int i = 2; i <= 10; i += 2) {...}` executes its body {{1}} times. The loop `while (i < 0) {...}` starting with `i = 3` executes its body {{2}} times. The loop `do {...} while (i < 0);` starting with `i = 3` executes its body {{3}} times.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Stepping by `2` from `2` to `10` gives `2, 4, 6, 8, 10`, which is five iterations. A `while` whose condition is false at the start runs zero times. A `do-while` runs its body once before testing, even when the condition is false.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-029",
+      "format": "cloze",
+      "stem": "Reason about C truth values and equality.",
+      "solution": "In C, the only integer value treated as false is {{1}}. The condition `if (x = 0)` (note the single equals) is always {{2}} because assignment yields the assigned value. The correct operator for testing equality in a condition is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "false",
+            "true",
+            "a syntax error"
+          ],
+          "answer": "false"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`==`",
+            "`=`",
+            "`:=`"
+          ],
+          "answer": "`==`"
+        }
+      ],
+      "explanation": "Only `0` is false in C; every other integer is true. The expression `x = 0` assigns `0` and evaluates to `0`, which is false, so that condition is always false. Equality is tested with `==`, while `=` is assignment.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-030",
+      "format": "cloze",
+      "stem": "Trace a nested loop count and a factorial accumulation.",
+      "solution": "The nested loop `for (i = 0; i < 4; i++) for (j = 0; j < 3; j++) printf(\"*\");` prints {{1}} stars in total. Separately, the loop `int p = 1; for (int k = 1; k <= 5; k++) p *= k;` leaves `p` equal to {{2}}, which is the factorial of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 12,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 120,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The inner loop runs `3` times for each of the `4` outer passes, so `4 * 3 = 12` stars. Multiplying `1 * 2 * 3 * 4 * 5` gives `120`, the factorial of `5`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    }
+  ]
+}

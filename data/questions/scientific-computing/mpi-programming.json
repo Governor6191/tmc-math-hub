@@ -1,0 +1,580 @@
+{
+  "courseId": "scientific-computing",
+  "topicId": "mpi-programming",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-mpi-programming-001",
+      "stem": "What does MPI stand for?",
+      "options": [
+        "Message Passing Interface",
+        "Memory Pointer Index",
+        "Modular Programming Interface",
+        "Multi Processor Interrupt"
+      ],
+      "answer": 0,
+      "explanation": "MPI is the Message Passing Interface, a standard library specification for writing parallel programs in which separate processes communicate by sending and receiving messages.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-002",
+      "stem": "Which function must be called to initialize the MPI environment before any other MPI call?",
+      "options": [
+        "`MPI_Start`",
+        "`MPI_Init`",
+        "`MPI_Begin`",
+        "`MPI_Open`"
+      ],
+      "answer": 1,
+      "explanation": "`MPI_Init` sets up the MPI execution environment and must be called before almost any other MPI function. It is typically the first MPI call in `main`.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-003",
+      "stem": "Which function shuts down the MPI environment at the end of the program?",
+      "options": [
+        "`MPI_Stop`",
+        "`MPI_End`",
+        "`MPI_Finalize`",
+        "`MPI_Close`"
+      ],
+      "answer": 2,
+      "explanation": "`MPI_Finalize` cleans up the MPI environment and must be the last MPI call. After it returns, no further MPI functions may be used.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-004",
+      "stem": "Which function reports the identifier (rank) of the calling process within a communicator?",
+      "options": [
+        "`MPI_Get_id`",
+        "`MPI_Rank_set`",
+        "`MPI_Comm_size`",
+        "`MPI_Comm_rank`"
+      ],
+      "answer": 3,
+      "explanation": "`MPI_Comm_rank` returns the rank of the calling process, a unique integer from `0` to one less than the number of processes. Each process uses its rank to decide what work to do.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-005",
+      "stem": "Which function reports the total number of processes in a communicator?",
+      "options": [
+        "`MPI_Comm_size`",
+        "`MPI_Count`",
+        "`MPI_Total`",
+        "`MPI_Comm_rank`"
+      ],
+      "answer": 0,
+      "explanation": "`MPI_Comm_size` returns how many processes belong to the communicator. With `MPI_COMM_WORLD` this is the total number of processes launched. `MPI_Comm_rank` instead gives the individual process its own id.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-006",
+      "stem": "If an MPI program is launched with 4 processes, what range of ranks will `MPI_Comm_rank` return across them?",
+      "options": [
+        "`1` to `4`",
+        "`0` to `3`",
+        "`0` to `4`",
+        "always `0`"
+      ],
+      "answer": 1,
+      "explanation": "Ranks are numbered starting from `0`, so with `4` processes the ranks are `0, 1, 2, 3`. The largest rank is always the process count minus one.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-007",
+      "stem": "If an MPI program runs with 8 processes, what value does `MPI_Comm_size` return on `MPI_COMM_WORLD`?",
+      "options": [
+        "`1`",
+        "`7`",
+        "`8`",
+        "`0`"
+      ],
+      "answer": 2,
+      "explanation": "`MPI_Comm_size` reports the count of processes, which is `8` here. Unlike the rank, the size is the same value on every process.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-008",
+      "stem": "What is the default communicator that includes all the processes in an MPI program?",
+      "options": [
+        "`MPI_GLOBAL`",
+        "`MPI_EVERYONE`",
+        "`MPI_ALL`",
+        "`MPI_COMM_WORLD`"
+      ],
+      "answer": 3,
+      "explanation": "`MPI_COMM_WORLD` is the predefined communicator that contains every process started by the program. Most basic MPI calls use it to refer to the whole group of processes.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-009",
+      "stem": "Which pair of functions performs basic point-to-point communication in MPI?",
+      "options": [
+        "`MPI_Send` and `MPI_Recv`",
+        "`MPI_Init` and `MPI_Finalize`",
+        "`MPI_Scatter` and `MPI_Gather`",
+        "`MPI_Bcast` and `MPI_Reduce`"
+      ],
+      "answer": 0,
+      "explanation": "`MPI_Send` and `MPI_Recv` move a message directly from one specific process to another, which is point-to-point communication. The other pairs are collective operations or setup and teardown calls.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-010",
+      "stem": "Which MPI function sends the same data from one process to all processes in the communicator?",
+      "options": [
+        "`MPI_Send`",
+        "`MPI_Bcast`",
+        "`MPI_Gather`",
+        "`MPI_Reduce`"
+      ],
+      "answer": 1,
+      "explanation": "`MPI_Bcast` broadcasts a single message from the root process to every other process in the communicator, so they all end up with the same data. `MPI_Send` only targets one receiver.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-011",
+      "stem": "Which MPI function distributes different chunks of an array from the root process so each process gets its own portion?",
+      "options": [
+        "`MPI_Reduce`",
+        "`MPI_Bcast`",
+        "`MPI_Scatter`",
+        "`MPI_Gather`"
+      ],
+      "answer": 2,
+      "explanation": "`MPI_Scatter` splits an array on the root and sends a distinct piece to each process. This differs from `MPI_Bcast`, which sends the same data to everyone rather than dividing it.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-012",
+      "stem": "Which MPI function collects pieces of data from all processes and assembles them on the root process?",
+      "options": [
+        "`MPI_Bcast`",
+        "`MPI_Send`",
+        "`MPI_Scatter`",
+        "`MPI_Gather`"
+      ],
+      "answer": 3,
+      "explanation": "`MPI_Gather` is the inverse of `MPI_Scatter`: each process contributes its data and the root receives all the pieces combined into one array. `MPI_Scatter` goes the other way, from root out to the processes.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-013",
+      "stem": "Which MPI function combines values from all processes using an operation such as sum or maximum?",
+      "options": [
+        "`MPI_Reduce`",
+        "`MPI_Scatter`",
+        "`MPI_Recv`",
+        "`MPI_Bcast`"
+      ],
+      "answer": 0,
+      "explanation": "`MPI_Reduce` takes one value from each process and combines them with a reduction operation like `MPI_SUM` or `MPI_MAX`, delivering the single result to the root. The other functions move data without combining it.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-014",
+      "stem": "Using `MPI_Reduce` with the operation `MPI_SUM`, if four processes contribute the values `1`, `2`, `3`, and `4`, what result arrives at the root?",
+      "options": [
+        "`4`",
+        "`10`",
+        "`24`",
+        "`1`"
+      ],
+      "answer": 1,
+      "explanation": "`MPI_SUM` adds the contributed values together: `1 + 2 + 3 + 4 = 10`. The combined result is delivered to the root process. `MPI_PROD` would instead multiply them.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-015",
+      "stem": "Using `MPI_Reduce` with the operation `MPI_MAX`, if processes contribute `7`, `2`, `9`, and `4`, what result arrives at the root?",
+      "options": [
+        "`4`",
+        "`22`",
+        "`9`",
+        "`2`"
+      ],
+      "answer": 2,
+      "explanation": "`MPI_MAX` keeps the largest contributed value, which is `9`. A reduction with `MPI_MAX` finds the maximum across all processes, not the sum.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-016",
+      "stem": "What is a collective communication operation in MPI?",
+      "options": [
+        "A call that only the root may make alone",
+        "A way to print to the screen",
+        "A message between exactly two processes",
+        "An operation that all processes in a communicator participate in together, such as `MPI_Bcast` or `MPI_Reduce`"
+      ],
+      "answer": 3,
+      "explanation": "Collective operations involve every process in the communicator, which must all call the function. Examples include `MPI_Bcast`, `MPI_Scatter`, `MPI_Gather`, and `MPI_Reduce`. Point-to-point calls like `MPI_Send` involve only two processes.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-017",
+      "stem": "In a typical MPI program, what is the correct overall order of these calls?",
+      "options": [
+        "`MPI_Init`, then the work and `MPI_Comm_rank`, then `MPI_Finalize`",
+        "`MPI_Finalize`, then `MPI_Init`",
+        "`MPI_Init` and `MPI_Finalize` are optional",
+        "`MPI_Comm_rank`, then `MPI_Init`, then `MPI_Finalize`"
+      ],
+      "answer": 0,
+      "explanation": "Every MPI program starts with `MPI_Init`, then does its work including calls like `MPI_Comm_rank`, and ends with `MPI_Finalize`. Calling rank queries before initialization or skipping these setup and teardown calls is incorrect.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-018",
+      "stem": "In `MPI_Send(&data, 1, MPI_INT, 2, 0, MPI_COMM_WORLD);`, what does the argument `2` specify?",
+      "options": [
+        "The number of items to send",
+        "The rank of the destination process",
+        "The message tag",
+        "The data type"
+      ],
+      "answer": 1,
+      "explanation": "In `MPI_Send`, after the buffer, count, and datatype comes the destination rank, here `2`, then the tag, then the communicator. So `2` is the rank of the process that should receive the message. The count is the separate `1`, and the tag is the `0`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-019",
+      "stem": "In the SPMD model used by MPI, how can different processes do different work even though they run the same program?",
+      "options": [
+        "The compiler makes separate programs automatically",
+        "They each load a different source file",
+        "They branch on their rank, so code can run only on certain ranks",
+        "They cannot do different work"
+      ],
+      "answer": 2,
+      "explanation": "MPI follows the Single Program Multiple Data model: every process runs the same executable but examines its rank from `MPI_Comm_rank` and uses `if` statements on that rank to take different paths. For example, `if (rank == 0)` can designate the root.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-020",
+      "stem": "Which MPI operation is the logical inverse of `MPI_Scatter`?",
+      "options": [
+        "`MPI_Reduce`",
+        "`MPI_Send`",
+        "`MPI_Bcast`",
+        "`MPI_Gather`"
+      ],
+      "answer": 3,
+      "explanation": "`MPI_Scatter` sends pieces of data from the root out to all processes, and `MPI_Gather` reverses that by collecting a piece from each process back onto the root. They form a natural distribute-then-collect pair.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-021",
+      "stem": "For `MPI_Recv` to accept a message from `MPI_Send`, which of these generally must match between them?",
+      "options": [
+        "The communicator, and the source, tag, and datatype must be compatible",
+        "The line numbers in the source code",
+        "Nothing needs to match",
+        "The variable names used in each process"
+      ],
+      "answer": 0,
+      "explanation": "A send and a matching receive must use the same communicator and have compatible source or destination ranks, tags, and datatypes so MPI can pair them. The actual variable names are irrelevant; only the message envelope matters.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-022",
+      "stem": "Which MPI datatype constant corresponds to the C type `int`?",
+      "options": [
+        "`MPI_FLOAT`",
+        "`MPI_INT`",
+        "`MPI_CHAR`",
+        "`MPI_DOUBLE`"
+      ],
+      "answer": 1,
+      "explanation": "`MPI_INT` is the MPI datatype matching the C `int`. MPI needs the datatype argument so it can handle the message correctly across processes. `MPI_FLOAT`, `MPI_CHAR`, and `MPI_DOUBLE` correspond to `float`, `char`, and `double`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-023",
+      "stem": "After `MPI_Bcast` runs with the root holding the value `100`, what value do the other processes hold for that variable?",
+      "options": [
+        "an undefined value",
+        "`0`",
+        "`100`",
+        "their own rank"
+      ],
+      "answer": 2,
+      "explanation": "A broadcast copies the root's data to all processes, so every process ends up with `100`. That is the whole purpose of `MPI_Bcast`: to give all participants the same value.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-024",
+      "format": "cloze",
+      "stem": "Identify the MPI setup and query calls.",
+      "solution": "The function that initializes the MPI environment, called first, is {{1}}. The function that finalizes it, called last, is {{2}}. The function a process uses to learn its own rank is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`MPI_Init`",
+            "`MPI_Finalize`",
+            "`MPI_Comm_rank`"
+          ],
+          "answer": "`MPI_Init`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`MPI_Finalize`",
+            "`MPI_Init`",
+            "`MPI_Comm_size`"
+          ],
+          "answer": "`MPI_Finalize`"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`MPI_Comm_rank`",
+            "`MPI_Comm_size`",
+            "`MPI_Bcast`"
+          ],
+          "answer": "`MPI_Comm_rank`"
+        }
+      ],
+      "explanation": "`MPI_Init` starts the environment, `MPI_Finalize` shuts it down, and `MPI_Comm_rank` tells a process its own rank within the communicator.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-025",
+      "format": "cloze",
+      "stem": "Reason about ranks and size for a run.",
+      "solution": "An MPI program is launched with `6` processes on `MPI_COMM_WORLD`. The value returned by `MPI_Comm_size` is {{1}}. The smallest rank any process can have is {{2}}, and the largest rank is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "With `6` processes, `MPI_Comm_size` returns `6`. Ranks start at `0` and run to one less than the size, so they span `0` to `5`.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-026",
+      "format": "cloze",
+      "stem": "Match each collective to what it does.",
+      "solution": "The collective that sends identical data from the root to every process is {{1}}. The collective that splits an array and gives each process a different piece is {{2}}. The collective that combines one value per process with an operation like sum is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`MPI_Bcast`",
+            "`MPI_Scatter`",
+            "`MPI_Reduce`"
+          ],
+          "answer": "`MPI_Bcast`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`MPI_Scatter`",
+            "`MPI_Gather`",
+            "`MPI_Bcast`"
+          ],
+          "answer": "`MPI_Scatter`"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`MPI_Reduce`",
+            "`MPI_Bcast`",
+            "`MPI_Scatter`"
+          ],
+          "answer": "`MPI_Reduce`"
+        }
+      ],
+      "explanation": "`MPI_Bcast` copies the same data to all processes, `MPI_Scatter` distributes distinct pieces of an array, and `MPI_Reduce` combines a value from each process into a single result.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-027",
+      "format": "cloze",
+      "stem": "Predict the results of reductions.",
+      "solution": "Four processes contribute the values `5`, `8`, `2`, and `5` to a single `MPI_Reduce`. With the operation `MPI_SUM`, the root receives {{1}}. With the operation `MPI_MAX`, the root receives {{2}}. With the operation `MPI_MIN`, the root receives {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "`MPI_SUM` adds the contributions: `5 + 8 + 2 + 5 = 20`. `MPI_MAX` selects the largest value, `8`. `MPI_MIN` selects the smallest, `2`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-028",
+      "format": "cloze",
+      "stem": "Identify point-to-point calls and the default communicator.",
+      "solution": "The MPI call that sends a message to one specific process is {{1}}, and the matching call that receives it is {{2}}. The predefined communicator that contains all processes in the program is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`MPI_Send`",
+            "`MPI_Bcast`",
+            "`MPI_Gather`"
+          ],
+          "answer": "`MPI_Send`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`MPI_Recv`",
+            "`MPI_Reduce`",
+            "`MPI_Scatter`"
+          ],
+          "answer": "`MPI_Recv`"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`MPI_COMM_WORLD`",
+            "`MPI_ALL`",
+            "`MPI_GLOBAL`"
+          ],
+          "answer": "`MPI_COMM_WORLD`"
+        }
+      ],
+      "explanation": "`MPI_Send` and `MPI_Recv` are the basic point-to-point pair for one sender and one receiver. `MPI_COMM_WORLD` is the default communicator holding every process.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-029",
+      "format": "cloze",
+      "stem": "Trace gather and broadcast outcomes.",
+      "solution": "Three processes (ranks 0, 1, 2) each hold their rank as a value and call `MPI_Gather` to the root. The root receives a total of {{1}} values. Afterward the root broadcasts the number `99` with `MPI_Bcast`, so the value held by process rank 2 becomes {{2}}. The number of processes that end up with `99` after the broadcast is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 99,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "`MPI_Gather` collects one value from each of the three processes, so the root assembles `3` values. `MPI_Bcast` then copies `99` to every process, so rank 2 holds `99` and all `3` processes share that value.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-mpi-programming-030",
+      "format": "cloze",
+      "stem": "Recall MPI datatypes and the SPMD idea.",
+      "solution": "The MPI datatype constant that matches the C `int` is {{1}}. The MPI datatype that matches the C `double` is {{2}}. In MPI's execution model, all processes run the same program but branch on their {{3}} to do different work.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "`MPI_INT`",
+            "`MPI_FLOAT`",
+            "`MPI_CHAR`"
+          ],
+          "answer": "`MPI_INT`"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "`MPI_DOUBLE`",
+            "`MPI_INT`",
+            "`MPI_LONG`"
+          ],
+          "answer": "`MPI_DOUBLE`"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "rank",
+            "size",
+            "tag"
+          ],
+          "answer": "rank"
+        }
+      ],
+      "explanation": "`MPI_INT` and `MPI_DOUBLE` are the datatypes for C `int` and `double`. Under the SPMD model, processes run one program and use their rank to choose different code paths.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    }
+  ]
+}

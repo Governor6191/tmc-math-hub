@@ -1,0 +1,584 @@
+{
+  "courseId": "scientific-computing",
+  "topicId": "parallel-computing-concepts",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "scientific-computing-parallel-computing-concepts-001",
+      "stem": "What is parallel computing?",
+      "options": [
+        "Performing many calculations simultaneously across multiple processing units",
+        "Writing programs in more than one language",
+        "Storing data in parallel disks only",
+        "Running one instruction at a time on a single core"
+      ],
+      "answer": 0,
+      "explanation": "Parallel computing splits a problem into parts that run at the same time on multiple processors or cores, aiming to finish faster than a single sequential processor could.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-002",
+      "stem": "What is the main difference between a process and a thread?",
+      "options": [
+        "A thread always has more memory than a process",
+        "A process has its own separate memory space, while threads of one process share its memory",
+        "Threads cannot run code",
+        "There is no difference"
+      ],
+      "answer": 1,
+      "explanation": "Each process owns a private address space, so processes are isolated from one another. Threads live inside a process and share that process's memory, which makes communication between threads cheap but requires care to avoid data races.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-003",
+      "stem": "In a shared-memory system, how do parallel tasks exchange data?",
+      "options": [
+        "Only through files on disk",
+        "By sending messages over a network",
+        "By reading and writing the same memory that all tasks can access",
+        "They cannot exchange data"
+      ],
+      "answer": 2,
+      "explanation": "Shared-memory parallelism lets tasks (typically threads) communicate simply by accessing common memory locations. This is the model behind OpenMP. Distributed memory, by contrast, requires explicit message passing.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-004",
+      "stem": "In a distributed-memory system, how do processes typically communicate?",
+      "options": [
+        "Through the keyboard",
+        "They never need to communicate",
+        "By sharing a single global variable directly",
+        "By passing messages between processes, since each has its own private memory"
+      ],
+      "answer": 3,
+      "explanation": "In distributed memory each process has its own address space and cannot read another's memory directly, so they coordinate by passing messages. MPI is the standard library for this model on clusters.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-005",
+      "stem": "How is speedup defined in parallel computing?",
+      "options": [
+        "The serial execution time divided by the parallel execution time",
+        "The parallel time minus the serial time",
+        "The total memory used",
+        "The number of processors used"
+      ],
+      "answer": 0,
+      "explanation": "Speedup is `T_serial / T_parallel`. If a job takes 100 seconds on one processor and 25 seconds in parallel, the speedup is `100 / 25 = 4`. A larger speedup means the parallel version is proportionally faster.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-006",
+      "stem": "A program runs in 80 seconds on one processor and 20 seconds on several processors. What is the speedup?",
+      "options": [
+        "`60`",
+        "`4`",
+        "`100`",
+        "`0.25`"
+      ],
+      "answer": 1,
+      "explanation": "Speedup is the serial time over the parallel time: `80 / 20 = 4`. The program runs four times as fast in parallel. Subtracting the times (giving `60`) is not how speedup is defined.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-007",
+      "stem": "What does Amdahl's law describe?",
+      "options": [
+        "How to write an MPI program",
+        "The exact cost of a cluster",
+        "The maximum speedup achievable when only part of a program can be parallelized",
+        "The number of threads a CPU can run"
+      ],
+      "answer": 2,
+      "explanation": "Amdahl's law bounds the overall speedup by the fraction of work that must stay sequential. Even with unlimited processors, the serial portion limits how fast the whole program can get. It is a statement about diminishing returns from parallelism.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-008",
+      "stem": "By Amdahl's law, if 90 percent of a program is parallelizable, what is the maximum possible speedup with unlimited processors?",
+      "options": [
+        "`9`",
+        "unlimited",
+        "`90`",
+        "`10`"
+      ],
+      "answer": 3,
+      "explanation": "With an unlimited number of processors the parallel part takes negligible time, so the speedup is limited by the serial fraction. Here the serial fraction is `1 - 0.9 = 0.1`, and the maximum speedup is `1 / 0.1 = 10`. The remaining 10 percent serial work caps the gain.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-009",
+      "stem": "By Amdahl's law, if 50 percent of a program must run serially, what is the maximum speedup with unlimited processors?",
+      "options": [
+        "`2`",
+        "`4`",
+        "unlimited",
+        "`50`"
+      ],
+      "answer": 0,
+      "explanation": "When half the work is serial, the serial fraction is `0.5`, so the best possible speedup is `1 / 0.5 = 2`. No matter how many processors you add, you cannot do better than twice as fast.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-010",
+      "stem": "What is an HPC cluster?",
+      "options": [
+        "A single very fast laptop",
+        "A collection of connected computers (nodes) that work together as one high-performance system",
+        "A type of hard drive",
+        "A programming language"
+      ],
+      "answer": 1,
+      "explanation": "A High Performance Computing cluster links many computers, called nodes, through a fast network so they can solve large problems together. Each node has its own processors and memory, and work is distributed across them, often using MPI.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-011",
+      "stem": "In an HPC cluster, what is a node?",
+      "options": [
+        "A unit of electricity",
+        "A single CPU core",
+        "An individual computer in the cluster, with its own processors and memory",
+        "A network cable"
+      ],
+      "answer": 2,
+      "explanation": "A node is one of the individual computers that make up the cluster. Each node typically contains multiple cores and its own local memory. Many nodes connected by a network form the full cluster.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-012",
+      "stem": "Why can adding more processors sometimes give diminishing returns?",
+      "options": [
+        "Memory disappears",
+        "It never gives diminishing returns",
+        "Processors get slower as you add them",
+        "The serial part of the program and communication overhead limit the gains"
+      ],
+      "answer": 3,
+      "explanation": "Beyond the limit set by the serial fraction (Amdahl's law), extra processors help less and less. Communication and synchronization overhead also grow with more processors, eventually offsetting the benefit of additional parallel workers.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-013",
+      "stem": "Which of these is a genuine advantage of threads sharing memory within a process?",
+      "options": [
+        "They can communicate quickly through shared variables without copying data",
+        "They never cause bugs",
+        "They each get a separate address space",
+        "They are completely isolated from each other"
+      ],
+      "answer": 0,
+      "explanation": "Because threads share their process's memory, one thread can pass data to another just by updating a shared variable, with no copying. The trade-off is that simultaneous access must be coordinated to avoid race conditions.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-014",
+      "stem": "What is a race condition in parallel programming?",
+      "options": [
+        "When two programs compete to finish first for a prize",
+        "When the result depends on the unpredictable timing of concurrent accesses to shared data",
+        "A type of fast network",
+        "A way to speed up loops"
+      ],
+      "answer": 1,
+      "explanation": "A race condition occurs when multiple threads access shared data at the same time and at least one writes, so the final result depends on the order in which the accesses happen to occur. It produces nondeterministic, hard-to-reproduce bugs.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-015",
+      "stem": "Which programming model is most associated with distributed-memory parallelism on clusters?",
+      "options": [
+        "Spreadsheet formulas",
+        "OpenMP",
+        "Message passing with MPI",
+        "Plain single-threaded C"
+      ],
+      "answer": 2,
+      "explanation": "MPI (the Message Passing Interface) is the standard for distributed-memory systems, where processes coordinate by sending and receiving messages. OpenMP targets shared-memory threading within a single node instead.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-016",
+      "stem": "What does it mean for a task to be embarrassingly parallel?",
+      "options": [
+        "It always runs slowly",
+        "It can only run on one processor",
+        "It is too simple to bother parallelizing",
+        "It splits into independent subtasks needing little or no communication between them"
+      ],
+      "answer": 3,
+      "explanation": "An embarrassingly parallel problem divides naturally into pieces that can be computed independently, with almost no need to share data. Such problems scale very well because there is little coordination overhead. Summing many independent values is a typical example.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-017",
+      "stem": "A serial program takes 100 seconds and its parallel version takes 25 seconds. What is the speedup?",
+      "options": [
+        "`4`",
+        "`125`",
+        "`0.25`",
+        "`75`"
+      ],
+      "answer": 0,
+      "explanation": "Speedup is serial time divided by parallel time: `100 / 25 = 4`. The parallel version is four times faster. The difference `75` is the time saved, not the speedup.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-018",
+      "stem": "Which statement best contrasts shared memory with distributed memory?",
+      "options": [
+        "Shared memory uses message passing; distributed memory uses common variables",
+        "Shared memory has one address space all tasks can access; distributed memory gives each process its own memory requiring messages",
+        "They are the same thing",
+        "Distributed memory only works on a single core"
+      ],
+      "answer": 1,
+      "explanation": "In shared memory all tasks reach a single common address space directly. In distributed memory each process holds private memory, so exchanging data requires explicit messages. This distinction drives the choice between OpenMP and MPI.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-019",
+      "stem": "By Amdahl's law, if 95 percent of a program is parallelizable, what is the maximum speedup with unlimited processors?",
+      "options": [
+        "`19`",
+        "`95`",
+        "`20`",
+        "`5`"
+      ],
+      "answer": 2,
+      "explanation": "The serial fraction is `1 - 0.95 = 0.05`, so the ceiling on speedup is `1 / 0.05 = 20`. The unparallelizable 5 percent limits the whole program to at most a twentyfold speedup, regardless of processor count.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-020",
+      "stem": "What is synchronization in parallel programming?",
+      "options": [
+        "Deleting shared data",
+        "Running tasks on one core",
+        "Making all processors the same brand",
+        "Coordinating tasks so they reach certain points in a controlled order, for example with a barrier"
+      ],
+      "answer": 3,
+      "explanation": "Synchronization coordinates concurrent tasks so that operations happen in a safe, predictable order. A barrier, for instance, makes all tasks wait until every one of them has arrived before any proceeds. It is essential for correctness but adds overhead.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-021",
+      "stem": "If a program has a serial fraction of 25 percent, what is the maximum speedup from Amdahl's law with unlimited processors?",
+      "options": [
+        "`4`",
+        "`75`",
+        "`2`",
+        "`25`"
+      ],
+      "answer": 0,
+      "explanation": "A serial fraction of `0.25` caps the speedup at `1 / 0.25 = 4`. Even infinite processors cannot reduce the time below the serial quarter of the work, so four times is the limit.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-022",
+      "stem": "Why is parallel computing especially important in scientific computing?",
+      "options": [
+        "It makes code easier to read",
+        "Large simulations and data sets need far more computation than a single processor can deliver in reasonable time",
+        "It removes the need for algorithms",
+        "It uses less electricity than serial computing"
+      ],
+      "answer": 1,
+      "explanation": "Scientific problems such as weather modeling or large simulations involve enormous amounts of computation. Spreading the work across many processors makes these problems tractable in a practical time frame, which a single processor could not achieve.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-023",
+      "stem": "Which best describes the relationship between cores and threads on a multicore CPU?",
+      "options": [
+        "A core can never run a thread",
+        "One core can run only one program ever",
+        "Multiple cores can each run a thread at the same time, giving true parallel execution",
+        "Threads and cores are unrelated"
+      ],
+      "answer": 2,
+      "explanation": "A multicore CPU has several cores, and each can execute a thread simultaneously, so multiple threads truly run at the same instant. On a single core, threads instead share time and only appear to run together (concurrency rather than parallelism).",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-024",
+      "format": "cloze",
+      "stem": "Compute speedup from timing measurements.",
+      "solution": "A program takes `120` seconds on one processor and `30` seconds on a parallel machine. The speedup, defined as serial time divided by parallel time, is {{1}}. If instead the parallel time were `60` seconds, the speedup would be {{2}}. Speedup is a ratio, so it has {{3}} as its unit.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "no unit",
+            "seconds",
+            "bytes"
+          ],
+          "answer": "no unit"
+        }
+      ],
+      "explanation": "Speedup is `T_serial / T_parallel`, so `120 / 30 = 4` and `120 / 60 = 2`. Because it divides a time by a time, it is a dimensionless ratio with no unit.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-025",
+      "format": "cloze",
+      "stem": "Apply Amdahl's law for maximum speedup.",
+      "solution": "By Amdahl's law, the maximum speedup with unlimited processors equals `1` divided by the serial fraction. If 80 percent of a program is parallelizable, the serial fraction is {{1}} and the maximum speedup is {{2}}. The factor that ultimately limits the speedup is always the {{3}} portion of the work.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "serial",
+            "parallel",
+            "fastest"
+          ],
+          "answer": "serial"
+        }
+      ],
+      "explanation": "If 80 percent is parallelizable, the serial fraction is `1 - 0.8 = 0.2`, so the maximum speedup is `1 / 0.2 = 5`. The serial portion sets the ceiling, since unlimited processors only shrink the parallel part.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-026",
+      "format": "cloze",
+      "stem": "Distinguish processes, threads, and memory models.",
+      "solution": "A unit of execution that has its own private memory space is a {{1}}. Several units that run inside one such space and share its memory are {{2}}. The parallel model in which each process keeps private memory and they coordinate by passing messages is called {{3}} memory.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "process",
+            "thread",
+            "core"
+          ],
+          "answer": "process"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "threads",
+            "processes",
+            "nodes"
+          ],
+          "answer": "threads"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "distributed",
+            "shared",
+            "cache"
+          ],
+          "answer": "distributed"
+        }
+      ],
+      "explanation": "A process owns a private address space; threads share the memory of their process; and distributed memory gives each process its own memory, so they communicate by message passing.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-027",
+      "format": "cloze",
+      "stem": "Reason about an HPC cluster and its scaling limit.",
+      "solution": "An individual computer within a cluster, with its own processors and memory, is called a {{1}}. These are joined by a fast {{2}} so they can work together. According to Amdahl's law, if 90 percent of a workload is parallelizable, no number of nodes can push the speedup above {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "node",
+            "thread",
+            "byte"
+          ],
+          "answer": "node"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "network",
+            "screen",
+            "keyboard"
+          ],
+          "answer": "network"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Each computer in a cluster is a node, and nodes are connected by a network. With a serial fraction of `0.1`, Amdahl's law caps the speedup at `1 / 0.1 = 10`.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-028",
+      "format": "cloze",
+      "stem": "Match parallel models to their communication style.",
+      "solution": "In a {{1}}-memory system, tasks communicate by reading and writing common variables. In a distributed-memory system, processes communicate by {{2}}. The library that is the standard for the distributed-memory model is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "shared",
+            "distributed",
+            "virtual"
+          ],
+          "answer": "shared"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "passing messages",
+            "sharing variables",
+            "printing"
+          ],
+          "answer": "passing messages"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "`MPI`",
+            "`SQL`",
+            "`HTML`"
+          ],
+          "answer": "`MPI`"
+        }
+      ],
+      "explanation": "Shared memory communicates through common variables, distributed memory communicates by passing messages, and MPI is the standard message-passing library for distributed-memory systems.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-029",
+      "format": "cloze",
+      "stem": "Compute several speedups and their limit.",
+      "solution": "A task takes `200` seconds serially. On a parallel system it takes `50` seconds, a speedup of {{1}}. On a larger system it takes `40` seconds, a speedup of {{2}}. If the serial fraction of the task is `0.1`, Amdahl's law says the speedup can never exceed {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Speedup is serial over parallel time: `200 / 50 = 4` and `200 / 40 = 5`. With a serial fraction of `0.1`, the maximum possible speedup is `1 / 0.1 = 10`, which neither measurement exceeds.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-parallel-computing-concepts-030",
+      "format": "cloze",
+      "stem": "Identify hazards and coordination in parallel code.",
+      "solution": "When two threads access the same shared data without coordination and the outcome depends on timing, the bug is called a {{1}} condition. To force all tasks to wait at a common point until every task arrives, you use a {{2}}. A problem that splits into independent pieces needing almost no communication is described as {{3}} parallel.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "race",
+            "boundary",
+            "syntax"
+          ],
+          "answer": "race"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "barrier",
+            "pointer",
+            "loop"
+          ],
+          "answer": "barrier"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "embarrassingly",
+            "barely",
+            "serially"
+          ],
+          "answer": "embarrassingly"
+        }
+      ],
+      "explanation": "Timing-dependent conflicts over shared data are race conditions. A barrier synchronizes tasks by making each wait for all the others. A workload that divides into nearly independent pieces is embarrassingly parallel.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    }
+  ]
+}

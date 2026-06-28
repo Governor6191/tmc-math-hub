@@ -1,0 +1,481 @@
+{
+  "courseId": "stoc-and-final-model-i",
+  "topicId": "equations-of-value-and-yield",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-001",
+      "stem": "An equation of value for a financial transaction sets which two quantities equal?",
+      "options": [
+        "Total income equals total outgo (undiscounted).",
+        "Present value of income equals present value of outgo.",
+        "Income at time 0 equals outgo at time 0.",
+        "Future value of income equals the principal."
+      ],
+      "answer": 1,
+      "explanation": "An equation of value equates the present value of all income with the present value of all outgo, with both discounted at the transaction's yield rate. Comparing undiscounted totals ignores the time value of money, comparing only time-0 cashflows omits later payments, and equating future value to principal misstates the balance. The trap is forgetting to discount: cashflows at different times can only be compared after being brought to a common date.",
+      "difficulty": "warmup",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-002",
+      "stem": "A perpetuity-immediate pays GHS 1 at the end of each year forever. At annual effective rate $i$, its present value is which expression?",
+      "options": [
+        "$\\dfrac{1}{d}$",
+        "$\\dfrac{1}{i}$",
+        "$\\dfrac{1+i}{i}$",
+        "$\\dfrac{1}{i^2}$"
+      ],
+      "answer": 1,
+      "explanation": "Letting $n \\to \\infty$ in $a_{\\overline{n}|} = \\frac{1 - v^n}{i}$, the term $v^n \\to 0$, so the perpetuity-immediate present value is $\\frac{1}{i}$. The form $\\frac{1}{d}$ is the perpetuity-due, $\\frac{1+i}{i}$ is also the perpetuity-due, and $\\frac{1}{i^2}$ is not a perpetuity value. The trap is the timing: end-of-year payments give $\\frac{1}{i}$, while start-of-year payments give $\\frac{1}{d} = \\frac{1+i}{i}$.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-003",
+      "stem": "What is the present value of a perpetuity-immediate paying GHS 1 per year at an annual effective interest rate of 5%?",
+      "options": [
+        "GHS 21.00",
+        "GHS 20.00",
+        "GHS 25.00",
+        "GHS 19.05"
+      ],
+      "answer": 1,
+      "explanation": "A perpetuity-immediate is worth $\\frac{1}{i} = \\frac{1}{0.05} = 20$. The value GHS 21 is the perpetuity-due $\\frac{1+i}{i} = \\frac{1.05}{0.05}$, GHS 25 misreads the rate as 4%, and GHS 19.05 discounts one extra year. The trap is using the due formula; with end-of-year payments the value is simply the reciprocal of the rate.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-004",
+      "stem": "What is the present value of a perpetuity-due paying GHS 1 at the start of each year at an annual effective interest rate of 8%?",
+      "options": [
+        "GHS 12.50",
+        "GHS 13.50",
+        "GHS 11.57",
+        "GHS 12.00"
+      ],
+      "answer": 1,
+      "explanation": "A perpetuity-due is worth $\\frac{1+i}{i} = \\frac{1.08}{0.08} = 13.50$, equivalently $\\frac{1}{d}$. The value GHS 12.50 is the perpetuity-immediate $\\frac{1}{i} = \\frac{1}{0.08}$, GHS 11.57 over-discounts, and GHS 12 is a guess. The trap is that the perpetuity-due exceeds the perpetuity-immediate by exactly 1 (the first payment occurs now), so $13.50 = 12.50 + 1$.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-005",
+      "stem": "A business borrows GHS X at time 0 and repays it with payments of GHS 45,000 at the end of years 3, 4, 5, and 6. The annual effective interest rate is 9%. What is X?",
+      "options": [
+        "GHS 145,800.00",
+        "GHS 122,706.33",
+        "GHS 134,750.00",
+        "GHS 113,000.00"
+      ],
+      "answer": 1,
+      "explanation": "Set up the equation of value at time 0: $X = 45000(v^3 + v^4 + v^5 + v^6)$ with $v = (1.09)^{-1}$. The four discount factors are $0.772183, 0.708425, 0.649931, 0.596267$, summing to $2.726806$, so $X = 45000 \\times 2.726806 = 122706.33$. The value GHS 145,800 ignores discounting (just $45000 \\times 3.24$), GHS 134,750 discounts too little, and GHS 113,000 too much. The trap is discounting each payment from its own time: the payments fall at years 3 through 6, not all at once.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-006",
+      "stem": "Akos deposits GHS 400 in an account that grows by compound interest. After five years the balance is GHS 463.71. What is the annual effective interest rate?",
+      "options": [
+        "$2.5\\%$",
+        "$3.0\\%$",
+        "$3.5\\%$",
+        "$4.0\\%$"
+      ],
+      "answer": 1,
+      "explanation": "From $400(1+i)^5 = 463.71$, we get $(1+i)^5 = \\frac{463.71}{400} = 1.159275$, so $1 + i = 1.159275^{1/5} = 1.030000$ and $i = 3.0\\%$. Check: $400(1.03)^5 = 463.71$. The other rates do not satisfy the equation. The trap is solving $(1+i)^5 = 1.159275$ with a fifth root, not by dividing the growth by five.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-007",
+      "stem": "Abena borrows GHS 4,000 and repays a single lump sum of GHS 4,750 five years later. What annual effective interest rate does she pay?",
+      "options": [
+        "$3.75\\%$",
+        "$3.50\\%$",
+        "$4.00\\%$",
+        "$3.00\\%$"
+      ],
+      "answer": 1,
+      "explanation": "From $4000(1+i)^5 = 4750$, $(1+i)^5 = \\frac{4750}{4000} = 1.1875$, so $1 + i = 1.1875^{1/5} = 1.034968$ and $i = 3.4968\\%$, rounding to $3.50\\%$. The value $3.75\\%$ divides the total growth of $18.75\\%$ by five, $4\\%$ and $3\\%$ are near misses. The trap is the linear division: the fifth root of $1.1875$ is needed, giving a rate below $\\frac{18.75\\%}{5} = 3.75\\%$.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-008",
+      "stem": "Akwasi opens an account with GHS 1,000 earning 4% annual effective interest. The balance is now GHS 1,342. How long did it take to earn the GHS 342 of interest?",
+      "options": [
+        "7.0 years",
+        "7.5 years",
+        "8.0 years",
+        "8.55 years"
+      ],
+      "answer": 1,
+      "explanation": "From $1000(1.04)^n = 1342$, $(1.04)^n = 1.342$, so $n = \\frac{\\ln 1.342}{\\ln 1.04} = \\frac{0.294012}{0.039221} = 7.50$ years. The value 7.0 and 8.0 are nearby integers that do not satisfy the equation, and 8.55 misreads the logarithms. The trap is solving an exponential for the exponent: take logarithms of both sides rather than guessing.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-009",
+      "stem": "Opoku borrows GHS 1,000 at 10% annual effective interest. He repays GHS 600 at the end of year 1 and a payment of P at the end of year 2 to clear the loan. What is P?",
+      "options": [
+        "GHS 500.00",
+        "GHS 550.00",
+        "GHS 540.00",
+        "GHS 610.00"
+      ],
+      "answer": 1,
+      "explanation": "The equation of value at time 0 is $1000 = 600v + P v^2$ with $v = (1.1)^{-1}$. So $P v^2 = 1000 - 600(0.909091) = 1000 - 545.455 = 454.545$, and $P = 454.545 \\times (1.1)^2 = 454.545 \\times 1.21 = 550.00$. The value GHS 500 forgets to accumulate the residual to year 2, GHS 540 mis-discounts, and GHS 610 over-charges. The trap is timing: the outstanding balance after the first payment must be carried forward two years' worth of discounting, giving the factor $(1.1)^2$.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-010",
+      "stem": "The yield rate (internal rate of return) on a transaction is best described as which of the following?",
+      "options": [
+        "The rate that makes total income equal total outgo, ignoring time.",
+        "The rate at which the present value of income equals the present value of outgo.",
+        "The rate quoted by the lender regardless of cashflows.",
+        "The simple interest rate on the first payment only."
+      ],
+      "answer": 1,
+      "explanation": "The yield rate is the interest rate that makes the net present value zero, that is, the rate at which discounted income equals discounted outgo. Equating undiscounted totals ignores timing, the lender's quoted rate need not be the realized yield, and a single-payment simple rate misses the whole stream. The trap is ignoring discounting: the yield is defined through present values, so it accounts for when each cashflow occurs.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-011",
+      "stem": "Adwoa pays GHS 1,500 at time 10 years and in return receives GHS 1,000 at time 11 years and GHS 1,000 at time 12 years. What annual effective yield does she earn?",
+      "options": [
+        "$15.0\\%$",
+        "$21.5\\%$",
+        "$33.3\\%$",
+        "$18.0\\%$"
+      ],
+      "answer": 1,
+      "explanation": "Valuing at time 10, $1500 = 1000v + 1000v^2$, so $v + v^2 = 1.5$. Solving $v^2 + v - 1.5 = 0$ gives $v = \\frac{-1 + \\sqrt{7}}{2} = 0.822876$, hence $i = \\frac{1}{v} - 1 = 0.2153 = 21.5\\%$. The value $15\\%$ is too low to satisfy the equation, $33.3\\%$ comes from ignoring the second payment's discounting, and $18\\%$ is a guess. The trap is solving the resulting quadratic in $v$ correctly rather than estimating.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-012",
+      "stem": "Kwame invests GHS 36,370 now and receives GHS 4,500 at the end of each year for n years, the first payment in 5 years. The annual effective interest rate is 7%. What is n?",
+      "options": [
+        "12",
+        "20",
+        "15",
+        "25"
+      ],
+      "answer": 1,
+      "explanation": "The deferred annuity has value $36370 = 4500 \\cdot v^4 \\cdot a_{\\overline{n}|}$ at 7%, since the first payment at time 5 means a 4-year deferral. So $a_{\\overline{n}|} = \\frac{36370}{4500 \\times (1.07)^{-4}} = \\frac{36370}{4500 \\times 0.762895} = 10.5941$. Solving $\\frac{1 - (1.07)^{-n}}{0.07} = 10.5941$ gives $(1.07)^{-n} = 0.258$, so $n = \\frac{\\ln(1/0.258)}{\\ln 1.07} = 20$. The other values do not match the annuity factor. The trap is the deferral: the first payment at time 5 corresponds to a 4-year discount on the annuity-immediate.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-013",
+      "stem": "Yaw invests GHS X at time 7 years in order to receive GHS 500 at the end of each year for 15 years, with the first payment at time 10 years. Using a 4% annual effective rate, what is X?",
+      "options": [
+        "GHS 5,559.19",
+        "GHS 5,139.79",
+        "GHS 7,500.00",
+        "GHS 4,750.00"
+      ],
+      "answer": 1,
+      "explanation": "Payments run from time 10 to time 24. Valued at time 9 (one period before the first payment), the annuity-immediate is worth $500\\,a_{\\overline{15}|} = 500 \\times 11.118387 = 5559.19$. Discounting from time 9 back to time 7 multiplies by $(1.04)^{-2} = 0.924556$, giving $X = 5559.19 \\times 0.924556 = 5139.79$. The value GHS 5,559.19 is the value at time 9 (forgetting the 2-year discount), GHS 7,500 ignores discounting, and GHS 4,750 over-discounts. The trap is the two valuation steps: the annuity-immediate sits at time 9, then must be discounted two further years to time 7.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-014",
+      "stem": "Perpetuity A pays GHS 100 at the beginning of each year, the first payment today. Perpetuity B pays GHS X at the end of each year, the first payment in 5 years. Their present values are equal at 10%. What is X?",
+      "options": [
+        "GHS 100.00",
+        "GHS 161.05",
+        "GHS 146.41",
+        "GHS 110.00"
+      ],
+      "answer": 1,
+      "explanation": "Perpetuity A is a perpetuity-due: $PV_A = 100 \\cdot \\frac{1+i}{i} = 100 \\cdot \\frac{1.1}{0.1} = 1100$. Perpetuity B is a perpetuity-immediate deferred so its first payment is at time 5, meaning a 4-year deferral of an end-of-year perpetuity: $PV_B = X \\cdot \\frac{1}{i} \\cdot v^4 = X \\cdot 10 \\cdot (1.1)^{-4} = X \\cdot 6.830135$. Setting $PV_B = 1100$ gives $X = \\frac{1100}{6.830135} = 161.05$. The value GHS 100 ignores the timing difference, GHS 146.41 mis-counts the deferral, and GHS 110 just scales by $(1+i)$. The trap is the deferral on B: a first payment at time 5 discounts the standard $\\frac{1}{i}$ perpetuity by four years.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-015",
+      "stem": "Kofi invests GHS 1,000 now and receives GHS 500 in 2 years and GHS 700 in n years. His annual effective yield is 4.5%. The equation of value at time 0 is which of the following?",
+      "options": [
+        "$1000 = 500 + 700$",
+        "$1000 = 500(1.045)^{-2} + 700(1.045)^{-n}$",
+        "$1000 = 500(1.045)^2 + 700(1.045)^n$",
+        "$1000 = 500(1.045)^{-2} + 700$"
+      ],
+      "answer": 1,
+      "explanation": "Each receipt is discounted from its own time to time 0 at the yield rate: $1000 = 500(1.045)^{-2} + 700(1.045)^{-n}$. The first option ignores discounting, the third accumulates instead of discounts, and the fourth fails to discount the second payment. The trap is discounting both future receipts; the GHS 700 at time $n$ must carry the factor $(1.045)^{-n}$.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-016",
+      "stem": "Edem deposits GHS 5,000 in an account earning a continuously compounded force of interest of 3% per year. How long until the balance reaches GHS 6,000?",
+      "options": [
+        "5.50 years",
+        "6.08 years",
+        "6.67 years",
+        "4.00 years"
+      ],
+      "answer": 1,
+      "explanation": "With a force of interest, $5000 e^{0.03 t} = 6000$, so $e^{0.03 t} = 1.2$ and $0.03 t = \\ln 1.2 = 0.182322$, giving $t = \\frac{0.182322}{0.03} = 6.08$ years. The value 5.50 and 4.00 are too short, and 6.67 misreads the logarithm. The trap is using $(1+i)^t$ instead of $e^{\\delta t}$; under a force of interest the accumulation is continuous.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-017",
+      "stem": "How does the present value of a perpetuity-due relate to the present value of an otherwise identical perpetuity-immediate?",
+      "options": [
+        "They are equal.",
+        "The perpetuity-due exceeds the immediate by exactly one payment.",
+        "The perpetuity-due is smaller by a factor of $v$.",
+        "The perpetuity-due is double the immediate."
+      ],
+      "answer": 1,
+      "explanation": "Since $\\frac{1+i}{i} = \\frac{1}{i} + 1$, the perpetuity-due equals the perpetuity-immediate plus 1, the extra payment made at time 0. The two are not equal, the due form is larger (not smaller), and it is not double. The trap is the timing of the very first payment: paying immediately rather than at year-end adds exactly one full payment to the present value.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-018",
+      "stem": "Ama invests GHS 3,500 now to receive GHS 450 at the end of each of the next 10 years. Which equation determines her annual effective yield $i$?",
+      "options": [
+        "$3500 = 450 \\times 10$",
+        "$3500 = 450\\,a_{\\overline{10}|}$ at rate $i$",
+        "$3500 = 450\\,s_{\\overline{10}|}$ at rate $i$",
+        "$3500 = 450(1+i)^{10}$"
+      ],
+      "answer": 1,
+      "explanation": "The yield solves the equation of value $3500 = 450\\,a_{\\overline{10}|}$, where $a_{\\overline{10}|}$ is evaluated at the unknown $i$. Multiplying $450 \\times 10$ ignores discounting, using $s_{\\overline{10}|}$ accumulates to time 10 rather than discounting to time 0, and $(1+i)^{10}$ treats the stream as a single payment. The trap is choosing the present-value annuity factor: the GHS 3,500 outlay is at time 0, so income must be discounted to time 0 via $a_{\\overline{10}|}$.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-019",
+      "stem": "A level perpetuity-immediate of GHS 1 per year is worth GHS 25 at the prevailing rate. What is the annual effective interest rate?",
+      "options": [
+        "$5.0\\%$",
+        "$4.0\\%$",
+        "$2.5\\%$",
+        "$25.0\\%$"
+      ],
+      "answer": 1,
+      "explanation": "From $\\frac{1}{i} = 25$, we get $i = \\frac{1}{25} = 0.04 = 4\\%$. The value $5\\%$ would give a perpetuity worth 20, $2.5\\%$ would give 40, and $25\\%$ inverts the relationship. The trap is the reciprocal: a higher perpetuity value corresponds to a lower interest rate, since $i = \\frac{1}{PV}$.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-020",
+      "stem": "Yaw pays GHS 2,500 now to receive GHS 400 at the end of each year for 7 years plus a lump sum of GHS 1,000 at time 8 years. Which equation of value determines his yield $i$?",
+      "options": [
+        "$2500 = 400 \\times 7 + 1000$",
+        "$2500 = 400\\,a_{\\overline{7}|} + 1000\\,v^8$ at rate $i$",
+        "$2500 = 400\\,s_{\\overline{7}|} + 1000(1+i)^8$",
+        "$2500 = 400\\,a_{\\overline{8}|} + 1000$"
+      ],
+      "answer": 1,
+      "explanation": "Discount every receipt to time 0: the 7-year annuity-immediate contributes $400\\,a_{\\overline{7}|}$ and the lump sum at time 8 contributes $1000\\,v^8$, so $2500 = 400\\,a_{\\overline{7}|} + 1000\\,v^8$ at the yield $i$ (which works out to about 9.1%). The first option ignores discounting, the third accumulates, and the fourth mishandles the timing of both pieces. The trap is treating the lump sum and the annuity consistently: both must be discounted to the outlay date, the lump sum by $v^8$.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-021",
+      "format": "cloze",
+      "stem": "Compare a perpetuity-immediate and a perpetuity-due of GHS 1 per year at an annual effective interest rate of 5%.",
+      "solution": "The perpetuity-immediate is worth $\\frac{1}{0.05} =$ GHS {{1}}. The perpetuity-due is worth $\\frac{1.05}{0.05} =$ GHS {{2}}. The due value exceeds the immediate value by exactly one {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0.01
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 21,
+          "tolerance": 0.01
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "payment",
+            "year of interest",
+            "discount factor"
+          ],
+          "answer": "payment"
+        }
+      ],
+      "explanation": "The immediate value is $1/0.05 = 20$ and the due value is $1.05/0.05 = 21$. They differ by exactly one payment, since the perpetuity-due makes its first payment immediately at time 0.",
+      "difficulty": "warmup",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-022",
+      "format": "cloze",
+      "stem": "A business borrows GHS X and repays GHS 45,000 at the end of years 3, 4, 5, 6 at 9% effective.",
+      "solution": "The equation of value at time 0 is $X = 45000(v^3 + v^4 + v^5 + v^6)$ with $v = (1.09)^{-1}$. The sum of the four discount factors is about {{1}} (to four decimals). Therefore $X \\approx$ GHS {{2}} (to the nearest cedi). Each payment is discounted from its {{3}} time.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2.7268,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 122706,
+          "tolerance": 5
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "own",
+            "average",
+            "final"
+          ],
+          "answer": "own"
+        }
+      ],
+      "explanation": "The factors $v^3 + v^4 + v^5 + v^6 = 2.726806$, so $X = 45000 \\times 2.726806 = 122706.33$, about GHS 122,706. Each payment is discounted from its own payment date.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-023",
+      "format": "cloze",
+      "stem": "Abena borrows GHS 4,000 and repays GHS 4,750 after 5 years. Find the yield.",
+      "solution": "From $4000(1+i)^5 = 4750$, the accumulation factor is $\\frac{4750}{4000} =$ {{1}} (to four decimals). Taking the fifth root, the annual effective rate is about {{2}} percent (to two decimals). The fifth root gives a rate {{3}} the naive figure of 18.75% divided by 5.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.1875,
+          "tolerance": 0.0002
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3.5,
+          "tolerance": 0.05
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "below",
+            "above",
+            "equal to"
+          ],
+          "answer": "below"
+        }
+      ],
+      "explanation": "The factor is $1.1875$, and $1.1875^{1/5} = 1.034968$, so $i = 3.50\\%$. This is below $18.75\\%/5 = 3.75\\%$ because compounding means a lower rate suffices.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-024",
+      "format": "cloze",
+      "stem": "Opoku borrows GHS 1,000 at 10% effective, repays GHS 600 at year 1, and clears the loan with P at year 2.",
+      "solution": "The balance after the year-1 payment, valued at time 1, is $1000(1.1) - 600 =$ GHS {{1}}. Accumulating this one more year gives $P =$ GHS {{2}} (to the nearest cedi). The outstanding balance is rolled forward at the factor {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 500,
+          "tolerance": 1
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 550,
+          "tolerance": 1
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "1.10",
+            "0.91",
+            "1.21"
+          ],
+          "answer": "1.10"
+        }
+      ],
+      "explanation": "At time 1 the loan has grown to $1000(1.1) = 1100$; after paying 600 the balance is 500. Rolling forward one year at $1.10$ gives $P = 500 \\times 1.10 = 550$.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-025",
+      "format": "cloze",
+      "stem": "Adwoa pays GHS 1,500 at time 10 to receive GHS 1,000 at time 11 and GHS 1,000 at time 12. Find her yield.",
+      "solution": "Valuing at time 10 gives $1500 = 1000v + 1000v^2$, so $v + v^2 = 1.5$. Solving the quadratic, $v \\approx$ {{1}} (to four decimals). The annual effective yield is then about {{2}} percent (to one decimal). The yield is high because the outlay is recovered in only {{3}} payments.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.8229,
+          "tolerance": 0.0005
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 21.5,
+          "tolerance": 0.2
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Solving $v^2 + v - 1.5 = 0$ gives $v = \\frac{-1 + \\sqrt{7}}{2} = 0.822876$, so $i = 1/v - 1 = 0.2153 = 21.5\\%$. The high yield reflects recovering 2000 of receipts against a 1500 outlay over just two payments.",
+      "difficulty": "stretch",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    },
+    {
+      "id": "stoc-and-final-model-i-equations-of-value-and-yield-026",
+      "format": "cloze",
+      "stem": "A level perpetuity-immediate of GHS 1 per year is observed to be worth GHS 25.",
+      "solution": "From $\\frac{1}{i} = 25$, the annual effective interest rate is $i =$ {{1}} as a decimal. A perpetuity-due of GHS 1 at the same rate would be worth GHS {{2}} (to two decimals). A larger perpetuity price implies a {{3}} interest rate.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.04,
+          "tolerance": 0.0005
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 26,
+          "tolerance": 0.1
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "lower",
+            "higher",
+            "unchanged"
+          ],
+          "answer": "lower"
+        }
+      ],
+      "explanation": "Here $i = 1/25 = 0.04$. The perpetuity-due is $\\frac{1+i}{i} = \\frac{1.04}{0.04} = 26$, exactly one payment more than the immediate value of 25. Because $i = 1/PV$, a higher price corresponds to a lower interest rate.",
+      "difficulty": "core",
+      "source": "in the style of Daniel and Vaaler, Mathematical Interest Theory"
+    }
+  ]
+}

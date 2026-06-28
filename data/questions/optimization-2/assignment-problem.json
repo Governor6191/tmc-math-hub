@@ -1,0 +1,478 @@
+{
+  "courseId": "optimization-2",
+  "topicId": "assignment-problem",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-2-assignment-problem-001",
+      "stem": "The assignment model is a special case of the transportation model in which:",
+      "options": [
+        "The supply at each source and the demand at each destination are each one unit",
+        "Costs are all equal",
+        "There are no constraints",
+        "Supply is always greater than demand"
+      ],
+      "answer": 0,
+      "explanation": "In an assignment problem each source supplies exactly one unit and each destination demands exactly one unit, so one agent is matched to one task. This one-to-one structure is what distinguishes it from a general transportation problem.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-002",
+      "stem": "In the linear programming formulation of a balanced assignment problem, every supply value and every demand value equals:",
+      "options": [
+        "$0$",
+        "$1$",
+        "the number of agents",
+        "the total cost"
+      ],
+      "answer": 1,
+      "explanation": "Each row sum (supply) and each column sum (demand) is set to $1$, for example $x_{AR} + x_{AA} + x_{AD} + x_{AC} = 1$. This forces exactly one assignment per agent and per task.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-003",
+      "stem": "The standard method used in the slides to solve the assignment problem is the:",
+      "options": [
+        "Stepping-stone method",
+        "Simplex Big-M method",
+        "Hungarian method",
+        "Iso-cost method"
+      ],
+      "answer": 2,
+      "explanation": "The assignment problem is solved by the Hungarian method, which builds an opportunity-cost table through row and column reductions and then makes assignments at the zero cells. The stepping-stone method is for transportation problems.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-004",
+      "stem": "The first step of the Hungarian method is to:",
+      "options": [
+        "Add a dummy row",
+        "Assign to the largest cost",
+        "Draw covering lines",
+        "Subtract the minimum value in each row from all entries of that row"
+      ],
+      "answer": 3,
+      "explanation": "Row reduction comes first: subtract the smallest entry in each row from every entry in that row, creating at least one zero per row. Column reduction follows, producing the opportunity-cost table.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-005",
+      "stem": "After row reduction, the Hungarian method performs:",
+      "options": [
+        "Column reduction, subtracting the minimum of each column from all its entries",
+        "A second row reduction",
+        "A ratio test",
+        "A pivot operation"
+      ],
+      "answer": 0,
+      "explanation": "Following row reduction, each column has its minimum subtracted from all its entries (column reduction). The result is the completed opportunity-cost table in which assignments are sought at the zeros.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-006",
+      "stem": "In the Hungarian method, assignments are made to cells that contain:",
+      "options": [
+        "The largest value",
+        "A zero",
+        "The row minimum before reduction",
+        "A negative number"
+      ],
+      "answer": 1,
+      "explanation": "Once the opportunity-cost table is built, unique assignments are made only at cells containing zeros, with at most one assignment per row and per column. Zeros represent positions of least opportunity cost.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-007",
+      "stem": "An optimal assignment is reached when the number of independent unique (zero) assignments equals:",
+      "options": [
+        "Zero",
+        "Half the number of rows",
+        "The number of rows (or columns)",
+        "The total cost"
+      ],
+      "answer": 2,
+      "explanation": "Optimality occurs when the number of independent unique assignments equals the number of rows, which equals the number of columns in a balanced problem. Then every agent is matched to a distinct task at zero opportunity cost.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-008",
+      "stem": "If fewer unique assignments can be made than there are rows, the Hungarian method applies a:",
+      "options": [
+        "Ratio test",
+        "Graphical plot",
+        "Dual computation",
+        "Line test, covering all zeros with the minimum number of lines"
+      ],
+      "answer": 3,
+      "explanation": "When a full set of assignments is not yet possible, all zeros are crossed out with the fewest horizontal and vertical lines. If fewer than $m$ lines suffice, the table is revised; when $m$ lines are needed, $m$ assignments exist (optimum).",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-009",
+      "stem": "In the line-test revision step, after covering zeros with fewer than $m$ lines, you:",
+      "options": [
+        "Add the maximum value everywhere",
+        "Subtract the minimum uncovered value from all uncovered values and add it to cells where two lines cross",
+        "Delete the covered rows",
+        "Set all zeros to one"
+      ],
+      "answer": 1,
+      "explanation": "Subtract the smallest uncovered entry from every uncovered entry, add it to each entry at the intersection of two covering lines, and leave singly-covered entries unchanged. Then repeat the line test on the new table.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-010",
+      "stem": "The ACC basketball example assigns four teams of officials to four games to minimize total distance. The optimal total distance is:",
+      "options": [
+        "$400$ miles",
+        "$450$ miles",
+        "$500$ miles",
+        "$525$ miles"
+      ],
+      "answer": 1,
+      "explanation": "The Hungarian method gives an optimal assignment totalling $90 + 100 + 140 + 120 = 450$ miles (for example A to Atlanta, B to Raleigh, C to Dallas, D to Clemson). An alternative optimal assignment also totals $450$ miles.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-011",
+      "stem": "In the ACC example, one optimal assignment sends official A to Atlanta ($90$), B to Raleigh ($100$), C to Dallas ($140$), D to Clemson ($120$). The total is:",
+      "options": [
+        "$430$",
+        "$470$",
+        "$450$",
+        "$360$"
+      ],
+      "answer": 2,
+      "explanation": "Summing the assigned distances gives $90 + 100 + 140 + 120 = 450$ miles. This matches the optimal total found by the Hungarian method.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-012",
+      "stem": "When supply exceeds demand in an assignment problem (more agents than tasks), the tableau is balanced by adding a:",
+      "options": [
+        "Dummy row",
+        "Prohibited cell",
+        "Second objective",
+        "Dummy column"
+      ],
+      "answer": 3,
+      "explanation": "If there are more agents (supply) than tasks (demand), a dummy column with zero costs is added so the tableau becomes square. A dummy row is added instead when demand exceeds supply.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-013",
+      "stem": "When demand exceeds supply in an assignment problem, the tableau is balanced by adding a:",
+      "options": [
+        "Dummy row",
+        "Dummy column",
+        "Negative cost",
+        "Slack variable"
+      ],
+      "answer": 0,
+      "explanation": "More tasks than agents means demand exceeds supply, so a dummy row (a fictitious agent) with zero costs is added to square the matrix. This lets the Hungarian method proceed on a balanced problem.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-014",
+      "stem": "A prohibited assignment (one that cannot be allowed) is handled in the Hungarian method by giving that cell:",
+      "options": [
+        "A cost of zero",
+        "A very large relative cost $M$ so it is never selected",
+        "A negative cost",
+        "The row minimum"
+      ],
+      "answer": 1,
+      "explanation": "A prohibited assignment is assigned a prohibitively large cost $M$, ensuring the method never chooses it in the optimal solution. This mirrors how prohibited routes are handled in transportation problems.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-015",
+      "stem": "Once an assignment is made to a particular row and column in the Hungarian method:",
+      "options": [
+        "More assignments may be made in that same row or column",
+        "All zeros in the table are removed",
+        "No further assignment can be made in that row or column",
+        "The total cost becomes zero"
+      ],
+      "answer": 2,
+      "explanation": "Because each agent does one task and each task uses one agent, once a cell is selected no other assignment may be made in its row or its column. This enforces the one-to-one matching.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-016",
+      "stem": "The presence of multiple zeros allowing different complete assignments indicates that the assignment problem has:",
+      "options": [
+        "No feasible solution",
+        "A degenerate transportation tableau",
+        "An unbounded solution",
+        "Multiple (alternative) optimal solutions"
+      ],
+      "answer": 3,
+      "explanation": "When several zero patterns each give a full set of assignments, there are multiple optimal solutions. The ACC example, for instance, has two distinct assignments both totalling $450$ miles.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-017",
+      "stem": "To solve a maximization assignment problem (for example maximizing ratings) by the Hungarian method, a common first step is to:",
+      "options": [
+        "Convert it to a minimization by subtracting every entry from the largest entry (an opportunity-loss matrix)",
+        "Leave the matrix unchanged",
+        "Add a dummy row",
+        "Set the diagonal to zero"
+      ],
+      "answer": 0,
+      "explanation": "The Hungarian method minimizes, so a maximization problem is first converted to an equivalent minimization, typically by subtracting each value from the maximum value to form a loss matrix. The method is then applied as usual.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-018",
+      "stem": "In the assignment LP, the constraint $x_{AR} + x_{BR} + x_{CR} + x_{DR} = 1$ expresses that:",
+      "options": [
+        "Official A officiates every game",
+        "Game (site) R is officiated by exactly one team",
+        "Exactly four teams cover game R",
+        "No team covers game R"
+      ],
+      "answer": 1,
+      "explanation": "This column constraint forces the total assignment to site R across all four officials to equal one, meaning game R is handled by exactly one team of officials. Row constraints similarly ensure each official takes exactly one game.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-019",
+      "stem": "How does the assignment model differ from a general transportation model?",
+      "options": [
+        "It has no costs",
+        "It maximizes instead of always minimizing",
+        "Each supply and each demand is limited to one unit, giving a one-to-one matching",
+        "It has no demand constraints"
+      ],
+      "answer": 2,
+      "explanation": "The assignment model is a transportation model specialized so that every supply and demand equals one, producing a one-to-one assignment of agents to tasks. Otherwise its structure and objective mirror the transportation problem.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-020",
+      "stem": "A balanced assignment problem with $m$ agents and $m$ tasks is optimal when the minimum number of lines needed to cover all zeros equals:",
+      "options": [
+        "$0$",
+        "$m - 1$",
+        "$2m$",
+        "$m$"
+      ],
+      "answer": 3,
+      "explanation": "When exactly $m$ covering lines are required to cross out all zeros, $m$ independent assignments can be made and the solution is optimal. Fewer than $m$ lines means the table must be revised and the test repeated.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-021",
+      "stem": "An entry of the opportunity-cost table created by the Hungarian method represents the:",
+      "options": [
+        "Relative penalty (opportunity cost) of not using the best option in that row and column",
+        "Actual travel distance",
+        "Number of agents",
+        "Shadow price of a resource"
+      ],
+      "answer": 0,
+      "explanation": "After row and column reductions, each entry is an opportunity cost: how much more than the cheapest available option that assignment would cost. Zeros mark the least-cost choices around which assignments are built.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-022",
+      "format": "cloze",
+      "stem": "The ACC example assigns four teams of officials to four games to minimize total travel distance.",
+      "solution": "One optimal assignment sends A to Atlanta ($90$), B to Raleigh ($100$), C to Dallas ($140$), and D to Clemson ($120$). Summing these distances gives a total of {{1}} miles. Because a second complete assignment achieves the same total, the problem has {{2}} optimal solutions.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 450,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "multiple",
+            "no"
+          ],
+          "answer": "multiple"
+        }
+      ],
+      "explanation": "The distances sum to $90 + 100 + 140 + 120 = 450$ miles; a second assignment also totals $450$, so there are multiple optimal solutions.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-023",
+      "format": "cloze",
+      "stem": "The Hungarian method builds an opportunity-cost table in two reduction steps.",
+      "solution": "First, subtract the minimum entry of each {{1}} from all its entries. Second, subtract the minimum entry of each {{2}} from all its entries. Assignments are then made at cells containing a {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "row"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "column"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "zero",
+            "0"
+          ]
+        }
+      ],
+      "explanation": "Row reduction then column reduction produce the opportunity-cost table; assignments are made at the zeros.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-024",
+      "format": "cloze",
+      "stem": "An assignment problem is balanced before the Hungarian method is applied.",
+      "solution": "If there are more agents than tasks (supply exceeds demand), a dummy {{1}} is added. If there are more tasks than agents (demand exceeds supply), a dummy {{2}} is added. Entries in any dummy line are given a cost of {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "column",
+            "row"
+          ],
+          "answer": "column"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "row",
+            "column"
+          ],
+          "answer": "row"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Surplus agents need a dummy column; surplus tasks need a dummy row; dummy costs are $0$.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-025",
+      "format": "cloze",
+      "stem": "The line test decides optimality in the Hungarian method.",
+      "solution": "Cover all zeros using the {{1}} number of horizontal and vertical lines. If the number of lines equals the number of rows $m$, then $m$ unique assignments exist and the solution is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "minimum",
+            "maximum"
+          ],
+          "answer": "minimum"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "optimal",
+            "optimum"
+          ]
+        }
+      ],
+      "explanation": "Cover zeros with the fewest lines; when that count equals $m$, an optimal set of $m$ assignments is available.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-026",
+      "format": "cloze",
+      "stem": "When fewer than $m$ lines cover all zeros, the opportunity-cost table is revised.",
+      "solution": "Let $d$ be the smallest uncovered entry. Subtract $d$ from every {{1}} entry and add $d$ to every entry lying at the {{2}} of two covering lines. Singly-covered entries are left unchanged, and the line test is then repeated.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "uncovered",
+            "uncrossed"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "intersection",
+            "crossing"
+          ]
+        }
+      ],
+      "explanation": "Subtract the minimum uncovered value from all uncovered entries and add it at the intersections of covering lines; repeat the line test.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-assignment-problem-027",
+      "format": "cloze",
+      "stem": "A prohibited assignment must be excluded from the optimal solution.",
+      "solution": "Such a cell is assigned a very {{1}} relative cost, denoted $M$, so it is never selected. This is the same device used for a prohibited route in a {{2}} problem.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "large",
+            "small"
+          ],
+          "answer": "large"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "transportation",
+            "transport"
+          ]
+        }
+      ],
+      "explanation": "A prohibited assignment gets a large cost $M$, mirroring the prohibited-route device of the transportation problem.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    }
+  ]
+}

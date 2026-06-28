@@ -1,0 +1,512 @@
+{
+  "courseId": "optimization-2",
+  "topicId": "lp-formulation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-2-lp-formulation-001",
+      "stem": "In the general linear programming model $\\text{Optimize } Z = c_1x_1 + c_2x_2 + \\cdots + c_nx_n$, what are the $x_j$ called?",
+      "options": [
+        "The decision variables",
+        "The technological coefficients",
+        "The right-hand-side constants",
+        "The objective coefficients"
+      ],
+      "answer": 0,
+      "explanation": "The $x_j$ are the decision variables, the unknown activity levels whose values the model chooses. The $c_j$ are the objective (cost or profit) coefficients, the $a_{ij}$ are the technological coefficients inside the constraints, and the $b_i$ are the right-hand-side resource availabilities.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-002",
+      "stem": "In an LP constraint $a_{i1}x_1 + a_{i2}x_2 + \\cdots + a_{in}x_n \\le b_i$, the numbers $a_{ij}$ are known as:",
+      "options": [
+        "Slack variables",
+        "Technological (input-output) coefficients",
+        "Decision variables",
+        "Shadow prices"
+      ],
+      "answer": 1,
+      "explanation": "The $a_{ij}$ are the technological or input-output coefficients; each represents the amount of resource $i$ consumed per unit of activity $x_j$. Slack variables are added later to convert inequalities to equations, the $x_j$ are the decisions, and shadow prices come from duality.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-003",
+      "stem": "What does the right-hand-side constant $b_i$ represent in a linear programming constraint?",
+      "options": [
+        "The per-unit profit of an activity",
+        "The number of decision variables",
+        "The total availability of resource $i$",
+        "The optimal objective value"
+      ],
+      "answer": 2,
+      "explanation": "The term $b_i$ is the total availability (or requirement) associated with the right-hand side of constraint $i$, such as the labour hours or raw material on hand. Per-unit profit is carried by the objective coefficients $c_j$.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-004",
+      "stem": "The compact form of an LP writes the objective as $Z = \\sum_{j=1}^{n} c_j x_j$. What is the corresponding compact constraint set?",
+      "options": [
+        "$a_{ij} x_j \\ge c_j$ for all $j$",
+        "$\\sum_{i=1}^{m} c_i x_i = 0$",
+        "$\\sum_{j=1}^{n} x_j = 1$",
+        "$\\sum_{j=1}^{n} a_{ij} x_j \\,(\\le,=,\\ge)\\, b_i,\\ i = 1,\\ldots,m$"
+      ],
+      "answer": 3,
+      "explanation": "Each of the $m$ constraints is written compactly as $\\sum_{j=1}^{n} a_{ij} x_j \\,(\\le,=,\\ge)\\, b_i$ for $i = 1, 2, \\ldots, m$, together with the non-negativity conditions $x_j \\ge 0$. The other choices are not the general constraint structure.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-005",
+      "stem": "In the general LP model the standard non-negativity conditions are:",
+      "options": [
+        "$x_j \\ge 0$ for all $j$",
+        "$x_j \\le 0$ for all $j$",
+        "$x_j = 1$ for all $j$",
+        "$c_j \\ge 0$ for all $j$"
+      ],
+      "answer": 0,
+      "explanation": "Linear programs require the decision variables to be non-negative, $x_j \\ge 0$ for $j = 1, 2, \\ldots, n$, because the activity levels cannot be negative. Restrictions on the $c_j$ are not part of the non-negativity conditions.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-006",
+      "stem": "A manufacturer makes $x_1$ chairs and $x_2$ tables earning profit $6$ and $8$ per unit. Which expression is the objective function to maximize?",
+      "options": [
+        "$Z = 8x_1 + 6x_2$",
+        "$Z = 6x_1 + 8x_2$",
+        "$Z = 6x_1 - 8x_2$",
+        "$Z = 14(x_1 + x_2)$"
+      ],
+      "answer": 1,
+      "explanation": "Total profit is the per-unit profit times the quantity for each product, summed: $Z = 6x_1 + 8x_2$. Swapping the coefficients misassigns the profits, and the products contribute additively rather than as a single combined rate.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-007",
+      "stem": "Producing one chair uses $30$ units of timber and one table uses $20$ units, with $300$ units of timber available. The timber constraint is:",
+      "options": [
+        "$30x_1 + 20x_2 \\ge 300$",
+        "$20x_1 + 30x_2 \\le 300$",
+        "$30x_1 + 20x_2 \\le 300$",
+        "$30x_1 + 20x_2 = 300$"
+      ],
+      "answer": 2,
+      "explanation": "Timber consumed is $30x_1 + 20x_2$, and this cannot exceed the $300$ units on hand, giving $30x_1 + 20x_2 \\le 300$. A $\\ge$ would force a minimum usage, an $=$ would force exact exhaustion, and swapping the coefficients misassigns the per-unit timber use.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-008",
+      "stem": "An LP requires the cost of television advertising to be at most $\\text{Rs}\\,500{,}000$, where prime-day and prime-time units cost $40{,}000$ and $75{,}000$. Which constraint captures this?",
+      "options": [
+        "$40{,}000x_1 + 75{,}000x_2 \\ge 500{,}000$",
+        "$40{,}000x_1 - 75{,}000x_2 \\le 500{,}000$",
+        "$115{,}000(x_1 + x_2) = 500{,}000$",
+        "$40{,}000x_1 + 75{,}000x_2 \\le 500{,}000$"
+      ],
+      "answer": 3,
+      "explanation": "The television spending $40{,}000x_1 + 75{,}000x_2$ must not exceed the $500{,}000$ ceiling, so the constraint is $40{,}000x_1 + 75{,}000x_2 \\le 500{,}000$. A budget ceiling is a $\\le$ limit, not a $\\ge$ requirement or an equality.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-009",
+      "stem": "A requirement reads 'at least $2$ million exposures among women', with women reached per unit being $300{,}000, 400{,}000, 200{,}000, 100{,}000$ for four media. The constraint is:",
+      "options": [
+        "$300{,}000x_1 + 400{,}000x_2 + 200{,}000x_3 + 100{,}000x_4 \\ge 2{,}000{,}000$",
+        "$300{,}000x_1 + 400{,}000x_2 + 200{,}000x_3 + 100{,}000x_4 \\le 2{,}000{,}000$",
+        "$300{,}000x_1 + 400{,}000x_2 + 200{,}000x_3 + 100{,}000x_4 = 0$",
+        "$x_1 + x_2 + x_3 + x_4 \\ge 2{,}000{,}000$"
+      ],
+      "answer": 0,
+      "explanation": "An 'at least' requirement is a greater-than-or-equal constraint: total women exposures $300{,}000x_1 + 400{,}000x_2 + 200{,}000x_3 + 100{,}000x_4$ must be $\\ge 2{,}000{,}000$. The word 'at least' is the verbal signal for $\\ge$.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-010",
+      "stem": "When converting a $\\le$ constraint such as $30x_1 + 20x_2 \\le 300$ to an equation for the simplex method, you add a:",
+      "options": [
+        "Surplus variable",
+        "Slack variable",
+        "Artificial variable",
+        "Decision variable"
+      ],
+      "answer": 1,
+      "explanation": "A $\\le$ constraint is turned into an equation by adding a non-negative slack variable that absorbs the unused resource: $30x_1 + 20x_2 + s_1 = 300$. Surplus variables are subtracted from $\\ge$ constraints, and artificial variables are a separate device for $\\ge$ or $=$ constraints.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-011",
+      "stem": "To convert a $\\ge$ constraint such as $x_1 + 0.9x_2 + 0.8x_3 \\ge 30$ into standard equation form, you:",
+      "options": [
+        "Add a slack variable",
+        "Multiply both sides by zero",
+        "Subtract a surplus variable",
+        "Drop the non-negativity conditions"
+      ],
+      "answer": 2,
+      "explanation": "A greater-than-or-equal constraint is made into an equation by subtracting a non-negative surplus variable: $x_1 + 0.9x_2 + 0.8x_3 - s_1 = 30$. The surplus measures the amount by which the left side exceeds the requirement.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-012",
+      "stem": "In the standard form objective $Z = 6x_1 + 8x_2 + 0s_1 + 0s_2$, why do the slack variables carry coefficient $0$?",
+      "options": [
+        "Because slack variables cannot be positive",
+        "Because the objective must always equal zero",
+        "Because slacks replace the decision variables",
+        "Because unused resources contribute nothing to profit"
+      ],
+      "answer": 3,
+      "explanation": "Slack variables represent unused resources, which earn no profit and incur no cost, so they enter the objective with a zero coefficient. They remain in the model only to keep the constraints as equations.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-013",
+      "stem": "A balanced transportation problem with $3$ supplies and $3$ demands is written with which type of constraints in the slide formulation?",
+      "options": [
+        "Supply and demand constraints are equalities $=$",
+        "All constraints are strict inequalities $<$",
+        "All constraints are $\\ge$",
+        "There are no non-negativity conditions"
+      ],
+      "answer": 0,
+      "explanation": "In a balanced transportation model total supply equals total demand, so every supply and demand constraint is an equation, for example $x_{1A} + x_{1B} + x_{1C} = 150$, together with $x_{ij} \\ge 0$. Equalities are used precisely because all available supply must be shipped to meet demand.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-014",
+      "stem": "The slide convention requires $b_i \\ge 0$. If a constraint appears as $2x_1 + 4x_2 \\ge -12$, how is it made to satisfy this convention?",
+      "options": [
+        "Delete the constraint",
+        "Multiply both sides by $-1$ and reverse the inequality, giving $-2x_1 - 4x_2 \\le 12$",
+        "Set $x_1 = x_2 = 0$",
+        "Replace $-12$ with $0$"
+      ],
+      "answer": 1,
+      "explanation": "When a right-hand side is negative, both sides of the constraint are multiplied by $-1$ and the inequality sign is reversed, turning $2x_1 + 4x_2 \\ge -12$ into $-2x_1 - 4x_2 \\le 12$ so that $b_i \\ge 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-015",
+      "stem": "Doctors work $5$ consecutive days then take $2$ off, and the objective is to minimize the total number of doctors. With $x_j$ doctors starting on day $j$, the objective is:",
+      "options": [
+        "$Z = \\max_j x_j$",
+        "$Z = 5(x_1 + x_2 + \\cdots + x_7)$",
+        "$Z = x_1 + x_2 + x_3 + x_4 + x_5 + x_6 + x_7$",
+        "$Z = x_1 x_2 \\cdots x_7$"
+      ],
+      "answer": 2,
+      "explanation": "The total number of doctors employed is the sum of those starting on each day, $Z = x_1 + x_2 + \\cdots + x_7$, to be minimized. Each doctor is counted once at the day their five-day block begins, so the objective is a plain sum.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-016",
+      "stem": "Which is the correct first step of LP model formulation according to the slide guidelines?",
+      "options": [
+        "Solve the simplex tableau",
+        "Draw the feasible region",
+        "Compute the dual prices",
+        "Identify the decision variables"
+      ],
+      "answer": 3,
+      "explanation": "The formulation guidelines begin by identifying the decision variables (after expressing the constraints and objective in words). Solving, plotting, or dualizing all come after a correct model has been written.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-017",
+      "stem": "In a maximization product-mix LP, a market commitment of 'at least $20$ units of product A' is modelled by the constraint:",
+      "options": [
+        "$x_1 \\ge 20$",
+        "$x_1 \\le 20$",
+        "$x_1 = 0$",
+        "$x_1 \\le 0$"
+      ],
+      "answer": 0,
+      "explanation": "A commitment to make at least $20$ units of product A is a lower bound, $x_1 \\ge 20$. The phrase 'at least' signals a greater-than-or-equal constraint on the corresponding decision variable.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-018",
+      "stem": "A capital-budgeting LP lets $x_j$ be the proportion invested in project $j$. Which constraint enforces that no more than the whole project can be funded?",
+      "options": [
+        "$x_j \\ge 1$",
+        "$x_j \\le 1$",
+        "$x_j = 0$",
+        "$x_j \\ge 0.5$"
+      ],
+      "answer": 1,
+      "explanation": "Because $x_j$ is a proportion of a project, it cannot exceed the entire project, giving the upper bound $x_j \\le 1$ (with $x_j \\ge 0$). This caps each investment at 100 percent of the project.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-019",
+      "stem": "Which list correctly names the three possible relational forms a single LP constraint may take?",
+      "options": [
+        "$<$, $>$, $\\neq$",
+        "$=$, $\\approx$, $\\ne$",
+        "$\\le$, $=$, $\\ge$",
+        "only $\\le$"
+      ],
+      "answer": 2,
+      "explanation": "The notation $(\\le, =, \\ge)$ in the general model means each constraint takes exactly one of the three forms: less than or equal to, equal to, or greater than or equal to. Strict inequalities and inequations are not used in the standard LP statement.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-020",
+      "stem": "In the chairs-and-tables model, after adding slacks the constraint set becomes $30x_1 + 20x_2 + s_1 = 300$ and $5x_1 + 10x_2 + s_2 = 110$. What does $s_2$ measure?",
+      "options": [
+        "The profit lost on tables",
+        "The shadow price of labour",
+        "The number of tables produced",
+        "The amount of the second resource left unused"
+      ],
+      "answer": 3,
+      "explanation": "The slack $s_2$ equals the unused amount of the second resource (here labour), the difference between the $110$ available and the $5x_1 + 10x_2$ consumed. When a resource is fully used its slack is zero.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-021",
+      "stem": "An LP model that seeks to minimize total transportation cost subject to fixed plant supplies and store demands is an example of:",
+      "options": [
+        "A minimization (cost) linear program",
+        "A maximization product-mix problem",
+        "A problem with no objective function",
+        "A nonlinear program"
+      ],
+      "answer": 0,
+      "explanation": "Transportation models minimize total cost $Z = \\sum c_{ij} x_{ij}$ subject to supply and demand constraints, so they are minimization linear programs. The objective is linear in the shipment quantities, keeping the model within LP.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-022",
+      "stem": "Why must the value of the decision variables in the optimal LP solution satisfy all the constraints?",
+      "options": [
+        "So that the objective coefficients become zero",
+        "So that the solution is feasible (acceptable)",
+        "So that slack variables become negative",
+        "So that the dual problem disappears"
+      ],
+      "answer": 1,
+      "explanation": "A solution is feasible, that is acceptable, only if it satisfies every constraint and the non-negativity conditions simultaneously. A point that violates a constraint is infeasible and cannot be the optimal solution, no matter how good its objective value looks.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-023",
+      "format": "cloze",
+      "stem": "Consider the chairs-and-tables LP: maximize profit $6x_1 + 8x_2$ subject to $30x_1 + 20x_2 \\le 300$ and $5x_1 + 10x_2 \\le 110$.",
+      "solution": "Writing the objective as $Z =$ {{1}} $x_1 + 8x_2$ identifies the per-unit profit of a chair. To convert the first constraint into an equation we add a slack variable, giving $30x_1 + 20x_2 + s_1 =$ {{2}}. In the objective written in standard form, the coefficient attached to that slack variable is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 300,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The chair profit is $6$, so $Z = 6x_1 + 8x_2$. Adding a slack to $30x_1 + 20x_2 \\le 300$ gives $30x_1 + 20x_2 + s_1 = 300$, and slacks carry a zero objective coefficient because unused resources earn no profit.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-024",
+      "format": "cloze",
+      "stem": "A linear program has $n$ decision variables and $m$ constraints stated in the general form.",
+      "solution": "The symbols $c_j$ are the {{1}} coefficients, while the symbols $a_{ij}$ are called the technological or input-output coefficients. The quantities $b_i$ give the total {{2}} of each resource, and the conditions $x_j \\ge 0$ are the {{3}} conditions.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "objective",
+            "slack",
+            "dual"
+          ],
+          "answer": "objective"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "availability",
+            "availabilities"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "non-negativity",
+            "nonnegativity",
+            "non negativity"
+          ]
+        }
+      ],
+      "explanation": "The $c_j$ are the objective (profit or cost) coefficients, the $a_{ij}$ are technological coefficients, the $b_i$ are resource availabilities, and $x_j \\ge 0$ are the non-negativity conditions.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-025",
+      "format": "cloze",
+      "stem": "Constraints must be converted to equations before the simplex method is applied.",
+      "solution": "A less-than-or-equal constraint is converted by {{1}} a slack variable, whereas a greater-than-or-equal constraint is converted by {{2}} a surplus variable. Both the slack and the surplus variables are required to be {{3}} (sign restriction).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "adding",
+            "subtracting",
+            "squaring"
+          ],
+          "answer": "adding"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "adding",
+            "subtracting",
+            "dividing"
+          ],
+          "answer": "subtracting"
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "non-negative",
+            "nonnegative",
+            "non negative"
+          ]
+        }
+      ],
+      "explanation": "Add a slack to a $\\le$ constraint, subtract a surplus from a $\\ge$ constraint, and require both to be non-negative ($s \\ge 0$).",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-026",
+      "format": "cloze",
+      "stem": "A balanced transportation LP ships wheat from three elevators with supplies $150, 175, 275$ to three mills.",
+      "solution": "The total supply equals $150 + 175 + 275 =$ {{1}} tons. Because the model is balanced, total demand must also equal this amount, so each supply and demand constraint is written as an {{2}} rather than an inequality.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 600,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "equation",
+            "equality"
+          ]
+        }
+      ],
+      "explanation": "The supplies sum to $150 + 175 + 275 = 600$ tons. In a balanced model demand also totals $600$, so all supply and demand constraints are equations.",
+      "difficulty": "warmup",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-027",
+      "format": "cloze",
+      "stem": "A doctor-scheduling LP minimizes the total number of doctors, with $x_j$ doctors beginning a five-day block on day $j$, $j = 1, \\ldots, 7$.",
+      "solution": "The objective function is $Z =$ {{1}}, written as the sum $x_1 + x_2 + \\cdots + x_7$, and it is to be {{2}}. A side condition that no more than $40$ doctors may start on any day is written $x_j$ {{3}} $40$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "x_1 + x_2 + x_3 + x_4 + x_5 + x_6 + x_7",
+            "sum of x_j",
+            "x1+x2+x3+x4+x5+x6+x7"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "minimized",
+            "maximized"
+          ],
+          "answer": "minimized"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "\\le",
+            "\\ge",
+            "="
+          ],
+          "answer": "\\le"
+        }
+      ],
+      "explanation": "The total head count is $Z = x_1 + x_2 + \\cdots + x_7$, to be minimized. A ceiling of $40$ starters per day is the upper bound $x_j \\le 40$.",
+      "difficulty": "core",
+      "source": "in the style of Sharma, Operations Research"
+    },
+    {
+      "id": "optimization-2-lp-formulation-028",
+      "format": "cloze",
+      "stem": "The slide convention requires every right-hand side to satisfy $b_i \\ge 0$.",
+      "solution": "Given the constraint $2x_1 + 4x_2 \\ge -12$, multiplying both sides by $-1$ changes the right-hand side to {{1}} and reverses the inequality so that the relation becomes a {{2}} type. The rewritten constraint is $-2x_1 - 4x_2 \\le 12$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 12,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "less-than-or-equal",
+            "greater-than-or-equal"
+          ],
+          "answer": "less-than-or-equal"
+        }
+      ],
+      "explanation": "Multiplying $2x_1 + 4x_2 \\ge -12$ by $-1$ gives right-hand side $12$ and flips $\\ge$ to $\\le$, yielding $-2x_1 - 4x_2 \\le 12$ with $b_i = 12 \\ge 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of Sharma, Operations Research"
+    }
+  ]
+}

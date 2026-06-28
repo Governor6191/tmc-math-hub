@@ -1,0 +1,477 @@
+{
+  "courseId": "mathematical-biology-i",
+  "topicId": "the-seir-model",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "mathematical-biology-i-the-seir-model-001",
+      "stem": "What does the compartment $E$ represent in an SEIR model?",
+      "options": [
+        "Eradicated individuals removed from the population",
+        "Exposed individuals: infected but not yet infectious",
+        "Externally immune individuals",
+        "Endemic equilibrium value"
+      ],
+      "answer": 1,
+      "explanation": "The exposed class $E$ holds individuals who have been infected but are not yet infectious, capturing the latent period before they can transmit the disease. It is not a removed or eradicated class, not an externally immune group, and certainly not an equilibrium value. SEIR inserts this latent stage between the susceptible and infective classes.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-002",
+      "stem": "Which system is the SEIR model without vital dynamics, with exposed transfer rate $k$?",
+      "options": [
+        "$\\dfrac{dS}{dt} = \\beta S I,\\ \\dfrac{dE}{dt} = \\beta S I + k E,\\ \\dfrac{dI}{dt} = k E + \\gamma I,\\ \\dfrac{dR}{dt} = \\gamma I$",
+        "$\\dfrac{dS}{dt} = -\\beta S I,\\ \\dfrac{dE}{dt} = k E - \\beta S I,\\ \\dfrac{dI}{dt} = \\gamma I - k E,\\ \\dfrac{dR}{dt} = -\\gamma I$",
+        "$\\dfrac{dS}{dt} = -\\beta S I,\\ \\dfrac{dE}{dt} = \\beta S I - k E,\\ \\dfrac{dI}{dt} = k E - \\gamma I,\\ \\dfrac{dR}{dt} = \\gamma I$",
+        "$\\dfrac{dS}{dt} = -\\beta S E,\\ \\dfrac{dE}{dt} = \\beta S E - k I,\\ \\dfrac{dI}{dt} = k I - \\gamma E,\\ \\dfrac{dR}{dt} = \\gamma E$"
+      ],
+      "answer": 2,
+      "explanation": "Infection moves susceptibles into $E$ at rate $\\beta S I$, exposed individuals become infective at rate $k E$, infectives recover at rate $\\gamma I$. This gives $\\frac{dS}{dt} = -\\beta S I$, $\\frac{dE}{dt} = \\beta S I - k E$, $\\frac{dI}{dt} = k E - \\gamma I$, $\\frac{dR}{dt} = \\gamma I$. The distractors flip signs, swap the roles of $E$ and $I$ in the incidence, or misuse $E$ in the contact term, which must involve the infectives $I$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-003",
+      "stem": "In the SEIR model the mean exposed (latent) period is",
+      "options": [
+        "$k$",
+        "$\\beta k$",
+        "$\\dfrac{1}{\\gamma}$",
+        "$\\dfrac{1}{k}$"
+      ],
+      "answer": 3,
+      "explanation": "The rate of leaving the exposed class is $k$, so the average time spent in $E$ is its reciprocal $1/k$. This parallels how $1/\\gamma$ is the mean infectious period. The rate $k$ itself is not a duration, $1/\\gamma$ is the infectious not the latent period, and $\\beta k$ has no such meaning. The mean exposed period is $1/k$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-004",
+      "stem": "In an SEIR model the exposed transfer rate is $k = 0.25$ per day. The average latent period is",
+      "options": [
+        "$4$ days",
+        "$2.5$ days",
+        "$0.25$ days",
+        "$0.5$ days"
+      ],
+      "answer": 0,
+      "explanation": "The average latent period is $1/k = 1/0.25 = 4$ days. A small transfer rate means individuals linger longer in the exposed class. Reporting $0.25$ confuses the rate with the period. The mean exposed period here is $4$ days.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-005",
+      "stem": "How does an SEIRS model extend the SEIR model?",
+      "options": [
+        "Exposed individuals skip the infective stage",
+        "Recovered individuals can lose immunity and return to the susceptible class at rate $\\xi$",
+        "Susceptibles are vaccinated at birth",
+        "Infectives are treated to reduce infectivity"
+      ],
+      "answer": 1,
+      "explanation": "SEIRS adds a return path from $R$ back to $S$ at rate $\\xi$, modelling loss of immunity so that recovery is not lifelong. The dashed return arrow on the SEIR diagram turns it into SEIRS. It does not let exposed individuals bypass the infective stage, vaccinate at birth, or add a treatment class, which are different model features. The defining SEIRS addition is loss of immunity.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-006",
+      "stem": "The SEIS model is best described as",
+      "options": [
+        "an SEIR model with a treatment class",
+        "an SIR model with permanent immunity",
+        "an SIS model with an added exposed (latent) period",
+        "a model with two infective stages"
+      ],
+      "answer": 2,
+      "explanation": "SEIS is an SIS model with an exposed period inserted between being infected and becoming infective, so the cycle is $S \\to E \\to I \\to S$. Because it is built on SIS, there is no lasting immunity and no permanent recovered class. It is not an SEIR variant with treatment, nor a two infective stage model. The key point is the added latent stage on an SIS backbone.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-007",
+      "stem": "In the SEIR equation $\\dfrac{dI}{dt} = k E - \\gamma I$, the term $k E$ represents",
+      "options": [
+        "loss of immunity",
+        "infectives recovering",
+        "new infections of susceptibles",
+        "exposed individuals progressing to become infectious"
+      ],
+      "answer": 3,
+      "explanation": "The inflow $k E$ is the rate at which exposed individuals finish their latent period and become infectious, entering $I$. The recovery of infectives is the $-\\gamma I$ term, new infections appear in the $E$ equation as $\\beta S I$, and loss of immunity is not present in the basic SEIR. So $k E$ is the exposed to infective progression.",
+      "difficulty": "warmup",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-008",
+      "stem": "Why is an SEIR model preferred over SIR for a disease such as measles with a clear incubation phase?",
+      "options": [
+        "Because it explicitly represents the latent period during which a person is infected but not yet infectious",
+        "Because it removes the need for a recovered class",
+        "Because it assumes the population is not constant",
+        "Because it ignores transmission entirely"
+      ],
+      "answer": 0,
+      "explanation": "SEIR adds the exposed compartment precisely to model the incubation or latent period, when an individual is infected but cannot yet transmit. SIR collapses this stage by assuming immediate infectiousness. SEIR still keeps a recovered class, can be posed with a constant population, and certainly retains transmission. The latent period is the reason to choose SEIR.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-009",
+      "stem": "In an SEIR model knowing who is exposed but not yet infectious is useful for public health because it",
+      "options": [
+        "guarantees the disease will die out",
+        "distinguishes those who can currently transmit from those who cannot yet",
+        "makes the population grow without bound",
+        "removes the need to estimate $\\beta$"
+      ],
+      "answer": 1,
+      "explanation": "Tracking the exposed class lets public health workers separate individuals who can already transmit (the infectives) from those who are infected but not yet infectious (the exposed), which matters for contact tracing and quarantine timing. It does not by itself guarantee extinction, alter population growth, or remove the need to estimate the transmission rate. The benefit is identifying who can spread the disease now.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-010",
+      "stem": "When an SEIR model includes some infectivity during the exposed period, reduced by a factor $\\varepsilon$, the basic reproduction number takes the form",
+      "options": [
+        "$R_0 = \\dfrac{\\gamma}{\\beta N} + \\varepsilon\\,\\dfrac{k}{\\beta N}$",
+        "$R_0 = \\dfrac{\\beta N}{\\gamma} - \\varepsilon\\,\\dfrac{\\beta N}{k}$",
+        "$R_0 = \\dfrac{\\beta N}{\\gamma} + \\varepsilon\\,\\dfrac{\\beta N}{k}$",
+        "$R_0 = \\varepsilon\\,\\dfrac{\\beta N}{\\gamma}$"
+      ],
+      "answer": 2,
+      "explanation": "If infectives contribute $\\frac{\\beta N}{\\gamma}$ and the exposed class also transmits at a fraction $\\varepsilon$ of full infectivity for a mean exposed time $1/k$, that adds $\\varepsilon\\frac{\\beta N}{k}$. The two contributions sum, giving $R_0 = \\frac{\\beta N}{\\gamma} + \\varepsilon\\frac{\\beta N}{k}$. Subtracting the exposed contribution, inverting the ratios, or dropping the infective term all misrepresent the total.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-011",
+      "stem": "For the SEIR model with exposed infectivity, $R_0 = \\dfrac{\\beta N}{\\gamma} + \\varepsilon\\dfrac{\\beta N}{k}$. If $\\beta N/\\gamma = 1.8$, $\\beta N/k = 1.5$, and $\\varepsilon = 0.2$, then $R_0$ is",
+      "options": [
+        "$2.4$",
+        "$3.3$",
+        "$1.8$",
+        "$2.1$"
+      ],
+      "answer": 3,
+      "explanation": "Substitute directly: $R_0 = 1.8 + 0.2 \\times 1.5 = 1.8 + 0.3 = 2.1$. The exposed class adds only a fraction $\\varepsilon$ of its full potential, so the increment is $0.3$, not the full $1.5$. Adding the full $1.5$ would wrongly give $3.3$. The correct value is $2.1$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-012",
+      "stem": "An SITR model adds a treatment class $T$ to the SIR structure. In that model the treated class receives inflow from",
+      "options": [
+        "infectives moved into treatment at rate $\\gamma$",
+        "susceptibles vaccinated directly",
+        "recovered individuals losing immunity",
+        "exposed individuals progressing"
+      ],
+      "answer": 0,
+      "explanation": "In the SITR extension a fraction of infectives is removed for treatment at rate $\\gamma$, so the treated class gains $\\gamma I$ and loses members as they recover at rate $\\eta$, giving $\\frac{dT}{dt} = \\gamma I - \\eta T$. Susceptibles are not vaccinated directly into $T$, there is no immunity loss feeding it, and the basic SITR has no exposed class. Treatment inflow comes from the infectives.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-013",
+      "stem": "In the SITR model the reproduction number is $R_0 = \\beta N_0\\left(\\dfrac{1}{\\alpha + \\gamma} + \\dfrac{\\gamma}{\\alpha + \\gamma}\\cdot\\dfrac{\\sigma}{\\eta}\\right)$. The factor $\\dfrac{\\gamma}{\\alpha + \\gamma}$ represents",
+      "options": [
+        "the mean latent period",
+        "the fraction of infectives that pass into the treated class",
+        "the loss of immunity rate",
+        "the total population size"
+      ],
+      "answer": 1,
+      "explanation": "Infectives leave the $I$ class at total rate $\\alpha + \\gamma$, split between recovery at $\\alpha$ and removal into treatment at $\\gamma$. The proportion routed to treatment is therefore $\\frac{\\gamma}{\\alpha + \\gamma}$, and their reduced contribution to transmission is weighted by $\\frac{\\sigma}{\\eta}$. It is not a latent period, an immunity loss rate, or a population size. It is the treated fraction of infectives.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-014",
+      "stem": "Evaluate the SITR reproduction number $R_0 = \\beta N_0\\left(\\dfrac{1}{\\alpha + \\gamma} + \\dfrac{\\gamma}{\\alpha + \\gamma}\\cdot\\dfrac{\\sigma}{\\eta}\\right)$ for $\\beta N_0 = 4$, $\\alpha = 1$, $\\gamma = 1$, $\\sigma = 0.5$, $\\eta = 1$.",
+      "options": [
+        "$4$",
+        "$2$",
+        "$3$",
+        "$1.5$"
+      ],
+      "answer": 2,
+      "explanation": "First $\\alpha + \\gamma = 2$, so $\\frac{1}{\\alpha+\\gamma} = 0.5$ and $\\frac{\\gamma}{\\alpha+\\gamma} = 0.5$. The treated term is $0.5 \\times \\frac{0.5}{1} = 0.25$. The bracket totals $0.5 + 0.25 = 0.75$, and $R_0 = 4 \\times 0.75 = 3$. Forgetting the treated term gives $2$; the full value is $3$.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-015",
+      "stem": "In the SLIAR influenza model (susceptible, latent, infectious, asymptomatic, recovered), the latent class $L$ progresses to two classes. What are they?",
+      "options": [
+        "The vaccinated class and the treated class",
+        "The susceptible class $S$ and the recovered class $R$",
+        "Two separate recovered classes",
+        "The clinically infectious class $I$ and the asymptomatic class $A$"
+      ],
+      "answer": 3,
+      "explanation": "In the SLIAR model the latent class advances at rate $\\kappa$, splitting into a proportion $p$ that becomes clinically infectious ($I$) and a proportion $1 - p$ that becomes asymptomatic ($A$). Both eventually recover. The latent class does not feed back to $S$ or $R$ directly, nor into two recovered classes or vaccinated and treated classes. It branches into the infectious and asymptomatic compartments.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-016",
+      "stem": "In the SLIAR model the incidence term is $\\beta(I + \\delta A)S$, where $\\delta$ is the reduced transmissibility of the asymptomatic class. What does $\\delta < 1$ express?",
+      "options": [
+        "Asymptomatic individuals transmit less effectively than clinically infectious ones",
+        "Asymptomatic individuals cannot transmit at all",
+        "Asymptomatic individuals transmit more than infectious ones",
+        "Latent individuals transmit the disease"
+      ],
+      "answer": 0,
+      "explanation": "The factor $\\delta$ scales the contribution of the asymptomatic class $A$ to new infections. With $0 < \\delta < 1$, asymptomatic carriers still transmit but less effectively than the fully infectious class $I$. If $\\delta$ were $0$ they would not transmit, and $\\delta > 1$ would make them more infectious, neither of which is the intended reduced transmissibility. The latent class does not appear in this incidence term.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-017",
+      "stem": "In the SEIR model without vital dynamics, what is $\\dfrac{d}{dt}(S + E + I + R)$ for a closed population?",
+      "options": [
+        "$\\beta S I$",
+        "$0$",
+        "$k E$",
+        "$\\gamma I$"
+      ],
+      "answer": 1,
+      "explanation": "Summing the four equations, $-\\beta S I + (\\beta S I - k E) + (k E - \\gamma I) + \\gamma I = 0$. Every internal transfer cancels, so the total population is constant. The individual incidence, progression, and recovery terms each appear with opposite signs in adjacent equations, which is why the closed SEIR population stays fixed.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-018",
+      "stem": "Compared with SIR, the SEIR model typically produces an epidemic curve whose initial growth is",
+      "options": [
+        "identical, because the exposed class has no effect",
+        "instantaneous, because there is no delay",
+        "slower, because infected individuals spend time in the exposed class before transmitting",
+        "always nonexistent, because the disease cannot spread"
+      ],
+      "answer": 2,
+      "explanation": "Because newly infected individuals must pass through the exposed class before becoming infectious, there is a built in delay that slows the early rise of the epidemic relative to SIR, where infection is immediate. The exposed stage does affect the dynamics, the disease can still spread, and the growth is not instantaneous. The latent delay makes the takeoff slower.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-019",
+      "stem": "In the SEIR model with exposed infectivity, the susceptible equation is written $\\dfrac{dS}{dt} = -\\beta S I - \\beta \\varepsilon S E$. The extra term $-\\beta\\varepsilon S E$ accounts for",
+      "options": [
+        "loss of immunity",
+        "recovery of infectives",
+        "births of new susceptibles",
+        "infections caused by exposed individuals at reduced infectivity"
+      ],
+      "answer": 3,
+      "explanation": "The second loss term $\\beta\\varepsilon S E$ represents new infections generated by contacts with exposed individuals, who transmit at a reduced rate scaled by $\\varepsilon < 1$. It is not recovery, birth, or immunity loss. Including it acknowledges that the exposed class is partially infectious, which is exactly why $R_0$ then gains the extra piece $\\varepsilon\\frac{\\beta N}{k}$.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-020",
+      "stem": "A disease has an average incubation period of $5$ days and an average infectious period of $4$ days. In an SEIR model these correspond to",
+      "options": [
+        "$k = 0.2$ per day and $\\gamma = 0.25$ per day",
+        "$k = 5$ per day and $\\gamma = 4$ per day",
+        "$k = 0.25$ per day and $\\gamma = 0.2$ per day",
+        "$k = 4$ per day and $\\gamma = 5$ per day"
+      ],
+      "answer": 0,
+      "explanation": "Rates are reciprocals of mean durations. A $5$ day incubation gives $k = 1/5 = 0.2$ per day, and a $4$ day infectious period gives $\\gamma = 1/4 = 0.25$ per day. Using the durations directly as rates, or swapping which period maps to which rate, gives the wrong pairs. The correct values are $k = 0.2$ and $\\gamma = 0.25$ per day.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-021",
+      "stem": "In the SEIR model the equation for the exposed class is $\\dfrac{dE}{dt} = \\beta S I - k E$. The two terms describe",
+      "options": [
+        "gain from recoveries and loss from births",
+        "gain from newly infected susceptibles and loss as exposed individuals become infectious",
+        "gain from treatment and loss from vaccination",
+        "loss from infection and gain from recovery"
+      ],
+      "answer": 1,
+      "explanation": "The inflow $\\beta S I$ adds susceptibles who have just been infected and enter the latent stage, while the outflow $k E$ removes exposed individuals as they progress to become infectious. There is no recovery, birth, treatment, or vaccination term here. The exposed class is fed by new infections and drained by progression to infectivity.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-022",
+      "format": "cloze",
+      "stem": "Assemble the SEIR system and interpret its rate constant.",
+      "solution": "In the SEIR model without vital dynamics, $\\dfrac{dS}{dt} = -\\beta S I$ and $\\dfrac{dE}{dt} = \\beta S I -$ {{1}}. The infective equation is $\\dfrac{dI}{dt} = k E - \\gamma I$, so exposed individuals become infectious at rate $k$. If $k = 0.2$ per day, the mean exposed period is {{2}} days. The class that recovery feeds into is the {{3}} class.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$k E$",
+            "$\\gamma I$",
+            "$k I$"
+          ],
+          "answer": "$k E$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "recovered",
+            "exposed",
+            "susceptible"
+          ],
+          "answer": "recovered"
+        }
+      ],
+      "explanation": "Exposed individuals leave at rate $k E$, so $\\frac{dE}{dt} = \\beta S I - k E$. The mean exposed period is $1/k = 1/0.2 = 5$ days. Recovery at rate $\\gamma I$ moves infectives into the recovered class $R$.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-023",
+      "format": "cloze",
+      "stem": "Identify the SEIR variants by their extra features.",
+      "solution": "Adding a return path from $R$ to $S$ at rate $\\xi$, so that immunity is lost, turns SEIR into the {{1}} model. An SIS model with an inserted latent stage is the {{2}} model. In SEIR the exposed class consists of individuals who are infected but {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "SEIRS",
+            "seirs"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "SEIS",
+            "seis"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "not yet infectious",
+            "already recovered",
+            "permanently immune"
+          ],
+          "answer": "not yet infectious"
+        }
+      ],
+      "explanation": "A loss of immunity arrow from $R$ to $S$ makes the model SEIRS. An SIS model with an exposed latent stage is SEIS. The exposed class in SEIR holds those infected but not yet infectious, the latent period before transmission begins.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-024",
+      "format": "cloze",
+      "stem": "Compute the reproduction number when the exposed class is partly infectious.",
+      "solution": "For an SEIR model with exposed infectivity, $R_0 = \\dfrac{\\beta N}{\\gamma} + \\varepsilon\\,\\dfrac{\\beta N}{k}$. Take $\\dfrac{\\beta N}{\\gamma} = 2.0$, $\\dfrac{\\beta N}{k} = 2.5$, and $\\varepsilon = 0.4$. The exposed contribution is {{1}}, so $R_0 =$ {{2}}. Because $R_0 > 1$, an epidemic {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "occurs",
+            "does not occur",
+            "is impossible"
+          ],
+          "answer": "occurs"
+        }
+      ],
+      "explanation": "The exposed contribution is $\\varepsilon \\times \\frac{\\beta N}{k} = 0.4 \\times 2.5 = 1.0$. Adding the infective term, $R_0 = 2.0 + 1.0 = 3.0 > 1$, so an epidemic occurs.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-025",
+      "format": "cloze",
+      "stem": "Convert incubation and infectious periods into SEIR rates.",
+      "solution": "A disease has a mean incubation period of $8$ days and a mean infectious period of $5$ days. In an SEIR model the exposed transfer rate is $k =$ {{1}} per day and the recovery rate is $\\gamma =$ {{2}} per day. Compared with an SIR model, the latent stage makes the early epidemic growth {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.125,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.2,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "slower",
+            "faster",
+            "instantaneous"
+          ],
+          "answer": "slower"
+        }
+      ],
+      "explanation": "Rates are reciprocals of durations: $k = 1/8 = 0.125$ per day and $\\gamma = 1/5 = 0.2$ per day. Because infected individuals wait in the exposed class before transmitting, SEIR shows slower initial growth than SIR.",
+      "difficulty": "core",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    },
+    {
+      "id": "mathematical-biology-i-the-seir-model-026",
+      "format": "cloze",
+      "stem": "Reason about conservation in the closed SEIR model and the SLIAR branching.",
+      "solution": "Adding all four SEIR equations for a closed population gives a total derivative of {{1}}, so the population stays constant. In the SLIAR model the latent class branches: a proportion $p$ becomes clinically infectious and a proportion {{2}} becomes asymptomatic. The asymptomatic class transmits with reduced effectiveness scaled by a factor that is {{3}} one.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "1-p",
+            "1 - p",
+            "(1-p)"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "less than",
+            "greater than",
+            "equal to"
+          ],
+          "answer": "less than"
+        }
+      ],
+      "explanation": "All internal transfers cancel when the SEIR equations are summed, so $\\frac{d}{dt}(S+E+I+R) = 0$. In SLIAR the latent class splits into proportion $p$ infectious and $1-p$ asymptomatic. The asymptomatic transmissibility factor $\\delta$ satisfies $\\delta < 1$, reflecting reduced infectiousness.",
+      "difficulty": "stretch",
+      "source": "in the style of Hethcote / Brauer and Castillo-Chavez, Mathematical Models in Population Biology and Epidemiology"
+    }
+  ]
+}
