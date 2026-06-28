@@ -157,3 +157,25 @@ test('an unknown format is rejected', () => {
   const errors = validateBank(b, 'calculus-i', 'limits');
   assert.ok(errors.some(e => e.includes('format')));
 });
+
+test('code: $ and braces inside backtick spans are not treated as math', () => {
+  const b = goodBank();
+  b.questions[0].stem = 'In bash, what does `echo $HOME` print and what is `awk {print $1}`?';
+  b.questions[0].options = ['the home directory and the first field', '`$PATH`', 'an error', 'nothing at all'];
+  b.questions[0].explanation = 'The variable `$HOME` expands to the home path and `awk` prints field one using `$1` here.';
+  assert.deepEqual(validateBank(b, 'calculus-i', 'limits'), []);
+});
+
+test('code: an unclosed backtick (odd number) is rejected', () => {
+  const b = goodBank();
+  b.questions[0].stem = 'Run `ls -l to list the files in long format on the machine right now';
+  const errors = validateBank(b, 'calculus-i', 'limits');
+  assert.ok(errors.some(e => e.includes('backtick')));
+});
+
+test('code: a bare odd $ outside code spans is still rejected', () => {
+  const b = goodBank();
+  b.questions[0].stem = 'The total cost was $5 and nothing more was spent on the trip that day';
+  const errors = validateBank(b, 'calculus-i', 'limits');
+  assert.ok(errors.some(e => e.includes('$ math delimiters')));
+});

@@ -1,4 +1,4 @@
-import { renderChrome, escapeHtml } from './app.js';
+import { renderChrome, escapeHtml, codeHtml } from './app.js';
 import { loadCatalog, findCourse } from './catalog.js';
 import { drawQuestions, shuffleOptions, mark, tally } from './quiz-engine.js';
 import { gradeCloze } from './cloze-engine.js';
@@ -64,11 +64,11 @@ function renderSession(course, year, semester, pool) {
     root.innerHTML = `
       ${header()}
       <div class="quiz-card">
-        <p class="quiz-stem">${escapeHtml(q.stem)}</p>
+        <p class="quiz-stem">${codeHtml(q.stem)}</p>
         <ul class="quiz-options">
           ${shuffled.options.map((opt, i) => `
             <li><button class="option-btn" data-i="${i}">
-              <span class="option-letter">${LETTERS[i]}</span><span>${escapeHtml(opt)}</span>
+              <span class="option-letter">${LETTERS[i]}</span><span>${codeHtml(opt)}</span>
             </button></li>`).join('')}
         </ul>
         <div id="feedback"></div>
@@ -91,7 +91,7 @@ function renderSession(course, year, semester, pool) {
       document.getElementById('feedback').innerHTML = `
         <div class="explanation">
           <p class="verdict ${result.correct ? 'right' : 'wrong'}">${result.correct ? 'Correct.' : 'Not quite.'}</p>
-          <div>${escapeHtml(q.explanation)}</div>
+          <div>${codeHtml(q.explanation)}</div>
         </div>
         <div class="quiz-next">
           <span class="hint">${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}</span>
@@ -114,7 +114,7 @@ function renderSession(course, year, semester, pool) {
     root.innerHTML = `
       ${header()}
       <div class="quiz-card">
-        <p class="quiz-stem">${escapeHtml(q.stem)}</p>
+        <p class="quiz-stem">${codeHtml(q.stem)}</p>
         ${solutionHtml(q, { shuffleDropdowns: true })}
         <div class="quiz-next" style="margin-top: 1.1rem;">
           <span class="hint">Fill every blank, then check.</span>
@@ -136,7 +136,7 @@ function renderSession(course, year, semester, pool) {
       document.getElementById('feedback').innerHTML = `
         <div class="explanation">
           <p class="verdict ${graded.allCorrect ? 'right' : 'wrong'}">${graded.allCorrect ? 'All correct.' : `${graded.correctCount} of ${graded.total} blanks right.`}</p>
-          <div>${escapeHtml(q.explanation)}</div>
+          <div>${codeHtml(q.explanation)}</div>
         </div>
         <div class="quiz-next">
           <span class="hint">${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}</span>

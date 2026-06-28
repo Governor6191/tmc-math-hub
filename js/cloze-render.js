@@ -6,7 +6,7 @@
 // render as a group of selectable chips (radio labels) so their math can be
 // KaTeX-rendered, which a native <select><option> cannot do.
 
-import { escapeHtml } from './app.js';
+import { escapeHtml, codeHtml } from './app.js';
 import { splitSolution } from './cloze-engine.js';
 import { shuffle } from './quiz-engine.js';
 
@@ -15,7 +15,7 @@ function gapWidget(gap, shuffleDropdowns, qid) {
     const opts = shuffleDropdowns ? shuffle(gap.options) : gap.options;
     const name = `clz-${escapeHtml(String(qid))}-${gap.id}`;
     return `<span class="cloze-choices" data-gap="${gap.id}" role="radiogroup" aria-label="blank ${gap.id}">` +
-      opts.map(o => `<label class="cloze-choice"><input type="radio" name="${name}" value="${escapeHtml(o)}"><span>${escapeHtml(o)}</span></label>`).join('') +
+      opts.map(o => `<label class="cloze-choice"><input type="radio" name="${name}" value="${escapeHtml(o)}"><span>${codeHtml(o)}</span></label>`).join('') +
       `</span>`;
   }
   const mode = gap.type === 'number' ? ' inputmode="decimal"' : '';
@@ -26,7 +26,7 @@ function gapWidget(gap, shuffleDropdowns, qid) {
 // question once). The exam pre-shuffles in the attempt snapshot and passes false.
 export function solutionHtml(question, opts = {}) {
   const html = splitSolution(question.solution).map(seg => {
-    if (seg.type === 'text') return escapeHtml(seg.value);
+    if (seg.type === 'text') return codeHtml(seg.value);
     const gap = question.gaps.find(g => g.id === seg.id);
     return gap ? gapWidget(gap, !!opts.shuffleDropdowns, question.id) : '';
   }).join('');

@@ -1,4 +1,4 @@
-import { renderChrome, escapeHtml } from './app.js';
+import { renderChrome, escapeHtml, codeHtml } from './app.js';
 import { loadCatalog, findCourse } from './catalog.js';
 import { createAttempt, remainingMs, answerQuestion, toggleFlag, answeredCount, scoreAttempt } from './exam-state.js';
 import { saveCheckpoint, loadCheckpoint, clearCheckpoint, recordAttempt } from './exam-store.js';
@@ -127,13 +127,13 @@ function renderExam() {
           <p class="hint" style="margin: 0;">Question ${i + 1} of ${attempt.questions.length}${i in attempt.answers ? '' : ' · not yet answered'}</p>
           <button class="flag-btn${attempt.flags[i] ? ' on' : ''}" id="flag">${attempt.flags[i] ? 'Flagged' : 'Flag question'}</button>
         </div>
-        <p class="quiz-stem">${escapeHtml(q.stem)}</p>
+        <p class="quiz-stem">${codeHtml(q.stem)}</p>
         ${q.format === 'cloze'
           ? solutionHtml(q)
           : `<ul class="quiz-options">
           ${q.options.map((opt, oi) => `
             <li><button class="option-btn${attempt.answers[i] === oi ? ' is-correct' : ''}" data-pick="${oi}">
-              <span class="option-letter">${LETTERS[oi]}</span><span>${escapeHtml(opt)}</span>
+              <span class="option-letter">${LETTERS[oi]}</span><span>${codeHtml(opt)}</span>
             </button></li>`).join('')}
         </ul>`}
         <div class="quiz-next">
@@ -256,24 +256,24 @@ function renderResults(s, auto) {
         return `
       <article class="review-q">
         <p class="meta">Question ${i + 1} · ${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}${attempt.flags[i] ? ' · flagged' : ''} · ${graded.correctCount}/${graded.total} blanks</p>
-        <p class="quiz-stem">${escapeHtml(q.stem)}</p>
+        <p class="quiz-stem">${codeHtml(q.stem)}</p>
         <div data-review-cloze="${i}">${solutionHtml(q)}</div>
-        <div class="explanation"><div>${escapeHtml(q.explanation)}</div></div>
+        <div class="explanation"><div>${codeHtml(q.explanation)}</div></div>
       </article>`;
       }
       const chosen = attempt.answers[i];
       return `
       <article class="review-q">
         <p class="meta">Question ${i + 1} · ${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}${attempt.flags[i] ? ' · flagged' : ''}</p>
-        <p class="quiz-stem">${escapeHtml(q.stem)}</p>
+        <p class="quiz-stem">${codeHtml(q.stem)}</p>
         <ul class="quiz-options">
           ${q.options.map((opt, oi) => `
             <li><span class="option-btn${oi === q.answerIndex ? ' is-correct' : ''}${chosen === oi && chosen !== q.answerIndex ? ' is-wrong' : ''}" style="cursor: default;">
-              <span class="option-letter">${LETTERS[oi]}</span><span>${escapeHtml(opt)}</span>
+              <span class="option-letter">${LETTERS[oi]}</span><span>${codeHtml(opt)}</span>
             </span></li>`).join('')}
         </ul>
         <p class="hint" style="margin: 0.4rem 0;">${chosen === undefined ? 'Not answered.' : chosen === q.answerIndex ? 'Your answer was correct.' : `Your answer: ${LETTERS[chosen]}. Correct answer: ${LETTERS[q.answerIndex]}.`}</p>
-        <div class="explanation"><div>${escapeHtml(q.explanation)}</div></div>
+        <div class="explanation"><div>${codeHtml(q.explanation)}</div></div>
       </article>`;
     }).join('')}`;
   renderMathIn(root);

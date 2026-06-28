@@ -32,10 +32,15 @@ function optionKey(raw) {
 
 function textProblems(label, s, errors, qid) {
   if (DASH_RE.test(s)) errors.push(`${qid}: ${label} contains an em or en dash (voice rules ban them)`);
-  const dollars = (s.match(/\$/g) || []).length;
+  // `backtick` code spans render literally (KaTeX skips <code>), so $ and braces
+  // inside them are not math; strip paired code spans before the math checks.
+  const ticks = (s.match(/`/g) || []).length;
+  if (ticks % 2 !== 0) errors.push(`${qid}: ${label} has an odd number of backticks (unclosed code span)`);
+  const bare = s.replace(/`[^`]*`/g, '');
+  const dollars = (bare.match(/\$/g) || []).length;
   if (dollars % 2 !== 0) errors.push(`${qid}: ${label} has an odd number of $ math delimiters`);
   let depth = 0;
-  for (const ch of s) {
+  for (const ch of bare) {
     if (ch === '{') depth++;
     if (ch === '}') depth--;
     if (depth < 0) break;

@@ -13,6 +13,26 @@ export function escapeHtml(s) {
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+// Render content text to HTML, turning `backtick` spans into <code> elements.
+// KaTeX's renderMathInElement ignores <code> by default, so shell/code with
+// $ signs ($HOME, awk $1) or braces renders literally instead of as math.
+// Outside code spans, $...$ is left intact for KaTeX. Unpaired backticks are
+// treated as a literal character. Safe drop-in for escapeHtml on content.
+export function codeHtml(s) {
+  const str = String(s);
+  let out = '', i = 0;
+  while (i < str.length) {
+    const open = str.indexOf('`', i);
+    if (open === -1) { out += escapeHtml(str.slice(i)); break; }
+    out += escapeHtml(str.slice(i, open));
+    const close = str.indexOf('`', open + 1);
+    if (close === -1) { out += escapeHtml(str.slice(open)); break; }
+    out += '<code>' + escapeHtml(str.slice(open + 1, close)) + '</code>';
+    i = close + 1;
+  }
+  return out;
+}
+
 export const drivePreviewUrl = id => `https://drive.google.com/file/d/${id}/preview`;
 export const driveViewUrl = id => `https://drive.google.com/file/d/${id}/view`;
 // Note: Google shows a "can't scan for viruses" interstitial for very large files. Expected, not a bug.
