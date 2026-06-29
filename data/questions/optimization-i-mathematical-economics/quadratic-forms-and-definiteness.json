@@ -1,0 +1,555 @@
+{
+  "courseId": "optimization-i-mathematical-economics",
+  "topicId": "quadratic-forms-and-definiteness",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-001",
+      "stem": "A quadratic form in $n$ variables is an expression that can be written as",
+      "options": [
+        "$x^T A x$ for a symmetric matrix $A$",
+        "$A x = b$ for a square matrix $A$",
+        "$\\nabla f(x) = 0$",
+        "$c^T x$ for a vector $c$"
+      ],
+      "answer": 0,
+      "explanation": "A quadratic form is $Q(x) = x^T A x$, a homogeneous degree-two polynomial in the entries of $x$, and $A$ may be taken symmetric without loss of generality. The expression $c^T x$ is linear, $Ax = b$ is a linear system, and $\\nabla f = 0$ is an optimality condition, so only $x^T A x$ is a quadratic form.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-002",
+      "stem": "When we associate a symmetric matrix $A$ with a quadratic form, why is $A$ taken to be symmetric?",
+      "options": [
+        "Because only symmetric matrices are invertible",
+        "Because any quadratic form can be represented by the symmetric matrix $\\tfrac{1}{2}(A + A^T)$ without changing its value",
+        "Because symmetric matrices have determinant one",
+        "Because symmetry makes the form linear"
+      ],
+      "answer": 1,
+      "explanation": "For any matrix $A$, the value $x^T A x$ equals $x^T \\tfrac{1}{2}(A + A^T) x$, and $\\tfrac{1}{2}(A + A^T)$ is symmetric, so we lose nothing by assuming symmetry. Symmetry does not force invertibility or unit determinant, and it certainly does not make the form linear, so the representation reason is correct.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-003",
+      "stem": "A symmetric matrix $A$ is positive definite if",
+      "options": [
+        "$x^T A x > 0$ for all $x \\ne 0$",
+        "$x^T A x \\ge 0$ for all $x$",
+        "$x^T A x < 0$ for all $x \\ne 0$",
+        "$\\det(A) > 0$ only"
+      ],
+      "answer": 0,
+      "explanation": "Positive definiteness means the form is strictly positive for every nonzero vector, that is $x^T A x > 0$ for all $x \\ne 0$. Allowing equality gives only positive semidefinite, the strict negative case is negative definite, and a positive determinant alone is not sufficient, so the strict positivity is the definition.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-004",
+      "stem": "By the leading-principal-minor (Sylvester) test, a symmetric matrix is positive definite when",
+      "options": [
+        "all leading principal minors are positive",
+        "the leading principal minors alternate in sign starting negative",
+        "the determinant is negative",
+        "the trace is zero"
+      ],
+      "answer": 0,
+      "explanation": "Sylvester's criterion says a symmetric matrix is positive definite exactly when every leading principal minor $D_1, D_2, \\dots, D_n$ is strictly positive. Alternating signs starting negative is the test for negative definiteness, while the trace and a single determinant are not enough on their own, so all-positive minors is the correct rule.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-005",
+      "stem": "By the eigenvalue test, a symmetric matrix is negative definite if and only if",
+      "options": [
+        "all its eigenvalues are positive",
+        "all its eigenvalues are negative",
+        "its eigenvalues have mixed signs",
+        "at least one eigenvalue is zero"
+      ],
+      "answer": 1,
+      "explanation": "Since a symmetric matrix is orthogonally diagonalizable, the form $x^T A x$ is a weighted sum of squares with the eigenvalues as weights, so it is negative for all nonzero $x$ exactly when every eigenvalue is negative. All-positive eigenvalues give positive definite, mixed signs give indefinite, and a zero eigenvalue rules out definiteness, so all-negative is correct.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-006",
+      "stem": "For $A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$, the leading principal minors are $D_1 = 2$ and $D_2 = 6$. The matrix is",
+      "options": [
+        "indefinite",
+        "negative definite",
+        "positive definite",
+        "positive semidefinite"
+      ],
+      "answer": 2,
+      "explanation": "Here $D_1 = 2 > 0$ and $D_2 = \\det(A) = 6 > 0$, so both leading principal minors are positive. By Sylvester's criterion the matrix is positive definite, which the eigenvalues $2$ and $3$ confirm since both are positive.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-007",
+      "stem": "Classify $A = \\begin{pmatrix} -2 & 0 \\\\ 0 & -5 \\end{pmatrix}$ using its leading principal minors.",
+      "options": [
+        "Positive definite",
+        "Negative semidefinite",
+        "Indefinite",
+        "Negative definite"
+      ],
+      "answer": 3,
+      "explanation": "The minors are $D_1 = -2 < 0$ and $D_2 = (-2)(-5) = 10 > 0$, so the signs alternate starting negative, which is the criterion for negative definiteness. The eigenvalues $-2$ and $-5$ are both negative, confirming the matrix is negative definite.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-008",
+      "stem": "Classify $A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 1 \\end{pmatrix}$.",
+      "options": [
+        "Positive definite",
+        "Indefinite",
+        "Negative definite",
+        "Positive semidefinite"
+      ],
+      "answer": 1,
+      "explanation": "The determinant is $D_2 = (1)(1) - (2)(2) = -3 < 0$, and a negative second minor forces indefiniteness. The eigenvalues are $-1$ and $3$, of opposite sign, so the form takes both positive and negative values and the matrix is indefinite.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-009",
+      "stem": "The eigenvalues of $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ are $1$ and $3$. Therefore $A$ is",
+      "options": [
+        "indefinite",
+        "negative semidefinite",
+        "positive definite",
+        "negative definite"
+      ],
+      "answer": 2,
+      "explanation": "Both eigenvalues $1$ and $3$ are strictly positive, so by the eigenvalue test the matrix is positive definite. Equivalently the minors $D_1 = 2$ and $D_2 = 3$ are positive, agreeing with the classification.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-010",
+      "stem": "Classify $A = \\begin{pmatrix} 4 & 2 \\\\ 2 & 1 \\end{pmatrix}$, whose determinant is $0$.",
+      "options": [
+        "Positive definite",
+        "Indefinite",
+        "Positive semidefinite",
+        "Negative definite"
+      ],
+      "answer": 2,
+      "explanation": "Here $D_1 = 4 > 0$ but $D_2 = (4)(1) - (2)(2) = 0$, so the matrix is not positive definite yet is not indefinite. The eigenvalues are $0$ and $5$, both nonnegative, so the form is always $\\ge 0$ and the matrix is positive semidefinite.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-011",
+      "stem": "For $A = \\begin{pmatrix} 2 & 3 \\\\ 3 & 2 \\end{pmatrix}$, compute $D_2 = \\det(A)$ and classify the matrix.",
+      "options": [
+        "$D_2 = -5$, indefinite",
+        "$D_2 = 13$, positive definite",
+        "$D_2 = 5$, positive definite",
+        "$D_2 = -5$, negative definite"
+      ],
+      "answer": 0,
+      "explanation": "The determinant is $D_2 = (2)(2) - (3)(3) = 4 - 9 = -5$, which is negative. A negative second leading minor makes the matrix indefinite, consistent with eigenvalues $-1$ and $5$ of opposite sign.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-012",
+      "stem": "Classify $A = \\begin{pmatrix} -3 & 1 \\\\ 1 & -3 \\end{pmatrix}$ using minors.",
+      "options": [
+        "Positive definite",
+        "Indefinite",
+        "Positive semidefinite",
+        "Negative definite"
+      ],
+      "answer": 3,
+      "explanation": "The minors are $D_1 = -3 < 0$ and $D_2 = (-3)(-3) - (1)(1) = 9 - 1 = 8 > 0$, alternating in sign starting negative. This is the negative-definite pattern, and the eigenvalues $-2$ and $-4$ are both negative, confirming it.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-013",
+      "stem": "The matrix $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}$ gives the quadratic form $Q(x, y) = x^2 - y^2$. This form is",
+      "options": [
+        "positive definite",
+        "negative definite",
+        "indefinite",
+        "positive semidefinite"
+      ],
+      "answer": 2,
+      "explanation": "At $(1, 0)$ the form equals $1 > 0$ while at $(0, 1)$ it equals $-1 < 0$, so it takes both signs and is indefinite. The eigenvalues are $1$ and $-1$, of opposite sign, which is exactly the indefinite case.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-014",
+      "stem": "A symmetric matrix is positive semidefinite if and only if its eigenvalues are",
+      "options": [
+        "all strictly positive",
+        "all nonnegative (some may be zero)",
+        "all strictly negative",
+        "all nonzero"
+      ],
+      "answer": 1,
+      "explanation": "Positive semidefinite means $x^T A x \\ge 0$ for all $x$, which happens exactly when every eigenvalue is $\\ge 0$, allowing zeros. Requiring strictly positive eigenvalues gives positive definite, and the other options describe different sign patterns, so all-nonnegative is correct.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-015",
+      "stem": "For the $3 \\times 3$ matrix $A = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 3 \\end{pmatrix}$, the leading principal minors are $D_1 = 1$, $D_2 = 2$, $D_3 = 6$. The matrix is",
+      "options": [
+        "indefinite",
+        "negative definite",
+        "positive semidefinite",
+        "positive definite"
+      ],
+      "answer": 3,
+      "explanation": "All three leading principal minors $1$, $2$, $6$ are positive, so Sylvester's criterion gives positive definiteness. The eigenvalues are the diagonal entries $1$, $2$, $3$, all positive, confirming the result.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-016",
+      "stem": "For $A = \\begin{pmatrix} -1 & 0 & 0 \\\\ 0 & -2 & 0 \\\\ 0 & 0 & -3 \\end{pmatrix}$, the leading principal minors are $D_1 = -1$, $D_2 = 2$, $D_3 = -6$. The matrix is",
+      "options": [
+        "negative semidefinite",
+        "positive definite",
+        "indefinite",
+        "negative definite"
+      ],
+      "answer": 3,
+      "explanation": "The minors are $-1, 2, -6$, alternating in sign and starting negative, which is the negative-definite pattern for a $3 \\times 3$ matrix. The eigenvalues $-1, -2, -3$ are all negative, confirming negative definiteness.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-017",
+      "stem": "Classify $A = \\begin{pmatrix} 3 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & 2 \\end{pmatrix}$.",
+      "options": [
+        "Positive definite",
+        "Indefinite",
+        "Negative definite",
+        "Positive semidefinite"
+      ],
+      "answer": 1,
+      "explanation": "The eigenvalues are the diagonal entries $3$, $-1$, $2$, which include both positive and negative values. Mixed-sign eigenvalues mean the form takes both signs, so the matrix is indefinite; indeed $D_2 = (3)(-1) = -3 < 0$ already rules out definiteness.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-018",
+      "stem": "The tridiagonal matrix $A = \\begin{pmatrix} 2 & 1 & 0 \\\\ 1 & 2 & 1 \\\\ 0 & 1 & 2 \\end{pmatrix}$ has leading principal minors $D_1 = 2$, $D_2 = 3$, $D_3 = 4$. Classify it.",
+      "options": [
+        "Indefinite",
+        "Negative definite",
+        "Positive definite",
+        "Negative semidefinite"
+      ],
+      "answer": 2,
+      "explanation": "All three minors $2$, $3$, $4$ are positive, so the matrix is positive definite by Sylvester's criterion. Its eigenvalues are $2 - \\sqrt{2}$, $2$, and $2 + \\sqrt{2}$, all positive, which agrees.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-019",
+      "stem": "If a symmetric matrix has one positive and one negative eigenvalue, then it is",
+      "options": [
+        "positive definite",
+        "indefinite",
+        "negative definite",
+        "positive semidefinite"
+      ],
+      "answer": 1,
+      "explanation": "Eigenvalues of opposite sign mean the quadratic form is positive in one eigen-direction and negative in another, so it takes both signs. By definition this is an indefinite matrix, regardless of the magnitudes involved.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-020",
+      "stem": "For $A = \\begin{pmatrix} 5 & 1 \\\\ 1 & 3 \\end{pmatrix}$, the leading principal minors are $D_1 = 5$ and $D_2 = 14$. The matrix is",
+      "options": [
+        "indefinite",
+        "negative definite",
+        "positive semidefinite",
+        "positive definite"
+      ],
+      "answer": 3,
+      "explanation": "Both minors $D_1 = 5$ and $D_2 = (5)(3) - (1)(1) = 14$ are positive, so the matrix is positive definite. The eigenvalues, near $2.59$ and $5.41$, are both positive, confirming the conclusion.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-021",
+      "stem": "Which statement about a negative-definite matrix $A$ is true?",
+      "options": [
+        "$-A$ is positive definite",
+        "$A$ has a zero eigenvalue",
+        "$A$ is also positive semidefinite",
+        "$\\det(A)$ is always negative"
+      ],
+      "answer": 0,
+      "explanation": "If $A$ is negative definite then $x^T A x < 0$ for all $x \\ne 0$, so $x^T(-A)x > 0$ and $-A$ is positive definite. A negative-definite matrix has no zero eigenvalue and is not positive semidefinite, and its determinant sign depends on the dimension, so only the $-A$ statement holds.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-022",
+      "stem": "The quadratic form $Q(x, y) = 2x^2 + 4xy + 3y^2$ corresponds to which symmetric matrix?",
+      "options": [
+        "$\\begin{pmatrix} 2 & 4 \\\\ 4 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 2 \\\\ 2 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 2 & 0 \\\\ 0 & 3 \\end{pmatrix}$",
+        "$\\begin{pmatrix} 4 & 2 \\\\ 2 & 6 \\end{pmatrix}$"
+      ],
+      "answer": 1,
+      "explanation": "Writing $Q = x^T A x$ with symmetric $A$, the diagonal entries are the coefficients of $x^2$ and $y^2$, namely $2$ and $3$, while the off-diagonal entry is half the $xy$ coefficient, that is $\\tfrac{1}{2}(4) = 2$. So $A = \\begin{pmatrix} 2 & 2 \\\\ 2 & 3 \\end{pmatrix}$, where putting the full $4$ off the diagonal would double-count the cross term.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-023",
+      "stem": "Evaluate the quadratic form $Q(x) = x^T A x$ with $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix}$ at $x = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$.",
+      "options": [
+        "$18$",
+        "$10$",
+        "$9$",
+        "$14$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $Ax = \\begin{pmatrix} 2 + 2 \\\\ 1 + 6 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 7 \\end{pmatrix}$, then $x^T(Ax) = (1)(4) + (2)(7) = 4 + 14 = 18$. Equivalently $2(1)^2 + 2(1)(2) + 3(2)^2 = 2 + 4 + 12 = 18$, so the value is $18$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-024",
+      "stem": "Classify $A = \\begin{pmatrix} 6 & 2 \\\\ 2 & 3 \\end{pmatrix}$ from its minors $D_1 = 6$, $D_2 = 14$.",
+      "options": [
+        "Indefinite",
+        "Positive semidefinite",
+        "Negative definite",
+        "Positive definite"
+      ],
+      "answer": 3,
+      "explanation": "Since $D_1 = 6 > 0$ and $D_2 = (6)(3) - (2)(2) = 18 - 4 = 14 > 0$, both leading minors are positive and the matrix is positive definite. The eigenvalues are $2$ and $7$, both positive, confirming this.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-025",
+      "stem": "The matrix $A = \\begin{pmatrix} 1 & 1 \\\\ 1 & 1 \\end{pmatrix}$, giving $Q(x, y) = (x + y)^2$, is",
+      "options": [
+        "positive definite",
+        "indefinite",
+        "positive semidefinite but not definite",
+        "negative definite"
+      ],
+      "answer": 2,
+      "explanation": "The form $(x + y)^2$ is never negative but equals zero along the line $x = -y$, for instance at $(1, -1)$, so it is not strictly positive. With eigenvalues $0$ and $2$ and minors $D_1 = 1$, $D_2 = 0$, the matrix is positive semidefinite but not positive definite.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-026",
+      "format": "cloze",
+      "stem": "Classify $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ using leading principal minors and eigenvalues.",
+      "solution": "The first leading principal minor is $D_1 = 2$ and the second is $D_2 = \\det(A) =$ {{1}}. The eigenvalues, from $\\lambda^2 - 4\\lambda + 3 = 0$, are $\\lambda =$ {{2}} and $\\lambda = 3$. Since both minors are positive and both eigenvalues are positive, the matrix is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "positive definite",
+            "negative definite",
+            "indefinite",
+            "positive semidefinite"
+          ],
+          "answer": "positive definite"
+        }
+      ],
+      "explanation": "Here $D_2 = (2)(2) - (1)(1) = 3$, and the characteristic equation gives $\\lambda = 1$ and $\\lambda = 3$. Positive minors and positive eigenvalues both certify positive definiteness.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-027",
+      "format": "cloze",
+      "stem": "Classify $A = \\begin{pmatrix} -3 & 1 \\\\ 1 & -3 \\end{pmatrix}$.",
+      "solution": "The minors are $D_1 = -3$ and $D_2 =$ {{1}}. The eigenvalues are $\\lambda = -2$ and $\\lambda =$ {{2}}. Because the minors alternate in sign starting negative and both eigenvalues are negative, the matrix is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "negative definite",
+            "positive definite",
+            "indefinite",
+            "negative semidefinite"
+          ],
+          "answer": "negative definite"
+        }
+      ],
+      "explanation": "The determinant is $D_2 = (-3)(-3) - (1)(1) = 8$, and the eigenvalues solve $\\lambda^2 + 6\\lambda + 8 = 0$, giving $-2$ and $-4$. The alternating minors and all-negative eigenvalues mark the matrix as negative definite.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-028",
+      "format": "cloze",
+      "stem": "Classify $A = \\begin{pmatrix} 2 & 3 \\\\ 3 & 2 \\end{pmatrix}$.",
+      "solution": "The second leading principal minor is $D_2 = \\det(A) =$ {{1}}. The eigenvalues are $\\lambda = -1$ and $\\lambda =$ {{2}}. A negative determinant and eigenvalues of opposite sign show the matrix is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -5,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "indefinite",
+            "positive definite",
+            "negative definite",
+            "positive semidefinite"
+          ],
+          "answer": "indefinite"
+        }
+      ],
+      "explanation": "The determinant is $D_2 = 4 - 9 = -5$, and the eigenvalues from $\\lambda^2 - 4\\lambda - 5 = 0$ are $-1$ and $5$. Opposite-sign eigenvalues, and equivalently a negative $D_2$, make the matrix indefinite.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-029",
+      "format": "cloze",
+      "stem": "Classify $A = \\begin{pmatrix} 4 & 2 \\\\ 2 & 1 \\end{pmatrix}$, paying attention to the boundary case.",
+      "solution": "The minors are $D_1 = 4$ and $D_2 =$ {{1}}. The eigenvalues are $\\lambda = 0$ and $\\lambda =$ {{2}}. Because one eigenvalue is zero while the rest are nonnegative, the matrix is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "positive semidefinite",
+            "positive definite",
+            "negative definite",
+            "indefinite"
+          ],
+          "answer": "positive semidefinite"
+        }
+      ],
+      "explanation": "Here $D_2 = (4)(1) - (2)(2) = 0$, and the eigenvalues solve $\\lambda^2 - 5\\lambda = 0$, giving $0$ and $5$. A zero eigenvalue with the others nonnegative means the matrix is positive semidefinite but not definite.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-030",
+      "format": "cloze",
+      "stem": "Use the Sylvester (leading-principal-minor) test on the $3 \\times 3$ matrix $A = \\begin{pmatrix} 2 & 1 & 0 \\\\ 1 & 2 & 1 \\\\ 0 & 1 & 2 \\end{pmatrix}$.",
+      "solution": "The leading principal minors are $D_1 = 2$, $D_2 =$ {{1}}, and $D_3 = \\det(A) =$ {{2}}. Since all three are positive, the matrix is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "positive definite",
+            "negative definite",
+            "indefinite",
+            "positive semidefinite"
+          ],
+          "answer": "positive definite"
+        }
+      ],
+      "explanation": "The top-left $1 \\times 1$ minor is $2$, the $2 \\times 2$ minor is $(2)(2) - (1)(1) = 3$, and the full determinant expands to $4$. All positive minors give positive definiteness by Sylvester's criterion.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-quadratic-forms-and-definiteness-031",
+      "format": "cloze",
+      "stem": "Evaluate and interpret the quadratic form for $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 3 \\end{pmatrix}$ at $x = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$.",
+      "solution": "Expanding, $Q(x, y) = 2x^2 + 2xy + 3y^2$, so at $(1, 2)$ the value is $Q =$ {{1}}. Because the minors $D_1 = 2$ and $D_2 = 5$ are both positive, this form is {{2}}, so $Q$ is positive at every nonzero point.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 18,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "positive definite",
+            "indefinite",
+            "negative definite",
+            "positive semidefinite"
+          ],
+          "answer": "positive definite"
+        }
+      ],
+      "explanation": "At $(1, 2)$ the form is $2(1) + 2(2) + 3(4) = 2 + 4 + 12 = 18$. With $D_1 = 2 > 0$ and $D_2 = (2)(3) - (1)(1) = 5 > 0$, the matrix is positive definite, so the form stays positive away from the origin.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    }
+  ]
+}

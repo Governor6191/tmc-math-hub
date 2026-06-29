@@ -1,0 +1,537 @@
+{
+  "courseId": "optimization-i-mathematical-economics",
+  "topicId": "convex-sets",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-001",
+      "stem": "A set $C \\subseteq \\mathbb{R}^n$ is convex if",
+      "options": [
+        "for every two points in $C$, the entire line segment joining them lies in $C$",
+        "it contains the origin",
+        "it is bounded and closed",
+        "it contains at least one extreme point"
+      ],
+      "answer": 0,
+      "explanation": "Convexity requires that whenever $x, y \\in C$, the segment $\\lambda x + (1 - \\lambda)y$ for $0 \\le \\lambda \\le 1$ stays inside $C$. Containing the origin, being closed and bounded, or having an extreme point are neither necessary nor sufficient, so the segment condition is the definition.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-002",
+      "stem": "For points $x$ and $y$, the expression $\\lambda x + (1 - \\lambda)y$ with $0 \\le \\lambda \\le 1$ is called a",
+      "options": [
+        "linear combination",
+        "convex combination",
+        "basis expansion",
+        "scalar product"
+      ],
+      "answer": 1,
+      "explanation": "A convex combination uses nonnegative weights that sum to one, exactly as $\\lambda$ and $1 - \\lambda$ do here, and traces the segment between $x$ and $y$. A general linear combination allows any coefficients, so the restricted weighting is specifically a convex combination.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-003",
+      "stem": "Which of the following sets in the plane is NOT convex?",
+      "options": [
+        "A solid disk $\\{(x, y) : x^2 + y^2 \\le 1\\}$",
+        "A half-plane $\\{(x, y) : x + y \\le 3\\}$",
+        "An annulus (ring) $\\{(x, y) : 1 \\le x^2 + y^2 \\le 4\\}$",
+        "A solid triangle"
+      ],
+      "answer": 2,
+      "explanation": "An annulus has a hole, so a segment joining two points on opposite sides passes through the missing center and leaves the set, violating convexity. A disk, a half-plane, and a triangle are all convex because every connecting segment stays inside, so only the annulus fails.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-004",
+      "stem": "A set of the form $H = \\{x : a^T x = b\\}$ (with $a \\ne 0$) is called a",
+      "options": [
+        "half-space",
+        "cone",
+        "polytope",
+        "hyperplane"
+      ],
+      "answer": 3,
+      "explanation": "The solution set of a single linear equation $a^T x = b$ is a hyperplane, a flat of dimension one less than the space. A half-space uses an inequality, a polytope is an intersection of several half-spaces, and a cone is closed under nonnegative scaling, so the equation defines a hyperplane.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-005",
+      "stem": "A set of the form $\\{x : a^T x \\le b\\}$ is called a",
+      "options": [
+        "hyperplane",
+        "half-space",
+        "line",
+        "ball"
+      ],
+      "answer": 1,
+      "explanation": "A single linear inequality $a^T x \\le b$ defines a half-space, one of the two regions a hyperplane splits the space into, and it is convex. An equality would give a hyperplane and a quadratic inequality a ball, so the linear inequality gives a half-space.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-006",
+      "stem": "The intersection of two convex sets is",
+      "options": [
+        "convex only if the sets are bounded",
+        "never convex",
+        "always convex",
+        "convex only if the sets are disjoint"
+      ],
+      "answer": 2,
+      "explanation": "If a segment lies in each of two convex sets, it lies in both, so it lies in their intersection, which makes the intersection convex. This holds without any boundedness or disjointness assumption, so the intersection is always convex.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-007",
+      "stem": "The midpoint of the points $x = (1, 2)$ and $y = (3, 6)$, namely $\\tfrac{1}{2}x + \\tfrac{1}{2}y$, is",
+      "options": [
+        "$(4, 8)$",
+        "$(2, 4)$",
+        "$(1, 3)$",
+        "$(2, 8)$"
+      ],
+      "answer": 1,
+      "explanation": "Averaging coordinatewise gives $\\left(\\tfrac{1 + 3}{2}, \\tfrac{2 + 6}{2}\\right) = (2, 4)$. This is the convex combination with $\\lambda = \\tfrac{1}{2}$, the midpoint of the segment from $x$ to $y$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-008",
+      "stem": "An extreme point of a convex set $C$ is a point that",
+      "options": [
+        "lies in the interior of $C$",
+        "is the midpoint of two boundary points",
+        "maximizes the distance from the origin",
+        "cannot be written as $\\lambda x + (1 - \\lambda)y$ with $x, y \\in C$ distinct and $0 < \\lambda < 1$"
+      ],
+      "answer": 3,
+      "explanation": "An extreme point cannot be expressed as a strict convex combination of two other distinct points of the set, so it does not lie strictly between any two points of $C$. Interior points always lie between nearby points, and distance to the origin is irrelevant, so the non-combination property is the definition.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-009",
+      "stem": "How many extreme points does a solid triangle in the plane have?",
+      "options": [
+        "$0$",
+        "$3$",
+        "Infinitely many",
+        "$1$"
+      ],
+      "answer": 1,
+      "explanation": "The extreme points of a solid triangle are exactly its three corner vertices, since no vertex lies strictly between two other points of the triangle. Edge and interior points can each be written as a convex combination of others, so there are precisely three extreme points.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-010",
+      "stem": "The convex combination $\\tfrac{1}{3}x + \\tfrac{2}{3}y$ of $x = (0, 0)$ and $y = (3, 9)$ equals",
+      "options": [
+        "$(1, 3)$",
+        "$(3, 9)$",
+        "$(2, 6)$",
+        "$(1.5, 4.5)$"
+      ],
+      "answer": 2,
+      "explanation": "Compute $\\tfrac{1}{3}(0, 0) + \\tfrac{2}{3}(3, 9) = (0, 0) + (2, 6) = (2, 6)$. The weight $\\tfrac{2}{3}$ on $y$ places the point two-thirds of the way from $x$ to $y$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-011",
+      "stem": "Which of the following is always a convex set?",
+      "options": [
+        "The boundary circle $\\{(x, y) : x^2 + y^2 = 1\\}$",
+        "The union of two disjoint disks",
+        "The set of points with integer coordinates",
+        "A single half-space $\\{x : a^T x \\le b\\}$"
+      ],
+      "answer": 3,
+      "explanation": "A half-space defined by one linear inequality is convex, since any segment between two points satisfying $a^T x \\le b$ also satisfies it. A circle (its boundary only), a union of separated disks, and the integer lattice all contain pairs whose connecting segment leaves the set, so only the half-space is convex.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-012",
+      "stem": "The whole space $\\mathbb{R}^n$ and the empty set $\\emptyset$ are",
+      "options": [
+        "both convex",
+        "both nonconvex",
+        "convex and nonconvex respectively",
+        "neither, since they have no extreme points"
+      ],
+      "answer": 0,
+      "explanation": "All of $\\mathbb{R}^n$ is convex because every segment stays inside it, and the empty set is convex vacuously since there are no two points to test. Convexity does not require extreme points, so both are convex.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-013",
+      "stem": "Is the point $(1, 6)$ a convex combination of $x = (4, 0)$ and $y = (0, 8)$? If so, with what weight $\\lambda$ on $x$?",
+      "options": [
+        "Yes, with $\\lambda = \\tfrac{1}{4}$",
+        "Yes, with $\\lambda = \\tfrac{3}{4}$",
+        "No, it is not on the segment",
+        "Yes, with $\\lambda = \\tfrac{1}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "Set $\\lambda(4, 0) + (1 - \\lambda)(0, 8) = (4\\lambda, 8 - 8\\lambda)$ equal to $(1, 6)$; the first coordinate gives $4\\lambda = 1$, so $\\lambda = \\tfrac{1}{4}$. Checking the second, $8 - 8(\\tfrac{1}{4}) = 8 - 2 = 6$, which matches, so the point is on the segment with $\\lambda = \\tfrac{1}{4}$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-014",
+      "stem": "A polyhedron is defined as",
+      "options": [
+        "the boundary of a ball",
+        "the union of finitely many half-spaces",
+        "any bounded set",
+        "the intersection of finitely many half-spaces"
+      ],
+      "answer": 3,
+      "explanation": "A polyhedron is the solution set of finitely many linear inequalities, that is the intersection of finitely many half-spaces, and is therefore convex. A union of half-spaces need not be convex, and boundedness alone or a ball boundary does not define a polyhedron, so the intersection definition is correct.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-015",
+      "stem": "Which statement about half-spaces and hyperplanes is correct?",
+      "options": [
+        "A hyperplane is convex but a half-space is not",
+        "Neither is convex",
+        "Both hyperplanes and half-spaces are convex",
+        "A half-space is convex but a hyperplane is not"
+      ],
+      "answer": 2,
+      "explanation": "A hyperplane $a^T x = b$ and a half-space $a^T x \\le b$ are both convex, because any convex combination of points satisfying a linear equality or inequality satisfies the same relation. So both sets are convex, making the joint statement the right one.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-016",
+      "stem": "The convex hull of a finite set of points is",
+      "options": [
+        "always a single line segment",
+        "the largest convex set inside them",
+        "the union of the points only",
+        "the smallest convex set containing those points"
+      ],
+      "answer": 3,
+      "explanation": "The convex hull is the smallest convex set that contains the given points, equal to the set of all their convex combinations. It is generally larger than the bare set of points and need not be a segment unless the points are collinear, so the smallest-containing-set description is correct.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-017",
+      "stem": "The point $\\tfrac{1}{2}x + \\tfrac{1}{2}y$ for $x = (-2, 4)$ and $y = (6, 0)$ is",
+      "options": [
+        "$(4, 4)$",
+        "$(2, 2)$",
+        "$(2, 4)$",
+        "$(4, 2)$"
+      ],
+      "answer": 1,
+      "explanation": "Averaging gives $\\left(\\tfrac{-2 + 6}{2}, \\tfrac{4 + 0}{2}\\right) = (2, 2)$. This midpoint lies on the segment joining the two points, halfway between them.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-018",
+      "stem": "Why is the union of two convex sets generally NOT convex?",
+      "options": [
+        "Because unions are never defined for convex sets",
+        "Because the union loses all extreme points",
+        "Because convex sets cannot overlap",
+        "Because a segment joining a point of one set to a point of the other may leave both sets"
+      ],
+      "answer": 3,
+      "explanation": "Take two separated disks: a segment from one disk to the other passes through the gap and lies in neither, so it escapes the union, breaking convexity. The failure is precisely that connecting segments across the two pieces leave the union, which is the stated reason.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-019",
+      "stem": "The point on the segment from $(1, 1)$ to $(5, 9)$ that has first coordinate $3$ is",
+      "options": [
+        "$(3, 4)$",
+        "$(3, 5)$",
+        "$(3, 6)$",
+        "$(3, 3)$"
+      ],
+      "answer": 1,
+      "explanation": "Parametrize as $(1, 1) + t(4, 8) = (1 + 4t, 1 + 8t)$; setting $1 + 4t = 3$ gives $t = \\tfrac{1}{2}$. Then the second coordinate is $1 + 8(\\tfrac{1}{2}) = 5$, so the point is $(3, 5)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-020",
+      "stem": "Why are convex feasible regions important in optimization?",
+      "options": [
+        "They guarantee the objective is linear",
+        "They remove the need for constraints",
+        "They make every problem unbounded",
+        "For a convex objective over a convex set, every local minimum is a global minimum"
+      ],
+      "answer": 3,
+      "explanation": "Convexity of both the feasible set and the objective ensures there are no separate local minima distinct from the global one, so local optimality implies global optimality. This is the central reason convex problems are tractable; it does not make the objective linear or the problem unbounded.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-021",
+      "stem": "Which of these is an extreme point of the square with vertices $(0,0), (1,0), (1,1), (0,1)$?",
+      "options": [
+        "$(0.5, 0.5)$",
+        "$(0.5, 0)$",
+        "$(1, 1)$",
+        "$(0.5, 1)$"
+      ],
+      "answer": 2,
+      "explanation": "The extreme points of a square are its four corners, so $(1, 1)$ qualifies because it cannot be written as a strict convex combination of two other points of the square. The center $(0.5, 0.5)$ and the edge midpoints such as $(0.5, 0)$ each lie between two points of the set, so they are not extreme.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-022",
+      "stem": "A set $C$ is a convex cone if it is convex and",
+      "options": [
+        "closed under nonnegative scaling: $x \\in C, t \\ge 0 \\Rightarrow tx \\in C$",
+        "bounded",
+        "contains exactly one point",
+        "has no interior"
+      ],
+      "answer": 0,
+      "explanation": "A convex cone is a convex set that is also closed under multiplication by nonnegative scalars, so rays from the origin through its points stay inside. Boundedness, being a single point, or lacking interior are not what define a cone, so the nonnegative-scaling property is correct.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-023",
+      "stem": "Is the set $\\{(x, y) : xy \\ge 1, \\ x > 0\\}$ (the region above one branch of a hyperbola) convex?",
+      "options": [
+        "No, because it is unbounded",
+        "Yes, this region is convex",
+        "No, because it excludes the origin",
+        "No, it is never convex for any curve"
+      ],
+      "answer": 1,
+      "explanation": "The branch $y \\ge 1/x$ for $x > 0$ lies above a convex function, and the region above a convex function (its epigraph) is a convex set, so any segment between two of its points stays inside. Unboundedness and exclusion of the origin do not affect convexity, so the region is convex.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-024",
+      "format": "cloze",
+      "stem": "Compute the convex combination $\\lambda x + (1 - \\lambda)y$ of $x = (0, 5)$ and $y = (5, 0)$ with $\\lambda = \\tfrac{2}{5}$.",
+      "solution": "The first coordinate is $\\tfrac{2}{5}(0) + \\tfrac{3}{5}(5) =$ {{1}} and the second coordinate is $\\tfrac{2}{5}(5) + \\tfrac{3}{5}(0) =$ {{2}}. Because this point is a convex combination of two points of any convex set containing $x$ and $y$, it also lies in that {{3}} set.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "concave",
+            "empty",
+            "open"
+          ],
+          "answer": "convex"
+        }
+      ],
+      "explanation": "With weight $\\tfrac{3}{5}$ on $y$, the first coordinate is $\\tfrac{3}{5}(5) = 3$ and the second is $\\tfrac{2}{5}(5) = 2$, giving $(3, 2)$. A convex set contains every convex combination of its points, so the point lies in the convex set.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-025",
+      "format": "cloze",
+      "stem": "Decide whether $(1, 6)$ lies on the segment from $x = (4, 0)$ to $y = (0, 8)$.",
+      "solution": "Write the point as $\\lambda(4, 0) + (1 - \\lambda)(0, 8)$. Matching the first coordinate, $4\\lambda = 1$, so $\\lambda =$ {{1}}. The second coordinate then gives $8 - 8\\lambda =$ {{2}}, which matches, so the point {{3}} on the segment.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "does lie",
+            "does not lie",
+            "is the midpoint",
+            "is an endpoint"
+          ],
+          "answer": "does lie"
+        }
+      ],
+      "explanation": "From $4\\lambda = 1$ we get $\\lambda = 0.25$, and then $8 - 8(0.25) = 6$ agrees with the target second coordinate. Since a valid $\\lambda \\in [0, 1]$ reproduces both coordinates, the point does lie on the segment.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-026",
+      "format": "cloze",
+      "stem": "Find the midpoint of $x = (-2, 4)$ and $y = (6, 0)$ and interpret it.",
+      "solution": "The midpoint coordinates are $\\tfrac{-2 + 6}{2} =$ {{1}} and $\\tfrac{4 + 0}{2} =$ {{2}}. This midpoint is the convex combination with weight $\\lambda =$ {{3}} on each point.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "Averaging the coordinates gives $(2, 2)$, the midpoint of the segment. A midpoint corresponds to equal weights $\\lambda = 1 - \\lambda = 0.5$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-027",
+      "format": "cloze",
+      "stem": "State key facts about convex sets and their building blocks.",
+      "solution": "The set $\\{x : a^T x \\le b\\}$ defined by one linear inequality is a {{1}}. The intersection of any collection of convex sets is {{2}}. The corner points of a convex polygon that cannot be written as strict convex combinations of other points are its {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "half-space",
+            "hyperplane",
+            "cone",
+            "ball"
+          ],
+          "answer": "half-space"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "nonconvex",
+            "empty",
+            "unbounded"
+          ],
+          "answer": "convex"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "extreme points",
+            "interior points",
+            "midpoints",
+            "saddle points"
+          ],
+          "answer": "extreme points"
+        }
+      ],
+      "explanation": "A single linear inequality defines a half-space, and intersecting convex sets always yields a convex set. The non-decomposable corner points of a polygon are its extreme points.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-028",
+      "format": "cloze",
+      "stem": "Classify three planar sets as convex or not.",
+      "solution": "A solid disk is {{1}}. An annulus (a ring with a hole) is {{2}}. A single half-plane is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "not convex"
+          ],
+          "answer": "convex"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "not convex",
+            "convex"
+          ],
+          "answer": "not convex"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "not convex"
+          ],
+          "answer": "convex"
+        }
+      ],
+      "explanation": "A disk and a half-plane are convex because every connecting segment stays inside. An annulus is not convex, since a segment across its hole leaves the set.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-sets-029",
+      "format": "cloze",
+      "stem": "Find the point one third of the way from $x = (0, 0)$ to $y = (3, 9)$, that is the combination with weight $\\tfrac{2}{3}$ on $x$ and $\\tfrac{1}{3}$ on $y$.",
+      "solution": "The first coordinate is $\\tfrac{1}{3}(3) =$ {{1}} and the second coordinate is $\\tfrac{1}{3}(9) =$ {{2}}. The number of extreme points of the segment joining $x$ and $y$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Putting weight $\\tfrac{1}{3}$ on $y = (3, 9)$ gives $(1, 3)$, one third of the way along. A line segment has exactly two extreme points, its endpoints.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    }
+  ]
+}

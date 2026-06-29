@@ -1,0 +1,554 @@
+{
+  "courseId": "optimization-i-applied-maths",
+  "topicId": "introduction-to-optimization",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-001",
+      "stem": "In an optimization problem, the function that is to be maximized or minimized is called the",
+      "options": [
+        "constraint function",
+        "objective function",
+        "feasible region",
+        "decision variable"
+      ],
+      "answer": 1,
+      "explanation": "The objective function is the quantity, written $f(x)$, whose largest or smallest value is sought. The constraints restrict the allowed points, the feasible region is the set of allowed points, and a decision variable is one of the inputs, so none of those names the function being optimized.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-002",
+      "stem": "The unknowns whose values we are free to choose in order to optimize the objective are called the",
+      "options": [
+        "parameters",
+        "Lagrange multipliers",
+        "objective values",
+        "decision variables"
+      ],
+      "answer": 3,
+      "explanation": "Decision variables are the controllable inputs, gathered into a vector $x = (x_1, \\dots, x_n)$, whose values we adjust. Lagrange multipliers are auxiliary unknowns introduced for constraints, the objective value is the output $f(x)$, and parameters are fixed data, so only decision variables are the free choices.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-003",
+      "stem": "The set of all points that satisfy every constraint of an optimization problem is called the",
+      "options": [
+        "objective set",
+        "level set",
+        "feasible region",
+        "gradient set"
+      ],
+      "answer": 2,
+      "explanation": "The feasible region is exactly the collection of points that meet all the constraints, and the optimum is searched for only within it. A level set is where the objective is constant, the gradient set is not a standard term, and the objective set is not where feasibility is decided, so the feasible region is the correct name.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-004",
+      "stem": "A point $x^*$ is a global minimizer of $f$ on a set $S$ if",
+      "options": [
+        "$f(x^*) \\le f(x)$ for all $x$ in $S$",
+        "$f(x^*) \\le f(x)$ only for $x$ near $x^*$",
+        "$f(x^*) \\ge f(x)$ for all $x$ in $S$",
+        "$\\nabla f(x^*)$ is nonzero"
+      ],
+      "answer": 0,
+      "explanation": "A global minimizer gives the least objective value over the entire set, so $f(x^*) \\le f(x)$ must hold for every $x$ in $S$. The condition holding only near $x^*$ defines a local minimizer, the reversed inequality describes a maximizer, and a nonzero gradient is unrelated to being a minimizer.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-005",
+      "stem": "A point $x^*$ is a local minimizer of $f$ if there is a neighborhood $N$ of $x^*$ such that",
+      "options": [
+        "$f(x^*) \\le f(x)$ for all $x$ in the whole domain",
+        "$f(x^*) = 0$",
+        "$f$ is linear on $N$",
+        "$f(x^*) \\le f(x)$ for all $x$ in $N$"
+      ],
+      "answer": 3,
+      "explanation": "A local minimizer is least only compared to nearby points, so the defining inequality $f(x^*) \\le f(x)$ holds just for $x$ in some neighborhood $N$. Requiring it over the whole domain would make it global, linearity of $f$ is irrelevant, and $f(x^*) = 0$ confuses the location with the objective value.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-006",
+      "stem": "Minimizing $f(x)$ is equivalent to maximizing which function?",
+      "options": [
+        "$\\dfrac{1}{f(x)}$",
+        "$f(x)^2$",
+        "$-f(x)$",
+        "$|f(x)|$"
+      ],
+      "answer": 2,
+      "explanation": "Because $\\min f(x) = -\\max(-f(x))$, the minimizer of $f$ is exactly the maximizer of $-f$, with the optimal value negated. Squaring, taking reciprocals, or taking absolute values all change which point is optimal, so only $-f(x)$ gives an equivalent problem.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-007",
+      "stem": "An optimization problem with no constraints on the decision variables is called",
+      "options": [
+        "an infeasible problem",
+        "a constrained problem",
+        "an unconstrained problem",
+        "a discrete problem"
+      ],
+      "answer": 2,
+      "explanation": "When the variables may range over all of $\\mathbb{R}^n$ with no restrictions, the problem is unconstrained. A constrained problem imposes equalities or inequalities, an infeasible problem has an empty feasible region, and a discrete problem restricts variables to integers, so unconstrained is correct.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-008",
+      "stem": "A constraint of the form $g(x) = 0$ is called",
+      "options": [
+        "an inequality constraint",
+        "an objective",
+        "an equality constraint",
+        "a bound",
+        "a slack variable"
+      ],
+      "answer": 2,
+      "explanation": "A condition written with an equals sign, $g(x) = 0$, is an equality constraint and confines the feasible points to a surface. Inequality constraints use $\\le$ or $\\ge$, a bound restricts a single variable, and a slack variable is added to convert an inequality, so equality constraint is the right label.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-009",
+      "stem": "Which classification best describes the problem: minimize $f(x, y) = x^2 + y^2$ subject to $x + y = 1$?",
+      "options": [
+        "Unconstrained nonlinear optimization",
+        "Equality-constrained nonlinear optimization",
+        "Linear programming",
+        "Inequality-constrained linear optimization"
+      ],
+      "answer": 1,
+      "explanation": "The objective $x^2 + y^2$ is nonlinear and there is a single equality $x + y = 1$, so this is equality-constrained nonlinear optimization. It is not unconstrained because of the equality, and not linear programming because the objective is quadratic rather than linear.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-010",
+      "stem": "If the feasible region of a problem is empty, the problem is said to be",
+      "options": [
+        "unbounded",
+        "degenerate",
+        "convex",
+        "infeasible"
+      ],
+      "answer": 3,
+      "explanation": "When no point satisfies all the constraints at once, the feasible set is empty and the problem is infeasible, so no optimum exists. Unbounded means the objective improves without limit, convex describes a shape of the region, and degenerate refers to a special vertex condition, so infeasible is correct.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-011",
+      "stem": "A minimization problem is called unbounded below if",
+      "options": [
+        "the feasible region is empty",
+        "the objective has a unique minimizer",
+        "the objective is constant",
+        "the objective can be made arbitrarily small (toward $-\\infty$) on the feasible region"
+      ],
+      "answer": 3,
+      "explanation": "Unbounded below means the objective decreases without any finite lower limit as feasible points are chosen, tending toward $-\\infty$. An empty region is infeasibility, a unique minimizer is the opposite situation, and a constant objective is bounded, so the arbitrary decrease is the defining feature.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-012",
+      "stem": "Every global minimizer of a function on a set is necessarily",
+      "options": [
+        "a local minimizer as well",
+        "a saddle point",
+        "a global maximizer",
+        "a boundary point"
+      ],
+      "answer": 0,
+      "explanation": "If a point gives the least value over the whole set, it also gives the least value compared with nearby points, so a global minimizer is automatically a local minimizer. It need not be a saddle point or maximizer, and it may lie in the interior rather than on the boundary, so only the local claim always holds.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-013",
+      "stem": "Consider minimizing $f(x) = (x - 3)^2 + 2$ over all real $x$. The global minimizer and minimum value are",
+      "options": [
+        "$x = 3$, value $2$",
+        "$x = 0$, value $11$",
+        "$x = -3$, value $2$",
+        "$x = 3$, value $0$"
+      ],
+      "answer": 0,
+      "explanation": "A squared term is least when it is zero, so $(x - 3)^2$ is smallest at $x = 3$, where it equals $0$. The objective there is $0 + 2 = 2$, giving minimizer $x = 3$ and minimum value $2$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-014",
+      "stem": "A function $f$ that we wish to maximize attains its maximum on a closed and bounded set. Which theorem guarantees a maximizer exists if $f$ is continuous?",
+      "options": [
+        "The mean value theorem",
+        "The extreme value (Weierstrass) theorem",
+        "The implicit function theorem",
+        "Taylor's theorem"
+      ],
+      "answer": 1,
+      "explanation": "The extreme value theorem, also called the Weierstrass theorem, states that a continuous function on a closed and bounded set attains both a maximum and a minimum. The mean value and Taylor theorems concern derivatives and approximation, and the implicit function theorem concerns solving equations, so Weierstrass is the existence result.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-015",
+      "stem": "In the standard form 'minimize $f(x)$ subject to $g(x) = 0$', the symbol $g(x) = 0$ represents the",
+      "options": [
+        "objective function",
+        "gradient condition",
+        "constraint",
+        "optimal value"
+      ],
+      "answer": 2,
+      "explanation": "The relation $g(x) = 0$ is the constraint that the decision variables must satisfy, defining the feasible region. The objective is $f(x)$, the gradient condition is a separate optimality test, and the optimal value is the number $f(x^*)$, so $g(x) = 0$ is the constraint.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-016",
+      "stem": "Which of the following is a continuous optimization problem rather than a discrete one?",
+      "options": [
+        "Choosing how many whole buses to deploy, an integer for each route",
+        "Minimizing $f(x, y) = x^2 + y^2$ over real $x, y$",
+        "Selecting a subset of projects to fund, each either in or out",
+        "Assigning workers to a fixed list of tasks"
+      ],
+      "answer": 1,
+      "explanation": "Continuous optimization lets the variables take any real values, as in minimizing $x^2 + y^2$ over real $x$ and $y$. Counting whole buses, choosing subsets, and making assignments all restrict variables to integers or yes-no choices, which are discrete problems, so the quadratic over the reals is the continuous one.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-017",
+      "stem": "A function can have several local minimizers but the smallest of their objective values is achieved at the",
+      "options": [
+        "saddle point",
+        "global minimizer",
+        "inflection point",
+        "global maximizer"
+      ],
+      "answer": 1,
+      "explanation": "Among possibly many local minimizers, the one giving the least objective value over the whole feasible region is the global minimizer. A saddle point is not a minimizer at all, an inflection point concerns curvature change, and the global maximizer gives the largest value, so the global minimizer is correct.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-018",
+      "stem": "For the problem 'maximize $f(x) = -(x - 2)^2 + 5$ over real $x$', the maximizer and maximum value are",
+      "options": [
+        "$x = -2$, value $5$",
+        "$x = 2$, value $1$",
+        "$x = 0$, value $1$",
+        "$x = 2$, value $5$"
+      ],
+      "answer": 3,
+      "explanation": "The term $-(x - 2)^2$ is largest when $(x - 2)^2 = 0$, that is at $x = 2$, where it equals $0$. The objective is then $0 + 5 = 5$, so the maximizer is $x = 2$ and the maximum value is $5$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-019",
+      "stem": "Which statement about constraints is correct?",
+      "options": [
+        "Constraints enlarge the feasible region compared with the unconstrained problem",
+        "Constraints define the feasible region by restricting which points are allowed",
+        "Constraints are the same thing as the objective function",
+        "Constraints can only be inequalities, never equalities"
+      ],
+      "answer": 1,
+      "explanation": "Constraints are the conditions that the decision variables must obey, and together they carve out the feasible region by excluding points that violate them. Adding constraints can only shrink the allowed set, they are distinct from the objective, and they may be equalities or inequalities, so the restriction statement is correct.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-020",
+      "stem": "The objective value $f(x^*)$ at an optimal point $x^*$ is called the",
+      "options": [
+        "feasible direction",
+        "optimal value",
+        "active constraint",
+        "search direction"
+      ],
+      "answer": 1,
+      "explanation": "The number $f(x^*)$ produced by the optimizer is the optimal value of the problem, distinct from the optimizer $x^*$ itself. A feasible direction and a search direction are vectors used in algorithms, and an active constraint is one met with equality, so optimal value is the correct term.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-021",
+      "stem": "Consider minimizing $f(x) = x^2$ over the feasible region $x \\ge 2$. The minimizer is",
+      "options": [
+        "$x = 0$, since that is where $f' = 0$",
+        "$x = 2$, on the boundary of the region",
+        "there is no minimizer",
+        "$x = -2$"
+      ],
+      "answer": 1,
+      "explanation": "Although $f(x) = x^2$ has its unconstrained minimum at $x = 0$, that point is infeasible because the region requires $x \\ge 2$. On the feasible set $f$ increases with $x$, so the least value occurs at the boundary point $x = 2$, where $f = 4$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-022",
+      "stem": "Which of the following correctly pairs each ingredient of an optimization model with its role?",
+      "options": [
+        "Objective is what is restricted; constraints are what is optimized",
+        "Decision variables are fixed data; parameters are chosen",
+        "Objective is optimized; constraints restrict; decision variables are chosen",
+        "Feasible region is the objective; optimal value is a constraint"
+      ],
+      "answer": 2,
+      "explanation": "In a model the objective is the function optimized, the constraints restrict the allowed points, and the decision variables are the quantities we choose. The other options swap these roles, for instance treating parameters as choices or the feasible region as the objective, so only the third pairing is right.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-023",
+      "stem": "Which problem is an example of linear programming?",
+      "options": [
+        "Minimize $x^2 + y^2$ subject to $x + y = 1$",
+        "Maximize $3x + 2y$ subject to $x + y \\le 4$, $x, y \\ge 0$",
+        "Minimize $e^x + y^2$ with no constraints",
+        "Maximize $x^T A x$ over the unit sphere"
+      ],
+      "answer": 1,
+      "explanation": "Linear programming has a linear objective and linear constraints, as in maximizing $3x + 2y$ subject to linear inequalities. The other problems involve quadratic or exponential objectives, which are nonlinear, so only the second is a linear program.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-024",
+      "format": "cloze",
+      "stem": "Classify the parts of the model: minimize $f(x, y) = x^2 + y^2$ subject to $x + y = 1$.",
+      "solution": "The function $x^2 + y^2$ being minimized is the {{1}}. The unknowns $x$ and $y$ that we are free to choose are the {{2}}. The relation $x + y = 1$ that limits the allowed points is a {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "objective function",
+            "constraint",
+            "feasible region",
+            "optimal value"
+          ],
+          "answer": "objective function"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "decision variables",
+            "parameters",
+            "multipliers",
+            "constraints"
+          ],
+          "answer": "decision variables"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "constraint",
+            "objective",
+            "gradient",
+            "saddle point"
+          ],
+          "answer": "constraint"
+        }
+      ],
+      "explanation": "The objective is the quantity to optimize, here $x^2 + y^2$, while $x$ and $y$ are the decision variables. The equation $x + y = 1$ restricts the feasible points and is therefore a constraint.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-025",
+      "format": "cloze",
+      "stem": "Minimize $f(x) = (x - 3)^2 + 2$ over all real $x$.",
+      "solution": "The squared term is smallest when it equals zero, which happens at the minimizer $x =$ {{1}}. Substituting back, the minimum value of $f$ is {{2}}. Because this is the least value over the whole real line, the point is a {{3}} minimizer.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "global",
+            "local only",
+            "saddle",
+            "boundary"
+          ],
+          "answer": "global"
+        }
+      ],
+      "explanation": "Setting $(x - 3)^2 = 0$ gives $x = 3$, and then $f(3) = 0 + 2 = 2$. Since $f$ never falls below $2$ anywhere, $x = 3$ is the global minimizer.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-026",
+      "format": "cloze",
+      "stem": "Maximize $f(x) = -(x - 2)^2 + 5$ over all real $x$.",
+      "solution": "The expression is largest when the squared term vanishes, at the maximizer $x =$ {{1}}. The maximum value of $f$ is then {{2}}. Converting to a minimization, maximizing $f$ is the same as minimizing the function {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$-f(x)$",
+            "$f(x)^2$",
+            "$1/f(x)$",
+            "$|f(x)|$"
+          ],
+          "answer": "$-f(x)$"
+        }
+      ],
+      "explanation": "The term $-(x - 2)^2$ is greatest, namely zero, at $x = 2$, so $f(2) = 5$. Maximizing $f$ is equivalent to minimizing $-f(x)$, since $\\max f = -\\min(-f)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-027",
+      "format": "cloze",
+      "stem": "Minimize $f(x) = x^2$ over the feasible region $x \\ge 2$.",
+      "solution": "The unconstrained minimum of $x^2$ is at $x = 0$, but that point is {{1}} for this problem. On the feasible set the objective increases with $x$, so the minimizer is the boundary point $x =$ {{2}}, where the objective value is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "infeasible",
+            "feasible",
+            "optimal",
+            "unbounded"
+          ],
+          "answer": "infeasible"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The point $x = 0$ violates $x \\ge 2$, so it is infeasible. Since $x^2$ grows for $x \\ge 2$, the smallest feasible value is at $x = 2$, giving $f(2) = 4$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-028",
+      "format": "cloze",
+      "stem": "State the basic vocabulary of optimization.",
+      "solution": "The quantity to be optimized is the {{1}}. A problem with no restrictions on the variables is called {{2}}. When the feasible region contains no points at all, the problem is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "objective function",
+            "feasible region",
+            "decision variable",
+            "constraint"
+          ],
+          "answer": "objective function"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "unconstrained",
+            "constrained",
+            "discrete",
+            "linear"
+          ],
+          "answer": "unconstrained"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "infeasible",
+            "unbounded",
+            "convex",
+            "optimal"
+          ],
+          "answer": "infeasible"
+        }
+      ],
+      "explanation": "The objective function is the target of optimization, and a problem with no constraints is unconstrained. If no point satisfies the constraints, the feasible region is empty and the problem is infeasible.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-applied-maths-introduction-to-optimization-029",
+      "format": "cloze",
+      "stem": "Consider minimizing $f(x) = x^2 - 4x + 7$ over all real $x$ by completing the square.",
+      "solution": "Completing the square gives $f(x) = (x - 2)^2 + 3$, so the minimizer is $x =$ {{1}} and the minimum value is {{2}}. Since the parabola opens upward, this minimizer is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "global",
+            "local only",
+            "a maximizer",
+            "a saddle"
+          ],
+          "answer": "global"
+        }
+      ],
+      "explanation": "Writing $x^2 - 4x + 7 = (x - 2)^2 + 3$ shows the least value occurs at $x = 2$, where $f = 3$. An upward-opening parabola has a single global minimizer, so $x = 2$ is global.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    }
+  ]
+}

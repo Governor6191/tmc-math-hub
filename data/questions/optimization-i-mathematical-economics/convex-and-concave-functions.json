@@ -1,0 +1,553 @@
+{
+  "courseId": "optimization-i-mathematical-economics",
+  "topicId": "convex-and-concave-functions",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-001",
+      "stem": "A function $f$ is convex on a convex set if for all $x, y$ and $0 \\le \\lambda \\le 1$,",
+      "options": [
+        "$f(\\lambda x + (1 - \\lambda)y) \\le \\lambda f(x) + (1 - \\lambda)f(y)$",
+        "$f(\\lambda x + (1 - \\lambda)y) \\ge \\lambda f(x) + (1 - \\lambda)f(y)$",
+        "$f(\\lambda x + (1 - \\lambda)y) = \\lambda f(x) + (1 - \\lambda)f(y)$",
+        "$f(x) = f(y)$"
+      ],
+      "answer": 0,
+      "explanation": "Convexity means the graph lies on or below each chord, giving $f(\\lambda x + (1 - \\lambda)y) \\le \\lambda f(x) + (1 - \\lambda)f(y)$. The reversed inequality defines concavity and equality defines an affine function, so the $\\le$ form is the convexity condition.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-002",
+      "stem": "A function $f$ is concave if and only if",
+      "options": [
+        "$f$ is convex",
+        "$-f$ is convex",
+        "$f$ is linear",
+        "$f$ has a unique minimizer"
+      ],
+      "answer": 1,
+      "explanation": "Concavity of $f$ is exactly convexity of $-f$, since negating flips the chord inequality. A concave function need not be linear and is associated with maximization rather than a unique minimizer, so the $-f$ characterization is correct.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-003",
+      "stem": "For a twice-differentiable single-variable function, $f$ is convex on an interval if and only if",
+      "options": [
+        "$f'(x) = 0$ there",
+        "$f''(x) \\ge 0$ throughout the interval",
+        "$f''(x) \\le 0$ throughout the interval",
+        "$f(x) \\ge 0$ throughout"
+      ],
+      "answer": 1,
+      "explanation": "In one variable, convexity is equivalent to a nonnegative second derivative, $f''(x) \\ge 0$, meaning the slope is nondecreasing. A nonpositive second derivative gives concavity, a zero first derivative marks a critical point, and the sign of $f$ itself is irrelevant, so $f'' \\ge 0$ is the test.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-004",
+      "stem": "For a twice-differentiable function of several variables, $f$ is convex if and only if its Hessian is",
+      "options": [
+        "indefinite everywhere",
+        "negative definite everywhere",
+        "positive semidefinite everywhere",
+        "the zero matrix"
+      ],
+      "answer": 2,
+      "explanation": "The multivariable analogue of $f'' \\ge 0$ is that the Hessian $\\nabla^2 f$ is positive semidefinite at every point. A negative definite Hessian gives concavity and an indefinite one gives neither, so positive semidefiniteness is the convexity criterion.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-005",
+      "stem": "A key reason convex functions matter in optimization is that for a convex function on a convex set,",
+      "options": [
+        "there are no minima",
+        "every critical point is a maximum",
+        "the function is always linear",
+        "every local minimum is a global minimum"
+      ],
+      "answer": 3,
+      "explanation": "Convexity removes the possibility of a local minimum that is not global, so any local minimizer is automatically a global minimizer. This is the property that makes convex optimization reliable; it does not force linearity or forbid minima.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-006",
+      "stem": "Is $f(x) = x^2$ convex, concave, or neither?",
+      "options": [
+        "Concave",
+        "Convex",
+        "Neither",
+        "Both"
+      ],
+      "answer": 1,
+      "explanation": "Here $f''(x) = 2 > 0$ for all $x$, so the second-derivative test gives convexity. The familiar upward-opening parabola lies below each of its chords, confirming that $x^2$ is convex.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-007",
+      "stem": "Is $f(x) = \\ln x$ (for $x > 0$) convex, concave, or neither?",
+      "options": [
+        "Convex",
+        "Linear",
+        "Neither",
+        "Concave"
+      ],
+      "answer": 3,
+      "explanation": "Since $f'(x) = 1/x$ and $f''(x) = -1/x^2 < 0$ for $x > 0$, the second derivative is negative throughout, so $\\ln x$ is concave. Its graph bends downward and lies above each chord.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-008",
+      "stem": "Is $f(x) = e^x$ convex, concave, or neither?",
+      "options": [
+        "Concave",
+        "Neither",
+        "Linear",
+        "Convex"
+      ],
+      "answer": 3,
+      "explanation": "The second derivative is $f''(x) = e^x > 0$ for every real $x$, so $e^x$ is convex by the second-derivative test. The exponential curve lies on or below each chord, matching convexity.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-009",
+      "stem": "The function $f(x, y) = x^2 + y^2$ has Hessian $\\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix}$. Therefore $f$ is",
+      "options": [
+        "concave",
+        "convex",
+        "neither",
+        "indefinite",
+        "linear"
+      ],
+      "answer": 1,
+      "explanation": "The constant Hessian has eigenvalues $2$ and $2$, both positive, so it is positive definite and hence positive semidefinite everywhere. A positive semidefinite Hessian means $f$ is convex, indeed strictly convex.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-010",
+      "stem": "The function $f(x, y) = -x^2 - y^2$ has Hessian $\\begin{pmatrix} -2 & 0 \\\\ 0 & -2 \\end{pmatrix}$. Therefore $f$ is",
+      "options": [
+        "convex",
+        "affine",
+        "neither",
+        "concave"
+      ],
+      "answer": 3,
+      "explanation": "The Hessian has eigenvalues $-2$ and $-2$, both negative, so it is negative definite and thus negative semidefinite everywhere. A negative semidefinite Hessian makes $f$ concave.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-011",
+      "stem": "The function $f(x, y) = x^2 - y^2$ has Hessian $\\begin{pmatrix} 2 & 0 \\\\ 0 & -2 \\end{pmatrix}$. This function is",
+      "options": [
+        "convex",
+        "concave",
+        "neither convex nor concave",
+        "both convex and concave"
+      ],
+      "answer": 2,
+      "explanation": "The Hessian has eigenvalues $2$ and $-2$, of opposite sign, so it is indefinite. An indefinite Hessian means the surface curves up in one direction and down in another, so $f$ is neither convex nor concave; this is a saddle-shaped function.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-012",
+      "stem": "The function $f(x, y) = x^2 + xy + y^2$ has Hessian $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$, with leading minors $2$ and $3$. Therefore $f$ is",
+      "options": [
+        "concave",
+        "indefinite",
+        "neither",
+        "convex"
+      ],
+      "answer": 3,
+      "explanation": "Both leading principal minors $D_1 = 2$ and $D_2 = 3$ are positive, so the Hessian is positive definite. A positive definite Hessian makes $f$ strictly convex.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-013",
+      "stem": "A function that is both convex and concave on $\\mathbb{R}^n$ must be",
+      "options": [
+        "quadratic",
+        "affine (linear plus a constant)",
+        "exponential",
+        "strictly convex"
+      ],
+      "answer": 1,
+      "explanation": "If the chord inequality holds with both $\\le$ and $\\ge$, it holds with equality, so $f(\\lambda x + (1 - \\lambda)y) = \\lambda f(x) + (1 - \\lambda)f(y)$, which characterizes affine functions. Such functions have the form $a^T x + b$, so being both convex and concave forces affineness.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-014",
+      "stem": "Jensen's inequality for a convex function $f$ and weights $\\lambda_i \\ge 0$ summing to $1$ states that",
+      "options": [
+        "$f\\left(\\sum \\lambda_i x_i\\right) = \\sum \\lambda_i f(x_i)$",
+        "$f\\left(\\sum \\lambda_i x_i\\right) \\ge \\sum \\lambda_i f(x_i)$",
+        "$f\\left(\\sum \\lambda_i x_i\\right) \\le \\sum \\lambda_i f(x_i)$",
+        "$\\sum \\lambda_i = 0$"
+      ],
+      "answer": 2,
+      "explanation": "Jensen's inequality generalizes the two-point chord condition to many points, giving $f$ of the weighted average at most the weighted average of $f$ for a convex $f$. The reversed inequality holds for concave functions, so the $\\le$ form is correct.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-015",
+      "stem": "For the convex function $f(x) = x^2$, compare $f$ of the average of $1$ and $3$ with the average of $f(1)$ and $f(3)$.",
+      "options": [
+        "$f(2) = 4$ and the average is $5$, so $f(2) \\le 5$ (Jensen holds)",
+        "$f(2) = 4$ and the average is $4$, so they are equal",
+        "$f(2) = 5$ and the average is $4$",
+        "$f(2) = 9$ and the average is $1$"
+      ],
+      "answer": 0,
+      "explanation": "The average of $1$ and $3$ is $2$, so $f(2) = 4$, while the average of $f(1) = 1$ and $f(3) = 9$ is $5$. Since $4 \\le 5$, Jensen's inequality holds for this convex function, with strict inequality because $x^2$ is strictly convex.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-016",
+      "stem": "Is $f(x) = x^4$ convex on $\\mathbb{R}$?",
+      "options": [
+        "No, it is concave",
+        "Only for $x > 0$",
+        "No, it is neither",
+        "Yes, because $f''(x) = 12x^2 \\ge 0$"
+      ],
+      "answer": 3,
+      "explanation": "The second derivative is $f''(x) = 12x^2$, which is nonnegative for all real $x$, so $f$ is convex on the whole line. Although $f''(0) = 0$, the second derivative never becomes negative, so convexity holds everywhere.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-017",
+      "stem": "Which function is concave on its domain?",
+      "options": [
+        "$f(x) = e^x$",
+        "$f(x) = \\sqrt{x}$ for $x > 0$",
+        "$f(x) = x^2$",
+        "$f(x) = x^4$"
+      ],
+      "answer": 1,
+      "explanation": "For $f(x) = \\sqrt{x} = x^{1/2}$, we get $f''(x) = -\\tfrac{1}{4}x^{-3/2} < 0$ for $x > 0$, so it is concave. The exponential and the even powers $x^2$ and $x^4$ all have nonnegative second derivatives and are convex, so the square root is the concave one.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-018",
+      "stem": "The sum of two convex functions is",
+      "options": [
+        "convex only if they are equal",
+        "always concave",
+        "never convex",
+        "always convex"
+      ],
+      "answer": 3,
+      "explanation": "Adding the chord inequalities for two convex functions term by term gives the chord inequality for their sum, so the sum is convex. Equivalently the sum of two positive semidefinite Hessians is positive semidefinite, so the sum of convex functions is always convex.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-019",
+      "stem": "The function $f(x, y) = 3x^2 - 2xy + 3y^2$ has Hessian $\\begin{pmatrix} 6 & -2 \\\\ -2 & 6 \\end{pmatrix}$. The leading minors are $6$ and $32$, so $f$ is",
+      "options": [
+        "concave",
+        "neither",
+        "convex",
+        "affine"
+      ],
+      "answer": 2,
+      "explanation": "Both leading minors $D_1 = 6$ and $D_2 = 36 - 4 = 32$ are positive, so the Hessian is positive definite. A positive definite Hessian certifies that $f$ is strictly convex.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-020",
+      "stem": "If $f$ is convex and we wish to find a global minimum, what does a point with $\\nabla f(x^*) = 0$ tell us?",
+      "options": [
+        "It is a saddle point",
+        "It is a global minimizer of $f$",
+        "It is a global maximizer of $f$",
+        "Nothing, since convex functions have no critical points"
+      ],
+      "answer": 1,
+      "explanation": "For a differentiable convex function, the first-order condition $\\nabla f(x^*) = 0$ is both necessary and sufficient for a global minimum. So a stationary point of a convex function is guaranteed to be a global minimizer, not a saddle or a maximizer.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-021",
+      "stem": "The function $f(x, y) = -(x^2 + 4y^2)$ has Hessian $\\begin{pmatrix} -2 & 0 \\\\ 0 & -8 \\end{pmatrix}$. Therefore $f$ is",
+      "options": [
+        "convex",
+        "indefinite",
+        "neither",
+        "concave"
+      ],
+      "answer": 3,
+      "explanation": "The Hessian has eigenvalues $-2$ and $-8$, both negative, so it is negative definite and negative semidefinite everywhere. A negative semidefinite Hessian makes $f$ concave, so its stationary point will be a maximizer.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-022",
+      "stem": "Which statement correctly links convexity to the epigraph (the region on and above the graph)?",
+      "options": [
+        "$f$ is convex if and only if its epigraph is a convex set",
+        "$f$ is convex if and only if its epigraph is empty",
+        "$f$ is concave if and only if its epigraph is convex",
+        "The epigraph is never convex"
+      ],
+      "answer": 0,
+      "explanation": "A function is convex precisely when the set of points on or above its graph, the epigraph, is a convex set. For a concave function it is the region below the graph (the hypograph) that is convex, so the epigraph characterization belongs to convexity.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-023",
+      "stem": "Determine the convexity of $f(x) = 2x^2 - 8x + 3$ on $\\mathbb{R}$.",
+      "options": [
+        "Concave, since the leading coefficient is positive",
+        "Neither",
+        "Convex, since $f''(x) = 4 > 0$",
+        "Convex only for $x > 2$"
+      ],
+      "answer": 2,
+      "explanation": "Differentiating twice gives $f''(x) = 4$, which is positive everywhere, so $f$ is convex on all of $\\mathbb{R}$. A positive leading coefficient on a quadratic always yields a convex, upward-opening parabola.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-024",
+      "format": "cloze",
+      "stem": "Use the second-derivative test on $f(x) = x^2$ and on $g(x) = \\ln x$ (for $x > 0$).",
+      "solution": "For $f(x) = x^2$, the second derivative is $f''(x) =$ {{1}}, which is positive, so $f$ is {{2}}. For $g(x) = \\ln x$, the second derivative $g''(x) = -1/x^2$ is negative, so $g$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "concave",
+            "affine",
+            "neither"
+          ],
+          "answer": "convex"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "concave",
+            "convex",
+            "affine",
+            "neither"
+          ],
+          "answer": "concave"
+        }
+      ],
+      "explanation": "Since $f''(x) = 2 > 0$, the function $x^2$ is convex. Since $g''(x) = -1/x^2 < 0$, the function $\\ln x$ is concave.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-025",
+      "format": "cloze",
+      "stem": "Classify $f(x, y) = x^2 + xy + y^2$ using the Hessian test.",
+      "solution": "The Hessian is $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$, with leading minors $D_1 = 2$ and $D_2 =$ {{1}}. Since both are positive the Hessian is positive definite, so $f$ is {{2}}. Consequently any stationary point of $f$ is a global {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "concave",
+            "neither",
+            "affine"
+          ],
+          "answer": "convex"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "minimizer",
+            "maximizer",
+            "saddle point",
+            "inflection"
+          ],
+          "answer": "minimizer"
+        }
+      ],
+      "explanation": "The second minor is $D_2 = (2)(2) - (1)(1) = 3$, so with both minors positive the Hessian is positive definite and $f$ is convex. For a convex function a stationary point is a global minimizer.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-026",
+      "format": "cloze",
+      "stem": "Verify Jensen's inequality for $f(x) = x^2$ at the points $1$ and $3$.",
+      "solution": "The average of the points is $\\tfrac{1 + 3}{2} = 2$, so $f$ of the average is $f(2) =$ {{1}}. The average of the values is $\\tfrac{f(1) + f(3)}{2} =$ {{2}}. Since $4 \\le 5$, the inequality goes in the direction expected for a {{3}} function.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "concave",
+            "affine",
+            "constant"
+          ],
+          "answer": "convex"
+        }
+      ],
+      "explanation": "Here $f(2) = 4$ and the average of $f(1) = 1$ and $f(3) = 9$ is $5$. Because $f$ of the average is at most the average of $f$, Jensen's inequality holds for this convex function.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-027",
+      "format": "cloze",
+      "stem": "Classify $f(x, y) = x^2 - y^2$ and $g(x, y) = -(x^2 + 4y^2)$ by their Hessians.",
+      "solution": "The Hessian of $f$ is $\\begin{pmatrix} 2 & 0 \\\\ 0 & -2 \\end{pmatrix}$, which is indefinite, so $f$ is {{1}}. The Hessian of $g$ is $\\begin{pmatrix} -2 & 0 \\\\ 0 & -8 \\end{pmatrix}$, which is negative definite, so $g$ is {{2}}. The most negative eigenvalue of the Hessian of $g$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "neither convex nor concave",
+            "convex",
+            "concave",
+            "affine"
+          ],
+          "answer": "neither convex nor concave"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "concave",
+            "convex",
+            "neither",
+            "affine"
+          ],
+          "answer": "concave"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -8,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The indefinite Hessian of $f$ (eigenvalues $2$ and $-2$) means $f$ is neither convex nor concave. The Hessian of $g$ has eigenvalues $-2$ and $-8$, both negative, so $g$ is concave and its most negative eigenvalue is $-8$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-028",
+      "format": "cloze",
+      "stem": "State the convexity facts used throughout optimization.",
+      "solution": "In one variable, $f$ is convex when its second derivative is {{1}}. In several variables, $f$ is convex when its Hessian is {{2}} everywhere. For a convex function, every local minimum is also a {{3}} minimum.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "nonnegative",
+            "nonpositive",
+            "zero",
+            "negative"
+          ],
+          "answer": "nonnegative"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "positive semidefinite",
+            "negative definite",
+            "indefinite",
+            "singular"
+          ],
+          "answer": "positive semidefinite"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "global",
+            "local only",
+            "boundary",
+            "saddle"
+          ],
+          "answer": "global"
+        }
+      ],
+      "explanation": "Convexity corresponds to $f'' \\ge 0$ in one dimension and to a positive semidefinite Hessian in higher dimensions. A central consequence is that a local minimum of a convex function is global.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-convex-and-concave-functions-029",
+      "format": "cloze",
+      "stem": "Classify $f(x, y) = 3x^2 - 2xy + 3y^2$ using the Hessian test.",
+      "solution": "The Hessian is $\\begin{pmatrix} 6 & -2 \\\\ -2 & 6 \\end{pmatrix}$, with leading minors $D_1 = 6$ and $D_2 =$ {{1}}. Both being positive, the Hessian is positive definite and $f$ is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 32,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "convex",
+            "concave",
+            "neither",
+            "affine"
+          ],
+          "answer": "convex"
+        }
+      ],
+      "explanation": "The second minor is $D_2 = (6)(6) - (-2)(-2) = 36 - 4 = 32$. With $D_1 = 6 > 0$ and $D_2 = 32 > 0$ the Hessian is positive definite, so $f$ is convex.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    }
+  ]
+}

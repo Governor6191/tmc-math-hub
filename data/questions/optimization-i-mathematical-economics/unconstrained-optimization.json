@@ -5,429 +5,379 @@
   "questions": [
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-001",
-      "stem": "A point $x^*$ is a stationary point of a differentiable function $f$ when which condition holds?",
+      "stem": "The first-order necessary condition for $x^*$ to be a local optimum of a differentiable function $f$ on an open set is",
       "options": [
+        "$\\nabla f(x^*) = 0$",
+        "$\\nabla f(x^*) > 0$",
         "$f(x^*) = 0$",
-        "$f(x^*)$ is the largest value of $f$",
-        "$f''(x^*) = 0$",
-        "$\\nabla f(x^*) = 0$"
+        "the Hessian is positive definite"
       ],
-      "answer": 3,
-      "explanation": "A stationary (or critical) point is one where the first-order derivative information vanishes, that is the gradient is zero: $\\nabla f(x^*) = 0$. In one variable this is $f'(x^*) = 0$. It is not the function value $f(x^*)$ that must vanish, nor the second derivative. The vanishing gradient is the first-order necessary condition for an interior local extremum.",
+      "answer": 0,
+      "explanation": "At an interior optimum the gradient must vanish, $\\nabla f(x^*) = 0$, since otherwise moving along $-\\nabla f$ would decrease $f$. A positive Hessian is a second-order condition, and $f(x^*) = 0$ concerns the value not the location, so the vanishing gradient is the first-order condition.",
       "difficulty": "warmup",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-002",
-      "stem": "Find the stationary point of $f(x) = x^2 - 4x + 7$.",
+      "stem": "A point where $\\nabla f = 0$ is called a",
       "options": [
-        "$x = -2$",
-        "$x = 7$",
-        "$x = 2$",
-        "$x = 4$"
+        "boundary point",
+        "stationary (critical) point",
+        "inflection point",
+        "feasible point"
       ],
-      "answer": 2,
-      "explanation": "Set $f'(x) = 2x - 4 = 0$, giving $x = 2$. This is the only stationary point. Since $f''(x) = 2 > 0$ the point is a local (and here global) minimum, with value $f(2) = 4 - 8 + 7 = 3$. The vertex of an upward parabola sits at $x = -b/(2a) = 4/2 = 2$, which agrees.",
+      "answer": 1,
+      "explanation": "A point at which the gradient is zero is a stationary point, also called a critical point, and is a candidate for a local optimum. It need not be a boundary, inflection, or merely feasible point, so stationary point is the correct name.",
       "difficulty": "warmup",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-003",
-      "stem": "For a twice-differentiable function of one variable, if $f'(c) = 0$ and $f''(c) > 0$, then $c$ is a",
+      "stem": "For a single-variable function, if $f'(x^*) = 0$ and $f''(x^*) > 0$, then $x^*$ is a",
       "options": [
+        "local maximum",
         "local minimum",
-        "point of inflection",
         "saddle point",
-        "local maximum"
+        "point of inflection"
       ],
-      "answer": 0,
-      "explanation": "The second-derivative test says that at a stationary point a positive second derivative means the curve is concave up there, so $c$ is a local minimum. A negative second derivative would give a local maximum, and $f''(c) = 0$ leaves the test inconclusive. Saddle points and inflection points are not classified by this simple sign rule for a strict extremum.",
+      "answer": 1,
+      "explanation": "A vanishing first derivative with a positive second derivative means the curve is locally bowl-shaped, so $x^*$ is a local minimum. A negative second derivative would give a maximum, so the positive case gives a minimum.",
       "difficulty": "warmup",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-004",
-      "stem": "Classify the stationary point $x = 3$ of $f(x) = -x^2 + 6x + 1$.",
+      "stem": "For a single-variable function, if $f'(x^*) = 0$ and $f''(x^*) < 0$, then $x^*$ is a",
       "options": [
-        "Local maximum with value $10$",
-        "Local minimum with value $1$",
-        "Local minimum with value $10$",
-        "Saddle point"
+        "local minimum",
+        "local maximum",
+        "saddle point",
+        "global minimum"
       ],
-      "answer": 0,
-      "explanation": "From $f'(x) = -2x + 6 = 0$ the stationary point is $x = 3$. The second derivative is $f''(x) = -2 < 0$, so the curve is concave down and $x = 3$ is a local maximum. Its value is $f(3) = -9 + 18 + 1 = 10$. A downward parabola has its single maximum at the vertex.",
-      "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "answer": 1,
+      "explanation": "A zero first derivative with a negative second derivative indicates a locally dome-shaped curve, so $x^*$ is a local maximum. The positive case would instead give a minimum, so the negative second derivative yields a maximum.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-005",
-      "stem": "The function $f(x) = x^3 - 3x$ has stationary points at",
+      "stem": "For a function of two variables at a stationary point, with Hessian determinant $D = f_{xx}f_{yy} - f_{xy}^2$, the point is a saddle point when",
       "options": [
-        "$x = \\sqrt{3}$ and $x = -\\sqrt{3}$",
-        "$x = 1$ and $x = -1$",
-        "$x = 0$ only",
-        "$x = 3$ and $x = -3$"
+        "$D > 0$ and $f_{xx} > 0$",
+        "$D > 0$ and $f_{xx} < 0$",
+        "$D < 0$",
+        "$D = 0$"
       ],
-      "answer": 1,
-      "explanation": "Solve $f'(x) = 3x^2 - 3 = 0$, so $x^2 = 1$ and $x = \\pm 1$. With $f''(x) = 6x$, the point $x = 1$ has $f''(1) = 6 > 0$ (local minimum, value $-2$) and $x = -1$ has $f''(-1) = -6 < 0$ (local maximum, value $2$). The roots of $x^2 = 1$ are $\\pm 1$, not $\\pm 3$ or $\\pm\\sqrt 3$.",
+      "answer": 2,
+      "explanation": "A negative Hessian determinant $D < 0$ means the Hessian is indefinite, so the surface rises in one direction and falls in another, a saddle. The cases $D > 0$ with $f_{xx} > 0$ or $f_{xx} < 0$ give a minimum or maximum, while $D = 0$ is inconclusive, so $D < 0$ marks the saddle.",
       "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-006",
-      "stem": "For $f(x) = 2x^3 - 3x^2 - 12x$, which statement about its stationary points is correct?",
+      "stem": "At a stationary point of $f(x, y)$, if $D = f_{xx}f_{yy} - f_{xy}^2 > 0$ and $f_{xx} > 0$, the point is a",
       "options": [
-        "There are no stationary points",
-        "$x = 2$ is a local minimum, $x = -1$ is a local maximum",
-        "$x = 2$ is a local maximum, $x = -1$ is a local minimum",
-        "Both $x = 2$ and $x = -1$ are local minima"
-      ],
-      "answer": 1,
-      "explanation": "Set $f'(x) = 6x^2 - 6x - 12 = 6(x - 2)(x + 1) = 0$, giving $x = 2$ and $x = -1$. The second derivative is $f''(x) = 12x - 6$. At $x = 2$, $f''(2) = 18 > 0$, a local minimum; at $x = -1$, $f''(-1) = -18 < 0$, a local maximum. So the cubic falls to a minimum at $x = 2$ and peaks at $x = -1$.",
-      "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
-    },
-    {
-      "id": "optimization-i-mathematical-economics-unconstrained-optimization-007",
-      "stem": "The function $f(x) = x^3$ has $f'(0) = 0$. What is the point $x = 0$?",
-      "options": [
-        "Neither a maximum nor a minimum (an inflection point)",
-        "A global minimum",
-        "A local minimum",
-        "A local maximum"
-      ],
-      "answer": 0,
-      "explanation": "Here $f'(x) = 3x^2$, so $f'(0) = 0$ and $x = 0$ is stationary. But $f''(x) = 6x$ gives $f''(0) = 0$, so the second-derivative test is inconclusive. Inspecting $f(x) = x^3$, the function decreases through no turning behaviour: it is negative for $x < 0$ and positive for $x > 0$, so $x = 0$ is an inflection point, neither a maximum nor a minimum.",
-      "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
-    },
-    {
-      "id": "optimization-i-mathematical-economics-unconstrained-optimization-008",
-      "stem": "For a function $f(x,y)$, the first-order necessary condition for an interior local minimum at $(x^*, y^*)$ is",
-      "options": [
-        "the Hessian is the identity matrix",
-        "$f(x^*, y^*) = 0$",
-        "$f_x = f_y = 0$",
-        "$f_{xx} > 0$ and $f_{yy} > 0$"
-      ],
-      "answer": 2,
-      "explanation": "The gradient must vanish, so both first partial derivatives are zero: $f_x = 0$ and $f_y = 0$. This is the two-variable form of $\\nabla f = 0$. The conditions on $f_{xx}$, $f_{yy}$ and the Hessian belong to the second-order test, which classifies a stationary point once the first-order condition has located it.",
-      "difficulty": "warmup",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
-    },
-    {
-      "id": "optimization-i-mathematical-economics-unconstrained-optimization-009",
-      "stem": "Find the stationary point of $f(x,y) = x^2 + y^2 - 4x - 6y + 13$.",
-      "options": [
-        "$(2, 3)$",
-        "$(-2, -3)$",
-        "$(4, 6)$",
-        "$(0, 0)$"
-      ],
-      "answer": 0,
-      "explanation": "Set the partials to zero: $f_x = 2x - 4 = 0$ gives $x = 2$, and $f_y = 2y - 6 = 0$ gives $y = 3$. So the stationary point is $(2, 3)$. The Hessian is $\\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix}$, positive definite, so this is a minimum with value $f(2,3) = 4 + 9 - 8 - 18 + 13 = 0$.",
-      "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
-    },
-    {
-      "id": "optimization-i-mathematical-economics-unconstrained-optimization-010",
-      "stem": "At a stationary point of $f(x,y)$, the Hessian is $H = \\begin{pmatrix} 2 & 0 \\\\ 0 & -2 \\end{pmatrix}$. The point is a",
-      "options": [
-        "global minimum",
         "local maximum",
+        "the test is inconclusive",
         "saddle point",
         "local minimum"
       ],
-      "answer": 2,
-      "explanation": "For a 2-by-2 Hessian, the determinant is $\\det H = (2)(-2) - 0 = -4 < 0$. A negative determinant signals an indefinite Hessian, so the stationary point is a saddle point. Equivalently the eigenvalues $2$ and $-2$ have opposite signs, meaning the surface curves up in one direction and down in another.",
+      "answer": 3,
+      "explanation": "When $D > 0$ the Hessian is definite, and a positive $f_{xx}$ makes it positive definite, indicating a local minimum. A negative $f_{xx}$ would instead give a maximum, so the positive case yields a minimum.",
       "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-unconstrained-optimization-007",
+      "stem": "Find the stationary point of $f(x, y) = x^2 + y^2 - 4x - 6y + 13$.",
+      "options": [
+        "$(4, 6)$",
+        "$(2, 3)$",
+        "$(-2, -3)$",
+        "$(2, -3)$"
+      ],
+      "answer": 1,
+      "explanation": "Setting $f_x = 2x - 4 = 0$ gives $x = 2$, and $f_y = 2y - 6 = 0$ gives $y = 3$. So the only stationary point is $(2, 3)$, where the gradient vanishes.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-unconstrained-optimization-008",
+      "stem": "Continuing with $f(x, y) = x^2 + y^2 - 4x - 6y + 13$ at its stationary point $(2, 3)$, the Hessian is $\\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix}$, so the point is a",
+      "options": [
+        "saddle point",
+        "the test is inconclusive",
+        "local maximum",
+        "local minimum"
+      ],
+      "answer": 3,
+      "explanation": "The Hessian determinant is $D = (2)(2) - 0 = 4 > 0$ and $f_{xx} = 2 > 0$, so the Hessian is positive definite and $(2, 3)$ is a local minimum. Since $f$ is convex, it is in fact the global minimum, with value $f(2, 3) = 0$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-unconstrained-optimization-009",
+      "stem": "Classify the stationary point $(0, 0)$ of $f(x, y) = x^2 - y^2$, whose Hessian is $\\begin{pmatrix} 2 & 0 \\\\ 0 & -2 \\end{pmatrix}$.",
+      "options": [
+        "Local minimum",
+        "Local maximum",
+        "Global minimum",
+        "Saddle point"
+      ],
+      "answer": 3,
+      "explanation": "The Hessian determinant is $D = (2)(-2) - 0 = -4 < 0$, so the Hessian is indefinite and the point is a saddle. Indeed $f$ increases along the $x$-axis and decreases along the $y$-axis, the signature of a saddle.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-unconstrained-optimization-010",
+      "stem": "Find all stationary points of the single-variable function $f(x) = x^3 - 3x$.",
+      "options": [
+        "$x = 0$ only",
+        "$x = 1$ and $x = -1$",
+        "$x = 3$ and $x = -3$",
+        "$x = \\sqrt{3}$ only"
+      ],
+      "answer": 1,
+      "explanation": "Setting $f'(x) = 3x^2 - 3 = 0$ gives $x^2 = 1$, so $x = 1$ and $x = -1$. These are the two stationary points of the cubic.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-011",
-      "stem": "The only stationary point of $f(x,y) = x^2 - y^2$ is the origin. Its nature is",
+      "stem": "For $f(x) = x^3 - 3x$ with $f''(x) = 6x$, classify the stationary points $x = 1$ and $x = -1$.",
       "options": [
-        "a local maximum",
-        "undefined because the gradient does not exist",
-        "a local minimum",
-        "a saddle point"
+        "$x = 1$ is a maximum, $x = -1$ is a minimum",
+        "both are saddle points",
+        "both are minima",
+        "$x = 1$ is a minimum, $x = -1$ is a maximum"
       ],
       "answer": 3,
-      "explanation": "The gradient is $(2x, -2y)$, zero only at $(0,0)$. The Hessian is $\\begin{pmatrix} 2 & 0 \\\\ 0 & -2 \\end{pmatrix}$ with determinant $-4 < 0$, so the origin is a saddle point. Along the $x$-axis $f = x^2$ rises, while along the $y$-axis $f = -y^2$ falls, the classic saddle shape.",
+      "explanation": "At $x = 1$, $f''(1) = 6 > 0$, so it is a local minimum, and at $x = -1$, $f''(-1) = -6 < 0$, so it is a local maximum. The sign of $f''$ at each critical point decides its type.",
       "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-012",
-      "stem": "For a 2-by-2 Hessian $H$ at a stationary point with $\\det H > 0$ and the leading entry $f_{xx} > 0$, the point is a",
+      "stem": "Find the stationary point of $f(x, y) = -(x^2 + y^2) + 2x + 4y$.",
       "options": [
-        "point where the test fails",
-        "local maximum",
-        "local minimum",
-        "saddle point"
+        "$(2, 4)$",
+        "$(1, 2)$",
+        "$(-1, -2)$",
+        "$(0, 0)$"
       ],
-      "answer": 2,
-      "explanation": "The second-order test in two variables uses $D = \\det H = f_{xx}f_{yy} - f_{xy}^2$. If $D > 0$ and $f_{xx} > 0$, the Hessian is positive definite and the point is a local minimum. If $D > 0$ and $f_{xx} < 0$ it is a local maximum; if $D < 0$ it is a saddle; if $D = 0$ the test is inconclusive.",
+      "answer": 1,
+      "explanation": "Setting $f_x = -2x + 2 = 0$ gives $x = 1$, and $f_y = -2y + 4 = 0$ gives $y = 2$. So the stationary point is $(1, 2)$.",
       "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-013",
-      "stem": "Classify the stationary point of $f(x,y) = x^2 + xy + y^2$.",
+      "stem": "At the stationary point $(1, 2)$ of $f(x, y) = -(x^2 + y^2) + 2x + 4y$, the Hessian is $\\begin{pmatrix} -2 & 0 \\\\ 0 & -2 \\end{pmatrix}$. The point is a",
       "options": [
-        "Local minimum at $(0,0)$",
-        "No stationary point exists",
-        "Saddle point at $(0,0)$",
-        "Local maximum at $(0,0)$"
+        "local minimum",
+        "saddle point",
+        "local maximum",
+        "inflection point"
       ],
-      "answer": 0,
-      "explanation": "Setting $f_x = 2x + y = 0$ and $f_y = x + 2y = 0$ gives the unique solution $(0,0)$. The Hessian is $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ with $\\det = 4 - 1 = 3 > 0$ and $f_{xx} = 2 > 0$, so it is positive definite. Hence $(0,0)$ is a local minimum, with value $0$.",
+      "answer": 2,
+      "explanation": "The determinant is $D = (-2)(-2) - 0 = 4 > 0$ with $f_{xx} = -2 < 0$, so the Hessian is negative definite and the point is a local maximum. The maximum value is $f(1, 2) = -(1 + 4) + 2 + 8 = 5$.",
       "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-014",
-      "stem": "Find and classify the stationary point of $f(x,y) = x^2 + 4y^2 - 2x + 8y$.",
+      "stem": "Find and classify the stationary point of $f(x, y) = x^2 + y^2 - 2x - 4y + 5$.",
       "options": [
-        "Saddle at $(1, -1)$",
-        "Minimum at $(1, -1)$, value $-5$",
-        "Minimum at $(-1, 1)$, value $5$",
-        "Maximum at $(1, -1)$, value $-5$"
+        "$(1, 2)$, a saddle point",
+        "$(1, 2)$, a local maximum",
+        "$(2, 4)$, a local minimum",
+        "$(1, 2)$, a local minimum"
       ],
-      "answer": 1,
-      "explanation": "Set $f_x = 2x - 2 = 0$ giving $x = 1$, and $f_y = 8y + 8 = 0$ giving $y = -1$. The Hessian is $\\begin{pmatrix} 2 & 0 \\\\ 0 & 8 \\end{pmatrix}$, positive definite, so $(1,-1)$ is a minimum. The value is $f(1,-1) = 1 + 4 - 2 - 8 = -5$.",
+      "answer": 3,
+      "explanation": "From $f_x = 2x - 2 = 0$ and $f_y = 2y - 4 = 0$ the stationary point is $(1, 2)$. The Hessian is $\\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix}$ with $D = 4 > 0$ and $f_{xx} > 0$, so it is a local minimum with value $f(1, 2) = 0$.",
       "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-015",
-      "stem": "Maximize $f(x) = xe^{-x}$ over $x \\ge 0$. The maximizer and maximum value are",
+      "stem": "Find the stationary point of $f(x, y) = x^2 + xy + y^2 - 3x$.",
       "options": [
-        "$x = e$, value $1$",
-        "$x = 1$, value $1/e$",
-        "$x = 0$, value $0$",
-        "$x = 2$, value $2/e^2$"
+        "$(2, -1)$",
+        "$(-2, 1)$",
+        "$(1, 1)$",
+        "$(3, 0)$"
       ],
-      "answer": 1,
-      "explanation": "Differentiate by the product rule: $f'(x) = e^{-x} - xe^{-x} = e^{-x}(1 - x)$. Setting this to zero gives $x = 1$ (since $e^{-x} \\ne 0$). The second derivative is $f''(x) = e^{-x}(x - 2)$, and $f''(1) = -e^{-1} < 0$, confirming a maximum. The value is $f(1) = 1\\cdot e^{-1} = 1/e$.",
+      "answer": 0,
+      "explanation": "The equations $f_x = 2x + y - 3 = 0$ and $f_y = x + 2y = 0$ give $x = -2y$; substituting yields $-4y + y - 3 = 0$, so $y = -1$ and $x = 2$. The stationary point is $(2, -1)$.",
       "difficulty": "stretch",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-016",
-      "stem": "Minimize $f(x) = x + \\dfrac{1}{x}$ for $x > 0$. The minimum value is",
+      "stem": "At the stationary point $(2, -1)$ of $f(x, y) = x^2 + xy + y^2 - 3x$, the Hessian is $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$. The point is a",
       "options": [
-        "$2$",
-        "$0$",
-        "$1$",
-        "$4$"
+        "saddle point",
+        "the test is inconclusive",
+        "local maximum",
+        "local minimum"
       ],
-      "answer": 0,
-      "explanation": "Differentiate: $f'(x) = 1 - \\frac{1}{x^2} = 0$ gives $x^2 = 1$, so $x = 1$ (taking $x > 0$). The second derivative $f''(x) = \\frac{2}{x^3} > 0$ confirms a minimum. The minimum value is $f(1) = 1 + 1 = 2$. (The AM-GM inequality gives the same bound $x + 1/x \\ge 2$.)",
-      "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "answer": 3,
+      "explanation": "The determinant is $D = (2)(2) - (1)(1) = 3 > 0$ and $f_{xx} = 2 > 0$, so the Hessian is positive definite and the point is a local minimum. Its value is $f(2, -1) = 4 - 2 + 1 - 6 = -3$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-017",
-      "stem": "A local minimum of a function on $\\mathbb{R}$ is guaranteed to be a global minimum when",
+      "stem": "Find and classify the stationary point of $f(x, y) = 2x^2 + 2y^2 - 2xy - 6x$.",
       "options": [
-        "the function is a polynomial",
-        "the second derivative is negative there",
-        "the function has exactly one stationary point of any kind",
-        "the function is convex"
+        "$(2, 1)$, a saddle point",
+        "$(1, 2)$, a local maximum",
+        "$(2, 1)$, a local minimum",
+        "$(0, 0)$, a local minimum"
       ],
-      "answer": 3,
-      "explanation": "Convexity is the key property: for a convex function any local minimum is automatically a global minimum, because the function never dips below its tangent lines. Being a polynomial does not suffice (a cubic has a local minimum that is not global). A negative second derivative would indicate a maximum, not a minimum.",
-      "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "answer": 2,
+      "explanation": "From $f_x = 4x - 2y - 6 = 0$ and $f_y = 4y - 2x = 0$ we get $x = 2y$, then $8y - 2y - 6 = 0$ gives $y = 1$ and $x = 2$. The Hessian $\\begin{pmatrix} 4 & -2 \\\\ -2 & 4 \\end{pmatrix}$ has $D = 12 > 0$ and $f_{xx} > 0$, so $(2, 1)$ is a local minimum with value $-6$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-018",
-      "stem": "The function $f(x) = x^4$ has $f'(0) = 0$ and $f''(0) = 0$. What is $x = 0$?",
+      "stem": "When the Hessian determinant $D = 0$ at a stationary point of $f(x, y)$, the second-order test",
       "options": [
-        "A saddle point",
-        "An inflection point",
-        "A global minimum",
-        "A local maximum"
+        "guarantees a minimum",
+        "guarantees a maximum",
+        "is inconclusive",
+        "guarantees a saddle point"
       ],
       "answer": 2,
-      "explanation": "Both $f'(0) = 4(0)^3 = 0$ and $f''(0) = 12(0)^2 = 0$, so the second-derivative test is inconclusive. But $f(x) = x^4 \\ge 0$ for all $x$ with equality only at $x = 0$, so $x = 0$ is in fact the global minimum. This shows the second-derivative test failing while the point is still a genuine minimum.",
-      "difficulty": "stretch",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "explanation": "A zero determinant means the Hessian is only semidefinite, so it cannot distinguish a minimum, maximum, or degenerate behaviour. The test is therefore inconclusive and higher-order analysis is needed.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-019",
-      "stem": "How many stationary points does $f(x,y) = x^3 + y^3 - 3xy$ have, and what are they?",
+      "stem": "The function $f(x, y) = x^3 - 3xy + y^3$ has stationary points where $f_x = 3x^2 - 3y = 0$ and $f_y = -3x + 3y^2 = 0$. These points are",
       "options": [
-        "Two: $(0,0)$ and $(1,1)$",
-        "Two: $(1,1)$ and $(-1,-1)$",
-        "One: $(0,0)$",
-        "Three: $(0,0)$, $(1,1)$ and $(-1,-1)$"
+        "$(0, 0)$ and $(1, 1)$",
+        "$(1, 0)$ and $(0, 1)$",
+        "$(0, 0)$ only",
+        "$(-1, -1)$ and $(1, 1)$"
       ],
       "answer": 0,
-      "explanation": "Set $f_x = 3x^2 - 3y = 0$ and $f_y = 3y^2 - 3x = 0$, so $y = x^2$ and $x = y^2$. Substituting gives $x = x^4$, that is $x(x^3 - 1) = 0$, so $x = 0$ or $x = 1$. The stationary points are $(0,0)$ and $(1,1)$. At $(0,0)$ the Hessian determinant is $-9 < 0$ (saddle); at $(1,1)$ it is $27 > 0$ with $f_{xx} = 6 > 0$ (minimum).",
+      "explanation": "From the first equation $y = x^2$, and substituting into the second gives $-3x + 3x^4 = 0$, so $x(x^3 - 1) = 0$ and $x = 0$ or $x = 1$. The corresponding points are $(0, 0)$ and $(1, 1)$.",
       "difficulty": "stretch",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-020",
-      "stem": "Minimize $f(x) = e^x - x$. The minimizer and minimum value are",
+      "stem": "For $f(x, y) = x^3 - 3xy + y^3$ with Hessian $\\begin{pmatrix} 6x & -3 \\\\ -3 & 6y \\end{pmatrix}$, classify the two stationary points $(0, 0)$ and $(1, 1)$.",
       "options": [
-        "$x = 0$, value $1$",
-        "$x = -1$, value $1/e + 1$",
-        "no minimum exists",
-        "$x = 1$, value $e - 1$"
+        "Both are local minima",
+        "$(0, 0)$ is a saddle, $(1, 1)$ is a local minimum",
+        "$(0, 0)$ is a local minimum, $(1, 1)$ is a saddle",
+        "Both are saddle points"
       ],
-      "answer": 0,
-      "explanation": "Differentiate: $f'(x) = e^x - 1 = 0$ gives $e^x = 1$, so $x = 0$. The second derivative $f''(x) = e^x > 0$ everywhere, so $f$ is convex and $x = 0$ is the global minimum. The value is $f(0) = e^0 - 0 = 1$.",
-      "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "answer": 1,
+      "explanation": "At $(0, 0)$ the Hessian is $\\begin{pmatrix} 0 & -3 \\\\ -3 & 0 \\end{pmatrix}$ with $D = -9 < 0$, a saddle. At $(1, 1)$ it is $\\begin{pmatrix} 6 & -3 \\\\ -3 & 6 \\end{pmatrix}$ with $D = 27 > 0$ and $f_{xx} = 6 > 0$, a local minimum with value $f(1, 1) = -1$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-021",
-      "stem": "Classify the stationary points of $f(x) = x^3 - 6x^2 + 9x + 2$.",
+      "stem": "Find the global minimum value of $f(x, y) = x^2 - 6x + y^2 - 8y$ over $\\mathbb{R}^2$.",
       "options": [
-        "$x = 1$ local minimum, $x = 3$ local maximum",
-        "$x = 1$ local maximum, $x = 3$ local minimum",
-        "$x = 2$ is the only stationary point",
-        "both are saddle points"
+        "$0$",
+        "$-7$",
+        "$25$",
+        "$-25$"
       ],
-      "answer": 1,
-      "explanation": "Set $f'(x) = 3x^2 - 12x + 9 = 3(x-1)(x-3) = 0$, giving $x = 1$ and $x = 3$. With $f''(x) = 6x - 12$: at $x = 1$, $f''(1) = -6 < 0$ (local maximum, value $6$); at $x = 3$, $f''(3) = 6 > 0$ (local minimum, value $2$).",
+      "answer": 3,
+      "explanation": "Setting $f_x = 2x - 6 = 0$ and $f_y = 2y - 8 = 0$ gives the minimizer $(3, 4)$. Since the Hessian is $\\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix}$ (positive definite), this is the global minimum, with value $9 - 18 + 16 - 32 = -25$.",
       "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-022",
-      "stem": "Maximize $f(x) = \\ln x - x$ for $x > 0$. The maximum value is",
+      "stem": "Find the stationary points of $f(x) = x^3 - 6x^2 + 9x + 1$.",
       "options": [
-        "$0$",
-        "$1$",
-        "$e$",
-        "$-1$"
+        "$x = 0$ and $x = 6$",
+        "$x = 1$ and $x = 3$",
+        "$x = 3$ only",
+        "$x = -1$ and $x = -3$"
       ],
-      "answer": 3,
-      "explanation": "Differentiate: $f'(x) = \\frac{1}{x} - 1 = 0$ gives $x = 1$. The second derivative $f''(x) = -\\frac{1}{x^2} < 0$, so the function is concave and $x = 1$ is the global maximum. The value is $f(1) = \\ln 1 - 1 = 0 - 1 = -1$.",
+      "answer": 1,
+      "explanation": "The derivative is $f'(x) = 3x^2 - 12x + 9 = 3(x - 1)(x - 3)$, which is zero at $x = 1$ and $x = 3$. These are the two stationary points of the cubic.",
       "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-023",
-      "stem": "The distinction between a local minimum and a global minimum of $f$ is that a global minimum",
+      "stem": "For $f(x) = x^3 - 6x^2 + 9x + 1$ with $f''(x) = 6x - 12$, the nature of $x = 1$ and $x = 3$ is",
       "options": [
-        "must occur at an endpoint of the domain",
-        "has the smallest function value over the entire domain, not just nearby",
-        "always has zero gradient while a local minimum need not",
-        "requires the Hessian to be the zero matrix"
+        "$x = 1$ minimum, $x = 3$ maximum",
+        "both minima",
+        "$x = 1$ maximum, $x = 3$ minimum",
+        "both maxima"
       ],
-      "answer": 1,
-      "explanation": "A local minimum is smallest only compared with nearby points, whereas a global (absolute) minimum has the smallest value of $f$ over the whole feasible set. Both interior minima have zero gradient, so that does not distinguish them. A global minimum need not be at an endpoint, and the Hessian condition is unrelated to the global-versus-local distinction.",
-      "difficulty": "warmup",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "answer": 2,
+      "explanation": "At $x = 1$, $f''(1) = -6 < 0$, so it is a local maximum (value $5$), and at $x = 3$, $f''(3) = 6 > 0$, so it is a local minimum (value $1$). The second derivative changes sign between the two critical points.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-024",
-      "stem": "For $f(x,y) = x^2 - 2x + y^2 + 4y$, the minimum value is",
+      "stem": "The gradient of $f(x, y) = x^2 + 3y^2$ is",
       "options": [
-        "$-3$",
-        "$0$",
-        "$5$",
-        "$-5$"
+        "$(2x, 6y)$",
+        "$(2x, 3y)$",
+        "$(x^2, 3y^2)$",
+        "$(2, 6)$"
       ],
-      "answer": 3,
-      "explanation": "Set $f_x = 2x - 2 = 0$ giving $x = 1$, and $f_y = 2y + 4 = 0$ giving $y = -2$. The Hessian $\\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix}$ is positive definite, so this is a minimum. The value is $f(1,-2) = 1 - 2 + 4 - 8 = -5$. Completing the square gives $(x-1)^2 + (y+2)^2 - 5$, confirming the minimum of $-5$.",
-      "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "answer": 0,
+      "explanation": "Differentiating gives $f_x = 2x$ and $f_y = 6y$, so $\\nabla f = (2x, 6y)$. Setting both components to zero yields the stationary point $(0, 0)$.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
       "id": "optimization-i-mathematical-economics-unconstrained-optimization-025",
-      "stem": "When the second-derivative test gives $f''(c) = 0$ at a stationary point of a one-variable function, the correct conclusion is",
-      "options": [
-        "the function has no extremum anywhere",
-        "the point is automatically an inflection point",
-        "the point is automatically a minimum",
-        "the test is inconclusive and further analysis is needed"
-      ],
-      "answer": 3,
-      "explanation": "A zero second derivative at a stationary point makes the standard test inconclusive: the point could be a minimum ($x^4$ at $0$), a maximum ($-x^4$ at $0$), or an inflection ($x^3$ at $0$). One must look at higher derivatives or the sign of $f'$ on either side. It is wrong to declare any single outcome automatically.",
-      "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
-    },
-    {
-      "id": "optimization-i-mathematical-economics-unconstrained-optimization-026",
       "format": "cloze",
-      "stem": "Find and classify the stationary point of $f(x) = x^2 - 6x + 5$.",
-      "solution": "Setting $f'(x) = 2x - 6 = 0$ gives the stationary point $x^* =$ {{1}}. The second derivative is $f''(x) = 2$, which is {{2}}, so the point is a local minimum. The minimum value is $f(x^*) =$ {{3}}.",
+      "stem": "Find and classify the stationary point of $f(x, y) = x^2 + y^2 - 4x - 6y + 13$.",
+      "solution": "Setting $f_x = 2x - 4 = 0$ and $f_y = 2y - 6 = 0$ gives the stationary point $(x, y) = ($ {{1}} $, $ {{2}} $)$. The Hessian determinant is $D = 4$, and since $f_{xx} > 0$, the point is a local {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 3,
           "tolerance": 0
         },
         {
-          "id": 2,
-          "type": "dropdown",
-          "options": [
-            "positive",
-            "negative",
-            "zero"
-          ],
-          "answer": "positive"
-        },
-        {
           "id": 3,
-          "type": "number",
-          "answer": -4,
-          "tolerance": 0
-        }
-      ],
-      "explanation": "From $f'(x) = 2x - 6 = 0$ we get $x = 3$. Since $f''(x) = 2 > 0$ is positive, the stationary point is a local minimum. The value there is $f(3) = 9 - 18 + 5 = -4$.",
-      "difficulty": "warmup",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
-    },
-    {
-      "id": "optimization-i-mathematical-economics-unconstrained-optimization-027",
-      "format": "cloze",
-      "stem": "Analyze the stationary points of $f(x) = x^3 - 12x$.",
-      "solution": "Solving $f'(x) = 3x^2 - 12 = 0$ gives $x = \\pm 2$. Using $f''(x) = 6x$, at $x = 2$ the second derivative is positive so this is a {{1}}; at $x = -2$ it is negative so this is a {{2}}. The local minimum value $f(2)$ equals {{3}}.",
-      "gaps": [
-        {
-          "id": 1,
           "type": "dropdown",
           "options": [
             "minimum",
             "maximum",
-            "saddle point"
+            "saddle point",
+            "inflection"
           ],
           "answer": "minimum"
-        },
-        {
-          "id": 2,
-          "type": "dropdown",
-          "options": [
-            "maximum",
-            "minimum",
-            "saddle point"
-          ],
-          "answer": "maximum"
-        },
-        {
-          "id": 3,
-          "type": "number",
-          "answer": -16,
-          "tolerance": 0
         }
       ],
-      "explanation": "From $f'(x) = 3x^2 - 12 = 0$, $x^2 = 4$, so $x = \\pm 2$. With $f''(x) = 6x$: $f''(2) = 12 > 0$ gives a minimum, $f''(-2) = -12 < 0$ gives a maximum. The minimum value is $f(2) = 8 - 24 = -16$.",
+      "explanation": "The gradient vanishes at $(2, 3)$. With $D = (2)(2) - 0 = 4 > 0$ and $f_{xx} = 2 > 0$, the Hessian is positive definite, so the point is a local minimum.",
       "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
-      "id": "optimization-i-mathematical-economics-unconstrained-optimization-028",
+      "id": "optimization-i-mathematical-economics-unconstrained-optimization-026",
       "format": "cloze",
-      "stem": "Find the stationary point of $f(x,y) = x^2 + y^2 - 2x + 4y + 6$ and classify it.",
-      "solution": "Setting $f_x = 2x - 2 = 0$ and $f_y = 2y + 4 = 0$ gives the point $(${{1}}$, ${{2}}$)$. The Hessian is diagonal with both entries equal to $2$, so it is positive definite and the point is a {{3}}.",
+      "stem": "Find and classify the stationary point of $f(x, y) = -(x^2 + y^2) + 2x + 4y$.",
+      "solution": "From $f_x = -2x + 2 = 0$ and $f_y = -2y + 4 = 0$, the stationary point is $(x, y) = ($ {{1}} $, $ {{2}} $)$. The Hessian determinant is $4$ with $f_{xx} < 0$, so the point is a local {{3}}, where $f$ takes the value {{4}}.",
       "gaps": [
         {
           "id": 1,
@@ -438,34 +388,41 @@
         {
           "id": 2,
           "type": "number",
-          "answer": -2,
+          "answer": 2,
           "tolerance": 0
         },
         {
           "id": 3,
           "type": "dropdown",
           "options": [
-            "minimum",
             "maximum",
-            "saddle point"
+            "minimum",
+            "saddle point",
+            "inflection"
           ],
-          "answer": "minimum"
+          "answer": "maximum"
+        },
+        {
+          "id": 4,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
         }
       ],
-      "explanation": "From $f_x = 2x - 2 = 0$ we get $x = 1$, and from $f_y = 2y + 4 = 0$ we get $y = -2$. The Hessian $\\begin{pmatrix} 2 & 0 \\\\ 0 & 2 \\end{pmatrix}$ is positive definite, so $(1,-2)$ is a minimum.",
+      "explanation": "The gradient vanishes at $(1, 2)$. With $D = 4 > 0$ and $f_{xx} = -2 < 0$ the Hessian is negative definite, so the point is a local maximum with value $f(1, 2) = -(1 + 4) + 2 + 8 = 5$.",
       "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
-      "id": "optimization-i-mathematical-economics-unconstrained-optimization-029",
+      "id": "optimization-i-mathematical-economics-unconstrained-optimization-027",
       "format": "cloze",
-      "stem": "Classify the stationary point of $f(x,y) = 4xy - x^2 - y^2$ using the Hessian.",
-      "solution": "The gradient $(4y - 2x,\\ 4x - 2y)$ vanishes only at the origin. The Hessian is $\\begin{pmatrix} -2 & 4 \\\\ 4 & -2 \\end{pmatrix}$, whose determinant equals {{1}}. Because this determinant is negative, the stationary point is a {{2}}.",
+      "stem": "Classify the stationary point $(0, 0)$ of $f(x, y) = x^2 - y^2$.",
+      "solution": "The Hessian is $\\begin{pmatrix} 2 & 0 \\\\ 0 & -2 \\end{pmatrix}$, so the determinant is $D =$ {{1}}. Because $D$ is negative, the second-order test classifies $(0, 0)$ as a {{2}}.",
       "gaps": [
         {
           "id": 1,
           "type": "number",
-          "answer": -12,
+          "answer": -4,
           "tolerance": 0
         },
         {
@@ -473,80 +430,113 @@
           "type": "dropdown",
           "options": [
             "saddle point",
-            "minimum",
-            "maximum"
+            "local minimum",
+            "local maximum",
+            "global minimum"
           ],
           "answer": "saddle point"
         }
       ],
-      "explanation": "The determinant of the Hessian is $(-2)(-2) - (4)(4) = 4 - 16 = -12$. A negative determinant means the Hessian is indefinite, so the origin is a saddle point.",
+      "explanation": "The determinant is $D = (2)(-2) - 0 = -4 < 0$, so the Hessian is indefinite. A negative determinant at a stationary point indicates a saddle point.",
       "difficulty": "core",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     },
     {
-      "id": "optimization-i-mathematical-economics-unconstrained-optimization-030",
+      "id": "optimization-i-mathematical-economics-unconstrained-optimization-028",
       "format": "cloze",
-      "stem": "Minimize $f(x) = x^4 - 8x^2$ over the reals.",
-      "solution": "Solving $f'(x) = 4x^3 - 16x = 4x(x^2 - 4) = 0$ gives $x = 0$ and $x = \\pm 2$. The point $x = 0$ is a local maximum, while $x = \\pm 2$ give the global minima. The global minimum value is {{1}}, and the type of symmetry that produces two equal minima is called {{2}}.",
+      "stem": "Find and classify the stationary points of $f(x) = x^3 - 3x$, using $f''(x) = 6x$.",
+      "solution": "Solving $f'(x) = 3x^2 - 3 = 0$ gives $x =$ {{1}} and $x = -1$ (enter the positive root). Since $f''$ at the positive root is positive, that point is a local {{2}}, while $x = -1$ is a local {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "number",
-          "answer": -16,
+          "answer": 1,
           "tolerance": 0
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "even (reflection in the $y$-axis)",
-            "odd (rotation by $180$ degrees)",
-            "periodic"
-          ],
-          "answer": "even (reflection in the $y$-axis)"
-        }
-      ],
-      "explanation": "From $f'(x) = 4x^3 - 16x = 0$ the critical points are $x = 0, \\pm 2$. At $x = \\pm 2$, $f(\\pm 2) = 16 - 32 = -16$, the global minimum. Because $f(-x) = f(x)$ the function is even, symmetric about the $y$-axis, which is why both $x = 2$ and $x = -2$ give the same value.",
-      "difficulty": "stretch",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
-    },
-    {
-      "id": "optimization-i-mathematical-economics-unconstrained-optimization-031",
-      "format": "cloze",
-      "stem": "A twice-differentiable function $f$ on $\\mathbb{R}$ has a stationary point at $x = c$. State the second-derivative test.",
-      "solution": "If $f''(c) > 0$ the point is a local {{1}}. If $f''(c) < 0$ the point is a local {{2}}. If $f''(c)$ equals $0$ the test is {{3}}.",
-      "gaps": [
-        {
-          "id": 1,
-          "type": "dropdown",
-          "options": [
             "minimum",
-            "maximum"
+            "maximum",
+            "saddle point",
+            "inflection"
           ],
           "answer": "minimum"
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
             "maximum",
-            "minimum"
+            "minimum",
+            "saddle point",
+            "inflection"
           ],
           "answer": "maximum"
+        }
+      ],
+      "explanation": "The critical points are $x = 1$ and $x = -1$. Since $f''(1) = 6 > 0$ the point $x = 1$ is a local minimum, and since $f''(-1) = -6 < 0$ the point $x = -1$ is a local maximum.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-unconstrained-optimization-029",
+      "format": "cloze",
+      "stem": "Find and classify the stationary point of $f(x, y) = x^2 + xy + y^2 - 3x$.",
+      "solution": "From $f_x = 2x + y - 3 = 0$ and $f_y = x + 2y = 0$, the stationary point is $(x, y) = ($ {{1}} $, $ {{2}} $)$. The Hessian $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$ has determinant $D =$ {{3}}, so with $f_{xx} > 0$ the point is a local minimum.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
         },
         {
           "id": 3,
-          "type": "text",
-          "accept": [
-            "inconclusive",
-            "indeterminate",
-            "not conclusive"
-          ]
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
         }
       ],
-      "explanation": "The second-derivative test: at a stationary point, $f''(c) > 0$ means concave up, a local minimum; $f''(c) < 0$ means concave down, a local maximum; and $f''(c) = 0$ leaves the test inconclusive, requiring further analysis.",
-      "difficulty": "warmup",
-      "source": "in the style of Chong and Zak, An Introduction to Optimization"
+      "explanation": "Solving the linear system gives $x = 2$, $y = -1$. The Hessian determinant is $D = (2)(2) - (1)(1) = 3 > 0$ with $f_{xx} = 2 > 0$, so the point is a local minimum.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
+    },
+    {
+      "id": "optimization-i-mathematical-economics-unconstrained-optimization-030",
+      "format": "cloze",
+      "stem": "Find the global minimum of $f(x, y) = x^2 - 6x + y^2 - 8y$ on $\\mathbb{R}^2$.",
+      "solution": "Setting the gradient to zero gives the minimizer $(x, y) = ($ {{1}} $, $ {{2}} $)$. Substituting back, the minimum value of $f$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -25,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From $2x - 6 = 0$ and $2y - 8 = 0$ the minimizer is $(3, 4)$. Then $f(3, 4) = 9 - 18 + 16 - 32 = -25$, the global minimum since the Hessian is positive definite.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Optimization I course (MATH 465)"
     }
   ]
 }
