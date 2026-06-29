@@ -1,0 +1,415 @@
+{
+  "courseId": "discrete-mathematics",
+  "topicId": "counting-and-permutations",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "discrete-mathematics-counting-and-permutations-001",
+      "stem": "What is the value of $5!$?",
+      "options": [
+        "$120$",
+        "$25$",
+        "$60$",
+        "$720$"
+      ],
+      "answer": 0,
+      "explanation": "The factorial $5!$ is the product $5 \\times 4 \\times 3 \\times 2 \\times 1$. Multiplying step by step gives $20$, then $60$, then $120$. The value $720$ is $6!$, one factorial too far.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-002",
+      "stem": "By convention, what is the value of $0!$?",
+      "options": [
+        "$0$",
+        "$1$",
+        "undefined",
+        "$\\infty$"
+      ],
+      "answer": 1,
+      "explanation": "By definition $0! = 1$; this convention makes formulas such as $\\binom{n}{0} = 1$ and the permutation count $P(n, n) = n!$ work without exception. There is exactly one way to arrange zero objects, namely the empty arrangement, which agrees with the value $1$. Setting $0!$ to $0$ would break these identities.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-003",
+      "stem": "A meal consists of one main dish and one drink. If there are $4$ main dishes and $3$ drinks, how many different meals are possible?",
+      "options": [
+        "$7$",
+        "$1$",
+        "$12$",
+        "$24$"
+      ],
+      "answer": 2,
+      "explanation": "Choosing a main dish and then a drink is a sequence of two independent stages, so by the product (multiplication) rule the totals multiply: $4 \\times 3 = 12$. Each of the $4$ mains pairs with each of the $3$ drinks to give a distinct meal. Adding to get $7$ would apply the sum rule, which is for mutually exclusive choices, not a combined selection.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-004",
+      "stem": "A student must choose one elective. There are $5$ science electives and $4$ arts electives, and the categories do not overlap. How many ways can the student choose a single elective?",
+      "options": [
+        "$20$",
+        "$1$",
+        "$45$",
+        "$9$"
+      ],
+      "answer": 3,
+      "explanation": "Choosing one elective from either of two disjoint groups is governed by the sum (addition) rule, so the counts add: $5 + 4 = 9$. The product $5 \\times 4 = 20$ would count picking one science and one arts elective together, which is not what is asked. Because the categories do not overlap, no option is double-counted.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-005",
+      "stem": "How many ways can $6$ distinct books be arranged in a row on a shelf?",
+      "options": [
+        "$36$",
+        "$120$",
+        "$720$",
+        "$64$"
+      ],
+      "answer": 2,
+      "explanation": "Arranging all $6$ distinct books in order is a permutation of $6$ objects, counted by $6! = 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 720$. There are $6$ choices for the first slot, $5$ for the next, and so on down to $1$. The value $120$ is $5!$ and $64$ is $2^6$, neither of which counts these arrangements.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-006",
+      "stem": "The number of permutations of $n$ distinct objects taken $r$ at a time is $P(n, r) = \\dfrac{n!}{(n-r)!}$. What is $P(7, 3)$?",
+      "options": [
+        "$21$",
+        "$35$",
+        "$210$",
+        "$343$"
+      ],
+      "answer": 2,
+      "explanation": "Using the formula, $P(7, 3) = \\dfrac{7!}{4!} = 7 \\times 6 \\times 5 = 210$, the product of the first three descending factors. Equivalently there are $7$ choices for the first position, $6$ for the second, and $5$ for the third. The value $35$ is the combination $\\binom{7}{3}$, which ignores order.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-007",
+      "stem": "The number of combinations of $n$ objects taken $r$ at a time is $\\binom{n}{r} = \\dfrac{n!}{r!\\,(n-r)!}$. What is $\\binom{7}{3}$?",
+      "options": [
+        "$35$",
+        "$21$",
+        "$210$",
+        "$42$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $\\binom{7}{3} = \\dfrac{7!}{3!\\,4!} = \\dfrac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = \\dfrac{210}{6} = 35$. Dividing the permutation count $210$ by $3! = 6$ removes the orderings of the chosen three. The value $210$ itself is $P(7,3)$, the count that keeps order.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-008",
+      "stem": "From a class of $10$ students, how many ways can a committee of $3$ be chosen (order does not matter)?",
+      "options": [
+        "$30$",
+        "$120$",
+        "$720$",
+        "$1000$"
+      ],
+      "answer": 1,
+      "explanation": "A committee is an unordered selection, so the count is $\\binom{10}{3} = \\dfrac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = \\dfrac{720}{6} = 120$. The value $720$ is the ordered count $P(10, 3)$, which overcounts because it treats the same three people in different orders as different committees. Dividing by $3!$ corrects for this.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-009",
+      "stem": "What is the value of $\\binom{8}{0}$?",
+      "options": [
+        "$0$",
+        "$8$",
+        "$1$",
+        "$40320$"
+      ],
+      "answer": 2,
+      "explanation": "By the formula $\\binom{8}{0} = \\dfrac{8!}{0!\\,8!} = \\dfrac{1}{0!} = 1$, since $0! = 1$. There is exactly one way to choose nothing from a set, namely take the empty selection. More generally $\\binom{n}{0} = 1$ for every $n$.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-010",
+      "stem": "Using the symmetry identity $\\binom{n}{r} = \\binom{n}{n-r}$, what is $\\binom{9}{7}$?",
+      "options": [
+        "$72$",
+        "$84$",
+        "$2$",
+        "$36$"
+      ],
+      "answer": 3,
+      "explanation": "By symmetry $\\binom{9}{7} = \\binom{9}{2} = \\dfrac{9 \\times 8}{2 \\times 1} = \\dfrac{72}{2} = 36$. Choosing which $7$ to include is the same as choosing which $2$ to leave out, so the two counts agree. Computing $\\binom{9}{2}$ is far easier than expanding $\\binom{9}{7}$ directly.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-011",
+      "stem": "How many distinct arrangements can be made from all the letters of the word BANANA?",
+      "options": [
+        "$60$",
+        "$720$",
+        "$120$",
+        "$360$"
+      ],
+      "answer": 0,
+      "explanation": "BANANA has $6$ letters with repeats: three As and two Ns, with one B. The number of distinct arrangements is $\\dfrac{6!}{3!\\,2!\\,1!} = \\dfrac{720}{6 \\times 2} = \\dfrac{720}{12} = 60$. Dividing by the factorials of the repeat counts removes arrangements that merely swap identical letters.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-012",
+      "stem": "How many distinct arrangements can be made from all the letters of the word LEVEL?",
+      "options": [
+        "$120$",
+        "$30$",
+        "$60$",
+        "$20$"
+      ],
+      "answer": 1,
+      "explanation": "LEVEL has $5$ letters: two Ls, two Es, and one V. The count of distinct arrangements is $\\dfrac{5!}{2!\\,2!\\,1!} = \\dfrac{120}{2 \\times 2} = \\dfrac{120}{4} = 30$. Each pair of identical letters contributes a factor of $2!$ in the denominator to avoid overcounting.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-013",
+      "stem": "A password is formed by choosing $4$ letters from the $26$-letter alphabet, where letters may repeat and order matters. How many such passwords are possible?",
+      "options": [
+        "$26 \\times 25 \\times 24 \\times 23$",
+        "$\\binom{26}{4}$",
+        "$26^4$",
+        "$4^{26}$"
+      ],
+      "answer": 2,
+      "explanation": "When order matters and repetition is allowed, each of the $4$ positions can independently be any of the $26$ letters, so the count is $26 \\times 26 \\times 26 \\times 26 = 26^4$ by the product rule. The expression $26 \\times 25 \\times 24 \\times 23$ would forbid repeats, and $\\binom{26}{4}$ would ignore order. Allowing repetition is exactly what turns the count into a power.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-014",
+      "stem": "How many three-digit numbers can be formed using the digits $1, 2, 3, 4, 5$ if no digit is repeated?",
+      "options": [
+        "$10$",
+        "$125$",
+        "$15$",
+        "$60$"
+      ],
+      "answer": 3,
+      "explanation": "With no repetition and order mattering, this is the permutation $P(5, 3) = 5 \\times 4 \\times 3 = 60$. There are $5$ choices for the hundreds digit, $4$ remaining for the tens, and $3$ for the units. Allowing repetition would instead give $5^3 = 125$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-015",
+      "stem": "A committee must have $2$ men chosen from $5$ men and $3$ women chosen from $4$ women. How many such committees are possible?",
+      "options": [
+        "$40$",
+        "$10$",
+        "$14$",
+        "$120$"
+      ],
+      "answer": 0,
+      "explanation": "Choose the men and the women separately, then combine with the product rule. There are $\\binom{5}{2} = 10$ ways to pick the men and $\\binom{4}{3} = 4$ ways to pick the women, giving $10 \\times 4 = 40$ committees. Adding the two counts to get $14$ would wrongly treat the two independent choices as mutually exclusive.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-016",
+      "stem": "In how many ways can $5$ people be seated around a circular table, where rotations of the same arrangement are considered identical?",
+      "options": [
+        "$120$",
+        "$24$",
+        "$60$",
+        "$5$"
+      ],
+      "answer": 1,
+      "explanation": "Circular arrangements of $n$ distinct people number $(n-1)!$ because fixing one person removes the $n$ equivalent rotations. With $n = 5$ this is $(5-1)! = 4! = 24$. The linear count $5! = 120$ overcounts each circular arrangement $5$ times, once per rotation.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-017",
+      "stem": "The pigeonhole principle guarantees that if more than $n$ objects are placed into $n$ boxes, then:",
+      "options": [
+        "every box contains at least one object",
+        "exactly one box is empty",
+        "at least one box contains two or more objects",
+        "the objects are spread evenly"
+      ],
+      "answer": 2,
+      "explanation": "The pigeonhole principle states that placing more objects than boxes forces at least one box to hold two or more objects, since the objects cannot all be separated. It does not promise that every box is used or that any specific box is empty. Even distribution is not guaranteed; only the existence of one crowded box.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-018",
+      "stem": "What is the minimum number of people that must be in a room to guarantee that at least two of them were born in the same month?",
+      "options": [
+        "$12$",
+        "$24$",
+        "$2$",
+        "$13$"
+      ],
+      "answer": 3,
+      "explanation": "There are $12$ months, which act as the boxes. By the pigeonhole principle, $12$ people could in principle all have different birth months, but the $13$th person must share a month with someone. Hence $13$ people guarantee a repeated month.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-019",
+      "stem": "How many ways can a president, a secretary, and a treasurer be chosen from a club of $8$ members, assuming no person holds two positions?",
+      "options": [
+        "$336$",
+        "$56$",
+        "$512$",
+        "$24$"
+      ],
+      "answer": 0,
+      "explanation": "The three offices are distinct, so order matters and this is $P(8, 3) = 8 \\times 7 \\times 6 = 336$. There are $8$ choices for president, then $7$ for secretary, then $6$ for treasurer. The combination $\\binom{8}{3} = 56$ would apply only if the three roles were interchangeable.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-020",
+      "stem": "How many subsets of size $2$ can be formed from a set of $6$ elements?",
+      "options": [
+        "$12$",
+        "$15$",
+        "$30$",
+        "$36$"
+      ],
+      "answer": 1,
+      "explanation": "A subset is unordered, so the count is $\\binom{6}{2} = \\dfrac{6 \\times 5}{2 \\times 1} = \\dfrac{30}{2} = 15$. The ordered count $P(6, 2) = 30$ double-counts each pair because it distinguishes the two orders. Dividing by $2! = 2$ removes that duplication.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-021",
+      "stem": "A coin is tossed $5$ times and the sequence of heads and tails is recorded. How many different sequences of outcomes are possible?",
+      "options": [
+        "$10$",
+        "$25$",
+        "$32$",
+        "$120$"
+      ],
+      "answer": 2,
+      "explanation": "Each toss has $2$ possible outcomes, heads or tails, and the $5$ tosses are independent, so by the product rule there are $2^5 = 32$ sequences. The value $25$ is $5^2$ and $120$ is $5!$, neither of which models repeated binary choices. Recording the full ordered sequence is what makes this a power of two.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-022",
+      "stem": "Using Pascal's identity $\\binom{n}{r} = \\binom{n-1}{r-1} + \\binom{n-1}{r}$, what is $\\binom{6}{2}$ given $\\binom{5}{1} = 5$ and $\\binom{5}{2} = 10$?",
+      "options": [
+        "$12$",
+        "$20$",
+        "$50$",
+        "$15$"
+      ],
+      "answer": 3,
+      "explanation": "Pascal's identity gives $\\binom{6}{2} = \\binom{5}{1} + \\binom{5}{2} = 5 + 10 = 15$. This matches the direct computation $\\binom{6}{2} = \\dfrac{6 \\times 5}{2} = 15$. The identity reflects how each row of Pascal's triangle is built by adding adjacent entries of the row above.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-023",
+      "format": "cloze",
+      "stem": "Evaluate two basic counting quantities for $n = 6$.",
+      "solution": "The factorial $6!$ equals {{1}}. The number of ways to choose $2$ objects from $6$ when order does not matter, $\\binom{6}{2}$, equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 720,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 15,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The factorial $6! = 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 720$. The combination $\\binom{6}{2} = \\dfrac{6 \\times 5}{2 \\times 1} = 15$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-024",
+      "format": "cloze",
+      "stem": "A four-character code uses digits from $0$ to $9$. Count the possibilities under two rules.",
+      "solution": "If digits may repeat and order matters, the number of codes is $10^4$, which equals {{1}}. If no digit may repeat, the number of codes is $P(10, 4) = 10 \\times 9 \\times 8 \\times 7$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 10000,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5040,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "With repetition allowed, each of the four positions has $10$ choices, giving $10^4 = 10000$. With no repetition, $P(10, 4) = 10 \\times 9 \\times 8 \\times 7 = 5040$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-025",
+      "format": "cloze",
+      "stem": "Identify which counting rule applies in each scenario.",
+      "solution": "When a task is done in two independent stages and the stage counts are multiplied, this is the {{1}} rule. When a single choice is made from two disjoint groups and the group counts are added, this is the {{2}} rule.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "product",
+            "sum",
+            "pigeonhole"
+          ],
+          "answer": "product"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "product",
+            "sum",
+            "pigeonhole"
+          ],
+          "answer": "sum"
+        }
+      ],
+      "explanation": "Multiplying counts for sequential independent stages is the product (multiplication) rule. Adding counts for a single choice among disjoint alternatives is the sum (addition) rule.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-counting-and-permutations-026",
+      "format": "cloze",
+      "stem": "Count distinct arrangements of repeated letters and apply the pigeonhole principle.",
+      "solution": "The number of distinct arrangements of the letters of the word MISSISSIPPI ($11$ letters: one M, four I, four S, two P) is $\\dfrac{11!}{4!\\,4!\\,2!}$, which equals {{1}}. To guarantee that at least two of a group of people share a birthday month, the smallest group size needed is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 34650,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 13,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Arrangements of MISSISSIPPI number $\\dfrac{11!}{4!\\,4!\\,2!} = \\dfrac{39916800}{24 \\times 24 \\times 2} = \\dfrac{39916800}{1152} = 34650$. By the pigeonhole principle with $12$ months, $13$ people force a shared birth month.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    }
+  ]
+}

@@ -1,0 +1,416 @@
+{
+  "courseId": "discrete-mathematics",
+  "topicId": "difference-equations-and-z-transforms",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-001",
+      "stem": "What is the order of the difference (recurrence) equation $a_n = a_{n-1} + a_{n-2}$?",
+      "options": [
+        "$2$",
+        "$0$",
+        "$1$",
+        "$3$"
+      ],
+      "answer": 0,
+      "explanation": "The order of a recurrence is the gap between the highest and lowest indices appearing, here between $a_n$ and $a_{n-2}$, which is $2$. This Fibonacci recurrence needs two initial values, $a_0$ and $a_1$, to be determined uniquely. A first-order recurrence would relate only $a_n$ and $a_{n-1}$.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-002",
+      "stem": "The recurrence $a_n = 5 a_{n-1}$ with $a_0 = 2$ has which closed-form solution?",
+      "options": [
+        "$a_n = 5 \\cdot 2^{n}$",
+        "$a_n = 2 \\cdot 5^{n}$",
+        "$a_n = 2 + 5n$",
+        "$a_n = 10^{n}$"
+      ],
+      "answer": 1,
+      "explanation": "A first-order recurrence $a_n = r\\,a_{n-1}$ has the geometric solution $a_n = a_0\\, r^{n}$. With $r = 5$ and $a_0 = 2$, this gives $a_n = 2 \\cdot 5^{n}$. Checking: $a_1 = 2 \\cdot 5 = 10 = 5 \\cdot 2$, as required, and $a_0 = 2 \\cdot 5^0 = 2$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-003",
+      "stem": "A difference equation is called homogeneous when:",
+      "options": [
+        "it has constant coefficients",
+        "it is first order",
+        "every term involves the unknown sequence and there is no separate forcing term",
+        "the initial condition is zero"
+      ],
+      "answer": 2,
+      "explanation": "A linear recurrence is homogeneous when each term contains the unknown sequence and the right-hand forcing term is zero, for example $a_n - 3a_{n-1} = 0$. Adding a nonzero function of $n$, such as $a_n - 3a_{n-1} = 2^n$, makes it nonhomogeneous. Constant coefficients and order are separate features and do not decide homogeneity.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-004",
+      "stem": "What is the characteristic equation of the recurrence $a_n - 5 a_{n-1} + 6 a_{n-2} = 0$?",
+      "options": [
+        "$x^2 + 5x + 6 = 0$",
+        "$5x^2 - 6x = 0$",
+        "$x - 5 + 6 = 0$",
+        "$x^2 - 5x + 6 = 0$"
+      ],
+      "answer": 3,
+      "explanation": "Substitute $a_n = x^n$ into the recurrence and divide by $x^{n-2}$ to obtain the characteristic equation $x^2 - 5x + 6 = 0$. The coefficients carry over directly with the highest-index term becoming the highest power. Its roots $x = 2$ and $x = 3$ then build the general solution.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-005",
+      "stem": "The roots of the characteristic equation $x^2 - 5x + 6 = 0$ are:",
+      "options": [
+        "$2$ and $3$",
+        "$-2$ and $-3$",
+        "$1$ and $6$",
+        "$5$ and $6$"
+      ],
+      "answer": 0,
+      "explanation": "Factor $x^2 - 5x + 6 = (x - 2)(x - 3) = 0$, giving roots $x = 2$ and $x = 3$. Their sum $2 + 3 = 5$ matches the coefficient of $x$ and their product $2 \\times 3 = 6$ matches the constant, confirming the factorisation. These distinct real roots lead to a solution $a_n = A \\cdot 2^n + B \\cdot 3^n$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-006",
+      "stem": "For the recurrence $a_n - 5 a_{n-1} + 6 a_{n-2} = 0$ with characteristic roots $2$ and $3$, the general solution is:",
+      "options": [
+        "$a_n = A \\cdot 5^{n} + B \\cdot 6^{n}$",
+        "$a_n = A \\cdot 2^{n} + B \\cdot 3^{n}$",
+        "$a_n = (A + Bn) \\cdot 2^{n}$",
+        "$a_n = A \\cdot 2^{n} \\cdot 3^{n}$"
+      ],
+      "answer": 1,
+      "explanation": "When the characteristic equation has distinct real roots $r_1$ and $r_2$, the general solution is $a_n = A\\, r_1^{n} + B\\, r_2^{n}$. Here $r_1 = 2$ and $r_2 = 3$, giving $a_n = A \\cdot 2^{n} + B \\cdot 3^{n}$. The form $(A + Bn) \\cdot 2^n$ applies only to a repeated root, which does not occur here.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-007",
+      "stem": "If the characteristic equation has a repeated root $r$ (a double root), the general solution of the second-order homogeneous recurrence is:",
+      "options": [
+        "$a_n = A r^{n} + B r^{n}$",
+        "$a_n = A r^{n} + B (-r)^{n}$",
+        "$a_n = (A + Bn) r^{n}$",
+        "$a_n = A r^{2n}$"
+      ],
+      "answer": 2,
+      "explanation": "A repeated root $r$ supplies only one basic solution $r^n$, so a second independent solution $n\\,r^n$ is needed; the general solution is $a_n = (A + Bn) r^{n}$. Writing $A r^n + B r^n$ collapses to $(A + B) r^n$, a single constant, and so is not general. The extra factor $n$ accounts for the missing second root.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-008",
+      "stem": "What is the characteristic equation of $a_n - 4 a_{n-1} + 4 a_{n-2} = 0$, and what kind of root does it have?",
+      "options": [
+        "$x^2 - 4x + 4 = 0$, distinct roots $2$ and $-2$",
+        "$x^2 + 4x + 4 = 0$, a repeated root $x = -2$",
+        "$x^2 - 4 = 0$, roots $2$ and $-2$",
+        "$x^2 - 4x + 4 = 0$, a repeated root $x = 2$"
+      ],
+      "answer": 3,
+      "explanation": "The characteristic equation is $x^2 - 4x + 4 = 0$, which factors as $(x - 2)^2 = 0$. This has the single repeated root $x = 2$, so the general solution takes the form $(A + Bn) 2^n$. The discriminant $16 - 16 = 0$ confirms the root is repeated rather than two distinct values.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-009",
+      "stem": "The Fibonacci recurrence $a_n = a_{n-1} + a_{n-2}$ has which characteristic equation?",
+      "options": [
+        "$x^2 - x - 1 = 0$",
+        "$x^2 + x + 1 = 0$",
+        "$x^2 - x + 1 = 0$",
+        "$x^2 - 1 = 0$"
+      ],
+      "answer": 0,
+      "explanation": "Rewrite the recurrence as $a_n - a_{n-1} - a_{n-2} = 0$, then substitute $a_n = x^n$ and divide by $x^{n-2}$ to get $x^2 - x - 1 = 0$. Both the $a_{n-1}$ and $a_{n-2}$ terms move to the left with a minus sign, producing the negative coefficients. Its roots are the golden ratio $\\tfrac{1 + \\sqrt 5}{2}$ and its conjugate.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-010",
+      "stem": "The recurrence $a_n - 3 a_{n-1} = 0$ with $a_0 = 1$ has solution:",
+      "options": [
+        "$a_n = 3n$",
+        "$a_n = 3^{n}$",
+        "$a_n = n^{3}$",
+        "$a_n = 1$"
+      ],
+      "answer": 1,
+      "explanation": "This is geometric: $a_n = 3 a_{n-1}$ gives $a_n = a_0 \\cdot 3^{n} = 1 \\cdot 3^{n} = 3^{n}$. Checking, $a_0 = 3^0 = 1$ and $a_1 = 3 = 3 \\cdot a_0$, both consistent. Each step multiplies by the constant ratio $3$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-011",
+      "stem": "The general solution of a nonhomogeneous linear difference equation is formed as:",
+      "options": [
+        "homogeneous solution times a particular solution",
+        "particular solution only",
+        "homogeneous solution plus a particular solution",
+        "homogeneous solution only"
+      ],
+      "answer": 2,
+      "explanation": "For a linear nonhomogeneous recurrence, the complete general solution is the sum of the general homogeneous (complementary) solution and any one particular solution: $a_n = a_n^{(h)} + a_n^{(p)}$. The homogeneous part carries the arbitrary constants fixed by initial conditions, and the particular part handles the forcing term. Using only one of the two pieces cannot satisfy both the recurrence and the initial data.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-012",
+      "stem": "For the recurrence $a_n = 2 a_{n-1} + 1$, trying a constant particular solution $a_n = c$ gives which value of $c$?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$0$",
+        "$-1$"
+      ],
+      "answer": 3,
+      "explanation": "Substituting the constant trial $a_n = c$ and $a_{n-1} = c$ gives $c = 2c + 1$, so $-c = 1$ and $c = -1$. A constant trial works because the forcing term $1$ is constant. The full general solution is then $a_n = A \\cdot 2^n - 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-013",
+      "stem": "Given $a_0 = 3$, $a_1 = 7$, and $a_n = 2 a_{n-1} + 3 a_{n-2}$, what is $a_2$?",
+      "options": [
+        "$23$",
+        "$14$",
+        "$21$",
+        "$17$"
+      ],
+      "answer": 0,
+      "explanation": "Apply the recurrence directly with $n = 2$: $a_2 = 2 a_1 + 3 a_0 = 2(7) + 3(3) = 14 + 9 = 23$. The two given initial values feed straight into the formula. Forgetting the coefficient $3$ on $a_0$ would give the wrong value $14$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-014",
+      "stem": "How many initial conditions are needed to determine a unique solution of a third-order linear difference equation?",
+      "options": [
+        "$1$",
+        "$3$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": 1,
+      "explanation": "A linear recurrence of order $k$ requires exactly $k$ initial conditions to pin down its arbitrary constants. For a third-order equation that is $3$ initial values, such as $a_0$, $a_1$, and $a_2$. These match the three constants in the general solution.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-015",
+      "stem": "The Z-transform of a sequence $\\{x_n\\}_{n \\ge 0}$ is defined as:",
+      "options": [
+        "$X(z) = \\sum_{n=0}^{\\infty} x_n z^{n}$",
+        "$X(z) = \\int_{0}^{\\infty} x_n z^{-n}\\, dn$",
+        "$X(z) = \\sum_{n=0}^{\\infty} x_n z^{-n}$",
+        "$X(z) = \\prod_{n=0}^{\\infty} x_n z^{-n}$"
+      ],
+      "answer": 2,
+      "explanation": "The (one-sided) Z-transform is the power series $X(z) = \\sum_{n=0}^{\\infty} x_n z^{-n}$, summing the sequence values against negative powers of $z$. It is the discrete analogue of the Laplace transform and turns recurrences into algebraic equations. Using $z^{n}$ instead of $z^{-n}$ would not match the standard definition.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-016",
+      "stem": "What is the Z-transform of the unit step sequence $x_n = 1$ for all $n \\ge 0$?",
+      "options": [
+        "$\\dfrac{1}{z - 1}$",
+        "$\\dfrac{z}{z + 1}$",
+        "$z - 1$",
+        "$\\dfrac{z}{z - 1}$"
+      ],
+      "answer": 3,
+      "explanation": "By definition $X(z) = \\sum_{n=0}^{\\infty} 1 \\cdot z^{-n}$, a geometric series with ratio $z^{-1}$ that sums to $\\dfrac{1}{1 - z^{-1}} = \\dfrac{z}{z - 1}$ for $|z| > 1$. Multiplying numerator and denominator by $z$ clears the negative power. So the unit step transforms to $\\dfrac{z}{z - 1}$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-017",
+      "stem": "What is the Z-transform of the geometric sequence $x_n = a^{n}$ for $n \\ge 0$?",
+      "options": [
+        "$\\dfrac{z}{z - a}$",
+        "$\\dfrac{a}{z - a}$",
+        "$\\dfrac{z}{z + a}$",
+        "$\\dfrac{1}{z - a}$"
+      ],
+      "answer": 0,
+      "explanation": "Compute $X(z) = \\sum_{n=0}^{\\infty} a^{n} z^{-n} = \\sum_{n=0}^{\\infty} (a/z)^{n} = \\dfrac{1}{1 - a/z} = \\dfrac{z}{z - a}$ for $|z| > |a|$. This is the geometric-series sum with ratio $a/z$. The unit step is the special case $a = 1$, giving $\\dfrac{z}{z-1}$ as expected.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-018",
+      "stem": "A key property that makes the Z-transform useful for solving difference equations is that it converts:",
+      "options": [
+        "addition into multiplication",
+        "a shift $x_{n-1}$ into multiplication by $z^{-1}$ (plus initial-value terms)",
+        "a sequence into its derivative",
+        "a recurrence into another recurrence",
+        "multiplication into convolution"
+      ],
+      "answer": 1,
+      "explanation": "The shifting property states that delaying a sequence by one step corresponds to multiplying its transform by $z^{-1}$, with correction terms for initial values. This turns a difference equation into an algebraic equation in $z$ that can be solved and then inverted. Replacing the recurrence by another recurrence would defeat the purpose; the whole point is to leave the discrete domain.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-019",
+      "stem": "To solve a difference equation using the Z-transform, the typical final step is to:",
+      "options": [
+        "differentiate $X(z)$",
+        "substitute $z = 0$",
+        "take the inverse Z-transform to recover the sequence $x_n$",
+        "factor the original recurrence"
+      ],
+      "answer": 2,
+      "explanation": "After transforming, solving the algebraic equation gives $X(z)$ as a function of $z$; the final step is to apply the inverse Z-transform (often via partial fractions and a table) to obtain the explicit sequence $x_n$. This recovers the time-domain answer from the transform-domain expression. Differentiating or setting $z = 0$ does not return the full sequence.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-020",
+      "stem": "The Z-transform is linear, so $\\mathcal{Z}\\{a\\,x_n + b\\,y_n\\}$ equals:",
+      "options": [
+        "$a\\,X(z) + b\\,Y(z)$",
+        "$X(z) \\cdot Y(z)$",
+        "$ab\\,X(z)Y(z)$",
+        "$X(z) + Y(z)$"
+      ],
+      "answer": 0,
+      "explanation": "Linearity means the transform of a linear combination is the same linear combination of the transforms: $\\mathcal{Z}\\{a x_n + b y_n\\} = a X(z) + b Y(z)$. This follows because the defining sum distributes over addition and scalar multiples. Dropping the constants $a$ and $b$, as in the last option, ignores the scaling.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-021",
+      "stem": "Given $a_0 = 1$, $a_1 = 2$, and $a_n = a_{n-1} + a_{n-2}$, what is $a_4$?",
+      "options": [
+        "$5$",
+        "$13$",
+        "$11$",
+        "$8$"
+      ],
+      "answer": 3,
+      "explanation": "Generate the terms in order: $a_2 = a_1 + a_0 = 2 + 1 = 3$, $a_3 = a_2 + a_1 = 3 + 2 = 5$, and $a_4 = a_3 + a_2 = 5 + 3 = 8$. Each new term sums the two before it. So $a_4 = 8$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-022",
+      "stem": "For the recurrence $a_n = 4 a_{n-1} - 4 a_{n-2}$ with repeated characteristic root $2$, the general solution is:",
+      "options": [
+        "$a_n = (A + Bn) 2^{n}$",
+        "$a_n = A 2^{n} + B 4^{n}$",
+        "$a_n = A 2^{n} + B (-2)^{n}$",
+        "$a_n = A 4^{n}$"
+      ],
+      "answer": 0,
+      "explanation": "The characteristic equation $x^2 - 4x + 4 = (x - 2)^2 = 0$ has the repeated root $2$. A repeated root gives the general solution $a_n = (A + Bn) 2^{n}$, where the factor $n$ supplies the needed second independent solution. Two separate exponential bases would require two distinct roots, which this equation does not have.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-023",
+      "format": "cloze",
+      "stem": "Analyse the recurrence $a_n - 7 a_{n-1} + 12 a_{n-2} = 0$.",
+      "solution": "Substituting $a_n = x^n$ gives the characteristic equation $x^2 - 7x + 12 = 0$, which factors as $(x - 3)(x - 4) = 0$. The larger root is {{1}}. The order of this recurrence is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The characteristic equation $x^2 - 7x + 12 = (x - 3)(x - 4) = 0$ has roots $3$ and $4$, so the larger root is $4$. The recurrence spans indices $n$ down to $n - 2$, so it is of order $2$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-024",
+      "format": "cloze",
+      "stem": "Compute terms of the recurrence $a_n = 3 a_{n-1} - 2 a_{n-2}$ with $a_0 = 1$ and $a_1 = 3$.",
+      "solution": "Using the recurrence, $a_2 = 3 a_1 - 2 a_0 = 3(3) - 2(1)$, which equals {{1}}. Then $a_3 = 3 a_2 - 2 a_1 = 3(7) - 2(3)$, which equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 15,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Apply the recurrence step by step: $a_2 = 3(3) - 2(1) = 9 - 2 = 7$, then $a_3 = 3(7) - 2(3) = 21 - 6 = 15$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-025",
+      "format": "cloze",
+      "stem": "Recall the structure of difference-equation solutions and the Z-transform.",
+      "solution": "The complete solution of a nonhomogeneous linear difference equation is the homogeneous solution {{1}} a particular solution. The Z-transform of the unit step sequence $x_n = 1$ is $\\dfrac{z}{z - 1}$, where the constant in the denominator is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "plus",
+            "times",
+            "minus"
+          ],
+          "answer": "plus"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The general solution is the homogeneous (complementary) solution plus a particular solution. The unit step transforms to $\\dfrac{z}{z - 1}$, so the constant subtracted in the denominator is $1$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    },
+    {
+      "id": "discrete-mathematics-difference-equations-and-z-transforms-026",
+      "format": "cloze",
+      "stem": "Classify recurrences and recall a Z-transform fact.",
+      "solution": "A difference equation whose forcing term is zero is called {{1}}. The Z-transform turns the shift $x_{n-1}$ into multiplication of the transform by $z$ raised to the power {{2}} (ignoring initial-value terms).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "homogeneous",
+            "nonhomogeneous",
+            "nonlinear"
+          ],
+          "answer": "homogeneous"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "A recurrence with a zero right-hand side is homogeneous. A one-step delay corresponds to multiplying the transform by $z^{-1}$, so the exponent is $-1$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
+    }
+  ]
+}

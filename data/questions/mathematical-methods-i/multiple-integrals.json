@@ -1,10 +1,25 @@
 {
   "courseId": "mathematical-methods-i",
   "topicId": "multiple-integrals",
+  "status": "approved",
   "questions": [
     {
       "id": "mathematical-methods-i-multiple-integrals-001",
-      "stem": "Evaluate $\\displaystyle\\int_0^1\\!\\!\\int_0^2 xy\\,dy\\,dx$.",
+      "stem": "Evaluate the double integral $\\displaystyle\\int_0^1\\int_0^2 xy\\,dy\\,dx$.",
+      "options": [
+        "$2$",
+        "$\\dfrac{1}{2}$",
+        "$4$",
+        "$1$"
+      ],
+      "answer": 3,
+      "explanation": "Integrate inside first with $x$ held constant: $\\int_0^2 xy\\,dy = x\\left[\\tfrac{y^2}{2}\\right]_0^2 = x\\cdot 2 = 2x$. Then $\\int_0^1 2x\\,dx = \\left[x^2\\right]_0^1 = 1$. The value $2$ stops after the inner integral evaluated at $x = 1$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
+    },
+    {
+      "id": "mathematical-methods-i-multiple-integrals-002",
+      "stem": "Evaluate $\\displaystyle\\iint_R x\\,dA$ where $R = [0, 1]\\times[0, 2]$ (so $0 \\le x \\le 1$, $0 \\le y \\le 2$).",
       "options": [
         "$\\dfrac{1}{2}$",
         "$4$",
@@ -12,462 +27,440 @@
         "$2$"
       ],
       "answer": 2,
-      "explanation": "Integrate the inner integral in $y$ first: $\\int_0^2 xy\\,dy = x\\left[\\frac{y^2}{2}\\right]_0^2 = x\\cdot 2 = 2x$. Then $\\int_0^1 2x\\,dx = [x^2]_0^1 = 1$. The option $2$ stops after the inner integral, $\\frac{1}{2}$ mishandles the bounds, and $4$ squares the inner result. The trap is carrying out both integrations: the inner gives $2x$, and the outer gives $1$.",
+      "explanation": "Write it as $\\int_0^2\\int_0^1 x\\,dx\\,dy$. The inner integral is $\\int_0^1 x\\,dx = \\tfrac{1}{2}$, and then $\\int_0^2 \\tfrac{1}{2}\\,dy = \\tfrac{1}{2}\\cdot 2 = 1$. The value $\\tfrac{1}{2}$ forgets to integrate over the $y$-interval of length $2$.",
       "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
-    },
-    {
-      "id": "mathematical-methods-i-multiple-integrals-002",
-      "stem": "In polar coordinates, the area element $dA$ is:",
-      "options": [
-        "$r^2\\,dr\\,d\\theta$",
-        "$dr\\,d\\theta$",
-        "$r\\,dr\\,d\\theta$",
-        "$\\dfrac{1}{r}\\,dr\\,d\\theta$"
-      ],
-      "answer": 2,
-      "explanation": "Converting from Cartesian to polar coordinates introduces the Jacobian factor $r$, so $dA = dx\\,dy = r\\,dr\\,d\\theta$. The option $dr\\,d\\theta$ forgets the factor, $r^2\\,dr\\,d\\theta$ overcounts, and $\\frac{1}{r}$ inverts it. The trap is the Jacobian: the polar area element carries exactly one factor of $r$.",
-      "difficulty": "warmup",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-003",
-      "stem": "The Jacobian $\\dfrac{\\partial(x, y)}{\\partial(r, \\theta)}$ for the polar transformation $x = r\\cos\\theta$, $y = r\\sin\\theta$ is:",
+      "stem": "Evaluate $\\displaystyle\\int_0^1\\int_0^1 (x + y)\\,dx\\,dy$.",
       "options": [
-        "$\\cos\\theta$",
-        "$r$",
-        "$r^2$",
+        "$\\dfrac{1}{2}$",
+        "$2$",
+        "$\\dfrac{1}{4}$",
         "$1$"
       ],
-      "answer": 1,
-      "explanation": "The Jacobian is the determinant $\\begin{vmatrix} \\cos\\theta & -r\\sin\\theta \\\\ \\sin\\theta & r\\cos\\theta \\end{vmatrix} = r\\cos^2\\theta + r\\sin^2\\theta = r$. The option $1$ ignores the scaling, $r^2$ squares it, and $\\cos\\theta$ is just one entry. The trap is computing the determinant: the cross terms cancel and the diagonal terms combine via $\\cos^2 + \\sin^2 = 1$, leaving $r$.",
+      "answer": 3,
+      "explanation": "The inner integral is $\\int_0^1 (x + y)\\,dx = \\left[\\tfrac{x^2}{2} + xy\\right]_0^1 = \\tfrac{1}{2} + y$. Then $\\int_0^1 \\left(\\tfrac{1}{2} + y\\right)dy = \\tfrac{1}{2} + \\tfrac{1}{2} = 1$. The value $\\tfrac{1}{2}$ keeps only one of the two equal contributions.",
       "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-004",
-      "stem": "Evaluate $\\displaystyle\\int_0^{2\\pi}\\!\\!\\int_0^1 r\\,dr\\,d\\theta$, the area of the unit disk.",
+      "stem": "Evaluate $\\displaystyle\\int_0^2\\int_0^3 (x + y)\\,dy\\,dx$.",
       "options": [
-        "$2\\pi$",
-        "$\\dfrac{\\pi}{2}$",
-        "$4\\pi$",
-        "$\\pi$"
+        "$6$",
+        "$12$",
+        "$9$",
+        "$15$"
       ],
       "answer": 3,
-      "explanation": "The inner integral is $\\int_0^1 r\\,dr = \\left[\\frac{r^2}{2}\\right]_0^1 = \\frac{1}{2}$. The outer integral is $\\int_0^{2\\pi}\\frac{1}{2}\\,d\\theta = \\frac{1}{2}\\cdot 2\\pi = \\pi$. This is the area $\\pi r^2 = \\pi(1)^2$ of the unit disk. The option $2\\pi$ forgets the $\\frac{1}{2}$, $\\frac{\\pi}{2}$ drops the angular range, and $4\\pi$ doubles. The trap is the factor $\\frac{1}{2}$ from $\\int r\\,dr$, giving area $\\pi$.",
+      "explanation": "The inner integral is $\\int_0^3 (x + y)\\,dy = \\left[xy + \\tfrac{y^2}{2}\\right]_0^3 = 3x + \\tfrac{9}{2}$. Then $\\int_0^2 \\left(3x + \\tfrac{9}{2}\\right)dx = \\left[\\tfrac{3x^2}{2} + \\tfrac{9}{2}x\\right]_0^2 = 6 + 9 = 15$. The value $6$ keeps only the $\\int 3x$ piece.",
       "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-005",
-      "stem": "Evaluate the triple integral $\\displaystyle\\int_0^2\\!\\!\\int_0^3\\!\\!\\int_0^1 dz\\,dy\\,dx$.",
+      "stem": "For an iterated integral, reversing the order of integration of $\\displaystyle\\int_0^1\\int_0^x f(x, y)\\,dy\\,dx$ over the triangular region gives:",
       "options": [
-        "$6$",
-        "$3$",
-        "$1$",
-        "$5$"
+        "$\\displaystyle\\int_0^1\\int_0^1 f(x, y)\\,dx\\,dy$",
+        "$\\displaystyle\\int_0^1\\int_0^y f(x, y)\\,dx\\,dy$",
+        "$\\displaystyle\\int_0^1\\int_y^1 f(x, y)\\,dx\\,dy$",
+        "$\\displaystyle\\int_0^1\\int_x^1 f(x, y)\\,dy\\,dx$"
       ],
-      "answer": 0,
-      "explanation": "Integrating the constant $1$ over a box just gives the volume. Here $\\int_0^1 dz = 1$, $\\int_0^3 dy = 3$, $\\int_0^2 dx = 2$, so the product is $1\\cdot 3\\cdot 2 = 6$. The option $5$ adds two dimensions, $3$ and $1$ stop early. The trap is multiplying the three side lengths: $2\\times 3\\times 1 = 6$.",
-      "difficulty": "warmup",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "answer": 2,
+      "explanation": "The region is $0 \\le x \\le 1$, $0 \\le y \\le x$, the triangle below the line $y = x$. Describing it with $y$ outer: $0 \\le y \\le 1$ and $y \\le x \\le 1$, giving $\\int_0^1\\int_y^1 f\\,dx\\,dy$. The option with inner limits $0$ to $y$ describes the wrong half of the square.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-006",
-      "stem": "The double integral $\\displaystyle\\iint_R 1\\,dA$ over a region $R$ computes:",
+      "stem": "When converting a double integral to polar coordinates, the area element $dA = dx\\,dy$ becomes:",
       "options": [
-        "the perimeter of $R$",
-        "the area of $R$",
-        "the volume above $R$",
-        "always $1$"
+        "$r^2\\,dr\\,d\\theta$",
+        "$\\dfrac{1}{r}\\,dr\\,d\\theta$",
+        "$dr\\,d\\theta$",
+        "$r\\,dr\\,d\\theta$"
       ],
-      "answer": 1,
-      "explanation": "Integrating the constant $1$ over a planar region sums up unit-height contributions, which equals the area of $R$. The perimeter is a one-dimensional measure, the volume would require a nonconstant integrand giving height, and the answer is not fixed at $1$. The trap is the integrand $1$: it turns the double integral into a pure area measurement.",
-      "difficulty": "warmup",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "answer": 3,
+      "explanation": "The Jacobian of the polar transformation $x = r\\cos\\theta$, $y = r\\sin\\theta$ is $r$, so $dA = r\\,dr\\,d\\theta$. Forgetting the factor $r$ is the most common error in polar integration, and $r^2$ belongs to spherical coordinates instead.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-007",
-      "stem": "Evaluate $\\displaystyle\\int_0^1\\!\\!\\int_0^x y\\,dy\\,dx$.",
+      "stem": "Using polar coordinates, find the area of the disk $x^2 + y^2 \\le 4$ by evaluating $\\displaystyle\\int_0^{2\\pi}\\int_0^2 r\\,dr\\,d\\theta$.",
       "options": [
-        "$\\dfrac{1}{3}$",
-        "$\\dfrac{1}{6}$",
-        "$1$",
-        "$\\dfrac{1}{2}$"
+        "$16\\pi$",
+        "$2\\pi$",
+        "$4\\pi$",
+        "$8\\pi$"
       ],
-      "answer": 1,
-      "explanation": "The inner integral is $\\int_0^x y\\,dy = \\left[\\frac{y^2}{2}\\right]_0^x = \\frac{x^2}{2}$. The outer integral is $\\int_0^1 \\frac{x^2}{2}\\,dx = \\frac{1}{2}\\cdot\\frac{1}{3} = \\frac{1}{6}$. The option $\\frac{1}{2}$ stops after the inner step incorrectly, $\\frac{1}{3}$ forgets the $\\frac{1}{2}$, and $1$ ignores the limits. The trap is the variable upper limit $x$: the inner integral depends on $x$, giving $\\frac{x^2}{2}$, then $\\frac{1}{6}$.",
-      "difficulty": "stretch",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "answer": 2,
+      "explanation": "The inner integral is $\\int_0^2 r\\,dr = \\left[\\tfrac{r^2}{2}\\right]_0^2 = 2$, and then $\\int_0^{2\\pi} 2\\,d\\theta = 2\\cdot 2\\pi = 4\\pi$. This matches the familiar area $\\pi R^2 = \\pi(2)^2 = 4\\pi$. The value $2\\pi$ forgets the radial integration.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-008",
-      "stem": "In cylindrical coordinates, the volume element $dV$ is:",
+      "stem": "Evaluate $\\displaystyle\\int_0^{2\\pi}\\int_0^1 r^2\\cdot r\\,dr\\,d\\theta$ (this is $\\iint r^2\\,dA$ over the unit disk).",
       "options": [
-        "$r\\sin\\theta\\,dr\\,d\\theta\\,dz$",
-        "$dr\\,d\\theta\\,dz$",
-        "$r^2\\,dr\\,d\\theta\\,dz$",
-        "$r\\,dr\\,d\\theta\\,dz$"
+        "$2\\pi$",
+        "$\\pi$",
+        "$\\dfrac{\\pi}{2}$",
+        "$\\dfrac{\\pi}{4}$"
       ],
-      "answer": 3,
-      "explanation": "Cylindrical coordinates extend polar coordinates by adding the $z$ axis unchanged, so the Jacobian is still $r$ and $dV = r\\,dr\\,d\\theta\\,dz$. The option without $r$ omits the Jacobian, $r^2$ is the spherical-style overcount, and $r\\sin\\theta$ belongs to spherical coordinates. The trap is reusing the polar factor $r$: cylindrical coordinates carry exactly one factor of $r$.",
-      "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "answer": 2,
+      "explanation": "The integrand $r^2$ times the area factor $r$ gives $r^3$. The inner integral is $\\int_0^1 r^3\\,dr = \\tfrac{1}{4}$, and then $\\int_0^{2\\pi}\\tfrac{1}{4}\\,d\\theta = \\tfrac{1}{4}\\cdot 2\\pi = \\tfrac{\\pi}{2}$. Forgetting the extra $r$ from $dA$ would wrongly give $\\tfrac{\\pi}{3}\\cdot 2 = \\tfrac{2\\pi}{3}$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-009",
-      "stem": "Evaluate $\\displaystyle\\int_0^{\\pi/2}\\!\\!\\int_0^2 r\\,dr\\,d\\theta$, the area of a quarter disk of radius $2$.",
+      "stem": "Evaluate the triple integral $\\displaystyle\\int_0^1\\int_0^2\\int_0^3 dz\\,dy\\,dx$ (the volume of a box).",
       "options": [
-        "$\\pi$",
-        "$\\dfrac{\\pi}{2}$",
-        "$4\\pi$",
-        "$2\\pi$"
+        "$3$",
+        "$1$",
+        "$12$",
+        "$6$"
       ],
-      "answer": 0,
-      "explanation": "The inner integral is $\\int_0^2 r\\,dr = \\left[\\frac{r^2}{2}\\right]_0^2 = 2$. The outer integral is $\\int_0^{\\pi/2} 2\\,d\\theta = 2\\cdot\\frac{\\pi}{2} = \\pi$. This matches the quarter-disk area $\\frac{1}{4}\\pi(2)^2 = \\pi$. The option $2\\pi$ uses the full circle, $4\\pi$ forgets the $\\frac{1}{2}$, and $\\frac{\\pi}{2}$ drops the radius contribution. The trap is the quarter range $\\frac{\\pi}{2}$ times the radial result $2$, giving $\\pi$.",
+      "answer": 3,
+      "explanation": "Integrating $1$ over the box gives the product of the side lengths: $1\\times 2\\times 3 = 6$. Working inside out, $\\int_0^3 dz = 3$, then $\\int_0^2 3\\,dy = 6$, then $\\int_0^1 6\\,dx = 6$. The answer is simply the volume of the rectangular box.",
       "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-010",
-      "stem": "Evaluate $\\displaystyle\\int_0^1\\!\\!\\int_0^1 (x + y)\\,dx\\,dy$.",
+      "stem": "In cylindrical coordinates, the volume element $dV$ is:",
       "options": [
-        "$1$",
-        "$\\dfrac{1}{4}$",
-        "$2$",
-        "$\\dfrac{1}{2}$"
+        "$r^2\\,dr\\,d\\theta\\,dz$",
+        "$r^2\\sin\\theta\\,dr\\,d\\theta\\,dz$",
+        "$dr\\,d\\theta\\,dz$",
+        "$r\\,dr\\,d\\theta\\,dz$"
       ],
-      "answer": 0,
-      "explanation": "The inner integral is $\\int_0^1 (x + y)\\,dx = \\left[\\frac{x^2}{2} + xy\\right]_0^1 = \\frac{1}{2} + y$. The outer integral is $\\int_0^1\\left(\\frac{1}{2} + y\\right)dy = \\frac{1}{2} + \\frac{1}{2} = 1$. The option $\\frac{1}{2}$ keeps only one piece, $2$ doubles, and $\\frac{1}{4}$ mishandles the bounds. The trap is integrating both terms across both variables, which gives $1$.",
+      "answer": 3,
+      "explanation": "Cylindrical coordinates are polar in the plane with $z$ unchanged, so the Jacobian is $r$ and $dV = r\\,dr\\,d\\theta\\,dz$. The factor $r^2$ and the $\\sin$ term belong to spherical coordinates, not cylindrical.",
       "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-011",
-      "stem": "The volume of a solid lying under the surface $z = f(x, y)$ and above a region $R$ is:",
+      "stem": "In spherical coordinates, the volume element $dV$ is:",
       "options": [
-        "$\\displaystyle\\oint_{\\partial R} f\\,ds$",
-        "$\\displaystyle\\iint_R \\nabla f\\,dA$",
-        "$\\displaystyle\\iint_R f(x, y)\\,dA$",
-        "$\\displaystyle\\iint_R 1\\,dA$"
+        "$\\rho^2\\cos\\phi\\,d\\rho\\,d\\phi\\,d\\theta$",
+        "$\\rho^2\\,d\\rho\\,d\\phi\\,d\\theta$",
+        "$\\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta$",
+        "$\\rho\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta$"
       ],
       "answer": 2,
-      "explanation": "The volume under a surface is the double integral of the height function: $V = \\iint_R f(x, y)\\,dA$. The integral of $1$ gives only the base area, the boundary integral measures something on the edge, and integrating the gradient is not a volume. The trap is using $f$ itself as the integrand, since $f$ is the height of the solid.",
-      "difficulty": "warmup",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "explanation": "The Jacobian of the spherical transformation is $\\rho^2\\sin\\phi$, so $dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta$, where $\\phi$ is the angle from the positive $z$-axis. Dropping the $\\sin\\phi$ or replacing it with $\\cos\\phi$ gives the wrong element.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-012",
-      "stem": "Evaluate $\\displaystyle\\int_1^2\\!\\!\\int_0^3 2x\\,dy\\,dx$.",
+      "stem": "Using spherical coordinates, the volume of a sphere of radius $a$ is found from $\\displaystyle\\int_0^{2\\pi}\\int_0^{\\pi}\\int_0^a \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta$. This evaluates to:",
       "options": [
-        "$6$",
-        "$3$",
-        "$9$",
-        "$18$"
+        "$4\\pi a^3$",
+        "$\\pi a^3$",
+        "$\\dfrac{4}{3}\\pi a^3$",
+        "$\\dfrac{2}{3}\\pi a^3$"
       ],
       "answer": 2,
-      "explanation": "The inner integral is $\\int_0^3 2x\\,dy = 2x\\cdot 3 = 6x$, since $2x$ is constant in $y$. The outer integral is $\\int_1^2 6x\\,dx = 3[x^2]_1^2 = 3(4 - 1) = 9$. The option $18$ forgets to halve from the antiderivative, $6$ stops after the inner step, and $3$ uses the wrong factor. The trap is the second integration: $\\int_1^2 6x\\,dx = 3(4 - 1) = 9$.",
-      "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "explanation": "The radial part gives $\\int_0^a \\rho^2\\,d\\rho = \\tfrac{a^3}{3}$, the polar part gives $\\int_0^\\pi \\sin\\phi\\,d\\phi = 2$, and the azimuthal part gives $\\int_0^{2\\pi} d\\theta = 2\\pi$. Multiplying, $\\tfrac{a^3}{3}\\cdot 2\\cdot 2\\pi = \\tfrac{4}{3}\\pi a^3$, the standard sphere volume.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-013",
-      "stem": "A triple integral $\\displaystyle\\iiint_E 1\\,dV$ of the constant $1$ over a solid region $E$ computes:",
+      "stem": "The Jacobian determinant for the change of variables to polar coordinates, $\\dfrac{\\partial(x, y)}{\\partial(r, \\theta)}$, equals:",
       "options": [
-        "the centroid of $E$",
-        "the mass of $E$",
-        "the surface area of $E$",
-        "the volume of $E$"
+        "$1$",
+        "$r$",
+        "$r^2$",
+        "$\\dfrac{1}{r}$"
       ],
-      "answer": 3,
-      "explanation": "Integrating the constant $1$ over a solid sums unit volumes, giving the volume of $E$. Surface area is a boundary quantity, mass requires a density integrand, and the centroid needs weighted moments. The trap is the integrand $1$: it turns the triple integral into a pure volume.",
-      "difficulty": "warmup",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "answer": 1,
+      "explanation": "With $x = r\\cos\\theta$ and $y = r\\sin\\theta$, the Jacobian is $\\begin{vmatrix} \\cos\\theta & -r\\sin\\theta \\\\ \\sin\\theta & r\\cos\\theta \\end{vmatrix} = r\\cos^2\\theta + r\\sin^2\\theta = r$. This is why $dA = r\\,dr\\,d\\theta$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-014",
-      "stem": "Compute the volume of a cylinder of radius $1$ and height $3$ via $\\displaystyle\\int_0^{2\\pi}\\!\\!\\int_0^1\\!\\!\\int_0^3 r\\,dz\\,dr\\,d\\theta$.",
+      "stem": "Evaluate $\\displaystyle\\int_0^1\\int_0^x dy\\,dx$ (the area of a triangular region).",
       "options": [
-        "$9\\pi$",
-        "$\\pi$",
-        "$3\\pi$",
-        "$6\\pi$"
+        "$1$",
+        "$\\dfrac{1}{2}$",
+        "$2$",
+        "$\\dfrac{1}{3}$"
       ],
-      "answer": 2,
-      "explanation": "Integrate stepwise: $\\int_0^3 dz = 3$, then $\\int_0^1 3r\\,dr = 3\\cdot\\frac{1}{2} = \\frac{3}{2}$, then $\\int_0^{2\\pi}\\frac{3}{2}\\,d\\theta = \\frac{3}{2}\\cdot 2\\pi = 3\\pi$. This matches $\\pi r^2 h = \\pi(1)^2(3) = 3\\pi$. The option $6\\pi$ forgets the $\\frac{1}{2}$, $9\\pi$ drops the radius factor, and $\\pi$ omits the height. The trap is the radial integral contributing $\\frac{1}{2}$, giving $3\\pi$.",
-      "difficulty": "stretch",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "answer": 1,
+      "explanation": "The inner integral is $\\int_0^x dy = x$, and then $\\int_0^1 x\\,dx = \\left[\\tfrac{x^2}{2}\\right]_0^1 = \\tfrac{1}{2}$. This is the area of the triangle with vertices $(0,0)$, $(1,0)$, $(1,1)$, which is $\\tfrac{1}{2}$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-015",
-      "stem": "Reversing the order of integration in $\\displaystyle\\int_0^1\\!\\!\\int_0^y f\\,dx\\,dy$ over the region $0 \\le x \\le y \\le 1$ gives:",
+      "stem": "Evaluate $\\displaystyle\\int_1^2\\int_0^1 (2x + 3y)\\,dx\\,dy$.",
       "options": [
-        "$\\displaystyle\\int_0^1\\!\\!\\int_x^1 f\\,dy\\,dx$",
-        "$\\displaystyle\\int_0^1\\!\\!\\int_0^x f\\,dy\\,dx$",
-        "$\\displaystyle\\int_0^1\\!\\!\\int_y^1 f\\,dy\\,dx$",
-        "$\\displaystyle\\int_0^1\\!\\!\\int_0^1 f\\,dy\\,dx$"
+        "$\\dfrac{15}{2}$",
+        "$\\dfrac{11}{2}$",
+        "$5$",
+        "$\\dfrac{9}{2}$"
       ],
-      "answer": 0,
-      "explanation": "The region is the triangle $0 \\le x \\le y \\le 1$. Fixing $x$ first, $y$ ranges from $x$ up to $1$, and $x$ ranges from $0$ to $1$, giving $\\int_0^1\\int_x^1 f\\,dy\\,dx$. The option with $y$ from $0$ to $x$ describes the wrong triangle, the full square ignores the constraint, and the last option leaves a stray $y$ in the limits. The trap is reading the new limits off the region: $x \\le y \\le 1$.",
+      "answer": 1,
+      "explanation": "The inner integral is $\\int_0^1 (2x + 3y)\\,dx = \\left[x^2 + 3xy\\right]_0^1 = 1 + 3y$. Then $\\int_1^2 (1 + 3y)\\,dy = \\left[y + \\tfrac{3y^2}{2}\\right]_1^2 = (2 + 6) - (1 + \\tfrac{3}{2}) = 8 - \\tfrac{5}{2} = \\tfrac{11}{2}$.",
       "difficulty": "stretch",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-016",
-      "stem": "Evaluate $\\displaystyle\\iint_R dA$ where $R$ is the rectangle $[0, 3] \\times [0, 4]$.",
+      "stem": "A double integral $\\iint_R f(x, y)\\,dA$ over a region $R$ where $f \\ge 0$ represents:",
       "options": [
-        "$14$",
-        "$7$",
-        "$24$",
-        "$12$"
+        "the area of $R$",
+        "the volume under the surface $z = f(x, y)$ over $R$",
+        "the perimeter of $R$",
+        "the slope of $f$"
       ],
-      "answer": 3,
-      "explanation": "The integral of $1$ over a rectangle is its area, which is $3\\times 4 = 12$. The option $7$ adds the side lengths, $14$ doubles that sum, and $24$ doubles the area. The trap is the area formula: width times height, $3\\cdot 4 = 12$.",
+      "answer": 1,
+      "explanation": "When $f \\ge 0$, the double integral gives the volume of the solid lying above the region $R$ and below the surface $z = f(x, y)$. The special case $f = 1$ recovers the area of $R$, but in general it is a volume.",
       "difficulty": "warmup",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-017",
-      "stem": "When converting a double integral to polar coordinates, the bounds of a full disk of radius $a$ centered at the origin are:",
+      "stem": "Convert the Cartesian description $x^2 + y^2 \\le 9$ (a disk) into polar limits.",
       "options": [
-        "$0 \\le r \\le a$, $0 \\le \\theta \\le \\pi$",
-        "$0 \\le r \\le 2a$, $0 \\le \\theta \\le \\pi$",
-        "$-a \\le r \\le a$, $0 \\le \\theta \\le 2\\pi$",
-        "$0 \\le r \\le a$, $0 \\le \\theta \\le 2\\pi$"
+        "$0 \\le r \\le 3,\\ 0 \\le \\theta \\le 2\\pi$",
+        "$0 \\le r \\le 9,\\ 0 \\le \\theta \\le 2\\pi$",
+        "$0 \\le r \\le 3,\\ 0 \\le \\theta \\le \\pi$",
+        "$0 \\le r \\le 9,\\ 0 \\le \\theta \\le \\pi$"
       ],
-      "answer": 3,
-      "explanation": "A full disk of radius $a$ is swept by $r$ from $0$ to $a$ while $\\theta$ runs through a complete revolution $0$ to $2\\pi$. The option with $\\theta$ to $\\pi$ covers only a half disk, $r$ to $2a$ uses the wrong radius, and a negative $r$ double-counts. The trap is the angular range: a full disk needs the entire $2\\pi$.",
+      "answer": 0,
+      "explanation": "Since $x^2 + y^2 = r^2$, the condition $r^2 \\le 9$ gives $r \\le 3$, and a full disk requires $\\theta$ to sweep all the way around from $0$ to $2\\pi$. Using $r \\le 9$ confuses the radius with the radius squared.",
       "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-018",
-      "stem": "The mass of a lamina occupying region $R$ with area density $\\rho(x, y)$ is:",
+      "stem": "Evaluate $\\displaystyle\\int_0^{\\pi}\\int_0^1 r\\,dr\\,d\\theta$ (a half-disk area).",
       "options": [
-        "$\\displaystyle\\iint_R \\rho^2\\,dA$",
-        "$\\displaystyle\\iint_R \\dfrac{1}{\\rho}\\,dA$",
-        "$\\displaystyle\\iint_R \\rho\\,dA$",
-        "$\\rho \\cdot \\text{area}(R)$ only if $\\rho$ varies"
+        "$\\dfrac{\\pi}{2}$",
+        "$\\pi$",
+        "$2\\pi$",
+        "$\\dfrac{\\pi}{4}$"
       ],
-      "answer": 2,
-      "explanation": "Mass is the integral of density over the region: $m = \\iint_R \\rho(x, y)\\,dA$. The option $\\rho^2$ squares the density, $\\frac{1}{\\rho}$ inverts it, and the product formula holds only for constant density (the stated condition is backwards). The trap is integrating density directly: $\\iint \\rho\\,dA$ accumulates mass.",
+      "answer": 0,
+      "explanation": "The inner integral is $\\int_0^1 r\\,dr = \\tfrac{1}{2}$, and then $\\int_0^{\\pi}\\tfrac{1}{2}\\,d\\theta = \\tfrac{1}{2}\\cdot\\pi = \\tfrac{\\pi}{2}$. This is the area of a half-disk of radius $1$, namely $\\tfrac{1}{2}\\pi(1)^2 = \\tfrac{\\pi}{2}$.",
       "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-019",
-      "stem": "The area in polar coordinates enclosed by a curve $r = r(\\theta)$ from $\\theta = \\alpha$ to $\\beta$ is:",
+      "stem": "In the order of integration $\\int\\int\\int f\\,dz\\,dy\\,dx$, which variable is integrated first?",
       "options": [
-        "$\\dfrac{1}{2}\\displaystyle\\int_\\alpha^\\beta r^2\\,d\\theta$",
-        "$\\dfrac{1}{2}\\displaystyle\\int_\\alpha^\\beta r\\,d\\theta$",
-        "$\\displaystyle\\int_\\alpha^\\beta r^2\\,d\\theta$",
-        "$\\displaystyle\\int_\\alpha^\\beta r\\,d\\theta$"
+        "$x$",
+        "$y$",
+        "$z$",
+        "all simultaneously"
       ],
-      "answer": 0,
-      "explanation": "Integrating the area element $r\\,dr\\,d\\theta$ radially from $0$ to $r(\\theta)$ gives $\\int_0^r r\\,dr = \\frac{r^2}{2}$, so the area is $\\frac{1}{2}\\int_\\alpha^\\beta r^2\\,d\\theta$. The options without the $\\frac{1}{2}$ or with the wrong power skip a step in the radial integration. The trap is the radial integral producing $\\frac{r^2}{2}$, hence the factor $\\frac{1}{2}$ and the square.",
-      "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "answer": 2,
+      "explanation": "In an iterated integral you work from the innermost differential outward, so $dz$ being innermost means $z$ is integrated first, then $y$, then $x$. The order of the differentials, read right to left in the symbol, sets the sequence of integration.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-020",
-      "stem": "Evaluate $\\displaystyle\\int_0^2\\!\\!\\int_0^2 4\\,dy\\,dx$.",
+      "stem": "Evaluate $\\displaystyle\\int_0^1\\int_0^1\\int_0^1 (x + y + z)\\,dz\\,dy\\,dx$.",
       "options": [
-        "$8$",
-        "$32$",
-        "$4$",
-        "$16$"
+        "$\\dfrac{3}{2}$",
+        "$1$",
+        "$3$",
+        "$\\dfrac{1}{2}$"
       ],
-      "answer": 3,
-      "explanation": "The integrand is the constant $4$, and the region is a $2\\times 2$ square of area $4$. So the integral is $4\\times 4 = 16$. Concretely $\\int_0^2 4\\,dy = 8$, then $\\int_0^2 8\\,dx = 16$. The option $8$ stops after the inner integral, $32$ doubles, and $4$ uses only the area. The trap is multiplying the constant by the area: $4\\times 4 = 16$.",
-      "difficulty": "warmup",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "answer": 0,
+      "explanation": "By symmetry each of $x$, $y$, $z$ contributes the same. For one term, $\\int_0^1\\int_0^1\\int_0^1 x\\,dz\\,dy\\,dx = \\tfrac{1}{2}$ (average of $x$ over the cube). Summing the three equal contributions gives $3\\times\\tfrac{1}{2} = \\tfrac{3}{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-021",
-      "stem": "For a change of variables $x = x(u, v)$, $y = y(u, v)$, the Jacobian determinant is:",
+      "stem": "In spherical coordinates, the angle $\\phi$ in $dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta$ is measured from:",
       "options": [
-        "$\\begin{vmatrix} x_u & x_v \\\\ y_u & y_v \\end{vmatrix}$",
-        "$x_u + y_v$",
-        "$x_u y_v + x_v y_u$",
-        "$\\begin{vmatrix} x_u & y_u \\\\ x_v & y_v \\end{vmatrix} \\text{ with a minus overall}$"
+        "the positive $x$-axis",
+        "the positive $z$-axis",
+        "the $xy$-plane",
+        "the origin only"
       ],
-      "answer": 0,
-      "explanation": "The Jacobian is the determinant of the matrix of partial derivatives, $\\begin{vmatrix} x_u & x_v \\\\ y_u & y_v \\end{vmatrix} = x_u y_v - x_v y_u$. The option $x_u y_v + x_v y_u$ uses a plus instead of the determinant's minus, $x_u + y_v$ is the trace, and the last option introduces a spurious sign. The trap is the determinant structure: it subtracts the off-diagonal product.",
+      "answer": 1,
+      "explanation": "In the standard convention, $\\phi$ is the polar angle measured down from the positive $z$-axis, ranging from $0$ to $\\pi$, while $\\theta$ is the azimuthal angle in the $xy$-plane. This is why the factor is $\\sin\\phi$ and $\\phi$ runs only to $\\pi$, not $2\\pi$.",
       "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-022",
-      "stem": "Evaluate $\\displaystyle\\int_0^3\\!\\!\\int_0^2 x^2\\,dy\\,dx$.",
+      "stem": "Evaluate $\\displaystyle\\int_0^2\\int_0^4 1\\,dy\\,dx$, the area of a rectangle.",
       "options": [
-        "$9$",
-        "$18$",
-        "$27$",
-        "$6$"
+        "$6$",
+        "$8$",
+        "$4$",
+        "$2$"
       ],
       "answer": 1,
-      "explanation": "The inner integral is $\\int_0^2 x^2\\,dy = x^2\\cdot 2 = 2x^2$, since $x^2$ is constant in $y$. The outer integral is $\\int_0^3 2x^2\\,dx = 2\\cdot\\frac{x^3}{3}\\Big|_0^3 = 2\\cdot 9 = 18$. The option $9$ omits the factor of $2$, $27$ forgets the $\\frac{1}{3}$, and $6$ stops early. The trap is the cubic antiderivative: $\\int_0^3 2x^2\\,dx = 2\\cdot\\frac{27}{3} = 18$.",
-      "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "explanation": "Integrating $1$ over the rectangle gives its area, the product of the side lengths $2\\times 4 = 8$. Step by step, $\\int_0^4 dy = 4$ and then $\\int_0^2 4\\,dx = 8$. The value $6$ would come from adding the sides rather than multiplying.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-023",
+      "stem": "For the change of variables $u = x + y$, $v = x - y$, the Jacobian $\\left|\\dfrac{\\partial(x, y)}{\\partial(u, v)}\\right|$ equals:",
+      "options": [
+        "$1$",
+        "$\\dfrac{1}{2}$",
+        "$2$",
+        "$\\dfrac{1}{4}$"
+      ],
+      "answer": 1,
+      "explanation": "Solving gives $x = \\tfrac{u + v}{2}$ and $y = \\tfrac{u - v}{2}$, so $\\dfrac{\\partial(x, y)}{\\partial(u, v)} = \\begin{vmatrix} \\tfrac{1}{2} & \\tfrac{1}{2} \\\\ \\tfrac{1}{2} & -\\tfrac{1}{2} \\end{vmatrix} = -\\tfrac{1}{4} - \\tfrac{1}{4} = -\\tfrac{1}{2}$. The absolute value is $\\tfrac{1}{2}$. Equivalently, $\\dfrac{\\partial(u,v)}{\\partial(x,y)} = 2$, and the inverse Jacobian is its reciprocal.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
+    },
+    {
+      "id": "mathematical-methods-i-multiple-integrals-024",
       "format": "cloze",
-      "stem": "Evaluate the iterated integral $\\displaystyle\\int_0^1\\!\\!\\int_0^2 x\\,dy\\,dx$.",
-      "solution": "The inner integral $\\displaystyle\\int_0^2 x\\,dy$ treats $x$ as constant and equals $2x$, since the $y$-interval has length {{1}}. The outer integral $\\displaystyle\\int_0^1 2x\\,dx$ then evaluates to {{2}}.",
+      "stem": "Evaluate the iterated integral $\\displaystyle\\int_0^1\\int_0^2 xy\\,dy\\,dx$.",
+      "solution": "The inner integral $\\int_0^2 xy\\,dy = x\\left[\\tfrac{y^2}{2}\\right]_0^2 = 2x$. The outer integral $\\int_0^1 2x\\,dx = [x^2]_0^1$ equals {{1}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 2,
-          "tolerance": 0
-        },
-        {
-          "id": 2,
           "type": "number",
           "answer": 1,
           "tolerance": 0
         }
       ],
-      "explanation": "The $y$-interval $[0, 2]$ has length $2$, so $\\int_0^2 x\\,dy = 2x$. Then $\\int_0^1 2x\\,dx = [x^2]_0^1 = 1$.",
+      "explanation": "After the inner integral gives $2x$, the outer integral is $\\int_0^1 2x\\,dx = [x^2]_0^1 = 1$.",
       "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
-    },
-    {
-      "id": "mathematical-methods-i-multiple-integrals-024",
-      "format": "cloze",
-      "stem": "State the polar area element and the Jacobian behind it.",
-      "solution": "Under the polar substitution $x = r\\cos\\theta$, $y = r\\sin\\theta$, the Jacobian determinant equals {{1}}. As a result the area element transforms as $dA = $ {{2}}.",
-      "gaps": [
-        {
-          "id": 1,
-          "type": "dropdown",
-          "options": [
-            "$r$",
-            "$1$",
-            "$r^2$",
-            "$\\theta$"
-          ],
-          "answer": "$r$"
-        },
-        {
-          "id": 2,
-          "type": "dropdown",
-          "options": [
-            "$r\\,dr\\,d\\theta$",
-            "$dr\\,d\\theta$",
-            "$r^2\\,dr\\,d\\theta$",
-            "$\\dfrac{1}{r}\\,dr\\,d\\theta$"
-          ],
-          "answer": "$r\\,dr\\,d\\theta$"
-        }
-      ],
-      "explanation": "The polar Jacobian is $r$, so the area element becomes $dA = r\\,dr\\,d\\theta$.",
-      "difficulty": "warmup",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
       "id": "mathematical-methods-i-multiple-integrals-025",
       "format": "cloze",
-      "stem": "Find the area of the disk of radius $3$ using a polar double integral.",
-      "solution": "The integral is $\\displaystyle\\int_0^{2\\pi}\\!\\!\\int_0^3 r\\,dr\\,d\\theta$. The radial part $\\displaystyle\\int_0^3 r\\,dr$ evaluates to $\\dfrac{9}{2}$, and after the angular integration the total area is $k\\pi$, where the integer $k$ is {{1}}. This agrees with the formula $\\pi r^2$ for radius {{2}}.",
+      "stem": "Find the area of the disk of radius $3$ using polar coordinates: $\\displaystyle\\int_0^{2\\pi}\\int_0^3 r\\,dr\\,d\\theta$.",
+      "solution": "The inner integral $\\int_0^3 r\\,dr = \\tfrac{9}{2}$. Multiplying by $\\int_0^{2\\pi} d\\theta = 2\\pi$ gives the area as $9\\pi$, so the coefficient of $\\pi$ is {{1}}.",
       "gaps": [
         {
           "id": 1,
           "type": "number",
           "answer": 9,
           "tolerance": 0
+        }
+      ],
+      "explanation": "The inner integral is $\\tfrac{9}{2}$, and times $2\\pi$ gives $9\\pi$, matching $\\pi R^2 = \\pi(3)^2 = 9\\pi$. The coefficient is $9$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
+    },
+    {
+      "id": "mathematical-methods-i-multiple-integrals-026",
+      "format": "cloze",
+      "stem": "Evaluate the volume of the box: $\\displaystyle\\int_0^1\\int_0^2\\int_0^3 dz\\,dy\\,dx$.",
+      "solution": "Integrating from the inside out, $\\int_0^3 dz = 3$, then $\\int_0^2 3\\,dy = 6$, then $\\int_0^1 6\\,dx$ gives the total volume {{1}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The volume of the box is the product of side lengths $1\\times 2\\times 3 = 6$, which the iterated integral confirms.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
+    },
+    {
+      "id": "mathematical-methods-i-multiple-integrals-027",
+      "format": "cloze",
+      "stem": "Identify the volume elements in cylindrical and spherical coordinates.",
+      "solution": "In cylindrical coordinates the volume element is $dV = r\\,dr\\,d\\theta\\,dz$, where the extra factor is {{1}}. In spherical coordinates the volume element is $dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta$, where the trigonometric factor is {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "r",
+            "r squared",
+            "1",
+            "z"
+          ],
+          "answer": "r"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "sine of phi",
+            "cosine of phi",
+            "tangent of phi",
+            "sine of theta"
+          ],
+          "answer": "sine of phi"
+        }
+      ],
+      "explanation": "Cylindrical coordinates carry the polar Jacobian factor $r$, while spherical coordinates carry $\\rho^2\\sin\\phi$, so the trigonometric factor is the sine of $\\phi$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
+    },
+    {
+      "id": "mathematical-methods-i-multiple-integrals-028",
+      "format": "cloze",
+      "stem": "Evaluate the volume of a sphere of radius $a = 2$ using the spherical integral $\\displaystyle\\int_0^{2\\pi}\\int_0^{\\pi}\\int_0^2 \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta$.",
+      "solution": "The radial part $\\int_0^2 \\rho^2\\,d\\rho = \\tfrac{8}{3}$, the polar part $\\int_0^{\\pi}\\sin\\phi\\,d\\phi = 2$, and the azimuthal part $\\int_0^{2\\pi} d\\theta = 2\\pi$. Multiplying gives $\\tfrac{32}{3}\\pi$, so the coefficient of $\\pi$ is the fraction $32/${{1}}.",
+      "gaps": [
+        {
+          "id": 1,
           "type": "number",
           "answer": 3,
           "tolerance": 0
         }
       ],
-      "explanation": "The radial integral gives $\\frac{9}{2}$, and multiplying by $\\int_0^{2\\pi} d\\theta = 2\\pi$ gives $9\\pi$, so $k = 9$. This is $\\pi(3)^2$, matching radius $3$.",
-      "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "explanation": "The product is $\\tfrac{8}{3}\\cdot 2\\cdot 2\\pi = \\tfrac{32}{3}\\pi$, matching $\\tfrac{4}{3}\\pi a^3 = \\tfrac{4}{3}\\pi(8) = \\tfrac{32}{3}\\pi$. The denominator is $3$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     },
     {
-      "id": "mathematical-methods-i-multiple-integrals-026",
+      "id": "mathematical-methods-i-multiple-integrals-029",
       "format": "cloze",
-      "stem": "Evaluate the triple integral of $1$ over the box $[0, 2] \\times [0, 2] \\times [0, 2]$.",
-      "solution": "Integrating the constant $1$ over a solid returns its {{1}}. For this cube, each edge has length $2$, so the result is $2^3$, which equals {{2}}.",
+      "stem": "Evaluate $\\displaystyle\\int_0^2\\int_0^3 (x + y)\\,dy\\,dx$.",
+      "solution": "The inner integral $\\int_0^3 (x + y)\\,dy = 3x + \\tfrac{9}{2}$. The outer integral $\\int_0^2 \\left(3x + \\tfrac{9}{2}\\right)dx = 6 + 9$, which equals {{1}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "dropdown",
-          "options": [
-            "volume",
-            "surface area",
-            "perimeter",
-            "mass"
-          ],
-          "answer": "volume"
-        },
-        {
-          "id": 2,
           "type": "number",
-          "answer": 8,
+          "answer": 15,
           "tolerance": 0
         }
       ],
-      "explanation": "The triple integral of $1$ gives the volume. For a cube of edge $2$, the volume is $2^3 = 8$.",
+      "explanation": "The inner integral gives $3x + \\tfrac{9}{2}$, and the outer integral evaluates to $\\left[\\tfrac{3x^2}{2} + \\tfrac{9}{2}x\\right]_0^2 = 6 + 9 = 15$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
+    },
+    {
+      "id": "mathematical-methods-i-multiple-integrals-030",
+      "format": "cloze",
+      "stem": "State the Jacobian factor for the polar change of variables.",
+      "solution": "For the substitution $x = r\\cos\\theta$, $y = r\\sin\\theta$, the area element transforms as $dx\\,dy = J\\,dr\\,d\\theta$, where the Jacobian factor J equals {{1}} (a single variable).",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "r",
+            "$r$"
+          ]
+        }
+      ],
+      "explanation": "The Jacobian determinant of the polar transformation is $r$, so $dx\\,dy = r\\,dr\\,d\\theta$. This factor is essential and is the most commonly forgotten part of polar integration.",
       "difficulty": "warmup",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
-    },
-    {
-      "id": "mathematical-methods-i-multiple-integrals-027",
-      "format": "cloze",
-      "stem": "Set up the limits for the triangular region bounded by $y = 0$, $x = 1$, and $y = x$.",
-      "solution": "Integrating with $y$ on the inside, for a fixed $x$ the variable $y$ runs from $0$ up to the line $y = x$, so the inner upper limit is {{1}}. The outer variable $x$ then runs from $0$ to {{2}}.",
-      "gaps": [
-        {
-          "id": 1,
-          "type": "dropdown",
-          "options": [
-            "$x$",
-            "$1$",
-            "$0$",
-            "$y$"
-          ],
-          "answer": "$x$"
-        },
-        {
-          "id": 2,
-          "type": "number",
-          "answer": 1,
-          "tolerance": 0
-        }
-      ],
-      "explanation": "Below the line $y = x$ and above $y = 0$, the inner limit is $y = x$. The region extends to $x = 1$, so $x$ runs from $0$ to $1$.",
-      "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
-    },
-    {
-      "id": "mathematical-methods-i-multiple-integrals-028",
-      "format": "cloze",
-      "stem": "Evaluate $\\displaystyle\\int_0^1\\!\\!\\int_0^1 (2x + 2y)\\,dx\\,dy$.",
-      "solution": "The inner integral $\\displaystyle\\int_0^1 (2x + 2y)\\,dx$ equals $1 + 2y$. The outer integral $\\displaystyle\\int_0^1 (1 + 2y)\\,dy$ then evaluates to the integer {{1}}, which is also the average value of $2x + 2y$ times the area {{2}}.",
-      "gaps": [
-        {
-          "id": 1,
-          "type": "number",
-          "answer": 2,
-          "tolerance": 0
-        },
-        {
-          "id": 2,
-          "type": "number",
-          "answer": 1,
-          "tolerance": 0
-        }
-      ],
-      "explanation": "The inner integral is $[x^2 + 2xy]_0^1 = 1 + 2y$. Then $\\int_0^1 (1 + 2y)\\,dy = 1 + 1 = 2$, over a unit-area square.",
-      "difficulty": "core",
-      "source": "in the style of Boas, Mathematical Methods in the Physical Sciences"
+      "source": "in the style of a KNUST Mathematical Methods I course (MATH 265)"
     }
-  ],
-  "status": "approved"
+  ]
 }
