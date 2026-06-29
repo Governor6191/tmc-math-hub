@@ -1,0 +1,484 @@
+{
+  "courseId": "real-function-2",
+  "topicId": "absolute-continuity-and-differentiation-of-integrals",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-001",
+      "stem": "A function $f$ on $[a,b]$ is absolutely continuous if, for every $\\varepsilon > 0$, there is a $\\delta > 0$ such that for every finite collection of disjoint subintervals $(a_k, b_k)$ which condition guarantees $\\sum_k |f(b_k) - f(a_k)| < \\varepsilon$?",
+      "options": [
+        "$\\max_k (b_k - a_k) < \\delta$.",
+        "$\\sum_k (b_k - a_k) < \\delta$.",
+        "the number of intervals is less than $\\delta$.",
+        "$\\sum_k |f(b_k) - f(a_k)| < \\delta$."
+      ],
+      "answer": 1,
+      "explanation": "Absolute continuity requires that whenever the total length $\\sum_k (b_k - a_k)$ of finitely many disjoint subintervals is below $\\delta$, the total change $\\sum_k |f(b_k) - f(a_k)|$ stays below $\\varepsilon$. Controlling only the largest length or the count of intervals is too weak; the hypothesis is on the summed lengths.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-002",
+      "stem": "Taking a single interval ($n = 1$) in the definition of absolute continuity shows that every absolutely continuous function is also which of the following?",
+      "options": [
+        "Differentiable everywhere.",
+        "Monotone.",
+        "Uniformly continuous.",
+        "Lipschitz."
+      ],
+      "answer": 2,
+      "explanation": "Restricting the absolute continuity condition to one interval gives exactly the definition of uniform continuity: $|b_1 - a_1| < \\delta$ implies $|f(b_1) - f(a_1)| < \\varepsilon$. So AC implies uniform continuity, though not necessarily differentiability everywhere, monotonicity, or the Lipschitz property.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-003",
+      "stem": "Which chain of implications is correct for functions on $[a,b]$?",
+      "options": [
+        "Lipschitz $\\Rightarrow$ absolutely continuous $\\Rightarrow$ bounded variation.",
+        "Bounded variation $\\Rightarrow$ absolutely continuous $\\Rightarrow$ Lipschitz.",
+        "Absolutely continuous $\\Rightarrow$ Lipschitz $\\Rightarrow$ bounded variation.",
+        "Continuous $\\Rightarrow$ absolutely continuous $\\Rightarrow$ Lipschitz."
+      ],
+      "answer": 0,
+      "explanation": "The correct hierarchy is Lipschitz $\\Rightarrow$ absolutely continuous $\\Rightarrow$ bounded variation (and AC also implies uniform continuity). Each implication is strict: AC functions need not be Lipschitz, and BV functions (such as the Cantor function) need not be AC.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-004",
+      "stem": "Why is every absolutely continuous function on $[a,b]$ also of bounded variation?",
+      "options": [
+        "Because AC functions are monotone.",
+        "Because the $\\delta$ from AC lets one cover $[a,b]$ by finitely many pieces, each of variation at most $\\varepsilon$, giving a finite total.",
+        "Because AC functions are differentiable everywhere.",
+        "Because every continuous function is of bounded variation."
+      ],
+      "answer": 1,
+      "explanation": "Split $[a,b]$ into finitely many subintervals each of length below the AC parameter $\\delta$ (for $\\varepsilon = 1$, say). On each piece the variation is at most $1$, so the total variation is bounded by the finite number of pieces. Hence AC implies finite total variation.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-005",
+      "stem": "Is the converse true: must a function of bounded variation be absolutely continuous?",
+      "options": [
+        "Yes, BV and AC are equivalent.",
+        "Yes, every continuous BV function is AC.",
+        "No, because BV functions are never continuous.",
+        "No, the Cantor function is BV (indeed monotone) and continuous but not absolutely continuous."
+      ],
+      "answer": 3,
+      "explanation": "The implication AC $\\Rightarrow$ BV does not reverse. The Cantor function is increasing (hence BV with variation $1$) and continuous, yet it fails absolute continuity because it climbs from $0$ to $1$ while being constant off a set of measure zero.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-006",
+      "stem": "Why does the Cantor function $c$ fail to be absolutely continuous, even though it is continuous and increasing?",
+      "options": [
+        "Because it is not bounded.",
+        "Because $c' = 0$ almost everywhere, yet $c$ increases from $0$ to $1$, so $\\int_0^1 c' = 0 \\ne c(1) - c(0)$.",
+        "Because $c$ has a jump discontinuity.",
+        "Because $c$ is not of bounded variation."
+      ],
+      "answer": 1,
+      "explanation": "The Cantor function is differentiable with $c' = 0$ at almost every point (the complement of the measure-zero Cantor set). If it were AC, the fundamental theorem would give $c(1) - c(0) = \\int_0^1 c'\\,dx = 0$, contradicting $c(1) - c(0) = 1$. So $c$ cannot be absolutely continuous.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-007",
+      "stem": "For a Lebesgue integrable function $f$ on $[a,b]$, the indefinite integral $F(x) = \\int_a^x f(t)\\,dt$ has which regularity property?",
+      "options": [
+        "It is only continuous, not necessarily of bounded variation.",
+        "It is Lipschitz with constant $\\int_a^b |f|$.",
+        "It is differentiable everywhere with $F' = f$ everywhere.",
+        "It is absolutely continuous on $[a,b]$."
+      ],
+      "answer": 3,
+      "explanation": "The indefinite Lebesgue integral of an integrable function is absolutely continuous, because absolute continuity of the integral gives $\\delta$ control: small total length forces $\\sum_k \\int_{a_k}^{b_k} |f|$ small. It need not be Lipschitz unless $f$ is bounded, and $F' = f$ holds only almost everywhere.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-008",
+      "stem": "The Lebesgue differentiation theorem for the indefinite integral states that if $f$ is integrable and $F(x) = \\int_a^x f$, then which holds?",
+      "options": [
+        "$F'(x) = f(x)$ for every $x$.",
+        "$F'(x) = f(x)$ for almost every $x$.",
+        "$F'(x) = 0$ almost everywhere.",
+        "$F$ is nowhere differentiable."
+      ],
+      "answer": 1,
+      "explanation": "The theorem asserts $F'(x) = f(x)$ for almost every $x \\in [a,b]$. Pointwise equality everywhere can fail at points where $f$ is altered on a null set, but the derivative recovers $f$ outside a set of measure zero.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-009",
+      "stem": "The fundamental theorem of calculus for the Lebesgue integral states that $f$ on $[a,b]$ satisfies $f(x) - f(a) = \\int_a^x f'(t)\\,dt$ for all $x$ precisely when which condition holds?",
+      "options": [
+        "$f$ is continuous.",
+        "$f$ is of bounded variation.",
+        "$f$ is absolutely continuous.",
+        "$f$ is differentiable almost everywhere."
+      ],
+      "answer": 2,
+      "explanation": "Absolute continuity is exactly the class for which the fundamental theorem holds: $f$ is AC if and only if $f'$ exists a.e., is integrable, and $f(x) - f(a) = \\int_a^x f'$. Continuity, bounded variation, or a.e. differentiability alone are insufficient, as the Cantor function shows.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-010",
+      "stem": "Every Lipschitz function on $[a,b]$ is absolutely continuous. Which choice of $\\delta$ works in the AC definition for a Lipschitz constant $L$ and tolerance $\\varepsilon$?",
+      "options": [
+        "$\\delta = \\varepsilon$.",
+        "$\\delta = L \\varepsilon$.",
+        "$\\delta = L$.",
+        "$\\delta = \\varepsilon / L$."
+      ],
+      "answer": 3,
+      "explanation": "If $|f(b_k) - f(a_k)| \\le L (b_k - a_k)$, then $\\sum_k |f(b_k) - f(a_k)| \\le L \\sum_k (b_k - a_k)$. Choosing $\\delta = \\varepsilon / L$ makes the right side below $\\varepsilon$ whenever $\\sum_k (b_k - a_k) < \\delta$, proving Lipschitz $\\Rightarrow$ AC.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-011",
+      "stem": "Which of the following is an absolutely continuous function on $[0,1]$?",
+      "options": [
+        "The Cantor function.",
+        "$f(x) = x \\sin(1/x)$ with $f(0) = 0$.",
+        "A step function with a jump at $x = 1/2$.",
+        "$f(x) = x^2$."
+      ],
+      "answer": 3,
+      "explanation": "On $[0,1]$, $f(x) = x^2$ has bounded derivative $f'(x) = 2x$, hence is Lipschitz and so absolutely continuous. The Cantor function is BV but not AC, $x\\sin(1/x)$ is not even BV, and a jump function is not continuous, so none of those are AC.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-012",
+      "stem": "If $f$ and $g$ are absolutely continuous on $[a,b]$, which of the following is NOT generally guaranteed to be absolutely continuous on $[a,b]$?",
+      "options": [
+        "$f + g$.",
+        "$cf$ for a constant $c$.",
+        "$f \\cdot g$.",
+        "$1/f$, with no further assumption on $f$."
+      ],
+      "answer": 3,
+      "explanation": "Sums, scalar multiples, and products of AC functions on a bounded interval are AC (products use boundedness of AC functions on $[a,b]$). The reciprocal $1/f$ can fail to be AC, or even defined, where $f$ approaches $0$, so without a bound like $|f| \\ge m > 0$ it is not guaranteed.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-013",
+      "stem": "The Cantor function provides a counterexample to which naive statement?",
+      "options": [
+        "Every increasing function is bounded.",
+        "Every continuous function of bounded variation is absolutely continuous.",
+        "Every absolutely continuous function is of bounded variation.",
+        "Every Lipschitz function is absolutely continuous."
+      ],
+      "answer": 1,
+      "explanation": "The Cantor function is continuous and of bounded variation (it is increasing) yet not absolutely continuous, refuting the claim that continuity plus bounded variation forces absolute continuity. The other three statements are in fact true.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-014",
+      "stem": "A monotone function $f$ on $[a,b]$ is differentiable almost everywhere (Lebesgue's theorem) and satisfies which inequality?",
+      "options": [
+        "$\\int_a^b f'(x)\\,dx = f(b) - f(a)$ always.",
+        "$\\int_a^b f'(x)\\,dx \\ge f(b) - f(a)$.",
+        "$\\int_a^b f'(x)\\,dx \\le f(b) - f(a)$.",
+        "$f'$ is not integrable in general."
+      ],
+      "answer": 2,
+      "explanation": "Lebesgue's theorem says an increasing $f$ has $f' \\ge 0$ a.e. and $\\int_a^b f' \\le f(b) - f(a)$, with equality exactly when $f$ is absolutely continuous. The Cantor function realizes strict inequality: $\\int_0^1 c' = 0 < 1 = c(1) - c(0)$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-015",
+      "stem": "Which statement about an absolutely continuous function $f$ on $[a,b]$ is correct?",
+      "options": [
+        "$f$ is differentiable at every point of $[a,b]$.",
+        "$f'$ exists almost everywhere and is Lebesgue integrable.",
+        "$f' = 0$ almost everywhere.",
+        "$f$ need not be of bounded variation."
+      ],
+      "answer": 1,
+      "explanation": "An AC function has a derivative almost everywhere, that derivative is integrable, and $f$ is recovered by $f(x) = f(a) + \\int_a^x f'$. It need not be differentiable at every point, and (unlike the Cantor function) $f'$ is not identically zero a.e. unless $f$ is constant.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-016",
+      "stem": "By the differentiation theorem, what is $\\frac{d}{dx} \\int_0^x t^2 \\, dt$ for $x \\in [0,1]$?",
+      "options": [
+        "$x^3 / 3$.",
+        "$2x$.",
+        "$x^2$.",
+        "$1$."
+      ],
+      "answer": 2,
+      "explanation": "With $f(t) = t^2$ continuous, the indefinite integral $F(x) = \\int_0^x t^2\\,dt = x^3/3$ is differentiable and $F'(x) = f(x) = x^2$. This is the differentiation of an indefinite integral, here holding at every point because the integrand is continuous.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-017",
+      "stem": "Uniform continuity does NOT imply absolute continuity. Which function illustrates this on $[0,1]$?",
+      "options": [
+        "$f(x) = x$.",
+        "The Cantor function, which is uniformly continuous but not absolutely continuous.",
+        "$f(x) = x^2$.",
+        "A constant function."
+      ],
+      "answer": 1,
+      "explanation": "The Cantor function is continuous on the compact interval $[0,1]$, hence uniformly continuous, yet it is not absolutely continuous. So the implication AC $\\Rightarrow$ uniform continuity cannot be reversed. The other listed functions are all absolutely continuous.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-018",
+      "stem": "If $f$ is absolutely continuous and $f'(x) = 0$ for almost every $x \\in [a,b]$, what must $f$ be?",
+      "options": [
+        "The Cantor function.",
+        "Strictly increasing.",
+        "Constant on $[a,b]$.",
+        "Unbounded."
+      ],
+      "answer": 2,
+      "explanation": "For an AC function, $f(x) - f(a) = \\int_a^x f' = \\int_a^x 0 = 0$, so $f(x) = f(a)$ for all $x$ and $f$ is constant. The Cantor function shows this conclusion fails without absolute continuity, since it has $c' = 0$ a.e. yet is non-constant.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-019",
+      "stem": "Which of the following correctly states the integration-by-parts formula for absolutely continuous functions $f, g$ on $[a,b]$?",
+      "options": [
+        "$\\int_a^b f g'\\,dx = f(b)g(b) - f(a)g(a) - \\int_a^b f' g\\,dx$.",
+        "$\\int_a^b f g'\\,dx = \\int_a^b f' g\\,dx$.",
+        "$\\int_a^b f g'\\,dx = f(b)g(b) - f(a)g(a) + \\int_a^b f' g\\,dx$.",
+        "$\\int_a^b f g'\\,dx = 0$ always."
+      ],
+      "answer": 0,
+      "explanation": "Since $(fg)' = f'g + fg'$ holds a.e. and $fg$ is absolutely continuous, the fundamental theorem gives $\\int_a^b (f'g + fg') = f(b)g(b) - f(a)g(a)$. Rearranging yields $\\int_a^b fg' = f(b)g(b) - f(a)g(a) - \\int_a^b f'g$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-020",
+      "stem": "Which condition on $f$ on $[a,b]$ is equivalent to absolute continuity?",
+      "options": [
+        "$f$ maps sets of measure zero to sets of measure zero (Luzin's N property), plus $f$ is BV and continuous.",
+        "$f$ is merely continuous.",
+        "$f$ is monotone.",
+        "$f$ has at most finitely many discontinuities."
+      ],
+      "answer": 0,
+      "explanation": "A continuous BV function is absolutely continuous exactly when it has the Luzin N property: it sends null sets to null sets. The Cantor function fails this, mapping the measure-zero Cantor set onto a set of measure one, which is precisely why it is not AC.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-021",
+      "stem": "If $f$ is absolutely continuous and increasing on $[a,b]$, which equality is guaranteed?",
+      "options": [
+        "$\\int_a^b f'(x)\\,dx < f(b) - f(a)$.",
+        "$\\int_a^b f'(x)\\,dx = f(b) - f(a)$.",
+        "$\\int_a^b f'(x)\\,dx = 0$.",
+        "$f'(x) = 0$ almost everywhere."
+      ],
+      "answer": 1,
+      "explanation": "Absolute continuity is exactly what upgrades Lebesgue's inequality $\\int_a^b f' \\le f(b) - f(a)$ to an equality. For an AC increasing function the fundamental theorem gives $\\int_a^b f'(x)\\,dx = f(b) - f(a)$ with no loss of mass.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-022",
+      "stem": "Consider $f(x) = \\sqrt{x}$ on $[0,1]$. Although $f'(x) = \\tfrac{1}{2\\sqrt{x}}$ is unbounded near $0$, what is its status?",
+      "options": [
+        "It is not absolutely continuous because $f'$ is unbounded.",
+        "It is not even continuous.",
+        "It is absolutely continuous, since $f' = \\tfrac{1}{2\\sqrt{x}}$ is integrable and $f(x) = \\int_0^x f'$.",
+        "It is Lipschitz on $[0,1]$."
+      ],
+      "answer": 2,
+      "explanation": "Even though $f' = \\tfrac{1}{2\\sqrt{x}}$ blows up at $0$, it is Lebesgue integrable with $\\int_0^x \\tfrac{1}{2\\sqrt t}\\,dt = \\sqrt{x} = f(x) - f(0)$, so $f$ is absolutely continuous. It is not Lipschitz because the derivative is unbounded, showing AC is strictly weaker than Lipschitz.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-023",
+      "stem": "Which implication is FALSE?",
+      "options": [
+        "Lipschitz $\\Rightarrow$ absolutely continuous.",
+        "Absolutely continuous $\\Rightarrow$ uniformly continuous.",
+        "Bounded variation $\\Rightarrow$ absolutely continuous.",
+        "Absolutely continuous $\\Rightarrow$ bounded variation."
+      ],
+      "answer": 2,
+      "explanation": "The false implication is BV $\\Rightarrow$ AC: the Cantor function is BV but not AC. The other three are valid, since Lipschitz $\\Rightarrow$ AC $\\Rightarrow$ BV and AC $\\Rightarrow$ uniformly continuous all hold.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-024",
+      "stem": "Absolute continuity of the Lebesgue integral states that for integrable $f$ and every $\\varepsilon > 0$ there is $\\delta > 0$ so that which holds for any measurable set $E$?",
+      "options": [
+        "$\\int_E |f| < \\varepsilon$ whenever the measure $m(E) < \\delta$.",
+        "$\\int_E |f| < \\varepsilon$ whenever $E$ is an interval.",
+        "$\\int_E f = 0$ whenever $m(E) < \\delta$.",
+        "$m(E) < \\varepsilon$ whenever $\\int_E |f| < \\delta$."
+      ],
+      "answer": 0,
+      "explanation": "The result says small measure forces small integral: if $m(E) < \\delta$ then $\\int_E |f| < \\varepsilon$. This is the mechanism that makes the indefinite integral $x \\mapsto \\int_a^x f$ an absolutely continuous function.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-025",
+      "format": "cloze",
+      "stem": "Place the implication chain in order. The known strict implications among classes of functions on $[a,b]$ read: Lipschitz, then absolutely continuous, then bounded variation.",
+      "solution": "Every Lipschitz function is absolutely continuous, so the first arrow is {{1}}. Every absolutely continuous function is of bounded variation, so the second arrow is {{2}}. The reverse implication, that bounded variation implies absolute continuity, is {{3}}, with the Cantor function as the standard counterexample.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "valid",
+            "invalid"
+          ],
+          "answer": "valid"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "valid",
+            "invalid"
+          ],
+          "answer": "valid"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "valid",
+            "invalid"
+          ],
+          "answer": "invalid"
+        }
+      ],
+      "explanation": "Lipschitz $\\Rightarrow$ AC (use $\\delta = \\varepsilon/L$) and AC $\\Rightarrow$ BV (cover by finitely many short pieces) are both valid. The converse BV $\\Rightarrow$ AC is invalid because the Cantor function is BV and continuous yet not absolutely continuous.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-026",
+      "format": "cloze",
+      "stem": "The Cantor function $c$ as a counterexample. It is continuous and increasing on $[0,1]$ with $c(0) = 0$ and $c(1) = 1$.",
+      "solution": "Because $c$ is constant on each interval removed in the Cantor construction, its derivative satisfies $c'(x) = $ {{1}} for almost every $x$. Hence the Lebesgue integral $\\int_0^1 c'(x)\\,dx$ equals {{2}}, while the actual rise $c(1) - c(0)$ equals {{3}}. The mismatch shows $c$ is not absolutely continuous.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The Cantor function is flat off the measure-zero Cantor set, so $c' = 0$ almost everywhere and $\\int_0^1 c' = 0$. Yet $c$ climbs from $0$ to $1$, so $c(1) - c(0) = 1 \\ne 0 = \\int_0^1 c'$, violating the fundamental theorem of calculus that holds for absolutely continuous functions.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-027",
+      "format": "cloze",
+      "stem": "Differentiating an indefinite integral. Let $F(x) = \\int_0^x (3t^2 + 1)\\,dt$ for $x \\in [0,2]$.",
+      "solution": "Carrying out the integration gives $F(x) = x^3 + x$, so $F(1)$ equals {{1}}. Since the integrand is continuous, the differentiation theorem gives $F'(x) = 3x^2 + 1$, so $F'(1)$ equals {{2}}. The kind of regularity $F$ possesses on $[0,2]$, which guarantees the fundamental theorem applies, is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "absolute continuity",
+            "monotonicity",
+            "boundedness only"
+          ],
+          "answer": "absolute continuity"
+        }
+      ],
+      "explanation": "Integrating, $F(x) = x^3 + x$, so $F(1) = 1 + 1 = 2$, and $F'(x) = 3x^2 + 1$ gives $F'(1) = 3 + 1 = 4$. The indefinite integral of an integrable function is absolutely continuous, which is the property that lets us recover $F' = f$ and apply the fundamental theorem of calculus.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-absolute-continuity-and-differentiation-of-integrals-028",
+      "format": "cloze",
+      "stem": "One-interval reduction and the AC parameter. A Lipschitz function on $[a,b]$ with constant $L$ is absolutely continuous.",
+      "solution": "Restricting the absolute continuity definition to a single interval recovers the definition of {{1}} continuity. For the Lipschitz function, the choice of AC parameter that works for tolerance $\\varepsilon$ is $\\delta = $ {{2}}. The resulting class membership, Lipschitz implies, is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "uniform",
+            "pointwise",
+            "Holder"
+          ],
+          "answer": "uniform"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "\\varepsilon / L",
+            "L \\varepsilon",
+            "\\varepsilon"
+          ],
+          "answer": "\\varepsilon / L"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "absolutely continuous",
+            "monotone",
+            "differentiable everywhere"
+          ],
+          "answer": "absolutely continuous"
+        }
+      ],
+      "explanation": "With one interval the AC condition becomes uniform continuity. Since $\\sum_k |f(b_k)-f(a_k)| \\le L\\sum_k(b_k-a_k)$, taking $\\delta = \\varepsilon/L$ forces the sum below $\\varepsilon$, so every Lipschitz function is absolutely continuous.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    }
+  ]
+}

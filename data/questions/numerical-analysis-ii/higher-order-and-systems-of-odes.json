@@ -1,0 +1,509 @@
+{
+  "courseId": "numerical-analysis-ii",
+  "topicId": "higher-order-and-systems-of-odes",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-001",
+      "stem": "To solve a second-order ODE numerically, the standard first step is to do which of the following?",
+      "options": [
+        "Differentiate it once more",
+        "Rewrite it as a system of two first-order ODEs",
+        "Integrate it twice analytically",
+        "Replace it with a single algebraic equation"
+      ],
+      "answer": 1,
+      "explanation": "Methods like Euler and Runge-Kutta are built for first-order systems, so a second-order ODE is converted into two coupled first-order equations by introducing the first derivative as a new unknown. Differentiating again raises the order, analytic integration defeats the purpose of a numerical method, and reducing to one algebraic equation is not generally possible. The trap is trying to apply a one-step method directly to a second-order equation; it must be reduced to a first-order system first.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-002",
+      "stem": "For the equation $y'' = -y$, introducing $u = y$ and $v = y'$ gives which first-order system?",
+      "options": [
+        "$u' = v$, $v' = -u$",
+        "$u' = -u$, $v' = v$",
+        "$u' = v$, $v' = -v$",
+        "$u' = u$, $v' = -u$"
+      ],
+      "answer": 0,
+      "explanation": "With $u = y$ we get $u' = y' = v$, and with $v = y'$ we get $v' = y'' = -y = -u$, so the system is $u' = v$, $v' = -u$. The other options misroute the derivatives, for instance setting $v' = -v$ instead of $-u$. The trap is forgetting that $v' = y''$ must be re-expressed through the original equation in terms of $u$, not $v$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-003",
+      "stem": "A third-order ODE reduces to a first-order system containing how many equations?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$6$"
+      ],
+      "answer": 2,
+      "explanation": "An ODE of order $n$ reduces to a system of exactly $n$ first-order equations, one for each of $y, y', \\ldots, y^{(n-1)}$, so a third-order equation gives $3$ equations. The count matches the order, not twice the order or one. The trap is the mismatch between order and system size; they are equal, so order $3$ gives $3$ first-order equations.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-004",
+      "stem": "For $y'' = -y$, $y(0) = 1$, $y'(0) = 0$, write $u = y$, $v = y'$ and apply one Euler step with $h = 0.1$. The new value $u_1$ is which of the following?",
+      "options": [
+        "$0.9000$",
+        "$1.1000$",
+        "$1.0000$",
+        "$0.9950$"
+      ],
+      "answer": 2,
+      "explanation": "The system is $u' = v$, $v' = -u$. The Euler update for $u$ is $u_1 = u_0 + h v_0 = 1 + 0.1(0) = 1$, since the initial velocity $v_0 = 0$. The value stays at $1$ on this first step because the slope $u' = v$ starts at zero. The other options anticipate later motion. The trap is updating $u$ with $-u$ instead of its own slope $v$; each component uses its own right-hand side.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-005",
+      "stem": "For $y'' = -y$, $y(0) = 1$, $y'(0) = 0$, with $u = y$, $v = y'$, one Euler step with $h = 0.1$ gives $v_1$ as which value?",
+      "options": [
+        "$0.1000$",
+        "$-0.1000$",
+        "$0.0000$",
+        "$-1.0000$"
+      ],
+      "answer": 1,
+      "explanation": "The Euler update for $v$ is $v_1 = v_0 + h(-u_0) = 0 + 0.1(-1) = -0.1$, using the slope $v' = -u = -1$ at the start. The velocity becomes negative because the restoring force $-y$ pulls the solution back. The value $0$ keeps it unchanged and $0.1$ has the wrong sign. The trap is dropping the minus sign in $v' = -u$; the second equation carries the restoring term.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-006",
+      "stem": "Continuing $y'' = -y$ with $u_1 = 1$, $v_1 = -0.1$ and $h = 0.1$, the second Euler step gives $u_2$ as which value?",
+      "options": [
+        "$1.0000$",
+        "$0.9800$",
+        "$0.9900$",
+        "$1.0100$"
+      ],
+      "answer": 2,
+      "explanation": "The update is $u_2 = u_1 + h v_1 = 1 + 0.1(-0.1) = 1 - 0.01 = 0.99$, now that the velocity component $v_1 = -0.1$ feeds the slope $u' = v$. The displacement begins to fall as expected for $\\cos t$. The value $1$ forgets the now-nonzero velocity. The trap is reusing $v_0 = 0$ from the first step; the latest velocity $v_1$ drives the second step.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-007",
+      "stem": "In vector form, a first-order system is written $\\mathbf{y}' = \\mathbf{F}(x, \\mathbf{y})$. Euler's method for the system is which of the following?",
+      "options": [
+        "$\\mathbf{y}_{n+1} = \\mathbf{y}_n + h\\,\\mathbf{F}(x_n, \\mathbf{y}_n)$",
+        "$\\mathbf{y}_{n+1} = \\mathbf{y}_n + \\mathbf{F}(x_n, \\mathbf{y}_n)$",
+        "$\\mathbf{y}_{n+1} = h\\,\\mathbf{F}(x_n, \\mathbf{y}_n)$",
+        "$\\mathbf{y}_{n+1} = \\mathbf{y}_n + h\\,x_n$"
+      ],
+      "answer": 0,
+      "explanation": "Euler's method generalizes component by component to the vector update $\\mathbf{y}_{n+1} = \\mathbf{y}_n + h\\,\\mathbf{F}(x_n, \\mathbf{y}_n)$, where $\\mathbf{y}$ and $\\mathbf{F}$ are vectors. The second option drops $h$, the third drops the previous value, and the fourth ignores $\\mathbf{F}$ entirely. The trap is treating the vector method differently from the scalar one; the formula is identical with vectors replacing scalars.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-008",
+      "stem": "For the system $x' = -y$, $y' = x$ with $x(0) = 1$, $y(0) = 0$, one Euler step with $h = 0.1$ gives $(x_1, y_1)$ as which of the following?",
+      "options": [
+        "$(0.9, 0.1)$",
+        "$(1.0, 0.1)$",
+        "$(1.1, 0.0)$",
+        "$(0.99, 0.2)$"
+      ],
+      "answer": 1,
+      "explanation": "The updates are $x_1 = x_0 + h(-y_0) = 1 + 0.1(0) = 1$ and $y_1 = y_0 + h(x_0) = 0 + 0.1(1) = 0.1$, so $(x_1, y_1) = (1.0, 0.1)$. Each equation uses its own right-hand side evaluated at the current state. The option $(0.9, 0.1)$ wrongly decreases $x$ on the first step. The trap is mixing the right-hand sides; $x'$ depends on $-y$ (zero here) and $y'$ on $x$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-009",
+      "stem": "When applying RK4 to a system of ODEs, the slopes $k_1, k_2, k_3, k_4$ become which kind of object?",
+      "options": [
+        "Vectors, one component per equation",
+        "Single scalars shared by all equations",
+        "Matrices of second derivatives",
+        "Complex numbers"
+      ],
+      "answer": 0,
+      "explanation": "For a system, each Runge-Kutta stage produces a vector of slopes, one entry for every equation, and the update is applied componentwise. They are not single shared scalars, not matrices of second derivatives, and not complex numbers. The trap is computing one scalar slope for the whole system; each equation needs its own slope at every stage.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-010",
+      "stem": "For $y'' = -4y$, $y(0) = 2$, $y'(0) = 0$, with $u = y$, $v = y'$, one Euler step with $h = 0.25$ gives $v_1$ as which value?",
+      "options": [
+        "$0.0$",
+        "$2.0$",
+        "$-2.0$",
+        "$-0.5$"
+      ],
+      "answer": 2,
+      "explanation": "The system is $u' = v$, $v' = -4u$. The slope for $v$ at the start is $v' = -4u_0 = -4(2) = -8$, so $v_1 = v_0 + h(-8) = 0 + 0.25(-8) = -2$. The factor $4$ from the equation must multiply $u$ before scaling by $h$. The value $-0.5$ omits the factor $4$. The trap is dropping the coefficient $4$; the right-hand side is $-4u$, not $-u$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-011",
+      "stem": "For the equation $y'' - 3y' + 2y = 0$, introducing $u = y$, $v = y'$ gives the second equation $v'$ equal to which expression?",
+      "options": [
+        "$3v - 2u$",
+        "$2v - 3u$",
+        "$-3v + 2u$",
+        "$3u - 2v$"
+      ],
+      "answer": 0,
+      "explanation": "Solving the equation for the highest derivative gives $y'' = 3y' - 2y$, so in the new variables $v' = y'' = 3v - 2u$. The other options swap coefficients or signs. The trap is mishandling the rearrangement: move the lower-order terms to the right-hand side with their signs flipped, giving $v' = 3v - 2u$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-012",
+      "stem": "Continuing the system $x' = -y$, $y' = x$ from $(x_1, y_1) = (1.0, 0.1)$ with $h = 0.1$, the second Euler step gives $(x_2, y_2)$ as which of the following?",
+      "options": [
+        "$(1.0, 0.2)$",
+        "$(0.98, 0.2)$",
+        "$(0.99, 0.2)$",
+        "$(0.99, 0.1)$"
+      ],
+      "answer": 2,
+      "explanation": "The updates are $x_2 = x_1 + h(-y_1) = 1 + 0.1(-0.1) = 0.99$ and $y_2 = y_1 + h(x_1) = 0.1 + 0.1(1) = 0.2$, so $(x_2, y_2) = (0.99, 0.2)$. Each component uses the latest state $(1.0, 0.1)$. The option $(0.98, 0.2)$ over-decreases $x$. The trap is using stale values from step one; the right-hand sides must be re-evaluated at $(x_1, y_1)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-013",
+      "stem": "For a second-order ODE, how many initial conditions are needed to start the numerical solution?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$0$"
+      ],
+      "answer": 1,
+      "explanation": "A second-order ODE requires two initial conditions, typically $y(x_0)$ and $y'(x_0)$, which become the initial values of the two state variables $u$ and $v$. One condition is too few to launch both components, and three over-specifies a second-order problem. The trap is forgetting that the reduced system has two unknowns and so needs two starting values.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-014",
+      "stem": "For the damped equation $y'' = -y - y'$, $y(0) = 1$, $y'(0) = 0$, with $u = y$, $v = y'$, one Euler step with $h = 0.1$ gives $v_1$ as which value?",
+      "options": [
+        "$0.1$",
+        "$0.0$",
+        "$-0.1$",
+        "$-0.2$"
+      ],
+      "answer": 2,
+      "explanation": "The system is $u' = v$, $v' = -u - v$. At the start $v' = -u_0 - v_0 = -1 - 0 = -1$, so $v_1 = v_0 + h(-1) = 0 + 0.1(-1) = -0.1$. Both the restoring term $-u$ and the damping term $-v$ enter, though $v_0 = 0$ contributes nothing here. The value $-0.2$ would double-count. The trap is omitting one of the two terms in $v' = -u - v$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-015",
+      "stem": "The vector right-hand side for the system from $y'' = -y$ (with $\\mathbf{y} = (u, v)^\\top$) is which of the following?",
+      "options": [
+        "$\\mathbf{F} = (v, -u)^\\top$",
+        "$\\mathbf{F} = (u, v)^\\top$",
+        "$\\mathbf{F} = (-u, v)^\\top$",
+        "$\\mathbf{F} = (v, u)^\\top$"
+      ],
+      "answer": 0,
+      "explanation": "With $u' = v$ and $v' = -u$, the vector field is $\\mathbf{F}(x, \\mathbf{y}) = (v, -u)^\\top$: the first component is the slope of $u$, the second the slope of $v$. The options that drop the minus sign or reorder the entries misrepresent the dynamics. The trap is ordering the components wrongly; the first entry of $\\mathbf{F}$ is always $u'$, the second $v'$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-016",
+      "stem": "When Euler or RK is applied to a system, the step size $h$ is which of the following?",
+      "options": [
+        "Different for each equation",
+        "The same single value for all equations",
+        "Determined separately by each variable's slope",
+        "Always equal to $1$"
+      ],
+      "answer": 1,
+      "explanation": "All components of the system advance together in the independent variable, so a single common step size $h$ is used for every equation at each step. Using different step sizes per equation would desynchronize the solution, and $h$ is a chosen parameter, not fixed at $1$. The trap is imagining each variable marches at its own pace; the whole state vector steps forward by the same $h$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-017",
+      "stem": "For projectile motion $y'' = -9.8$, $y(0) = 0$, $y'(0) = 20$, with $u = y$, $v = y'$, one Euler step with $h = 0.5$ gives $u_1$ as which value?",
+      "options": [
+        "$5.0$",
+        "$20.0$",
+        "$10.0$",
+        "$15.1$"
+      ],
+      "answer": 2,
+      "explanation": "The system is $u' = v$, $v' = -9.8$. The update for height is $u_1 = u_0 + h v_0 = 0 + 0.5(20) = 10$, using the initial upward velocity $20$. The value $15.1$ is actually $v_1$, the new velocity. The trap is confusing the position update (driven by velocity $v_0$) with the velocity update (driven by $-9.8$); $u_1$ uses the velocity, not gravity.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-018",
+      "stem": "For projectile motion $y'' = -9.8$, $y(0) = 0$, $y'(0) = 20$, with $u = y$, $v = y'$, one Euler step with $h = 0.5$ gives $v_1$ as which value?",
+      "options": [
+        "$20.0$",
+        "$15.1$",
+        "$10.0$",
+        "$24.9$"
+      ],
+      "answer": 1,
+      "explanation": "The velocity update is $v_1 = v_0 + h(-9.8) = 20 + 0.5(-9.8) = 20 - 4.9 = 15.1$, as gravity slows the upward motion. The value $10$ is the new height $u_1$, and $24.9$ adds instead of subtracts. The trap is the sign of gravity; $v' = -9.8$ reduces the velocity each step.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-019",
+      "stem": "An $n$th-order ODE in the form $y^{(n)} = g(x, y, y', \\ldots, y^{(n-1)})$ is reduced by setting the new variables equal to which quantities?",
+      "options": [
+        "$y$ and its successive derivatives up to order $n - 1$",
+        "$y$ raised to powers $1$ through $n$",
+        "$n$ copies of $y$ only",
+        "The integrals of $y$"
+      ],
+      "answer": 0,
+      "explanation": "The standard reduction sets $u_1 = y$, $u_2 = y'$, up to $u_n = y^{(n-1)}$, so each new variable is a successive derivative; then $u_i' = u_{i+1}$ and $u_n' = g$. Powers of $y$, repeated copies, or integrals do not produce a first-order system equivalent to the original equation. The trap is using powers instead of derivatives; the chain of variables tracks the derivatives.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-020",
+      "stem": "For $y'' = -4y$, $y(0) = 2$, $y'(0) = 0$, with $u = y$, $v = y'$, one Euler step with $h = 0.25$ gives $u_1$ as which value?",
+      "options": [
+        "$2.0$",
+        "$1.5$",
+        "$0.0$",
+        "$2.5$"
+      ],
+      "answer": 0,
+      "explanation": "The position update is $u_1 = u_0 + h v_0 = 2 + 0.25(0) = 2$, unchanged because the initial velocity is zero. The displacement only begins to move once $v$ becomes nonzero (here $v_1 = -2$). The value $1.5$ anticipates later decay. The trap is updating $u$ with the equation's $-4u$ term; $u$ is driven by its own slope $v$, which starts at zero.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-021",
+      "stem": "Applying RK4 to a system rather than a single equation changes the accuracy order how?",
+      "options": [
+        "It stays fourth-order in $h$",
+        "It drops to first-order",
+        "It becomes second-order",
+        "It loses all convergence"
+      ],
+      "answer": 0,
+      "explanation": "The order of a one-step method is unchanged when it is applied componentwise to a system, so RK4 remains globally fourth-order, $O(h^4)$, for systems just as for scalars. The method does not degrade to first or second order, nor lose convergence. The trap is assuming coupling between equations lowers the order; the Taylor-matching that gives RK4 its order holds vector-valued as well.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-022",
+      "stem": "For the system $u' = v$, $v' = -u$, the slope vector used in Euler's step at the state $(u, v) = (1, 0)$ is which of the following?",
+      "options": [
+        "$(0, -1)$",
+        "$(1, 0)$",
+        "$(0, 1)$",
+        "$(-1, 0)$"
+      ],
+      "answer": 0,
+      "explanation": "Evaluating the right-hand sides at $(1, 0)$ gives $u' = v = 0$ and $v' = -u = -1$, so the slope vector is $(0, -1)$. This is what multiplies $h$ in the Euler update for the whole state. The option $(1, 0)$ just repeats the state, not its slope. The trap is reporting the state instead of the slope; the slope comes from substituting the state into $\\mathbf{F}$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-023",
+      "format": "cloze",
+      "stem": "Reduce $y'' = -y$, $y(0) = 1$, $y'(0) = 0$ to a first-order system and take two Euler steps with $h = 0.1$.",
+      "solution": "Setting $u = y$ and $v = y'$ gives $u' = v$ and $v' =$ {{1}} (in terms of $u$). After one step, $u_1 = 1 + 0.1(0) = 1$ and $v_1 = 0 + 0.1(-1) =$ {{2}}. After the second step, $u_2 = 1 + 0.1(-0.1) =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$-u$",
+            "$-v$",
+            "$u$",
+            "$v$"
+          ],
+          "answer": "$-u$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -0.1,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.99,
+          "tolerance": 0.0001
+        }
+      ],
+      "explanation": "Since $v' = y'' = -y = -u$, the system is $u' = v$, $v' = -u$. First step: $u_1 = 1$, $v_1 = 0 + 0.1(-1) = -0.1$. Second step: $u_2 = 1 + 0.1(-0.1) = 0.99$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-024",
+      "format": "cloze",
+      "stem": "Solve the system $x' = -y$, $y' = x$ with $x(0) = 1$, $y(0) = 0$ by Euler's method, $h = 0.1$, for two steps.",
+      "solution": "The first step gives $x_1 = 1 + 0.1(0) =$ {{1}} and $y_1 = 0 + 0.1(1) =$ {{2}}. Using these, the second step gives $x_2 = 1 + 0.1(-0.1) =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.1,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.99,
+          "tolerance": 0.0001
+        }
+      ],
+      "explanation": "Step one: $x_1 = 1 + 0.1(-0) = 1$, $y_1 = 0 + 0.1(1) = 0.1$. Step two: $x_2 = x_1 + 0.1(-y_1) = 1 + 0.1(-0.1) = 0.99$ (and $y_2 = 0.1 + 0.1(1) = 0.2$).",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-025",
+      "format": "cloze",
+      "stem": "Reduce the projectile equation $y'' = -9.8$, $y(0) = 0$, $y'(0) = 20$ to a system and take one Euler step with $h = 0.5$.",
+      "solution": "With $u = y$, $v = y'$, the system is $u' = v$ and $v' =$ {{1}}. After one step, the height is $u_1 = 0 + 0.5(20) =$ {{2}} and the velocity is $v_1 = 20 + 0.5(-9.8) =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -9.8,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 15.1,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "The reduction gives $v' = y'' = -9.8$. Position: $u_1 = 0 + 0.5(20) = 10$. Velocity: $v_1 = 20 + 0.5(-9.8) = 20 - 4.9 = 15.1$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-026",
+      "format": "cloze",
+      "stem": "Recall the reduction of higher-order ODEs to systems and how one-step methods extend.",
+      "solution": "An ODE of order $n$ reduces to a first-order system of {{1}} equations. To start a second-order problem, the number of initial conditions required is {{2}}. When RK4 is applied to a system, its global order of accuracy in $h$ is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$n$",
+            "$2n$",
+            "$n - 1$",
+            "$1$"
+          ],
+          "answer": "$n$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$h^4$",
+            "$h^2$",
+            "$h$",
+            "$h^5$"
+          ],
+          "answer": "$h^4$"
+        }
+      ],
+      "explanation": "Order $n$ gives $n$ first-order equations. A second-order problem needs two initial conditions, $y(x_0)$ and $y'(x_0)$. RK4 stays fourth-order, $O(h^4)$, for systems.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-027",
+      "format": "cloze",
+      "stem": "Reduce $y'' - 3y' + 2y = 0$, $y(0) = 1$, $y'(0) = 0$ to a system and take one Euler step with $h = 0.1$.",
+      "solution": "Solving for the highest derivative gives $y'' = 3y' - 2y$, so with $u = y$, $v = y'$ the second equation is $v' = 3v - 2u$. At the start $v' = 3(0) - 2(1) =$ {{1}}. One Euler step then gives $v_1 = 0 + 0.1(-2) =$ {{2}} and $u_1 = 1 + 0.1(0) =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -0.2,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.0001
+        }
+      ],
+      "explanation": "Rearranged, $v' = 3v - 2u$, so at $(u, v) = (1, 0)$, $v' = -2$. Then $v_1 = 0 + 0.1(-2) = -0.2$ and $u_1 = 1 + 0.1(0) = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-higher-order-and-systems-of-odes-028",
+      "format": "cloze",
+      "stem": "Examine the vector form of the system arising from $y'' = -4y$, $y(0) = 2$, $y'(0) = 0$, and take one Euler step with $h = 0.25$.",
+      "solution": "Writing $\\mathbf{y} = (u, v)^\\top$, the vector right-hand side is $\\mathbf{F} = (v,\\,{{1}})^\\top$. Evaluated at the start $(2, 0)$, the slope of $v$ is $-4(2) =$ {{2}}, so $v_1 = 0 + 0.25(-8) =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$-4u$",
+            "$-4v$",
+            "$4u$",
+            "$-u$"
+          ],
+          "answer": "$-4u$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -8,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0.0001
+        }
+      ],
+      "explanation": "From $v' = y'' = -4y = -4u$, the field is $\\mathbf{F} = (v, -4u)^\\top$. At $(2, 0)$ the slope of $v$ is $-4(2) = -8$, so $v_1 = 0 + 0.25(-8) = -2$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    }
+  ]
+}

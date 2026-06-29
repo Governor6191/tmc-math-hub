@@ -1,0 +1,480 @@
+{
+  "courseId": "real-function-2",
+  "topicId": "functions-of-bounded-variation",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-function-2-functions-of-bounded-variation-001",
+      "stem": "For a function $f$ on $[a,b]$ and a partition $P = \\{a = x_0 < x_1 < \\cdots < x_n = b\\}$, the variation of $f$ over $P$ is defined as which sum?",
+      "options": [
+        "$\\sum_{i=1}^{n} (x_i - x_{i-1})$.",
+        "$\\sum_{i=1}^{n} |f(x_i) - f(x_{i-1})|$.",
+        "$\\sup_i |f(x_i) - f(x_{i-1})|$.",
+        "$\\sum_{i=1}^{n} (f(x_i) - f(x_{i-1}))$."
+      ],
+      "answer": 1,
+      "explanation": "The variation of $f$ relative to a partition $P$ is the sum of the absolute increments $\\sum_{i=1}^{n} |f(x_i) - f(x_{i-1})|$. Dropping the absolute values would let increments cancel and always telescope to $f(b) - f(a)$, which is not what measures total oscillation.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-002",
+      "stem": "The total variation $V_a^b(f)$ of $f$ on $[a,b]$ is defined as which quantity, taken over all partitions $P$ of $[a,b]$?",
+      "options": [
+        "The infimum of the partition sums $\\sum_i |f(x_i) - f(x_{i-1})|$.",
+        "The limit of the sums as the mesh of $P$ tends to zero.",
+        "The average of the sums over all partitions.",
+        "The supremum of the sums $\\sum_i |f(x_i) - f(x_{i-1})|$."
+      ],
+      "answer": 3,
+      "explanation": "By definition $V_a^b(f) = \\sup_P \\sum_{i} |f(x_i) - f(x_{i-1})|$, the supremum over all partitions. Refining a partition can only increase the sum, so the supremum (not an infimum or a mesh limit) captures the largest total oscillation.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-003",
+      "stem": "A function $f$ is said to be of bounded variation on $[a,b]$ exactly when which condition holds?",
+      "options": [
+        "$f$ is continuous on $[a,b]$.",
+        "$f$ is differentiable on $[a,b]$.",
+        "$V_a^b(f) < \\infty$, that is the partition sums are bounded above.",
+        "$f$ is bounded on $[a,b]$."
+      ],
+      "answer": 2,
+      "explanation": "Bounded variation means the total variation is finite: $V_a^b(f) = \\sup_P \\sum_i |f(x_i) - f(x_{i-1})| < \\infty$. Mere boundedness of $f$ is far weaker, and continuity or differentiability are neither necessary nor sufficient for finite variation.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-004",
+      "stem": "If $f$ is monotone increasing on $[a,b]$, what is its total variation $V_a^b(f)$?",
+      "options": [
+        "$f(b) - f(a)$.",
+        "$0$.",
+        "$|f(b)| + |f(a)|$.",
+        "Infinite, unless $f$ is constant."
+      ],
+      "answer": 0,
+      "explanation": "For an increasing $f$ every increment $f(x_i) - f(x_{i-1})$ is non-negative, so $\\sum_i |f(x_i) - f(x_{i-1})| = \\sum_i (f(x_i) - f(x_{i-1})) = f(b) - f(a)$ telescopes for every partition. Hence the supremum is exactly $f(b) - f(a)$, and every monotone function is of bounded variation.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-005",
+      "stem": "Which classical theorem characterizes functions of bounded variation as differences of monotone functions?",
+      "options": [
+        "Every BV function is a difference of two increasing functions (the Jordan decomposition).",
+        "Every BV function is a product of two increasing functions.",
+        "Every BV function is a sum of two decreasing functions.",
+        "Every continuous function is of bounded variation."
+      ],
+      "answer": 0,
+      "explanation": "The Jordan decomposition theorem states that $f$ is of bounded variation on $[a,b]$ if and only if $f = g - h$ for two increasing functions $g$ and $h$. A standard choice is $g(x) = V_a^x(f)$ and $h(x) = V_a^x(f) - f(x)$, both increasing.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-006",
+      "stem": "In the Jordan decomposition $f = g - h$ with $g(x) = V_a^x(f)$, why is the variation function $V_a^x(f)$ increasing in $x$?",
+      "options": [
+        "Because $f$ is assumed increasing.",
+        "Because variation over a larger interval is at least the variation over a smaller one, by additivity over subintervals.",
+        "Because $f$ is continuous.",
+        "Because the supremum of any set is increasing."
+      ],
+      "answer": 1,
+      "explanation": "Total variation is additive over adjacent intervals: $V_a^c(f) = V_a^b(f) + V_b^c(f)$ for $a \\le b \\le c$. Since $V_b^c(f) \\ge 0$, extending the interval can only add a non-negative amount, so $x \\mapsto V_a^x(f)$ is increasing.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-007",
+      "stem": "What is the total variation of $f(x) = c$ (a constant) on any interval $[a,b]$?",
+      "options": [
+        "$|c|$.",
+        "$0$.",
+        "$c(b-a)$.",
+        "$b - a$."
+      ],
+      "answer": 1,
+      "explanation": "Every increment of a constant function is $f(x_i) - f(x_{i-1}) = 0$, so each partition sum is $0$ and the supremum is $0$. Thus constants have zero total variation and are trivially of bounded variation.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-008",
+      "stem": "Compute the total variation of $f(x) = \\sin x$ on $[0, 2\\pi]$.",
+      "options": [
+        "$0$.",
+        "$2$.",
+        "$2\\pi$.",
+        "$4$."
+      ],
+      "answer": 3,
+      "explanation": "On $[0,2\\pi]$ the sine increases from $0$ to $1$, decreases from $1$ to $-1$, then increases from $-1$ to $0$, contributing $1 + 2 + 1 = 4$. Since $\\sin x$ is piecewise monotone, the total variation equals the sum of the absolute changes across its monotone pieces, namely $4$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-009",
+      "stem": "For a function that is monotone on each of finitely many subintervals partitioning $[a,b]$, the total variation equals which quantity?",
+      "options": [
+        "The largest single jump of $f$.",
+        "The sum of the absolute changes $|f(\\text{end}) - f(\\text{start})|$ over the monotone pieces.",
+        "Always $f(b) - f(a)$.",
+        "The number of monotone pieces."
+      ],
+      "answer": 1,
+      "explanation": "On a piece where $f$ is monotone the variation is just the absolute change of $f$ across that piece. By additivity of total variation, summing these absolute changes over all the monotone pieces gives $V_a^b(f)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-010",
+      "stem": "The function $f(x) = x \\sin(1/x)$ for $x \\in (0,1]$ with $f(0) = 0$ is continuous on $[0,1]$. What is true of its total variation there?",
+      "options": [
+        "It equals $1$.",
+        "It equals $0$ because $f$ is continuous.",
+        "It is infinite, so $f$ is continuous but not of bounded variation.",
+        "It equals $\\pi$."
+      ],
+      "answer": 2,
+      "explanation": "Near $0$ the function oscillates with amplitudes comparable to $1/n$, and the sum of these amplitudes behaves like the harmonic series, which diverges. Hence $V_0^1(f) = \\infty$: a continuous function need not be of bounded variation.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-011",
+      "stem": "By contrast, $g(x) = x^2 \\sin(1/x)$ with $g(0) = 0$ has a bounded derivative away from $0$ and is differentiable everywhere on $[0,1]$. Why is $g$ of bounded variation on $[0,1]$?",
+      "options": [
+        "Because $g$ is continuous, and continuity implies bounded variation.",
+        "Because $g$ is monotone.",
+        "Because $g'$ is bounded on $[0,1]$, and a function with bounded derivative has finite variation $\\int_0^1 |g'|$.",
+        "Because $g$ is a polynomial."
+      ],
+      "answer": 2,
+      "explanation": "Here $g'(x) = 2x\\sin(1/x) - \\cos(1/x)$ is bounded on $[0,1]$, with $g'(0) = 0$. A function with bounded derivative is Lipschitz, hence of bounded variation with $V_0^1(g) = \\int_0^1 |g'(x)|\\,dx < \\infty$; the extra factor of $x$ tames the oscillation that ruins $x\\sin(1/x)$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-012",
+      "stem": "Which of the following functions on $[0,1]$ is NOT of bounded variation?",
+      "options": [
+        "$f(x) = x^2$.",
+        "$f(x) = |x - \\tfrac{1}{2}|$.",
+        "$f(x) = x \\sin(1/x)$ with $f(0) = 0$.",
+        "Any increasing step function with finitely many jumps."
+      ],
+      "answer": 2,
+      "explanation": "The functions $x^2$, $|x - 1/2|$, and a finite step function are each piecewise monotone with finite total variation. Only $x\\sin(1/x)$ accumulates infinitely many oscillations of harmonic size near $0$, giving infinite variation.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-013",
+      "stem": "A function of bounded variation on $[a,b]$ is necessarily which of the following?",
+      "options": [
+        "Continuous on $[a,b]$.",
+        "Differentiable on $[a,b]$.",
+        "Monotone on $[a,b]$.",
+        "Bounded on $[a,b]$."
+      ],
+      "answer": 3,
+      "explanation": "If $V_a^b(f) < \\infty$ then for any $x$, $|f(x) - f(a)| \\le V_a^b(f)$, so $f$ is bounded. However a BV function need not be continuous (it may have jumps), need not be differentiable, and need not be monotone.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-014",
+      "stem": "Total variation is additive over adjacent intervals. Which identity expresses this for $a < c < b$?",
+      "options": [
+        "$V_a^b(f) = V_a^c(f) \\cdot V_c^b(f)$.",
+        "$V_a^b(f) = V_a^c(f) + V_c^b(f)$.",
+        "$V_a^b(f) = \\max\\{V_a^c(f), V_c^b(f)\\}$.",
+        "$V_a^b(f) = V_a^c(f) - V_c^b(f)$."
+      ],
+      "answer": 1,
+      "explanation": "Inserting the point $c$ into any partition does not decrease the variation sum, and the supremum splits as $V_a^b(f) = V_a^c(f) + V_c^b(f)$. This additivity is what makes the variation function $x \\mapsto V_a^x(f)$ increasing.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-015",
+      "stem": "If $f$ is Lipschitz on $[a,b]$ with constant $L$, which bound on its total variation holds?",
+      "options": [
+        "$V_a^b(f) \\le L(b - a)$.",
+        "$V_a^b(f) = L$.",
+        "$V_a^b(f) \\le L$.",
+        "$V_a^b(f)$ may be infinite."
+      ],
+      "answer": 0,
+      "explanation": "For any partition, $\\sum_i |f(x_i) - f(x_{i-1})| \\le L \\sum_i (x_i - x_{i-1}) = L(b-a)$. Taking the supremum gives $V_a^b(f) \\le L(b-a)$, so every Lipschitz function is of bounded variation.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-016",
+      "stem": "If $f$ has a continuous derivative on $[a,b]$, the total variation is given by which formula?",
+      "options": [
+        "$V_a^b(f) = f(b) - f(a)$.",
+        "$V_a^b(f) = \\int_a^b f'(x)\\,dx$.",
+        "$V_a^b(f) = \\int_a^b |f'(x)|\\,dx$.",
+        "$V_a^b(f) = \\sup_x |f'(x)|$."
+      ],
+      "answer": 2,
+      "explanation": "When $f \\in C^1[a,b]$, the variation equals the integral of the absolute speed: $V_a^b(f) = \\int_a^b |f'(x)|\\,dx$. The unsigned integral $\\int_a^b f'(x)\\,dx = f(b) - f(a)$ would only count net change, missing oscillation where $f$ rises and falls.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-017",
+      "stem": "Using $V_a^b(f) = \\int_a^b |f'(x)|\\,dx$, compute the total variation of $f(x) = \\cos x$ on $[0, \\pi]$.",
+      "options": [
+        "$0$.",
+        "$1$.",
+        "$2$.",
+        "$\\pi$."
+      ],
+      "answer": 2,
+      "explanation": "On $[0,\\pi]$ the cosine decreases monotonically from $1$ to $-1$, so $V_0^\\pi(\\cos) = |{-1} - 1| = 2$. Equivalently $\\int_0^\\pi |-\\sin x|\\,dx = \\int_0^\\pi \\sin x\\,dx = 2$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-018",
+      "stem": "The set of functions of bounded variation on $[a,b]$ forms which kind of algebraic structure under pointwise addition and scalar multiplication?",
+      "options": [
+        "It is not closed under addition.",
+        "A vector space (sums and scalar multiples of BV functions are BV).",
+        "Only a group, not closed under scalar multiplication.",
+        "A field."
+      ],
+      "answer": 1,
+      "explanation": "If $f, g$ are BV then $V_a^b(f + g) \\le V_a^b(f) + V_a^b(g)$ and $V_a^b(cf) = |c|\\,V_a^b(f)$, so sums and scalar multiples remain of bounded variation. Hence $BV[a,b]$ is a vector space (in fact products of BV functions are also BV).",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-019",
+      "stem": "Compute the total variation of the step function $f$ on $[0,3]$ defined by $f(x) = 0$ on $[0,1)$, $f(x) = 2$ on $[1,2)$, and $f(x) = 1$ on $[2,3]$.",
+      "options": [
+        "$1$.",
+        "$2$.",
+        "$3$.",
+        "$0$."
+      ],
+      "answer": 2,
+      "explanation": "There are jumps of size $|2 - 0| = 2$ at $x = 1$ and $|1 - 2| = 1$ at $x = 2$, and $f$ is constant elsewhere. Summing the absolute jumps gives $V_0^3(f) = 2 + 1 = 3$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-020",
+      "stem": "Which statement about the relationship between continuity and bounded variation is correct?",
+      "options": [
+        "Bounded variation implies continuity.",
+        "Continuity implies bounded variation.",
+        "Neither continuity nor bounded variation implies the other.",
+        "A function of bounded variation has no discontinuities at all."
+      ],
+      "answer": 2,
+      "explanation": "A jump (step) function is BV but discontinuous, so BV does not imply continuity; and $x\\sin(1/x)$ is continuous but not BV, so continuity does not imply BV. The two notions are logically independent. A BV function may still have at most countably many jump discontinuities.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-021",
+      "stem": "A monotone function on $[a,b]$ can have at most how many discontinuities, and of what type?",
+      "options": [
+        "Uncountably many, of any type.",
+        "At most countably many, all of jump type.",
+        "None at all.",
+        "Finitely many, all removable."
+      ],
+      "answer": 1,
+      "explanation": "A monotone function has one-sided limits everywhere, so its only discontinuities are jumps, and the jump sizes sum to at most $f(b) - f(a)$, forcing at most countably many of them. Since BV functions are differences of monotone functions, they share this property.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-022",
+      "stem": "If $f$ is of bounded variation and continuous on $[a,b]$, what can be said about its variation function $V(x) = V_a^x(f)$?",
+      "options": [
+        "$V$ is also continuous on $[a,b]$.",
+        "$V$ is constant.",
+        "$V$ is necessarily discontinuous wherever $f$ is.",
+        "$V$ need not be increasing."
+      ],
+      "answer": 0,
+      "explanation": "A standard theorem says the variation function $V_a^x(f)$ is continuous at a point precisely when $f$ is. Hence if $f$ is continuous on all of $[a,b]$, then $V$ is continuous (and increasing) there, which underlies the continuous Jordan decomposition.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-023",
+      "stem": "Why does dropping the absolute values in the variation sum, giving $\\sum_i (f(x_i) - f(x_{i-1}))$, fail to measure oscillation?",
+      "options": [
+        "Because the sum is always negative.",
+        "Because the sum telescopes to $f(b) - f(a)$ for every partition, ignoring intermediate ups and downs.",
+        "Because the sum depends on the mesh of the partition.",
+        "Because the sum is always zero."
+      ],
+      "answer": 1,
+      "explanation": "Without absolute values the increments telescope: $\\sum_i (f(x_i) - f(x_{i-1})) = f(b) - f(a)$ regardless of $P$. This records only the net change and cancels rises against falls, which is exactly why the definition of total variation keeps the absolute values.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-024",
+      "stem": "Which inequality always relates the net change of a BV function to its total variation on $[a,b]$?",
+      "options": [
+        "$|f(b) - f(a)| \\ge V_a^b(f)$.",
+        "$|f(b) - f(a)| \\le V_a^b(f)$.",
+        "$|f(b) - f(a)| = V_a^b(f)$ for every $f$.",
+        "There is no general relationship."
+      ],
+      "answer": 1,
+      "explanation": "The two-point partition $\\{a, b\\}$ already gives the sum $|f(b) - f(a)|$, and the supremum over all partitions can only be larger, so $|f(b) - f(a)| \\le V_a^b(f)$. Equality holds exactly when $f$ is monotone.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-025",
+      "format": "cloze",
+      "stem": "Total variation of a piecewise monotone function. Let $f(x) = |x|$ on the interval $[-2, 3]$.",
+      "solution": "On $[-2, 0]$ the function decreases from $2$ to $0$, contributing variation {{1}}. On $[0, 3]$ it increases from $0$ to $3$, contributing variation {{2}}. Adding the two monotone pieces, the total variation $V_{-2}^{3}(f)$ equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The function $|x|$ is monotone on each of $[-2,0]$ and $[0,3]$, where the absolute changes are $|0 - 2| = 2$ and $|3 - 0| = 3$. By additivity of total variation, $V_{-2}^{3}(|x|) = 2 + 3 = 5$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-026",
+      "format": "cloze",
+      "stem": "Total variation from the derivative. Let $f(x) = x^3 - 3x$ on $[-2, 2]$, so $f'(x) = 3x^2 - 3 = 3(x-1)(x+1)$.",
+      "solution": "The critical points where $f'$ vanishes are $x = -1$ and $x = {{1}}$. The function values are $f(-2) = -2$, $f(-1) = 2$, $f(1) = -2$, and $f(2) = 2$, so the absolute changes across the three monotone pieces are $4$, $4$, and $4$. The total variation $V_{-2}^{2}(f)$ therefore equals {{2}}, while the net change $|f(2) - f(-2)|$ is only {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 12,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The cubic is monotone on $[-2,-1]$, $[-1,1]$, $[1,2]$ with values $-2, 2, -2, 2$, giving absolute changes $4 + 4 + 4 = 12$ for the total variation. The signed net change is just $|f(2) - f(-2)| = |2 - (-2)| = 4$, showing how oscillation inflates the variation beyond the net change.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-027",
+      "format": "cloze",
+      "stem": "Classifying functions on $[0,1]$ by bounded variation.",
+      "solution": "A monotone function on $[0,1]$ is always of bounded variation: answer {{1}}. The continuous function $x \\sin(1/x)$ with value $0$ at the origin is of bounded variation on $[0,1]$: answer {{2}}. A Lipschitz function on $[0,1]$ is of bounded variation: answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        }
+      ],
+      "explanation": "Monotone functions (variation $f(b)-f(a)$) and Lipschitz functions (variation at most $L(b-a)$) are always BV, so both answer yes. The function $x\\sin(1/x)$ is continuous but accumulates harmonic-sized oscillations near $0$, giving infinite variation, so it is not BV: answer no.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-functions-of-bounded-variation-028",
+      "format": "cloze",
+      "stem": "Jordan decomposition vocabulary and bounds.",
+      "solution": "Jordan's theorem writes any function of bounded variation as the difference of two functions that are each {{1}}. One standard choice uses the variation function $V_a^x(f)$, which is increasing because total variation is {{2}} over adjacent subintervals. For any such $f$, the net change satisfies $|f(b) - f(a)|$ {{3}} the total variation $V_a^b(f)$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "increasing",
+            "continuous",
+            "constant"
+          ],
+          "answer": "increasing"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "additive",
+            "multiplicative",
+            "subtractive"
+          ],
+          "answer": "additive"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is at most",
+            "is at least",
+            "always equals"
+          ],
+          "answer": "is at most"
+        }
+      ],
+      "explanation": "Jordan decomposition expresses a BV function as a difference of two increasing functions, with $V_a^x(f)$ increasing thanks to the additivity $V_a^c = V_a^b + V_b^c$. Since the two-point partition already gives $|f(b)-f(a)|$, the supremum obeys $|f(b)-f(a)| \\le V_a^b(f)$, that is the net change is at most the total variation.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    }
+  ]
+}

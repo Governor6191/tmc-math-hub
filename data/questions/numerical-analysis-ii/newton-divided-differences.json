@@ -1,0 +1,524 @@
+{
+  "courseId": "numerical-analysis-ii",
+  "topicId": "newton-divided-differences",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-001",
+      "stem": "For two points $(x_0, f_0)$ and $(x_1, f_1)$, the first divided difference $f[x_0, x_1]$ is which expression?",
+      "options": [
+        "$\\dfrac{f_1 - f_0}{x_1 - x_0}$",
+        "$f_1 - f_0$",
+        "$\\dfrac{f_0 - f_1}{x_1 - x_0}$",
+        "$\\dfrac{f_1 + f_0}{x_1 - x_0}$"
+      ],
+      "answer": 0,
+      "explanation": "The first divided difference is the slope between the two points, $f[x_0, x_1] = \\dfrac{f_1 - f_0}{x_1 - x_0}$. The plain difference $f_1 - f_0$ omits the denominator, the third option reverses the numerator sign, and the fourth adds instead of subtracts. The trap is forgetting the denominator: a divided difference is a difference quotient, not just a difference.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-002",
+      "stem": "The second divided difference is built from first divided differences by which rule?",
+      "options": [
+        "$f[x_0, x_1, x_2] = f[x_1, x_2] - f[x_0, x_1]$",
+        "$f[x_0, x_1, x_2] = \\dfrac{f[x_1, x_2] - f[x_0, x_1]}{x_2 - x_0}$",
+        "$f[x_0, x_1, x_2] = \\dfrac{f[x_1, x_2] - f[x_0, x_1]}{x_2 - x_1}$",
+        "$f[x_0, x_1, x_2] = \\dfrac{f[x_0, x_1] + f[x_1, x_2]}{x_2 - x_0}$"
+      ],
+      "answer": 1,
+      "explanation": "A higher divided difference divides the difference of two adjacent lower ones by the span between the outermost arguments, so $f[x_0, x_1, x_2] = \\dfrac{f[x_1, x_2] - f[x_0, x_1]}{x_2 - x_0}$. Omitting the denominator, using the adjacent gap $x_2 - x_1$, or adding instead of subtracting all give the wrong value. The trap is dividing by an adjacent gap rather than by the full span $x_2 - x_0$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-003",
+      "stem": "For the points $(1, 1)$, $(2, 8)$, $(4, 64)$, the first divided difference $f[2, 4]$ is which value?",
+      "options": [
+        "$56$",
+        "$28$",
+        "$14$",
+        "$7$"
+      ],
+      "answer": 1,
+      "explanation": "The first divided difference is $f[2, 4] = \\dfrac{64 - 8}{4 - 2} = \\dfrac{56}{2} = 28$. The value $56$ is the unreduced numerator before dividing by the span $4 - 2 = 2$, $14$ halves it again, and $7$ is the other first divided difference $f[1, 2]$. The trap is forgetting to divide by the gap $x_2 - x_1 = 2$, which here is not $1$.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-004",
+      "stem": "For the points $(1, 1)$, $(2, 8)$, $(4, 64)$, the second divided difference $f[1, 2, 4]$ is which value?",
+      "options": [
+        "$21$",
+        "$14$",
+        "$7$",
+        "$28$"
+      ],
+      "answer": 2,
+      "explanation": "With $f[1, 2] = 7$ and $f[2, 4] = 28$, the second divided difference is $f[1, 2, 4] = \\dfrac{28 - 7}{4 - 1} = \\dfrac{21}{3} = 7$. The value $21$ is the numerator before dividing by the span $4 - 1 = 3$, $14$ halves it wrongly, and $28$ is the first divided difference $f[2, 4]$. The trap is dividing by an adjacent gap instead of by the full span between the outermost nodes.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-005",
+      "stem": "For the points $(0, 2)$, $(1, 3)$, $(2, 12)$, the second divided difference $f[0, 1, 2]$ is which value?",
+      "options": [
+        "$9$",
+        "$8$",
+        "$1$",
+        "$4$"
+      ],
+      "answer": 3,
+      "explanation": "First divided differences: $f[0, 1] = \\dfrac{3 - 2}{1 - 0} = 1$ and $f[1, 2] = \\dfrac{12 - 3}{2 - 1} = 9$. Then $f[0, 1, 2] = \\dfrac{9 - 1}{2 - 0} = \\dfrac{8}{2} = 4$. The values $1$ and $9$ are first divided differences, and $8$ is the numerator before dividing by the span $2 - 0$. The trap is dividing by an adjacent gap rather than by the full span $x_2 - x_0 = 2$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-006",
+      "stem": "Newton's divided difference form of the interpolating polynomial through $(x_0, x_1, x_2)$ is which expression?",
+      "options": [
+        "$f_0 + f[x_0, x_1](x - x_0) + f[x_0, x_1, x_2](x - x_0)(x - x_1)$",
+        "$f_0 + f[x_0, x_1](x - x_1) + f[x_0, x_1, x_2](x - x_1)(x - x_2)$",
+        "$f[x_0, x_1] + f[x_0, x_1, x_2](x - x_0)$",
+        "$f_0 + f[x_0, x_1, x_2](x - x_0)(x - x_1)(x - x_2)$"
+      ],
+      "answer": 0,
+      "explanation": "Newton's form builds up term by term, each new coefficient a higher divided difference multiplying the product of the preceding node factors: $P(x) = f_0 + f[x_0, x_1](x - x_0) + f[x_0, x_1, x_2](x - x_0)(x - x_1)$. The second option uses the wrong node factors, the third drops the constant $f_0$, and the fourth skips the linear term. The trap is mismatching each divided difference with its product of leading factors $(x - x_0)(x - x_1)\\cdots$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-007",
+      "stem": "For $(1, 1)$, $(2, 8)$, $(4, 64)$ the Newton form is $P(x) = 1 + 7(x - 1) + 7(x - 1)(x - 2)$. Evaluating at $x = 3$ gives which value?",
+      "options": [
+        "$22$",
+        "$36$",
+        "$29$",
+        "$64$"
+      ],
+      "answer": 2,
+      "explanation": "Substituting $x = 3$: $P(3) = 1 + 7(3 - 1) + 7(3 - 1)(3 - 2) = 1 + 7(2) + 7(2)(1) = 1 + 14 + 14 = 29$. The point $x = 3$ lies between the nodes, so the interpolated value $29$ sits between $f(2) = 8$ and $f(4) = 64$. The value $64$ is $f(4)$, not $P(3)$. The trap is misreading which node factor each term multiplies; here both bracketed factors are evaluated at $x = 3$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-008",
+      "stem": "For equally spaced data with spacing $h$, the forward difference $\\Delta f_0$ is defined as which expression?",
+      "options": [
+        "$f_0 - f_1$",
+        "$\\dfrac{f_1 - f_0}{h}$",
+        "$f_1 - f_0$",
+        "$f_1 + f_0$"
+      ],
+      "answer": 2,
+      "explanation": "The forward difference is the plain difference of consecutive ordinates, $\\Delta f_0 = f_1 - f_0$, with no division by $h$ (that division is what turns it into a divided difference). The first option reverses the sign, the second is the divided difference, and the fourth adds. The trap is confusing the forward difference $\\Delta f_0 = f_1 - f_0$ with the divided difference $\\dfrac{f_1 - f_0}{h}$.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-009",
+      "stem": "For the values $f = 1, 2, 4, 8$ at equally spaced nodes, the second forward difference $\\Delta^2 f_0$ is which value?",
+      "options": [
+        "$2$",
+        "$1$",
+        "$3$",
+        "$4$"
+      ],
+      "answer": 1,
+      "explanation": "The first forward differences are $\\Delta f_0 = 2 - 1 = 1$, $\\Delta f_1 = 4 - 2 = 2$, $\\Delta f_2 = 8 - 4 = 4$. The second forward difference is $\\Delta^2 f_0 = \\Delta f_1 - \\Delta f_0 = 2 - 1 = 1$. The value $2$ is $\\Delta f_1$, and $4$ is $\\Delta f_2$. The trap is reading off a first difference instead of differencing the first differences once more.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-010",
+      "stem": "In Newton's forward (Newton-Gregory) formula with $p = \\dfrac{x - x_0}{h}$, the coefficient of $\\Delta^2 f_0$ is which expression?",
+      "options": [
+        "$\\dfrac{p(p - 1)}{2}$",
+        "$\\dfrac{p(p + 1)}{2}$",
+        "$p$",
+        "$p^2$"
+      ],
+      "answer": 0,
+      "explanation": "Newton's forward formula is $f(x) = f_0 + p\\,\\Delta f_0 + \\dfrac{p(p - 1)}{2!}\\Delta^2 f_0 + \\cdots$, so the second-order term carries $\\dfrac{p(p - 1)}{2}$, the binomial coefficient $\\binom{p}{2}$. The factor $p$ belongs to the first-order term, $\\dfrac{p(p + 1)}{2}$ is the backward coefficient, and $p^2$ is not a binomial coefficient. The trap is mixing forward and backward: forward uses $p(p - 1)$, backward uses $p(p + 1)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-011",
+      "stem": "Using the Newton-Gregory forward formula on $f(0) = 1$, $f(1) = 2$, $f(2) = 4$, $f(3) = 8$ with $h = 1$, estimate $f(0.5)$.",
+      "options": [
+        "$1.4142$",
+        "$1.375$",
+        "$1.4375$",
+        "$1.500$"
+      ],
+      "answer": 2,
+      "explanation": "From $1, 2, 4, 8$ the forward differences are $\\Delta f_0 = 1$, $\\Delta^2 f_0 = 1$, $\\Delta^3 f_0 = 1$. With $p = 0.5$, $f(0.5) = 1 + 0.5(1) + \\dfrac{0.5(-0.5)}{2}(1) + \\dfrac{0.5(-0.5)(-1.5)}{6}(1) = 1 + 0.5 - 0.125 + 0.0625 = 1.4375$. The value $1.5$ stops after the linear term, and $1.375$ drops the cubic term. The trap is truncating the series early; all available differences belong in the cubic estimate.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-012",
+      "stem": "Newton's forward difference formula is most accurate for interpolating at a point located where in the table?",
+      "options": [
+        "Near the beginning of the table",
+        "Near the end of the table",
+        "Exactly at the midpoint",
+        "Far outside the table on the right"
+      ],
+      "answer": 0,
+      "explanation": "Newton's forward formula expands about the first node $x_0$ using differences that march forward through the table, so it is most accurate for $x$ near the start of the tabulated range. Points near the end are better served by the backward formula, the midpoint favours a central formula, and extrapolation far to the right is unreliable. The trap is choosing forward differences for the end of the table, where the required forward differences run off the data.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-013",
+      "stem": "Newton's backward difference formula uses $p = \\dfrac{x - x_n}{h}$. The coefficient of $\\nabla^2 f_n$ in that formula is which expression?",
+      "options": [
+        "$\\dfrac{p(p + 1)(p + 2)}{6}$",
+        "$\\dfrac{p(p - 1)}{2}$",
+        "$\\dfrac{p(p + 1)}{2}$",
+        "$p$"
+      ],
+      "answer": 2,
+      "explanation": "Newton's backward formula is $f(x) = f_n + p\\,\\nabla f_n + \\dfrac{p(p + 1)}{2!}\\nabla^2 f_n + \\cdots$, so the second-order coefficient is $\\dfrac{p(p + 1)}{2}$. The option $\\dfrac{p(p - 1)}{2}$ is the forward coefficient, $p$ is the first-order term, and $\\dfrac{p(p + 1)(p + 2)}{6}$ is the third-order backward coefficient. The trap is reusing the forward sign pattern; backward differences add $1$ inside the product.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-014",
+      "stem": "Divided differences are symmetric in their arguments, which means which of the following holds?",
+      "options": [
+        "$f[x_0, x_1] = f[x_1, x_0]$",
+        "$f[x_0, x_1] = -f[x_1, x_0]$",
+        "$f[x_0, x_1] = f[x_0]\\,f[x_1]$",
+        "$f[x_0, x_1] = \\dfrac{1}{f[x_1, x_0]}$"
+      ],
+      "answer": 0,
+      "explanation": "Although $\\dfrac{f_1 - f_0}{x_1 - x_0}$ looks order-dependent, reversing both numerator and denominator signs leaves the quotient unchanged, so $f[x_0, x_1] = f[x_1, x_0]$, and the same symmetry holds at higher orders. The negative option misreads the cancellation of signs, the reciprocal has no basis, and the product confuses a divided difference with a product of values. The trap is assuming the apparent asymmetry of the formula survives; the two sign flips cancel.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-015",
+      "stem": "For equally spaced data with spacing $h$, the $n$th divided difference $f[x_0, \\ldots, x_n]$ relates to the forward difference by which formula?",
+      "options": [
+        "$\\dfrac{\\Delta^n f_0}{h^n}$",
+        "$\\Delta^n f_0$",
+        "$\\dfrac{\\Delta^n f_0}{n!\\,h^n}$",
+        "$n!\\,\\Delta^n f_0$"
+      ],
+      "answer": 2,
+      "explanation": "For a uniform grid the $n$th divided difference equals $\\dfrac{\\Delta^n f_0}{n!\\,h^n}$, since each of the $n$ denominators contributes a factor of $h$ while the combinatorial overlap contributes $n!$. Dropping the $n!$ or the $h^n$ keeps only part of the scaling, and multiplying by $n!$ inverts the relationship. The trap is omitting either the factorial or the power of $h$ when converting between divided and forward differences.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-016",
+      "stem": "An advantage of Newton's divided difference form over the Lagrange form is which of the following?",
+      "options": [
+        "It only works for equally spaced data",
+        "It does not use the data values $f_i$",
+        "It always gives a different polynomial",
+        "A new data point adds one term without recomputing earlier ones"
+      ],
+      "answer": 3,
+      "explanation": "Newton's divided difference form is built incrementally, so adding one more node appends a single new term while every previously computed coefficient stays valid. The interpolant is unique, so it is not a different polynomial from Lagrange's, both forms use the data values, and the divided difference form works for unequally spaced data. The trap is thinking the two forms give different curves; they are two representations of the same unique interpolant.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-017",
+      "stem": "For the values $f = 3, 7, 13, 21$ at equally spaced nodes, the third forward difference $\\Delta^3 f_0$ is which value?",
+      "options": [
+        "$2$",
+        "$1$",
+        "$0$",
+        "$8$"
+      ],
+      "answer": 2,
+      "explanation": "First differences: $4, 6, 8$. Second differences: $\\Delta^2 = 2, 2$. Third difference: $\\Delta^3 f_0 = 2 - 2 = 0$. The data come from the quadratic $x^2 + x + 1$, whose third differences vanish, consistent with a constant second difference. The value $8$ is a first difference and $2$ is a second difference. The trap is stopping at the constant second difference; differencing a constant once more gives $0$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-018",
+      "stem": "If the data come from a polynomial of degree $k$, then the divided differences of order higher than $k$ are which of the following?",
+      "options": [
+        "All equal to zero",
+        "All equal to one",
+        "Equal to the leading coefficient",
+        "Undefined"
+      ],
+      "answer": 0,
+      "explanation": "For a degree-$k$ polynomial, the $k$th divided difference equals the leading coefficient (a constant), so every divided difference of order $k + 1$ or higher, being a difference of constants, is zero. They are not all one, the constant value belongs to order $k$ exactly (not higher), and they are perfectly well defined. The trap is placing the leading coefficient at the higher orders; it sits at order $k$, and everything above it vanishes.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-019",
+      "stem": "Newton's divided difference interpolant and the Lagrange interpolant through the same nodes are related how?",
+      "options": [
+        "They are identical polynomials",
+        "Newton's has one higher degree",
+        "They agree only at the nodes but differ between them",
+        "They are reflections of each other"
+      ],
+      "answer": 0,
+      "explanation": "Because the interpolating polynomial of degree at most $n$ through $n + 1$ distinct nodes is unique, Newton's divided difference form and the Lagrange form are the very same polynomial, merely written differently. They do not differ in degree, do not diverge between nodes, and are not reflections. The trap is assuming two construction recipes yield two curves; the uniqueness theorem forces them to coincide everywhere.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-020",
+      "stem": "For equally spaced data $f = 1, 2, 4, 8$ at $x = 0, 1, 2, 3$ ($h = 1$), the leading divided difference $f[x_0, x_1, x_2, x_3]$ is which value?",
+      "options": [
+        "$1$",
+        "$\\dfrac{1}{6}$",
+        "$\\dfrac{1}{2}$",
+        "$\\dfrac{1}{3}$"
+      ],
+      "answer": 1,
+      "explanation": "Using $f[x_0, \\ldots, x_3] = \\dfrac{\\Delta^3 f_0}{3!\\,h^3}$ with $\\Delta^3 f_0 = 1$ and $h = 1$, the value is $\\dfrac{1}{6}$. Directly, the divided difference table of $1, 2, 4, 8$ has top entries $1, 0.5, \\tfrac{1}{6}$. The value $1$ is $\\Delta^3 f_0$ itself, and $\\tfrac{1}{2}$ is the second-order coefficient. The trap is forgetting the $3! = 6$ factor that scales the third forward difference into a divided difference.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-021",
+      "stem": "For equally spaced data $(0, 1)$, $(2, 5)$, $(4, 17)$ (values of $x^2 + 1$, $h = 2$), the second divided difference $f[0, 2, 4]$ is which value?",
+      "options": [
+        "$4$",
+        "$2$",
+        "$1$",
+        "$6$"
+      ],
+      "answer": 2,
+      "explanation": "First divided differences: $f[0, 2] = \\dfrac{5 - 1}{2 - 0} = 2$ and $f[2, 4] = \\dfrac{17 - 5}{4 - 2} = 6$. Then $f[0, 2, 4] = \\dfrac{6 - 2}{4 - 0} = \\dfrac{4}{4} = 1$. This equals the leading coefficient of $x^2 + 1$, as expected for quadratic data. The value $4$ is the numerator before dividing by the span $4$, and $2$ and $6$ are first divided differences. The trap is dividing by an adjacent gap of $2$ rather than the full span $4$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-022",
+      "stem": "In the Newton-Gregory forward formula, the variable $p$ is defined as which expression?",
+      "options": [
+        "$\\dfrac{x - x_0}{h}$",
+        "$\\dfrac{x - x_n}{h}$",
+        "$x - x_0$",
+        "$\\dfrac{h}{x - x_0}$"
+      ],
+      "answer": 0,
+      "explanation": "The forward formula introduces the scaled coordinate $p = \\dfrac{x - x_0}{h}$, measuring how many step sizes the evaluation point lies past the first node. Using $x_n$ in the numerator gives the backward formula's variable, $x - x_0$ omits the scaling by $h$, and the reciprocal form is meaningless here. The trap is anchoring $p$ at the last node $x_n$; the forward formula measures from the first node $x_0$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-023",
+      "format": "cloze",
+      "stem": "Build the divided difference table for $(1, 1)$, $(2, 8)$, $(4, 64)$, then form the Newton interpolating polynomial.",
+      "solution": "The first divided differences are $f[1, 2] = 7$ and $f[2, 4] =$ {{1}}. The second divided difference $f[1, 2, 4]$ is then {{2}}. Writing the Newton form $P(x) = 1 + 7(x - 1) + 7(x - 1)(x - 2)$ and evaluating at $x = 3$ gives {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 28,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 29,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "First divided differences: $\\frac{8 - 1}{2 - 1} = 7$ and $\\frac{64 - 8}{4 - 2} = 28$. Second: $\\frac{28 - 7}{4 - 1} = 7$. Then $P(3) = 1 + 7(2) + 7(2)(1) = 1 + 14 + 14 = 29$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-024",
+      "format": "cloze",
+      "stem": "Build the divided difference table for $(0, 2)$, $(1, 3)$, $(2, 12)$.",
+      "solution": "The first divided differences are $f[0, 1] =$ {{1}} and $f[1, 2] = 9$. The second divided difference $f[0, 1, 2]$, found by dividing the difference of these by the span $2 - 0$, is {{2}}. Because the highest nonzero divided difference here is of order $2$, the data are consistent with a polynomial of degree {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "First divided differences: $\\frac{3 - 2}{1 - 0} = 1$ and $\\frac{12 - 3}{2 - 1} = 9$. Second: $\\frac{9 - 1}{2 - 0} = 4$. With three points and a nonzero second divided difference, the interpolant is a degree-$2$ polynomial.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-025",
+      "format": "cloze",
+      "stem": "Form the forward difference table for $f = 1, 2, 4, 8$ at $x = 0, 1, 2, 3$ ($h = 1$) and apply the Newton-Gregory forward formula at $x = 0.5$.",
+      "solution": "The forward differences are $\\Delta f_0 = 1$, $\\Delta^2 f_0 = 1$, and $\\Delta^3 f_0 =$ {{1}}. With $p = 0.5$, summing the four terms $1 + 0.5 - 0.125 + 0.0625$ gives $f(0.5) =$ {{2}}. The relation between the leading divided difference and $\\Delta^3 f_0$ divides it by the factor {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.4375,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$3!\\,h^3$",
+            "$h^3$",
+            "$3!$",
+            "$3h$"
+          ],
+          "answer": "$3!\\,h^3$"
+        }
+      ],
+      "explanation": "The values $1, 2, 4, 8$ have all forward differences equal to $1$, so $\\Delta^3 f_0 = 1$. With $p = 0.5$ the terms are $1$, $0.5$, $\\frac{0.5(-0.5)}{2} = -0.125$, $\\frac{0.5(-0.5)(-1.5)}{6} = 0.0625$, summing to $1.4375$. On a uniform grid $f[x_0, \\ldots, x_3] = \\frac{\\Delta^3 f_0}{3!\\,h^3}$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-026",
+      "format": "cloze",
+      "stem": "Recall the structure and coefficients of the Newton forward and backward formulas.",
+      "solution": "With $p = \\dfrac{x - x_0}{h}$, the coefficient multiplying $\\Delta^2 f_0$ in the forward formula is {{1}}. In the backward formula the coefficient multiplying $\\nabla^2 f_n$ is {{2}}. The forward formula is best suited to interpolation near the {{3}} of the table.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{p(p - 1)}{2}$",
+            "$\\dfrac{p(p + 1)}{2}$",
+            "$p^2$",
+            "$\\dfrac{p}{2}$"
+          ],
+          "answer": "$\\dfrac{p(p - 1)}{2}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{p(p + 1)}{2}$",
+            "$\\dfrac{p(p - 1)}{2}$",
+            "$p$",
+            "$\\dfrac{p(p + 1)(p + 2)}{6}$"
+          ],
+          "answer": "$\\dfrac{p(p + 1)}{2}$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "beginning",
+            "end",
+            "exact midpoint",
+            "far right exterior"
+          ],
+          "answer": "beginning"
+        }
+      ],
+      "explanation": "The forward second-order coefficient is $\\frac{p(p - 1)}{2}$ and the backward one is $\\frac{p(p + 1)}{2}$. The forward formula expands about $x_0$, so it is most accurate near the start of the table.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-027",
+      "format": "cloze",
+      "stem": "Examine forward differences of the quadratic-sampled data $f = 3, 7, 13, 21$ at equally spaced nodes.",
+      "solution": "The first forward differences are $4, 6, 8$, so the second forward difference $\\Delta^2 f_0$ is {{1}}. The third forward difference $\\Delta^3 f_0$ is {{2}}. Since the highest nonzero difference is of order $2$, the data are sampled from a polynomial of degree {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The first differences $4, 6, 8$ have constant second difference $\\Delta^2 f_0 = 2$, so $\\Delta^3 f_0 = 0$. A vanishing third difference and constant second difference identify a quadratic, degree $2$ (here $x^2 + x + 1$).",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-newton-divided-differences-028",
+      "format": "cloze",
+      "stem": "Relate divided differences to forward differences and to the Lagrange form.",
+      "solution": "On a uniform grid the $n$th divided difference equals $\\Delta^n f_0$ divided by the product {{1}}. A first divided difference $f[x_0, x_1]$ equals $f[x_1, x_0]$, a property called {{2}}. Newton's divided difference interpolant and the Lagrange interpolant through the same nodes are {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$n!\\,h^n$",
+            "$n\\,h$",
+            "$h^n$",
+            "$n!$"
+          ],
+          "answer": "$n!\\,h^n$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "symmetry",
+            "linearity",
+            "orthogonality",
+            "convexity"
+          ],
+          "answer": "symmetry"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "the same polynomial",
+            "different by one degree",
+            "equal only at the nodes",
+            "mirror images"
+          ],
+          "answer": "the same polynomial"
+        }
+      ],
+      "explanation": "On a uniform grid $f[x_0, \\ldots, x_n] = \\frac{\\Delta^n f_0}{n!\\,h^n}$. Divided differences are symmetric in their arguments. By uniqueness of the interpolant, Newton's and Lagrange's forms are the same polynomial.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+{
+  "courseId": "real-function-2",
+  "topicId": "riemann-stieltjes-integration",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-001",
+      "stem": "For the Riemann-Stieltjes integral $\\int_a^b f\\,d\\alpha$, a Riemann-Stieltjes sum for a tagged partition with tags $t_i \\in [x_{i-1}, x_i]$ is which expression?",
+      "options": [
+        "$\\sum_i f(t_i)\\,(x_i - x_{i-1})$.",
+        "$\\sum_i f(t_i)\\,[\\alpha(x_i) - \\alpha(x_{i-1})]$.",
+        "$\\sum_i \\alpha(t_i)\\,[f(x_i) - f(x_{i-1})]$.",
+        "$\\sum_i [f(x_i) - f(x_{i-1})]\\,[\\alpha(x_i) - \\alpha(x_{i-1})]$."
+      ],
+      "answer": 1,
+      "explanation": "The Riemann-Stieltjes sum weights the integrand value $f(t_i)$ by the increment of the integrator $\\Delta\\alpha_i = \\alpha(x_i) - \\alpha(x_{i-1})$, giving $\\sum_i f(t_i)\\,[\\alpha(x_i) - \\alpha(x_{i-1})]$. Using $x_i - x_{i-1}$ instead would be the ordinary Riemann sum, recovered when $\\alpha(x) = x$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-002",
+      "stem": "When the integrator is $\\alpha(x) = x$, the Riemann-Stieltjes integral $\\int_a^b f\\,d\\alpha$ reduces to which integral?",
+      "options": [
+        "$\\int_a^b f(x)\\,dx$, the ordinary Riemann integral.",
+        "$f(b) - f(a)$.",
+        "$\\int_a^b \\alpha(x)\\,dx$.",
+        "$0$."
+      ],
+      "answer": 0,
+      "explanation": "With $\\alpha(x) = x$ each increment is $\\Delta\\alpha_i = x_i - x_{i-1}$, so the Stieltjes sum becomes the Riemann sum $\\sum_i f(t_i)(x_i - x_{i-1})$. Hence $\\int_a^b f\\,d\\alpha = \\int_a^b f(x)\\,dx$, recovering the classical Riemann integral.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-003",
+      "stem": "A standard existence theorem guarantees that $\\int_a^b f\\,d\\alpha$ exists under which hypotheses?",
+      "options": [
+        "$f$ is continuous on $[a,b]$ and $\\alpha$ is of bounded variation on $[a,b]$.",
+        "$f$ and $\\alpha$ are both discontinuous at the same point.",
+        "$f$ is integrable and $\\alpha$ is unbounded.",
+        "$f$ is of bounded variation and $\\alpha$ is arbitrary."
+      ],
+      "answer": 0,
+      "explanation": "If the integrand $f$ is continuous and the integrator $\\alpha$ is of bounded variation on $[a,b]$, then $\\int_a^b f\\,d\\alpha$ exists. The key danger is a common discontinuity of $f$ and $\\alpha$, which can destroy existence, so the continuity of $f$ paired with BV of $\\alpha$ is the clean sufficient condition.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-004",
+      "stem": "The Riemann-Stieltjes integration by parts formula states that if $\\int_a^b f\\,d\\alpha$ exists, then $\\int_a^b \\alpha\\,df$ also exists and equals which expression?",
+      "options": [
+        "$f(b)\\alpha(b) - f(a)\\alpha(a) + \\int_a^b f\\,d\\alpha$.",
+        "$\\int_a^b f\\,d\\alpha$.",
+        "$f(b)\\alpha(b) - f(a)\\alpha(a)$.",
+        "$f(b)\\alpha(b) - f(a)\\alpha(a) - \\int_a^b f\\,d\\alpha$."
+      ],
+      "answer": 3,
+      "explanation": "Integration by parts for Stieltjes integrals reads $\\int_a^b f\\,d\\alpha + \\int_a^b \\alpha\\,df = f(b)\\alpha(b) - f(a)\\alpha(a)$. Solving for the second integral gives $\\int_a^b \\alpha\\,df = f(b)\\alpha(b) - f(a)\\alpha(a) - \\int_a^b f\\,d\\alpha$, and the symmetry shows existence of one integral implies existence of the other.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-005",
+      "stem": "If $\\alpha$ is continuously differentiable ($\\alpha \\in C^1$) on $[a,b]$ and $f$ is continuous, the Riemann-Stieltjes integral reduces to which Riemann integral?",
+      "options": [
+        "$\\int_a^b f(x)\\,dx$.",
+        "$\\int_a^b f(x)\\,\\alpha'(x)\\,dx$.",
+        "$\\int_a^b f(x)\\,\\alpha(x)\\,dx$.",
+        "$\\int_a^b \\alpha'(x)\\,dx$."
+      ],
+      "answer": 1,
+      "explanation": "When $\\alpha$ is $C^1$, the increment $\\Delta\\alpha_i \\approx \\alpha'(t_i)(x_i - x_{i-1})$ by the mean value theorem, so the Stieltjes sums converge to $\\int_a^b f(x)\\,\\alpha'(x)\\,dx$. This is the reduction formula $\\int_a^b f\\,d\\alpha = \\int_a^b f\\,\\alpha'\\,dx$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-006",
+      "stem": "Using the reduction formula, evaluate $\\int_0^1 x\\,d(x^2)$.",
+      "options": [
+        "$\\tfrac{1}{2}$.",
+        "$1$.",
+        "$\\tfrac{1}{3}$.",
+        "$\\tfrac{2}{3}$."
+      ],
+      "answer": 3,
+      "explanation": "Here $\\alpha(x) = x^2$ is $C^1$ with $\\alpha'(x) = 2x$, so $\\int_0^1 x\\,d(x^2) = \\int_0^1 x \\cdot 2x\\,dx = \\int_0^1 2x^2\\,dx = \\tfrac{2}{3}$. The integrator's derivative supplies the extra factor $2x$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-007",
+      "stem": "If $\\alpha$ is a step function with a single jump of size $J$ at an interior point $c \\in (a,b)$, and $f$ is continuous at $c$, then $\\int_a^b f\\,d\\alpha$ equals which value?",
+      "options": [
+        "$0$.",
+        "$f(c)\\,J$.",
+        "$J$.",
+        "$f(b) - f(a)$."
+      ],
+      "answer": 1,
+      "explanation": "A jump integrator concentrates all its variation at $c$, so the only surviving term in the Stieltjes sum is $f(c)$ times the jump, giving $\\int_a^b f\\,d\\alpha = f(c)\\,J$. This is how Stieltjes integration encodes point masses, the bridge to discrete sums.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-008",
+      "stem": "The Riemann-Stieltjes integral is linear in the integrator. Which identity expresses this?",
+      "options": [
+        "$\\int_a^b f\\,d(\\alpha\\beta) = \\int_a^b f\\,d\\alpha \\cdot \\int_a^b f\\,d\\beta$.",
+        "$\\int_a^b f\\,d(\\alpha + \\beta) = \\int_a^b f\\,d\\alpha - \\int_a^b f\\,d\\beta$.",
+        "$\\int_a^b f\\,d(\\alpha + \\beta) = \\int_a^b f\\,d\\alpha + \\int_a^b f\\,d\\beta$.",
+        "$\\int_a^b f\\,d(c\\alpha) = \\int_a^b f\\,d\\alpha$ for any constant $c$."
+      ],
+      "answer": 2,
+      "explanation": "Stieltjes integration is linear in both arguments; in the integrator, $\\int_a^b f\\,d(\\alpha + \\beta) = \\int_a^b f\\,d\\alpha + \\int_a^b f\\,d\\beta$ and $\\int_a^b f\\,d(c\\alpha) = c\\int_a^b f\\,d\\alpha$. There is no product rule of the form claimed in the other options.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-009",
+      "stem": "Why does the existence theorem pair continuity of $f$ with bounded variation of $\\alpha$, rather than just continuity of both?",
+      "options": [
+        "Because continuity of $\\alpha$ alone does not bound the increments $\\sum_i |\\Delta\\alpha_i|$, which BV controls.",
+        "Because $f$ must be unbounded.",
+        "Because $\\alpha$ must be differentiable.",
+        "Because the Riemann integral requires it."
+      ],
+      "answer": 0,
+      "explanation": "The convergence of Stieltjes sums is controlled by $\\sum_i |\\Delta\\alpha_i|$, which is bounded by $V_a^b(\\alpha)$ precisely when $\\alpha$ is of bounded variation. Continuity of $\\alpha$ alone permits unbounded total variation, so BV of the integrator is the natural hypothesis paired with continuity of $f$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-010",
+      "stem": "Evaluate $\\int_0^2 1\\,d\\alpha$ where $\\alpha$ is any integrator with $\\alpha(0) = 3$ and $\\alpha(2) = 7$.",
+      "options": [
+        "$10$.",
+        "$2$.",
+        "$0$.",
+        "$4$."
+      ],
+      "answer": 3,
+      "explanation": "For the constant integrand $f \\equiv 1$, every Stieltjes sum telescopes: $\\sum_i 1 \\cdot [\\alpha(x_i) - \\alpha(x_{i-1})] = \\alpha(2) - \\alpha(0)$. Hence $\\int_0^2 1\\,d\\alpha = 7 - 3 = 4$, independent of the partition.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-011",
+      "stem": "Using $\\int_a^b f\\,d\\alpha = \\int_a^b f\\,\\alpha'\\,dx$, evaluate $\\int_0^{\\pi} \\cos x \\, d(\\sin x)$.",
+      "options": [
+        "$0$.",
+        "$\\tfrac{\\pi}{2}$.",
+        "$1$.",
+        "$2$."
+      ],
+      "answer": 1,
+      "explanation": "With $\\alpha(x) = \\sin x$, $\\alpha'(x) = \\cos x$, so $\\int_0^\\pi \\cos x\\,d(\\sin x) = \\int_0^\\pi \\cos x \\cdot \\cos x\\,dx = \\int_0^\\pi \\cos^2 x\\,dx$. Using $\\cos^2 x = \\tfrac{1 + \\cos 2x}{2}$, the integral is $\\tfrac{1}{2}\\cdot\\pi + 0 = \\tfrac{\\pi}{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-012",
+      "stem": "The Riemann-Stieltjes integral is additive over the interval of integration. Which identity holds for $a < c < b$ when the relevant integrals exist?",
+      "options": [
+        "$\\int_a^b f\\,d\\alpha = \\int_a^c f\\,d\\alpha + \\int_c^b f\\,d\\alpha$.",
+        "$\\int_a^b f\\,d\\alpha = \\int_a^c f\\,d\\alpha \\cdot \\int_c^b f\\,d\\alpha$.",
+        "$\\int_a^b f\\,d\\alpha = \\max\\left\\{\\int_a^c f\\,d\\alpha, \\int_c^b f\\,d\\alpha\\right\\}$.",
+        "$\\int_a^b f\\,d\\alpha = \\int_a^c f\\,d\\alpha - \\int_c^b f\\,d\\alpha$."
+      ],
+      "answer": 0,
+      "explanation": "Splitting the partition at $c$ shows the integral is additive over adjacent intervals: $\\int_a^b f\\,d\\alpha = \\int_a^c f\\,d\\alpha + \\int_c^b f\\,d\\alpha$. This mirrors the additivity of the ordinary Riemann integral.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-013",
+      "stem": "What goes wrong with $\\int_a^b f\\,d\\alpha$ when $f$ and $\\alpha$ share a common point of discontinuity?",
+      "options": [
+        "Nothing; the integral always exists.",
+        "The integral may fail to exist, because upper and lower Stieltjes sums need not converge to a common value.",
+        "The integral is always zero.",
+        "The integral becomes the Riemann integral."
+      ],
+      "answer": 1,
+      "explanation": "If $f$ and $\\alpha$ jump at the same point, the value $f(t_i)$ at the jump depends on which side the tag lands, and the Stieltjes sums can converge to different limits. This is the classic obstruction, which is why the existence theorem forbids a shared discontinuity (e.g. via continuity of $f$).",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-014",
+      "stem": "Using integration by parts, $\\int_a^b f\\,d\\alpha + \\int_a^b \\alpha\\,df$ equals which boundary expression?",
+      "options": [
+        "$f(b)\\alpha(b) - f(a)\\alpha(a)$.",
+        "$f(b) - f(a)$.",
+        "$\\alpha(b) - \\alpha(a)$.",
+        "$0$."
+      ],
+      "answer": 0,
+      "explanation": "The symmetric integration-by-parts identity is $\\int_a^b f\\,d\\alpha + \\int_a^b \\alpha\\,df = f(b)\\alpha(b) - f(a)\\alpha(a) = [f\\alpha]_a^b$. It exchanges the roles of integrand and integrator up to the boundary term.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-015",
+      "stem": "Evaluate $\\int_0^1 x^2\\,d(3x)$ using the reduction formula.",
+      "options": [
+        "$1$.",
+        "$\\tfrac{1}{3}$.",
+        "$3$.",
+        "$\\tfrac{1}{2}$."
+      ],
+      "answer": 0,
+      "explanation": "Here $\\alpha(x) = 3x$ has $\\alpha'(x) = 3$, so $\\int_0^1 x^2\\,d(3x) = \\int_0^1 x^2 \\cdot 3\\,dx = 3 \\cdot \\tfrac{1}{3} = 1$. A linear integrator simply scales the ordinary integral by its slope.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-016",
+      "stem": "Which estimate bounds the Riemann-Stieltjes integral when $\\alpha$ is increasing?",
+      "options": [
+        "$\\left|\\int_a^b f\\,d\\alpha\\right| \\le \\sup_{[a,b]} |f|$.",
+        "$\\left|\\int_a^b f\\,d\\alpha\\right| \\le \\alpha(b) - \\alpha(a)$.",
+        "$\\left|\\int_a^b f\\,d\\alpha\\right| \\le \\left(\\sup_{[a,b]} |f|\\right)\\,[\\alpha(b) - \\alpha(a)]$.",
+        "$\\left|\\int_a^b f\\,d\\alpha\\right| \\le b - a$."
+      ],
+      "answer": 2,
+      "explanation": "For increasing $\\alpha$, each $\\Delta\\alpha_i \\ge 0$ and they sum to $\\alpha(b) - \\alpha(a)$. Bounding $|f(t_i)|$ by its supremum gives $\\left|\\int_a^b f\\,d\\alpha\\right| \\le (\\sup |f|)\\,[\\alpha(b) - \\alpha(a)]$, the Stieltjes analogue of the standard integral estimate.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-017",
+      "stem": "If $\\alpha$ is increasing, the lower Riemann-Stieltjes sum $L(f, P, \\alpha)$ uses which value of $f$ on each subinterval?",
+      "options": [
+        "The supremum $M_i$ of $f$.",
+        "The right endpoint value.",
+        "The midpoint value.",
+        "The infimum $m_i = \\inf_{[x_{i-1}, x_i]} f$, weighted by $\\Delta\\alpha_i$."
+      ],
+      "answer": 3,
+      "explanation": "Exactly as for Darboux sums, the lower Stieltjes sum is $L(f,P,\\alpha) = \\sum_i m_i\\,\\Delta\\alpha_i$ with $m_i = \\inf f$ on the subinterval and $\\Delta\\alpha_i \\ge 0$ since $\\alpha$ increases. The integral exists when the lower and upper sums squeeze to a common value.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-018",
+      "stem": "Why can a general integrator $\\alpha$ of bounded variation be handled by the existence theory through its Jordan decomposition?",
+      "options": [
+        "Because $\\alpha = \\alpha_1 - \\alpha_2$ with $\\alpha_1, \\alpha_2$ increasing, and the integral is linear in $\\alpha$.",
+        "Because every BV function is constant.",
+        "Because $\\alpha$ must be continuous.",
+        "Because $\\alpha$ can be ignored."
+      ],
+      "answer": 0,
+      "explanation": "By Jordan decomposition a BV integrator splits as $\\alpha = \\alpha_1 - \\alpha_2$ with both parts increasing. Linearity in the integrator gives $\\int f\\,d\\alpha = \\int f\\,d\\alpha_1 - \\int f\\,d\\alpha_2$, so the theory for increasing integrators extends to all BV integrators.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-019",
+      "stem": "Evaluate $\\int_{-1}^{1} x\\,dH(x)$, where $H$ is the unit step (Heaviside) integrator with a jump of size $1$ at $x = 0$, and the integrand $f(x) = x$ is continuous at $0$.",
+      "options": [
+        "$1$.",
+        "$0$.",
+        "$-1$.",
+        "$2$."
+      ],
+      "answer": 1,
+      "explanation": "A unit jump at $0$ makes $\\int_{-1}^{1} f\\,dH = f(0) \\cdot 1$. Since $f(0) = 0$, the integral is $0$. The Stieltjes integral against a step samples the integrand at the jump location.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-020",
+      "stem": "Using $\\int_a^b f\\,d\\alpha = \\int_a^b f\\,\\alpha'\\,dx$, evaluate $\\int_1^2 \\frac{1}{x}\\,d(\\ln x)$.",
+      "options": [
+        "$\\ln 2$.",
+        "$\\tfrac{3}{8}$.",
+        "$\\tfrac{1}{2}$.",
+        "$1$."
+      ],
+      "answer": 2,
+      "explanation": "With $\\alpha(x) = \\ln x$, $\\alpha'(x) = 1/x$, so $\\int_1^2 \\tfrac{1}{x}\\,d(\\ln x) = \\int_1^2 \\tfrac{1}{x}\\cdot\\tfrac{1}{x}\\,dx = \\int_1^2 x^{-2}\\,dx$. Evaluating, $[-x^{-1}]_1^2 = -\\tfrac{1}{2} - (-1) = \\tfrac{1}{2}$, so the value is $\\tfrac{1}{2}$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-021",
+      "stem": "Which statement about the integrand-integrator roles in $\\int_a^b f\\,d\\alpha$ is correct?",
+      "options": [
+        "The integral is symmetric: $\\int_a^b f\\,d\\alpha = \\int_a^b \\alpha\\,df$ always.",
+        "Integration by parts relates $\\int_a^b f\\,d\\alpha$ and $\\int_a^b \\alpha\\,df$ via a boundary term, so they are generally different.",
+        "Only $f$ may be discontinuous.",
+        "$\\int_a^b \\alpha\\,df$ never exists."
+      ],
+      "answer": 1,
+      "explanation": "The two integrals are not equal in general; they are linked by $\\int_a^b f\\,d\\alpha + \\int_a^b \\alpha\\,df = [f\\alpha]_a^b$. Existence of one forces existence of the other, but their values differ unless the boundary term happens to make them coincide.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-022",
+      "stem": "Evaluate $\\int_0^1 (2x + 1)\\,d(x^2 + x)$ using the reduction formula.",
+      "options": [
+        "$\\tfrac{8}{3}$.",
+        "$2$.",
+        "$\\tfrac{13}{3}$.",
+        "$3$."
+      ],
+      "answer": 2,
+      "explanation": "Here $\\alpha(x) = x^2 + x$ has $\\alpha'(x) = 2x + 1$, so $\\int_0^1 (2x+1)\\,d(x^2+x) = \\int_0^1 (2x+1)^2\\,dx = \\int_0^1 (4x^2 + 4x + 1)\\,dx$. This evaluates to $\\tfrac{4}{3} + 2 + 1 = \\tfrac{13}{3}$, since $\\int_0^1 4x^2\\,dx = \\tfrac{4}{3}$, $\\int_0^1 4x\\,dx = 2$, and $\\int_0^1 1\\,dx = 1$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-023",
+      "stem": "For a continuous integrand $f$ and an increasing integrator $\\alpha$, a mean value theorem for Stieltjes integrals gives $\\int_a^b f\\,d\\alpha = f(\\xi)\\,[\\alpha(b) - \\alpha(a)]$ for some $\\xi \\in [a,b]$. This works because:",
+      "options": [
+        "$f$ is unbounded.",
+        "$f$ attains every value between its min and max (intermediate value), and $\\int f\\,d\\alpha$ lies between $m[\\alpha(b)-\\alpha(a)]$ and $M[\\alpha(b)-\\alpha(a)]$.",
+        "$\\alpha$ is constant.",
+        "$f$ is a step function."
+      ],
+      "answer": 1,
+      "explanation": "Since $m \\le f \\le M$ and $\\alpha$ increases, the integral satisfies $m[\\alpha(b)-\\alpha(a)] \\le \\int f\\,d\\alpha \\le M[\\alpha(b)-\\alpha(a)]$. By continuity $f$ takes the intermediate value, so some $\\xi$ gives $\\int_a^b f\\,d\\alpha = f(\\xi)[\\alpha(b)-\\alpha(a)]$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-024",
+      "stem": "Evaluate $\\int_0^3 2\\,d\\alpha$ where $\\alpha$ is increasing with $\\alpha(0) = 1$ and $\\alpha(3) = 5$.",
+      "options": [
+        "$4$.",
+        "$8$.",
+        "$10$.",
+        "$2$."
+      ],
+      "answer": 1,
+      "explanation": "For the constant integrand $f \\equiv 2$, $\\int_0^3 2\\,d\\alpha = 2\\,[\\alpha(3) - \\alpha(0)] = 2(5 - 1) = 8$. A constant pulls out and multiplies the total increment of the integrator.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-025",
+      "format": "cloze",
+      "stem": "Reduction to a Riemann integral. Let $\\alpha(x) = x^2$ on $[0,1]$, which is continuously differentiable, and integrate $f(x) = x$ against it.",
+      "solution": "Since $\\alpha$ is $C^1$, the Stieltjes integral reduces to $\\int_0^1 f(x)\\,\\alpha'(x)\\,dx$, where $\\alpha'(x) = $ {{1}} times $x$. Carrying out $\\int_0^1 x \\cdot 2x\\,dx = \\int_0^1 2x^2\\,dx$ gives the value {{2}} as a fraction with denominator $3$. The reduction is valid because the integrator is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "2/3",
+            "two thirds",
+            "0.6667",
+            "0.667"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "continuously differentiable",
+            "discontinuous",
+            "constant"
+          ],
+          "answer": "continuously differentiable"
+        }
+      ],
+      "explanation": "With $\\alpha(x) = x^2$, $\\alpha'(x) = 2x$, so the integral becomes $\\int_0^1 x\\cdot 2x\\,dx = \\int_0^1 2x^2\\,dx = \\tfrac{2}{3}$. The reduction $\\int f\\,d\\alpha = \\int f\\,\\alpha'\\,dx$ holds precisely because $\\alpha$ is continuously differentiable.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-026",
+      "format": "cloze",
+      "stem": "Integration by parts for Stieltjes integrals. Recall $\\int_a^b f\\,d\\alpha + \\int_a^b \\alpha\\,df = [f\\alpha]_a^b$.",
+      "solution": "The boundary term $[f\\alpha]_a^b$ is computed as $f(b)\\alpha(b)$ minus $f(a)\\alpha({{1}})$. The existence of $\\int_a^b f\\,d\\alpha$ implies the existence of the companion integral $\\int_a^b \\alpha\\,df$: answer {{2}}. In general the two integrals $\\int_a^b f\\,d\\alpha$ and $\\int_a^b \\alpha\\,df$ are {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "a"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "generally different",
+            "always equal",
+            "always zero"
+          ],
+          "answer": "generally different"
+        }
+      ],
+      "explanation": "The boundary term is $f(b)\\alpha(b) - f(a)\\alpha(a)$. The parts formula makes existence symmetric, so if $\\int f\\,d\\alpha$ exists then so does $\\int \\alpha\\,df$ (yes). Their values are generally different, related only through the boundary term.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-027",
+      "format": "cloze",
+      "stem": "A step integrator. Let $\\alpha$ jump by $2$ at $x = 1$ and by $3$ at $x = 2$ inside $[0,3]$, with $f(x) = x$ continuous at both jump points.",
+      "solution": "The contribution from the jump at $x = 1$ is $f(1)$ times $2$, namely {{1}}. The contribution from the jump at $x = 2$ is $f(2)$ times $3$, namely {{2}}. Summing the two point contributions, $\\int_0^3 f\\,d\\alpha$ equals {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "A step integrator concentrates its variation at the jumps, so $\\int_0^3 f\\,d\\alpha = f(1)\\cdot 2 + f(2)\\cdot 3 = 1\\cdot 2 + 2\\cdot 3 = 2 + 6 = 8$. This is how the Stieltjes integral encodes a weighted sum of sampled values.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    },
+    {
+      "id": "real-function-2-riemann-stieltjes-integration-028",
+      "format": "cloze",
+      "stem": "Existence hypotheses. State the standard sufficient condition for $\\int_a^b f\\,d\\alpha$ to exist.",
+      "solution": "It suffices that the integrand $f$ be {{1}} on $[a,b]$ and that the integrator $\\alpha$ be of {{2}} on $[a,b]$. The configuration that must be avoided is a {{3}} discontinuity shared by $f$ and $\\alpha$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "continuous",
+            "unbounded",
+            "discontinuous"
+          ],
+          "answer": "continuous"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "bounded variation",
+            "infinite variation",
+            "zero variation"
+          ],
+          "answer": "bounded variation"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "common",
+            "removable",
+            "left-sided"
+          ],
+          "answer": "common"
+        }
+      ],
+      "explanation": "The clean existence theorem requires $f$ continuous and $\\alpha$ of bounded variation. The obstruction to existence is a common point where both $f$ and $\\alpha$ are discontinuous, since then the tag choice changes the limit of the sums.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions II course (MATH 462)"
+    }
+  ]
+}

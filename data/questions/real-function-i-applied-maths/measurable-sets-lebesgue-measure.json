@@ -1,0 +1,513 @@
+{
+  "courseId": "real-function-i-applied-maths",
+  "topicId": "measurable-sets-lebesgue-measure",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-001",
+      "stem": "By the Caratheodory criterion, a set $E \\subseteq \\mathbb{R}$ is (Lebesgue) measurable if for every test set $A \\subseteq \\mathbb{R}$:",
+      "options": [
+        "$m^*(A) = m^*(A \\cap E) + m^*(A \\cap E^c)$.",
+        "$m^*(A) = 0$.",
+        "$E$ is an interval.",
+        "$m^*(E) < \\infty$."
+      ],
+      "answer": 0,
+      "explanation": "Caratheodory's definition says $E$ is measurable when it splits every set $A$ additively: $m^*(A) = m^*(A \\cap E) + m^*(A \\cap E^c)$. Finiteness of $m^*(E)$ and being an interval are neither required nor sufficient; the splitting condition for all test sets $A$ is the criterion.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-002",
+      "stem": "In the Caratheodory criterion, only one inequality needs to be checked, because the other always holds. Which inequality is automatic?",
+      "options": [
+        "$m^*(A) \\geq m^*(A \\cap E) + m^*(A \\cap E^c)$.",
+        "$m^*(A) \\leq m^*(A \\cap E) + m^*(A \\cap E^c)$.",
+        "$m^*(A) = 0$.",
+        "Neither inequality is automatic."
+      ],
+      "answer": 1,
+      "explanation": "Since $A = (A \\cap E) \\cup (A \\cap E^c)$, subadditivity of outer measure gives $m^*(A) \\leq m^*(A \\cap E) + m^*(A \\cap E^c)$ for free. Thus measurability reduces to proving the reverse inequality $m^*(A) \\geq m^*(A \\cap E) + m^*(A \\cap E^c)$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-003",
+      "stem": "The collection $\\mathcal{M}$ of all Lebesgue measurable subsets of $\\mathbb{R}$ is:",
+      "options": [
+        "merely a finite list of sets.",
+        "not closed under complements.",
+        "a $\\sigma$-algebra.",
+        "the same as the open sets."
+      ],
+      "answer": 2,
+      "explanation": "A central theorem is that the Lebesgue measurable sets form a $\\sigma$-algebra: they contain $\\mathbb{R}$ and are closed under complements and countable unions. This structural fact is what makes Lebesgue measure $m = m^*|_{\\mathcal{M}}$ behave like a genuine measure.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-004",
+      "stem": "How does the $\\sigma$-algebra $\\mathcal{M}$ of Lebesgue measurable sets relate to the Borel $\\sigma$-algebra $\\mathcal{B}$?",
+      "options": [
+        "$\\mathcal{M} = \\mathcal{B}$ exactly.",
+        "They are disjoint.",
+        "$\\mathcal{M} \\subseteq \\mathcal{B}$ strictly.",
+        "$\\mathcal{B} \\subseteq \\mathcal{M}$, that is every Borel set is Lebesgue measurable."
+      ],
+      "answer": 3,
+      "explanation": "Every Borel set is Lebesgue measurable, so $\\mathcal{B} \\subseteq \\mathcal{M}$. The containment is strict: there are Lebesgue measurable sets (for instance subsets of the Cantor set) that are not Borel, so the two $\\sigma$-algebras are not equal.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-005",
+      "stem": "Lebesgue measure $m$ is countably additive, meaning that for pairwise disjoint measurable sets $E_1, E_2, \\dots$:",
+      "options": [
+        "$m\\!\\left(\\bigcup_k E_k\\right) = \\sum_k m(E_k)$.",
+        "$m\\!\\left(\\bigcup_k E_k\\right) \\leq \\sum_k m(E_k)$ only.",
+        "$m\\!\\left(\\bigcup_k E_k\\right) = \\max_k m(E_k)$.",
+        "$m\\!\\left(\\bigcup_k E_k\\right) = 0$."
+      ],
+      "answer": 0,
+      "explanation": "On disjoint measurable sets Lebesgue measure is countably additive: the measure of the union equals the sum of the measures. This upgrade from the mere subadditivity of outer measure is exactly what measurability buys, and it is the defining property of a measure.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-006",
+      "stem": "Continuity of measure from below states that for an increasing sequence of measurable sets $E_1 \\subseteq E_2 \\subseteq \\cdots$ with union $E$:",
+      "options": [
+        "$m(E) = \\inf_k m(E_k)$.",
+        "$m(E) = \\lim_{k \\to \\infty} m(E_k)$.",
+        "$m(E) = m(E_1)$.",
+        "$m(E) = 0$."
+      ],
+      "answer": 1,
+      "explanation": "For an increasing (nested) sequence, measure is continuous from below: $m\\big(\\bigcup_k E_k\\big) = \\lim_k m(E_k)$, which equals $\\sup_k m(E_k)$ since the values increase. This follows by writing the union as a disjoint union of the successive differences and using countable additivity.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-007",
+      "stem": "Continuity of measure from above, for a decreasing sequence $E_1 \\supseteq E_2 \\supseteq \\cdots$ with intersection $E$, requires which extra hypothesis to conclude $m(E) = \\lim_k m(E_k)$?",
+      "options": [
+        "No extra hypothesis is ever needed.",
+        "Every $E_k$ must be open.",
+        "At least one $E_k$ has finite measure, for example $m(E_1) < \\infty$.",
+        "The sets must be disjoint."
+      ],
+      "answer": 2,
+      "explanation": "Continuity from above needs some set in the chain to have finite measure (commonly $m(E_1) < \\infty$); otherwise it can fail. The classic counterexample is $E_k = [k, \\infty)$, where each $m(E_k) = \\infty$ but $\\bigcap_k E_k = \\varnothing$ has measure $0$, so the limit and the measure of the intersection disagree.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-008",
+      "stem": "For the decreasing sets $E_k = [k, \\infty)$, why does continuity from above fail without a finiteness hypothesis?",
+      "options": [
+        "Because $\\bigcap_k E_k = [0, \\infty)$.",
+        "Because $m(E_k) = 0$ for all $k$.",
+        "Because the sets are not measurable.",
+        "Because $m(E_k) = \\infty$ for all $k$, yet $\\bigcap_k E_k = \\varnothing$ has measure $0$."
+      ],
+      "answer": 3,
+      "explanation": "Each $E_k = [k,\\infty)$ has infinite measure, so $\\lim_k m(E_k) = \\infty$, but no real number lies in every $[k,\\infty)$, so the intersection is empty with measure $0$. The limit $\\infty$ does not equal $0$, exhibiting the failure when no $E_k$ has finite measure.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-009",
+      "stem": "Which of the following sets is definitely Lebesgue measurable?",
+      "options": [
+        "Every open subset of $\\mathbb{R}$.",
+        "A Vitali set.",
+        "Only finite sets.",
+        "No set of positive measure."
+      ],
+      "answer": 0,
+      "explanation": "Open sets are Borel and every Borel set is Lebesgue measurable, so every open subset of $\\mathbb{R}$ is measurable. A Vitali set is the standard example of a non-measurable set, and measurable sets are far more plentiful than just finite sets.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-010",
+      "stem": "If $E$ has outer measure zero, is $E$ Lebesgue measurable?",
+      "options": [
+        "No, null sets are never measurable.",
+        "Yes, every set of outer measure zero is measurable (a null set), and $m(E) = 0$.",
+        "Only if $E$ is countable.",
+        "Only if $E$ is open."
+      ],
+      "answer": 1,
+      "explanation": "Sets of outer measure zero satisfy the Caratheodory criterion automatically, since $m^*(A \\cap E) \\leq m^*(E) = 0$, leaving $m^*(A) \\geq m^*(A \\cap E^c)$ to verify, which monotonicity supplies. Thus every null set is measurable with measure $0$, whether or not it is countable; the Lebesgue measure is complete.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-011",
+      "stem": "Lebesgue measure restricted to an interval gives $m([a,b]) = $:",
+      "options": [
+        "$ab$",
+        "$0$",
+        "$b - a$",
+        "$\\infty$"
+      ],
+      "answer": 2,
+      "explanation": "Intervals are measurable and their Lebesgue measure equals their length, so $m([a,b]) = b - a$. This matches the outer measure of an interval and is the basic normalisation that ties Lebesgue measure to ordinary length.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-012",
+      "stem": "If $A$ and $B$ are disjoint measurable sets with $m(A) = 3$ and $m(B) = 4$, then $m(A \\cup B) = $:",
+      "options": [
+        "It cannot be determined.",
+        "$12$",
+        "$1$",
+        "$7$"
+      ],
+      "answer": 3,
+      "explanation": "By (finite) additivity for disjoint measurable sets, $m(A \\cup B) = m(A) + m(B) = 3 + 4 = 7$. Disjointness is essential; without it only subadditivity would give an upper bound rather than equality.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-013",
+      "stem": "For measurable sets $A \\subseteq B$ with $m(B) < \\infty$, the measure of the difference is:",
+      "options": [
+        "$m(B \\setminus A) = m(B) - m(A)$.",
+        "$m(B \\setminus A) = m(B) + m(A)$.",
+        "$m(B \\setminus A) = m(A) - m(B)$.",
+        "$m(B \\setminus A) = 0$."
+      ],
+      "answer": 0,
+      "explanation": "Since $B = A \\sqcup (B \\setminus A)$ is a disjoint union of measurable sets, additivity gives $m(B) = m(A) + m(B \\setminus A)$, hence $m(B \\setminus A) = m(B) - m(A)$. The finiteness of $m(B)$ lets us subtract safely.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-014",
+      "stem": "The inclusion-exclusion formula for two measurable sets of finite measure reads $m(A \\cup B) = $:",
+      "options": [
+        "$m(A) + m(B)$",
+        "$m(A) + m(B) - m(A \\cap B)$",
+        "$m(A) - m(B)$",
+        "$m(A \\cap B)$"
+      ],
+      "answer": 1,
+      "explanation": "For measurable sets, $m(A \\cup B) = m(A) + m(B) - m(A \\cap B)$, correcting the double counting of the overlap. When $A$ and $B$ are disjoint, $m(A \\cap B) = 0$ and this reduces to plain additivity.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-015",
+      "stem": "Given measurable sets with $m(A) = 5$, $m(B) = 6$, and $m(A \\cap B) = 2$, what is $m(A \\cup B)$?",
+      "options": [
+        "$11$",
+        "$13$",
+        "$9$",
+        "$3$"
+      ],
+      "answer": 2,
+      "explanation": "By inclusion-exclusion, $m(A \\cup B) = m(A) + m(B) - m(A \\cap B) = 5 + 6 - 2 = 9$. Subtracting the overlap once removes the part counted twice in $m(A) + m(B)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-016",
+      "stem": "Lebesgue measure is translation invariant, meaning for measurable $E$ and real $t$:",
+      "options": [
+        "$m(E + t) = m(E) + t$.",
+        "$m(E + t) = 0$.",
+        "$m(E + t) = t\\, m(E)$.",
+        "$m(E + t) = m(E)$."
+      ],
+      "answer": 3,
+      "explanation": "Lebesgue measure inherits translation invariance from outer measure: $m(E + t) = m(E)$ for every measurable $E$ and shift $t$, and $E + t$ remains measurable. This invariance is one of the characterising properties of Lebesgue measure on $\\mathbb{R}$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-017",
+      "stem": "Which statement about complements is true for Lebesgue measurable sets?",
+      "options": [
+        "If $E$ is measurable then $E^c = \\mathbb{R} \\setminus E$ is measurable.",
+        "The complement of a measurable set need not be measurable.",
+        "Only complements of intervals are measurable.",
+        "Complements are never measurable."
+      ],
+      "answer": 0,
+      "explanation": "Because $\\mathcal{M}$ is a $\\sigma$-algebra, it is closed under complementation: if $E$ is measurable so is $E^c$. The Caratheodory criterion is itself symmetric in $E$ and $E^c$, which makes this closure transparent.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-018",
+      "stem": "What is the Lebesgue measure of $\\mathbb{Q} \\cap [0,1]$?",
+      "options": [
+        "$1$",
+        "$0$",
+        "$\\tfrac{1}{2}$",
+        "It is non-measurable."
+      ],
+      "answer": 1,
+      "explanation": "The set $\\mathbb{Q} \\cap [0,1]$ is countable, hence a null set, so it is measurable with $m(\\mathbb{Q} \\cap [0,1]) = 0$. Consequently the irrationals in $[0,1]$ carry the full measure $1$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-019",
+      "stem": "What is the Lebesgue measure of the set of irrationals in $[0,1]$?",
+      "options": [
+        "$0$",
+        "$\\tfrac{1}{2}$",
+        "$1$",
+        "$\\infty$"
+      ],
+      "answer": 2,
+      "explanation": "Since $[0,1] = (\\mathbb{Q} \\cap [0,1]) \\sqcup (\\text{irrationals in } [0,1])$ and the rationals form a null set, additivity gives the irrationals measure $1 - 0 = 1$. The full length of $[0,1]$ sits on the irrationals.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-020",
+      "stem": "The Lebesgue measure of the Cantor set $C$ is:",
+      "options": [
+        "$1$",
+        "$\\tfrac{1}{2}$",
+        "$\\tfrac{2}{3}$",
+        "$0$"
+      ],
+      "answer": 3,
+      "explanation": "The Cantor set is closed, hence measurable, and is covered at stage $n$ by intervals of total length $(2/3)^n \\to 0$, so $m(C) = 0$. It is a striking example of an uncountable set with measure zero.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-021",
+      "stem": "Which closure property is NOT part of $\\mathcal{M}$ being a $\\sigma$-algebra?",
+      "options": [
+        "Closure under arbitrary (uncountable) unions.",
+        "Closure under complements.",
+        "Closure under countable unions.",
+        "Closure under countable intersections."
+      ],
+      "answer": 0,
+      "explanation": "A $\\sigma$-algebra is closed under complements, countable unions, and (by De Morgan) countable intersections, but not under arbitrary uncountable unions. Indeed an arbitrary union of measurable singletons could build a non-measurable set, so uncountable unions are excluded.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-022",
+      "stem": "Increasing continuity: let $E_k = [0, 1 - 1/k]$ for $k = 1, 2, \\dots$. What is $m\\big(\\bigcup_k E_k\\big)$?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$\\tfrac{1}{2}$",
+        "$\\infty$"
+      ],
+      "answer": 1,
+      "explanation": "The sets increase to $\\bigcup_k E_k = [0,1)$, and $m(E_k) = 1 - 1/k \\to 1$. By continuity from below, $m\\big(\\bigcup_k E_k\\big) = \\lim_k m(E_k) = 1$, which also equals $m([0,1)) = 1$ directly.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-023",
+      "stem": "Why is a countable union of measurable sets measurable, even if the sets overlap?",
+      "options": [
+        "Because overlaps are impossible for measurable sets.",
+        "Because only disjoint unions are allowed.",
+        "Because the overlapping union can be rewritten as a disjoint union of measurable sets, and $\\mathcal{M}$ is closed under countable unions.",
+        "Because unions are never measurable."
+      ],
+      "answer": 2,
+      "explanation": "Closure under countable unions is part of the $\\sigma$-algebra structure and holds regardless of overlap; one standard proof disjointifies by setting $F_k = E_k \\setminus (E_1 \\cup \\cdots \\cup E_{k-1})$, which are measurable and disjoint with the same union. So overlapping unions are still measurable.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-024",
+      "stem": "Suppose $E$ is measurable with $m(E) = 0$ and $F \\subseteq E$ is arbitrary. Which statement is correct, reflecting completeness of Lebesgue measure?",
+      "options": [
+        "$F$ may fail to be measurable.",
+        "$m(F) = m(E) = 0$ only if $F$ is countable.",
+        "$F$ must be open.",
+        "$F$ is measurable with $m(F) = 0$."
+      ],
+      "answer": 3,
+      "explanation": "Lebesgue measure is complete: every subset of a measure-zero set is itself measurable with measure zero. By monotonicity $m^*(F) \\leq m^*(E) = 0$, so $F$ is a null set and hence measurable, with no countability assumption needed.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-025",
+      "stem": "Decreasing continuity: let $E_k = [0, 1 + 1/k]$. What is $m\\big(\\bigcap_k E_k\\big)$, and does continuity from above apply?",
+      "options": [
+        "$1$, and continuity from above applies since $m(E_1) < \\infty$.",
+        "$0$, and it does not apply.",
+        "$2$, with no finiteness needed.",
+        "$\\infty$."
+      ],
+      "answer": 0,
+      "explanation": "The nested sets decrease to $\\bigcap_k E_k = [0,1]$, and since $m(E_1) = 2 < \\infty$, continuity from above gives $m\\big(\\bigcap_k E_k\\big) = \\lim_k m(E_k) = \\lim_k (1 + 1/k) = 1$. The finiteness hypothesis is satisfied, so the limit is valid.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-026",
+      "stem": "Which of the following is the correct value of $m([0,3] \\cup [2,5])$ for these overlapping intervals?",
+      "options": [
+        "$8$",
+        "$5$",
+        "$3$",
+        "$10$"
+      ],
+      "answer": 1,
+      "explanation": "The union $[0,3] \\cup [2,5]$ is the single interval $[0,5]$, so its measure is $5 - 0 = 5$. Equivalently inclusion-exclusion gives $3 + 3 - m([2,3]) = 3 + 3 - 1 = 5$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-027",
+      "format": "cloze",
+      "stem": "Additivity and differences for measurable sets. Let $A$ and $B$ be measurable with $m(A) = 5$, $m(B) = 8$, $A \\subseteq B$.",
+      "solution": "Because $A \\subseteq B$, the measure of the difference $m(B \\setminus A)$ equals $8 - 5$, the number {{1}}. If instead $A$ and $B$ were disjoint, then $m(A \\cup B)$ would equal $5 + 8$, the number {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 13,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "For $A \\subseteq B$, $m(B \\setminus A) = m(B) - m(A) = 8 - 5 = 3$. For disjoint sets, additivity gives $m(A \\cup B) = m(A) + m(B) = 5 + 8 = 13$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-028",
+      "format": "cloze",
+      "stem": "Inclusion-exclusion. Let $A$ and $B$ be measurable with $m(A) = 7$, $m(B) = 9$, $m(A \\cap B) = 4$.",
+      "solution": "By inclusion-exclusion, $m(A \\cup B) = 7 + 9 - 4$, the number {{1}}. The part of $B$ outside $A$, namely $m(B \\setminus A)$, equals $9 - 4$, the number {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 12,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Inclusion-exclusion gives $m(A \\cup B) = 7 + 9 - 4 = 12$. Since $B \\setminus A = B \\setminus (A \\cap B)$ with $A \\cap B \\subseteq B$, its measure is $9 - 4 = 5$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-029",
+      "format": "cloze",
+      "stem": "The Caratheodory criterion and the measurable sigma-algebra.",
+      "solution": "A set $E$ is Lebesgue measurable when, for every test set $A$, the outer measure splits as $m^*(A) = m^*(A \\cap E) + m^*(A \\cap E^c)$; this is the {{1}} criterion. The collection of all measurable sets forms a {{2}}, and it contains every {{3}} set.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "Caratheodory",
+            "Caratheodory's",
+            "Caratheodory criterion"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "sigma-algebra",
+            "topology",
+            "metric space"
+          ],
+          "answer": "sigma-algebra"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Borel",
+            "non-measurable",
+            "finite"
+          ],
+          "answer": "Borel"
+        }
+      ],
+      "explanation": "The splitting condition for all test sets is the Caratheodory criterion. The measurable sets form a $\\sigma$-algebra, and since open sets are measurable and $\\mathcal{M}$ is a $\\sigma$-algebra, it contains all Borel sets.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-030",
+      "format": "cloze",
+      "stem": "Continuity of measure. Consider the increasing sets $E_k = [0, 2 - 1/k]$.",
+      "solution": "The sets increase to the union $[0,2)$. Since $m(E_k) = 2 - 1/k$ tends to a limit, continuity from below gives $m\\!\\left(\\bigcup_k E_k\\right)$ equal to the number {{1}}. Continuity from above for a decreasing sequence needs at least one set to have {{2}} measure, or it can fail.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "finite",
+            "infinite",
+            "zero"
+          ],
+          "answer": "finite"
+        }
+      ],
+      "explanation": "The increasing sets fill out $[0,2)$ with $m(E_k) = 2 - 1/k \\to 2$, so continuity from below gives measure $2$. Continuity from above can fail unless some set in the decreasing chain has finite measure, as the example $[k,\\infty)$ shows.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-measurable-sets-lebesgue-measure-031",
+      "format": "cloze",
+      "stem": "Measure of standard sets. Record each Lebesgue measure.",
+      "solution": "The measure $m([0,1])$ is the number {{1}}. The measure of the rationals $\\mathbb{Q} \\cap [0,1]$ is the number {{2}}. The measure of the Cantor set is the number {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "An interval has measure equal to its length, so $m([0,1]) = 1$. The countable set $\\mathbb{Q} \\cap [0,1]$ is null, and the Cantor set, though uncountable, is also null, so both have measure $0$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    }
+  ]
+}

@@ -1,0 +1,518 @@
+{
+  "courseId": "real-function-i-pure-maths",
+  "topicId": "lebesgue-outer-measure",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-001",
+      "stem": "For a bounded interval $I$ with endpoints $a \\leq b$, the length $\\ell(I)$ is defined to be:",
+      "options": [
+        "$b - a$.",
+        "$a + b$.",
+        "$ab$.",
+        "$\\tfrac{1}{2}(b - a)$."
+      ],
+      "answer": 0,
+      "explanation": "The length of any interval with endpoints $a \\leq b$, open or closed, is $\\ell(I) = b - a$. Whether the endpoints are included does not change the length, since single points contribute nothing. The other expressions do not measure how long the interval is.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-002",
+      "stem": "The Lebesgue outer measure of a set $A \\subseteq \\mathbb{R}$ is defined as:",
+      "options": [
+        "$\\sup\\{\\ell(I) : I \\subseteq A\\}$.",
+        "$\\inf\\Big\\{\\sum_{k} \\ell(I_k) : A \\subseteq \\bigcup_k I_k,\\ I_k \\text{ open intervals}\\Big\\}$.",
+        "the number of intervals needed to cover $A$.",
+        "$\\sum_{x \\in A} 1$."
+      ],
+      "answer": 1,
+      "explanation": "Lebesgue outer measure $m^*(A)$ is the infimum of total lengths $\\sum_k \\ell(I_k)$ over all countable covers of $A$ by open intervals. It is an outer (covering-from-above) construction, so it uses an infimum over covers, not a supremum over subsets, and certainly not a count of points.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-003",
+      "stem": "What is the outer measure of the empty set, $m^*(\\varnothing)$?",
+      "options": [
+        "$1$",
+        "$\\infty$",
+        "$0$",
+        "undefined"
+      ],
+      "answer": 2,
+      "explanation": "The empty set can be covered by intervals of arbitrarily small total length (indeed by no intervals, total length $0$), so its outer measure is $0$. Outer measure is always nonnegative, and $\\varnothing$ achieves the smallest possible value.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-004",
+      "stem": "Monotonicity of outer measure states that if $A \\subseteq B$ then:",
+      "options": [
+        "$m^*(A) \\geq m^*(B)$.",
+        "$m^*(A) = 0$.",
+        "$m^*(A) = m^*(B)$ always.",
+        "$m^*(A) \\leq m^*(B)$."
+      ],
+      "answer": 3,
+      "explanation": "Monotonicity says a smaller set has no larger outer measure: $A \\subseteq B$ implies $m^*(A) \\leq m^*(B)$. This holds because every cover of $B$ is also a cover of $A$, so the infimum defining $m^*(A)$ is taken over a richer family and cannot exceed $m^*(B)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-005",
+      "stem": "Countable subadditivity of outer measure is the statement that for any sequence of sets $A_1, A_2, \\dots$:",
+      "options": [
+        "$m^*\\!\\left(\\bigcup_k A_k\\right) \\leq \\sum_k m^*(A_k)$.",
+        "$m^*\\!\\left(\\bigcup_k A_k\\right) = \\sum_k m^*(A_k)$ always.",
+        "$m^*\\!\\left(\\bigcup_k A_k\\right) \\geq \\sum_k m^*(A_k)$.",
+        "$m^*\\!\\left(\\bigcup_k A_k\\right) = \\max_k m^*(A_k)$."
+      ],
+      "answer": 0,
+      "explanation": "Outer measure is countably subadditive: the outer measure of a countable union is at most the sum of the individual outer measures. Equality is not guaranteed in general (it requires the sets to be measurable and disjoint), so subadditivity gives only the $\\leq$ inequality.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-006",
+      "stem": "A fundamental theorem about outer measure on intervals states that for an interval $I$:",
+      "options": [
+        "$m^*(I) = 0$.",
+        "$m^*(I) = \\ell(I)$, the outer measure equals the length.",
+        "$m^*(I) = 2\\ell(I)$.",
+        "$m^*(I) = \\infty$ for every interval."
+      ],
+      "answer": 1,
+      "explanation": "A central result is that the outer measure of any interval equals its length, $m^*(I) = \\ell(I)$. The easy direction is subadditivity ($m^*(I) \\leq \\ell(I)$); the harder direction uses the Heine-Borel theorem to show no cheaper cover exists, giving $m^*(I) \\geq \\ell(I)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-007",
+      "stem": "Translation invariance of Lebesgue outer measure says that for any set $A$ and real number $t$:",
+      "options": [
+        "$m^*(A + t) = m^*(A) + t$.",
+        "$m^*(A + t) = t\\, m^*(A)$.",
+        "$m^*(A + t) = m^*(A)$, where $A + t = \\{a + t : a \\in A\\}$.",
+        "$m^*(A + t) = 0$."
+      ],
+      "answer": 2,
+      "explanation": "Sliding a set along the line does not change its outer measure: $m^*(A + t) = m^*(A)$. The reason is that translating every covering interval $I_k$ by $t$ gives a cover of $A + t$ with the same total length, since translation preserves $\\ell(I_k)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-008",
+      "stem": "What is the outer measure of a single point $\\{a\\} \\subseteq \\mathbb{R}$?",
+      "options": [
+        "$1$",
+        "$\\infty$",
+        "$a$",
+        "$0$"
+      ],
+      "answer": 3,
+      "explanation": "For any $\\varepsilon > 0$ the open interval $(a - \\varepsilon/2, a + \\varepsilon/2)$ covers $\\{a\\}$ with total length $\\varepsilon$, so $m^*(\\{a\\}) \\leq \\varepsilon$ for every $\\varepsilon > 0$, forcing $m^*(\\{a\\}) = 0$. A single point has no length.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-009",
+      "stem": "Why does every countable set $A \\subseteq \\mathbb{R}$ have outer measure zero?",
+      "options": [
+        "Because we can cover the $k$-th point by an interval of length $\\varepsilon/2^k$, giving total length $\\varepsilon$.",
+        "Because countable sets are finite.",
+        "Because countable sets are open.",
+        "Because outer measure ignores all sets."
+      ],
+      "answer": 0,
+      "explanation": "Enumerate $A = \\{a_1, a_2, \\dots\\}$ and cover $a_k$ by an interval of length $\\varepsilon / 2^k$. The total length is $\\sum_k \\varepsilon/2^k = \\varepsilon$, which can be made arbitrarily small, so $m^*(A) = 0$. This applies to all countable sets, including $\\mathbb{Q}$, even infinite ones.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-010",
+      "stem": "The outer measure of the set of rational numbers in $[0,1]$, that is $m^*(\\mathbb{Q} \\cap [0,1])$, is:",
+      "options": [
+        "$1$",
+        "$0$",
+        "$\\tfrac{1}{2}$",
+        "$\\infty$"
+      ],
+      "answer": 1,
+      "explanation": "The set $\\mathbb{Q} \\cap [0,1]$ is countable, and every countable set has outer measure zero by the $\\varepsilon/2^k$ covering argument. So its outer measure is $0$, even though the set is dense in $[0,1]$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-011",
+      "stem": "What is the outer measure of the interval $[2, 7]$?",
+      "options": [
+        "$9$",
+        "$14$",
+        "$5$",
+        "$7$"
+      ],
+      "answer": 2,
+      "explanation": "The outer measure of an interval equals its length, so $m^*([2,7]) = 7 - 2 = 5$. Including or excluding the endpoints would not change this value.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-012",
+      "stem": "Using subadditivity, what is an upper bound for $m^*\\big([0,1] \\cup [3,5]\\big)$?",
+      "options": [
+        "$5$",
+        "$\\infty$",
+        "$1$",
+        "$3$"
+      ],
+      "answer": 3,
+      "explanation": "By subadditivity $m^*([0,1] \\cup [3,5]) \\leq m^*([0,1]) + m^*([3,5]) = 1 + 2 = 3$. Since the two intervals are disjoint this bound is in fact attained, so the outer measure equals $3$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-013",
+      "stem": "Which property of outer measure is the one that may FAIL to be an equality for general (not necessarily disjoint or measurable) sets?",
+      "options": [
+        "Full countable additivity $m^*\\!\\left(\\bigsqcup_k A_k\\right) = \\sum_k m^*(A_k)$ for disjoint sets.",
+        "$m^*(\\varnothing) = 0$.",
+        "Monotonicity.",
+        "Translation invariance."
+      ],
+      "answer": 0,
+      "explanation": "Outer measure is only countably subadditive, not countably additive: even for pairwise disjoint sets, $m^*$ of the union can be strictly less than the sum of outer measures when the sets are non-measurable. Monotonicity, $m^*(\\varnothing) = 0$, and translation invariance hold unconditionally for all sets.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-014",
+      "stem": "The outer measure of all of $\\mathbb{R}$ is:",
+      "options": [
+        "$0$",
+        "$\\infty$",
+        "$1$",
+        "undefined"
+      ],
+      "answer": 1,
+      "explanation": "Since $\\mathbb{R}$ contains intervals $[-n, n]$ of length $2n$ for every $n$, monotonicity gives $m^*(\\mathbb{R}) \\geq 2n$ for all $n$, so $m^*(\\mathbb{R}) = \\infty$. Outer measure is allowed to take the value $+\\infty$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-015",
+      "stem": "Which of the following is a valid covering of the interval $[0,1]$ by open intervals whose total length can be made close to $1$?",
+      "options": [
+        "A single point.",
+        "Finitely many disjoint singletons.",
+        "The open interval $(-\\varepsilon, 1 + \\varepsilon)$ of length $1 + 2\\varepsilon$.",
+        "The closed interval $[0,1]$ itself, which is not open."
+      ],
+      "answer": 2,
+      "explanation": "The open interval $(-\\varepsilon, 1+\\varepsilon)$ covers $[0,1]$ and has length $1 + 2\\varepsilon$, which tends to $1$ as $\\varepsilon \\to 0$, witnessing $m^*([0,1]) \\leq 1$. Points and singletons cannot cover a whole interval, and $[0,1]$ is closed, not an admissible open cover element.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-016",
+      "stem": "Outer measure $m^*$ is defined for:",
+      "options": [
+        "only Borel sets.",
+        "only measurable sets.",
+        "only bounded sets.",
+        "every subset of $\\mathbb{R}$."
+      ],
+      "answer": 3,
+      "explanation": "A key feature of outer measure is that it assigns a value (possibly $+\\infty$) to every subset of $\\mathbb{R}$, with no measurability assumed. This universal domain is precisely why outer measure is the starting point from which measurable sets are later singled out by the Caratheodory criterion.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-017",
+      "stem": "If $m^*(A) = 0$, what can be said about any subset $B \\subseteq A$?",
+      "options": [
+        "$m^*(B) = 0$ as well, by monotonicity.",
+        "$m^*(B)$ could be positive.",
+        "$B$ must be empty.",
+        "$m^*(B) = \\infty$."
+      ],
+      "answer": 0,
+      "explanation": "By monotonicity, $B \\subseteq A$ gives $m^*(B) \\leq m^*(A) = 0$, and since outer measure is nonnegative, $m^*(B) = 0$. Thus every subset of a set of outer measure zero again has outer measure zero, even if $B$ is nonempty.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-018",
+      "stem": "What is the outer measure of the Cantor set $C \\subseteq [0,1]$?",
+      "options": [
+        "$1$",
+        "$0$",
+        "$\\tfrac{1}{2}$",
+        "$\\tfrac{2}{3}$"
+      ],
+      "answer": 1,
+      "explanation": "At stage $n$ of the construction the Cantor set is contained in $2^n$ intervals each of length $3^{-n}$, of total length $(2/3)^n \\to 0$. Hence $m^*(C) \\leq (2/3)^n$ for all $n$, forcing $m^*(C) = 0$, even though $C$ is uncountable.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-019",
+      "stem": "Which statement correctly distinguishes 'countable' from 'measure zero'?",
+      "options": [
+        "A set has outer measure zero if and only if it is countable.",
+        "Only finite sets have outer measure zero.",
+        "Every countable set has outer measure zero, but some uncountable sets (such as the Cantor set) also have outer measure zero.",
+        "Measure zero implies the set is empty."
+      ],
+      "answer": 2,
+      "explanation": "Countability is sufficient but not necessary for outer measure zero: every countable set is null, yet the Cantor set is uncountable and still has outer measure zero. So 'measure zero' is a strictly weaker condition than 'countable'.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-020",
+      "stem": "In proving $m^*(I) = \\ell(I)$ for a closed bounded interval $I$, which theorem supplies the crucial finite subcover used for the lower bound?",
+      "options": [
+        "The Monotone Convergence Theorem.",
+        "The intermediate value theorem.",
+        "Fatou's lemma.",
+        "The Heine-Borel theorem."
+      ],
+      "answer": 3,
+      "explanation": "To show $m^*(I) \\geq \\ell(I)$ one passes from an arbitrary open cover of the compact interval $I$ to a finite subcover via the Heine-Borel theorem, then adds up lengths over finitely many intervals. The convergence theorems and the intermediate value theorem play no role here.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-021",
+      "stem": "Suppose $A \\subseteq [0,1]$ and $m^*([0,1] \\setminus A) = 0$. What is $m^*(A)$?",
+      "options": [
+        "$1$",
+        "$0$",
+        "It cannot be determined.",
+        "$\\tfrac{1}{2}$"
+      ],
+      "answer": 0,
+      "explanation": "By subadditivity $1 = m^*([0,1]) \\leq m^*(A) + m^*([0,1] \\setminus A) = m^*(A) + 0$, so $m^*(A) \\geq 1$. Monotonicity gives $m^*(A) \\leq m^*([0,1]) = 1$, hence $m^*(A) = 1$. Removing a null set leaves the outer measure unchanged.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-022",
+      "stem": "Which equality or inequality is FALSE in general for Lebesgue outer measure?",
+      "options": [
+        "$m^*(A \\cup B) \\leq m^*(A) + m^*(B)$.",
+        "$m^*(A \\cup B) = m^*(A) + m^*(B)$ for all sets $A, B$.",
+        "$m^*(A) \\leq m^*(B)$ whenever $A \\subseteq B$.",
+        "$m^*(A + t) = m^*(A)$ for all real $t$."
+      ],
+      "answer": 1,
+      "explanation": "Additivity $m^*(A \\cup B) = m^*(A) + m^*(B)$ fails in general; it can break even for disjoint non-measurable sets, where outer measure is only subadditive. Subadditivity, monotonicity, and translation invariance are all genuine properties of outer measure.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-023",
+      "stem": "Compute an upper bound for the outer measure of $\\mathbb{Q} \\cap [0, 10]$ using a covering with total length $\\varepsilon$.",
+      "options": [
+        "$10$",
+        "$5$",
+        "$0$",
+        "$\\varepsilon$ only, with no smaller bound possible"
+      ],
+      "answer": 2,
+      "explanation": "Because $\\mathbb{Q} \\cap [0,10]$ is countable, the $\\varepsilon/2^k$ covering gives total length $\\varepsilon$ for any $\\varepsilon > 0$, so the outer measure is at most every positive $\\varepsilon$ and therefore equals $0$. Density in $[0,10]$ does not raise the outer measure above zero.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-024",
+      "stem": "Why is $m^*(A) \\leq \\ell(I)$ immediate when $A \\subseteq I$ for an interval $I$?",
+      "options": [
+        "Because $A$ is countable.",
+        "Because $A$ must equal $I$.",
+        "Because outer measure is always zero.",
+        "Because $I$ itself (slightly enlarged to be open) is a cover of $A$, and $m^*(I) = \\ell(I)$ together with monotonicity bounds $m^*(A)$."
+      ],
+      "answer": 3,
+      "explanation": "Since $A \\subseteq I$, monotonicity gives $m^*(A) \\leq m^*(I)$, and the outer measure of an interval equals its length, so $m^*(A) \\leq \\ell(I)$. No assumption that $A$ is countable or equal to $I$ is needed.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-025",
+      "stem": "The outer measure of the half-open interval $(3, 8]$ is:",
+      "options": [
+        "$5$",
+        "$11$",
+        "$8$",
+        "$3$"
+      ],
+      "answer": 0,
+      "explanation": "Length, and hence outer measure, ignores whether endpoints are included: $m^*((3,8]) = 8 - 3 = 5$. The single endpoints contribute outer measure zero, so all four interval types with these endpoints share the value $5$.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-026",
+      "stem": "If $A$ and $B$ satisfy $m^*(A) = 0$, then $m^*(A \\cup B)$ equals:",
+      "options": [
+        "$m^*(B) + 1$.",
+        "$m^*(B)$.",
+        "$0$ always.",
+        "$\\infty$."
+      ],
+      "answer": 1,
+      "explanation": "Subadditivity gives $m^*(A \\cup B) \\leq m^*(A) + m^*(B) = m^*(B)$, while monotonicity ($B \\subseteq A \\cup B$) gives $m^*(A \\cup B) \\geq m^*(B)$. Hence $m^*(A \\cup B) = m^*(B)$: adjoining a null set does not change outer measure.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-027",
+      "format": "cloze",
+      "stem": "Outer measure of intervals. Recall that for an interval the outer measure equals the length.",
+      "solution": "The outer measure of $[0,1]$ is the number {{1}}. The outer measure of $[2,9]$ is the number {{2}}. The outer measure of a single point $\\{5\\}$ is the number {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Outer measure equals length on intervals: $m^*([0,1]) = 1$ and $m^*([2,9]) = 9 - 2 = 7$. A single point has length and outer measure $0$.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-028",
+      "format": "cloze",
+      "stem": "Naming the properties of outer measure. Choose the correct property name for each statement.",
+      "solution": "The statement that $A \\subseteq B$ implies $m^*(A) \\le m^*(B)$ is called {{1}}. The statement that $m^*\\!\\left(\\bigcup_k A_k\\right) \\le \\sum_k m^*(A_k)$ is called countable {{2}}. The statement that $m^*(A + t) = m^*(A)$ for every real $t$ is called translation {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "monotonicity",
+            "additivity",
+            "convexity"
+          ],
+          "answer": "monotonicity"
+        },
+        {
+          "id": 2,
+          "type": "text",
+          "accept": [
+            "subadditivity",
+            "sub-additivity"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "text",
+          "accept": [
+            "invariance"
+          ]
+        }
+      ],
+      "explanation": "The order-preserving property is monotonicity, the bound on unions is countable subadditivity, and the shift-preserving property is translation invariance. These three (plus $m^*(\\varnothing) = 0$) are the defining properties of Lebesgue outer measure.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-029",
+      "format": "cloze",
+      "stem": "Null sets. Decide the outer measure of each set and whether it is null.",
+      "solution": "The outer measure of the rationals $\\mathbb{Q}$ in $\\mathbb{R}$ is the number {{1}}. The outer measure of the Cantor set is the number {{2}}. Therefore the Cantor set, although uncountable, is a set of outer measure zero: this statement is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "true",
+            "false"
+          ],
+          "answer": "true"
+        }
+      ],
+      "explanation": "Every countable set, such as $\\mathbb{Q}$, has outer measure $0$. The Cantor set is covered at stage $n$ by intervals of total length $(2/3)^n \\to 0$, so it too has outer measure $0$, despite being uncountable; the statement is true.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-030",
+      "format": "cloze",
+      "stem": "Subadditivity bound. Two disjoint intervals are combined.",
+      "solution": "By subadditivity, $m^*([0,2] \\cup [5,6])$ is at most $m^*([0,2]) + m^*([5,6])$, which equals $2 + 1 = $ the number {{1}}. Because the intervals are disjoint, this upper bound is in fact attained, so the exact outer measure also equals {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Subadditivity gives $m^*([0,2] \\cup [5,6]) \\le 2 + 1 = 3$. Since the two intervals are separated, no overlap saves length, so the outer measure equals exactly $3$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-pure-maths-lebesgue-outer-measure-031",
+      "format": "cloze",
+      "stem": "The key interval theorem. Fill in the lengths and the name of the theorem invoked in the lower bound.",
+      "solution": "For any interval $I$ the outer measure equals the length, so $m^*((0,4))$ is the number {{1}}. In proving the lower bound $m^*(I) \\ge \\ell(I)$ for a closed bounded interval, one extracts a finite subcover using the {{2}} theorem.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "Heine-Borel",
+            "Fatou",
+            "Egoroff"
+          ],
+          "answer": "Heine-Borel"
+        }
+      ],
+      "explanation": "The outer measure of $(0,4)$ equals its length $4$. The lower bound in the proof that outer measure equals length on a compact interval relies on passing to a finite subcover via the Heine-Borel theorem.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    }
+  ]
+}

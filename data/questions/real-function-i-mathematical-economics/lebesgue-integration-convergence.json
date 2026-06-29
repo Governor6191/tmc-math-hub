@@ -1,0 +1,524 @@
+{
+  "courseId": "real-function-i-mathematical-economics",
+  "topicId": "lebesgue-integration-convergence",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-001",
+      "stem": "For a nonnegative simple function $s = \\sum_{k=1}^{n} c_k \\chi_{E_k}$ in canonical form, the Lebesgue integral is defined as:",
+      "options": [
+        "$\\sum_{k=1}^{n} c_k\\, m(E_k)$.",
+        "$\\sum_{k=1}^{n} c_k$.",
+        "$\\prod_{k=1}^{n} c_k\\, m(E_k)$.",
+        "$\\max_k c_k$."
+      ],
+      "answer": 0,
+      "explanation": "The integral of a nonnegative simple function weights each value $c_k$ by the measure of the set on which it is taken: $\\int s = \\sum_k c_k\\, m(E_k)$. This generalises 'height times width' from one rectangle to finitely many measurable pieces and is the base case for the whole Lebesgue integral.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-002",
+      "stem": "For a nonnegative measurable function $f$, the Lebesgue integral is defined as:",
+      "options": [
+        "$\\inf\\{\\int s : s \\geq f, s \\text{ simple}\\}$.",
+        "$\\sup\\{\\int s : 0 \\leq s \\leq f, s \\text{ simple}\\}$.",
+        "the Riemann integral of $f$.",
+        "$\\lim_{a \\to \\infty} f(a)$."
+      ],
+      "answer": 1,
+      "explanation": "For nonnegative measurable $f$, the integral is the supremum of integrals of simple functions lying below $f$: $\\int f = \\sup\\{\\int s : 0 \\leq s \\leq f \\text{ simple}\\}$. Building up from below (a supremum), rather than down from above, is what makes the definition robust and matches the simple approximation theorem.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-003",
+      "stem": "For a general measurable function $f$, the Lebesgue integral $\\int f$ is defined (when it makes sense) as:",
+      "options": [
+        "$\\int f^+ + \\int f^-$.",
+        "$\\int |f|$ always.",
+        "$\\int f^+ - \\int f^-$, provided not both are infinite.",
+        "$\\int f^- - \\int f^+$."
+      ],
+      "answer": 2,
+      "explanation": "Splitting $f = f^+ - f^-$ into nonnegative parts, one sets $\\int f = \\int f^+ - \\int f^-$, which is defined as long as at least one of $\\int f^+, \\int f^-$ is finite. The function is integrable precisely when both are finite, equivalently $\\int |f| < \\infty$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-004",
+      "stem": "A measurable function $f$ is said to be Lebesgue integrable on $E$ exactly when:",
+      "options": [
+        "$f$ is bounded.",
+        "$\\int_E f = 0$.",
+        "$f$ is continuous.",
+        "$\\int_E |f| < \\infty$."
+      ],
+      "answer": 3,
+      "explanation": "Integrability means the integral of the absolute value is finite, $\\int_E |f| < \\infty$, equivalently both $\\int_E f^+$ and $\\int_E f^-$ are finite. Boundedness and continuity are neither necessary nor sufficient on sets of infinite measure, and $\\int f = 0$ is a value, not the integrability condition.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-005",
+      "stem": "The Dirichlet function $\\chi_{\\mathbb{Q}}$ on $[0,1]$ illustrates the difference between Riemann and Lebesgue integration because it is:",
+      "options": [
+        "Lebesgue integrable with $\\int_0^1 \\chi_{\\mathbb{Q}} = 0$, but not Riemann integrable.",
+        "Riemann integrable but not Lebesgue integrable.",
+        "neither Riemann nor Lebesgue integrable.",
+        "Riemann integrable with value $1$."
+      ],
+      "answer": 0,
+      "explanation": "The Dirichlet function is not Riemann integrable (its upper and lower Riemann integrals are $1$ and $0$), yet it is Lebesgue integrable: since $\\mathbb{Q} \\cap [0,1]$ is null, $\\int_0^1 \\chi_{\\mathbb{Q}} = 1 \\cdot m(\\mathbb{Q} \\cap [0,1]) = 0$. This is the canonical example where Lebesgue succeeds and Riemann fails.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-006",
+      "stem": "Chebyshev's (Markov's) inequality states that for a nonnegative measurable $f$ and $\\lambda > 0$:",
+      "options": [
+        "$m\\{f \\geq \\lambda\\} \\geq \\lambda \\int f$.",
+        "$m\\{f \\geq \\lambda\\} \\leq \\dfrac{1}{\\lambda} \\int f$.",
+        "$m\\{f \\geq \\lambda\\} = \\int f$.",
+        "$m\\{f \\geq \\lambda\\} \\leq \\lambda \\int f$."
+      ],
+      "answer": 1,
+      "explanation": "Chebyshev's inequality bounds the size of a super-level set by the integral: $m\\{f \\geq \\lambda\\} \\leq \\frac{1}{\\lambda}\\int f$. It follows from $\\lambda\\, \\chi_{\\{f \\geq \\lambda\\}} \\leq f$ and integrating. The factor is $1/\\lambda$, not $\\lambda$, so larger thresholds force smaller level sets.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-007",
+      "stem": "Fatou's lemma states that for nonnegative measurable functions $f_n$:",
+      "options": [
+        "$\\int \\liminf_n f_n = \\liminf_n \\int f_n$.",
+        "$\\int \\liminf_n f_n \\geq \\liminf_n \\int f_n$.",
+        "$\\int \\liminf_n f_n \\leq \\liminf_n \\int f_n$.",
+        "$\\int \\limsup_n f_n \\leq \\liminf_n \\int f_n$."
+      ],
+      "answer": 2,
+      "explanation": "Fatou's lemma is the inequality $\\int \\liminf_n f_n \\leq \\liminf_n \\int f_n$ for nonnegative measurable $f_n$. It is genuinely an inequality, not an equality, and the direction is that the integral of the liminf is at most the liminf of the integrals; mass can be lost in the limit but not created.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-008",
+      "stem": "Which example shows that Fatou's lemma can be a STRICT inequality?",
+      "options": [
+        "$f_n = \\chi_{[0,1]}$ for all $n$.",
+        "$f_n = x$ on $[0,1]$.",
+        "$f_n = 0$ for all $n$.",
+        "$f_n = n\\, \\chi_{(0, 1/n)}$ on $[0,1]$, where $\\int f_n = 1$ but $\\liminf f_n = 0$ pointwise."
+      ],
+      "answer": 3,
+      "explanation": "For $f_n = n\\,\\chi_{(0,1/n)}$, each integral is $n \\cdot (1/n) = 1$, so $\\liminf_n \\int f_n = 1$, while $f_n(x) \\to 0$ for every $x$, giving $\\int \\liminf f_n = 0$. Thus $0 < 1$, a strict instance of Fatou. The escaping spike carries its mass away in the limit.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-009",
+      "stem": "The Monotone Convergence Theorem (MCT) states that if $0 \\leq f_1 \\leq f_2 \\leq \\cdots$ are measurable and $f_n \\uparrow f$ pointwise, then:",
+      "options": [
+        "$\\int f = \\lim_n \\int f_n$.",
+        "$\\int f = \\liminf_n \\int f_n$ only.",
+        "$\\int f \\leq \\lim_n \\int f_n$ strictly.",
+        "$\\int f = 0$."
+      ],
+      "answer": 0,
+      "explanation": "The MCT gives equality of the integral of the limit and the limit of the integrals for an increasing sequence of nonnegative measurable functions: $\\int f = \\lim_n \\int f_n$. Monotonicity rules out the mass loss seen in Fatou, so the inequality becomes an equality here.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-010",
+      "stem": "The Dominated Convergence Theorem (DCT) requires, in addition to $f_n \\to f$ pointwise a.e., the existence of:",
+      "options": [
+        "an increasing sequence.",
+        "an integrable function $g$ with $|f_n| \\leq g$ for all $n$ (a dominating function).",
+        "a bound on the number of $f_n$.",
+        "continuity of each $f_n$."
+      ],
+      "answer": 1,
+      "explanation": "The DCT needs a single integrable dominating function $g$ with $|f_n| \\leq g$ a.e. for all $n$; then $\\int f_n \\to \\int f$. The dominating function controls the tails uniformly, preventing mass from escaping. Without such a $g$, the conclusion can fail.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-011",
+      "stem": "Under the hypotheses of the Dominated Convergence Theorem, the conclusion is:",
+      "options": [
+        "$\\int f \\leq \\liminf_n \\int f_n$ only.",
+        "$\\int f_n \\to 0$.",
+        "$\\lim_n \\int f_n = \\int f$, and moreover $\\int |f_n - f| \\to 0$.",
+        "$f$ is continuous."
+      ],
+      "answer": 2,
+      "explanation": "The DCT yields $\\lim_n \\int f_n = \\int \\lim_n f_n = \\int f$, and in fact $\\int |f_n - f| \\to 0$ ($L^1$ convergence). The dominating function lets one pass the limit through the integral as a genuine equality, which Fatou alone would not give.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-012",
+      "stem": "Which example shows the Dominated Convergence Theorem can FAIL when no integrable dominating function exists?",
+      "options": [
+        "$f_n = \\chi_{[0,1]}$.",
+        "$f_n = x^2$ on $[0,1]$.",
+        "$f_n = 0$.",
+        "$f_n = \\tfrac{1}{n}\\chi_{[0,n]}$ on $[0, \\infty)$, where $\\int f_n = 1$ for all $n$ but $f_n \\to 0$ pointwise."
+      ],
+      "answer": 3,
+      "explanation": "For $f_n = \\frac{1}{n}\\chi_{[0,n]}$ each integral is $\\frac{1}{n}\\cdot n = 1$, yet $f_n(x) \\to 0$ for every $x$, so $\\int \\lim f_n = 0 \\neq 1 = \\lim \\int f_n$. No integrable $g$ dominates all $f_n$ (the smallest candidate is not integrable on $[0,\\infty)$), so DCT does not apply, and indeed its conclusion fails.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-013",
+      "stem": "The Bounded Convergence Theorem is a special case of the DCT that applies when:",
+      "options": [
+        "$m(E) < \\infty$ and the $f_n$ are uniformly bounded by a constant $M$.",
+        "the set has infinite measure.",
+        "the functions are unbounded.",
+        "there is no common bound."
+      ],
+      "answer": 0,
+      "explanation": "On a finite-measure set $E$, a uniform bound $|f_n| \\leq M$ provides the integrable dominating function $g = M \\chi_E$ (since $\\int_E M = M\\,m(E) < \\infty$), so the DCT applies. This special case is the Bounded Convergence Theorem, requiring both $m(E) < \\infty$ and a uniform constant bound.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-014",
+      "stem": "Compute the Lebesgue integral $\\int_{[0,1]} s\\, dm$ for the simple function $s = 3\\chi_{[0, 1/2]} + 5\\chi_{(1/2, 1]}$.",
+      "options": [
+        "$8$",
+        "$4$",
+        "$\\tfrac{15}{2}$",
+        "$2$"
+      ],
+      "answer": 1,
+      "explanation": "By definition $\\int s = 3\\, m([0,1/2]) + 5\\, m((1/2,1]) = 3 \\cdot \\tfrac{1}{2} + 5 \\cdot \\tfrac{1}{2} = \\tfrac{3}{2} + \\tfrac{5}{2} = 4$. Each value is weighted by the measure of the set where it is taken.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-015",
+      "stem": "Compute $\\int_{[0,3]} s\\, dm$ where $s = 2\\chi_{[0,1)} + 4\\chi_{[1,3]}$.",
+      "options": [
+        "$6$",
+        "$8$",
+        "$10$",
+        "$12$"
+      ],
+      "answer": 2,
+      "explanation": "Here $\\int s = 2\\, m([0,1)) + 4\\, m([1,3]) = 2 \\cdot 1 + 4 \\cdot 2 = 2 + 8 = 10$. The measure of $[0,1)$ is $1$ and of $[1,3]$ is $2$, so weighting the values gives $10$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-016",
+      "stem": "What is $\\int_{[0,1]} \\chi_{\\mathbb{Q}}\\, dm$, the Lebesgue integral of the indicator of the rationals?",
+      "options": [
+        "$1$",
+        "undefined",
+        "$\\tfrac{1}{2}$",
+        "$0$"
+      ],
+      "answer": 3,
+      "explanation": "Since $\\chi_{\\mathbb{Q}}$ is a simple function taking value $1$ on the null set $\\mathbb{Q} \\cap [0,1]$, its integral is $1 \\cdot m(\\mathbb{Q} \\cap [0,1]) = 1 \\cdot 0 = 0$. The rationals contribute nothing because they form a set of measure zero.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-017",
+      "stem": "Which statement comparing Riemann and Lebesgue integrals is correct for a bounded function on $[a,b]$?",
+      "options": [
+        "If $f$ is Riemann integrable on $[a,b]$, then it is Lebesgue integrable there and the two integrals agree.",
+        "If $f$ is Riemann integrable, the two integrals can disagree.",
+        "Lebesgue integrability implies Riemann integrability.",
+        "The integrals never agree."
+      ],
+      "answer": 0,
+      "explanation": "Every bounded Riemann integrable function on $[a,b]$ is also Lebesgue integrable, and the two integrals give the same value. The converse fails: $\\chi_{\\mathbb{Q}}$ is Lebesgue but not Riemann integrable. So Lebesgue extends Riemann consistently.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-018",
+      "stem": "By Chebyshev's inequality, if $f \\geq 0$ is measurable with $\\int f = 5$, what is the largest possible value of $m\\{f \\geq 10\\}$?",
+      "options": [
+        "$5$",
+        "$\\tfrac{1}{2}$",
+        "$10$",
+        "$50$"
+      ],
+      "answer": 1,
+      "explanation": "Chebyshev gives $m\\{f \\geq 10\\} \\leq \\frac{1}{10}\\int f = \\frac{5}{10} = \\frac{1}{2}$. So the super-level set $\\{f \\geq 10\\}$ has measure at most $\\frac{1}{2}$; a large value cannot be attained on too big a set without inflating the integral.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-019",
+      "stem": "If $f \\geq 0$ is measurable and $\\int_E f = 0$, what can be concluded?",
+      "options": [
+        "$f$ is bounded.",
+        "$f$ is continuous.",
+        "$f = 0$ almost everywhere on $E$.",
+        "$E$ has measure zero."
+      ],
+      "answer": 2,
+      "explanation": "For a nonnegative measurable $f$, $\\int_E f = 0$ forces $f = 0$ a.e. on $E$. By Chebyshev, each set $\\{f \\geq 1/n\\}$ has measure $\\leq n\\int_E f = 0$, and the union over $n$ is $\\{f > 0\\}$, which is therefore null. This does not require $E$ itself to be null.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-020",
+      "stem": "Which convergence theorem is best suited to justify $\\lim_n \\int_0^1 \\frac{n x}{1 + n^2 x^2}\\, dx$ when a single integrable dominating function is available?",
+      "options": [
+        "The Monotone Convergence Theorem, since the sequence is increasing.",
+        "None applies because the functions are negative.",
+        "Fatou's lemma, which gives an exact limit.",
+        "The Dominated Convergence Theorem, using a dominating integrable bound."
+      ],
+      "answer": 3,
+      "explanation": "The integrands are nonnegative but not monotone in $n$, so the MCT is not directly applicable; when a dominating integrable function exists, the DCT is the right tool to interchange limit and integral. Fatou would yield only an inequality, not the exact limit.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-021",
+      "stem": "Linearity of the Lebesgue integral: if $f, g$ are integrable and $\\alpha, \\beta \\in \\mathbb{R}$, then $\\int (\\alpha f + \\beta g)$ equals:",
+      "options": [
+        "$\\alpha \\int f + \\beta \\int g$.",
+        "$\\alpha \\int f \\cdot \\beta \\int g$.",
+        "$\\int f + \\int g$ only.",
+        "$\\alpha \\beta \\int (f + g)$."
+      ],
+      "answer": 0,
+      "explanation": "The Lebesgue integral is linear: $\\int(\\alpha f + \\beta g) = \\alpha \\int f + \\beta \\int g$ for integrable $f, g$. Constants factor out and integrals of sums split, exactly as for the Riemann integral, and this holds for the wider class of Lebesgue integrable functions.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-022",
+      "stem": "Monotonicity of the Lebesgue integral says that if $f \\leq g$ (both integrable), then:",
+      "options": [
+        "$\\int f \\geq \\int g$.",
+        "$\\int f \\leq \\int g$.",
+        "$\\int f = \\int g$.",
+        "$\\int f = 0$."
+      ],
+      "answer": 1,
+      "explanation": "If $f \\leq g$ pointwise then $\\int f \\leq \\int g$, since $g - f \\geq 0$ has nonnegative integral. This order-preserving property is fundamental and underlies many estimates, including the comparison used in Chebyshev's inequality.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-023",
+      "stem": "The triangle inequality for the Lebesgue integral states that for integrable $f$:",
+      "options": [
+        "$\\left| \\int f \\right| \\geq \\int |f|$.",
+        "$\\left| \\int f \\right| = \\int |f|$ always.",
+        "$\\left| \\int f \\right| \\leq \\int |f|$.",
+        "$\\int |f| = 0$."
+      ],
+      "answer": 2,
+      "explanation": "The integral triangle inequality is $\\left|\\int f\\right| \\leq \\int |f|$, following from $-|f| \\leq f \\leq |f|$ and monotonicity. Equality holds only when $f$ does not change sign a.e.; in general the absolute value of the integral is dominated by the integral of the absolute value.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-024",
+      "stem": "In which scenario does the Monotone Convergence Theorem directly apply?",
+      "options": [
+        "$f_n = (-1)^n \\chi_{[0,1]}$.",
+        "any sequence whatsoever.",
+        "$f_n = -n \\chi_{[0,1]}$, decreasing and negative.",
+        "$f_n(x) = \\min(n, 1/\\sqrt{x})$ on $(0,1]$, an increasing sequence of nonnegative functions."
+      ],
+      "answer": 3,
+      "explanation": "The MCT applies to an increasing sequence of nonnegative measurable functions, such as $f_n(x) = \\min(n, 1/\\sqrt{x})$, which rises to $1/\\sqrt{x}$ pointwise. The alternating and negative-decreasing examples violate the nonnegativity or monotone-increasing hypotheses, so the MCT does not apply to them.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-025",
+      "stem": "Why is the bounded function $\\chi_{\\mathbb{Q} \\cap [0,1]}$ not Riemann integrable, even though it is Lebesgue integrable?",
+      "options": [
+        "Because on every subinterval its supremum is $1$ and infimum is $0$, so the upper and lower Riemann integrals are $1$ and $0$.",
+        "Because it is unbounded.",
+        "Because the rationals are uncountable.",
+        "Because it is continuous."
+      ],
+      "answer": 0,
+      "explanation": "Density of both rationals and irrationals makes $\\sup = 1$ and $\\inf = 0$ on every subinterval, so every upper Riemann sum is $1$ and every lower sum is $0$; the upper and lower integrals never meet. Lebesgue integration instead weights by measure, giving $0$ since $\\mathbb{Q}$ is null. The function is bounded and nowhere continuous, and $\\mathbb{Q}$ is countable.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-026",
+      "stem": "Which of the following correctly states a hypothesis that, if removed, breaks the named theorem?",
+      "options": [
+        "Fatou's lemma needs the functions to be bounded.",
+        "The Dominated Convergence Theorem needs an integrable dominating function $g$; removing $g$ allows mass to escape and the conclusion to fail.",
+        "The Monotone Convergence Theorem needs the functions to be continuous.",
+        "Chebyshev's inequality needs $f$ to be simple."
+      ],
+      "answer": 1,
+      "explanation": "The integrable dominating function is exactly the hypothesis that makes the DCT work; without it, examples like $\\frac{1}{n}\\chi_{[0,n]}$ show mass escaping to infinity and $\\lim \\int f_n \\neq \\int \\lim f_n$. Fatou needs only nonnegativity (not boundedness), the MCT needs monotonicity and nonnegativity (not continuity), and Chebyshev holds for all nonnegative measurable $f$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-027",
+      "format": "cloze",
+      "stem": "Integral of a simple function. Let $s = 2\\chi_{[0,1)} + 6\\chi_{[1,2)}$ on $[0,2)$.",
+      "solution": "The Lebesgue integral weights each value by the measure of its set: $\\int s = 2 \\cdot m([0,1)) + 6 \\cdot m([1,2))$. Since each interval has measure $1$, this equals $2 + 6 = $ the number {{1}}. If the value on $[1,2)$ were changed to $0$, the integral would instead be the number {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "With both intervals of measure $1$, $\\int s = 2(1) + 6(1) = 8$. Changing the second value to $0$ leaves only $2(1) + 0(1) = 2$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-028",
+      "format": "cloze",
+      "stem": "Naming the convergence theorems by their conclusions and hypotheses.",
+      "solution": "The result $\\int \\liminf_n f_n \\le \\liminf_n \\int f_n$ for nonnegative measurable functions is {{1}} lemma, which is an inequality, not an equality. The theorem requiring an increasing sequence $f_n \\uparrow f$ of nonnegative functions and concluding $\\int f = \\lim_n \\int f_n$ is the {{2}} Convergence Theorem. The theorem requiring an integrable dominating function $g$ is the {{3}} Convergence Theorem.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "Fatou's",
+            "Fatou"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "Monotone",
+            "Dominated",
+            "Bounded"
+          ],
+          "answer": "Monotone"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Dominated",
+            "Monotone",
+            "Bounded"
+          ],
+          "answer": "Dominated"
+        }
+      ],
+      "explanation": "Fatou's lemma is the liminf inequality, the Monotone Convergence Theorem handles increasing nonnegative sequences with equality, and the Dominated Convergence Theorem uses an integrable dominating function to interchange limit and integral.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-029",
+      "format": "cloze",
+      "stem": "Riemann versus Lebesgue on the Dirichlet function on $[0,1]$.",
+      "solution": "The Dirichlet function $\\chi_{\\mathbb{Q}}$ is Riemann integrable on $[0,1]$: answer {{1}}. It is Lebesgue integrable on $[0,1]$: answer {{2}}. Its Lebesgue integral $\\int_0^1 \\chi_{\\mathbb{Q}}\\,dm$ has the value {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "The Dirichlet function is not Riemann integrable (upper integral $1$, lower integral $0$) but is Lebesgue integrable, with integral $1 \\cdot m(\\mathbb{Q} \\cap [0,1]) = 0$ since the rationals form a null set.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-030",
+      "format": "cloze",
+      "stem": "Chebyshev's inequality in action. Let $f \\ge 0$ be measurable with $\\int f = 12$.",
+      "solution": "Chebyshev's inequality gives $m\\{f \\ge \\lambda\\} \\le \\frac{1}{\\lambda}\\int f$. Taking $\\lambda = 4$, the bound on $m\\{f \\ge 4\\}$ is $12/4 = $ the number {{1}}. Taking $\\lambda = 6$, the bound on $m\\{f \\ge 6\\}$ is $12/6 = $ the number {{2}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Chebyshev gives $m\\{f \\ge \\lambda\\} \\le \\frac{1}{\\lambda}\\int f$. For $\\lambda = 4$ the bound is $12/4 = 3$, and for $\\lambda = 6$ it is $12/6 = 2$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-mathematical-economics-lebesgue-integration-convergence-031",
+      "format": "cloze",
+      "stem": "Strict Fatou and escaping mass. Consider $f_n = n\\,\\chi_{(0, 1/n)}$ on $[0,1]$.",
+      "solution": "Each integral $\\int_0^1 f_n$ equals $n \\cdot \\frac{1}{n}$, the number {{1}}. Pointwise, $f_n(x) \\to 0$ for every $x$, so $\\int_0^1 \\liminf_n f_n$ equals the number {{2}}. Since these differ, Fatou's lemma holds here as a strict {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "inequality",
+            "equality",
+            "identity"
+          ],
+          "answer": "inequality"
+        }
+      ],
+      "explanation": "Here $\\int f_n = n(1/n) = 1$ for all $n$, while $f_n \\to 0$ pointwise so $\\int \\liminf f_n = 0$. Thus $0 \\le 1$ strictly, a strict instance of Fatou's inequality as the spike's mass escapes.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    }
+  ]
+}

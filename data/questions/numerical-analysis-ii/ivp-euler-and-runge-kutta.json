@@ -1,0 +1,515 @@
+{
+  "courseId": "numerical-analysis-ii",
+  "topicId": "ivp-euler-and-runge-kutta",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-001",
+      "stem": "For the initial value problem $y' = f(x, y)$, $y(x_0) = y_0$, Euler's method advances the solution by which formula?",
+      "options": [
+        "$y_{n+1} = y_n + h\\,f(x_n, y_n)$",
+        "$y_{n+1} = y_n + f(x_n, y_n)$",
+        "$y_{n+1} = y_n + h\\,f(x_{n+1}, y_{n+1})$",
+        "$y_{n+1} = y_n\\,f(x_n, y_n)$"
+      ],
+      "answer": 0,
+      "explanation": "Euler's method takes one step along the tangent line at the current point: $y_{n+1} = y_n + h\\,f(x_n, y_n)$, using the slope $f(x_n, y_n)$ and the step size $h$. The second option drops the factor $h$, the third is the implicit (backward) Euler method using the slope at the new point, and the fourth multiplies instead of adds. The trap is omitting $h$; the slope must be scaled by the step length to give the increment in $y$.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-002",
+      "stem": "Apply one Euler step to $y' = y$, $y(0) = 1$, with $h = 0.1$. The value $y_1$ is which of the following?",
+      "options": [
+        "$1.1052$",
+        "$1.0500$",
+        "$1.1000$",
+        "$1.0100$"
+      ],
+      "answer": 2,
+      "explanation": "Euler's update is $y_1 = y_0 + h\\,f(x_0, y_0) = 1 + 0.1(1) = 1.1$, since $f(0, 1) = 1$. The exact value is $e^{0.1} = 1.1052$, so Euler undershoots by about $0.0052$. The value $1.1052$ is the exact solution and $1.05$ uses half the step. The trap is reporting the exact $e^{0.1}$; the first-order Euler step lags the true exponential growth.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-003",
+      "stem": "Apply one Euler step to $y' = x + y$, $y(0) = 1$, with $h = 0.1$. The value $y_1$ is which of the following?",
+      "options": [
+        "$1.2000$",
+        "$1.0100$",
+        "$1.1103$",
+        "$1.1000$"
+      ],
+      "answer": 3,
+      "explanation": "The slope at the start is $f(0, 1) = 0 + 1 = 1$, so $y_1 = 1 + 0.1(1) = 1.1$. The exact solution $y = 2e^x - x - 1$ gives $y(0.1) = 1.1103$, which Euler underestimates. The value $1.1103$ is the exact answer and $1.2$ over-steps. The trap is using a slope other than the one evaluated at the current point $(0, 1)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-004",
+      "stem": "Continue Euler's method for $y' = x + y$, $y(0) = 1$, $h = 0.1$ from $y_1 = 1.1$. The second step gives $y_2$ as which value?",
+      "options": [
+        "$1.2200$",
+        "$1.2100$",
+        "$1.2000$",
+        "$1.3310$"
+      ],
+      "answer": 0,
+      "explanation": "At $(x_1, y_1) = (0.1, 1.1)$ the slope is $f = 0.1 + 1.1 = 1.2$, so $y_2 = 1.1 + 0.1(1.2) = 1.22$. Each step reuses only the slope at the latest point. The value $1.21$ forgets to add $x_1$ into the slope, and $1.2$ truncates. The trap is freezing the slope at its first-step value $1$ instead of re-evaluating $f$ at the new point.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-005",
+      "stem": "The improved Euler (Heun) method corrects the Euler predictor by which formula, where $y_p = y_n + h\\,f(x_n, y_n)$?",
+      "options": [
+        "$y_{n+1} = y_n + h\\,f(x_{n+1}, y_p)$",
+        "$y_{n+1} = y_n + \\dfrac{h}{2}\\left[f(x_n, y_n) + f(x_{n+1}, y_p)\\right]$",
+        "$y_{n+1} = y_n + \\dfrac{h}{2}\\,f(x_n, y_n)$",
+        "$y_{n+1} = y_p + h\\,f(x_n, y_n)$"
+      ],
+      "answer": 1,
+      "explanation": "Heun's method averages the slope at the start with the slope at the predicted endpoint: $y_{n+1} = y_n + \\dfrac{h}{2}[f(x_n, y_n) + f(x_{n+1}, y_p)]$. The first option uses only the endpoint slope, the third halves a single slope, and the fourth double-counts. The trap is forgetting to average the two slopes; the corrector blends the predictor slope with the slope at the new point.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-006",
+      "stem": "Apply one step of the improved Euler (Heun) method to $y' = x + y$, $y(0) = 1$, $h = 0.1$. The value $y_1$ is which of the following?",
+      "options": [
+        "$1.1000$",
+        "$1.1200$",
+        "$1.1100$",
+        "$1.1050$"
+      ],
+      "answer": 2,
+      "explanation": "The predictor is $y_p = 1 + 0.1(1) = 1.1$ with slope $f(0, 1) = 1$, and the endpoint slope is $f(0.1, 1.1) = 1.2$. Then $y_1 = 1 + \\dfrac{0.1}{2}(1 + 1.2) = 1 + 0.05(2.2) = 1.11$. This beats plain Euler's $1.1$, closer to the exact $1.1103$. The value $1.1$ is the Euler estimate. The trap is skipping the averaging step and reporting the predictor.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-007",
+      "stem": "Apply one step of the improved Euler (Heun) method to $y' = y$, $y(0) = 1$, $h = 0.1$. The value $y_1$ is which of the following?",
+      "options": [
+        "$1.1000$",
+        "$1.1052$",
+        "$1.1025$",
+        "$1.1050$"
+      ],
+      "answer": 3,
+      "explanation": "The predictor is $y_p = 1 + 0.1(1) = 1.1$, and the endpoint slope is $f(0.1, 1.1) = 1.1$. Then $y_1 = 1 + \\dfrac{0.1}{2}(1 + 1.1) = 1 + 0.05(2.1) = 1.105$. This is closer to the exact $e^{0.1} = 1.1052$ than Euler's $1.1$. The value $1.1052$ is the exact solution. The trap is reporting the Euler predictor $1.1$ instead of the corrected average.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-008",
+      "stem": "The classical fourth-order Runge-Kutta (RK4) method combines four slope estimates with which weighting?",
+      "options": [
+        "$y_{n+1} = y_n + \\dfrac{h}{6}\\left(k_1 + 2k_2 + 2k_3 + k_4\\right)$",
+        "$y_{n+1} = y_n + \\dfrac{h}{4}\\left(k_1 + k_2 + k_3 + k_4\\right)$",
+        "$y_{n+1} = y_n + h\\,k_1$",
+        "$y_{n+1} = y_n + \\dfrac{h}{6}\\left(k_1 + 4k_2 + k_4\\right)$"
+      ],
+      "answer": 0,
+      "explanation": "RK4 takes the weighted average $y_{n+1} = y_n + \\dfrac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)$, giving the two midpoint slopes $k_2, k_3$ double weight. The second option weights all four equally, the third is plain Euler, and the fourth drops $k_3$ and misweights. The trap is the Simpson-like pattern $1, 2, 2, 1$ over $6$; the midpoint slopes carry twice the weight of the endpoints.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-009",
+      "stem": "For RK4 applied to $y' = x + y$, $y(0) = 1$, $h = 0.1$, the first slope $k_1 = f(x_0, y_0)$ is which value?",
+      "options": [
+        "$1.1$",
+        "$1.05$",
+        "$1$",
+        "$1.2105$"
+      ],
+      "answer": 2,
+      "explanation": "The first RK4 slope is simply $k_1 = f(x_0, y_0) = f(0, 1) = 0 + 1 = 1$, the same starting slope Euler uses. The value $1.1$ is $k_2$, and $1.2105$ is $k_4$. The trap is confusing $k_1$ with a later stage; $k_1$ is always evaluated at the unshifted initial point.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-010",
+      "stem": "For RK4 on $y' = x + y$, $y(0) = 1$, $h = 0.1$ with $k_1 = 1$, the second slope $k_2 = f\\!\\left(x_0 + \\tfrac{h}{2}, y_0 + \\tfrac{h}{2}k_1\\right)$ is which value?",
+      "options": [
+        "$1.2105$",
+        "$1.10$",
+        "$1.105$",
+        "$1.00$"
+      ],
+      "answer": 1,
+      "explanation": "Here $x_0 + \\tfrac{h}{2} = 0.05$ and $y_0 + \\tfrac{h}{2}k_1 = 1 + 0.05(1) = 1.05$, so $k_2 = f(0.05, 1.05) = 0.05 + 1.05 = 1.1$. The value $1.105$ is $k_3$, and $1.2105$ is $k_4$. The trap is forgetting to advance $x$ by $\\tfrac{h}{2}$ as well as $y$; both arguments shift to the midpoint.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-011",
+      "stem": "For RK4 on $y' = x + y$, $y(0) = 1$, $h = 0.1$, the four slopes are $k_1 = 1$, $k_2 = 1.1$, $k_3 = 1.105$, $k_4 = 1.2105$. The value $y_1$ is which of the following?",
+      "options": [
+        "$1.1000$",
+        "$1.1103$",
+        "$1.2105$",
+        "$1.1050$"
+      ],
+      "answer": 1,
+      "explanation": "Combining the slopes, $y_1 = 1 + \\dfrac{0.1}{6}(1 + 2(1.1) + 2(1.105) + 1.2105) = 1 + \\dfrac{0.1}{6}(6.6205) = 1 + 0.110342 = 1.1103$. This agrees with the exact $y(0.1) = 2e^{0.1} - 0.1 - 1 = 1.1103$ to four decimals, showing RK4's high accuracy. The value $1.1$ is the Euler estimate. The trap is using equal weights instead of the $1, 2, 2, 1$ pattern.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-012",
+      "stem": "The local truncation error of Euler's method per step is of which order in $h$?",
+      "options": [
+        "$O(h^2)$",
+        "$O(h)$",
+        "$O(h^3)$",
+        "$O(h^4)$"
+      ],
+      "answer": 0,
+      "explanation": "Euler's method comes from truncating the Taylor expansion after the linear term, so the error dropped in one step is $\\dfrac{h^2}{2}y''(\\xi) = O(h^2)$. Accumulating these over $O(1/h)$ steps gives a global error $O(h)$, which is why Euler is called first-order. The options $O(h)$, $O(h^3)$, $O(h^4)$ misstate the per-step order. The trap is confusing the local error $O(h^2)$ with the global error $O(h)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-013",
+      "stem": "The global truncation error of Euler's method over a fixed interval is of which order in $h$?",
+      "options": [
+        "$O(h^2)$",
+        "$O(h^0)$",
+        "$O(h)$",
+        "$O(h^4)$"
+      ],
+      "answer": 2,
+      "explanation": "The local error is $O(h^2)$ per step, but summing over the $O(1/h)$ steps needed to cross the interval loses one power of $h$, giving a global (accumulated) error of $O(h)$. So Euler's method is first-order accurate. The value $O(h^2)$ is the local order, and $O(h^0)$ would mean no convergence. The trap is quoting the local order; the global Euler error is one power lower.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-014",
+      "stem": "The classical RK4 method has global truncation error of which order in $h$?",
+      "options": [
+        "$O(h^4)$",
+        "$O(h^2)$",
+        "$O(h^5)$",
+        "$O(h)$"
+      ],
+      "answer": 0,
+      "explanation": "Classical RK4 matches the Taylor expansion through the $h^4$ term, so its local error is $O(h^5)$ and its accumulated global error over a fixed interval is $O(h^4)$. This fourth-order accuracy is why RK4 is far more accurate than Euler for the same step size. The value $O(h^5)$ is the local order, and $O(h^2)$, $O(h)$ understate it. The trap is reporting the local order $O(h^5)$ as the global one.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-015",
+      "stem": "The improved Euler (Heun) method has global truncation error of which order in $h$?",
+      "options": [
+        "$O(h^3)$",
+        "$O(h^2)$",
+        "$O(h)$",
+        "$O(h^4)$"
+      ],
+      "answer": 1,
+      "explanation": "Heun's method is a second-order Runge-Kutta scheme: averaging two slopes cancels the leading Euler error, giving local error $O(h^3)$ and global error $O(h^2)$. It is therefore one order more accurate than Euler and one less than RK4. The value $O(h^3)$ is the local order, and $O(h)$ is Euler's. The trap is mixing the local order $O(h^3)$ with the global order $O(h^2)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-016",
+      "stem": "Apply one Euler step to $y' = -y$, $y(0) = 1$, with $h = 0.1$. The value $y_1$ is which of the following?",
+      "options": [
+        "$1.1000$",
+        "$0.9048$",
+        "$0.9000$",
+        "$0.8100$"
+      ],
+      "answer": 2,
+      "explanation": "The slope is $f(0, 1) = -1$, so $y_1 = 1 + 0.1(-1) = 0.9$. The exact solution is $e^{-0.1} = 0.9048$, which Euler underestimates here. The value $0.9048$ is exact and $0.81$ would be $y_0(1 - h)^2$. The trap is mishandling the sign of the slope; the decay $y' = -y$ makes $y$ decrease, so the increment is negative.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-017",
+      "stem": "In one step of RK4, how many evaluations of the function $f(x, y)$ are required?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$4$",
+        "$6$"
+      ],
+      "answer": 2,
+      "explanation": "RK4 computes four slope estimates $k_1, k_2, k_3, k_4$, one function evaluation each, so a single step needs $4$ evaluations of $f$. This higher cost per step buys fourth-order accuracy. Euler needs $1$ and Heun needs $2$; the $6$ confuses the weighting denominator with the number of evaluations. The trap is reading the $6$ in $\\dfrac{h}{6}$ as a count of evaluations.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-018",
+      "stem": "If Euler's step size $h$ is halved, the global error of Euler's method is reduced by approximately which factor?",
+      "options": [
+        "$2$",
+        "$4$",
+        "$8$",
+        "$16$"
+      ],
+      "answer": 0,
+      "explanation": "Euler's global error is $O(h)$, so halving $h$ multiplies the error by about $\\dfrac{1}{2}$, a twofold reduction. A factor of $4$ would mean second-order accuracy, $8$ third-order, and $16$ fourth-order. The trap is matching the reduction to the wrong order; first-order accuracy means the error only halves when the step halves.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-019",
+      "stem": "Apply one Euler step to $y' = 2x$, $y(0) = 0$, $h = 0.5$, then a second step. The value $y_2$ (at $x = 1$) is which of the following?",
+      "options": [
+        "$1.00$",
+        "$0.75$",
+        "$0.50$",
+        "$0.25$"
+      ],
+      "answer": 2,
+      "explanation": "First step: $f(0, 0) = 0$, so $y_1 = 0 + 0.5(0) = 0$. Second step at $x_1 = 0.5$: $f(0.5, 0) = 2(0.5) = 1$, so $y_2 = 0 + 0.5(1) = 0.5$. The exact value is $\\int_0^1 2x\\,dx = 1$, so Euler lags because the slope is sampled at the left of each panel. The value $1.00$ is exact. The trap is sampling the slope at the wrong end; Euler uses the left endpoint, which underestimates a rising slope.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-020",
+      "stem": "A second-order Runge-Kutta method (such as Heun) achieves higher accuracy than Euler primarily by doing which of the following?",
+      "options": [
+        "Using a smaller step size automatically",
+        "Sampling the slope at more than one point per step",
+        "Ignoring the initial condition",
+        "Solving an implicit equation each step"
+      ],
+      "answer": 1,
+      "explanation": "A second-order Runge-Kutta scheme evaluates the slope at two points within the step (for Heun, the start and the predicted endpoint) and combines them, cancelling the leading Euler error term. It does not change $h$ on its own, certainly does not ignore the initial condition, and Heun is explicit, not implicit. The trap is attributing the gain to a smaller step; the gain comes from better slope information within the same step.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-021",
+      "stem": "Euler's method can be viewed as the Taylor series method that retains terms up to which order in $h$?",
+      "options": [
+        "Zeroth order (the constant term)",
+        "First order (the $h\\,y'$ term)",
+        "Second order (the $h^2 y''$ term)",
+        "Fourth order",
+        "Third order"
+      ],
+      "answer": 1,
+      "explanation": "Euler's update $y_{n+1} = y_n + h\\,y'$ is exactly the Taylor expansion of $y(x + h)$ kept through the first-order term $h\\,y'$, discarding $\\dfrac{h^2}{2}y''$ and higher. Keeping only the constant term would give $y_{n+1} = y_n$, while second or higher order would require derivative terms Euler omits. The trap is miscounting which Taylor term Euler stops at; it keeps the linear term and drops the quadratic.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-022",
+      "stem": "The modified Euler (midpoint) method estimates $y_{n+1}$ using which slope?",
+      "options": [
+        "The slope at the start, $f(x_n, y_n)$",
+        "The slope at the midpoint, $f\\!\\left(x_n + \\tfrac{h}{2}, y_n + \\tfrac{h}{2}f(x_n, y_n)\\right)$",
+        "The average of four slopes",
+        "The slope at the previous step"
+      ],
+      "answer": 1,
+      "explanation": "The modified Euler (midpoint) method first takes a half Euler step to estimate $y$ at the midpoint, then uses the slope there for the full step: $y_{n+1} = y_n + h\\,f\\!\\left(x_n + \\tfrac{h}{2}, y_n + \\tfrac{h}{2}f(x_n, y_n)\\right)$. Using only the start slope is plain Euler, four slopes is RK4, and the previous step's slope is unrelated. The trap is using the start slope for the whole step; the midpoint method evaluates the slope halfway across.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-023",
+      "format": "cloze",
+      "stem": "Apply Euler's method to $y' = x + y$, $y(0) = 1$ with $h = 0.1$ for two steps.",
+      "solution": "The first slope is $f(0, 1) =$ {{1}}, so $y_1 = 1 + 0.1(1) =$ {{2}}. At the new point the slope is $f(0.1, 1.1) = 1.2$, giving $y_2 =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.1,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.22,
+          "tolerance": 0.0001
+        }
+      ],
+      "explanation": "First slope $f(0, 1) = 0 + 1 = 1$, so $y_1 = 1 + 0.1(1) = 1.1$. Second slope $f(0.1, 1.1) = 0.1 + 1.1 = 1.2$, so $y_2 = 1.1 + 0.1(1.2) = 1.22$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-024",
+      "format": "cloze",
+      "stem": "Apply one step of the improved Euler (Heun) method to $y' = x + y$, $y(0) = 1$ with $h = 0.1$.",
+      "solution": "The Euler predictor is $y_p = 1 + 0.1(1) =$ {{1}}. The slope at the predicted endpoint is $f(0.1, y_p) =$ {{2}}. Averaging the two slopes, $y_1 = 1 + \\dfrac{0.1}{2}(1 + 1.2) =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.1,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.2,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.11,
+          "tolerance": 0.0001
+        }
+      ],
+      "explanation": "Predictor $y_p = 1 + 0.1(1) = 1.1$. Endpoint slope $f(0.1, 1.1) = 0.1 + 1.1 = 1.2$. Corrector $y_1 = 1 + 0.05(1 + 1.2) = 1 + 0.05(2.2) = 1.11$, closer to the exact $1.1103$ than Euler's $1.1$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-025",
+      "format": "cloze",
+      "stem": "Apply the classical RK4 method to $y' = x + y$, $y(0) = 1$ with $h = 0.1$.",
+      "solution": "The first two slopes are $k_1 = f(0, 1) =$ {{1}} and $k_2 = f(0.05, 1.05) =$ {{2}}. With $k_3 = 1.105$ and $k_4 = 1.2105$, the update $y_1 = 1 + \\dfrac{0.1}{6}(k_1 + 2k_2 + 2k_3 + k_4)$ gives $y_1 \\approx$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.1,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.1103,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "$k_1 = 0 + 1 = 1$; $k_2 = 0.05 + 1.05 = 1.1$; with $k_3 = 1.105$, $k_4 = 1.2105$, the sum $k_1 + 2k_2 + 2k_3 + k_4 = 6.6205$, so $y_1 = 1 + \\frac{0.1}{6}(6.6205) = 1.1103$, matching the exact value to four decimals.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-026",
+      "format": "cloze",
+      "stem": "Recall the order of accuracy and cost of the standard one-step methods.",
+      "solution": "Euler's method has global error of order {{1}} in $h$. The classical RK4 method has global error of order {{2}} in $h$. A single RK4 step requires {{3}} evaluations of the function $f$.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$h$",
+            "$h^2$",
+            "$h^4$",
+            "$h^5$"
+          ],
+          "answer": "$h$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$h^2$",
+            "$h^3$",
+            "$h^4$",
+            "$h$"
+          ],
+          "answer": "$h^4$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Euler is first-order, global error $O(h)$. RK4 is fourth-order, global error $O(h^4)$. RK4 evaluates $f$ four times per step (for $k_1, k_2, k_3, k_4$).",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-027",
+      "format": "cloze",
+      "stem": "Apply one step each of Euler and improved Euler to $y' = y$, $y(0) = 1$ with $h = 0.1$, and compare.",
+      "solution": "Euler gives $y_1 = 1 + 0.1(1) =$ {{1}}. Improved Euler (Heun), averaging the start slope $1$ with the endpoint slope $1.1$, gives $y_1 = 1 + 0.05(1 + 1.1) =$ {{2}}. Compared with the exact value $e^{0.1} = 1.1052$, the more accurate estimate is from {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1.1,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1.105,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "improved Euler",
+            "plain Euler",
+            "both equally",
+            "neither"
+          ],
+          "answer": "improved Euler"
+        }
+      ],
+      "explanation": "Euler: $y_1 = 1 + 0.1 = 1.1$. Heun: $y_1 = 1 + 0.05(2.1) = 1.105$. The exact value is $e^{0.1} = 1.1052$, so improved Euler's $1.105$ is far closer than Euler's $1.1$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-ivp-euler-and-runge-kutta-028",
+      "format": "cloze",
+      "stem": "Apply Euler's method to the decay problem $y' = -y$, $y(0) = 1$, and recall error behaviour.",
+      "solution": "One Euler step with $h = 0.1$ gives $y_1 = 1 + 0.1(-1) =$ {{1}}. The local truncation error of Euler's method per step is of order {{2}} in $h$. The method that uses four slope evaluations per step to reach fourth-order accuracy is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.9,
+          "tolerance": 0.0001
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$h^2$",
+            "$h$",
+            "$h^3$",
+            "$h^4$"
+          ],
+          "answer": "$h^2$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "classical RK4",
+            "Euler's method",
+            "the trapezium rule",
+            "the shooting method"
+          ],
+          "answer": "classical RK4"
+        }
+      ],
+      "explanation": "The slope is $f(0, 1) = -1$, so $y_1 = 1 - 0.1 = 0.9$. Euler's local truncation error is $O(h^2)$ per step. Classical RK4 uses four function evaluations per step and is fourth-order accurate.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    }
+  ]
+}

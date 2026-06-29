@@ -1,0 +1,504 @@
+{
+  "courseId": "numerical-analysis-ii",
+  "topicId": "interpolation-direct-and-lagrange",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-001",
+      "stem": "The interpolation problem asks for a polynomial $P_n(x)$ that agrees with a function at $n + 1$ distinct nodes. To make $P_n$ unique, its degree is taken to be at most which value?",
+      "options": [
+        "$n + 1$",
+        "$2n$",
+        "$n$",
+        "$n - 1$"
+      ],
+      "answer": 2,
+      "explanation": "A polynomial of degree at most $n$ has $n + 1$ coefficients, exactly matching the $n + 1$ interpolation conditions, so the interpolant is taken to have degree at most $n$. Degree $n + 1$ or $2n$ would leave free coefficients and spoil uniqueness, while $n - 1$ gives too few coefficients to hit all the nodes. The trap is the off-by-one: three points fix a parabola of degree $2$, not degree $3$.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-002",
+      "stem": "In the direct (Vandermonde) method, the interpolating polynomial is written as $P(x) = a_0 + a_1 x + a_2 x^2 + \\cdots$ and the coefficients are found by which procedure?",
+      "options": [
+        "Reading them off as the function values $f_i$ directly",
+        "Solving a linear system obtained by substituting each node",
+        "Differentiating $P$ at the first node",
+        "Taking forward differences of the data"
+      ],
+      "answer": 1,
+      "explanation": "Substituting each node $x_i$ into $P(x_i) = f_i$ produces one linear equation per point, and the resulting square linear system (with the Vandermonde coefficient matrix) is solved for the $a_k$. The coefficients are not the raw $f_i$, differentiation plays no role here, and forward differences belong to Newton's tabular methods rather than the direct method. The trap is confusing the unknown coefficients $a_k$ with the data values $f_i$; only for the constant term of a single point do they coincide.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-003",
+      "stem": "Linear interpolation between $(2, 4)$ and $(6, 8)$ estimates the value at $x = 3$ as which of the following?",
+      "options": [
+        "$6$",
+        "$4.5$",
+        "$5.5$",
+        "$5$"
+      ],
+      "answer": 3,
+      "explanation": "Linear interpolation gives $f(x) \\approx f_0 + (x - x_0)\\dfrac{f_1 - f_0}{x_1 - x_0} = 4 + (3 - 2)\\dfrac{8 - 4}{6 - 2} = 4 + 1\\cdot 1 = 5$. The slope is $\\dfrac{4}{4} = 1$, so advancing one unit in $x$ from the first node adds $1$ to the value. The value $6$ doubles the step, and $4.5$ or $5.5$ misplace the fraction. The trap is using the midpoint average $6$ of the two heights; $x = 3$ is only a quarter of the way along $[2, 6]$, not halfway.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-004",
+      "stem": "The Lagrange basis polynomial $L_i(x)$ for distinct nodes is built to satisfy which property at the nodes?",
+      "options": [
+        "$L_i(x_j) = \\delta_{ij}$ (one if $i = j$, zero otherwise)",
+        "$L_i(x_j) = 1$ for every $i$ and $j$",
+        "$L_i(x_j) = x_j$",
+        "$L_i(x_j) = 0$ for every $i$ and $j$"
+      ],
+      "answer": 0,
+      "explanation": "Each Lagrange basis polynomial is constructed so that $L_i(x_i) = 1$ and $L_i(x_j) = 0$ for $j \\neq i$, the Kronecker delta property $L_i(x_j) = \\delta_{ij}$. This selectivity is what makes $\\sum_i f_i L_i(x)$ pass through every data point. A value of $1$ everywhere would make the sum collapse, all zeros give the zero polynomial, and $x_j$ has no basis meaning. The trap is missing the on/off behaviour: each basis function switches on at exactly one node.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-005",
+      "stem": "For the three nodes $x_0, x_1, x_2$, the Lagrange basis polynomial $L_1(x)$ is which expression?",
+      "options": [
+        "$\\dfrac{(x - x_0)(x - x_2)}{(x_1 - x_0)(x_1 - x_2)}$",
+        "$\\dfrac{(x - x_0)(x - x_1)}{(x_2 - x_0)(x_2 - x_1)}$",
+        "$\\dfrac{(x - x_1)(x - x_2)}{(x_0 - x_1)(x_0 - x_2)}$",
+        "$\\dfrac{(x - x_0)(x - x_1)(x - x_2)}{(x_1 - x_0)(x_1 - x_2)}$"
+      ],
+      "answer": 0,
+      "explanation": "The basis function $L_1$ must vanish at the other nodes $x_0$ and $x_2$, so its numerator is $(x - x_0)(x - x_2)$, and it must equal $1$ at $x_1$, so the denominator is $(x_1 - x_0)(x_1 - x_2)$. The second option is $L_2$, the third is $L_0$, and the fourth wrongly includes the factor $(x - x_1)$, which would force $L_1(x_1) = 0$. The trap is leaving in the factor for the node's own value; $L_i$ omits the $(x - x_i)$ term.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-006",
+      "stem": "Using Lagrange interpolation on $(0, 1)$, $(1, 2)$, $(2, 5)$, evaluate the basis weight $L_0$ at $x = 1.5$.",
+      "options": [
+        "$0.75$",
+        "$0.375$",
+        "$0.125$",
+        "$-0.125$"
+      ],
+      "answer": 3,
+      "explanation": "Here $L_0(1.5) = \\dfrac{(1.5 - 1)(1.5 - 2)}{(0 - 1)(0 - 2)} = \\dfrac{(0.5)(-0.5)}{(-1)(-2)} = \\dfrac{-0.25}{2} = -0.125$. The weight is negative because $x = 1.5$ lies outside the interval $[x_0, x_1]$ on the far side from $x_0$. The value $0.75$ is $L_1$, $0.375$ is $L_2$, and $0.125$ drops the sign. The trap is forgetting that Lagrange weights can be negative when the evaluation point sits away from the node.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-007",
+      "stem": "Using Lagrange interpolation on $(0, 1)$, $(1, 2)$, $(2, 5)$, estimate the value at $x = 1.5$.",
+      "options": [
+        "$2.50$",
+        "$3.50$",
+        "$3.25$",
+        "$3.00$"
+      ],
+      "answer": 2,
+      "explanation": "With $L_0 = -0.125$, $L_1 = 0.75$, $L_2 = 0.375$, the estimate is $1(-0.125) + 2(0.75) + 5(0.375) = -0.125 + 1.5 + 1.875 = 3.25$. As a check the data fit $P(x) = 1 + x^2$, so $P(1.5) = 1 + 2.25 = 3.25$. The other options drop or misweight a node. The trap is a sign slip in a Lagrange weight; the three weights must sum to $1$, which they do: $-0.125 + 0.75 + 0.375 = 1$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-008",
+      "stem": "Using Lagrange interpolation on the squares $(1, 1)$, $(2, 4)$, $(3, 9)$, estimate the value at $x = 2.5$.",
+      "options": [
+        "$6.50$",
+        "$6.25$",
+        "$5.75$",
+        "$6.00$"
+      ],
+      "answer": 1,
+      "explanation": "The weights at $x = 2.5$ are $L_0 = \\dfrac{(2.5 - 2)(2.5 - 3)}{(1 - 2)(1 - 3)} = -0.125$, $L_1 = \\dfrac{(2.5 - 1)(2.5 - 3)}{(2 - 1)(2 - 3)} = 0.75$, $L_2 = \\dfrac{(2.5 - 1)(2.5 - 2)}{(3 - 1)(3 - 2)} = 0.375$. Then $f(2.5) = 1(-0.125) + 4(0.75) + 9(0.375) = -0.125 + 3 + 3.375 = 6.25$. Since the data are squares, the interpolant is $x^2$ and $2.5^2 = 6.25$ confirms it. The trap is a sign error in a denominator, which would break the partition-of-unity check.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-009",
+      "stem": "The sum of all Lagrange basis polynomials $\\sum_{i=0}^{n} L_i(x)$ equals which constant for every $x$?",
+      "options": [
+        "$n$",
+        "$x$",
+        "$0$",
+        "$1$"
+      ],
+      "answer": 3,
+      "explanation": "Interpolating the constant function $f \\equiv 1$ must return $1$ everywhere, and that interpolant is exactly $\\sum_i 1\\cdot L_i(x) = \\sum_i L_i(x)$. So the basis forms a partition of unity, summing to $1$ for every $x$. A sum of $0$ would hold only for the zero function, while $n$ and $x$ contradict the reproduction of constants. The trap is overlooking that the basis must reproduce constants, which pins the sum at $1$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-010",
+      "stem": "Using the direct method on $(0, 1)$, $(1, 2)$, $(2, 5)$ with $P(x) = a_0 + a_1 x + a_2 x^2$, the value of $a_0$ is which of the following?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$0$",
+        "$5$"
+      ],
+      "answer": 0,
+      "explanation": "Substituting $x = 0$ gives $P(0) = a_0 = 1$ immediately, since the node at the origin isolates the constant term. The remaining equations $a_0 + a_1 + a_2 = 2$ and $a_0 + 2a_1 + 4a_2 = 5$ then give $a_1 = 0$, $a_2 = 1$. The value $2$ is $f(1)$ and $5$ is $f(2)$, not $a_0$. The trap is reading a coefficient off a non-origin data value; only the point at $x = 0$ directly yields $a_0$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-011",
+      "stem": "For the data $(0, 1)$, $(1, 2)$, $(2, 5)$, solving the direct-method system gives the interpolating polynomial as which of the following?",
+      "options": [
+        "$1 + 2x$",
+        "$2 + x^2$",
+        "$1 + x^2$",
+        "$1 + x + x^2$"
+      ],
+      "answer": 2,
+      "explanation": "From $a_0 = 1$, $a_0 + a_1 + a_2 = 2$, $a_0 + 2a_1 + 4a_2 = 5$, the second and third equations give $a_1 + a_2 = 1$ and $2a_1 + 4a_2 = 4$, so $a_2 = 1$ and $a_1 = 0$, yielding $P(x) = 1 + x^2$. Checking: $P(0) = 1$, $P(1) = 2$, $P(2) = 5$, all match. The option $1 + x + x^2$ gives $P(1) = 3$, and the others fail a node. The trap is solving the $2\\times 2$ subsystem carelessly; substitute back to confirm every point.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-012",
+      "stem": "A drawback of the direct (Vandermonde) method compared with the Lagrange form is which of the following?",
+      "options": [
+        "It cannot reproduce a quadratic exactly",
+        "The Vandermonde system can be ill-conditioned and must be re-solved if a node is added",
+        "It requires equally spaced nodes",
+        "It produces a different polynomial from Lagrange's"
+      ],
+      "answer": 1,
+      "explanation": "The direct method requires forming and solving a Vandermonde linear system, which grows ill-conditioned as the number of nodes increases, and adding one more point forces a complete re-solve. The interpolant is unique, so it is not a different polynomial from Lagrange's, the method handles unequally spaced nodes, and it reproduces low-degree polynomials exactly. The trap is thinking the methods give different curves; they are three representations of the one unique interpolant.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-013",
+      "stem": "If $n + 1$ data points are sampled from a polynomial of degree exactly $n$, the degree-$n$ interpolating polynomial does which of the following?",
+      "options": [
+        "Has degree $n + 1$",
+        "Is the zero polynomial",
+        "Reproduces the original polynomial exactly",
+        "Approximates it with a nonzero error"
+      ],
+      "answer": 2,
+      "explanation": "Interpolation through $n + 1$ nodes is exact for any polynomial of degree at most $n$, because the degree-$n$ interpolant is unique and the original polynomial already qualifies. The error term carries $f^{(n+1)}(\\xi)$, which is zero for a degree-$n$ polynomial, so there is no error. It cannot have degree $n + 1$, and it is not zero unless the data are. The trap is expecting a residual even when the sampled function is itself a low-degree polynomial.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-014",
+      "stem": "The error of polynomial interpolation through $n + 1$ nodes is $f(x) - P_n(x) = \\dfrac{f^{(n+1)}(\\xi)}{(n + 1)!}\\,\\omega(x)$. The node polynomial $\\omega(x)$ is which of the following?",
+      "options": [
+        "$\\displaystyle\\prod_{i=0}^{n}(x - x_i)$",
+        "$\\displaystyle\\sum_{i=0}^{n}(x - x_i)$",
+        "$(x - x_0)^{n+1}$",
+        "$\\displaystyle\\prod_{i=0}^{n} x_i$"
+      ],
+      "answer": 0,
+      "explanation": "The node polynomial is the product $\\omega(x) = \\prod_{i=0}^{n}(x - x_i) = (x - x_0)(x - x_1)\\cdots(x - x_n)$, which vanishes at every node and so drives the interpolation error to zero there. A sum would not vanish at the nodes, $(x - x_0)^{n+1}$ uses a single node repeatedly, and a product of the $x_i$ themselves loses the variable $x$. The trap is replacing the product over all nodes with a power of one node or a sum.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-015",
+      "stem": "Linear interpolation uses $(1, 0)$ and $(4, 1.3863)$ (values of $\\ln x$) to estimate $\\ln 2$. The estimate at $x = 2$ is which of the following?",
+      "options": [
+        "$0.6931$",
+        "$0.4621$",
+        "$0.3466$",
+        "$0.5000$"
+      ],
+      "answer": 1,
+      "explanation": "Linear interpolation gives $f(2) \\approx 0 + (2 - 1)\\dfrac{1.3863 - 0}{4 - 1} = \\dfrac{1.3863}{3} = 0.4621$. The true value $\\ln 2 = 0.6931$ is larger because $\\ln x$ is concave, so the chord lies below the curve. The value $0.5$ is a rough guess and $0.3466$ halves the rise wrongly. The trap is expecting the linear estimate to match $\\ln 2$; a straight chord across a wide concave interval undershoots.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-016",
+      "stem": "Quadratic interpolation requires how many distinct data points?",
+      "options": [
+        "$2$",
+        "$4$",
+        "$3$",
+        "$5$"
+      ],
+      "answer": 2,
+      "explanation": "A quadratic has degree $2$ and therefore $3$ coefficients, so $3$ distinct points are required to determine it uniquely. Two points fix only a line, while four or five points over-determine a quadratic and would generally raise the degree. The trap is the degree-versus-points off-by-one: degree $2$ needs $2 + 1 = 3$ nodes.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-017",
+      "stem": "Using Lagrange interpolation on $(1, 1)$, $(2, 4)$, $(4, 16)$ (values of $x^2$), estimate the value at $x = 3$.",
+      "options": [
+        "$8$",
+        "$10$",
+        "$9$",
+        "$12$"
+      ],
+      "answer": 2,
+      "explanation": "The weights at $x = 3$ are $L_0 = \\dfrac{(3 - 2)(3 - 4)}{(1 - 2)(1 - 4)} = \\dfrac{-1}{3}$, $L_1 = \\dfrac{(3 - 1)(3 - 4)}{(2 - 1)(2 - 4)} = 1$, $L_2 = \\dfrac{(3 - 1)(3 - 2)}{(4 - 1)(4 - 2)} = \\dfrac{1}{3}$. Then $f(3) = 1(-\\tfrac{1}{3}) + 4(1) + 16(\\tfrac{1}{3}) = -\\tfrac{1}{3} + 4 + \\tfrac{16}{3} = 9$. The interpolant is $x^2$, so $3^2 = 9$ confirms it. The trap is mishandling the unequal spacing in the denominators, where the gaps are $1$ and $2$, not both $1$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-018",
+      "stem": "The linear Lagrange interpolant through $(2, 4)$ and $(5, 1)$ evaluated at $x = 3$ gives which value?",
+      "options": [
+        "$2$",
+        "$3.5$",
+        "$5$",
+        "$3$"
+      ],
+      "answer": 3,
+      "explanation": "The Lagrange weights are $L_0 = \\dfrac{3 - 5}{2 - 5} = \\dfrac{2}{3}$ and $L_1 = \\dfrac{3 - 2}{5 - 2} = \\dfrac{1}{3}$, so $f(3) = 4\\cdot\\tfrac{2}{3} + 1\\cdot\\tfrac{1}{3} = \\dfrac{8 + 1}{3} = 3$. Equivalently the slope is $\\dfrac{1 - 4}{5 - 2} = -1$, giving $4 + (3 - 2)(-1) = 3$. The value $3.5$ is the midpoint average of the heights, which ignores that $x = 3$ is not the midpoint of $[2, 5]$. The trap is averaging the endpoint values instead of weighting by position.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-019",
+      "stem": "The Lagrange interpolating polynomial is written as $P(x) = \\sum_{i=0}^{n} f_i L_i(x)$. The data values $f_i$ enter this expression how?",
+      "options": [
+        "As linear coefficients multiplying the basis polynomials",
+        "Inside the basis polynomials' denominators",
+        "As exponents of $(x - x_i)$",
+        "Only through their differences"
+      ],
+      "answer": 0,
+      "explanation": "In the Lagrange form the data values appear purely as constant multipliers on the basis polynomials, $P(x) = f_0 L_0(x) + f_1 L_1(x) + \\cdots$, so the interpolant is a linear combination of fixed basis functions. The $f_i$ do not appear in the denominators (those use only node differences), are not exponents, and enter directly rather than as differences. The trap is confusing the Lagrange form, which uses raw $f_i$ as weights, with Newton's form, which uses divided differences.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-020",
+      "stem": "Using Lagrange interpolation on $(0, 1)$, $(2, 5)$, $(4, 17)$ (values of $x^2 + 1$), estimate the value at $x = 1$.",
+      "options": [
+        "$2$",
+        "$3$",
+        "$1.5$",
+        "$2.5$"
+      ],
+      "answer": 0,
+      "explanation": "The weights at $x = 1$ are $L_0 = \\dfrac{(1 - 2)(1 - 4)}{(0 - 2)(0 - 4)} = \\dfrac{3}{8}$, $L_1 = \\dfrac{(1 - 0)(1 - 4)}{(2 - 0)(2 - 4)} = \\dfrac{3}{4}$, $L_2 = \\dfrac{(1 - 0)(1 - 2)}{(4 - 0)(4 - 2)} = -\\dfrac{1}{8}$. Then $f(1) = 1(\\tfrac{3}{8}) + 5(\\tfrac{3}{4}) + 17(-\\tfrac{1}{8}) = \\tfrac{3}{8} + \\tfrac{30}{8} - \\tfrac{17}{8} = \\tfrac{16}{8} = 2$. The interpolant is $x^2 + 1$, so $1^2 + 1 = 2$. The trap is mishandling the spacing $h = 2$ in the denominators.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-021",
+      "stem": "For a fixed set of $n + 1$ distinct nodes, how many different polynomials of degree at most $n$ interpolate the same data?",
+      "options": [
+        "Infinitely many",
+        "Exactly one",
+        "Exactly $n + 1$",
+        "Exactly two"
+      ],
+      "answer": 1,
+      "explanation": "The interpolating polynomial of degree at most $n$ through $n + 1$ distinct nodes is unique: if two such polynomials agreed at all nodes, their difference would be a polynomial of degree at most $n$ with $n + 1$ roots, hence identically zero. So the direct, Lagrange, and Newton forms all produce the same polynomial. The trap is thinking different construction methods give different interpolants; they only differ in how the one polynomial is written.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-022",
+      "stem": "The denominator of the Lagrange basis polynomial $L_i(x)$ is which of the following?",
+      "options": [
+        "$\\displaystyle\\prod_{j \\neq i}(x_i - x_j)$",
+        "$\\displaystyle\\prod_{j \\neq i}(x - x_j)$",
+        "$\\displaystyle\\prod_{j \\neq i}(x_j - x_i)$ with no further restriction",
+        "$f_i$"
+      ],
+      "answer": 0,
+      "explanation": "The denominator of $L_i$ is the constant $\\prod_{j \\neq i}(x_i - x_j)$, formed by evaluating the numerator's product at $x = x_i$ so that $L_i(x_i) = 1$. The first wrong option is actually the numerator (a function of $x$), the reversed-difference product changes the overall sign, and $f_i$ is a data value, not part of the basis. The trap is swapping numerator and denominator: the numerator depends on $x$, the denominator is a fixed number built from node differences.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-023",
+      "format": "cloze",
+      "stem": "Linear interpolation is applied between $(2, 4)$ and $(6, 8)$ to estimate the value at $x = 3$.",
+      "solution": "The slope between the two points is $\\dfrac{8 - 4}{6 - 2}$, which equals {{1}}. The interpolation fraction $\\dfrac{3 - 2}{6 - 2}$ equals {{2}}. The estimated value is then $f(3) \\approx$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 5,
+          "tolerance": 0.001
+        }
+      ],
+      "explanation": "The slope is $\\frac{4}{4} = 1$ and the fraction is $\\frac{1}{4} = 0.25$. The estimate is $4 + (3 - 2)(1) = 4 + 1 = 5$, equivalently $4 + 0.25(8 - 4) = 5$.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-024",
+      "format": "cloze",
+      "stem": "Evaluate the Lagrange interpolant through $(0, 1)$, $(1, 2)$, $(2, 5)$ at the point $x = 1.5$.",
+      "solution": "The basis weight $L_1(1.5) = \\dfrac{(1.5 - 0)(1.5 - 2)}{(1 - 0)(1 - 2)}$ evaluates to {{1}}. Combining all three weighted values gives the estimate $f(1.5) =$ {{2}}. As a check, the three Lagrange weights must add to {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0.75,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "Here $L_1(1.5) = \\frac{(1.5)(-0.5)}{(1)(-1)} = \\frac{-0.75}{-1} = 0.75$. With $L_0 = -0.125$ and $L_2 = 0.375$, the estimate is $1(-0.125) + 2(0.75) + 5(0.375) = 3.25$. The weights sum to $-0.125 + 0.75 + 0.375 = 1$, the partition-of-unity check.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-025",
+      "format": "cloze",
+      "stem": "Use the direct (Vandermonde) method on $(0, 1)$, $(1, 2)$, $(2, 5)$ with $P(x) = a_0 + a_1 x + a_2 x^2$.",
+      "solution": "Substituting $x = 0$ gives $a_0 =$ {{1}}. The remaining equations $a_1 + a_2 = 1$ and $2a_1 + 4a_2 = 4$ give $a_2 =$ {{2}} and $a_1 = 0$. Evaluating the resulting polynomial at $x = 3$ yields $P(3) =$ {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "From $x = 0$, $a_0 = 1$. Solving $a_1 + a_2 = 1$ and $2a_1 + 4a_2 = 4$ gives $a_2 = 1$, $a_1 = 0$, so $P(x) = 1 + x^2$. Then $P(3) = 1 + 9 = 10$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-026",
+      "format": "cloze",
+      "stem": "Recall the structure of Lagrange interpolation and the interpolation error term.",
+      "solution": "The Lagrange basis polynomial $L_i$ takes the value $1$ at node $x_i$ and the value {{1}} at every other node. The minimum number of distinct nodes needed to interpolate a polynomial of degree $3$ exactly is {{2}}. The node polynomial that appears in the interpolation error is best described as {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "the product of $(x - x_i)$ over all nodes",
+            "the sum of $(x - x_i)$ over all nodes",
+            "a single power $(x - x_0)^{n+1}$",
+            "the product of the data values $f_i$"
+          ],
+          "answer": "the product of $(x - x_i)$ over all nodes"
+        }
+      ],
+      "explanation": "Each basis polynomial satisfies $L_i(x_j) = \\delta_{ij}$, so it is $0$ at other nodes. A degree-$3$ polynomial needs $3 + 1 = 4$ points. The error's node polynomial is $\\prod_i (x - x_i)$, which vanishes at every node.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-027",
+      "format": "cloze",
+      "stem": "Evaluate the Lagrange interpolant through the squares $(1, 1)$, $(2, 4)$, $(3, 9)$ at $x = 2.5$, and identify the method.",
+      "solution": "The weight $L_0(2.5) = \\dfrac{(2.5 - 2)(2.5 - 3)}{(1 - 2)(1 - 3)}$ equals {{1}}. The interpolated value $f(2.5)$ is {{2}}. Because the chosen construction writes the interpolant directly as a weighted sum of the data values, the method used here is {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": -0.125,
+          "tolerance": 0.001
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 6.25,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Lagrange interpolation",
+            "the Thomas algorithm",
+            "Simpson's rule",
+            "Euler's method"
+          ],
+          "answer": "Lagrange interpolation"
+        }
+      ],
+      "explanation": "Here $L_0(2.5) = \\frac{(0.5)(-0.5)}{(-1)(-2)} = -0.125$. With $L_1 = 0.75$ and $L_2 = 0.375$, $f(2.5) = 1(-0.125) + 4(0.75) + 9(0.375) = 6.25 = 2.5^2$. Writing $P = \\sum f_i L_i$ directly is the Lagrange form.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-interpolation-direct-and-lagrange-028",
+      "format": "cloze",
+      "stem": "Linear interpolation uses $(1, 0)$ and $(4, 1.3863)$ (values of $\\ln x$) to estimate $\\ln 2$ at $x = 2$.",
+      "solution": "The rise over the interval is $1.3863 - 0 = 1.3863$ and the run is {{1}}. The linear estimate of $\\ln 2$ is therefore approximately {{2}}. Compared with the true value $0.6931$, this linear estimate is {{3}} the true value.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 0.4621,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "below",
+            "above",
+            "exactly equal to",
+            "double"
+          ],
+          "answer": "below"
+        }
+      ],
+      "explanation": "The run is $4 - 1 = 3$, so the estimate is $0 + (2 - 1)\\frac{1.3863}{3} = 0.4621$. Since $\\ln x$ is concave, the chord lies below the curve, so the estimate falls below the true $0.6931$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    }
+  ]
+}

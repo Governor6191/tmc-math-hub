@@ -1,0 +1,566 @@
+{
+  "courseId": "real-function-i-applied-maths",
+  "topicId": "open-closed-borel-sets",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-001",
+      "stem": "A set $O \\subseteq \\mathbb{R}$ is called open if:",
+      "options": [
+        "for every $x \\in O$ there exists $\\varepsilon > 0$ with $(x - \\varepsilon, x + \\varepsilon) \\subseteq O$.",
+        "$O$ contains all of its limit points.",
+        "$O$ is a finite union of points.",
+        "the complement $\\mathbb{R} \\setminus O$ is bounded."
+      ],
+      "answer": 0,
+      "explanation": "By definition, $O$ is open when every point of $O$ is interior, that is each $x \\in O$ has some open interval $(x-\\varepsilon, x+\\varepsilon)$ entirely inside $O$. Containing all limit points is the definition of closed, not open, and neither finiteness nor a bounded complement is required.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-002",
+      "stem": "A set $F \\subseteq \\mathbb{R}$ is closed precisely when:",
+      "options": [
+        "$F$ is bounded.",
+        "its complement $\\mathbb{R} \\setminus F$ is open.",
+        "$F$ is an interval.",
+        "$F$ is countable."
+      ],
+      "answer": 1,
+      "explanation": "Closed is defined as the complement of an open set, so $F$ is closed exactly when $\\mathbb{R} \\setminus F$ is open. Equivalently $F$ contains all of its limit points. Boundedness, being an interval, and countability are unrelated to closedness in general.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-003",
+      "stem": "Which of the following statements about open and closed sets in $\\mathbb{R}$ is TRUE?",
+      "options": [
+        "Every set is either open or closed.",
+        "A set cannot be both open and closed.",
+        "The sets $\\varnothing$ and $\\mathbb{R}$ are both open and closed.",
+        "Finite sets are open."
+      ],
+      "answer": 2,
+      "explanation": "In $\\mathbb{R}$ the only sets that are simultaneously open and closed (clopen) are $\\varnothing$ and $\\mathbb{R}$ itself, a reflection of the connectedness of the real line. A half-open interval like $[0,1)$ is neither open nor closed, so not every set falls into one class, and a nonempty finite set is closed but never open.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-004",
+      "stem": "Which operation is guaranteed to keep open sets open in $\\mathbb{R}$?",
+      "options": [
+        "Countable intersections of open sets, always producing an open set.",
+        "Arbitrary intersections of open sets.",
+        "Complements of open sets.",
+        "Arbitrary (possibly uncountable) unions of open sets."
+      ],
+      "answer": 3,
+      "explanation": "The open sets are closed under arbitrary unions: a union of open sets is open because each point lies in one of them and inherits a surrounding interval. Arbitrary intersections need not be open, for instance $\\bigcap_n (-1/n, 1/n) = \\{0\\}$, and the complement of an open set is closed, not open.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-005",
+      "stem": "Which operation is guaranteed to keep closed sets closed in $\\mathbb{R}$?",
+      "options": [
+        "Arbitrary (possibly uncountable) intersections of closed sets.",
+        "Arbitrary unions of closed sets.",
+        "Taking interiors of closed sets.",
+        "Countable unions of closed sets, always producing a closed set."
+      ],
+      "answer": 0,
+      "explanation": "By De Morgan duality with the open sets, arbitrary intersections of closed sets are closed. Arbitrary unions of closed sets can fail to be closed, for example $\\bigcup_n [1/n, 1] = (0, 1]$, which is not closed. So intersection is the safe operation for the closed class.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-006",
+      "stem": "The structure theorem for open subsets of $\\mathbb{R}$ states that every nonempty open set is:",
+      "options": [
+        "a finite union of closed intervals.",
+        "a countable union of pairwise disjoint open intervals.",
+        "an uncountable union of points.",
+        "always a single open interval."
+      ],
+      "answer": 1,
+      "explanation": "Every nonempty open subset of $\\mathbb{R}$ is a countable disjoint union of open intervals, obtained as its connected components. The union is countable because each component contains a distinct rational. It need not be a single interval (for example $(0,1) \\cup (2,3)$), and the building blocks are open, not closed.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-007",
+      "stem": "A collection $\\mathcal{A}$ of subsets of a set $X$ is a $\\sigma$-algebra if it contains $X$ and is closed under:",
+      "options": [
+        "finite unions only.",
+        "complements and finite intersections only.",
+        "complements and countable unions.",
+        "arbitrary unions."
+      ],
+      "answer": 2,
+      "explanation": "A $\\sigma$-algebra must contain $X$ and be closed under complementation and countable unions; closure under countable intersections then follows by De Morgan's laws. Requiring only finite unions gives merely an algebra, while demanding arbitrary (uncountable) unions would be too strong and is not part of the definition.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-008",
+      "stem": "If $\\mathcal{A}$ is a $\\sigma$-algebra on $X$, which set must also belong to $\\mathcal{A}$?",
+      "options": [
+        "Only $X$ itself.",
+        "Only finite subsets of $X$.",
+        "Every singleton $\\{x\\}$.",
+        "The empty set $\\varnothing$."
+      ],
+      "answer": 3,
+      "explanation": "Since $X \\in \\mathcal{A}$ and $\\sigma$-algebras are closed under complements, the empty set $\\varnothing = X \\setminus X$ must lie in $\\mathcal{A}$. Singletons or arbitrary finite sets need not belong to a general $\\sigma$-algebra; for instance $\\{\\varnothing, X\\}$ is a valid $\\sigma$-algebra containing no singletons.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-009",
+      "stem": "The Borel $\\sigma$-algebra $\\mathcal{B}(\\mathbb{R})$ is defined as:",
+      "options": [
+        "the smallest $\\sigma$-algebra on $\\mathbb{R}$ containing all open sets.",
+        "the collection of all subsets of $\\mathbb{R}$.",
+        "the collection of all open sets only.",
+        "the collection of all countable sets."
+      ],
+      "answer": 0,
+      "explanation": "The Borel $\\sigma$-algebra is by definition the smallest $\\sigma$-algebra containing every open subset of $\\mathbb{R}$, equivalently the $\\sigma$-algebra generated by the open sets. The open sets alone are not a $\\sigma$-algebra (they are not closed under complement), and $\\mathcal{B}(\\mathbb{R})$ is a proper subcollection of the full power set.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-010",
+      "stem": "Which of the following sets is NOT in general a Borel set produced by the standard generators?",
+      "options": [
+        "Every open interval $(a,b)$.",
+        "Every closed set.",
+        "Every countable set.",
+        "Some subset of $\\mathbb{R}$ that lies outside $\\mathcal{B}(\\mathbb{R})$ entirely."
+      ],
+      "answer": 3,
+      "explanation": "Open intervals, all closed sets, and all countable sets are Borel, since they are built from open sets by countable operations. However $\\mathcal{B}(\\mathbb{R})$ does not exhaust the power set: there exist subsets of $\\mathbb{R}$ that are not Borel at all, so the last option names sets genuinely outside the Borel class.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-011",
+      "stem": "An $F_\\sigma$ set is by definition a set that can be written as a:",
+      "options": [
+        "countable intersection of open sets.",
+        "countable union of closed sets.",
+        "finite union of open intervals.",
+        "complement of a single closed set."
+      ],
+      "answer": 1,
+      "explanation": "An $F_\\sigma$ set is a countable union of closed sets, the letters standing for ferme (closed) and sigma (sum/union). A countable intersection of open sets is instead the dual notion, a $G_\\delta$ set. Both $F_\\sigma$ and $G_\\delta$ sets are Borel.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-012",
+      "stem": "A $G_\\delta$ set is by definition a set that can be written as a:",
+      "options": [
+        "countable union of closed sets.",
+        "finite intersection of closed intervals.",
+        "countable intersection of open sets.",
+        "single open interval."
+      ],
+      "answer": 2,
+      "explanation": "A $G_\\delta$ set is a countable intersection of open sets, with $G$ for Gebiet (region/open) and $\\delta$ for Durchschnitt (intersection). Its dual, a countable union of closed sets, is an $F_\\sigma$ set. For example $\\{0\\} = \\bigcap_n (-1/n, 1/n)$ is a $G_\\delta$ set.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-013",
+      "stem": "Why is the set of rational numbers $\\mathbb{Q}$ an $F_\\sigma$ set?",
+      "options": [
+        "Because $\\mathbb{Q}$ is open.",
+        "Because $\\mathbb{Q}$ is a single closed interval.",
+        "Because $\\mathbb{Q}$ is a finite set.",
+        "Because $\\mathbb{Q}$ is a countable union of singletons, each of which is closed."
+      ],
+      "answer": 3,
+      "explanation": "Each singleton $\\{q\\}$ is a closed set, and $\\mathbb{Q}$ is countable, so $\\mathbb{Q} = \\bigcup_{q \\in \\mathbb{Q}} \\{q\\}$ is a countable union of closed sets, hence $F_\\sigma$. It is not open (every interval contains irrationals) and certainly not finite.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-014",
+      "stem": "The set of irrational numbers $\\mathbb{R} \\setminus \\mathbb{Q}$ is best classified as:",
+      "options": [
+        "a $G_\\delta$ set, being the complement of the $F_\\sigma$ set $\\mathbb{Q}$.",
+        "an $F_\\sigma$ set.",
+        "an open set.",
+        "a closed set."
+      ],
+      "answer": 0,
+      "explanation": "The complement of an $F_\\sigma$ set is a $G_\\delta$ set by De Morgan's laws, so since $\\mathbb{Q}$ is $F_\\sigma$, the irrationals form a $G_\\delta$ set. The irrationals are neither open nor closed, as every interval meets both $\\mathbb{Q}$ and its complement.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-015",
+      "stem": "The Heine-Borel theorem characterises the compact subsets of $\\mathbb{R}$ as exactly those sets that are:",
+      "options": [
+        "open and bounded.",
+        "closed and bounded.",
+        "countable.",
+        "closed only."
+      ],
+      "answer": 1,
+      "explanation": "The Heine-Borel theorem states that a subset of $\\mathbb{R}^n$ is compact if and only if it is closed and bounded. Both conditions are essential: $(0,1)$ is bounded but not closed and fails to be compact, while $[0, \\infty)$ is closed but unbounded and also fails.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-016",
+      "stem": "In the language of open covers, a set $K \\subseteq \\mathbb{R}$ is compact when:",
+      "options": [
+        "it has at least one finite open cover.",
+        "it is covered by countably many intervals.",
+        "every open cover of $K$ admits a finite subcover.",
+        "every cover by closed sets has a finite subcover."
+      ],
+      "answer": 2,
+      "explanation": "Compactness is the open-cover property: from any collection of open sets whose union contains $K$, finitely many already cover $K$. Having one finite cover is trivially true of every set, and the property concerns open covers, not closed covers, so only the open-cover formulation is correct.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-017",
+      "stem": "The Lindelof property of $\\mathbb{R}$ asserts that:",
+      "options": [
+        "every open cover has a finite subcover.",
+        "$\\mathbb{R}$ is compact.",
+        "every subset of $\\mathbb{R}$ is countable.",
+        "every open cover has a countable subcover."
+      ],
+      "answer": 3,
+      "explanation": "The Lindelof property says that every open cover of a subset of $\\mathbb{R}$ has a countable subcover, a consequence of $\\mathbb{R}$ having a countable base. This is weaker than compactness (which would demand a finite subcover) and $\\mathbb{R}$ itself is not compact since it is unbounded.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-018",
+      "stem": "Which countable collection forms a base for the standard topology on $\\mathbb{R}$?",
+      "options": [
+        "All open intervals $(p, q)$ with rational endpoints $p, q$.",
+        "All closed intervals $[a,b]$ with $a,b$ irrational.",
+        "All singletons $\\{x\\}$.",
+        "All half-lines $(a, \\infty)$ with real $a$."
+      ],
+      "answer": 0,
+      "explanation": "The open intervals with rational endpoints form a countable base: every open set is a union of such intervals, and there are only countably many because $\\mathbb{Q} \\times \\mathbb{Q}$ is countable. Singletons are not open, closed intervals are not open, and the family of all real half-lines is uncountable.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-019",
+      "stem": "Which family of generators does NOT generate the Borel $\\sigma$-algebra $\\mathcal{B}(\\mathbb{R})$?",
+      "options": [
+        "All open intervals.",
+        "The single set $\\{0\\}$ together with $\\varnothing$ and $\\mathbb{R}$.",
+        "All rays $(a, \\infty)$.",
+        "All closed sets."
+      ],
+      "answer": 1,
+      "explanation": "The open intervals, the closed sets, and the rays $(a,\\infty)$ each generate the full Borel $\\sigma$-algebra. By contrast, $\\{0\\}$ together with $\\varnothing$ and $\\mathbb{R}$ generates only a tiny $\\sigma$-algebra ($\\{\\varnothing, \\{0\\}, \\mathbb{R} \\setminus \\{0\\}, \\mathbb{R}\\}$), nowhere near all Borel sets.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-020",
+      "stem": "Is every closed subset of $\\mathbb{R}$ a Borel set?",
+      "options": [
+        "No, only compact sets are Borel.",
+        "No, closed sets are never Borel.",
+        "Yes, because closed sets are complements of open sets and $\\mathcal{B}(\\mathbb{R})$ is closed under complements.",
+        "Only closed intervals are Borel."
+      ],
+      "answer": 2,
+      "explanation": "Open sets are Borel by definition, and a $\\sigma$-algebra is closed under complementation, so every closed set (the complement of an open set) is Borel. This includes all closed sets, not merely compact ones or closed intervals.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-021",
+      "stem": "A limit point (accumulation point) of a set $A \\subseteq \\mathbb{R}$ is a point $x$ such that:",
+      "options": [
+        "$x \\in A$.",
+        "some neighbourhood of $x$ misses $A$.",
+        "$x$ is an endpoint of $A$.",
+        "every neighbourhood of $x$ contains a point of $A$ different from $x$."
+      ],
+      "answer": 3,
+      "explanation": "A limit point $x$ of $A$ is one every neighbourhood of which meets $A$ in a point other than $x$ itself, so points of $A$ accumulate arbitrarily close to $x$. The point need not belong to $A$, and a point with a neighbourhood missing $A$ is by definition not a limit point.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-022",
+      "stem": "The closure $\\overline{A}$ of a set $A \\subseteq \\mathbb{R}$ equals:",
+      "options": [
+        "$A$ together with all of its limit points.",
+        "the interior of $A$.",
+        "$A$ with its limit points removed.",
+        "the smallest open set containing $A$."
+      ],
+      "answer": 0,
+      "explanation": "The closure is the union of $A$ with the set of its limit points, equivalently the smallest closed set containing $A$. Removing limit points gives a smaller set, the interior is the largest open subset of $A$, and there is no smallest open set containing a general $A$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-023",
+      "stem": "Which of the following is an example of a set that is neither open nor closed in $\\mathbb{R}$?",
+      "options": [
+        "$(0, 1)$",
+        "$[0, 1)$",
+        "$[0, 1]$",
+        "$\\mathbb{R}$"
+      ],
+      "answer": 1,
+      "explanation": "The half-open interval $[0,1)$ is not open because the point $0$ has no surrounding interval inside it, and not closed because the limit point $1$ is missing. By contrast $(0,1)$ is open, $[0,1]$ is closed, and $\\mathbb{R}$ is both open and closed.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-024",
+      "stem": "Is every singleton $\\{a\\} \\subseteq \\mathbb{R}$ a $G_\\delta$ set?",
+      "options": [
+        "No, singletons are open.",
+        "No, a $G_\\delta$ set must be uncountable.",
+        "Yes, since $\\{a\\} = \\bigcap_{n=1}^{\\infty} (a - \\tfrac{1}{n}, a + \\tfrac{1}{n})$.",
+        "Only $\\{0\\}$ is a $G_\\delta$ set."
+      ],
+      "answer": 2,
+      "explanation": "Each open interval $(a - 1/n, a + 1/n)$ contains $a$, and any point at distance $d > 0$ from $a$ is excluded once $1/n < d$, so the countable intersection collapses to exactly $\\{a\\}$. This realises every singleton as a countable intersection of open sets, that is a $G_\\delta$ set.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-025",
+      "stem": "Which statement about the Cantor set $C \\subseteq [0,1]$ is correct?",
+      "options": [
+        "$C$ is open.",
+        "$C$ is countable and hence not closed.",
+        "$C$ is a single interval.",
+        "$C$ is closed, since it is an intersection of closed sets."
+      ],
+      "answer": 3,
+      "explanation": "The Cantor set is the intersection $C = \\bigcap_n C_n$ of the closed sets $C_n$ remaining at each stage of the middle-thirds construction, and an arbitrary intersection of closed sets is closed. It is in fact compact (closed and bounded), uncountable, and contains no interval, so it is not open and not a single interval.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-026",
+      "stem": "Why does the Bolzano-Weierstrass theorem guarantee that an infinite bounded subset of $\\mathbb{R}$ has a limit point?",
+      "options": [
+        "Because infinitely many points in a bounded interval must cluster, by repeated bisection.",
+        "Because every bounded set is finite.",
+        "Because bounded sets are always closed.",
+        "Because the set must be an interval."
+      ],
+      "answer": 0,
+      "explanation": "Bolzano-Weierstrass is proved by repeatedly bisecting a bounding interval: at least one half contains infinitely many points, and nesting these halves produces a point every neighbourhood of which captures infinitely many members, a limit point. Bounded sets need not be finite or closed, and need not be intervals.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-027",
+      "format": "cloze",
+      "stem": "Classify standard sets by their topological type. Use the blanks to record yes or no and the names of set classes.",
+      "solution": "The interval $(0,1)$ is open: answer {{1}}. The interval $[0,1]$ is closed: answer {{2}}. The half-open interval $[0,1)$ is open: answer {{3}}. The two sets in $\\mathbb{R}$ that are both open and closed are $\\varnothing$ and the whole line, of which there are exactly {{4}} such sets.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        },
+        {
+          "id": 4,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
+      ],
+      "explanation": "An open interval is open and a closed interval is closed, while $[0,1)$ is neither (it misses the limit point $1$ yet is not open at $0$). The only clopen subsets of the connected line $\\mathbb{R}$ are $\\varnothing$ and $\\mathbb{R}$, so there are exactly $2$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-028",
+      "format": "cloze",
+      "stem": "Fill in the standard names for set classes built from open and closed sets.",
+      "solution": "A countable union of closed sets is called an {{1}} set. A countable intersection of open sets is called a {{2}} set. The smallest sigma-algebra containing all open subsets of $\\mathbb{R}$ is the {{3}} sigma-algebra.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "F-sigma",
+            "G-delta",
+            "compact"
+          ],
+          "answer": "F-sigma"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "F-sigma",
+            "G-delta",
+            "open"
+          ],
+          "answer": "G-delta"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "Borel",
+            "Lebesgue",
+            "Cantor"
+          ],
+          "answer": "Borel"
+        }
+      ],
+      "explanation": "By definition a countable union of closed sets is $F_\\sigma$ and a countable intersection of open sets is $G_\\delta$. The $\\sigma$-algebra generated by the open sets is the Borel $\\sigma$-algebra $\\mathcal{B}(\\mathbb{R})$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-029",
+      "format": "cloze",
+      "stem": "Heine-Borel and compactness. Decide which intervals are compact.",
+      "solution": "A subset of $\\mathbb{R}$ is compact exactly when it is closed and {{1}}. By this test, the interval $[0,1]$ is compact: answer {{2}}. The interval $(0,1)$ is compact: answer {{3}}. The interval $[0, \\infty)$ is compact: answer {{4}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "text",
+          "accept": [
+            "bounded"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "no"
+        }
+      ],
+      "explanation": "Heine-Borel says compact means closed and bounded. So $[0,1]$ qualifies, $(0,1)$ fails (not closed), and $[0,\\infty)$ fails (not bounded).",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-030",
+      "format": "cloze",
+      "stem": "Counting components of an open set. Consider the open set $O = (0,1) \\cup (2,3) \\cup (5,6)$.",
+      "solution": "By the structure theorem, every open subset of $\\mathbb{R}$ is a countable disjoint union of open intervals. The set $O$ is already written this way, and the number of disjoint open intervals (components) it has is {{1}}. Each such component is itself an {{2}} set.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "open",
+            "closed",
+            "compact"
+          ],
+          "answer": "open"
+        }
+      ],
+      "explanation": "The set $O$ is a disjoint union of the three intervals $(0,1)$, $(2,3)$, and $(5,6)$, so it has $3$ components. Each component is an open interval, hence an open set, matching the structure theorem for open subsets of $\\mathbb{R}$.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    },
+    {
+      "id": "real-function-i-applied-maths-open-closed-borel-sets-031",
+      "format": "cloze",
+      "stem": "Borel membership. Decide whether each set belongs to the Borel sigma-algebra of $\\mathbb{R}$.",
+      "solution": "Every open set is Borel: answer {{1}}. Every closed set is Borel: answer {{2}}. The rationals $\\mathbb{Q}$, being a countable union of singletons, are Borel: answer {{3}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "yes",
+            "no"
+          ],
+          "answer": "yes"
+        }
+      ],
+      "explanation": "Open sets generate $\\mathcal{B}(\\mathbb{R})$, so they are Borel, and closed sets are Borel as their complements. The set $\\mathbb{Q}$ is a countable union of closed singletons, hence an $F_\\sigma$ set and therefore Borel as well.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Real Functions I course (MATH 461, measure theory)"
+    }
+  ]
+}

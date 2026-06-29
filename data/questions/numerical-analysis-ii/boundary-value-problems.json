@@ -1,0 +1,391 @@
+{
+  "courseId": "numerical-analysis-ii",
+  "topicId": "boundary-value-problems",
+  "status": "approved",
+  "questions": [
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-001",
+      "stem": "Which feature distinguishes a two-point boundary value problem (BVP) from an initial value problem (IVP)?",
+      "options": [
+        "All auxiliary conditions are given at the same starting point",
+        "The differential equation must be nonlinear",
+        "The auxiliary conditions are specified at two different points of the interval",
+        "No auxiliary conditions are required at all"
+      ],
+      "answer": 2,
+      "explanation": "In an IVP every condition (value and derivatives) is given at a single point, so the solution can march forward step by step. A two-point BVP gives conditions at the two ends $x=a$ and $x=b$, so the missing information at the start must be found indirectly. That is exactly why special methods (shooting, finite differences) are needed.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-002",
+      "stem": "The central-difference approximation to $y''(x_i)$ on a grid of spacing $h$ is:",
+      "options": [
+        "$\\dfrac{y_{i-1}-2y_i+y_{i+1}}{h^2}$",
+        "$\\dfrac{y_{i+1}-y_{i-1}}{2h}$",
+        "$\\dfrac{y_{i+1}-y_i}{h}$",
+        "$\\dfrac{y_{i-1}+2y_i+y_{i+1}}{h^2}$"
+      ],
+      "answer": 0,
+      "explanation": "The standard second-order central difference for the second derivative is $(y_{i-1}-2y_i+y_{i+1})/h^2$. The second option is the central difference for $y'$, the third is a one-sided first-derivative formula, and the fourth has the wrong sign on the middle term.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-003",
+      "stem": "The central-difference approximation to $y'(x_i)$ on a grid of spacing $h$ is:",
+      "options": [
+        "$\\dfrac{y_{i+1}-y_i}{h}$",
+        "$\\dfrac{y_{i+1}-y_{i-1}}{2h}$",
+        "$\\dfrac{y_{i-1}-2y_i+y_{i+1}}{h^2}$",
+        "$\\dfrac{y_i-y_{i-1}}{h}$"
+      ],
+      "answer": 1,
+      "explanation": "The central difference for the first derivative averages the forward and backward slopes: $(y_{i+1}-y_{i-1})/(2h)$, which is accurate to $O(h^2)$. The first and fourth options are the (one-sided) forward and backward differences, each only $O(h)$ accurate; the third is the second-derivative formula.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-004",
+      "stem": "Which pair are the two standard numerical methods for two-point BVPs?",
+      "options": [
+        "Gaussian elimination and LU factorization",
+        "Bisection and Newton's method",
+        "Jacobi and Gauss-Seidel iteration",
+        "The shooting method and the finite-difference method"
+      ],
+      "answer": 3,
+      "explanation": "Two-point BVPs are normally solved either by the shooting method (turn the BVP into an IVP with a guessed initial slope and iterate) or by the finite-difference method (replace derivatives by difference quotients and solve the resulting algebraic system). The other pairs are general linear-algebra or root-finding tools, not BVP methods in themselves.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-005",
+      "stem": "In the shooting method, a two-point BVP is converted into:",
+      "options": [
+        "An initial value problem with a guessed value for the unknown initial slope",
+        "A system of nonlinear algebraic equations solved by Newton's method directly",
+        "A tridiagonal linear system",
+        "An eigenvalue problem"
+      ],
+      "answer": 0,
+      "explanation": "Shooting replaces the boundary condition at $x=b$ with a guess for the missing initial slope $y'(a)=s$, turning the problem into an IVP that can be integrated by Euler or Runge-Kutta. The computed value $y(b)$ is then compared with the required boundary value and the guess $s$ is corrected, repeating until the target is hit.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-006",
+      "stem": "For a LINEAR two-point BVP, the correct initial slope in the shooting method can be found by:",
+      "options": [
+        "Bisection on the endpoint residual",
+        "Newton's method requiring the Jacobian",
+        "Linear interpolation between two trial slopes",
+        "Gaussian quadrature"
+      ],
+      "answer": 2,
+      "explanation": "When the ODE is linear, the computed endpoint value $y(b)$ depends linearly on the guessed slope $s$. Two shots therefore determine that straight-line relationship exactly, and one linear interpolation gives the slope that hits the target with no further iteration. Nonlinear problems lose this exactness and need secant or Newton iteration.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-007",
+      "stem": "Applying the finite-difference method to a linear second-order BVP produces:",
+      "options": [
+        "A full dense linear system",
+        "A tridiagonal system of linear equations",
+        "A single nonlinear equation",
+        "An over-determined least-squares system"
+      ],
+      "answer": 1,
+      "explanation": "Because the central-difference stencil at node $i$ only couples $y_{i-1}$, $y_i$ and $y_{i+1}$, each equation has at most three unknowns, so the coefficient matrix is tridiagonal. This banded structure is what makes the finite-difference method cheap to solve.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-008",
+      "stem": "The Thomas algorithm is an efficient direct solver for:",
+      "options": [
+        "Nonlinear equations",
+        "Eigenvalue problems",
+        "Dense (full) systems",
+        "Tridiagonal systems"
+      ],
+      "answer": 3,
+      "explanation": "The Thomas algorithm is a streamlined Gaussian elimination for tridiagonal systems, running in $O(n)$ operations instead of the $O(n^3)$ of general elimination. It is the natural solver for the linear system produced by the finite-difference method.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-009",
+      "stem": "The truncation error of the central-difference second-derivative formula is of order:",
+      "options": [
+        "$O(h)$",
+        "$O(h^4)$",
+        "$O(h^2)$",
+        "$O(1)$"
+      ],
+      "answer": 2,
+      "explanation": "Expanding $y_{i\\pm 1}$ in Taylor series, the odd-order terms cancel and the leading error of $(y_{i-1}-2y_i+y_{i+1})/h^2$ is $-\\tfrac{h^2}{12}y^{(4)}(\\xi)$, hence $O(h^2)$. Halving $h$ therefore cuts the error by about a factor of four.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-010",
+      "stem": "If $[a,b]$ is divided into $n$ equal subintervals and the BVP has Dirichlet conditions at both ends, how many interior unknowns appear in the finite-difference system?",
+      "options": [
+        "$n$",
+        "$n-1$",
+        "$n+1$",
+        "$n-2$"
+      ],
+      "answer": 1,
+      "explanation": "The $n$ subintervals create $n+1$ grid points, but the two end values are fixed by the Dirichlet boundary conditions. That leaves $n-1$ interior nodes whose values are unknown, so the linear system is $(n-1)\\times(n-1)$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-011",
+      "stem": "For a NONLINEAR two-point BVP, the shooting method corrects the initial slope using:",
+      "options": [
+        "Newton's or the secant method on the endpoint residual",
+        "Exact linear interpolation after exactly two shots",
+        "Simpson's rule",
+        "The Thomas algorithm"
+      ],
+      "answer": 0,
+      "explanation": "When the ODE is nonlinear the endpoint value is a nonlinear function of the guessed slope, so the residual $y(b;s)-B$ must be driven to zero by an iterative root-finder such as the secant or Newton method. Single-step linear interpolation is exact only in the linear case.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-012",
+      "stem": "A BVP on $[0,1]$ is solved by finite differences with step $h=0.25$. How many interior nodes are there?",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": 1,
+      "explanation": "With $h=0.25$ the grid points are $0,\\,0.25,\\,0.5,\\,0.75,\\,1$. The two ends are fixed, leaving the three interior nodes $0.25,\\,0.5,\\,0.75$. Equivalently $n=1/0.25=4$ subintervals give $n-1=3$ interior unknowns.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-013",
+      "stem": "Given $y_{i-1}=2$, $y_i=3$, $y_{i+1}=6$ and $h=1$, the central-difference estimate of $y''$ at node $i$ is:",
+      "options": [
+        "$-2$",
+        "$1$",
+        "$0$",
+        "$2$"
+      ],
+      "answer": 3,
+      "explanation": "Using $(y_{i-1}-2y_i+y_{i+1})/h^2 = (2-2(3)+6)/1^2 = (2-6+6)/1 = 2$. The result measures the upward curvature of the data at that node.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-014",
+      "stem": "Given $y_{i+1}=6$, $y_{i-1}=2$ and $h=1$, the central-difference estimate of $y'$ at node $i$ is:",
+      "options": [
+        "$2$",
+        "$4$",
+        "$8$",
+        "$1$"
+      ],
+      "answer": 0,
+      "explanation": "Using $(y_{i+1}-y_{i-1})/(2h) = (6-2)/(2\\cdot 1) = 4/2 = 2$. Note it ignores the value $y_i$ at the node itself, which is characteristic of the central first-difference.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-015",
+      "stem": "For the model linear BVP, the coefficient matrix produced by central differences is:",
+      "options": [
+        "Dense and nonsymmetric",
+        "Diagonal",
+        "Tridiagonal",
+        "Upper triangular"
+      ],
+      "answer": 2,
+      "explanation": "Each interior equation couples only a node and its two immediate neighbours, so nonzero entries sit on the main diagonal and the two adjacent diagonals: the matrix is tridiagonal. This is precisely the structure the Thomas algorithm exploits.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-016",
+      "stem": "In the central-difference stencil for $y''$, the coefficient multiplying $y_i$ (before dividing by $h^2$) is:",
+      "options": [
+        "$+2$",
+        "$-2$",
+        "$-1$",
+        "$+1$"
+      ],
+      "answer": 1,
+      "explanation": "The stencil is $(y_{i-1}-2y_i+y_{i+1})/h^2$, so the three weights are $(1,\\,-2,\\,1)$ and the middle node carries $-2$. After dividing by $h^2$ the diagonal entry of the matrix is $-2/h^2$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-017",
+      "stem": "Within the shooting method, the resulting initial value problem is integrated using:",
+      "options": [
+        "The Thomas algorithm",
+        "Gaussian elimination",
+        "Bisection",
+        "Euler's method or a Runge-Kutta method"
+      ],
+      "answer": 3,
+      "explanation": "Once the missing slope is guessed, the problem is an ordinary IVP, integrated by a marching scheme such as Euler or (more accurately) fourth-order Runge-Kutta. The other options are linear-algebra or root-finding tools, not ODE integrators.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-018",
+      "stem": "An advantage of the finite-difference method over shooting for a linear BVP is that it:",
+      "options": [
+        "Avoids sensitivity to a poor initial-slope guess by solving all nodes simultaneously",
+        "Always uses fewer arithmetic operations",
+        "Works only for nonlinear problems",
+        "Produces an exact, error-free solution"
+      ],
+      "answer": 0,
+      "explanation": "The finite-difference method imposes both boundary conditions at once and solves for all interior values together, so there is no guessed slope to iterate on and no growth of integration error across a long interval. Shooting can be very sensitive when the IVP is unstable in the marching direction.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-019",
+      "stem": "Boundary conditions of the form $y(a)=A$, $y(b)=B$ (values of $y$ prescribed at both ends) are called:",
+      "options": [
+        "Neumann conditions",
+        "Dirichlet conditions",
+        "Robin conditions",
+        "Periodic conditions"
+      ],
+      "answer": 1,
+      "explanation": "Prescribing the value of the unknown function itself at the boundary gives Dirichlet conditions. Neumann conditions prescribe the derivative, Robin conditions prescribe a combination of value and derivative, and periodic conditions tie the two ends together.",
+      "difficulty": "warmup",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-020",
+      "stem": "Boundary conditions that prescribe the derivative, such as $y'(a)$ and $y'(b)$, are called:",
+      "options": [
+        "Dirichlet conditions",
+        "Periodic conditions",
+        "Neumann conditions",
+        "Cauchy conditions"
+      ],
+      "answer": 2,
+      "explanation": "Conditions on the derivative of the solution at the boundary are Neumann conditions. Implementing them by finite differences usually introduces a fictitious (ghost) node or a one-sided difference at the boundary.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-021",
+      "stem": "The tridiagonal linear system from a finite-difference BVP is most efficiently solved in $O(n)$ work by:",
+      "options": [
+        "Cramer's rule",
+        "Full Gaussian elimination at $O(n^3)$",
+        "Jacobi iteration",
+        "The Thomas algorithm"
+      ],
+      "answer": 3,
+      "explanation": "The Thomas algorithm is a forward-elimination then back-substitution tailored to tridiagonal matrices, costing only $O(n)$ operations. Cramer's rule and full elimination are far more expensive, and iterative methods are unnecessary for so simple a banded system.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-022",
+      "stem": "Discretizing $y'' - y = 0$ by central differences at interior node $i$ gives which difference equation?",
+      "options": [
+        "$y_{i-1} - 2y_i + y_{i+1} = 0$",
+        "$y_{i-1} - (2+h^2)y_i + y_{i+1} = 0$",
+        "$y_{i-1} + (2-h^2)y_i + y_{i+1} = 0$",
+        "$y_{i-1} - (2-h^2)y_i + y_{i+1} = 0$"
+      ],
+      "answer": 1,
+      "explanation": "Substituting $y'' \\approx (y_{i-1}-2y_i+y_{i+1})/h^2$ into $y''-y=0$ gives $(y_{i-1}-2y_i+y_{i+1})/h^2 - y_i = 0$. Multiplying by $h^2$ and collecting the $y_i$ terms yields $y_{i-1} - (2+h^2)y_i + y_{i+1} = 0$.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-023",
+      "format": "cloze",
+      "stem": "A table gives $y(0.8)=1.6$, $y(1.0)=2.0$, $y(1.2)=2.5$ with spacing $h=0.2$.",
+      "solution": "The central-difference second derivative at $x=1.0$ is $\\dfrac{1.6 - 2(2.0) + 2.5}{(0.2)^2} =$ {{1}}, and the central-difference first derivative is $\\dfrac{2.5 - 1.6}{2(0.2)} =$ {{2}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 2.5, "tolerance": 0.001 },
+        { "id": 2, "type": "number", "answer": 2.25, "tolerance": 0.001 }
+      ],
+      "explanation": "Second derivative: $(1.6-4.0+2.5)/0.04 = 0.1/0.04 = 2.5$. First derivative: $(2.5-1.6)/0.4 = 0.9/0.4 = 2.25$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-024",
+      "format": "cloze",
+      "stem": "A two-point BVP on $[0,1]$ with Dirichlet conditions is solved by finite differences using step $h=0.2$.",
+      "solution": "The interval contains {{1}} equal subintervals, which leaves {{2}} interior unknown nodes, so the resulting linear system is square of that size.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 5, "tolerance": 0 },
+        { "id": 2, "type": "number", "answer": 4, "tolerance": 0 }
+      ],
+      "explanation": "Number of subintervals $n = 1/0.2 = 5$, giving grid points $0,0.2,0.4,0.6,0.8,1.0$. The two ends are fixed by the Dirichlet conditions, so the interior unknowns number $n-1 = 4$ and the system is $4\\times 4$.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-025",
+      "format": "cloze",
+      "stem": "A linear BVP is solved by shooting. Trial slope $s_1=1$ gives endpoint $y(b)=4$; trial slope $s_2=2$ gives endpoint $y(b)=6$. The required endpoint is $y(b)=5$.",
+      "solution": "Because the problem is linear, the correct slope is $s = 1 + (5-4)\\cdot\\dfrac{2-1}{6-4} =$ {{1}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": 1.5, "tolerance": 0.001 }
+      ],
+      "explanation": "Linear interpolation on the (slope, endpoint) pairs $(1,4)$ and $(2,6)$ to reach target 5 gives $s = 1 + (5-4)(2-1)/(6-4) = 1 + 1\\cdot 1/2 = 1.5$. For a linear BVP this single interpolation is exact.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-026",
+      "format": "cloze",
+      "stem": "Identify the three-point central-difference stencil for the second derivative at an interior node.",
+      "solution": "The second derivative uses the three-point stencil with weights {{1}} divided by $h^2$, and the method most appropriate for a BVP that should not depend on an initial-slope guess is the {{2}} method.",
+      "gaps": [
+        { "id": 1, "type": "dropdown", "options": ["$(1,-2,1)$", "$(1,2,1)$", "$(-1,0,1)$", "$(1,-1)$"], "answer": "$(1,-2,1)$" },
+        { "id": 2, "type": "dropdown", "options": ["shooting", "finite-difference", "Euler", "Runge-Kutta"], "answer": "finite-difference" }
+      ],
+      "explanation": "The central second-derivative stencil has weights $(1,-2,1)/h^2$. The finite-difference method imposes both boundary conditions simultaneously, so unlike shooting it needs no guessed initial slope.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-027",
+      "format": "cloze",
+      "stem": "The BVP $y'' = y$ is discretized by central differences with step $h=0.5$, giving $y_{i-1} - (2 + h^2)\\,y_i + y_{i+1} = 0$ at each interior node.",
+      "solution": "With $h=0.5$ the coefficient multiplying $y_i$ equals {{1}}.",
+      "gaps": [
+        { "id": 1, "type": "number", "answer": -2.25, "tolerance": 0.001 }
+      ],
+      "explanation": "Here $h^2 = 0.25$, so the coefficient is $-(2 + h^2) = -(2 + 0.25) = -2.25$. This is the diagonal entry of the tridiagonal matrix (the off-diagonal entries are $+1$).",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    },
+    {
+      "id": "numerical-analysis-ii-boundary-value-problems-028",
+      "format": "cloze",
+      "stem": "Solving the tridiagonal linear system that arises from a finite-difference BVP.",
+      "solution": "The linear system is tridiagonal, so it is solved most efficiently by the {{1}} algorithm, which costs order {{2}} operations.",
+      "gaps": [
+        { "id": 1, "type": "dropdown", "options": ["Thomas", "Newton", "Simpson", "Lagrange"], "answer": "Thomas" },
+        { "id": 2, "type": "dropdown", "options": ["$n$", "$n^2$", "$n^3$", "$2^n$"], "answer": "$n$" }
+      ],
+      "explanation": "The Thomas algorithm is the tailored tridiagonal solver, running in $O(n)$ operations versus $O(n^3)$ for full Gaussian elimination.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Numerical Methods II course (MATH 379)"
+    }
+  ]
+}
