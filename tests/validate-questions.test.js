@@ -179,3 +179,49 @@ test('code: a bare odd $ outside code spans is still rejected', () => {
   const errors = validateBank(b, 'calculus-i', 'limits');
   assert.ok(errors.some(e => e.includes('$ math delimiters')));
 });
+
+function goodCode() {
+  return {
+    courseId: 'calculus-i', topicId: 'limits', status: 'draft',
+    questions: [{
+      id: 'calculus-i-limits-201', format: 'code', language: 'python',
+      stem: 'Write a function double(x) that returns 2*x.',
+      starterCode: 'def double(x):\n    pass',
+      tests: [
+        { name: 'a', kind: 'function', call: 'double(3)', expected: '6', hidden: false },
+        { name: 'b', kind: 'function', call: 'double(-1)', expected: '-2', hidden: true },
+      ],
+      solution: 'def double(x):\n    return 2*x',
+      explanation: 'Multiply the input by two and return it.',
+      difficulty: 'core', source: 's',
+    }],
+  };
+}
+
+test('a well-formed code bank has no errors', () => {
+  assert.deepEqual(validateBank(goodCode(), 'calculus-i', 'limits'), []);
+});
+
+test('code: rejects non-python language, missing tests, and no hidden test', () => {
+  const b = goodCode();
+  b.questions[0].language = 'ruby';
+  assert.ok(validateBank(b, 'calculus-i', 'limits').some(e => e.includes('language')));
+  const b2 = goodCode(); b2.questions[0].tests = [];
+  assert.ok(validateBank(b2, 'calculus-i', 'limits').some(e => e.includes('at least one test')));
+  const b3 = goodCode(); b3.questions[0].tests.forEach(t => { t.hidden = false; });
+  assert.ok(validateBank(b3, 'calculus-i', 'limits').some(e => e.includes('hidden')));
+});
+
+test('code: rejects a bad test kind and a function test with no call', () => {
+  const b = goodCode();
+  b.questions[0].tests[0].kind = 'magic';
+  assert.ok(validateBank(b, 'calculus-i', 'limits').some(e => e.includes('kind')));
+  const b2 = goodCode(); delete b2.questions[0].tests[0].call;
+  assert.ok(validateBank(b2, 'calculus-i', 'limits').some(e => e.includes('call')));
+});
+
+test('code: dash in starterCode or solution is rejected (voice rules)', () => {
+  const b = goodCode();
+  b.questions[0].solution = 'def double(x):\n    return 2*x  # times two ' + String.fromCharCode(0x2014);
+  assert.ok(validateBank(b, 'calculus-i', 'limits').some(e => e.includes('dash')));
+});

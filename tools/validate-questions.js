@@ -6,8 +6,9 @@ import { pathToFileURL } from 'node:url';
 
 const DIFFICULTIES = new Set(['warmup', 'core', 'stretch']);
 const STATUSES = new Set(['draft', 'approved']);
-const FORMATS = new Set(['mcq', 'cloze']);
+const FORMATS = new Set(['mcq', 'cloze', 'code']);
 const GAP_TYPES = new Set(['number', 'dropdown', 'text']);
+const TEST_KINDS = new Set(['function', 'stdout']);
 const DASH_RE = /[–—]/;
 
 // Canonicalize an option for duplicate detection. Pure numbers and single
@@ -83,6 +84,35 @@ function validateCloze(q, errors) {
   }
 }
 
+function dashOnly(label, s, errors, qid) {
+  if (DASH_RE.test(String(s))) errors.push(`${qid}: ${label} contains an em or en dash (voice rules ban them)`);
+}
+
+function validateCode(q, errors) {
+  const qid = q.id;
+  if (q.language !== 'python') errors.push(`${qid}: code language must be "python"`);
+  if (typeof q.starterCode !== 'string' || q.starterCode.length === 0) errors.push(`${qid}: code starterCode missing`);
+  if (typeof q.solution !== 'string' || q.solution.trim().length === 0) errors.push(`${qid}: code solution missing`);
+  if (!Array.isArray(q.tests) || q.tests.length === 0) { errors.push(`${qid}: code needs at least one test`); return; }
+  const names = new Set();
+  let visible = 0, hidden = 0;
+  q.tests.forEach((t, i) => {
+    if (typeof t.name !== 'string' || t.name.length === 0) errors.push(`${qid}: test ${i} name missing`);
+    else if (names.has(t.name)) errors.push(`${qid}: duplicate test name "${t.name}"`); else names.add(t.name);
+    if (!TEST_KINDS.has(t.kind)) errors.push(`${qid}: test ${i} kind must be function or stdout`);
+    if (typeof t.expected !== 'string') errors.push(`${qid}: test ${i} expected must be a string`);
+    if (t.kind === 'function' && (typeof t.call !== 'string' || t.call.length === 0)) errors.push(`${qid}: test ${i} function test needs a call`);
+    if (t.kind === 'stdout' && typeof t.stdin !== 'string') errors.push(`${qid}: test ${i} stdout test needs a string stdin`);
+    if (t.hidden) hidden++; else visible++;
+    dashOnly(`test ${i} call`, t.call || '', errors, qid);
+    dashOnly(`test ${i} expected`, t.expected || '', errors, qid);
+  });
+  if (visible < 1) errors.push(`${qid}: code needs at least one visible (example) test`);
+  if (hidden < 1) errors.push(`${qid}: code needs at least one hidden test`);
+  dashOnly('starterCode', q.starterCode || '', errors, qid);
+  dashOnly('solution', q.solution || '', errors, qid);
+}
+
 export function validateBank(bank, expectedCourseId, expectedTopicId) {
   const errors = [];
   if (bank.courseId !== expectedCourseId) errors.push(`bank courseId is "${bank.courseId}", expected "${expectedCourseId}"`);
@@ -103,12 +133,14 @@ export function validateBank(bank, expectedCourseId, expectedTopicId) {
     if (typeof q.explanation !== 'string' || q.explanation.trim().length < 20) errors.push(`${qid}: explanation missing or too short (worked solutions are the point)`);
     if (!DIFFICULTIES.has(q.difficulty)) errors.push(`${qid}: difficulty must be warmup, core, or stretch`);
     if (typeof q.source !== 'string' || q.source.trim().length === 0) errors.push(`${qid}: source must not be empty`);
-    if (q.format !== undefined && !FORMATS.has(q.format)) errors.push(`${qid}: format must be mcq or cloze`);
+    if (q.format !== undefined && !FORMATS.has(q.format)) errors.push(`${qid}: format must be mcq, cloze, or code`);
     if (typeof q.stem === 'string') textProblems('stem', q.stem, errors, qid);
     if (typeof q.explanation === 'string') textProblems('explanation', q.explanation, errors, qid);
 
     if (q.format === 'cloze') {
       validateCloze(q, errors);
+    } else if (q.format === 'code') {
+      validateCode(q, errors);
     } else {
       if (!Array.isArray(q.options) || q.options.length < 2 || q.options.length > 5) errors.push(`${qid}: options must be 2 to 5 entries`);
       if (!Number.isInteger(q.answer) || !Array.isArray(q.options) || q.answer < 0 || q.answer >= q.options.length) errors.push(`${qid}: answer index out of range`);
