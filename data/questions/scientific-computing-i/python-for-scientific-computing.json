@@ -602,6 +602,414 @@
       "explanation": "Start an accumulator at 1 and multiply by every integer from 2 up to n. For n = 4 this gives 1*2*3*4 = 24, and the loop runs zero times for n = 0 or n = 1, leaving the answer 1.",
       "difficulty": "core",
       "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-034",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `variance(xs)` that returns the population variance of a non-empty list of numbers, the mean of the squared deviations from the average.",
+      "starterCode": "def variance(xs):\n    # mean of the squared deviations from the average\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "variance([1, 2, 3, 4, 5])",
+          "expected": "2.0",
+          "hidden": false
+        },
+        {
+          "name": "constant",
+          "kind": "function",
+          "call": "variance([2, 2, 2])",
+          "expected": "0.0",
+          "hidden": true
+        },
+        {
+          "name": "pair",
+          "kind": "function",
+          "call": "variance([1, 3])",
+          "expected": "1.0",
+          "hidden": true
+        }
+      ],
+      "solution": "def variance(xs):\n    m = sum(xs) / len(xs)\n    return sum((x - m) ** 2 for x in xs) / len(xs)",
+      "explanation": "Find the average `m`, then average the squared gaps `(x - m) ** 2`. For [1, 2, 3, 4, 5] the mean is 3 and the squared gaps are 4, 1, 0, 1, 4, whose average is 2.0.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-035",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `norm(v)` that returns the Euclidean length of a vector, the square root of the sum of the squares of its entries.",
+      "starterCode": "def norm(v):\n    # square root of the sum of squares\n    pass",
+      "tests": [
+        {
+          "name": "three-four",
+          "kind": "function",
+          "call": "norm([3, 4])",
+          "expected": "5.0",
+          "hidden": false
+        },
+        {
+          "name": "zero",
+          "kind": "function",
+          "call": "norm([0, 0, 0])",
+          "expected": "0.0",
+          "hidden": true
+        },
+        {
+          "name": "one-two-two",
+          "kind": "function",
+          "call": "norm([1, 2, 2])",
+          "expected": "3.0",
+          "hidden": true
+        }
+      ],
+      "solution": "def norm(v):\n    return sum(x * x for x in v) ** 0.5",
+      "explanation": "Square every entry, add them, and raise to the power 0.5 to take the square root. For [3, 4] this is the familiar 3-4-5 right triangle, so the length is 5.0.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-036",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `gcd(a, b)` that returns the greatest common divisor of two positive integers using the Euclidean algorithm.",
+      "starterCode": "def gcd(a, b):\n    # repeatedly replace (a, b) with (b, a % b)\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "gcd(12, 18)",
+          "expected": "6",
+          "hidden": false
+        },
+        {
+          "name": "coprime",
+          "kind": "function",
+          "call": "gcd(17, 5)",
+          "expected": "1",
+          "hidden": true
+        },
+        {
+          "name": "hundred",
+          "kind": "function",
+          "call": "gcd(100, 80)",
+          "expected": "20",
+          "hidden": true
+        }
+      ],
+      "solution": "def gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a",
+      "explanation": "Keep replacing the pair `(a, b)` with `(b, a % b)` until the remainder is zero; the last nonzero value is the gcd. For 12 and 18 the steps give 6.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-037",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `is_prime(n)` that returns `True` when the integer `n` is prime and `False` otherwise. Numbers below 2 are not prime.",
+      "starterCode": "def is_prime(n):\n    # test divisibility up to the square root of n\n    pass",
+      "tests": [
+        {
+          "name": "seven",
+          "kind": "function",
+          "call": "is_prime(7)",
+          "expected": "True",
+          "hidden": false
+        },
+        {
+          "name": "one",
+          "kind": "function",
+          "call": "is_prime(1)",
+          "expected": "False",
+          "hidden": true
+        },
+        {
+          "name": "nine",
+          "kind": "function",
+          "call": "is_prime(9)",
+          "expected": "False",
+          "hidden": true
+        }
+      ],
+      "solution": "def is_prime(n):\n    if n < 2:\n        return False\n    i = 2\n    while i * i <= n:\n        if n % i == 0:\n            return False\n        i += 1\n    return True",
+      "explanation": "Reject anything below 2, then look for a divisor from 2 up to the square root of `n`. If none divides `n`, it is prime. Checking only to the square root is enough because a larger factor would pair with a smaller one.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-038",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `reverse(xs)` that returns a new list with the items of `xs` in reverse order. Do not use the built-in `reversed`.",
+      "starterCode": "def reverse(xs):\n    # return a new list, last item first\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "reverse([1, 2, 3])",
+          "expected": "[3, 2, 1]",
+          "hidden": false
+        },
+        {
+          "name": "empty",
+          "kind": "function",
+          "call": "reverse([])",
+          "expected": "[]",
+          "hidden": true
+        },
+        {
+          "name": "single",
+          "kind": "function",
+          "call": "reverse([7])",
+          "expected": "[7]",
+          "hidden": true
+        }
+      ],
+      "solution": "def reverse(xs):\n    return xs[::-1]",
+      "explanation": "The slice `xs[::-1]` walks the list with a step of minus one, producing a new list from the last item to the first.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-039",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `count_vowels(s)` that returns how many vowels (a, e, i, o, u, in either case) appear in the string `s`.",
+      "starterCode": "def count_vowels(s):\n    # count letters that are vowels\n    pass",
+      "tests": [
+        {
+          "name": "word",
+          "kind": "function",
+          "call": "count_vowels(\"scientific\")",
+          "expected": "4",
+          "hidden": false
+        },
+        {
+          "name": "none",
+          "kind": "function",
+          "call": "count_vowels(\"XYZ\")",
+          "expected": "0",
+          "hidden": true
+        },
+        {
+          "name": "caps",
+          "kind": "function",
+          "call": "count_vowels(\"AEIOU\")",
+          "expected": "5",
+          "hidden": true
+        }
+      ],
+      "solution": "def count_vowels(s):\n    return sum(1 for c in s if c in \"aeiouAEIOU\")",
+      "explanation": "Walk the characters and add one for each that appears in the vowel set, covering both lower and upper case. The word \"scientific\" has the vowels i, e, i, i, so the count is 4.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-040",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `fib(n)` that returns the nth Fibonacci number, where `fib(0)` is 0, `fib(1)` is 1, and each later value is the sum of the previous two.",
+      "starterCode": "def fib(n):\n    # build up from 0 and 1\n    pass",
+      "tests": [
+        {
+          "name": "seventh",
+          "kind": "function",
+          "call": "fib(7)",
+          "expected": "13",
+          "hidden": false
+        },
+        {
+          "name": "zero",
+          "kind": "function",
+          "call": "fib(0)",
+          "expected": "0",
+          "hidden": true
+        },
+        {
+          "name": "tenth",
+          "kind": "function",
+          "call": "fib(10)",
+          "expected": "55",
+          "hidden": true
+        }
+      ],
+      "solution": "def fib(n):\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a",
+      "explanation": "Keep a rolling pair `(a, b)` and advance it `n` times so `a` holds the nth value. The sequence 0, 1, 1, 2, 3, 5, 8, 13 gives `fib(7)` equal to 13.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-041",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `trapz(ys, h)` that estimates an integral by the trapezoidal rule, given equally spaced samples `ys` of the function and the spacing `h` between them.",
+      "starterCode": "def trapz(ys, h):\n    # h times the average of the ends plus the interior points\n    pass",
+      "tests": [
+        {
+          "name": "ramp",
+          "kind": "function",
+          "call": "trapz([0, 1, 2, 3], 1)",
+          "expected": "4.5",
+          "hidden": false
+        },
+        {
+          "name": "flat",
+          "kind": "function",
+          "call": "trapz([1, 1, 1], 2)",
+          "expected": "4.0",
+          "hidden": true
+        },
+        {
+          "name": "two-points",
+          "kind": "function",
+          "call": "trapz([0, 2], 0.5)",
+          "expected": "0.5",
+          "hidden": true
+        }
+      ],
+      "solution": "def trapz(ys, h):\n    return h * ((ys[0] + ys[-1]) / 2 + sum(ys[1:-1]))",
+      "explanation": "The trapezoidal rule weights the two end samples by a half and the interior samples by one, then multiplies by the spacing `h`. For the ramp 0, 1, 2, 3 with spacing 1 the estimate is 4.5, matching the exact area under a straight line.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-042",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `matvec(A, x)` that multiplies a matrix `A` (a list of equal-length rows) by a vector `x`, returning the resulting list.",
+      "starterCode": "def matvec(A, x):\n    # each output entry is one row dotted with x\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "matvec([[1, 2], [3, 4]], [1, 1])",
+          "expected": "[3, 7]",
+          "hidden": false
+        },
+        {
+          "name": "identity",
+          "kind": "function",
+          "call": "matvec([[1, 0], [0, 1]], [5, 9])",
+          "expected": "[5, 9]",
+          "hidden": true
+        },
+        {
+          "name": "single-row",
+          "kind": "function",
+          "call": "matvec([[2, 2, 2]], [1, 1, 1])",
+          "expected": "[6]",
+          "hidden": true
+        }
+      ],
+      "solution": "def matvec(A, x):\n    return [sum(a * b for a, b in zip(row, x)) for row in A]",
+      "explanation": "Each entry of the answer is the dot product of one row of `A` with `x`. For the 2 by 2 matrix the rows give 1*1 + 2*1 = 3 and 3*1 + 4*1 = 7.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-043",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `std(xs)` that returns the population standard deviation of a non-empty list, the square root of the population variance.",
+      "starterCode": "def std(xs):\n    # square root of the average squared deviation\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "std([2, 4, 4, 4, 5, 5, 7, 9])",
+          "expected": "2.0",
+          "hidden": false
+        },
+        {
+          "name": "constant",
+          "kind": "function",
+          "call": "std([1, 1, 1])",
+          "expected": "0.0",
+          "hidden": true
+        },
+        {
+          "name": "pair",
+          "kind": "function",
+          "call": "std([0, 2])",
+          "expected": "1.0",
+          "hidden": true
+        }
+      ],
+      "solution": "def std(xs):\n    m = sum(xs) / len(xs)\n    var = sum((x - m) ** 2 for x in xs) / len(xs)\n    return var ** 0.5",
+      "explanation": "Compute the variance as the average squared deviation from the mean, then take its square root. The classic sample 2, 4, 4, 4, 5, 5, 7, 9 has mean 5, variance 4, and standard deviation 2.0.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-044",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `running_max(xs)` that returns a list whose ith entry is the largest value seen in `xs` up to and including position i.",
+      "starterCode": "def running_max(xs):\n    # track the best value as you scan left to right\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "running_max([1, 3, 2, 5, 4])",
+          "expected": "[1, 3, 3, 5, 5]",
+          "hidden": false
+        },
+        {
+          "name": "single",
+          "kind": "function",
+          "call": "running_max([5])",
+          "expected": "[5]",
+          "hidden": true
+        },
+        {
+          "name": "decreasing",
+          "kind": "function",
+          "call": "running_max([3, 1, 2])",
+          "expected": "[3, 3, 3]",
+          "hidden": true
+        }
+      ],
+      "solution": "def running_max(xs):\n    out = []\n    best = xs[0]\n    for x in xs:\n        if x > best:\n            best = x\n        out.append(best)\n    return out",
+      "explanation": "Scan left to right, keeping `best` as the largest value so far, and record it at each step. For [1, 3, 2, 5, 4] the running maxima are [1, 3, 3, 5, 5].",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-045",
+      "format": "code",
+      "language": "python",
+      "stem": "Read one line of space-separated numbers from input and print their average (arithmetic mean).",
+      "starterCode": "# read the numbers from one line and print their average\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "1 2 3 4\n",
+          "expected": "2.5",
+          "hidden": false
+        },
+        {
+          "name": "single",
+          "kind": "stdout",
+          "stdin": "10\n",
+          "expected": "10.0",
+          "hidden": true
+        },
+        {
+          "name": "threes",
+          "kind": "stdout",
+          "stdin": "2 4 6\n",
+          "expected": "4.0",
+          "hidden": true
+        }
+      ],
+      "solution": "nums = [float(x) for x in input().split()]\nprint(sum(nums) / len(nums))",
+      "explanation": "Split the input line on spaces, convert each piece to a float, then print the sum divided by the count. For \"1 2 3 4\" the average is 2.5.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
     }
   ]
 }
