@@ -90,7 +90,7 @@ function dashOnly(label, s, errors, qid) {
 
 function validateCode(q, errors) {
   const qid = q.id;
-  if (q.language !== 'python') errors.push(`${qid}: code language must be "python"`);
+  if (q.language !== 'python' && q.language !== 'c') errors.push(`${qid}: code language must be "python" or "c"`);
   if (typeof q.starterCode !== 'string' || q.starterCode.length === 0) errors.push(`${qid}: code starterCode missing`);
   if (typeof q.solution !== 'string' || q.solution.trim().length === 0) errors.push(`${qid}: code solution missing`);
   if (!Array.isArray(q.tests) || q.tests.length === 0) { errors.push(`${qid}: code needs at least one test`); return; }

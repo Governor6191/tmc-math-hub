@@ -225,3 +225,25 @@ test('code: dash in starterCode or solution is rejected (voice rules)', () => {
   b.questions[0].solution = 'def double(x):\n    return 2*x  # times two ' + String.fromCharCode(0x2014);
   assert.ok(validateBank(b, 'calculus-i', 'limits').some(e => e.includes('dash')));
 });
+
+function goodCCode() {
+  return {
+    courseId: 'scientific-computing', topicId: 'c-basics-and-data-types', status: 'draft',
+    questions: [{
+      id: 'scientific-computing-c-basics-and-data-types-201', format: 'code', language: 'c',
+      stem: 'Read two integers and print their sum.',
+      starterCode: '#include <stdio.h>\nint main() {\n    return 0;\n}\n',
+      tests: [
+        { name: 'a', kind: 'stdout', stdin: '3 4\n', expected: '7', hidden: false },
+        { name: 'b', kind: 'stdout', stdin: '10 20\n', expected: '30', hidden: true },
+      ],
+      solution: '#include <stdio.h>\nint main() {\n    int a, b;\n    scanf("%d %d", &a, &b);\n    printf("%d\\n", a + b);\n    return 0;\n}\n',
+      explanation: 'Read the two values and print their sum.',
+      difficulty: 'core', source: 's',
+    }],
+  };
+}
+
+test('code: a well-formed C (language c) code bank validates', () => {
+  assert.deepEqual(validateBank(goodCCode(), 'scientific-computing', 'c-basics-and-data-types'), []);
+});
