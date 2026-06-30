@@ -61,12 +61,10 @@ function render(course, year, semester) {
         <h3>${escapeHtml(t.title)}</h3>
         <ul class="pdf-list">${t.slides.map(fileRow).join('')}</ul>
         ${t.questionCount ? `<p><a href="practice.html?c=${encodeURIComponent(course.id)}&t=${encodeURIComponent(t.id)}">Practice ${t.questionCount} questions on ${escapeHtml(t.title)}</a></p>` : ''}
-        ${t.videos.length ? `<div class="videos">${t.videos.map(v => `
-          <figure class="video">
-            <iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.youtubeId)}"
-              title="${escapeHtml(v.title)}" loading="lazy" allowfullscreen></iframe>
-            <figcaption>${escapeHtml(v.title)}</figcaption>
-          </figure>`).join('')}</div>`
+        ${(course.channels && course.channels.length) ? `<div class="topic-videos">
+          <span class="tv-label">Watch on YouTube</span>
+          ${course.channels.map(ch => `<a class="tv-chip" href="https://www.youtube.com/results?search_query=${encodeURIComponent(ch + ' ' + t.title)}" target="_blank" rel="noopener">${escapeHtml(ch)}</a>`).join('')}
+        </div>`
         : `<p class="hint">Video lessons for this topic are coming.</p>`}
       </article>`).join('')}</section>` : ''}
 
