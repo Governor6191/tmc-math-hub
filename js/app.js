@@ -147,6 +147,7 @@ async function loadDrawerTree() {
                  <a href="practice.html?c=${encodeURIComponent(c.id)}">Practice</a>
                  <a href="exam.html?c=${encodeURIComponent(c.id)}">Mock exam</a>
                  ${c.hasCode ? `<a href="lab.html?c=${encodeURIComponent(c.id)}">Coding lab</a>` : ''}
+                 ${c.hasC ? `<a href="clab/index.html?c=${encodeURIComponent(c.id)}">C lab</a>` : ''}
                </div>` : '';
           return `<a class="drawer-course" href="course.html?c=${encodeURIComponent(c.id)}"${active ? ' aria-current="page"' : ''}>${escapeHtml(c.title)}</a>${sub}`;
         }).join('')}`).join('')}`).join('');

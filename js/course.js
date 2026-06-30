@@ -94,6 +94,11 @@ function render(course, year, semester) {
         <p>Write and run Python right in your browser, checked instantly against tests. No setup, nothing to install.</p>
         <a class="next-btn" style="display: inline-block; text-decoration: none;" href="lab.html?c=${encodeURIComponent(course.id)}">Open coding lab</a></div>`
       : ''}
+      ${course.hasC ? `
+      <div class="coming-card"><h3>C coding lab</h3>
+        <p>Write and run real C in your browser, compiled with clang and checked against tests. The compiler downloads once on first use.</p>
+        <a class="next-btn" style="display: inline-block; text-decoration: none;" href="clab/index.html?c=${encodeURIComponent(course.id)}">Open C lab</a></div>`
+      : ''}
     </section>`;
 }
 

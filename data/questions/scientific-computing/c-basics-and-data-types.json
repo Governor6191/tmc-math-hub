@@ -540,6 +540,108 @@
       "explanation": "A fractional measurement needs a floating-point type such as `double`. A whole count fits an `int`. By the C standard, `sizeof(char)` is defined to be `1`.",
       "difficulty": "core",
       "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-031",
+      "format": "code",
+      "language": "c",
+      "stem": "Read two integers from input and print their sum.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "3 4\n",
+          "expected": "7",
+          "hidden": false
+        },
+        {
+          "name": "bigger",
+          "kind": "stdout",
+          "stdin": "10 20\n",
+          "expected": "30",
+          "hidden": true
+        },
+        {
+          "name": "negative",
+          "kind": "stdout",
+          "stdin": "-5 5\n",
+          "expected": "0",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", a + b);\n    return 0;\n}\n",
+      "explanation": "Read the two values with one scanf and print their sum. `scanf(\"%d %d\", &a, &b)` skips the spaces between the numbers for you.",
+      "difficulty": "core",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-032",
+      "format": "code",
+      "language": "c",
+      "stem": "Read three integers u, a and t and print the value of v = u + a*t (final velocity, initial velocity plus acceleration times time).",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "10 2 5\n",
+          "expected": "20",
+          "hidden": false
+        },
+        {
+          "name": "zero-u",
+          "kind": "stdout",
+          "stdin": "0 3 4\n",
+          "expected": "12",
+          "hidden": true
+        },
+        {
+          "name": "zero-a",
+          "kind": "stdout",
+          "stdin": "5 0 9\n",
+          "expected": "5",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int u, a, t;\n    scanf(\"%d %d %d\", &u, &a, &t);\n    printf(\"%d\\n\", u + a * t);\n    return 0;\n}\n",
+      "explanation": "This is the kinematics formula from the slides. Read the three values and print `u + a*t`. For 10, 2, 5 the result is 10 + 10 = 20.",
+      "difficulty": "core",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-033",
+      "format": "code",
+      "language": "c",
+      "stem": "Read three integers P, R and T and print the simple interest, P*R*T/100. Assume the result is a whole number.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "1000 5 2\n",
+          "expected": "100",
+          "hidden": false
+        },
+        {
+          "name": "case-2",
+          "kind": "stdout",
+          "stdin": "2000 3 4\n",
+          "expected": "240",
+          "hidden": true
+        },
+        {
+          "name": "case-3",
+          "kind": "stdout",
+          "stdin": "500 10 1\n",
+          "expected": "50",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int p, r, t;\n    scanf(\"%d %d %d\", &p, &r, &t);\n    printf(\"%d\\n\", p * r * t / 100);\n    return 0;\n}\n",
+      "explanation": "The simple interest formula from the slides is P*R*T/100. For P = 1000, R = 5, T = 2 the interest is 10000/100 = 100.",
+      "difficulty": "core",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
     }
   ]
 }

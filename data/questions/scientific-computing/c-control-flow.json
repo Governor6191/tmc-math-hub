@@ -555,6 +555,142 @@
       "explanation": "The inner loop runs `3` times for each of the `4` outer passes, so `4 * 3 = 12` stars. Multiplying `1 * 2 * 3 * 4 * 5` gives `120`, the factorial of `5`.",
       "difficulty": "stretch",
       "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-031",
+      "format": "code",
+      "language": "c",
+      "stem": "Read three integers and print the largest of the three.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "3 7 5\n",
+          "expected": "7",
+          "hidden": false
+        },
+        {
+          "name": "first",
+          "kind": "stdout",
+          "stdin": "9 2 4\n",
+          "expected": "9",
+          "hidden": true
+        },
+        {
+          "name": "last",
+          "kind": "stdout",
+          "stdin": "1 1 8\n",
+          "expected": "8",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int a, b, c;\n    scanf(\"%d %d %d\", &a, &b, &c);\n    int m = a;\n    if (b > m) m = b;\n    if (c > m) m = c;\n    printf(\"%d\\n\", m);\n    return 0;\n}\n",
+      "explanation": "Start with the first number as the largest so far, then compare it with the other two using `if`, updating when you find something bigger.",
+      "difficulty": "core",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-032",
+      "format": "code",
+      "language": "c",
+      "stem": "Read an integer and print the word even if it is even, otherwise print odd.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "even",
+          "kind": "stdout",
+          "stdin": "4\n",
+          "expected": "even",
+          "hidden": false
+        },
+        {
+          "name": "odd",
+          "kind": "stdout",
+          "stdin": "7\n",
+          "expected": "odd",
+          "hidden": true
+        },
+        {
+          "name": "zero",
+          "kind": "stdout",
+          "stdin": "0\n",
+          "expected": "even",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n % 2 == 0) printf(\"even\\n\");\n    else printf(\"odd\\n\");\n    return 0;\n}\n",
+      "explanation": "The remainder operator `%` tells you if a number is even: `n % 2` is 0 for even numbers. Zero counts as even.",
+      "difficulty": "core",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-033",
+      "format": "code",
+      "language": "c",
+      "stem": "Read an integer score and print its grade: A for 70 and above, B for 60 to 69, C for 50 to 59, D for 40 to 49, otherwise F.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "grade-a",
+          "kind": "stdout",
+          "stdin": "75\n",
+          "expected": "A",
+          "hidden": false
+        },
+        {
+          "name": "grade-c",
+          "kind": "stdout",
+          "stdin": "55\n",
+          "expected": "C",
+          "hidden": true
+        },
+        {
+          "name": "grade-f",
+          "kind": "stdout",
+          "stdin": "30\n",
+          "expected": "F",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int s;\n    scanf(\"%d\", &s);\n    if (s >= 70) printf(\"A\\n\");\n    else if (s >= 60) printf(\"B\\n\");\n    else if (s >= 50) printf(\"C\\n\");\n    else if (s >= 40) printf(\"D\\n\");\n    else printf(\"F\\n\");\n    return 0;\n}\n",
+      "explanation": "An if/else if ladder checks the bands from the top down. A score of 55 falls past A and B and lands on C.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-034",
+      "format": "code",
+      "language": "c",
+      "stem": "Read a positive integer n and print the sum 1 + 2 + ... + n.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "hundred",
+          "kind": "stdout",
+          "stdin": "100\n",
+          "expected": "5050",
+          "hidden": false
+        },
+        {
+          "name": "one",
+          "kind": "stdout",
+          "stdin": "1\n",
+          "expected": "1",
+          "hidden": true
+        },
+        {
+          "name": "ten",
+          "kind": "stdout",
+          "stdin": "10\n",
+          "expected": "55",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long sum = 0;\n    for (int i = 1; i <= n; i++) sum += i;\n    printf(\"%ld\\n\", sum);\n    return 0;\n}\n",
+      "explanation": "A count-controlled `for` loop adds every integer from 1 to n. Using a long for the running total leaves room for large sums. For n = 100 the total is 5050.",
+      "difficulty": "core",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
     }
   ]
 }

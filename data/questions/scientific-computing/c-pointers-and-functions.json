@@ -579,6 +579,74 @@
       "explanation": "Swapping through the pointers exchanges the originals, so `x` becomes `3` and `y` becomes `7`. It succeeds only because the addresses were passed, letting the function reach the caller's variables.",
       "difficulty": "stretch",
       "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-031",
+      "format": "code",
+      "language": "c",
+      "stem": "Write a function that swaps two integers using pointers. Read two integers, swap them with your function, and print the two values separated by a space.",
+      "starterCode": "#include <stdio.h>\n\nvoid swap(int *x, int *y) {\n    // swap the values that x and y point to\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    // call swap, then print a and b\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "3 7\n",
+          "expected": "7 3",
+          "hidden": false
+        },
+        {
+          "name": "case-2",
+          "kind": "stdout",
+          "stdin": "1 2\n",
+          "expected": "2 1",
+          "hidden": true
+        },
+        {
+          "name": "equal",
+          "kind": "stdout",
+          "stdin": "5 5\n",
+          "expected": "5 5",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\n\nvoid swap(int *x, int *y) {\n    int t = *x;\n    *x = *y;\n    *y = t;\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    swap(&a, &b);\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}\n",
+      "explanation": "The function takes pointers, so it can change the caller's variables. Dereference with `*x` to read and write the values, using a temporary to hold one during the exchange. Pass the addresses with `&a` and `&b`.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-pointers-and-functions-032",
+      "format": "code",
+      "language": "c",
+      "stem": "Write a recursive function to compute n factorial. Read a non-negative integer n and print n!.",
+      "starterCode": "#include <stdio.h>\n\nlong fact(int n) {\n    // return n! using recursion\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    // print fact(n)\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "5\n",
+          "expected": "120",
+          "hidden": false
+        },
+        {
+          "name": "zero",
+          "kind": "stdout",
+          "stdin": "0\n",
+          "expected": "1",
+          "hidden": true
+        },
+        {
+          "name": "ten",
+          "kind": "stdout",
+          "stdin": "10\n",
+          "expected": "3628800",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\n\nlong fact(int n) {\n    if (n <= 1) return 1;\n    return (long) n * fact(n - 1);\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%ld\\n\", fact(n));\n    return 0;\n}\n",
+      "explanation": "A recursive function calls itself on a smaller input. The base case is n of 0 or 1, which returns 1; otherwise the answer is n times fact(n - 1). This mirrors the factorial example from the slides.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
     }
   ]
 }

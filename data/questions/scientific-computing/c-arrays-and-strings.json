@@ -555,6 +555,108 @@
       "explanation": "A size-`10` array uses indices `0` to `9`, so `9` is the largest valid one. Reading `x[10]` is out of bounds and therefore undefined behavior. The array holds ten elements in all.",
       "difficulty": "core",
       "source": "in the style of a KNUST Scientific Computing course (C and MPI)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-031",
+      "format": "code",
+      "language": "c",
+      "stem": "Read an integer n, then n integers, and print their sum.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "4\n1 2 3 4\n",
+          "expected": "10",
+          "hidden": false
+        },
+        {
+          "name": "single",
+          "kind": "stdout",
+          "stdin": "1\n5\n",
+          "expected": "5",
+          "hidden": true
+        },
+        {
+          "name": "tens",
+          "kind": "stdout",
+          "stdin": "3\n10 20 30\n",
+          "expected": "60",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    long sum = 0;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        sum += x;\n    }\n    printf(\"%ld\\n\", sum);\n    return 0;\n}\n",
+      "explanation": "Read the count first, then loop that many times, reading one value each pass and adding it to a running total.",
+      "difficulty": "core",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-032",
+      "format": "code",
+      "language": "c",
+      "stem": "Read an integer n, then n integers, and print the largest of them.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "5\n3 1 4 1 5\n",
+          "expected": "5",
+          "hidden": false
+        },
+        {
+          "name": "single",
+          "kind": "stdout",
+          "stdin": "1\n9\n",
+          "expected": "9",
+          "hidden": true
+        },
+        {
+          "name": "negatives",
+          "kind": "stdout",
+          "stdin": "3\n-1 -5 -3\n",
+          "expected": "-1",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int best;\n    for (int i = 0; i < n; i++) {\n        int x;\n        scanf(\"%d\", &x);\n        if (i == 0 || x > best) best = x;\n    }\n    printf(\"%d\\n\", best);\n    return 0;\n}\n",
+      "explanation": "Track the best value seen so far. Take the first number as the starting best, then update whenever a larger one arrives. This also works when every value is negative.",
+      "difficulty": "core",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-arrays-and-strings-033",
+      "format": "code",
+      "language": "c",
+      "stem": "Read a single word and print how many vowels (a, e, i, o, u, in either case) it contains.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "word",
+          "kind": "stdout",
+          "stdin": "scientific\n",
+          "expected": "4",
+          "hidden": false
+        },
+        {
+          "name": "none",
+          "kind": "stdout",
+          "stdin": "XYZ\n",
+          "expected": "0",
+          "hidden": true
+        },
+        {
+          "name": "caps",
+          "kind": "stdout",
+          "stdin": "AEIOU\n",
+          "expected": "5",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    char s[200];\n    scanf(\"%s\", s);\n    int count = 0;\n    for (int i = 0; s[i] != '\\0'; i++) {\n        char c = s[i];\n        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||\n            c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') count++;\n    }\n    printf(\"%d\\n\", count);\n    return 0;\n}\n",
+      "explanation": "Read the word into a character array, then walk it until the terminating null character, adding one for each vowel in either case. The word \"scientific\" has the vowels i, e, i, i.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
     }
   ]
 }

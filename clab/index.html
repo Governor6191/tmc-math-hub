@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Enables cross-origin isolation for /clab/ only, so the Wasmer C compiler
+       can use SharedArrayBuffer. Scoped here; the rest of the site is untouched. -->
+  <script src="coi-serviceworker.js"></script>
+  <script>
+    try {
+      var t = localStorage.getItem('tmc.v1.theme');
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+  <meta name="theme-color" content="#0f1f1c">
+  <title>C Coding Lab - TMC Math Hub</title>
+  <meta name="description" content="Write and run real C in the browser, checked against tests.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" crossorigin>
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css" crossorigin>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js" crossorigin></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js" crossorigin></script>
+</head>
+<body>
+  <header class="clab-header">
+    <a class="clab-brand" href="../index.html">&#931; TMC Math Hub</a>
+    <span class="clab-tag">C Coding Lab</span>
+  </header>
+  <main class="wrap" id="clab"><p class="hint">Loading the C coding lab&#x2026;</p></main>
+  <footer class="chrome-foot"><p class="hint">Built by and for fellows of the KNUST Mathematics Department.</p></footer>
+  <script type="module" src="../js/clab.js"></script>
+</body>
+</html>
