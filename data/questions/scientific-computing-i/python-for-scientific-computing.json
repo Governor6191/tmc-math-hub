@@ -500,6 +500,108 @@
       "explanation": "`range(6)` yields the six values 0 through 5. Dividing 7 by 3 leaves a remainder of 1, so `7 % 3` is 1.",
       "difficulty": "core",
       "source": "in the style of a KNUST Introduction to Scientific Computing course (Linux and Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-031",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `mean(xs)` that returns the average (arithmetic mean) of a non-empty list of numbers.",
+      "starterCode": "def mean(xs):\n    # return the average of the list xs\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "mean([1, 2, 3, 4])",
+          "expected": "2.5",
+          "hidden": false
+        },
+        {
+          "name": "single",
+          "kind": "function",
+          "call": "mean([10])",
+          "expected": "10.0",
+          "hidden": true
+        },
+        {
+          "name": "mixed",
+          "kind": "function",
+          "call": "mean([2, 4, 6])",
+          "expected": "4.0",
+          "hidden": true
+        }
+      ],
+      "solution": "def mean(xs):\n    return sum(xs) / len(xs)",
+      "explanation": "Add the values with sum(xs) and divide by how many there are, len(xs). Division with / always gives a float in Python 3, so mean([1, 2, 3, 4]) is 2.5.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-032",
+      "format": "code",
+      "language": "python",
+      "stem": "Write a function `dot(a, b)` that returns the dot product of two equal-length lists, that is the sum of each a[i] times b[i].",
+      "starterCode": "def dot(a, b):\n    # return the dot product of a and b\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "dot([1, 2, 3], [4, 5, 6])",
+          "expected": "32",
+          "hidden": false
+        },
+        {
+          "name": "orthogonal",
+          "kind": "function",
+          "call": "dot([1, 0], [0, 1])",
+          "expected": "0",
+          "hidden": true
+        },
+        {
+          "name": "twos",
+          "kind": "function",
+          "call": "dot([2, 2], [3, 3])",
+          "expected": "12",
+          "hidden": true
+        }
+      ],
+      "solution": "def dot(a, b):\n    return sum(x * y for x, y in zip(a, b))",
+      "explanation": "Pair the entries with zip and add each product. For [1, 2, 3] and [4, 5, 6] this is 1*4 + 2*5 + 3*6 = 32.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-033",
+      "format": "code",
+      "language": "python",
+      "stem": "Read a single non-negative integer n from input and print n factorial (the product 1*2*...*n, with 0 factorial equal to 1).",
+      "starterCode": "n = int(input())\n# print the factorial of n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "4\n",
+          "expected": "24",
+          "hidden": false
+        },
+        {
+          "name": "zero",
+          "kind": "stdout",
+          "stdin": "0\n",
+          "expected": "1",
+          "hidden": true
+        },
+        {
+          "name": "six",
+          "kind": "stdout",
+          "stdin": "6\n",
+          "expected": "720",
+          "hidden": true
+        }
+      ],
+      "solution": "n = int(input())\nf = 1\nfor i in range(2, n + 1):\n    f *= i\nprint(f)",
+      "explanation": "Start an accumulator at 1 and multiply by every integer from 2 up to n. For n = 4 this gives 1*2*3*4 = 24, and the loop runs zero times for n = 0 or n = 1, leaving the answer 1.",
+      "difficulty": "core",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
     }
   ]
 }

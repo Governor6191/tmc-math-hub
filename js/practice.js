@@ -3,6 +3,7 @@ import { loadCatalog, findCourse } from './catalog.js';
 import { drawQuestions, shuffleOptions, mark, tally } from './quiz-engine.js';
 import { gradeCloze } from './cloze-engine.js';
 import { solutionHtml, readGapValues, markGaps } from './cloze-render.js';
+import { codeCardHtml, mountCode } from './code-render.js';
 import { recordAnswer, getProgress, isAvailable } from './progress.js';
 import { renderMathIn } from './math-render.js';
 
@@ -60,6 +61,7 @@ function renderSession(course, year, semester, pool) {
   function showQuestion() {
     const q = queue[index];
     if (q.format === 'cloze') { showCloze(q); return; }
+    if (q.format === 'code') { showCode(q); return; }
     const shuffled = shuffleOptions(q);
     root.innerHTML = `
       ${header()}
@@ -152,6 +154,39 @@ function renderSession(course, year, semester, pool) {
       });
       document.getElementById('next').focus();
     });
+  }
+
+  function showCode(q) {
+    root.innerHTML = `
+      ${header()}
+      <div class="quiz-card">
+        ${codeCardHtml(q)}
+        <div id="feedback"></div>
+      </div>`;
+    renderMathIn(root);
+    mountCode(root.querySelector('.quiz-card'), q, { onGraded: (graded) => {
+      results.push({ score: graded.score });
+      if (!draftMode) recordAnswer(course.id, q.id, graded.score);
+      const last = index === queue.length - 1;
+      document.getElementById('feedback').innerHTML = `
+        <div class="explanation">
+          <p class="verdict ${graded.allCorrect ? 'right' : 'wrong'}">${graded.passed} of ${graded.total} tests passed.</p>
+          <div>${codeHtml(q.explanation)}</div>
+        </div>
+        <div class="quiz-next">
+          <span class="hint">${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}</span>
+          <button class="next-btn" id="next">${last ? 'See results' : 'Next question'}</button>
+        </div>`;
+      renderMathIn(document.getElementById('feedback'));
+      const t = tally(results);
+      document.querySelector('.quiz-head .quiz-tally').textContent = `${fmtCount(t.correct)}/${t.answered} correct`;
+      document.getElementById('next').addEventListener('click', () => {
+        index++;
+        if (index < queue.length) showQuestion();
+        else showSummary();
+      });
+      document.getElementById('next').focus();
+    } });
   }
 
   function showSummary() {
