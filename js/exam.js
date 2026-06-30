@@ -5,6 +5,7 @@ import { saveCheckpoint, loadCheckpoint, clearCheckpoint, recordAttempt } from '
 import { renderMathIn } from './math-render.js';
 import { gradeCloze } from './cloze-engine.js';
 import { solutionHtml, readGapValues, markGaps } from './cloze-render.js';
+import { codeCardHtml, mountCode, testChipsHtml } from './code-render.js';
 
 renderChrome();
 const root = document.getElementById('exam');
@@ -130,6 +131,8 @@ function renderExam() {
         <p class="quiz-stem">${codeHtml(q.stem)}</p>
         ${q.format === 'cloze'
           ? solutionHtml(q)
+          : q.format === 'code'
+          ? codeCardHtml(q, { savedCode: attempt.answers[i] && attempt.answers[i].code })
           : `<ul class="quiz-options">
           ${q.options.map((opt, oi) => `
             <li><button class="option-btn${attempt.answers[i] === oi ? ' is-correct' : ''}" data-pick="${oi}">
@@ -186,6 +189,16 @@ function wireExamEvents() {
         if (v !== undefined && r.value === v) r.checked = true;
         r.addEventListener('change', save);
       });
+    });
+  }
+  const codeEl = root.querySelector('.code-editor');
+  if (codeEl) {
+    const i = attempt.current;
+    const cq = attempt.questions[i];
+    const handle = mountCode(root.querySelector('.quiz-card'), cq, {
+      revealSolution: false,
+      onEdit: (code) => { const prev = attempt.answers[i] || {}; answerQuestion(attempt, i, { code, graded: prev.graded }); checkpoint(); },
+      onGraded: (graded) => { answerQuestion(attempt, i, { code: handle.getCode(), graded }); checkpoint(); },
     });
   }
 }
@@ -258,6 +271,22 @@ function renderResults(s, auto) {
         <p class="meta">Question ${i + 1} · ${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}${attempt.flags[i] ? ' · flagged' : ''} · ${graded.correctCount}/${graded.total} blanks</p>
         <p class="quiz-stem">${codeHtml(q.stem)}</p>
         <div data-review-cloze="${i}">${solutionHtml(q)}</div>
+        <div class="explanation"><div>${codeHtml(q.explanation)}</div></div>
+      </article>`;
+      }
+      if (q.format === 'code') {
+        const ans = attempt.answers[i] || {};
+        const graded = ans.graded || { tests: [], passed: 0, total: (q.tests || []).length, score: 0 };
+        const studentCode = ans.code != null ? ans.code : q.starterCode;
+        return `
+      <article class="review-q">
+        <p class="meta">Question ${i + 1} · ${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}${attempt.flags[i] ? ' · flagged' : ''} · ${graded.passed}/${graded.total} tests</p>
+        <p class="quiz-stem">${codeHtml(q.stem)}</p>
+        <p class="hint" style="margin: 0.4rem 0 0.2rem;">Your code</p>
+        <pre class="code-ref">${escapeHtml(studentCode)}</pre>
+        <div class="code-tests">${testChipsHtml(graded, q, true)}</div>
+        <p class="hint" style="margin: 0.6rem 0 0.2rem;">Reference solution</p>
+        <pre class="code-ref">${escapeHtml(q.solution)}</pre>
         <div class="explanation"><div>${codeHtml(q.explanation)}</div></div>
       </article>`;
       }

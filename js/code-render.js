@@ -25,7 +25,7 @@ export function codeCardHtml(question, { savedCode } = {}) {
     <div class="code-solution"></div>`;
 }
 
-function chipHtml(graded, question, revealHidden) {
+export function testChipsHtml(graded, question, revealHidden) {
   const orig = {};
   (question.tests || []).forEach(t => { orig[t.name] = t; });
   return graded.tests
@@ -46,7 +46,7 @@ function chipHtml(graded, question, revealHidden) {
 
 // Wires the editor + Run/Check. onGraded(graded) fires after Check. revealSolution
 // shows the reference solution on Check (true for practice/lab, false mid-exam).
-export function mountCode(root, question, { onGraded, revealSolution = true } = {}) {
+export function mountCode(root, question, { onGraded, onEdit, revealSolution = true } = {}) {
   const ta = root.querySelector('.code-editor');
   let cm = null;
   if (window.CodeMirror && ta) {
@@ -54,6 +54,10 @@ export function mountCode(root, question, { onGraded, revealSolution = true } = 
     cm = window.CodeMirror.fromTextArea(ta, { mode: 'python', lineNumbers: true, indentUnit: 4, theme: dark ? 'material-darker' : 'default' });
   }
   const getCode = () => (cm ? cm.getValue() : (ta ? ta.value : ''));
+  if (onEdit) {
+    if (cm) cm.on('change', () => onEdit(getCode()));
+    else if (ta) ta.addEventListener('input', () => onEdit(getCode()));
+  }
 
   const out = root.querySelector('.code-output');
   const testsEl = root.querySelector('.code-tests');
@@ -77,7 +81,7 @@ export function mountCode(root, question, { onGraded, revealSolution = true } = 
     const result = await runCode(buildHarness(question, getCode()), { onProgress: m => { out.textContent = m; } });
     showOutput(result);
     const graded = gradeCode(question, result.stdout, result.error || (result.timedOut ? 'timeout' : ''));
-    testsEl.innerHTML = chipHtml(graded, question, all);
+    testsEl.innerHTML = testChipsHtml(graded, question, all);
     if (all) {
       if (revealSolution) {
         solEl.innerHTML = `<p class="hint" style="margin-bottom:0.3rem;">Reference solution</p><pre class="code-ref">${escapeHtml(question.solution || '')}</pre>`;
