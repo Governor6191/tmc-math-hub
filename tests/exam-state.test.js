@@ -93,3 +93,36 @@ test('scoreAttempt gives partial credit for a cloze question and adds it to mcq 
   assert.equal(s.total, 2);
   assert.equal(s.correct, 1.5);
 });
+
+test('createAttempt snapshots a code question keeping tests, starter and solution', () => {
+  const pool = [{
+    id: 'k1', format: 'code', language: 'python', stem: 'double', starterCode: 'def double(x):\n    pass',
+    tests: [{ name: 'a', kind: 'function', call: 'double(3)', expected: '6', hidden: false }],
+    solution: 'def double(x):\n    return 2*x', explanation: 'e', difficulty: 'core', topicTitle: 'T',
+  }];
+  const fmt = { id: 'f', label: 'F', questions: 1, minutes: 10 };
+  const a = createAttempt('c', fmt, pool, () => 0, () => 0);
+  const q = a.questions[0];
+  assert.equal(q.format, 'code');
+  assert.equal(q.starterCode, 'def double(x):\n    pass');
+  assert.equal(q.tests.length, 1);
+  assert.equal(q.solution, 'def double(x):\n    return 2*x');
+});
+
+test('scoreAttempt adds a stored code score to the marks', () => {
+  const pool = [
+    { id: 'm1', stem: 's', options: ['a', 'b'], answer: 0, explanation: 'e', difficulty: 'core', topicTitle: 'T' },
+    { id: 'k1', format: 'code', language: 'python', stem: 'c', starterCode: 'x',
+      tests: [{ name: 'a', kind: 'function', call: 'f()', expected: '1', hidden: false }],
+      solution: 's', explanation: 'e', difficulty: 'core', topicTitle: 'T' },
+  ];
+  const fmt = { id: 'f', label: 'F', questions: 2, minutes: 10 };
+  const a = createAttempt('c', fmt, pool, () => 0.1, () => 0);
+  const mcq = a.questions.findIndex(q => q.format !== 'code' && q.format !== 'cloze');
+  const code = a.questions.findIndex(q => q.format === 'code');
+  answerQuestion(a, mcq, a.questions[mcq].answerIndex);
+  answerQuestion(a, code, { code: 'whatever', graded: { score: 0.5 } });
+  const s = scoreAttempt(a);
+  assert.equal(s.total, 2);
+  assert.equal(s.correct, 1.5);
+});

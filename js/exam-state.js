@@ -25,6 +25,20 @@ export function createAttempt(courseId, format, pool, rng = Math.random, now = D
           topicTitle: q.topicTitle ?? '',
         };
       }
+      if (q.format === 'code') {
+        return {
+          id: q.id,
+          format: 'code',
+          language: q.language || 'python',
+          stem: q.stem,
+          starterCode: q.starterCode,
+          tests: q.tests,
+          solution: q.solution,
+          explanation: q.explanation,
+          difficulty: q.difficulty,
+          topicTitle: q.topicTitle ?? '',
+        };
+      }
       const s = shuffleOptions(q, rng);
       return {
         id: q.id,
@@ -65,6 +79,7 @@ export function scoreAttempt(attempt) {
   let correct = 0;
   attempt.questions.forEach((q, i) => {
     if (q.format === 'cloze') correct += gradeCloze(q, attempt.answers[i] || {}).score;
+    else if (q.format === 'code') correct += (attempt.answers[i] && attempt.answers[i].graded ? attempt.answers[i].graded.score : 0);
     else if (attempt.answers[i] === q.answerIndex) correct += 1;
   });
   return { correct, total: attempt.questions.length };
