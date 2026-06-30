@@ -472,6 +472,108 @@
       "explanation": "Each loop runs over 0, 1, 2, giving 9 pairs. The 3 pairs where `i == j` are excluded, leaving 6 where `i != j`, so `c` reaches 6. The `if` test is the selection construct, nested inside two iteration loops.",
       "difficulty": "stretch",
       "source": "in the style of a KNUST Introduction to Programming for Mathematics course"
+    },
+    {
+      "id": "mathematical-programing-programming-constructs-029",
+      "format": "code",
+      "language": "python",
+      "stem": "A worker is paid by the hour. For the first 8 hours the pay is `hours * rate`; every hour beyond 8 is paid at 1.5 times the rate (overtime). Write `daily_wage(hours, rate)` returning the total pay.",
+      "starterCode": "def daily_wage(hours, rate):\n    # first 8 hours at the normal rate, the rest at 1.5 times\n    pass",
+      "tests": [
+        {
+          "name": "regular",
+          "kind": "function",
+          "call": "daily_wage(8, 50)",
+          "expected": "400",
+          "hidden": false
+        },
+        {
+          "name": "overtime",
+          "kind": "function",
+          "call": "daily_wage(10, 20)",
+          "expected": "220.0",
+          "hidden": true
+        },
+        {
+          "name": "under",
+          "kind": "function",
+          "call": "daily_wage(6, 15)",
+          "expected": "90",
+          "hidden": true
+        }
+      ],
+      "solution": "def daily_wage(hours, rate):\n    if hours <= 8:\n        return hours * rate\n    return 8 * rate + (hours - 8) * rate * 1.5",
+      "explanation": "This is a single selection: if 8 hours or fewer, pay is just `hours * rate`; otherwise pay the first 8 hours normally and the extra hours at 1.5 times. For 10 hours at 20 the pay is 8*20 + 2*20*1.5 = 160 + 60 = 220.",
+      "difficulty": "core",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-programming-constructs-030",
+      "format": "code",
+      "language": "python",
+      "stem": "Read an integer exam score from input and print its letter grade: A for 70 and above, B for 60 to 69, C for 50 to 59, D for 40 to 49, and F below 40.",
+      "starterCode": "score = int(input())\n# print the letter grade A, B, C, D or F",
+      "tests": [
+        {
+          "name": "grade-a",
+          "kind": "stdout",
+          "stdin": "75\n",
+          "expected": "A",
+          "hidden": false
+        },
+        {
+          "name": "grade-c",
+          "kind": "stdout",
+          "stdin": "55\n",
+          "expected": "C",
+          "hidden": true
+        },
+        {
+          "name": "grade-f",
+          "kind": "stdout",
+          "stdin": "30\n",
+          "expected": "F",
+          "hidden": true
+        }
+      ],
+      "solution": "score = int(input())\nif score >= 70:\n    print(\"A\")\nelif score >= 60:\n    print(\"B\")\nelif score >= 50:\n    print(\"C\")\nelif score >= 40:\n    print(\"D\")\nelse:\n    print(\"F\")",
+      "explanation": "This is a multiple-alternative selection (an if/elif/else ladder). The bands are tested from the top down, so a score of 55 falls through A and B and prints C.",
+      "difficulty": "core",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-programming-constructs-031",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `digit_sum(n)` that returns the sum of the decimal digits of a non-negative integer `n`, for example the digits of 123 add up to 6.",
+      "starterCode": "def digit_sum(n):\n    # peel off one digit at a time with % 10 and // 10\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "digit_sum(123)",
+          "expected": "6",
+          "hidden": false
+        },
+        {
+          "name": "zero",
+          "kind": "function",
+          "call": "digit_sum(0)",
+          "expected": "0",
+          "hidden": true
+        },
+        {
+          "name": "nines",
+          "kind": "function",
+          "call": "digit_sum(99)",
+          "expected": "18",
+          "hidden": true
+        }
+      ],
+      "solution": "def digit_sum(n):\n    total = 0\n    while n > 0:\n        total += n % 10\n        n = n // 10\n    return total",
+      "explanation": "A count-free repetition (a while loop): `n % 10` gives the last digit and `n // 10` removes it, so the loop adds 3, then 2, then 1 from 123. The loop never runs for 0, leaving the total at 0.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
     }
   ]
 }

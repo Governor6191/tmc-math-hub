@@ -504,6 +504,176 @@
       "explanation": "Variance measures spread about the mean. Skewness measures asymmetry, and a long right tail gives positive skewness. Kurtosis measures peakedness and the heaviness of the tails.",
       "difficulty": "core",
       "source": "in the style of a KNUST Introduction to Programming for Mathematics course"
+    },
+    {
+      "id": "mathematical-programing-statistical-computation-029",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `std(xs)` returning the population standard deviation of `xs`: the square root of the average squared deviation from the mean. Round the result to 4 decimal places.",
+      "starterCode": "def std(xs):\n    # square root of the mean of (x - mean) squared\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "std([2, 4, 4, 4, 5, 5, 7, 9])",
+          "expected": "2.0",
+          "hidden": false
+        },
+        {
+          "name": "constant",
+          "kind": "function",
+          "call": "std([10, 10, 10])",
+          "expected": "0.0",
+          "hidden": true
+        },
+        {
+          "name": "pair",
+          "kind": "function",
+          "call": "std([1, 9])",
+          "expected": "4.0",
+          "hidden": true
+        }
+      ],
+      "solution": "def std(xs):\n    n = len(xs)\n    m = sum(xs) / n\n    var = sum((x - m) ** 2 for x in xs) / n\n    return round(var ** 0.5, 4)",
+      "explanation": "Find the mean, average the squared deviations to get the variance, then take the square root. The classic set 2, 4, 4, 4, 5, 5, 7, 9 has mean 5, variance 4 and standard deviation 2.",
+      "difficulty": "core",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-statistical-computation-030",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `covariance(xs, ys)` returning the population covariance of two equal-length lists: the average of `(x - mean_x) * (y - mean_y)` over all pairs. Round to 4 decimal places.",
+      "starterCode": "def covariance(xs, ys):\n    # average of (x - mean_x)(y - mean_y) over the pairs\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "covariance([1, 3], [2, 6])",
+          "expected": "2.0",
+          "hidden": false
+        },
+        {
+          "name": "spread",
+          "kind": "function",
+          "call": "covariance([2, 4, 6, 8], [1, 2, 3, 4])",
+          "expected": "2.5",
+          "hidden": true
+        },
+        {
+          "name": "same",
+          "kind": "function",
+          "call": "covariance([1, 2, 3, 4], [1, 2, 3, 4])",
+          "expected": "1.25",
+          "hidden": true
+        }
+      ],
+      "solution": "def covariance(xs, ys):\n    n = len(xs)\n    mx = sum(xs) / n\n    my = sum(ys) / n\n    return round(sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / n, 4)",
+      "explanation": "Centre each list at its own mean, multiply the paired deviations, and average them. For [1, 3] and [2, 6] the means are 2 and 4, giving ((-1)(-2) + (1)(2))/2 = 2.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-statistical-computation-031",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `correlation(xs, ys)` returning the population Pearson correlation: the covariance divided by the product of the two standard deviations. Round to 4 decimal places.",
+      "starterCode": "def correlation(xs, ys):\n    # covariance divided by (std_x times std_y)\n    pass",
+      "tests": [
+        {
+          "name": "perfect",
+          "kind": "function",
+          "call": "correlation([1, 2, 3], [2, 4, 6])",
+          "expected": "1.0",
+          "hidden": false
+        },
+        {
+          "name": "inverse",
+          "kind": "function",
+          "call": "correlation([1, 2, 3], [6, 4, 2])",
+          "expected": "-1.0",
+          "hidden": true
+        },
+        {
+          "name": "identity",
+          "kind": "function",
+          "call": "correlation([1, 2, 3, 4], [1, 2, 3, 4])",
+          "expected": "1.0",
+          "hidden": true
+        }
+      ],
+      "solution": "def correlation(xs, ys):\n    n = len(xs)\n    mx = sum(xs) / n\n    my = sum(ys) / n\n    sx = (sum((x - mx) ** 2 for x in xs) / n) ** 0.5\n    sy = (sum((y - my) ** 2 for y in ys) / n) ** 0.5\n    cov = sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / n\n    return round(cov / (sx * sy), 4)",
+      "explanation": "Correlation rescales covariance by the two standard deviations, so it always lands between -1 and 1. When one list is an exact increasing linear function of the other the correlation is +1; when it decreases linearly it is -1.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-statistical-computation-032",
+      "format": "code",
+      "language": "python",
+      "stem": "The population skewness is `m3 / m2**1.5`, where `m2` and `m3` are the average of `(x - mean)**2` and `(x - mean)**3`. Write `skewness(xs)` returning this value rounded to 4 decimal places.",
+      "starterCode": "def skewness(xs):\n    # third moment divided by the second moment to the power 1.5\n    pass",
+      "tests": [
+        {
+          "name": "symmetric",
+          "kind": "function",
+          "call": "skewness([1, 2, 3, 4, 5])",
+          "expected": "0.0",
+          "hidden": false
+        },
+        {
+          "name": "right",
+          "kind": "function",
+          "call": "skewness([1, 1, 1, 5])",
+          "expected": "1.1547",
+          "hidden": true
+        },
+        {
+          "name": "skewed",
+          "kind": "function",
+          "call": "skewness([1, 2, 9])",
+          "expected": "0.6655",
+          "hidden": true
+        }
+      ],
+      "solution": "def skewness(xs):\n    n = len(xs)\n    m = sum(xs) / n\n    m2 = sum((x - m) ** 2 for x in xs) / n\n    m3 = sum((x - m) ** 3 for x in xs) / n\n    return round(m3 / m2 ** 1.5, 4)",
+      "explanation": "Skewness measures lopsidedness. A symmetric list like 1, 2, 3, 4, 5 has third moment 0, so its skewness is 0; a list with a long right tail gives a positive value.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-statistical-computation-033",
+      "format": "code",
+      "language": "python",
+      "stem": "The population kurtosis is `m4 / m2**2`, where `m2` and `m4` are the average of `(x - mean)**2` and `(x - mean)**4`. Write `kurtosis(xs)` returning this value rounded to 4 decimal places.",
+      "starterCode": "def kurtosis(xs):\n    # fourth moment divided by the square of the second moment\n    pass",
+      "tests": [
+        {
+          "name": "uniform",
+          "kind": "function",
+          "call": "kurtosis([1, 2, 3, 4, 5])",
+          "expected": "1.7",
+          "hidden": false
+        },
+        {
+          "name": "even",
+          "kind": "function",
+          "call": "kurtosis([2, 4, 6, 8])",
+          "expected": "1.64",
+          "hidden": true
+        },
+        {
+          "name": "peaked",
+          "kind": "function",
+          "call": "kurtosis([1, 1, 1, 1, 5])",
+          "expected": "3.25",
+          "hidden": true
+        }
+      ],
+      "solution": "def kurtosis(xs):\n    n = len(xs)\n    m = sum(xs) / n\n    m2 = sum((x - m) ** 2 for x in xs) / n\n    m4 = sum((x - m) ** 4 for x in xs) / n\n    return round(m4 / m2 ** 2, 4)",
+      "explanation": "Kurtosis compares the fourth moment to the squared variance, describing how heavy the tails are. For the evenly spread 1, 2, 3, 4, 5 it works out to 1.7.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
     }
   ]
 }

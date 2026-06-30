@@ -482,6 +482,142 @@
       "explanation": "The `x = 7` inside `change` creates a local variable, so `change()` returns 7. The global `x` is untouched and remains 100. Assignments inside a function affect only local scope unless declared global.",
       "difficulty": "stretch",
       "source": "in the style of a KNUST Introduction to Programming for Mathematics course"
+    },
+    {
+      "id": "mathematical-programing-modular-programming-029",
+      "format": "code",
+      "language": "python",
+      "stem": "Using the quadratic formula, write `larger_root(a, b, c)` that returns the larger real root of `a*x**2 + b*x + c = 0`. You may assume the equation has two real roots.",
+      "starterCode": "def larger_root(a, b, c):\n    # the larger root uses the plus sign in the quadratic formula\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "larger_root(1, -5, 6)",
+          "expected": "3.0",
+          "hidden": false
+        },
+        {
+          "name": "simple",
+          "kind": "function",
+          "call": "larger_root(1, -3, 2)",
+          "expected": "2.0",
+          "hidden": true
+        },
+        {
+          "name": "leading",
+          "kind": "function",
+          "call": "larger_root(2, -7, 3)",
+          "expected": "3.0",
+          "hidden": true
+        }
+      ],
+      "solution": "def larger_root(a, b, c):\n    d = b * b - 4 * a * c\n    return (-b + d ** 0.5) / (2 * a)",
+      "explanation": "The two roots are (-b plus or minus the square root of the discriminant) over 2a; the larger one takes the plus sign. For x squared minus 5x plus 6 the discriminant is 1 and the larger root is (5 + 1)/2 = 3.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-modular-programming-030",
+      "format": "code",
+      "language": "python",
+      "stem": "Using Heron's formula, write `area_triangle(a, b, c)` that returns the area of a triangle with side lengths `a`, `b`, `c`. With `s` the semi-perimeter `(a + b + c) / 2`, the area is the square root of `s*(s - a)*(s - b)*(s - c)`.",
+      "starterCode": "def area_triangle(a, b, c):\n    # s is the semi-perimeter; area is sqrt(s(s-a)(s-b)(s-c))\n    pass",
+      "tests": [
+        {
+          "name": "right",
+          "kind": "function",
+          "call": "area_triangle(3, 4, 5)",
+          "expected": "6.0",
+          "hidden": false
+        },
+        {
+          "name": "scaled",
+          "kind": "function",
+          "call": "area_triangle(6, 8, 10)",
+          "expected": "24.0",
+          "hidden": true
+        },
+        {
+          "name": "isosceles",
+          "kind": "function",
+          "call": "area_triangle(5, 5, 6)",
+          "expected": "12.0",
+          "hidden": true
+        }
+      ],
+      "solution": "def area_triangle(a, b, c):\n    s = (a + b + c) / 2\n    return (s * (s - a) * (s - b) * (s - c)) ** 0.5",
+      "explanation": "For the 3-4-5 triangle the semi-perimeter is 6, so the area is the square root of 6*3*2*1 = 36, which is 6.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-modular-programming-031",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `sum_product(xs)` that returns a list `[total, product]` where `total` is the sum of the numbers in `xs` and `product` is their product.",
+      "starterCode": "def sum_product(xs):\n    # one accumulator starts at 0 for the sum, one at 1 for the product\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "sum_product([1, 2, 3, 4])",
+          "expected": "[10, 24]",
+          "hidden": false
+        },
+        {
+          "name": "single",
+          "kind": "function",
+          "call": "sum_product([5])",
+          "expected": "[5, 5]",
+          "hidden": true
+        },
+        {
+          "name": "threes",
+          "kind": "function",
+          "call": "sum_product([2, 3, 5])",
+          "expected": "[10, 30]",
+          "hidden": true
+        }
+      ],
+      "solution": "def sum_product(xs):\n    total = 0\n    prod = 1\n    for x in xs:\n        total += x\n        prod *= x\n    return [total, prod]",
+      "explanation": "Use two accumulators in one pass: the sum starts at 0 and the product starts at 1. For [1, 2, 3, 4] the sum is 10 and the product is 24.",
+      "difficulty": "core",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-modular-programming-032",
+      "format": "code",
+      "language": "python",
+      "stem": "The cosine of `x` has the series cos x = 1 - x^2/2! + x^4/4! - ... Write `cos_series(x, n)` that adds the first `n` terms of this series and returns the result rounded to 4 decimal places.",
+      "starterCode": "import math\n\ndef cos_series(x, n):\n    # sum the first n terms, alternating sign, even powers over factorials\n    pass",
+      "tests": [
+        {
+          "name": "zero",
+          "kind": "function",
+          "call": "cos_series(0, 5)",
+          "expected": "1.0",
+          "hidden": false
+        },
+        {
+          "name": "one",
+          "kind": "function",
+          "call": "cos_series(1, 3)",
+          "expected": "0.5417",
+          "hidden": true
+        },
+        {
+          "name": "two",
+          "kind": "function",
+          "call": "cos_series(2, 4)",
+          "expected": "-0.4222",
+          "hidden": true
+        }
+      ],
+      "solution": "import math\n\ndef cos_series(x, n):\n    total = 0.0\n    for k in range(n):\n        total += (-1) ** k * x ** (2 * k) / math.factorial(2 * k)\n    return round(total, 4)",
+      "explanation": "Each term k contributes (-1)^k times x^(2k) divided by (2k) factorial. For x = 1 and n = 3 the partial sum is 1 - 0.5 + 1/24 = 0.5417 to four places. At x = 0 every term after the first is 0, leaving 1.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
     }
   ]
 }
