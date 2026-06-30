@@ -89,6 +89,11 @@ function render(course, year, semester) {
       <div class="coming-card"><h3>Mock exam hall</h3>
         <p>Timed, Moodle-style trial exams. Feel the real format before exam day.</p>
         <span class="badge soon">Coming soon</span></div>`}
+      ${course.hasCode ? `
+      <div class="coming-card"><h3>Coding lab</h3>
+        <p>Write and run Python right in your browser, checked instantly against tests. No setup, nothing to install.</p>
+        <a class="next-btn" style="display: inline-block; text-decoration: none;" href="lab.html?c=${encodeURIComponent(course.id)}">Open coding lab</a></div>`
+      : ''}
     </section>`;
 }
 
