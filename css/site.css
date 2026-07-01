@@ -502,3 +502,43 @@ code {
 @media (prefers-reduced-motion: reduce) {
   .option-btn.is-correct, .option-btn.is-correct::after, .option-btn.is-wrong, .explanation, .quiz-card, .score-ring-fill { animation: none !important; transition: none !important; }
 }
+
+/* --- AI tutor --- */
+.tutor-overlay { position: fixed; inset: 0; z-index: 80; background: rgba(0,0,0,0.28); display: flex; align-items: flex-end; justify-content: flex-end; padding: 1rem; }
+.tutor-panel { display: flex; flex-direction: column; width: min(420px, 96vw); height: min(72vh, 640px); background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 18px 50px rgba(0,0,0,0.3); overflow: hidden; animation: slideUpIn .28s ease both; }
+.tutor-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.8rem 1rem; border-bottom: 1px solid var(--line); background: var(--card-raised); }
+.tutor-title { font-family: var(--font-display); font-weight: 700; }
+.tutor-sub { color: var(--ink-soft); font-size: 0.8rem; }
+.tutor-close { background: none; border: none; font-size: 1.5rem; line-height: 1; color: var(--ink-soft); cursor: pointer; padding: 0 0.2rem; }
+.tutor-close:hover { color: var(--ink); }
+.tutor-messages { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.7rem; }
+.tutor-msg { max-width: 88%; padding: 0.6rem 0.85rem; border-radius: 14px; line-height: 1.5; font-size: 0.94rem; animation: slideUpIn .22s ease both; }
+.tutor-user { align-self: flex-end; background: var(--mint); color: #08261c; border-bottom-right-radius: 4px; }
+.tutor-assistant { align-self: flex-start; background: var(--card-raised); border: 1px solid var(--line); color: var(--ink); border-bottom-left-radius: 4px; }
+.tutor-assistant code { background: rgba(127,127,127,0.16); padding: 0.05rem 0.3rem; border-radius: 4px; }
+.tutor-code { background: var(--ink); color: var(--card); padding: 0.55rem 0.7rem; border-radius: 8px; overflow-x: auto; font-family: var(--font-mono); font-size: 0.84rem; margin: 0.4rem 0; }
+.tutor-form { display: flex; gap: 0.5rem; padding: 0.7rem; border-top: 1px solid var(--line); }
+.tutor-input { flex: 1; resize: none; border: 1px solid var(--line); border-radius: 10px; padding: 0.55rem 0.7rem; font: inherit; background: var(--bg); color: var(--ink); max-height: 120px; }
+.tutor-send { border: none; background: var(--mint); color: #08261c; font-weight: 700; border-radius: 10px; padding: 0 1.1rem; cursor: pointer; font-family: var(--font-display); }
+.tutor-send:hover { filter: brightness(1.06); }
+.tutor-foot { margin: 0; padding: 0 0.9rem 0.7rem; font-size: 0.72rem; }
+.tutor-dots { display: inline-flex; gap: 4px; align-items: center; }
+.tutor-dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-soft); animation: tutorBlink 1s infinite; }
+.tutor-dots i:nth-child(2) { animation-delay: .2s; }
+.tutor-dots i:nth-child(3) { animation-delay: .4s; }
+@keyframes tutorBlink { 0%,100% { opacity:.3 } 50% { opacity:1 } }
+.ai-explain { margin-top: 0.75rem; background: none; border: 1px dashed var(--mint); color: var(--mint); font-weight: 700; border-radius: 999px; padding: 0.35rem 0.9rem; cursor: pointer; font-size: 0.85rem; transition: background .15s ease; }
+.ai-explain:hover { background: var(--right-bg); }
+.ai-explain::before { content: '\2728'; margin-right: 0.35rem; }
+.tutor-fab { position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 70; background: var(--mint); color: #08261c; border: none; border-radius: 999px; padding: 0.7rem 1.15rem; font-weight: 700; box-shadow: 0 8px 24px rgba(0,0,0,0.22); cursor: pointer; font-family: var(--font-display); transition: transform .15s ease; }
+.tutor-fab::before { content: '\2728'; margin-right: 0.4rem; }
+.tutor-fab:hover { transform: translateY(-2px); }
+@media (max-width: 520px) { .tutor-overlay { padding: 0; } .tutor-panel { width: 100vw; height: 84vh; border-radius: 16px 16px 0 0; } }
+
+/* --- AI tutor fixes from adversarial review --- */
+/* The author display:flex above would otherwise defeat the hidden attribute,
+   leaving the full-screen overlay stuck over the page after Close/Escape. */
+.tutor-overlay[hidden] { display: none !important; }
+/* Leave room above the floating tutor button so it never covers the
+   Next/Check buttons at the bottom of practice, exam review and lab pages. */
+body.has-tutor-fab main.wrap { padding-bottom: 4.8rem; }

@@ -6,6 +6,7 @@ import { renderChrome, escapeHtml } from './app.js';
 import { loadCatalog, findCourse } from './catalog.js';
 import { codeCardHtml, mountCode } from './code-render.js';
 import { renderMathIn } from './math-render.js';
+import { mountTutorFab } from './ai-tutor.js';
 
 renderChrome();
 const root = document.getElementById('lab');
@@ -108,6 +109,7 @@ function renderProblem(course, p) {
     const chosen = problemId ? problems.find(x => x.id === problemId) : null;
     if (chosen) renderProblem(hit.course, chosen);
     else renderList(hit.course, problems);
+    mountTutorFab();
   } catch (err) {
     console.error(err);
     root.innerHTML = `<div class="error"><p>The coding lab failed to load.

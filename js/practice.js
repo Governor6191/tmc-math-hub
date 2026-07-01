@@ -1,4 +1,5 @@
 import { renderChrome, escapeHtml, codeHtml, confettiBurst } from './app.js';
+import { tutorEnabled, openTutor, mountTutorFab } from './ai-tutor.js';
 import { loadCatalog, findCourse } from './catalog.js';
 import { drawQuestions, shuffleOptions, mark, tally } from './quiz-engine.js';
 import { gradeCloze } from './cloze-engine.js';
@@ -98,12 +99,18 @@ function renderSession(course, year, semester, pool) {
           ${recap}
           <p class="explain-label">Why</p>
           <div class="explain-body">${codeHtml(q.explanation)}</div>
+          ${(!result.correct && tutorEnabled()) ? '<button class="ai-explain" id="ai-explain" type="button">Explain this with AI</button>' : ''}
         </div>
         <div class="quiz-next">
           <span class="hint">${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}</span>
           <button class="next-btn" id="next">${last ? 'See results' : 'Next question'}</button>
         </div>`;
       renderMathIn(document.getElementById('feedback'));
+      const ax = document.getElementById('ai-explain');
+      if (ax) ax.addEventListener('click', () => {
+        const opts = shuffled.options.map((o, i) => `${LETTERS[i]}) ${o}`).join('\n');
+        openTutor(`I got this practice question wrong and want to understand it.\n\nQuestion: ${q.stem}\n\nOptions:\n${opts}\n\nI chose ${LETTERS[chosen]} but the correct answer is ${LETTERS[result.correctIndex]}. Explain simply why my choice is wrong and why the correct answer is right.`, true);
+      });
       const tnow = tally(results);
       document.querySelector('.quiz-head .quiz-tally').textContent =
         `${fmtCount(tnow.correct)}/${tnow.answered} correct`;
@@ -240,6 +247,7 @@ function renderSession(course, year, semester, pool) {
       return;
     }
     renderSession(hit.course, hit.year, hit.semester, pool);
+    mountTutorFab();
   } catch (err) {
     console.error(err);
     root.innerHTML = `<div class="error"><p>Practice failed to load. Check your connection, then <a href="">reload the page</a>.</p></div>`;

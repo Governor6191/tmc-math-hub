@@ -6,6 +6,7 @@ import { renderMathIn } from './math-render.js';
 import { gradeCloze } from './cloze-engine.js';
 import { solutionHtml, readGapValues, markGaps } from './cloze-render.js';
 import { codeCardHtml, mountCode, testChipsHtml } from './code-render.js';
+import { tutorEnabled, openTutor, mountTutorFab } from './ai-tutor.js';
 
 renderChrome();
 const root = document.getElementById('exam');
@@ -302,10 +303,21 @@ function renderResults(s, auto) {
             </span></li>`).join('')}
         </ul>
         <p class="hint" style="margin: 0.4rem 0;">${chosen === undefined ? 'Not answered.' : chosen === q.answerIndex ? 'Your answer was correct.' : `Your answer: ${LETTERS[chosen]}. Correct answer: ${LETTERS[q.answerIndex]}.`}</p>
-        <div class="explanation"><div>${codeHtml(q.explanation)}</div></div>
+        <div class="explanation"><div>${codeHtml(q.explanation)}</div>
+          ${(chosen !== q.answerIndex && tutorEnabled()) ? `<button class="ai-explain" data-ai-explain="${i}" type="button">Explain this with AI</button>` : ''}
+        </div>
       </article>`;
     }).join('')}`;
   renderMathIn(root);
+  root.querySelectorAll('[data-ai-explain]').forEach(btn => btn.addEventListener('click', () => {
+    const i = Number(btn.dataset.aiExplain);
+    const q = attempt.questions[i];
+    const chosen = attempt.answers[i];
+    const opts = q.options.map((o, oi) => `${LETTERS[oi]}) ${o}`).join('\n');
+    const mine = chosen === undefined ? 'I did not answer it' : `I chose ${LETTERS[chosen]}`;
+    openTutor(`I took a mock exam and want to understand this question.\n\nQuestion: ${q.stem}\n\nOptions:\n${opts}\n\n${mine} and the correct answer is ${LETTERS[q.answerIndex]}. Explain simply why the correct answer is right${chosen !== undefined ? ' and why my choice is wrong' : ''}.`, true);
+  }));
+  mountTutorFab();
   root.querySelectorAll('[data-review-cloze]').forEach(div => {
     const i = Number(div.dataset.reviewCloze);
     const q = attempt.questions[i];
