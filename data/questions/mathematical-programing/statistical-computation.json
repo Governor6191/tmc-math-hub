@@ -674,6 +674,142 @@
       "explanation": "Kurtosis compares the fourth moment to the squared variance, describing how heavy the tails are. For the evenly spread 1, 2, 3, 4, 5 it works out to 1.7.",
       "difficulty": "stretch",
       "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-statistical-computation-034",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `median(xs)` that returns the median of a list: the middle value once sorted, or the average of the two middle values when the count is even.",
+      "starterCode": "def median(xs):\n    # sort first, then pick the middle (or average the two middle values)\n    pass",
+      "tests": [
+        {
+          "name": "odd",
+          "kind": "function",
+          "call": "median([1, 3, 2, 5, 4])",
+          "expected": "3",
+          "hidden": false
+        },
+        {
+          "name": "even",
+          "kind": "function",
+          "call": "median([1, 2, 3, 4])",
+          "expected": "2.5",
+          "hidden": true
+        },
+        {
+          "name": "single",
+          "kind": "function",
+          "call": "median([7])",
+          "expected": "7",
+          "hidden": true
+        }
+      ],
+      "solution": "def median(xs):\n    s = sorted(xs)\n    n = len(s)\n    if n % 2 == 1:\n        return s[n // 2]\n    return (s[n // 2 - 1] + s[n // 2]) / 2",
+      "explanation": "Sort the values, then take the middle one for an odd count, or average the two middle ones for an even count.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-statistical-computation-035",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `mode(xs)` that returns the value that appears most often in the list. You may assume there is a single most frequent value.",
+      "starterCode": "def mode(xs):\n    # the value whose count is the largest\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "mode([1, 2, 2, 3])",
+          "expected": "2",
+          "hidden": false
+        },
+        {
+          "name": "all-same",
+          "kind": "function",
+          "call": "mode([5, 5, 5])",
+          "expected": "5",
+          "hidden": true
+        },
+        {
+          "name": "clear",
+          "kind": "function",
+          "call": "mode([1, 1, 2, 2, 2])",
+          "expected": "2",
+          "hidden": true
+        }
+      ],
+      "solution": "def mode(xs):\n    return max(set(xs), key=xs.count)",
+      "explanation": "Take the distinct values and pick the one whose count in the list is greatest.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-statistical-computation-036",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `weighted_mean(xs, ws)` that returns the weighted mean of the values `xs` with weights `ws`: the sum of value times weight, divided by the sum of the weights.",
+      "starterCode": "def weighted_mean(xs, ws):\n    # sum of x*w over sum of w\n    pass",
+      "tests": [
+        {
+          "name": "equal",
+          "kind": "function",
+          "call": "weighted_mean([1, 2, 3], [1, 1, 1])",
+          "expected": "2.0",
+          "hidden": false
+        },
+        {
+          "name": "skewed",
+          "kind": "function",
+          "call": "weighted_mean([10, 20], [1, 3])",
+          "expected": "17.5",
+          "hidden": true
+        },
+        {
+          "name": "flat",
+          "kind": "function",
+          "call": "weighted_mean([4, 4], [2, 2])",
+          "expected": "4.0",
+          "hidden": true
+        }
+      ],
+      "solution": "def weighted_mean(xs, ws):\n    return sum(x * w for x, w in zip(xs, ws)) / sum(ws)",
+      "explanation": "Multiply each value by its weight, add those up, and divide by the total weight. Equal weights give the ordinary mean.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
+    },
+    {
+      "id": "mathematical-programing-statistical-computation-037",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `geometric_mean(xs)` that returns the geometric mean of a list of positive numbers, the nth root of their product, rounded to 6 decimal places.",
+      "starterCode": "def geometric_mean(xs):\n    # the product raised to the power 1/n\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "geometric_mean([1, 4])",
+          "expected": "2.0",
+          "hidden": false
+        },
+        {
+          "name": "powers",
+          "kind": "function",
+          "call": "geometric_mean([2, 8])",
+          "expected": "4.0",
+          "hidden": true
+        },
+        {
+          "name": "ones",
+          "kind": "function",
+          "call": "geometric_mean([1, 1, 1])",
+          "expected": "1.0",
+          "hidden": true
+        }
+      ],
+      "solution": "def geometric_mean(xs):\n    p = 1\n    for x in xs:\n        p *= x\n    return round(p ** (1 / len(xs)), 6)",
+      "explanation": "Multiply all the values and take the nth root, where n is how many there are. For 1 and 4 the product is 4 and its square root is 2.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST MATH 279 Introduction to Programming for Mathematics course (Python)"
     }
   ]
 }

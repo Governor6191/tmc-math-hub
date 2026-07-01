@@ -642,6 +642,74 @@
       "explanation": "The simple interest formula from the slides is P*R*T/100. For P = 1000, R = 5, T = 2 the interest is 10000/100 = 100.",
       "difficulty": "core",
       "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-034",
+      "format": "code",
+      "language": "c",
+      "stem": "Read an integer and print it with its digits reversed, for example 123 becomes 321.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "123\n",
+          "expected": "321",
+          "hidden": false
+        },
+        {
+          "name": "trailing-zero",
+          "kind": "stdout",
+          "stdin": "100\n",
+          "expected": "1",
+          "hidden": true
+        },
+        {
+          "name": "single",
+          "kind": "stdout",
+          "stdin": "5\n",
+          "expected": "5",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int r = 0;\n    while (n > 0) {\n        r = r * 10 + n % 10;\n        n /= 10;\n    }\n    printf(\"%d\\n\", r);\n    return 0;\n}\n",
+      "explanation": "Peel the last digit with `% 10` and build the reversed number by multiplying the running result by 10 and adding it. A trailing zero in the input just disappears.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-basics-and-data-types-035",
+      "format": "code",
+      "language": "c",
+      "stem": "Read a non-negative integer and print its binary representation (base 2), with no leading zeros.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "5\n",
+          "expected": "101",
+          "hidden": false
+        },
+        {
+          "name": "zero",
+          "kind": "stdout",
+          "stdin": "0\n",
+          "expected": "0",
+          "hidden": true
+        },
+        {
+          "name": "ten",
+          "kind": "stdout",
+          "stdin": "10\n",
+          "expected": "1010",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nvoid bin(int n) {\n    if (n > 1) bin(n / 2);\n    printf(\"%d\", n % 2);\n}\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    if (n == 0) printf(\"0\");\n    else bin(n);\n    printf(\"\\n\");\n    return 0;\n}\n",
+      "explanation": "Divide by 2 repeatedly; the remainders are the binary digits from least to most significant. Printing them on the way back out of the recursion puts them in the right order.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
     }
   ]
 }

@@ -691,6 +691,108 @@
       "explanation": "A count-controlled `for` loop adds every integer from 1 to n. Using a long for the running total leaves room for large sums. For n = 100 the total is 5050.",
       "difficulty": "core",
       "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-035",
+      "format": "code",
+      "language": "c",
+      "stem": "Read two integers, a base and an exponent, and print the base raised to that power.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "2 10\n",
+          "expected": "1024",
+          "hidden": false
+        },
+        {
+          "name": "zero-exp",
+          "kind": "stdout",
+          "stdin": "5 0\n",
+          "expected": "1",
+          "hidden": true
+        },
+        {
+          "name": "cube",
+          "kind": "stdout",
+          "stdin": "3 3\n",
+          "expected": "27",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int b, e;\n    scanf(\"%d %d\", &b, &e);\n    long r = 1;\n    for (int i = 0; i < e; i++) r *= b;\n    printf(\"%ld\\n\", r);\n    return 0;\n}\n",
+      "explanation": "Start at 1 and multiply by the base exponent times with a count-controlled loop. Any base to the power 0 is 1, since the loop runs zero times.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-036",
+      "format": "code",
+      "language": "c",
+      "stem": "Read an integer n and print a right triangle of n rows, where row i contains i asterisks.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "3\n",
+          "expected": "*\n**\n***",
+          "hidden": false
+        },
+        {
+          "name": "one",
+          "kind": "stdout",
+          "stdin": "1\n",
+          "expected": "*",
+          "hidden": true
+        },
+        {
+          "name": "five",
+          "kind": "stdout",
+          "stdin": "5\n",
+          "expected": "*\n**\n***\n****\n*****",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) {\n        for (int j = 0; j < i; j++) printf(\"*\");\n        printf(\"\\n\");\n    }\n    return 0;\n}\n",
+      "explanation": "An outer loop counts the rows and an inner loop prints that many asterisks, followed by a newline. Nested loops like this build up two-dimensional patterns.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
+    },
+    {
+      "id": "scientific-computing-c-control-flow-037",
+      "format": "code",
+      "language": "c",
+      "stem": "Read an integer n and print how many prime numbers are less than or equal to n.",
+      "starterCode": "#include <stdio.h>\nint main() {\n    // read the input and print the result\n    return 0;\n}\n",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "stdout",
+          "stdin": "10\n",
+          "expected": "4",
+          "hidden": false
+        },
+        {
+          "name": "small",
+          "kind": "stdout",
+          "stdin": "2\n",
+          "expected": "1",
+          "hidden": true
+        },
+        {
+          "name": "thirty",
+          "kind": "stdout",
+          "stdin": "30\n",
+          "expected": "10",
+          "hidden": true
+        }
+      ],
+      "solution": "#include <stdio.h>\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    int count = 0;\n    for (int k = 2; k <= n; k++) {\n        int p = 1;\n        for (int i = 2; i * i <= k; i++) {\n            if (k % i == 0) { p = 0; break; }\n        }\n        if (p) count++;\n    }\n    printf(\"%d\\n\", count);\n    return 0;\n}\n",
+      "explanation": "For each number up to n, test whether any divisor from 2 to its square root divides it. Count the ones with no divisor. Up to 10 the primes are 2, 3, 5, 7.",
+      "difficulty": "stretch",
+      "source": "in the style of the KNUST Scientific Computing course (Introduction to C, MATH 279 / HPC)"
     }
   ]
 }

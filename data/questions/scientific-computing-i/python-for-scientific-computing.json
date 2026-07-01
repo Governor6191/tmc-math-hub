@@ -1010,6 +1010,278 @@
       "explanation": "Split the input line on spaces, convert each piece to a float, then print the sum divided by the count. For \"1 2 3 4\" the average is 2.5.",
       "difficulty": "core",
       "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-046",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `matmul(A, B)` that returns the product of two matrices, each given as a list of rows.",
+      "starterCode": "def matmul(A, B):\n    # each entry is a row of A dotted with a column of B\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "matmul([[1, 2], [3, 4]], [[5, 6], [7, 8]])",
+          "expected": "[[19, 22], [43, 50]]",
+          "hidden": false
+        },
+        {
+          "name": "identity",
+          "kind": "function",
+          "call": "matmul([[1, 0], [0, 1]], [[9, 8], [7, 6]])",
+          "expected": "[[9, 8], [7, 6]]",
+          "hidden": true
+        },
+        {
+          "name": "rect",
+          "kind": "function",
+          "call": "matmul([[1, 2, 3]], [[1], [1], [1]])",
+          "expected": "[[6]]",
+          "hidden": true
+        }
+      ],
+      "solution": "def matmul(A, B):\n    m = len(B)\n    p = len(B[0])\n    return [[sum(row[k] * B[k][j] for k in range(m)) for j in range(p)] for row in A]",
+      "explanation": "Entry (i, j) of the product is row i of A dotted with column j of B. The inner sum runs over the shared dimension.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-047",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `transpose(A)` that returns the transpose of a matrix given as a list of rows (rows become columns).",
+      "starterCode": "def transpose(A):\n    # entry (i, j) of the result is entry (j, i) of A\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "transpose([[1, 2, 3], [4, 5, 6]])",
+          "expected": "[[1, 4], [2, 5], [3, 6]]",
+          "hidden": false
+        },
+        {
+          "name": "single",
+          "kind": "function",
+          "call": "transpose([[1]])",
+          "expected": "[[1]]",
+          "hidden": true
+        },
+        {
+          "name": "square",
+          "kind": "function",
+          "call": "transpose([[1, 2], [3, 4]])",
+          "expected": "[[1, 3], [2, 4]]",
+          "hidden": true
+        }
+      ],
+      "solution": "def transpose(A):\n    return [[A[i][j] for i in range(len(A))] for j in range(len(A[0]))]",
+      "explanation": "The transpose swaps rows and columns, so the new entry (i, j) is the old entry (j, i).",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-048",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `det2(A)` that returns the determinant of a 2 by 2 matrix `[[a, b], [c, d]]`, which is a*d minus b*c.",
+      "starterCode": "def det2(A):\n    # a*d - b*c\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "det2([[1, 2], [3, 4]])",
+          "expected": "-2",
+          "hidden": false
+        },
+        {
+          "name": "diagonal",
+          "kind": "function",
+          "call": "det2([[2, 0], [0, 3]])",
+          "expected": "6",
+          "hidden": true
+        },
+        {
+          "name": "other",
+          "kind": "function",
+          "call": "det2([[5, 1], [2, 1]])",
+          "expected": "3",
+          "hidden": true
+        }
+      ],
+      "solution": "def det2(A):\n    return A[0][0] * A[1][1] - A[0][1] * A[1][0]",
+      "explanation": "For a 2 by 2 matrix the determinant is the product of the diagonal minus the product of the off-diagonal.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-049",
+      "format": "code",
+      "language": "python",
+      "stem": "Using Horner's method, write `poly_eval(coeffs, x)` that evaluates a polynomial at `x`. The coefficients run from the highest power down to the constant term.",
+      "starterCode": "def poly_eval(coeffs, x):\n    # start at 0 and repeatedly multiply by x and add the next coefficient\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "poly_eval([2, 3, 1], 2)",
+          "expected": "15",
+          "hidden": false
+        },
+        {
+          "name": "quadratic",
+          "kind": "function",
+          "call": "poly_eval([1, 0, -1], 3)",
+          "expected": "8",
+          "hidden": true
+        },
+        {
+          "name": "linear",
+          "kind": "function",
+          "call": "poly_eval([1, 1], 5)",
+          "expected": "6",
+          "hidden": true
+        }
+      ],
+      "solution": "def poly_eval(coeffs, x):\n    r = 0\n    for c in coeffs:\n        r = r * x + c\n    return r",
+      "explanation": "Horner's method nests the polynomial so each step does one multiply and one add. For 2x squared + 3x + 1 at x = 2 the value is 8 + 6 + 1 = 15.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-050",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `nth_prime(n)` that returns the nth prime number, counting from 1 so that `nth_prime(1)` is 2.",
+      "starterCode": "def nth_prime(n):\n    # count primes until you reach the nth one\n    pass",
+      "tests": [
+        {
+          "name": "first",
+          "kind": "function",
+          "call": "nth_prime(1)",
+          "expected": "2",
+          "hidden": false
+        },
+        {
+          "name": "fifth",
+          "kind": "function",
+          "call": "nth_prime(5)",
+          "expected": "11",
+          "hidden": true
+        },
+        {
+          "name": "tenth",
+          "kind": "function",
+          "call": "nth_prime(10)",
+          "expected": "29",
+          "hidden": true
+        }
+      ],
+      "solution": "def nth_prime(n):\n    def prime(k):\n        if k < 2:\n            return False\n        i = 2\n        while i * i <= k:\n            if k % i == 0:\n                return False\n            i += 1\n        return True\n    count = 0\n    k = 1\n    while count < n:\n        k += 1\n        if prime(k):\n            count += 1\n    return k",
+      "explanation": "Test each integer for primality and count up until you have found n primes. The fifth prime is 11 (2, 3, 5, 7, 11).",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-051",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `lcm(a, b)` that returns the least common multiple of two positive integers.",
+      "starterCode": "def lcm(a, b):\n    # the product divided by the greatest common divisor\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "lcm(4, 6)",
+          "expected": "12",
+          "hidden": false
+        },
+        {
+          "name": "multiple",
+          "kind": "function",
+          "call": "lcm(21, 6)",
+          "expected": "42",
+          "hidden": true
+        },
+        {
+          "name": "coprime",
+          "kind": "function",
+          "call": "lcm(5, 7)",
+          "expected": "35",
+          "hidden": true
+        }
+      ],
+      "solution": "import math\n\ndef lcm(a, b):\n    return a * b // math.gcd(a, b)",
+      "explanation": "The least common multiple is the product of the two numbers divided by their greatest common divisor.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-052",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `collatz(n)` that returns how many steps it takes to reach 1 under the Collatz rule: halve an even number, and triple plus one an odd number.",
+      "starterCode": "def collatz(n):\n    # count steps: n // 2 if even, else 3n + 1, until n is 1\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "collatz(6)",
+          "expected": "8",
+          "hidden": false
+        },
+        {
+          "name": "one",
+          "kind": "function",
+          "call": "collatz(1)",
+          "expected": "0",
+          "hidden": true
+        },
+        {
+          "name": "long",
+          "kind": "function",
+          "call": "collatz(27)",
+          "expected": "111",
+          "hidden": true
+        }
+      ],
+      "solution": "def collatz(n):\n    steps = 0\n    while n != 1:\n        n = n // 2 if n % 2 == 0 else 3 * n + 1\n        steps += 1\n    return steps",
+      "explanation": "Apply the rule until you reach 1, counting each step. From 6 the path is 6, 3, 10, 5, 16, 8, 4, 2, 1, which is 8 steps.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
+    },
+    {
+      "id": "scientific-computing-i-python-for-scientific-computing-053",
+      "format": "code",
+      "language": "python",
+      "stem": "Write `count_primes(n)` that returns how many prime numbers are less than or equal to `n`.",
+      "starterCode": "def count_primes(n):\n    # test each number from 2 to n for primality\n    pass",
+      "tests": [
+        {
+          "name": "example",
+          "kind": "function",
+          "call": "count_primes(10)",
+          "expected": "4",
+          "hidden": false
+        },
+        {
+          "name": "small",
+          "kind": "function",
+          "call": "count_primes(2)",
+          "expected": "1",
+          "hidden": true
+        },
+        {
+          "name": "thirty",
+          "kind": "function",
+          "call": "count_primes(30)",
+          "expected": "10",
+          "hidden": true
+        }
+      ],
+      "solution": "def count_primes(n):\n    count = 0\n    for k in range(2, n + 1):\n        p = True\n        i = 2\n        while i * i <= k:\n            if k % i == 0:\n                p = False\n                break\n            i += 1\n        if p:\n            count += 1\n    return count",
+      "explanation": "Check each number from 2 up to n and count the primes. Up to 10 there are 4: namely 2, 3, 5 and 7.",
+      "difficulty": "stretch",
+      "source": "in the style of a KNUST Introduction to Scientific Computing course (Python)"
     }
   ]
 }
