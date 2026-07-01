@@ -13,6 +13,31 @@ export function escapeHtml(s) {
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+// A light, dependency-free confetti burst for celebratory moments. Respects the
+// reduced-motion preference and cleans up after itself.
+export function confettiBurst() {
+  try {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  } catch { /* older browser: just proceed */ }
+  const colors = ['#3fb98a', '#ff6b5f', '#f4c95d', '#6ea8ff'];
+  const h = window.innerHeight + 80;
+  for (let i = 0; i < 44; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.background = colors[i % colors.length];
+    el.style.opacity = '0.9';
+    document.body.appendChild(el);
+    const dx = (Math.random() - 0.5) * 240;
+    const dur = 1700 + Math.random() * 1500;
+    const anim = el.animate([
+      { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+      { transform: `translate(${dx}px, ${h}px) rotate(${Math.random() * 720 - 360}deg)`, opacity: 0.85 },
+    ], { duration: dur, easing: 'cubic-bezier(.2,.6,.4,1)', delay: Math.random() * 220, fill: 'forwards' });
+    anim.onfinish = () => el.remove();
+  }
+}
+
 // Render content text to HTML, turning `backtick` spans into <code> elements.
 // KaTeX's renderMathInElement ignores <code> by default, so shell/code with
 // $ signs ($HOME, awk $1) or braces renders literally instead of as math.

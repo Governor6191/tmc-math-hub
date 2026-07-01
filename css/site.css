@@ -470,3 +470,35 @@ code {
 .clab-brand { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--ink); text-decoration: none; }
 .clab-brand:hover { color: var(--mint); }
 .clab-tag { font-size: 0.78rem; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* --- answer feedback delight + smart explanations --- */
+@keyframes shake { 10%,90%{transform:translateX(-1px)} 20%,80%{transform:translateX(2px)} 30%,50%,70%{transform:translateX(-4px)} 40%,60%{transform:translateX(4px)} }
+@keyframes slideUpIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+@keyframes checkPop { 0%{transform:translateY(-50%) scale(0) rotate(-25deg);opacity:0} 60%{transform:translateY(-50%) scale(1.3) rotate(0)} 100%{transform:translateY(-50%) scale(1);opacity:1} }
+
+.option-btn { transition: border-color .15s ease, transform .12s ease, background .2s ease, box-shadow .15s ease; }
+.option-btn:hover:not(:disabled) { box-shadow: 0 3px 12px rgba(0,0,0,0.07); }
+.option-btn.is-correct { position: relative; animation: pop 0.32s ease both; padding-right: 2.6rem; }
+.option-btn.is-correct::after { content: '\2713'; position: absolute; right: 1rem; top: 50%; font-weight: 800; color: var(--right-text); animation: checkPop 0.42s ease both 0.05s; }
+.option-btn.is-wrong { animation: shake 0.42s ease both; }
+
+.explanation { animation: slideUpIn 0.32s ease both; }
+.answer-recap { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 0 0 0.65rem; font-family: var(--font-mono); font-size: 0.88rem; }
+.recap-you { background: var(--wrong-bg); color: var(--wrong-text); padding: 0.18rem 0.6rem; border-radius: 999px; font-weight: 700; }
+.recap-ans { background: var(--right-bg); color: var(--right-text); padding: 0.18rem 0.6rem; border-radius: 999px; font-weight: 700; }
+.recap-arrow { color: var(--ink-soft); font-weight: 700; }
+.explain-label { font-family: var(--font-display); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin: 0 0 0.3rem; }
+.explain-body { line-height: 1.58; }
+
+/* summary score ring */
+.score-ring { display: block; margin: 0.2rem auto 0.7rem; }
+.score-ring-track { fill: none; stroke: var(--line); stroke-width: 9; }
+.score-ring-fill { fill: none; stroke: var(--mint); stroke-width: 9; stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset 0.95s cubic-bezier(.4,.9,.3,1) 0.15s; }
+.score-ring-text { font-family: var(--font-display); font-weight: 700; fill: var(--ink); }
+
+/* confetti */
+.confetti-piece { position: fixed; width: 9px; height: 14px; top: -22px; border-radius: 2px; z-index: 60; pointer-events: none; will-change: transform, opacity; }
+
+@media (prefers-reduced-motion: reduce) {
+  .option-btn.is-correct, .option-btn.is-correct::after, .option-btn.is-wrong, .explanation, .quiz-card, .score-ring-fill { animation: none !important; transition: none !important; }
+}

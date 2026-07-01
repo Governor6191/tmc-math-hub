@@ -1,4 +1,4 @@
-import { renderChrome, escapeHtml, codeHtml } from './app.js';
+import { renderChrome, escapeHtml, codeHtml, confettiBurst } from './app.js';
 import { loadCatalog, findCourse } from './catalog.js';
 import { drawQuestions, shuffleOptions, mark, tally } from './quiz-engine.js';
 import { gradeCloze } from './cloze-engine.js';
@@ -90,10 +90,14 @@ function renderSession(course, year, semester, pool) {
       });
 
       const last = index === queue.length - 1;
+      const recap = result.correct ? '' :
+        `<p class="answer-recap"><span class="recap-you">You chose ${LETTERS[chosen]}</span><span class="recap-arrow">&#8594;</span><span class="recap-ans">Answer: ${LETTERS[result.correctIndex]}</span></p>`;
       document.getElementById('feedback').innerHTML = `
-        <div class="explanation">
-          <p class="verdict ${result.correct ? 'right' : 'wrong'}">${result.correct ? 'Correct.' : 'Not quite.'}</p>
-          <div>${codeHtml(q.explanation)}</div>
+        <div class="explanation ${result.correct ? 'is-right' : 'is-wrong'}">
+          <p class="verdict ${result.correct ? 'right' : 'wrong'}">${result.correct ? 'Correct!' : 'Not quite.'}</p>
+          ${recap}
+          <p class="explain-label">Why</p>
+          <div class="explain-body">${codeHtml(q.explanation)}</div>
         </div>
         <div class="quiz-next">
           <span class="hint">${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}</span>
@@ -192,17 +196,28 @@ function renderSession(course, year, semester, pool) {
   function showSummary() {
     const t = tally(results);
     const prog = !draftMode && isAvailable() ? getProgress(course.id) : null;
+    const pct = t.answered ? Math.round((t.correct / t.answered) * 100) : 0;
+    const C = 2 * Math.PI * 52;
+    const msg = pct >= 80 ? 'Strong work!' : pct >= 50 ? 'Solid. The explanations you just read are the gold.' : 'Rough round. Read the worked solutions and go again.';
     root.innerHTML = `
       ${header()}
       <div class="quiz-card quiz-summary">
-        <p class="score">${fmtCount(t.correct)}/${t.answered}</p>
-        <p>${t.percent >= 80 ? 'Strong work.' : t.percent >= 50 ? 'Solid. The explanations you just read are the gold.' : 'Rough round. Read the worked solutions and go again.'}</p>
+        <svg class="score-ring" width="150" height="150" viewBox="0 0 120 120" role="img" aria-label="Score ${pct} percent">
+          <circle class="score-ring-track" cx="60" cy="60" r="52"></circle>
+          <circle class="score-ring-fill" cx="60" cy="60" r="52" style="stroke-dasharray:${C.toFixed(1)}; stroke-dashoffset:${C.toFixed(1)};"></circle>
+          <text class="score-ring-text" x="60" y="60" text-anchor="middle" dominant-baseline="central" font-size="27">${pct}%</text>
+        </svg>
+        <p class="score-sub" style="font-family: var(--font-mono); font-weight: 700; color: var(--mint); margin: 0 0 0.4rem;">${fmtCount(t.correct)} of ${t.answered} correct</p>
+        <p>${msg}</p>
         ${prog ? `<p class="hint">All time on this device: ${prog.attempted} questions tried in ${escapeHtml(course.title)}.</p>` : ''}
         <div class="quiz-next" style="justify-content: center;">
           <button class="next-btn" id="again">Practice ${queue.length} more</button>
           <a href="course.html?c=${encodeURIComponent(course.id)}">Back to ${escapeHtml(course.title)}</a>
         </div>
       </div>`;
+    const fill = root.querySelector('.score-ring-fill');
+    if (fill) setTimeout(() => { fill.style.strokeDashoffset = (C * (1 - pct / 100)).toFixed(1); }, 60);
+    if (pct >= 80) setTimeout(confettiBurst, 350);
     document.getElementById('again').addEventListener('click', () => renderSession(course, year, semester, pool));
   }
 
