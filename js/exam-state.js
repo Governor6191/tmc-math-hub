@@ -4,8 +4,20 @@
 import { drawQuestions, shuffleOptions, shuffle } from './quiz-engine.js';
 import { gradeCloze } from './cloze-engine.js';
 
+// C code questions need the isolated compiler (the C lab) and cannot run in the
+// shared exam page, so they never enter an exam. When the pool has runnable
+// (Python) code questions, guarantee at least one appears in the draw.
+function ensureCodeQuestion(drawn, pool, rng) {
+  if (drawn.length === 0 || drawn.some(q => q.format === 'code')) return;
+  const codes = pool.filter(q => q.format === 'code');
+  if (!codes.length) return;
+  drawn[drawn.length - 1] = codes[Math.floor(rng() * codes.length)];
+}
+
 export function createAttempt(courseId, format, pool, rng = Math.random, now = Date.now) {
-  const drawn = drawQuestions(pool, format.questions, rng);
+  const examPool = pool.filter(q => !(q.format === 'code' && q.language === 'c'));
+  const drawn = drawQuestions(examPool, format.questions, rng);
+  ensureCodeQuestion(drawn, examPool, rng);
   return {
     courseId,
     formatId: format.id,

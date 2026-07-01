@@ -126,3 +126,28 @@ test('scoreAttempt adds a stored code score to the marks', () => {
   assert.equal(s.total, 2);
   assert.equal(s.correct, 1.5);
 });
+
+test('createAttempt guarantees a Python code question appears in the exam', () => {
+  const pool = [
+    ...Array.from({ length: 12 }, (_, i) => ({ id: 'm' + i, stem: 's', options: ['a', 'b'], answer: 0, explanation: 'e', difficulty: 'core', topicTitle: 'T' })),
+    { id: 'code1', format: 'code', language: 'python', stem: 'c', starterCode: 'x',
+      tests: [{ name: 'a', kind: 'function', call: 'f()', expected: '1', hidden: false }],
+      solution: 's', explanation: 'e', difficulty: 'core', topicTitle: 'T' },
+  ];
+  const fmt = { id: 'f', label: 'F', questions: 5, minutes: 10 };
+  const a = createAttempt('c', fmt, pool, () => 0.99, () => 0);
+  assert.equal(a.questions.length, 5);
+  assert.ok(a.questions.some(q => q.format === 'code'));
+});
+
+test('createAttempt keeps C code questions out of the exam entirely', () => {
+  const pool = [
+    ...Array.from({ length: 6 }, (_, i) => ({ id: 'm' + i, stem: 's', options: ['a', 'b'], answer: 0, explanation: 'e', difficulty: 'core', topicTitle: 'T' })),
+    { id: 'cq', format: 'code', language: 'c', stem: 'c', starterCode: 'x',
+      tests: [{ name: 'a', kind: 'stdout', stdin: '', expected: '1', hidden: false }],
+      solution: 's', explanation: 'e', difficulty: 'core', topicTitle: 'T' },
+  ];
+  const fmt = { id: 'f', label: 'F', questions: 7, minutes: 10 };
+  const a = createAttempt('c', fmt, pool, () => 0, () => 0);
+  assert.ok(!a.questions.some(q => q.format === 'code'));
+});
