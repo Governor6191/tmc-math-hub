@@ -1,7 +1,7 @@
 import { renderChrome, escapeHtml, codeHtml } from './app.js';
 import { loadCatalog, findCourse } from './catalog.js';
 import { createAttempt, remainingMs, answerQuestion, toggleFlag, answeredCount, scoreAttempt } from './exam-state.js';
-import { saveCheckpoint, loadCheckpoint, clearCheckpoint, recordAttempt } from './exam-store.js';
+import { saveCheckpoint, loadCheckpoint, clearCheckpoint, recordAttempt, getAttempts } from './exam-store.js';
 import { renderMathIn } from './math-render.js';
 import { gradeCloze } from './cloze-engine.js';
 import { solutionHtml, readGapValues, markGaps } from './cloze-render.js';
@@ -78,14 +78,25 @@ function renderPreStart(pool) {
     ${draftBanner()}
     <p>Pick a paper. The clock starts immediately, keeps running even if you refresh, and the
     exam submits itself at zero, just like the real thing. Flag anything you want to revisit.</p>
-    ${course.examFormats.map(f => `
+    ${(() => {
+      const history = draftMode ? [] : getAttempts(course.id);
+      return course.examFormats.map(f => {
+        const mine = history.filter(a => a && a.formatId === f.id && a.total);
+        const best = mine.reduce((b, a) => (!b || a.score / a.total > b.score / b.total ? a : b), null);
+        const line = best
+          ? `Best so far: <strong>${Number.isInteger(best.score) ? best.score : best.score.toFixed(1)}/${best.total}</strong> (${Math.round((best.score / best.total) * 100)}%) · ${mine.length} attempt${mine.length === 1 ? '' : 's'}`
+          : 'Not attempted yet';
+        return `
       <div class="format-card">
         <div>
           <h3>${escapeHtml(f.label)}</h3>
           <p class="format-meta">${Math.min(f.questions, pool.length)} questions · ${f.minutes} minutes</p>
+          <p class="format-history ${best ? '' : 'is-fresh'}">${line}</p>
         </div>
         <button class="next-btn" data-format="${escapeHtml(f.id)}">Attempt now</button>
-      </div>`).join('')}
+      </div>`;
+      }).join('');
+    })()}
     <p class="hint">${pool.length} questions in the bank. Your attempt draws a random paper, so every attempt is different.</p>`;
   root.querySelectorAll('[data-format]').forEach(btn => btn.addEventListener('click', () => {
     const format = course.examFormats.find(f => f.id === btn.dataset.format);

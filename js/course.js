@@ -56,17 +56,33 @@ function render(course, year, semester) {
       <p class="viewer-note">Trouble viewing, or want it offline? Use the links above.</p>
     </section>
 
-    ${course.topics.length ? `<section><h2>Topics</h2>${course.topics.map(t => `
+    ${course.topics.length ? `<section><h2>Topics</h2>${course.topics.map(t => {
+      // Question ids embed the topic (courseId-topicId-NNN), so per-topic
+      // progress falls out of the stored ids without fetching any bank.
+      let tried = 0;
+      if (prog && t.questionCount) {
+        const prefix = `${course.id}-${t.id}-`;
+        for (const id of Object.keys(prog.byQuestion)) if (id.startsWith(prefix)) tried += 1;
+      }
+      const pct = t.questionCount ? Math.min(100, Math.round((tried / t.questionCount) * 100)) : 0;
+      return `
       <article class="topic">
         <h3>${escapeHtml(t.title)}</h3>
         <ul class="pdf-list">${t.slides.map(fileRow).join('')}</ul>
-        ${t.questionCount ? `<p><a href="practice.html?c=${encodeURIComponent(course.id)}&t=${encodeURIComponent(t.id)}">Practice ${t.questionCount} questions on ${escapeHtml(t.title)}</a></p>` : ''}
+        ${t.questionCount ? `
+        <p class="topic-practice"><a href="practice.html?c=${encodeURIComponent(course.id)}&t=${encodeURIComponent(t.id)}">Practice ${t.questionCount} questions on ${escapeHtml(t.title)}</a></p>
+        ${tried ? `
+        <div class="topic-progress" role="img" aria-label="${tried} of ${t.questionCount} questions tried">
+          <div class="topic-progress-bar"><i style="width:${pct}%"></i></div>
+          <span class="topic-progress-label">${tried} of ${t.questionCount} tried</span>
+        </div>` : ''}` : ''}
         ${(course.channels && course.channels.length) ? `<div class="topic-videos">
           <span class="tv-label">Watch on YouTube</span>
           ${course.channels.map(ch => `<a class="tv-chip" href="https://www.youtube.com/results?search_query=${encodeURIComponent(ch + ' ' + t.title)}" target="_blank" rel="noopener">${escapeHtml(ch)}</a>`).join('')}
         </div>`
         : `<p class="hint">Video lessons for this topic are coming.</p>`}
-      </article>`).join('')}</section>` : ''}
+      </article>`;
+    }).join('')}</section>` : ''}
 
     ${section('Practice sheets &amp; assignments', practice)}
     ${section('Textbooks', textbooks)}
