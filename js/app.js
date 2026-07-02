@@ -1,6 +1,7 @@
 import { loadCatalog } from './catalog.js';
 import { initThemeToggle, applyTheme, currentTheme } from './theme.js';
 import { wireAccountUI, accountsEnabled } from './cloud-sync.js';
+import { AI_ENDPOINT } from './ai-config.js';
 
 const SECTIONS = [
   { href: 'index.html', label: 'Library' },
@@ -82,6 +83,11 @@ export function renderChrome() {
     // sign-in privacy paragraph) is hidden until the feature is configured.
     if (accountsEnabled()) {
       document.querySelectorAll('[data-accounts-only]').forEach(el => { el.hidden = false; });
+    }
+    // Same idea for the AI tutor: its About mention stays hidden until the
+    // proxy endpoint is configured in js/ai-config.js.
+    if (AI_ENDPOINT) {
+      document.querySelectorAll('[data-tutor-only]').forEach(el => { el.hidden = false; });
     }
 
     if (!document.getElementById('tmc-drawer')) {
