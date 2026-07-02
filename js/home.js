@@ -1,16 +1,17 @@
 import { renderChrome, escapeHtml } from './app.js';
 import { loadCatalog, yearStats } from './catalog.js';
 import { getProgress, isAvailable } from './progress.js';
+import { initReveals } from './reveal.js';
 
 renderChrome();
 const root = document.getElementById('library');
 const status = document.getElementById('library-status');
 
-function yearBox(y) {
+function yearBox(y, i) {
   const st = yearStats(y);
   const bits = [`${st.courses} course${st.courses === 1 ? '' : 's'}`];
   if (st.questions) bits.push(`${st.questions} practice questions`);
-  return `<a class="pick-box" href="year.html?y=${y.year}">
+  return `<a class="pick-box" data-reveal style="--reveal-delay: ${i * 80}ms" href="year.html?y=${y.year}">
     <span class="pick-label">Year ${y.year}</span>
     <span class="pick-meta">${bits.join(' · ')}</span>
   </a>`;
@@ -46,7 +47,7 @@ function heroStats(catalog) {
     }
   }
   return `
-    <div class="home-stats" aria-label="What is inside">
+    <div class="home-stats" aria-label="What is inside" data-reveal>
       <div class="home-stat"><span class="home-stat-n" data-count="${questions}">0</span><span class="home-stat-l">practice questions</span></div>
       <div class="home-stat"><span class="home-stat-n" data-count="${courses}">0</span><span class="home-stat-l">courses, Year 1 to 4</span></div>
       <div class="home-stat"><span class="home-stat-n" data-count="${labs}">0</span><span class="home-stat-l">in-browser coding labs</span></div>
@@ -66,7 +67,7 @@ function continueCards(catalog) {
   if (!active.length) return '';
   active.sort((a, b) => b.lastActive - a.lastActive);
   return `
-    <section class="home-continue" aria-label="Pick up where you left off">
+    <section class="home-continue" aria-label="Pick up where you left off" data-reveal style="--reveal-delay: 60ms">
       <h2>Pick up where you left off</h2>
       <div class="continue-grid">
         ${active.slice(0, 3).map(({ c, p }) => `
@@ -88,6 +89,7 @@ function continueCards(catalog) {
       ${heroStats(catalog)}
       ${continueCards(catalog)}
       <div class="pick-grid">${catalog.years.map(yearBox).join('')}</div>`;
+    initReveals();
     root.querySelectorAll('.home-stat-n').forEach(el => countUp(el, Number(el.dataset.count) || 0));
     if (status) status.textContent = '';
   } catch (err) {
