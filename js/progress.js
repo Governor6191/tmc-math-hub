@@ -32,6 +32,34 @@ export function recordAnswer(courseId, questionId, value, store = defaultStore()
   const score = Number.isFinite(n) ? n : 0;
   data[questionId] = { correct: score >= 1, score, at: Date.now() };
   try { store.setItem(KEY_PREFIX + courseId, JSON.stringify(data)); } catch { return false; }
+  bumpActivity(store, Date.now());
+  return true;
+}
+
+// A small per-day answer counter (key tmc.v1.activity, {"YYYY-MM-DD": n}) so
+// the dashboard can show exact streaks and daily activity. Answer timestamps
+// alone lose history when a question is re-answered; this log does not.
+const ACTIVITY_KEY = 'tmc.v1.activity';
+
+function localDayKey(ts) {
+  const d = new Date(ts);
+  const p = x => String(x).padStart(2, '0');
+  return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+}
+
+export function getActivity(store = defaultStore()) {
+  if (!isAvailable(store)) return {};
+  let data;
+  try { data = JSON.parse(store.getItem(ACTIVITY_KEY)); } catch { data = null; }
+  return data && typeof data === 'object' && !Array.isArray(data) ? data : {};
+}
+
+export function bumpActivity(store = defaultStore(), now = Date.now()) {
+  if (!isAvailable(store)) return false;
+  const map = getActivity(store);
+  const key = localDayKey(now);
+  map[key] = (map[key] || 0) + 1;
+  try { store.setItem(ACTIVITY_KEY, JSON.stringify(map)); } catch { return false; }
   return true;
 }
 

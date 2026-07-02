@@ -542,3 +542,36 @@ code {
 /* Leave room above the floating tutor button so it never covers the
    Next/Check buttons at the bottom of practice, exam review and lab pages. */
 body.has-tutor-fab main.wrap { padding-bottom: 4.8rem; }
+
+/* --- progress dashboard --- */
+.dash-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.7rem; margin: 1.1rem 0 0.9rem; }
+.stat-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 0.85rem 1rem; animation: pop 0.35s ease both; }
+.stat-card:nth-child(2) { animation-delay: 0.05s; }
+.stat-card:nth-child(3) { animation-delay: 0.1s; }
+.stat-card:nth-child(4) { animation-delay: 0.15s; }
+.stat-value { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--mint); margin: 0; }
+.stat-label { margin: 0.15rem 0 0; color: var(--ink-soft); font-size: 0.82rem; }
+.dash-spark { display: flex; gap: 4px; align-items: flex-end; height: 56px; margin: 0.4rem 0 0.1rem; }
+.spark-col { flex: 1; max-width: 26px; height: 100%; display: flex; align-items: flex-end; }
+.spark-col i { display: block; width: 100%; border-radius: 4px 4px 2px 2px; background: var(--line); transition: height 0.5s ease; }
+.spark-col i.is-active { background: var(--mint); }
+.dash-spark-label { margin: 0 0 0.4rem; font-size: 0.74rem; }
+.dash-h2 { margin: 1.4rem 0 0.7rem; }
+.dash-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.9rem; }
+.dash-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; animation: pop 0.35s ease both; }
+.dash-card-head { display: flex; gap: 0.85rem; align-items: center; }
+.dash-card-title h3 { margin: 0 0 0.2rem; font-size: 1.05rem; }
+.dash-card-title .hint { margin: 0; font-size: 0.8rem; }
+.ring-sm { flex: none; }
+.ring-sm-track { fill: none; stroke: var(--line); stroke-width: 6; }
+.ring-sm-fill { fill: none; stroke: var(--mint); stroke-width: 6; stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset 0.9s cubic-bezier(.4,.9,.3,1); }
+.ring-sm-text { font-family: var(--font-mono); font-weight: 700; font-size: 14px; fill: var(--ink); }
+.dash-bar { height: 7px; border-radius: 999px; background: var(--line); margin: 0.75rem 0 0.2rem; overflow: hidden; }
+.dash-bar i { display: block; height: 100%; border-radius: 999px; background: var(--mint); transition: width 0.8s ease; }
+.dash-exam { margin: 0.55rem 0 0; font-size: 0.88rem; }
+.dash-attempts { margin-top: 0.5rem; }
+.dash-attempts summary { cursor: pointer; color: var(--ink-soft); font-size: 0.85rem; }
+.dash-links { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 0.75rem; font-size: 0.9rem; }
+.dash-empty { text-align: center; padding: 1.8rem 1.2rem; }
+.dash-empty-big { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; margin: 0 0 0.4rem; }
+@media (prefers-reduced-motion: reduce) { .stat-card, .dash-card, .ring-sm-fill, .dash-bar i, .spark-col i { animation: none !important; transition: none !important; } }
