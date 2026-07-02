@@ -4,6 +4,7 @@
 // Work and best score persist per problem on this device. Mirrors js/lab.js.
 
 import { escapeHtml } from './app.js';
+import { initReveals } from './reveal.js';
 import { loadCatalog, findCourse } from './catalog.js';
 import { cCardHtml, mountC } from './c-render.js';
 
@@ -52,12 +53,12 @@ function crumb(course) {
 
 function renderList(course, problems) {
   document.title = `C Coding Lab · ${course.title} - TMC Math Hub`;
-  const items = problems.map(p => {
+  const items = problems.map((p, pi) => {
     const st = loadSaved(course.id, p.id);
     const tag = st.best === 1
       ? '<span class="lab-tag is-solved">Solved</span>'
       : (st.code ? '<span class="lab-tag is-progress">In progress</span>' : '');
-    return `<a class="lab-item" href="index.html?c=${encodeURIComponent(course.id)}&p=${encodeURIComponent(p.id)}">
+    return `<a class="lab-item" data-reveal style="--reveal-delay: ${Math.min(pi, 7) * 60}ms" href="index.html?c=${encodeURIComponent(course.id)}&p=${encodeURIComponent(p.id)}">
       <span class="lab-item-text"><strong>${escapeHtml(firstLine(p.stem))}</strong>
       <span class="hint">${escapeHtml(p.topicTitle)} · ${escapeHtml(p.difficulty)}</span></span>
       ${tag}
@@ -70,6 +71,7 @@ function renderList(course, problems) {
     ${problems.length
       ? `<div class="lab-list">${items}</div>`
       : '<p class="hint">No C problems for this course yet. Check back soon.</p>'}`;
+  initReveals();
 }
 
 function renderProblem(course, p) {
