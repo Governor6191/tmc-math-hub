@@ -1,6 +1,6 @@
 import { loadCatalog } from './catalog.js';
 import { initThemeToggle, applyTheme, currentTheme } from './theme.js';
-import { wireAccountUI } from './cloud-sync.js';
+import { wireAccountUI, accountsEnabled } from './cloud-sync.js';
 
 const SECTIONS = [
   { href: 'index.html', label: 'Library' },
@@ -78,6 +78,11 @@ export function renderChrome() {
       <span class="account-slot" hidden></span>
       <button class="theme-toggle" aria-label="Switch theme"></button>`;
     wireAccountUI(header.querySelector('.account-slot'));
+    // Copy that only makes sense once accounts exist (e.g. the About page's
+    // sign-in privacy paragraph) is hidden until the feature is configured.
+    if (accountsEnabled()) {
+      document.querySelectorAll('[data-accounts-only]').forEach(el => { el.hidden = false; });
+    }
 
     if (!document.getElementById('tmc-drawer')) {
       const scrim = document.createElement('div');

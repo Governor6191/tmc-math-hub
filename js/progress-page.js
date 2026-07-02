@@ -6,9 +6,14 @@ import { loadCatalog, courseStats } from './catalog.js';
 import { getProgress, getActivity, isAvailable } from './progress.js';
 import { getAttempts } from './exam-store.js';
 import { dayKey, streaks, mergeDayCounts, lastDays } from './progress-stats.js';
+import { accountsEnabled } from './cloud-sync.js';
 
 renderChrome();
 const root = document.getElementById('progress');
+
+const privacyLine = () => (accountsEnabled()
+  ? 'Your progress lives on this device and, when you sign in, follows you across devices.'
+  : 'Everything here lives on this device only. Nothing is uploaded anywhere.');
 
 const fmt1 = n => (Number.isInteger(n) ? String(n) : n.toFixed(1));
 
@@ -87,7 +92,7 @@ async function renderDashboard() {
     if (rows.length === 0) {
       root.innerHTML = `
         <h1>My progress</h1>
-        <p class="hint">Everything here lives on this device only. Nothing is uploaded anywhere.</p>
+        <p class="hint">${privacyLine()}</p>
         <div class="quiz-card dash-empty">
           <p class="dash-empty-big">Nothing here yet, and that is easy to fix.</p>
           <p>Open a course and answer a few practice questions. Your streak, accuracy and mastery rings will start growing right here.</p>
@@ -100,7 +105,7 @@ async function renderDashboard() {
 
     root.innerHTML = `
       <h1>My progress</h1>
-      <p class="hint">Everything here lives on this device only. Nothing is uploaded anywhere.</p>
+      <p class="hint">${privacyLine()}</p>
       <div class="dash-stats">
         <div class="stat-card">
           <p class="stat-value">${s.current} day${s.current === 1 ? '' : 's'}</p>

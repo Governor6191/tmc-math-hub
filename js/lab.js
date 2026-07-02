@@ -20,8 +20,9 @@ function loadSaved(cid, qid) {
   catch { return {}; }
 }
 function saveState(cid, qid, patch) {
-  const next = { ...loadSaved(cid, qid), ...patch };
+  const next = { ...loadSaved(cid, qid), ...patch, at: Date.now() };
   try { localStorage.setItem(keyFor(cid, qid), JSON.stringify(next)); } catch { /* private mode */ }
+  try { window.dispatchEvent(new CustomEvent('tmc:lab', { detail: { courseId: cid } })); } catch { /* fine */ }
 }
 
 function firstLine(stem) {

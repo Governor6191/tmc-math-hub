@@ -18,7 +18,8 @@ function loadSaved(cid, qid) {
   catch { return {}; }
 }
 function saveState(cid, qid, patch) {
-  const next = { ...loadSaved(cid, qid), ...patch };
+  // The at timestamp lets cloud sync decide which device's code is newer.
+  const next = { ...loadSaved(cid, qid), ...patch, at: Date.now() };
   try { localStorage.setItem(keyFor(cid, qid), JSON.stringify(next)); } catch { /* private mode */ }
 }
 

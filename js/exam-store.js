@@ -43,6 +43,12 @@ export function recordAttempt(courseId, record, store = defaultStore()) {
   if (!Array.isArray(list)) list = [];
   list.push(record);
   try { store.setItem(key, JSON.stringify(list)); } catch { return false; }
+  // Nudge the cloud sync layer (when signed in). Guarded for node:test runs.
+  try {
+    if (typeof window !== 'undefined' && typeof CustomEvent === 'function') {
+      window.dispatchEvent(new CustomEvent('tmc:attempt', { detail: { courseId } }));
+    }
+  } catch { /* nothing depends on this */ }
   return true;
 }
 

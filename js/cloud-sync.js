@@ -5,10 +5,13 @@
 // config, so the default site is untouched. See accounts/README.md.
 
 import { FIREBASE_CONFIG } from './firebase-config.js';
-import { mergeQuestionMaps, mergeActivityMaps } from './cloud-merge.js';
+import { mergeQuestionMaps, mergeActivityMaps, mergeAttemptLists, mergeLabMaps } from './cloud-merge.js';
 
 const SDK = 'https://www.gstatic.com/firebasejs/10.14.1/';
 const PRACTICE_PREFIX = 'tmc.v1.practice.';
+const ATTEMPTS_PREFIX = 'tmc.v1.exam.attempts.';
+const LAB_PREFIX = 'tmc.v1.lab.';
+const CLAB_PREFIX = 'tmc.v1.clab.';
 const ACTIVITY_KEY = 'tmc.v1.activity';
 const PULL_STAMP = 'tmc.v1.sync.pulledAt';
 const DIRTY_KEY = 'tmc.v1.sync.dirty';
@@ -90,15 +93,42 @@ export async function signOutUser() {
   await fb.authMod.signOut(fb.auth);
 }
 
+// Every course this device knows anything about, across all four stores.
+// Lab keys are tmc.v1.lab.<courseId>.<questionId>; ids never contain dots.
 function localCourseIds() {
-  const ids = [];
+  const ids = new Set();
   try {
     for (let i = 0; i < localStorage.length; i++) {
       const k = localStorage.key(i);
-      if (k && k.startsWith(PRACTICE_PREFIX)) ids.push(k.slice(PRACTICE_PREFIX.length));
+      if (!k) continue;
+      if (k.startsWith(PRACTICE_PREFIX)) ids.add(k.slice(PRACTICE_PREFIX.length));
+      else if (k.startsWith(ATTEMPTS_PREFIX)) ids.add(k.slice(ATTEMPTS_PREFIX.length));
+      else if (k.startsWith(LAB_PREFIX)) ids.add(k.slice(LAB_PREFIX.length).split('.')[0]);
+      else if (k.startsWith(CLAB_PREFIX)) ids.add(k.slice(CLAB_PREFIX.length).split('.')[0]);
     }
   } catch { /* storage off */ }
-  return ids;
+  return [...ids];
+}
+
+// Lab saves live one localStorage key per problem; gather them into a map for
+// the course document, and spread a merged map back onto the per-problem keys.
+function readLabMap(prefix, courseId) {
+  const out = {};
+  const p = prefix + courseId + '.';
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k || !k.startsWith(p)) continue;
+      const entry = readJson(k, null);
+      if (entry && typeof entry === 'object') out[k.slice(p.length)] = entry;
+    }
+  } catch { /* storage off */ }
+  return out;
+}
+function writeLabMap(prefix, courseId, map) {
+  for (const [qid, entry] of Object.entries(map || {})) {
+    writeJson(prefix + courseId + '.' + qid, entry);
+  }
 }
 
 // Pull the cloud copy, merge into localStorage, and queue a push for anything
@@ -128,18 +158,41 @@ export async function pullAndMerge(respectThrottle = true) {
 
   const courseSnaps = await fsMod.getDocs(fsMod.collection(db, 'users', uid, 'courses'));
   const cloudCourses = new Map();
-  courseSnaps.forEach(snap => cloudCourses.set(snap.id, snap.data().questions || {}));
+  courseSnaps.forEach(snap => cloudCourses.set(snap.id, snap.data() || {}));
 
   const allCourses = new Set([...localCourseIds(), ...cloudCourses.keys()]);
   for (const courseId of allCourses) {
-    const local = readJson(PRACTICE_PREFIX + courseId, {});
     const cloud = cloudCourses.get(courseId) || {};
-    const merged = mergeQuestionMaps(local, cloud);
-    if (JSON.stringify(merged) !== JSON.stringify(local)) {
-      writeJson(PRACTICE_PREFIX + courseId, merged);
+    let courseDirty = false;
+
+    const localQ = readJson(PRACTICE_PREFIX + courseId, {});
+    const mergedQ = mergeQuestionMaps(localQ, cloud.questions || {});
+    if (JSON.stringify(mergedQ) !== JSON.stringify(localQ)) {
+      writeJson(PRACTICE_PREFIX + courseId, mergedQ);
       anythingChangedLocally = true;
     }
-    if (JSON.stringify(merged) !== JSON.stringify(cloud)) dirtyCourses.add(courseId);
+    if (JSON.stringify(mergedQ) !== JSON.stringify(cloud.questions || {})) courseDirty = true;
+
+    const rawA = readJson(ATTEMPTS_PREFIX + courseId, []);
+    const localA = Array.isArray(rawA) ? rawA : [];
+    const mergedA = mergeAttemptLists(localA, cloud.examAttempts || []);
+    if (JSON.stringify(mergedA) !== JSON.stringify(localA)) {
+      writeJson(ATTEMPTS_PREFIX + courseId, mergedA);
+      anythingChangedLocally = true;
+    }
+    if (mergedA.length !== (cloud.examAttempts || []).length) courseDirty = true;
+
+    for (const [prefix, field] of [[LAB_PREFIX, 'labs'], [CLAB_PREFIX, 'clabs']]) {
+      const localL = readLabMap(prefix, courseId);
+      const mergedL = mergeLabMaps(localL, cloud[field] || {});
+      if (JSON.stringify(mergedL) !== JSON.stringify(localL)) {
+        writeLabMap(prefix, courseId, mergedL);
+        anythingChangedLocally = true;
+      }
+      if (JSON.stringify(mergedL) !== JSON.stringify(cloud[field] || {})) courseDirty = true;
+    }
+
+    if (courseDirty) dirtyCourses.add(courseId);
   }
   saveDirty();
 
@@ -161,9 +214,17 @@ async function pushNow() {
   metaDirty = false;
   try {
     for (const courseId of courses) {
-      const questions = readJson(PRACTICE_PREFIX + courseId, {});
-      await fsMod.setDoc(fsMod.doc(db, 'users', uid, 'courses', courseId),
-        { questions, updatedAt: fsMod.serverTimestamp() }, { merge: true });
+      const payload = {
+        questions: readJson(PRACTICE_PREFIX + courseId, {}),
+        labs: readLabMap(LAB_PREFIX, courseId),
+        clabs: readLabMap(CLAB_PREFIX, courseId),
+        updatedAt: fsMod.serverTimestamp(),
+      };
+      // arrayUnion so a push that raced another device only ever adds attempts.
+      const rawA = readJson(ATTEMPTS_PREFIX + courseId, []);
+      const attempts = Array.isArray(rawA) ? rawA : [];
+      if (attempts.length) payload.examAttempts = fsMod.arrayUnion(...attempts);
+      await fsMod.setDoc(fsMod.doc(db, 'users', uid, 'courses', courseId), payload, { merge: true });
     }
     if (wasMetaDirty || courses.length) {
       await fsMod.setDoc(fsMod.doc(db, 'users', uid), {
@@ -220,11 +281,14 @@ export function wireAccountUI(slot) {
   onUser(render);
 
   loadDirty();
-  window.addEventListener('tmc:answer', e => {
+  const markDirty = e => {
     if (!currentUser) return;
     const courseId = e && e.detail && e.detail.courseId;
     if (courseId) { dirtyCourses.add(courseId); saveDirty(); metaDirty = true; schedulePush(); }
-  });
+  };
+  window.addEventListener('tmc:answer', markDirty);
+  window.addEventListener('tmc:attempt', markDirty);
+  window.addEventListener('tmc:lab', markDirty);
   const flush = () => { if (dirtyCourses.size || metaDirty) { clearTimeout(pushTimer); pushNow(); } };
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flush(); });
   window.addEventListener('pagehide', flush);
