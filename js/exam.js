@@ -1,4 +1,5 @@
 import { renderChrome, escapeHtml, codeHtml } from './app.js';
+import { initReveals } from './reveal.js';
 import { loadCatalog, findCourse } from './catalog.js';
 import { createAttempt, remainingMs, answerQuestion, toggleFlag, answeredCount, scoreAttempt } from './exam-state.js';
 import { saveCheckpoint, loadCheckpoint, clearCheckpoint, recordAttempt, getAttempts } from './exam-store.js';
@@ -80,14 +81,14 @@ function renderPreStart(pool) {
     exam submits itself at zero, just like the real thing. Flag anything you want to revisit.</p>
     ${(() => {
       const history = draftMode ? [] : getAttempts(course.id);
-      return course.examFormats.map(f => {
+      return course.examFormats.map((f, fi) => {
         const mine = history.filter(a => a && a.formatId === f.id && a.total);
         const best = mine.reduce((b, a) => (!b || a.score / a.total > b.score / b.total ? a : b), null);
         const line = best
           ? `Best so far: <strong>${Number.isInteger(best.score) ? best.score : best.score.toFixed(1)}/${best.total}</strong> (${Math.round((best.score / best.total) * 100)}%) · ${mine.length} attempt${mine.length === 1 ? '' : 's'}`
           : 'Not attempted yet';
         return `
-      <div class="format-card">
+      <div class="format-card" data-reveal style="--reveal-delay: ${fi * 80}ms">
         <div>
           <h3>${escapeHtml(f.label)}</h3>
           <p class="format-meta">${Math.min(f.questions, pool.length)} questions · ${f.minutes} minutes</p>
@@ -98,6 +99,7 @@ function renderPreStart(pool) {
       }).join('');
     })()}
     <p class="hint">${pool.length} questions in the bank. Your attempt draws a random paper, so every attempt is different.</p>`;
+  initReveals();
   root.querySelectorAll('[data-format]').forEach(btn => btn.addEventListener('click', () => {
     const format = course.examFormats.find(f => f.id === btn.dataset.format);
     attempt = createAttempt(course.id, format, pool);
@@ -266,7 +268,7 @@ function renderResults(s, auto) {
     <h1>Results: ${escapeHtml(course.title)}, ${escapeHtml(attempt.formatLabel)} mock</h1>
     ${draftBanner()}
     ${auto ? `<div class="draft-banner">Time ran out, so the attempt was submitted automatically.</div>` : ''}
-    <div class="quiz-card quiz-summary">
+    <div class="quiz-card quiz-summary" data-reveal>
       <p class="score">${Number.isInteger(s.correct) ? s.correct : s.correct.toFixed(1)}/${s.total}</p>
       <p>${pct}%. ${pct >= 70 ? 'Exam-room ready.' : pct >= 50 ? 'Getting there. Work the review below.' : 'The review below is where the marks are. Read every explanation.'}</p>
       <div class="quiz-next" style="justify-content: center;">
@@ -279,7 +281,7 @@ function renderResults(s, auto) {
       if (q.format === 'cloze') {
         const graded = gradeCloze(q, attempt.answers[i] || {});
         return `
-      <article class="review-q">
+      <article class="review-q" data-reveal>
         <p class="meta">Question ${i + 1} · ${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}${attempt.flags[i] ? ' · flagged' : ''} · ${graded.correctCount}/${graded.total} blanks</p>
         <p class="quiz-stem">${codeHtml(q.stem)}</p>
         <div data-review-cloze="${i}">${solutionHtml(q)}</div>
@@ -291,7 +293,7 @@ function renderResults(s, auto) {
         const graded = ans.graded || { tests: [], passed: 0, total: (q.tests || []).length, score: 0 };
         const studentCode = ans.code != null ? ans.code : q.starterCode;
         return `
-      <article class="review-q">
+      <article class="review-q" data-reveal>
         <p class="meta">Question ${i + 1} · ${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}${attempt.flags[i] ? ' · flagged' : ''} · ${graded.passed}/${graded.total} tests</p>
         <p class="quiz-stem">${codeHtml(q.stem)}</p>
         <p class="hint" style="margin: 0.4rem 0 0.2rem;">Your code</p>
@@ -304,7 +306,7 @@ function renderResults(s, auto) {
       }
       const chosen = attempt.answers[i];
       return `
-      <article class="review-q">
+      <article class="review-q" data-reveal>
         <p class="meta">Question ${i + 1} · ${escapeHtml(q.topicTitle)} · ${escapeHtml(q.difficulty)}${attempt.flags[i] ? ' · flagged' : ''}</p>
         <p class="quiz-stem">${codeHtml(q.stem)}</p>
         <ul class="quiz-options">
@@ -320,6 +322,7 @@ function renderResults(s, auto) {
       </article>`;
     }).join('')}`;
   renderMathIn(root);
+  initReveals();
   root.querySelectorAll('[data-ai-explain]').forEach(btn => btn.addEventListener('click', () => {
     const i = Number(btn.dataset.aiExplain);
     const q = attempt.questions[i];
