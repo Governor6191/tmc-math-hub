@@ -4,14 +4,17 @@
    "Mint" (deep teal-black). Class names are the site's stable API. */
 
 :root, :root[data-theme="dark"] {
-  --paper: #0f1f1c;
-  --card: #16302b;
-  --card-raised: #1d3a33;
-  --ink: #eafff7;
-  --ink-soft: #a7c9bf;
-  --ink-faint: #86a89c;
-  --mint: #4fd6ad;
-  --mint-deep: #7fe6c6;
+  --paper: #0c1b16;
+  --page-bg: linear-gradient(180deg, #0a1613, #10241d 55%, #0c1e18);
+  --card: rgba(255, 255, 255, 0.055);
+  --card-raised: rgba(255, 255, 255, 0.09);
+  --card-solid: #142a24;
+  --drawer-glass: rgba(20, 42, 36, 0.86);
+  --ink: #f5f1e6;
+  --ink-soft: #b9cac1;
+  --ink-faint: #8fab9f;
+  --mint: #5ecfa2;
+  --mint-deep: #8ee7c1;
   --coral: #ff7a64;
   --coral-deep: #ff9580;
   --marker-bg: #3a3320;
@@ -20,18 +23,29 @@
   --right-text: #8fe6c6;
   --wrong-bg: rgba(255, 122, 100, 0.16);
   --wrong-text: #ff9d88;
-  --line: rgba(234, 255, 247, 0.16);
-  --line-strong: rgba(234, 255, 247, 0.32);
-  --scrim: rgba(6, 16, 14, 0.55);
+  --line: rgba(127, 224, 184, 0.17);
+  --line-strong: rgba(127, 224, 184, 0.36);
+  --scrim: rgba(4, 12, 10, 0.6);
+  --glow-card: 0 18px 44px rgba(0, 0, 0, 0.5), 0 0 30px rgba(63, 185, 138, 0.14);
+  --glow-cta: 0 10px 32px rgba(63, 185, 138, 0.35);
+  --glow-cta-strong: 0 16px 44px rgba(63, 185, 138, 0.5);
+  --grad-cta: linear-gradient(135deg, #56d3a4, #2a9d74);
+  --grad-num: linear-gradient(90deg, #8ee7c1, #3fb98a);
+  --cta-text: #052018;
+  --lamp: radial-gradient(640px 320px at 22% -8%, rgba(244, 201, 93, 0.16), transparent 62%);
+  --header-bg: rgba(10, 22, 18, 0.82);
 }
 
 :root[data-theme="light"] {
-  --paper: #fbfbf7;
-  --card: #ffffff;
-  --card-raised: #f4f6f3;
-  --ink: #15302a;
-  --ink-soft: #4a625a;
-  --ink-faint: #5a6c64;
+  --paper: #faf6ee;
+  --page-bg: linear-gradient(180deg, #fbf8f1, #f7f1e4 55%, #faf6ee);
+  --card: #fffdf7;
+  --card-raised: #f3eee1;
+  --card-solid: #fffdf7;
+  --drawer-glass: rgba(255, 253, 247, 0.88);
+  --ink: #17251f;
+  --ink-soft: #47564e;
+  --ink-faint: #566659;
   --mint: #0a7d5f;
   --mint-deep: #086848;
   --coral: #ff6b54;
@@ -42,9 +56,17 @@
   --right-text: #0a6e54;
   --wrong-bg: rgba(255, 107, 84, 0.14);
   --wrong-text: #b23a25;
-  --line: rgba(21, 48, 42, 0.14);
-  --line-strong: rgba(21, 48, 42, 0.30);
+  --line: rgba(23, 37, 31, 0.15);
+  --line-strong: rgba(23, 37, 31, 0.32);
   --scrim: rgba(21, 48, 42, 0.40);
+  --glow-card: 0 14px 34px rgba(23, 37, 31, 0.12);
+  --glow-cta: 0 8px 22px rgba(10, 125, 95, 0.28);
+  --glow-cta-strong: 0 12px 30px rgba(10, 125, 95, 0.38);
+  --grad-cta: linear-gradient(135deg, #12996f, #0a7d5f);
+  --grad-num: linear-gradient(90deg, #0f8f66, #0a6e54);
+  --cta-text: #04281d;
+  --lamp: radial-gradient(640px 320px at 22% -8%, rgba(244, 201, 93, 0.30), transparent 62%);
+  --header-bg: rgba(250, 246, 238, 0.85);
 }
 
 :root {
@@ -63,7 +85,9 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--paper);
+  min-height: 100vh;
+  background-color: var(--paper);
+  background-image: var(--page-bg);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
@@ -97,8 +121,11 @@ a:hover { color: var(--mint-deep); }
   position: sticky; top: 0; z-index: 30;
   display: flex; align-items: center; gap: 0.75rem;
   padding: 0.7rem 1rem;
-  background: var(--paper);
+  background: var(--header-bg);
   border-bottom: 1px solid var(--line);
+}
+@supports (backdrop-filter: blur(10px)) {
+  .chrome { backdrop-filter: blur(10px); }
 }
 .nav-burger, .theme-toggle {
   display: inline-flex; align-items: center; justify-content: center;
@@ -124,9 +151,12 @@ a:hover { color: var(--mint-deep); }
 .drawer {
   position: fixed; top: 0; left: 0; z-index: 50;
   width: min(82vw, 320px); height: 100%; overflow-y: auto;
-  background: var(--card); border-right: 1px solid var(--line);
+  background: var(--card-solid); border-right: 1px solid var(--line);
   padding: 0.9rem 0.9rem 2rem;
   transform: translateX(-100%); transition: transform 0.22s ease;
+}
+@supports (backdrop-filter: blur(14px)) {
+  .drawer { background: var(--drawer-glass); backdrop-filter: blur(14px); }
 }
 .drawer.is-open { transform: translateX(0); }
 .drawer-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }

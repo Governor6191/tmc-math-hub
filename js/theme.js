@@ -34,7 +34,7 @@ export function nextTheme(theme) {
 
 // ---- DOM wiring (browser only; not unit tested) ----
 
-const THEME_COLOR = { dark: '#0f1f1c', light: '#fbfbf7' };
+const THEME_COLOR = { dark: '#0a1613', light: '#faf6ee' };
 
 function defaultStore() {
   try {
