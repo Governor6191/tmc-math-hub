@@ -345,69 +345,122 @@
       "id": "calculus-i-continuity-025",
       "format": "cloze",
       "stem": "On what set is the rational function $f(x) = \\dfrac{x + 4}{x^2 - 25}$ continuous?",
-      "solution": "A rational function is continuous everywhere its denominator is nonzero. Factor the denominator as $(x - 5)(x + 5)$, which is zero at two points. The smaller excluded point is {{1}} and the larger excluded point is {{2}}. So $f$ is continuous at every real number except those two values.",
+      "solution": "A rational function is continuous exactly where {{1}}. Here that condition fails at $x = \\pm$ {{2}}. At $x = -4$, where the numerator vanishes, $f$ is {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": -5,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "its denominator is nonzero",
+            "its numerator is nonzero",
+            "both numerator and denominator are nonzero",
+            "the variable is positive"
+          ],
+          "answer": "its denominator is nonzero"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 5,
           "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "perfectly continuous, with value $0$",
+            "discontinuous, since the top is $0$",
+            "undefined",
+            "infinite"
+          ],
+          "answer": "perfectly continuous, with value $0$"
         }
       ],
-      "explanation": "Since $x^2 - 25 = (x - 5)(x + 5)$ vanishes at $x = -5$ and $x = 5$, the function is continuous on all reals except those two points. The numerator's zero at $x = -4$ does not affect continuity.",
-      "difficulty": "warmup",
+      "explanation": "Rational functions are continuous on their domain, which excludes only the zeros of the denominator: $x^2 - 25 = 0$ at $x = \\pm 5$. A zero of the numerator is harmless; $f(-4) = 0$ and $f$ is continuous there.",
+      "difficulty": "core",
       "source": "in the style of Stewart 8e, section 2.5"
     },
     {
       "id": "calculus-i-continuity-026",
       "format": "cloze",
       "stem": "The function $g(x) = \\dfrac{x^2 - 4}{x - 2}$ is undefined at $x = 2$. Classify the discontinuity there.",
-      "solution": "Factor and cancel: for $x \\ne 2$, $\\frac{x^2 - 4}{x - 2} = \\frac{(x - 2)(x + 2)}{x - 2} = x + 2$. The limit as $x \\to 2$ is therefore {{1}}, a finite number, while $g(2)$ is undefined. A finite limit at an undefined point means the discontinuity is of the {{2}} kind.",
+      "solution": "For $x \\ne 2$ the formula simplifies to {{1}}, so the limit of $g$ at $2$ exists and equals {{2}}. A finite limit at a point where the function is undefined makes the discontinuity {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$x + 2$",
+            "$x - 2$",
+            "$x^2 - 2$",
+            "$1$"
+          ],
+          "answer": "$x + 2$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 4,
           "tolerance": 0
         },
         {
-          "id": 2,
-          "type": "text",
-          "accept": [
-            "removable"
-          ]
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "removable: defining $g(2)$ to be the limit repairs it",
+            "a jump: the sides disagree",
+            "infinite: the values blow up",
+            "essential: it cannot be repaired"
+          ],
+          "answer": "removable: defining $g(2)$ to be the limit repairs it"
         }
       ],
-      "explanation": "The cancellation leaves $x + 2$, whose limit at $2$ is $4$. Because the limit exists and is finite but the point is undefined, the discontinuity is removable: defining $g(2) = 4$ would repair it.",
-      "difficulty": "warmup",
+      "explanation": "Factoring gives $\\frac{(x-2)(x+2)}{x-2} = x + 2$ for $x \\ne 2$, so the limit at $2$ is $4$. Because the limit exists and is finite, filling in the single missing value removes the discontinuity.",
+      "difficulty": "core",
       "source": "in the style of Dawkins Calculus I notes"
     },
     {
       "id": "calculus-i-continuity-027",
       "format": "cloze",
       "stem": "Let $f(x) = kx + 1$ for $x < 3$ and $f(x) = x^2 - 2$ for $x \\ge 3$. Find the value of $k$ that makes $f$ continuous at $x = 3$.",
-      "solution": "The right piece gives both the value and the right-hand limit at $3$: $f(3) = 3^2 - 2 =$ {{1}}. The left-hand limit is $\\lim_{x\\to 3^-}(kx + 1) = 3k + 1$. Continuity requires these to be equal, so solving $3k + 1 = 7$ gives $k =$ {{2}}.",
+      "solution": "Continuity at $x = 3$ requires {{1}}. The left-hand limit works out to {{2}}, while the right piece gives $f(3) =$ {{3}}. The value of $k$ that reconciles the two sides is $k =$ {{4}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "the left limit, the right limit, and $f(3)$ to all be equal",
+            "only the two one-sided limits to exist",
+            "$f$ to be differentiable at $3$",
+            "$f(3)$ to be positive"
+          ],
+          "answer": "the left limit, the right limit, and $f(3)$ to all be equal"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$3k + 1$",
+            "$k + 1$",
+            "$3k$",
+            "$9k + 1$"
+          ],
+          "answer": "$3k + 1$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 7,
           "tolerance": 0
         },
         {
-          "id": 2,
+          "id": 4,
           "type": "number",
           "answer": 2,
           "tolerance": 0
         }
       ],
-      "explanation": "Setting the two pieces equal at $x = 3$ gives $3k + 1 = 7$, so $3k = 6$ and $k = 2$. With $k = 2$ both pieces pass through $(3, 7)$, so $f$ is continuous there.",
+      "explanation": "Continuity at a point demands that both one-sided limits exist and agree with the function value. Here $\\lim_{x\\to 3^-} f = 3k + 1$ (substituting $3$ into $kx + 1$) and $f(3) = 3^2 - 2 = 7$ from the right piece. Solving $3k + 1 = 7$ gives $k = 2$. The distractor $k + 1$ comes from forgetting to multiply $k$ by $3$; $9k + 1$ from squaring where no square exists.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 2.5"
     },
@@ -415,31 +468,43 @@
       "id": "calculus-i-continuity-028",
       "format": "cloze",
       "stem": "Classify the discontinuity of $f(x) = \\dfrac{1}{(x - 4)^2}$ at $x = 4$.",
-      "solution": "As $x \\to 4$ from either side, the denominator $(x - 4)^2$ tends to $0$ through values that are always {{1}}, since a square is never negative. The quotient $\\frac{1}{(x - 4)^2}$ therefore grows without bound, so the limit is $+\\infty$. A function that blows up at a point has a discontinuity of type {{2}}.",
+      "solution": "As $x \\to 4$ from either side, $(x - 4)^2 \\to 0$ through {{1}}, so both one-sided limits are {{2}}. The discontinuity at $x = 4$ is therefore {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "positive",
-            "negative",
-            "zero",
-            "alternating in sign"
+            "positive values only",
+            "negative values only",
+            "values of both signs",
+            "values approaching $4$"
           ],
-          "answer": "positive"
+          "answer": "positive values only"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "infinite",
-            "removable",
-            "jump"
+            "$+\\infty$",
+            "$-\\infty$",
+            "opposite infinities",
+            "finite but different"
           ],
-          "answer": "infinite"
+          "answer": "$+\\infty$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "infinite, with a vertical asymptote",
+            "removable",
+            "a finite jump",
+            "not a discontinuity at all"
+          ],
+          "answer": "infinite, with a vertical asymptote"
         }
       ],
-      "explanation": "Because $(x - 4)^2 > 0$ near $4$ and tends to $0$, the reciprocal increases without bound, giving $\\lim_{x\\to 4} f(x) = \\infty$. An unbounded limit signals an infinite discontinuity, and $x = 4$ is a vertical asymptote.",
+      "explanation": "A square is nonnegative, so the denominator approaches $0$ from above on both sides, sending the quotient to $+\\infty$ on both sides. Unbounded behaviour at a point is an infinite discontinuity, and the line $x = 4$ is a vertical asymptote.",
       "difficulty": "core",
       "source": "in the style of Dawkins Calculus I notes"
     },
@@ -447,7 +512,7 @@
       "id": "calculus-i-continuity-029",
       "format": "cloze",
       "stem": "Let $g(x) = x^2 + 2$ for $x < 1$ and $g(x) = 5 - 2x$ for $x \\ge 1$. Determine whether $g$ is continuous at $x = 1$.",
-      "solution": "Compute the two one-sided limits at $1$. From the left, $\\lim_{x\\to 1^-}(x^2 + 2) =$ {{1}}. From the right, $\\lim_{x\\to 1^+}(5 - 2x) =$ {{2}}, which is also the value $g(1)$. Since the left limit, the right limit, and the value all agree, $g$ is {{3}} at $x = 1$.",
+      "solution": "The left-hand limit at $1$ equals {{1}}, and the right-hand limit equals {{2}}. The value $g(1)$ itself comes from {{3}}. Comparing all three, $g$ is {{4}} at $x = 1$.",
       "gaps": [
         {
           "id": 1,
@@ -465,13 +530,26 @@
           "id": 3,
           "type": "dropdown",
           "options": [
+            "the second piece, whose condition $x \\ge 1$ includes $1$",
+            "the first piece, since limits come from the left",
+            "the average of the two pieces",
+            "neither piece, so $g(1)$ is undefined"
+          ],
+          "answer": "the second piece, whose condition $x \\ge 1$ includes $1$"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
             "continuous",
-            "discontinuous"
+            "discontinuous with a jump",
+            "continuous from the left only",
+            "undefined"
           ],
           "answer": "continuous"
         }
       ],
-      "explanation": "The left limit is $1 + 2 = 3$ and the right limit is $5 - 2 = 3$, and $g(1) = 3$. All three numbers agree, so the three continuity conditions hold and $g$ is continuous at $1$.",
+      "explanation": "From the left, $x^2 + 2 \\to 3$; from the right, $5 - 2x \\to 3$. The point $x = 1$ belongs to the second piece because its condition uses $\\ge$, so $g(1) = 3$ as well. All three numbers agree, so $g$ is continuous at $1$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 2.5"
     },
@@ -479,67 +557,96 @@
       "id": "calculus-i-continuity-030",
       "format": "cloze",
       "stem": "Let $f(x) = \\dfrac{x^2 - 36}{x - 6}$ for $x \\ne 6$ and $f(6) = k$. For what value of $k$ is $f$ continuous at $x = 6$?",
-      "solution": "Continuity at $6$ requires $k$ to equal the limit there. For $x \\ne 6$, factor the difference of squares: the numerator is {{1}}. Cancelling $x - 6$ leaves $x + 6$, whose limit at $6$ is {{2}}. So $k$ must equal that value.",
+      "solution": "Continuity at $6$ forces $k$ to equal {{1}}. For $x \\ne 6$ the formula simplifies to {{2}}, so the required value is $k =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$(x - 6)(x + 6)$",
-            "$(x - 6)^2$",
-            "$(x - 36)(x + 1)$",
-            "$(x - 6)(x + 36)$"
+            "$\\lim_{x\\to 6} f(x)$",
+            "$f(0)$",
+            "$f'(6)$",
+            "any value at all"
           ],
-          "answer": "$(x - 6)(x + 6)$"
+          "answer": "$\\lim_{x\\to 6} f(x)$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$x + 6$",
+            "$x - 6$",
+            "$x^2$",
+            "$\\frac{1}{x - 6}$"
+          ],
+          "answer": "$x + 6$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 12,
           "tolerance": 0
         }
       ],
-      "explanation": "Since $x^2 - 36 = (x - 6)(x + 6)$, the quotient simplifies to $x + 6$, and $\\lim_{x\\to 6}(x + 6) = 12$. Setting $k = 12$ makes the value equal the limit, so $f$ is continuous at $6$.",
+      "explanation": "Continuity means the assigned value must equal the limit. Factoring $x^2 - 36 = (x-6)(x+6)$ and cancelling gives $x + 6$ away from $6$, so the limit is $12$, and $k = 12$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 2.5"
     },
     {
       "id": "calculus-i-continuity-031",
       "format": "cloze",
-      "stem": "Let $f(x) = x^3 + 2x - 2$. Use the Intermediate Value Theorem to confirm a root in $(0, 1)$.",
-      "solution": "A polynomial is continuous everywhere, so the IVT applies on $[0, 1]$. Evaluate the endpoints: $f(0) =$ {{1}} and $f(1) =$ {{2}}. These values have opposite signs, so the target value $0$ lies between them, and the IVT guarantees a {{3}} in the open interval $(0, 1)$.",
+      "stem": "Let $f(x) = x^3 + 2x - 2$. What does the Intermediate Value Theorem say about a root of $f$ in $(0, 1)$?",
+      "solution": "The IVT applies on $[0, 1]$ because $f$ is {{1}}. Evaluating the endpoints, $f(0) =$ {{2}}, and comparing it with $f(1)$ shows the two values have {{3}}. The IVT therefore guarantees {{4}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "continuous on the interval, being a polynomial",
+            "differentiable, which the IVT needs",
+            "increasing on the interval",
+            "positive somewhere"
+          ],
+          "answer": "continuous on the interval, being a polynomial"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": -2,
           "tolerance": 0
         },
         {
-          "id": 2,
-          "type": "number",
-          "answer": 1,
-          "tolerance": 0
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "opposite signs",
+            "the same sign",
+            "equal magnitudes",
+            "integer values, which the IVT needs"
+          ],
+          "answer": "opposite signs"
         },
         {
-          "id": 3,
-          "type": "text",
-          "accept": [
-            "root",
-            "zero",
-            "solution"
-          ]
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "at least one root in $(0, 1)$, but not where it is or that it is unique",
+            "exactly one root in $(0, 1)$",
+            "a root at the midpoint $x = 0.5$",
+            "that $f$ is increasing on $(0, 1)$"
+          ],
+          "answer": "at least one root in $(0, 1)$, but not where it is or that it is unique"
         }
       ],
-      "explanation": "Here $f(0) = -2 < 0$ and $f(1) = 1 + 2 - 2 = 1 > 0$. Since $f$ is continuous and the endpoint values bracket $0$, the IVT guarantees at least one $c$ in $(0, 1)$ with $f(c) = 0$.",
+      "explanation": "Polynomials are continuous everywhere, which is the only hypothesis the IVT needs. $f(0) = -2$ and $f(1) = 1$ straddle $0$, so a root exists in between. The theorem is purely an existence statement: it locates nothing and never proves uniqueness.",
       "difficulty": "core",
-      "source": "in the style of Dawkins Calculus I notes"
+      "source": "in the style of Stewart 8e, section 2.5"
     },
     {
       "id": "calculus-i-continuity-032",
       "format": "cloze",
       "stem": "What type of discontinuity does $f(x) = \\dfrac{|x - 2|}{x - 2}$ have at $x = 2$?",
-      "solution": "Split by sign. For $x > 2$, the input $x - 2$ is positive, so $|x - 2| = x - 2$ and $f(x) = 1$; thus the right-hand limit is {{1}}. For $x < 2$, $|x - 2| = -(x - 2)$, so $f(x) = -1$ and the left-hand limit is {{2}}. The one-sided limits both exist but disagree, which is exactly a {{3}} discontinuity.",
+      "solution": "For $x > 2$ the quotient collapses to a constant, so the right-hand limit is {{1}}. For $x < 2$ it collapses to a different constant, so the left-hand limit is {{2}}. Both one-sided limits exist and are finite but unequal, which is precisely a {{3}} discontinuity.",
       "gaps": [
         {
           "id": 1,
@@ -559,20 +666,21 @@
           "options": [
             "jump",
             "removable",
-            "infinite"
+            "infinite",
+            "higher order"
           ],
           "answer": "jump"
         }
       ],
-      "explanation": "The right-hand limit is $1$ and the left-hand limit is $-1$. Both are finite but unequal, so the two-sided limit fails to exist and the discontinuity is a jump.",
+      "explanation": "For $x > 2$, $|x-2| = x-2$ and the quotient is $1$; for $x < 2$, $|x-2| = -(x-2)$ and the quotient is $-1$. Finite one-sided limits that disagree define a jump discontinuity, and no choice of $f(2)$ can repair it.",
       "difficulty": "core",
-      "source": "in the style of Dawkins Calculus I notes"
+      "source": "in the style of Stewart 8e, section 2.5"
     },
     {
       "id": "calculus-i-continuity-033",
       "format": "cloze",
       "stem": "Let $f(x) = x^2 + k$ for $x < -2$ and $f(x) = kx + 6$ for $x \\ge -2$. For what value of $k$ is $f$ continuous at $x = -2$?",
-      "solution": "The left-hand limit is $\\lim_{x\\to -2^-}(x^2 + k)$. Since $(-2)^2 = 4$, this equals {{1}}. The value and right-hand limit come from the second piece: $f(-2) = k(-2) + 6 = 6 - 2k$. Setting the two expressions equal and solving $4 + k = 6 - 2k$ gives $k =$ {{2}}.",
+      "solution": "The left-hand limit at $-2$ equals {{1}}, while the right piece gives $f(-2) =$ {{2}}. Setting the two expressions equal and solving for $k$ gives $k =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -581,20 +689,36 @@
             "$4 + k$",
             "$-4 + k$",
             "$4 - k$",
-            "$2 + k$"
+            "$2k - 4$"
           ],
           "answer": "$4 + k$"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 0.6667,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "$6 - 2k$",
+            "$6 + 2k$",
+            "$2k - 6$",
+            "$4 + k$"
+          ],
+          "answer": "$6 - 2k$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{2}{3}$",
+            "$-\\frac{2}{3}$",
+            "$2$",
+            "$\\frac{10}{3}$"
+          ],
+          "answer": "$\\frac{2}{3}$"
         }
       ],
-      "explanation": "From $4 + k = 6 - 2k$ we get $3k = 2$, so $k = \\frac{2}{3} \\approx 0.667$. With that value both pieces meet at $x = -2$, making $f$ continuous there.",
+      "explanation": "From the left, $x^2 + k \\to (-2)^2 + k = 4 + k$; the sign trap is thinking $(-2)^2 = -4$. From the right, $f(-2) = k(-2) + 6 = 6 - 2k$; the trap is dropping the minus onto $k$. Equating: $4 + k = 6 - 2k$, so $3k = 2$ and $k = \\frac{2}{3}$.",
       "difficulty": "stretch",
-      "source": "in the style of Dawkins Calculus I notes"
+      "source": "in the style of Stewart 8e, section 2.5"
     }
   ]
 }

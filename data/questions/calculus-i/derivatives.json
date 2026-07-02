@@ -511,45 +511,45 @@
     {
       "id": "calculus-i-derivatives-037",
       "format": "cloze",
-      "stem": "Differentiate $f(x) = x^4 - 5x^2 + 3x - 7$.",
-      "solution": "Apply the power rule term by term: multiply by the old exponent, then drop it by one. The term $x^4$ becomes $4x^3$, the term $-5x^2$ becomes {{1}}, the term $3x$ becomes the constant $3$, and the constant $-7$ becomes {{2}}. Collecting the pieces gives $f'(x) = 4x^3 - 10x + 3$.",
+      "stem": "Differentiate $f(x) = x^4 - 5x^2 + 3x - 7$, then find the slope at $x = 1$.",
+      "solution": "Differentiating term by term gives $f'(x) =$ {{1}}. Evaluating at $x = 1$, the slope there is {{2}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$-10x$",
-            "$-10x^2$",
-            "$-5x$",
-            "$10x$"
+            "$4x^3 - 10x + 3$",
+            "$4x^3 - 10x + 3 - 7$",
+            "$4x^4 - 10x^2 + 3x$",
+            "$x^3 - 5x + 3$"
           ],
-          "answer": "$-10x$"
+          "answer": "$4x^3 - 10x + 3$"
         },
         {
           "id": 2,
           "type": "number",
-          "answer": 0,
+          "answer": -3,
           "tolerance": 0
         }
       ],
-      "explanation": "By the power rule, $\\frac{d}{dx}(-5x^2) = -10x$ and the derivative of any constant is $0$. So $f'(x) = 4x^3 - 10x + 3$.",
-      "difficulty": "warmup",
+      "explanation": "The power rule sends $x^4 \\to 4x^3$, $-5x^2 \\to -10x$, $3x \\to 3$, and the constant $-7 \\to 0$; keeping the $-7$ is the classic slip. At $x = 1$: $4 - 10 + 3 = -3$.",
+      "difficulty": "core",
       "source": "in the style of Stewart 8e, section 3.1"
     },
     {
       "id": "calculus-i-derivatives-038",
       "format": "cloze",
-      "stem": "Find the slope of $f(x) = x^3$ at $x = -3$.",
-      "solution": "The slope at a point is the value of the derivative there. By the power rule, $f'(x) =$ {{1}}. Substituting $x = -3$ and squaring the negative input gives $3 \\cdot 9$, which equals {{2}}.",
+      "stem": "Find the slope of $f(x) = x^3$ at $x = -3$, and explain its sign.",
+      "solution": "The derivative is $f'(x) =$ {{1}}, so the slope at $x = -3$ equals {{2}}. The sign of this slope is {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
             "$3x^2$",
-            "$3x$",
             "$x^2$",
-            "$x^3$"
+            "$3x$",
+            "$\\frac{x^4}{4}$"
           ],
           "answer": "$3x^2$"
         },
@@ -558,28 +558,39 @@
           "type": "number",
           "answer": 27,
           "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "positive, because squaring wipes out the negative input",
+            "negative, because the input is negative",
+            "zero, since the graph flattens",
+            "undefined at negative inputs"
+          ],
+          "answer": "positive, because squaring wipes out the negative input"
         }
       ],
-      "explanation": "Since $f'(x) = 3x^2$, we get $f'(-3) = 3(-3)^2 = 3 \\cdot 9 = 27$. The square of the negative input is positive.",
-      "difficulty": "warmup",
-      "source": "in the style of Stewart 8e, section 2.7"
+      "explanation": "The power rule gives $3x^2$, and $3(-3)^2 = 27$. Since $x^2 \\ge 0$ always, the cubic is climbing even at negative inputs; assuming a negative slope from a negative $x$ is the trap.",
+      "difficulty": "core",
+      "source": "in the style of Stewart 8e, section 3.1"
     },
     {
       "id": "calculus-i-derivatives-039",
       "format": "cloze",
-      "stem": "Differentiate $f(x) = x^2 \\cos x$ using the product rule.",
-      "solution": "The product rule states $(uv)' = u'v + uv'$. Take $u = x^2$ and $v = \\cos x$. Then $u' = 2x$ and the derivative of the second factor is $v' =$ {{1}}. Assembling the two terms $u'v + uv'$ and writing the result in standard form gives {{2}}.",
+      "stem": "Differentiate $f(x) = x^2 \\cos x$, then evaluate $f'(0)$.",
+      "solution": "This is a product, so the derivative has the shape {{1}}. Assembled and simplified, $f'(x) =$ {{2}}, and evaluating at $x = 0$ gives {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$-\\sin x$",
-            "$\\sin x$",
-            "$\\cos x$",
-            "$-\\cos x$"
+            "$u'v + uv'$, keeping both terms",
+            "$u'v'$, differentiating each factor",
+            "$u'v - uv'$, with a minus sign",
+            "$\\frac{u'}{v'}$"
           ],
-          "answer": "$-\\sin x$"
+          "answer": "$u'v + uv'$, keeping both terms"
         },
         {
           "id": 2,
@@ -587,21 +598,27 @@
           "options": [
             "$2x\\cos x - x^2\\sin x$",
             "$2x\\cos x + x^2\\sin x$",
-            "$-2x\\sin x\\cos x$",
-            "$2x\\cos x - 2x\\sin x$"
+            "$-2x\\sin x$",
+            "$-x^2\\sin x$"
           ],
           "answer": "$2x\\cos x - x^2\\sin x$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
         }
       ],
-      "explanation": "Since $\\frac{d}{dx}\\cos x = -\\sin x$, the product rule gives $f'(x) = 2x\\cos x + x^2(-\\sin x) = 2x\\cos x - x^2\\sin x$. Both factors vary, so both terms are needed.",
+      "explanation": "The product rule keeps both cross terms; differentiating each factor separately ($u'v'$) is the classic error. With $u = x^2$, $v = \\cos x$: $2x\\cos x + x^2(-\\sin x)$. At $x = 0$ both terms vanish, so $f'(0) = 0$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 3.2"
     },
     {
       "id": "calculus-i-derivatives-040",
       "format": "cloze",
-      "stem": "Differentiate $f(x) = (3x + 4)^5$ using the chain rule.",
-      "solution": "Let $u = 3x + 4$, so $f = u^5$. The chain rule gives $f' = 5u^4 \\cdot u'$. The inner derivative is $u' =$ {{1}}. Multiplying the outer power $5(3x+4)^4$ by this inner derivative gives the leading coefficient {{2}}, so $f'(x) = 15(3x + 4)^4$.",
+      "stem": "Differentiate $f(x) = (3x + 4)^5$.",
+      "solution": "The chain rule multiplies the outer derivative by the inner derivative, which here equals {{1}}. The full derivative is $f'(x) =$ {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -611,27 +628,36 @@
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 15,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$15(3x + 4)^4$",
+            "$5(3x + 4)^4$",
+            "$15(3x + 4)^5$",
+            "$5(3x)^4$"
+          ],
+          "answer": "$15(3x + 4)^4$"
         }
       ],
-      "explanation": "Here $u' = 3$, so $f'(x) = 5(3x + 4)^4 \\cdot 3 = 15(3x + 4)^4$. The chain rule requires multiplying by the inner derivative.",
+      "explanation": "With $u = 3x + 4$, $f = u^5$ and $f' = 5u^4 \\cdot u' = 5(3x+4)^4 \\cdot 3 = 15(3x+4)^4$. Choosing $5(3x+4)^4$ is the classic forgotten inner derivative.",
       "difficulty": "core",
-      "source": "in the style of Dawkins Calculus I notes"
+      "source": "in the style of Stewart 8e, section 3.4"
     },
     {
       "id": "calculus-i-derivatives-041",
       "format": "cloze",
-      "stem": "Find $\\dfrac{dy}{dx}$ if $x^2 + y^2 = 16$ using implicit differentiation.",
-      "solution": "Differentiate both sides with respect to $x$, treating $y$ as a function of $x$. The term $x^2$ gives $2x$, and the term $y^2$ gives $2y\\dfrac{dy}{dx}$ by the {{1}} rule. The equation becomes $2x + 2y\\dfrac{dy}{dx} = 0$. Solving for the derivative gives {{2}}.",
+      "stem": "Find $\\dfrac{dy}{dx}$ if $x^2 + y^2 = 16$, then give the tangent slope at the point $(0, 4)$.",
+      "solution": "Differentiating implicitly, the term $y^2$ contributes {{1}}. Solving the resulting equation, $\\dfrac{dy}{dx} =$ {{2}}, so at $(0, 4)$ the tangent slope equals {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
-            "chain"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$2y\\,\\frac{dy}{dx}$, by the chain rule",
+            "$2y$, by the power rule alone",
+            "$2x$, the same as $x^2$",
+            "$y^2$, unchanged"
+          ],
+          "answer": "$2y\\,\\frac{dy}{dx}$, by the chain rule"
         },
         {
           "id": 2,
@@ -640,12 +666,18 @@
             "$-\\frac{x}{y}$",
             "$\\frac{x}{y}$",
             "$-\\frac{y}{x}$",
-            "$-\\frac{2x}{y}$"
+            "$-2x$"
           ],
           "answer": "$-\\frac{x}{y}$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
         }
       ],
-      "explanation": "The chain rule produces the $\\dfrac{dy}{dx}$ on the $y^2$ term. Solving $2x + 2y\\dfrac{dy}{dx} = 0$ gives $\\dfrac{dy}{dx} = -\\dfrac{x}{y}$.",
+      "explanation": "Because $y$ depends on $x$, differentiating $y^2$ needs the chain rule: $2y\\,y'$. Then $2x + 2y\\,y' = 0$ gives $y' = -x/y$. At $(0,4)$ the slope is $0$: the circle has a horizontal tangent at its top.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 3.5"
     },
@@ -653,7 +685,7 @@
       "id": "calculus-i-derivatives-042",
       "format": "cloze",
       "stem": "Find the equation of the tangent line to $y = x^2$ at the point $(4, 16)$.",
-      "solution": "The derivative is $y' = 2x$, so the slope at $x = 4$ is $m =$ {{1}}. Using point-slope form $y - 16 = m(x - 4)$ and simplifying gives the line $y = 8x -$ {{2}}.",
+      "solution": "The slope of the tangent is the derivative evaluated at the point of tangency, which gives $m =$ {{1}}. In slope-intercept form, the tangent line is {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -663,99 +695,107 @@
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 16,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$y = 8x - 16$",
+            "$y = 8x + 16$",
+            "$y = 2x + 8$",
+            "$y = 16x - 48$"
+          ],
+          "answer": "$y = 8x - 16$"
         }
       ],
-      "explanation": "Here $m = 2(4) = 8$, and $y - 16 = 8(x - 4)$ gives $y = 8x - 32 + 16 = 8x - 16$. A check at $x = 4$ returns $y = 16$, matching the point.",
+      "explanation": "From $y' = 2x$, the slope at $x = 4$ is $8$. Point-slope form $y - 16 = 8(x - 4)$ expands to $y = 8x - 16$; keeping $+16$ forgets to distribute the $8$ over $-4$.",
       "difficulty": "core",
-      "source": "in the style of Stewart 8e, section 2.7"
+      "source": "in the style of Stewart 8e, section 3.1"
     },
     {
       "id": "calculus-i-derivatives-043",
       "format": "cloze",
-      "stem": "Differentiate $f(x) = e^{5x}$.",
-      "solution": "Because the variable sits in the exponent, this is an exponential, so the power rule does not apply; instead use the {{1}} rule in the form $\\frac{d}{dx}e^u = e^u \\cdot u'$. Here $u = 5x$, so the inner derivative is $u' =$ {{2}}. The exponential shell is copied unchanged and multiplied by this factor, giving $f'(x) =$ {{3}}.",
+      "stem": "Differentiate $f(x) = e^{5x}$, then evaluate $f'(0)$.",
+      "solution": "The correct derivative is $f'(x) =$ {{1}}. Evaluating at $x = 0$ gives $f'(0) =$ {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
-            "chain"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$5e^{5x}$",
+            "$e^{5x}$",
+            "$5x\\,e^{5x - 1}$",
+            "$e^{5}$"
+          ],
+          "answer": "$5e^{5x}$"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 5,
           "tolerance": 0
-        },
-        {
-          "id": 3,
-          "type": "dropdown",
-          "options": [
-            "$5e^{5x}$",
-            "$e^{5x}$",
-            "$e^{5}$",
-            "$5x\\,e^{5x - 1}$"
-          ],
-          "answer": "$5e^{5x}$"
         }
       ],
-      "explanation": "With $u = 5x$ and $u' = 5$, the chain rule gives $f'(x) = e^{5x} \\cdot 5 = 5e^{5x}$. The exponential is never differentiated using the power rule.",
+      "explanation": "For $e^u$ the derivative is $e^u \\cdot u'$, so $f'(x) = 5e^{5x}$. The distractor $5x\\,e^{5x-1}$ applies the power rule to an exponential, the single most common exponential error. At $0$: $5e^0 = 5$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 3.4"
     },
     {
       "id": "calculus-i-derivatives-044",
       "format": "cloze",
-      "stem": "Differentiate $f(x) = \\dfrac{x}{x + 2}$ using the quotient rule.",
-      "solution": "The quotient rule is $\\left(\\frac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$ with $u = x$ and $v = x + 2$. Here $u' = 1$ and $v' = 1$, so the numerator is $1\\cdot(x + 2) - x\\cdot 1$, which simplifies to {{1}}. The denominator is $(x + 2)^2$, so $f'(x) = \\dfrac{2}{(x + 2)^2}$. Evaluating at $x = 0$ gives a slope of {{2}}.",
+      "stem": "Differentiate $f(x) = \\dfrac{x}{x + 2}$, then find the slope at $x = 0$.",
+      "solution": "By the quotient rule, the numerator of $f'(x)$ simplifies to {{1}}, while the denominator is $(x + 2)^2$. The slope at $x = 0$ is then {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 2,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$2$",
+            "$2x + 2$",
+            "$-2$",
+            "$0$"
+          ],
+          "answer": "$2$"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 0.5,
-          "tolerance": 0
+          "tolerance": 0.001
         }
       ],
-      "explanation": "The numerator simplifies to $(x + 2) - x = 2$, so $f'(x) = \\dfrac{2}{(x + 2)^2}$. At $x = 0$ this is $\\dfrac{2}{4} = \\dfrac{1}{2}$.",
+      "explanation": "With $u = x$, $v = x + 2$: $u'v - uv' = (x + 2) - x = 2$. Getting $-2$ means the order was swapped, the top-heavy quotient rule trap. At $x = 0$: $\\frac{2}{4} = 0.5$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 3.2"
     },
     {
       "id": "calculus-i-derivatives-045",
       "format": "cloze",
-      "stem": "At which values of $x$ does the graph of $f(x) = x^3 - 12x$ have a horizontal tangent line?",
-      "solution": "A horizontal tangent occurs where the derivative equals {{1}}. Compute $f'(x) = 3x^2 - 12 = 3(x^2 - 4)$, then set it to zero: $x^2 - 4 = 0$ gives $x^2 = 4$. Taking both square roots, the smaller solution is {{2}} and the larger solution is {{3}}.",
+      "stem": "At which points does the graph of $f(x) = x^3 - 12x$ have a horizontal tangent line?",
+      "solution": "Horizontal tangents occur exactly where {{1}}. Solving that condition for this $f$ gives $x = \\pm$ {{2}}. At the negative one of these critical numbers, the $y$-coordinate on the graph is {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$f'(x) = 0$",
+            "$f(x) = 0$",
+            "$f''(x) = 0$",
+            "$f'(x)$ is undefined"
+          ],
+          "answer": "$f'(x) = 0$"
         },
         {
           "id": 2,
           "type": "number",
-          "answer": -2,
+          "answer": 2,
           "tolerance": 0
         },
         {
           "id": 3,
           "type": "number",
-          "answer": 2,
+          "answer": 16,
           "tolerance": 0
         }
       ],
-      "explanation": "Setting $f'(x) = 3x^2 - 12 = 0$ gives $x^2 = 4$, so $x = -2$ and $x = 2$. Both roots must be kept, since the tangent is flat at each.",
+      "explanation": "A horizontal tangent means zero slope, a condition on $f'$, not on $f$. From $f'(x) = 3x^2 - 12 = 0$ we get $x = \\pm 2$. Then $f(-2) = -8 + 24 = 16$, so the point is $(-2, 16)$.",
       "difficulty": "stretch",
       "source": "in the style of Stewart 8e, section 3.1"
     }

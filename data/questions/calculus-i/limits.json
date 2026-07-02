@@ -428,13 +428,18 @@
       "id": "calculus-i-limits-031",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\lim_{x\\to 2}\\left(x^2 + 3x - 1\\right)$.",
-      "solution": "A polynomial is continuous everywhere, so the limit is just the value at $x = 2$ and direct substitution is allowed. The square term gives $x^2 = 4$, the linear term gives $3x =$ {{1}}, and the constant stays $-1$. Adding these, $4 + 6 - 1 =$ {{2}}.",
+      "solution": "Direct substitution is justified here because a polynomial is {{1}}. The limit therefore equals the value of the polynomial at $x = 2$, which is {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 6,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "continuous at every real number",
+            "merely defined at $x = 2$",
+            "bounded on an interval around $2$",
+            "increasing near $x = 2$"
+          ],
+          "answer": "continuous at every real number"
         },
         {
           "id": 2,
@@ -443,34 +448,37 @@
           "tolerance": 0
         }
       ],
-      "explanation": "Every polynomial is continuous on all of $\\mathbb{R}$, so $\\lim_{x\\to a} p(x) = p(a)$. Here $p(2) = 4 + 6 - 1 = 9$, which is why no factoring or special technique is needed.",
-      "difficulty": "warmup",
+      "explanation": "Polynomials are continuous on all of $\\mathbb{R}$, and continuity at a point is exactly what licenses computing a limit by substitution. Being defined at the point is weaker and not enough in general. Substituting: $4 + 6 - 1 = 9$.",
+      "difficulty": "core",
       "source": "in the style of Stewart 8e, section 2.3"
     },
     {
       "id": "calculus-i-limits-032",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\lim_{x\\to 4}\\frac{x^2 - 16}{x - 4}$.",
-      "solution": "Substituting $x = 4$ gives $\\frac{0}{0}$, an indeterminate form, so factor first. The numerator is a difference of squares, and the correct factoring is {{1}}. Cancel the common factor $x - 4$, which is legal because $x \\ne 4$ during the limit, and the expression that remains is {{2}}. Substituting $x = 4$ now gives {{3}}.",
+      "solution": "Substituting $x = 4$ produces {{1}}, so the limit cannot be read off directly. The numerator factors as {{2}}. After cancelling the factor responsible for the problem, the limit evaluates to {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$(x - 4)(x + 4)$",
-            "$(x - 4)^2$",
-            "$(x - 16)(x + 1)$",
-            "$(x - 4)(x + 16)$"
+            "the indeterminate form $\\frac{0}{0}$",
+            "the value $0$",
+            "the value $8$",
+            "the undefined form $\\frac{8}{0}$"
           ],
-          "answer": "$(x - 4)(x + 4)$"
+          "answer": "the indeterminate form $\\frac{0}{0}$"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "x+4",
-            "4+x"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$(x - 4)(x + 4)$",
+            "$(x - 4)^2$",
+            "$(x - 8)(x + 2)$",
+            "$(x - 2)(x + 8)$"
+          ],
+          "answer": "$(x - 4)(x + 4)$"
         },
         {
           "id": 3,
@@ -479,7 +487,7 @@
           "tolerance": 0
         }
       ],
-      "explanation": "The $\\frac{0}{0}$ form signals a removable factor. Since $x^2 - 16 = (x - 4)(x + 4)$, the quotient simplifies to $x + 4$ for $x \\ne 4$, and its limit at $4$ is $8$.",
+      "explanation": "Both the numerator and denominator vanish at $4$, giving $\\frac{0}{0}$. Since $x^2 - 16 = (x-4)(x+4)$, cancelling $x - 4$ (legal while $x \\ne 4$) leaves $x + 4$, whose value at $4$ is $8$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 2.3"
     },
@@ -487,7 +495,7 @@
       "id": "calculus-i-limits-033",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\lim_{x\\to 0}\\frac{\\sqrt{x + 4} - 2}{x}$.",
-      "solution": "Substitution gives $\\frac{2 - 2}{0} = \\frac{0}{0}$, so multiply the top and bottom by the conjugate, which is {{1}}. The numerator becomes $(x + 4) - 4 = x$, so after cancelling the $x$ the expression equals $\\frac{1}{\\sqrt{x + 4} + 2}$. Substituting $x = 0$ gives $\\frac{1}{2 + 2}$, which equals {{2}}.",
+      "solution": "Substitution gives $\\frac{0}{0}$, so multiply the top and bottom by the conjugate, which is {{1}}. After this multiplication the numerator simplifies to {{2}}, the troublesome factor cancels, and the limit evaluates to {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -495,59 +503,66 @@
           "options": [
             "$\\sqrt{x + 4} + 2$",
             "$\\sqrt{x + 4} - 2$",
-            "$\\sqrt{x - 4} + 2$",
-            "$\\sqrt{x + 4} + 4$"
+            "$\\sqrt{x} + 2$",
+            "$x + 4$"
           ],
           "answer": "$\\sqrt{x + 4} + 2$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$x$",
+            "$x + 8$",
+            "$x - 4$",
+            "$\\sqrt{x}$"
+          ],
+          "answer": "$x$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 0.25,
-          "tolerance": 0
+          "tolerance": 0.001
         }
       ],
-      "explanation": "Multiplying by the conjugate $\\sqrt{x + 4} + 2$ clears the root from the numerator and exposes a factor of $x$ that cancels the denominator. The surviving expression $\\frac{1}{\\sqrt{x + 4} + 2}$ evaluates to $\\frac{1}{4}$ at $x = 0$.",
+      "explanation": "Multiplying by $\\frac{\\sqrt{x+4}+2}{\\sqrt{x+4}+2}$ turns the numerator into $(x + 4) - 4 = x$. Cancelling $x$ leaves $\\frac{1}{\\sqrt{x+4}+2}$, and substituting $x = 0$ gives $\\frac{1}{4} = 0.25$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 2.3"
     },
     {
       "id": "calculus-i-limits-034",
       "format": "cloze",
-      "stem": "Suppose $3 - x^2 \\le f(x) \\le 3 + x^2$ for all real $x$. Evaluate $\\displaystyle\\lim_{x\\to 0} f(x)$.",
-      "solution": "Take the limit of each bound at $x = 0$. The lower bound $3 - x^2$ tends to {{1}}, and the upper bound $3 + x^2$ tends to {{2}}. Both bounds approach the same value, so the limit of $f$ is pinned to that common value by the {{3}} theorem.",
+      "stem": "Suppose $3 - x^2 \\le f(x) \\le 3 + x^2$ for all real $x$, and nothing else is known about $f$. Evaluate $\\displaystyle\\lim_{x\\to 0} f(x)$.",
+      "solution": "Since $f$ itself is unknown, substitution into $f$ is impossible; the tool that applies is {{1}}. Both bounding functions tend to the same value at $0$, namely {{2}}, so the limit of $f$ is forced to equal it.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 3,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "the squeeze theorem",
+            "the intermediate value theorem",
+            "the mean value theorem",
+            "direct substitution into $f$"
+          ],
+          "answer": "the squeeze theorem"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 3,
           "tolerance": 0
-        },
-        {
-          "id": 3,
-          "type": "text",
-          "accept": [
-            "squeeze",
-            "sandwich",
-            "pinching"
-          ]
         }
       ],
-      "explanation": "When two bounds that trap $f$ share the same limit $L$ at a point, the squeeze theorem forces $\\lim f = L$. Here both $3 - x^2$ and $3 + x^2$ tend to $3$, so $\\lim_{x\\to 0} f(x) = 3$ no matter how $f$ wiggles between them.",
+      "explanation": "The squeeze theorem applies because $f$ is trapped between two functions with a common limit: both $3 - x^2$ and $3 + x^2$ tend to $3$ as $x \\to 0$, so $\\lim_{x\\to 0} f(x) = 3$. The IVT and MVT say nothing here, and $f$ cannot be substituted into since no formula for it exists.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 2.3"
     },
     {
       "id": "calculus-i-limits-035",
       "format": "cloze",
-      "stem": "Evaluate the one-sided limit $\\displaystyle\\lim_{x\\to 2^+}\\frac{|x - 2|}{x - 2}$.",
-      "solution": "We approach $2$ from the right, so $x > 2$ and $x - 2 > 0$. On this side the absolute value satisfies {{1}}, since its input is positive. The quotient then reduces to a constant, and the right-hand limit is {{2}}.",
+      "stem": "Evaluate $\\displaystyle\\lim_{x\\to 2^+}\\frac{|x - 2|}{x - 2}$, and decide what it implies for the two-sided limit at $2$.",
+      "solution": "For the one-sided limit, on the side $x > 2$ the absolute value satisfies {{1}}, so the quotient is constant there and the right-hand limit equals {{2}}. The two-sided limit at $2$ {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -555,8 +570,8 @@
           "options": [
             "$|x - 2| = x - 2$",
             "$|x - 2| = -(x - 2)$",
-            "$|x - 2| = 2 - x$",
-            "$|x - 2| = x + 2$"
+            "$|x - 2| = x + 2$",
+            "$|x - 2| = 2 - x$"
           ],
           "answer": "$|x - 2| = x - 2$"
         },
@@ -565,17 +580,28 @@
           "type": "number",
           "answer": 1,
           "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "does not exist, because the left side gives $-1$",
+            "also equals $1$",
+            "equals $0$ by averaging the sides",
+            "is $+\\infty$"
+          ],
+          "answer": "does not exist, because the left side gives $-1$"
         }
       ],
-      "explanation": "For $x > 2$ the input $x - 2$ is positive, so $|x - 2| = x - 2$ and the quotient is $\\frac{x - 2}{x - 2} = 1$. The left-hand limit would instead be $-1$, which is why the two-sided limit fails to exist.",
+      "explanation": "For $x > 2$ the input to the absolute value is positive, so $|x-2| = x-2$ and the quotient is $1$. For $x < 2$ the same reasoning gives $-1$. Two different one-sided limits mean the two-sided limit does not exist.",
       "difficulty": "core",
-      "source": "in the style of Stewart 8e, section 2.3"
+      "source": "in the style of Stewart 8e, section 2.2"
     },
     {
       "id": "calculus-i-limits-036",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\lim_{x\\to 0}\\frac{\\sin 3x}{5x}$.",
-      "solution": "Substitution gives $\\frac{0}{0}$, so reshape the quotient to expose the standard limit $\\lim_{t\\to 0}\\frac{\\sin t}{t} = 1$. The correct rewrite is {{1}}. As $x \\to 0$ the factor $\\frac{\\sin 3x}{3x}$ tends to {{2}}, so the whole limit equals the leftover constant, which is {{3}}.",
+      "solution": "Substitution gives the indeterminate form $\\frac{0}{0}$. To use the standard limit $\\lim_{t\\to 0}\\frac{\\sin t}{t} = 1$, rewrite the quotient as {{1}}. Taking the limit of this rewritten form gives {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -583,48 +609,47 @@
           "options": [
             "$\\frac{3}{5}\\cdot\\frac{\\sin 3x}{3x}$",
             "$\\frac{5}{3}\\cdot\\frac{\\sin 3x}{3x}$",
-            "$\\frac{1}{5}\\cdot\\frac{\\sin 3x}{x}$",
-            "$\\frac{3}{5}\\cdot\\frac{\\sin 5x}{5x}$"
+            "$\\frac{3}{5}\\cdot\\frac{\\sin x}{3x}$",
+            "$\\frac{\\sin 3}{5}$"
           ],
           "answer": "$\\frac{3}{5}\\cdot\\frac{\\sin 3x}{3x}$"
         },
         {
           "id": 2,
           "type": "number",
-          "answer": 1,
-          "tolerance": 0
-        },
-        {
-          "id": 3,
-          "type": "number",
           "answer": 0.6,
-          "tolerance": 0
+          "tolerance": 0.001
         }
       ],
-      "explanation": "Writing $\\frac{\\sin 3x}{5x} = \\frac{3}{5}\\cdot\\frac{\\sin 3x}{3x}$ isolates a copy of $\\frac{\\sin t}{t}$ with $t = 3x$, which tends to $1$. The limit is therefore the constant $\\frac{3}{5} = 0.6$.",
+      "explanation": "Multiply and divide by $3$: $\\frac{\\sin 3x}{5x} = \\frac{3}{5}\\cdot\\frac{\\sin 3x}{3x}$. As $x \\to 0$ the factor $\\frac{\\sin 3x}{3x} \\to 1$, so the limit is $\\frac{3}{5} = 0.6$. Choosing $\\frac{5}{3}$ is the classic upside-down correction factor.",
       "difficulty": "stretch",
-      "source": "in the style of Dawkins Calculus I notes"
+      "source": "in the style of Stewart 8e, section 3.3"
     },
     {
       "id": "calculus-i-limits-037",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\lim_{x\\to\\infty}\\frac{4x^2 - x}{8x^2 + 3}$.",
-      "solution": "Divide the numerator and denominator by the highest power present, which is $x^2$. The quotient becomes $\\frac{4 - 1/x}{8 + 3/x^2}$. As $x \\to \\infty$, every term with $x$ in its denominator tends to {{1}}, so the numerator approaches $4$ and the denominator approaches $8$. Since the degrees match, the limit is the ratio of leading coefficients, which equals {{2}}.",
+      "solution": "The standard move for a limit at infinity of a rational function is to divide the numerator and denominator by {{1}}. After that division every leftover term with $x$ downstairs dies off, and the limit equals {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$x^2$, the highest power present",
+            "$x$, the lowest power present",
+            "$8x^2$, the whole leading term",
+            "the constant $3$"
+          ],
+          "answer": "$x^2$, the highest power present"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 0.5,
-          "tolerance": 0
+          "tolerance": 0.001
         }
       ],
-      "explanation": "When numerator and denominator have equal degree, the limit at infinity is the ratio of leading coefficients. Here $\\frac{4}{8} = \\frac{1}{2}$, which is the horizontal asymptote $y = \\frac{1}{2}$.",
+      "explanation": "Dividing through by $x^2$ gives $\\frac{4 - 1/x}{8 + 3/x^2} \\to \\frac{4}{8} = \\frac{1}{2}$. With equal degrees the answer is the ratio of leading coefficients.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 2.6"
     },
@@ -632,25 +657,29 @@
       "id": "calculus-i-limits-038",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\lim_{x\\to -2}\\frac{x^2 - x - 6}{x + 2}$.",
-      "solution": "Substituting $x = -2$ gives $\\frac{0}{0}$, an indeterminate form, so factor the numerator. The correct factoring is {{1}}. Cancelling the common factor $x + 2$ leaves the expression {{2}}. Substituting $x = -2$ into that expression now gives {{3}}.",
+      "solution": "Substituting $x = -2$ produces {{1}}. The numerator factors as {{2}}, the common factor cancels, and the limit evaluates to {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$(x + 2)(x - 3)$",
-            "$(x - 2)(x + 3)$",
-            "$(x + 2)(x + 3)$",
-            "$(x + 6)(x - 1)$"
+            "the indeterminate form $\\frac{0}{0}$",
+            "the value $0$",
+            "the undefined form $\\frac{-4}{0}$",
+            "the value $-5$ directly"
           ],
-          "answer": "$(x + 2)(x - 3)$"
+          "answer": "the indeterminate form $\\frac{0}{0}$"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "x-3"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$(x + 2)(x - 3)$",
+            "$(x - 2)(x + 3)$",
+            "$(x + 2)(x + 3)$",
+            "$(x - 6)(x + 1)$"
+          ],
+          "answer": "$(x + 2)(x - 3)$"
         },
         {
           "id": 3,
@@ -659,36 +688,51 @@
           "tolerance": 0
         }
       ],
-      "explanation": "Since $x^2 - x - 6 = (x + 2)(x - 3)$, the quotient reduces to $x - 3$ for $x \\ne -2$. Evaluating at $x = -2$ gives $-2 - 3 = -5$.",
+      "explanation": "At $x = -2$ both top and bottom vanish. Since $x^2 - x - 6 = (x+2)(x-3)$, cancelling $x + 2$ leaves $x - 3$, whose value at $-2$ is $-5$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 2.3"
     },
     {
       "id": "calculus-i-limits-039",
       "format": "cloze",
-      "stem": "Evaluate the one-sided limit $\\displaystyle\\lim_{x\\to 1^+}\\frac{x + 2}{x - 1}$.",
-      "solution": "As $x \\to 1^+$ the numerator tends to $1 + 2 = 3$, a positive number. The denominator $x - 1$ tends to $0$ through values whose sign is {{1}}, since $x > 1$ on this side. A positive number divided by a tiny positive number grows without bound, so the limit is {{2}}.",
+      "stem": "Evaluate the one-sided limit $\\displaystyle\\lim_{x\\to 1^+}\\frac{x + 2}{x - 1}$ and interpret it for the graph.",
+      "solution": "As $x \\to 1^+$ the numerator tends to $3$ while the denominator tends to $0$ through {{1}}. The one-sided limit is therefore {{2}}, which tells us the line $x = 1$ is {{3}} of the graph.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
-            "positive"
-          ]
+          "type": "dropdown",
+          "options": [
+            "positive values only",
+            "negative values only",
+            "values of both signs",
+            "values near $1$"
+          ],
+          "answer": "positive values only"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "$\\infty$",
+            "$+\\infty$",
             "$-\\infty$",
             "$3$",
             "$0$"
           ],
-          "answer": "$\\infty$"
+          "answer": "$+\\infty$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "a vertical asymptote",
+            "a horizontal asymptote",
+            "a removable hole",
+            "a point of tangency"
+          ],
+          "answer": "a vertical asymptote"
         }
       ],
-      "explanation": "On the right side of $1$ both numerator and denominator are positive, and the denominator shrinks to $0$, so the quotient increases without bound to $+\\infty$. The left-hand limit would instead be $-\\infty$.",
+      "explanation": "Just to the right of $1$, $x - 1$ is a small positive number, so $\\frac{3}{\\text{small positive}}$ blows up to $+\\infty$. An infinite one-sided limit at a finite point is exactly what a vertical asymptote means.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, section 2.2"
     },
@@ -696,18 +740,18 @@
       "id": "calculus-i-limits-040",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\lim_{x\\to -\\infty}\\frac{\\sqrt{4x^2 + 1}}{3x - 2}$.",
-      "solution": "Factor $x^2$ from the radicand: $\\sqrt{4x^2 + 1} = |x|\\sqrt{4 + 1/x^2}$. Because $x \\to -\\infty$ means $x$ is negative, the absolute value satisfies {{1}}. Dividing the numerator and denominator by $x$ then gives $\\frac{-\\sqrt{4 + 1/x^2}}{3 - 2/x}$, which tends to $\\frac{-\\sqrt{4}}{3}$. This equals {{2}}.",
+      "solution": "Write $\\sqrt{4x^2 + 1} = |x|\\sqrt{4 + 1/x^2}$. Because $x \\to -\\infty$, the absolute value must be resolved as {{1}}. Carrying the sign through the division and letting $x \\to -\\infty$, the limit equals {{2}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$|x| = -x$",
-            "$|x| = x$",
-            "$|x| = x^2$",
-            "$|x| = 2x$"
+            "$|x| = -x$, since $x$ is negative",
+            "$|x| = x$, as always",
+            "$|x| = \\pm x$, both at once",
+            "$|x| = 0$ in the limit"
           ],
-          "answer": "$|x| = -x$"
+          "answer": "$|x| = -x$, since $x$ is negative"
         },
         {
           "id": 2,
@@ -715,13 +759,13 @@
           "options": [
             "$-\\frac{2}{3}$",
             "$\\frac{2}{3}$",
-            "$\\frac{4}{3}$",
+            "$-\\frac{4}{3}$",
             "$0$"
           ],
           "answer": "$-\\frac{2}{3}$"
         }
       ],
-      "explanation": "For $x < 0$ we have $\\sqrt{x^2} = |x| = -x$, so dividing by $x$ flips the sign of the root. The result is $\\frac{-2}{3} = -\\frac{2}{3}$, the horizontal asymptote as $x \\to -\\infty$.",
+      "explanation": "For negative $x$, $|x| = -x$; forgetting this sign is the single most common error in limits at $-\\infty$ with square roots. Dividing top and bottom by $x$ gives $\\frac{-\\sqrt{4 + 1/x^2}}{3 - 2/x} \\to \\frac{-2}{3}$.",
       "difficulty": "stretch",
       "source": "in the style of Stewart 8e, section 2.6"
     }
