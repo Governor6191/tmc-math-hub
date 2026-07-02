@@ -1,5 +1,6 @@
 import { renderChrome, escapeHtml } from './app.js';
 import { loadCatalog, statsForCourses, semesterStats, yearTracks, coursesForGroup } from './catalog.js';
+import { initReveals } from './reveal.js';
 
 renderChrome();
 const root = document.getElementById('year-root');
@@ -7,10 +8,10 @@ const params = new URLSearchParams(location.search);
 const yearNum = Number(params.get('y'));
 const group = params.get('g');
 
-function pickBox(href, label, st) {
+function pickBox(href, label, st, i = 0) {
   const bits = [`${st.courses} course${st.courses === 1 ? '' : 's'}`];
   if (st.questions) bits.push(`${st.questions} practice questions`);
-  return `<a class="pick-box" href="${href}">
+  return `<a class="pick-box" data-reveal style="--reveal-delay: ${i * 80}ms" href="${href}">
     <span class="pick-label">${escapeHtml(label)}</span>
     <span class="pick-meta">${bits.join(' · ')}</span>
   </a>`;
@@ -34,16 +35,18 @@ function notFound() {
     // Year with streams, no group chosen yet: pick a group first.
     if (tracks.length && !group) {
       document.title = `Year ${year.year} - TMC Math Hub`;
-      const boxes = tracks.map(t => pickBox(
+      const boxes = tracks.map((t, i) => pickBox(
         `year.html?y=${year.year}&amp;g=${encodeURIComponent(t)}`,
         t,
         statsForCourses(coursesForGroup(allCourses, t)),
+        i,
       )).join('');
       root.innerHTML = `
         <p class="crumb"><a class="crumb-back" href="index.html" aria-label="Back to the library">&#8592;</a><a href="index.html">Library</a> · Year ${year.year}</p>
         <h1>Year ${year.year}</h1>
         <p class="hint">Pick your group.</p>
         <div class="pick-grid">${boxes}</div>`;
+      initReveals();
       return;
     }
 
@@ -53,18 +56,19 @@ function notFound() {
       ? `<p class="crumb"><a class="crumb-back" href="year.html?y=${year.year}" aria-label="Back to the Year ${year.year} groups">&#8592;</a><a href="index.html">Library</a> · <a href="year.html?y=${year.year}">Year ${year.year}</a> · ${escapeHtml(group)}</p>`
       : `<p class="crumb"><a class="crumb-back" href="index.html" aria-label="Back to the library">&#8592;</a><a href="index.html">Library</a> · Year ${year.year}</p>`;
     const heading = group ? `Year ${year.year} · ${escapeHtml(group)}` : `Year ${year.year}`;
-    const boxes = year.semesters.map(s => {
+    const boxes = year.semesters.map((s, i) => {
       const href = group
         ? `semester.html?y=${year.year}&amp;s=${s.semester}&amp;g=${encodeURIComponent(group)}`
         : `semester.html?y=${year.year}&amp;s=${s.semester}`;
       const st = group ? statsForCourses(coursesForGroup(s.courses, group)) : semesterStats(s);
-      return pickBox(href, `Semester ${s.semester}`, st);
+      return pickBox(href, `Semester ${s.semester}`, st, i);
     }).join('');
     root.innerHTML = `
       ${crumb}
       <h1>${heading}</h1>
       <p class="hint">Pick a semester.</p>
       <div class="pick-grid">${boxes}</div>`;
+    initReveals();
   } catch (err) {
     console.error(err);
     root.innerHTML = `<div class="error"><p>The course catalog failed to load.

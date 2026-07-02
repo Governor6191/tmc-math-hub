@@ -1,6 +1,7 @@
 import { renderChrome, drivePreviewUrl, driveViewUrl, driveDownloadUrl, escapeHtml } from './app.js';
 import { loadCatalog, findCourse, courseStats } from './catalog.js';
 import { getProgress, isAvailable } from './progress.js';
+import { initReveals } from './reveal.js';
 
 renderChrome();
 const root = document.getElementById('course');
@@ -19,7 +20,7 @@ function fileRow(item) {
 
 function section(title, items) {
   if (!items.length) return '';
-  return `<section><h2>${title}</h2><ul class="pdf-list">${items.map(fileRow).join('')}</ul></section>`;
+  return `<section data-reveal><h2>${title}</h2><ul class="pdf-list">${items.map(fileRow).join('')}</ul></section>`;
 }
 
 function render(course, year, semester) {
@@ -56,7 +57,7 @@ function render(course, year, semester) {
       <p class="viewer-note">Trouble viewing, or want it offline? Use the links above.</p>
     </section>
 
-    ${course.topics.length ? `<section><h2>Topics</h2>${course.topics.map(t => {
+    ${course.topics.length ? `<section><h2>Topics</h2>${course.topics.map((t, ti) => {
       // Question ids embed the topic (courseId-topicId-NNN), so per-topic
       // progress falls out of the stored ids without fetching any bank.
       let tried = 0;
@@ -66,7 +67,7 @@ function render(course, year, semester) {
       }
       const pct = t.questionCount ? Math.min(100, Math.round((tried / t.questionCount) * 100)) : 0;
       return `
-      <article class="topic">
+      <article class="topic" data-reveal style="--reveal-delay: ${Math.min(ti, 5) * 60}ms">
         <h3>${escapeHtml(t.title)}</h3>
         <ul class="pdf-list">${t.slides.map(fileRow).join('')}</ul>
         ${t.questionCount ? `
@@ -90,32 +91,33 @@ function render(course, year, semester) {
 
     <section class="coming" aria-label="Coming soon">
       ${st.questions ? `
-      <div class="coming-card"><h3>Practice questions</h3>
+      <div class="coming-card" data-reveal><h3>Practice questions</h3>
         <p>${st.questions} questions with instant marking and worked solutions.${attemptedLine}</p>
         <a class="next-btn" style="display: inline-block; text-decoration: none;" href="practice.html?c=${encodeURIComponent(course.id)}">Start practice</a></div>`
       : `
-      <div class="coming-card"><h3>Practice questions</h3>
+      <div class="coming-card" data-reveal><h3>Practice questions</h3>
         <p>Hundreds of trial questions with instant marking and worked solutions.</p>
         <span class="badge soon">Coming soon</span></div>`}
       ${st.questions ? `
-      <div class="coming-card"><h3>Mock exam hall</h3>
+      <div class="coming-card" data-reveal><h3>Mock exam hall</h3>
         <p>Timed, Moodle-style trial exams drawn from ${st.questions} questions. Feel the real format before exam day.</p>
         <a class="next-btn" style="display: inline-block; text-decoration: none;" href="exam.html?c=${encodeURIComponent(course.id)}">Enter exam hall</a></div>`
       : `
-      <div class="coming-card"><h3>Mock exam hall</h3>
+      <div class="coming-card" data-reveal><h3>Mock exam hall</h3>
         <p>Timed, Moodle-style trial exams. Feel the real format before exam day.</p>
         <span class="badge soon">Coming soon</span></div>`}
       ${course.hasCode ? `
-      <div class="coming-card"><h3>Coding lab</h3>
+      <div class="coming-card" data-reveal><h3>Coding lab</h3>
         <p>Write and run Python right in your browser, checked instantly against tests. No setup, nothing to install.</p>
         <a class="next-btn" style="display: inline-block; text-decoration: none;" href="lab.html?c=${encodeURIComponent(course.id)}">Open coding lab</a></div>`
       : ''}
       ${course.hasC ? `
-      <div class="coming-card"><h3>C coding lab</h3>
+      <div class="coming-card" data-reveal><h3>C coding lab</h3>
         <p>Write and run real C in your browser, compiled with clang and checked against tests. The compiler downloads once on first use.</p>
         <a class="next-btn" style="display: inline-block; text-decoration: none;" href="clab/index.html?c=${encodeURIComponent(course.id)}">Open C lab</a></div>`
       : ''}
     </section>`;
+  initReveals();
 }
 
 root.addEventListener('click', e => {

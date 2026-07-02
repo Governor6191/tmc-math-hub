@@ -271,17 +271,11 @@ a:hover { color: var(--mint-deep); }
 .course-list { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; gap: 0.65rem; }
 .course-card {
   display: flex; flex-direction: column; gap: 0.15rem;
-  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px;
   padding: 0.9rem 1.05rem; text-decoration: none;
-  transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
-  animation: pop 0.4s ease both;
+  transition: transform 0.3s cubic-bezier(0.34, 1.5, 0.64, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.course-list li:nth-child(2) .course-card { animation-delay: 0.04s; }
-.course-list li:nth-child(3) .course-card { animation-delay: 0.08s; }
-.course-list li:nth-child(4) .course-card { animation-delay: 0.12s; }
-.course-list li:nth-child(5) .course-card { animation-delay: 0.16s; }
-.course-list li:nth-child(6) .course-card { animation-delay: 0.2s; }
-.course-card:hover { transform: translateY(-2px); border-color: var(--mint); }
+.course-card:hover { transform: translateY(-4px); border-color: var(--line-strong); box-shadow: var(--glow-card); }
 .course-title { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--ink); }
 .course-card:hover .course-title { color: var(--mint); }
 .course-meta { font-size: 0.78rem; color: var(--ink-faint); font-family: var(--font-mono); }
@@ -352,8 +346,11 @@ a:hover { color: var(--mint-deep); }
 .video figcaption { font-size: 0.85rem; color: var(--ink-soft); margin-top: 0.25rem; }
 
 .coming { display: grid; gap: 0.85rem; margin-top: 2.5rem; }
-.coming-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.2rem; animation: pop 0.4s ease both; }
-.coming > .coming-card:nth-child(2) { animation-delay: 0.06s; }
+.coming-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 1.1rem 1.2rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.5, 0.64, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.coming-card:hover { transform: translateY(-4px); border-color: var(--line-strong); box-shadow: var(--glow-card); }
 .coming-card h3 { margin: 0 0 0.3rem; }
 .coming-card p { margin: 0 0 0.7rem; color: var(--ink-soft); font-size: 0.92rem; }
 
@@ -533,9 +530,9 @@ code {
 /* --- per-topic YouTube channel search chips --- */
 .topic-videos { margin-top: 0.7rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
 .tv-label { font-size: 0.8rem; color: var(--ink-faint); margin-right: 0.15rem; }
-.tv-chip { font-size: 0.82rem; padding: 0.25rem 0.62rem; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); text-decoration: none; background: transparent; transition: border-color 0.15s ease, color 0.15s ease; }
+.tv-chip { font-size: 0.82rem; padding: 0.25rem 0.62rem; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); text-decoration: none; background: transparent; transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.2, 0.7, 0.3, 1.4); }
 .tv-chip::before { content: "\25B6"; color: var(--coral); font-size: 0.66em; margin-right: 0.32em; vertical-align: middle; }
-.tv-chip:hover { border-color: var(--coral); color: var(--coral); }
+.tv-chip:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-2px); }
 
 /* --- coding lab --- */
 .lab-intro { max-width: 62ch; color: var(--ink-soft); }
@@ -686,7 +683,15 @@ body.has-tutor-fab main.wrap { padding-bottom: 4.8rem; }
 .topic-practice { margin-bottom: 0.35rem; }
 .topic-progress { display: flex; align-items: center; gap: 0.6rem; margin: 0 0 0.5rem; }
 .topic-progress-bar { flex: 1; max-width: 260px; height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; }
-.topic-progress-bar i { display: block; height: 100%; border-radius: 999px; background: var(--mint); transition: width 0.6s ease; }
+.topic-progress-bar i {
+  display: block; height: 100%; border-radius: 999px; background: var(--mint);
+  transition: width 0.6s ease; transform-origin: left;
+  animation: bar-fill 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) 0.2s both paused;
+}
+:root:not([data-theme="light"]) .topic-progress-bar i { box-shadow: 0 0 12px rgba(63, 185, 138, 0.4); }
+[data-reveal].is-revealed .topic-progress-bar i,
+html:not(.is-js) .topic-progress-bar i { animation-play-state: running; }
+@keyframes bar-fill { from { transform: scaleX(0); } }
 .topic-progress-label { color: var(--ink-soft); font-size: 0.76rem; font-family: var(--font-mono); white-space: nowrap; }
 
 /* --- exam hall: per-format history --- */

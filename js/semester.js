@@ -1,5 +1,6 @@
 import { renderChrome, escapeHtml } from './app.js';
 import { loadCatalog, courseStats, coursesForGroup } from './catalog.js';
+import { initReveals } from './reveal.js';
 
 renderChrome();
 const root = document.getElementById('semester-root');
@@ -8,13 +9,13 @@ const yearNum = Number(params.get('y'));
 const semNum = Number(params.get('s'));
 const group = params.get('g');
 
-function courseCard(c) {
+function courseCard(c, i = 0) {
   const st = courseStats(c);
   const meta = [`${st.files} file${st.files === 1 ? '' : 's'}`];
   if (st.topics) meta.push(`${st.topics} topics`);
   if (st.videos) meta.push(`${st.videos} videos`);
   if (st.questions) meta.push(`${st.questions} questions`);
-  return `<li><a class="course-card" href="course.html?c=${encodeURIComponent(c.id)}">
+  return `<li><a class="course-card" data-reveal style="--reveal-delay: ${Math.min(i, 7) * 60}ms" href="course.html?c=${encodeURIComponent(c.id)}">
     <span class="course-title">${escapeHtml(c.title)}</span>
     <span class="course-meta">${meta.join(' · ')}</span>
   </a></li>`;
@@ -67,6 +68,7 @@ function notFound() {
       : '<p class="hint">No courses listed yet.</p>';
 
     root.innerHTML = `${crumb}<h1>${heading}</h1>${body}`;
+    initReveals();
   } catch (err) {
     console.error(err);
     root.innerHTML = `<div class="error"><p>The course catalog failed to load.
