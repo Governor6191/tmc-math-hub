@@ -1,5 +1,6 @@
 import { loadCatalog } from './catalog.js';
 import { initThemeToggle, applyTheme, currentTheme } from './theme.js';
+import { wireAccountUI } from './cloud-sync.js';
 
 const SECTIONS = [
   { href: 'index.html', label: 'Library' },
@@ -74,7 +75,9 @@ export function renderChrome() {
     header.innerHTML = `
       <button class="nav-burger" aria-label="Open navigation" aria-controls="tmc-drawer" aria-expanded="false">&#9776;</button>
       <a class="wordmark" href="index.html"><span aria-hidden="true">&#8721;</span> TMC Math Hub</a>
+      <span class="account-slot" hidden></span>
       <button class="theme-toggle" aria-label="Switch theme"></button>`;
+    wireAccountUI(header.querySelector('.account-slot'));
 
     if (!document.getElementById('tmc-drawer')) {
       const scrim = document.createElement('div');

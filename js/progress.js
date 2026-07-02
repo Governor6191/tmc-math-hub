@@ -33,6 +33,13 @@ export function recordAnswer(courseId, questionId, value, store = defaultStore()
   data[questionId] = { correct: score >= 1, score, at: Date.now() };
   try { store.setItem(KEY_PREFIX + courseId, JSON.stringify(data)); } catch { return false; }
   bumpActivity(store, Date.now());
+  // Let the cloud sync layer (when signed in) know something changed. Guarded
+  // so the module keeps working under node:test where window does not exist.
+  try {
+    if (typeof window !== 'undefined' && typeof CustomEvent === 'function') {
+      window.dispatchEvent(new CustomEvent('tmc:answer', { detail: { courseId } }));
+    }
+  } catch { /* nothing depends on this */ }
   return true;
 }
 

@@ -37,7 +37,7 @@ function sparkline(counts, todayKey) {
     <p class="hint dash-spark-label">Last 14 days</p>`;
 }
 
-(async () => {
+async function renderDashboard() {
   try {
     if (!isAvailable()) {
       root.innerHTML = `<h1>My progress</h1>
@@ -171,4 +171,8 @@ function sparkline(counts, todayKey) {
     console.error(err);
     root.innerHTML = `<div class="error"><p>Progress failed to load. <a href="">Reload the page</a>.</p></div>`;
   }
-})();
+}
+
+renderDashboard();
+// When cloud sync merges fresh data in (signed-in students), redraw with it.
+window.addEventListener('tmc:synced', () => { renderDashboard(); });
