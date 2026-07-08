@@ -286,26 +286,39 @@
     {
       "id": "physical-chemistry-thermochemistry-021",
       "format": "cloze",
-      "stem": "Given $\\text{C} + \\text{O}_2 \\to \\text{CO}_2$ with $\\Delta H = -393.5\\ \\text{kJ}$ and $\\text{CO} + \\tfrac{1}{2}\\text{O}_2 \\to \\text{CO}_2$ with $\\Delta H = -283.0\\ \\text{kJ}$.",
-      "solution": "To build $\\text{C} + \\tfrac{1}{2}\\text{O}_2 \\to \\text{CO}$, keep the first reaction and reverse the second. Reversing flips the sign, so the enthalpies combine as $-393.5 + 283.0 =$ {{1}} $\\text{ kJ}$. The negative result shows the formation of carbon monoxide is {{2}}.",
+      "stem": "Given reaction 1, $\\text{C} + \\text{O}_2 \\to \\text{CO}_2$ with $\\Delta H = -393.5\\ \\text{kJ}$, and reaction 2, $\\text{CO} + \\tfrac{1}{2}\\text{O}_2 \\to \\text{CO}_2$ with $\\Delta H = -283.0\\ \\text{kJ}$.",
+      "solution": "Hess's law lets the given equations be added once they are suitably arranged. The manipulation that yields $\\text{C} + \\tfrac{1}{2}\\text{O}_2 \\to \\text{CO}$ is to {{1}}. Carrying that out and combining the enthalpies gives $\\Delta H =$ {{2}} $\\text{ kJ}$, and a reaction with this sign of $\\Delta H$ is {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "keep reaction 1 and reverse reaction 2, then add",
+            "add reactions 1 and 2 as written",
+            "reverse reaction 1 and keep reaction 2, then add",
+            "add reaction 1 to twice reaction 2"
+          ],
+          "answer": "keep reaction 1 and reverse reaction 2, then add"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": -110.5,
           "tolerance": 0.1
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
-            "exothermic",
-            "endothermic"
+            "exothermic, since $\\Delta H < 0$",
+            "endothermic, since $\\Delta H < 0$",
+            "exothermic, since $\\Delta H > 0$",
+            "endothermic, since $\\Delta H > 0$"
           ],
-          "answer": "exothermic"
+          "answer": "exothermic, since $\\Delta H < 0$"
         }
       ],
-      "explanation": "By Hess's law $\\Delta H = -393.5 - (-283.0) = -110.5\\ \\text{kJ}$, and the negative sign marks it exothermic.",
+      "explanation": "Target $=$ reaction 1 minus reaction 2, so keep reaction 1 and reverse reaction 2 (which flips its sign to $+283.0$). Then $\\Delta H = -393.5 + 283.0 = -110.5\\ \\text{kJ}$. Adding the two as written gives the wrong $-676.5\\ \\text{kJ}$. A negative $\\Delta H$ means heat is released, so forming carbon monoxide this way is exothermic.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -313,22 +326,38 @@
       "id": "physical-chemistry-thermochemistry-022",
       "format": "cloze",
       "stem": "For $\\text{CH}_4 + 2\\text{O}_2 \\to \\text{CO}_2 + 2\\text{H}_2\\text{O(l)}$ use $\\Delta H_f^\\circ$: $\\text{CO}_2 = -393.5$, $\\text{H}_2\\text{O(l)} = -285.8$, $\\text{CH}_4 = -74.8\\ \\text{kJ mol}^{-1}$.",
-      "solution": "Apply $\\Delta H^\\circ = \\sum \\Delta H_f^\\circ(\\text{products}) - \\sum \\Delta H_f^\\circ(\\text{reactants})$. The product sum is $-393.5 + 2(-285.8) = -965.1$, and the reactant sum is just $-74.8$ because oxygen as an element contributes {{1}}. So $\\Delta H^\\circ = -965.1 - (-74.8) =$ {{2}} $\\text{ kJ}$.",
+      "solution": "The standard reaction enthalpy is assembled from formation enthalpies as {{1}}. Oxygen appears among the reactants, and its standard formation enthalpy is {{2}}. Applying the rule with the tabulated values and the stoichiometric coefficients gives $\\Delta H^\\circ =$ {{3}} $\\text{ kJ}$.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$\\sum \\Delta H_f^\\circ(\\text{products}) - \\sum \\Delta H_f^\\circ(\\text{reactants})$",
+            "$\\sum \\Delta H_f^\\circ(\\text{reactants}) - \\sum \\Delta H_f^\\circ(\\text{products})$",
+            "$\\sum \\Delta H_f^\\circ(\\text{products}) + \\sum \\Delta H_f^\\circ(\\text{reactants})$",
+            "$\\sum \\Delta H_f^\\circ(\\text{products}) \\times \\sum \\Delta H_f^\\circ(\\text{reactants})$"
+          ],
+          "answer": "$\\sum \\Delta H_f^\\circ(\\text{products}) - \\sum \\Delta H_f^\\circ(\\text{reactants})$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$0$, because it is an element in its standard state",
+            "$+498\\ \\text{kJ mol}^{-1}$, its bond enthalpy",
+            "$-393.5\\ \\text{kJ mol}^{-1}$",
+            "$-285.8\\ \\text{kJ mol}^{-1}$"
+          ],
+          "answer": "$0$, because it is an element in its standard state"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": -890.3,
           "tolerance": 0.2
         }
       ],
-      "explanation": "Oxygen as an element has $\\Delta H_f^\\circ = 0$, so $\\Delta H^\\circ = -965.1 + 74.8 = -890.3\\ \\text{kJ}$.",
+      "explanation": "Reaction enthalpy is products minus reactants: $\\Delta H^\\circ = \\sum \\Delta H_f^\\circ(\\text{products}) - \\sum \\Delta H_f^\\circ(\\text{reactants})$. Elements in their standard state, such as $\\text{O}_2$, have $\\Delta H_f^\\circ = 0$; using its bond enthalpy $498$ is a trap. Products give $-393.5 + 2(-285.8) = -965.1$; reactants give $-74.8 + 0$. So $\\Delta H^\\circ = -965.1 - (-74.8) = -890.3\\ \\text{kJ}$.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -336,22 +365,38 @@
       "id": "physical-chemistry-thermochemistry-023",
       "format": "cloze",
       "stem": "Using bond enthalpies $\\text{H-H} = 436$, $\\text{Cl-Cl} = 243$, $\\text{H-Cl} = 431\\ \\text{kJ mol}^{-1}$ for $\\text{H}_2 + \\text{Cl}_2 \\to 2\\text{HCl}$.",
-      "solution": "The estimate is bonds broken minus bonds formed. Broken: $436 + 243 = 679$. Formed: $2 \\times 431 =$ {{1}}. So $\\Delta H = 679 - 862 =$ {{2}} $\\text{ kJ}$.",
+      "solution": "A bond-enthalpy estimate of the reaction enthalpy uses {{1}}. Breaking the reactant bonds costs $436 + 243 = 679\\ \\text{kJ}$. On the product side, {{2}}. Combining the two sides with the correct sign gives $\\Delta H =$ {{3}} $\\text{ kJ}$.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 862,
-          "tolerance": 1
+          "type": "dropdown",
+          "options": [
+            "$\\sum(\\text{bonds broken}) - \\sum(\\text{bonds formed})$",
+            "$\\sum(\\text{bonds formed}) - \\sum(\\text{bonds broken})$",
+            "$\\sum(\\text{bonds broken}) + \\sum(\\text{bonds formed})$",
+            "$\\tfrac{1}{2}\\sum(\\text{all bond enthalpies})$"
+          ],
+          "answer": "$\\sum(\\text{bonds broken}) - \\sum(\\text{bonds formed})$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "two H-Cl bonds form, releasing $862\\ \\text{kJ}$",
+            "one H-Cl bond forms, releasing $431\\ \\text{kJ}$",
+            "two H-Cl bonds form, releasing $431\\ \\text{kJ}$",
+            "four H-Cl bonds form, releasing $1724\\ \\text{kJ}$"
+          ],
+          "answer": "two H-Cl bonds form, releasing $862\\ \\text{kJ}$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": -183,
           "tolerance": 1
         }
       ],
-      "explanation": "Two $\\text{H-Cl}$ bonds form, giving $862\\ \\text{kJ}$ released. Then $\\Delta H = 679 - 862 = -183\\ \\text{kJ}$.",
+      "explanation": "Bond-enthalpy method: $\\Delta H = \\sum(\\text{bonds broken}) - \\sum(\\text{bonds formed})$, since breaking costs energy and forming releases it. Breaking $\\text{H-H}$ and $\\text{Cl-Cl}$ costs $436 + 243 = 679\\ \\text{kJ}$. The product $2\\text{HCl}$ has two H-Cl bonds, releasing $2 \\times 431 = 862\\ \\text{kJ}$. So $\\Delta H = 679 - 862 = -183\\ \\text{kJ}$, exothermic.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -359,22 +404,38 @@
       "id": "physical-chemistry-thermochemistry-024",
       "format": "cloze",
       "stem": "A sample of water of mass $100\\ \\text{g}$ is heated from $20\\,^\\circ\\text{C}$ to $45\\,^\\circ\\text{C}$. The specific heat of water is $4.18\\ \\text{J g}^{-1}\\text{K}^{-1}$.",
-      "solution": "The temperature change is $\\Delta T = 45 - 20 =$ {{1}} $\\text{ K}$. The heat absorbed is $q = mc\\Delta T = (100)(4.18)(25) =$ {{2}} $\\text{ J}$.",
+      "solution": "The heat absorbed by a substance is given by {{1}}. The temperature change to use is {{2}}. Combining the mass, the specific heat, and that temperature change through $q = mc\\Delta T$ gives $q =$ {{3}} $\\text{ J}$.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 25,
-          "tolerance": 0.5
+          "type": "dropdown",
+          "options": [
+            "$q = mc\\Delta T$",
+            "$q = c\\Delta T$",
+            "$q = m\\Delta T$",
+            "$q = mc/\\Delta T$"
+          ],
+          "answer": "$q = mc\\Delta T$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$25\\ \\text{K}$, since a change of $25\\,^\\circ\\text{C}$ is a change of $25\\ \\text{K}$",
+            "$298\\ \\text{K}$, after adding $273$ to the change",
+            "$45\\ \\text{K}$, the final temperature",
+            "$65\\ \\text{K}$, the sum of the two temperatures"
+          ],
+          "answer": "$25\\ \\text{K}$, since a change of $25\\,^\\circ\\text{C}$ is a change of $25\\ \\text{K}$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 10450,
           "tolerance": 5
         }
       ],
-      "explanation": "The rise is $25\\ \\text{K}$ and $q = (100)(4.18)(25) = 10450\\ \\text{J}$.",
+      "explanation": "Sensible heating uses $q = mc\\Delta T$, which needs both the mass and the specific heat. A temperature difference is identical in kelvin and Celsius, so $\\Delta T = 45 - 20 = 25\\ \\text{K}$; adding $273$ to a difference is a common mistake. Then $q = (100)(4.18)(25) = 10450\\ \\text{J}$.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -382,25 +443,38 @@
       "id": "physical-chemistry-thermochemistry-025",
       "format": "cloze",
       "stem": "A bomb calorimeter with heat capacity $5.00\\ \\text{kJ K}^{-1}$ shows a temperature rise of $2.50\\ \\text{K}$ when a sample burns.",
-      "solution": "The heat absorbed by the calorimeter is $q = C\\Delta T = (5.00)(2.50) =$ {{1}} $\\text{ kJ}$. By energy balance this equals the heat released by the reaction, so the reaction is {{2}}.",
+      "solution": "A bomb calorimeter is a sealed, rigid vessel, so it operates at constant volume; the heat it registers therefore matches {{1}} of the reaction. The heat taken up by the calorimeter is $q = C\\Delta T$, and with $C = 5.00\\ \\text{kJ K}^{-1}$ and $\\Delta T = 2.50\\ \\text{K}$ this equals {{2}} $\\text{ kJ}$. Since the calorimeter warmed up, the reaction supplying that heat is {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\Delta U$, the internal energy change, since the volume is fixed",
+            "$\\Delta H$, the enthalpy change",
+            "the work done $w$",
+            "$\\Delta G$, the free energy change"
+          ],
+          "answer": "$\\Delta U$, the internal energy change, since the volume is fixed"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 12.5,
           "tolerance": 0.1
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
-            "exothermic",
-            "endothermic"
+            "exothermic, because it releases heat that warms the calorimeter",
+            "endothermic, because it absorbs heat from the calorimeter",
+            "exothermic, because it absorbs heat from the calorimeter",
+            "endothermic, because it releases heat to the calorimeter"
           ],
-          "answer": "exothermic"
+          "answer": "exothermic, because it releases heat that warms the calorimeter"
         }
       ],
-      "explanation": "The calorimeter absorbs $C\\Delta T = 12.5\\ \\text{kJ}$, released by the combustion, so the reaction is exothermic.",
+      "explanation": "A bomb calorimeter holds the volume constant, so the heat it measures is $q_v = \\Delta U$, not $\\Delta H$ (that would need constant pressure). The heat absorbed is $q = C\\Delta T = (5.00)(2.50) = 12.5\\ \\text{kJ}$. Because the temperature rose, the reaction released this heat, so it is exothermic; an endothermic reaction would have cooled the calorimeter.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -408,22 +482,38 @@
       "id": "physical-chemistry-thermochemistry-026",
       "format": "cloze",
       "stem": "The enthalpy of combustion of methane is $\\Delta H_c = -890\\ \\text{kJ mol}^{-1}$ with $M(\\text{CH}_4) = 16.0\\ \\text{g mol}^{-1}$.",
-      "solution": "Dividing the molar value by the molar mass gives the energy per gram: $-890/16.0 =$ {{1}} $\\text{ kJ g}^{-1}$. Burning $0.50\\ \\text{mol}$ instead releases $0.50 \\times 890 =$ {{2}} $\\text{ kJ}$.",
+      "solution": "Enthalpy of combustion is extensive, scaling with the amount burned. To turn the per-mole value $-890\\ \\text{kJ mol}^{-1}$ into an energy per gram, you {{1}}. Doing so gives {{2}} $\\text{ kJ g}^{-1}$. Burning only $0.50\\ \\text{mol}$ of methane instead releases {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "divide the molar value by the molar mass",
+            "multiply the molar value by the molar mass",
+            "divide the molar mass by the molar value",
+            "add the molar mass to the molar value"
+          ],
+          "answer": "divide the molar value by the molar mass"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": -55.6,
           "tolerance": 0.2
         },
         {
-          "id": 2,
-          "type": "number",
-          "answer": 445,
-          "tolerance": 1
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "half of $890\\ \\text{kJ}$, namely $445\\ \\text{kJ}$",
+            "twice $890\\ \\text{kJ}$, namely $1780\\ \\text{kJ}$",
+            "the full $890\\ \\text{kJ}$",
+            "a quarter of $890\\ \\text{kJ}$, namely $223\\ \\text{kJ}$"
+          ],
+          "answer": "half of $890\\ \\text{kJ}$, namely $445\\ \\text{kJ}$"
         }
       ],
-      "explanation": "Per gram the value is $-55.6\\ \\text{kJ g}^{-1}$, and $0.50\\ \\text{mol}$ releases $0.50 \\times 890 = 445\\ \\text{kJ}$.",
+      "explanation": "Per gram, divide the molar enthalpy by the molar mass: $-890/16.0 = -55.6\\ \\text{kJ g}^{-1}$. Multiplying instead, or dividing the wrong way round, gives nonsense units. Because the enthalpy scales with amount, $0.50\\ \\text{mol}$ releases half of $890$, that is $445\\ \\text{kJ}$.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     }

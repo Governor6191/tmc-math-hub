@@ -287,25 +287,38 @@
       "id": "physical-chemistry-first-law-thermodynamics-021",
       "format": "cloze",
       "stem": "A system absorbs $100\\ \\text{J}$ of heat while doing $40\\ \\text{J}$ of work on its surroundings. Use $\\Delta U = q + w$ with $w$ the work done on the system.",
-      "solution": "Heat absorbed is positive, so $q = +100\\ \\text{J}$. Because the system does work on the surroundings, the work done on the system is {{1}} $40\\ \\text{J}$. Adding, $\\Delta U =$ {{2}} $\\text{ J}$.",
+      "solution": "Heat absorbed by the system counts as positive, so $q = +100\\ \\text{J}$. The subtler term is the work: because the system does work on its surroundings, the work done on the system is {{1}}. Adding the two contributions, $\\Delta U = q + w =$ {{2}} $\\text{ J}$, so the internal energy has {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$-$",
-            "$+$"
+            "$-40\\ \\text{J}$, since the system spends energy pushing the surroundings back",
+            "$+40\\ \\text{J}$, since work is being done",
+            "$-100\\ \\text{J}$, equal and opposite to the heat",
+            "$+140\\ \\text{J}$"
           ],
-          "answer": "$-$"
+          "answer": "$-40\\ \\text{J}$, since the system spends energy pushing the surroundings back"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 60,
           "tolerance": 0.5
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "increased, because the heat added exceeds the work done",
+            "decreased, because the system did work on the surroundings",
+            "stayed constant, because internal energy is a state function",
+            "increased by the full $100\\ \\text{J}$ of heat"
+          ],
+          "answer": "increased, because the heat added exceeds the work done"
         }
       ],
-      "explanation": "With $w = -40\\ \\text{J}$, the change is $\\Delta U = 100 + (-40) = +60\\ \\text{J}$. Work done by the system lowers its internal energy.",
+      "explanation": "Heat in makes $q = +100\\ \\text{J}$. The convention $w =$ work done on the system means that when the system does $40\\ \\text{J}$ of work on the surroundings, $w = -40\\ \\text{J}$; the frequent error is calling it $+40\\ \\text{J}$. Then $\\Delta U = 100 + (-40) = +60\\ \\text{J}$. The internal energy rises because the heat supplied outweighs the energy spent as work; it does not gain the full $100\\ \\text{J}$, nor is a state function forced to stay constant here.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -313,25 +326,38 @@
       "id": "physical-chemistry-first-law-thermodynamics-022",
       "format": "cloze",
       "stem": "A gas expands by $5.00\\ \\text{L}$ against a constant external pressure of $2.00\\ \\text{atm}$. Use $1\\ \\text{L atm} = 101.325\\ \\text{J}$.",
-      "solution": "The work on the gas is $w = -P_{\\text{ext}}\\Delta V = -(2.00)(5.00) =$ {{1}} $\\text{ L atm}$. Converting to joules gives $-1013\\ \\text{J}$. The sign is negative because the expanding gas {{2}} energy as it pushes back the surroundings.",
+      "solution": "Work done on a gas against a constant external pressure is given by {{1}}. For this expansion the gas volume increases, so the work done on the gas is {{2}}. Converting $-P_{\\text{ext}}\\Delta V = -(2.00)(5.00)\\ \\text{L atm}$ into joules with $1\\ \\text{L atm} = 101.325\\ \\text{J}$ gives $w =$ {{3}} $\\text{ J}$.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": -10,
-          "tolerance": 0.05
+          "type": "dropdown",
+          "options": [
+            "$w = -P_{\\text{ext}}\\Delta V$",
+            "$w = +P_{\\text{ext}}\\Delta V$",
+            "$w = -nRT\\ln(V_2/V_1)$",
+            "$w = P_{\\text{ext}}/\\Delta V$"
+          ],
+          "answer": "$w = -P_{\\text{ext}}\\Delta V$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "loses",
-            "gains"
+            "negative, because the gas spends energy pushing the surroundings back",
+            "positive, because the gas gains energy as it expands",
+            "zero, because the external pressure is constant",
+            "positive, because the volume increases"
           ],
-          "answer": "loses"
+          "answer": "negative, because the gas spends energy pushing the surroundings back"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -1013,
+          "tolerance": 5
         }
       ],
-      "explanation": "The work is $-10.0\\ \\text{L atm} = -1013\\ \\text{J}$. Negative work on the gas means it loses internal energy doing the pushing.",
+      "explanation": "Against a constant external pressure the irreversible work is $w = -P_{\\text{ext}}\\Delta V$; the reversible $-nRT\\ln(V_2/V_1)$ form does not apply when $P_{\\text{ext}}$ is fixed. Expansion gives $\\Delta V > 0$, so $w < 0$: the gas loses energy pushing the surroundings. Numerically $w = -(2.00)(5.00) = -10.0\\ \\text{L atm}$, and $-10.0 \\times 101.325 = -1013\\ \\text{J}$.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -339,22 +365,38 @@
       "id": "physical-chemistry-first-law-thermodynamics-023",
       "format": "cloze",
       "stem": "One mole of an ideal gas expands isothermally and reversibly at $300\\ \\text{K}$, doubling its volume. Use $R = 8.314\\ \\text{J mol}^{-1}\\text{K}^{-1}$.",
-      "solution": "The reversible isothermal work is $w = -nRT\\ln(V_2/V_1) = -(1.0)(8.314)(300)\\ln 2 =$ {{1}} $\\text{ J}$. Because the temperature is constant, the internal energy change of the ideal gas is {{2}} $\\text{ J}$, so the heat absorbed equals the magnitude of the work.",
+      "solution": "For a reversible isothermal change of an ideal gas the work is given by {{1}}. With the volume doubling, $V_2/V_1 = 2$, so using $\\ln 2 = 0.693$ the work comes out to $w =$ {{2}} $\\text{ J}$. Because the temperature is held fixed, the change in internal energy is {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$w = -nRT\\ln(V_2/V_1)$",
+            "$w = -P_{\\text{ext}}\\Delta V$",
+            "$w = -nR\\Delta T$",
+            "$w = +nRT\\ln(V_2/V_1)$"
+          ],
+          "answer": "$w = -nRT\\ln(V_2/V_1)$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": -1729,
           "tolerance": 5
         },
         {
-          "id": 2,
-          "type": "number",
-          "answer": 0,
-          "tolerance": 0.5
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$0$, because internal energy depends only on temperature, which is constant",
+            "equal to the work $w$",
+            "equal to the heat absorbed",
+            "negative, matching the sign of the work"
+          ],
+          "answer": "$0$, because internal energy depends only on temperature, which is constant"
         }
       ],
-      "explanation": "The work is $-(8.314)(300)(0.693) = -1729\\ \\text{J}$. For an ideal gas at constant temperature $\\Delta U = 0$, so $q = +1729\\ \\text{J}$.",
+      "explanation": "Reversible isothermal work is $w = -nRT\\ln(V_2/V_1)$; the constant-pressure $-P_{\\text{ext}}\\Delta V$ and the sign-flipped $+nRT\\ln(V_2/V_1)$ forms are the usual wrong picks. So $w = -(1)(8.314)(300)(0.693) = -1729\\ \\text{J}$. For an ideal gas at constant temperature $\\Delta U = 0$, since internal energy depends only on $T$; the first law then forces $q = +1729\\ \\text{J}$.",
       "difficulty": "stretch",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -362,78 +404,121 @@
       "id": "physical-chemistry-first-law-thermodynamics-024",
       "format": "cloze",
       "stem": "A reaction at $298\\ \\text{K}$ has $\\Delta n_{\\text{gas}} = +1$. Use $R = 8.314\\ \\text{J mol}^{-1}\\text{K}^{-1}$.",
-      "solution": "The link between the two energy changes is $\\Delta H = \\Delta U + \\Delta n_{\\text{gas}}RT$. The correction term is $(1)(8.314)(298) =$ {{1}} $\\text{ J}$, which equals about $2.48\\ \\text{kJ}$. Since more moles of gas are produced, $\\Delta H$ is {{2}} than $\\Delta U$.",
+      "solution": "For a reaction involving gases the two energy changes are linked by {{1}}. With $\\Delta n_{\\text{gas}} = +1$, $T = 298\\ \\text{K}$, and $R = 8.314$, the correction term works out to {{2}} $\\text{ J}$. Because gas is produced, the enthalpy change is {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\Delta H = \\Delta U + \\Delta n_{\\text{gas}}RT$",
+            "$\\Delta H = \\Delta U - \\Delta n_{\\text{gas}}RT$",
+            "$\\Delta H = \\Delta U + \\Delta n_{\\text{gas}}R$",
+            "$\\Delta H = \\Delta U \\times \\Delta n_{\\text{gas}}RT$"
+          ],
+          "answer": "$\\Delta H = \\Delta U + \\Delta n_{\\text{gas}}RT$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 2478,
           "tolerance": 5
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
-            "larger",
-            "smaller"
+            "larger than $\\Delta U$, because the number of gas moles increases",
+            "smaller than $\\Delta U$, because the number of gas moles increases",
+            "equal to $\\Delta U$, since $R$ and $T$ cancel",
+            "larger than $\\Delta U$, because the number of gas moles decreases"
           ],
-          "answer": "larger"
+          "answer": "larger than $\\Delta U$, because the number of gas moles increases"
         }
       ],
-      "explanation": "The term $\\Delta n_{\\text{gas}}RT = 2478\\ \\text{J} = +2.48\\ \\text{kJ}$ is positive, so $\\Delta H > \\Delta U$.",
+      "explanation": "For ideal gases $\\Delta H = \\Delta U + \\Delta n_{\\text{gas}}RT$; dropping $T$ or flipping the sign are the common slips. The correction is $(+1)(8.314)(298) = 2478\\ \\text{J} = +2.48\\ \\text{kJ}$. Since it is positive, $\\Delta H > \\Delta U$: producing more gas moles makes the enthalpy change exceed the internal-energy change.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
     {
       "id": "physical-chemistry-first-law-thermodynamics-025",
       "format": "cloze",
-      "stem": "Heat is supplied to $2.0\\ \\text{mol}$ of a monatomic ideal gas at constant pressure, raising its temperature by $50\\ \\text{K}$. Use $C_{p,m} = \\tfrac{5}{2}R$ and $R = 8.314\\ \\text{J mol}^{-1}\\text{K}^{-1}$.",
-      "solution": "At constant pressure the heat equals $q_p = nC_{p,m}\\Delta T = (2.0)(\\tfrac{5}{2} \\times 8.314)(50) =$ {{1}} $\\text{ J}$. At constant pressure this heat is also equal to the change in the state function {{2}}.",
+      "stem": "Heat is supplied to $2.0\\ \\text{mol}$ of a monatomic ideal gas at constant pressure, raising its temperature by $50\\ \\text{K}$. Use $R = 8.314\\ \\text{J mol}^{-1}\\text{K}^{-1}$.",
+      "solution": "Because the heating is at constant pressure, the molar heat capacity to use is {{1}}. Substituting it into $q_p = nC_{p,m}\\Delta T$ with $n = 2.0\\ \\text{mol}$ and $\\Delta T = 50\\ \\text{K}$ gives $q_p =$ {{2}} $\\text{ J}$. At constant pressure this heat equals the change in the state function {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$C_{p,m} = \\tfrac{5}{2}R$, the constant-pressure value",
+            "$C_{v,m} = \\tfrac{3}{2}R$, the constant-volume value",
+            "$R$ on its own",
+            "$C_{p,m} = \\tfrac{3}{2}R$"
+          ],
+          "answer": "$C_{p,m} = \\tfrac{5}{2}R$, the constant-pressure value"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 2079,
           "tolerance": 5
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
-            "enthalpy",
-            "entropy",
-            "internal energy"
+            "enthalpy $\\Delta H$",
+            "internal energy $\\Delta U$",
+            "entropy $\\Delta S$",
+            "Gibbs energy $\\Delta G$"
           ],
-          "answer": "enthalpy"
+          "answer": "enthalpy $\\Delta H$"
         }
       ],
-      "explanation": "The heat is $q_p = (2.0)(20.79)(50) = 2079\\ \\text{J}$, and at constant pressure $q_p = \\Delta H$, the enthalpy change.",
+      "explanation": "At constant pressure the correct capacity is $C_{p,m} = \\tfrac{5}{2}R$ for a monatomic gas; using $C_{v,m} = \\tfrac{3}{2}R$ is the classic error because heating at constant pressure also does expansion work. So $q_p = (2.0)(\\tfrac{5}{2} \\times 8.314)(50) = (2.0)(20.79)(50) = 2079\\ \\text{J}$. By definition $q_p = \\Delta H$, the enthalpy change, whereas $q_v$ would equal $\\Delta U$.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
     {
       "id": "physical-chemistry-first-law-thermodynamics-026",
       "format": "cloze",
-      "stem": "An ideal gas is taken through an adiabatic process.",
-      "solution": "Adiabatic means no heat flows, so $q =$ {{1}}. The first law $\\Delta U = q + w$ then simplifies to $\\Delta U = w$, meaning the entire change in internal energy comes from {{2}}.",
+      "stem": "An ideal gas expands adiabatically, doing work on its surroundings.",
+      "solution": "The defining feature of an adiabatic process is that {{1}}. The first law $\\Delta U = q + w$ therefore reduces to {{2}}. Since the gas does work on the surroundings while receiving no heat, its temperature {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "no heat is exchanged, so $q = 0$",
+            "no work is done, so $w = 0$",
+            "the temperature is constant, so $\\Delta U = 0$",
+            "the pressure is constant"
+          ],
+          "answer": "no heat is exchanged, so $q = 0$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "work",
-            "heat"
+            "$\\Delta U = w$",
+            "$\\Delta U = q$",
+            "$\\Delta U = 0$",
+            "$\\Delta U = q - w$"
           ],
-          "answer": "work"
+          "answer": "$\\Delta U = w$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "falls, because the internal energy drops as the gas does work",
+            "rises, because the work adds energy to the gas",
+            "stays constant, as in an isothermal process",
+            "cannot change without heat flow"
+          ],
+          "answer": "falls, because the internal energy drops as the gas does work"
         }
       ],
-      "explanation": "With $q = 0$ the first law gives $\\Delta U = w$, so only work changes the internal energy in an adiabatic process.",
+      "explanation": "Adiabatic means no heat crosses the boundary, so $q = 0$; that is different from isochoric ($w = 0$) or isothermal ($\\Delta U = 0$). The first law then gives $\\Delta U = w$. In an adiabatic expansion the gas does work with no heat entering, so $w < 0$, $\\Delta U < 0$, and the temperature falls. This cooling is why adiabatic expansion is used in refrigeration.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     }

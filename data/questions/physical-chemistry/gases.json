@@ -287,26 +287,38 @@
       "id": "physical-chemistry-gases-021",
       "format": "cloze",
       "stem": "A sample of $0.500\\ \\text{mol}$ of an ideal gas is held at $1.00\\ \\text{atm}$ and $273\\ \\text{K}$. Use $R = 0.0821\\ \\text{L atm mol}^{-1}\\text{K}^{-1}$.",
-      "solution": "Rearranging $PV = nRT$ gives $V = nRT/P$. Substituting, $V = (0.500 \\times 0.0821 \\times 273)/1.00 =$ {{1}} $\\text{ L}$. Because volume is directly proportional to the number of moles, halving the moles from one mole to half a mole makes the volume {{2}} the molar volume of $22.4\\ \\text{L}$.",
+      "solution": "Only one state of the gas is specified here, with $P$, $n$, and $T$ all fixed at a single instant, so its volume follows directly from {{1}}. Because volume is proportional to the amount of gas at fixed $P$ and $T$, cutting the sample from one mole down to $0.500\\ \\text{mol}$ {{2}} the volume. Solving $V = nRT/P$ with the given numbers gives $V =$ {{3}} $\\text{ L}$.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 11.2,
-          "tolerance": 0.1
+          "type": "dropdown",
+          "options": [
+            "the ideal gas law $PV = nRT$",
+            "Boyle's law $P_1 V_1 = P_2 V_2$",
+            "Charles's law $V_1/T_1 = V_2/T_2$",
+            "the combined gas law $P_1 V_1/T_1 = P_2 V_2/T_2$"
+          ],
+          "answer": "the ideal gas law $PV = nRT$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "half",
-            "double",
-            "equal to"
+            "halves",
+            "doubles",
+            "leaves unchanged",
+            "quadruples"
           ],
-          "answer": "half"
+          "answer": "halves"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 11.2,
+          "tolerance": 0.1
         }
       ],
-      "explanation": "With $n = 0.500\\ \\text{mol}$, $V = nRT/P = 11.2\\ \\text{L}$, which is exactly half the $22.4\\ \\text{L}$ that one mole occupies at the same conditions.",
+      "explanation": "Only one state is given, so the ideal gas law $PV = nRT$ applies; Boyle's, Charles's, and the combined gas law all need two states and do not fit. Volume is proportional to $n$ at fixed $P$ and $T$, so halving the moles halves the volume. Numerically $V = nRT/P = (0.500)(0.0821)(273)/1.00 = 11.2\\ \\text{L}$, exactly half the $22.4\\ \\text{L}$ that one mole fills at these conditions.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -314,26 +326,38 @@
       "id": "physical-chemistry-gases-022",
       "format": "cloze",
       "stem": "A gas at $1.50\\ \\text{atm}$ occupies $4.00\\ \\text{L}$. It is compressed isothermally to $2.00\\ \\text{L}$.",
-      "solution": "At constant temperature Boyle's law gives $P_1 V_1 = P_2 V_2$. Solving for the new pressure, $P_2 = (1.50 \\times 4.00)/2.00 =$ {{1}} $\\text{ atm}$. Since the volume was reduced, the pressure must {{2}}, which matches the inverse relationship between pressure and volume.",
+      "solution": "At constant temperature the pressure and volume of a fixed amount of gas are linked by {{1}}. Since the gas is squeezed into a smaller volume, its pressure must {{2}}. Putting $P_1 = 1.50\\ \\text{atm}$, $V_1 = 4.00\\ \\text{L}$, and $V_2 = 2.00\\ \\text{L}$ into that law and solving for $P_2$ gives {{3}} $\\text{ atm}$.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 3,
-          "tolerance": 0.05
+          "type": "dropdown",
+          "options": [
+            "Boyle's law, $P_1 V_1 = P_2 V_2$",
+            "Charles's law, $V_1/T_1 = V_2/T_2$",
+            "Gay-Lussac's law, $P_1/T_1 = P_2/T_2$",
+            "Avogadro's law, $V \\propto n$"
+          ],
+          "answer": "Boyle's law, $P_1 V_1 = P_2 V_2$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "increase",
-            "decrease",
-            "stay the same"
+            "rise",
+            "fall",
+            "stay the same",
+            "drop to zero"
           ],
-          "answer": "increase"
+          "answer": "rise"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0.05
         }
       ],
-      "explanation": "By Boyle's law $P_2 = P_1 V_1/V_2 = (1.50 \\times 4.00)/2.00 = 3.0\\ \\text{atm}$. Halving the volume doubles the pressure, an increase.",
+      "explanation": "At constant temperature Boyle's law $P_1 V_1 = P_2 V_2$ governs; Charles's, Gay-Lussac's, and Avogadro's laws each hold a different variable fixed and do not fit an isothermal squeeze. Pressure and volume are inversely related, so compressing the gas raises the pressure. Solving, $P_2 = P_1 V_1/V_2 = (1.50)(4.00)/2.00 = 3.00\\ \\text{atm}$, double the original because the volume was halved.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -341,13 +365,18 @@
       "id": "physical-chemistry-gases-023",
       "format": "cloze",
       "stem": "A mixture contains $0.20\\ \\text{mol}$ $\\text{O}_2$ and $0.80\\ \\text{mol}$ $\\text{N}_2$ at a total pressure of $2.0\\ \\text{atm}$.",
-      "solution": "The mole fraction of oxygen is $x_{\\text{O}_2} = 0.20/(0.20 + 0.80) =$ {{1}}. By Dalton's law of partial pressures, the partial pressure of oxygen is this mole fraction times the total, giving $P_{\\text{O}_2} =$ {{2}} $\\text{ atm}$. The principle being applied is named after {{3}}.",
+      "solution": "In a gas mixture each component exerts a partial pressure equal to its {{1}}. Oxygen's mole fraction is $0.20/(0.20 + 0.80)$, and multiplying that fraction by the total pressure of $2.0\\ \\text{atm}$ gives $P_{\\text{O}_2} =$ {{2}} $\\text{ atm}$. Of the two gases, the one exerting the larger partial pressure is {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0.2,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "mole fraction times the total pressure",
+            "mass fraction times the total pressure",
+            "an equal share of the total pressure",
+            "molar mass times the total pressure"
+          ],
+          "answer": "mole fraction times the total pressure"
         },
         {
           "id": 2,
@@ -357,14 +386,17 @@
         },
         {
           "id": 3,
-          "type": "text",
-          "accept": [
-            "Dalton",
-            "John Dalton"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$\\text{N}_2$, because it is present in the greater amount",
+            "$\\text{O}_2$, because it has the greater molar mass",
+            "$\\text{O}_2$, because it is the more reactive gas",
+            "both equally, since the total is shared evenly"
+          ],
+          "answer": "$\\text{N}_2$, because it is present in the greater amount"
         }
       ],
-      "explanation": "The mole fraction is $0.20$, and $P_{\\text{O}_2} = 0.20 \\times 2.0 = 0.40\\ \\text{atm}$. Dalton's law states each gas contributes its mole-fraction share of the total pressure.",
+      "explanation": "By Dalton's law each gas's partial pressure is its mole fraction times the total, not its mass fraction, a molar-mass share, or an even split. Oxygen's mole fraction is $0.20/(0.20 + 0.80) = 0.20$, so $P_{\\text{O}_2} = 0.20 \\times 2.0 = 0.40\\ \\text{atm}$. Partial pressure tracks moles, so the more abundant $\\text{N}_2$ ($0.80\\ \\text{mol}$) carries the larger partial pressure, $1.6\\ \\text{atm}$; molar mass and reactivity do not enter the split.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -372,26 +404,38 @@
       "id": "physical-chemistry-gases-024",
       "format": "cloze",
       "stem": "The density of a gas is $1.96\\ \\text{g L}^{-1}$ at $273\\ \\text{K}$ and $1.00\\ \\text{atm}$. Use $R = 0.0821\\ \\text{L atm mol}^{-1}\\text{K}^{-1}$.",
-      "solution": "Starting from $PM = \\rho RT$, the molar mass is $M = \\rho RT/P = (1.96 \\times 0.0821 \\times 273)/1.00 =$ {{1}} $\\text{ g mol}^{-1}$. This value identifies the gas as {{2}}.",
+      "solution": "The molar mass of a gas can be extracted from its density using {{1}}. Substituting $\\rho = 1.96\\ \\text{g L}^{-1}$, $R = 0.0821$, $T = 273\\ \\text{K}$, and $P = 1.00\\ \\text{atm}$ gives a molar mass of {{2}} $\\text{ g mol}^{-1}$. A value of that size identifies the gas as {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$M = \\rho RT/P$",
+            "$M = P/(\\rho RT)$",
+            "$M = \\rho P/(RT)$",
+            "$M = PV/(RT)$"
+          ],
+          "answer": "$M = \\rho RT/P$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 44,
           "tolerance": 0.5
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
             "$\\text{CO}_2$",
             "$\\text{N}_2$",
-            "$\\text{CH}_4$"
+            "$\\text{CH}_4$",
+            "$\\text{O}_2$"
           ],
           "answer": "$\\text{CO}_2$"
         }
       ],
-      "explanation": "The molar mass is $\\rho RT/P = 43.9 \\approx 44.0\\ \\text{g mol}^{-1}$, matching carbon dioxide $\\text{CO}_2$.",
+      "explanation": "Rearranging $PM = \\rho RT$ gives $M = \\rho RT/P$; the inverted or rearranged forms carry the wrong dimensions. Substituting, $M = (1.96)(0.0821)(273)/1.00 = 43.9 \\approx 44\\ \\text{g mol}^{-1}$. Among the choices only $\\text{CO}_2$ has $M = 44$; $\\text{N}_2$ is $28$, $\\text{O}_2$ is $32$, and $\\text{CH}_4$ is $16\\ \\text{g mol}^{-1}$.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -399,25 +443,38 @@
       "id": "physical-chemistry-gases-025",
       "format": "cloze",
       "stem": "Helium ($M = 4.0$) and oxygen ($M = 32$) are compared at the same temperature.",
-      "solution": "Graham's law states the effusion rate is inversely proportional to the square root of the molar mass. The ratio of rates is $\\sqrt{32/4.0} = \\sqrt{8.0} =$ {{1}}. The {{2}} gas effuses faster.",
+      "solution": "Graham's law states that the rate of effusion of a gas varies as {{1}}. It follows that the faster-effusing gas here is {{2}}. Forming the ratio $\\text{rate}_{\\text{He}}/\\text{rate}_{\\text{O}_2} = \\sqrt{M_{\\text{O}_2}/M_{\\text{He}}}$ with $M_{\\text{He}} = 4.0$ and $M_{\\text{O}_2} = 32$ gives {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 2.83,
-          "tolerance": 0.05
+          "type": "dropdown",
+          "options": [
+            "$1/\\sqrt{M}$",
+            "$\\sqrt{M}$",
+            "$M$",
+            "$1/M$"
+          ],
+          "answer": "$1/\\sqrt{M}$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "lighter",
-            "heavier"
+            "helium, the lighter gas",
+            "oxygen, the heavier gas",
+            "neither, they effuse equally",
+            "whichever is at higher pressure"
           ],
-          "answer": "lighter"
+          "answer": "helium, the lighter gas"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2.83,
+          "tolerance": 0.05
         }
       ],
-      "explanation": "The rate ratio is $\\sqrt{M_{\\text{O}_2}/M_{\\text{He}}} = \\sqrt{8.0} = 2.83$, so the lighter helium effuses about $2.83$ times faster.",
+      "explanation": "Graham's law says effusion rate $\\propto 1/\\sqrt{M}$, so lighter molecules effuse faster; the plain $\\sqrt{M}$, $M$, and $1/M$ forms invert or drop the square root. Helium ($M = 4.0$) is lighter than oxygen ($M = 32$), so it effuses faster. The rate ratio is $\\sqrt{32/4.0} = \\sqrt{8.0} = 2.83$, so helium effuses about $2.83$ times as fast.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -425,22 +482,38 @@
       "id": "physical-chemistry-gases-026",
       "format": "cloze",
       "stem": "An ideal gas occupies $10.0\\ \\text{L}$ at $2.00\\ \\text{atm}$ and $300\\ \\text{K}$. Use $R = 0.0821\\ \\text{L atm mol}^{-1}\\text{K}^{-1}$.",
-      "solution": "The amount of gas is $n = PV/(RT) = (2.00 \\times 10.0)/(0.0821 \\times 300) =$ {{1}} $\\text{ mol}$. The mean translational kinetic energy per mole at this temperature is $\\frac{3}{2}RT$, which with $R = 8.314\\ \\text{J mol}^{-1}\\text{K}^{-1}$ equals {{2}} $\\text{ J}$ rounded to the nearest integer.",
+      "solution": "The amount of gas present comes from rearranging the ideal gas law as {{1}}. Substituting $P = 2.00\\ \\text{atm}$, $V = 10.0\\ \\text{L}$, $T = 300\\ \\text{K}$, and $R = 0.0821$ gives $n =$ {{2}} $\\text{ mol}$. The mean translational kinetic energy per mole of an ideal gas is $\\tfrac{3}{2}RT$, a quantity that {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$n = PV/(RT)$",
+            "$n = RT/(PV)$",
+            "$n = PVRT$",
+            "$n = P/(VRT)$"
+          ],
+          "answer": "$n = PV/(RT)$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 0.812,
           "tolerance": 0.01
         },
         {
-          "id": 2,
-          "type": "number",
-          "answer": 3741,
-          "tolerance": 5
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "depends only on the temperature, so any ideal gas at $300\\ \\text{K}$ has the same value",
+            "depends on the number of moles in the sample",
+            "depends on the pressure and the volume",
+            "depends on the molar mass of the gas"
+          ],
+          "answer": "depends only on the temperature, so any ideal gas at $300\\ \\text{K}$ has the same value"
         }
       ],
-      "explanation": "The amount is $n = 20.0/24.63 = 0.812\\ \\text{mol}$. The molar kinetic energy is $\\frac{3}{2}RT = 1.5 \\times 8.314 \\times 300 = 3741\\ \\text{J}$.",
+      "explanation": "Rearranging $PV = nRT$ gives $n = PV/(RT)$; the inverted forms are dimensionally wrong. So $n = (2.00)(10.0)/[(0.0821)(300)] = 20.0/24.63 = 0.812\\ \\text{mol}$. The molar translational kinetic energy $\\tfrac{3}{2}RT = 1.5 \\times 8.314 \\times 300 = 3741\\ \\text{J}$ depends only on temperature, so it is the same for every ideal gas at $300\\ \\text{K}$ regardless of amount, pressure, volume, or molar mass.",
       "difficulty": "stretch",
       "source": "in the style of Atkins, Physical Chemistry"
     }

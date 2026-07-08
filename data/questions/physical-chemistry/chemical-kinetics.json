@@ -287,48 +287,77 @@
       "id": "physical-chemistry-chemical-kinetics-021",
       "format": "cloze",
       "stem": "A first-order reaction has rate constant $k = 0.0693\\ \\text{s}^{-1}$.",
-      "solution": "The first-order half-life is $t_{1/2} = \\ln 2/k = 0.693/0.0693 =$ {{1}} $\\text{ s}$. This half-life is {{2}} of the starting concentration, a defining feature of first-order kinetics.",
+      "solution": "For a first-order reaction the half-life is given by {{1}}. Substituting $k = 0.0693\\ \\text{s}^{-1}$ and $\\ln 2 = 0.693$ gives $t_{1/2} =$ {{2}} $\\text{ s}$. A distinctive feature of a first-order half-life is that {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$t_{1/2} = \\dfrac{\\ln 2}{k}$",
+            "$t_{1/2} = \\dfrac{k}{\\ln 2}$",
+            "$t_{1/2} = \\dfrac{1}{k[\\text{A}]_0}$",
+            "$t_{1/2} = \\dfrac{[\\text{A}]_0}{2k}$"
+          ],
+          "answer": "$t_{1/2} = \\dfrac{\\ln 2}{k}$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 10,
           "tolerance": 0.1
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
-            "independent",
-            "dependent"
+            "it is independent of the initial concentration",
+            "it is proportional to the initial concentration",
+            "it is inversely proportional to the initial concentration",
+            "it grows with the square of the initial concentration"
           ],
-          "answer": "independent"
+          "answer": "it is independent of the initial concentration"
         }
       ],
-      "explanation": "The half-life is $0.693/0.0693 = 10.0\\ \\text{s}$, and for first order it does not depend on the initial concentration.",
+      "explanation": "For first order $t_{1/2} = \\ln 2/k$; the inverted form, the second-order $1/(k[\\text{A}]_0)$, and the zero-order $[\\text{A}]_0/(2k)$ are the usual wrong picks. So $t_{1/2} = 0.693/0.0693 = 10.0\\ \\text{s}$. The formula holds no concentration term, so the first-order half-life is independent of the starting concentration, unlike zero or second order.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
     {
       "id": "physical-chemistry-chemical-kinetics-022",
       "format": "cloze",
-      "stem": "A first-order reactant starts at $[\\text{A}]_0 = 0.10\\ \\text{M}$ with $k = 0.0200\\ \\text{s}^{-1}$. Use $e^{-1} = 0.368$.",
-      "solution": "The exponent is $kt = 0.0200 \\times 50 =$ {{1}}. Then $[\\text{A}] = [\\text{A}]_0 e^{-kt} = 0.10 \\times 0.368 =$ {{2}} $\\text{ M}$.",
+      "stem": "A first-order reactant starts at $[\\text{A}]_0 = 0.10\\ \\text{M}$ with $k = 0.0200\\ \\text{s}^{-1}$, and is observed after $50\\ \\text{s}$. Use $e^{-1} = 0.368$.",
+      "solution": "The integrated rate law for a first-order reaction is {{1}}. The exponent here is $kt = (0.0200)(50) = 1$, so with $e^{-1} = 0.368$ the remaining concentration is $[\\text{A}] =$ {{2}} $\\text{ M}$. Since $[\\text{A}]$ has fallen to $0.368$ of its starting value, the time elapsed is {{3}} one half-life.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 1,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "$[\\text{A}] = [\\text{A}]_0 e^{-kt}$",
+            "$[\\text{A}] = [\\text{A}]_0 e^{kt}$",
+            "$[\\text{A}] = [\\text{A}]_0 - kt$",
+            "$1/[\\text{A}] = 1/[\\text{A}]_0 + kt$"
+          ],
+          "answer": "$[\\text{A}] = [\\text{A}]_0 e^{-kt}$"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 0.0368,
           "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "more than",
+            "less than",
+            "exactly equal to",
+            "exactly three times"
+          ],
+          "answer": "more than"
         }
       ],
-      "explanation": "With $kt = 1.0$, $[\\text{A}] = 0.10 \\times e^{-1} = 0.10 \\times 0.368 = 0.0368\\ \\text{M}$.",
+      "explanation": "The integrated first-order law is $[\\text{A}] = [\\text{A}]_0 e^{-kt}$; the $e^{+kt}$ form grows, and the linear and reciprocal forms belong to zero and second order. With $kt = 1$, $[\\text{A}] = 0.10 \\times 0.368 = 0.0368\\ \\text{M}$. Falling to $0.368$ (below $0.5$) means more than one half-life has passed; in fact $t_{1/2} = 0.693/0.0200 \\approx 34.7\\ \\text{s}$, and $50\\ \\text{s}$ is about $1.4$ half-lives.",
       "difficulty": "stretch",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -336,22 +365,38 @@
       "id": "physical-chemistry-chemical-kinetics-023",
       "format": "cloze",
       "stem": "After several first-order half-lives, the fraction of reactant remaining follows a halving pattern.",
-      "solution": "After three half-lives the fraction remaining is $(1/2)^3 =$ {{1}}, which is {{2}} percent of the original amount.",
+      "solution": "Each half-life multiplies the amount remaining by one half, so after $n$ half-lives the fraction remaining is {{1}}. For $n = 3$ this fraction equals {{2}}. Expressed the other way, the fraction of the reactant that has been consumed is {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$(1/2)^n$",
+            "$1 - (1/2)^n$",
+            "$n \\times \\tfrac{1}{2}$",
+            "$(1/2)^{n-1}$"
+          ],
+          "answer": "$(1/2)^n$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 0.125,
           "tolerance": 0.001
         },
         {
-          "id": 2,
-          "type": "number",
-          "answer": 12.5,
-          "tolerance": 0.1
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$87.5\\%$",
+            "$12.5\\%$",
+            "$50\\%$",
+            "$100\\%$"
+          ],
+          "answer": "$87.5\\%$"
         }
       ],
-      "explanation": "Three halvings give $(1/2)^3 = 0.125$, that is $12.5\\%$ remaining.",
+      "explanation": "Halving repeatedly gives a fraction remaining of $(1/2)^n$; $1 - (1/2)^n$ is the fraction reacted, while $n \\times \\tfrac{1}{2}$ and $(1/2)^{n-1}$ mis-model the decay. For $n = 3$, $(1/2)^3 = 0.125$, that is $12.5\\%$ remaining. The complement, $100\\% - 12.5\\% = 87.5\\%$, is the fraction consumed.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -359,25 +404,38 @@
       "id": "physical-chemistry-chemical-kinetics-024",
       "format": "cloze",
       "stem": "A zero-order reaction has $[\\text{A}]_0 = 0.20\\ \\text{M}$ and $k = 0.010\\ \\text{M s}^{-1}$.",
-      "solution": "The zero-order half-life is $t_{1/2} = [\\text{A}]_0/(2k) = 0.20/(2 \\times 0.010) =$ {{1}} $\\text{ s}$. Unlike first order, this half-life {{2}} as the reaction proceeds and the concentration drops.",
+      "solution": "The half-life of a zero-order reaction is given by {{1}}. Substituting $[\\text{A}]_0 = 0.20\\ \\text{M}$ and $k = 0.010\\ \\text{M s}^{-1}$ gives $t_{1/2} =$ {{2}} $\\text{ s}$. As the reaction runs and $[\\text{A}]$ falls, this half-life {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$t_{1/2} = \\dfrac{[\\text{A}]_0}{2k}$",
+            "$t_{1/2} = \\dfrac{\\ln 2}{k}$",
+            "$t_{1/2} = \\dfrac{1}{k[\\text{A}]_0}$",
+            "$t_{1/2} = \\dfrac{2k}{[\\text{A}]_0}$"
+          ],
+          "answer": "$t_{1/2} = \\dfrac{[\\text{A}]_0}{2k}$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 10,
           "tolerance": 0.1
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
-            "decreases",
-            "increases"
+            "decreases, because it is proportional to $[\\text{A}]_0$",
+            "increases, because it is inversely proportional to $[\\text{A}]_0$",
+            "stays constant, as in a first-order reaction",
+            "doubles after each half-life"
           ],
-          "answer": "decreases"
+          "answer": "decreases, because it is proportional to $[\\text{A}]_0$"
         }
       ],
-      "explanation": "The half-life is $0.20/0.020 = 10\\ \\text{s}$. For zero order $t_{1/2}$ is proportional to concentration, so it decreases as $[\\text{A}]$ falls.",
+      "explanation": "The zero-order half-life is $t_{1/2} = [\\text{A}]_0/(2k)$; the $\\ln 2/k$ and $1/(k[\\text{A}]_0)$ forms belong to first and second order. So $t_{1/2} = 0.20/(2 \\times 0.010) = 0.20/0.020 = 10\\ \\text{s}$. Because it is proportional to $[\\text{A}]_0$, the zero-order half-life shrinks as the concentration drops, the opposite of the second-order case.",
       "difficulty": "stretch",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -385,25 +443,38 @@
       "id": "physical-chemistry-chemical-kinetics-025",
       "format": "cloze",
       "stem": "The rate constant of a reaction doubles between $300\\ \\text{K}$ and $310\\ \\text{K}$. Use $\\ln(k_2/k_1) = -\\dfrac{E_a}{R}\\left(\\dfrac{1}{T_2} - \\dfrac{1}{T_1}\\right)$ with $R = 8.314\\ \\text{J mol}^{-1}\\text{K}^{-1}$.",
-      "solution": "Since the rate constant doubles, $\\ln(k_2/k_1) = \\ln 2 = 0.693$. Solving for the activation energy gives $E_a \\approx$ {{1}} $\\text{ kJ mol}^{-1}$. Raising the temperature {{2}} the rate constant.",
+      "solution": "Because the temperature rises, the Arrhenius rate constant {{1}}. To find the activation energy, first note that the ratio $k_2/k_1$ is {{2}}. Substituting into the given two-temperature equation with $T_1 = 300\\ \\text{K}$, $T_2 = 310\\ \\text{K}$, and $\\ln 2 = 0.693$ gives $E_a =$ {{3}} $\\text{ kJ mol}^{-1}$.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 53.6,
-          "tolerance": 0.5
+          "type": "dropdown",
+          "options": [
+            "increases, because more molecules have energy above $E_a$",
+            "decreases, because the collisions weaken",
+            "stays the same",
+            "becomes negative"
+          ],
+          "answer": "increases, because more molecules have energy above $E_a$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "increases",
-            "decreases"
+            "$2$, since the rate constant doubles",
+            "$0.5$, since the temperature increases",
+            "$\\ln 2$",
+            "$310/300$"
           ],
-          "answer": "increases"
+          "answer": "$2$, since the rate constant doubles"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 53.6,
+          "tolerance": 0.5
         }
       ],
-      "explanation": "Solving the two-temperature Arrhenius form gives $E_a = 53600\\ \\text{J mol}^{-1} = 53.6\\ \\text{kJ mol}^{-1}$, and higher temperature increases $k$.",
+      "explanation": "Raising $T$ makes the exponent $-E_a/RT$ less negative, so $k$ increases. The doubling gives $k_2/k_1 = 2$, hence $\\ln 2 = 0.693$. With $1/310 - 1/300 = -1.075 \\times 10^{-4}\\ \\text{K}^{-1}$, $E_a = -R\\ln 2/(1/T_2 - 1/T_1) = -(8.314)(0.693)/(-1.075 \\times 10^{-4}) = 53600\\ \\text{J mol}^{-1} = 53.6\\ \\text{kJ mol}^{-1}$.",
       "difficulty": "stretch",
       "source": "in the style of Atkins, Physical Chemistry"
     },
@@ -411,22 +482,38 @@
       "id": "physical-chemistry-chemical-kinetics-026",
       "format": "cloze",
       "stem": "A reaction has the rate law $\\text{rate} = k[\\text{A}]^2[\\text{B}]$.",
-      "solution": "The order with respect to $\\text{A}$ is $2$ and with respect to $\\text{B}$ is $1$, so the overall order is {{1}}. If $[\\text{A}]$ is doubled while $[\\text{B}]$ is held fixed, the rate increases by a factor of {{2}}.",
+      "solution": "Reading the exponents from the rate law $\\text{rate} = k[\\text{A}]^2[\\text{B}]$, the overall order of the reaction is {{1}}. If $[\\text{A}]$ is doubled while $[\\text{B}]$ is held fixed, the rate changes by a factor of {{2}}. If instead only $[\\text{B}]$ is doubled, the rate changes by {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 3,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$3$, the sum of the exponents $2$ and $1$",
+            "$6$, the product of the exponents",
+            "$2$, the largest exponent",
+            "$1$, the exponent on B"
+          ],
+          "answer": "$3$, the sum of the exponents $2$ and $1$"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 4,
           "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "a factor of $2$, since it is first order in $\\text{B}$",
+            "a factor of $4$",
+            "no change, since $\\text{B}$ does not affect the rate",
+            "a factor of $8$"
+          ],
+          "answer": "a factor of $2$, since it is first order in $\\text{B}$"
         }
       ],
-      "explanation": "The overall order is $2 + 1 = 3$, and doubling $[\\text{A}]$ in a second-order term scales the rate by $2^2 = 4$.",
+      "explanation": "Overall order is the sum of the exponents, $2 + 1 = 3$ (not the product $6$ nor the largest exponent). Doubling $[\\text{A}]$ in a term that is second order in A scales the rate by $2^2 = 4$. Doubling $[\\text{B}]$, which is first order, scales the rate by $2^1 = 2$; B does affect the rate, just less steeply than A.",
       "difficulty": "core",
       "source": "in the style of Atkins, Physical Chemistry"
     }
