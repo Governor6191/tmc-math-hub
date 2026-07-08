@@ -429,7 +429,7 @@
       "id": "logic-and-set-theory-arguments-and-proofs-031",
       "format": "cloze",
       "stem": "An argument has premises $p \\to q$ and $p$, and conclusion $q$. Name the rule of inference and state whether the argument is valid.",
-      "solution": "The premises are a conditional together with its affirmed antecedent, and the conclusion detaches the consequent. This is the rule {{1}}. Because every row that makes both premises true also makes $q$ true, the argument is {{2}}.",
+      "solution": "The premises are a conditional and its affirmed antecedent, and the conclusion detaches the consequent; this pattern is the rule {{1}}. Comparing the rows where both premises hold against the conclusion shows the argument is {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -444,21 +444,25 @@
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "valid"
-          ]
+          "type": "dropdown",
+          "options": [
+            "valid, since every row with both premises true also has $q$ true",
+            "invalid, since some row has both premises true but $q$ false",
+            "invalid, because the conclusion merely repeats a premise",
+            "valid only when $p$ happens to be true"
+          ],
+          "answer": "valid, since every row with both premises true also has $q$ true"
         }
       ],
-      "explanation": "From $p \\to q$ and $p$, modus ponens detaches $q$. The only row with $p \\to q$ and $p$ both true is $p$ true, $q$ true, where $q$ holds, so the rule is valid.",
-      "difficulty": "warmup",
+      "explanation": "From $p \\to q$ and $p$, modus ponens detaches $q$. The only row with both premises true is $p$ true, $q$ true, where $q$ holds, so the argument is valid: no row makes the premises true and the conclusion false. Affirming the consequent would instead argue from $q$ to $p$, and validity is a property of the form, not contingent on $p$ being true.",
+      "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-arguments-and-proofs-032",
       "format": "cloze",
       "stem": "An argument has premises $p \\to q$ and $\\lnot q$, and conclusion $\\lnot p$. Name the rule and state whether it is valid.",
-      "solution": "From a conditional and the denial of its consequent, the argument infers the denial of its antecedent. This rule is {{1}}, and it is {{2}}, since in every row where $p \\to q$ and $\\lnot q$ both hold, $p$ must be false.",
+      "solution": "From a conditional and the denial of its consequent, the argument concludes the denial of its antecedent; this is the rule {{1}}. Testing the rows where $p \\to q$ and $\\lnot q$ are both true reveals that the argument is {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -475,21 +479,23 @@
           "id": 2,
           "type": "dropdown",
           "options": [
-            "valid",
-            "invalid"
+            "valid, because every such row also makes $\\lnot p$ true",
+            "invalid, because it illegitimately negates the antecedent",
+            "invalid, because a conditional cannot be reversed",
+            "valid only when $q$ is false"
           ],
-          "answer": "valid"
+          "answer": "valid, because every such row also makes $\\lnot p$ true"
         }
       ],
-      "explanation": "From $p \\to q$ and $\\lnot q$, modus tollens gives $\\lnot p$. Whenever the conditional is true and its consequent is false, the antecedent cannot be true, so the rule is valid.",
-      "difficulty": "warmup",
+      "explanation": "From $p \\to q$ and $\\lnot q$, modus tollens yields $\\lnot p$. In every row where the conditional is true and $q$ is false, $p$ must be false, so $\\lnot p$ holds and the argument is valid. Denying the antecedent, from $\\lnot p$ to $\\lnot q$, is the invalid look-alike; modus tollens denies the consequent, and its validity does not depend on any particular truth value.",
+      "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-arguments-and-proofs-033",
       "format": "cloze",
       "stem": "Test the argument form with premises $p \\to q$ and $q$, and conclusion $p$, using its four-row truth table.",
-      "solution": "Find the rows where both premises are true. The conditional $p \\to q$ and the premise $q$ are both true at $p$ true, $q$ true and also at $p$ false, $q$ true, so the number of rows with both premises true is {{1}}. In the second of these rows the conclusion $p$ is false, so the argument form is {{2}}.",
+      "solution": "First locate the rows where both premises are true. The conditional $p \\to q$ together with the premise $q$ are both true in {{1}} of the four rows. The argument is valid only if the conclusion $p$ is true in all of those rows; checking them shows the form is {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -501,21 +507,23 @@
           "id": 2,
           "type": "dropdown",
           "options": [
-            "valid",
-            "invalid"
+            "invalid, because one of those rows has $p$ false",
+            "valid, because $p$ is true in both of those rows",
+            "invalid, because the premises are never both true",
+            "valid, because it matches modus ponens"
           ],
-          "answer": "invalid"
+          "answer": "invalid, because one of those rows has $p$ false"
         }
       ],
-      "explanation": "Both premises are true in $2$ rows, $p$ true with $q$ true and $p$ false with $q$ true. The row $p$ false, $q$ true makes the conclusion $p$ false while the premises hold, so this form, which affirms the consequent, is invalid.",
+      "explanation": "Both premises are true in $2$ rows: $p$ true with $q$ true, and $p$ false with $q$ true. In the second, the conclusion $p$ is false while both premises hold, so the form, which affirms the consequent, is invalid. The trap 'valid, $p$ true in both' checks only the first row; the premises certainly can both be true, and this form is not modus ponens, which would need $p$ as a premise.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-arguments-and-proofs-034",
       "format": "cloze",
-      "stem": "From the premises $p \\to q$ and $q \\to r$, what follows, and by which rule?",
-      "solution": "Two conditionals that share a middle term chain nose to tail, so the valid conclusion is {{1}}. The rule that licenses this composition is {{2}}.",
+      "stem": "From the premises $p \\to q$ and $q \\to r$, state what follows and name the rule.",
+      "solution": "Two conditionals that share a middle term can be composed into a single conditional. The conclusion this composition yields is {{1}}, and the rule that licenses it is {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -540,15 +548,15 @@
           "answer": "hypothetical syllogism"
         }
       ],
-      "explanation": "Hypothetical syllogism chains $p \\to q$ and $q \\to r$ into $p \\to r$. The converse $r \\to p$ does not follow, as the assignment $p$ false, $q$ true, $r$ true shows.",
+      "explanation": "Hypothetical syllogism chains $p \\to q$ and $q \\to r$ into $p \\to r$; a truth table shows no row makes both premises true and $p \\to r$ false. The converse $r \\to p$ and inverse $\\lnot p \\to \\lnot r$ do not follow (try $p$ false, $q$ true, $r$ true), and $p \\land r$ asserts more than the premises give.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-arguments-and-proofs-035",
       "format": "cloze",
-      "stem": "From the premises $p \\lor q$ and $\\lnot p$, what follows, and by which rule?",
-      "solution": "A disjunction together with the denial of one disjunct forces the other disjunct, so the conclusion is {{1}}. The rule that eliminates the ruled-out disjunct is {{2}}.",
+      "stem": "From the premises $p \\lor q$ and $\\lnot p$, state what follows and name the rule.",
+      "solution": "One disjunct has been denied, so a valid argument can keep only what remains of the disjunction. The conclusion that follows is {{1}}, obtained by the rule {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -573,7 +581,7 @@
           "answer": "disjunctive syllogism"
         }
       ],
-      "explanation": "Disjunctive syllogism takes $p \\lor q$ and $\\lnot p$ to $q$: if at least one alternative holds and the first is ruled out, the second must hold. There is no row with both premises true and $q$ false.",
+      "explanation": "Disjunctive syllogism takes $p \\lor q$ and $\\lnot p$ to $q$: if at least one disjunct holds and $p$ is ruled out, $q$ must hold, and no row has both premises true with $q$ false. Concluding $p$ contradicts $\\lnot p$, $\\lnot q$ is unsupported, and $p \\land q$ claims more than follows. Addition and simplification act on a single premise, not a disjunction plus a denial.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
@@ -581,15 +589,18 @@
       "id": "logic-and-set-theory-arguments-and-proofs-036",
       "format": "cloze",
       "stem": "To prove that if $n$ is an odd integer then $n^2$ is odd, a student writes $n = 2k + 1$ and computes $n^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$. Name the proof method and the parity it establishes.",
-      "solution": "The student assumes the hypothesis and computes straight through to the conclusion with no negations, which is a {{1}} proof. The final expression has the form two times an integer plus one, so $n^2$ is {{2}}.",
+      "solution": "The student assumes the hypothesis and works forward to the conclusion using no negations or contradictions, which makes this a {{1}} proof. The final expression is written in the form two times an integer, plus one; a number of that form is {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
+          "type": "dropdown",
+          "options": [
             "direct",
-            "direct proof"
-          ]
+            "contrapositive",
+            "contradiction",
+            "inductive"
+          ],
+          "answer": "direct"
         },
         {
           "id": 2,
@@ -603,45 +614,48 @@
           "answer": "odd"
         }
       ],
-      "explanation": "Assuming $n$ odd and deriving the conclusion forward is a direct proof. Since $n^2 = 2(2k^2 + 2k) + 1$ is one more than an even number, $n^2$ is odd.",
+      "explanation": "Assuming the hypothesis (that $n$ is odd) and deriving the conclusion forward, with no negation assumed, is a direct proof. Since $n^2 = 2(2k^2 + 2k) + 1$ is two times an integer plus one, it is odd. A contrapositive proof would assume $n^2$ even, and a contradiction proof would assume $n$ odd and $n^2$ even together; neither happens here.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-arguments-and-proofs-037",
       "format": "cloze",
-      "stem": "To prove that if $n^2$ is even then $n$ is even, a student assumes $n$ is odd and deduces that $n^2$ is odd. Identify the method and what is assumed.",
-      "solution": "Writing the statement as $P \\to Q$ with $P$: $n^2$ is even and $Q$: $n$ is even, the student proves the equivalent $\\lnot Q \\to \\lnot P$, which is a proof by {{1}}. The assumption that starts the proof is {{2}}.",
+      "stem": "To prove that if $n^2$ is even then $n$ is even, a student assumes $n$ is odd and deduces that $n^2$ is odd. Identify the proof method and what role the assumption plays.",
+      "solution": "Write the statement as $P \\to Q$ with $P$: $n^2$ is even and $Q$: $n$ is even. The student starts not from $P$ but from the assumption that $n$ is odd, then derives that $n^2$ is odd. This choice of starting and ending points identifies the method as proof by {{1}}, and within that scheme the assumption that $n$ is odd functions as {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
+          "type": "dropdown",
+          "options": [
             "contrapositive",
-            "contraposition"
-          ]
+            "contradiction",
+            "direct proof",
+            "counterexample"
+          ],
+          "answer": "contrapositive"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "$n$ is odd, the negation of the conclusion",
-            "$n^2$ is even, the hypothesis",
-            "both $n^2$ even and $n$ odd",
-            "$n$ is even, the conclusion"
+            "the negation of the conclusion $Q$",
+            "the negation of the hypothesis $P$",
+            "the hypothesis $P$ itself",
+            "an extra assumption added to the hypothesis $P$"
           ],
-          "answer": "$n$ is odd, the negation of the conclusion"
+          "answer": "the negation of the conclusion $Q$"
         }
       ],
-      "explanation": "A contrapositive proof assumes the negated conclusion, here $n$ odd, and derives the negated hypothesis, here $n^2$ odd. The hypothesis $n^2$ even is never assumed, which distinguishes this from a proof by contradiction.",
+      "explanation": "Proving $\\lnot Q \\to \\lnot P$ in place of $P \\to Q$ is a proof by contrapositive: the student assumes $\\lnot Q$ (that $n$ is odd) and derives $\\lnot P$ (that $n^2$ is odd). The hypothesis $P$ (that $n^2$ is even) is never assumed, which is what separates this from proof by contradiction, where one would assume both $P$ and $\\lnot Q$ and seek an absurdity.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-arguments-and-proofs-038",
       "format": "cloze",
-      "stem": "From the premises $p \\to q$, $r \\to s$, and $p \\lor r$, what follows, and by which rule?",
-      "solution": "Whichever disjunct of $p \\lor r$ holds, the matching conditional fires and delivers its consequent, so at least one of $q$ and $s$ must hold. The valid conclusion is {{1}}, and the rule is the {{2}}.",
+      "stem": "From the premises $p \\to q$, $r \\to s$, and $p \\lor r$, state what follows and name the rule.",
+      "solution": "Whichever disjunct of $p \\lor r$ turns out to hold, its matching conditional fires and delivers that conditional's consequent. Since we cannot say in advance which disjunct holds, the strongest guaranteed conclusion is {{1}}, and the rule producing it is the {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -666,15 +680,15 @@
           "answer": "constructive dilemma"
         }
       ],
-      "explanation": "The constructive dilemma yields $q \\lor s$ from $p \\to q$, $r \\to s$, and $p \\lor r$. No single consequent follows, since $p$ true, $q$ true, $r$ false, $s$ false satisfies the premises but makes $s$ false.",
+      "explanation": "The constructive dilemma concludes $q \\lor s$ from $p \\to q$, $r \\to s$, and $p \\lor r$: whichever of $p$, $r$ holds delivers its consequent, so at least one of $q$, $s$ must hold. No single consequent follows, since $p$ true, $q$ true, $r$ false, $s$ false satisfies the premises but makes $s$ false; the conjunctions demand more than the premises guarantee.",
       "difficulty": "stretch",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-arguments-and-proofs-039",
       "format": "cloze",
-      "stem": "Consider a proof by mathematical induction that $1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$ for all integers $n \\geq 1$. Identify the base case and what the inductive step proves.",
-      "solution": "The base case verifies the formula at the smallest value, namely $n =$ {{1}}, where both sides equal $1$. The inductive step is a conditional proved for an arbitrary $k$: it shows that {{2}}. Together these two pillars make up a proof by {{3}}.",
+      "stem": "Consider a proof by mathematical induction that $1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$ for all integers $n \\geq 1$. Identify the base case and what the inductive step must establish.",
+      "solution": "The base case checks the claim at the smallest value of $n$ covered by the statement, which is $n = $ {{1}}. The inductive step does not assert $P(k)$ outright; instead it proves, for an arbitrary $k$, that {{2}}. This matters because the step on its own establishes {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -695,14 +709,17 @@
         },
         {
           "id": 3,
-          "type": "text",
-          "accept": [
-            "induction",
-            "mathematical induction"
-          ]
+          "type": "dropdown",
+          "options": [
+            "only the passage from each case to the next, never a starting case",
+            "the full claim for all $n \\geq 1$",
+            "the claim for all even $n$",
+            "nothing of logical value"
+          ],
+          "answer": "only the passage from each case to the next, never a starting case"
         }
       ],
-      "explanation": "Induction starts by checking the base case at $n = 1$, where $1 = \\frac{1 \\cdot 2}{2}$. The inductive step proves the conditional that $P(k)$ implies $P(k+1)$ for arbitrary $k$, not $P(k)$ itself, and the two together prove the claim for all $n \\geq 1$.",
+      "explanation": "The base case verifies $P(1)$: $1 = \\frac{1 \\cdot 2}{2}$. The inductive step proves the conditional $P(k) \\to P(k+1)$ for arbitrary $k$, not $P(k)$ itself. Without a base case the step establishes only that truth propagates from each case to the next, never that any case is actually true; the two pillars together give the claim for all $n \\geq 1$.",
       "difficulty": "stretch",
       "source": "in the style of Rosen, Discrete Mathematics"
     }

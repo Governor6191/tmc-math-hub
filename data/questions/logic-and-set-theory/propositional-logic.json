@@ -426,79 +426,212 @@
     {
       "id": "logic-and-set-theory-propositional-logic-031",
       "format": "cloze",
-      "stem": "Suppose $p$ is true and $q$ is false. Evaluate $p \\land q$, and count the true rows in the four-row truth table of $p \\to q$.",
-      "solution": "A conjunction needs both parts true, so at $p$ true and $q$ false the value of $p \\land q$ is {{1}}. For the conditional, list the four rows: $p \\to q$ is true when both are true, true at $p$ false with $q$ either value, and false only at $p$ true with $q$ false. So the number of rows that make $p \\to q$ true is {{2}}.",
+      "stem": "Suppose $p$ is true and $q$ is false. Evaluate $p \\land q$ at this assignment, then count how many of the four rows of the truth table of $q \\to p$ are true.",
+      "solution": "The conjunction $p \\land q$ needs both conjuncts true, so at $p$ true and $q$ false it is false. The conditional $q \\to p$ behaves differently: it is false in exactly one of its four rows, the row where {{1}}, and true in every other row. Counting the rows that are not that one, the number of rows in which $q \\to p$ is true is {{2}}.",
       "gaps": [
-        { "id": 1, "type": "dropdown", "options": ["true", "false", "undefined"], "answer": "false" },
-        { "id": 2, "type": "number", "answer": 3, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$q$ is true and $p$ is false",
+            "$q$ is false and $p$ is true",
+            "$p$ and $q$ are both true",
+            "$p$ and $q$ are both false"
+          ],
+          "answer": "$q$ is true and $p$ is false"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
       ],
-      "explanation": "At $p$ true and $q$ false the conjunction fails because $q$ is false. The conditional $p \\to q$ is false in exactly one of its four rows, the row $p$ true and $q$ false, so it is true in the other $3$ rows.",
-      "difficulty": "warmup",
+      "explanation": "A conjunction is false unless both conjuncts hold, so $p \\land q$ is false here because $q$ is false. The conditional $q \\to p$ is false only when its antecedent is true and its consequent is false, that is when $q$ is true and $p$ is false; the distractors name rows where the antecedent $q$ is false, and there a conditional is vacuously true. Since only one of the four rows makes $q \\to p$ false, the other $3$ rows make it true.",
+      "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-propositional-logic-032",
       "format": "cloze",
-      "stem": "A compound proposition is built from the three variables $p$, $q$, and $r$. How large is its truth table, and in how many rows is $p \\lor q \\lor r$ false?",
-      "solution": "Each of the three variables is independently true or false, so the truth table has $2^3$ rows, that is {{1}} rows. The disjunction $p \\lor q \\lor r$ fails only when every disjunct fails, which happens at the single assignment where $p$, $q$, and $r$ are all false. So the number of rows in which $p \\lor q \\lor r$ is false is {{2}}.",
+      "stem": "A compound proposition is built from the three variables $p$, $q$, and $r$. Give the number of rows in its truth table, and the number of those rows in which $p \\lor q \\lor r$ is false.",
+      "solution": "Each of the three variables is independently true or false, so the number of rows in the table is {{1}}. The disjunction $p \\lor q \\lor r$ comes out false only on the assignments where {{2}}, and counting those assignments gives the number of rows in which it is false, {{3}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": 8, "tolerance": 0 },
-        { "id": 2, "type": "number", "answer": 1, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$2^3$, two truth values for each of three variables",
+            "$3^2$, three variables squared",
+            "$2 \\times 3$, two values times three variables",
+            "$3^3$, three values for each of three variables"
+          ],
+          "answer": "$2^3$, two truth values for each of three variables"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$p$, $q$, and $r$ are all false",
+            "$p$, $q$, and $r$ are all true",
+            "at least one of $p$, $q$, $r$ is false",
+            "exactly one of $p$, $q$, $r$ is true"
+          ],
+          "answer": "$p$, $q$, and $r$ are all false"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
       ],
-      "explanation": "Three independent binary choices give $2^3 = 8$ rows. An inclusive disjunction is false only when all of its disjuncts are false, so $p \\lor q \\lor r$ is false in exactly $1$ of those rows.",
-      "difficulty": "warmup",
+      "explanation": "Three independent true or false choices give $2^3 = 8$ rows; the distractors $3^2$, $2 \\times 3$, and $3^3$ miscount by swapping base and exponent, multiplying instead of exponentiating, or using the wrong base. An inclusive disjunction is false only when every disjunct is false, which is the single all-false assignment, so $p \\lor q \\lor r$ is false in $1$ row and true in the other $7$.",
+      "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-propositional-logic-033",
       "format": "cloze",
-      "stem": "Use De Morgan's law to simplify $\\lnot(p \\land q)$, then count its true rows.",
-      "solution": "De Morgan's law negates each part of the conjunction and flips $\\land$ to $\\lor$, so $\\lnot(p \\land q)$ is logically equivalent to {{1}}. This formula is false only when both $\\lnot p$ and $\\lnot q$ are false, that is only at $p$ true and $q$ true, so out of the four rows the number in which it is true is {{2}}.",
+      "stem": "Use De Morgan's law to simplify $\\lnot(p \\land q)$, then count how many of the four rows of its truth table are true.",
+      "solution": "De Morgan's law turns the negated conjunction into {{1}}. That equivalent form is false exactly on the assignments where {{2}}, and true on all the others, so the count of its four rows that come out true is {{3}}.",
       "gaps": [
-        { "id": 1, "type": "dropdown", "options": ["$\\lnot p \\lor \\lnot q$", "$\\lnot p \\land \\lnot q$", "$\\lnot p \\lor q$", "$p \\lor q$"], "answer": "$\\lnot p \\lor \\lnot q$" },
-        { "id": 2, "type": "number", "answer": 3, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\lnot p \\lor \\lnot q$",
+            "$\\lnot p \\land \\lnot q$",
+            "$\\lnot p \\lor q$",
+            "$p \\lor q$"
+          ],
+          "answer": "$\\lnot p \\lor \\lnot q$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$p$ and $q$ are both true",
+            "$p$ and $q$ are both false",
+            "$p$ and $q$ differ in truth value",
+            "at least one of $p$, $q$ is true"
+          ],
+          "answer": "$p$ and $q$ are both true"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
       ],
-      "explanation": "By De Morgan, $\\lnot(p \\land q) \\equiv \\lnot p \\lor \\lnot q$: push the negation onto each conjunct and switch the connective. That disjunction is false only in the both-true row, so it is true in the remaining $3$ rows.",
+      "explanation": "De Morgan's law pushes the negation onto each conjunct and flips $\\land$ to $\\lor$, giving $\\lnot(p \\land q) \\equiv \\lnot p \\lor \\lnot q$; keeping $\\land$ gives $\\lnot p \\land \\lnot q$ (the other law), negating one side gives $\\lnot p \\lor q$, and dropping the negations gives $p \\lor q$. The disjunction $\\lnot p \\lor \\lnot q$ fails only when both $\\lnot p$ and $\\lnot q$ are false, that is when $p$ and $q$ are both true; that is one row, so the form is true in the other $3$ rows.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-propositional-logic-034",
       "format": "cloze",
-      "stem": "Count the true rows in the eight-row truth table of $(p \\land q) \\to r$.",
-      "solution": "Split the eight rows by the antecedent $p \\land q$. The antecedent is true only when $p$ and $q$ are both true, which covers {{1}} of the rows. In the other six rows the antecedent is false, so the conditional is {{2}} there regardless of $r$. Among the antecedent-true rows the conditional holds exactly when $r$ is true, which adds one more, so the total number of true rows is {{3}}.",
+      "stem": "Count how many of the eight rows in the truth table of $(p \\land q) \\to r$ are true.",
+      "solution": "The antecedent $p \\land q$ is true only when $p$ and $q$ are both true, which is two of the eight rows; in the other six rows the antecedent is false, so the conditional is {{1}} there. Among the two antecedent-true rows, the conditional fails only when {{2}}. Collecting every row that comes out true, the total is {{3}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": 2, "tolerance": 0 },
-        { "id": 2, "type": "text", "accept": ["true", "vacuously true"] },
-        { "id": 3, "type": "number", "answer": 7, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "automatically true, since a false antecedent cannot falsify a conditional",
+            "automatically false, since the antecedent fails",
+            "true only when $r$ is also true",
+            "undefined, since the antecedent is false"
+          ],
+          "answer": "automatically true, since a false antecedent cannot falsify a conditional"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$r$ is false",
+            "$r$ is true",
+            "$p \\land q$ is false",
+            "$p$ and $q$ differ"
+          ],
+          "answer": "$r$ is false"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 7,
+          "tolerance": 0
+        }
       ],
-      "explanation": "The antecedent $p \\land q$ is true in the two rows with $p$ and $q$ both true and false in the other six, where the conditional is vacuously true. Of the two antecedent-true rows only the one with $r$ false makes the conditional false, so $7$ of the $8$ rows are true.",
+      "explanation": "A conditional with a false antecedent is vacuously true, so the six rows with $p \\land q$ false are all true. In the two rows with $p \\land q$ true, $(p \\land q) \\to r$ fails exactly when $r$ is false, which is one row; the other has $r$ true and is true. So $6 + 1 = 7$ of the $8$ rows are true. The trap is calling a false-antecedent row false, which would wrongly discard those six vacuous truths.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-propositional-logic-035",
       "format": "cloze",
-      "stem": "Rewrite the conditional $p \\to q$ as a disjunction, and state how many rows of its four-row truth table are false.",
-      "solution": "The standard equivalence replaces a conditional with a disjunction that negates the antecedent, giving {{1}}. This disjunction is false only when $\\lnot p$ and $q$ are both false, that is at $p$ true and $q$ false, the same single row where the conditional fails. So the number of false rows is {{2}}.",
+      "stem": "Rewrite the conditional $p \\to q$ as an equivalent disjunction, and state how many of the four rows of its truth table are false.",
+      "solution": "The standard equivalence replaces the conditional with a disjunction that negates the antecedent, giving {{1}}. This disjunction fails exactly on the assignments where {{2}}, and counting those assignments gives the number of false rows, {{3}}.",
       "gaps": [
-        { "id": 1, "type": "dropdown", "options": ["$\\lnot p \\lor q$", "$p \\lor \\lnot q$", "$\\lnot p \\land q$", "$\\lnot(p \\lor q)$"], "answer": "$\\lnot p \\lor q$" },
-        { "id": 2, "type": "number", "answer": 1, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\lnot p \\lor q$",
+            "$p \\lor \\lnot q$",
+            "$\\lnot p \\land q$",
+            "$\\lnot(p \\lor q)$"
+          ],
+          "answer": "$\\lnot p \\lor q$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$p$ is true and $q$ is false",
+            "$p$ is false and $q$ is true",
+            "$p$ and $q$ are both false",
+            "$p$ and $q$ are both true"
+          ],
+          "answer": "$p$ is true and $q$ is false"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
       ],
-      "explanation": "The disjunctive form of the conditional is $p \\to q \\equiv \\lnot p \\lor q$, with the negation landing on the antecedent. A conditional is false in exactly $1$ row, at $p$ true and $q$ false, and the disjunction fails there too.",
+      "explanation": "The disjunctive form of a conditional is $p \\to q \\equiv \\lnot p \\lor q$, with the negation on the antecedent. It is false only when $\\lnot p$ and $q$ are both false, that is when $p$ is true and $q$ is false, the single row where the conditional itself fails, so exactly $1$ row is false. Negating the wrong side gives $p \\lor \\lnot q$, using $\\land$ gives a formula true in only one row, and $\\lnot(p \\lor q)$ is true only when both are false.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-propositional-logic-036",
       "format": "cloze",
-      "stem": "Describe the connective $p \\leftrightarrow q$ and count its true rows.",
-      "solution": "The connective $\\leftrightarrow$ is the {{1}}, and it is true exactly when its two sides carry the same truth value. The agreeing rows are both true and both false, so out of the four rows the number that make $p \\leftrightarrow q$ true is {{2}}. Its negation is the exclusive or, which is true in the other two rows.",
+      "stem": "Determine when the biconditional $p \\leftrightarrow q$ is true, and count how many of the four rows of its truth table are true.",
+      "solution": "The biconditional is true exactly when {{1}}. Counting the rows of the four-row table that meet this description, the number in which $p \\leftrightarrow q$ is true is {{2}}.",
       "gaps": [
-        { "id": 1, "type": "text", "accept": ["biconditional", "biconditional connective"] },
-        { "id": 2, "type": "number", "answer": 2, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$p$ and $q$ have the same truth value",
+            "$p$ and $q$ have different truth values",
+            "$p$ and $q$ are both true",
+            "at least one of $p$, $q$ is true"
+          ],
+          "answer": "$p$ and $q$ have the same truth value"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        }
       ],
-      "explanation": "A biconditional asserts agreement, so $p \\leftrightarrow q$ is true in the two rows where the variables match, both true or both false, and false in the two mixed rows. That is why $2$ of the $4$ rows are true.",
+      "explanation": "A biconditional asserts agreement: $p \\leftrightarrow q$ is true when the two sides share a truth value, which happens in the both-true and both-false rows, so $2$ of the $4$ rows are true. The trap 'different truth values' is the exclusive or, the negation of the biconditional; 'both true' describes conjunction and forgets the both-false agreement; 'at least one true' describes inclusive or.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
@@ -506,38 +639,110 @@
       "id": "logic-and-set-theory-propositional-logic-037",
       "format": "cloze",
       "stem": "Read $p \\oplus q \\oplus r$ as $(p \\oplus q) \\oplus r$, where $\\oplus$ is the exclusive or. For how many of the eight assignments to $(p, q, r)$ is it true?",
-      "solution": "A chain of exclusive ors flips its running value each time a true input arrives, so the whole expression is true exactly when an {{1}} number of the three variables are true. That occurs when exactly one variable is true, in three assignments, or when all three are true, in one more. So the total number of true assignments is {{2}}.",
+      "solution": "A chain of exclusive ors flips its running value each time a true input arrives, so the whole expression is true exactly when the number of true variables among $p$, $q$, $r$ is {{1}}. Counting the assignments to $(p, q, r)$ that satisfy this parity condition, the total number of true assignments is {{2}}.",
       "gaps": [
-        { "id": 1, "type": "dropdown", "options": ["odd", "even", "prime", "nonzero"], "answer": "odd" },
-        { "id": 2, "type": "number", "answer": 4, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "odd",
+            "even",
+            "prime",
+            "nonzero"
+          ],
+          "answer": "odd"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        }
       ],
-      "explanation": "A chained exclusive or computes the parity of its inputs, so it is true precisely when an odd number of $p$, $q$, $r$ are true. The odd counts are exactly one true ($3$ assignments) and all three true ($1$ assignment), giving $4$ in all.",
+      "explanation": "A chained exclusive or computes the parity of its inputs, so it is true precisely when an odd number of $p$, $q$, $r$ are true. Odd counts occur with exactly one true variable (three assignments) or all three true (one assignment), giving $4$ in all. Reading $\\oplus$ as 'exactly one' drops the all-true case, 'even' inverts the parity, and 'nonzero' would wrongly include the two-true rows.",
       "difficulty": "stretch",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-propositional-logic-038",
       "format": "cloze",
-      "stem": "Simplify the negation $\\lnot(p \\to q)$ and classify the resulting proposition.",
-      "solution": "Rewrite the conditional as $\\lnot p \\lor q$, then apply De Morgan and cancel the double negation: $\\lnot(\\lnot p \\lor q)$ simplifies to {{1}}. A conditional fails only when its antecedent holds and its consequent fails, so this formula is true in just one row. That makes the proposition {{2}}.",
+      "stem": "Simplify the negation $\\lnot(p \\to q)$, and classify the resulting proposition as a tautology, a contradiction, or a contingency.",
+      "solution": "Rewrite the conditional as $\\lnot p \\lor q$, then apply De Morgan and cancel the double negation to obtain {{1}}. Reading off its truth table, this formula is true on exactly the assignments where {{2}}, and false on all the rest. Comparing that count of true rows against $0$ and against $4$ places the proposition in the category {{3}}.",
       "gaps": [
-        { "id": 1, "type": "dropdown", "options": ["$p \\land \\lnot q$", "$\\lnot p \\land q$", "$\\lnot p \\lor \\lnot q$", "$p \\to q$"], "answer": "$p \\land \\lnot q$" },
-        { "id": 2, "type": "dropdown", "options": ["a contingency, true only when $p$ is true and $q$ is false", "a tautology", "a contradiction", "true exactly when $p$ and $q$ agree"], "answer": "a contingency, true only when $p$ is true and $q$ is false" }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$p \\land \\lnot q$",
+            "$\\lnot p \\land q$",
+            "$\\lnot p \\lor \\lnot q$",
+            "$p \\to q$"
+          ],
+          "answer": "$p \\land \\lnot q$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$p$ is true and $q$ is false",
+            "$p$ is false and $q$ is true",
+            "$p$ and $q$ are both true",
+            "$p$ and $q$ are both false"
+          ],
+          "answer": "$p$ is true and $q$ is false"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "a contingency",
+            "a tautology",
+            "a contradiction",
+            "not a proposition at all, since its value varies"
+          ],
+          "answer": "a contingency"
+        }
       ],
-      "explanation": "Since $p \\to q \\equiv \\lnot p \\lor q$, its negation is $p \\land \\lnot q$. This conjunction is true in exactly the one row where $p$ is true and $q$ is false, so it is a contingency, not a tautology or a contradiction.",
+      "explanation": "Since $p \\to q \\equiv \\lnot p \\lor q$, De Morgan gives $\\lnot(\\lnot p \\lor q) \\equiv p \\land \\lnot q$. This conjunction is true only when $p$ is true and $q$ is false, that is in one of the four rows; being true in some but not all rows makes it a contingency, not a tautology (all rows) or a contradiction (no rows). A formula whose value varies is still a perfectly good proposition.",
       "difficulty": "stretch",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-propositional-logic-039",
       "format": "cloze",
-      "stem": "The compound proposition $(p \\lor q) \\land \\lnot(p \\land q)$ holds in how many rows, and which familiar connective does it match?",
-      "solution": "The first conjunct $p \\lor q$ requires at least one true variable, while the second conjunct $\\lnot(p \\land q)$ forbids both from being true. Together they hold only when exactly one of $p$, $q$ is true, so the number of true rows is {{1}}. This is precisely the {{2}} of $p$ and $q$.",
+      "stem": "The compound proposition $(p \\lor q) \\land \\lnot(p \\land q)$ is true in how many of its four rows, and which familiar connective does it match?",
+      "solution": "The first conjunct $p \\lor q$ keeps every row with at least one true variable, while the second conjunct $\\lnot(p \\land q)$ removes {{1}}. Counting the rows that survive both conjuncts gives the number of true rows, {{2}}. The connective whose truth table consists of exactly those surviving rows is the {{3}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": 2, "tolerance": 0 },
-        { "id": 2, "type": "dropdown", "options": ["exclusive or", "inclusive or", "conjunction", "biconditional"], "answer": "exclusive or" }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "the row where $p$ and $q$ are both true",
+            "the row where $p$ and $q$ are both false",
+            "every row where at least one variable is true",
+            "the two rows where $p$ and $q$ differ"
+          ],
+          "answer": "the row where $p$ and $q$ are both true"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "exclusive or",
+            "inclusive or",
+            "conjunction",
+            "biconditional"
+          ],
+          "answer": "exclusive or"
+        }
       ],
-      "explanation": "The two conjuncts together demand at least one true variable and rule out both being true, leaving the two mixed rows, which is the truth table of the exclusive or $p \\oplus q$.",
+      "explanation": "The clause $p \\lor q$ admits the three rows with at least one true variable; $\\lnot(p \\land q)$ then deletes the both-true row, leaving the two rows where exactly one variable is true. That is $2$ true rows, and it is precisely the truth table of the exclusive or $p \\oplus q$. Removing the both-false row instead, or the two differing rows, would misread the second conjunct.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     }

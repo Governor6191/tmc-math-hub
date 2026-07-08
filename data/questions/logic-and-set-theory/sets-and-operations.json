@@ -429,7 +429,7 @@
       "id": "logic-and-set-theory-sets-and-operations-031",
       "format": "cloze",
       "stem": "A set $A$ has exactly $5$ elements. Find the size of its power set $P(A)$ and the rule that produces it.",
-      "solution": "Each element is independently either in or out of a given subset, so a set with $n$ elements has $2^n$ subsets. The formula for $|P(A)|$ in terms of $n$ is {{1}}. With $n = 5$ this gives $|P(A)| =$ {{2}}.",
+      "solution": "Building a subset means deciding, for each element, whether it is in or out, and these choices are independent. The count this in-or-out reasoning produces for a set of $n$ elements is {{1}}. Applying it with $n = 5$ gives $|P(A)| = $ {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -449,26 +449,26 @@
           "tolerance": 0
         }
       ],
-      "explanation": "Each of the $n$ elements gives an independent in-or-out choice, so $|P(A)| = 2^n$. For $n = 5$ this is $2^5 = 32$, and the empty set and $A$ itself are both counted among those subsets.",
-      "difficulty": "warmup",
+      "explanation": "Each of the $n$ elements is independently in or out of a subset, giving $2^n$ subsets. For $n = 5$ this is $2^5 = 32$, counting both the empty set and $A$ itself. The distractors $n^2$, $2n$, and $n!$ replace the exponential with squaring, doubling, or a factorial.",
+      "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-sets-and-operations-032",
       "format": "cloze",
-      "stem": "Let $A = \\lbrace 1, 2, 3, 4 \\rbrace$ and $B = \\lbrace 3, 4, 5, 6 \\rbrace$. Find $A \\cap B$ and the size of $A \\cup B$.",
-      "solution": "The intersection keeps only the shared elements, and the elements common to both sets are $3$ and $4$, so $A \\cap B =$ {{1}}. The union collects every element of either set without repetition, namely $1, 2, 3, 4, 5, 6$, so $|A \\cup B| =$ {{2}}.",
+      "stem": "Let $A = \\{1, 2, 3, 4\\}$ and $B = \\{3, 4, 5, 6\\}$. Find $A \\cap B$ and the size of $A \\cup B$.",
+      "solution": "The intersection keeps the elements lying in both sets, so $A \\cap B = $ {{1}}. The union keeps every element in either set, each counted once; the size of that combined collection is $|A \\cup B| = $ {{2}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$\\lbrace 3, 4 \\rbrace$",
-            "$\\lbrace 1, 2 \\rbrace$",
-            "$\\lbrace 5, 6 \\rbrace$",
-            "$\\lbrace 1, 2, 3, 4, 5, 6 \\rbrace$"
+            "$\\{3, 4\\}$",
+            "$\\{1, 2\\}$",
+            "$\\{5, 6\\}$",
+            "$\\{1, 2, 5, 6\\}$"
           ],
-          "answer": "$\\lbrace 3, 4 \\rbrace$"
+          "answer": "$\\{3, 4\\}$"
         },
         {
           "id": 2,
@@ -477,26 +477,26 @@
           "tolerance": 0
         }
       ],
-      "explanation": "Only $3$ and $4$ lie in both sets, so $A \\cap B = \\lbrace 3, 4 \\rbrace$. The union $A \\cup B = \\lbrace 1, 2, 3, 4, 5, 6 \\rbrace$ has $6$ distinct elements.",
-      "difficulty": "warmup",
+      "explanation": "Only $3$ and $4$ lie in both sets, so $A \\cap B = \\{3, 4\\}$. The union $\\{1, 2, 3, 4, 5, 6\\}$ has $6$ distinct elements. The distractors $\\{1, 2\\}$ and $\\{5, 6\\}$ are the one-sided differences $A \\setminus B$ and $B \\setminus A$, and $\\{1, 2, 5, 6\\}$ is the symmetric difference, none of which is the intersection.",
+      "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-sets-and-operations-033",
       "format": "cloze",
-      "stem": "Let $A = \\lbrace a, b, c, d, e \\rbrace$ and $B = \\lbrace c, d, f \\rbrace$. Find the set difference $A \\setminus B$ and its size.",
-      "solution": "The difference $A \\setminus B$ keeps the elements of $A$ that do not appear in $B$. Removing the shared elements $c$ and $d$ from $A$ leaves $A \\setminus B =$ {{1}}; the element $f$ plays no role because the difference starts from $A$. The number of elements remaining is {{2}}.",
+      "stem": "Let $A = \\{a, b, c, d, e\\}$ and $B = \\{c, d, f\\}$. Find the set difference $A \\setminus B$ and its size.",
+      "solution": "The difference $A \\setminus B$ keeps the elements of $A$ that are not in $B$, and it never reaches outside $A$, so $f$ plays no role. Carrying out that removal gives $A \\setminus B = $ {{1}}, whose number of elements is {{2}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$\\lbrace a, b, e \\rbrace$",
-            "$\\lbrace f \\rbrace$",
-            "$\\lbrace c, d \\rbrace$",
-            "$\\lbrace a, b, e, f \\rbrace$"
+            "$\\{a, b, e\\}$",
+            "$\\{f\\}$",
+            "$\\{c, d\\}$",
+            "$\\{a, b, e, f\\}$"
           ],
-          "answer": "$\\lbrace a, b, e \\rbrace$"
+          "answer": "$\\{a, b, e\\}$"
         },
         {
           "id": 2,
@@ -505,7 +505,7 @@
           "tolerance": 0
         }
       ],
-      "explanation": "Deleting the common elements $c$ and $d$ from $A$ gives $A \\setminus B = \\lbrace a, b, e \\rbrace$, which has $3$ elements. The element $f$ is irrelevant because $A \\setminus B$ never reaches outside $A$.",
+      "explanation": "Deleting the shared elements $c$ and $d$ from $A$ leaves $A \\setminus B = \\{a, b, e\\}$, which has $3$ elements; $f$ is irrelevant since the difference stays within $A$. The distractor $\\{f\\}$ is $B \\setminus A$ (wrong direction), $\\{c, d\\}$ is the intersection, and $\\{a, b, e, f\\}$ is the symmetric difference.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
@@ -513,7 +513,7 @@
       "id": "logic-and-set-theory-sets-and-operations-034",
       "format": "cloze",
       "stem": "For sets $A$ and $B$ inside a universe $U$, state the two De Morgan laws for complements.",
-      "solution": "An element avoids a union exactly when it avoids both parts, so the complement of a union is the intersection of the complements: $(A \\cup B)' =$ {{1}}. Dually, the complement of an intersection is the union of the complements: $(A \\cap B)' =$ {{2}}.",
+      "solution": "Each law complements the parts and switches the operation between union and intersection. For a complemented union, $(A \\cup B)' = $ {{1}}. For a complemented intersection, $(A \\cap B)' = $ {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -538,23 +538,26 @@
           "answer": "$A' \\cup B'$"
         }
       ],
-      "explanation": "De Morgan's laws for sets complement each part and flip the operation: $(A \\cup B)' = A' \\cap B'$ and $(A \\cap B)' = A' \\cup B'$. Keeping the same operation after complementing is the classic error.",
+      "explanation": "De Morgan's laws complement each part and flip the operation: $(A \\cup B)' = A' \\cap B'$ and $(A \\cap B)' = A' \\cup B'$. An element misses a union exactly when it misses both parts (an intersection of complements) and misses an intersection when it misses at least one part (a union of complements). Keeping the same operation after complementing, as in $A' \\cup B'$ for the first law, is the classic error.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-sets-and-operations-035",
       "format": "cloze",
-      "stem": "Let $A$ have $3$ elements and $B$ have $4$ elements. Name the construction $A \\times B$ and find its size.",
-      "solution": "The set $A \\times B$ of ordered pairs whose first coordinate comes from $A$ and second from $B$ is the {{1}} product of the two sets. By the multiplication principle its size is the product of the sizes, so $|A \\times B| = 3 \\times 4 =$ {{2}}.",
+      "stem": "Let $A$ have $3$ elements and $B$ have $4$ elements. Identify how the Cartesian product $A \\times B$ is formed and find how many ordered pairs it contains.",
+      "solution": "The Cartesian product $A \\times B$ consists of ordered pairs, formed by pairing {{1}}. By the multiplication principle its size is the product of the two set sizes, so $|A \\times B| = $ {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
-            "Cartesian",
-            "cartesian"
-          ]
+          "type": "dropdown",
+          "options": [
+            "every element of $A$ with every element of $B$",
+            "each element of $A$ with one matching element of $B$",
+            "every element of $A$ with every element of $A$",
+            "each element of $A$ or $B$, listed once"
+          ],
+          "answer": "every element of $A$ with every element of $B$"
         },
         {
           "id": 2,
@@ -563,21 +566,26 @@
           "tolerance": 0
         }
       ],
-      "explanation": "The Cartesian product pairs every element of $A$ with every element of $B$, so $|A \\times B| = |A| \\cdot |B| = 3 \\times 4 = 12$. Adding the sizes would be the error that gives $7$.",
+      "explanation": "In $A \\times B$ each of the $3$ elements of $A$ pairs with each of the $4$ elements of $B$, so $|A \\times B| = 3 \\times 4 = 12$. The distractors describe a termwise pairing (giving only $3$ pairs), the product $A \\times A$, and the union $A \\cup B$; adding the sizes to get $7$ is the other common slip.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-sets-and-operations-036",
       "format": "cloze",
-      "stem": "In a class of $50$ KNUST students, $30$ offer Statistics, $22$ offer Computer Science, and $10$ offer both. How many offer at least one of the two, and how many offer neither?",
-      "solution": "By inclusion-exclusion, $|S \\cup C| = |S| + |C| - |S \\cap C| = 30 + 22 - 10$, so the number offering at least one course is {{1}}. The students offering neither course are the rest of the class, $50$ minus that total, which is {{2}}.",
+      "stem": "In a class of $50$ KNUST students, $30$ offer Statistics, $22$ offer Computer Science, and $10$ offer both. How many offer at least one of the two subjects, and how many offer neither?",
+      "solution": "The count offering at least one subject is not $30 + 22$, because the $10$ students offering both are then counted twice. The correct expression for $|S \\cup C|$ is {{1}}. Subtracting that total from the $50$ in the class leaves the number offering neither, which is {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 42,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$30 + 22 - 10$",
+            "$30 + 22 + 10$",
+            "$30 + 22$",
+            "$30 + 22 - 2 \\times 10$"
+          ],
+          "answer": "$30 + 22 - 10$"
         },
         {
           "id": 2,
@@ -586,24 +594,35 @@
           "tolerance": 0
         }
       ],
-      "explanation": "The $10$ students offering both are counted once in the $30$ and again in the $22$, so they must be subtracted once: $30 + 22 - 10 = 42$ offer at least one. The remaining $50 - 42 = 8$ offer neither.",
+      "explanation": "By inclusion-exclusion $|S \\cup C| = 30 + 22 - 10 = 42$, since the $10$ students in both are counted once in each subject total. The remaining $50 - 42 = 8$ offer neither. Adding the overlap gives $62$, keeping the double count gives $52$, and subtracting it twice gives $32$, all wrong.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-sets-and-operations-037",
       "format": "cloze",
-      "stem": "Let $A = \\lbrace 1, 2, 3, 4, 5 \\rbrace$. How many subsets of $A$ contain the element $1$, and what fraction of all subsets is that?",
-      "solution": "A subset that must contain $1$ is determined entirely by which of the remaining four elements $2, 3, 4, 5$ it includes, giving $2^4$ independent choices, so the number of such subsets is {{1}}. Since $A$ has $2^5 = 32$ subsets in total, this count is {{2}} of all subsets.",
+      "stem": "Let $A = \\{1, 2, 3, 4, 5\\}$. How many subsets of $A$ contain the element $1$, and what fraction of all subsets of $A$ is that?",
+      "solution": "Once $1$ is required to be in the subset, the subset is pinned down by free in-or-out choices over {{1}}. Counting those choices gives the number of subsets containing $1$, which is {{2}}. Compared with the $2^5 = 32$ subsets of $A$ in total, that many subsets is {{3}} of them all.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "the remaining four elements $2, 3, 4, 5$",
+            "all five elements of $A$",
+            "the single fixed element $1$",
+            "the remaining three elements $3, 4, 5$"
+          ],
+          "answer": "the remaining four elements $2, 3, 4, 5$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 16,
           "tolerance": 0
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
             "half",
@@ -614,21 +633,26 @@
           "answer": "half"
         }
       ],
-      "explanation": "Fixing $1$ inside leaves free in-or-out choices over the other four elements, so there are $2^4 = 16$ such subsets. That is exactly half of the $2^5 = 32$ subsets of $A$, matching the symmetry between subsets that contain $1$ and those that do not.",
+      "explanation": "Fixing $1$ inside leaves independent in-or-out choices over the other four elements $2, 3, 4, 5$, giving $2^4 = 16$ subsets. That is $16$ out of $32$, exactly half, reflecting the symmetry between subsets that contain $1$ and those that do not. Treating all five elements as free counts every subset ($32$), and the smaller element sets undercount.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-sets-and-operations-038",
       "format": "cloze",
-      "stem": "Among $120$ students, $55$ take Algebra, $50$ take Calculus, and $40$ take Geometry. Also $20$ take Algebra and Calculus, $18$ take Calculus and Geometry, $15$ take Algebra and Geometry, and $8$ take all three. How many take at least one course, and how many take exactly two?",
-      "solution": "Inclusion-exclusion for three sets gives $55 + 50 + 40 - 20 - 18 - 15 + 8$, so the number taking at least one course is {{1}}. For exactly two courses, remove the triple count from each pairwise overlap: $(20 - 8) + (18 - 8) + (15 - 8)$, which is {{2}}.",
+      "stem": "Among $120$ students, $55$ take Algebra, $50$ take Calculus, and $40$ take Geometry. Also $20$ take Algebra and Calculus, $18$ take Calculus and Geometry, $15$ take Algebra and Geometry, and $8$ take all three. Find how many take at least one course, and how many take exactly two.",
+      "solution": "For at least one course, inclusion-exclusion adds the single counts, subtracts the pairwise overlaps, and then restores the triple overlap; the correct combination is {{1}}. For exactly two courses, each pairwise overlap must have the all-three group removed, since those $8$ students sit inside every pairwise count; carrying that out gives the total {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 100,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$55 + 50 + 40 - 20 - 18 - 15 + 8$",
+            "$55 + 50 + 40 - 20 - 18 - 15 - 8$",
+            "$55 + 50 + 40 - 20 - 18 - 15$",
+            "$55 + 50 + 40 + 20 + 18 + 15 - 8$"
+          ],
+          "answer": "$55 + 50 + 40 - 20 - 18 - 15 + 8$"
         },
         {
           "id": 2,
@@ -637,42 +661,35 @@
           "tolerance": 0
         }
       ],
-      "explanation": "The single counts sum to $145$, the pairwise overlaps remove $53$, and the triple overlap of $8$ is added back once: $145 - 53 + 8 = 100$. Exactly two means each pairwise region with the all-three group taken out: $12 + 10 + 7 = 29$.",
+      "explanation": "Inclusion-exclusion gives $|A \\cup C \\cup G| = 55 + 50 + 40 - 20 - 18 - 15 + 8 = 100$: the triple overlap is added back once after the pairwise subtractions remove it three times. For exactly two, strip the $8$ from each pairwise region: $(20 - 8) + (18 - 8) + (15 - 8) = 12 + 10 + 7 = 29$. Subtracting the triple overlap instead of adding it gives $84$, and forgetting it gives $92$.",
       "difficulty": "stretch",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-sets-and-operations-039",
       "format": "cloze",
-      "stem": "Compute the power set $P(\\lbrace \\emptyset \\rbrace)$ and its size.",
-      "solution": "The set $\\lbrace \\emptyset \\rbrace$ has exactly one element, the empty set. Its subsets are the empty set itself and the whole set, so $P(\\lbrace \\emptyset \\rbrace) =$ {{1}}, which has {{2}} elements. The empty set appears because it is a {{3}} of every set.",
+      "stem": "Compute the power set $P(\\{\\emptyset\\})$ and its size.",
+      "solution": "The power set of a set collects all of its subsets. Written as a set whose members are the subsets of $\\{\\emptyset\\}$, the power set is $P(\\{\\emptyset\\}) = $ {{1}}. Counting its members gives $|P(\\{\\emptyset\\})| = $ {{2}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$\\lbrace \\emptyset, \\lbrace \\emptyset \\rbrace \\rbrace$",
-            "$\\lbrace \\lbrace \\emptyset \\rbrace \\rbrace$",
-            "$\\lbrace \\emptyset \\rbrace$",
+            "$\\{\\emptyset, \\{\\emptyset\\}\\}$",
+            "$\\{\\emptyset, \\{\\{\\emptyset\\}\\}\\}$",
+            "$\\{\\{\\emptyset\\}\\}$",
             "$\\emptyset$"
           ],
-          "answer": "$\\lbrace \\emptyset, \\lbrace \\emptyset \\rbrace \\rbrace$"
+          "answer": "$\\{\\emptyset, \\{\\emptyset\\}\\}$"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 2,
           "tolerance": 0
-        },
-        {
-          "id": 3,
-          "type": "text",
-          "accept": [
-            "subset"
-          ]
         }
       ],
-      "explanation": "A one-element set has $2^1 = 2$ subsets: $\\emptyset$ and the set itself, so $P(\\lbrace \\emptyset \\rbrace) = \\lbrace \\emptyset, \\lbrace \\emptyset \\rbrace \\rbrace$ with $2$ elements. The empty set is a subset of every set, which is why it is listed.",
+      "explanation": "The set $\\{\\emptyset\\}$ has one element, so it has $2^1 = 2$ subsets: the empty set $\\emptyset$ and the set itself $\\{\\emptyset\\}$. Hence $P(\\{\\emptyset\\}) = \\{\\emptyset, \\{\\emptyset\\}\\}$, with $2$ members. The trap $\\{\\{\\emptyset\\}\\}$ drops the empty set, the two-member look-alike replaces the whole set $\\{\\emptyset\\}$ with the deeper nesting $\\{\\{\\emptyset\\}\\}$, and $\\emptyset$ forgets that every set is a subset of itself.",
       "difficulty": "stretch",
       "source": "in the style of Rosen, Discrete Mathematics"
     }

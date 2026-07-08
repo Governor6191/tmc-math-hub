@@ -344,18 +344,19 @@
     {
       "id": "logic-and-set-theory-predicate-logic-025",
       "format": "cloze",
-      "stem": "Let the domain be $D = \\{1, 2, 3, 4\\}$ and let $P(x)$ mean $x^2 < 10$. Evaluate $\\forall x\\, P(x)$, and count how many elements of $D$ satisfy $P$.",
-      "solution": "Square each element: $1^2 = 1$, $2^2 = 4$, and $3^2 = 9$ are all below $10$, but $4^2 = 16$ is not. A universal statement needs every element to pass, and $x = 4$ fails, so $\\forall x\\, P(x)$ is {{1}}. The elements that do satisfy $P$ are $1$, $2$, and $3$, so their number is {{2}}.",
+      "stem": "Let the domain be $D = \\{1, 2, 3, 4\\}$ and let $P(x)$ mean $x^2 < 10$. Decide the truth value of $\\forall x\\, P(x)$, and count how many elements of $D$ satisfy $P$.",
+      "solution": "Square each element to test $x^2 < 10$: the values are $1, 4, 9, 16$. A universal statement is false as soon as {{1}}, and here $x = 4$ does exactly that, so $\\forall x\\, P(x)$ is false. Setting the failing element aside, the number of elements of $D$ that satisfy $P$ is {{2}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "true",
-            "false",
-            "undefined"
+            "a single element of the domain fails the predicate",
+            "every element of the domain fails the predicate",
+            "the predicate fails for some element outside the domain",
+            "at least half the elements fail the predicate"
           ],
-          "answer": "false"
+          "answer": "a single element of the domain fails the predicate"
         },
         {
           "id": 2,
@@ -364,15 +365,15 @@
           "tolerance": 0
         }
       ],
-      "explanation": "The single failure at $x = 4$, where $16 \\not< 10$, makes the universal false. The predicate holds at $1$, $2$, and $3$, so $3$ elements satisfy it, which is also why the existential $\\exists x\\, P(x)$ is true.",
-      "difficulty": "warmup",
+      "explanation": "A universal $\\forall x\\, P(x)$ is false the moment one element violates $P$; here $4^2 = 16 \\not< 10$, so the single failure at $x = 4$ makes it false. The predicate holds at $1, 2, 3$, so $3$ elements satisfy it, which is exactly why $\\exists x\\, P(x)$ is true. The distractors misstate the rule: one counterexample suffices, elements outside $D$ are irrelevant, and no majority is required.",
+      "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-predicate-logic-026",
       "format": "cloze",
-      "stem": "Let $A(x)$ mean that resident $x$ attended the hall meeting. Negate the statement $\\forall x\\, A(x)$.",
-      "solution": "Negating a universal flips $\\forall$ to $\\exists$ and negates the predicate, so $\\lnot \\forall x\\, A(x)$ is logically equivalent to {{1}}. In words this says that the number of residents who did not attend is at least {{2}}.",
+      "stem": "Let $A(x)$ mean that resident $x$ attended the hall meeting. Give the negation of $\\forall x\\, A(x)$, and compare it with the claim that no resident attended.",
+      "solution": "Negating a universal flips the quantifier and negates the predicate, so $\\lnot \\forall x\\, A(x)$ is logically equivalent to {{1}}. A common wrong answer is $\\forall x\\, \\lnot A(x)$, the claim that no resident attended; compared with the true negation, this claim is {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -387,97 +388,122 @@
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 1,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "strictly stronger",
+            "strictly weaker",
+            "logically equivalent to it",
+            "unrelated in strength"
+          ],
+          "answer": "strictly stronger"
         }
       ],
-      "explanation": "The negation of $\\forall x\\, A(x)$ is $\\exists x\\, \\lnot A(x)$: at least one resident did not attend. Writing $\\forall x\\, \\lnot A(x)$ instead would claim no resident attended, a far stronger statement than the negation requires.",
-      "difficulty": "warmup",
+      "explanation": "The negation of $\\forall x\\, A(x)$ is $\\exists x\\, \\lnot A(x)$: at least one resident did not attend. The claim $\\forall x\\, \\lnot A(x)$, that no resident attended, implies the negation but is not implied by it, so it is strictly stronger; a single absentee makes the true negation hold while $\\forall x\\, \\lnot A(x)$ still fails. The option $\\lnot \\exists x\\, A(x)$ is just $\\forall x\\, \\lnot A(x)$ in disguise, and $\\exists x\\, A(x)$ negates neither the quantifier nor the predicate correctly.",
+      "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-predicate-logic-027",
       "format": "cloze",
-      "stem": "Over the domain $\\mathbb{R}$, evaluate $S_1: \\forall x\\, \\exists y\\, (x + y = 0)$ and $S_2: \\exists y\\, \\forall x\\, (x + y = 0)$.",
-      "solution": "For $S_1$, given any real $x$ choose $y = -x$, and this choice may depend on $x$, so $S_1$ is {{1}}. For $S_2$, one fixed $y$ would have to satisfy $x + y = 0$ for every $x$ at once, forcing $y = -1$ and $y = -2$ simultaneously, so $S_2$ is {{2}}.",
+      "stem": "Over the domain $\\mathbb{R}$, compare $S_1: \\forall x\\, \\exists y\\, (x + y = 0)$ and $S_2: \\exists y\\, \\forall x\\, (x + y = 0)$.",
+      "solution": "In $S_1$ the witness $y$ is chosen after $x$, so it may depend on $x$; taking $y = -x$ works for every $x$, making $S_1$ true. In $S_2$ the order is reversed, so a single $y$ must serve all $x$ at once. No such $y$ exists, and the reason is that {{1}}. So $S_2$ is false, and in general swapping $\\forall x\\, \\exists y$ to $\\exists y\\, \\forall x$ {{2}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "true",
-            "false",
-            "undefined"
+            "different values of $x$ force different values of $y = -x$",
+            "the equation $x + y = 0$ has no real solutions",
+            "$y = 0$ fails to satisfy $x + y = 0$ when $x = 0$",
+            "$-x$ is not a real number when $x$ is negative"
           ],
-          "answer": "true"
+          "answer": "different values of $x$ force different values of $y = -x$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "false",
-            "true",
-            "undefined"
+            "can change a true statement into a false one",
+            "never changes the truth value",
+            "always turns a true statement into a false one",
+            "only matters over finite domains"
           ],
-          "answer": "false"
+          "answer": "can change a true statement into a false one"
         }
       ],
-      "explanation": "In $\\forall x\\, \\exists y$ the witness $y = -x$ is allowed to vary with $x$, so $S_1$ is true. In $\\exists y\\, \\forall x$ a single $y$ must work for every $x$, which is impossible here, so $S_2$ is false. Swapping the quantifiers changes the meaning.",
+      "explanation": "$S_1$ is true because $y = -x$ may vary with $x$; $S_2$ demands one fixed $y$ with $x + y = 0$ for all $x$, impossible since each $x$ needs its own $y = -x$. So the quantifier order genuinely matters: $\\forall x\\, \\exists y$ can be true while $\\exists y\\, \\forall x$ is false. The distractors are false statements: the equation does have solutions, $y = 0$ works at $x = 0$, and $-x$ is real for every real $x$; and the swap does not always flip truth, nor is it confined to finite domains.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-predicate-logic-028",
       "format": "cloze",
-      "stem": "Let $D = \\{1, 2, 3, 4, 5, 6\\}$ and let $E(x)$ mean $x$ is even. Determine the truth value of $\\forall x \\in D\\, (E(x) \\to x^2 > 10)$.",
-      "solution": "Only even elements can falsify the conditional, and the even elements of $D$ are $2$, $4$, and $6$, with squares $4$, $16$, and $36$. Since $4$ is not greater than $10$, the even element that satisfies the hypothesis yet breaks the conclusion is $x =$ {{1}}. Because such a counterexample exists, the whole statement is {{2}}.",
+      "stem": "Let $D = \\{1, 2, 3, 4, 5, 6\\}$ and let $E(x)$ mean $x$ is even. Determine the truth value of $\\forall x \\in D\\, (E(x) \\to x^2 > 10)$ and identify any counterexample.",
+      "solution": "A counterexample to $\\forall x\\, (E(x) \\to x^2 > 10)$ must be an element that {{1}}. The odd elements $1, 3, 5$ cannot be counterexamples, because for them the conditional is {{2}}. Among the even elements $2, 4, 6$, with squares $4, 16, 36$, the one that is a genuine counterexample is $x = $ {{3}}, so the universal statement is false.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 2,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "satisfies the hypothesis but fails the conclusion",
+            "fails the hypothesis but satisfies the conclusion",
+            "fails both the hypothesis and the conclusion",
+            "satisfies both the hypothesis and the conclusion"
+          ],
+          "answer": "satisfies the hypothesis but fails the conclusion"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "true",
-            "false",
-            "undefined"
+            "vacuously true, since the hypothesis $E(x)$ fails",
+            "false, since the hypothesis $E(x)$ fails",
+            "true only when $x^2 > 10$",
+            "undefined, since $x$ is odd"
           ],
-          "answer": "false"
+          "answer": "vacuously true, since the hypothesis $E(x)$ fails"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
         }
       ],
-      "explanation": "A counterexample to $\\forall x\\, (E(x) \\to x^2 > 10)$ must be even and have a square at most $10$. Only $x = 2$ qualifies, since $2^2 = 4 \\not> 10$, so the statement is false; the odd elements make the conditional vacuously true and cannot be counterexamples.",
+      "explanation": "A counterexample to $\\forall x\\, (E(x) \\to x^2 > 10)$ must satisfy $E(x)$ yet fail $x^2 > 10$. The odd elements make the hypothesis false, so the conditional is vacuously true for them and they cannot be counterexamples. Of the even elements, $2^2 = 4 \\not> 10$, so $x = 2$ satisfies the hypothesis and breaks the conclusion, making the statement false; $4$ and $6$ have squares above $10$ and are not counterexamples.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-predicate-logic-029",
       "format": "cloze",
-      "stem": "Let $D = \\{1, 2, 3\\}$. Counting over $D \\times D$, evaluate $S_1: \\forall x\\, \\exists y\\, (x + y = 4)$ and $S_2: \\exists y\\, \\forall x\\, (x + y = 4)$.",
-      "solution": "The ordered pairs $(x, y)$ from $D \\times D$ with $x + y = 4$ are $(1, 3)$, $(2, 2)$, and $(3, 1)$, so the number of solution pairs is {{1}}. Each $x$ in $D$ appears as a first coordinate in some pair, so $S_1$ is true. But no single $y$ serves every $x$, since that would need $y = 3$, $y = 2$, and $y = 1$ at once, so $S_2$ is {{2}}.",
+      "stem": "Let $D = \\{1, 2, 3\\}$. Compare $S_1: \\forall x\\, \\exists y\\, (x + y = 4)$ and $S_2: \\exists y\\, \\forall x\\, (x + y = 4)$ over this domain.",
+      "solution": "For $S_1$, each $x$ may pick its own $y$ with $x + y = 4$: the pairs $(1, 3)$, $(2, 2)$, $(3, 1)$ serve every $x$ in $D$, so $S_1$ is true. For $S_2$, one fixed $y$ would have to work for all three values of $x$, and the obstruction is that {{1}}. So $S_2$ is false, and the whole difference between the statements comes down to {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 3,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "the three values of $x$ each demand a different $y$",
+            "no pair $(x, y)$ in $D \\times D$ satisfies $x + y = 4$",
+            "$y = 2$ fails for every $x$",
+            "the sum $x + y = 4$ leaves the domain $D$"
+          ],
+          "answer": "the three values of $x$ each demand a different $y$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "false",
-            "true",
-            "undefined"
+            "whether the choice of $y$ may depend on $x$",
+            "whether the domain $D$ is finite",
+            "whether $x + y = 4$ has any solutions",
+            "whether $y$ may be negative"
           ],
-          "answer": "false"
+          "answer": "whether the choice of $y$ may depend on $x$"
         }
       ],
-      "explanation": "There are $3$ pairs solving $x + y = 4$: $(1, 3)$, $(2, 2)$, $(3, 1)$. They cover every $x$ with a $y$ that depends on $x$, so $S_1$ is true, while $\\exists y\\, \\forall x$ demands one uniform $y$, which does not exist, so $S_2$ is false.",
+      "explanation": "In $S_1$ the witness $y = 4 - x$ may depend on $x$, so it is true; in $S_2$ a single $y$ must satisfy $1 + y = 4$, $2 + y = 4$, and $3 + y = 4$ at once, forcing $y = 3, 2, 1$ simultaneously, which is impossible, so it is false. The difference is exactly whether $y$ may depend on $x$. The distractors are false: solution pairs do exist, $y = 2$ works at $x = 2$, and every required sum stays inside $D$.",
       "difficulty": "stretch",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
@@ -485,16 +511,18 @@
       "id": "logic-and-set-theory-predicate-logic-030",
       "format": "cloze",
       "stem": "Find a formula logically equivalent to $\\lnot \\forall x\\, (P(x) \\to Q(x))$.",
-      "solution": "Negating the universal turns it into an {{1}} quantifier applied to the negated body. The negation of the conditional $P(x) \\to Q(x)$ is the conjunction $P(x) \\land \\lnot Q(x)$, so the full negation is {{2}}.",
+      "solution": "Pushing the negation through the universal flips the quantifier and negates the body. The negation of the conditional $P(x) \\to Q(x)$ is {{1}}, not another conditional. Combining the flipped quantifier with this negated body gives the equivalent formula {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
-            "existential",
-            "existential quantifier",
-            "exists"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$P(x) \\land \\lnot Q(x)$",
+            "$\\lnot P(x) \\land Q(x)$",
+            "$\\lnot P(x) \\lor Q(x)$",
+            "$P(x) \\to \\lnot Q(x)$"
+          ],
+          "answer": "$P(x) \\land \\lnot Q(x)$"
         },
         {
           "id": 2,
@@ -508,82 +536,87 @@
           "answer": "$\\exists x\\, (P(x) \\land \\lnot Q(x))$"
         }
       ],
-      "explanation": "The negation is $\\exists x\\, \\lnot(P(x) \\to Q(x))$, and a conditional is false exactly when its hypothesis holds and its conclusion fails, so $\\lnot(P(x) \\to Q(x)) \\equiv P(x) \\land \\lnot Q(x)$. Hence the equivalent formula is $\\exists x\\, (P(x) \\land \\lnot Q(x))$.",
+      "explanation": "Negating a universal yields an existential over the negated body: $\\lnot \\forall x\\, (P(x) \\to Q(x)) \\equiv \\exists x\\, \\lnot(P(x) \\to Q(x))$. A conditional is false exactly when its hypothesis holds and its conclusion fails, so $\\lnot(P(x) \\to Q(x)) \\equiv P(x) \\land \\lnot Q(x)$, giving $\\exists x\\, (P(x) \\land \\lnot Q(x))$. Keeping $\\forall$, writing the body as another conditional, or negating the wrong component are the standard errors.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-predicate-logic-031",
       "format": "cloze",
-      "stem": "Let the domain of discourse be the empty set and let $P(x)$ be an arbitrary predicate. Evaluate $\\forall x\\, P(x)$ and $\\exists x\\, P(x)$.",
-      "solution": "The empty domain contains no elements, so the number of witnesses available for $\\exists x\\, P(x)$ is {{1}}, which makes the existential false. A universal is false only when some element violates the predicate, and an empty domain offers no such element, so $\\forall x\\, P(x)$ is {{2}}, whatever $P$ is.",
+      "stem": "Let the domain of discourse be the empty set and let $P(x)$ be an arbitrary predicate. Determine the truth values of $\\forall x\\, P(x)$ and $\\exists x\\, P(x)$.",
+      "solution": "An existential statement asserts a witness, so $\\exists x\\, P(x)$ is false here because {{1}}. A universal statement is false only when the domain holds a counterexample; with no elements at all, $\\forall x\\, P(x)$ turns out {{2}}, whatever $P$ is. This mismatch is why $\\forall x\\, P(x)$ does not entail $\\exists x\\, P(x)$ over an empty domain.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "there is no witness in the empty domain",
+            "the predicate $P$ is arbitrary",
+            "$P(x)$ is false for every element",
+            "the domain could be infinite"
+          ],
+          "answer": "there is no witness in the empty domain"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "true",
-            "false",
-            "undefined"
+            "vacuously true, since there is no counterexample to exhibit",
+            "false, since nothing in the domain satisfies $P$",
+            "true only for certain predicates $P$",
+            "undefined, because the domain is empty"
           ],
-          "answer": "true"
+          "answer": "vacuously true, since there is no counterexample to exhibit"
         }
       ],
-      "explanation": "With no elements there is no witness, so $\\exists x\\, P(x)$ is false, and there is no counterexample, so $\\forall x\\, P(x)$ is vacuously true. This is why the inference from $\\forall x\\, P(x)$ to $\\exists x\\, P(x)$ fails over an empty domain.",
+      "explanation": "Over the empty domain there is no witness, so $\\exists x\\, P(x)$ is false, and there is no counterexample, so $\\forall x\\, P(x)$ is vacuously true, both independently of $P$. This is precisely why the inference from $\\forall x\\, P(x)$ to $\\exists x\\, P(x)$ fails when the domain is empty. The distractors treat the universal as needing something to satisfy $P$, or as undefined, both of which misread vacuous truth.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-predicate-logic-032",
       "format": "cloze",
-      "stem": "Over the domain $\\mathbb{R}$, evaluate $S: \\exists y\\, \\forall x\\, (x \\cdot y = x)$ and name a witness $y$.",
-      "solution": "The statement asks for one fixed real $y$ such that $x \\cdot y = x$ holds for every real $x$. The multiplicative identity does exactly this, so $S$ is {{1}}. The single witness that works for all $x$ is $y =$ {{2}}.",
+      "stem": "Over the domain $\\mathbb{R}$, evaluate $S: \\exists y\\, \\forall x\\, (x \\cdot y = x)$ and identify a witness $y$.",
+      "solution": "An $\\exists y\\, \\forall x$ statement is true exactly when {{1}}. Here such a value does exist: the real number that satisfies $x \\cdot y = x$ for every $x$ is $y = $ {{2}}. So $S$ is true, which also shows that not every statement of the form $\\exists y\\, \\forall x$ over an infinite domain is false.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "true",
-            "false",
-            "undefined"
+            "one fixed value of $y$ works for every $x$",
+            "for each $x$ some value of $y$ works",
+            "at least one pair $(x, y)$ works",
+            "every value of $y$ works for some $x$"
           ],
-          "answer": "true"
+          "answer": "one fixed value of $y$ works for every $x$"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "1",
-            "one"
-          ]
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
         }
       ],
-      "explanation": "An $\\exists y\\, \\forall x$ statement is true exactly when one uniform witness exists. Here $y = 1$ gives $x \\cdot 1 = x$ for every real $x$, so $S$ is true; this also shows that not every $\\exists y\\, \\forall x$ statement over an infinite domain is false.",
+      "explanation": "$\\exists y\\, \\forall x$ requires a single uniform $y$ that works for all $x$. The multiplicative identity $y = 1$ satisfies $x \\cdot 1 = x$ for every real $x$, so $S$ is true. The distractors describe $\\forall x\\, \\exists y$ (a per-$x$ choice), a bare existential over pairs, or a reversed dependence, none of which is the meaning of $\\exists y\\, \\forall x$.",
       "difficulty": "stretch",
       "source": "in the style of Rosen, Discrete Mathematics"
     },
     {
       "id": "logic-and-set-theory-predicate-logic-033",
       "format": "cloze",
-      "stem": "A student wants to establish $\\exists x \\in \\mathbb{Z}\\, (x^2 - 5x + 6 = 0)$. What is the right strategy, and how many integer solutions does the equation have?",
-      "solution": "An existential statement is proved by a single verified witness, so the correct move is to {{1}}. Factoring gives $x^2 - 5x + 6 = (x - 2)(x - 3)$, whose integer roots are $2$ and $3$, so the number of integer solutions is {{2}}. Either root already settles the existential; the extra one is a bonus, not a requirement.",
+      "stem": "A student wants to establish $\\exists x \\in \\mathbb{Z}\\, (x^2 - 5x + 6 = 0)$. Identify the correct proof strategy and the number of integer solutions the equation has.",
+      "solution": "An existential statement is proved by {{1}}, not by exhaustive checking or a uniqueness argument. To count how many witnesses exist, factor the quadratic $x^2 - 5x + 6$ and read off its integer roots; the number of distinct integer solutions is {{2}}. Any one of them already settles the existential, so uniqueness is beside the point.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "exhibit one witness",
-            "check every integer",
-            "prove the solution is unique first",
-            "show no integer fails the equation"
+            "exhibiting one verified witness",
+            "checking every integer in turn",
+            "first proving the solution is unique",
+            "showing no integer fails the equation"
           ],
-          "answer": "exhibit one witness"
+          "answer": "exhibiting one verified witness"
         },
         {
           "id": 2,
@@ -592,7 +625,7 @@
           "tolerance": 0
         }
       ],
-      "explanation": "Since $x^2 - 5x + 6 = (x - 2)(x - 3)$, the equation has the $2$ integer roots $2$ and $3$. Exhibiting either one, for instance checking $2^2 - 5(2) + 6 = 0$, proves the existential; exhaustive checking and uniqueness are not needed.",
+      "explanation": "An existential is established by producing a single witness. Factoring $x^2 - 5x + 6 = (x - 2)(x - 3)$ shows integer roots $2$ and $3$, so there are $2$ integer solutions; exhibiting either, for instance verifying $2^2 - 5(2) + 6 = 0$, proves the statement. Exhaustive checking is impossible and uniqueness is a stronger, unneeded claim, false here since two roots exist.",
       "difficulty": "core",
       "source": "in the style of Rosen, Discrete Mathematics"
     }
