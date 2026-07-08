@@ -286,17 +286,28 @@
     {
       "id": "electricity-and-magnetism-dc-circuits-021",
       "format": "cloze",
-      "stem": "A charge of $60\\ \\text{C}$ flows past a point in $20\\ \\text{s}$. Find the current and name its SI unit.",
-      "solution": "The current is $I = Q/t = 60/20 = $ {{1}} amperes. The SI unit of current is the {{2}}.",
+      "stem": "A charge of $60\\ \\text{C}$ flows past a point in a wire in $20\\ \\text{s}$. Find the current and name its SI unit.",
+      "solution": "Current is the rate of flow of charge, so it is given by {{1}}. Substituting the numbers gives a current of {{2}} amperes. Current is measured in the SI unit called the {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 3,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "$Q/t$",
+            "$t/Q$",
+            "$Qt$",
+            "$Q - t$"
+          ],
+          "answer": "$Q/t$"
         },
         {
           "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
           "type": "text",
           "accept": [
             "ampere",
@@ -307,21 +318,26 @@
           ]
         }
       ],
-      "explanation": "Dividing $60$ by $20$ gives $3.0\\ \\text{A}$. Current is measured in amperes, one ampere being one coulomb per second.",
+      "explanation": "Current is charge per unit time, $I = Q/t = 60/20 = 3.0\\ \\text{A}$. Inverting to $t/Q$ gives $0.33$ and multiplying as $Qt$ gives $1200$, both with the wrong units. Current is measured in amperes, one ampere being one coulomb per second.",
       "difficulty": "warmup",
       "source": "in the style of Tipler, Physics for Scientists and Engineers"
     },
     {
       "id": "electricity-and-magnetism-dc-circuits-022",
       "format": "cloze",
-      "stem": "A resistor of $5.0\\ \\Omega$ carries $2.0\\ \\text{A}$. Find the voltage across it and identify the law used.",
-      "solution": "By the relation $V = IR$, the voltage is $V = 2.0 \\times 5.0 = $ {{1}} volts. This relation is {{2}}.",
+      "stem": "A resistor of $5.0\\ \\Omega$ carries a current of $2.0\\ \\text{A}$. Find the potential difference across it and name the law used.",
+      "solution": "The relation between voltage, current, and resistance is {{1}}, known as {{2}}. Substituting $I = 2.0\\ \\text{A}$ and $R = 5.0\\ \\Omega$, the potential difference is {{3}} $\\text{V}$.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 10,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "$V = IR$",
+            "$V = I/R$",
+            "$V = R/I$",
+            "$V = I + R$"
+          ],
+          "answer": "$V = IR$"
         },
         {
           "id": 2,
@@ -329,62 +345,97 @@
           "options": [
             "Ohm's law",
             "Coulomb's law",
-            "Gauss's law"
+            "Gauss's law",
+            "Faraday's law"
           ],
           "answer": "Ohm's law"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
         }
       ],
-      "explanation": "Multiplying $2.0 \\times 5.0$ gives $10\\ \\text{V}$. The relation $V = IR$ is Ohm's law.",
+      "explanation": "Ohm's law gives $V = IR = (2.0)(5.0) = 10\\ \\text{V}$. Dividing as $I/R$ or $R/I$ misplaces the quantities and gives $0.4$ or $2.5$ with the wrong units. Coulomb's, Gauss's, and Faraday's laws describe forces, flux, and induction, not the voltage across a resistor.",
       "difficulty": "warmup",
       "source": "in the style of Tipler, Physics for Scientists and Engineers"
     },
     {
       "id": "electricity-and-magnetism-dc-circuits-023",
       "format": "cloze",
-      "stem": "Resistors of $6.0\\ \\Omega$ and $3.0\\ \\Omega$ are combined. Find the equivalent resistance in series and in parallel.",
-      "solution": "In series the resistances add: $R_{\\text{eq}} = 6.0 + 3.0 = $ {{1}} ohms. In parallel, $\\tfrac{1}{R_{\\text{eq}}} = \\tfrac{1}{6.0} + \\tfrac{1}{3.0} = \\tfrac{3}{6.0}$, so $R_{\\text{eq}} = $ {{2}} ohms.",
+      "stem": "Two resistors of $6.0\\ \\Omega$ and $3.0\\ \\Omega$ are to be combined. Find the equivalent resistance in series and in parallel.",
+      "solution": "In series the resistances {{1}}, giving an equivalent of {{2}} ohms. In parallel the reciprocals add instead, $\\tfrac{1}{R_\\text{eq}} = \\tfrac{1}{6.0} + \\tfrac{1}{3.0}$, and the resulting parallel equivalent is {{3}} either individual resistor.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 9,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "add directly",
+            "add as reciprocals",
+            "multiply together",
+            "subtract"
+          ],
+          "answer": "add directly"
         },
         {
           "id": 2,
           "type": "number",
-          "answer": 2,
-          "tolerance": 0.01
+          "answer": 9,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "smaller than",
+            "larger than",
+            "equal to",
+            "double"
+          ],
+          "answer": "smaller than"
         }
       ],
-      "explanation": "Series addition gives $9.0\\ \\Omega$, while the parallel reciprocal sum gives $2.0\\ \\Omega$, less than either resistor.",
+      "explanation": "Series resistances add directly, so $R_\\text{eq} = 6.0 + 3.0 = 9.0\\ \\Omega$. In parallel the reciprocals add, $\\tfrac{1}{R_\\text{eq}} = \\tfrac{1}{6.0} + \\tfrac{1}{3.0} = \\tfrac{3}{6.0}$, giving $R_\\text{eq} = 2.0\\ \\Omega$, which is smaller than either resistor. Resistors behave opposite to capacitors, so swapping the rules is the usual error.",
       "difficulty": "core",
       "source": "in the style of Tipler, Physics for Scientists and Engineers"
     },
     {
       "id": "electricity-and-magnetism-dc-circuits-024",
       "format": "cloze",
-      "stem": "A current of $3.0\\ \\text{A}$ flows through a $4.0\\ \\Omega$ resistor. Find the power dissipated and identify the formula.",
-      "solution": "The power is $P = I^2 R = (3.0)^2 \\times 4.0 = $ {{1}} watts. The correct power formula in terms of current and resistance is {{2}}.",
+      "stem": "A current of $3.0\\ \\text{A}$ flows through a $4.0\\ \\Omega$ resistor. Find the power dissipated and identify the correct formula.",
+      "solution": "The power dissipated in a resistor carrying a current is {{1}}. Squaring the current first, $3.0^2 = $ {{2}}, and then multiplying by $R = 4.0\\ \\Omega$ gives a power of {{3}} $\\text{W}$.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 36,
-          "tolerance": 0.1
+          "type": "dropdown",
+          "options": [
+            "$I^2 R$",
+            "$IR$",
+            "$IR^2$",
+            "$I/R$"
+          ],
+          "answer": "$I^2 R$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "$I^2 R$",
-            "$IR$",
-            "$I R^2$"
+            "$9$",
+            "$6$",
+            "$3$",
+            "$27$"
           ],
-          "answer": "$I^2 R$"
+          "answer": "$9$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 36,
+          "tolerance": 0
         }
       ],
-      "explanation": "Squaring the current gives $9$, and $9 \\times 4.0 = 36\\ \\text{W}$. Power dissipated in a resistor is $P = I^2 R$.",
+      "explanation": "The power is $P = I^2 R$, so the current must be squared: $3.0^2 = 9$, and doubling to $6$ is the common slip. Then $P = 9 \\times 4.0 = 36\\ \\text{W}$. Using $IR$ instead gives $12\\ \\text{W}$, which is the voltage drop across the resistor, not the power dissipated in it.",
       "difficulty": "core",
       "source": "in the style of Tipler, Physics for Scientists and Engineers"
     },
@@ -392,22 +443,49 @@
       "id": "electricity-and-magnetism-dc-circuits-025",
       "format": "cloze",
       "stem": "A battery of emf $12\\ \\text{V}$ and internal resistance $0.50\\ \\Omega$ is connected to a $5.5\\ \\Omega$ external resistor. Find the current and the terminal voltage.",
-      "solution": "The current is $I = \\dfrac{\\text{emf}}{R + r} = \\dfrac{12}{5.5 + 0.50} = $ {{1}} amperes. The terminal voltage is $V = \\text{emf} - Ir = 12 - $ {{2}} $ = 11\\ \\text{V}$ (give the value of $Ir$ in volts).",
+      "solution": "A real battery's internal resistance acts {{1}} with the external resistor. Taking that into account, the current is $I = \\dfrac{\\text{emf}}{R + r} = \\dfrac{12}{5.5 + 0.5} = $ {{2}} amperes. Because current is flowing, the terminal voltage is {{3}} the emf; subtracting the internal drop $Ir$ from $12\\ \\text{V}$ leaves {{4}} $\\text{V}$.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 2,
-          "tolerance": 0.05
+          "type": "dropdown",
+          "options": [
+            "in series",
+            "in parallel",
+            "in a separate loop",
+            "at right angles to"
+          ],
+          "answer": "in series"
         },
         {
           "id": 2,
           "type": "number",
-          "answer": 1,
-          "tolerance": 0.05
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "less than",
+            "greater than",
+            "equal to",
+            "double"
+          ],
+          "answer": "less than"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "$11$",
+            "$13$",
+            "$12$",
+            "$1$"
+          ],
+          "answer": "$11$"
         }
       ],
-      "explanation": "The total resistance is $6.0\\ \\Omega$, so $I = 2.0\\ \\text{A}$. The internal drop is $Ir = 2.0 \\times 0.50 = 1.0\\ \\text{V}$, leaving a terminal voltage of $12 - 1.0 = 11\\ \\text{V}$.",
+      "explanation": "Internal resistance is in series with the load, so the total is $R + r = 5.5 + 0.5 = 6.0\\ \\Omega$ and $I = 12/6.0 = 2.0\\ \\text{A}$. The terminal voltage is the emf minus the internal drop: $V = 12 - Ir = 12 - (2.0)(0.50) = 11\\ \\text{V}$, always less than the emf while current flows. Adding the drop instead gives $13\\ \\text{V}$, and ignoring the internal resistance leaves the emf $12\\ \\text{V}$.",
       "difficulty": "core",
       "source": "in the style of Tipler, Physics for Scientists and Engineers"
     },
@@ -415,22 +493,38 @@
       "id": "electricity-and-magnetism-dc-circuits-026",
       "format": "cloze",
       "stem": "A resistor $R_1 = 6.0\\ \\Omega$ is in series with a parallel pair $R_2 = 6.0\\ \\Omega$ and $R_3 = 3.0\\ \\Omega$, all across a $12\\ \\text{V}$ battery of negligible internal resistance. Find the total resistance and the battery current.",
-      "solution": "The parallel pair has $R_p = 2.0\\ \\Omega$, so the total is $R_{\\text{total}} = 6.0 + 2.0 = $ {{1}} ohms. The battery current is then $I = V/R_{\\text{total}} = 12/8.0 = $ {{2}} amperes.",
+      "solution": "First reduce the parallel pair: because they are in parallel, their combined value is {{1}} either one, and $\\tfrac{1}{R_p} = \\tfrac{1}{6.0} + \\tfrac{1}{3.0}$ gives $R_p = 2.0\\ \\Omega$. This sits in series with $R_1$, so the total resistance is $6.0 + 2.0 = $ {{2}} ohms. The battery current is then $I = V/R_\\text{total} = $ {{3}} amperes.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 8,
-          "tolerance": 0.05
+          "type": "dropdown",
+          "options": [
+            "smaller than",
+            "larger than",
+            "equal to",
+            "the sum of"
+          ],
+          "answer": "smaller than"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$8.0$",
+            "$15$",
+            "$2.0$",
+            "$12$"
+          ],
+          "answer": "$8.0$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 1.5,
-          "tolerance": 0.05
+          "tolerance": 0.001
         }
       ],
-      "explanation": "Combining the parallel pair gives $2.0\\ \\Omega$, and adding the series resistor gives $8.0\\ \\Omega$. Then $I = 12/8.0 = 1.5\\ \\text{A}$ flows from the battery.",
+      "explanation": "The parallel pair gives $\\tfrac{1}{R_p} = \\tfrac{1}{6.0} + \\tfrac{1}{3.0} = \\tfrac{3}{6.0}$, so $R_p = 2.0\\ \\Omega$, smaller than either branch. Adding the series resistor gives $R_\\text{total} = 6.0 + 2.0 = 8.0\\ \\Omega$; treating all three as series would wrongly give $15\\ \\Omega$. Then $I = V/R_\\text{total} = 12/8.0 = 1.5\\ \\text{A}$ from the battery.",
       "difficulty": "stretch",
       "source": "in the style of Tipler, Physics for Scientists and Engineers"
     }

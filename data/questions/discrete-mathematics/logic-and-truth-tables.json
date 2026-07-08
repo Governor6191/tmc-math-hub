@@ -314,63 +314,97 @@
     {
       "id": "discrete-mathematics-logic-and-truth-tables-023",
       "format": "cloze",
-      "stem": "A compound statement is built from the four variables $p$, $q$, $r$, and $s$. Determine how many rows its truth table has, and how many of those rows make the conjunction $p \\land q \\land r \\land s$ true.",
-      "solution": "With $4$ variables, each taking $2$ values, the number of rows is $2^4$, which equals {{1}}. A conjunction of all four variables is true only when every variable is true, so the number of rows making it true is {{2}}.",
+      "stem": "A compound statement is built from the four variables $p$, $q$, $r$, and $s$. Find how many rows its truth table has, and in how many of those rows the conjunction $p \\land q \\land r \\land s$ is true.",
+      "solution": "Each of the four variables is independently true or false, so the number of rows is {{1}}. A conjunction of all four variables is true only when {{2}}, which describes exactly {{3}} of those rows.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 16,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$2^4$",
+            "$2 \\times 4$",
+            "$4!$",
+            "$4^4$"
+          ],
+          "answer": "$2^4$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "every one of the four variables is true",
+            "at least one of the four variables is true",
+            "every one of the four variables is false",
+            "an even number of the variables are true"
+          ],
+          "answer": "every one of the four variables is true"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 1,
           "tolerance": 0
         }
       ],
-      "explanation": "Four independent variables give $2^4 = 16$ rows. A conjunction is true only when all conjuncts are true, which is the single row where $p$, $q$, $r$, and $s$ are all true, so exactly one row makes it true.",
+      "explanation": "Each variable independently takes one of two truth values, so $n$ variables give $2^n$ rows; here $2^4 = 16$. The trap $2 \\times 4 = 8$ multiplies instead of exponentiating, $4! = 24$ counts orderings, and $4^4$ raises the wrong base to the wrong power. A conjunction is true only when every conjunct is true, the single row with $p$, $q$, $r$, $s$ all true, so exactly $1$ of the $16$ rows makes it true. The distractor \"at least one variable is true\" describes when the disjunction, not the conjunction, holds.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-logic-and-truth-tables-024",
       "format": "cloze",
-      "stem": "Consider the implication $p \\to q$. Across its full four-row truth table, count the rows where it is true and the rows where it is false.",
-      "solution": "The conditional $p \\to q$ is false only when $p$ is true and $q$ is false, so the number of false rows is {{1}}. The remaining rows make it true, so the number of true rows is {{2}}.",
+      "stem": "Consider the implication $p \\to q$. Across its full four-row truth table, reason about where it is true and where it is false.",
+      "solution": "A conditional is false in exactly the row where {{1}}. That is a single row, so of the four rows the conditional is true in the other {{2}}. This is also why, whenever the antecedent $p$ is false, the conditional comes out {{3}} no matter what $q$ is.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 1,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$p$ is true and $q$ is false",
+            "$p$ is false and $q$ is true",
+            "$p$ and $q$ are both false",
+            "$p$ and $q$ are both true"
+          ],
+          "answer": "$p$ is true and $q$ is false"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 3,
           "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "true",
+            "false",
+            "undetermined",
+            "equal to $q$"
+          ],
+          "answer": "true"
         }
       ],
-      "explanation": "A conditional is false in exactly one of its four rows, the row with a true antecedent and false consequent. The other three rows make it true, so it is true in three rows and false in one.",
+      "explanation": "A conditional $p \\to q$ breaks its promise only when the antecedent holds but the consequent fails, that is $p$ true and $q$ false, which is one row. The other three rows make it true, so it is true in $3$ of the $4$ rows. In particular a false antecedent gives a vacuously true conditional regardless of $q$, so the last blank is true, not \"equal to $q$\". The remaining row options ($p$ false with $q$ true, both false, both true) are all rows where the conditional actually holds.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-logic-and-truth-tables-025",
       "format": "cloze",
-      "stem": "Apply De Morgan's law and classify a basic statement form. Fill in the blanks.",
-      "solution": "The negation $\\lnot(p \\lor q)$ is logically equivalent to $\\lnot p$ {{1}} $\\lnot q$. A statement that is true in every row of its truth table is called a {{2}}.",
+      "stem": "Apply De Morgan's law, then classify two basic compound statements by their truth tables.",
+      "solution": "By De Morgan's law, $\\lnot(p \\lor q)$ is logically equivalent to $\\lnot p$ {{1}} $\\lnot q$. Turning to classification: since a statement and its negation are never simultaneously true, $r \\land \\lnot r$ is a {{2}}, while $r \\lor \\lnot r$, where at least one side always holds, is a {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "and",
-            "or"
+            "$\\land$",
+            "$\\lor$",
+            "$\\to$",
+            "$\\leftrightarrow$"
           ],
-          "answer": "and"
+          "answer": "$\\land$"
         },
         {
           "id": 2,
@@ -378,27 +412,41 @@
           "options": [
             "contradiction",
             "tautology",
-            "contingency"
+            "contingency",
+            "biconditional"
+          ],
+          "answer": "contradiction"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "tautology",
+            "contradiction",
+            "contingency",
+            "converse"
           ],
           "answer": "tautology"
         }
       ],
-      "explanation": "De Morgan's law gives $\\lnot(p \\lor q) \\equiv \\lnot p \\land \\lnot q$, so the connecting word is and. A statement true in every row is a tautology, in contrast with a contradiction (false in every row) or a contingency (true in some rows and false in others).",
+      "explanation": "De Morgan's law gives $\\lnot(p \\lor q) \\equiv \\lnot p \\land \\lnot q$: the OR becomes an AND, and keeping it as OR is the classic error that instead negates $p \\land q$. A statement ANDed with its own negation, $r \\land \\lnot r$, is false in every row, a contradiction; $r \\lor \\lnot r$ is true in every row, a tautology (the law of the excluded middle). Swapping these two is the common mistake, since a variable AND its negation is $0$ but a variable OR its negation is $1$. A contingency would be true in some rows and false in others, which neither of these is.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-logic-and-truth-tables-026",
       "format": "cloze",
-      "stem": "Evaluate the compound statement $(p \\lor q) \\land \\lnot r$ at the assignment $p$ true, $q$ false, $r$ false, and identify the equivalent of $p \\to q$.",
-      "solution": "First $p \\lor q$ is true and $\\lnot r$ is true, so $(p \\lor q) \\land \\lnot r$ evaluates to {{1}}. Using a standard equivalence, the conditional $p \\to q$ can be rewritten as $\\lnot p$ {{2}} $q$.",
+      "stem": "Let $p$ be true, $q$ be false, and $r$ be false. Evaluate $(p \\lor q) \\land \\lnot r$, and identify the disjunction that is logically equivalent to the conditional $p \\to q$.",
+      "solution": "The left side $p \\lor q$ evaluates to {{1}}, since a disjunction needs only one true disjunct. With $r$ false, the right side $\\lnot r$ is true, and because an AND is true exactly when both sides are true, $(p \\lor q) \\land \\lnot r$ is {{2}}. Separately, the standard equivalence rewrites the conditional as $p \\to q \\equiv$ {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
             "true",
-            "false"
+            "false",
+            "true only if both $p$ and $q$ hold",
+            "equal to $q$"
           ],
           "answer": "true"
         },
@@ -406,13 +454,26 @@
           "id": 2,
           "type": "dropdown",
           "options": [
-            "and",
-            "or"
+            "true",
+            "false",
+            "true only if $q$ is true",
+            "cannot be determined"
           ],
-          "answer": "or"
+          "answer": "true"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\lnot p \\lor q$",
+            "$p \\lor \\lnot q$",
+            "$\\lnot p \\land q$",
+            "$p \\lor q$"
+          ],
+          "answer": "$\\lnot p \\lor q$"
         }
       ],
-      "explanation": "With $p$ true the disjunction $p \\lor q$ is true, and with $r$ false the negation $\\lnot r$ is true, so the conjunction of two true parts is true. The conditional equivalence is $p \\to q \\equiv \\lnot p \\lor q$, so the connecting word is or.",
+      "explanation": "A disjunction is true as soon as one disjunct is true, so $p \\lor q$ is true here because $p$ is true, even though $q$ is false; the trap \"true only if both hold\" confuses OR with AND. With $r$ false, $\\lnot r$ is true, and true AND true is true, so $(p \\lor q) \\land \\lnot r$ is true. Finally, the conditional equivalence is $p \\to q \\equiv \\lnot p \\lor q$, which fails only when $p$ is true and $q$ is false, matching the single row where $\\lnot p \\lor q$ is false. The trap $p \\lor \\lnot q$ is instead equivalent to the converse $q \\to p$.",
       "difficulty": "stretch",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     }

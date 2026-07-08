@@ -314,8 +314,8 @@
     {
       "id": "discrete-mathematics-boolean-algebra-023",
       "format": "cloze",
-      "stem": "Evaluate basic Boolean constants for any variable $x$.",
-      "solution": "The value of $x + \\bar{x}$ is {{1}}. The value of $x \\cdot \\bar{x}$ is {{2}}.",
+      "stem": "Reason about basic Boolean constants for any variable $x$.",
+      "solution": "For any Boolean variable $x$, the sum $x + \\bar{x}$ evaluates to {{1}}, because {{2}}. Its dual, the product $x \\cdot \\bar{x}$, evaluates instead to {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -325,50 +325,80 @@
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 0,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "at least one of $x$ and $\\bar{x}$ is always $1$",
+            "both $x$ and $\\bar{x}$ are always $1$",
+            "$x$ always equals $\\bar{x}$",
+            "neither $x$ nor $\\bar{x}$ is ever $1$"
+          ],
+          "answer": "at least one of $x$ and $\\bar{x}$ is always $1$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$0$",
+            "$1$",
+            "$x$",
+            "$\\bar{x}$"
+          ],
+          "answer": "$0$"
         }
       ],
-      "explanation": "By the complement laws, $x + \\bar{x} = 1$ because one of the two is always $1$, and $x \\cdot \\bar{x} = 0$ because they are never both $1$.",
+      "explanation": "By the complement law for OR, $x + \\bar{x} = 1$: whichever value $x$ takes, exactly one of $x$ and $\\bar{x}$ is $1$, so their OR is always $1$. Its dual, the complement law for AND, gives $x \\cdot \\bar{x} = 0$: $x$ and $\\bar{x}$ are never both $1$, so their product is always $0$. Confusing the two, getting $0$ for the sum or $1$ for the product, is the standard slip.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-boolean-algebra-024",
       "format": "cloze",
-      "stem": "Apply De Morgan's laws and the double complement.",
-      "solution": "The complement $\\overline{x + y}$ equals $\\bar{x}$ {{1}} $\\bar{y}$. Complementing a Boolean variable twice, as in $\\overline{\\overline{x}}$, returns {{2}}.",
+      "stem": "Apply both De Morgan's laws and the double complement law.",
+      "solution": "By De Morgan's law, $\\overline{x + y}$ equals {{1}}, and its dual $\\overline{x \\cdot y}$ equals {{2}}. Complementing a variable twice, as in $\\overline{\\overline{x}}$, returns {{3}} by the double complement law.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "times",
-            "plus"
+            "$\\bar{x} \\cdot \\bar{y}$",
+            "$\\bar{x} + \\bar{y}$",
+            "$x \\cdot y$",
+            "$x + y$"
           ],
-          "answer": "times"
+          "answer": "$\\bar{x} \\cdot \\bar{y}$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "x",
-            "the complement of x",
-            "1"
+            "$\\bar{x} + \\bar{y}$",
+            "$\\bar{x} \\cdot \\bar{y}$",
+            "$x + y$",
+            "$x \\cdot y$"
           ],
-          "answer": "x"
+          "answer": "$\\bar{x} + \\bar{y}$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$x$",
+            "$\\bar{x}$",
+            "$1$",
+            "$0$"
+          ],
+          "answer": "$x$"
         }
       ],
-      "explanation": "De Morgan gives $\\overline{x + y} = \\bar{x} \\cdot \\bar{y}$, so the connecting operation is AND (times). The double complement law gives $\\overline{\\overline{x}} = x$.",
+      "explanation": "De Morgan's laws: $\\overline{x + y} = \\bar{x} \\cdot \\bar{y}$, where the OR of a sum becomes the AND of the complements, and $\\overline{x \\cdot y} = \\bar{x} + \\bar{y}$, where the AND becomes an OR. The common error keeps the original operation instead of switching it. The double complement law gives $\\overline{\\overline{x}} = x$, since negating twice restores the original value.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-boolean-algebra-025",
       "format": "cloze",
-      "stem": "Identify Boolean forms and gate behaviour.",
-      "solution": "An expression written as an OR of AND terms is called a {{1}} form. A gate whose output is $1$ only when every input is $1$ is an {{2}} gate.",
+      "stem": "Reason about Boolean canonical forms and gate behaviour.",
+      "solution": "An expression written as an OR of AND terms is called a {{1}} form; the dual arrangement, an AND of OR terms, is the {{2}} form. A gate whose output is $1$ only when every input is $1$ is an {{3}} gate, whereas a gate that outputs $1$ as soon as any input is $1$ is an {{4}} gate.",
       "gaps": [
         {
           "id": 1,
@@ -376,6 +406,7 @@
           "options": [
             "sum-of-products",
             "product-of-sums",
+            "canonical",
             "complemented"
           ],
           "answer": "sum-of-products"
@@ -384,45 +415,92 @@
           "id": 2,
           "type": "dropdown",
           "options": [
+            "product-of-sums",
+            "sum-of-products",
+            "canonical",
+            "complemented"
+          ],
+          "answer": "product-of-sums"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
             "AND",
             "OR",
-            "NOT"
+            "NOT",
+            "NAND"
           ],
           "answer": "AND"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "OR",
+            "AND",
+            "NOT",
+            "NOR"
+          ],
+          "answer": "OR"
         }
       ],
-      "explanation": "An OR of AND (product) terms is the sum-of-products form, in contrast with the product-of-sums form. A gate that outputs $1$ only when all inputs are $1$ is an AND gate.",
+      "explanation": "A sum-of-products (SOP) form is an OR (sum) of AND (product) terms, such as $\\bar{x}y + x\\bar{y}$; the dual, an AND of OR terms, is the product-of-sums (POS) form. An AND gate outputs $1$ only when all inputs are $1$ (Boolean multiplication), while an OR gate outputs $1$ whenever at least one input is $1$ (Boolean addition). Swapping the gate behaviours, or SOP with POS, is the usual confusion.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-boolean-algebra-026",
       "format": "cloze",
-      "stem": "Simplify Boolean expressions using the identities.",
-      "solution": "Using absorption, the expression $x + xy$ simplifies to the single variable {{1}}. Using the complement and identity laws, the expression $x\\bar{x} + y$ simplifies to {{2}}.",
+      "stem": "Simplify two Boolean expressions and name the law used in each.",
+      "solution": "The expression $x + xy$ simplifies to {{1}} by the {{2}} law. The expression $x\\bar{x} + y$ simplifies to {{3}}, because $x\\bar{x}$ equals $0$ by the {{4}} law.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "x",
-            "y",
-            "xy"
+            "$x$",
+            "$y$",
+            "$xy$",
+            "$x + y$"
           ],
-          "answer": "x"
+          "answer": "$x$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "y",
-            "x",
-            "1"
+            "absorption",
+            "distributive",
+            "complement",
+            "idempotent"
           ],
-          "answer": "y"
+          "answer": "absorption"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$y$",
+            "$x$",
+            "$0$",
+            "$1$"
+          ],
+          "answer": "$y$"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "complement",
+            "absorption",
+            "identity",
+            "idempotent"
+          ],
+          "answer": "complement"
         }
       ],
-      "explanation": "Absorption gives $x + xy = x(1 + y) = x$. Since $x\\bar{x} = 0$, the second expression becomes $0 + y = y$.",
+      "explanation": "By the absorption law, $x + xy = x(1 + y) = x \\cdot 1 = x$, so the $xy$ term is absorbed. For $x\\bar{x} + y$, the complement law gives $x\\bar{x} = 0$, and then the identity law $0 + y = y$ leaves $y$. Naming the wrong law, for instance distributive in place of absorption, is exactly what the dropdowns probe.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     }

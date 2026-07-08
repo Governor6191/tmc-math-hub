@@ -314,54 +314,86 @@
     {
       "id": "discrete-mathematics-counting-and-permutations-023",
       "format": "cloze",
-      "stem": "Evaluate two basic counting quantities for $n = 6$.",
-      "solution": "The factorial $6!$ equals {{1}}. The number of ways to choose $2$ objects from $6$ when order does not matter, $\\binom{6}{2}$, equals {{2}}.",
+      "stem": "For $n = 6$ distinct objects, reason about two basic counts.",
+      "solution": "Arranging all $6$ distinct objects in a row is an ordered arrangement of every object, counted by {{1}}, which works out to {{2}}. Choosing just $2$ of the $6$ with order irrelevant is instead counted by {{3}}, not a permutation.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$6!$",
+            "$6^6$",
+            "$2^6$",
+            "$\\binom{6}{6}$"
+          ],
+          "answer": "$6!$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 720,
           "tolerance": 0
         },
         {
-          "id": 2,
-          "type": "number",
-          "answer": 15,
-          "tolerance": 0
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\binom{6}{2}$",
+            "$P(6, 2)$",
+            "$6^2$",
+            "$2^6$"
+          ],
+          "answer": "$\\binom{6}{2}$"
         }
       ],
-      "explanation": "The factorial $6! = 6 \\times 5 \\times 4 \\times 3 \\times 2 \\times 1 = 720$. The combination $\\binom{6}{2} = \\dfrac{6 \\times 5}{2 \\times 1} = 15$.",
+      "explanation": "Arranging all $6$ distinct objects in order is a permutation of all of them, counted by $6! = 720$; the distractors $6^6$ and $2^6$ allow repetition or model independent binary choices, and $\\binom{6}{6} = 1$ counts choosing all six as one unordered set. Selecting $2$ objects with order irrelevant is the combination $\\binom{6}{2} = 15$, not the permutation $P(6, 2) = 30$, which would count the two orders of each pair separately.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-counting-and-permutations-024",
       "format": "cloze",
-      "stem": "A four-character code uses digits from $0$ to $9$. Count the possibilities under two rules.",
-      "solution": "If digits may repeat and order matters, the number of codes is $10^4$, which equals {{1}}. If no digit may repeat, the number of codes is $P(10, 4) = 10 \\times 9 \\times 8 \\times 7$, which equals {{2}}.",
+      "stem": "A four-character code uses digits from $0$ to $9$. Reason about the count under two repetition rules.",
+      "solution": "With repetition allowed and order mattering, each of the four positions independently has $10$ choices, so the number of codes is {{1}}. Evaluating that gives {{2}}. Forbidding repetition means each position has one fewer choice than the last, which is the {{3}} count $10 \\times 9 \\times 8 \\times 7$.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$10^4$",
+            "$4^{10}$",
+            "$\\binom{10}{4}$",
+            "$10 \\times 4$"
+          ],
+          "answer": "$10^4$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 10000,
           "tolerance": 0
         },
         {
-          "id": 2,
-          "type": "number",
-          "answer": 5040,
-          "tolerance": 0
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "permutation",
+            "combination",
+            "power",
+            "factorial"
+          ],
+          "answer": "permutation"
         }
       ],
-      "explanation": "With repetition allowed, each of the four positions has $10$ choices, giving $10^4 = 10000$. With no repetition, $P(10, 4) = 10 \\times 9 \\times 8 \\times 7 = 5040$.",
+      "explanation": "With repetition and order both in play, each of the $4$ positions is an independent choice among $10$ digits, so the product rule gives $10^4 = 10000$; the swap $4^{10}$ raises the wrong base, $\\binom{10}{4}$ drops order, and $10 \\times 4$ keeps only one factor. Forbidding repetition removes one option per step, giving the permutation $P(10, 4) = 10 \\times 9 \\times 8 \\times 7 = 5040$. It is a permutation, not a combination, because the order of the four digits matters.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-counting-and-permutations-025",
       "format": "cloze",
-      "stem": "Identify which counting rule applies in each scenario.",
-      "solution": "When a task is done in two independent stages and the stage counts are multiplied, this is the {{1}} rule. When a single choice is made from two disjoint groups and the group counts are added, this is the {{2}} rule.",
+      "stem": "A canteen offers $4$ main dishes and $3$ drinks. Decide which counting rule applies to two different questions.",
+      "solution": "To count meals made of one main and one drink, the two independent choices are combined by the {{1}} rule, giving {{2}} meals. To count the ways to pick a single item that is either a main or a drink, the disjoint options are combined by the {{3}} rule instead.",
       "gaps": [
         {
           "id": 1,
@@ -369,45 +401,64 @@
           "options": [
             "product",
             "sum",
-            "pigeonhole"
+            "pigeonhole",
+            "factorial"
           ],
           "answer": "product"
         },
         {
           "id": 2,
+          "type": "number",
+          "answer": 12,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
           "type": "dropdown",
           "options": [
-            "product",
             "sum",
-            "pigeonhole"
+            "product",
+            "pigeonhole",
+            "factorial"
           ],
           "answer": "sum"
         }
       ],
-      "explanation": "Multiplying counts for sequential independent stages is the product (multiplication) rule. Adding counts for a single choice among disjoint alternatives is the sum (addition) rule.",
+      "explanation": "A meal pairs one main with one drink, two independent stages, so the product rule multiplies: $4 \\times 3 = 12$ meals. Picking a single item that is either a main or a drink is one choice from two disjoint groups, so the sum rule adds: $4 + 3 = 7$. Multiplying when you should add, or the reverse, is the classic counting error: the product rule is for \"and\" (both stages happen), the sum rule for \"or\" (one item from disjoint groups).",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-counting-and-permutations-026",
       "format": "cloze",
-      "stem": "Count distinct arrangements of repeated letters and apply the pigeonhole principle.",
-      "solution": "The number of distinct arrangements of the letters of the word MISSISSIPPI ($11$ letters: one M, four I, four S, two P) is $\\dfrac{11!}{4!\\,4!\\,2!}$, which equals {{1}}. To guarantee that at least two of a group of people share a birthday month, the smallest group size needed is {{2}}.",
+      "stem": "Count distinct arrangements of the letters of MISSISSIPPI, then apply the pigeonhole principle.",
+      "solution": "MISSISSIPPI has $11$ letters with repeats: four I, four S, two P, and one M. The number of distinct arrangements is $11!$ divided by {{1}}, which removes the rearrangements of identical letters that produce the same word. This evaluates to {{2}}. Separately, to force two people to share a birth month, the pigeonhole principle needs more people than the $12$ months, so the smallest guaranteeing group has {{3}} people.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$4!\\,4!\\,2!$",
+            "$4 \\cdot 4 \\cdot 2$",
+            "$4! + 4! + 2!$",
+            "$(4 + 4 + 2)!$"
+          ],
+          "answer": "$4!\\,4!\\,2!$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 34650,
           "tolerance": 0
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "number",
           "answer": 13,
           "tolerance": 0
         }
       ],
-      "explanation": "Arrangements of MISSISSIPPI number $\\dfrac{11!}{4!\\,4!\\,2!} = \\dfrac{39916800}{24 \\times 24 \\times 2} = \\dfrac{39916800}{1152} = 34650$. By the pigeonhole principle with $12$ months, $13$ people force a shared birth month.",
+      "explanation": "Without repeats the $11$ letters would give $11!$ orderings, but the four I's, four S's, and two P's are indistinguishable, so we divide by $4!\\,4!\\,2!$ to cancel their internal rearrangements: $\\dfrac{11!}{4!\\,4!\\,2!} = \\dfrac{39916800}{1152} = 34650$. Dividing by $4 \\cdot 4 \\cdot 2$ or by $4! + 4! + 2!$ misapplies the correction. For the birth-month question the $12$ months are the pigeonholes: $12$ people could all differ, but a $13$th must repeat a month, so $13$ people guarantee a shared birth month.",
       "difficulty": "stretch",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     }

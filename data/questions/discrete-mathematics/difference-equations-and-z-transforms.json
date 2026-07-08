@@ -316,22 +316,38 @@
       "id": "discrete-mathematics-difference-equations-and-z-transforms-023",
       "format": "cloze",
       "stem": "Analyse the recurrence $a_n - 7 a_{n-1} + 12 a_{n-2} = 0$.",
-      "solution": "Substituting $a_n = x^n$ gives the characteristic equation $x^2 - 7x + 12 = 0$, which factors as $(x - 3)(x - 4) = 0$. The larger root is {{1}}. The order of this recurrence is {{2}}.",
+      "solution": "Substituting $a_n = x^n$ and dividing by $x^{n-2}$ turns the recurrence into the characteristic equation {{1}}. The larger of its two roots is {{2}}. The order of the recurrence, set by the span from the highest to the lowest index, is {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$x^2 - 7x + 12 = 0$",
+            "$x^2 + 7x + 12 = 0$",
+            "$-7x + 12 = 0$",
+            "$x^2 - 7x - 12 = 0$"
+          ],
+          "answer": "$x^2 - 7x + 12 = 0$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 4,
           "tolerance": 0
         },
         {
-          "id": 2,
-          "type": "number",
-          "answer": 2,
-          "tolerance": 0
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$2$",
+            "$1$",
+            "$3$",
+            "$7$"
+          ],
+          "answer": "$2$"
         }
       ],
-      "explanation": "The characteristic equation $x^2 - 7x + 12 = (x - 3)(x - 4) = 0$ has roots $3$ and $4$, so the larger root is $4$. The recurrence spans indices $n$ down to $n - 2$, so it is of order $2$.",
+      "explanation": "Putting $a_n = x^n$ and dividing by $x^{n-2}$ carries the coefficients straight across to $x^2 - 7x + 12 = 0$, so $+7x$ or $-12$ would be wrong. This factors as $(x - 3)(x - 4) = 0$, with roots $3$ and $4$, the larger being $4$. The order is the gap between the highest index $n$ and the lowest $n - 2$, namely $2$, not a coefficient or the number of terms.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
@@ -339,30 +355,46 @@
       "id": "discrete-mathematics-difference-equations-and-z-transforms-024",
       "format": "cloze",
       "stem": "Compute terms of the recurrence $a_n = 3 a_{n-1} - 2 a_{n-2}$ with $a_0 = 1$ and $a_1 = 3$.",
-      "solution": "Using the recurrence, $a_2 = 3 a_1 - 2 a_0 = 3(3) - 2(1)$, which equals {{1}}. Then $a_3 = 3 a_2 - 2 a_1 = 3(7) - 2(3)$, which equals {{2}}.",
+      "solution": "Writing $a_n = 3a_{n-1} - 2a_{n-2}$ at $n = 2$ gives $a_2 =$ {{1}}, which evaluates to {{2}}. Continuing to $n = 3$, $a_3 = 3a_2 - 2a_1$ comes out to {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$3a_1 - 2a_0$",
+            "$3a_0 - 2a_1$",
+            "$3a_1 - 2a_2$",
+            "$3a_2 - 2a_1$"
+          ],
+          "answer": "$3a_1 - 2a_0$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 7,
           "tolerance": 0
         },
         {
-          "id": 2,
-          "type": "number",
-          "answer": 15,
-          "tolerance": 0
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$15$",
+            "$18$",
+            "$12$",
+            "$21$"
+          ],
+          "answer": "$15$"
         }
       ],
-      "explanation": "Apply the recurrence step by step: $a_2 = 3(3) - 2(1) = 9 - 2 = 7$, then $a_3 = 3(7) - 2(3) = 21 - 6 = 15$.",
+      "explanation": "At $n = 2$ the recurrence reads $a_2 = 3a_1 - 2a_0$; the indices drop by one and two from $n$, so pairing $a_0$ with the coefficient $3$ (or referencing $a_2$ itself) is the common slip. With $a_1 = 3$ and $a_0 = 1$, $a_2 = 3(3) - 2(1) = 7$. Then $a_3 = 3a_2 - 2a_1 = 3(7) - 2(3) = 21 - 6 = 15$; forgetting the $-2a_1$ term gives the trap $21$.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-difference-equations-and-z-transforms-025",
       "format": "cloze",
-      "stem": "Recall the structure of difference-equation solutions and the Z-transform.",
-      "solution": "The complete solution of a nonhomogeneous linear difference equation is the homogeneous solution {{1}} a particular solution. The Z-transform of the unit step sequence $x_n = 1$ is $\\dfrac{z}{z - 1}$, where the constant in the denominator is {{2}}.",
+      "stem": "Reason about the structure of difference-equation solutions and the Z-transform.",
+      "solution": "The complete solution of a nonhomogeneous linear difference equation is the homogeneous (complementary) solution {{1}} a particular solution: the homogeneous part supplies the {{2}}, while the particular part matches the forcing term. Separately, the Z-transform of the unit step sequence $x_n = 1$ for $n \\ge 0$ is {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -370,26 +402,43 @@
           "options": [
             "plus",
             "times",
-            "minus"
+            "minus",
+            "divided by"
           ],
           "answer": "plus"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 1,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "arbitrary constants fixed by the initial conditions",
+            "forcing term",
+            "particular solution",
+            "characteristic equation"
+          ],
+          "answer": "arbitrary constants fixed by the initial conditions"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{z}{z - 1}$",
+            "$\\dfrac{1}{z - 1}$",
+            "$\\dfrac{z}{z + 1}$",
+            "$z - 1$"
+          ],
+          "answer": "$\\dfrac{z}{z - 1}$"
         }
       ],
-      "explanation": "The general solution is the homogeneous (complementary) solution plus a particular solution. The unit step transforms to $\\dfrac{z}{z - 1}$, so the constant subtracted in the denominator is $1$.",
+      "explanation": "For a linear nonhomogeneous recurrence the general solution is $a_n = a_n^{(h)} + a_n^{(p)}$, the homogeneous solution plus a particular solution; combining them by times or minus cannot satisfy both the recurrence and the initial data. The homogeneous part carries the arbitrary constants that the initial conditions fix, and the particular part accounts for the forcing term. The unit step $x_n = 1$ has Z-transform $\\sum_{n \\ge 0} z^{-n} = \\dfrac{1}{1 - z^{-1}} = \\dfrac{z}{z - 1}$; the form $\\dfrac{1}{z - 1}$ drops the numerator $z$ that comes from clearing the negative power.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-difference-equations-and-z-transforms-026",
       "format": "cloze",
-      "stem": "Classify recurrences and recall a Z-transform fact.",
-      "solution": "A difference equation whose forcing term is zero is called {{1}}. The Z-transform turns the shift $x_{n-1}$ into multiplication of the transform by $z$ raised to the power {{2}} (ignoring initial-value terms).",
+      "stem": "Classify recurrences and reason about a Z-transform property.",
+      "solution": "A difference equation whose forcing (right-hand) term is zero is called {{1}}; if the forcing term is a nonzero function of $n$, it is {{2}} instead. The Z-transform's shifting property sends a one-step delay $x_{n-1}$ to the transform multiplied by $z$ raised to the power {{3}} (ignoring initial-value terms).",
       "gaps": [
         {
           "id": 1,
@@ -397,18 +446,30 @@
           "options": [
             "homogeneous",
             "nonhomogeneous",
-            "nonlinear"
+            "nonlinear",
+            "first-order"
           ],
           "answer": "homogeneous"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "nonhomogeneous",
+            "homogeneous",
+            "linear",
+            "second-order"
+          ],
+          "answer": "nonhomogeneous"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": -1,
           "tolerance": 0
         }
       ],
-      "explanation": "A recurrence with a zero right-hand side is homogeneous. A one-step delay corresponds to multiplying the transform by $z^{-1}$, so the exponent is $-1$.",
+      "explanation": "A recurrence with a zero right-hand side is homogeneous; a nonzero function of $n$ on the right makes it nonhomogeneous, since homogeneity is about the forcing term, not the order or linearity. The Z-transform shifting property turns a one-step delay $x_{n-1}$ into multiplication by $z^{-1}$, so the exponent is $-1$; this is what converts a difference equation into an algebraic equation in $z$.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     }

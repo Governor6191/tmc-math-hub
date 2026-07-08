@@ -314,8 +314,8 @@
     {
       "id": "discrete-mathematics-sets-relations-functions-023",
       "format": "cloze",
-      "stem": "Let $A = \\{1, 2, 3, 5, 8\\}$ and $B = \\{2, 3, 4, 5\\}$. Compute the sizes of the intersection and union.",
-      "solution": "The common elements are $2, 3, 5$, so $|A \\cap B|$ equals {{1}}. Using $|A \\cup B| = |A| + |B| - |A \\cap B| = 5 + 4 - 3$, the size $|A \\cup B|$ equals {{2}}.",
+      "stem": "Let $A = \\{1, 2, 3, 5, 8\\}$ and $B = \\{2, 3, 4, 5\\}$. Reason out the sizes of the intersection and union.",
+      "solution": "The elements belonging to both $A$ and $B$ are the common members of $\\{1,2,3,5,8\\}$ and $\\{2,3,4,5\\}$; there are {{1}} of them, which is $|A \\cap B|$. By inclusion-exclusion, $|A \\cup B| = |A| + |B| - |A \\cap B|$, where the subtraction is needed because {{2}}. Substituting $|A| = 5$ and $|B| = 4$ gives $|A \\cup B| =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -325,35 +325,62 @@
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "the shared elements would otherwise be counted twice",
+            "the union is always smaller than either set",
+            "$A$ and $B$ are disjoint",
+            "the intersection is never part of the union"
+          ],
+          "answer": "the shared elements would otherwise be counted twice"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 6,
           "tolerance": 0
         }
       ],
-      "explanation": "The elements in both sets are $2$, $3$, and $5$, so the intersection has size $3$. By inclusion-exclusion, $|A \\cup B| = 5 + 4 - 3 = 6$, which matches listing the union $\\{1,2,3,4,5,8\\}$.",
+      "explanation": "The elements in both sets are $2$, $3$, and $5$, so $|A \\cap B| = 3$. Inclusion-exclusion subtracts the overlap because the sum $|A| + |B|$ counts each shared element twice; this gives $|A \\cup B| = 5 + 4 - 3 = 6$, matching the listed union $\\{1,2,3,4,5,8\\}$. The distractors misread the principle: the union is never smaller than either set, $A$ and $B$ are not disjoint since they share three elements, and the shared elements are certainly part of the union.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-sets-relations-functions-024",
       "format": "cloze",
-      "stem": "Let $A$ have $4$ elements and $B$ have $3$ elements. Compute two related counts.",
-      "solution": "The number of ordered pairs in the Cartesian product $A \\times B$ is $4 \\times 3$, which equals {{1}}. The number of subsets of $A$ is $2^4$, which equals {{2}}.",
+      "stem": "Let $A$ have $4$ elements and $B$ have $3$ elements. Reason out two related counts.",
+      "solution": "The size of the Cartesian product $A \\times B$ comes from the {{1}} rule, so $|A \\times B| = |A| \\cdot |B| =$ {{2}}. The number of subsets of $A$ is a different kind of count: because each of the $|A|$ elements is independently included or excluded, it equals {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "product",
+            "sum",
+            "pigeonhole",
+            "inclusion-exclusion"
+          ],
+          "answer": "product"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 12,
           "tolerance": 0
         },
         {
-          "id": 2,
-          "type": "number",
-          "answer": 16,
-          "tolerance": 0
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$2^{|A|}$",
+            "$2 \\cdot |A|$",
+            "$|A|!$",
+            "$|A|^{|B|}$"
+          ],
+          "answer": "$2^{|A|}$"
         }
       ],
-      "explanation": "The Cartesian product has $|A| \\cdot |B| = 4 \\times 3 = 12$ ordered pairs. The number of subsets of a set with $4$ elements is $2^4 = 16$, counting the empty set and the whole set.",
+      "explanation": "The Cartesian product pairs each of the $|A|$ first coordinates with each of the $|B|$ second coordinates, a two-stage independent choice, so the product rule gives $|A| \\cdot |B| = 4 \\times 3 = 12$; the sum rule $4 + 3 = 7$ would count a single choice between disjoint groups. The number of subsets is $2^{|A|} = 2^4 = 16$, since each element is independently in or out. The distractor $2 \\cdot |A|$ is linear, $|A|!$ counts orderings, and $|A|^{|B|} = 4^3$ counts functions from $B$ to $A$, none of which counts subsets.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
@@ -361,14 +388,15 @@
       "id": "discrete-mathematics-sets-relations-functions-025",
       "format": "cloze",
       "stem": "Classify a relation and a function using the standard vocabulary.",
-      "solution": "A relation that is reflexive, symmetric, and transitive is called an {{1}} relation. A function in which distinct inputs always have distinct outputs is called {{2}}.",
+      "solution": "A relation that is reflexive, symmetric, and transitive is called an {{1}} relation; the three properties together let it partition its set into classes. If instead a relation is reflexive, antisymmetric, and transitive, it is a {{2}}. A function in which distinct inputs always produce distinct outputs is called {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
             "equivalence",
-            "ordering",
+            "partial order",
+            "total",
             "empty"
           ],
           "answer": "equivalence"
@@ -377,40 +405,76 @@
           "id": 2,
           "type": "dropdown",
           "options": [
+            "partial order",
+            "equivalence",
+            "bijection",
+            "symmetric"
+          ],
+          "answer": "partial order"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
             "injective",
             "surjective",
+            "bijective",
             "constant"
           ],
           "answer": "injective"
         }
       ],
-      "explanation": "Reflexive, symmetric, and transitive together define an equivalence relation, which partitions the set into classes. A function sending distinct inputs to distinct outputs is injective (one-to-one), in contrast with surjective (onto) which is about covering the codomain.",
+      "explanation": "Reflexive, symmetric, and transitive together define an equivalence relation, which partitions the set into equivalence classes. Swapping symmetry for antisymmetry gives a partial order instead, the key structural contrast (equality is an equivalence relation, while $\\le$ is a partial order). A function sending distinct inputs to distinct outputs is injective (one-to-one); surjective means covering the whole codomain, and bijective requires both at once.",
       "difficulty": "core",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     },
     {
       "id": "discrete-mathematics-sets-relations-functions-026",
       "format": "cloze",
-      "stem": "Let $f : A \\to B$ where $A = \\{1, 2, 3, 4\\}$ and $B = \\{a, b, c, d, e\\}$, with $f$ injective. Reason about counts and possibility.",
-      "solution": "The number of functions (not necessarily injective) from $A$ to $B$ is $5^4$, which equals {{1}}. Since $|A| = 4 \\le 5 = |B|$, an injective function from $A$ to $B$ {{2}} exist.",
+      "stem": "Let $A = \\{1, 2, 3, 4\\}$ and $B = \\{a, b, c, d, e\\}$, and consider functions $f : A \\to B$. Reason about how many there are and whether an injective one is possible.",
+      "solution": "Each of the $4$ elements of $A$ can map to any of the $5$ elements of $B$, and these choices are independent, so the number of functions from $A$ to $B$ is {{1}}, which equals {{2}}. An injective function needs distinct outputs for distinct inputs, so one can exist only when {{3}}; since $|A| = 4$ and $|B| = 5$, an injective function {{4}} exist.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$5^4$",
+            "$4^5$",
+            "$5 \\times 4$",
+            "$5!$"
+          ],
+          "answer": "$5^4$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 625,
           "tolerance": 0
         },
         {
-          "id": 2,
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$|A| \\le |B|$",
+            "$|A| \\ge |B|$",
+            "$|A| = |B|$",
+            "$|A| \\cdot |B|$ is even"
+          ],
+          "answer": "$|A| \\le |B|$"
+        },
+        {
+          "id": 4,
           "type": "dropdown",
           "options": [
             "does",
-            "does not"
+            "does not",
+            "does only if $|A| = |B|$",
+            "may or may not"
           ],
           "answer": "does"
         }
       ],
-      "explanation": "Each of the $4$ inputs can map to any of the $5$ outputs, giving $5^4 = 625$ functions in total. An injective function needs at least as many outputs as inputs; since $4 \\le 5$, such a function exists (for example mapping to four distinct elements of $B$).",
+      "explanation": "Each of the $4$ inputs independently picks one of $5$ outputs, so by the product rule there are $5^4 = 625$ functions; the swap $4^5 = 1024$ wrongly raises the domain size to the codomain size, while $5 \\times 4$ and $5!$ count other things. An injective function needs at least as many outputs as inputs, that is $|A| \\le |B|$; here $4 \\le 5$, so an injective function does exist (for instance send $1, 2, 3, 4$ to four distinct elements of $B$). Had $|A|$ exceeded $|B|$, the pigeonhole principle would force two inputs to share an output.",
       "difficulty": "stretch",
       "source": "in the style of a KNUST Discrete Mathematics course (CSM 165 / MATH 172)"
     }

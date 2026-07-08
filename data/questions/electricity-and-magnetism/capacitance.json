@@ -287,17 +287,28 @@
     {
       "id": "electricity-and-magnetism-capacitance-021",
       "format": "cloze",
-      "stem": "A capacitor stores $12\\ \\mu\\text{C}$ at $6.0\\ \\text{V}$. Find its capacitance and name its SI unit.",
-      "solution": "The capacitance is $C = Q/V = 12/6.0 = $ {{1}} microfarads. The SI unit of capacitance is the {{2}}.",
+      "stem": "A capacitor stores a charge of $12\\ \\mu\\text{C}$ when $6.0\\ \\text{V}$ is applied across it. Find its capacitance and name the SI unit of capacitance.",
+      "solution": "Capacitance measures charge stored per unit voltage, so the defining relation is {{1}}. Substituting the given values gives a capacitance of {{2}} microfarads. Capacitance is measured in the SI unit called the {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 2,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "$C = Q/V$",
+            "$C = V/Q$",
+            "$C = QV$",
+            "$C = Q + V$"
+          ],
+          "answer": "$C = Q/V$"
         },
         {
           "id": 2,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
           "type": "text",
           "accept": [
             "farad",
@@ -306,130 +317,224 @@
           ]
         }
       ],
-      "explanation": "Dividing $12$ by $6.0$ gives $2.0\\ \\mu\\text{F}$. Capacitance is measured in farads, where one farad is one coulomb per volt.",
+      "explanation": "By definition $C = Q/V = 12/6.0 = 2.0\\ \\mu\\text{F}$. Inverting to $V/Q$ gives $0.5$ and multiplying as $QV$ gives $72$, both with the wrong units. Capacitance is measured in farads (symbol F), where one farad is one coulomb stored per volt applied.",
       "difficulty": "warmup",
       "source": "in the style of Tipler, Physics for Scientists and Engineers"
     },
     {
       "id": "electricity-and-magnetism-capacitance-022",
       "format": "cloze",
-      "stem": "A $2.0\\ \\mu\\text{F}$ capacitor is charged to $100\\ \\text{V}$. Find the energy stored and identify the formula used.",
-      "solution": "The energy is $U = \\tfrac{1}{2}CV^2 = \\tfrac{1}{2}(2.0 \\times 10^{-6})(100)^2 = $ {{1}} $\\text{ J}$. The energy formula in terms of $C$ and $V$ is {{2}}.",
+      "stem": "A $2.0\\ \\mu\\text{F}$ capacitor is charged to $100\\ \\text{V}$. Find the energy stored and identify the correct energy formula.",
+      "solution": "The energy stored in a capacitor is {{1}}. The step that most affects the size of the answer is squaring the voltage: $100^2 = $ {{2}}. Combining this with $C = 2.0 \\times 10^{-6}\\ \\text{F}$, the stored energy is {{3}} $\\text{J}$.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0.01,
-          "tolerance": 0.0005
+          "type": "dropdown",
+          "options": [
+            "$\\tfrac{1}{2}CV^2$",
+            "$CV^2$",
+            "$\\tfrac{1}{2}CV$",
+            "$\\tfrac{1}{2}C^2V$"
+          ],
+          "answer": "$\\tfrac{1}{2}CV^2$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "$\\tfrac{1}{2}CV^2$",
-            "$CV^2$",
-            "$\\tfrac{1}{2}CV$"
+            "$10^4$",
+            "$200$",
+            "$10^2$",
+            "$10^6$"
           ],
-          "answer": "$\\tfrac{1}{2}CV^2$"
+          "answer": "$10^4$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.01,
+          "tolerance": 0.001
         }
       ],
-      "explanation": "With $V^2 = 10^4$, the energy is $\\tfrac{1}{2}(2.0 \\times 10^{-6})(10^4) = 0.010\\ \\text{J}$. The stored energy is $\\tfrac{1}{2}CV^2$.",
+      "explanation": "The stored energy is $U = \\tfrac{1}{2}CV^2$. Squaring the voltage gives $100^2 = 10^4$; the classic slip is to double instead and write $200$. Then $U = \\tfrac{1}{2}(2.0 \\times 10^{-6})(10^4) = 0.010\\ \\text{J}$. Omitting the factor $\\tfrac{1}{2}$ would give $0.020\\ \\text{J}$, and using $CV$ without the square would collapse the answer entirely.",
       "difficulty": "core",
       "source": "in the style of Tipler, Physics for Scientists and Engineers"
     },
     {
       "id": "electricity-and-magnetism-capacitance-023",
       "format": "cloze",
-      "stem": "Capacitors of $6.0\\ \\mu\\text{F}$ and $3.0\\ \\mu\\text{F}$ are combined. Find the equivalent capacitance in series and in parallel.",
-      "solution": "In series, $\\tfrac{1}{C_{\\text{eq}}} = \\tfrac{1}{6.0} + \\tfrac{1}{3.0} = \\tfrac{3}{6.0}$, so $C_{\\text{eq}} = $ {{1}} microfarads. In parallel, the capacitances add to give $C_{\\text{eq}} = $ {{2}} microfarads.",
+      "stem": "Two capacitors of $6.0\\ \\mu\\text{F}$ and $3.0\\ \\mu\\text{F}$ are to be combined. Find the equivalent capacitance in series and in parallel.",
+      "solution": "Capacitors combine oppositely to resistors. In parallel the capacitances {{1}}, giving an equivalent of {{2}} microfarads. In series the reciprocals add instead, and the resulting series equivalent is {{3}} either individual capacitor.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 2,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "add directly",
+            "add as reciprocals",
+            "multiply together",
+            "subtract"
+          ],
+          "answer": "add directly"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 9,
-          "tolerance": 0.01
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "smaller than",
+            "larger than",
+            "equal to",
+            "double"
+          ],
+          "answer": "smaller than"
         }
       ],
-      "explanation": "The series reciprocal sum gives $2.0\\ \\mu\\text{F}$, less than either capacitor, while parallel addition gives $6.0 + 3.0 = 9.0\\ \\mu\\text{F}$.",
+      "explanation": "Parallel capacitors add directly, so $C_\\text{eq} = 6.0 + 3.0 = 9.0\\ \\mu\\text{F}$; adding plate area always raises capacitance. In series the reciprocals add, $\\tfrac{1}{C_\\text{eq}} = \\tfrac{1}{6.0} + \\tfrac{1}{3.0} = \\tfrac{3}{6.0}$, giving $C_\\text{eq} = 2.0\\ \\mu\\text{F}$, which is smaller than either capacitor. Swapping the two rules is the usual error, since capacitors behave opposite to resistors.",
       "difficulty": "core",
       "source": "in the style of Tipler, Physics for Scientists and Engineers"
     },
     {
       "id": "electricity-and-magnetism-capacitance-024",
       "format": "cloze",
-      "stem": "Capacitors of $3.0\\ \\mu\\text{F}$ and $6.0\\ \\mu\\text{F}$ are in series across $9.0\\ \\text{V}$. Find the common charge and the voltage across the $3.0\\ \\mu\\text{F}$ capacitor.",
-      "solution": "The series equivalent is $2.0\\ \\mu\\text{F}$, so the common charge is $Q = C_{\\text{eq}}V = 2.0 \\times 9.0 = $ {{1}} microcoulombs. The voltage across the $3.0\\ \\mu\\text{F}$ capacitor is $V = Q/C = $ {{2}} volts.",
+      "stem": "Capacitors of $3.0\\ \\mu\\text{F}$ and $6.0\\ \\mu\\text{F}$ are connected in series across a $9.0\\ \\text{V}$ battery. Find the charge on each capacitor and the voltage across the $3.0\\ \\mu\\text{F}$ capacitor.",
+      "solution": "In a series combination the quantity that is identical on both capacitors is {{1}}, not the voltage. Using the series equivalent $2.0\\ \\mu\\text{F}$, this common charge is $Q = C_\\text{eq}V = 2.0 \\times 9.0 = $ {{2}} microcoulombs. The voltage across the $3.0\\ \\mu\\text{F}$ capacitor is then $V = Q/C = $ {{3}} $\\text{V}$, which is the {{4}} of the two capacitor voltages because it is the smaller capacitor.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 18,
-          "tolerance": 0.1
+          "type": "dropdown",
+          "options": [
+            "the charge",
+            "the voltage",
+            "the capacitance",
+            "the stored energy"
+          ],
+          "answer": "the charge"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$18$",
+            "$27$",
+            "$54$",
+            "$9$"
+          ],
+          "answer": "$18$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 6,
-          "tolerance": 0.1
+          "tolerance": 0
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "larger",
+            "smaller",
+            "same",
+            "half"
+          ],
+          "answer": "larger"
         }
       ],
-      "explanation": "Series capacitors carry the same charge $Q = 18\\ \\mu\\text{C}$, and the $3.0\\ \\mu\\text{F}$ capacitor then has $V = 18/3.0 = 6.0\\ \\text{V}$. The smaller capacitor takes the larger voltage.",
+      "explanation": "Series capacitors carry the same charge, not the same voltage; that is the key idea. With $C_\\text{eq} = 2.0\\ \\mu\\text{F}$, the common charge is $Q = 2.0 \\times 9.0 = 18\\ \\mu\\text{C}$ (using $3.0$ or $6.0$ instead of $C_\\text{eq}$ would give $27$ or $54$). Then $V = Q/C = 18/3.0 = 6.0\\ \\text{V}$ across the $3.0\\ \\mu\\text{F}$ capacitor, while the $6.0\\ \\mu\\text{F}$ takes the remaining $3.0\\ \\text{V}$. The smaller capacitor takes the larger share of the voltage.",
       "difficulty": "stretch",
       "source": "in the style of Tipler, Physics for Scientists and Engineers"
     },
     {
       "id": "electricity-and-magnetism-capacitance-025",
       "format": "cloze",
-      "stem": "A dielectric of constant $\\kappa = 4$ fills a parallel-plate capacitor that was $2.0\\ \\mu\\text{F}$ in vacuum. Find the new capacitance and state whether the dielectric raises or lowers it.",
-      "solution": "The new capacitance is $C = \\kappa C_0 = 4 \\times 2.0 = $ {{1}} microfarads. Inserting a dielectric {{2}} the capacitance.",
+      "stem": "A dielectric slab of constant $\\kappa = 4$ completely fills a parallel-plate capacitor that was $2.0\\ \\mu\\text{F}$ in vacuum. Find the new capacitance and state whether the dielectric raises or lowers it.",
+      "solution": "Inserting a dielectric changes the capacitance by {{1}}, because the slab lets the plates hold more charge at the same voltage. The new capacitance is therefore {{2}} microfarads, which is {{3}} the vacuum value.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 8,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "multiplying it by $\\kappa$",
+            "dividing it by $\\kappa$",
+            "adding $\\kappa$ to it",
+            "leaving it unchanged"
+          ],
+          "answer": "multiplying it by $\\kappa$"
         },
         {
           "id": 2,
+          "type": "number",
+          "answer": 8,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
           "type": "dropdown",
           "options": [
-            "raises",
-            "lowers",
-            "does not change"
+            "larger than",
+            "smaller than",
+            "equal to",
+            "the reciprocal of"
           ],
-          "answer": "raises"
+          "answer": "larger than"
         }
       ],
-      "explanation": "Multiplying by $\\kappa = 4$ gives $8.0\\ \\mu\\text{F}$. A dielectric always raises capacitance, since it lets the plates hold more charge per volt.",
+      "explanation": "A dielectric multiplies the capacitance by $\\kappa$, so $C = \\kappa C_0 = 4 \\times 2.0 = 8.0\\ \\mu\\text{F}$, larger than the vacuum value. Dividing by $\\kappa$ (giving $0.5\\ \\mu\\text{F}$) points the wrong way, and adding $\\kappa$ (giving $6.0\\ \\mu\\text{F}$) misreads the relationship. Physically the dielectric reduces the field for a given charge, letting the plates store more charge per volt.",
       "difficulty": "core",
       "source": "in the style of Tipler, Physics for Scientists and Engineers"
     },
     {
       "id": "electricity-and-magnetism-capacitance-026",
       "format": "cloze",
-      "stem": "A $4.0\\ \\mu\\text{F}$ capacitor charged to $12\\ \\text{V}$ is disconnected and then connected in parallel to an uncharged $2.0\\ \\mu\\text{F}$ capacitor. Find the conserved charge and the final voltage.",
-      "solution": "The charge is conserved: $Q = (4.0)(12) = $ {{1}} microcoulombs. Sharing this over the total capacitance $6.0\\ \\mu\\text{F}$, the final voltage is $V = Q/C_{\\text{eq}} = $ {{2}} volts.",
+      "stem": "A $4.0\\ \\mu\\text{F}$ capacitor charged to $12\\ \\text{V}$ is disconnected from the battery and then connected in parallel to an uncharged $2.0\\ \\mu\\text{F}$ capacitor. Find the final voltage across the combination.",
+      "solution": "With the battery gone, the quantity that stays fixed as the capacitors share is {{1}}. Its value is $Q = (4.0)(12) = 48\\ \\mu\\text{C}$. This charge now sits on the combined parallel capacitance, which is {{2}} microfarads. The final voltage $V = Q/C_\\text{eq}$ works out to {{3}} $\\text{V}$, which is {{4}} the original $12\\ \\text{V}$.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 48,
-          "tolerance": 0.5
+          "type": "dropdown",
+          "options": [
+            "the total charge",
+            "the voltage",
+            "the stored energy",
+            "the capacitance"
+          ],
+          "answer": "the total charge"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$6.0$",
+            "$2.0$",
+            "$1.3$",
+            "$48$"
+          ],
+          "answer": "$6.0$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 8,
-          "tolerance": 0.1
+          "tolerance": 0
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "lower than",
+            "higher than",
+            "equal to",
+            "double"
+          ],
+          "answer": "lower than"
         }
       ],
-      "explanation": "The stored charge is $48\\ \\mu\\text{C}$, and spreading it over $4.0 + 2.0 = 6.0\\ \\mu\\text{F}$ gives $V = 48/6.0 = 8.0\\ \\text{V}$. The voltage drops because the same charge now sits on more capacitance.",
+      "explanation": "Once disconnected, the charge $Q = (4.0)(12) = 48\\ \\mu\\text{C}$ is conserved, not the voltage. The two capacitors in parallel give $C_\\text{eq} = 4.0 + 2.0 = 6.0\\ \\mu\\text{F}$, so $V = Q/C_\\text{eq} = 48/6.0 = 8.0\\ \\text{V}$. The voltage falls below the original $12\\ \\text{V}$ because the same charge now spreads over more capacitance. Assuming the voltage stays at $12\\ \\text{V}$ ignores the second capacitor entirely.",
       "difficulty": "stretch",
       "source": "in the style of Tipler, Physics for Scientists and Engineers"
     }
