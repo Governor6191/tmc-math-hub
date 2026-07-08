@@ -428,16 +428,32 @@
       "id": "calculus-ii-introduction-to-integration-031",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int 8x^3\\,dx$ by reversing the power rule.",
-      "solution": "Raise the exponent by one to get the new exponent {{1}}, then divide the coefficient $8$ by it. The result is $2x^{4}$ plus the constant of integration, written {{2}}.",
+      "solution": "The reverse power rule sends $x^n$ to {{1}}. Applying that to the integrand gives $\\int 8x^3\\,dx =$ {{2}}, together with the arbitrary constant every indefinite integral carries, written {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 4,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{x^{n+1}}{n+1}$",
+            "$\\dfrac{x^{n-1}}{n-1}$",
+            "$nx^{n-1}$",
+            "$\\dfrac{x^{n+1}}{n}$"
+          ],
+          "answer": "$\\dfrac{x^{n+1}}{n+1}$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$2x^4$",
+            "$8x^4$",
+            "$\\dfrac{8x^4}{3}$",
+            "$24x^2$"
+          ],
+          "answer": "$2x^4$"
+        },
+        {
+          "id": 3,
           "type": "text",
           "accept": [
             "C",
@@ -445,7 +461,7 @@
           ]
         }
       ],
-      "explanation": "Reverse power rule: the new exponent is $3 + 1 = 4$, and dividing $8$ by $4$ gives $2$. The constant of integration $C$ completes the indefinite integral.",
+      "explanation": "Reversing the power rule means raising the exponent by one and dividing by that new exponent: $x^n$ becomes $\\frac{x^{n+1}}{n+1}$. The distractors $\\frac{x^{n-1}}{n-1}$ and $nx^{n-1}$ both move in the differentiation direction, and $\\frac{x^{n+1}}{n}$ divides by the old exponent. Applied to $8x^3$: raise to $x^4$ and divide the coefficient $8$ by the new exponent $4$, giving $2x^4$. Choosing $8x^4$ forgets the division entirely, $\\frac{8x^4}{3}$ divides by the old exponent $3$, and $24x^2$ differentiates instead of integrating. The constant of integration $C$ completes the answer, because an indefinite integral names every antiderivative at once. Check by differentiating: $\\frac{d}{dx}\\left(2x^4 + C\\right) = 8x^3$.",
       "difficulty": "warmup",
       "source": "in the style of Stewart 8e"
     },
@@ -453,10 +469,21 @@
       "id": "calculus-ii-introduction-to-integration-032",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int \\left(4x^3 - 6x + 7\\right)dx$ term by term.",
-      "solution": "Antidifferentiate each term. The integral $\\int 4x^3\\,dx$ equals {{1}}, while $\\int (-6x)\\,dx = -3x^2$ and $\\int 7\\,dx = 7x$. Putting the pieces together gives $x^4 - 3x^2 + 7x$ plus a constant, written {{2}}.",
+      "solution": "Integration distributes over the sum, and each power term follows the reverse power rule: raise the exponent by one, then divide by {{1}}. The cubic term gives $\\int 4x^3\\,dx =$ {{2}}, the linear term gives $\\int (-6x)\\,dx =$ {{3}}, and the constant term integrates to {{4}}. Adding $C$ finishes the family of antiderivatives.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "the new exponent, $n + 1$",
+            "the old exponent, $n$",
+            "the exponent lowered by one, $n - 1$",
+            "the coefficient already in front"
+          ],
+          "answer": "the new exponent, $n + 1$"
+        },
+        {
+          "id": 2,
           "type": "dropdown",
           "options": [
             "$x^4$",
@@ -467,15 +494,29 @@
           "answer": "$x^4$"
         },
         {
-          "id": 2,
-          "type": "text",
-          "accept": [
-            "C",
-            "c"
-          ]
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$-3x^2$",
+            "$-6x^2$",
+            "$-3x$",
+            "$-6$"
+          ],
+          "answer": "$-3x^2$"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "$7x$",
+            "$7$",
+            "$0$",
+            "$\\dfrac{7x^2}{2}$"
+          ],
+          "answer": "$7x$"
         }
       ],
-      "explanation": "For $4x^3$, raise to $x^4$ and divide $4$ by the new exponent $4$, giving $x^4$. The constant $C$ must appear because the integral is indefinite.",
+      "explanation": "Each power term obeys the reverse power rule: raise the exponent by one, then divide by the new exponent $n + 1$, never the old one and never the coefficient. So $\\int 4x^3\\,dx = \\frac{4x^4}{4} = x^4$ and $\\int (-6x)\\,dx = -\\frac{6x^2}{2} = -3x^2$; the distractors $4x^4$ and $-6x^2$ skip the division, $\\frac{4x^4}{3}$ and $-3x$ mishandle the exponent, and $12x^2$ and $-6$ differentiate instead. The constant integrates to $7x$, since $\\frac{d}{dx}(7x) = 7$: leaving it as $7$ or sending it to $0$ is a differentiation habit, and $\\frac{7x^2}{2}$ integrates $7x$ rather than $7$. Assembling the pieces gives $x^4 - 3x^2 + 7x + C$, and differentiating back returns $4x^3 - 6x + 7$, confirming every coefficient.",
       "difficulty": "core",
       "source": "in the style of Schaum's Outline of Calculus"
     },
@@ -483,29 +524,32 @@
       "id": "calculus-ii-introduction-to-integration-033",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int \\frac{5}{x}\\,dx$ for $x > 0$.",
-      "solution": "The reverse power rule fails at exponent $-1$, so this integral is the logarithmic case. The correct antiderivative is {{1}}, where the constant of integration is written as {{2}}.",
+      "solution": "Write the integrand as $5x^{-1}$ and test the reverse power rule: it fails here because {{1}}. On $x > 0$ the antiderivative is therefore {{2}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$5\\ln x + C$",
-            "$5\\log_{10} x + C$",
-            "$\\dfrac{5}{x^2} + C$",
-            "$-\\dfrac{5}{x^2} + C$"
+            "raising the exponent by one lands on $0$, and dividing by that new exponent is impossible",
+            "the coefficient $5$ cannot be pulled out of an integral",
+            "negative exponents always fall outside the power rule",
+            "the integrand is undefined at $x = 0$, so no antiderivative exists"
           ],
-          "answer": "$5\\ln x + C$"
+          "answer": "raising the exponent by one lands on $0$, and dividing by that new exponent is impossible"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "C",
-            "c"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$5\\ln x + C$",
+            "$5\\log_{10} x + C$",
+            "$\\ln(5x) + C$",
+            "$-\\dfrac{5}{x^2} + C$"
+          ],
+          "answer": "$5\\ln x + C$"
         }
       ],
-      "explanation": "Only exponent $-1$ gives a logarithm: $\\int \\frac{1}{x}\\,dx = \\ln x + C$ for $x > 0$, so the constant multiple gives $5\\ln x + C$.",
+      "explanation": "Written as $5x^{-1}$, the exponent is $-1$, and raising it by one gives $0$: the reverse power rule would demand dividing by zero, which is exactly the one case where it fails. The coefficient $5$ is harmless because constants always pull through an integral, other negative exponents like $x^{-2}$ integrate by the power rule without trouble, and the undefined point $x = 0$ does not matter here because the problem lives on $x > 0$. The gap the power rule leaves is filled by the natural logarithm: $\\int \\frac{1}{x}\\,dx = \\ln x + C$ on $x > 0$, so the answer is $5\\ln x + C$, and the check $\\frac{d}{dx}(5\\ln x) = \\frac{5}{x}$ confirms it. The base-ten option $5\\log_{10} x + C$ differentiates to $\\frac{5}{x\\ln 10}$, off by a factor of $\\ln 10$; moving the constant inside as $\\ln(5x) + C$ differentiates to $\\frac{1}{x}$, losing the $5$ entirely; and $-\\frac{5}{x^2} + C$ is the derivative of the integrand, not an antiderivative.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e"
     },
@@ -513,22 +557,38 @@
       "id": "calculus-ii-introduction-to-integration-034",
       "format": "cloze",
       "stem": "Use the Fundamental Theorem of Calculus to evaluate $\\displaystyle\\int_{1}^{3} 4x^3\\,dx$.",
-      "solution": "An antiderivative of $4x^3$ is $F(x) = x^4$. Evaluate at the limits: $F(3)$ equals {{1}} and $F(1) = 1$. The definite integral equals $F(3) - F(1)$, which is {{2}}.",
+      "solution": "Part 2 of the Fundamental Theorem needs an antiderivative of the integrand first: take $F(x) =$ {{1}}. The theorem then says the definite integral equals {{2}}. Carrying out that evaluation gives {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 81,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$x^4$",
+            "$4x^4$",
+            "$\\dfrac{x^4}{4}$",
+            "$12x^2$"
+          ],
+          "answer": "$x^4$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$F(3) - F(1)$",
+            "$F(1) - F(3)$",
+            "$F(3) + F(1)$",
+            "$F'(3) - F'(1)$"
+          ],
+          "answer": "$F(3) - F(1)$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 80,
           "tolerance": 0
         }
       ],
-      "explanation": "Since $\\frac{d}{dx}x^4 = 4x^3$, the FTC gives $F(3) - F(1) = 81 - 1 = 80$.",
+      "explanation": "First find any antiderivative: $F(x) = x^4$ works because $\\frac{d}{dx}x^4 = 4x^3$. Choosing $4x^4$ forgets to divide by the new exponent, $\\frac{x^4}{4}$ divides but ignores the coefficient $4$ already present, and $12x^2$ differentiates. Part 2 of the Fundamental Theorem then evaluates the integral as $F(3) - F(1)$: antiderivative at the upper limit minus antiderivative at the lower limit. Reversing the order flips the sign, adding the two values has no justification, and $F'(3) - F'(1)$ plugs the limits back into the integrand, skipping the antidifferentiation the theorem is built on. Numerically, $F(3) = 81$ and $F(1) = 1$, so the integral is $81 - 1 = 80$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e"
     },
@@ -536,7 +596,7 @@
       "id": "calculus-ii-introduction-to-integration-035",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int_{0}^{\\pi/2} \\sin x\\,dx$.",
-      "solution": "An antiderivative of $\\sin x$ is {{1}}. Then the integral is $\\left(-\\cos\\dfrac{\\pi}{2}\\right) - \\left(-\\cos 0\\right) = 0 - (-1)$, which equals {{2}}.",
+      "solution": "An antiderivative of $\\sin x$ is $F(x) =$ {{1}}. The Fundamental Theorem evaluates the integral as $F\\left(\\frac{\\pi}{2}\\right) - F(0)$. The lower-limit term $F(0)$ equals {{2}}, and completing the subtraction gives the value {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -545,18 +605,29 @@
             "$-\\cos x$",
             "$\\cos x$",
             "$-\\sin x$",
-            "$\\sin x$"
+            "$\\dfrac{\\sin^2 x}{2}$"
           ],
           "answer": "$-\\cos x$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$-1$",
+            "$1$",
+            "$0$",
+            "$\\dfrac{1}{2}$"
+          ],
+          "answer": "$-1$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 1,
           "tolerance": 0
         }
       ],
-      "explanation": "Integrating sine gives minus cosine. With $\\cos\\frac{\\pi}{2} = 0$ and $\\cos 0 = 1$, the value is $0 - (-1) = 1$.",
+      "explanation": "Integrating sine gives minus cosine: $F(x) = -\\cos x$, since $\\frac{d}{dx}(-\\cos x) = \\sin x$. Picking $\\cos x$ is the classic sign slip, $-\\sin x$ pairs the minus with the wrong function, and $\\frac{\\sin^2 x}{2}$ applies the power rule to the symbol $\\sin x$ as if it were a bare variable. At the lower limit, $F(0) = -\\cos 0 = -1$: answering $1$ drops the minus sign carried by the antiderivative, and $0$ confuses $\\cos 0$ with $\\sin 0$. The theorem then gives $F\\left(\\frac{\\pi}{2}\\right) - F(0) = 0 - (-1) = 1$. The double negative is the whole trap: subtracting the negative lower-limit value adds, and a positive integrand on $\\left[0, \\frac{\\pi}{2}\\right]$ had to produce a positive answer.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e"
     },
@@ -564,36 +635,57 @@
       "id": "calculus-ii-introduction-to-integration-036",
       "format": "cloze",
       "stem": "Find $f(x)$ given that $f'(x) = 3x^2$ and $f(2) = 10$.",
-      "solution": "Antidifferentiate: $f(x) = x^3 + C$. Apply the initial condition $f(2) = 8 + C = 10$, so the constant $C$ is {{1}}. Therefore $f(x) = x^3$ plus that constant, giving the constant term {{2}}.",
+      "solution": "Antidifferentiating $f'(x) = 3x^2$ gives the family $f(x) =$ {{1}}. Substituting the initial condition turns this into the equation {{2}}, and solving that equation gives $C =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 2,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$x^3 + C$",
+            "$x^3$",
+            "$\\dfrac{x^3}{3} + C$",
+            "$6x + C$"
+          ],
+          "answer": "$x^3 + C$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$8 + C = 10$",
+            "$12 + C = 10$",
+            "$6 + C = 10$",
+            "$8 + C = 0$"
+          ],
+          "answer": "$8 + C = 10$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 2,
           "tolerance": 0
         }
       ],
-      "explanation": "The antiderivative of $3x^2$ is $x^3 + C$. Solving $8 + C = 10$ gives $C = 2$, so $f(x) = x^3 + 2$.",
-      "difficulty": "warmup",
+      "explanation": "Antidifferentiating $3x^2$ gives $x^3$, and the full family is $f(x) = x^3 + C$: dropping the $+C$ leaves nothing for the initial condition to determine, $\\frac{x^3}{3} + C$ ignores the coefficient $3$ waiting to cancel, and $6x + C$ differentiates instead. Substituting $x = 2$ and setting the result equal to $10$ gives $8 + C = 10$, because $2^3 = 8$. The distractor $12 + C = 10$ substitutes into $f'(x) = 3x^2$ instead of into $f$, the equation $6 + C = 10$ computes $2^3$ as $2 \\times 3$, and $8 + C = 0$ forgets the target value entirely. Solving gives $C = 2$, so $f(x) = x^3 + 2$, which satisfies both $f'(x) = 3x^2$ and $f(2) = 10$.",
+      "difficulty": "core",
       "source": "in the style of Schaum's Outline of Calculus"
     },
     {
       "id": "calculus-ii-introduction-to-integration-037",
       "format": "cloze",
       "stem": "Suppose $\\displaystyle\\int_{0}^{4} f(x)\\,dx = 9$ and $\\displaystyle\\int_{0}^{4} g(x)\\,dx = -3$. Evaluate $\\displaystyle\\int_{0}^{4} \\left(2f(x) + g(x)\\right)dx$.",
-      "solution": "By linearity, pull the constants out and split the integral. The integral of $f$ contributes the value {{1}}, so the total is $2 \\cdot 9 + (-3) = 18 - 3$, which works out to {{2}}.",
+      "solution": "Linearity pulls constant multiples out and splits the sum apart, so the given values assemble as {{1}}. Evaluating that expression gives {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 9,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$2(9) + (-3)$",
+            "$2(9 + (-3))$",
+            "$2(9) - (-3)$",
+            "$9 + 2(-3)$"
+          ],
+          "answer": "$2(9) + (-3)$"
         },
         {
           "id": 2,
@@ -602,7 +694,7 @@
           "tolerance": 0
         }
       ],
-      "explanation": "Linearity gives $2\\int f + \\int g = 2(9) + (-3) = 18 - 3 = 15$.",
+      "explanation": "Linearity works term by term: the coefficient $2$ scales only the $f$ integral, and the $g$ integral joins with its own sign, giving $2(9) + (-3)$. Distributing the $2$ over both integrals as $2(9 + (-3))$ scales $g$ by a factor it never had, $2(9) - (-3)$ flips the sign of $g$'s contribution even though the integrand adds $g$, and $9 + 2(-3)$ attaches the coefficient to the wrong function. Evaluating: $18 - 3 = 15$. The trap is sign bookkeeping: because $g$'s integral is already negative, adding it correctly subtracts $3$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e"
     },
@@ -610,27 +702,38 @@
       "id": "calculus-ii-introduction-to-integration-038",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int_{-3}^{3} \\left(x^5 + 2x\\right)dx$ using symmetry.",
-      "solution": "The integrand $x^5 + 2x$ is an {{1}} function, and the interval $[-3, 3]$ is symmetric about the origin, so the two halves cancel. The value of the integral is {{2}}.",
+      "solution": "Check symmetry before computing anything: replacing $x$ by $-x$ turns the integrand into {{1}}. Over the origin-symmetric interval $[-3, 3]$ the integrand is therefore {{2}}, so the integral equals {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "odd",
-            "even",
-            "constant",
-            "periodic"
+            "$-(x^5 + 2x)$",
+            "$x^5 + 2x$",
+            "$-x^5 + 2x$",
+            "$x^5 - 2x$"
           ],
-          "answer": "odd"
+          "answer": "$-(x^5 + 2x)$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "odd, so the two halves cancel",
+            "even, so the two halves add",
+            "neither odd nor even, so symmetry gives no shortcut",
+            "odd, so the two halves add"
+          ],
+          "answer": "odd, so the two halves cancel"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 0,
           "tolerance": 0
         }
       ],
-      "explanation": "Both $x^5$ and $2x$ are odd, so their sum is odd. The integral of an odd function over a symmetric interval is $0$.",
+      "explanation": "Substituting $-x$: the odd power gives $(-x)^5 = -x^5$ and the linear term gives $2(-x) = -2x$, so the integrand becomes $-x^5 - 2x = -(x^5 + 2x)$. The distractors each fumble a sign: $x^5 + 2x$ would make the function even, while the mixed options flip only one of the two terms. A function with $f(-x) = -f(x)$ is odd, and over an interval symmetric about the origin the signed area on $[-3, 0]$ exactly cancels the signed area on $[0, 3]$, so the integral is $0$ with no antiderivative needed. Knowing the function is odd but doubling anyway applies the even-function shortcut to the wrong class: even functions double, odd functions cancel. The direct check agrees: $F(x) = \\frac{x^6}{6} + x^2$ is even, so $F(3) - F(-3) = 0$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e"
     },
@@ -638,13 +741,18 @@
       "id": "calculus-ii-introduction-to-integration-039",
       "format": "cloze",
       "stem": "Let $g(x) = \\displaystyle\\int_{1}^{x} \\sqrt{t^2 + 7}\\,dt$. Find $g'(3)$.",
-      "solution": "By Part 1 of the Fundamental Theorem, $g'(x)$ equals the integrand evaluated at the upper limit, so $g'(x) = \\sqrt{x^2 + 7}$. Substituting $x = 3$ gives $9 + 7$ under the root, which is the radicand {{1}}, and the square root of that radicand equals {{2}}.",
+      "solution": "The upper limit is the bare variable $x$, so Part 1 of the Fundamental Theorem applies directly: $g'(x)$ is {{1}}. Evaluating at $x = 3$ then gives $g'(3) =$ {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 16,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$\\sqrt{x^2 + 7}$",
+            "$\\sqrt{x^2 + 7} - \\sqrt{8}$",
+            "$\\dfrac{x}{\\sqrt{x^2 + 7}}$",
+            "unknowable until an antiderivative of $\\sqrt{t^2 + 7}$ is written down"
+          ],
+          "answer": "$\\sqrt{x^2 + 7}$"
         },
         {
           "id": 2,
@@ -653,7 +761,7 @@
           "tolerance": 0
         }
       ],
-      "explanation": "Part 1 of the FTC says differentiating an integral with variable upper limit returns the integrand there: $g'(3) = \\sqrt{3^2 + 7} = \\sqrt{16} = 4$. No antiderivative is needed.",
+      "explanation": "Because the upper limit is the plain variable $x$, Part 1 of the Fundamental Theorem differentiates the accumulation function directly: $g'(x) = \\sqrt{x^2 + 7}$, the integrand evaluated at the upper limit. No explicit antiderivative is ever needed, which is the entire point of the theorem, so the last option gives up on exactly the shortcut being tested. Subtracting $\\sqrt{8}$, the integrand's value at the lower limit, confuses Part 1 with the evaluation rule of Part 2: the lower limit only shifts $g$ by a constant, and constants vanish under differentiation. The option $\\frac{x}{\\sqrt{x^2 + 7}}$ differentiates the integrand a second time instead of stopping. At $x = 3$: $g'(3) = \\sqrt{9 + 7} = \\sqrt{16} = 4$.",
       "difficulty": "stretch",
       "source": "in the style of Stewart 8e"
     }

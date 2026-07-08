@@ -426,74 +426,119 @@
     {
       "id": "linear-algebra-i-determinants-031",
       "format": "cloze",
-      "stem": "Compute the determinant $\\begin{vmatrix} 5 & 3 \\\\ 2 & 4 \\end{vmatrix}$.",
-      "solution": "For a $2 \\times 2$ matrix the determinant is the main-diagonal product minus the anti-diagonal product, that is $ad - bc$. The main-diagonal product is $5 \\cdot 4 = 20$, the anti-diagonal product is $3 \\cdot 2 = 6$, and the determinant is the difference {{1}}. Because this value is {{2}}, the matrix is invertible.",
+      "stem": "Compute the determinant $\\begin{vmatrix} 5 & 3 \\\\ 2 & 4 \\end{vmatrix}$ and decide whether the matrix is invertible.",
+      "solution": "The $2 \\times 2$ rule computes this determinant as {{1}}. Carrying that out gives {{2}}. A square matrix is invertible exactly when its determinant is {{3}}, so this matrix {{4}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$5 \\cdot 4 - 3 \\cdot 2$",
+            "$5 \\cdot 4 + 3 \\cdot 2$",
+            "$5 \\cdot 3 - 2 \\cdot 4$",
+            "$5 \\cdot 2 - 3 \\cdot 4$"
+          ],
+          "answer": "$5 \\cdot 4 - 3 \\cdot 2$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 14,
           "tolerance": 0
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
             "nonzero",
             "zero",
-            "negative",
-            "equal to one"
+            "positive",
+            "equal to $1$"
           ],
           "answer": "nonzero"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "is invertible",
+            "is singular",
+            "cannot be classified from the determinant alone",
+            "is invertible only if it is also symmetric"
+          ],
+          "answer": "is invertible"
         }
       ],
-      "explanation": "The formula $ad - bc$ subtracts the anti-diagonal product from the main-diagonal product, giving $20 - 6 = 14$. A nonzero determinant means the matrix has an inverse.",
-      "difficulty": "warmup",
+      "explanation": "The $2 \\times 2$ determinant is $ad - bc$: the main-diagonal product minus the anti-diagonal product. Here that is $5 \\cdot 4 - 3 \\cdot 2 = 20 - 6 = 14$. Adding the two products as $5 \\cdot 4 + 3 \\cdot 2 = 26$ is the classic sign trap, while $5 \\cdot 3 - 2 \\cdot 4$ pairs the entries across rows and $5 \\cdot 2 - 3 \\cdot 4$ pairs them down columns, neither of which is the diagonal rule. Invertibility asks only that the determinant be nonzero; it does not need to be positive or equal to $1$. Since $14 \\neq 0$, the matrix is invertible, and symmetry has nothing to do with it.",
+      "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
     {
       "id": "linear-algebra-i-determinants-032",
       "format": "cloze",
-      "stem": "Compute the determinant of the diagonal matrix $\\begin{pmatrix} 3 & 0 & 0 \\\\ 0 & -2 & 0 \\\\ 0 & 0 & 5 \\end{pmatrix}$.",
-      "solution": "For a diagonal or triangular matrix the determinant is the {{1}} of the diagonal entries, since the off-diagonal zeros contribute nothing. Multiplying the diagonal entries gives $3 \\cdot (-2) \\cdot 5 =$ {{2}}.",
+      "stem": "Compute the determinant of the diagonal matrix $\\begin{pmatrix} 3 & 0 & 0 \\\\ 0 & -2 & 0 \\\\ 0 & 0 & 5 \\end{pmatrix}$ and decide whether the matrix is invertible.",
+      "solution": "A diagonal matrix is a special case of a triangular matrix, so its determinant equals {{1}}. Here that gives {{2}}. From this value we conclude that the matrix {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
-            "product"
-          ]
+          "type": "dropdown",
+          "options": [
+            "the product of the diagonal entries",
+            "the sum of the diagonal entries",
+            "zero, because most of the entries are zero",
+            "the product of the absolute values of the diagonal entries"
+          ],
+          "answer": "the product of the diagonal entries"
         },
         {
           "id": 2,
           "type": "number",
           "answer": -30,
           "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "is invertible, because the determinant is nonzero",
+            "is not invertible, because the determinant is negative",
+            "is not invertible, because the matrix contains zero entries",
+            "cannot be classified without row reducing"
+          ],
+          "answer": "is invertible, because the determinant is nonzero"
         }
       ],
-      "explanation": "A triangular determinant ignores everything off the diagonal and multiplies the diagonal entries. Here $3 \\cdot (-2) \\cdot 5 = -30$, with the single negative entry making the result negative.",
-      "difficulty": "warmup",
+      "explanation": "For a triangular (hence diagonal) matrix the determinant is the product of the diagonal entries: $3 \\cdot (-2) \\cdot 5 = -30$. The many zero entries do not force a zero determinant; they merely kill every other term of the cofactor expansion. Summing the diagonal gives the trace, $6$, which is a different invariant, and taking absolute values first would give $30$ and destroy the sign, which the determinant carries. Invertibility only requires a nonzero determinant, so $-30$ qualifies: a negative determinant is perfectly invertible, and no row reduction is needed once the determinant is known.",
+      "difficulty": "core",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
     {
       "id": "linear-algebra-i-determinants-033",
       "format": "cloze",
       "stem": "Compute the determinant $\\begin{vmatrix} 1 & 2 & 0 \\\\ 3 & -1 & 4 \\\\ 2 & 0 & 1 \\end{vmatrix}$ by expansion along the first row.",
-      "solution": "This is the {{1}} expansion along the first row, where the middle term carries a minus sign from the checkerboard pattern. The first term is $1 \\cdot ((-1)(1) - 4 \\cdot 0) = -1$, the second term is $-2 \\cdot (3 \\cdot 1 - 4 \\cdot 2) =$ {{2}}, and the third term is $0$. Adding the terms gives the determinant {{3}}.",
+      "solution": "Each term of the expansion is an entry times its cofactor. The entry $1$ in position $(1,1)$ contributes $1 \\cdot ((-1)(1) - (4)(0)) = -1$. For the entry $2$ in position $(1,2)$, the minor is the determinant of {{1}}, and once the checkerboard sign is attached the full second term equals {{2}}. The entry $0$ wipes out the third term, so the determinant is {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
-            "cofactor",
-            "Laplace"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$\\begin{pmatrix} 3 & 4 \\\\ 2 & 1 \\end{pmatrix}$",
+            "$\\begin{pmatrix} -1 & 4 \\\\ 0 & 1 \\end{pmatrix}$",
+            "$\\begin{pmatrix} 3 & -1 \\\\ 2 & 0 \\end{pmatrix}$",
+            "$\\begin{pmatrix} 1 & 0 \\\\ 2 & 1 \\end{pmatrix}$"
+          ],
+          "answer": "$\\begin{pmatrix} 3 & 4 \\\\ 2 & 1 \\end{pmatrix}$"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 10,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$10$",
+            "$-10$",
+            "$2$",
+            "$-22$"
+          ],
+          "answer": "$10$"
         },
         {
           "id": 3,
@@ -502,7 +547,7 @@
           "tolerance": 0
         }
       ],
-      "explanation": "Cofactor expansion alternates signs across the row, so the middle minor $(3 - 8) = -5$ becomes $-2 \\cdot (-5) = 10$. Summing $-1 + 10 + 0 = 9$ gives the determinant.",
+      "explanation": "The minor of the entry in row $1$, column $2$ deletes that row and that column, leaving $\\begin{pmatrix} 3 & 4 \\\\ 2 & 1 \\end{pmatrix}$ with determinant $3 - 8 = -5$; the other candidates delete the wrong row or column. The checkerboard sign at position $(1,2)$ is negative, so the second term is $-2 \\cdot (-5) = 10$. Forgetting that sign gives $-10$, reusing the $(1,1)$ minor gives $2$, and a sign slip inside the minor ($3 + 8 = 11$) leads to $-22$. Summing the terms, $-1 + 10 + 0 = 9$; the zero entry spares us the third cofactor entirely.",
       "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
@@ -510,7 +555,7 @@
       "id": "linear-algebra-i-determinants-034",
       "format": "cloze",
       "stem": "Let $A$ be a $3 \\times 3$ matrix with $\\det(A) = 4$. What is $\\det(2A)$?",
-      "solution": "Scaling an $n \\times n$ matrix by $k$ multiplies its determinant by {{1}}, because all $n$ rows scale at once. With $n = 3$ and $k = 2$, the factor is $2^3 = 8$, so $\\det(2A) = 8 \\cdot 4 =$ {{2}}.",
+      "solution": "The scalar $2$ multiplies every entry of $A$. In determinant terms, the correct rule multiplies $\\det(A)$ by {{1}}, because {{2}}. Applying the rule to this matrix gives $\\det(2A) =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -519,18 +564,29 @@
             "$k^n$",
             "$k$",
             "$nk$",
-            "$k + n$"
+            "$k^2$"
           ],
           "answer": "$k^n$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "each of the $n$ rows picks up its own factor of $k$",
+            "the scalar acts once on the matrix as a whole",
+            "each row and each column is scaled, giving $2n$ factors of $k$",
+            "determinants add across rows, so the factors of $k$ add up"
+          ],
+          "answer": "each of the $n$ rows picks up its own factor of $k$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 32,
           "tolerance": 0
         }
       ],
-      "explanation": "The rule $\\det(kA) = k^n \\det(A)$ applies one factor of $k$ per row. For a $3 \\times 3$ matrix the factor is $2^3 = 8$, giving $\\det(2A) = 32$.",
+      "explanation": "Scaling $A$ by $k$ scales all $n$ rows, and the determinant is linear in each row separately, so each row contributes one factor of $k$: $\\det(kA) = k^n \\det(A)$. Treating the scalar as acting once gives only $k$, letting the factors add gives $nk$, and rows and columns are not scaled independently, so $2n$ factors would double count. Here $n = 3$ and $k = 2$, so the factor is $2^3 = 8$ and $\\det(2A) = 8 \\cdot 4 = 32$. The $2 \\times 2$ habit of squaring the scalar would give $4 \\cdot 4 = 16$, which is wrong for a $3 \\times 3$ matrix.",
       "difficulty": "core",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
@@ -538,55 +594,77 @@
       "id": "linear-algebra-i-determinants-035",
       "format": "cloze",
       "stem": "Let $A$ and $B$ be $3 \\times 3$ matrices with $\\det(A) = 5$ and $\\det(B) = -2$. What is $\\det(AB)$?",
-      "solution": "The determinant is {{1}} over products, so $\\det(AB) = \\det(A)\\det(B)$. Substituting the values gives $5 \\cdot (-2) =$ {{2}}.",
+      "solution": "The determinant interacts with a matrix product through the rule {{1}}. Applying it here gives $\\det(AB) =$ {{2}}. And although $BA$ need not equal $AB$ as a matrix, $\\det(BA)$ is {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "multiplicative",
-            "additive",
-            "constant",
-            "undefined"
+            "$\\det(AB) = \\det(A)\\det(B)$",
+            "$\\det(AB) = \\det(A) + \\det(B)$",
+            "$\\det(AB) = n \\det(A)\\det(B)$ for $n \\times n$ matrices",
+            "$\\det(AB)$ is not determined by $\\det(A)$ and $\\det(B)$ alone"
           ],
-          "answer": "multiplicative"
+          "answer": "$\\det(AB) = \\det(A)\\det(B)$"
         },
         {
           "id": 2,
           "type": "number",
           "answer": -10,
           "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "the same value, since $\\det(B)\\det(A) = \\det(A)\\det(B)$",
+            "the opposite sign, since reversing the factors acts like a row swap",
+            "the reciprocal of $\\det(AB)$",
+            "not determined, since $BA \\neq AB$ in general"
+          ],
+          "answer": "the same value, since $\\det(B)\\det(A) = \\det(A)\\det(B)$"
         }
       ],
-      "explanation": "Because $\\det(AB) = \\det(A)\\det(B)$ for square matrices of equal size, the product of the determinants is $5 \\cdot (-2) = -10$. The determinant does not distribute over sums, only over products.",
+      "explanation": "The determinant is multiplicative: $\\det(AB) = \\det(A)\\det(B) = 5 \\cdot (-2) = -10$. It is sums that break down: $\\det(A + B)$ really is undetermined by the two determinants alone, but a product is fully determined, and no size factor $n$ enters the rule. For the reversed product, $\\det(BA) = \\det(B)\\det(A)$, and multiplication of numbers commutes, so $\\det(BA) = -10$ as well even though $BA$ and $AB$ can differ as matrices. Reversing the factors is not a row swap, so no sign flips, and nothing here is inverted, so no reciprocal appears.",
       "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
     {
       "id": "linear-algebra-i-determinants-036",
       "format": "cloze",
-      "stem": "The matrix $B$ is obtained from $A$ by interchanging two of its rows. If $\\det(A) = 7$, what is $\\det(B)$?",
-      "solution": "Swapping two rows of a matrix multiplies its determinant by {{1}}, so the magnitude stays the same and only the sign changes. Therefore $\\det(B) =$ {{2}}.",
+      "stem": "The matrix $B$ is obtained from $A$ by interchanging two of its rows, and $C$ is then obtained from $B$ by interchanging two rows again. If $\\det(A) = 7$, find $\\det(B)$ and $\\det(C)$.",
+      "solution": "A single row interchange {{1}}. Therefore $\\det(B) =$ {{2}}. The second interchange applies the same rule once more, so $\\det(C) =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$-1$",
-            "$1$",
-            "$0$",
-            "$2$"
+            "multiplies the determinant by $-1$",
+            "leaves the determinant unchanged",
+            "makes the determinant zero",
+            "rescales the determinant by an amount that depends on the swapped rows"
           ],
-          "answer": "$-1$"
+          "answer": "multiplies the determinant by $-1$"
         },
         {
           "id": 2,
           "type": "number",
           "answer": -7,
           "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$7$",
+            "$-7$",
+            "$0$",
+            "$14$"
+          ],
+          "answer": "$7$"
         }
       ],
-      "explanation": "A single row interchange flips the sign of the determinant, so $\\det(B) = -\\det(A) = -7$. This contrasts with adding a multiple of one row to another, which leaves the determinant unchanged.",
+      "explanation": "Interchanging two rows multiplies the determinant by $-1$: the magnitude survives and only the sign flips, so $\\det(B) = -7$. It is the other elementary operation, adding a multiple of one row to another, that leaves the determinant unchanged, and no swap can turn a nonzero determinant into zero. The effect also never depends on which rows are swapped. The second interchange multiplies by $-1$ again, and $(-1)(-1) = 1$, so $\\det(C) = 7$: two swaps restore the original sign. Thinking the sign stays flipped gives $-7$, and imagining the effects add gives $14$; both misread how the two factors of $-1$ combine.",
       "difficulty": "core",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
@@ -594,22 +672,49 @@
       "id": "linear-algebra-i-determinants-037",
       "format": "cloze",
       "stem": "For which value of $k$ is the matrix $\\begin{pmatrix} k & 5 \\\\ 3 & 6 \\end{pmatrix}$ singular?",
-      "solution": "A matrix is singular when its determinant equals {{1}}. The determinant here is $6k - 15$, and solving $6k - 15 = 0$ gives $k =$ {{2}}. At that value the rows become proportional.",
+      "solution": "Singular means the matrix fails to be invertible, which happens exactly when {{1}}. In terms of $k$, the determinant of this matrix is {{2}}. Imposing the singularity condition and solving gives $k =$ {{3}}. At that value of $k$ the failure is visible directly in the matrix, because {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "its determinant equals zero",
+            "its determinant is negative",
+            "its determinant equals one",
+            "it has at least one zero entry"
+          ],
+          "answer": "its determinant equals zero"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$6k - 15$",
+            "$6k + 15$",
+            "$5k - 18$",
+            "$3k - 30$"
+          ],
+          "answer": "$6k - 15$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 2.5,
-          "tolerance": 0
+          "tolerance": 0.001
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "the two rows become proportional",
+            "one of the rows becomes entirely zero",
+            "the matrix becomes symmetric",
+            "the two diagonal entries become equal"
+          ],
+          "answer": "the two rows become proportional"
         }
       ],
-      "explanation": "Singularity means a zero determinant, so set $6k - 15 = 0$ to get $k = \\tfrac{15}{6} = 2.5$. At that value the second row is a multiple of the first, making the rows linearly dependent.",
+      "explanation": "A matrix is singular exactly when its determinant is zero; the sign or size of a nonzero determinant is irrelevant, and having a zero entry proves nothing. By $ad - bc$ the determinant is $k \\cdot 6 - 5 \\cdot 3 = 6k - 15$; adding the products gives $6k + 15$, while $5k - 18$ and $3k - 30$ pair the entries across the wrong diagonals. Solving $6k - 15 = 0$ gives $k = 2.5$. At that value the second row $(3, 6)$ is $1.2$ times the first row $(2.5, 5)$, so the rows are proportional and hence linearly dependent, which is what singularity looks like in a $2 \\times 2$ matrix. No row becomes zero, and symmetry or equal diagonal entries never enter the story.",
       "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
@@ -617,24 +722,29 @@
       "id": "linear-algebra-i-determinants-038",
       "format": "cloze",
       "stem": "Use Cramer's rule to solve $\\begin{cases} 2x + y = 5 \\\\ 3x + 4y = 10 \\end{cases}$ for $x$ and $y$.",
-      "solution": "The coefficient determinant is $\\begin{vmatrix} 2 & 1 \\\\ 3 & 4 \\end{vmatrix} =$ {{1}}. For $x$, replace the {{2}} column with the constants to get $\\begin{vmatrix} 5 & 1 \\\\ 10 & 4 \\end{vmatrix} = 10$, so $x =$ {{3}}. For $y$, replacing the second column gives $\\begin{vmatrix} 2 & 5 \\\\ 3 & 10 \\end{vmatrix} = 5$, so $y =$ {{4}}.",
+      "solution": "Cramer's rule writes each unknown as a ratio of two determinants. The denominator, the same for both unknowns, is {{1}}. The numerator for $x$ is {{2}}. Evaluating the two determinants and dividing gives $x =$ {{3}}. Building the numerator for $y$ the same way and dividing gives $y =$ {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 5,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "the determinant of the coefficient matrix",
+            "the determinant with the constants substituted into the column of the unknown",
+            "the product of the diagonal entries of the coefficient matrix",
+            "the trace of the coefficient matrix"
+          ],
+          "answer": "the determinant of the coefficient matrix"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "first",
-            "second",
-            "bottom",
-            "constant"
+            "$\\begin{vmatrix} 5 & 1 \\\\ 10 & 4 \\end{vmatrix}$",
+            "$\\begin{vmatrix} 2 & 5 \\\\ 3 & 10 \\end{vmatrix}$",
+            "$\\begin{vmatrix} 5 & 10 \\\\ 3 & 4 \\end{vmatrix}$",
+            "$\\begin{vmatrix} 2 & 1 \\\\ 5 & 10 \\end{vmatrix}$"
           ],
-          "answer": "first"
+          "answer": "$\\begin{vmatrix} 5 & 1 \\\\ 10 & 4 \\end{vmatrix}$"
         },
         {
           "id": 3,
@@ -649,7 +759,7 @@
           "tolerance": 0
         }
       ],
-      "explanation": "Cramer's rule divides a replaced determinant by the coefficient determinant $D = 8 - 3 = 5$. Replacing the first column gives $D_x = 10$ so $x = 2$, and replacing the second column gives $D_y = 5$ so $y = 1$.",
+      "explanation": "The denominator is always the coefficient determinant $D = \\begin{vmatrix} 2 & 1 \\\\ 3 & 4 \\end{vmatrix} = 8 - 3 = 5$; it does not change between unknowns, it is not the trace, and the diagonal-product shortcut is only valid for triangular matrices. The numerator for $x$ replaces the $x$ column, the first one, with the constants: $\\begin{vmatrix} 5 & 1 \\\\ 10 & 4 \\end{vmatrix} = 20 - 10 = 10$, so $x = 10/5 = 2$. Replacing the second column instead builds the numerator for $y$, and pushing the constants into a row is not a legal substitution at all. For $y$, $\\begin{vmatrix} 2 & 5 \\\\ 3 & 10 \\end{vmatrix} = 20 - 15 = 5$, so $y = 5/5 = 1$. Check: $2(2) + 1 = 5$ and $3(2) + 4(1) = 10$.",
       "difficulty": "stretch",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
@@ -657,33 +767,38 @@
       "id": "linear-algebra-i-determinants-039",
       "format": "cloze",
       "stem": "Let $A$ be an invertible matrix with $\\det(A) = -4$. Find $\\det(A^{T})$ and $\\det(A^{-1})$.",
-      "solution": "Transposing a matrix leaves its determinant unchanged, so $\\det(A^{T}) =$ {{1}}. For the inverse, the determinant is the {{2}} of the original, so $\\det(A^{-1}) =$ {{3}}.",
+      "solution": "For the transpose, the governing identity is $\\det(A^{T}) =$ {{1}}. For the inverse, $\\det(A^{-1})$ equals {{2}}, so evaluating it for this matrix gives $\\det(A^{-1}) =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": -4,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$\\det(A)$",
+            "$-\\det(A)$",
+            "$1/\\det(A)$",
+            "$\\det(A)^{2}$"
+          ],
+          "answer": "$\\det(A)$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "reciprocal",
-            "negative",
-            "square",
-            "absolute value"
+            "the reciprocal of $\\det(A)$",
+            "the negative of $\\det(A)$",
+            "the reciprocal of $|\\det(A)|$",
+            "$\\det(A)$ unchanged, since inverting undoes itself"
           ],
-          "answer": "reciprocal"
+          "answer": "the reciprocal of $\\det(A)$"
         },
         {
           "id": 3,
           "type": "number",
           "answer": -0.25,
-          "tolerance": 0
+          "tolerance": 0.001
         }
       ],
-      "explanation": "Since $\\det(A^{T}) = \\det(A)$, the transpose keeps the value $-4$, sign included. Because $\\det(A)\\det(A^{-1}) = \\det(I) = 1$, the inverse determinant is the reciprocal $\\tfrac{1}{-4} = -0.25$.",
+      "explanation": "Transposing swaps rows with columns, but the cofactor expansion produces the same value either way, so $\\det(A^{T}) = \\det(A) = -4$: a transpose is not a row swap and does not flip the sign, and nothing gets squared or inverted. For the inverse, take determinants of both sides of $A A^{-1} = I$: since $\\det(I) = 1$, we get $\\det(A)\\det(A^{-1}) = 1$, so $\\det(A^{-1})$ is the reciprocal $1/(-4) = -0.25$. The reciprocal keeps the sign of the original; dropping the sign to get $0.25$ is the trap of using $|\\det(A)|$, and $\\det(A^{-1})$ could only equal $\\det(A)$ if the determinant were $\\pm 1$.",
       "difficulty": "stretch",
       "source": "in the style of Anton, Elementary Linear Algebra"
     }

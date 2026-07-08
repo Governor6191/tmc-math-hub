@@ -511,33 +511,65 @@
       "id": "calculus-ii-integration-techniques-037",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int 3x^2\\left(x^3 + 1\\right)^4 dx$ using the substitution $u = x^3 + 1$.",
-      "solution": "With $u = x^3 + 1$ the differential is $du = c\\,x^2\\,dx$, where the coefficient $c$ is {{1}}, matching the $3x^2\\,dx$ already present. The integral becomes $\\int u^4\\,du$, which equals $u^5$ divided by {{2}}, plus $C$. Back-substituting gives $\\dfrac{\\left(x^3 + 1\\right)^5}{5} + C$.",
+      "solution": "Differentiating the substitution gives {{1}}. Compare that with the factors actually present in the integrand: the whole integral rewrites in $u$ alone as {{2}}. Finishing with the reverse power rule and back-substituting, the antiderivative is {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 3,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$du = 3x^2\\,dx$",
+            "$du = x^2\\,dx$",
+            "$du = 3x\\,dx$",
+            "$du = \\dfrac{x^4}{4}\\,dx$"
+          ],
+          "answer": "$du = 3x^2\\,dx$"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 5,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$\\displaystyle\\int u^4\\,du$",
+            "$3\\displaystyle\\int u^4\\,du$",
+            "$\\dfrac{1}{3}\\displaystyle\\int u^4\\,du$",
+            "$\\displaystyle\\int u^4\\,dx$"
+          ],
+          "answer": "$\\displaystyle\\int u^4\\,du$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{\\left(x^3 + 1\\right)^5}{5} + C$",
+            "$\\dfrac{\\left(x^3 + 1\\right)^5}{15} + C$",
+            "$\\left(x^3 + 1\\right)^5 + C$",
+            "$\\dfrac{\\left(x^3 + 1\\right)^4}{4} + C$"
+          ],
+          "answer": "$\\dfrac{\\left(x^3 + 1\\right)^5}{5} + C$"
         }
       ],
-      "explanation": "Differentiating $u = x^3 + 1$ gives $du = 3x^2\\,dx$. Then $\\int u^4\\,du = \\frac{u^5}{5} + C$ by the power rule, and back-substituting restores $x$.",
-      "difficulty": "warmup",
+      "explanation": "From $u = x^3 + 1$, differentiating gives $du = 3x^2\\,dx$: dropping the coefficient to $x^2\\,dx$, slipping on the power rule to $3x\\,dx$, or antidifferentiating to $\\frac{x^4}{4}\\,dx$ all break the match. The integrand supplies exactly $3x^2\\,dx$, so the rewrite is $\\int u^4\\,du$ with no leftover constant: prefixing a $3$ double-counts the coefficient that $du$ already absorbed, prefixing $\\frac{1}{3}$ compensates for a factor that was never missing, and keeping $dx$ means the substitution never finished. The power rule then gives $\\frac{u^5}{5}$, so the answer is $\\frac{\\left(x^3 + 1\\right)^5}{5} + C$. The $\\frac{1}{15}$ option divides by $5$ and then again by the already-consumed $3$, and the $\\frac{\\left(x^3 + 1\\right)^4}{4}$ option never raises the power. Check by the chain rule: $\\frac{d}{dx}\\,\\frac{\\left(x^3 + 1\\right)^5}{5} = \\left(x^3 + 1\\right)^4 \\cdot 3x^2$, the original integrand.",
+      "difficulty": "core",
       "source": "in the style of Stewart 8e"
     },
     {
       "id": "calculus-ii-integration-techniques-038",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int x e^{2x}\\,dx$ using integration by parts with $u = x$ and $dv = e^{2x}\\,dx$.",
-      "solution": "From the choices, $du = dx$ and $v$ is {{1}}. The formula $\\int u\\,dv = uv - \\int v\\,du$ gives $\\dfrac{x}{2}e^{2x} - \\int \\dfrac{1}{2}e^{2x}\\,dx$. Completing the remaining integral, the final answer is $\\dfrac{x}{2}e^{2x}$ minus the term {{2}}, plus $C$.",
+      "solution": "Parts trades $\\int u\\,dv$ for $uv - \\int v\\,du$. The given split is the right one because {{1}}. Integrating $dv$ gives $v =$ {{2}}. Carrying the formula through and finishing the leftover integral, the antiderivative is {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "differentiating $x$ simplifies it to the constant $1$",
+            "integrating $x$ simplifies it to a constant",
+            "differentiating $e^{2x}$ eventually reaches zero",
+            "the two factors can be integrated separately and multiplied"
+          ],
+          "answer": "differentiating $x$ simplifies it to the constant $1$"
+        },
+        {
+          "id": 2,
           "type": "dropdown",
           "options": [
             "$\\dfrac{1}{2}e^{2x}$",
@@ -548,29 +580,40 @@
           "answer": "$\\dfrac{1}{2}e^{2x}$"
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
-            "$\\dfrac{1}{4}e^{2x}$",
-            "$\\dfrac{1}{2}e^{2x}$",
-            "$\\dfrac{1}{4}e^{x}$",
-            "$e^{2x}$"
+            "$\\dfrac{x}{2}e^{2x} - \\dfrac{1}{4}e^{2x} + C$",
+            "$\\dfrac{x}{2}e^{2x} + \\dfrac{1}{4}e^{2x} + C$",
+            "$\\dfrac{x}{2}e^{2x} - \\dfrac{1}{2}e^{2x} + C$",
+            "$x e^{2x} - e^{2x} + C$"
           ],
-          "answer": "$\\dfrac{1}{4}e^{2x}$"
+          "answer": "$\\dfrac{x}{2}e^{2x} - \\dfrac{1}{4}e^{2x} + C$"
         }
       ],
-      "explanation": "Integrating $dv = e^{2x}\\,dx$ gives $v = \\frac{1}{2}e^{2x}$. The leftover $\\int \\frac{1}{2}e^{2x}\\,dx = \\frac{1}{4}e^{2x}$, so the result is $\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x} + C$.",
-      "difficulty": "warmup",
+      "explanation": "Parts pays off when differentiating one factor genuinely simplifies it: $u = x$ has $du = dx$, killing the polynomial. Integrating $x$ raises its power instead of lowering it, $e^{2x}$ never differentiates to zero, and integrating the factors separately and multiplying is the product-rule fallacy. Integrating $dv = e^{2x}\\,dx$ gives $v = \\frac{1}{2}e^{2x}$: multiplying by $2$ instead of dividing, ignoring the inner factor, or losing the $2$ in the exponent all fail the check $v' = e^{2x}$. The formula then gives $\\frac{x}{2}e^{2x} - \\int \\frac{1}{2}e^{2x}\\,dx$, and the leftover integral contributes a second factor of $\\frac{1}{2}$, landing on $\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x} + C$. Stopping at $-\\frac{1}{2}e^{2x}$ skips that second halving, a plus sign misquotes the parts formula, and $x e^{2x} - e^{2x} + C$ carries the wrong $v = e^{2x}$ all the way through. Differentiate to confirm: $\\frac{1}{2}e^{2x} + x e^{2x} - \\frac{1}{2}e^{2x} = x e^{2x}$.",
+      "difficulty": "core",
       "source": "in the style of Stewart 8e"
     },
     {
       "id": "calculus-ii-integration-techniques-039",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int \\frac{1}{(x - 2)(x + 3)}\\,dx$ using partial fractions.",
-      "solution": "Write $\\dfrac{1}{(x - 2)(x + 3)} = \\dfrac{A}{x - 2} + \\dfrac{B}{x + 3}$. Clearing denominators and solving gives $A = \\dfrac{1}{5}$ while $B$ equals {{1}}. Integrating each piece yields $\\dfrac{1}{5}\\ln|x - 2| - \\dfrac{1}{5}\\ln|x + 3|$ plus the constant of integration, written {{2}}.",
+      "solution": "Write $\\dfrac{1}{(x - 2)(x + 3)} = \\dfrac{A}{x - 2} + \\dfrac{B}{x + 3}$. The cover-up method at $x = 2$ gives $A =$ {{1}}, and at $x = -3$ it gives $B =$ {{2}}. Integrating the two pieces then produces {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{5}$",
+            "$-\\dfrac{1}{5}$",
+            "$\\dfrac{1}{2}$",
+            "$\\dfrac{1}{6}$"
+          ],
+          "answer": "$\\dfrac{1}{5}$"
+        },
+        {
+          "id": 2,
           "type": "dropdown",
           "options": [
             "$-\\dfrac{1}{5}$",
@@ -581,15 +624,18 @@
           "answer": "$-\\dfrac{1}{5}$"
         },
         {
-          "id": 2,
-          "type": "text",
-          "accept": [
-            "C",
-            "c"
-          ]
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{5}\\ln|x - 2| - \\dfrac{1}{5}\\ln|x + 3| + C$",
+            "$\\dfrac{1}{5}\\ln|x + 3| - \\dfrac{1}{5}\\ln|x - 2| + C$",
+            "$\\dfrac{1}{5}\\ln\\left|(x - 2)(x + 3)\\right| + C$",
+            "$\\dfrac{1}{6}\\ln|x - 2| - \\dfrac{1}{6}\\ln|x + 3| + C$"
+          ],
+          "answer": "$\\dfrac{1}{5}\\ln|x - 2| - \\dfrac{1}{5}\\ln|x + 3| + C$"
         }
       ],
-      "explanation": "Setting $x = 2$ gives $A = \\frac{1}{5}$; setting $x = -3$ gives $B = -\\frac{1}{5}$. The two logarithms then follow, plus the constant of integration $C$.",
+      "explanation": "Cover-up finds each residue by deleting its own factor and substituting that factor's root into what remains. At $x = 2$: $A = \\frac{1}{2 + 3} = \\frac{1}{5}$. At $x = -3$: $B = \\frac{1}{-3 - 2} = -\\frac{1}{5}$. The sign distractors fumble the subtraction $-3 - 2$, and the $\\frac{1}{6}$ values come from substituting a root into its own factor's constant instead of the other factor. Each piece integrates to a logarithm, giving $\\frac{1}{5}\\ln|x - 2| - \\frac{1}{5}\\ln|x + 3| + C$; its derivative $\\frac{1}{5}\\left(\\frac{1}{x - 2} - \\frac{1}{x + 3}\\right)$ recombines to the original integrand, confirming the answer. Attaching each residue to the wrong factor reverses the sign of the whole answer, the single log of the product would require the numerator to be the derivative of the denominator, which it is not, and the $\\frac{1}{6}$ version inherits the wrong residues from the start. The trap is bookkeeping: the residue produced by the root $x = 2$ belongs over the factor $x - 2$.",
       "difficulty": "core",
       "source": "in the style of Schaum's Outline of Calculus"
     },
@@ -597,7 +643,7 @@
       "id": "calculus-ii-integration-techniques-040",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int \\cos^2 x\\,dx$ using a half-angle identity.",
-      "solution": "Replace $\\cos^2 x$ with the identity {{1}}. Integrating term by term gives $\\dfrac{x}{2} + \\dfrac{\\sin 2x}{d} + C$, where the denominator $d$ under $\\sin 2x$ is {{2}}.",
+      "solution": "A bare even power of cosine has no usable $du$, so replace $\\cos^2 x$ by the identity rewrite {{1}}. Integrating term by term, the constant piece gives $\\frac{x}{2}$, while $\\int \\cos 2x\\,dx =$ {{2}}. The outer factor $\\frac{1}{2}$ still multiplies that second piece, so the antiderivative takes the form $\\frac{x}{2} + \\frac{\\sin 2x}{d} + C$ with denominator $d =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -606,18 +652,29 @@
             "$\\dfrac{1 + \\cos 2x}{2}$",
             "$\\dfrac{1 - \\cos 2x}{2}$",
             "$\\dfrac{1 + \\sin 2x}{2}$",
-            "$1 - \\sin^2 x$"
+            "$2\\cos 2x - 1$"
           ],
           "answer": "$\\dfrac{1 + \\cos 2x}{2}$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{\\sin 2x}{2}$",
+            "$\\sin 2x$",
+            "$2\\sin 2x$",
+            "$-\\dfrac{\\sin 2x}{2}$"
+          ],
+          "answer": "$\\dfrac{\\sin 2x}{2}$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 4,
           "tolerance": 0
         }
       ],
-      "explanation": "The identity is $\\cos^2 x = \\frac{1 + \\cos 2x}{2}$. Integrating gives $\\frac{x}{2} + \\frac{1}{2}\\cdot\\frac{\\sin 2x}{2} = \\frac{x}{2} + \\frac{\\sin 2x}{4} + C$.",
+      "explanation": "No substitution works on a bare even power, so trade $\\cos^2 x$ for the half-angle form $\\frac{1 + \\cos 2x}{2}$, which comes from solving $\\cos 2x = 2\\cos^2 x - 1$ for $\\cos^2 x$. Picking $\\frac{1 - \\cos 2x}{2}$ grabs the identity for $\\sin^2 x$ and flips the eventual sign, $\\frac{1 + \\sin 2x}{2}$ garbles the identity, and $2\\cos 2x - 1$ solves it for the wrong side. Term by term, $\\int \\cos 2x\\,dx = \\frac{\\sin 2x}{2}$: the inner $2$ divides on the way out, so bare $\\sin 2x$ forgets it, $2\\sin 2x$ multiplies instead, and the minus sign belongs to integrating sine, not cosine. The outer $\\frac{1}{2}$ from the identity then multiplies $\\frac{\\sin 2x}{2}$, stacking the denominators to $d = 4$: the final answer is $\\frac{x}{2} + \\frac{\\sin 2x}{4} + C$. Differentiating returns $\\frac{1}{2} + \\frac{\\cos 2x}{2} = \\cos^2 x$, confirming the result.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e"
     },
@@ -625,24 +682,43 @@
       "id": "calculus-ii-integration-techniques-041",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int \\frac{1}{\\sqrt{25 - x^2}}\\,dx$.",
-      "solution": "This matches the standard form $\\int \\dfrac{1}{\\sqrt{a^2 - x^2}}\\,dx$, where the value of $a$ is {{1}}. The antiderivative is $\\arcsin\\!\\left(\\dfrac{x}{5}\\right)$ plus the constant of integration, written {{2}}.",
+      "solution": "The integrand has the shape $\\dfrac{1}{\\sqrt{a^2 - x^2}}$, which belongs to the {{1}} family. Matching $a^2 = 25$ gives $a =$ {{2}}. The antiderivative is therefore {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 5,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "arcsine",
+            "arctangent",
+            "arcsecant",
+            "natural logarithm"
+          ],
+          "answer": "arcsine"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "C",
-            "c"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$5$",
+            "$25$",
+            "$\\sqrt{5}$",
+            "$\\dfrac{1}{5}$"
+          ],
+          "answer": "$5$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\arcsin\\left(\\dfrac{x}{5}\\right) + C$",
+            "$\\dfrac{1}{5}\\arcsin\\left(\\dfrac{x}{5}\\right) + C$",
+            "$\\arcsin(5x) + C$",
+            "$\\arcsin\\left(\\dfrac{x}{25}\\right) + C$"
+          ],
+          "answer": "$\\arcsin\\left(\\dfrac{x}{5}\\right) + C$"
         }
       ],
-      "explanation": "Here $a^2 = 25$ so $a = 5$, and $\\int \\frac{1}{\\sqrt{a^2 - x^2}}\\,dx = \\arcsin\\frac{x}{a} + C = \\arcsin\\frac{x}{5} + C$.",
+      "explanation": "A constant minus $x^2$ under a square root is the arcsine shape: $\\int \\frac{dx}{\\sqrt{a^2 - x^2}} = \\arcsin\\frac{x}{a} + C$. Arctangent handles $\\frac{1}{x^2 + a^2}$ with no radical, arcsecant handles $\\frac{1}{x\\sqrt{x^2 - a^2}}$, and the logarithm handles derivative-over-function shapes; mixing up these families is the main danger with inverse trig forms. Matching $a^2 = 25$ gives $a = 5$: taking $a = 25$ forgets that the formula compares against $a$ squared, and $\\sqrt{5}$ takes a square root that was never asked for. The antiderivative is $\\arcsin\\left(\\frac{x}{5}\\right) + C$; differentiating gives $\\frac{1/5}{\\sqrt{1 - x^2/25}} = \\frac{1}{\\sqrt{25 - x^2}}$, so it checks. The $\\frac{1}{5}$ prefactor option borrows arctangent's leading constant, which arcsine does not have, $\\arcsin(5x)$ flips the ratio, and $\\arcsin\\left(\\frac{x}{25}\\right)$ carries the wrong $a$ through to the end.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e"
     },
@@ -650,24 +726,32 @@
       "id": "calculus-ii-integration-techniques-042",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int \\frac{1}{x^2 + 9}\\,dx$.",
-      "solution": "This matches the arctangent form $\\int \\dfrac{1}{x^2 + a^2}\\,dx = \\dfrac{1}{a}\\arctan\\dfrac{x}{a} + C$, where the value of $a$ is {{1}}. So the antiderivative is $\\dfrac{1}{3}\\arctan\\!\\left(\\dfrac{x}{3}\\right)$ plus the constant of integration, written {{2}}.",
+      "solution": "The denominator is an irreducible sum of squares, so the matching standard form is $\\int \\dfrac{dx}{x^2 + a^2} =$ {{1}}. Applying it with the correct value of $a$, the antiderivative is {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 3,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{a}\\arctan\\dfrac{x}{a} + C$",
+            "$\\arctan\\dfrac{x}{a} + C$",
+            "$\\dfrac{1}{a^2}\\arctan\\dfrac{x}{a} + C$",
+            "$\\arcsin\\dfrac{x}{a} + C$"
+          ],
+          "answer": "$\\dfrac{1}{a}\\arctan\\dfrac{x}{a} + C$"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "C",
-            "c"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{3}\\arctan\\left(\\dfrac{x}{3}\\right) + C$",
+            "$\\arctan\\left(\\dfrac{x}{3}\\right) + C$",
+            "$\\dfrac{1}{9}\\arctan\\left(\\dfrac{x}{9}\\right) + C$",
+            "$\\dfrac{1}{3}\\arctan(3x) + C$"
+          ],
+          "answer": "$\\dfrac{1}{3}\\arctan\\left(\\dfrac{x}{3}\\right) + C$"
         }
       ],
-      "explanation": "Since $a^2 = 9$, we have $a = 3$, giving $\\frac{1}{3}\\arctan\\frac{x}{3} + C$. The leading $\\frac{1}{a}$ factor is easy to forget.",
+      "explanation": "For $\\frac{1}{x^2 + a^2}$ the antiderivative is $\\frac{1}{a}\\arctan\\frac{x}{a} + C$: differentiating gives $\\frac{1}{a}\\cdot\\frac{1/a}{1 + x^2/a^2} = \\frac{1}{x^2 + a^2}$, so both the outer $\\frac{1}{a}$ and the inner $\\frac{x}{a}$ are forced. Omitting the prefactor leaves the derivative too large by a factor of $a$, dividing by $a^2$ overcorrects, and arcsine belongs to $\\sqrt{a^2 - x^2}$, a radical this integrand does not have. Here $a^2 = 9$ so $a = 3$, giving $\\frac{1}{3}\\arctan\\left(\\frac{x}{3}\\right) + C$. The version with $9$ everywhere confuses $a$ with $a^2$, dropping the $\\frac{1}{3}$ repeats the classic missing-prefactor slip, and $\\arctan(3x)$ inverts the ratio inside. The trap to remember: arcsine's formula carries no leading constant, arctangent's does, and swapping the two conventions produces exactly these wrong answers.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e"
     },
@@ -675,22 +759,32 @@
       "id": "calculus-ii-integration-techniques-043",
       "format": "cloze",
       "stem": "Evaluate the definite integral $\\displaystyle\\int_{0}^{2} 2x\\,e^{x^2}\\,dx$ by substitution.",
-      "solution": "Let $u = x^2$, so $du = 2x\\,dx$. Changing limits, $x = 0$ gives $u = 0$ and $x = 2$ gives an upper limit of {{1}}. The integral becomes $\\int_{0}^{4} e^u\\,du = e^{4} - e^{0}$, and since $e^0$ equals {{2}}, the value is $e^4 - 1$.",
+      "solution": "Let $u = x^2$, so $du = 2x\\,dx$, which the integrand supplies exactly. A definite substitution converts the limits as well: here they become {{1}}. Evaluating $\\int e^u\\,du$ between those converted limits gives {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 4,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$u = 0$ to $u = 4$",
+            "$u = 0$ to $u = 2$",
+            "$u = 0$ to $u = \\sqrt{2}$",
+            "$u = 1$ to $u = 4$"
+          ],
+          "answer": "$u = 0$ to $u = 4$"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 1,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$e^4 - 1$",
+            "$e^4$",
+            "$e^2 - 1$",
+            "$\\dfrac{e^4 - 1}{2}$"
+          ],
+          "answer": "$e^4 - 1$"
         }
       ],
-      "explanation": "With $u = x^2$ the new limits are $0$ and $4$. Then $\\int_0^4 e^u\\,du = e^4 - e^0 = e^4 - 1$. Converting the limits avoids back-substituting.",
+      "explanation": "With $u = x^2$ the differential $du = 2x\\,dx$ is present exactly, so no compensating constant appears. A definite substitution converts the limits once: $x = 0$ gives $u = 0$ and $x = 2$ gives $u = 2^2 = 4$. Keeping $0$ to $2$ evaluates the $u$-antiderivative at old $x$-values, $\\sqrt{2}$ converts in the wrong direction, and $1$ to $4$ confuses a limit with the value $e^0 = 1$ that only shows up during the final evaluation. Then $\\int_0^4 e^u\\,du = e^4 - e^0 = e^4 - 1$: answering $e^4$ forgets to subtract the lower-limit value, $e^2 - 1$ is the kept-old-limits path carried to the end, and halving the result pays for a $\\frac{1}{2}$ that $du = 2x\\,dx$ never demanded. The trap is converting the limits and then not trusting them: once $u$ runs from $0$ to $4$, the evaluation happens entirely in $u$ with no back-substitution.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e"
     },
@@ -698,29 +792,43 @@
       "id": "calculus-ii-integration-techniques-044",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int x^2 e^{x}\\,dx$ by applying integration by parts twice.",
-      "solution": "First pass with $u = x^2$ gives $x^2 e^x - \\int 2x\\,e^x\\,dx$. A second integration by parts on $\\int 2x\\,e^x\\,dx$ produces $2x e^x$ minus the term {{1}}. Combining, the full antiderivative is $x^2 e^x - 2x e^x + 2e^x$ plus the constant of integration, written {{2}}.",
+      "solution": "The power dies after two differentiations while $e^x$ integrates without changing, so take $u = x^2$, $dv = e^x\\,dx$. The first application of parts rewrites the integral as {{1}}. A second application, now with $u = 2x$, turns the remaining integral into {{2}}. Assembling both rounds, the full antiderivative is {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$2e^x$",
-            "$2x e^x$",
-            "$e^x$",
-            "$x^2 e^x$"
+            "$x^2 e^x - \\displaystyle\\int 2x\\,e^x\\,dx$",
+            "$x^2 e^x + \\displaystyle\\int 2x\\,e^x\\,dx$",
+            "$x^2 e^x - \\displaystyle\\int x^2\\,e^x\\,dx$",
+            "$2x\\,e^x - \\displaystyle\\int x^2\\,e^x\\,dx$"
           ],
-          "answer": "$2e^x$"
+          "answer": "$x^2 e^x - \\displaystyle\\int 2x\\,e^x\\,dx$"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "C",
-            "c"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$2x\\,e^x - \\displaystyle\\int 2\\,e^x\\,dx$",
+            "$2x\\,e^x + \\displaystyle\\int 2\\,e^x\\,dx$",
+            "$2\\,e^x - \\displaystyle\\int 2x\\,e^x\\,dx$",
+            "$x^2 e^x - \\displaystyle\\int x^2\\,e^x\\,dx$"
+          ],
+          "answer": "$2x\\,e^x - \\displaystyle\\int 2\\,e^x\\,dx$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$x^2 e^x - 2x e^x + 2e^x + C$",
+            "$x^2 e^x + 2x e^x + 2e^x + C$",
+            "$x^2 e^x - 2x e^x - 2e^x + C$",
+            "$\\dfrac{x^3}{3}e^x + C$"
+          ],
+          "answer": "$x^2 e^x - 2x e^x + 2e^x + C$"
         }
       ],
-      "explanation": "The second parts step gives $\\int 2x\\,e^x\\,dx = 2x e^x - \\int 2e^x\\,dx = 2x e^x - 2e^x$. Substituting back yields $x^2 e^x - 2x e^x + 2e^x + C$, which differentiates to $x^2 e^x$.",
+      "explanation": "Choose $u = x^2$, $dv = e^x\\,dx$, because two differentiations reduce the power to a constant while $e^x$ integrates unchanged. The first round gives $x^2 e^x - \\int 2x\\,e^x\\,dx$: a plus sign misquotes the formula $uv - \\int v\\,du$, keeping $x^2$ inside the new integral forgets that $u$ gets differentiated, and leading with $2x\\,e^x$ mixes the product rule into the parts formula. The second round, with $u = 2x$ and $dv = e^x\\,dx$ again, gives $2x\\,e^x - \\int 2\\,e^x\\,dx$: the sign is once more minus, and choosing $u = e^x$ instead produces $x^2 e^x - \\int x^2 e^x\\,dx$, which undoes the first step and returns to the harder integral. Assembling, $x^2 e^x - \\left(2x e^x - 2e^x\\right) = x^2 e^x - 2x e^x + 2e^x$, plus $C$. The signs alternate because each application contributes its own minus: the all-plus and trailing-minus options each fumble one round, and $\\frac{x^3}{3}e^x + C$ integrates the two factors separately, which no rule permits. Differentiating the answer cancels the cross terms and returns $x^2 e^x$.",
       "difficulty": "stretch",
       "source": "in the style of Stewart 8e"
     },
@@ -728,29 +836,43 @@
       "id": "calculus-ii-integration-techniques-045",
       "format": "cloze",
       "stem": "Evaluate $\\displaystyle\\int \\tan x \\sec^2 x\\,dx$.",
-      "solution": "The most efficient choice is the substitution {{1}}, since its derivative $\\sec^2 x\\,dx$ already appears. Then $\\int u\\,du = \\dfrac{u^2}{2} + C$, giving $\\dfrac{\\tan^2 x}{2}$ plus the constant of integration, written {{2}}.",
+      "solution": "Take $u = \\tan x$, whose differential is {{1}}; that exact combination sits in the integrand, so the integral becomes $\\int u\\,du$, which evaluates to {{2}}. The substitution $u = \\sec x$ also succeeds here and returns $\\dfrac{\\sec^2 x}{2} + C$. The two results do not conflict because they differ by {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$u = \\tan x$",
-            "$u = \\sec x$",
-            "$u = \\cos x$",
-            "$u = \\sec^2 x$"
+            "$du = \\sec^2 x\\,dx$",
+            "$du = \\sec x\\tan x\\,dx$",
+            "$du = -\\csc^2 x\\,dx$",
+            "$du = \\dfrac{\\tan^2 x}{2}\\,dx$"
           ],
-          "answer": "$u = \\tan x$"
+          "answer": "$du = \\sec^2 x\\,dx$"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "C",
-            "c"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{\\tan^2 x}{2} + C$",
+            "$\\tan^2 x + C$",
+            "$\\dfrac{\\sec^3 x}{3} + C$",
+            "$\\ln|\\sec x| + C$"
+          ],
+          "answer": "$\\dfrac{\\tan^2 x}{2} + C$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "an additive constant, which the arbitrary $C$ absorbs",
+            "nothing, because the two expressions are equal for every $x$",
+            "a factor of $2$, so only one of them can be correct",
+            "a non-constant function of $x$, so one method must be invalid"
+          ],
+          "answer": "an additive constant, which the arbitrary $C$ absorbs"
         }
       ],
-      "explanation": "Since $\\frac{d}{dx}\\tan x = \\sec^2 x$, set $u = \\tan x$, $du = \\sec^2 x\\,dx$. Then $\\int u\\,du = \\frac{u^2}{2} + C = \\frac{\\tan^2 x}{2} + C$.",
+      "explanation": "Differentiating $u = \\tan x$ gives $du = \\sec^2 x\\,dx$: the option $\\sec x\\tan x\\,dx$ is the differential of $\\sec x$, $-\\csc^2 x\\,dx$ belongs to $\\cot x$, and $\\frac{\\tan^2 x}{2}\\,dx$ antidifferentiates instead of differentiating. Since the integrand is exactly $u\\,du$, the integral is $\\frac{u^2}{2} + C = \\frac{\\tan^2 x}{2} + C$: omitting the $2$ forgets the power rule's division, $\\frac{\\sec^3 x}{3}$ applies the power rule to the wrong function, and $\\ln|\\sec x|$ integrates plain $\\tan x$, ignoring the $\\sec^2 x$ factor. The rival substitution $u = \\sec x$, $du = \\sec x\\tan x\\,dx$ also fits, because the integrand regroups as $\\sec x\\cdot(\\sec x\\tan x)$, and it yields $\\frac{\\sec^2 x}{2} + C$. The two answers differ by $\\frac{\\sec^2 x - \\tan^2 x}{2} = \\frac{1}{2}$, a pure constant that the arbitrary $C$ absorbs, so both are correct: antiderivatives are unique only up to an additive constant. They are not pointwise equal, the discrepancy is not a factor of $2$, and neither method is invalid.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e"
     }

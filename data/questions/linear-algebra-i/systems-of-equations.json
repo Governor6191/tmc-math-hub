@@ -427,89 +427,118 @@
       "id": "linear-algebra-i-systems-of-equations-031",
       "format": "cloze",
       "stem": "Solve the system $\\begin{cases} x + y = 7 \\\\ x - y = 3 \\end{cases}$ for $(x, y)$.",
-      "solution": "Add the two equations to {{1}} the variable $y$: this gives $2x = 10$, so $x =$ {{2}}. Substituting back into $x + y = 7$ gives $y =$ {{3}}.",
+      "solution": "Because the coefficients of $y$ are $+1$ and $-1$, the variable $y$ disappears if we {{1}}. Doing so collapses the system to the single equation {{2}}. Solving it gives $x =$ {{3}}, and substituting back into either original equation gives $y =$ {{4}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "eliminate",
-            "double",
-            "square",
-            "introduce"
+            "add the two equations",
+            "subtract the second equation from the first",
+            "multiply the two equations together",
+            "divide the first equation by the second"
           ],
-          "answer": "eliminate"
+          "answer": "add the two equations"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$2x = 10$",
+            "$2y = 4$",
+            "$2x + 2y = 10$",
+            "$2x = 4$"
+          ],
+          "answer": "$2x = 10$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 5,
           "tolerance": 0
         },
         {
-          "id": 3,
+          "id": 4,
           "type": "number",
           "answer": 2,
           "tolerance": 0
         }
       ],
-      "explanation": "Adding the equations cancels $y$ because its coefficients are $+1$ and $-1$, leaving $2x = 10$ and $x = 5$. Then $y = 7 - 5 = 2$, and the pair checks the second equation since $5 - 2 = 3$.",
-      "difficulty": "warmup",
+      "explanation": "Opposite coefficients cancel under addition, so adding the equations eliminates $y$: $(x + y) + (x - y) = 7 + 3$ gives $2x = 10$ and $x = 5$. Subtracting the second equation from the first eliminates $x$ instead, leaving $2y = 4$, which is the classic wrong turn when the goal is to remove $y$; multiplying or dividing equations is not a legal elimination move at all. The distractor $2x + 2y = 10$ comes from losing the minus sign while adding. Back-substituting, $5 + y = 7$ gives $y = 2$, and the check $5 - 2 = 3$ confirms the pair $(5, 2)$.",
+      "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
     {
       "id": "linear-algebra-i-systems-of-equations-032",
       "format": "cloze",
       "stem": "The augmented matrix of a system in $x, y$ reduces to $\\begin{pmatrix} 1 & 0 & 4 \\\\ 0 & 1 & -2 \\end{pmatrix}$. Read off the solution.",
-      "solution": "In reduced row echelon form each pivot column is a unit column, so the rightmost column gives the solution directly. The first row reads $x =$ {{1}} and the second row reads $y =$ {{2}}. Since every variable is a leading variable, the system has {{3}}.",
+      "solution": "Each row translates back into an equation, with the columns to the left of the bar holding the coefficients of $x$ and $y$. The top row translates to the equation {{1}}. The complete solution of the system is therefore {{2}}. It is the only solution because {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 4,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$x = 4$",
+            "$y = 4$",
+            "$x + 4y = 0$",
+            "$x + y = 4$"
+          ],
+          "answer": "$x = 4$"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": -2,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$(x, y) = (4, -2)$",
+            "$(x, y) = (-2, 4)$",
+            "$(x, y) = (4, 2)$",
+            "$(x, y) = (-4, 2)$"
+          ],
+          "answer": "$(x, y) = (4, -2)$"
         },
         {
           "id": 3,
           "type": "dropdown",
           "options": [
-            "exactly one solution",
-            "no solution",
-            "infinitely many solutions",
-            "exactly two solutions"
+            "every variable column has a pivot and no row is contradictory",
+            "the matrix is square",
+            "reduced row echelon form always yields exactly one solution",
+            "the right-hand column contains no zero entries"
           ],
-          "answer": "exactly one solution"
+          "answer": "every variable column has a pivot and no row is contradictory"
         }
       ],
-      "explanation": "Fully reduced rows read the values straight from the last column, so $x = 4$ and $y = -2$. With a pivot in every variable column and no contradictory row, the solution is unique.",
-      "difficulty": "warmup",
+      "explanation": "The top row has coefficients $1$ and $0$ with right-hand side $4$, so it says $1x + 0y = 4$, that is $x = 4$; reading it as $y = 4$ confuses the columns, and $x + 4y = 0$ mistakes the augmented column for a coefficient. Likewise the bottom row says $y = -2$, giving the solution $(4, -2)$; the sign on $-2$ must survive the read-off. Uniqueness follows because both variable columns carry pivots (no free variable) and no row reads zero equals nonzero. It is not automatic: a reduced matrix can still encode free variables or a contradiction, and squareness or nonzero right-hand entries prove nothing.",
+      "difficulty": "core",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
     {
       "id": "linear-algebra-i-systems-of-equations-033",
       "format": "cloze",
       "stem": "The augmented matrix of a system reduces to $\\begin{pmatrix} 1 & 3 & 5 \\\\ 0 & 0 & 4 \\end{pmatrix}$. What does the bottom row tell you?",
-      "solution": "The bottom row translates to the equation $0x + 0y =$ {{1}}, which is the impossible statement that zero equals a nonzero number. A row of zeros on the left with a nonzero entry on the right signals a {{2}}, so the system has {{3}}.",
+      "solution": "Translated back into an equation, the bottom row says {{1}}. Such a row is {{2}}. The conclusion for the system is that it has {{3}}. If instead the bottom row had been all zeros, including its right-hand entry, the correct conclusion would have been {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 4,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$0 = 4$",
+            "$y = 4$",
+            "$x + y = 4$",
+            "$4y = 0$"
+          ],
+          "answer": "$0 = 4$"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "contradiction",
-            "inconsistency"
-          ]
+          "type": "dropdown",
+          "options": [
+            "a contradiction that no choice of $x$ and $y$ can satisfy",
+            "a redundant equation that can simply be discarded",
+            "a sign that $y$ is a free variable",
+            "an equation that fixes the value of one variable"
+          ],
+          "answer": "a contradiction that no choice of $x$ and $y$ can satisfy"
         },
         {
           "id": 3,
@@ -518,12 +547,23 @@
             "no solution",
             "exactly one solution",
             "infinitely many solutions",
-            "two solutions"
+            "only the trivial solution"
           ],
           "answer": "no solution"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "infinitely many solutions, since a free variable would remain",
+            "no solution, since a zero row always signals inconsistency",
+            "exactly one solution, since the zero row would fix both variables",
+            "that the system is homogeneous"
+          ],
+          "answer": "infinitely many solutions, since a free variable would remain"
         }
       ],
-      "explanation": "The reduced row says $0 = 4$, which can never hold, so the system is inconsistent. Whenever a zero left side pairs with a nonzero right side, there is no solution.",
+      "explanation": "The bottom row has zero coefficients for both variables and right-hand side $4$, so it reads $0x + 0y = 4$, that is $0 = 4$; it is not a pivot row for $y$ and it does not mark a free variable. No values of $x$ and $y$ can make zero equal four, so the row is a genuine contradiction and the system is inconsistent: no solution. The tempting mistake is to treat it like the harmless all-zero row, but those two rows have opposite meanings: an all-zero row reads $0 = 0$, drops away, and leaves one pivot for two unknowns, so the system would then be consistent with a free variable and infinitely many solutions.",
       "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
@@ -531,31 +571,44 @@
       "id": "linear-algebra-i-systems-of-equations-034",
       "format": "cloze",
       "stem": "Solve the triangular system $\\begin{cases} x + y + z = 6 \\\\ y + z = 4 \\\\ z = 3 \\end{cases}$.",
-      "solution": "Because the system is already triangular, use {{1}}, working upward from the last equation. The third equation gives $z = 3$, the second gives $y = 4 - z =$ {{2}}, and the first gives $x = 6 - y - z =$ {{3}}.",
+      "solution": "The system is already triangular, so solve it by back-substitution, {{1}}. The last equation hands us $z$ directly. The middle equation then determines $y$ as the expression {{2}}, which evaluates to {{3}}. Finally, the first equation yields $x =$ {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
-            "back-substitution",
-            "backsubstitution",
-            "back substitution"
-          ]
+          "type": "dropdown",
+          "options": [
+            "starting from the last equation and working upward",
+            "starting from the first equation and working downward",
+            "adding all three equations together",
+            "solving each equation independently of the others"
+          ],
+          "answer": "starting from the last equation and working upward"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$4 - z$",
+            "$4 + z$",
+            "$6 - z$",
+            "$z - 4$"
+          ],
+          "answer": "$4 - z$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 1,
           "tolerance": 0
         },
         {
-          "id": 3,
+          "id": 4,
           "type": "number",
           "answer": 2,
           "tolerance": 0
         }
       ],
-      "explanation": "Triangular systems are solved by back-substitution from the bottom up. With $z = 3$ the second equation gives $y = 1$, and the first gives $x = 6 - 1 - 3 = 2$, so the solution is $(2, 1, 3)$.",
+      "explanation": "Back-substitution must begin at the bottom, where only one unknown lives; the first equation involves all three unknowns, so starting there solves nothing, and the equations cannot be treated independently since they share variables. With $z = 3$, the middle equation $y + z = 4$ rearranges to $y = 4 - z$ (moving $z$ across flips its sign, so $4 + z$ and $z - 4$ are both sign slips, and $6 - z$ borrows the wrong right-hand side). That gives $y = 4 - 3 = 1$. The top equation then gives $x = 6 - y - z = 6 - 1 - 3 = 2$, so the solution is $(2, 1, 3)$.",
       "difficulty": "core",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
@@ -563,27 +616,44 @@
       "id": "linear-algebra-i-systems-of-equations-035",
       "format": "cloze",
       "stem": "A consistent system in $3$ unknowns has a coefficient matrix of rank $2$. How many free variables and solutions does it have?",
-      "solution": "The number of free variables is the number of unknowns minus the rank, here $3 - 2 =$ {{1}}. With at least one free variable, a consistent system has {{2}}.",
+      "solution": "The number of free variables in a consistent system equals {{1}}. For this system that count works out to {{2}}. Consequently the solution set is {{3}}. For the solution to have been unique instead, the rank would have needed to be {{4}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "the number of unknowns minus the rank of the coefficient matrix",
+            "the rank of the coefficient matrix minus the number of equations",
+            "the number of equations minus the number of unknowns",
+            "the rank of the coefficient matrix itself"
+          ],
+          "answer": "the number of unknowns minus the rank of the coefficient matrix"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 1,
           "tolerance": 0
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
-            "infinitely many solutions",
-            "exactly one solution",
-            "no solution",
-            "exactly two solutions"
+            "an infinite family described by one parameter",
+            "a single point",
+            "empty, because the rank is too small",
+            "a set of exactly two solutions"
           ],
-          "answer": "infinitely many solutions"
+          "answer": "an infinite family described by one parameter"
+        },
+        {
+          "id": 4,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
         }
       ],
-      "explanation": "Free variables equal unknowns minus rank, so $3 - 2 = 1$. A consistent system with a free variable can be parameterized by that variable, producing infinitely many solutions.",
+      "explanation": "Each pivot ties down one leading variable, so the leftover unknowns are free: free variables equal unknowns minus rank, not the rank itself and not any count involving the number of equations. Here that is $3 - 2 = 1$ free variable. A consistent system with one free variable sweeps out an infinite one-parameter family of solutions; a small rank never makes a consistent system empty, and linear systems can never have exactly two solutions. Uniqueness would require zero free variables, which for $3$ unknowns means rank $3$.",
       "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
@@ -591,27 +661,49 @@
       "id": "linear-algebra-i-systems-of-equations-036",
       "format": "cloze",
       "stem": "For what value of $k$ does the system $\\begin{cases} x + 2y = 3 \\\\ 2x + ky = 7 \\end{cases}$ have no solution?",
-      "solution": "Subtract twice the first equation from the second to eliminate $x$: this gives $(k - 4)y = 1$. The system has no solution when the left side collapses to zero while the right side does not, which happens at $k =$ {{1}}. For any other value of $k$ the system {{2}}.",
+      "solution": "Eliminate $x$ by subtracting twice the first equation from the second: what remains is {{1}}. A single equation in $y$ has no solution exactly when {{2}}. That situation occurs here at $k =$ {{3}}. For every other value of $k$, the system {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 4,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$(k - 4)y = 1$",
+            "$(k - 4)y = 4$",
+            "$(k - 2)y = 4$",
+            "$(k + 4)y = 13$"
+          ],
+          "answer": "$(k - 4)y = 1$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "has a unique solution",
-            "has no solution",
-            "is homogeneous",
-            "has infinitely many solutions"
+            "the coefficient of $y$ is zero while the right side is not",
+            "the coefficient of $y$ and the right side are both zero",
+            "the coefficient of $y$ is negative",
+            "solving it would force $y$ to be a fraction"
           ],
-          "answer": "has a unique solution"
+          "answer": "the coefficient of $y$ is zero while the right side is not"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "has exactly one solution",
+            "has infinitely many solutions",
+            "is still inconsistent",
+            "becomes homogeneous"
+          ],
+          "answer": "has exactly one solution"
         }
       ],
-      "explanation": "Eliminating $x$ leaves $(k - 4)y = 1$. At $k = 4$ this reads $0 = 1$, a contradiction, so there is no solution. For $k \\neq 4$ the equation solves uniquely for $y$ and then for $x$.",
+      "explanation": "Subtracting twice the first equation from the second kills the $x$ terms: $(2x + ky) - 2(x + 2y) = 7 - 6$ leaves $(k - 4)y = 1$. Forgetting to double the right-hand side gives $(k - 4)y = 4$, subtracting only one copy of the first equation gives the $(k - 2)$ variant, and adding instead of subtracting produces $(k + 4)y = 13$. An equation $cy = d$ is unsolvable exactly when $c = 0$ and $d \\neq 0$; if both were zero it would hold for every $y$ (infinitely many solutions), a negative coefficient is harmless, and fractional answers are perfectly valid. Since the right side is the nonzero constant $1$, the no-solution case is $k - 4 = 0$, so $k = 4$. For $k \\neq 4$ the equation pins down $y$ uniquely and then $x$ follows, giving exactly one solution.",
       "difficulty": "core",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
@@ -619,22 +711,44 @@
       "id": "linear-algebra-i-systems-of-equations-037",
       "format": "cloze",
       "stem": "Solve $\\begin{cases} x + 2y = 8 \\\\ 3x - y = 3 \\end{cases}$ for $(x, y)$.",
-      "solution": "From the first equation $x = 8 - 2y$. Substituting into $3x - y = 3$ gives $3(8 - 2y) - y = 3$, that is $24 - 7y = 3$, so $y =$ {{1}}. Then $x = 8 - 2y =$ {{2}}.",
+      "solution": "Substitution begins by isolating a variable; from the first equation, $x =$ {{1}}. Substituting that expression into the second equation and simplifying produces {{2}}. Solving it gives $y =$ {{3}}, and the isolated expression then yields $x =$ {{4}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$8 - 2y$",
+            "$8 + 2y$",
+            "$2y - 8$",
+            "$\\tfrac{8 - y}{2}$"
+          ],
+          "answer": "$8 - 2y$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$24 - 7y = 3$",
+            "$24 - 3y = 3$",
+            "$8 - 7y = 3$",
+            "$24 - 5y = 3$"
+          ],
+          "answer": "$24 - 7y = 3$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 3,
           "tolerance": 0
         },
         {
-          "id": 2,
+          "id": 4,
           "type": "number",
           "answer": 2,
           "tolerance": 0
         }
       ],
-      "explanation": "Substitution reduces the system to $24 - 7y = 3$, giving $7y = 21$ and $y = 3$. Then $x = 8 - 6 = 2$, and the pair satisfies the second equation since $3 \\cdot 2 - 3 = 3$.",
+      "explanation": "Isolating $x$ in $x + 2y = 8$ means moving $2y$ across with a sign flip: $x = 8 - 2y$; keeping the plus sign, reversing the subtraction, or dividing by $2$ (which would be right only for $2x + y = 8$) all isolate incorrectly. Substituting into $3x - y = 3$ gives $3(8 - 2y) - y = 24 - 6y - y = 24 - 7y = 3$: forgetting to triple the $2y$ leaves $24 - 3y$, forgetting to triple the $8$ leaves $8 - 7y$, and flipping the lone $-y$ gives $24 - 5y$. From $24 - 7y = 3$ we get $7y = 21$, so $y = 3$, and then $x = 8 - 2 \\cdot 3 = 2$. The check $3 \\cdot 2 - 3 = 3$ confirms $(2, 3)$.",
       "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
@@ -642,27 +756,49 @@
       "id": "linear-algebra-i-systems-of-equations-038",
       "format": "cloze",
       "stem": "For what value of $k$ does the homogeneous system $\\begin{cases} 3x + ky = 0 \\\\ x + 2y = 0 \\end{cases}$ have a nontrivial solution?",
-      "solution": "A homogeneous $2 \\times 2$ system has a nontrivial solution exactly when its coefficient determinant is zero. The determinant is $3 \\cdot 2 - k \\cdot 1 = 6 - k$, and setting $6 - k = 0$ gives $k =$ {{1}}. For any other value of $k$ the system has {{2}}.",
+      "solution": "A homogeneous square system always has the trivial solution; a nontrivial solution exists exactly when {{1}}. Here the coefficient determinant equals {{2}}. The critical value is therefore $k =$ {{3}}, and at that value the two equations {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 6,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "the coefficient determinant is zero",
+            "the coefficient determinant is nonzero",
+            "the right-hand sides are all zero",
+            "there are more equations than unknowns"
+          ],
+          "answer": "the coefficient determinant is zero"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "only the trivial solution",
-            "no solution",
-            "infinitely many nontrivial solutions",
-            "exactly two solutions"
+            "$6 - k$",
+            "$6 + k$",
+            "$3k - 2$",
+            "$3 - 2k$"
           ],
-          "answer": "only the trivial solution"
+          "answer": "$6 - k$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "become proportional, so a whole line of solutions appears",
+            "still cross only at the origin",
+            "contradict each other, so no solution at all remains",
+            "produce exactly two solutions"
+          ],
+          "answer": "become proportional, so a whole line of solutions appears"
         }
       ],
-      "explanation": "Nontrivial solutions require a zero determinant, so $6 - k = 0$ gives $k = 6$, where the equations become proportional. For $k \\neq 6$ the determinant is nonzero and only the trivial solution $x = y = 0$ exists.",
+      "explanation": "Nontrivial solutions require the coefficient matrix to be singular, that is, a zero determinant; a nonzero determinant is precisely the case with only the trivial solution. The zero right-hand sides are what make the system homogeneous in the first place and guarantee nothing beyond the trivial solution. By $ad - bc$ the determinant is $3 \\cdot 2 - k \\cdot 1 = 6 - k$; the variants $6 + k$, $3k - 2$, and $3 - 2k$ add the products or pair entries across the wrong diagonals. Setting $6 - k = 0$ gives $k = 6$, where the first equation $3x + 6y = 0$ is three times the second, so the two lines coincide and every point of the line $x + 2y = 0$ solves the system. A homogeneous system can never be inconsistent, and a linear solution set is never exactly two points.",
       "difficulty": "stretch",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
@@ -670,33 +806,49 @@
       "id": "linear-algebra-i-systems-of-equations-039",
       "format": "cloze",
       "stem": "The augmented matrix $\\begin{pmatrix} 1 & 2 & 1 & 5 \\\\ 0 & 1 & 3 & 4 \\\\ 0 & 0 & 0 & 0 \\end{pmatrix}$ describes a system in $x, y, z$. Writing $z = t$ as the free variable, find the general solution.",
-      "solution": "The zero bottom row reads $0 = 0$, so the system is consistent with one free variable and therefore has {{1}}. Row two gives $y + 3z = 4$, so $y = 4 - 3t$, meaning the constant term of $y$ is {{2}}. Substituting into row one, $x + 2y + z = 5$ gives $x = -3 + 5t$, so the coefficient of $t$ in $x$ is {{3}}.",
+      "solution": "The all-zero bottom row imposes no constraint, so with three unknowns and only two pivots the system has {{1}}. Row two rearranges to give $y =$ {{2}}. Substituting that into row one and simplifying gives $x =$ {{3}}. As a spot check, the particular solution with $z = 2$ has $x =$ {{4}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "infinitely many solutions",
+            "infinitely many solutions, one for each value of $t$",
             "exactly one solution",
             "no solution",
-            "a unique trivial solution"
+            "only the trivial solution"
           ],
-          "answer": "infinitely many solutions"
+          "answer": "infinitely many solutions, one for each value of $t$"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 4,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$4 - 3t$",
+            "$4 + 3t$",
+            "$3t - 4$",
+            "$3 - 4t$"
+          ],
+          "answer": "$4 - 3t$"
         },
         {
           "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$-3 + 5t$",
+            "$-3 - 7t$",
+            "$-3 + 6t$",
+            "$1 + 2t$"
+          ],
+          "answer": "$-3 + 5t$"
+        },
+        {
+          "id": 4,
           "type": "number",
-          "answer": 5,
+          "answer": 7,
           "tolerance": 0
         }
       ],
-      "explanation": "An all-zero bottom row leaves one free variable, so there are infinitely many solutions. From $y = 4 - 3t$ and $x = 5 - 2(4 - 3t) - t = -3 + 5t$, the family is $(-3 + 5t, 4 - 3t, t)$.",
+      "explanation": "A consistent system whose pivots do not cover every unknown has a free variable, so the solutions form an infinite family indexed by $t$; an all-zero row is redundancy, not contradiction. Row two says $y + 3z = 4$, so $y = 4 - 3t$: the sign must flip as $3z$ moves across, and $3 - 4t$ swaps the roles of coefficient and constant. Row one says $x + 2y + z = 5$, so $x = 5 - 2(4 - 3t) - t = 5 - 8 + 6t - t = -3 + 5t$: mishandling the distribution gives $-3 - 7t$, dropping the $-t$ term gives $-3 + 6t$, and failing to double $y$ gives $1 + 2t$. The general solution is $(-3 + 5t,\\ 4 - 3t,\\ t)$, and at $t = 2$ the first coordinate is $-3 + 10 = 7$.",
       "difficulty": "stretch",
       "source": "in the style of Anton, Elementary Linear Algebra"
     }

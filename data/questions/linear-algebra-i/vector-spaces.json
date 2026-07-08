@@ -427,122 +427,188 @@
       "id": "linear-algebra-i-vector-spaces-031",
       "format": "cloze",
       "stem": "Is the set $W = \\{ (x, y) \\in \\mathbb{R}^2 : y = 3x \\}$ a subspace of $\\mathbb{R}^2$?",
-      "solution": "Every subspace must contain the {{1}} vector, so check it first. Setting $(x, y) = (0, 0)$ gives $0 = 3 \\cdot 0$, which holds, and the line is also closed under addition and scaling. Therefore $W$ {{2}} of $\\mathbb{R}^2$.",
+      "solution": "To qualify as a subspace, $W$ must {{1}}. The zero vector is in $W$ since $0 = 3 \\cdot 0$. For sums, $(a, 3a) + (b, 3b) = (a + b, \\, 3a + 3b)$, and this vector {{2}}. Scaling behaves the same way, since $c(a, 3a) = (ca, \\, 3(ca))$. With all the checks settled, $W$ {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
-            "zero",
-            "null"
-          ]
+          "type": "dropdown",
+          "options": [
+            "contain $\\mathbf{0}$ and be closed under both addition and scalar multiplication",
+            "contain $\\mathbf{0}$, which is the only requirement",
+            "contain the standard basis vectors $(1,0)$ and $(0,1)$",
+            "contain at least one vector from every line through the origin"
+          ],
+          "answer": "contain $\\mathbf{0}$ and be closed under both addition and scalar multiplication"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "is a subspace",
-            "is not a subspace",
-            "is an affine line only",
-            "is all of the plane"
+            "stays in $W$, because $3a + 3b = 3(a + b)$",
+            "leaves $W$, because the sum of two points on a line lies off the line",
+            "stays in $W$ only when $a = b$",
+            "cannot be classified without knowing $a$ and $b$"
           ],
-          "answer": "is a subspace"
-        }
-      ],
-      "explanation": "A line through the origin contains the zero vector and is closed under both operations, so it is a one-dimensional subspace. The defining equation $y = 3x$ passes through $(0,0)$, which is what makes it qualify.",
-      "difficulty": "warmup",
-      "source": "in the style of Anton, Elementary Linear Algebra"
-    },
-    {
-      "id": "linear-algebra-i-vector-spaces-032",
-      "format": "cloze",
-      "stem": "Write $(7, 4)$ as a linear combination of $(1, 0)$ and $(0, 1)$ in $\\mathbb{R}^2$.",
-      "solution": "We need scalars $a, b$ with $a(1, 0) + b(0, 1) = (a, b) = (7, 4)$. Matching coordinates forces $a =$ {{1}} and $b =$ {{2}}. Because such scalars exist, $(7, 4)$ {{3}} a linear combination of the two vectors.",
-      "gaps": [
-        {
-          "id": 1,
-          "type": "number",
-          "answer": 7,
-          "tolerance": 0
-        },
-        {
-          "id": 2,
-          "type": "number",
-          "answer": 4,
-          "tolerance": 0
+          "answer": "stays in $W$, because $3a + 3b = 3(a + b)$"
         },
         {
           "id": 3,
           "type": "dropdown",
           "options": [
-            "is",
-            "is not",
-            "might be",
-            "is never"
+            "is a subspace of $\\mathbb{R}^2$",
+            "is not a subspace, because it is only a line and not all of $\\mathbb{R}^2$",
+            "is not a subspace, because it contains vectors with negative coordinates",
+            "is a subspace of $\\mathbb{R}$ but not of $\\mathbb{R}^2$"
           ],
-          "answer": "is"
+          "answer": "is a subspace of $\\mathbb{R}^2$"
         }
       ],
-      "explanation": "The standard vectors $(1,0)$ and $(0,1)$ span all of $\\mathbb{R}^2$, so every vector is a combination of them. Reading off the coordinates gives $a = 7$ and $b = 4$.",
-      "difficulty": "warmup",
+      "explanation": "The subspace test has three parts: contain the zero vector, be closed under addition, and be closed under scalar multiplication. Containing $\\mathbf{0}$ is necessary but never sufficient on its own, and no subspace is required to contain the standard basis vectors; that demand would force $W$ to be all of $\\mathbb{R}^2$. For addition, $(a, 3a) + (b, 3b) = (a + b, 3a + 3b)$ and $3a + 3b = 3(a + b)$, so the sum still satisfies $y = 3x$ with no condition on $a$ and $b$; sums of points on a line through the origin never leave the line, though they do leave a line that misses the origin. Scaling gives $c(a, 3a) = (ca, 3(ca))$, still on the line. All three conditions hold, so $W$ is a subspace. Being a proper subset of the plane is no objection, since lines through the origin are exactly the one-dimensional subspaces of $\\mathbb{R}^2$, and containing vectors with negative coordinates is what every nonzero subspace does.",
+      "difficulty": "core",
+      "source": "in the style of Anton, Elementary Linear Algebra"
+    },
+    {
+      "id": "linear-algebra-i-vector-spaces-032",
+      "format": "cloze",
+      "stem": "Write $(7, 4)$ as a linear combination of $(2, 1)$ and $(1, 1)$ in $\\mathbb{R}^2$, if possible.",
+      "solution": "Being a linear combination means scalars $a, b$ exist with $a(2, 1) + b(1, 1) = (7, 4)$. Matching coordinates, entry by entry, produces the system {{1}}. Subtracting one equation from the other eliminates $b$ and leaves $a =$ {{2}}; substituting back then gives $b =$ {{3}}. Since consistent scalars exist, $(7, 4)$ {{4}}.",
+      "gaps": [
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$2a + b = 7$ and $a + b = 4$",
+            "$a + b = 7$ and $2a + b = 4$",
+            "$2a + b = 7$ and $a - b = 4$",
+            "$2a + a = 7$ and $b + b = 4$"
+          ],
+          "answer": "$2a + b = 7$ and $a + b = 4$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "is a linear combination of the two vectors",
+            "is not a linear combination, because the two coefficients differ",
+            "is a linear combination only after normalizing the two vectors",
+            "cannot be classified without a third vector"
+          ],
+          "answer": "is a linear combination of the two vectors"
+        }
+      ],
+      "explanation": "Matching first coordinates of $a(2, 1) + b(1, 1) = (7, 4)$ gives $2a + b = 7$, and matching second coordinates gives $a + b = 4$. Swapping the right-hand sides attaches each total to the wrong coordinate, flipping a sign invents a subtraction the vectors do not contain, and grouping by vector instead of by coordinate produces the meaningless $2a + a = 7$. Subtracting the second equation from the first eliminates $b$ and leaves $a = 3$, and then $b = 4 - 3 = 1$; the check $3(2, 1) + 1(1, 1) = (7, 4)$ confirms both values. Consistency is all that membership requires: the coefficients need not be equal, no normalization of the vectors is involved, and no third vector is needed. So $(7, 4)$ is a linear combination of $(2, 1)$ and $(1, 1)$.",
+      "difficulty": "core",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
     {
       "id": "linear-algebra-i-vector-spaces-033",
       "format": "cloze",
       "stem": "Is $(5, 8)$ in the span of $(1, 2)$ and $(1, 3)$ in $\\mathbb{R}^2$?",
-      "solution": "Solve $a(1, 2) + b(1, 3) = (5, 8)$, giving the equations $a + b = 5$ and $2a + 3b = 8$. Subtracting twice the first from the second gives $b =$ {{1}}, and then $a = 5 - b =$ {{2}}. Since a solution exists, $(5, 8)$ {{3}} the span.",
+      "solution": "By definition, $(5, 8)$ lies in the span exactly when {{1}}. Matching coordinates gives $a + b = 5$ and $2a + 3b = 8$. Subtracting twice the first equation from the second eliminates $a$ and leaves $b =$ {{2}}; the first equation then gives $a =$ {{3}}. One coefficient came out negative, which {{4}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "some scalars $a, b$ satisfy $a(1,2) + b(1,3) = (5,8)$",
+            "$(5, 8)$ is a scalar multiple of $(1, 2)$ or of $(1, 3)$",
+            "$(5, 8)$ is perpendicular to both $(1, 2)$ and $(1, 3)$",
+            "scalars $a, b$ with $a(1,2) + b(1,3) = (5,8)$ can be chosen as positive whole numbers"
+          ],
+          "answer": "some scalars $a, b$ satisfy $a(1,2) + b(1,3) = (5,8)$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": -2,
           "tolerance": 0
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "number",
           "answer": 7,
           "tolerance": 0
         },
         {
-          "id": 3,
+          "id": 4,
           "type": "dropdown",
           "options": [
-            "is in",
-            "is not in",
-            "is perpendicular to",
-            "is the basis of"
+            "is allowed, so $(5, 8)$ does lie in the span",
+            "is not allowed, so $(5, 8)$ lies outside the span",
+            "shows that the two spanning vectors are dependent",
+            "signals an arithmetic error, since spans only use positive weights"
           ],
-          "answer": "is in"
+          "answer": "is allowed, so $(5, 8)$ does lie in the span"
         }
       ],
-      "explanation": "The system $a + b = 5$, $2a + 3b = 8$ solves to $b = -2$ and $a = 7$, so $(5,8) = 7(1,2) - 2(1,3)$. The two independent vectors span all of $\\mathbb{R}^2$, so every vector lies in their span.",
+      "explanation": "Membership in a span asks only that some real scalars solve $a(1,2) + b(1,3) = (5,8)$. It does not require $(5,8)$ to be a multiple of a single spanning vector, perpendicularity has nothing to do with it, and nothing restricts the scalars to positive whole numbers. The coordinates give $a + b = 5$ and $2a + 3b = 8$; subtracting twice the first from the second leaves $b = 8 - 10 = -2$, and then $a = 5 - (-2) = 7$. Negative coefficients are perfectly legal scalars, so $(5,8) = 7(1,2) - 2(1,3)$ and the vector is in the span; rejecting it because a coefficient is negative is the trap, and a negative coefficient says nothing about the spanning vectors being dependent. In fact $(1,2)$ and $(1,3)$ are independent, so their span is all of $\\mathbb{R}^2$.",
       "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
     {
       "id": "linear-algebra-i-vector-spaces-034",
       "format": "cloze",
-      "stem": "How many vectors are in the standard basis of $\\mathbb{R}^5$, and what does that number equal?",
-      "solution": "The standard basis of $\\mathbb{R}^n$ has one vector $\\mathbf{e}_i$ for each coordinate, so $\\mathbb{R}^5$ has {{1}} basis vectors. This count is precisely the {{2}} of the space.",
+      "stem": "In $\\mathbb{R}^5$, decide which sizes of vector sets could form a basis: $4$ vectors, $5$ vectors, or $6$ vectors.",
+      "solution": "The standard basis $\\mathbf{e}_1, \\ldots, \\mathbf{e}_5$ is one basis of $\\mathbb{R}^5$, and any two bases of the same space {{1}}. A set of $6$ vectors in $\\mathbb{R}^5$ is therefore {{2}}. A set of $4$ vectors {{3}}. A set of exactly $5$ vectors is a basis precisely when {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 5,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "contain the same number of vectors",
+            "can contain different numbers of vectors, provided both span",
+            "share at least one vector in common",
+            "differ only by the order of their vectors"
+          ],
+          "answer": "contain the same number of vectors"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "dimension",
-            "dim"
-          ]
+          "type": "dropdown",
+          "options": [
+            "linearly dependent, no matter which vectors are chosen",
+            "guaranteed to span, since it has more than enough vectors",
+            "independent whenever no two of its vectors are proportional",
+            "a basis whenever it contains the five standard basis vectors"
+          ],
+          "answer": "linearly dependent, no matter which vectors are chosen"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "cannot span $\\mathbb{R}^5$, though it may well be independent",
+            "cannot be independent, because it is too small",
+            "always spans a subspace of dimension exactly $4$",
+            "must contain at least one redundant vector"
+          ],
+          "answer": "cannot span $\\mathbb{R}^5$, though it may well be independent"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "it is linearly independent; spanning then comes for free",
+            "it spans, which five vectors in $\\mathbb{R}^5$ always do",
+            "no two of its vectors are scalar multiples of each other",
+            "it avoids the zero vector"
+          ],
+          "answer": "it is linearly independent; spanning then comes for free"
         }
       ],
-      "explanation": "There are exactly $n$ standard basis vectors in $\\mathbb{R}^n$, here $5$. The number of vectors in any basis equals the dimension of the space.",
+      "explanation": "All bases of a fixed space have the same size, and that shared size is the dimension; two bases never need to share a vector, are not mere reorderings of each other, and spanning sets of different sizes cannot both be bases. Since the standard basis of $\\mathbb{R}^5$ has five vectors, $\\dim \\mathbb{R}^5 = 5$. Any $6$ vectors in a five-dimensional space are automatically dependent, however they are chosen; extra vectors never guarantee spanning, pairwise non-proportionality does not rescue independence, and a $6$-vector set containing the standard basis spans but is still dependent, hence not a basis. Four vectors span at most a four-dimensional subspace, so they can never span $\\mathbb{R}^5$, although four vectors can perfectly well be independent, and if they are dependent their span has dimension below $4$. For exactly $5$ vectors, independence and spanning become equivalent, so checking independence alone settles the matter; five vectors need not span (they could be dependent), and avoiding the zero vector or pairwise proportionality is necessary but far from sufficient.",
       "difficulty": "core",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
@@ -550,27 +616,49 @@
       "id": "linear-algebra-i-vector-spaces-035",
       "format": "cloze",
       "stem": "Are the vectors $(1, 2)$ and $(3, 5)$ linearly independent in $\\mathbb{R}^2$?",
-      "solution": "Form the matrix with these vectors as columns and compute its determinant: $1 \\cdot 5 - 3 \\cdot 2 =$ {{1}}. Because this value is nonzero, the vectors are linearly {{2}}.",
+      "solution": "A pair of vectors is linearly dependent precisely when {{1}}. To settle it by computation, place $(1, 2)$ and $(3, 5)$ into the columns of a matrix; the correct $2 \\times 2$ determinant of that matrix is {{2}}, which evaluates to {{3}}. By the determinant test, this pair is {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": -1,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "one of them is a scalar multiple of the other",
+            "they fail to be perpendicular to each other",
+            "they lie in the same quadrant of the plane",
+            "they span two different lines through the origin"
+          ],
+          "answer": "one of them is a scalar multiple of the other"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "independent",
-            "dependent",
-            "orthogonal",
-            "equal"
+            "$1 \\cdot 5 - 3 \\cdot 2$",
+            "$1 \\cdot 5 + 3 \\cdot 2$",
+            "$1 \\cdot 2 - 3 \\cdot 5$",
+            "$1 \\cdot 3 - 2 \\cdot 5$"
           ],
-          "answer": "independent"
+          "answer": "$1 \\cdot 5 - 3 \\cdot 2$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -1,
+          "tolerance": 0
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "independent, because the determinant is nonzero",
+            "dependent, because the determinant is negative",
+            "dependent, because the determinant is nonzero",
+            "independent, because neither vector is the zero vector"
+          ],
+          "answer": "independent, because the determinant is nonzero"
         }
       ],
-      "explanation": "Two vectors in $\\mathbb{R}^2$ are independent exactly when the determinant of the matrix holding them is nonzero. Here the determinant is $5 - 6 = -1 \\neq 0$, so neither vector is a multiple of the other.",
+      "explanation": "Two vectors are dependent exactly when one is a scalar multiple of the other. Failing to be perpendicular is irrelevant, since independence is not orthogonality; sharing a quadrant proves nothing; and spanning two different lines is what independent pairs do, the opposite of dependence. With $(1,2)$ and $(3,5)$ as columns, the $ad - bc$ rule gives $1 \\cdot 5 - 3 \\cdot 2$; adding the products is the classic sign trap, while $1 \\cdot 2 - 3 \\cdot 5$ multiplies down each column and $1 \\cdot 3 - 2 \\cdot 5$ pairs the entries across rows, none of which is the diagonal rule. The value is $5 - 6 = -1$. The test cares only about zero versus nonzero: $-1 \\neq 0$, so the pair is independent. A negative determinant does not signal dependence, and being nonzero vectors is no reason by itself, since $(1,2)$ and $(2,4)$ are both nonzero yet dependent.",
       "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
@@ -578,27 +666,49 @@
       "id": "linear-algebra-i-vector-spaces-036",
       "format": "cloze",
       "stem": "What is the dimension of the subspace $W = \\{ (x, y, z) \\in \\mathbb{R}^3 : z = 0 \\}$?",
-      "solution": "A vector in $W$ has the form $(x, y, 0) = x(1, 0, 0) + y(0, 1, 0)$, so $W$ is spanned by two independent vectors and has dimension {{1}}. Geometrically this subspace is the {{2}}.",
+      "solution": "A general point of $W$ keeps $x$ and $y$ free while $z = 0$, so it decomposes as {{1}}. The vectors appearing in that decomposition are independent and span $W$, so they form a basis. Dimension counts {{2}}, so $\\dim W =$ {{3}}. Geometrically, $W$ is {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 2,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$x(1,0,0) + y(0,1,0)$",
+            "$x(1,0,0) + y(0,1,0) + (0,0,1)$",
+            "$x(1,0,0) + z(0,0,1)$",
+            "$(x + y)(1,1,0)$"
+          ],
+          "answer": "$x(1,0,0) + y(0,1,0)$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "xy-plane",
-            "z-axis",
-            "whole space",
-            "origin only"
+            "the number of vectors in a basis",
+            "the number of coordinates each vector carries",
+            "the number of equations defining the subspace",
+            "how many vectors the subspace contains"
           ],
-          "answer": "xy-plane"
+          "answer": "the number of vectors in a basis"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "the $xy$-plane inside $\\mathbb{R}^3$",
+            "the $z$-axis",
+            "all of $\\mathbb{R}^3$",
+            "a single line through the origin"
+          ],
+          "answer": "the $xy$-plane inside $\\mathbb{R}^3$"
         }
       ],
-      "explanation": "The condition $z = 0$ leaves $x$ and $y$ free, so $(1,0,0)$ and $(0,1,0)$ form a basis and $\\dim W = 2$. This is exactly the $xy$-plane sitting inside $\\mathbb{R}^3$.",
+      "explanation": "With $z = 0$, a point of $W$ is $(x, y, 0) = x(1,0,0) + y(0,1,0)$. Tacking on $(0,0,1)$ as a constant lifts every point to height $1$, using $z$ as a free coefficient keeps the very variable the constraint killed, and merging $x$ and $y$ into one coefficient collapses two directions of freedom into one. The two spanning vectors are independent, so they are a basis. Dimension counts basis vectors, not the three ambient coordinates (the trap that suggests $3$), not the single defining equation (which would suggest $1$), and certainly not the infinitely many vectors the subspace contains. So $\\dim W = 2$, and $W$ is the $xy$-plane. It is not the $z$-axis: the equation $z = 0$ flattens out the third coordinate and keeps the horizontal plane, whereas the $z$-axis is defined by $x = y = 0$.",
       "difficulty": "core",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
@@ -606,22 +716,44 @@
       "id": "linear-algebra-i-vector-spaces-037",
       "format": "cloze",
       "stem": "Find the coordinates of $(7, 3)$ relative to the basis $B = \\{ (1, 1), (1, -1) \\}$ of $\\mathbb{R}^2$.",
-      "solution": "We need $a, b$ with $a(1, 1) + b(1, -1) = (7, 3)$, giving $a + b = 7$ and $a - b = 3$. Adding the equations yields $2a = 10$, so $a =$ {{1}}, and then $b = 7 - a =$ {{2}}.",
+      "solution": "The coordinate vector of $(7, 3)$ relative to $B$ collects {{1}}. Matching first coordinates and then second coordinates produces the system {{2}}. Adding the two equations eliminates $b$ and gives $a =$ {{3}}; either original equation then returns $b =$ {{4}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "the scalars $a, b$ with $a(1,1) + b(1,-1) = (7,3)$",
+            "the entries $7$ and $3$ unchanged, since coordinates do not depend on the basis",
+            "the value of the combination $7(1,1) + 3(1,-1)$",
+            "the entries reversed to $(3, 7)$, to match the order of the basis"
+          ],
+          "answer": "the scalars $a, b$ with $a(1,1) + b(1,-1) = (7,3)$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$a + b = 7$ and $a - b = 3$",
+            "$a - b = 7$ and $a + b = 3$",
+            "$a + b = 7$ and $b - a = 3$",
+            "$7a + 3b = 1$ and $7a - 3b = -1$"
+          ],
+          "answer": "$a + b = 7$ and $a - b = 3$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 5,
           "tolerance": 0
         },
         {
-          "id": 2,
+          "id": 4,
           "type": "number",
           "answer": 2,
           "tolerance": 0
         }
       ],
-      "explanation": "Solving the system gives $a = 5$ and $b = 2$, so the coordinate vector relative to $B$ is $(5, 2)$. Checking, $5(1,1) + 2(1,-1) = (7, 3)$ as required.",
+      "explanation": "Coordinates relative to $B$ are the coefficients $a, b$ in $a(1,1) + b(1,-1) = (7,3)$. They are not the entries $7$ and $3$ themselves, which only works in the standard basis; not the value of $7(1,1) + 3(1,-1)$, which wrongly uses the entries as the weights; and not a reordering of the entries. Matching first coordinates gives $a + b = 7$ and matching second coordinates gives $a - b = 3$; swapping the right-hand sides or flipping the subtraction builds the wrong system, and the last option scrambles the roles of knowns and unknowns entirely. Adding the two correct equations gives $2a = 10$, so $a = 5$, and then $b = 7 - 5 = 2$. The check $5(1,1) + 2(1,-1) = (7,3)$ confirms that the coordinate vector is $(5, 2)$.",
       "difficulty": "stretch",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
@@ -629,33 +761,44 @@
       "id": "linear-algebra-i-vector-spaces-038",
       "format": "cloze",
       "stem": "Are the vectors $(1, 2, 3)$, $(0, 1, 1)$, and $(2, 5, 7)$ linearly independent in $\\mathbb{R}^3$?",
-      "solution": "Look for a dependence by writing the third vector through the first two: solving $\\alpha(1, 2, 3) + \\beta(0, 1, 1) = (2, 5, 7)$ gives $\\alpha =$ {{1}} and $\\beta =$ {{2}}. Since the third vector is a combination of the others, the set is linearly {{3}}.",
+      "solution": "A sound test for independence is to {{1}}. Try to build the third listed vector from the first two: in $\\alpha(1,2,3) + \\beta(0,1,1) = (2,5,7)$, the first coordinates force $\\alpha =$ {{2}}, and the second coordinates then force $\\beta =$ {{3}}. The third coordinates must be checked rather than assumed: substituting the values above makes $3\\alpha + \\beta$ match the third target coordinate exactly. This means the set is {{4}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "ask whether some scalars, not all zero, combine the three vectors into $\\mathbf{0}$",
+            "check each pair separately for proportionality",
+            "confirm that none of the three vectors is the zero vector",
+            "count them: three vectors in $\\mathbb{R}^3$ always form an independent set"
+          ],
+          "answer": "ask whether some scalars, not all zero, combine the three vectors into $\\mathbf{0}$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 2,
           "tolerance": 0
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "number",
           "answer": 1,
           "tolerance": 0
         },
         {
-          "id": 3,
+          "id": 4,
           "type": "dropdown",
           "options": [
-            "dependent",
-            "independent",
-            "orthogonal",
-            "normalized"
+            "linearly dependent",
+            "linearly independent, because no two of the vectors are proportional",
+            "linearly independent, because both coefficients came out nonzero",
+            "impossible to classify from a single reconstruction"
           ],
-          "answer": "dependent"
+          "answer": "linearly dependent"
         }
       ],
-      "explanation": "The first coordinate forces $\\alpha = 2$ and the second then forces $\\beta = 1$, and the third coordinate checks since $2 \\cdot 3 + 1 = 7$. So $(2,5,7) = 2(1,2,3) + (0,1,1)$, a nontrivial relation that makes the set dependent.",
+      "explanation": "Independence is tested by the defining condition: can scalars, not all zero, combine the vectors into $\\mathbf{0}$? Checking pairs for proportionality is the classic shortcut that fails exactly here, since no two of these vectors are proportional and yet the set is dependent. Avoiding the zero vector proves nothing, and counting decides nothing, because three vectors in $\\mathbb{R}^3$ may or may not be independent. Solving $\\alpha(1,2,3) + \\beta(0,1,1) = (2,5,7)$: the first coordinates give $\\alpha \\cdot 1 = 2$, so $\\alpha = 2$; the second give $2\\alpha + \\beta = 5$, so $\\beta = 5 - 4 = 1$; and the third coordinates confirm $3(2) + 1 = 7$. So $(2,5,7) = 2(1,2,3) + 1(0,1,1)$, equivalently $2(1,2,3) + 1(0,1,1) - 1(2,5,7) = \\mathbf{0}$, a nontrivial relation, and the set is linearly dependent. A successful reconstruction with nonzero coefficients is evidence of dependence, not independence, and one such relation settles the question for good.",
       "difficulty": "stretch",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
@@ -663,33 +806,38 @@
       "id": "linear-algebra-i-vector-spaces-039",
       "format": "cloze",
       "stem": "What is the dimension of the subspace $W = \\{ (a, b, c, d) \\in \\mathbb{R}^4 : a = b \\text{ and } c = d \\}$?",
-      "solution": "A vector in $W$ has the form $(a, a, c, c) = a(1, 1, 0, 0) + c(0, 0, 1, 1)$, so there are {{1}} free parameters and a basis of that many vectors. Hence $\\dim W =$ {{2}}, since each of the two constraints {{3}} the ambient dimension by one.",
+      "solution": "The two conditions force the shape $(a, \\, a, \\, c, \\, c)$, which decomposes as {{1}}. The vectors in that decomposition are independent, so they form a basis of $W$. The count agrees with the general principle that {{2}}: starting from $\\dim \\mathbb{R}^4 = 4$, the two independent constraints leave $\\dim W =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 2,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$a(1,1,0,0) + c(0,0,1,1)$",
+            "$a(1,1,0,0) + b(0,1,0,0) + c(0,0,1,1) + d(0,0,0,1)$",
+            "$a(1,0,0,0) + c(0,0,1,0)$",
+            "$(a + c)(1,1,1,1)$"
+          ],
+          "answer": "$a(1,1,0,0) + c(0,0,1,1)$"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 2,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "each independent linear constraint lowers the dimension by one",
+            "constraints never change the dimension, only the choice of basis",
+            "each constraint lowers the dimension by two, one for each variable it mentions",
+            "adding constraints raises the dimension, since each adds structure"
+          ],
+          "answer": "each independent linear constraint lowers the dimension by one"
         },
         {
           "id": 3,
-          "type": "dropdown",
-          "options": [
-            "lowers",
-            "raises",
-            "doubles",
-            "fixes"
-          ],
-          "answer": "lowers"
+          "type": "number",
+          "answer": 2,
+          "tolerance": 0
         }
       ],
-      "explanation": "The free parameters $a$ and $c$ give the basis $(1,1,0,0)$ and $(0,0,1,1)$, so $\\dim W = 2$. Each independent equation cuts one degree of freedom from the $4$ of $\\mathbb{R}^4$, leaving $4 - 2 = 2$.",
+      "explanation": "The conditions $a = b$ and $c = d$ force the shape $(a, a, c, c) = a(1,1,0,0) + c(0,0,1,1)$. Keeping four separate parameters ignores that $b$ and $d$ are tied to $a$ and $c$; dropping the tied copies gives $(a, 0, c, 0)$, which violates $a = b$ the moment $a \\neq 0$; and a single shared coefficient collapses the two independent directions into one line. The two decomposition vectors are independent, so they form a basis and $\\dim W = 2$. This matches the counting principle: each independent linear constraint removes exactly one degree of freedom, so two constraints take $\\dim \\mathbb{R}^4 = 4$ down to $4 - 2 = 2$. Constraints certainly do change dimension, they remove one dimension each rather than two, and adding equations can only shrink a solution space, never enlarge it. The trap answer $4$ would ignore the constraints and report the ambient dimension.",
       "difficulty": "stretch",
       "source": "in the style of Anton, Elementary Linear Algebra"
     }

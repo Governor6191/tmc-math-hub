@@ -427,7 +427,7 @@
       "id": "statistics-and-probability-special-distributions-031",
       "format": "cloze",
       "stem": "A fair coin is tossed $6$ times and $X$ counts the number of heads. Identify the distribution of $X$ and find its mean.",
-      "solution": "There are $6$ fixed independent trials, each landing heads or tails with constant probability $p = \\tfrac{1}{2}$, so $X$ follows a {{1}} distribution. Its mean is $np = 6 \\times \\tfrac{1}{2}$, which equals {{2}}.",
+      "solution": "The three hallmarks here are a fixed number of trials, independence, and a constant success probability, so $X$ follows a {{1}} distribution. Its mean is $np = 6 \\times \\tfrac12$, which equals {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -436,7 +436,7 @@
             "Binomial",
             "Poisson",
             "Normal",
-            "Uniform"
+            "Geometric"
           ],
           "answer": "Binomial"
         },
@@ -447,30 +447,35 @@
           "tolerance": 0
         }
       ],
-      "explanation": "A fixed number of independent two-outcome trials with constant $p$ is binomial, and the mean is $np = 6 \\times 0.5 = 3$. Poisson would apply only to counts over a continuous span with no fixed $n$.",
-      "difficulty": "warmup",
+      "explanation": "Fixed $n$, independent trials, constant $p$ is exactly the binomial setup. Mean $= np = 6(1/2) = 3$.",
+      "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
     {
       "id": "statistics-and-probability-special-distributions-032",
       "format": "cloze",
       "stem": "Let $X \\sim \\text{Binomial}(n = 20, p = 0.3)$. Find the mean and the variance of $X$.",
-      "solution": "The binomial mean is $np = 20 \\times 0.3$, which equals {{1}}. The binomial variance is $np(1 - p) = 20(0.3)(0.7)$, which equals {{2}}.",
+      "solution": "The mean of a binomial is $np$; the variance is {{1}}, which students often wrongly set equal to the mean. Here the mean is $np = 6$, and substituting into the variance formula $20(0.3)(0.7)$ gives {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 6,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$np(1-p)$",
+            "$np$",
+            "$np^2$",
+            "$np(1+p)$"
+          ],
+          "answer": "$np(1-p)$"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 4.2,
-          "tolerance": 0.01
+          "tolerance": 0.001
         }
       ],
-      "explanation": "Here $\\mu = np = 20 \\times 0.3 = 6$ and $\\text{Var}(X) = np(1 - p) = 20(0.3)(0.7) = 4.2$. The variance is strictly smaller than the mean for a binomial, unlike the Poisson where they are equal.",
+      "explanation": "Binomial variance is $np(1-p)$, not $np$ (that is the mean). With $n=20, p=0.3$: variance $= 20(0.3)(0.7) = 4.2$.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -478,18 +483,18 @@
       "id": "statistics-and-probability-special-distributions-033",
       "format": "cloze",
       "stem": "A random variable $X$ follows a Poisson distribution with mean $\\lambda = 5$. Find its variance.",
-      "solution": "For this distribution the variance equals {{1}}. Substituting $\\lambda = 5$ gives a variance of {{2}}. A distribution whose mean and variance are always equal in this way is the {{3}} distribution.",
+      "solution": "A defining feature of the Poisson distribution is that its variance {{1}}. So with $\\lambda = 5$ the variance is {{2}}. A distribution whose mean and variance always coincide like this is the {{3}} distribution.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$\\lambda$",
-            "$\\sqrt{\\lambda}$",
-            "$\\lambda^2$",
-            "$2\\lambda$"
+            "equals its mean $\\lambda$",
+            "equals $\\lambda^2$",
+            "equals $\\sqrt{\\lambda}$",
+            "is always $1$"
           ],
-          "answer": "$\\lambda$"
+          "answer": "equals its mean $\\lambda$"
         },
         {
           "id": 2,
@@ -499,29 +504,36 @@
         },
         {
           "id": 3,
-          "type": "text",
-          "accept": [
+          "type": "dropdown",
+          "options": [
             "Poisson",
-            "Poisson distribution",
-            "poisson"
-          ]
+            "Binomial",
+            "Normal",
+            "Exponential"
+          ],
+          "answer": "Poisson"
         }
       ],
-      "explanation": "A defining property of the Poisson distribution is that its mean and variance are both $\\lambda$, so the variance is $5$. Taking $\\sqrt{\\lambda}$ would give the standard deviation, and $\\lambda^2$ has no place here.",
-      "difficulty": "warmup",
+      "explanation": "For a Poisson, mean and variance are both $\\lambda$, so the variance is $5$. That equality is the signature of the Poisson.",
+      "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
     {
       "id": "statistics-and-probability-special-distributions-034",
       "format": "cloze",
       "stem": "Scores on an exam are normally distributed with mean $\\mu = 100$ and standard deviation $\\sigma = 15$. A student scores $130$. Find the $z$-score.",
-      "solution": "Standardizing uses $z = \\frac{x - \\mu}{\\sigma}$. The numerator $x - \\mu = 130 - 100$ equals {{1}}. Dividing that difference by $\\sigma = 15$ gives a $z$-score of {{2}}.",
+      "solution": "The $z$-score $z = \\frac{x-\\mu}{\\sigma}$ measures {{1}}. The numerator $x-\\mu = 130-100 = 30$, and dividing by $\\sigma = 15$ gives $z =$ {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 30,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "how many standard deviations $x$ lies above the mean",
+            "the raw distance of $x$ from the mean",
+            "the probability of scoring $x$",
+            "the percentile rank of $x$"
+          ],
+          "answer": "how many standard deviations $x$ lies above the mean"
         },
         {
           "id": 2,
@@ -530,7 +542,7 @@
           "tolerance": 0
         }
       ],
-      "explanation": "The difference is $130 - 100 = 30$, and $z = \\frac{30}{15} = 2$. The score lies two standard deviations above the mean. Forgetting to divide by $\\sigma$ leaves the answer at the raw difference $30$.",
+      "explanation": "A $z$-score counts standard deviations from the mean (not the raw gap, which is $30$). Here $z = 30/15 = 2$.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -538,7 +550,7 @@
       "id": "statistics-and-probability-special-distributions-035",
       "format": "cloze",
       "stem": "For a normal distribution, apply the empirical (68-95-99.7) rule.",
-      "solution": "About {{1}} of the values lie within one standard deviation of the mean. Widening the window to two standard deviations raises this to approximately {{2}} per cent, entered here as a plain number such as 95.",
+      "solution": "The empirical rule says that about {{1}} of the values lie within one standard deviation of the mean. Widening the window to two standard deviations raises the coverage to approximately {{2}} per cent (enter a plain whole number).",
       "gaps": [
         {
           "id": 1,
@@ -558,7 +570,7 @@
           "tolerance": 0
         }
       ],
-      "explanation": "The empirical rule places about $68\\%$ within one standard deviation, about $95\\%$ within two, and about $99.7\\%$ within three. Sliding these figures onto the wrong number of standard deviations is the common mistake.",
+      "explanation": "The 68-95-99.7 rule: one SD covers about $68\\%$, two SDs about $95\\%$, three SDs about $99.7\\%$.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -566,22 +578,27 @@
       "id": "statistics-and-probability-special-distributions-036",
       "format": "cloze",
       "stem": "A fair coin is tossed $4$ times. Find the probability of getting exactly $2$ heads.",
-      "solution": "With $X \\sim \\text{Binomial}(4, \\tfrac{1}{2})$, $P(X = 2) = \\binom{4}{2}\\left(\\tfrac{1}{2}\\right)^2\\left(\\tfrac{1}{2}\\right)^2$. The coefficient $\\binom{4}{2}$ equals {{1}}. Carrying out the full product gives a probability of {{2}}.",
+      "solution": "With $X\\sim\\text{Binomial}(4,\\tfrac12)$, $P(X=2) = \\binom{4}{2}\\left(\\tfrac12\\right)^2\\left(\\tfrac12\\right)^2$. The coefficient $\\binom{4}{2}$ counts {{1}} and equals $6$. Multiplying by $(\\tfrac12)^4$ gives a probability of {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 6,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "the number of ways to choose which 2 of the 4 tosses are heads",
+            "the number of heads",
+            "the number of tosses",
+            "the probability of a single head"
+          ],
+          "answer": "the number of ways to choose which 2 of the 4 tosses are heads"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 0.375,
-          "tolerance": 0.01
+          "tolerance": 0.001
         }
       ],
-      "explanation": "Here $\\binom{4}{2} = 6$, so $P(X = 2) = 6 \\cdot \\frac{1}{16} = \\frac{6}{16} = 0.375$. Dropping the coefficient would leave only $\\left(\\tfrac{1}{2}\\right)^4 = \\frac{1}{16}$.",
+      "explanation": "The binomial coefficient counts arrangements of the 2 heads among 4 tosses ($\\binom42 = 6$). So $P = 6(1/2)^4 = 6/16 = 0.375$.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -589,16 +606,16 @@
       "id": "statistics-and-probability-special-distributions-037",
       "format": "cloze",
       "stem": "Calls arrive at a call centre at an average rate of $4$ per minute, following a Poisson distribution. Find the probability that no calls arrive in a given minute.",
-      "solution": "For a Poisson variable with mean $\\lambda = 4$, the probability of zero events is {{1}}. Evaluated as a decimal, this is about {{2}}.",
+      "solution": "For a Poisson variable with mean $\\lambda = 4$, the probability of zero events is $\\frac{\\lambda^0 e^{-\\lambda}}{0!}$, which simplifies to {{1}}. Evaluated as a decimal, this is about {{2}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
             "$e^{-4}$",
-            "$1 - e^{-4}$",
-            "$4 e^{-4}$",
-            "$e^{-1}$"
+            "$e^{4}$",
+            "$4e^{-4}$",
+            "$1 - e^{-4}$"
           ],
           "answer": "$e^{-4}$"
         },
@@ -606,10 +623,10 @@
           "id": 2,
           "type": "number",
           "answer": 0.0183,
-          "tolerance": 0.001
+          "tolerance": 0.0005
         }
       ],
-      "explanation": "Since $P(X = 0) = \\frac{e^{-4} 4^0}{0!} = e^{-4} \\approx 0.0183$. The expression $1 - e^{-4}$ would instead give the probability of at least one call.",
+      "explanation": "Since $\\lambda^0 = 1$ and $0! = 1$, $P(X=0) = e^{-\\lambda} = e^{-4} \\approx 0.0183$. The trap $1-e^{-4}$ is $P(X\\ge 1)$.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -617,25 +634,27 @@
       "id": "statistics-and-probability-special-distributions-038",
       "format": "cloze",
       "stem": "A surgeon performs an operation on $8$ patients. Each operation succeeds independently with probability $0.9$, and $X$ counts the successes. Identify the distribution and find its mean.",
-      "solution": "With a fixed number of trials and a constant success probability, the mean number of successes is $np = 8 \\times 0.9$, which equals {{1}}. The distribution of $X$ here is the {{2}} distribution.",
+      "solution": "A fixed number of independent trials with a constant success probability signals the {{1}} distribution. Its mean is $np = 8 \\times 0.9$, which equals {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 7.2,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "Binomial",
+            "Poisson",
+            "Normal",
+            "Geometric"
+          ],
+          "answer": "Binomial"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "binomial",
-            "Binomial",
-            "binomial distribution"
-          ]
+          "type": "number",
+          "answer": 7.2,
+          "tolerance": 0.001
         }
       ],
-      "explanation": "A fixed $n = 8$ with constant $p = 0.9$ and independent trials is binomial, with mean $np = 8 \\times 0.9 = 7.2$. There is no continuous span here, so Poisson does not apply.",
+      "explanation": "Fixed trials, constant $p$: binomial. Mean $= np = 8(0.9) = 7.2$.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -643,22 +662,27 @@
       "id": "statistics-and-probability-special-distributions-039",
       "format": "cloze",
       "stem": "A multiple-choice quiz has $5$ questions, each answered correctly by guessing with probability $0.2$. If $X$ is the number of correct answers, find $P(X = 2)$.",
-      "solution": "With $X \\sim \\text{Binomial}(5, 0.2)$, $P(X = 2) = \\binom{5}{2}(0.2)^2(0.8)^3$. The coefficient $\\binom{5}{2}$ equals {{1}}. Multiplying $\\binom{5}{2}(0.2)^2(0.8)^3$ out gives a probability of about {{2}}.",
+      "solution": "With $X\\sim\\text{Binomial}(5,0.2)$, $P(X=2) = \\binom{5}{2}(0.2)^2(0.8)^3$. The factor $(0.8)^3$ appears because {{1}}. Evaluating the whole product gives about {{2}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 10,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "the other 3 answers must each be wrong, with probability $0.8$",
+            "there are 3 questions in total",
+            "$0.8$ is the success probability",
+            "3 of the answers are correct"
+          ],
+          "answer": "the other 3 answers must each be wrong, with probability $0.8$"
         },
         {
           "id": 2,
           "type": "number",
           "answer": 0.2048,
-          "tolerance": 0.001
+          "tolerance": 0.0005
         }
       ],
-      "explanation": "Here $\\binom{5}{2} = 10$, so $P(X = 2) = 10 \\cdot 0.04 \\cdot 0.512 = 0.2048$. Omitting either the coefficient or the failure factor $(0.8)^3$ gives a wrong partial product.",
+      "explanation": "Getting exactly 2 right means 3 wrong, each with probability $0.8$, hence $(0.8)^3$. So $P = 10(0.04)(0.512) = 0.2048$.",
       "difficulty": "stretch",
       "source": "in the style of an introductory statistics text"
     }

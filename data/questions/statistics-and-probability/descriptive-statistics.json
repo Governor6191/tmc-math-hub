@@ -426,111 +426,200 @@
     {
       "id": "statistics-and-probability-descriptive-statistics-031",
       "format": "cloze",
-      "stem": "Find the mean of the data set $5,\\ 10,\\ 15,\\ 20$.",
-      "solution": "The mean is $\\bar{x} = \\frac{\\sum x_i}{n}$. First add the values: $5 + 10 + 15 + 20$ gives a total of {{1}}. There are $n = 4$ values, so dividing the total by $4$ gives a mean of {{2}}.",
+      "stem": "The data set $5,\\ 10,\\ 15,\\ 20$ is joined by a fifth value $v$, after which the mean of all five values is $16$. Find $v$.",
+      "solution": "The four original values sum to $50$, so their mean is $\\frac{50}{4} = 12.5$. Once $v$ joins, the target mean translates into the equation {{1}}. Since the mean rose when $v$ arrived, $v$ must be {{2}}. Solving the equation gives $v =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 50,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$\\frac{50 + v}{5} = 16$",
+            "$\\frac{50 + v}{4} = 16$",
+            "$\\frac{50}{5} + v = 16$",
+            "$\\frac{50}{4} + v = 16$"
+          ],
+          "answer": "$\\frac{50 + v}{5} = 16$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "above the old mean",
+            "below the old mean",
+            "exactly at the old mean",
+            "between the old and the new mean"
+          ],
+          "answer": "above the old mean"
+        },
+        {
+          "id": 3,
           "type": "number",
-          "answer": 12.5,
+          "answer": 30,
           "tolerance": 0
         }
       ],
-      "explanation": "The sum is $5 + 10 + 15 + 20 = 50$ and $n = 4$, so $\\bar{x} = \\frac{50}{4} = 12.5$. The total alone is not the mean; you must divide by the number of values.",
-      "difficulty": "warmup",
+      "explanation": "The four values total $50$, and a mean of $16$ over five values forces the grand total to be $5 \\times 16 = 80$, so the equation is $\\frac{50 + v}{5} = 16$ and $v = 80 - 50 = 30$. Keeping the divisor at $4$ forgets that $v$ itself now counts as a data value, and adding $v$ to the old mean confuses a single value with an average. The direction check confirms the answer: a newcomer can only pull the mean up if it sits above the old mean, and in fact $v = 30$ even exceeds the new mean of $16$, which rules out $v$ landing between the two means.",
+      "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
     {
       "id": "statistics-and-probability-descriptive-statistics-032",
       "format": "cloze",
       "stem": "Find the median of the data set $8,\\ 3,\\ 11,\\ 6,\\ 9,\\ 4$.",
-      "solution": "First sort the data into order: $3,\\ 4,\\ 6,\\ 8,\\ 9,\\ 11$. With $n = 6$ values, which is even, the median is {{1}}. The two central values are $6$ and $8$, so the median equals {{2}}.",
+      "solution": "Before any middle value can be read off, the data must first be {{1}}. With $n = 6$ values, an even count, the median is {{2}}. For this data set that means averaging the pair {{3}}, so the median is {{4}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "the average of the two middle values",
-            "the single middle value",
-            "the most frequent value",
-            "the largest value minus the smallest"
+            "sorted into increasing order",
+            "left in the order given",
+            "grouped into a frequency table",
+            "centred by subtracting the mean"
           ],
-          "answer": "the average of the two middle values"
+          "answer": "sorted into increasing order"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "the average of the values in positions $3$ and $4$",
+            "the single value in position $3$",
+            "the single value in position $4$",
+            "the most frequent value"
+          ],
+          "answer": "the average of the values in positions $3$ and $4$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$6$ and $8$",
+            "$11$ and $6$",
+            "$3$ and $4$",
+            "$8$ and $9$"
+          ],
+          "answer": "$6$ and $8$"
+        },
+        {
+          "id": 4,
           "type": "number",
           "answer": 7,
           "tolerance": 0
         }
       ],
-      "explanation": "Sorted, the data is $3, 4, 6, 8, 9, 11$. For an even count the median averages the two middle values: $\\frac{6 + 8}{2} = 7$. Sorting first is essential before locating the middle.",
-      "difficulty": "warmup",
+      "explanation": "Sorting gives $3,\\ 4,\\ 6,\\ 8,\\ 9,\\ 11$. With an even count there is no single middle value: the median averages the two central values, in positions $3$ and $4$, which are $6$ and $8$. So the median is $\\frac{6 + 8}{2} = 7$. Reading the middle of the unsorted list picks up $11$ and $6$, the classic trap, and taking just one central value gives $6$ or $8$ rather than their average.",
+      "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
     {
       "id": "statistics-and-probability-descriptive-statistics-033",
       "format": "cloze",
       "stem": "For the data set $4,\\ 7,\\ 7,\\ 2,\\ 9,\\ 7,\\ 11$, find the range and the mode.",
-      "solution": "The range is the largest value minus the smallest: $11 - 2$, which equals {{1}}. The mode is the value that occurs most often; here $7$ appears three times, so the mode is {{2}}. The mode, like the mean and median, is a measure of {{3}}.",
+      "solution": "The two measures answer different questions: the range measures {{1}}, while the mode is a measure of central tendency. The range is computed as {{2}}, which for this data set gives {{3}}. The mode is defined as {{4}}, so here the mode is {{5}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "the spread of the data",
+            "the centre of the data",
+            "how often values repeat",
+            "the symmetry of the data"
+          ],
+          "answer": "the spread of the data"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "maximum minus minimum",
+            "maximum plus minimum",
+            "the average of the maximum and minimum",
+            "the difference between the two largest values"
+          ],
+          "answer": "maximum minus minimum"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 9,
           "tolerance": 0
         },
         {
-          "id": 2,
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "the value that occurs most often",
+            "the number of times the commonest value occurs",
+            "the largest value in the data set",
+            "the value in the middle of the sorted data"
+          ],
+          "answer": "the value that occurs most often"
+        },
+        {
+          "id": 5,
           "type": "number",
           "answer": 7,
           "tolerance": 0
-        },
-        {
-          "id": 3,
-          "type": "text",
-          "accept": [
-            "central tendency",
-            "centre",
-            "center"
-          ]
         }
       ],
-      "explanation": "The maximum is $11$ and the minimum is $2$, so the range is $11 - 2 = 9$. The value $7$ occurs three times, more than any other, so the mode is $7$. The mode, mean, and median are all measures of central tendency.",
+      "explanation": "The maximum is $11$ and the minimum is $2$, so the range is $11 - 2 = 9$; adding the extremes to get $13$ is the classic slip. The value $7$ appears three times, more than any other, so the mode is $7$. Answering $3$ confuses the frequency with the value that carries it, and $11$ confuses the largest value with the most frequent one. The range describes spread, while the mode, like the mean and median, describes central tendency.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
     {
       "id": "statistics-and-probability-descriptive-statistics-034",
       "format": "cloze",
-      "stem": "Treat $2,\\ 4,\\ 6,\\ 8$ as a sample. Find the sample variance $s^2$.",
-      "solution": "The mean is $\\bar{x} = 5$, and the squared deviations $(2-5)^2, (4-5)^2, (6-5)^2, (8-5)^2$ sum to $20$. For a sample the divisor is {{1}}, not $n$. Dividing $20$ by that divisor gives a sample variance of about {{2}}.",
+      "stem": "Treat $2,\\ 4,\\ 6,\\ 8$ as a sample drawn from a larger population. Find the sample variance $s^2$.",
+      "solution": "The sample mean is $\\bar{x} = 5$, and the squared deviations from it sum to $20$. Because these four values are a sample rather than a complete population, the divisor is {{1}}. The deeper reason for that choice is that {{2}}. The sample variance is therefore $s^2 =$ {{3}}, and dividing by $n$ instead would have {{4}} the spread.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$n-1$",
-            "$n$",
-            "$n+1$",
-            "$n^2$"
+            "$n - 1 = 3$",
+            "$n = 4$",
+            "$n + 1 = 5$",
+            "$n^2 = 16$"
           ],
-          "answer": "$n-1$"
+          "answer": "$n - 1 = 3$"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 6.67,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "estimating the mean from the same data uses up one degree of freedom",
+            "one observation must always be discarded as an outlier",
+            "samples are always one value short of the population",
+            "it keeps the variance an integer"
+          ],
+          "answer": "estimating the mean from the same data uses up one degree of freedom"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{20}{3}$",
+            "$5$",
+            "$4$",
+            "$\\sqrt{5}$"
+          ],
+          "answer": "$\\frac{20}{3}$"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "understated",
+            "overstated",
+            "left unchanged",
+            "doubled"
+          ],
+          "answer": "understated"
         }
       ],
-      "explanation": "The mean of $2,4,6,8$ is $5$, and the squared deviations are $9, 1, 1, 9$ summing to $20$. A sample variance divides by $n - 1 = 3$, so $s^2 = \\frac{20}{3} \\approx 6.67$. Using $n$ would understate the spread.",
+      "explanation": "The mean of $2, 4, 6, 8$ is $5$ and the squared deviations $9, 1, 1, 9$ sum to $20$. A sample variance divides by $n - 1 = 3$, giving $s^2 = \\frac{20}{3} \\approx 6.67$. The correction exists because $\\bar{x}$ was estimated from the same four values: the deviations are forced to sum to zero, so only three of them are free, one degree of freedom having been spent on the mean. Dividing by $n = 4$ gives $5$, a systematic understatement of the spread. The option $4$ comes from dividing by $n + 1$, and $\\sqrt{5}$ is a standard deviation, not a variance.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -538,22 +627,44 @@
       "id": "statistics-and-probability-descriptive-statistics-035",
       "format": "cloze",
       "stem": "A sample of values is $4,\\ 8,\\ 6,\\ 10,\\ 12$. Find the sample variance $s^2$ and the sample standard deviation $s$, using the $n-1$ divisor.",
-      "solution": "The mean is $\\bar{x} = 8$, and the squared deviations $16, 0, 4, 4, 16$ sum to $40$. Dividing by $n - 1 = 4$ gives a sample variance of {{1}}. Taking the square root gives a sample standard deviation of about {{2}}.",
+      "solution": "The sample mean is $\\bar{x} = 8$. The raw deviations $x_i - \\bar{x}$ cannot measure spread by themselves, because for any data set they sum to {{1}}. The variance is instead built from the {{2}}, which for this sample total $40$. Applying the sample divisor to that total gives $s^2 =$ {{3}}, and hence $s =$ {{4}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "squared deviations $(x_i - \\bar{x})^2$",
+            "absolute deviations $|x_i - \\bar{x}|$",
+            "squared data values $x_i^2$",
+            "deviations from the median"
+          ],
+          "answer": "squared deviations $(x_i - \\bar{x})^2$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 10,
           "tolerance": 0
         },
         {
-          "id": 2,
-          "type": "number",
-          "answer": 3.16,
-          "tolerance": 0.01
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "$\\sqrt{10} \\approx 3.16$",
+            "$10$",
+            "$5$",
+            "$100$"
+          ],
+          "answer": "$\\sqrt{10} \\approx 3.16$"
         }
       ],
-      "explanation": "With mean $8$, the squared deviations are $16, 0, 4, 4, 16$ summing to $40$, so $s^2 = \\frac{40}{4} = 10$ and $s = \\sqrt{10} \\approx 3.16$. The standard deviation is the square root of the variance.",
+      "explanation": "The mean is $8$, and the deviations $-4, 0, -2, 2, 4$ sum to zero, as deviations from a mean always do; that cancellation is exactly why they are squared before averaging. The squared deviations $16, 0, 4, 4, 16$ total $40$, so with the sample divisor $n - 1 = 4$ the variance is $s^2 = \\frac{40}{4} = 10$. The standard deviation undoes the squaring: $s = \\sqrt{10} \\approx 3.16$. Quoting $10$ for $s$ hands in the variance itself, $5$ halves the variance instead of rooting it, and $100$ squares it, going the wrong way entirely.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -561,27 +672,49 @@
       "id": "statistics-and-probability-descriptive-statistics-036",
       "format": "cloze",
       "stem": "Every value in a data set is transformed by $y = 2x + 5$. The original mean was $20$ and the original standard deviation was $4$. Find the new mean and new standard deviation.",
-      "solution": "A linear transformation $y = ax + b$ changes the mean to $a\\bar{x} + b$, so the new mean is $2(20) + 5$, which equals {{1}}. The standard deviation scales by $|a|$ but is unaffected by the additive constant, so the new standard deviation is {{2}}.",
+      "solution": "Adding the constant $5$ shifts every value together, so on its own it changes {{1}}. Multiplying by $2$ stretches the data, which changes {{2}}. Combining the two effects: the new standard deviation is {{3}}, and the new mean is {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 45,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "the mean but not the standard deviation",
+            "the standard deviation but not the mean",
+            "both the mean and the standard deviation",
+            "neither the mean nor the standard deviation"
+          ],
+          "answer": "the mean but not the standard deviation"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "$8$",
-            "$4$",
-            "$13$",
-            "$10$"
+            "both the mean and the standard deviation",
+            "only the mean",
+            "only the standard deviation",
+            "neither the mean nor the standard deviation"
           ],
-          "answer": "$8$"
+          "answer": "both the mean and the standard deviation"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$2 \\times 4 = 8$",
+            "$2 \\times 4 + 5 = 13$",
+            "$4$, unchanged",
+            "$4 + 5 = 9$"
+          ],
+          "answer": "$2 \\times 4 = 8$"
+        },
+        {
+          "id": 4,
+          "type": "number",
+          "answer": 45,
+          "tolerance": 0
         }
       ],
-      "explanation": "The new mean is $2(20) + 5 = 45$. The standard deviation scales by $|a| = 2$, giving $2 \\times 4 = 8$; the $+5$ shift moves every value together and leaves the spread unchanged.",
+      "explanation": "Under $y = ax + b$ the mean becomes $a\\bar{x} + b$ and the standard deviation becomes $|a|\\,s$: a shift moves every value together and cannot change spread, while a stretch changes both centre and spread. So the new standard deviation is $2 \\times 4 = 8$ (adding the $5$ to get $13$ is the trap), and the new mean is $2(20) + 5 = 45$. Answers of $40$ or $25$ drop one of the operations, and $50$ applies them in the wrong order as $2(20 + 5)$.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -589,30 +722,49 @@
       "id": "statistics-and-probability-descriptive-statistics-037",
       "format": "cloze",
       "stem": "A student takes three courses with credit weights $3,\\ 2,\\ 1$ and earns grade points $80,\\ 60,\\ 30$ respectively. Find the weighted mean grade point.",
-      "solution": "The weighted total is $3(80) + 2(60) + 1(30)$, which equals {{1}}. The total weight is $3 + 2 + 1 = 6$, so dividing the weighted total by $6$ gives {{2}}. This kind of average, where each value is scaled by its weight, is called the {{3}}.",
+      "solution": "Because the courses carry unequal credit weights, a plain average of the three grade points would misrepresent the record. The weighted mean uses the numerator {{1}} divided by {{2}}. Evaluating that quotient gives {{3}}. It lands above the plain average of $56.67$ because {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 390,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$3(80) + 2(60) + 1(30)$",
+            "$80 + 60 + 30$",
+            "$3(30) + 2(60) + 1(80)$",
+            "$(3 + 2 + 1)(80 + 60 + 30)$"
+          ],
+          "answer": "$3(80) + 2(60) + 1(30)$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "the total weight, $3 + 2 + 1$",
+            "the number of courses, $3$",
+            "the sum of the grade points, $170$",
+            "$100$, to make it a percentage"
+          ],
+          "answer": "the total weight, $3 + 2 + 1$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 65,
           "tolerance": 0
         },
         {
-          "id": 3,
-          "type": "text",
-          "accept": [
-            "weighted mean",
-            "weighted average"
-          ]
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "the largest weight is attached to the highest grade point",
+            "weighted means always exceed plain averages",
+            "the total weight exceeds the number of courses",
+            "the lowest grade point is dropped from the calculation"
+          ],
+          "answer": "the largest weight is attached to the highest grade point"
         }
       ],
-      "explanation": "The weighted total is $240 + 120 + 30 = 390$ and the total weight is $6$, so the weighted mean is $\\frac{390}{6} = 65$. Each grade point is weighted by its credit weight rather than counted equally.",
+      "explanation": "The numerator pairs each grade point with its own credit weight: $3(80) + 2(60) + 1(30) = 390$. Dividing by the total weight $3 + 2 + 1 = 6$ gives $\\frac{390}{6} = 65$. Dividing by the number of courses treats the weighted total as if it came from three equal courses, and the plain average $\\frac{170}{3} \\approx 56.67$ ignores the credits entirely. The weighted mean sits above that plain average only because the heaviest course carries the best grade; with the weights reversed the same grades would average $\\frac{290}{6} \\approx 48.3$, below it, so weighted means are not always larger.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -620,33 +772,49 @@
       "id": "statistics-and-probability-descriptive-statistics-038",
       "format": "cloze",
       "stem": "A grouped frequency distribution has class midpoints $5,\\ 15,\\ 25$ with frequencies $2,\\ 5,\\ 3$ respectively. Estimate the mean.",
-      "solution": "For grouped data, multiply each midpoint by its frequency and add: $2(5) + 5(15) + 3(25)$, which equals {{1}}. This weighted total is then divided by {{2}}. Carrying out that division gives an estimated mean of {{3}}.",
+      "solution": "Each class is represented by its midpoint. The estimate uses the numerator {{1}}, divided by {{2}}. Carrying out the division gives an estimated mean of {{3}}. The result is an estimate rather than an exact mean because {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 160,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$2(5) + 5(15) + 3(25)$",
+            "$5 + 15 + 25$",
+            "$2 + 5 + 3$",
+            "$2(25) + 5(15) + 3(5)$"
+          ],
+          "answer": "$2(5) + 5(15) + 3(25)$"
         },
         {
           "id": 2,
           "type": "dropdown",
           "options": [
-            "the total frequency $\\sum f$",
-            "the number of classes",
-            "the largest frequency",
-            "the sum of the midpoints"
+            "the total frequency, $10$",
+            "the number of classes, $3$",
+            "the sum of the midpoints, $45$",
+            "the largest frequency, $5$"
           ],
-          "answer": "the total frequency $\\sum f$"
+          "answer": "the total frequency, $10$"
         },
         {
           "id": 3,
           "type": "number",
           "answer": 16,
           "tolerance": 0
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "the raw values inside each class are unknown, so midpoints stand in for them",
+            "the frequencies are only approximate counts",
+            "the classes must overlap at their boundaries",
+            "grouped data always rounds to whole numbers"
+          ],
+          "answer": "the raw values inside each class are unknown, so midpoints stand in for them"
         }
       ],
-      "explanation": "The weighted total is $10 + 75 + 75 = 160$ and the total frequency is $2 + 5 + 3 = 10$, so the estimated mean is $\\frac{160}{10} = 16$. Dividing by the number of classes instead of the total frequency is the common error.",
+      "explanation": "Each midpoint is weighted by its class frequency: $\\sum f_i x_i = 2(5) + 5(15) + 3(25) = 160$. Dividing by the total frequency $2 + 5 + 3 = 10$ gives $\\frac{160}{10} = 16$. Dividing by the number of classes, $3$, or simply averaging the midpoints to get $15$, ignores how many observations sit in each class, and attaching the frequencies to the wrong midpoints gives $140$ over $10$. The answer is an estimate because grouping throws away the raw values; every observation in a class is assumed to sit at its midpoint.",
       "difficulty": "stretch",
       "source": "in the style of an introductory statistics text"
     },
@@ -654,24 +822,29 @@
       "id": "statistics-and-probability-descriptive-statistics-039",
       "format": "cloze",
       "stem": "Two groups are combined. Group A has $4$ values with mean $10$, and group B has $6$ values with mean $25$. Find the mean of all $10$ combined values.",
-      "solution": "The correct method is to {{1}}. The combined total is $4(10) + 6(25)$, which equals {{2}}. Dividing this total by the $10$ combined values gives a mean of {{3}}.",
+      "solution": "Because the groups differ in size, the combined mean comes from {{1}}. Group B is the bigger group, so even before computing, the combined mean must land {{2}}. Group A contributes a total of $4 \\times 10 = 40$ and group B contributes $6 \\times 25 = 150$, so the combined mean is {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "weight each group mean by its size",
-            "take a plain average of the two means",
-            "add the two means together",
-            "use the larger group mean only"
+            "weighting each group mean by its group size",
+            "averaging the two group means",
+            "adding the two group means",
+            "keeping the mean of the larger group"
           ],
-          "answer": "weight each group mean by its size"
+          "answer": "weighting each group mean by its group size"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 190,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "between $10$ and $25$, nearer to $25$",
+            "exactly midway between $10$ and $25$",
+            "between $10$ and $25$, nearer to $10$",
+            "above $25$"
+          ],
+          "answer": "between $10$ and $25$, nearer to $25$"
         },
         {
           "id": 3,
@@ -680,7 +853,7 @@
           "tolerance": 0
         }
       ],
-      "explanation": "The combined total is $4(10) + 6(25) = 40 + 150 = 190$ over $10$ values, so the combined mean is $\\frac{190}{10} = 19$. Averaging the two means as $\\frac{10 + 25}{2}$ would wrongly ignore the different group sizes.",
+      "explanation": "The combined mean weights each group mean by its size: $\\frac{4(10) + 6(25)}{10} = \\frac{40 + 150}{10} = \\frac{190}{10} = 19$. Averaging the two means to get $17.5$ ignores that group B supplies six of the ten values; because the bigger group pulls harder, the combined mean must sit on B's side of the midpoint, and $19$ is indeed nearer to $25$ than to $10$. A combined mean can never escape the interval between the two group means, so a value above $25$ is impossible.",
       "difficulty": "stretch",
       "source": "in the style of an introductory statistics text"
     }

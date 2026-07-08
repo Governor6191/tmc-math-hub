@@ -314,26 +314,78 @@
     {
       "id": "calculus-ii-parametric-and-polar-coordinates-023",
       "format": "cloze",
-      "stem": "Convert between rectangular and polar coordinates.",
-      "solution": "The point $(x,y) = (3,4)$ has polar radius $r = \\sqrt{3^2 + 4^2} =$ {{1}}. The polar point $(r,\\theta) = (4,\\ \\pi/2)$ has rectangular coordinates $x =$ {{2}} and $y =$ {{3}}.",
+      "stem": "Convert the rectangular point $(-3, 3)$ to polar coordinates $(r, \\theta)$ with $r > 0$ and $0 \\le \\theta < 2\\pi$.",
+      "solution": "The radius comes from $r^2 = x^2 + y^2$, which gives $r =$ {{1}}. The calculator angle $\\arctan\\left(\\dfrac{y}{x}\\right) = \\arctan(-1)$ must still be placed with the point's actual quadrant in mind, so the correct angle is $\\theta =$ {{2}}. As a check, compute $r\\cos\\theta$: it equals {{3}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": 5, "tolerance": 0 },
-        { "id": 2, "type": "number", "answer": 0, "tolerance": 0.001 },
-        { "id": 3, "type": "number", "answer": 4, "tolerance": 0.001 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$3\\sqrt{2}$",
+            "$18$",
+            "$6$",
+            "$0$"
+          ],
+          "answer": "$3\\sqrt{2}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{3\\pi}{4}$",
+            "$-\\dfrac{\\pi}{4}$",
+            "$\\dfrac{7\\pi}{4}$",
+            "$\\dfrac{\\pi}{4}$"
+          ],
+          "answer": "$\\dfrac{3\\pi}{4}$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": -3,
+          "tolerance": 0.001
+        }
       ],
-      "explanation": "Radius: $r = \\sqrt{9 + 16} = \\sqrt{25} = 5$. For $(4,\\pi/2)$: $x = 4\\cos(\\pi/2) = 0$ and $y = 4\\sin(\\pi/2) = 4$.",
+      "explanation": "The radius is $r = \\sqrt{(-3)^2 + 3^2} = \\sqrt{9 + 9} = \\sqrt{18} = 3\\sqrt{2}$. Reporting $18$ forgets the square root, $6$ just adds the two magnitudes, and $0$ comes from treating $(-3)^2$ as $-9$. The angle is the real trap: $\\arctan(-1) = -\\frac{\\pi}{4}$ is only a reference value, because arctangent cannot tell the second quadrant from the fourth. The point $(-3, 3)$ has $x < 0$ and $y > 0$, so it sits in the second quadrant and the correct angle is $\\pi - \\frac{\\pi}{4} = \\frac{3\\pi}{4}$. Taking $-\\frac{\\pi}{4}$ raw violates the required range and points into the fourth quadrant, $\\frac{7\\pi}{4}$ fixes the range but not the quadrant, and $\\frac{\\pi}{4}$ drops the signs entirely. The check: $r\\cos\\theta = 3\\sqrt{2}\\cdot\\left(-\\frac{\\sqrt{2}}{2}\\right) = -3$, which recovers the original $x$ coordinate, exactly as the conversion $x = r\\cos\\theta$ demands.",
       "difficulty": "core",
       "source": "in the style of a KNUST Calculus II course"
     },
     {
       "id": "calculus-ii-parametric-and-polar-coordinates-024",
       "format": "cloze",
-      "stem": "Consider the parametric curve $x = t^2,\\ y = 2t$.",
-      "solution": "The slope is $\\dfrac{dy}{dx} = \\dfrac{2}{2t}$, which at $t = 1$ equals {{1}}.",
+      "stem": "Consider the parametric curve $x = t^2,\\ y = 2t$. Find the slope of the tangent line at $t = 2$.",
+      "solution": "For a parametric curve the slope is $\\dfrac{dy}{dx} =$ {{1}}. With $x = t^2$ and $y = 2t$, computing both derivatives and forming that combination gives $\\dfrac{dy}{dx} =$ {{2}}. Evaluating at $t = 2$, the slope of the tangent line is {{3}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": 1, "tolerance": 0.001 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{dy/dt}{dx/dt}$",
+            "$\\dfrac{dx/dt}{dy/dt}$",
+            "$\\dfrac{dy}{dt} \\cdot \\dfrac{dx}{dt}$",
+            "$\\dfrac{d}{dt}\\left(\\dfrac{y}{x}\\right)$"
+          ],
+          "answer": "$\\dfrac{dy/dt}{dx/dt}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{t}$",
+            "$t$",
+            "$4t$",
+            "$-\\dfrac{2}{t^2}$"
+          ],
+          "answer": "$\\dfrac{1}{t}$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.5,
+          "tolerance": 0.001
+        }
       ],
-      "explanation": "Here $dy/dt = 2$ and $dx/dt = 2t$, so $dy/dx = 2/(2t) = 1/t$. At $t = 1$ this is $1$.",
+      "explanation": "The chain rule gives $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}$ wherever $dx/dt \\ne 0$: the slope is a quotient of the two parameter derivatives, with $y$'s rate on top. Inverting the quotient computes $\\frac{dx}{dy}$ instead, multiplying the rates has no meaning as a slope, and differentiating the ratio $\\frac{y}{x}$ is a different quantity altogether. Here $dy/dt = 2$ and $dx/dt = 2t$, so $\\frac{dy}{dx} = \\frac{2}{2t} = \\frac{1}{t}$. The distractor $t$ is the inverted quotient $\\frac{2t}{2}$, $4t$ is the product of the rates, and $-\\frac{2}{t^2}$ comes from differentiating $\\frac{y}{x} = \\frac{2}{t}$. At $t = 2$ the slope is $\\frac{1}{2} = 0.5$. Note why the evaluation point matters: at $t = 1$ the correct $\\frac{1}{t}$ and the inverted $t$ both equal $1$, so an inversion error would slip through unnoticed there; at $t = 2$ they give $0.5$ and $2$, and the mistake shows.",
       "difficulty": "core",
       "source": "in the style of a KNUST Calculus II course"
     },
@@ -341,50 +393,160 @@
       "id": "calculus-ii-parametric-and-polar-coordinates-025",
       "format": "cloze",
       "stem": "Find the area enclosed by the polar curve $r = 4$.",
-      "solution": "The area is $\\dfrac12\\int_0^{2\\pi}(4)^2\\,d\\theta = \\dfrac12(16)(2\\pi) =$ {{1}}$\\,\\pi$.",
+      "solution": "Polar area accumulates thin sectors swept from the pole, so the correct general formula is {{1}}. To sweep the whole circle $r = 4$ exactly once, $\\theta$ runs from $0$ to {{2}}. Carrying out the integration, the enclosed area equals {{3}} $\\,\\pi$.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": 16, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{2}\\displaystyle\\int r^2\\,d\\theta$",
+            "$\\displaystyle\\int r^2\\,d\\theta$",
+            "$\\displaystyle\\int r\\,d\\theta$",
+            "$\\pi\\displaystyle\\int r^2\\,d\\theta$"
+          ],
+          "answer": "$\\dfrac{1}{2}\\displaystyle\\int r^2\\,d\\theta$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$2\\pi$",
+            "$\\pi$",
+            "$\\dfrac{\\pi}{2}$",
+            "$4\\pi$"
+          ],
+          "answer": "$2\\pi$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 16,
+          "tolerance": 0
+        }
       ],
-      "explanation": "The integral gives $\\tfrac12 \\cdot 16 \\cdot 2\\pi = 16\\pi$, matching the circle area $\\pi(4)^2 = 16\\pi$. The blank is the coefficient of $\\pi$, namely 16.",
+      "explanation": "A thin polar sector at angle $\\theta$ has area $\\frac{1}{2}r^2\\,d\\theta$, the area of a skinny pie slice, so the total is $\\frac{1}{2}\\int r^2\\,d\\theta$. Dropping the $\\frac{1}{2}$ doubles every answer, integrating $r$ alone treats the radius like a rectangular height, and a leading $\\pi$ imports the disk-volume habit into a formula that never had one. Because $r = 4$ is constant and positive, the full circle is traced exactly once as $\\theta$ goes from $0$ to $2\\pi$; stopping at $\\pi$ or $\\frac{\\pi}{2}$ captures only half or a quarter of the circle, and running to $4\\pi$ walks the circle twice and double-counts the area. The integral is $\\frac{1}{2}\\int_0^{2\\pi} 16\\,d\\theta = \\frac{1}{2}\\cdot 16\\cdot 2\\pi = 16\\pi$, so the coefficient is $16$, agreeing with the classical $\\pi r^2 = \\pi\\cdot 4^2$ for a circle of radius $4$.",
       "difficulty": "core",
       "source": "in the style of a KNUST Calculus II course"
     },
     {
       "id": "calculus-ii-parametric-and-polar-coordinates-026",
       "format": "cloze",
-      "stem": "Recall the integral formulas for polar curves.",
-      "solution": "The area swept by a polar curve uses the formula {{1}}, while the polar arc length uses {{2}}.",
+      "stem": "Recall the integral formulas for polar curves, then apply one to the circle $r = 3$.",
+      "solution": "The area swept by a polar curve between two rays uses {{1}}, while the length of the curve itself uses {{2}}. Applied to the circle $r = 3$ over one full revolution, the length formula returns {{3}} $\\,\\pi$.",
       "gaps": [
-        { "id": 1, "type": "dropdown", "options": ["$\\frac12\\int r^2\\,d\\theta$", "$\\int r\\,d\\theta$", "$\\int r^2\\,d\\theta$"], "answer": "$\\frac12\\int r^2\\,d\\theta$" },
-        { "id": 2, "type": "dropdown", "options": ["$\\int \\sqrt{r^2 + (dr/d\\theta)^2}\\,d\\theta$", "$\\int r\\,d\\theta$", "$\\frac12\\int r^2\\,d\\theta$"], "answer": "$\\int \\sqrt{r^2 + (dr/d\\theta)^2}\\,d\\theta$" }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\dfrac{1}{2}\\displaystyle\\int_a^b r^2\\,d\\theta$",
+            "$\\displaystyle\\int_a^b r\\,d\\theta$",
+            "$\\displaystyle\\int_a^b r^2\\,d\\theta$",
+            "$\\pi\\displaystyle\\int_a^b r^2\\,d\\theta$"
+          ],
+          "answer": "$\\dfrac{1}{2}\\displaystyle\\int_a^b r^2\\,d\\theta$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\displaystyle\\int_a^b \\sqrt{r^2 + \\left(\\dfrac{dr}{d\\theta}\\right)^2}\\,d\\theta$",
+            "$\\displaystyle\\int_a^b \\sqrt{1 + \\left(\\dfrac{dr}{d\\theta}\\right)^2}\\,d\\theta$",
+            "$\\displaystyle\\int_a^b \\sqrt{r + \\dfrac{dr}{d\\theta}}\\,d\\theta$",
+            "$\\dfrac{1}{2}\\displaystyle\\int_a^b r^2\\,d\\theta$"
+          ],
+          "answer": "$\\displaystyle\\int_a^b \\sqrt{r^2 + \\left(\\dfrac{dr}{d\\theta}\\right)^2}\\,d\\theta$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 6,
+          "tolerance": 0
+        }
       ],
-      "explanation": "Polar area integrates $\\tfrac12 r^2$ over the angle; polar arc length integrates the speed $\\sqrt{r^2 + (dr/d\\theta)^2}$.",
+      "explanation": "Polar area adds up sector slivers of size $\\frac{1}{2}r^2\\,d\\theta$; forgetting the $\\frac{1}{2}$ or integrating a bare $r$ are the standard corruptions, and the $\\pi$ version confuses sectors with disks. Polar arc length integrates the speed $\\sqrt{r^2 + \\left(dr/d\\theta\\right)^2}$: the option with $1$ in place of $r^2$ transplants the rectangular formula $\\sqrt{1 + (dy/dx)^2}$ where it does not belong, the unsquared version breaks the Pythagorean structure, and the last option is the area formula wearing the wrong label. For $r = 3$, the derivative $\\frac{dr}{d\\theta}$ is $0$, so the integrand collapses to $\\sqrt{9} = 3$ and one revolution gives $\\int_0^{2\\pi} 3\\,d\\theta = 6\\pi$. That is exactly the circumference $2\\pi r$ of a circle of radius $3$, a reassuring check that the formula, and not just memory, is doing the work.",
       "difficulty": "core",
       "source": "in the style of a KNUST Calculus II course"
     },
     {
       "id": "calculus-ii-parametric-and-polar-coordinates-027",
       "format": "cloze",
-      "stem": "Convert $r = 2\\cos\\theta$ to rectangular form.",
-      "solution": "Multiplying by $r$ gives $r^2 = 2r\\cos\\theta$, i.e. $x^2 + y^2 =$ {{1}}$x$, which is a circle of radius {{2}}.",
+      "stem": "Convert $r = 2\\cos\\theta$ to rectangular form and identify the curve.",
+      "solution": "The efficient first move is to {{1}}. After that move, every piece of the equation translates directly into rectangular coordinates, giving {{2}}. Completing the square then identifies the curve as a circle centered at {{3}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": 2, "tolerance": 0 },
-        { "id": 2, "type": "number", "answer": 1, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "multiply both sides by $r$",
+            "square both sides",
+            "substitute $r = x^2 + y^2$",
+            "replace $\\cos\\theta$ with $\\dfrac{y}{r}$"
+          ],
+          "answer": "multiply both sides by $r$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$x^2 + y^2 = 2x$",
+            "$x^2 + y^2 = 2y$",
+            "$\\sqrt{x^2 + y^2} = 2x$",
+            "$x^2 - y^2 = 2x$"
+          ],
+          "answer": "$x^2 + y^2 = 2x$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$(1, 0)$ with radius $1$",
+            "$(0, 1)$ with radius $1$",
+            "$(2, 0)$ with radius $2$",
+            "$(1, 0)$ with radius $\\sqrt{2}$"
+          ],
+          "answer": "$(1, 0)$ with radius $1$"
+        }
       ],
-      "explanation": "Using $r^2 = x^2+y^2$ and $r\\cos\\theta = x$ gives $x^2 + y^2 = 2x$, i.e. $(x-1)^2 + y^2 = 1$: center $(1,0)$, radius 1.",
+      "explanation": "Multiplying both sides by $r$ turns $r = 2\\cos\\theta$ into $r^2 = 2r\\cos\\theta$, and both sides now translate at sight: $r^2 = x^2 + y^2$ and $r\\cos\\theta = x$. Squaring both sides instead produces $r^2 = 4\\cos^2\\theta$, whose right side has no clean rectangular form; substituting $r = x^2 + y^2$ misquotes the identity, which equates $r$ squared, not $r$, with $x^2 + y^2$; and $\\cos\\theta$ pairs with $x$, not $y$, so $\\frac{y}{r}$ is the sine's translation. The substitution gives $x^2 + y^2 = 2x$; the $2y$ version follows the sine mix-up, the square-root version substitutes into the unmultiplied equation and stalls, and $x^2 - y^2$ has a stray sign. Completing the square, $x^2 - 2x + y^2 = 0$ becomes $(x - 1)^2 + y^2 = 1$: a circle centered at $(1, 0)$ with radius $1$. Reading the coefficient $2$ directly as the radius, or placing the center on the $y$-axis, are the two classic misreadings; the general fact is that $r = 2a\\cos\\theta$ is a circle of radius $a$ through the pole, centered at $(a, 0)$.",
       "difficulty": "core",
       "source": "in the style of a KNUST Calculus II course"
     },
     {
       "id": "calculus-ii-parametric-and-polar-coordinates-028",
       "format": "cloze",
-      "stem": "Find the arc length of $x = 3t,\\ y = 4t$ for $0 \\le t \\le 2$.",
-      "solution": "The speed is $\\sqrt{3^2 + 4^2} =$ {{1}}, so the arc length over the interval of length 2 is {{2}}.",
+      "stem": "Find the arc length of the parametric curve $x = 3t,\\ y = 4t$ for $0 \\le t \\le 2$.",
+      "solution": "Arc length integrates the moving point's speed: $L = \\displaystyle\\int_0^2$ {{1}} $\\,dt$. Here $dx/dt = 3$ and $dy/dt = 4$, so the speed is the constant {{2}}. Integrating that constant speed across the parameter interval gives $L =$ {{3}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": 5, "tolerance": 0 },
-        { "id": 2, "type": "number", "answer": 10, "tolerance": 0.001 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\sqrt{\\left(\\dfrac{dx}{dt}\\right)^2 + \\left(\\dfrac{dy}{dt}\\right)^2}$",
+            "$\\dfrac{dy/dt}{dx/dt}$",
+            "$\\sqrt{x^2 + y^2}$",
+            "$\\left(\\dfrac{dx}{dt}\\right)^2 + \\left(\\dfrac{dy}{dt}\\right)^2$"
+          ],
+          "answer": "$\\sqrt{\\left(\\dfrac{dx}{dt}\\right)^2 + \\left(\\dfrac{dy}{dt}\\right)^2}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$5$",
+            "$7$",
+            "$25$",
+            "$\\sqrt{7}$"
+          ],
+          "answer": "$5$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 10,
+          "tolerance": 0
+        }
       ],
-      "explanation": "The speed $\\sqrt{9+16} = 5$ is constant, so arc length $= \\int_0^2 5\\,dt = 5 \\cdot 2 = 10$.",
+      "explanation": "The infinitesimal step is $\\sqrt{dx^2 + dy^2}$, and factoring out $dt$ leaves the speed $\\sqrt{(dx/dt)^2 + (dy/dt)^2}$ as the integrand. The quotient $\\frac{dy/dt}{dx/dt}$ is the slope, not a length; $\\sqrt{x^2 + y^2}$ measures distance from the origin using coordinates instead of rates; and dropping the square root leaves a sum of squared rates with the wrong units. Here the speed is $\\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$: adding the rates to get $7$ skips the Pythagorean combination, $25$ forgets the root, and $\\sqrt{7}$ adds before squaring. The speed is constant, so $L = \\int_0^2 5\\,dt = 5 \\cdot 2 = 10$. Check it against geometry: the curve is the straight segment from $(0, 0)$ at $t = 0$ to $(6, 8)$ at $t = 2$, and the distance formula gives $\\sqrt{36 + 64} = 10$, the same answer.",
       "difficulty": "core",
       "source": "in the style of a KNUST Calculus II course"
     }

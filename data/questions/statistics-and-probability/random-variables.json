@@ -427,22 +427,38 @@
       "id": "statistics-and-probability-random-variables-031",
       "format": "cloze",
       "stem": "A discrete random variable $X$ takes the values $1, 2, 3, 4$ with $p(1) = 0.1$, $p(2) = 0.2$, $p(3) = 0.4$, and $p(4) = k$. Find $k$.",
-      "solution": "A valid probability mass function must have all its probabilities sum to $1$. The three known probabilities add to {{1}}. Therefore $k$, the leftover needed to reach $1$, equals {{2}}.",
+      "solution": "A probability mass function is valid only if every $p(x)$ lies between $0$ and $1$ and the probabilities {{1}}. That requirement pins down $k$ through the equation {{2}}, so $k =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0.7,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "sum to exactly $1$",
+            "sum to at most $1$",
+            "are all equal",
+            "increase with $x$"
+          ],
+          "answer": "sum to exactly $1$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$0.1 + 0.2 + 0.4 + k = 1$",
+            "$k = 0.1 + 0.2 + 0.4$",
+            "$0.1 + 0.2 + 0.4 - k = 1$",
+            "$(0.1)(0.2)(0.4)\\,k = 1$"
+          ],
+          "answer": "$0.1 + 0.2 + 0.4 + k = 1$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 0.3,
-          "tolerance": 0
+          "tolerance": 0.001
         }
       ],
-      "explanation": "The known probabilities sum to $0.1 + 0.2 + 0.4 = 0.7$, so $k = 1 - 0.7 = 0.3$. The total probability over all outcomes must be exactly $1$.",
+      "explanation": "Total probability must be exactly $1$, not merely at most $1$, so $0.1 + 0.2 + 0.4 + k = 1$ and $k = 1 - 0.7 = 0.3$. Setting $k$ equal to the sum of the others gives $0.7$, which answers a different question, and the check works: $0.3$ lies between $0$ and $1$, as every probability must.",
       "difficulty": "warmup",
       "source": "in the style of an introductory statistics text"
     },
@@ -450,33 +466,57 @@
       "id": "statistics-and-probability-random-variables-032",
       "format": "cloze",
       "stem": "A random variable $X$ has $p(0) = 0.2$, $p(1) = 0.5$, $p(2) = 0.3$. Find its expected value.",
-      "solution": "The mean weights each value by its probability: $0(0.2) + 1(0.5) + 2(0.3)$, which equals {{1}}. This probability-weighted sum is called the {{2}} of $X$.",
+      "solution": "$E(X)$ weights each value by {{1}}, so the correct sum is {{2}}. Evaluating it gives $E(X) =$ {{3}}. Notice that the result {{4}}: an expected value is a long-run average, not a prediction of any single outcome.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 1.1,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "its probability",
+            "one over the number of values",
+            "its squared probability",
+            "its rank in increasing order"
+          ],
+          "answer": "its probability"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "expected value",
-            "mean",
-            "expectation"
-          ]
+          "type": "dropdown",
+          "options": [
+            "$0(0.2) + 1(0.5) + 2(0.3)$",
+            "$\\frac{0 + 1 + 2}{3}$",
+            "$1 \\times 0.5$, using only the likeliest value",
+            "$(0 + 1 + 2)(0.2 + 0.5 + 0.3)$"
+          ],
+          "answer": "$0(0.2) + 1(0.5) + 2(0.3)$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1.1,
+          "tolerance": 0.001
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "need not be a value $X$ can actually take",
+            "must be one of the values $X$ can take",
+            "must be the most likely value of $X$",
+            "must be a whole number"
+          ],
+          "answer": "need not be a value $X$ can actually take"
         }
       ],
-      "explanation": "Here $E(X) = 0(0.2) + 1(0.5) + 2(0.3) = 0.5 + 0.6 = 1.1$. A plain average of $0, 1, 2$ would ignore how likely each value is.",
-      "difficulty": "warmup",
+      "explanation": "The expectation weights each value by its probability: $E(X) = 0(0.2) + 1(0.5) + 2(0.3) = 0.5 + 0.6 = 1.1$. The plain average $\\frac{0+1+2}{3} = 1$ pretends the values are equally likely, and using only the likeliest value confuses the mean with the mode. The answer $1.1$ is not itself a possible value of $X$, which is normal: expectation describes the long-run average, not a single play.",
+      "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
     {
       "id": "statistics-and-probability-random-variables-033",
       "format": "cloze",
       "stem": "A random variable $X$ has $p(1) = 0.1$, $p(2) = 0.3$, $p(3) = 0.4$, $p(4) = 0.2$. Find $P(X > 2)$.",
-      "solution": "The strict inequality $X > 2$ excludes $2$ itself, so the relevant outcomes are {{1}}. Adding their probabilities gives a value of {{2}}.",
+      "solution": "The strict inequality $X > 2$ covers the outcomes {{1}}. Adding their probabilities gives $P(X > 2) =$ {{2}}. Equivalently, the complement rule writes $P(X > 2)$ as $1$ minus {{3}}, and the two routes agree.",
       "gaps": [
         {
           "id": 1,
@@ -493,10 +533,21 @@
           "id": 2,
           "type": "number",
           "answer": 0.6,
-          "tolerance": 0.01
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$P(X \\le 2)$",
+            "$P(X < 2)$",
+            "$P(X \\ge 3)$",
+            "$P(X = 2)$"
+          ],
+          "answer": "$P(X \\le 2)$"
         }
       ],
-      "explanation": "Since $X > 2$ is strict, it covers only $X = 3$ and $X = 4$: $P = 0.4 + 0.2 = 0.6$. Including $X = 2$ would instead give $P(X \\ge 2)$.",
+      "explanation": "Strictly greater than $2$ excludes $2$ itself, leaving $X = 3$ and $X = 4$: $P = 0.4 + 0.2 = 0.6$. Including $2$ computes $P(X \\ge 2) = 0.9$ instead. Under the complement the inequality flips to inclusive: $P(X > 2) = 1 - P(X \\le 2) = 1 - 0.4 = 0.6$; subtracting $P(X < 2) = 0.1$ or $P(X = 2) = 0.3$ leaves the boundary handled wrongly, and $P(X \\ge 3)$ is the event itself, not its complement.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -504,22 +555,38 @@
       "id": "statistics-and-probability-random-variables-034",
       "format": "cloze",
       "stem": "A random variable $X$ has $p(0) = 0.25$, $p(1) = 0.5$, $p(2) = 0.25$. Find $\\text{Var}(X)$.",
-      "solution": "First, $E(X) = 1$. Next, $E(X^2) = 0^2(0.25) + 1^2(0.5) + 2^2(0.25)$, which equals {{1}}. Using $\\text{Var}(X) = E(X^2) - [E(X)]^2$ then gives {{2}}.",
+      "solution": "The distribution is symmetric about $1$, so $E(X) = 1$ with no calculation. The shortcut formula is $\\text{Var}(X) =$ {{1}}. Its first ingredient weights the squared values by their probabilities: $E(X^2) =$ {{2}}. Combining the pieces gives $\\text{Var}(X) =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 1.5,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "$E(X^2) - [E(X)]^2$",
+            "$E(X^2)$",
+            "$[E(X)]^2 - E(X^2)$",
+            "$E(X^2) + [E(X)]^2$"
+          ],
+          "answer": "$E(X^2) - [E(X)]^2$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$0^2(0.25) + 1^2(0.5) + 2^2(0.25)$",
+            "$[0(0.25) + 1(0.5) + 2(0.25)]^2$",
+            "$0^2 + 1^2 + 2^2$",
+            "$0(0.25)^2 + 1(0.5)^2 + 2(0.25)^2$"
+          ],
+          "answer": "$0^2(0.25) + 1^2(0.5) + 2^2(0.25)$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 0.5,
-          "tolerance": 0.01
+          "tolerance": 0.001
         }
       ],
-      "explanation": "Here $E(X) = 1$ and $E(X^2) = 0(0.25) + 1(0.5) + 4(0.25) = 1.5$, so $\\text{Var}(X) = 1.5 - 1^2 = 0.5$. Forgetting to subtract $[E(X)]^2$ is the usual slip.",
+      "explanation": "By symmetry $E(X) = 1$. Then $E(X^2) = 0(0.25) + 1(0.5) + 4(0.25) = 1.5$, and $\\text{Var}(X) = E(X^2) - [E(X)]^2 = 1.5 - 1 = 0.5$. Quoting $E(X^2)$ alone forgets the subtraction, squaring the weighted sum gives $[E(X)]^2$, which is a different object precisely because variance measures the gap between the two, and squaring the probabilities instead of the values has no meaning at all.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -527,22 +594,38 @@
       "id": "statistics-and-probability-random-variables-035",
       "format": "cloze",
       "stem": "A random variable $X$ takes the values $1$ and $5$, each with probability $0.5$. Find the mean and the standard deviation.",
-      "solution": "The mean is $0.5(1) + 0.5(5)$, which equals {{1}}. With $E(X^2) = 0.5(1) + 0.5(25) = 13$, the variance is $13 - 9 = 4$, so the standard deviation is its square root, namely {{2}}.",
+      "solution": "With the two values equally likely, the mean sits midway between them, so $E(X) = 3$. A spread calculation must work with {{1}}. Carrying it out, the variance is {{2}}, and the standard deviation is therefore $\\sigma =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 3,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "the squared deviations of the values from the mean",
+            "the raw values themselves",
+            "the squared probabilities",
+            "the difference between the two probabilities"
+          ],
+          "answer": "the squared deviations of the values from the mean"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$0.5(1-3)^2 + 0.5(5-3)^2 = 4$",
+            "$0.5(1^2) + 0.5(5^2) = 13$",
+            "$(5-1)^2 = 16$",
+            "$0.5(1-3) + 0.5(5-3) = 0$"
+          ],
+          "answer": "$0.5(1-3)^2 + 0.5(5-3)^2 = 4$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 2,
           "tolerance": 0
         }
       ],
-      "explanation": "Here $E(X) = 3$ and $E(X^2) = 13$, so $\\text{Var}(X) = 13 - 3^2 = 4$ and $\\sigma = \\sqrt{4} = 2$. The standard deviation is the square root of the variance, not the variance itself.",
+      "explanation": "The mean is $E(X) = 0.5(1) + 0.5(5) = 3$. Variance averages the squared deviations: $0.5(1-3)^2 + 0.5(5-3)^2 = 0.5(4) + 0.5(4) = 4$, so $\\sigma = \\sqrt{4} = 2$. The value $13$ is $E(X^2)$ with the $[E(X)]^2 = 9$ not yet subtracted, $16$ squares the range instead of the deviations, and the unsquared deviations cancel to $0$, which is exactly why squaring is needed.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -550,7 +633,7 @@
       "id": "statistics-and-probability-random-variables-036",
       "format": "cloze",
       "stem": "A random variable $X$ has $E(X) = 2$. Find $E(3X + 1)$.",
-      "solution": "By linearity of expectation, $E(aX + b) =$ {{1}}. Substituting $a = 3$, $b = 1$, and $E(X) = 2$ gives a value of {{2}}.",
+      "solution": "By linearity of expectation, $E(aX + b) =$ {{1}}. With $a = 3$, $b = 1$, and $E(X) = 2$, the value is {{2}}. This conclusion holds {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -559,7 +642,7 @@
             "$a\\,E(X) + b$",
             "$a\\,E(X)$",
             "$E(X) + b$",
-            "$a + b\\,E(X)$"
+            "$a\\,(E(X) + b)$"
           ],
           "answer": "$a\\,E(X) + b$"
         },
@@ -568,9 +651,20 @@
           "type": "number",
           "answer": 7,
           "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "for every distribution with $E(X) = 2$, whatever its shape",
+            "only for symmetric distributions",
+            "only for discrete random variables",
+            "only when $X$ never exceeds $2$"
+          ],
+          "answer": "for every distribution with $E(X) = 2$, whatever its shape"
         }
       ],
-      "explanation": "Linearity gives $E(3X + 1) = 3\\,E(X) + 1 = 3(2) + 1 = 7$. The additive constant carries straight through, and only the slope multiplies $E(X)$.",
+      "explanation": "Linearity gives $E(3X + 1) = 3\\,E(X) + 1 = 3(2) + 1 = 7$. Dropping the constant gives $6$, adding it before scaling gives $9$, and forgetting the slope gives $3$. Linearity needs no assumption about the distribution at all, which is what makes it so useful: the mean alone determines $E(aX + b)$.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -578,27 +672,38 @@
       "id": "statistics-and-probability-random-variables-037",
       "format": "cloze",
       "stem": "A random variable $X$ has $\\text{Var}(X) = 4$. Find $\\text{Var}(2X + 3)$.",
-      "solution": "For a linear transformation, the variance rule is $\\text{Var}(aX + b) =$ {{1}}. With $a = 2$ and $\\text{Var}(X) = 4$, this gives a value of {{2}}.",
+      "solution": "In $\\text{Var}(aX + b)$, the additive constant $b$ {{1}}, while the coefficient $a$ enters {{2}}. Hence $\\text{Var}(2X + 3) =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
-            "$a^2\\,\\text{Var}(X)$",
-            "$a\\,\\text{Var}(X)$",
-            "$a^2\\,\\text{Var}(X) + b$",
-            "$|a|\\,\\text{Var}(X)$"
+            "shifts every outcome equally and so leaves the spread unchanged",
+            "adds $b$ to the variance",
+            "adds $b^2$ to the variance",
+            "multiplies the variance by $b$"
           ],
-          "answer": "$a^2\\,\\text{Var}(X)$"
+          "answer": "shifts every outcome equally and so leaves the spread unchanged"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "squared, because variance carries squared units",
+            "linearly, the same as for the mean",
+            "as $|a|$, the same as for the standard deviation",
+            "not at all, since only shifts matter"
+          ],
+          "answer": "squared, because variance carries squared units"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 16,
           "tolerance": 0
         }
       ],
-      "explanation": "The rule is $\\text{Var}(2X + 3) = 2^2 \\, \\text{Var}(X) = 4 \\times 4 = 16$. The coefficient is squared, and the additive constant $3$ leaves the spread unchanged.",
+      "explanation": "The shift $+3$ moves every outcome together, so it cannot change spread; the scale factor is squared because variance is measured in squared units: $\\text{Var}(2X + 3) = 2^2 \\times 4 = 16$. Scaling linearly gives $8$, which is how the standard deviation (not the variance) would behave up to sign, and adding $3$ or $9$ wrongly lets the shift leak into the spread.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -606,25 +711,48 @@
       "id": "statistics-and-probability-random-variables-038",
       "format": "cloze",
       "stem": "A random variable $X$ has $p(1) = 0.2$, $p(2) = 0.3$, $p(3) = 0.4$, $p(4) = 0.1$. Find $F(3) = P(X \\le 3)$.",
-      "solution": "The function $F$ accumulates all probability up to and including its argument, so $F(3) = p(1) + p(2) + p(3)$, which equals {{1}}. The function $F$ that builds up probability in this way is called the {{2}}.",
+      "solution": "Because the event $X \\le 3$ is inclusive, $F(3)$ gathers {{1}}. Summing them gives $F(3) =$ {{2}}. By contrast, the strict probability $P(X < 3)$ would equal {{3}}. A function that records $P(X \\le x)$ as $x$ grows is called the {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0.9,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "the probabilities of $1$, $2$ and $3$",
+            "the probabilities of $1$ and $2$ only",
+            "the probability of $3$ only",
+            "the probabilities of $3$ and $4$"
+          ],
+          "answer": "the probabilities of $1$, $2$ and $3$"
         },
         {
           "id": 2,
+          "type": "number",
+          "answer": 0.9,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$0.5$",
+            "$0.9$",
+            "$0.4$",
+            "$0.1$"
+          ],
+          "answer": "$0.5$"
+        },
+        {
+          "id": 4,
           "type": "text",
           "accept": [
             "cumulative distribution function",
             "cdf",
-            "CDF"
+            "CDF",
+            "distribution function"
           ]
         }
       ],
-      "explanation": "Since $P(X \\le 3)$ includes $X = 3$, $F(3) = 0.2 + 0.3 + 0.4 = 0.9$. Stopping before $X = 3$ would instead give $P(X < 3) = 0.5$.",
+      "explanation": "Since $X \\le 3$ includes the value $3$, $F(3) = 0.2 + 0.3 + 0.4 = 0.9$. The strict version stops short of the boundary: $P(X < 3) = 0.2 + 0.3 = 0.5$, so for discrete variables the boundary term matters. The function $F$ is the cumulative distribution function; $0.4$ is only $p(3)$ and $0.1$ is the tail $P(X > 3)$.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -632,33 +760,49 @@
       "id": "statistics-and-probability-random-variables-039",
       "format": "cloze",
       "stem": "In a game you pay GHC $5$ to play. You win GHC $12$ with probability $0.4$ and win nothing otherwise. Find the expected net gain per game.",
-      "solution": "The expected prize is $12(0.4) + 0(0.6)$, which equals GHC {{1}}. Subtracting the GHC $5$ cost of playing leaves an expected net gain of GHC {{2}}. Because this net figure is below zero, the game is {{3}}.",
+      "solution": "Two accounting routes give the same answer. Working with the prize first, the expected prize is {{1}}, and subtracting the sure GHC $5$ stake leaves an expected net gain of GHC {{2}}. Equivalently, the net outcomes are $+7$ with probability $0.4$ and {{3}} with probability $0.6$, and weighting these confirms the result. Because the expectation is negative, in the long run the game is {{4}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 4.8,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "$12(0.4) + 0(0.6) = 4.8$ cedis",
+            "$12(0.6) + 0(0.4) = 7.2$ cedis",
+            "$\\frac{12 + 0}{2} = 6$ cedis",
+            "$12$ cedis, the full prize"
+          ],
+          "answer": "$12(0.4) + 0(0.6) = 4.8$ cedis"
         },
         {
           "id": 2,
           "type": "number",
           "answer": -0.2,
-          "tolerance": 0.01
+          "tolerance": 0.001
         },
         {
           "id": 3,
           "type": "dropdown",
           "options": [
+            "$-5$",
+            "$0$",
+            "$-12$",
+            "$+5$"
+          ],
+          "answer": "$-5$"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
             "unfavourable to the player",
             "favourable to the player",
             "perfectly fair",
-            "free to play"
+            "guaranteed to lose on every single play"
           ],
           "answer": "unfavourable to the player"
         }
       ],
-      "explanation": "The expected prize is $12(0.4) = 4.8$ cedis, and the net gain is $4.8 - 5 = -0.2$ cedis, a small expected loss. Reporting the prize without subtracting the cost would hide the loss.",
+      "explanation": "The expected prize is $12(0.4) + 0(0.6) = 4.8$ cedis, so the net gain is $4.8 - 5 = -0.2$ cedis per game. The check from the net side: winning nets $12 - 5 = +7$, losing nets $-5$ because the stake is gone, and $0.4(7) + 0.6(-5) = 2.8 - 3 = -0.2$ agrees. Writing $0$ for a loss forgets the stake was paid. A negative expectation makes the game unfavourable over many plays, though it is not a guaranteed loss on any single play; swapping the probabilities gives $7.2$, and $6$ ignores the probabilities entirely.",
       "difficulty": "stretch",
       "source": "in the style of an introductory statistics text"
     }

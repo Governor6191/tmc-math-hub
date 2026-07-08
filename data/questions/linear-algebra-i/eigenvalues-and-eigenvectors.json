@@ -427,91 +427,126 @@
       "id": "linear-algebra-i-eigenvalues-and-eigenvectors-031",
       "format": "cloze",
       "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 2 & 2 \\\\ 1 & 3 \\end{pmatrix}$.",
-      "solution": "Set up the {{1}} equation $\\det(A - \\lambda I) = (2 - \\lambda)(3 - \\lambda) - 2 \\cdot 1 = 0$, which expands to $\\lambda^2 - 5\\lambda + 4 = 0$. Factoring gives the smaller eigenvalue $\\lambda =$ {{2}} and the larger eigenvalue $\\lambda =$ {{3}}.",
+      "solution": "Eigenvalues come from the {{1}} equation $\\det(A-\\lambda I)=0$, which here is $\\lambda^2 - 5\\lambda + 4 = 0$. Its constant term $4$ equals {{2}} of the eigenvalues, and factoring gives the pair {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
-            "characteristic"
-          ]
+          "type": "dropdown",
+          "options": [
+            "characteristic",
+            "linear",
+            "homogeneous",
+            "normal"
+          ],
+          "answer": "characteristic"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 1,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "the product",
+            "the sum",
+            "the difference",
+            "the ratio"
+          ],
+          "answer": "the product"
         },
         {
           "id": 3,
-          "type": "number",
-          "answer": 4,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$\\lambda = 1$ and $\\lambda = 4$",
+            "$\\lambda = -1$ and $\\lambda = -4$",
+            "$\\lambda = 2$ and $\\lambda = 3$",
+            "$\\lambda = 5$ and $\\lambda = 4$"
+          ],
+          "answer": "$\\lambda = 1$ and $\\lambda = 4$"
         }
       ],
-      "explanation": "The characteristic polynomial $\\lambda^2 - 5\\lambda + 4$ factors as $(\\lambda - 1)(\\lambda - 4)$, so the eigenvalues are $1$ and $4$. Their sum $5$ matches the trace $2 + 3$.",
-      "difficulty": "warmup",
+      "explanation": "$\\det(A-\\lambda I) = \\lambda^2 - 5\\lambda + 4 = (\\lambda-1)(\\lambda-4)$. The constant $4$ is the product of the roots; $(2,3)$ are the diagonal entries (a trap for non-triangular $A$).",
+      "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
     {
       "id": "linear-algebra-i-eigenvalues-and-eigenvectors-032",
       "format": "cloze",
       "stem": "What are the eigenvalues of the upper triangular matrix $A = \\begin{pmatrix} 3 & 7 \\\\ 0 & -2 \\end{pmatrix}$?",
-      "solution": "The eigenvalues of a triangular matrix are simply its {{1}}, because the characteristic polynomial comes already factored as $(3 - \\lambda)(-2 - \\lambda)$. So the eigenvalues are $\\lambda =$ {{2}} and $\\lambda =$ {{3}}, and the off-diagonal entry $7$ plays no role.",
+      "solution": "The eigenvalues of a triangular matrix are simply its {{1}}, since the characteristic polynomial comes already factored as $(3-\\lambda)(-2-\\lambda)$. So the eigenvalues are {{2}}, and the off-diagonal entry $7$ is {{3}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
             "diagonal entries",
-            "column entries",
+            "off-diagonal entries",
             "row sums",
-            "off-diagonal entries"
+            "column sums"
           ],
           "answer": "diagonal entries"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 3,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$3$ and $-2$",
+            "$3$ and $7$",
+            "$7$ and $-2$",
+            "$3$ and $2$"
+          ],
+          "answer": "$3$ and $-2$"
         },
         {
           "id": 3,
-          "type": "number",
-          "answer": -2,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "irrelevant to the eigenvalues",
+            "the third eigenvalue",
+            "equal to the trace",
+            "equal to the determinant"
+          ],
+          "answer": "irrelevant to the eigenvalues"
         }
       ],
-      "explanation": "Triangular matrices have their diagonal entries as eigenvalues, so $\\lambda = 3$ and $\\lambda = -2$. The entry $7$ above the diagonal does not affect them.",
-      "difficulty": "warmup",
+      "explanation": "For a triangular matrix the diagonal entries are the eigenvalues; the off-diagonal $7$ never enters the characteristic polynomial.",
+      "difficulty": "core",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
     {
       "id": "linear-algebra-i-eigenvalues-and-eigenvectors-033",
       "format": "cloze",
       "stem": "The matrix $A = \\begin{pmatrix} 4 & 2 \\\\ 1 & 3 \\end{pmatrix}$ has eigenvalue $\\lambda = 5$. Find a corresponding eigenvector.",
-      "solution": "Form $A - 5I = \\begin{pmatrix} -1 & 2 \\\\ 1 & -2 \\end{pmatrix}$ and solve $(A - 5I)v = \\mathbf{0}$. The first row gives $-x + 2y = 0$, so $x = 2y$. Choosing $y = 1$ gives the first component $x =$ {{1}}, and a check confirms $Av$ {{2}} $5v$.",
+      "solution": "An eigenvector for $\\lambda = 5$ solves $(A - 5I)v = \\mathbf 0$. Row-reducing $A - 5I = \\begin{pmatrix} -1 & 2 \\\\ 1 & -2 \\end{pmatrix}$ gives the single condition {{1}}. Choosing $y = 1$ makes the first component $x =$ {{2}}, and such an eigenvector is determined {{3}}.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$x = 2y$",
+            "$y = 2x$",
+            "$x = -2y$",
+            "$x = y$"
+          ],
+          "answer": "$x = 2y$"
+        },
+        {
+          "id": 2,
           "type": "number",
           "answer": 2,
           "tolerance": 0
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "dropdown",
           "options": [
-            "equals",
-            "exceeds",
-            "is orthogonal to",
-            "is unrelated to"
+            "only up to a nonzero scalar multiple",
+            "uniquely",
+            "up to sign only",
+            "up to adding any vector"
           ],
-          "answer": "equals"
+          "answer": "only up to a nonzero scalar multiple"
         }
       ],
-      "explanation": "Solving $(A - 5I)v = \\mathbf{0}$ gives $x = 2y$, so $v = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ when $y = 1$. Then $Av = \\begin{pmatrix} 10 \\\\ 5 \\end{pmatrix} = 5v$, confirming the eigenvector.",
+      "explanation": "$-x+2y=0$ gives $x=2y$; with $y=1$, $v=(2,1)$. Any nonzero multiple of $v$ is also an eigenvector, so it is unique only up to scale.",
       "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
@@ -519,7 +554,7 @@
       "id": "linear-algebra-i-eigenvalues-and-eigenvectors-034",
       "format": "cloze",
       "stem": "A $2 \\times 2$ matrix $A$ has eigenvalues $\\lambda = 9$ and $\\lambda = 2$. Find the trace and determinant of $A$.",
-      "solution": "The trace equals the {{1}} of the eigenvalues, so it is $9 + 2 =$ {{2}}. The determinant equals the product of the eigenvalues, so it is $9 \\cdot 2 =$ {{3}}.",
+      "solution": "The trace of a matrix equals the {{1}} of its eigenvalues, so it is $9 + 2 =$ {{2}}. The determinant equals the {{3}} of the eigenvalues, so it is $9\\cdot2 = 18$.",
       "gaps": [
         {
           "id": 1,
@@ -528,7 +563,7 @@
             "sum",
             "product",
             "difference",
-            "ratio"
+            "average"
           ],
           "answer": "sum"
         },
@@ -540,12 +575,17 @@
         },
         {
           "id": 3,
-          "type": "number",
-          "answer": 18,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "product",
+            "sum",
+            "ratio",
+            "difference"
+          ],
+          "answer": "product"
         }
       ],
-      "explanation": "For any square matrix the trace is the sum of the eigenvalues and the determinant is their product. Here the trace is $9 + 2 = 11$ and the determinant is $9 \\cdot 2 = 18$.",
+      "explanation": "Trace $=$ sum of eigenvalues $= 11$; determinant $=$ product $= 18$. Swapping these two relations is the standard mix-up.",
       "difficulty": "core",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
@@ -553,31 +593,32 @@
       "id": "linear-algebra-i-eigenvalues-and-eigenvectors-035",
       "format": "cloze",
       "stem": "The matrix $A$ has eigenvalues $\\lambda = 3$ and $\\lambda = -2$. What are the eigenvalues of $A^2$?",
-      "solution": "If $Av = \\lambda v$ then $A^2 v = \\lambda^2 v$, so each eigenvalue of $A^2$ is the original eigenvalue {{1}}. Squaring gives $3^2 =$ {{2}} and $(-2)^2 =$ {{3}}, both positive.",
+      "solution": "If $Av = \\lambda v$ then $A^2 v = \\lambda^2 v$, so each eigenvalue of $A^2$ is the original eigenvalue {{1}}. Applying that to $3$ and $-2$ gives the pair {{2}}, both positive because squaring removes the sign.",
       "gaps": [
         {
           "id": 1,
-          "type": "text",
-          "accept": [
+          "type": "dropdown",
+          "options": [
             "squared",
-            "squared.",
-            "raisedtothepowertwo"
-          ]
+            "doubled",
+            "reciprocated",
+            "left unchanged"
+          ],
+          "answer": "squared"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 9,
-          "tolerance": 0
-        },
-        {
-          "id": 3,
-          "type": "number",
-          "answer": 4,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$9$ and $4$",
+            "$6$ and $-4$",
+            "$9$ and $-4$",
+            "$5$ and $1$"
+          ],
+          "answer": "$9$ and $4$"
         }
       ],
-      "explanation": "Powers of a matrix raise the eigenvalues to the same power while fixing the eigenvectors. So the eigenvalues of $A^2$ are $9$ and $4$, the squares of $3$ and $-2$.",
+      "explanation": "Powers of $A$ raise eigenvalues to that power: $3^2 = 9$, $(-2)^2 = 4$. Doubling (giving $6, -4$) is the trap.",
       "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
@@ -585,7 +626,7 @@
       "id": "linear-algebra-i-eigenvalues-and-eigenvectors-036",
       "format": "cloze",
       "stem": "An invertible matrix $A$ has eigenvalues $\\lambda = 4$ and $\\lambda = -2$. What are the eigenvalues of $A^{-1}$?",
-      "solution": "If $Av = \\lambda v$ with $\\lambda \\neq 0$, then $A^{-1} v = \\tfrac{1}{\\lambda} v$, so the eigenvalues of $A^{-1}$ are the {{1}} of those of $A$. Thus they are $\\tfrac{1}{4} =$ {{2}} and $\\tfrac{1}{-2} =$ {{3}}.",
+      "solution": "If $Av = \\lambda v$ with $\\lambda \\neq 0$, then $A^{-1} v = \\tfrac{1}{\\lambda} v$, so the eigenvalues of $A^{-1}$ are the {{1}} of those of $A$. Thus $4$ becomes $\\tfrac14$ and $-2$ becomes {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -594,24 +635,18 @@
             "reciprocals",
             "negatives",
             "squares",
-            "doubles"
+            "same values"
           ],
           "answer": "reciprocals"
         },
         {
           "id": 2,
           "type": "number",
-          "answer": 0.25,
-          "tolerance": 0
-        },
-        {
-          "id": 3,
-          "type": "number",
           "answer": -0.5,
-          "tolerance": 0
+          "tolerance": 0.001
         }
       ],
-      "explanation": "Inverting a matrix inverts each nonzero eigenvalue while keeping the eigenvectors. So the eigenvalues of $A^{-1}$ are $\\tfrac{1}{4} = 0.25$ and $-\\tfrac{1}{2} = -0.5$.",
+      "explanation": "Inverting a matrix reciprocates its eigenvalues: $4\\to\\frac14$, $-2\\to-\\frac12$.",
       "difficulty": "core",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
@@ -619,33 +654,27 @@
       "id": "linear-algebra-i-eigenvalues-and-eigenvectors-037",
       "format": "cloze",
       "stem": "The matrix $A$ has eigenvalues $\\lambda = 5$ and $\\lambda = 3$. What are the eigenvalues of $A + 2I$?",
-      "solution": "If $Av = \\lambda v$, then $(A + 2I)v = (\\lambda + 2)v$, so adding $2I$ {{1}} every eigenvalue by $2$. Therefore $5$ becomes {{2}} and $3$ becomes {{3}}.",
+      "solution": "If $Av = \\lambda v$, then $(A + 2I)v = (\\lambda + 2)v$, so adding $2I$ {{1}} every eigenvalue by $2$ (it does not scale them). Therefore $5$ becomes $7$ and $3$ becomes {{2}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
             "shifts",
-            "doubles",
+            "scales",
             "squares",
-            "inverts"
+            "reciprocates"
           ],
           "answer": "shifts"
         },
         {
           "id": 2,
           "type": "number",
-          "answer": 7,
-          "tolerance": 0
-        },
-        {
-          "id": 3,
-          "type": "number",
           "answer": 5,
           "tolerance": 0
         }
       ],
-      "explanation": "Adding $cI$ shifts each eigenvalue by $c$ while keeping the eigenvectors fixed. With $c = 2$, the eigenvalues become $7$ and $5$.",
+      "explanation": "Adding $2I$ shifts each eigenvalue by $+2$: $5\\to7$, $3\\to5$. Thinking it multiplies by $2$ (scales) is the trap.",
       "difficulty": "core",
       "source": "in the style of Anton, Elementary Linear Algebra"
     },
@@ -653,7 +682,7 @@
       "id": "linear-algebra-i-eigenvalues-and-eigenvectors-038",
       "format": "cloze",
       "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 1 & 4 \\\\ 2 & 3 \\end{pmatrix}$.",
-      "solution": "The trace is $1 + 3 = 4$ and the determinant is $1 \\cdot 3 - 4 \\cdot 2 =$ {{1}}, so the characteristic equation is $\\lambda^2 - 4\\lambda - 5 = 0$. Factoring gives the eigenvalues $\\lambda =$ {{2}} and $\\lambda =$ {{3}}.",
+      "solution": "Using trace $= 1+3 = 4$ and determinant $= 1\\cdot3 - 4\\cdot2 =$ {{1}}, the characteristic equation is $\\lambda^2 - 4\\lambda - 5 = 0$ (which is $\\lambda^2 - (\\text{trace})\\lambda + \\det$). Factoring gives the pair {{2}}.",
       "gaps": [
         {
           "id": 1,
@@ -663,18 +692,17 @@
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 5,
-          "tolerance": 0
-        },
-        {
-          "id": 3,
-          "type": "number",
-          "answer": -1,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$\\lambda = 5$ and $\\lambda = -1$",
+            "$\\lambda = -5$ and $\\lambda = 1$",
+            "$\\lambda = 5$ and $\\lambda = 1$",
+            "$\\lambda = 1$ and $\\lambda = 3$"
+          ],
+          "answer": "$\\lambda = 5$ and $\\lambda = -1$"
         }
       ],
-      "explanation": "With determinant $3 - 8 = -5$ and trace $4$, the equation $\\lambda^2 - 4\\lambda - 5 = 0$ factors as $(\\lambda - 5)(\\lambda + 1) = 0$, giving $\\lambda = 5$ and $\\lambda = -1$.",
+      "explanation": "$\\det = 3 - 8 = -5$, so $\\lambda^2 - 4\\lambda - 5 = (\\lambda-5)(\\lambda+1)$, giving $\\lambda = 5, -1$.",
       "difficulty": "stretch",
       "source": "in the style of Leon, Linear Algebra with Applications"
     },
@@ -682,7 +710,7 @@
       "id": "linear-algebra-i-eigenvalues-and-eigenvectors-039",
       "format": "cloze",
       "stem": "Find the eigenvalues of $A = \\begin{pmatrix} 4 & 2 \\\\ 2 & 1 \\end{pmatrix}$ and decide whether $A$ is invertible.",
-      "solution": "The determinant is $4 \\cdot 1 - 2 \\cdot 2 =$ {{1}}, so the characteristic equation $\\lambda^2 - 5\\lambda = 0$ factors as $\\lambda(\\lambda - 5)$. The eigenvalues are $\\lambda =$ {{2}} and $\\lambda = 5$. Because $0$ is an eigenvalue, the matrix {{3}}.",
+      "solution": "The determinant is $4\\cdot1 - 2\\cdot2 =$ {{1}}, so the characteristic equation $\\lambda^2 - 5\\lambda = 0$ factors as $\\lambda(\\lambda - 5)$, giving eigenvalues $0$ and $5$. Because {{2}}, the matrix {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -692,9 +720,14 @@
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 0,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$0$ is an eigenvalue",
+            "$5$ is an eigenvalue",
+            "the trace is $5$",
+            "both eigenvalues are positive"
+          ],
+          "answer": "$0$ is an eigenvalue"
         },
         {
           "id": 3,
@@ -703,12 +736,12 @@
             "is not invertible",
             "is invertible",
             "is symmetric only",
-            "is the identity"
+            "has no eigenvectors"
           ],
           "answer": "is not invertible"
         }
       ],
-      "explanation": "Since $\\det(A) = 4 - 4 = 0$, zero is an eigenvalue and the equation $\\lambda^2 - 5\\lambda = 0$ gives $\\lambda = 0$ and $\\lambda = 5$. A zero eigenvalue means a zero determinant, so $A$ is singular and not invertible.",
+      "explanation": "Determinant $= 0$, so $0$ is an eigenvalue and the matrix is singular (not invertible). A matrix is invertible iff $0$ is not an eigenvalue.",
       "difficulty": "stretch",
       "source": "in the style of Anton, Elementary Linear Algebra"
     }

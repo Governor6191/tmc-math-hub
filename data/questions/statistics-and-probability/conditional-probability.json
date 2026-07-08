@@ -426,99 +426,134 @@
     {
       "id": "statistics-and-probability-conditional-probability-031",
       "format": "cloze",
-      "stem": "In a group of $50$ students, $30$ are boys and $20$ are girls. Of the boys, $12$ wear glasses. A student is chosen at random. Given that the student is a boy, find the probability that the student wears glasses.",
-      "solution": "Conditioning on the student being a boy restricts attention to just the boys, so the denominator becomes {{1}}. Of those, $12$ wear glasses, so $P(\\text{glasses} \\mid \\text{boy})$ as a decimal is {{2}}.",
+      "stem": "In a group of $50$ students, $30$ are boys and $20$ are girls. Of the boys, $12$ wear glasses, and of the girls, $6$ do. A student is chosen at random. Given that the student is a boy, find the probability that the student wears glasses.",
+      "solution": "The phrase given that the student is a boy shrinks the sample space to {{1}}. Within that restricted group the favourable outcomes are the $12$ glasses wearers, so the probability is {{2}}, which as a decimal equals {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 30,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "the $30$ boys",
+            "all $50$ students",
+            "the $18$ glasses wearers",
+            "the $12$ boys who wear glasses"
+          ],
+          "answer": "the $30$ boys"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{12}{30}$",
+            "$\\frac{12}{50}$",
+            "$\\frac{12}{18}$",
+            "$\\frac{18}{50}$"
+          ],
+          "answer": "$\\frac{12}{30}$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 0.4,
-          "tolerance": 0.01
+          "tolerance": 0.001
         }
       ],
-      "explanation": "Given the student is a boy, only the $30$ boys matter, and $12$ of them wear glasses, so $P(\\text{glasses} \\mid \\text{boy}) = \\frac{12}{30} = 0.4$. Dividing by the whole group of $50$ would give the joint probability instead.",
-      "difficulty": "warmup",
+      "explanation": "Conditioning on the student being a boy throws away everyone else: the denominator is the $30$ boys, and $12$ of them wear glasses, so $P(\\text{glasses} \\mid \\text{boy}) = \\frac{12}{30} = 0.4$. The fraction $\\frac{12}{50}$ is the joint probability of being a boy who wears glasses, $\\frac{12}{18}$ answers the reversed question $P(\\text{boy} \\mid \\text{glasses})$, and $\\frac{18}{50}$ is the overall glasses rate, which ignores the condition altogether.",
+      "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
     {
       "id": "statistics-and-probability-conditional-probability-032",
       "format": "cloze",
       "stem": "A box contains $3$ red pens and $2$ blue pens. Two pens are drawn one after the other without replacement. Find the probability that both pens are red.",
-      "solution": "The first pen is red with probability $\\frac{3}{5}$. Given that a red pen has been removed, the second pen is red with probability that as a decimal is {{1}}. Multiplying the two together gives $P(\\text{both red})$ as a decimal of about {{2}}.",
+      "solution": "The first pen is red with probability $\\frac{3}{5}$. Because the first pen is not put back, the second draw sees {{1}}. The joint probability therefore assembles as $P(\\text{both red}) =$ {{2}}, which evaluates to {{3}} as a decimal.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0.5,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "$2$ red pens among $4$",
+            "$3$ red pens among $5$",
+            "$2$ red pens among $5$",
+            "$3$ red pens among $4$"
+          ],
+          "answer": "$2$ red pens among $4$"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{3}{5} \\times \\frac{2}{4}$",
+            "$\\frac{3}{5} \\times \\frac{3}{5}$",
+            "$\\frac{3}{5} + \\frac{2}{4}$",
+            "$\\frac{2}{4}$ on its own"
+          ],
+          "answer": "$\\frac{3}{5} \\times \\frac{2}{4}$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 0.3,
-          "tolerance": 0.01
+          "tolerance": 0.001
         }
       ],
-      "explanation": "After a red pen is removed, $2$ red remain out of $4$ pens, so the second draw is red with probability $\\frac{2}{4} = 0.5$. Then $P(\\text{both red}) = \\frac{3}{5} \\times \\frac{2}{4} = \\frac{6}{20} = 0.3$. The counts must drop on the second draw.",
-      "difficulty": "warmup",
+      "explanation": "Removing a red pen leaves $2$ red among $4$ pens, so the conditional probability of a second red is $\\frac{2}{4}$. The multiplication rule then gives $P(\\text{both red}) = \\frac{3}{5} \\times \\frac{2}{4} = \\frac{6}{20} = 0.3$. Squaring $\\frac{3}{5}$ quietly assumes the pen was replaced, adding the two fractions produces $1.1$, which is impossible for a probability, and $\\frac{2}{4}$ alone is only the second-draw conditional, not the probability of both draws succeeding.",
+      "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
     {
       "id": "statistics-and-probability-conditional-probability-033",
       "format": "cloze",
       "stem": "Events $A$ and $B$ satisfy $P(A) = 0.5$ and $P(B) = 0.4$, and the occurrence of one does not affect the other. Find $P(A \\cap B)$.",
-      "solution": "When two events do not influence each other, the joint probability factorises as $P(A \\cap B) =$ {{1}}. Substituting the values gives a result of {{2}}. Two events with this multiplying property are described as {{3}}.",
+      "solution": "Because the occurrence of one event does not affect the other, $A$ and $B$ are {{1}}. For such events the joint probability is $P(A \\cap B) =$ {{2}}, which evaluates to {{3}}. Had $A$ and $B$ instead been mutually exclusive, $P(A \\cap B)$ would have been {{4}}.",
       "gaps": [
         {
           "id": 1,
           "type": "dropdown",
           "options": [
+            "independent",
+            "mutually exclusive",
+            "complementary",
+            "exhaustive"
+          ],
+          "answer": "independent"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
             "$P(A)\\,P(B)$",
             "$P(A) + P(B)$",
-            "$P(A) - P(B)$",
-            "$P(A \\mid B)$"
+            "$P(A) + P(B) - P(A)\\,P(B)$",
+            "$\\frac{P(A)}{P(B)}$"
           ],
           "answer": "$P(A)\\,P(B)$"
         },
         {
-          "id": 2,
+          "id": 3,
           "type": "number",
           "answer": 0.2,
-          "tolerance": 0
+          "tolerance": 0.001
         },
         {
-          "id": 3,
-          "type": "text",
-          "accept": [
-            "independent",
-            "Independent"
-          ]
+          "id": 4,
+          "type": "number",
+          "answer": 0,
+          "tolerance": 0
         }
       ],
-      "explanation": "For independent events the joint probability is the product $P(A)\\,P(B) = 0.5 \\times 0.4 = 0.2$. Adding the probabilities would describe a union of disjoint events, not a joint probability.",
-      "difficulty": "warmup",
+      "explanation": "Not affecting each other is exactly independence, so the joint probability factorises: $P(A \\cap B) = P(A)\\,P(B) = 0.5 \\times 0.4 = 0.2$. Adding gives $0.9$, which would be the union of disjoint events, and $P(A) + P(B) - P(A)\\,P(B) = 0.7$ is the union $P(A \\cup B)$ for independent events, not the intersection. Mutually exclusive events cannot happen together, so their intersection has probability $0$; note that two events with positive probabilities can never be both independent and mutually exclusive.",
+      "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
     {
       "id": "statistics-and-probability-conditional-probability-034",
       "format": "cloze",
       "stem": "A first-year student registers for two courses in sequence. The probability of a place in Calculus is $P(C) = 0.7$. Given a place in Calculus, the probability of a place in Statistics is $P(S \\mid C) = 0.5$. Find the probability of getting places in both.",
-      "solution": "The multiplication rule gives $P(C \\cap S) = P(C)\\,P(S \\mid C) = 0.7 \\times 0.5$, which equals {{1}}. The value $0.5$ used here, the chance of Statistics once Calculus is secured, is an example of a {{2}}.",
+      "solution": "The value $0.5$ applies only once Calculus is already secured, so it is a {{1}}. To get the probability of both places, the multiplication rule combines the two givens as {{2}}. Numerically the chance of both places is {{3}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0.35,
-          "tolerance": 0.01
-        },
-        {
-          "id": 2,
           "type": "dropdown",
           "options": [
             "conditional probability",
@@ -527,9 +562,26 @@
             "complement"
           ],
           "answer": "conditional probability"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$P(C)\\,P(S \\mid C)$",
+            "$P(C) + P(S \\mid C)$",
+            "$P(S \\mid C)$ on its own",
+            "$\\frac{P(S \\mid C)}{P(C)}$"
+          ],
+          "answer": "$P(C)\\,P(S \\mid C)$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 0.35,
+          "tolerance": 0.001
         }
       ],
-      "explanation": "By the multiplication rule, $P(C \\cap S) = 0.7 \\times 0.5 = 0.35$. The given $P(S \\mid C) = 0.5$ is a conditional probability; quoting it as the final answer would ignore the factor $P(C)$.",
+      "explanation": "The $0.5$ is the conditional probability of Statistics given Calculus, not a probability of both. The multiplication rule gives $P(C \\cap S) = P(C)\\,P(S \\mid C) = 0.7 \\times 0.5 = 0.35$. Quoting $0.5$ as the final answer forgets that the Calculus place itself is uncertain, adding gives $1.2$, which no probability can reach, and dividing runs the rule backwards.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -537,7 +589,7 @@
       "id": "statistics-and-probability-conditional-probability-035",
       "format": "cloze",
       "stem": "A factory runs two machines. Machine $X$ makes $60\\%$ of the items and machine $Y$ makes $40\\%$. Machine $X$ produces a defect with probability $0.05$, and machine $Y$ with probability $0.10$. Find the probability that a randomly chosen item is defective.",
-      "solution": "Each defect rate must be weighted by the share of items that machine makes, then the weighted pieces are summed. This combining step is {{1}}. Computing $(0.05)(0.6) + (0.10)(0.4)$ gives a probability of {{2}}.",
+      "solution": "A random item comes from $X$ or from $Y$, so the overall defect rate blends the two machines' rates using {{1}}. Weighting each defect probability by the correct share of production gives the expression {{2}}. Evaluating it, $P(\\text{defective}) =$ {{3}}.",
       "gaps": [
         {
           "id": 1,
@@ -546,18 +598,29 @@
             "the law of total probability",
             "Bayes theorem",
             "the complement rule",
-            "the addition rule for mutually exclusive events"
+            "the multiplication rule for independent events"
           ],
           "answer": "the law of total probability"
         },
         {
           "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$(0.6)(0.05) + (0.4)(0.10)$",
+            "$(0.4)(0.05) + (0.6)(0.10)$",
+            "$0.05 + 0.10$",
+            "$(0.5)(0.05) + (0.5)(0.10)$"
+          ],
+          "answer": "$(0.6)(0.05) + (0.4)(0.10)$"
+        },
+        {
+          "id": 3,
           "type": "number",
           "answer": 0.07,
-          "tolerance": 0.01
+          "tolerance": 0.001
         }
       ],
-      "explanation": "By the law of total probability, $P(D) = (0.05)(0.6) + (0.10)(0.4) = 0.03 + 0.04 = 0.07$. Simply adding the two defect rates would ignore how much each machine produces.",
+      "explanation": "By the law of total probability, each machine's defect rate is weighted by that machine's share of output: $P(D) = (0.6)(0.05) + (0.4)(0.10) = 0.03 + 0.04 = 0.07$. Swapping the shares pairs each rate with the wrong machine and gives $0.08$, adding the raw rates gives $0.15$ as if each machine made every item, and equal weights $0.075$ pretend the machines produce the same amount. Bayes theorem is the tool for the reverse question, which machine a defective item came from.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -565,28 +628,60 @@
       "id": "statistics-and-probability-conditional-probability-036",
       "format": "cloze",
       "stem": "A clinic screens for a disease that $2\\%$ of patients have. The test is positive for $90\\%$ of patients who have the disease and for $5\\%$ of patients who do not. A patient tests positive. Find the probability that the patient actually has the disease.",
-      "solution": "First find the joint probability of having the disease and testing positive: $(0.90)(0.02)$, which equals {{1}}. The overall probability of a positive test, $(0.90)(0.02) + (0.05)(0.98)$, equals {{2}}. Dividing the joint probability by this total gives a posterior of about {{3}}.",
+      "solution": "The $90\\%$ figure quoted for the test is, in symbols, {{1}}, while the question asks for the reversed conditional. Bayes theorem supplies the reversal, and its denominator, the overall positive rate, must count {{2}}. Assembling prevalence, sensitivity and false positive rate, the posterior equals {{3}}. Evaluating that ratio gives about {{4}} (4 dp). The answer stays small despite the accurate-looking test because {{5}}.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0.018,
-          "tolerance": 0.001
+          "type": "dropdown",
+          "options": [
+            "$P(\\text{positive} \\mid \\text{disease})$",
+            "$P(\\text{disease} \\mid \\text{positive})$",
+            "$P(\\text{disease} \\cap \\text{positive})$",
+            "$P(\\text{positive})$"
+          ],
+          "answer": "$P(\\text{positive} \\mid \\text{disease})$"
         },
         {
           "id": 2,
-          "type": "number",
-          "answer": 0.067,
-          "tolerance": 0.001
+          "type": "dropdown",
+          "options": [
+            "both true positives and false positives",
+            "true positives only",
+            "false positives only",
+            "all diseased patients, positive or not"
+          ],
+          "answer": "both true positives and false positives"
         },
         {
           "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{(0.90)(0.02)}{(0.90)(0.02) + (0.05)(0.98)}$",
+            "$\\frac{0.90}{0.90 + 0.05}$",
+            "$\\frac{(0.05)(0.98)}{(0.90)(0.02) + (0.05)(0.98)}$",
+            "$\\frac{(0.90)(0.02)}{(0.05)(0.98)}$"
+          ],
+          "answer": "$\\frac{(0.90)(0.02)}{(0.90)(0.02) + (0.05)(0.98)}$"
+        },
+        {
+          "id": 4,
           "type": "number",
-          "answer": 0.269,
-          "tolerance": 0.01
+          "answer": 0.2687,
+          "tolerance": 0.0005
+        },
+        {
+          "id": 5,
+          "type": "dropdown",
+          "options": [
+            "the disease is rare, so false positives outnumber true positives",
+            "the test detects only a minority of diseased patients",
+            "exactly $5\\%$ of the positive results are false",
+            "a positive result is independent of disease status"
+          ],
+          "answer": "the disease is rare, so false positives outnumber true positives"
         }
       ],
-      "explanation": "Here $(0.90)(0.02) = 0.018$ and $P(+) = 0.018 + (0.05)(0.98) = 0.018 + 0.049 = 0.067$, so Bayes theorem gives $P(D \\mid +) = \\frac{0.018}{0.067} \\approx 0.269$. Because the disease is rare, most positives are false alarms.",
+      "explanation": "The stem's $90\\%$ is the sensitivity $P(+ \\mid D)$; the question wants the reverse, $P(D \\mid +)$. Bayes theorem gives $P(D \\mid +) = \\frac{(0.90)(0.02)}{(0.90)(0.02) + (0.05)(0.98)} = \\frac{0.018}{0.018 + 0.049} = \\frac{0.018}{0.067} \\approx 0.2687$. The ratio $\\frac{0.90}{0.90 + 0.05} \\approx 0.947$ ignores the $2\\%$ prevalence, the base rate neglect trap; $\\frac{0.049}{0.067} \\approx 0.731$ is the posterior of not having the disease; and $\\frac{0.018}{0.049} \\approx 0.367$ is an odds ratio, not a probability. The posterior is small because only $2\\%$ of patients are diseased: the $0.049$ of false positives from the healthy majority outweighs the $0.018$ of true positives, so most positives are false alarms even though the test catches $90\\%$ of cases.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -594,10 +689,21 @@
       "id": "statistics-and-probability-conditional-probability-037",
       "format": "cloze",
       "stem": "From a standard deck of $52$ cards, two cards are dealt without replacement. Given that the first card is a heart, find the probability that the second card is also a heart.",
-      "solution": "After one heart is dealt and not replaced, both the number of hearts and the size of the deck drop by one. The probability that the second card is a heart is {{1}}. As a decimal that value is about {{2}}.",
+      "solution": "Without replacement, the first heart leaves the deck changed for the second draw: it now holds {{1}}. The conditional probability that the second card is also a heart is therefore {{2}}. Had the first card been put back and the deck reshuffled, that probability would instead have been {{3}}, because replacement restores the original composition.",
       "gaps": [
         {
           "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$12$ hearts among $51$ cards",
+            "$13$ hearts among $51$ cards",
+            "$12$ hearts among $52$ cards",
+            "$13$ hearts among $52$ cards"
+          ],
+          "answer": "$12$ hearts among $51$ cards"
+        },
+        {
+          "id": 2,
           "type": "dropdown",
           "options": [
             "$\\frac{12}{51}$",
@@ -608,13 +714,18 @@
           "answer": "$\\frac{12}{51}$"
         },
         {
-          "id": 2,
-          "type": "number",
-          "answer": 0.235,
-          "tolerance": 0.01
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{13}{52}$",
+            "$\\frac{12}{51}$",
+            "$\\frac{12}{52}$",
+            "$\\frac{13}{51}$"
+          ],
+          "answer": "$\\frac{13}{52}$"
         }
       ],
-      "explanation": "Removing one heart leaves $12$ hearts among $51$ cards, so $P(\\text{second heart} \\mid \\text{first heart}) = \\frac{12}{51} \\approx 0.235$. Both the heart count and the deck size must be updated after the first card.",
+      "explanation": "Dealing a heart removes one heart and one card, leaving $12$ hearts among $51$ cards, so $P(\\text{second heart} \\mid \\text{first heart}) = \\frac{12}{51} \\approx 0.235$. Updating only the heart count gives $\\frac{12}{52}$, updating only the deck size gives $\\frac{13}{51}$, and $\\frac{13}{52}$ forgets the condition entirely. With replacement the deck is restored, so the second draw is a fresh draw from $52$ cards and the probability returns to $\\frac{13}{52} = 0.25$.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -622,24 +733,49 @@
       "id": "statistics-and-probability-conditional-probability-038",
       "format": "cloze",
       "stem": "For two events, $P(A) = 0.6$, $P(B) = 0.5$, and $P(A \\cap B) = 0.3$. Determine whether $A$ and $B$ are independent.",
-      "solution": "Independence is tested by comparing the joint probability with the product of the marginals. The product $P(A)\\,P(B) = 0.6 \\times 0.5$ equals {{1}}. Since this matches the given $P(A \\cap B) = 0.3$, the two events are {{2}}.",
+      "solution": "Independence is a statement about probabilities, not about overlap: the test compares the given $P(A \\cap B)$ with {{1}}. Here that comparison value works out to {{2}}. Consequently $A$ and $B$ are {{3}}. Mutual exclusivity is a different idea entirely: mutually exclusive events with positive probabilities are {{4}} independent.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0.3,
-          "tolerance": 0
+          "type": "dropdown",
+          "options": [
+            "$P(A)\\,P(B)$",
+            "$0$",
+            "$P(A) + P(B)$",
+            "$1 - P(A)\\,P(B)$"
+          ],
+          "answer": "$P(A)\\,P(B)$"
         },
         {
           "id": 2,
-          "type": "text",
-          "accept": [
-            "independent",
-            "Independent"
-          ]
+          "type": "number",
+          "answer": 0.3,
+          "tolerance": 0.001
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "independent, because the product matches the joint probability",
+            "dependent, because the product differs from the joint probability",
+            "independent, because the joint probability is nonzero",
+            "mutually exclusive, because their probabilities sum to more than $1$"
+          ],
+          "answer": "independent, because the product matches the joint probability"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "never",
+            "always",
+            "sometimes",
+            "usually"
+          ],
+          "answer": "never"
         }
       ],
-      "explanation": "Since $P(A)\\,P(B) = 0.6 \\times 0.5 = 0.3$ equals the given $P(A \\cap B) = 0.3$, the events are independent. A nonzero intersection alone does not decide independence; mutual exclusivity is a different idea.",
+      "explanation": "The test is whether $P(A \\cap B)$ equals $P(A)\\,P(B) = 0.6 \\times 0.5 = 0.3$. It does, so the events are independent. A nonzero intersection proves nothing by itself: dependent events overlap too. Comparing against $0$ tests mutual exclusivity, not independence, and the two ideas are incompatible here: mutually exclusive events with positive probabilities satisfy $P(A \\cap B) = 0 < P(A)\\,P(B)$, so they are never independent.",
       "difficulty": "core",
       "source": "in the style of an introductory statistics text"
     },
@@ -647,13 +783,18 @@
       "id": "statistics-and-probability-conditional-probability-039",
       "format": "cloze",
       "stem": "Two bags look identical. Bag $1$ has $4$ red and $6$ green sweets; bag $2$ has $7$ red and $3$ green sweets. A bag is chosen at random and one sweet is drawn; it is red. Find the probability that it came from bag $1$.",
-      "solution": "Each bag is chosen with probability $\\frac{1}{2}$. The overall probability of drawing red is $\\frac{1}{2}\\cdot\\frac{4}{10} + \\frac{1}{2}\\cdot\\frac{7}{10}$, which as a decimal equals {{1}}. To reverse the conditioning and find $P(\\text{bag 1} \\mid \\text{red})$ we apply {{2}}. The result, $\\frac{0.2}{0.55}$, as a decimal is about {{3}}.",
+      "solution": "Before the draw each bag has prior probability $\\frac{1}{2}$, and the red sweet is evidence that should favour {{1}}. Mixing the two bags gives the overall red probability $P(\\text{red}) = \\frac{1}{2}\\cdot\\frac{4}{10} + \\frac{1}{2}\\cdot\\frac{7}{10} = \\frac{11}{20}$. The tool that reverses the conditioning from $P(\\text{red} \\mid \\text{bag})$ to $P(\\text{bag} \\mid \\text{red})$ is {{2}}, and it gives $P(\\text{bag 1} \\mid \\text{red}) =$ {{3}}. This sits {{4}} the prior of $\\frac{1}{2}$, exactly as the direction of the evidence predicts.",
       "gaps": [
         {
           "id": 1,
-          "type": "number",
-          "answer": 0.55,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "bag $2$, the bag richer in red",
+            "bag $1$, the bag poorer in red",
+            "neither bag, since the priors are equal",
+            "both bags equally"
+          ],
+          "answer": "bag $2$, the bag richer in red"
         },
         {
           "id": 2,
@@ -668,12 +809,28 @@
         },
         {
           "id": 3,
-          "type": "number",
-          "answer": 0.364,
-          "tolerance": 0.01
+          "type": "dropdown",
+          "options": [
+            "$\\frac{4}{11}$",
+            "$\\frac{1}{2}$",
+            "$\\frac{7}{11}$",
+            "$\\frac{2}{5}$"
+          ],
+          "answer": "$\\frac{4}{11}$"
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "below",
+            "above",
+            "exactly at",
+            "unrelated to"
+          ],
+          "answer": "below"
         }
       ],
-      "explanation": "Total probability gives $P(\\text{red}) = \\frac{1}{2}(0.4) + \\frac{1}{2}(0.7) = 0.2 + 0.35 = 0.55$. Bayes theorem then gives $P(\\text{bag 1} \\mid \\text{red}) = \\frac{0.2}{0.55} = \\frac{4}{11} \\approx 0.364$. Quoting the prior $\\frac{1}{2}$ would ignore the red evidence.",
+      "explanation": "Bayes theorem divides the bag 1 branch by the total: $P(\\text{bag 1} \\mid \\text{red}) = \\frac{\\frac{1}{2}\\cdot\\frac{4}{10}}{\\frac{11}{20}} = \\frac{4/20}{11/20} = \\frac{4}{11} \\approx 0.364$. The option $\\frac{1}{2}$ is the prior left un-updated, $\\frac{7}{11}$ is the posterior for bag 2 (the two posteriors sum to $1$), and $\\frac{2}{5}$ is $P(\\text{red} \\mid \\text{bag 1})$, the conditional pointing the wrong way. Because red is likelier from bag 2, seeing red pushes the probability of bag 1 below its prior; the law of total probability only builds the denominator and cannot reverse a conditional by itself.",
       "difficulty": "stretch",
       "source": "in the style of an introductory statistics text"
     }

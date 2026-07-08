@@ -429,12 +429,38 @@
       "id": "vectors-and-mechanics-products-of-vectors-031",
       "format": "cloze",
       "stem": "Let $\\mathbf{a} = 2\\mathbf{i} - 3\\mathbf{j} + \\mathbf{k}$ and $\\mathbf{b} = 4\\mathbf{i} + \\mathbf{j} - 2\\mathbf{k}$. Compute the dot product $\\mathbf{a} \\cdot \\mathbf{b}$.",
-      "solution": "Multiply matching components and add: $(2)(4) + (-3)(1) + (1)(-2) = 8 - 3 - 2 = $ {{1}}. The result of a dot product is a {{2}}.",
+      "solution": "A dot product returns a {{1}}, assembled from three componentwise contributions. The middle contribution here is {{2}}. Adding all three signed contributions gives $\\mathbf{a} \\cdot \\mathbf{b} = $ {{3}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": 3, "tolerance": 0 },
-        { "id": 2, "type": "dropdown", "options": ["scalar", "vector", "unit vector", "matrix"], "answer": "scalar" }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "scalar",
+            "vector",
+            "unit vector",
+            "matrix"
+          ],
+          "answer": "scalar"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$(-3)(1)$",
+            "$(-3)(4)$",
+            "$(3)(1)$",
+            "$(-3) + 1$"
+          ],
+          "answer": "$(-3)(1)$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 3,
+          "tolerance": 0
+        }
       ],
-      "explanation": "Summing the componentwise products gives $8 - 3 - 2 = 3$, a single number. A dot product is always a scalar, never a vector, so the sign of each product must be tracked carefully.",
+      "explanation": "The dot product multiplies matching components and adds the results into a single number: $(2)(4) + (-3)(1) + (1)(-2) = 8 - 3 - 2 = 3$. The output is a scalar; keeping the three products as a vector is the classic structural error. The middle contribution pairs the $\\mathbf{j}$ components with the sign intact, $(-3)(1) = -3$: crossing over to $(-3)(4)$ mixes unmatched components, $(3)(1)$ quietly drops the sign, and $(-3) + 1$ adds where it should multiply. The final sum needs all three signed products, two of which are negative here.",
       "difficulty": "warmup",
       "source": "in the style of Stewart 8e, chapter 12"
     },
@@ -442,13 +468,43 @@
       "id": "vectors-and-mechanics-products-of-vectors-032",
       "format": "cloze",
       "stem": "Let $\\mathbf{a} = \\mathbf{i} - 2\\mathbf{j} + 2\\mathbf{k}$ and $\\mathbf{b} = -2\\mathbf{i} + 2\\mathbf{j} + \\mathbf{k}$. Find the cosine of the angle between them.",
-      "solution": "The dot product is $(1)(-2) + (-2)(2) + (2)(1) = $ {{1}}. Both magnitudes equal $\\sqrt{1 + 4 + 4} = 3$, so $\\cos\\theta = \\frac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{a}||\\mathbf{b}|}$ equals {{2}}. A negative cosine means the angle is {{3}}.",
+      "solution": "The cosine of the angle between two vectors is given by {{1}}. Computing the dot product and both magnitudes for this pair gives $\\cos\\theta = $ {{2}}. A cosine of this sign means the angle is {{3}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": -4, "tolerance": 0 },
-        { "id": 2, "type": "dropdown", "options": ["$-\\frac{4}{9}$", "$\\frac{4}{9}$", "$-\\frac{4}{3}$", "$-\\frac{8}{9}$"], "answer": "$-\\frac{4}{9}$" },
-        { "id": 3, "type": "dropdown", "options": ["obtuse", "acute", "right", "straight"], "answer": "obtuse" }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{a}|\\,|\\mathbf{b}|}$",
+            "$\\frac{|\\mathbf{a} \\times \\mathbf{b}|}{|\\mathbf{a}|\\,|\\mathbf{b}|}$",
+            "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{a}| + |\\mathbf{b}|}$",
+            "$\\mathbf{a} \\cdot \\mathbf{b}$"
+          ],
+          "answer": "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{a}|\\,|\\mathbf{b}|}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$-\\frac{4}{9}$",
+            "$\\frac{4}{9}$",
+            "$-\\frac{4}{3}$",
+            "$-\\frac{8}{9}$"
+          ],
+          "answer": "$-\\frac{4}{9}$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "obtuse",
+            "acute",
+            "right",
+            "straight"
+          ],
+          "answer": "obtuse"
+        }
       ],
-      "explanation": "The dot product is $-2 - 4 + 2 = -4$, and dividing by $3 \\times 3 = 9$ gives $\\cos\\theta = -\\frac{4}{9}$. A negative cosine places the angle between $90^\\circ$ and $180^\\circ$, so it is obtuse; the sign carries real information and must not be discarded.",
+      "explanation": "The dot product carries the cosine: $\\cos\\theta = \\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{a}|\\,|\\mathbf{b}|}$; the ratio with $|\\mathbf{a} \\times \\mathbf{b}|$ in the numerator is the sine, the classic dot versus cross mix-up, and the bare dot product forgets to normalise at all. Here $\\mathbf{a} \\cdot \\mathbf{b} = -2 - 4 + 2 = -4$ while both magnitudes equal $\\sqrt{9} = 3$, so $\\cos\\theta = -\\frac{4}{9}$. Discarding the minus sign to report $\\frac{4}{9}$ throws away real information, $-\\frac{4}{3}$ divides by only one magnitude, and $-\\frac{8}{9}$ botches the third product as $(2)(1) = -2$. A negative cosine places $\\theta$ between $90^\\circ$ and $180^\\circ$, so the angle is obtuse.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, chapter 12"
     },
@@ -456,39 +512,132 @@
       "id": "vectors-and-mechanics-products-of-vectors-033",
       "format": "cloze",
       "stem": "Find the value of $k$ for which $\\mathbf{a} = 2\\mathbf{i} + k\\mathbf{j} - \\mathbf{k}$ and $\\mathbf{b} = 4\\mathbf{i} + 2\\mathbf{j} + 10\\mathbf{k}$ are orthogonal.",
-      "solution": "Two vectors are orthogonal exactly when their dot product is {{1}}. Setting $\\mathbf{a} \\cdot \\mathbf{b} = (2)(4) + (k)(2) + (-1)(10) = 8 + 2k - 10 = 0$ and solving gives $k = $ {{2}}.",
+      "solution": "Two vectors are orthogonal exactly when {{1}}. Writing that condition out for this pair produces the equation {{2}}, and solving it gives $k = $ {{3}}.",
       "gaps": [
-        { "id": 1, "type": "dropdown", "options": ["zero", "one", "positive", "negative"], "answer": "zero" },
-        { "id": 2, "type": "number", "answer": 1, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\mathbf{a} \\cdot \\mathbf{b} = 0$",
+            "$\\mathbf{a} \\times \\mathbf{b} = \\mathbf{0}$",
+            "$\\mathbf{a} \\cdot \\mathbf{b} = 1$",
+            "$|\\mathbf{a}| = |\\mathbf{b}|$"
+          ],
+          "answer": "$\\mathbf{a} \\cdot \\mathbf{b} = 0$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$8 + 2k - 10 = 0$",
+            "$8 + 2k + 10 = 0$",
+            "$8 + k - 10 = 0$",
+            "$4 + 4k - 10 = 0$"
+          ],
+          "answer": "$8 + 2k - 10 = 0$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 1,
+          "tolerance": 0
+        }
       ],
-      "explanation": "Orthogonality means the dot product vanishes. The equation $8 + 2k - 10 = 0$ becomes $2k = 2$, so $k = 1$. The sign of the third product, $(-1)(10) = -10$, is the easy step to drop.",
+      "explanation": "Orthogonality is the vanishing dot product, $\\mathbf{a} \\cdot \\mathbf{b} = 0$; the condition $\\mathbf{a} \\times \\mathbf{b} = \\mathbf{0}$ characterises parallel vectors instead, the opposite situation, and equal magnitudes say nothing about the angle. Multiplying matching components gives $(2)(4) + (k)(2) + (-1)(10) = 8 + 2k - 10 = 0$. The variant with $+10$ drops the minus sign on the third product, $8 + k - 10 = 0$ loses the coefficient $2$ on $k$, and $4 + 4k - 10 = 0$ pairs components that do not match. Solving $2k = 2$ gives $k = 1$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, chapter 12"
     },
     {
       "id": "vectors-and-mechanics-products-of-vectors-034",
       "format": "cloze",
-      "stem": "Using the standard right-handed basis vectors, evaluate the cross products $\\mathbf{i} \\times \\mathbf{j}$ and $\\mathbf{j} \\times \\mathbf{i}$.",
-      "solution": "The right-hand cyclic rule gives $\\mathbf{i} \\times \\mathbf{j} = $ {{1}} (write it as a single basis vector). Reversing the order flips the sign, so $\\mathbf{j} \\times \\mathbf{i} = $ {{2}}.",
+      "stem": "Using the standard right-handed basis vectors, evaluate $\\mathbf{i} \\times \\mathbf{j}$ and $\\mathbf{j} \\times \\mathbf{i}$, and hence $(\\mathbf{i} + \\mathbf{j}) \\times \\mathbf{j}$.",
+      "solution": "By the right-hand cyclic rule, $\\mathbf{i} \\times \\mathbf{j} = $ {{1}}. Swapping the two factors of any cross product {{2}}, which settles $\\mathbf{j} \\times \\mathbf{i}$ without further work. Finally, expanding $(\\mathbf{i} + \\mathbf{j}) \\times \\mathbf{j}$ term by term and using $\\mathbf{j} \\times \\mathbf{j} = \\mathbf{0}$ gives {{3}}.",
       "gaps": [
-        { "id": 1, "type": "text", "accept": ["k"] },
-        { "id": 2, "type": "dropdown", "options": ["$-\\mathbf{k}$", "$\\mathbf{k}$", "$\\mathbf{i}$", "$\\mathbf{0}$"], "answer": "$-\\mathbf{k}$" }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\mathbf{k}$",
+            "$-\\mathbf{k}$",
+            "$\\mathbf{0}$",
+            "$1$"
+          ],
+          "answer": "$\\mathbf{k}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "reverses the sign of the result",
+            "leaves the result unchanged",
+            "produces the zero vector",
+            "turns the result into a scalar"
+          ],
+          "answer": "reverses the sign of the result"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\mathbf{k}$",
+            "$2\\mathbf{k}$",
+            "$\\mathbf{0}$",
+            "$-\\mathbf{k}$"
+          ],
+          "answer": "$\\mathbf{k}$"
+        }
       ],
-      "explanation": "The cyclic order $\\mathbf{i} \\to \\mathbf{j} \\to \\mathbf{k}$ gives $\\mathbf{i} \\times \\mathbf{j} = \\mathbf{k}$. The cross product is anti-commutative, so swapping the factors gives $\\mathbf{j} \\times \\mathbf{i} = -\\mathbf{k}$.",
-      "difficulty": "warmup",
+      "explanation": "The cyclic order $\\mathbf{i} \\to \\mathbf{j} \\to \\mathbf{k}$ gives $\\mathbf{i} \\times \\mathbf{j} = \\mathbf{k}$; the answer $1$ belongs to dot-product thinking, since a cross product is always a vector, and $\\mathbf{0}$ arises only when the two factors are parallel. Anti-commutativity says swapping the factors reverses the sign, so $\\mathbf{j} \\times \\mathbf{i} = -\\mathbf{k}$: the cross product is the product where order matters, unlike the dot product. For the last part, distributivity gives $(\\mathbf{i} + \\mathbf{j}) \\times \\mathbf{j} = \\mathbf{i} \\times \\mathbf{j} + \\mathbf{j} \\times \\mathbf{j} = \\mathbf{k} + \\mathbf{0} = \\mathbf{k}$. The tempting $2\\mathbf{k}$ double-counts the surviving term, and $\\mathbf{0}$ wrongly spreads $\\mathbf{j} \\times \\mathbf{j} = \\mathbf{0}$ across the whole expression.",
+      "difficulty": "core",
       "source": "in the style of Stewart 8e, chapter 12"
     },
     {
       "id": "vectors-and-mechanics-products-of-vectors-035",
       "format": "cloze",
       "stem": "Let $\\mathbf{a} = 2\\mathbf{i} - \\mathbf{j} + 3\\mathbf{k}$ and $\\mathbf{b} = \\mathbf{i} + 4\\mathbf{j} - 2\\mathbf{k}$. Compute the components of $\\mathbf{a} \\times \\mathbf{b}$.",
-      "solution": "Expanding the determinant, the $\\mathbf{i}$ component is $(-1)(-2) - (3)(4) = $ {{1}}, the $\\mathbf{j}$ component is $-\\left[(2)(-2) - (3)(1)\\right] = $ {{2}}, and the $\\mathbf{k}$ component is $(2)(4) - (-1)(1) = $ {{3}}.",
+      "solution": "Set up the determinant with $\\mathbf{i}$, $\\mathbf{j}$, $\\mathbf{k}$ in the first row, the components of $\\mathbf{a}$ in the second row, and the components of $\\mathbf{b}$ in the third. The $\\mathbf{i}$ component of $\\mathbf{a} \\times \\mathbf{b}$ is {{1}}, and the $\\mathbf{j}$ component is {{2}}. Building the $\\mathbf{k}$ cofactor the same way and evaluating it gives the $\\mathbf{k}$ component {{3}}. As a check on the whole result, $(\\mathbf{a} \\times \\mathbf{b}) \\cdot \\mathbf{a}$ must equal {{4}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": -10, "tolerance": 0 },
-        { "id": 2, "type": "number", "answer": 7, "tolerance": 0 },
-        { "id": 3, "type": "number", "answer": 9, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$(-1)(-2) - (3)(4)$",
+            "$(-1)(-2) + (3)(4)$",
+            "$(3)(4) - (-1)(-2)$",
+            "$(2)(1) - (-1)(4)$"
+          ],
+          "answer": "$(-1)(-2) - (3)(4)$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$-\\left[(2)(-2) - (3)(1)\\right]$",
+            "$(2)(-2) - (3)(1)$",
+            "$-\\left[(2)(-2) + (3)(1)\\right]$",
+            "$-\\left[(2)(1) - (3)(-2)\\right]$"
+          ],
+          "answer": "$-\\left[(2)(-2) - (3)(1)\\right]$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 9,
+          "tolerance": 0
+        },
+        {
+          "id": 4,
+          "type": "dropdown",
+          "options": [
+            "$0$",
+            "$\\mathbf{0}$",
+            "$1$",
+            "$|\\mathbf{a}|\\,|\\mathbf{b}|$"
+          ],
+          "answer": "$0$"
+        }
       ],
-      "explanation": "The components are $2 - 12 = -10$, $-(-4 - 3) = 7$, and $8 + 1 = 9$, so $\\mathbf{a} \\times \\mathbf{b} = -10\\mathbf{i} + 7\\mathbf{j} + 9\\mathbf{k}$. A check confirms it is perpendicular to $\\mathbf{a}$: $-20 - 7 + 27 = 0$. The middle term carries a built-in minus sign.",
+      "explanation": "The $\\mathbf{i}$ cofactor strikes out the first column: $(-1)(-2) - (3)(4) = 2 - 12 = -10$. Adding instead of subtracting gives $14$, reversing the order of subtraction gives $10$, and $(2)(1) - (-1)(4)$ wrongly recycles the first components that should have been struck out. The middle cofactor carries a built-in minus sign: $-\\left[(2)(-2) - (3)(1)\\right] = -(-7) = 7$; omitting that outer sign is the most common cross product error. The $\\mathbf{k}$ cofactor is $(2)(4) - (-1)(1) = 8 + 1 = 9$. So $\\mathbf{a} \\times \\mathbf{b} = -10\\mathbf{i} + 7\\mathbf{j} + 9\\mathbf{k}$, and the check confirms it: $(\\mathbf{a} \\times \\mathbf{b}) \\cdot \\mathbf{a} = -20 - 7 + 27 = 0$, a scalar zero, because a cross product is perpendicular to each of its factors; the zero vector option confuses the dot product's scalar output with a vector.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, chapter 12"
     },
@@ -496,13 +645,38 @@
       "id": "vectors-and-mechanics-products-of-vectors-036",
       "format": "cloze",
       "stem": "Find the scalar projection of $\\mathbf{a} = 4\\mathbf{i} + 2\\mathbf{j}$ onto $\\mathbf{b} = 3\\mathbf{i} + 4\\mathbf{j}$.",
-      "solution": "The scalar projection is $\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{b}|}$, dividing by the length of the vector projected onto. Here $\\mathbf{a} \\cdot \\mathbf{b} = 12 + 8 = $ {{1}} and $|\\mathbf{b}| = \\sqrt{9 + 16} = $ {{2}}, so the scalar projection is {{3}}.",
+      "solution": "The scalar projection of $\\mathbf{a}$ onto $\\mathbf{b}$ is computed as {{1}}. Evaluating it for this pair gives the value {{2}}. The sign of that value tells you the shadow of $\\mathbf{a}$ points {{3}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": 20, "tolerance": 0 },
-        { "id": 2, "type": "number", "answer": 5, "tolerance": 0 },
-        { "id": 3, "type": "number", "answer": 4, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{b}|}$",
+            "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{a}|}$",
+            "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{b}|^2}$",
+            "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{a}|\\,|\\mathbf{b}|}$"
+          ],
+          "answer": "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{b}|}$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": 4,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "along $\\mathbf{b}$",
+            "against $\\mathbf{b}$",
+            "perpendicular to $\\mathbf{b}$",
+            "along $\\mathbf{a}$"
+          ],
+          "answer": "along $\\mathbf{b}$"
+        }
       ],
-      "explanation": "With $\\mathbf{a} \\cdot \\mathbf{b} = 20$ and $|\\mathbf{b}| = 5$, the scalar projection is $\\frac{20}{5} = 4$. The denominator is the magnitude of $\\mathbf{b}$, the vector being projected onto, not of $\\mathbf{a}$.",
+      "explanation": "The scalar projection divides the dot product by the length of the vector being projected onto: $\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{b}|}$. Dividing by $|\\mathbf{a}|$ uses the wrong magnitude, dividing by $|\\mathbf{b}|^2$ builds the coefficient of the vector projection instead, and dividing by both magnitudes produces $\\cos\\theta$. Here $\\mathbf{a} \\cdot \\mathbf{b} = 12 + 8 = 20$ and $|\\mathbf{b}| = \\sqrt{9 + 16} = 5$, so the scalar projection is $\\frac{20}{5} = 4$. A positive scalar projection means the shadow points along $\\mathbf{b}$; a negative one would point against $\\mathbf{b}$, and zero would mean the vectors are perpendicular.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, chapter 12"
     },
@@ -510,13 +684,43 @@
       "id": "vectors-and-mechanics-products-of-vectors-037",
       "format": "cloze",
       "stem": "Find the vector projection of $\\mathbf{a} = 3\\mathbf{i} - \\mathbf{j} + 2\\mathbf{k}$ onto $\\mathbf{b} = 2\\mathbf{i} - 2\\mathbf{j} + \\mathbf{k}$.",
-      "solution": "The vector projection is $\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{b}|^2}\\,\\mathbf{b}$. Here $\\mathbf{a} \\cdot \\mathbf{b} = 6 + 2 + 2 = $ {{1}} and $|\\mathbf{b}|^2 = 4 + 4 + 1 = $ {{2}}, so the projection is {{3}}.",
+      "solution": "The vector projection of $\\mathbf{a}$ onto $\\mathbf{b}$ is computed as {{1}}. Evaluating the dot product and the squared magnitude for this pair gives the projection {{2}}. The length of this projection vector is {{3}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": 10, "tolerance": 0 },
-        { "id": 2, "type": "number", "answer": 9, "tolerance": 0 },
-        { "id": 3, "type": "dropdown", "options": ["$\\frac{10}{9}(2\\mathbf{i} - 2\\mathbf{j} + \\mathbf{k})$", "$\\frac{10}{3}(2\\mathbf{i} - 2\\mathbf{j} + \\mathbf{k})$", "$\\frac{10}{9}(3\\mathbf{i} - \\mathbf{j} + 2\\mathbf{k})$", "$\\frac{10}{14}(3\\mathbf{i} - \\mathbf{j} + 2\\mathbf{k})$"], "answer": "$\\frac{10}{9}(2\\mathbf{i} - 2\\mathbf{j} + \\mathbf{k})$" }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{b}|^2}\\,\\mathbf{b}$",
+            "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{b}|}\\,\\mathbf{b}$",
+            "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{a}|^2}\\,\\mathbf{a}$",
+            "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{b}|^2}\\,\\mathbf{a}$"
+          ],
+          "answer": "$\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{b}|^2}\\,\\mathbf{b}$"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{10}{9}(2\\mathbf{i} - 2\\mathbf{j} + \\mathbf{k})$",
+            "$\\frac{10}{3}(2\\mathbf{i} - 2\\mathbf{j} + \\mathbf{k})$",
+            "$\\frac{5}{7}(3\\mathbf{i} - \\mathbf{j} + 2\\mathbf{k})$",
+            "$\\frac{10}{9}(3\\mathbf{i} - \\mathbf{j} + 2\\mathbf{k})$"
+          ],
+          "answer": "$\\frac{10}{9}(2\\mathbf{i} - 2\\mathbf{j} + \\mathbf{k})$"
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "$\\frac{10}{3}$",
+            "$\\frac{10}{9}$",
+            "$10$",
+            "$3$"
+          ],
+          "answer": "$\\frac{10}{3}$"
+        }
       ],
-      "explanation": "With $\\mathbf{a} \\cdot \\mathbf{b} = 10$ and $|\\mathbf{b}|^2 = 9$, the projection is $\\frac{10}{9}(2\\mathbf{i} - 2\\mathbf{j} + \\mathbf{k})$, a multiple of $\\mathbf{b}$. The denominator is the squared magnitude because $\\mathbf{b}$ itself, not the unit vector, multiplies the fraction.",
+      "explanation": "The vector projection is $\\frac{\\mathbf{a} \\cdot \\mathbf{b}}{|\\mathbf{b}|^2}\\,\\mathbf{b}$: the squared magnitude appears because $\\mathbf{b}$ itself rather than the unit vector multiplies the fraction, and the result must lie along $\\mathbf{b}$, so any formula built on $\\mathbf{a}$ points the wrong way. Here $\\mathbf{a} \\cdot \\mathbf{b} = 6 + 2 + 2 = 10$ and $|\\mathbf{b}|^2 = 4 + 4 + 1 = 9$, giving $\\frac{10}{9}(2\\mathbf{i} - 2\\mathbf{j} + \\mathbf{k})$; the option with $\\frac{10}{3}$ in front divides by $|\\mathbf{b}|$ instead of $|\\mathbf{b}|^2$, and $\\frac{5}{7}$ projects onto $\\mathbf{a}$ using $|\\mathbf{a}|^2 = 14$. The length is the coefficient times $|\\mathbf{b}|$: $\\frac{10}{9} \\times 3 = \\frac{10}{3}$, exactly the scalar projection. Mistaking the coefficient $\\frac{10}{9}$ for the length forgets that $\\mathbf{b}$ is not a unit vector.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, chapter 12"
     },
@@ -524,12 +728,38 @@
       "id": "vectors-and-mechanics-products-of-vectors-038",
       "format": "cloze",
       "stem": "A constant force $\\mathbf{F} = 2\\mathbf{i} - \\mathbf{j} + 4\\mathbf{k}$ newtons moves a particle in a straight line from $P(2, 1, 1)$ to $Q(5, -1, 4)$, distances in metres. Find the work done.",
-      "solution": "The displacement is $\\mathbf{d} = \\overrightarrow{PQ} = Q - P = $ {{1}} (write it in the form $a\\mathbf{i}+b\\mathbf{j}+c\\mathbf{k}$). Work is the dot product $W = \\mathbf{F} \\cdot \\mathbf{d} = (2)(3) + (-1)(-2) + (4)(3) = $ {{2}} joules.",
+      "solution": "Work done by a constant force is $W = \\mathbf{F} \\cdot \\mathbf{d}$, where $\\mathbf{d}$ must be {{1}}. Here $\\mathbf{d} = $ {{2}}, and taking the dot product with $\\mathbf{F}$ gives $W = $ {{3}} joules.",
       "gaps": [
-        { "id": 1, "type": "text", "accept": ["3i-2j+3k", "3i - 2j + 3k"] },
-        { "id": 2, "type": "number", "answer": 20, "tolerance": 0 }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "the displacement $\\overrightarrow{PQ}$, the difference of the two positions",
+            "the position vector of the endpoint $Q$",
+            "the position vector of the starting point $P$",
+            "the unit vector in the direction of travel"
+          ],
+          "answer": "the displacement $\\overrightarrow{PQ}$, the difference of the two positions"
+        },
+        {
+          "id": 2,
+          "type": "dropdown",
+          "options": [
+            "$3\\mathbf{i} - 2\\mathbf{j} + 3\\mathbf{k}$",
+            "$-3\\mathbf{i} + 2\\mathbf{j} - 3\\mathbf{k}$",
+            "$7\\mathbf{i} + 5\\mathbf{k}$",
+            "$3\\mathbf{i} + 2\\mathbf{j} + 3\\mathbf{k}$"
+          ],
+          "answer": "$3\\mathbf{i} - 2\\mathbf{j} + 3\\mathbf{k}$"
+        },
+        {
+          "id": 3,
+          "type": "number",
+          "answer": 20,
+          "tolerance": 0
+        }
       ],
-      "explanation": "The displacement is $(5-2, -1-1, 4-1) = (3, -2, 3)$, that is $3\\mathbf{i} - 2\\mathbf{j} + 3\\mathbf{k}$. Then $W = 6 + 2 + 12 = 20$ joules. Work uses the displacement, the difference of positions, not the position vector of $Q$.",
+      "explanation": "The work formula wants the displacement, head minus tail: $\\mathbf{d} = \\overrightarrow{PQ} = (5-2)\\mathbf{i} + (-1-1)\\mathbf{j} + (4-1)\\mathbf{k} = 3\\mathbf{i} - 2\\mathbf{j} + 3\\mathbf{k}$. Dotting $\\mathbf{F}$ with the position vector of $Q$ is the classic error, $-3\\mathbf{i} + 2\\mathbf{j} - 3\\mathbf{k}$ is $\\overrightarrow{QP}$, the journey run backwards, and normalising to a unit vector would compute a force component rather than work. Then $W = (2)(3) + (-1)(-2) + (4)(3) = 6 + 2 + 12 = 20$ joules. The middle term is the trap: the double negative $(-1)(-2)$ contributes $+2$, and losing it gives $16$.",
       "difficulty": "core",
       "source": "in the style of Stewart 8e, chapter 12"
     },
@@ -537,13 +767,38 @@
       "id": "vectors-and-mechanics-products-of-vectors-039",
       "format": "cloze",
       "stem": "A parallelepiped has coterminous edges $\\mathbf{a} = \\mathbf{i} + \\mathbf{j}$, $\\mathbf{b} = \\mathbf{i} + \\mathbf{k}$, and $\\mathbf{c} = \\mathbf{j} + \\mathbf{k}$. Find the scalar triple product and the volume.",
-      "solution": "The determinant with rows $(1, 1, 0)$, $(1, 0, 1)$, $(0, 1, 1)$ expands to $1(0 - 1) - 1(1 - 0) + 0 = $ {{1}}, which is the scalar triple product $\\mathbf{a} \\cdot (\\mathbf{b} \\times \\mathbf{c})$. The volume is its absolute value, namely {{2}}. Since this is nonzero, the three edges are {{3}}.",
+      "solution": "The volume of a parallelepiped on coterminous edges is {{1}}. Expanding the determinant with rows $(1, 1, 0)$, $(1, 0, 1)$, $(0, 1, 1)$ gives the scalar triple product $\\mathbf{a} \\cdot (\\mathbf{b} \\times \\mathbf{c}) = $ {{2}}, and the volume follows by taking the absolute value. A triple product of zero would instead have meant that the three edges were {{3}}.",
       "gaps": [
-        { "id": 1, "type": "number", "answer": -2, "tolerance": 0 },
-        { "id": 2, "type": "number", "answer": 2, "tolerance": 0 },
-        { "id": 3, "type": "dropdown", "options": ["not coplanar", "coplanar", "parallel", "perpendicular"], "answer": "not coplanar" }
+        {
+          "id": 1,
+          "type": "dropdown",
+          "options": [
+            "$|\\mathbf{a} \\cdot (\\mathbf{b} \\times \\mathbf{c})|$",
+            "$\\mathbf{a} \\cdot (\\mathbf{b} \\times \\mathbf{c})$",
+            "$|\\mathbf{a} \\times (\\mathbf{b} \\times \\mathbf{c})|$",
+            "$|\\mathbf{a}|\\,|\\mathbf{b}|\\,|\\mathbf{c}|$"
+          ],
+          "answer": "$|\\mathbf{a} \\cdot (\\mathbf{b} \\times \\mathbf{c})|$"
+        },
+        {
+          "id": 2,
+          "type": "number",
+          "answer": -2,
+          "tolerance": 0
+        },
+        {
+          "id": 3,
+          "type": "dropdown",
+          "options": [
+            "coplanar",
+            "perpendicular to one another",
+            "parallel to one another",
+            "of unit length"
+          ],
+          "answer": "coplanar"
+        }
       ],
-      "explanation": "The expansion gives $-1 - 1 = -2$, so the volume is $|-2| = 2$. A nonzero triple product means the edges span a genuine three-dimensional box, so they are not coplanar; a volume can never be negative, the sign only records orientation.",
+      "explanation": "Volume is the absolute value of the scalar triple product, $V = |\\mathbf{a} \\cdot (\\mathbf{b} \\times \\mathbf{c})|$: the signed product alone can come out negative, which no volume can, the vector triple product $\\mathbf{a} \\times (\\mathbf{b} \\times \\mathbf{c})$ is a different object entirely, and $|\\mathbf{a}|\\,|\\mathbf{b}|\\,|\\mathbf{c}| = 2\\sqrt{2}$ would only be right for a rectangular box. Expanding along the first row: $1\\left[(0)(1) - (1)(1)\\right] - 1\\left[(1)(1) - (1)(0)\\right] + 0 = -1 - 1 = -2$; the middle cofactor's built-in minus sign is the step that, if missed, collapses the sum to $0$ and falsely suggests flat edges. So the triple product is $-2$ and the volume is $|-2| = 2$. A genuinely zero triple product is the coplanarity test: the box flattens because all three edges lie in one plane.",
       "difficulty": "stretch",
       "source": "in the style of Stewart 8e, chapter 12"
     }
